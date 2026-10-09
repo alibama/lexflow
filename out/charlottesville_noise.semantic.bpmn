@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="defs_va_charlottesville_ch16_noise" name="Noise enforcement and sound limits (Noise Control Ordinance)" targetNamespace="https://lexipedia.xyz/ns/process/va_charlottesville_ch16_noise" exporter="lexflow" exporterVersion="0.3.0">
+  <bpmn:message id="msg_noise_complaint" name="Noise complaint"/>
+  <bpmn:message id="msg_summons" name="Summons"/>
+  <bpmn:message id="msg_certificate_as_evidence" name="Certificate as evidence"/>
+  <bpmn:message id="msg_certificate_copy_request" name="Certificate copy request"/>
+  <bpmn:message id="msg_certificate_copy" name="Certificate copy"/>
+  <bpmn:dataStore id="meter_reports_store" name="Sworn meter test reports (12 months)" isUnlimited="true">
+    <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(b): “Any sworn report of the results of any test of the calibrator for the accuracy of a sound level meter shall be admissible in court”
+Charlottesville City Code § 16-7: “the chief of police shall develop and promulgate standards and procedures for testing and validating sound level meters”</bpmn:documentation>
+  </bpmn:dataStore>
+  <bpmn:collaboration id="collab_va_charlottesville_ch16_noise" name="Noise enforcement and sound limits (Noise Control Ordinance)">
+    <bpmn:documentation textFormat="text/plain">How Charlottesville police apply Chapter 16: pick the limit (DMN), measure with a tested meter, identify who is responsible, certify the reading and charge a Class 4 misdemeanor.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <lex:model id="va-charlottesville-ch16-noise" jurisdiction="va/charlottesville" jurisdictionName="Charlottesville, Virginia" jurisdictionQid="Q123766" reviewStatus="machine-checked" method="gold-manual">
+        <lex:gap>Daytime limits for restaurants/music halls outside residential zones are not set in ch. 16 (rule nr10).</lex:gap>
+        <lex:gap>Complaint intake and charging mechanics are operational assumptions.</lex:gap>
+        <lex:actor id="city" name="City of Charlottesville" kind="public-body" wikidata="Q123766"/>
+        <lex:actor id="police" name="Charlottesville Police Department" kind="public-body"/>
+        <lex:actor id="officer" name="Officer operating the sound level meter" kind="official"/>
+        <lex:actor id="complainant" name="Complainant (owner, tenant or resident)" kind="private-party"/>
+        <lex:actor id="accused" name="Responsible person (accused)" kind="private-party"/>
+        <lex:actor id="court" name="Court" kind="court"/>
+      </lex:model>
+    </bpmn:extensionElements>
+    <bpmn:participant id="p_complainant" name="Complainant">
+      <bpmn:extensionElements>
+        <lex:actor ref="complainant"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_cpd" name="Charlottesville Police Department" processRef="proc_cpd">
+      <bpmn:extensionElements>
+        <lex:actor ref="police"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_accused" name="Responsible person (accused)">
+      <bpmn:extensionElements>
+        <lex:actor ref="accused"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_court" name="Court">
+      <bpmn:extensionElements>
+        <lex:actor ref="court"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:messageFlow id="k1" name="Noise complaint" sourceRef="p_complainant" targetRef="n_start" messageRef="msg_noise_complaint"/>
+    <bpmn:messageFlow id="k2" name="Summons" sourceRef="n_summons" targetRef="p_accused" messageRef="msg_summons"/>
+    <bpmn:messageFlow id="k3" name="Certificate and charge" sourceRef="n_court" targetRef="p_court" messageRef="msg_certificate_as_evidence"/>
+    <bpmn:messageFlow id="k4" name="Copy request" sourceRef="p_accused" targetRef="nc_start" messageRef="msg_certificate_copy_request"/>
+    <bpmn:messageFlow id="k5" name="Certificate copy" sourceRef="nc_send" targetRef="p_accused" messageRef="msg_certificate_copy"/>
+  </bpmn:collaboration>
+  <bpmn:process id="proc_cpd" name="Noise enforcement (Charlottesville Police Department)" isExecutable="true">
+    <bpmn:documentation textFormat="text/plain">Charlottesville City Code ch. 16 (Noise Control Ordinance).</bpmn:documentation>
+    <bpmn:startEvent id="n_start" name="Noise complaint or measurement request">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-8(c) [implied]: “when requested to do so by the owner or tenant in possession and control thereof”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-8(c)" section="16-8" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="implied" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>when requested to do so by the owner or tenant in possession and control thereof</lex:quote>
+            <lex:note>Only multifamily measurements are tied to a request in the text; complaints and officer observation are operational triggers.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>n1</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="n_start_def" messageRef="msg_noise_complaint"/>
+    </bpmn:startEvent>
+    <bpmn:userTask id="n_identify" name="Identify source, location and time">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-4 [assumed]: “The noise control program established by this chapter shall be enforced and administered by the police department”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-4" section="16-4" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="assumed" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>The noise control program established by this chapter shall be enforced and administered by the police department</lex:quote>
+            <lex:note>Operational step that gathers the inputs for the limit decision.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n1</bpmn:incoming>
+      <bpmn:outgoing>n2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="n_limit" name="Determine applicable sound limit" camunda:decisionRef="d_noise_limit">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-6: “No provisions of this chapter shall apply to the emission of sound for the purpose of alerting persons to the existence of an emergency”
+Charlottesville City Code § 16-8(a): “in excess of fifty-five (55) dB(A) when measured at or outside the property boundary”
+Charlottesville City Code § 16-8(b): “in excess of sixty-five (65) dB(A) when measured at or outside the property boundary”
+Charlottesville City Code § 16-10(b): “seventy-five (75) dB(A) or more at a distance of ten (10) feet or more from the source of the sound generation”
+Charlottesville City Code § 16-11: “in excess of seventy-five (75) dB(A) (fifty-five (55) dB(A) in the Neighborhood Commercial Corridor district”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-6" section="16-6" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>No provisions of this chapter shall apply to the emission of sound for the purpose of alerting persons to the existence of an emergency</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-8(a)" section="16-8" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>in excess of fifty-five (55) dB(A) when measured at or outside the property boundary</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-8(b)" section="16-8" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>in excess of sixty-five (65) dB(A) when measured at or outside the property boundary</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-10(b)" section="16-10" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>seventy-five (75) dB(A) or more at a distance of ten (10) feet or more from the source of the sound generation</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-11" section="16-11" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>in excess of seventy-five (75) dB(A) (fifty-five (55) dB(A) in the Neighborhood Commercial Corridor district</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <spiffworkflow:calledDecisionId>d_noise_limit</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n2</bpmn:incoming>
+      <bpmn:outgoing>n3</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="n_applies_gw" name="Numeric limit applies?" default="n5" gatewayDirection="Diverging">
+      <bpmn:incoming>n3</bpmn:incoming>
+      <bpmn:outgoing>n4</bpmn:outgoing>
+      <bpmn:outgoing>n5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="n_no_limit" name="No numeric limit applies">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-8(d) [implied]: “shall be exempt from the daytime prohibition set forth in subsection (b) of this section”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-8(d)" section="16-8" subsection="d" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="implied" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>shall be exempt from the daytime prohibition set forth in subsection (b) of this section</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="n_mf_gw" name="Multifamily measurement requested?" default="n7" gatewayDirection="Diverging">
+      <bpmn:incoming>n4</bpmn:incoming>
+      <bpmn:outgoing>n6</bpmn:outgoing>
+      <bpmn:outgoing>n7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="n_measure_mf" name="Measure inside the multifamily building">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-8(c): “Such measurement shall be taken at a point at least four (4) feet from the wall, ceiling or floor nearest the noise source, with doors to the receiving area closed and windows in the normal position for the season.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-8(c)" section="16-8" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>Such measurement shall be taken at a point at least four (4) feet from the wall, ceiling or floor nearest the noise source, with doors to the receiving area closed and windows in the normal position for the season.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n6</bpmn:incoming>
+      <bpmn:outgoing>n8</bpmn:outgoing>
+      <bpmn:property id="n_measure_mf_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="n_measure_mf_dia_0">
+        <bpmn:sourceRef>meter_reports</bpmn:sourceRef>
+        <bpmn:targetRef>n_measure_mf_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="n_measure" name="Measure at the required point">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-8(a): “when measured at or outside the property boundary”
+Charlottesville City Code § 16-10(b): “at a distance of ten (10) feet or more from the source of the sound generation”
+Charlottesville City Code § 16-11: “when measured at a residential property boundary”
+Charlottesville City Code § 16-12(a): “may be measured by the use of a sound level meter which measures sound pressure levels”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-8(a)" section="16-8" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>when measured at or outside the property boundary</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-10(b)" section="16-10" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>at a distance of ten (10) feet or more from the source of the sound generation</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-11" section="16-11" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>when measured at a residential property boundary</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-12(a)" section="16-12" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>may be measured by the use of a sound level meter which measures sound pressure levels</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n7</bpmn:incoming>
+      <bpmn:outgoing>n9</bpmn:outgoing>
+      <bpmn:property id="n_measure_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="n_measure_dia_0">
+        <bpmn:sourceRef>meter_reports</bpmn:sourceRef>
+        <bpmn:targetRef>n_measure_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="n_mjoin" gatewayDirection="Converging">
+      <bpmn:incoming>n8</bpmn:incoming>
+      <bpmn:incoming>n9</bpmn:incoming>
+      <bpmn:outgoing>n10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="n_exceeds_gw" name="Reading over the limit?" default="n12" gatewayDirection="Diverging">
+      <bpmn:incoming>n10</bpmn:incoming>
+      <bpmn:outgoing>n11</bpmn:outgoing>
+      <bpmn:outgoing>n12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="n_ok" name="No violation shown">
+      <bpmn:incoming>n12</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="n_responsible" name="Identify the responsible person">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-5(b): “The person operating or controlling a noise source shall be guilty of any violation caused by that source.”
+Charlottesville City Code § 16-5(b): “is rebuttably presumed to be guilty of the violation”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-5(b)" section="16-5" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>The person operating or controlling a noise source shall be guilty of any violation caused by that source.</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-5(b)" section="16-5" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>is rebuttably presumed to be guilty of the violation</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n11</bpmn:incoming>
+      <bpmn:outgoing>n13</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="n_certificate" name="Issue sound-level certificate">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(c): “An individual operating a sound level meter pursuant to the provisions of this chapter shall issue a certificate to indicate:”
+Charlottesville City Code § 16-12(c)(2): “has been tested within the past twelve (12) months and has been found to be accurate”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>An individual operating a sound level meter pursuant to the provisions of this chapter shall issue a certificate to indicate:</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-12(c)(2)" section="16-12" subsection="c.2" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>has been tested within the past twelve (12) months and has been found to be accurate</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n13</bpmn:incoming>
+      <bpmn:outgoing>n14</bpmn:outgoing>
+      <bpmn:property id="n_certificate_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="n_certificate_dia_0">
+        <bpmn:sourceRef>meter_reports</bpmn:sourceRef>
+        <bpmn:targetRef>n_certificate_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="n_certificate_doa_0">
+        <bpmn:targetRef>certificate</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:sendTask id="n_summons" name="Charge Class 4 misdemeanor" messageRef="msg_summons">
+      <bpmn:documentation textFormat="text/plain">Charging and summons mechanics follow state criminal procedure (assumption).
+Charlottesville City Code § 16-5(a): “shall be deemed to be guilty of a Class 4 misdemeanor”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-5(a)" section="16-5" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>shall be deemed to be guilty of a Class 4 misdemeanor</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n14</bpmn:incoming>
+      <bpmn:outgoing>n15</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sendTask id="n_court" name="Present certificate in court" messageRef="msg_certificate_as_evidence">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(a): “Such measurements shall be accepted as prima facie evidence of the level of noise at issue in any court or legal proceeding to enforce the provisions of this chapter.”
+Charlottesville City Code § 16-12(c): “shall be admissible in court in any criminal or civil proceeding as evidence of the facts therein stated and of the decibel level reading”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-12(a)" section="16-12" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>Such measurements shall be accepted as prima facie evidence of the level of noise at issue in any court or legal proceeding to enforce the provisions of this chapter.</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>shall be admissible in court in any criminal or civil proceeding as evidence of the facts therein stated and of the decibel level reading</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>n15</bpmn:incoming>
+      <bpmn:outgoing>n16</bpmn:outgoing>
+      <bpmn:property id="n_court_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="n_court_dia_0">
+        <bpmn:sourceRef>certificate</bpmn:sourceRef>
+        <bpmn:targetRef>n_court_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="n_end" name="Case before the court">
+      <bpmn:incoming>n16</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="n_copy" name="Certificate copy on request" triggeredByEvent="true">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(c): “A copy of the certificate shall be delivered to the accused upon request.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>A copy of the certificate shall be delivered to the accused upon request.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:startEvent id="nc_start" name="Accused requests a copy" isInterrupting="false">
+        <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(c): “A copy of the certificate shall be delivered to the accused upon request.”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>A copy of the certificate shall be delivered to the accused upon request.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>nc1</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="nc_start_def" messageRef="msg_certificate_copy_request"/>
+      </bpmn:startEvent>
+      <bpmn:sendTask id="nc_send" name="Deliver copy of certificate" messageRef="msg_certificate_copy">
+        <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(c): “A copy of the certificate shall be delivered to the accused upon request.”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>A copy of the certificate shall be delivered to the accused upon request.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+          <lex:norm modality="obligation" bearer="police"/>
+        </bpmn:extensionElements>
+        <bpmn:incoming>nc1</bpmn:incoming>
+        <bpmn:outgoing>nc2</bpmn:outgoing>
+        <bpmn:property id="nc_send_in" name="__targetRef_placeholder"/>
+        <bpmn:dataInputAssociation id="nc_send_dia_0">
+          <bpmn:sourceRef>certificate_in_n_copy</bpmn:sourceRef>
+          <bpmn:targetRef>nc_send_in</bpmn:targetRef>
+        </bpmn:dataInputAssociation>
+      </bpmn:sendTask>
+      <bpmn:endEvent id="nc_end" name="Copy delivered">
+        <bpmn:incoming>nc2</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="nc1" sourceRef="nc_start" targetRef="nc_send"/>
+      <bpmn:sequenceFlow id="nc2" sourceRef="nc_send" targetRef="nc_end"/>
+      <bpmn:dataObjectReference id="certificate_in_n_copy" name="Sound-level certificate" dataObjectRef="certificate_obj"/>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="n1" sourceRef="n_start" targetRef="n_identify"/>
+    <bpmn:sequenceFlow id="n2" sourceRef="n_identify" targetRef="n_limit"/>
+    <bpmn:sequenceFlow id="n3" sourceRef="n_limit" targetRef="n_applies_gw"/>
+    <bpmn:sequenceFlow id="n4" name="Yes" sourceRef="n_applies_gw" targetRef="n_mf_gw">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">limit_applies</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="n5" name="No" sourceRef="n_applies_gw" targetRef="n_no_limit"/>
+    <bpmn:sequenceFlow id="n6" name="Multifamily request" sourceRef="n_mf_gw" targetRef="n_measure_mf">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">multifamily_request</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="n7" name="Otherwise" sourceRef="n_mf_gw" targetRef="n_measure"/>
+    <bpmn:sequenceFlow id="n8" sourceRef="n_measure_mf" targetRef="n_mjoin"/>
+    <bpmn:sequenceFlow id="n9" sourceRef="n_measure" targetRef="n_mjoin"/>
+    <bpmn:sequenceFlow id="n10" sourceRef="n_mjoin" targetRef="n_exceeds_gw"/>
+    <bpmn:sequenceFlow id="n11" name="Over limit" sourceRef="n_exceeds_gw" targetRef="n_responsible">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">measured_dba &gt; limit_dba</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="n12" name="Within limit" sourceRef="n_exceeds_gw" targetRef="n_ok"/>
+    <bpmn:sequenceFlow id="n13" sourceRef="n_responsible" targetRef="n_certificate"/>
+    <bpmn:sequenceFlow id="n14" sourceRef="n_certificate" targetRef="n_summons"/>
+    <bpmn:sequenceFlow id="n15" sourceRef="n_summons" targetRef="n_court"/>
+    <bpmn:sequenceFlow id="n16" sourceRef="n_court" targetRef="n_end"/>
+    <bpmn:dataStoreReference id="meter_reports" name="Sworn meter test reports (12 months)" dataStoreRef="meter_reports_store">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(b): “Any sworn report of the results of any test of the calibrator for the accuracy of a sound level meter shall be admissible in court”
+Charlottesville City Code § 16-7: “the chief of police shall develop and promulgate standards and procedures for testing and validating sound level meters”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-12(b)" section="16-12" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>Any sworn report of the results of any test of the calibrator for the accuracy of a sound level meter shall be admissible in court</lex:quote>
+          </lex:source>
+          <lex:source citation="Charlottesville City Code § 16-7" section="16-7" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>the chief of police shall develop and promulgate standards and procedures for testing and validating sound level meters</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+    </bpmn:dataStoreReference>
+    <bpmn:dataObject id="certificate_obj" name="Sound-level certificate"/>
+    <bpmn:dataObjectReference id="certificate" name="Sound-level certificate" dataObjectRef="certificate_obj">
+      <bpmn:documentation textFormat="text/plain">Charlottesville City Code § 16-12(c): “shall issue a certificate to indicate:”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Charlottesville City Code § 16-12(c)" section="16-12" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+            <lex:quote>shall issue a certificate to indicate:</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+    </bpmn:dataObjectReference>
+    <bpmn:textAnnotation id="note_meter">
+      <bpmn:text>Meter must have a sworn accuracy test within 12 months (§ 16-12(c)(2)).</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="note_meter_assoc_0" sourceRef="n_certificate" targetRef="note_meter" associationDirection="None"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="seed_va_charlottesville_ch16_noise">
+    <bpmndi:BPMNPlane id="seed_plane_va_charlottesville_ch16_noise" bpmnElement="collab_va_charlottesville_ch16_noise">
+      <bpmndi:BPMNShape id="n_copy_seed" bpmnElement="n_copy" isExpanded="true">
+        <dc:Bounds x="0" y="0" width="350" height="200"/>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

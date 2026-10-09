@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" id="dmn_va_albemarle_17_211_compiled" name="Review of administrator's action; judicial review - decisions" namespace="https://lexipedia.xyz/ns/decision/va_albemarle_17_211_compiled" exporter="lexflow">
+  <decision id="standing" name="Is the action reviewable and does this person have standing?">
+    <question>Is the action reviewable and does this person have standing?</question>
+    <decisionTable id="standing_table" hitPolicy="FIRST">
+      <input id="standing_in_action_type" label="Administrator action">
+        <inputExpression id="standing_in_action_type_expr" typeRef="string">
+          <text>action_type</text>
+        </inputExpression>
+      </input>
+      <input id="standing_in_person_role" label="Person's role">
+        <inputExpression id="standing_in_person_role_expr" typeRef="string">
+          <text>person_role</text>
+        </inputExpression>
+      </input>
+      <input id="standing_in_aggrieved" label="Aggrieved?">
+        <inputExpression id="standing_in_aggrieved_expr" typeRef="boolean">
+          <text>aggrieved</text>
+        </inputExpression>
+      </input>
+      <output id="standing_out_reviewable" label="Reviewable" name="reviewable" typeRef="boolean"/>
+      <output id="standing_out_has_standing" label="Has standing" name="has_standing" typeRef="boolean"/>
+      <rule id="standing_r1">
+        <description>Albemarle County Code § 17-211(B)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>who is aggrieved by any action or inaction under subsections (A)(i) through (vii) has standing to seek review</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="standing_r1_in0">
+          <text>? in ['disapproval', 'conditional_approval', 'variance_disapproval', 'status_determination', 'general_permit_decision', 'enforcement_decision', 'failure_to_act']</text>
+        </inputEntry>
+        <inputEntry id="standing_r1_in1">
+          <text>? in ['applicant', 'permitted_operator', 'general_permit_subject']</text>
+        </inputEntry>
+        <inputEntry id="standing_r1_in2">
+          <text>True</text>
+        </inputEntry>
+        <outputEntry id="standing_r1_out0">
+          <text>True</text>
+        </outputEntry>
+        <outputEntry id="standing_r1_out1">
+          <text>True</text>
+        </outputEntry>
+      </rule>
+      <rule id="standing_r2">
+        <description>Albemarle County Code § 17-211(B)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Any downstream owner who is aggrieved by an action under subsection (A)(viii) has standing to seek review under this section.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="standing_r2_in0">
+          <text>'approval_downstream_issue'</text>
+        </inputEntry>
+        <inputEntry id="standing_r2_in1">
+          <text>'downstream_owner'</text>
+        </inputEntry>
+        <inputEntry id="standing_r2_in2">
+          <text>True</text>
+        </inputEntry>
+        <outputEntry id="standing_r2_out0">
+          <text>True</text>
+        </outputEntry>
+        <outputEntry id="standing_r2_out1">
+          <text>True</text>
+        </outputEntry>
+      </rule>
+      <rule id="standing_r3">
+        <description>Albemarle County Code § 17-211(A)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Any of the following actions by the administrator may be reviewed</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="standing_r3_in0">
+          <text>(not ((? == 'other')))</text>
+        </inputEntry>
+        <inputEntry id="standing_r3_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="standing_r3_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="standing_r3_out0">
+          <text>True</text>
+        </outputEntry>
+        <outputEntry id="standing_r3_out1">
+          <text>False</text>
+        </outputEntry>
+      </rule>
+      <rule id="standing_r4">
+        <description>Albemarle County Code § 17-211(A)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Any of the following actions by the administrator may be reviewed</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="standing_r4_in0">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="standing_r4_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="standing_r4_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="standing_r4_out0">
+          <text>False</text>
+        </outputEntry>
+        <outputEntry id="standing_r4_out1">
+          <text>False</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="dmndi_va_albemarle_17_211_compiled">
+      <dmndi:DMNShape id="standing_shape" dmnElementRef="standing">
+        <dc:Bounds x="160" y="100" width="200" height="80"/>
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

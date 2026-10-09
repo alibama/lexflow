@@ -1,0 +1,1389 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="defs_va_albemarle_17_211" name="Review of administrator's action; judicial review (VESMP)" targetNamespace="https://lexipedia.xyz/ns/process/va_albemarle_17_211" exporter="lexflow" exporterVersion="0.3.0">
+  <bpmn:message id="msg_request_for_hearing" name="Request for hearing"/>
+  <bpmn:message id="msg_written_decision" name="Written decision"/>
+  <bpmn:message id="msg_petition_for_appeal" name="Petition for appeal"/>
+  <bpmn:message id="msg_notice_of_appeal" name="Notice of appeal"/>
+  <bpmn:message id="msg_notice_of_action" name="Notice of action"/>
+  <bpmn:message id="msg_grounds_for_appeal" name="Grounds for appeal"/>
+  <bpmn:message id="msg_extension_request" name="Extension request"/>
+  <bpmn:message id="msg_hearing_record" name="Hearing record"/>
+  <bpmn:collaboration id="collab_va_albemarle_17_211" name="Review of administrator's action; judicial review (VESMP)">
+    <bpmn:documentation textFormat="text/plain">How a person aggrieved by a VESMP administrator decision gets a County hearing and then judicial review: 30-day filing windows, a soft 30-day hearing target, and appeal to circuit court.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <lex:model id="va-albemarle-17-211" jurisdiction="va/albemarle_county" jurisdictionName="Albemarle County, Virginia" jurisdictionQid="Q488653" reviewStatus="machine-checked" method="gold-manual">
+        <lex:gap>Subsection E is absent from the LOCUS chunks (letters jump D to F); the written decision is presupposed by subsection F.</lex:gap>
+        <lex:gap>Who determines standing is not stated (assigned to the hearing officer).</lex:gap>
+        <lex:gap>Consequence of an untimely request is not stated.</lex:gap>
+        <lex:actor id="appellant" name="Aggrieved person (appellant)" kind="private-party"/>
+        <lex:actor id="county" name="Albemarle County" kind="public-body" wikidata="Q488653"/>
+        <lex:actor id="administrator" name="VESMP administrator" kind="official"/>
+        <lex:actor id="clerk" name="Clerk of the Board of Supervisors" kind="official"/>
+        <lex:actor id="hearing_officer" name="Director of Community Development (hearing officer)" kind="official"/>
+        <lex:actor id="circuit_court" name="Circuit court" kind="court"/>
+      </lex:model>
+    </bpmn:extensionElements>
+    <bpmn:participant id="p_appellant" name="Appellant (aggrieved person)" processRef="proc_appellant">
+      <bpmn:extensionElements>
+        <lex:actor ref="appellant"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_county" name="Albemarle County (VESMP authority)" processRef="proc_county">
+      <bpmn:extensionElements>
+        <lex:actor ref="county" wikidata="Q488653"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_court" name="Circuit court">
+      <bpmn:extensionElements>
+        <lex:actor ref="circuit_court"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:messageFlow id="m1" name="Notice of action" sourceRef="c_notify" targetRef="p_appellant" messageRef="msg_notice_of_action"/>
+    <bpmn:messageFlow id="m2" name="Request for hearing" sourceRef="a_file" targetRef="c_request" messageRef="msg_request_for_hearing"/>
+    <bpmn:messageFlow id="m3" name="Grounds" sourceRef="p_appellant" targetRef="c_await_grounds" messageRef="msg_grounds_for_appeal"/>
+    <bpmn:messageFlow id="m4" name="Extension request" sourceRef="p_appellant" targetRef="ph_ext" messageRef="msg_extension_request"/>
+    <bpmn:messageFlow id="m5" name="Written decision" sourceRef="c_decide" targetRef="a_wait" messageRef="msg_written_decision"/>
+    <bpmn:messageFlow id="m6" name="Petition for appeal" sourceRef="a_appeal" targetRef="p_court" messageRef="msg_petition_for_appeal"/>
+    <bpmn:messageFlow id="m7" name="Notice of appeal" sourceRef="a_notify" targetRef="c_jr_notice" messageRef="msg_notice_of_appeal"/>
+    <bpmn:messageFlow id="m8" name="Hearing record" sourceRef="c_transmit" targetRef="p_court" messageRef="msg_hearing_record"/>
+  </bpmn:collaboration>
+  <bpmn:process id="proc_appellant" name="Appellant" isExecutable="true">
+    <bpmn:startEvent id="a_start" name="Aggrieved by action or inaction">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211: “Any person aggrieved by an action or inaction of the administrator may request that the County review the action or inaction”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211" section="17-211" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Any person aggrieved by an action or inaction of the administrator may request that the County review the action or inaction</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>a1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="a_decide" name="Decide whether to ask for County review">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “may request in writing that the County conduct a hearing”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>may request in writing that the County conduct a hearing</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="permission" bearer="appellant"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a1</bpmn:incoming>
+      <bpmn:outgoing>a2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="a_window" name="30-day window closes" attachedToRef="a_decide" cancelActivity="true">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C)(1): “Within 30 days after the date of notice of the action”
+Albemarle County Code § 17-211(C)(2): “Within 30 days after the date by which the administrator was required to act but failed to do so”
+Albemarle County Code § 17-211(C)(3): “Within 30 days after the date of the administrator's approval of the ESM plan or land-disturbance permit”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(C)(2)" section="17-211" subsection="C.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date by which the administrator was required to act but failed to do so</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(C)(3)" section="17-211" subsection="C.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of the administrator's approval of the ESM plan or land-disturbance permit</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="notice date / required-action date / approval date" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>a5</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="a_window_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="a_lapsed" name="County review lapsed">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C) [implied]: “provided that the request is filed with the clerk of the board of supervisors”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that the request is filed with the clerk of the board of supervisors</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="a_gw" name="Request review?" default="a4" gatewayDirection="Diverging">
+      <bpmn:incoming>a2</bpmn:incoming>
+      <bpmn:outgoing>a3</bpmn:outgoing>
+      <bpmn:outgoing>a4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="a_no" name="No review requested">
+      <bpmn:incoming>a4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="a_file" name="File written request stating grounds" messageRef="msg_request_for_hearing">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “provided that the request is filed with the clerk of the board of supervisors”
+Albemarle County Code § 17-211(C): “The request must specify the grounds for the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that the request is filed with the clerk of the board of supervisors</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The request must specify the grounds for the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="permission" bearer="appellant"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a3</bpmn:incoming>
+      <bpmn:outgoing>a6</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="a_wait" name="Written decision received">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [implied]: “the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>the hearing officer's written decision</lex:quote>
+            <lex:note>Subsection E is absent from the LOCUS chunks (letters jump D to F); the written decision is presupposed by subsection F.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a6</bpmn:incoming>
+      <bpmn:outgoing>a7</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="a_wait_def" messageRef="msg_written_decision"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:userTask id="a_decide_jr" name="Decide whether to seek judicial review">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “A final decision by the hearing officer under this section may be subject to judicial review”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>A final decision by the hearing officer under this section may be subject to judicial review</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="right" bearer="appellant"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a7</bpmn:incoming>
+      <bpmn:outgoing>a8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="a_jr_window" name="30 days after decision" attachedToRef="a_decide_jr" cancelActivity="true">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “within 30 days after the date of the hearing officer's written decision”
+Va. Code § 62.1-44.15:46: “within 30 days from the date of any written decision adversely affecting the rights, duties, or privileges”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+          <lex:source citation="Va. Code § 62.1-44.15:46" section="62.1-44.15:46" code="Code of Virginia" jurisdiction="va" grounding="explicit" url="https://law.lis.virginia.gov/vacode/62.1-44.15:46/">
+            <lex:quote>within 30 days from the date of any written decision adversely affecting the rights, duties, or privileges</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="date of the hearing officer's written decision" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>a14</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="a_jr_window_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="a_time_barred" name="Judicial review time-barred">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [implied]: “provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a14</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="a_gw2" name="Seek judicial review?" default="a10" gatewayDirection="Diverging">
+      <bpmn:incoming>a8</bpmn:incoming>
+      <bpmn:outgoing>a9</bpmn:outgoing>
+      <bpmn:outgoing>a10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="a_accept" name="Decision accepted">
+      <bpmn:incoming>a10</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="a_appeal" name="File appeal in circuit court" messageRef="msg_petition_for_appeal">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a9</bpmn:incoming>
+      <bpmn:outgoing>a11</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sendTask id="a_notify" name="Notify the County of the appeal" messageRef="msg_notice_of_appeal">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4) [assumed]: “The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="assumed" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).</lex:quote>
+            <lex:note>How the County learns of the appeal (service of process) is outside § 17-211.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a11</bpmn:incoming>
+      <bpmn:outgoing>a12</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:callActivity id="a_jr" name="Judicial review (Va. Code § 62.1-44.15:46)" calledElement="va_62_1_44_15_46_judicial_review">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “Judicial review will be conducted as provided in Virginia Code § 62.1-44.15:46.”
+Va. Code § 62.1-44.15:46: “A final decision by a locality, when serving as a VESMP authority, shall be subject to judicial review”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Judicial review will be conducted as provided in Virginia Code § 62.1-44.15:46.</lex:quote>
+          </lex:source>
+          <lex:source citation="Va. Code § 62.1-44.15:46" section="62.1-44.15:46" code="Code of Virginia" jurisdiction="va" grounding="explicit" url="https://law.lis.virginia.gov/vacode/62.1-44.15:46/">
+            <lex:quote>A final decision by a locality, when serving as a VESMP authority, shall be subject to judicial review</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>a12</bpmn:incoming>
+      <bpmn:outgoing>a13</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:endEvent id="a_end" name="Judicial review concluded">
+      <bpmn:incoming>a13</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="a1" sourceRef="a_start" targetRef="a_decide"/>
+    <bpmn:sequenceFlow id="a2" sourceRef="a_decide" targetRef="a_gw"/>
+    <bpmn:sequenceFlow id="a3" name="Yes" sourceRef="a_gw" targetRef="a_file">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">request_review</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="a4" name="No" sourceRef="a_gw" targetRef="a_no"/>
+    <bpmn:sequenceFlow id="a5" sourceRef="a_window" targetRef="a_lapsed"/>
+    <bpmn:sequenceFlow id="a6" sourceRef="a_file" targetRef="a_wait"/>
+    <bpmn:sequenceFlow id="a7" sourceRef="a_wait" targetRef="a_decide_jr"/>
+    <bpmn:sequenceFlow id="a8" sourceRef="a_decide_jr" targetRef="a_gw2"/>
+    <bpmn:sequenceFlow id="a9" name="Yes" sourceRef="a_gw2" targetRef="a_appeal">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">seek_judicial_review</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="a10" name="No" sourceRef="a_gw2" targetRef="a_accept"/>
+    <bpmn:sequenceFlow id="a11" sourceRef="a_appeal" targetRef="a_notify"/>
+    <bpmn:sequenceFlow id="a12" sourceRef="a_notify" targetRef="a_jr"/>
+    <bpmn:sequenceFlow id="a13" sourceRef="a_jr" targetRef="a_end"/>
+    <bpmn:sequenceFlow id="a14" sourceRef="a_jr_window" targetRef="a_time_barred"/>
+  </bpmn:process>
+  <bpmn:process id="proc_county" name="Albemarle County: review of administrator's action" isExecutable="true">
+    <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211 (VESMP appeals).</bpmn:documentation>
+    <bpmn:laneSet id="proc_county_lanes">
+      <bpmn:lane id="ln_admin" name="VESMP administrator">
+        <bpmn:extensionElements>
+          <lex:actor ref="administrator"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>c_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_notify</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="ln_clerk" name="Clerk of the Board of Supervisors">
+        <bpmn:extensionElements>
+          <lex:actor ref="clerk"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>c_await_request</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_request</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_window</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_lapsed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_grounds_gw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_await_grounds</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_grounds_join</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_after_gw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_jr_notice</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_transcribe</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_transmit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_jr_end</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_jr_window</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_final</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="ln_ho" name="Hearing officer (Dir. of Community Development)">
+        <bpmn:extensionElements>
+          <lex:actor ref="hearing_officer"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>c_review_rules</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_standing_gw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_dismiss</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_phase</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_target</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_target_end</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c_decide</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="c_start" name="Reviewable action or failure to act">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(A): “Any of the following actions by the administrator may be reviewed”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Any of the following actions by the administrator may be reviewed</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sendTask id="c_notify" name="Give notice of the action" messageRef="msg_notice_of_action">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C)(1) [implied]: “Within 30 days after the date of notice of the action”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+            <lex:note>Notice is presupposed by the C.1 filing window; notice rules are outside this section.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:eventBasedGateway id="c_await_request" name="Request within 30 days?" instantiate="false" eventGatewayType="Exclusive" gatewayDirection="Diverging">
+      <bpmn:incoming>f2</bpmn:incoming>
+      <bpmn:outgoing>f3</bpmn:outgoing>
+      <bpmn:outgoing>f4</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="c_request" name="Request for hearing filed">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “may request in writing that the County conduct a hearing, provided that the request is filed with the clerk of the board of supervisors”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>may request in writing that the County conduct a hearing, provided that the request is filed with the clerk of the board of supervisors</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f3</bpmn:incoming>
+      <bpmn:outgoing>f6</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="c_request_def" messageRef="msg_request_for_hearing"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="c_window" name="30 days pass, no request">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C)(1): “Within 30 days after the date of notice of the action”
+Albemarle County Code § 17-211(C)(2): “Within 30 days after the date by which the administrator was required to act but failed to do so”
+Albemarle County Code § 17-211(C)(3): “Within 30 days after the date of the administrator's approval of the ESM plan or land-disturbance permit”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(C)(2)" section="17-211" subsection="C.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date by which the administrator was required to act but failed to do so</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(C)(3)" section="17-211" subsection="C.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of the administrator's approval of the ESM plan or land-disturbance permit</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="notice date / required-action date / approval date" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f4</bpmn:incoming>
+      <bpmn:outgoing>f5</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="c_window_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="c_lapsed" name="Review unavailable (untimely)">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C) [implied]: “provided that the request is filed with the clerk of the board of supervisors”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that the request is filed with the clerk of the board of supervisors</lex:quote>
+            <lex:note>The section states the window but not the consequence of missing it.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="c_grounds_gw" name="Request states grounds?" default="f8" gatewayDirection="Diverging">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “The request must specify the grounds for the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The request must specify the grounds for the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f6</bpmn:incoming>
+      <bpmn:outgoing>f7</bpmn:outgoing>
+      <bpmn:outgoing>f8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:intermediateCatchEvent id="c_await_grounds" name="Grounds supplied">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “The 30-day period within which the hearing is held will not begin unless and until the request specifies the grounds for the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The 30-day period within which the hearing is held will not begin unless and until the request specifies the grounds for the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f8</bpmn:incoming>
+      <bpmn:outgoing>f9</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="c_await_grounds_def" messageRef="msg_grounds_for_appeal"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="c_grounds_join" gatewayDirection="Converging">
+      <bpmn:incoming>f7</bpmn:incoming>
+      <bpmn:incoming>f9</bpmn:incoming>
+      <bpmn:outgoing>f10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:businessRuleTask id="c_review_rules" name="Determine reviewability and standing" camunda:decisionRef="d_review_standing">
+      <bpmn:documentation textFormat="text/plain">Who decides standing is not stated in § 17-211; placed with the hearing officer (assumption).
+Albemarle County Code § 17-211(A): “Any of the following actions by the administrator may be reviewed”
+Albemarle County Code § 17-211(B): “has standing to seek review under this section”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Any of the following actions by the administrator may be reviewed</lex:quote>
+          </lex:source>
+          <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>has standing to seek review under this section</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <spiffworkflow:calledDecisionId>d_review_standing</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f10</bpmn:incoming>
+      <bpmn:outgoing>f11</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="c_standing_gw" name="Reviewable and has standing?" default="f13" gatewayDirection="Diverging">
+      <bpmn:incoming>f11</bpmn:incoming>
+      <bpmn:outgoing>f12</bpmn:outgoing>
+      <bpmn:outgoing>f13</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="c_dismiss" name="Not reviewable or no standing">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(B) [implied]: “has standing to seek review under this section”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>has standing to seek review under this section</lex:quote>
+            <lex:note>Disposition of requests without standing is not specified.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f13</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="c_phase" name="Hold hearing (30-day target)">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The hearing will be held within 30 days after receipt of the petition requesting a hearing.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The hearing will be held within 30 days after receipt of the petition requesting a hearing.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f12</bpmn:incoming>
+      <bpmn:outgoing>f14</bpmn:outgoing>
+      <bpmn:startEvent id="ph_start" name="Petition with grounds received">
+        <bpmn:outgoing>pf1</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:userTask id="ph_schedule" name="Set a date both parties can attend">
+        <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The hearing will be held on a date and at a time at which both the appellant and the administrator may be present.”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>The hearing will be held on a date and at a time at which both the appellant and the administrator may be present.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+          <lex:norm modality="obligation" bearer="hearing_officer"/>
+        </bpmn:extensionElements>
+        <bpmn:incoming>pf1</bpmn:incoming>
+        <bpmn:outgoing>pf2</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:boundaryEvent id="ph_ext" name="Appellant asks for extension" attachedToRef="ph_schedule" cancelActivity="false">
+        <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “At the request of the appellant, the hearing officer may extend the hearing date beyond the 30-day period.”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>At the request of the appellant, the hearing officer may extend the hearing date beyond the 30-day period.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>pf4</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="ph_ext_def" messageRef="msg_extension_request"/>
+      </bpmn:boundaryEvent>
+      <bpmn:userTask id="ph_extend" name="Decide whether to extend the date">
+        <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “the hearing officer may extend the hearing date beyond the 30-day period”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>the hearing officer may extend the hearing date beyond the 30-day period</lex:quote>
+            </lex:source>
+          </lex:grounding>
+          <lex:norm modality="permission" bearer="hearing_officer"/>
+        </bpmn:extensionElements>
+        <bpmn:incoming>pf4</bpmn:incoming>
+        <bpmn:outgoing>pf5</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="ph_ext_end" name="Extension decided">
+        <bpmn:incoming>pf5</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:subProcess id="ph_hearing" name="Conduct hearing">
+        <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(1): “The hearing before the County will be conducted by the Director of Community Development, who will act as the hearing officer for the County.”</bpmn:documentation>
+        <bpmn:extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(D)(1)" section="17-211" subsection="D.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>The hearing before the County will be conducted by the Director of Community Development, who will act as the hearing officer for the County.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </bpmn:extensionElements>
+        <bpmn:incoming>pf2</bpmn:incoming>
+        <bpmn:outgoing>pf3</bpmn:outgoing>
+        <bpmn:startEvent id="h_start" name="Hearing opens">
+          <bpmn:outgoing>hf1</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:userTask id="h_evidence" name="Take evidence from owner, administrator, others">
+          <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(3): “evidence presented by the owner, the administrator, and any other person as the hearing officer deems to be necessary for a complete review of the matter”</bpmn:documentation>
+          <bpmn:extensionElements>
+            <lex:grounding>
+              <lex:source citation="Albemarle County Code § 17-211(D)(3)" section="17-211" subsection="D.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+                <lex:quote>evidence presented by the owner, the administrator, and any other person as the hearing officer deems to be necessary for a complete review of the matter</lex:quote>
+              </lex:source>
+            </lex:grounding>
+          </bpmn:extensionElements>
+          <bpmn:incoming>hf1</bpmn:incoming>
+          <bpmn:outgoing>hf2</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:userTask id="h_consider" name="Consider relevant law and evidence">
+          <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(3): “the hearing officer will consider relevant and material laws and evidence”</bpmn:documentation>
+          <bpmn:extensionElements>
+            <lex:grounding>
+              <lex:source citation="Albemarle County Code § 17-211(D)(3)" section="17-211" subsection="D.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+                <lex:quote>the hearing officer will consider relevant and material laws and evidence</lex:quote>
+              </lex:source>
+            </lex:grounding>
+            <lex:norm modality="obligation" bearer="hearing_officer"/>
+          </bpmn:extensionElements>
+          <bpmn:incoming>hf2</bpmn:incoming>
+          <bpmn:outgoing>hf3</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:task id="h_record" name="Compile the hearing record">
+          <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.”</bpmn:documentation>
+          <bpmn:extensionElements>
+            <lex:grounding>
+              <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+                <lex:quote>The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.</lex:quote>
+              </lex:source>
+            </lex:grounding>
+          </bpmn:extensionElements>
+          <bpmn:incoming>hf3</bpmn:incoming>
+          <bpmn:outgoing>hf4</bpmn:outgoing>
+          <bpmn:dataOutputAssociation id="h_record_doa_0">
+            <bpmn:targetRef>hearing_record_in_ph_hearing</bpmn:targetRef>
+          </bpmn:dataOutputAssociation>
+        </bpmn:task>
+        <bpmn:endEvent id="h_end" name="Hearing closed">
+          <bpmn:incoming>hf4</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="hf1" sourceRef="h_start" targetRef="h_evidence"/>
+        <bpmn:sequenceFlow id="hf2" sourceRef="h_evidence" targetRef="h_consider"/>
+        <bpmn:sequenceFlow id="hf3" sourceRef="h_consider" targetRef="h_record"/>
+        <bpmn:sequenceFlow id="hf4" sourceRef="h_record" targetRef="h_end"/>
+        <bpmn:dataObjectReference id="hearing_record_in_ph_hearing" name="Hearing record (files, recording, writings)" dataObjectRef="hearing_record_obj"/>
+      </bpmn:subProcess>
+      <bpmn:endEvent id="ph_end" name="Hearing held">
+        <bpmn:incoming>pf3</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="pf1" sourceRef="ph_start" targetRef="ph_schedule"/>
+      <bpmn:sequenceFlow id="pf2" sourceRef="ph_schedule" targetRef="ph_hearing"/>
+      <bpmn:sequenceFlow id="pf3" sourceRef="ph_hearing" targetRef="ph_end"/>
+      <bpmn:sequenceFlow id="pf4" sourceRef="ph_ext" targetRef="ph_extend"/>
+      <bpmn:sequenceFlow id="pf5" sourceRef="ph_extend" targetRef="ph_ext_end"/>
+    </bpmn:subProcess>
+    <bpmn:boundaryEvent id="c_target" name="30 days after receipt" attachedToRef="c_phase" cancelActivity="false">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The hearing will be held within 30 days after receipt of the petition requesting a hearing.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The hearing will be held within 30 days after receipt of the petition requesting a hearing.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="receipt of the petition (clock starts once grounds are stated)" strict="false"/>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>f15</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="c_target_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="c_target_end" name="Target missed; jurisdiction kept">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f15</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="c_decide" name="Issue written decision" messageRef="msg_written_decision">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [implied]: “the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>the hearing officer's written decision</lex:quote>
+            <lex:note>Subsection E is absent from the LOCUS chunks (letters jump D to F); the written decision is presupposed by subsection F.</lex:note>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="duty-to-decide" bearer="hearing_officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f14</bpmn:incoming>
+      <bpmn:outgoing>f16</bpmn:outgoing>
+      <bpmn:property id="c_decide_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="c_decide_dia_0">
+        <bpmn:sourceRef>hearing_record</bpmn:sourceRef>
+        <bpmn:targetRef>c_decide_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:sendTask>
+    <bpmn:eventBasedGateway id="c_after_gw" name="Judicial review sought?" instantiate="false" eventGatewayType="Exclusive" gatewayDirection="Diverging">
+      <bpmn:incoming>f16</bpmn:incoming>
+      <bpmn:outgoing>f17</bpmn:outgoing>
+      <bpmn:outgoing>f18</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="c_jr_notice" name="Notice of appeal received">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4) [implied]: “The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f17</bpmn:incoming>
+      <bpmn:outgoing>f19</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="c_jr_notice_def" messageRef="msg_notice_of_appeal"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:task id="c_transcribe" name="Transcribe the hearing recording">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f19</bpmn:incoming>
+      <bpmn:outgoing>f20</bpmn:outgoing>
+      <bpmn:property id="c_transcribe_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="c_transcribe_dia_0">
+        <bpmn:sourceRef>hearing_record</bpmn:sourceRef>
+        <bpmn:targetRef>c_transcribe_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="c_transcribe_doa_0">
+        <bpmn:targetRef>transcript</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:sendTask id="c_transmit" name="Send record to circuit court" messageRef="msg_hearing_record">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [assumed]: “Judicial review will be conducted as provided in Virginia Code § 62.1-44.15:46.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="assumed" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Judicial review will be conducted as provided in Virginia Code § 62.1-44.15:46.</lex:quote>
+            <lex:note>How the record reaches the court is governed by court rules, not § 17-211.</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f20</bpmn:incoming>
+      <bpmn:outgoing>f21</bpmn:outgoing>
+      <bpmn:property id="c_transmit_in" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="c_transmit_dia_0">
+        <bpmn:sourceRef>transcript</bpmn:sourceRef>
+        <bpmn:targetRef>c_transmit_in</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="c_jr_end" name="Record before the court">
+      <bpmn:incoming>f21</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="c_jr_window" name="30 days after decision">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “within 30 days after the date of the hearing officer's written decision”
+Va. Code § 62.1-44.15:46: “within 30 days from the date of any written decision adversely affecting the rights, duties, or privileges”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+          <lex:source citation="Va. Code § 62.1-44.15:46" section="62.1-44.15:46" code="Code of Virginia" jurisdiction="va" grounding="explicit" url="https://law.lis.virginia.gov/vacode/62.1-44.15:46/">
+            <lex:quote>within 30 days from the date of any written decision adversely affecting the rights, duties, or privileges</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="date of the hearing officer's written decision" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f18</bpmn:incoming>
+      <bpmn:outgoing>f22</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="c_jr_window_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="c_final" name="County decision final">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [implied]: “A final decision by the hearing officer under this section may be subject to judicial review”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>A final decision by the hearing officer under this section may be subject to judicial review</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>f22</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f1" sourceRef="c_start" targetRef="c_notify"/>
+    <bpmn:sequenceFlow id="f2" sourceRef="c_notify" targetRef="c_await_request"/>
+    <bpmn:sequenceFlow id="f3" sourceRef="c_await_request" targetRef="c_request"/>
+    <bpmn:sequenceFlow id="f4" sourceRef="c_await_request" targetRef="c_window"/>
+    <bpmn:sequenceFlow id="f5" sourceRef="c_window" targetRef="c_lapsed"/>
+    <bpmn:sequenceFlow id="f6" sourceRef="c_request" targetRef="c_grounds_gw"/>
+    <bpmn:sequenceFlow id="f7" name="Grounds stated" sourceRef="c_grounds_gw" targetRef="c_grounds_join">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">grounds_stated</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f8" name="Grounds missing" sourceRef="c_grounds_gw" targetRef="c_await_grounds"/>
+    <bpmn:sequenceFlow id="f9" sourceRef="c_await_grounds" targetRef="c_grounds_join"/>
+    <bpmn:sequenceFlow id="f10" sourceRef="c_grounds_join" targetRef="c_review_rules"/>
+    <bpmn:sequenceFlow id="f11" sourceRef="c_review_rules" targetRef="c_standing_gw"/>
+    <bpmn:sequenceFlow id="f12" name="Yes" sourceRef="c_standing_gw" targetRef="c_phase">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">reviewable and has_standing</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f13" name="No" sourceRef="c_standing_gw" targetRef="c_dismiss"/>
+    <bpmn:sequenceFlow id="f14" sourceRef="c_phase" targetRef="c_decide"/>
+    <bpmn:sequenceFlow id="f15" sourceRef="c_target" targetRef="c_target_end"/>
+    <bpmn:sequenceFlow id="f16" sourceRef="c_decide" targetRef="c_after_gw"/>
+    <bpmn:sequenceFlow id="f17" sourceRef="c_after_gw" targetRef="c_jr_notice"/>
+    <bpmn:sequenceFlow id="f18" sourceRef="c_after_gw" targetRef="c_jr_window"/>
+    <bpmn:sequenceFlow id="f19" sourceRef="c_jr_notice" targetRef="c_transcribe"/>
+    <bpmn:sequenceFlow id="f20" sourceRef="c_transcribe" targetRef="c_transmit"/>
+    <bpmn:sequenceFlow id="f21" sourceRef="c_transmit" targetRef="c_jr_end"/>
+    <bpmn:sequenceFlow id="f22" sourceRef="c_jr_window" targetRef="c_final"/>
+    <bpmn:dataObject id="hearing_record_obj" name="Hearing record (files, recording, writings)"/>
+    <bpmn:dataObjectReference id="hearing_record" name="Hearing record (files, recording, writings)" dataObjectRef="hearing_record_obj">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+    </bpmn:dataObjectReference>
+    <bpmn:dataObject id="transcript_obj" name="Transcript of hearing recording"/>
+    <bpmn:dataObjectReference id="transcript" name="Transcript of hearing recording" dataObjectRef="transcript_obj">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+    </bpmn:dataObjectReference>
+    <bpmn:textAnnotation id="note_soft">
+      <bpmn:text>Soft deadline: missing it does not end the appeal (§ 17-211(D)(2)).</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="note_gap">
+      <bpmn:text>Subsection E missing from source; decision step inferred from (F).</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="note_soft_assoc_0" sourceRef="c_target" targetRef="note_soft" associationDirection="None"/>
+    <bpmn:association id="note_gap_assoc_0" sourceRef="c_decide" targetRef="note_gap" associationDirection="None"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_collab_va_albemarle_17_211">
+    <bpmndi:BPMNPlane id="BPMNPlane_collab_va_albemarle_17_211" bpmnElement="collab_va_albemarle_17_211">
+      <bpmndi:BPMNShape id="BPMNShape_p_appellant" bpmnElement="p_appellant" isHorizontal="true">
+        <dc:Bounds x="1802" y="220" width="2054" height="618"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_p_county" bpmnElement="p_county" isHorizontal="true">
+        <dc:Bounds x="80" y="918" width="3944" height="1557"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_p_court" bpmnElement="p_court" isHorizontal="true">
+        <dc:Bounds x="2339" y="80" width="2350" height="60"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_m1" bpmnElement="m1">
+        <di:waypoint x="336" y="998"/>
+        <di:waypoint x="336" y="878"/>
+        <di:waypoint x="1832" y="878"/>
+        <di:waypoint x="1832" y="838"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="462" y="845" width="66" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m2" bpmnElement="m2">
+        <di:waypoint x="2544" y="500"/>
+        <di:waypoint x="2544" y="878"/>
+        <di:waypoint x="654" y="878"/>
+        <di:waypoint x="654" y="1245"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2148" y="845" width="80" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m3" bpmnElement="m3">
+        <di:waypoint x="1832" y="838"/>
+        <di:waypoint x="1832" y="878"/>
+        <di:waypoint x="940" y="878"/>
+        <di:waypoint x="940" y="1245"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="945" y="1055" width="55" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m4" bpmnElement="m4">
+        <di:waypoint x="1832" y="838"/>
+        <di:waypoint x="1832" y="878"/>
+        <di:waypoint x="1784" y="878"/>
+        <di:waypoint x="1784" y="2061"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1789" y="1456" width="69" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m5" bpmnElement="m5">
+        <di:waypoint x="3112" y="2042"/>
+        <di:waypoint x="3112" y="878"/>
+        <di:waypoint x="2712" y="878"/>
+        <di:waypoint x="2712" y="478"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2882" y="845" width="60" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m6" bpmnElement="m6">
+        <di:waypoint x="3230" y="580"/>
+        <di:waypoint x="3230" y="560"/>
+        <di:waypoint x="3300" y="560"/>
+        <di:waypoint x="3300" y="140"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3202" y="527" width="87" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m7" bpmnElement="m7">
+        <di:waypoint x="3430" y="660"/>
+        <di:waypoint x="3430" y="1390"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3435" y="1011" width="66" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_m8" bpmnElement="m8">
+        <di:waypoint x="3798" y="1368"/>
+        <di:waypoint x="3798" y="1348"/>
+        <di:waypoint x="3868" y="1348"/>
+        <di:waypoint x="3868" y="140"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3806" y="1315" width="55" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_a_start" bpmnElement="a_start">
+        <dc:Bounds x="1872" y="282" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1847" y="323" width="87" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_decide" bpmnElement="a_decide">
+        <dc:Bounds x="2008" y="260" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_lapsed" bpmnElement="a_lapsed">
+        <dc:Bounds x="2208" y="442" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2202" y="483" width="49" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_gw" bpmnElement="a_gw" isMarkerVisible="true">
+        <dc:Bounds x="2344" y="275" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2341" y="242" width="56" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_no" bpmnElement="a_no">
+        <dc:Bounds x="2526" y="282" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2510" y="323" width="69" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_file" bpmnElement="a_file">
+        <dc:Bounds x="2494" y="420" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_wait" bpmnElement="a_wait">
+        <dc:Bounds x="2694" y="442" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2682" y="395" width="60" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_decide_jr" bpmnElement="a_decide_jr">
+        <dc:Bounds x="2830" y="420" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_time_barred" bpmnElement="a_time_barred">
+        <dc:Bounds x="3037" y="762" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3013" y="715" width="84" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_gw2" bpmnElement="a_gw2" isMarkerVisible="true">
+        <dc:Bounds x="3030" y="435" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3025" y="388" width="60" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_accept" bpmnElement="a_accept">
+        <dc:Bounds x="3212" y="442" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3199" y="483" width="62" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_appeal" bpmnElement="a_appeal">
+        <dc:Bounds x="3180" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_notify" bpmnElement="a_notify">
+        <dc:Bounds x="3380" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_jr" bpmnElement="a_jr">
+        <dc:Bounds x="3580" y="580" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_end" bpmnElement="a_end">
+        <dc:Bounds x="3780" y="602" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3765" y="643" width="67" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_window" bpmnElement="a_window">
+        <dc:Bounds x="2040" y="322" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1992" y="363" width="52" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_a_jr_window" bpmnElement="a_jr_window">
+        <dc:Bounds x="2862" y="482" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2776" y="523" width="89" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_a1" bpmnElement="a1">
+        <di:waypoint x="1908" y="300"/>
+        <di:waypoint x="2008" y="300"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a2" bpmnElement="a2">
+        <di:waypoint x="2108" y="300"/>
+        <di:waypoint x="2344" y="300"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a4" bpmnElement="a4">
+        <di:waypoint x="2394" y="300"/>
+        <di:waypoint x="2526" y="300"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2450" y="278" width="20" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a10" bpmnElement="a10">
+        <di:waypoint x="3080" y="460"/>
+        <di:waypoint x="3212" y="460"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3136" y="438" width="20" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a3" bpmnElement="a3">
+        <di:waypoint x="2369" y="325"/>
+        <di:waypoint x="2369" y="460"/>
+        <di:waypoint x="2494" y="460"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2374" y="386" width="27" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a9" bpmnElement="a9">
+        <di:waypoint x="3055" y="485"/>
+        <di:waypoint x="3055" y="620"/>
+        <di:waypoint x="3180" y="620"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3060" y="546" width="27" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a6" bpmnElement="a6">
+        <di:waypoint x="2594" y="460"/>
+        <di:waypoint x="2694" y="460"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a7" bpmnElement="a7">
+        <di:waypoint x="2730" y="460"/>
+        <di:waypoint x="2830" y="460"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a8" bpmnElement="a8">
+        <di:waypoint x="2930" y="460"/>
+        <di:waypoint x="3030" y="460"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a11" bpmnElement="a11">
+        <di:waypoint x="3280" y="620"/>
+        <di:waypoint x="3380" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a12" bpmnElement="a12">
+        <di:waypoint x="3480" y="620"/>
+        <di:waypoint x="3580" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a13" bpmnElement="a13">
+        <di:waypoint x="3680" y="620"/>
+        <di:waypoint x="3780" y="620"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a5" bpmnElement="a5">
+        <di:waypoint x="2058" y="358"/>
+        <di:waypoint x="2058" y="460"/>
+        <di:waypoint x="2208" y="460"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_a14" bpmnElement="a14">
+        <di:waypoint x="2880" y="518"/>
+        <di:waypoint x="2880" y="780"/>
+        <di:waypoint x="3037" y="780"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_ln_admin" bpmnElement="ln_admin" isHorizontal="true">
+        <dc:Bounds x="110" y="918" width="3914" height="240"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ln_clerk" bpmnElement="ln_clerk" isHorizontal="true">
+        <dc:Bounds x="110" y="1158" width="3914" height="486"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ln_ho" bpmnElement="ln_ho" isHorizontal="true">
+        <dc:Bounds x="110" y="1644" width="3914" height="831"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_start" bpmnElement="c_start">
+        <dc:Bounds x="150" y="1020" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="129" y="1061" width="79" height="56"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_notify" bpmnElement="c_notify">
+        <dc:Bounds x="286" y="998" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_await_request" bpmnElement="c_await_request" isMarkerVisible="true">
+        <dc:Bounds x="486" y="1238" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="1242" width="67" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_request" bpmnElement="c_request">
+        <dc:Bounds x="636" y="1245" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="614" y="1286" width="80" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_window" bpmnElement="c_window">
+        <dc:Bounds x="636" y="1390" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="610" y="1431" width="89" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_lapsed" bpmnElement="c_lapsed">
+        <dc:Bounds x="779" y="1390" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="757" y="1431" width="81" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_grounds_gw" bpmnElement="c_grounds_gw" isMarkerVisible="true">
+        <dc:Bounds x="772" y="1238" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="767" y="1293" width="60" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_await_grounds" bpmnElement="c_await_grounds">
+        <dc:Bounds x="922" y="1245" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="910" y="1306" width="60" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_grounds_join" bpmnElement="c_grounds_join" isMarkerVisible="true">
+        <dc:Bounds x="1058" y="1238" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_review_rules" bpmnElement="c_review_rules">
+        <dc:Bounds x="1208" y="1724" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_standing_gw" bpmnElement="c_standing_gw" isMarkerVisible="true">
+        <dc:Bounds x="1408" y="1739" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1394" y="1692" width="79" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_dismiss" bpmnElement="c_dismiss">
+        <dc:Bounds x="2242" y="1746" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2222" y="1787" width="77" height="56"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_phase" bpmnElement="c_phase" isExpanded="true">
+        <dc:Bounds x="1558" y="1884" width="1404" height="395"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_target_end" bpmnElement="c_target_end">
+        <dc:Bounds x="3094" y="2359" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3068" y="2400" width="88" height="56"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_decide" bpmnElement="c_decide">
+        <dc:Bounds x="3062" y="2042" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_after_gw" bpmnElement="c_after_gw" isMarkerVisible="true">
+        <dc:Bounds x="3262" y="1383" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3256" y="1336" width="62" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_jr_notice" bpmnElement="c_jr_notice">
+        <dc:Bounds x="3412" y="1390" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3397" y="1431" width="66" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_transcribe" bpmnElement="c_transcribe">
+        <dc:Bounds x="3548" y="1368" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_transmit" bpmnElement="c_transmit">
+        <dc:Bounds x="3748" y="1368" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_jr_end" bpmnElement="c_jr_end">
+        <dc:Bounds x="3948" y="1390" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3931" y="1431" width="71" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_jr_window" bpmnElement="c_jr_window">
+        <dc:Bounds x="3412" y="1528" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3386" y="1569" width="89" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_final" bpmnElement="c_final">
+        <dc:Bounds x="3580" y="1528" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3568" y="1569" width="60" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_c_target" bpmnElement="c_target">
+        <dc:Bounds x="2242" y="2261" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2216" y="2228" width="89" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_hearing_record" bpmnElement="hearing_record">
+        <dc:Bounds x="3668" y="1663" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3589" y="1653" width="74" height="70"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_transcript" bpmnElement="transcript">
+        <dc:Bounds x="3780" y="1488" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3760" y="1543" width="76" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_note_soft" bpmnElement="note_soft">
+        <dc:Bounds x="1990" y="2337" width="140" height="90"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_note_gap" bpmnElement="note_gap">
+        <dc:Bounds x="3182" y="2051" width="220" height="62"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_f1" bpmnElement="f1">
+        <di:waypoint x="186" y="1038"/>
+        <di:waypoint x="286" y="1038"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f2" bpmnElement="f2">
+        <di:waypoint x="386" y="1038"/>
+        <di:waypoint x="511" y="1038"/>
+        <di:waypoint x="511" y="1238"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f3" bpmnElement="f3">
+        <di:waypoint x="536" y="1263"/>
+        <di:waypoint x="636" y="1263"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f6" bpmnElement="f6">
+        <di:waypoint x="672" y="1263"/>
+        <di:waypoint x="772" y="1263"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f8" bpmnElement="f8">
+        <di:waypoint x="822" y="1263"/>
+        <di:waypoint x="922" y="1263"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="854" y="1230" width="56" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f9" bpmnElement="f9">
+        <di:waypoint x="958" y="1263"/>
+        <di:waypoint x="1058" y="1263"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f10" bpmnElement="f10">
+        <di:waypoint x="1108" y="1263"/>
+        <di:waypoint x="1258" y="1263"/>
+        <di:waypoint x="1258" y="1724"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f11" bpmnElement="f11">
+        <di:waypoint x="1308" y="1764"/>
+        <di:waypoint x="1408" y="1764"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f13" bpmnElement="f13">
+        <di:waypoint x="1458" y="1764"/>
+        <di:waypoint x="2242" y="1764"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1840" y="1742" width="20" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f17" bpmnElement="f17">
+        <di:waypoint x="3312" y="1408"/>
+        <di:waypoint x="3412" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f19" bpmnElement="f19">
+        <di:waypoint x="3448" y="1408"/>
+        <di:waypoint x="3548" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f20" bpmnElement="f20">
+        <di:waypoint x="3648" y="1408"/>
+        <di:waypoint x="3748" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f21" bpmnElement="f21">
+        <di:waypoint x="3848" y="1408"/>
+        <di:waypoint x="3948" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f4" bpmnElement="f4">
+        <di:waypoint x="511" y="1288"/>
+        <di:waypoint x="511" y="1408"/>
+        <di:waypoint x="636" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f12" bpmnElement="f12">
+        <di:waypoint x="1433" y="1789"/>
+        <di:waypoint x="1433" y="2082"/>
+        <di:waypoint x="1558" y="2082"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1438" y="1929" width="27" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f18" bpmnElement="f18">
+        <di:waypoint x="3287" y="1433"/>
+        <di:waypoint x="3287" y="1546"/>
+        <di:waypoint x="3412" y="1546"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f5" bpmnElement="f5">
+        <di:waypoint x="672" y="1408"/>
+        <di:waypoint x="779" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f7" bpmnElement="f7">
+        <di:waypoint x="822" y="1263"/>
+        <di:waypoint x="842" y="1263"/>
+        <di:waypoint x="842" y="1288"/>
+        <di:waypoint x="1038" y="1288"/>
+        <di:waypoint x="1038" y="1263"/>
+        <di:waypoint x="1058" y="1263"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="993" y="1293" width="55" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f14" bpmnElement="f14">
+        <di:waypoint x="2962" y="2082"/>
+        <di:waypoint x="3062" y="2082"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f16" bpmnElement="f16">
+        <di:waypoint x="3112" y="2042"/>
+        <di:waypoint x="3112" y="1408"/>
+        <di:waypoint x="3262" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f22" bpmnElement="f22">
+        <di:waypoint x="3448" y="1546"/>
+        <di:waypoint x="3580" y="1546"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_f15" bpmnElement="f15">
+        <di:waypoint x="2260" y="2297"/>
+        <di:waypoint x="2260" y="2377"/>
+        <di:waypoint x="3094" y="2377"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_c_decide_dia_0" bpmnElement="c_decide_dia_0">
+        <di:waypoint x="3686" y="1713"/>
+        <di:waypoint x="3686" y="2082"/>
+        <di:waypoint x="3162" y="2082"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_c_transcribe_dia_0" bpmnElement="c_transcribe_dia_0">
+        <di:waypoint x="3686" y="1663"/>
+        <di:waypoint x="3686" y="1408"/>
+        <di:waypoint x="3648" y="1408"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_c_transcribe_doa_0" bpmnElement="c_transcribe_doa_0">
+        <di:waypoint x="3598" y="1448"/>
+        <di:waypoint x="3598" y="1513"/>
+        <di:waypoint x="3780" y="1513"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_c_transmit_dia_0" bpmnElement="c_transmit_dia_0">
+        <di:waypoint x="3798" y="1488"/>
+        <di:waypoint x="3798" y="1448"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_note_soft_assoc_0" bpmnElement="note_soft_assoc_0">
+        <di:waypoint x="2260" y="2297"/>
+        <di:waypoint x="2060" y="2337"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_note_gap_assoc_0" bpmnElement="note_gap_assoc_0">
+        <di:waypoint x="3162" y="2082"/>
+        <di:waypoint x="3182" y="2082"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_ph_start" bpmnElement="ph_start">
+        <dc:Bounds x="1598" y="2021" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1572" y="2062" width="88" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_schedule" bpmnElement="ph_schedule">
+        <dc:Bounds x="1734" y="1999" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_extend" bpmnElement="ph_extend">
+        <dc:Bounds x="2310" y="2159" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_ext_end" bpmnElement="ph_ext_end">
+        <dc:Bounds x="2886" y="2181" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2870" y="2222" width="69" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_hearing" bpmnElement="ph_hearing" isExpanded="true">
+        <dc:Bounds x="1934" y="1924" width="852" height="230"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_end" bpmnElement="ph_end">
+        <dc:Bounds x="2886" y="2021" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2861" y="2062" width="87" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ph_ext" bpmnElement="ph_ext">
+        <dc:Bounds x="1766" y="2061" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1710" y="2102" width="69" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_pf1" bpmnElement="pf1">
+        <di:waypoint x="1634" y="2039"/>
+        <di:waypoint x="1734" y="2039"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_pf2" bpmnElement="pf2">
+        <di:waypoint x="1834" y="2039"/>
+        <di:waypoint x="1934" y="2039"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_pf3" bpmnElement="pf3">
+        <di:waypoint x="2786" y="2039"/>
+        <di:waypoint x="2886" y="2039"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_pf5" bpmnElement="pf5">
+        <di:waypoint x="2410" y="2199"/>
+        <di:waypoint x="2886" y="2199"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_pf4" bpmnElement="pf4">
+        <di:waypoint x="1784" y="2097"/>
+        <di:waypoint x="1784" y="2199"/>
+        <di:waypoint x="2310" y="2199"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_h_start" bpmnElement="h_start">
+        <dc:Bounds x="1974" y="1986" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1965" y="2027" width="55" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_h_evidence" bpmnElement="h_evidence">
+        <dc:Bounds x="2110" y="1964" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_h_consider" bpmnElement="h_consider">
+        <dc:Bounds x="2310" y="1964" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_h_record" bpmnElement="h_record">
+        <dc:Bounds x="2510" y="1964" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_h_end" bpmnElement="h_end">
+        <dc:Bounds x="2710" y="1986" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2701" y="2027" width="55" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_hearing_record_in_ph_hearing" bpmnElement="hearing_record_in_ph_hearing">
+        <dc:Bounds x="2542" y="2064" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2463" y="2054" width="74" height="70"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_hf1" bpmnElement="hf1">
+        <di:waypoint x="2010" y="2004"/>
+        <di:waypoint x="2110" y="2004"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_hf2" bpmnElement="hf2">
+        <di:waypoint x="2210" y="2004"/>
+        <di:waypoint x="2310" y="2004"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_hf3" bpmnElement="hf3">
+        <di:waypoint x="2410" y="2004"/>
+        <di:waypoint x="2510" y="2004"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_hf4" bpmnElement="hf4">
+        <di:waypoint x="2610" y="2004"/>
+        <di:waypoint x="2710" y="2004"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_h_record_doa_0" bpmnElement="h_record_doa_0">
+        <di:waypoint x="2560" y="2044"/>
+        <di:waypoint x="2560" y="2064"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

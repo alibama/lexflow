@@ -1,0 +1,114 @@
+[
+  {
+    "feature": "plain sequence",
+    "imported": true,
+    "survives_round_trip": true,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "documentation (legal citation text)",
+    "imported": true,
+    "survives_round_trip": false,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "extensionElements (lex:source)",
+    "imported": true,
+    "survives_round_trip": false,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "conditionExpression on flow",
+    "imported": true,
+    "survives_round_trip": false,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "timer boundary, non-interrupting",
+    "imported": true,
+    "survives_round_trip": true,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "message boundary event",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValidationError: 22 validation errors for BPMNPool\nprocess.1.BPMNTask.boundary_events.0.eventDefinition\n  Input should be 'timerEventDefinition' or 'errorEventDefinition' [type="
+  },
+  {
+    "feature": "event-based gateway (deadline race)",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValueError: Sequence flow refers to a missing element or crosses a subprocess scope."
+  },
+  {
+    "feature": "call activity (state-law process)",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValueError: Sequence flow refers to a missing element or crosses a subprocess scope."
+  },
+  {
+    "feature": "event sub-process",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValueError: Event subprocesses are not supported; use an ordinary embedded subprocess."
+  },
+  {
+    "feature": "nested embedded sub-process",
+    "imported": true,
+    "survives_round_trip": true,
+    "output_xsd_valid": true,
+    "output_has_di": true,
+    "error": null
+  },
+  {
+    "feature": "data object + association",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValueError: The pool contains unsupported BPMN elements."
+  },
+  {
+    "feature": "data store",
+    "imported": false,
+    "survives_round_trip": false,
+    "output_xsd_valid": null,
+    "output_has_di": null,
+    "error": "ValueError: The pool contains unsupported BPMN elements."
+  },
+  {
+    "feature": "business rule task (DMN link)",
+    "imported": true,
+    "survives_round_trip": true,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  },
+  {
+    "feature": "pools + lanes + message flow",
+    "imported": true,
+    "survives_round_trip": true,
+    "output_xsd_valid": true,
+    "output_has_di": false,
+    "error": null
+  }
+]

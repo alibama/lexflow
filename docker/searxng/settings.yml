@@ -1,0 +1,33 @@
+# SearXNG for the Lexipedia pipeline (private instance).
+use_default_settings: true
+general:
+  instance_name: "lexipedia-search"
+search:
+  safe_search: 0
+  formats: [html, json]        # JSON is off by default; the pipeline needs it (403 otherwise)
+server:
+  secret_key: "CHANGE-ME-random-64-chars"
+  limiter: false               # the limiter flags python-requests as a bot; keep off or use pass_ip
+  public_instance: false
+  image_proxy: false
+engines:
+  - name: bing                 # Google and Bing ship disabled; enable at least one for site: queries
+    disabled: false
+  - name: brave
+    disabled: false
+  - name: duckduckgo
+    disabled: false
+  # CourtListener opinions via the generic JSON engine (check field names against your SearXNG version;
+  # CourtListener may require an API token header for heavier use)
+  - name: courtlistener
+    engine: json_engine
+    shortcut: cl
+    categories: [general]
+    paging: false
+    search_url: https://www.courtlistener.com/api/rest/v4/search/?q={query}&type=o
+    results_query: results
+    url_query: absolute_url
+    url_prefix: https://www.courtlistener.com
+    title_query: caseName
+    content_query: snippet
+    disabled: true

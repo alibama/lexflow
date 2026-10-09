@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="defs_va_62_1_44_15_46" name="Judicial review of a locality's VESMP decision (stub)" targetNamespace="https://lexipedia.xyz/ns/process/va_62_1_44_15_46" exporter="lexflow" exporterVersion="0.3.0">
+  <bpmn:collaboration id="collab_va_62_1_44_15_46" name="Judicial review of a locality's VESMP decision (stub)">
+    <bpmn:extensionElements>
+      <lex:model id="va-62.1-44.15-46" jurisdiction="va" jurisdictionName="Virginia" jurisdictionQid="Q1370" reviewStatus="draft" method="gold-manual">
+        <lex:gap>Stub: only the step called from local processes is modeled.</lex:gap>
+        <lex:actor id="court" name="Circuit court" kind="court"/>
+      </lex:model>
+    </bpmn:extensionElements>
+    <bpmn:participant id="p_va_court" name="Circuit court" processRef="va_62_1_44_15_46_judicial_review">
+      <bpmn:extensionElements>
+        <lex:actor ref="court"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+  </bpmn:collaboration>
+  <bpmn:process id="va_62_1_44_15_46_judicial_review" name="Judicial review of a locality's VESMP decision" isExecutable="true">
+    <bpmn:startEvent id="jr_start" name="Appeal filed">
+      <bpmn:outgoing>jr1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="jr_review" name="Court reviews the locality's final decision">
+      <bpmn:documentation textFormat="text/plain">Va. Code § 62.1-44.15:46: “A final decision by a locality, when serving as a VESMP authority, shall be subject to judicial review”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Va. Code § 62.1-44.15:46" section="62.1-44.15:46" code="Code of Virginia" jurisdiction="va" grounding="explicit" url="https://law.lis.virginia.gov/vacode/62.1-44.15:46/">
+            <lex:quote>A final decision by a locality, when serving as a VESMP authority, shall be subject to judicial review</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>jr1</bpmn:incoming>
+      <bpmn:outgoing>jr2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="jr_end" name="Judgment">
+      <bpmn:incoming>jr2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="jr1" sourceRef="jr_start" targetRef="jr_review"/>
+    <bpmn:sequenceFlow id="jr2" sourceRef="jr_review" targetRef="jr_end"/>
+  </bpmn:process>
+</bpmn:definitions>

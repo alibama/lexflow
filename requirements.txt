@@ -1,0 +1,15 @@
+pydantic>=2.10
+lxml>=5
+requests>=2.32
+pm4py==2.7.23.8        # AGPL-3.0
+pulp<3                 # pm4py 2.7.23.8 breaks with PuLP 4.0 (LpStatus import)
+powl==2.3.7            # AGPL-3.0, POWL 2.0 (choice graphs)
+SpiffWorkflow==3.2.0   # LGPL-3.0; see patches/spiffworkflow-nested-data-object.patch
+pandas>=2
+pyarrow>=15
+huggingface_hub>=0.25
+citeurl>=12
+eyecite>=2.7
+cairosvg>=2.7
+pytest>=8
+responses>=0.25

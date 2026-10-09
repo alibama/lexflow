@@ -1,0 +1,9 @@
+# Create these properties (Special:NewProperty or wbeditentity new=property):
+# {P:bpmn_model}	BPMN model URL	url	Canonical BPMN 2.0 file (with DI) for this legal process
+# {P:dmn_model}	DMN model URL	url	Canonical DMN 1.3 decision tables used by this process
+# {P:wiki_page}	Lexipedia wiki page	url	DokuWiki page that renders the process and cross-references
+# {P:time_limit}	time limit	string	ISO 8601 duration of a legal deadline, e.g. P30D
+# {P:deadline_anchor}	deadline runs from	string	Event that starts a legal deadline (qualifier of time limit)
+# {P:grounding}	grounding status	string	explicit | implied | assumed - why this step exists
+# {P:bpmn_element}	BPMN element id	external-id	Id of the element inside the process model
+# {P:performed_by}	performed by	wikibase-item	Actor that carries out the step

@@ -1,0 +1,7 @@
+<?php
+// Add to conf/local.php on lexipedia.xyz (keep your existing settings)
+$conf['disableactions'] = 'register';   // stop open self-registration (spam)
+$conf['remote']         = 1;            // enable the JSON-RPC / XML-RPC API
+$conf['remoteuser']     = '@bots';      // NEVER leave empty: empty means everyone, guests included
+// conf/acl.auth.php:   law:*      @bots 8      process:*   @bots 8
+// conf/mime.local.conf: bpmn text/xml | dmn text/xml | pnml text/xml   (so diagrams can be uploaded as media)

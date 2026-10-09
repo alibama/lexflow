@@ -1,0 +1,207 @@
+From 26854d9dad9b2ca094fbe0e1239e390895f7b204 Mon Sep 17 00:00:00 2001
+From: lexflow <lexflow@example.invalid>
+Date: Tue, 6 Oct 2026 18:22:09 -0400
+Subject: [PATCH] Add Ollama provider (LiteLLM ollama_chat), pass temperature,
+ add required targetNamespace
+
+- Provider.OLLAMA; models addressed as ollama_chat/<model> or ollama/<model>
+- endpoint from OLLAMA_API_BASE, optional OLLAMA_NUM_CTX
+- temperature was accepted but never forwarded to LiteLLM
+- non-pool definitions lacked targetNamespace (required by BPMN20.xsd)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ src/bpmn_assistant/core/enums/providers.py    |  1 +
+ src/bpmn_assistant/core/llm_facade.py         |  1 +
+ .../core/provider_impl/litellm_provider.py    | 21 ++++++++++++++++++-
+ .../services/bpmn_xml_generator.py            |  1 +
+ src/bpmn_assistant/utils/utils.py             | 12 +++++++++++
+ tests/services/test_bpmn_xml_generator.py     | 12 +++++------
+ 6 files changed, 41 insertions(+), 7 deletions(-)
+
+diff --git a/src/bpmn_assistant/core/enums/providers.py b/src/bpmn_assistant/core/enums/providers.py
+index d4a430a..a895f57 100644
+--- a/src/bpmn_assistant/core/enums/providers.py
++++ b/src/bpmn_assistant/core/enums/providers.py
+@@ -4,3 +4,4 @@ from enum import Enum
+ class Provider(Enum):
+     OPENAI = "openai"
+     ANTHROPIC = "anthropic"
++    OLLAMA = "ollama"
+diff --git a/src/bpmn_assistant/core/llm_facade.py b/src/bpmn_assistant/core/llm_facade.py
+index e2c4187..94305d2 100644
+--- a/src/bpmn_assistant/core/llm_facade.py
++++ b/src/bpmn_assistant/core/llm_facade.py
+@@ -29,6 +29,7 @@ class LLMFacade:
+         supported_providers = {
+             Provider.OPENAI,
+             Provider.ANTHROPIC,
++            Provider.OLLAMA,
+         }
+         if provider not in supported_providers:
+             raise ValueError(f"Unsupported LLM provider: {provider}")
+diff --git a/src/bpmn_assistant/core/provider_impl/litellm_provider.py b/src/bpmn_assistant/core/provider_impl/litellm_provider.py
+index 6c76083..b7b6775 100644
+--- a/src/bpmn_assistant/core/provider_impl/litellm_provider.py
++++ b/src/bpmn_assistant/core/provider_impl/litellm_provider.py
+@@ -1,4 +1,5 @@
+ import json
++import os
+ from typing import Any, Generator
+ 
+ from litellm import completion
+@@ -57,7 +58,9 @@ class LiteLLMProvider(LLMProvider):
+             "model": model,
+             "messages": messages,
+             "max_tokens": max_tokens,
++            "temperature": temperature,
+         }
++        params.update(self._ollama_params(model))
+ 
+         if structured_output is not None or self.output_mode == OutputMode.JSON:
+             params["response_format"] = {"type": "json_object"}
+@@ -94,7 +97,9 @@ class LiteLLMProvider(LLMProvider):
+             model=model,
+             messages=messages,
+             max_tokens=max_tokens,
++            temperature=temperature,
+             stream=True,
++            **self._ollama_params(model),
+         )
+ 
+         for chunk in response:
+@@ -114,9 +119,23 @@ class LiteLLMProvider(LLMProvider):
+             else []
+         )
+ 
++    @staticmethod
++    def _is_ollama(model: str) -> bool:
++        return model.startswith(("ollama_chat/", "ollama/"))
++
++    def _ollama_params(self, model: str) -> dict[str, Any]:
++        if not self._is_ollama(model):
++            return {}
++        params: dict[str, Any] = {"api_base": os.getenv("OLLAMA_API_BASE", "http://localhost:11434")}
++        num_ctx = os.getenv("OLLAMA_NUM_CTX")
++        if num_ctx:
++            params["num_ctx"] = int(num_ctx)
++        return params
++
+     def check_model_compatibility(self, model: str) -> bool:
+         return (
+-            model in [m.value for m in OpenAIModels]
++            self._is_ollama(model)
++            or model in [m.value for m in OpenAIModels]
+             or model in [m.value for m in AnthropicModels]
+         )
+ 
+diff --git a/src/bpmn_assistant/services/bpmn_xml_generator.py b/src/bpmn_assistant/services/bpmn_xml_generator.py
+index c99c710..f9fcc4f 100644
+--- a/src/bpmn_assistant/services/bpmn_xml_generator.py
++++ b/src/bpmn_assistant/services/bpmn_xml_generator.py
+@@ -42,6 +42,7 @@ class BpmnXmlGenerator:
+         root.set("xmlns:dc", "http://www.omg.org/spec/DD/20100524/DC")
+         root.set("xmlns:di", "http://www.omg.org/spec/DD/20100524/DI")
+         root.set("id", "definitions_1")
++        root.set("targetNamespace", "https://bpmn-assistant.local/processes")  # required by BPMN20.xsd
+ 
+         # Create the process element
+         process_element = ET.SubElement(root, "process")
+diff --git a/src/bpmn_assistant/utils/utils.py b/src/bpmn_assistant/utils/utils.py
+index 7a24a68..3742502 100644
+--- a/src/bpmn_assistant/utils/utils.py
++++ b/src/bpmn_assistant/utils/utils.py
+@@ -36,6 +36,9 @@ def get_llm_facade(model: str, output_mode: OutputMode = OutputMode.JSON, api_ke
+     elif is_anthropic_model(model):
+         api_key = api_keys.get("anthropic_api_key") or os.getenv("ANTHROPIC_API_KEY")
+         provider = Provider.ANTHROPIC
++    elif is_ollama_model(model):
++        api_key = "ollama"  # local server: no key; endpoint comes from OLLAMA_API_BASE
++        provider = Provider.OLLAMA
+     else:
+         raise Exception("Invalid model")
+ 
+@@ -76,6 +79,7 @@ def get_available_providers(api_keys: dict[str, str] | None = None) -> dict:
+     return {
+         "openai": openai_present,
+         "anthropic": anthropic_present,
++        "ollama": bool(os.getenv("OLLAMA_API_BASE")),
+     }
+ 
+ 
+@@ -87,6 +91,14 @@ def is_anthropic_model(model: str) -> bool:
+     return model in [model.value for model in AnthropicModels]
+ 
+ 
++OLLAMA_PREFIXES = ("ollama_chat/", "ollama/")
++
++
++def is_ollama_model(model: str) -> bool:
++    """Any local model served by Ollama, e.g. 'ollama_chat/qwen3.6:27b'."""
++    return model.startswith(OLLAMA_PREFIXES) and len(model.split("/", 1)[1]) > 0
++
++
+ def message_history_to_string(message_history: list[MessageItem]) -> str:
+     """
+     Convert a message history list into a formatted string.
+diff --git a/tests/services/test_bpmn_xml_generator.py b/tests/services/test_bpmn_xml_generator.py
+index e2d862a..4247af2 100644
+--- a/tests/services/test_bpmn_xml_generator.py
++++ b/tests/services/test_bpmn_xml_generator.py
+@@ -43,7 +43,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_xml_parallel(self, procurement_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(procurement_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-parallel1</outgoing></startEvent><parallelGateway id="parallel1"><incoming>start1-parallel1</incoming><outgoing>parallel1-task1</outgoing><outgoing>parallel1-task3</outgoing></parallelGateway><parallelGateway id="parallel1-join"><incoming>task2-parallel1-join</incoming><incoming>task4-parallel1-join</incoming><outgoing>parallel1-join-end1</outgoing></parallelGateway><task id="task1" name="Send mail to supplier"><incoming>parallel1-task1</incoming><outgoing>task1-task2</outgoing></task><task id="task2" name="Prepare the documents"><incoming>task1-task2</incoming><outgoing>task2-parallel1-join</outgoing></task><task id="task3" name="Search for the goods"><incoming>parallel1-task3</incoming><outgoing>task3-task4</outgoing></task><task id="task4" name="Pick up the goods"><incoming>task3-task4</incoming><outgoing>task4-parallel1-join</outgoing></task><endEvent id="end1"><incoming>parallel1-join-end1</incoming></endEvent><sequenceFlow id="start1-parallel1" sourceRef="start1" targetRef="parallel1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="parallel1-task1" sourceRef="parallel1" targetRef="task1" /><sequenceFlow id="task2-parallel1-join" sourceRef="task2" targetRef="parallel1-join" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="parallel1-task3" sourceRef="parallel1" targetRef="task3" /><sequenceFlow id="task4-parallel1-join" sourceRef="task4" targetRef="parallel1-join" /><sequenceFlow id="parallel1-join-end1" sourceRef="parallel1-join" targetRef="end1" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-parallel1</outgoing></startEvent><parallelGateway id="parallel1"><incoming>start1-parallel1</incoming><outgoing>parallel1-task1</outgoing><outgoing>parallel1-task3</outgoing></parallelGateway><parallelGateway id="parallel1-join"><incoming>task2-parallel1-join</incoming><incoming>task4-parallel1-join</incoming><outgoing>parallel1-join-end1</outgoing></parallelGateway><task id="task1" name="Send mail to supplier"><incoming>parallel1-task1</incoming><outgoing>task1-task2</outgoing></task><task id="task2" name="Prepare the documents"><incoming>task1-task2</incoming><outgoing>task2-parallel1-join</outgoing></task><task id="task3" name="Search for the goods"><incoming>parallel1-task3</incoming><outgoing>task3-task4</outgoing></task><task id="task4" name="Pick up the goods"><incoming>task3-task4</incoming><outgoing>task4-parallel1-join</outgoing></task><endEvent id="end1"><incoming>parallel1-join-end1</incoming></endEvent><sequenceFlow id="start1-parallel1" sourceRef="start1" targetRef="parallel1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="parallel1-task1" sourceRef="parallel1" targetRef="task1" /><sequenceFlow id="task2-parallel1-join" sourceRef="task2" targetRef="parallel1-join" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="parallel1-task3" sourceRef="parallel1" targetRef="task3" /><sequenceFlow id="task4-parallel1-join" sourceRef="task4" targetRef="parallel1-join" /><sequenceFlow id="parallel1-join-end1" sourceRef="parallel1-join" targetRef="end1" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+@@ -51,7 +51,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_xml_linear(self, linear_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(linear_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Receive customer inquiry"><incoming>start1-task1</incoming><outgoing>task1-task2</outgoing></task><userTask id="task2" name="Review product catalog"><incoming>task1-task2</incoming><outgoing>task2-task3</outgoing></userTask><task id="task3" name="Prepare quote"><incoming>task2-task3</incoming><outgoing>task3-task4</outgoing></task><serviceTask id="task4" name="Send quote to customer"><incoming>task3-task4</incoming><outgoing>task4-task5</outgoing></serviceTask><task id="task5" name="Follow up with customer"><incoming>task4-task5</incoming><outgoing>task5-end1</outgoing></task><endEvent id="end1"><incoming>task5-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="task2-task3" sourceRef="task2" targetRef="task3" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="task4-task5" sourceRef="task4" targetRef="task5" /><sequenceFlow id="task5-end1" sourceRef="task5" targetRef="end1" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Receive customer inquiry"><incoming>start1-task1</incoming><outgoing>task1-task2</outgoing></task><userTask id="task2" name="Review product catalog"><incoming>task1-task2</incoming><outgoing>task2-task3</outgoing></userTask><task id="task3" name="Prepare quote"><incoming>task2-task3</incoming><outgoing>task3-task4</outgoing></task><serviceTask id="task4" name="Send quote to customer"><incoming>task3-task4</incoming><outgoing>task4-task5</outgoing></serviceTask><task id="task5" name="Follow up with customer"><incoming>task4-task5</incoming><outgoing>task5-end1</outgoing></task><endEvent id="end1"><incoming>task5-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="task2-task3" sourceRef="task2" targetRef="task3" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="task4-task5" sourceRef="task4" targetRef="task5" /><sequenceFlow id="task5-end1" sourceRef="task5" targetRef="end1" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+@@ -59,7 +59,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_exclusive(self, order_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(order_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Receive order from customer"><incoming>start1-task1</incoming><outgoing>task1-exclusive1</outgoing></task><exclusiveGateway id="exclusive1" name="Product in stock?"><incoming>task1-exclusive1</incoming><outgoing>exclusive1-task2</outgoing><outgoing>exclusive1-exclusive2</outgoing></exclusiveGateway><task id="task2" name="Notify customer that order cannot be fulfilled"><incoming>exclusive1-task2</incoming><outgoing>task2-end1</outgoing></task><exclusiveGateway id="exclusive2" name="Payment succeeds?"><incoming>exclusive1-exclusive2</incoming><outgoing>exclusive2-task3</outgoing><outgoing>exclusive2-task5</outgoing></exclusiveGateway><task id="task3" name="Process order"><incoming>exclusive2-task3</incoming><outgoing>task3-task4</outgoing></task><task id="task4" name="Notify customer that order has been processed"><incoming>task3-task4</incoming><outgoing>task4-end1</outgoing></task><task id="task5" name="Notify customer that order cannot be processed"><incoming>exclusive2-task5</incoming><outgoing>task5-end1</outgoing></task><endEvent id="end1"><incoming>task2-end1</incoming><incoming>task4-end1</incoming><incoming>task5-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-exclusive1" sourceRef="task1" targetRef="exclusive1" /><sequenceFlow id="task2-end1" sourceRef="task2" targetRef="end1" /><sequenceFlow id="exclusive1-task2" sourceRef="exclusive1" targetRef="task2" name="Product is out of stock" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="task4-end1" sourceRef="task4" targetRef="end1" /><sequenceFlow id="exclusive2-task3" sourceRef="exclusive2" targetRef="task3" name="Payment succeeds" /><sequenceFlow id="task5-end1" sourceRef="task5" targetRef="end1" /><sequenceFlow id="exclusive2-task5" sourceRef="exclusive2" targetRef="task5" name="Payment fails" /><sequenceFlow id="exclusive1-exclusive2" sourceRef="exclusive1" targetRef="exclusive2" name="Product is in stock" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Receive order from customer"><incoming>start1-task1</incoming><outgoing>task1-exclusive1</outgoing></task><exclusiveGateway id="exclusive1" name="Product in stock?"><incoming>task1-exclusive1</incoming><outgoing>exclusive1-task2</outgoing><outgoing>exclusive1-exclusive2</outgoing></exclusiveGateway><task id="task2" name="Notify customer that order cannot be fulfilled"><incoming>exclusive1-task2</incoming><outgoing>task2-end1</outgoing></task><exclusiveGateway id="exclusive2" name="Payment succeeds?"><incoming>exclusive1-exclusive2</incoming><outgoing>exclusive2-task3</outgoing><outgoing>exclusive2-task5</outgoing></exclusiveGateway><task id="task3" name="Process order"><incoming>exclusive2-task3</incoming><outgoing>task3-task4</outgoing></task><task id="task4" name="Notify customer that order has been processed"><incoming>task3-task4</incoming><outgoing>task4-end1</outgoing></task><task id="task5" name="Notify customer that order cannot be processed"><incoming>exclusive2-task5</incoming><outgoing>task5-end1</outgoing></task><endEvent id="end1"><incoming>task2-end1</incoming><incoming>task4-end1</incoming><incoming>task5-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-exclusive1" sourceRef="task1" targetRef="exclusive1" /><sequenceFlow id="task2-end1" sourceRef="task2" targetRef="end1" /><sequenceFlow id="exclusive1-task2" sourceRef="exclusive1" targetRef="task2" name="Product is out of stock" /><sequenceFlow id="task3-task4" sourceRef="task3" targetRef="task4" /><sequenceFlow id="task4-end1" sourceRef="task4" targetRef="end1" /><sequenceFlow id="exclusive2-task3" sourceRef="exclusive2" targetRef="task3" name="Payment succeeds" /><sequenceFlow id="task5-end1" sourceRef="task5" targetRef="end1" /><sequenceFlow id="exclusive2-task5" sourceRef="exclusive2" targetRef="task5" name="Payment fails" /><sequenceFlow id="exclusive1-exclusive2" sourceRef="exclusive1" targetRef="exclusive2" name="Product is in stock" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+@@ -67,7 +67,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_xml_pg_inside_eg(self, pg_inside_eg_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(pg_inside_eg_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-exclusive1</outgoing></startEvent><exclusiveGateway id="exclusive1" name="Exclusive Decision"><incoming>start1-exclusive1</incoming><outgoing>exclusive1-task2</outgoing><outgoing>exclusive1-parallel1</outgoing></exclusiveGateway><exclusiveGateway id="exclusive1-join"><incoming>task2-exclusive1-join</incoming><incoming>parallel1-join-exclusive1-join</incoming><outgoing>exclusive1-join-end1</outgoing></exclusiveGateway><task id="task2" name="Task A"><incoming>exclusive1-task2</incoming><outgoing>task2-exclusive1-join</outgoing></task><parallelGateway id="parallel1"><incoming>exclusive1-parallel1</incoming><outgoing>parallel1-task3</outgoing><outgoing>parallel1-task4</outgoing></parallelGateway><parallelGateway id="parallel1-join"><incoming>task3-parallel1-join</incoming><incoming>task4-parallel1-join</incoming><outgoing>parallel1-join-exclusive1-join</outgoing></parallelGateway><task id="task3" name="Parallel Task 1"><incoming>parallel1-task3</incoming><outgoing>task3-parallel1-join</outgoing></task><task id="task4" name="Parallel Task 2"><incoming>parallel1-task4</incoming><outgoing>task4-parallel1-join</outgoing></task><endEvent id="end1"><incoming>exclusive1-join-end1</incoming></endEvent><sequenceFlow id="start1-exclusive1" sourceRef="start1" targetRef="exclusive1" /><sequenceFlow id="task2-exclusive1-join" sourceRef="task2" targetRef="exclusive1-join" /><sequenceFlow id="exclusive1-task2" sourceRef="exclusive1" targetRef="task2" name="Condition A" /><sequenceFlow id="parallel1-task3" sourceRef="parallel1" targetRef="task3" /><sequenceFlow id="task3-parallel1-join" sourceRef="task3" targetRef="parallel1-join" /><sequenceFlow id="parallel1-task4" sourceRef="parallel1" targetRef="task4" /><sequenceFlow id="task4-parallel1-join" sourceRef="task4" targetRef="parallel1-join" /><sequenceFlow id="parallel1-join-exclusive1-join" sourceRef="parallel1-join" targetRef="exclusive1-join" /><sequenceFlow id="exclusive1-parallel1" sourceRef="exclusive1" targetRef="parallel1" name="Condition B" /><sequenceFlow id="exclusive1-join-end1" sourceRef="exclusive1-join" targetRef="end1" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start1"><outgoing>start1-exclusive1</outgoing></startEvent><exclusiveGateway id="exclusive1" name="Exclusive Decision"><incoming>start1-exclusive1</incoming><outgoing>exclusive1-task2</outgoing><outgoing>exclusive1-parallel1</outgoing></exclusiveGateway><exclusiveGateway id="exclusive1-join"><incoming>task2-exclusive1-join</incoming><incoming>parallel1-join-exclusive1-join</incoming><outgoing>exclusive1-join-end1</outgoing></exclusiveGateway><task id="task2" name="Task A"><incoming>exclusive1-task2</incoming><outgoing>task2-exclusive1-join</outgoing></task><parallelGateway id="parallel1"><incoming>exclusive1-parallel1</incoming><outgoing>parallel1-task3</outgoing><outgoing>parallel1-task4</outgoing></parallelGateway><parallelGateway id="parallel1-join"><incoming>task3-parallel1-join</incoming><incoming>task4-parallel1-join</incoming><outgoing>parallel1-join-exclusive1-join</outgoing></parallelGateway><task id="task3" name="Parallel Task 1"><incoming>parallel1-task3</incoming><outgoing>task3-parallel1-join</outgoing></task><task id="task4" name="Parallel Task 2"><incoming>parallel1-task4</incoming><outgoing>task4-parallel1-join</outgoing></task><endEvent id="end1"><incoming>exclusive1-join-end1</incoming></endEvent><sequenceFlow id="start1-exclusive1" sourceRef="start1" targetRef="exclusive1" /><sequenceFlow id="task2-exclusive1-join" sourceRef="task2" targetRef="exclusive1-join" /><sequenceFlow id="exclusive1-task2" sourceRef="exclusive1" targetRef="task2" name="Condition A" /><sequenceFlow id="parallel1-task3" sourceRef="parallel1" targetRef="task3" /><sequenceFlow id="task3-parallel1-join" sourceRef="task3" targetRef="parallel1-join" /><sequenceFlow id="parallel1-task4" sourceRef="parallel1" targetRef="task4" /><sequenceFlow id="task4-parallel1-join" sourceRef="task4" targetRef="parallel1-join" /><sequenceFlow id="parallel1-join-exclusive1-join" sourceRef="parallel1-join" targetRef="exclusive1-join" /><sequenceFlow id="exclusive1-parallel1" sourceRef="exclusive1" targetRef="parallel1" name="Condition B" /><sequenceFlow id="exclusive1-join-end1" sourceRef="exclusive1-join" targetRef="end1" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+@@ -75,7 +75,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_xml_empty_gateway_paths(self, empty_gateway_path_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(empty_gateway_path_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start"><outgoing>start-task1</outgoing></startEvent><task id="task1" name="Perform a simple task"><incoming>start-task1</incoming><outgoing>task1-task2</outgoing></task><task id="task2" name="Perform a second task"><incoming>task1-task2</incoming><outgoing>task2-exclusive1</outgoing></task><exclusiveGateway id="exclusive1" name="Decision Point"><incoming>task2-exclusive1</incoming><outgoing>exclusive1-task3</outgoing><outgoing>exclusive1-end</outgoing></exclusiveGateway><task id="task3" name="Perform a third task"><incoming>exclusive1-task3</incoming><outgoing>task3-end</outgoing></task><endEvent id="end"><incoming>task3-end</incoming><incoming>exclusive1-end</incoming></endEvent><sequenceFlow id="start-task1" sourceRef="start" targetRef="task1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="task2-exclusive1" sourceRef="task2" targetRef="exclusive1" /><sequenceFlow id="task3-end" sourceRef="task3" targetRef="end" /><sequenceFlow id="exclusive1-task3" sourceRef="exclusive1" targetRef="task3" name="Condition A" /><sequenceFlow id="exclusive1-end" sourceRef="exclusive1" targetRef="end" name="Condition B" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start"><outgoing>start-task1</outgoing></startEvent><task id="task1" name="Perform a simple task"><incoming>start-task1</incoming><outgoing>task1-task2</outgoing></task><task id="task2" name="Perform a second task"><incoming>task1-task2</incoming><outgoing>task2-exclusive1</outgoing></task><exclusiveGateway id="exclusive1" name="Decision Point"><incoming>task2-exclusive1</incoming><outgoing>exclusive1-task3</outgoing><outgoing>exclusive1-end</outgoing></exclusiveGateway><task id="task3" name="Perform a third task"><incoming>exclusive1-task3</incoming><outgoing>task3-end</outgoing></task><endEvent id="end"><incoming>task3-end</incoming><incoming>exclusive1-end</incoming></endEvent><sequenceFlow id="start-task1" sourceRef="start" targetRef="task1" /><sequenceFlow id="task1-task2" sourceRef="task1" targetRef="task2" /><sequenceFlow id="task2-exclusive1" sourceRef="task2" targetRef="exclusive1" /><sequenceFlow id="task3-end" sourceRef="task3" targetRef="end" /><sequenceFlow id="exclusive1-task3" sourceRef="exclusive1" targetRef="task3" name="Condition A" /><sequenceFlow id="exclusive1-end" sourceRef="exclusive1" targetRef="end" name="Condition B" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+@@ -83,7 +83,7 @@ class TestBpmnXmlGenerator:
+     def test_create_bpmn_xml_labeled_events(self, labeled_events_process):
+         xml_generator = BpmnXmlGenerator()
+         result = xml_generator.create_bpmn_xml(labeled_events_process)
+-        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1"><process id="Process_1" isExecutable="false"><startEvent id="start1" name="Order received"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Process order"><incoming>start1-task1</incoming><outgoing>task1-end1</outgoing></task><endEvent id="end1" name="Order completed"><incoming>task1-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-end1" sourceRef="task1" targetRef="end1" /></process></definitions>'
++        expected_xml = '<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_1" targetNamespace="https://bpmn-assistant.local/processes"><process id="Process_1" isExecutable="false"><startEvent id="start1" name="Order received"><outgoing>start1-task1</outgoing></startEvent><task id="task1" name="Process order"><incoming>start1-task1</incoming><outgoing>task1-end1</outgoing></task><endEvent id="end1" name="Order completed"><incoming>task1-end1</incoming></endEvent><sequenceFlow id="start1-task1" sourceRef="start1" targetRef="task1" /><sequenceFlow id="task1-end1" sourceRef="task1" targetRef="end1" /></process></definitions>'
+         result_tree = ET.ElementTree(ET.fromstring(result))
+         expected_tree = ET.ElementTree(ET.fromstring(expected_xml))
+         assert elements_equal(result_tree.getroot(), expected_tree.getroot())
+-- 
+2.43.0
+

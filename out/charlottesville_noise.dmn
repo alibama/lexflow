@@ -1,0 +1,636 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" id="dmn_va_charlottesville_ch16_noise" name="Noise enforcement and sound limits (Noise Control Ordinance) - decisions" namespace="https://lexipedia.xyz/ns/decision/va_charlottesville_ch16_noise" exporter="lexflow">
+  <decision id="d_noise_limit" name="Applicable sound limit">
+    <description>Grounded in Charlottesville City Code § 16-6; Charlottesville City Code § 16-8; Charlottesville City Code § 16-10; Charlottesville City Code § 16-11</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Charlottesville City Code § 16-6" section="16-6" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+        <lex:source citation="Charlottesville City Code § 16-8" section="16-8" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+        <lex:source citation="Charlottesville City Code § 16-10" section="16-10" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+        <lex:source citation="Charlottesville City Code § 16-11" section="16-11" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+      </lex:grounding>
+    </extensionElements>
+    <question>Which Chapter 16 numeric limit applies to this sound, where is it measured, and under which section?</question>
+    <decisionTable id="d_noise_limit_table" hitPolicy="FIRST">
+      <input id="ni_ctx" label="Location context">
+        <inputExpression id="ni_ctx_expr" typeRef="string">
+          <text>context</text>
+        </inputExpression>
+        <inputValues id="ni_ctx_values">
+          <text>"residential_zone","downtown_business_district","restaurant_music_hall","other"</text>
+        </inputValues>
+      </input>
+      <input id="ni_hour" label="Hour (0-23)">
+        <inputExpression id="ni_hour_expr" typeRef="number">
+          <text>hour</text>
+        </inputExpression>
+      </input>
+      <input id="ni_act" label="Activity / source">
+        <inputExpression id="ni_act_expr" typeRef="string">
+          <text>activity</text>
+        </inputExpression>
+      </input>
+      <input id="ni_ncc" label="Neighborhood Commercial Corridor?">
+        <inputExpression id="ni_ncc_expr" typeRef="boolean">
+          <text>ncc_district</text>
+        </inputExpression>
+      </input>
+      <output id="no_applies" label="Limit applies" name="limit_applies" typeRef="boolean"/>
+      <output id="no_dba" label="Limit dB(A)" name="limit_dba" typeRef="number"/>
+      <output id="no_where" label="Measured at" name="measured_at" typeRef="string"/>
+      <output id="no_basis" label="Basis" name="basis" typeRef="string"/>
+      <annotation name="Source"/>
+      <rule id="nr1">
+        <description>Charlottesville City Code § 16-6</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-6" section="16-6" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>No provisions of this chapter shall apply to the emission of sound for the purpose of alerting persons to the existence of an emergency</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr1_in0">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr1_in2">
+          <text>"emergency"</text>
+        </inputEntry>
+        <inputEntry id="nr1_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr1_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="nr1_out1">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="nr1_out2">
+          <text>"-"</text>
+        </outputEntry>
+        <outputEntry id="nr1_out3">
+          <text>"§ 16-6 emergency exception"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-6</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr2">
+        <description>Charlottesville City Code § 16-8(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-8(a)" section="16-8" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>during the hours between 10:00 p.m. and 6:00 a.m. in excess of fifty-five (55) dB(A)</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr2_in0">
+          <text>"residential_zone"</text>
+        </inputEntry>
+        <inputEntry id="nr2_in1">
+          <text>[22..23],[0..5]</text>
+        </inputEntry>
+        <inputEntry id="nr2_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr2_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr2_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="nr2_out1">
+          <text>55</text>
+        </outputEntry>
+        <outputEntry id="nr2_out2">
+          <text>"at or outside the property boundary"</text>
+        </outputEntry>
+        <outputEntry id="nr2_out3">
+          <text>"§ 16-8(a) nighttime"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-8(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr3">
+        <description>Charlottesville City Code § 16-8(d)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-8(d)" section="16-8" subsection="d" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>The following activities or sources of noise shall be exempt from the daytime prohibition set forth in subsection (b) of this section:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr3_in0">
+          <text>"residential_zone"</text>
+        </inputEntry>
+        <inputEntry id="nr3_in1">
+          <text>[6..21]</text>
+        </inputEntry>
+        <inputEntry id="nr3_in2">
+          <text>"school","park","construction","landscaping","church_bells","first_amendment","federally_preempted","transportation_sanitation"</text>
+        </inputEntry>
+        <inputEntry id="nr3_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr3_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="nr3_out1">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="nr3_out2">
+          <text>"-"</text>
+        </outputEntry>
+        <outputEntry id="nr3_out3">
+          <text>"§ 16-8(d) daytime exemption"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-8(d)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr4">
+        <description>Charlottesville City Code § 16-8(b)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-8(b)" section="16-8" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>during the hours between 6:00 a.m. and 10:00 p.m. in excess of sixty-five (65) dB(A)</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr4_in0">
+          <text>"residential_zone"</text>
+        </inputEntry>
+        <inputEntry id="nr4_in1">
+          <text>[6..21]</text>
+        </inputEntry>
+        <inputEntry id="nr4_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr4_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr4_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="nr4_out1">
+          <text>65</text>
+        </outputEntry>
+        <outputEntry id="nr4_out2">
+          <text>"at or outside the property boundary"</text>
+        </outputEntry>
+        <outputEntry id="nr4_out3">
+          <text>"§ 16-8(b) daytime"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-8(b)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr5">
+        <description>Charlottesville City Code § 16-10(c)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-10(c)" section="16-10" subsection="c" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>The prohibitions set forth within this section shall not apply to any sound generation which occurs:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr5_in0">
+          <text>"downtown_business_district"</text>
+        </inputEntry>
+        <inputEntry id="nr5_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr5_in2">
+          <text>"community_event","transportation_sanitation"</text>
+        </inputEntry>
+        <inputEntry id="nr5_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr5_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="nr5_out1">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="nr5_out2">
+          <text>"-"</text>
+        </outputEntry>
+        <outputEntry id="nr5_out3">
+          <text>"§ 16-10(c) exception"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-10(c)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr6">
+        <description>Charlottesville City Code § 16-10(d)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-10(d)" section="16-10" subsection="d" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>shall be in compliance with the noise level and sound amplification requirements set forth in the permit for that special event</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr6_in0">
+          <text>"downtown_business_district"</text>
+        </inputEntry>
+        <inputEntry id="nr6_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr6_in2">
+          <text>"special_event_permit"</text>
+        </inputEntry>
+        <inputEntry id="nr6_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr6_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="nr6_out1">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="nr6_out2">
+          <text>"per special event permit"</text>
+        </outputEntry>
+        <outputEntry id="nr6_out3">
+          <text>"§ 16-10(d) permit terms govern"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-10(d)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr7">
+        <description>Charlottesville City Code § 16-10(b)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-10(b)" section="16-10" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>seventy-five (75) dB(A) or more at a distance of ten (10) feet or more from the source of the sound generation shall constitute prima facie evidence of a violation</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr7_in0">
+          <text>"downtown_business_district"</text>
+        </inputEntry>
+        <inputEntry id="nr7_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr7_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr7_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr7_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="nr7_out1">
+          <text>75</text>
+        </outputEntry>
+        <outputEntry id="nr7_out2">
+          <text>"10 feet or more from the source"</text>
+        </outputEntry>
+        <outputEntry id="nr7_out3">
+          <text>"§ 16-10(b) prima facie threshold"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-10(b)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr8">
+        <description>Charlottesville City Code § 16-11</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-11" section="16-11" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>fifty-five (55) dB(A) in the Neighborhood Commercial Corridor district</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr8_in0">
+          <text>"restaurant_music_hall"</text>
+        </inputEntry>
+        <inputEntry id="nr8_in1">
+          <text>23,[0..5]</text>
+        </inputEntry>
+        <inputEntry id="nr8_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr8_in3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="nr8_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="nr8_out1">
+          <text>55</text>
+        </outputEntry>
+        <outputEntry id="nr8_out2">
+          <text>"at a residential property boundary"</text>
+        </outputEntry>
+        <outputEntry id="nr8_out3">
+          <text>"§ 16-11 (Neighborhood Commercial Corridor)"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-11</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr9">
+        <description>Charlottesville City Code § 16-11</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-11" section="16-11" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>during the hours between 11:00 p.m. and 6:00 a.m. in excess of seventy-five (75) dB(A)</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="nr9_in0">
+          <text>"restaurant_music_hall"</text>
+        </inputEntry>
+        <inputEntry id="nr9_in1">
+          <text>23,[0..5]</text>
+        </inputEntry>
+        <inputEntry id="nr9_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr9_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr9_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="nr9_out1">
+          <text>75</text>
+        </outputEntry>
+        <outputEntry id="nr9_out2">
+          <text>"at a residential property boundary"</text>
+        </outputEntry>
+        <outputEntry id="nr9_out3">
+          <text>"§ 16-11"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-11</text>
+        </annotationEntry>
+      </rule>
+      <rule id="nr10">
+        <description>Coverage gap surfaced by the table: flag for legal review</description>
+        <inputEntry id="nr10_in0">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr10_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr10_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="nr10_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="nr10_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="nr10_out1">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="nr10_out2">
+          <text>"-"</text>
+        </outputEntry>
+        <outputEntry id="nr10_out3">
+          <text>"No numeric limit in ch. 16 for this context (review)"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>-</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_vehicle_limit" name="Motor vehicle sound limit">
+    <description>Grounded in Charlottesville City Code § 16-9(a)</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+          <lex:quote>when measured at a distance of fifty (50) feet or more, exceeds the level set forth in the following table:</lex:quote>
+        </lex:source>
+      </lex:grounding>
+    </extensionElements>
+    <question>What is the maximum sound level for this vehicle on this road (measured at 50 feet or more)?</question>
+    <decisionTable id="d_vehicle_limit_table" hitPolicy="UNIQUE">
+      <input id="vi_class" label="Vehicle class">
+        <inputExpression id="vi_class_expr" typeRef="string">
+          <text>vehicle_class</text>
+        </inputExpression>
+        <inputValues id="vi_class_values">
+          <text>"heavy_6000_plus","motorcycle","other"</text>
+        </inputValues>
+      </input>
+      <input id="vi_speed" label="Speed limit (mph)">
+        <inputExpression id="vi_speed_expr" typeRef="number">
+          <text>speed_limit_mph</text>
+        </inputExpression>
+      </input>
+      <input id="vi_interstate" label="Interstate motor carrier?">
+        <inputExpression id="vi_interstate_expr" typeRef="boolean">
+          <text>interstate_carrier</text>
+        </inputExpression>
+      </input>
+      <output id="vo_applies" label="Limit applies" name="limit_applies" typeRef="boolean"/>
+      <output id="vo_dba" label="Limit dB(A)" name="limit_dba" typeRef="number"/>
+      <annotation name="Source"/>
+      <rule id="vr1">
+        <description>Charlottesville City Code § 16-9(b)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(b)" section="16-9" subsection="b" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances">
+              <lex:quote>This section shall not apply to any motor carrier vehicle engaged in interstate commerce.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr1_in0">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="vr1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="vr1_in2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="vr1_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="vr1_out1">
+          <text>null</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(b)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr2">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr2_in0">
+          <text>"heavy_6000_plus"</text>
+        </inputEntry>
+        <inputEntry id="vr2_in1">
+          <text>&lt;= 35</text>
+        </inputEntry>
+        <inputEntry id="vr2_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr2_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr2_out1">
+          <text>86</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr3">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr3_in0">
+          <text>"heavy_6000_plus"</text>
+        </inputEntry>
+        <inputEntry id="vr3_in1">
+          <text>&gt; 35</text>
+        </inputEntry>
+        <inputEntry id="vr3_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr3_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr3_out1">
+          <text>90</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr4">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr4_in0">
+          <text>"motorcycle"</text>
+        </inputEntry>
+        <inputEntry id="vr4_in1">
+          <text>&lt;= 35</text>
+        </inputEntry>
+        <inputEntry id="vr4_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr4_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr4_out1">
+          <text>82</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr5">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr5_in0">
+          <text>"motorcycle"</text>
+        </inputEntry>
+        <inputEntry id="vr5_in1">
+          <text>&gt; 35</text>
+        </inputEntry>
+        <inputEntry id="vr5_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr5_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr5_out1">
+          <text>86</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr6">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr6_in0">
+          <text>"other"</text>
+        </inputEntry>
+        <inputEntry id="vr6_in1">
+          <text>&lt;= 35</text>
+        </inputEntry>
+        <inputEntry id="vr6_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr6_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr6_out1">
+          <text>76</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="vr7">
+        <description>Charlottesville City Code § 16-9(a)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Charlottesville City Code § 16-9(a)" section="16-9" subsection="a" code="Charlottesville City Code" jurisdiction="va/charlottesville" grounding="explicit" url="https://library.municode.com/va/charlottesville/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="vr7_in0">
+          <text>"other"</text>
+        </inputEntry>
+        <inputEntry id="vr7_in1">
+          <text>&gt; 35</text>
+        </inputEntry>
+        <inputEntry id="vr7_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="vr7_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="vr7_out1">
+          <text>82</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Charlottesville City Code § 16-9(a)</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="dmndi_va_charlottesville_ch16_noise">
+      <dmndi:DMNShape id="d_noise_limit_shape" dmnElementRef="d_noise_limit">
+        <dc:Bounds x="160" y="100" width="200" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_vehicle_limit_shape" dmnElementRef="d_vehicle_limit">
+        <dc:Bounds x="400" y="100" width="200" height="80"/>
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

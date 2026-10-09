@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="proc_cpd" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>proc_cpd</text>
+    </name>
+    <page id="n0">
+      <place id="n_mf_gw-&gt;n_measure">
+        <name>
+          <text>n_mf_gw-&gt;n_measure</text>
+        </name>
+      </place>
+      <place id="n_responsible-&gt;n_certificate">
+        <name>
+          <text>n_responsible-&gt;n_certificate</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;nc_start">
+        <name>
+          <text>_xor2-&gt;nc_start</text>
+        </name>
+      </place>
+      <place id="n_limit-&gt;n_applies_gw">
+        <name>
+          <text>n_limit-&gt;n_applies_gw</text>
+        </name>
+      </place>
+      <place id="n_applies_gw-&gt;n_mf_gw">
+        <name>
+          <text>n_applies_gw-&gt;n_mf_gw</text>
+        </name>
+      </place>
+      <place id="n_exceeds_gw-&gt;n_ok">
+        <name>
+          <text>n_exceeds_gw-&gt;n_ok</text>
+        </name>
+      </place>
+      <place id="n_certificate-&gt;n_summons">
+        <name>
+          <text>n_certificate-&gt;n_summons</text>
+        </name>
+      </place>
+      <place id="n_identify-&gt;n_limit">
+        <name>
+          <text>n_identify-&gt;n_limit</text>
+        </name>
+      </place>
+      <place id="_and0-&gt;_xor2">
+        <name>
+          <text>_and0-&gt;_xor2</text>
+        </name>
+      </place>
+      <place id="n_measure_mf-&gt;n_mjoin">
+        <name>
+          <text>n_measure_mf-&gt;n_mjoin</text>
+        </name>
+      </place>
+      <place id="n_exceeds_gw-&gt;n_responsible">
+        <name>
+          <text>n_exceeds_gw-&gt;n_responsible</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;_xor3">
+        <name>
+          <text>_xor2-&gt;_xor3</text>
+        </name>
+      </place>
+      <place id="xor:_xor3">
+        <name>
+          <text>xor:_xor3</text>
+        </name>
+      </place>
+      <place id="nc_send-&gt;nc_end">
+        <name>
+          <text>nc_send-&gt;nc_end</text>
+        </name>
+      </place>
+      <place id="n_applies_gw-&gt;n_no_limit">
+        <name>
+          <text>n_applies_gw-&gt;n_no_limit</text>
+        </name>
+      </place>
+      <place id="n_measure-&gt;n_mjoin">
+        <name>
+          <text>n_measure-&gt;n_mjoin</text>
+        </name>
+      </place>
+      <place id="xor:n_mjoin">
+        <name>
+          <text>xor:n_mjoin</text>
+        </name>
+      </place>
+      <place id="__start-&gt;_and0">
+        <name>
+          <text>__start-&gt;_and0</text>
+        </name>
+      </place>
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="n_mf_gw-&gt;n_measure_mf">
+        <name>
+          <text>n_mf_gw-&gt;n_measure_mf</text>
+        </name>
+      </place>
+      <place id="n_summons-&gt;n_court">
+        <name>
+          <text>n_summons-&gt;n_court</text>
+        </name>
+      </place>
+      <place id="n_court-&gt;n_end">
+        <name>
+          <text>n_court-&gt;n_end</text>
+        </name>
+      </place>
+      <place id="_and1-&gt;__end">
+        <name>
+          <text>_and1-&gt;__end</text>
+        </name>
+      </place>
+      <place id="xor:__done">
+        <name>
+          <text>xor:__done</text>
+        </name>
+      </place>
+      <place id="nc_start-&gt;nc_send">
+        <name>
+          <text>nc_start-&gt;nc_send</text>
+        </name>
+      </place>
+      <place id="_and0-&gt;n_start">
+        <name>
+          <text>_and0-&gt;n_start</text>
+        </name>
+      </place>
+      <transition id="t13_n_measure">
+        <name>
+          <text>Measure at the required point</text>
+        </name>
+      </transition>
+      <transition id="t25_n_court">
+        <name>
+          <text>Present certificate in court</text>
+        </name>
+      </transition>
+      <transition id="t33___start">
+        <name>
+          <text>t33___start</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="002c505f-145e-410c-bb2f-a08337741ebc"/>
+      </transition>
+      <transition id="t37__xor2_out">
+        <name>
+          <text>t37__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="1bc3a631-0496-4f83-a9d7-fe49409c47a6"/>
+      </transition>
+      <transition id="t38__xor2_out">
+        <name>
+          <text>t38__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="d08a57e3-f53a-4f0b-889c-9caf26f276f2"/>
+      </transition>
+      <transition id="t3_n_limit">
+        <name>
+          <text>Determine applicable sound limit</text>
+        </name>
+      </transition>
+      <transition id="t43_nc_send">
+        <name>
+          <text>Deliver copy of certificate</text>
+        </name>
+      </transition>
+      <transition id="t5_n_applies_gw_out">
+        <name>
+          <text>t5_n_applies_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="72437191-480a-4447-ab0d-cfbbe47fcbf1"/>
+      </transition>
+      <transition id="t6_n_applies_gw_out">
+        <name>
+          <text>t6_n_applies_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="00882bae-db83-4a3f-b0f1-0bd3e7c604c5"/>
+      </transition>
+      <transition id="t15_n_mjoin_in">
+        <name>
+          <text>t15_n_mjoin_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="bbecbc21-f46a-4ab8-b465-e15fad8da6d1"/>
+      </transition>
+      <transition id="t18_n_exceeds_gw_out">
+        <name>
+          <text>t18_n_exceeds_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="41d90427-0fa2-4372-afef-dd37da9c57b6"/>
+      </transition>
+      <transition id="t28___end__and1-&gt;__end">
+        <name>
+          <text>t28___end__and1-&gt;__end</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="1b599cf4-c13e-4261-9623-36471321412b"/>
+      </transition>
+      <transition id="t30___done_in">
+        <name>
+          <text>t30___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="4f3499a6-bfce-4c20-aa13-9f6ee8e1c051"/>
+      </transition>
+      <transition id="t42_nc_start">
+        <name>
+          <text>✉ Accused requests a copy</text>
+        </name>
+      </transition>
+      <transition id="t11_n_mf_gw_out">
+        <name>
+          <text>t11_n_mf_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="7c909ae4-1dce-417f-a3ae-b15337408b5d"/>
+      </transition>
+      <transition id="t22_n_responsible">
+        <name>
+          <text>Identify the responsible person</text>
+        </name>
+      </transition>
+      <transition id="t31___done_in">
+        <name>
+          <text>t31___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="8cc3bb48-9dbd-42c2-a44d-f27199ade78f"/>
+      </transition>
+      <transition id="t34__and0">
+        <name>
+          <text>t34__and0</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="140bf6da-fa80-48ef-ae15-d2d0c2f21f24"/>
+      </transition>
+      <transition id="t39__xor3_in">
+        <name>
+          <text>t39__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="d6f7ca69-3a56-4005-8e69-685e41aab4b8"/>
+      </transition>
+      <transition id="t10_n_mf_gw_out">
+        <name>
+          <text>t10_n_mf_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="d8e74b9f-25ec-48f9-9619-f3a000e770a9"/>
+      </transition>
+      <transition id="t23_n_certificate">
+        <name>
+          <text>Issue sound-level certificate</text>
+        </name>
+      </transition>
+      <transition id="t2_n_identify">
+        <name>
+          <text>Identify source, location and time</text>
+        </name>
+      </transition>
+      <transition id="t19_n_exceeds_gw_out">
+        <name>
+          <text>t19_n_exceeds_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="735fa11c-3832-4ac1-8630-eea62fc80f91"/>
+      </transition>
+      <transition id="t29___done_in">
+        <name>
+          <text>t29___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="49fea90d-2f34-47c2-b4a7-cbac83ac92b3"/>
+      </transition>
+      <transition id="t35__and1">
+        <name>
+          <text>t35__and1</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="03f1eb22-16db-498e-908e-aa9b44172149"/>
+      </transition>
+      <transition id="t40__xor3_in">
+        <name>
+          <text>t40__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="c9540858-cfad-4f71-adbe-1a647c2f8115"/>
+      </transition>
+      <transition id="t12_n_measure_mf">
+        <name>
+          <text>Measure inside the multifamily building</text>
+        </name>
+      </transition>
+      <transition id="t24_n_summons">
+        <name>
+          <text>Charge Class 4 misdemeanor</text>
+        </name>
+      </transition>
+      <transition id="t14_n_mjoin_in">
+        <name>
+          <text>t14_n_mjoin_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="af83bb75-bbb3-4ca1-a0c2-2bae5dc3aa1b"/>
+      </transition>
+      <arc id="140609942859776" source="n_exceeds_gw-&gt;n_ok" target="t30___done_in"/>
+      <arc id="140609942855184" source="t37__xor2_out" target="_xor2-&gt;nc_start"/>
+      <arc id="140609942858768" source="t42_nc_start" target="nc_start-&gt;nc_send"/>
+      <arc id="140609942861344" source="_and0-&gt;_xor2" target="t38__xor2_out"/>
+      <arc id="140609944541728" source="n_mf_gw-&gt;n_measure_mf" target="t12_n_measure_mf"/>
+      <arc id="140609942854176" source="t35__and1" target="_and1-&gt;__end"/>
+      <arc id="140609944544304" source="t6_n_applies_gw_out" target="n_applies_gw-&gt;n_no_limit"/>
+      <arc id="140609944750128" source="t31___done_in" target="xor:__done"/>
+      <arc id="140609942856752" source="t40__xor3_in" target="xor:_xor3"/>
+      <arc id="140609942860336" source="nc_send-&gt;nc_end" target="t39__xor3_in"/>
+      <arc id="140609944536128" source="n_mf_gw-&gt;n_measure" target="t13_n_measure"/>
+      <arc id="140609944539712" source="n_measure-&gt;n_mjoin" target="t15_n_mjoin_in"/>
+      <arc id="140609944452160" source="t25_n_court" target="n_court-&gt;n_end"/>
+      <arc id="140609944544864" source="t5_n_applies_gw_out" target="n_applies_gw-&gt;n_mf_gw"/>
+      <arc id="140609942853728" source="t34__and0" target="_and0-&gt;_xor2"/>
+      <arc id="140609942856304" source="t33___start" target="__start-&gt;_and0"/>
+      <arc id="140609944540272" source="t12_n_measure_mf" target="n_measure_mf-&gt;n_mjoin"/>
+      <arc id="140609942859888" source="n_applies_gw-&gt;n_no_limit" target="t29___done_in"/>
+      <arc id="140609944546432" source="n_measure_mf-&gt;n_mjoin" target="t14_n_mjoin_in"/>
+      <arc id="140609942858880" source="n_limit-&gt;n_applies_gw" target="t6_n_applies_gw_out"/>
+      <arc id="140609942857872" source="xor:n_mjoin" target="t18_n_exceeds_gw_out"/>
+      <arc id="140609942853280" source="source" target="t33___start"/>
+      <arc id="140609942856864" source="_xor2-&gt;_xor3" target="t40__xor3_in"/>
+      <arc id="140609942859440" source="n_applies_gw-&gt;n_mf_gw" target="t10_n_mf_gw_out"/>
+      <arc id="140609944541392" source="t14_n_mjoin_in" target="xor:n_mjoin"/>
+      <arc id="140609942861008" source="_and0-&gt;_xor2" target="t37__xor2_out"/>
+      <arc id="140609942857424" source="_xor2-&gt;nc_start" target="t42_nc_start"/>
+      <arc id="140609942860000" source="_and0-&gt;n_start" target="t2_n_identify"/>
+      <arc id="140609944749792" source="_and1-&gt;__end" target="t28___end__and1-&gt;__end"/>
+      <arc id="140609944451824" source="t23_n_certificate" target="n_certificate-&gt;n_summons"/>
+      <arc id="140609942858992" source="nc_start-&gt;nc_send" target="t43_nc_send"/>
+      <arc id="140609944541952" source="t3_n_limit" target="n_limit-&gt;n_applies_gw"/>
+      <arc id="140609944449808" source="t24_n_summons" target="n_summons-&gt;n_court"/>
+      <arc id="140609942853392" source="__start-&gt;_and0" target="t34__and0"/>
+      <arc id="140609944542512" source="t2_n_identify" target="n_identify-&gt;n_limit"/>
+      <arc id="140609942854960" source="t38__xor2_out" target="_xor2-&gt;_xor3"/>
+      <arc id="140609944450368" source="t22_n_responsible" target="n_responsible-&gt;n_certificate"/>
+      <arc id="140609944452944" source="n_summons-&gt;n_court" target="t25_n_court"/>
+      <arc id="140609942855520" source="t39__xor3_in" target="xor:_xor3"/>
+      <arc id="140609944545648" source="n_identify-&gt;n_limit" target="t3_n_limit"/>
+      <arc id="140609944542064" source="t10_n_mf_gw_out" target="n_mf_gw-&gt;n_measure_mf"/>
+      <arc id="140609944450928" source="t18_n_exceeds_gw_out" target="n_exceeds_gw-&gt;n_ok"/>
+      <arc id="140609944537472" source="t15_n_mjoin_in" target="xor:n_mjoin"/>
+      <arc id="140609944449920" source="n_certificate-&gt;n_summons" target="t24_n_summons"/>
+      <arc id="140609944750464" source="t30___done_in" target="xor:__done"/>
+      <arc id="140609942860672" source="n_court-&gt;n_end" target="t31___done_in"/>
+      <arc id="140609944452496" source="n_exceeds_gw-&gt;n_responsible" target="t22_n_responsible"/>
+      <arc id="140609942859664" source="xor:__done" target="t35__and1"/>
+      <arc id="140609944542624" source="t13_n_measure" target="n_measure-&gt;n_mjoin"/>
+      <arc id="140609944451488" source="n_responsible-&gt;n_certificate" target="t23_n_certificate"/>
+      <arc id="140609944450480" source="t19_n_exceeds_gw_out" target="n_exceeds_gw-&gt;n_responsible"/>
+      <arc id="140609942857648" source="t43_nc_send" target="nc_send-&gt;nc_end"/>
+      <arc id="140609944540608" source="t11_n_mf_gw_out" target="n_mf_gw-&gt;n_measure"/>
+      <arc id="140609944750016" source="t28___end__and1-&gt;__end" target="sink"/>
+      <arc id="140609942860224" source="n_applies_gw-&gt;n_mf_gw" target="t11_n_mf_gw_out"/>
+      <arc id="140609942859216" source="n_limit-&gt;n_applies_gw" target="t5_n_applies_gw_out"/>
+      <arc id="140609942858208" source="xor:n_mjoin" target="t19_n_exceeds_gw_out"/>
+      <arc id="140609944750576" source="t29___done_in" target="xor:__done"/>
+      <arc id="140609942853616" source="t34__and0" target="_and0-&gt;n_start"/>
+      <arc id="140609942860784" source="xor:_xor3" target="t35__and1"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

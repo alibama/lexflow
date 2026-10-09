@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" xmlns:spiffworkflow="http://spiffworkflow.org/bpmn/schema/1.0/core" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="defs_va_albemarle_17_211_compiled" name="Review of administrator's action; judicial review" targetNamespace="https://lexipedia.xyz/ns/process/va_albemarle_17_211_compiled" exporter="lexflow" exporterVersion="0.3.0">
+  <bpmn:message id="msg_file_written_request_for_hearing" name="File written request for hearing"/>
+  <bpmn:message id="msg_issue_written_decision" name="Issue written decision"/>
+  <bpmn:message id="msg_file_appeal_in_circuit_court" name="File appeal in circuit court"/>
+  <bpmn:collaboration id="collab_va_albemarle_17_211_compiled" name="Review of administrator's action; judicial review">
+    <bpmn:documentation textFormat="text/plain">A person is aggrieved by an action or inaction of the VESMP administrator</bpmn:documentation>
+    <bpmn:extensionElements>
+      <lex:model id="va-albemarle-17-211-compiled" jurisdiction="va/albemarle_county" jurisdictionName="Albemarle County, Virginia" jurisdictionQid="Q488653" reviewStatus="draft" method="llm-extraction">
+        <lex:gap>Subsection E is missing from the source chunks; the written decision is presupposed by (F).</lex:gap>
+        <lex:gap>The section does not say who determines standing.</lex:gap>
+        <lex:gap>The consequence of an untimely request is not stated.</lex:gap>
+        <lex:actor id="appellant" name="Appellant (aggrieved person with standing)" kind="private-party"/>
+        <lex:actor id="county" name="Albemarle County" kind="public-body"/>
+        <lex:actor id="administrator" name="VESMP administrator" kind="official"/>
+        <lex:actor id="clerk" name="Clerk of the Board of Supervisors" kind="official"/>
+        <lex:actor id="hearing_officer" name="Director of Community Development (hearing officer)" kind="official"/>
+        <lex:actor id="circuit_court" name="Circuit court" kind="court"/>
+      </lex:model>
+    </bpmn:extensionElements>
+    <bpmn:participant id="p_agency" name="Albemarle County" processRef="proc_va_albemarle_17_211_compiled">
+      <bpmn:extensionElements>
+        <lex:actor ref="county"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_appellant" name="Appellant (aggrieved person with standing)">
+      <bpmn:extensionElements>
+        <lex:actor ref="appellant"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:participant id="p_circuit_court" name="Circuit court">
+      <bpmn:extensionElements>
+        <lex:actor ref="circuit_court"/>
+      </bpmn:extensionElements>
+    </bpmn:participant>
+    <bpmn:messageFlow id="mf_file_request" name="File written request for hearing" sourceRef="p_appellant" targetRef="file_request"/>
+    <bpmn:messageFlow id="mf_issue_decision" name="Issue written decision" sourceRef="issue_decision" targetRef="p_appellant"/>
+    <bpmn:messageFlow id="mf_appeal_to_court" name="File appeal in circuit court" sourceRef="p_appellant" targetRef="appeal_to_court"/>
+  </bpmn:collaboration>
+  <bpmn:process id="proc_va_albemarle_17_211_compiled" name="Review of administrator's action; judicial review" isExecutable="true">
+    <bpmn:laneSet id="proc_va_albemarle_17_211_compiled_lanes">
+      <bpmn:lane id="ln_county" name="Albemarle County">
+        <bpmn:extensionElements>
+          <lex:actor ref="county"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>appeal_to_court_wait</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>appeal_to_court</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>appeal_to_court_timeout</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>appeal_to_court_lapsed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>transcribe</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>transcribe_done</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="ln_administrator" name="VESMP administrator">
+        <bpmn:extensionElements>
+          <lex:actor ref="administrator"/>
+        </bpmn:extensionElements>
+      </bpmn:lane>
+      <bpmn:lane id="ln_clerk" name="Clerk of the Board of Supervisors">
+        <bpmn:extensionElements>
+          <lex:actor ref="clerk"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>file_request_wait</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>file_request</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>file_request_timeout</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>file_request_lapsed</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="ln_hearing_officer" name="Director of Community Development (hearing officer)">
+        <bpmn:extensionElements>
+          <lex:actor ref="hearing_officer"/>
+        </bpmn:extensionElements>
+        <bpmn:flowNodeRef>determine_standing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>hold_hearing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>hold_hearing_deadline</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>hold_hearing_deadline_end</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>consider_evidence</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>keep_record</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>issue_decision</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>issue_decision_join</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>determine_standing_gw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>determine_standing_not_hold_hearing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>hold_hearing_par</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="start" name="A person is aggrieved by an action or inaction of the VESMP ">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211: “Any person aggrieved by an action or inaction of the administrator may request that the County review the action or inaction”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211" section="17-211" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Any person aggrieved by an action or inaction of the administrator may request that the County review the action or inaction</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>sf9</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:eventBasedGateway id="file_request_wait" name="File written request for hearing in time?" instantiate="false" eventGatewayType="Exclusive" gatewayDirection="Diverging">
+      <bpmn:incoming>sf9</bpmn:incoming>
+      <bpmn:outgoing>sf1</bpmn:outgoing>
+      <bpmn:outgoing>sf2</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="file_request" name="File written request for hearing">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C): “may request in writing that the County conduct a hearing, provided that the request is filed with the clerk of the board of supervisors”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>may request in writing that the County conduct a hearing, provided that the request is filed with the clerk of the board of supervisors</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="permission" bearer="appellant"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf1</bpmn:incoming>
+      <bpmn:outgoing>sf10</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="file_request_def" messageRef="msg_file_written_request_for_hearing"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="file_request_timeout" name="30 days pass">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C)(1): “Within 30 days after the date of notice of the action”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="date of notice of the action" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf2</bpmn:incoming>
+      <bpmn:outgoing>sf3</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="file_request_timeout_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="file_request_lapsed" name="Time to act lapsed">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(C)(1) [implied]: “Within 30 days after the date of notice of the action”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+            <lex:note>Consequence of missing the deadline inferred</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:businessRuleTask id="determine_standing" name="Determine reviewability and standing" camunda:decisionRef="standing">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(B): “has standing to seek review under this section”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>has standing to seek review under this section</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <spiffworkflow:calledDecisionId>standing</spiffworkflow:calledDecisionId>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf10</bpmn:incoming>
+      <bpmn:outgoing>sf12</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="hold_hearing" name="Hold hearing with appellant and administrator">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The hearing will be held within 30 days after receipt of the petition requesting a hearing.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The hearing will be held within 30 days after receipt of the petition requesting a hearing.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="hearing_officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf13</bpmn:incoming>
+      <bpmn:outgoing>sf14</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="hold_hearing_deadline" name="30 days" attachedToRef="hold_hearing" cancelActivity="false">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="receipt of the petition requesting a hearing" strict="false"/>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>sf4</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="hold_hearing_deadline_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="hold_hearing_deadline_end" name="Deadline passed (no effect)">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(2): “The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(2)" section="17-211" subsection="D.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="consider_evidence" name="Consider relevant law and evidence">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(3): “the hearing officer will consider relevant and material laws and evidence”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(3)" section="17-211" subsection="D.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>the hearing officer will consider relevant and material laws and evidence</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="hearing_officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf15</bpmn:incoming>
+      <bpmn:outgoing>sf17</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:task id="keep_record" name="Compile the hearing record">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings.</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="hearing_officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf16</bpmn:incoming>
+      <bpmn:outgoing>sf18</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sendTask id="issue_decision" name="Issue written decision" messageRef="msg_issue_written_decision">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>the hearing officer's written decision</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="hearing_officer"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf8</bpmn:incoming>
+      <bpmn:outgoing>sf19</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:eventBasedGateway id="appeal_to_court_wait" name="File appeal in circuit court in time?" instantiate="false" eventGatewayType="Exclusive" gatewayDirection="Diverging">
+      <bpmn:incoming>sf19</bpmn:incoming>
+      <bpmn:outgoing>sf5</bpmn:outgoing>
+      <bpmn:outgoing>sf6</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="appeal_to_court" name="File appeal in circuit court">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="right" bearer="appellant"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf5</bpmn:incoming>
+      <bpmn:outgoing>sf20</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="appeal_to_court_def" messageRef="msg_file_appeal_in_circuit_court"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="appeal_to_court_timeout" name="30 days pass">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F): “within 30 days after the date of the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>within 30 days after the date of the hearing officer's written decision</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:deadline kind="duration" value="P30D" anchor="date of the hearing officer's written decision" strict="true"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf6</bpmn:incoming>
+      <bpmn:outgoing>sf7</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="appeal_to_court_timeout_def">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P30D</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="appeal_to_court_lapsed" name="Time to act lapsed">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(F) [implied]: “within 30 days after the date of the hearing officer's written decision”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(F)" section="17-211" subsection="F" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="implied" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>within 30 days after the date of the hearing officer's written decision</lex:quote>
+            <lex:note>Consequence of missing the deadline inferred</lex:note>
+          </lex:source>
+        </lex:grounding>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf7</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="transcribe" name="Transcribe the hearing recording">
+      <bpmn:documentation textFormat="text/plain">Albemarle County Code § 17-211(D)(4): “The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).”</bpmn:documentation>
+      <bpmn:extensionElements>
+        <lex:grounding>
+          <lex:source citation="Albemarle County Code § 17-211(D)(4)" section="17-211" subsection="D.4" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+            <lex:quote>The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F).</lex:quote>
+          </lex:source>
+        </lex:grounding>
+        <lex:norm modality="obligation" bearer="county"/>
+      </bpmn:extensionElements>
+      <bpmn:incoming>sf20</bpmn:incoming>
+      <bpmn:outgoing>sf21</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="issue_decision_join" gatewayDirection="Converging">
+      <bpmn:incoming>sf17</bpmn:incoming>
+      <bpmn:incoming>sf18</bpmn:incoming>
+      <bpmn:outgoing>sf8</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="determine_standing_gw" name="has standing?" default="sf11" gatewayDirection="Diverging">
+      <bpmn:incoming>sf12</bpmn:incoming>
+      <bpmn:outgoing>sf13</bpmn:outgoing>
+      <bpmn:outgoing>sf11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="determine_standing_not_hold_hearing" name="Not has standing">
+      <bpmn:incoming>sf11</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:parallelGateway id="hold_hearing_par" gatewayDirection="Diverging">
+      <bpmn:incoming>sf14</bpmn:incoming>
+      <bpmn:outgoing>sf15</bpmn:outgoing>
+      <bpmn:outgoing>sf16</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="transcribe_done" name="Done">
+      <bpmn:incoming>sf21</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="sf1" sourceRef="file_request_wait" targetRef="file_request"/>
+    <bpmn:sequenceFlow id="sf2" sourceRef="file_request_wait" targetRef="file_request_timeout"/>
+    <bpmn:sequenceFlow id="sf3" sourceRef="file_request_timeout" targetRef="file_request_lapsed"/>
+    <bpmn:sequenceFlow id="sf4" sourceRef="hold_hearing_deadline" targetRef="hold_hearing_deadline_end"/>
+    <bpmn:sequenceFlow id="sf5" sourceRef="appeal_to_court_wait" targetRef="appeal_to_court"/>
+    <bpmn:sequenceFlow id="sf6" sourceRef="appeal_to_court_wait" targetRef="appeal_to_court_timeout"/>
+    <bpmn:sequenceFlow id="sf7" sourceRef="appeal_to_court_timeout" targetRef="appeal_to_court_lapsed"/>
+    <bpmn:sequenceFlow id="sf8" sourceRef="issue_decision_join" targetRef="issue_decision"/>
+    <bpmn:sequenceFlow id="sf9" sourceRef="start" targetRef="file_request_wait"/>
+    <bpmn:sequenceFlow id="sf10" sourceRef="file_request" targetRef="determine_standing"/>
+    <bpmn:sequenceFlow id="sf12" sourceRef="determine_standing" targetRef="determine_standing_gw"/>
+    <bpmn:sequenceFlow id="sf13" name="Yes" sourceRef="determine_standing_gw" targetRef="hold_hearing">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">has_standing</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="sf11" name="No" sourceRef="determine_standing_gw" targetRef="determine_standing_not_hold_hearing"/>
+    <bpmn:sequenceFlow id="sf14" sourceRef="hold_hearing" targetRef="hold_hearing_par"/>
+    <bpmn:sequenceFlow id="sf15" sourceRef="hold_hearing_par" targetRef="consider_evidence"/>
+    <bpmn:sequenceFlow id="sf16" sourceRef="hold_hearing_par" targetRef="keep_record"/>
+    <bpmn:sequenceFlow id="sf17" sourceRef="consider_evidence" targetRef="issue_decision_join"/>
+    <bpmn:sequenceFlow id="sf18" sourceRef="keep_record" targetRef="issue_decision_join"/>
+    <bpmn:sequenceFlow id="sf19" sourceRef="issue_decision" targetRef="appeal_to_court_wait"/>
+    <bpmn:sequenceFlow id="sf20" sourceRef="appeal_to_court" targetRef="transcribe"/>
+    <bpmn:sequenceFlow id="sf21" sourceRef="transcribe" targetRef="transcribe_done"/>
+  </bpmn:process>
+</bpmn:definitions>

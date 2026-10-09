@@ -1,0 +1,11 @@
+--- a/SpiffWorkflow/bpmn/parser/node_parser.py	2026-10-06 18:22:55.911779981 -0400
++++ b/SpiffWorkflow/bpmn/parser/node_parser.py	2026-10-06 18:22:55.913619015 -0400
+@@ -142,7 +142,7 @@
+             while current is not None:
+                 data_obj = current.spec.data_objects.get(ref.get('dataObjectRef'))
+                 if data_obj is None:
+-                    current = self.process_parser.parent
++                    current = current.parent
+                 else:
+                     return data_obj
+ 

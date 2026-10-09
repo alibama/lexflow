@@ -1,0 +1,478 @@
+{
+  "models": {
+    "albemarle_17_211": {
+      "title": "Review of administrator's action; judicial review (VESMP)",
+      "jurisdiction": "Albemarle County, Virginia",
+      "counts": {
+        "pools": 3,
+        "lanes": 3,
+        "flow_nodes": 52,
+        "node_types": {
+          "startEvent": 4,
+          "userTask": 6,
+          "boundaryEvent": 4,
+          "endEvent": 13,
+          "exclusiveGateway": 5,
+          "sendTask": 6,
+          "intermediateCatchEvent": 6,
+          "callActivity": 1,
+          "eventBasedGateway": 2,
+          "businessRuleTask": 1,
+          "subProcess": 2,
+          "task": 2
+        },
+        "sequence_flows": 45,
+        "message_flows": 8,
+        "decisions": 1,
+        "rules": 5
+      },
+      "bpmn_xsd_errors": [],
+      "layout_warnings": [],
+      "bpmnlint": [],
+      "dmn_xsd_errors": [],
+      "dmnlint_ok": true,
+      "lex": {
+        "quotes_checked": 54,
+        "quote_misses": 0,
+        "grounding": {
+          "explicit": 49,
+          "implied": 9,
+          "assumed": 2
+        },
+        "explicit_share": 0.817,
+        "ungrounded": [],
+        "bad_timers": [],
+        "rules_without_source": [],
+        "deontic": {
+          "permission": 3,
+          "right": 1,
+          "obligation": 2,
+          "duty-to-decide": 1
+        }
+      },
+      "petri": {
+        "proc_appellant": {
+          "places": 21,
+          "transitions": 24,
+          "visible": 9,
+          "sound": true,
+          "reachable_states": 21,
+          "powl": "CHOICE [\n  n0:\n    Decide whether to ask for County review\n  n1:\n    \u23f1 30 days after decision\n  n2:\n    Notify the County of the appeal\n  n3:\n    \u2709 Written decision received\n  n4:\n    File written request stating grounds\n  n5:\n    Decide whether to seek judicial review\n  n6:\n    File appeal in circuit court\n  n7:\n    \u23f1 30-day window closes\n  n8:\n    Judicial review (Va. Code \u00a7 62.1-44.15:46)\n  order: n3\u2192n5, n2\u2192n8, n0\u2192n4, n6\u2192n2, n5\u2192n6, n3\u2192n1, n4\u2192n3\n  start: n0, n7  end: n0, n5, n1, n8, n7\n]",
+          "approximations": [
+            "a_window: interrupting boundary -> exclusive choice before a_decide",
+            "a_jr_window: interrupting boundary -> exclusive choice before a_decide_jr"
+          ],
+          "error": null
+        },
+        "proc_county": {
+          "places": 42,
+          "transitions": 45,
+          "visible": 17,
+          "sound": true,
+          "reachable_states": 109,
+          "powl": "PO [\n  n0:\n    Give notice of the action\n  n1:\n    CHOICE [\n      n0:\n        \u23f1 30 days pass, no request\n      n1:\n        \u23f1 30 days after decision\n      n2:\n        Determine reviewability and standing\n      n3:\n        \u2709 Notice of appeal received\n      n4:\n        \u2709 Grounds supplied?\n      n5:\n        Transcribe the hearing recording\n      n6:\n        \u2709 Request for hearing filed\n      n7:\n        Issue written decision\n      n8:\n        Send record to circuit court\n      n9:\n        PO [\n          n0:\n            Set a date both parties can attend\n          n1:\n            Take evidence from owner, administrator, others\n          n2:\n            \u23f1 30 days after receipt?\n          n3:\n            Consider relevant law and evidence\n          n4:\n            Compile the hearing record\n          n5:\n            PO? [\n              n0:\n                \u2709 Appellant asks for extension\n              n1:\n                Decide whether to extend the date\n              order: n0\u2192n1\n            ]\n          order: n1\u2192n3, n0\u2192n1, n5\u2192n1, n3\u2192n4\n        ]\n      order: n2\u2192n9, n6\u2192n4, n7\u2192n1, n3\u2192n5, n9\u2192n7, n7\u2192n3, n4\u2192n2, n5\u2192n8\n      start: n6, n0  end: n8, n1, n0, n2\n    ]\n  order: n0\u2192n1\n]",
+          "approximations": [
+            "ph_ext: non-interrupting boundary -> optional branch concurrent with ph_schedule",
+            "c_target: non-interrupting boundary -> optional branch concurrent with c_phase"
+          ],
+          "error": null
+        }
+      },
+      "wikibase": {
+        "items": 61,
+        "statements": 422
+      }
+    },
+    "charlottesville_noise": {
+      "title": "Noise enforcement and sound limits (Noise Control Ordinance)",
+      "jurisdiction": "Charlottesville, Virginia",
+      "counts": {
+        "pools": 4,
+        "lanes": 0,
+        "flow_nodes": 20,
+        "node_types": {
+          "startEvent": 2,
+          "userTask": 5,
+          "businessRuleTask": 1,
+          "exclusiveGateway": 4,
+          "endEvent": 4,
+          "sendTask": 3,
+          "subProcess": 1
+        },
+        "sequence_flows": 18,
+        "message_flows": 5,
+        "decisions": 2,
+        "rules": 17
+      },
+      "bpmn_xsd_errors": [],
+      "layout_warnings": [],
+      "bpmnlint": [],
+      "dmn_xsd_errors": [],
+      "dmnlint_ok": true,
+      "lex": {
+        "quotes_checked": 37,
+        "quote_misses": 0,
+        "grounding": {
+          "implied": 2,
+          "assumed": 1,
+          "explicit": 44
+        },
+        "explicit_share": 0.936,
+        "ungrounded": [],
+        "bad_timers": [],
+        "rules_without_source": [],
+        "deontic": {
+          "obligation": 2
+        }
+      },
+      "petri": {
+        "proc_cpd": {
+          "places": 27,
+          "transitions": 29,
+          "visible": 10,
+          "sound": true,
+          "reachable_states": 106,
+          "powl": "PO [\n  n0:\n    Identify source, location and time\n  n1:\n    Determine applicable sound limit\n  n2:\n    PO? [\n      n0:\n        CHOICE [\n          n0:\n            Measure at the required point\n          n1:\n            Measure inside the multifamily building\n          start: n0, n1  end: n0, n1\n        ]\n      n1:\n        PO? [\n          n0:\n            Identify the responsible person\n          n1:\n            Charge Class 4 misdemeanor\n          n2:\n            Present certificate in court\n          n3:\n            Issue sound-level certificate\n          order: n3\u2192n1, n0\u2192n3, n1\u2192n2\n        ]\n      order: n0\u2192n1\n    ]\n  n3:\n    PO? [\n      n0:\n        \u2709 Accused requests a copy\n      n1:\n        Deliver copy of certificate\n      order: n0\u2192n1\n    ]\n  order: n0\u2192n1, n1\u2192n2\n]",
+          "approximations": [
+            "n_copy: event sub-process -> optional branch concurrent with the process"
+          ],
+          "error": null
+        }
+      },
+      "wikibase": {
+        "items": 36,
+        "statements": 224
+      }
+    },
+    "va_judicial_review_stub": {
+      "title": "Judicial review of a locality's VESMP decision (stub)",
+      "jurisdiction": "Virginia",
+      "counts": {
+        "pools": 1,
+        "lanes": 0,
+        "flow_nodes": 3,
+        "node_types": {
+          "startEvent": 1,
+          "userTask": 1,
+          "endEvent": 1
+        },
+        "sequence_flows": 2,
+        "message_flows": 0,
+        "decisions": 0,
+        "rules": 0
+      },
+      "bpmn_xsd_errors": [],
+      "layout_warnings": [],
+      "bpmnlint": [],
+      "lex": {
+        "quotes_checked": 1,
+        "quote_misses": 0,
+        "grounding": {
+          "explicit": 1
+        },
+        "explicit_share": 1.0,
+        "ungrounded": [],
+        "bad_timers": [],
+        "rules_without_source": [],
+        "deontic": {}
+      },
+      "petri": {
+        "va_62_1_44_15_46_judicial_review": {
+          "places": 4,
+          "transitions": 3,
+          "visible": 1,
+          "sound": true,
+          "reachable_states": 4,
+          "powl": "Court reviews the locality's final decision",
+          "approximations": [],
+          "error": null
+        }
+      },
+      "wikibase": {
+        "items": 7,
+        "statements": 32
+      }
+    },
+    "compiled_17_211": {
+      "title": "Review of administrator's action; judicial review",
+      "jurisdiction": "Albemarle County, Virginia",
+      "counts": {
+        "pools": 3,
+        "lanes": 4,
+        "flow_nodes": 22,
+        "node_types": {
+          "startEvent": 1,
+          "eventBasedGateway": 2,
+          "intermediateCatchEvent": 4,
+          "endEvent": 5,
+          "businessRuleTask": 1,
+          "userTask": 2,
+          "boundaryEvent": 1,
+          "task": 2,
+          "sendTask": 1,
+          "parallelGateway": 2,
+          "exclusiveGateway": 1
+        },
+        "sequence_flows": 21,
+        "message_flows": 3,
+        "decisions": 1,
+        "rules": 4
+      },
+      "bpmn_xsd_errors": [],
+      "layout_warnings": [],
+      "bpmnlint": [],
+      "dmn_xsd_errors": [],
+      "dmnlint_ok": true,
+      "lex": {
+        "quotes_checked": 19,
+        "quote_misses": 0,
+        "grounding": {
+          "explicit": 17,
+          "implied": 2
+        },
+        "explicit_share": 0.895,
+        "ungrounded": [],
+        "bad_timers": [],
+        "rules_without_source": [],
+        "deontic": {
+          "permission": 1,
+          "obligation": 5,
+          "right": 1
+        }
+      },
+      "petri": {
+        "proc_va_albemarle_17_211_compiled": {
+          "places": 30,
+          "transitions": 31,
+          "visible": 11,
+          "sound": true,
+          "reachable_states": 33,
+          "powl": "CHOICE [\n  n0:\n    \u23f1 30 days pass\n  n1:\n    Determine reviewability and standing\n  n2:\n    \u2709 File appeal in circuit court\n  n3:\n    Issue written decision\n  n4:\n    \u2709 File written request for hearing\n  n5:\n    Transcribe the hearing recording\n  n6:\n    \u23f1 30 days pass\n  n7:\n    PO [\n      n0:\n        Hold hearing with appellant and administrator\n      n1:\n        \u23f1 30 days?\n    ]\n  n8:\n    PO [\n      n0:\n        Consider relevant law and evidence\n      n1:\n        Compile the hearing record\n    ]\n  order: n3\u2192n2, n1\u2192n7, n3\u2192n0, n7\u2192n8, n4\u2192n1, n2\u2192n5, n8\u2192n3\n  start: n6, n4  end: n5, n1, n0, n6\n]",
+          "approximations": [
+            "hold_hearing_deadline: non-interrupting boundary -> optional branch concurrent with hold_hearing"
+          ],
+          "error": null
+        }
+      },
+      "wikibase": {
+        "items": 29,
+        "statements": 177
+      }
+    }
+  },
+  "locus_rebuild": {
+    "rows": 20,
+    "sections": 17,
+    "flags": {
+      "17-207": [
+        "page-furniture"
+      ],
+      "17-211": [
+        "page-furniture",
+        "page-head-row:1999001",
+        "header-as-content:D",
+        "header-as-content:F",
+        "missing-subsection:E"
+      ],
+      "16-7": [
+        "page-furniture"
+      ],
+      "16-9": [
+        "page-furniture"
+      ],
+      "16-12": [
+        "page-furniture"
+      ],
+      "17-21": [
+        "header-mismatch:row 1949249 content: Secs. 17-22, 17-23. Reserved."
+      ],
+      "17-37?": [
+        "unattributed-text:row 1949250"
+      ],
+      "17-1": [
+        "header-mismatch:row 1949250 header says 17-37",
+        "page-furniture"
+      ],
+      "17-2": [
+        "header-mismatch:row 1949250 header says 17-37",
+        "page-furniture"
+      ],
+      "17-3": [
+        "header-mismatch:row 1949250 header says 17-37",
+        "page-furniture"
+      ]
+    }
+  },
+  "legistar": {
+    "cases": 6,
+    "complete": 5,
+    "variants": {
+      "scheduled with the consent agenda \u2192 deferred": 1,
+      "scheduled with the consent agenda \u2192 adopted": 4,
+      "adopted": 1
+    },
+    "days_authorize_to_decision": [
+      28,
+      35,
+      28,
+      28,
+      28
+    ],
+    "unobservable": [
+      "notice_1",
+      "notice_2",
+      "meeting"
+    ],
+    "findings": [
+      "Newspaper notices required by Va. Code \u00a7 15.2-1427(F) leave no trace in Legistar; compliance cannot be checked from this data alone (needs ad affidavits).",
+      "Adopted ordinances with no linked scheduling matter (link by title failed or step missing).",
+      "MatterEnactmentNumber is empty, so adopted ordinances cannot be joined to the code's history notes (e.g. 'Ord. 24-17(1)') without text matching."
+    ]
+  },
+  "ollama_schema_bytes": 7466,
+  "bpmn_assistant_roundtrip": [
+    {
+      "feature": "plain sequence",
+      "imported": true,
+      "survives_round_trip": true,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "documentation (legal citation text)",
+      "imported": true,
+      "survives_round_trip": false,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "extensionElements (lex:source)",
+      "imported": true,
+      "survives_round_trip": false,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "conditionExpression on flow",
+      "imported": true,
+      "survives_round_trip": false,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "timer boundary, non-interrupting",
+      "imported": true,
+      "survives_round_trip": true,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "message boundary event",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValidationError: 22 validation errors for BPMNPool\nprocess.1.BPMNTask.boundary_events.0.eventDefinition\n  Input should be 'timerEventDefinition' or 'errorEventDefinition' [type="
+    },
+    {
+      "feature": "event-based gateway (deadline race)",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValueError: Sequence flow refers to a missing element or crosses a subprocess scope."
+    },
+    {
+      "feature": "call activity (state-law process)",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValueError: Sequence flow refers to a missing element or crosses a subprocess scope."
+    },
+    {
+      "feature": "event sub-process",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValueError: Event subprocesses are not supported; use an ordinary embedded subprocess."
+    },
+    {
+      "feature": "nested embedded sub-process",
+      "imported": true,
+      "survives_round_trip": true,
+      "output_xsd_valid": true,
+      "output_has_di": true,
+      "error": null
+    },
+    {
+      "feature": "data object + association",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValueError: The pool contains unsupported BPMN elements."
+    },
+    {
+      "feature": "data store",
+      "imported": false,
+      "survives_round_trip": false,
+      "output_xsd_valid": null,
+      "output_has_di": null,
+      "error": "ValueError: The pool contains unsupported BPMN elements."
+    },
+    {
+      "feature": "business rule task (DMN link)",
+      "imported": true,
+      "survives_round_trip": true,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    },
+    {
+      "feature": "pools + lanes + message flow",
+      "imported": true,
+      "survives_round_trip": true,
+      "output_xsd_valid": true,
+      "output_has_di": false,
+      "error": null
+    }
+  ],
+  "published": {
+    "albemarle_17_211": {
+      "law_pages": [
+        "law:va:albemarle_county:17-211",
+        "law:va:62.1-44.15_46"
+      ],
+      "process_page": "process:va:albemarle_county:17-211",
+      "media": [
+        "process:va:albemarle_county:17-211.bpmn",
+        "process:va:albemarle_county:17-211.dmn"
+      ]
+    },
+    "charlottesville_noise": {
+      "law_pages": [
+        "law:va:charlottesville:16-4",
+        "law:va:charlottesville:16-5",
+        "law:va:charlottesville:16-6",
+        "law:va:charlottesville:16-7",
+        "law:va:charlottesville:16-8",
+        "law:va:charlottesville:16-9",
+        "law:va:charlottesville:16-10",
+        "law:va:charlottesville:16-11",
+        "law:va:charlottesville:16-12"
+      ],
+      "process_page": "process:va:charlottesville:ch16-noise",
+      "media": [
+        "process:va:charlottesville:ch16-noise.bpmn",
+        "process:va:charlottesville:ch16-noise.dmn"
+      ]
+    }
+  }
+}

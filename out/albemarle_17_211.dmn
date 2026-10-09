@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" id="dmn_va_albemarle_17_211" name="Review of administrator's action; judicial review (VESMP) - decisions" namespace="https://lexipedia.xyz/ns/decision/va_albemarle_17_211" exporter="lexflow">
+  <decision id="d_review_standing" name="Reviewability, standing and filing window">
+    <description>Grounded in Albemarle County Code § 17-211(A); Albemarle County Code § 17-211(B); Albemarle County Code § 17-211(C)</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+        <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+        <lex:source citation="Albemarle County Code § 17-211(C)" section="17-211" subsection="C" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+      </lex:grounding>
+    </extensionElements>
+    <question>Can this person get County review of this administrator action, and from when does the 30-day window run?</question>
+    <decisionTable id="d_review_standing_table" hitPolicy="FIRST">
+      <input id="in_action" label="Administrator action (§ 17-211(A))">
+        <inputExpression id="in_action_expr" typeRef="string">
+          <text>action_type</text>
+        </inputExpression>
+        <inputValues id="in_action_values">
+          <text>"disapproval","conditional_approval","variance_disapproval","status_determination","general_permit_decision","enforcement_decision","failure_to_act","approval_downstream_issue","other"</text>
+        </inputValues>
+      </input>
+      <input id="in_role" label="Person's role">
+        <inputExpression id="in_role_expr" typeRef="string">
+          <text>person_role</text>
+        </inputExpression>
+        <inputValues id="in_role_values">
+          <text>"applicant","permitted_operator","general_permit_subject","downstream_owner","other"</text>
+        </inputValues>
+      </input>
+      <input id="in_aggrieved" label="Aggrieved?">
+        <inputExpression id="in_aggrieved_expr" typeRef="boolean">
+          <text>aggrieved</text>
+        </inputExpression>
+      </input>
+      <output id="out_rev" label="Reviewable" name="reviewable" typeRef="boolean"/>
+      <output id="out_std" label="Has standing" name="has_standing" typeRef="boolean"/>
+      <output id="out_basis" label="30-day window runs from" name="window_basis" typeRef="string"/>
+      <output id="out_days" label="Window (days)" name="window_days" typeRef="number"/>
+      <annotation name="Source"/>
+      <rule id="r1">
+        <description>Albemarle County Code § 17-211(A); Albemarle County Code § 17-211(B); Albemarle County Code § 17-211(C)(1)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+            <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>who is aggrieved by any action or inaction under subsections (A)(i) through (vii) has standing to seek review</lex:quote>
+            </lex:source>
+            <lex:source citation="Albemarle County Code § 17-211(C)(1)" section="17-211" subsection="C.1" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Within 30 days after the date of notice of the action</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="r1_in0">
+          <text>"disapproval","conditional_approval","variance_disapproval","status_determination","general_permit_decision","enforcement_decision"</text>
+        </inputEntry>
+        <inputEntry id="r1_in1">
+          <text>"applicant","permitted_operator","general_permit_subject"</text>
+        </inputEntry>
+        <inputEntry id="r1_in2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r1_out1">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r1_out2">
+          <text>"date of notice of the action"</text>
+        </outputEntry>
+        <outputEntry id="r1_out3">
+          <text>30</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Albemarle County Code § 17-211(A); Albemarle County Code § 17-211(B); Albemarle County Code § 17-211(C)(1)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="r2">
+        <description>Albemarle County Code § 17-211(A); Albemarle County Code § 17-211(C)(2)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>(vii) the failure of the administrator to act within the time periods required by this chapter</lex:quote>
+            </lex:source>
+            <lex:source citation="Albemarle County Code § 17-211(C)(2)" section="17-211" subsection="C.2" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Within 30 days after the date by which the administrator was required to act but failed to do so</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="r2_in0">
+          <text>"failure_to_act"</text>
+        </inputEntry>
+        <inputEntry id="r2_in1">
+          <text>"applicant","permitted_operator","general_permit_subject"</text>
+        </inputEntry>
+        <inputEntry id="r2_in2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="r2_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r2_out1">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r2_out2">
+          <text>"date by which the administrator was required to act"</text>
+        </outputEntry>
+        <outputEntry id="r2_out3">
+          <text>30</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Albemarle County Code § 17-211(A); Albemarle County Code § 17-211(C)(2)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="r3">
+        <description>Albemarle County Code § 17-211(B); Albemarle County Code § 17-211(C)(3)</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Any downstream owner who is aggrieved by an action under subsection (A)(viii) has standing to seek review under this section.</lex:quote>
+            </lex:source>
+            <lex:source citation="Albemarle County Code § 17-211(C)(3)" section="17-211" subsection="C.3" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances">
+              <lex:quote>Within 30 days after the date of the administrator's approval of the ESM plan or land-disturbance permit</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="r3_in0">
+          <text>"approval_downstream_issue"</text>
+        </inputEntry>
+        <inputEntry id="r3_in1">
+          <text>"downstream_owner"</text>
+        </inputEntry>
+        <inputEntry id="r3_in2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r3_out1">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r3_out2">
+          <text>"date of the administrator's approval"</text>
+        </outputEntry>
+        <outputEntry id="r3_out3">
+          <text>30</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Albemarle County Code § 17-211(B); Albemarle County Code § 17-211(C)(3)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="r4">
+        <description>Reviewable action, but this person lacks standing</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(B)" section="17-211" subsection="B" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="r4_in0">
+          <text>not("other")</text>
+        </inputEntry>
+        <inputEntry id="r4_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="r4_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="r4_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="r4_out1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="r4_out2">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="r4_out3">
+          <text>null</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Albemarle County Code § 17-211(B)</text>
+        </annotationEntry>
+      </rule>
+      <rule id="r5">
+        <description>Not one of the eight reviewable actions</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Albemarle County Code § 17-211(A)" section="17-211" subsection="A" code="Albemarle County Code" jurisdiction="va/albemarle_county" grounding="explicit" url="https://library.municode.com/va/albemarle_county/codes/code_of_ordinances"/>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="r5_in0">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="r5_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="r5_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="r5_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="r5_out1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="r5_out2">
+          <text>null</text>
+        </outputEntry>
+        <outputEntry id="r5_out3">
+          <text>null</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Albemarle County Code § 17-211(A)</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="dmndi_va_albemarle_17_211">
+      <dmndi:DMNShape id="d_review_standing_shape" dmnElementRef="d_review_standing">
+        <dc:Bounds x="160" y="100" width="200" height="80"/>
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

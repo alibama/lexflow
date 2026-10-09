@@ -1,0 +1,13 @@
+{
+  "name": "bpmnlint-plugin-lexipedia",
+  "version": "0.1.0",
+  "description": "bpmnlint rules for legally grounded BPMN (Lexipedia lex: extension)",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "bpmnlint": ">=10"
+  },
+  "dependencies": {
+    "bpmnlint-utils": "^1.1.1"
+  }
+}

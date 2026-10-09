@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="proc_va_albemarle_17_211_compiled" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>proc_va_albemarle_17_211_compiled</text>
+    </name>
+    <page id="n0">
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="file_request_wait-&gt;file_request_timeout">
+        <name>
+          <text>file_request_wait-&gt;file_request_timeout</text>
+        </name>
+      </place>
+      <place id="_and0-&gt;hold_hearing">
+        <name>
+          <text>_and0-&gt;hold_hearing</text>
+        </name>
+      </place>
+      <place id="consider_evidence-&gt;issue_decision_join">
+        <name>
+          <text>consider_evidence-&gt;issue_decision_join</text>
+        </name>
+      </place>
+      <place id="_and0-&gt;_xor2">
+        <name>
+          <text>_and0-&gt;_xor2</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;_xor3">
+        <name>
+          <text>_xor2-&gt;_xor3</text>
+        </name>
+      </place>
+      <place id="hold_hearing_par-&gt;keep_record">
+        <name>
+          <text>hold_hearing_par-&gt;keep_record</text>
+        </name>
+      </place>
+      <place id="issue_decision-&gt;appeal_to_court_wait">
+        <name>
+          <text>issue_decision-&gt;appeal_to_court_wait</text>
+        </name>
+      </place>
+      <place id="appeal_to_court_timeout-&gt;appeal_to_court_lapsed">
+        <name>
+          <text>appeal_to_court_timeout-&gt;appeal_to_court_lapsed</text>
+        </name>
+      </place>
+      <place id="_and1-&gt;hold_hearing_par">
+        <name>
+          <text>_and1-&gt;hold_hearing_par</text>
+        </name>
+      </place>
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="file_request_timeout-&gt;file_request_lapsed">
+        <name>
+          <text>file_request_timeout-&gt;file_request_lapsed</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;hold_hearing_deadline">
+        <name>
+          <text>_xor2-&gt;hold_hearing_deadline</text>
+        </name>
+      </place>
+      <place id="hold_hearing_deadline-&gt;hold_hearing_deadline_end">
+        <name>
+          <text>hold_hearing_deadline-&gt;hold_hearing_deadline_end</text>
+        </name>
+      </place>
+      <place id="appeal_to_court_wait-&gt;appeal_to_court_timeout">
+        <name>
+          <text>appeal_to_court_wait-&gt;appeal_to_court_timeout</text>
+        </name>
+      </place>
+      <place id="appeal_to_court-&gt;transcribe">
+        <name>
+          <text>appeal_to_court-&gt;transcribe</text>
+        </name>
+      </place>
+      <place id="keep_record-&gt;issue_decision_join">
+        <name>
+          <text>keep_record-&gt;issue_decision_join</text>
+        </name>
+      </place>
+      <place id="determine_standing_gw-&gt;determine_standing_not_hold_hearing">
+        <name>
+          <text>determine_standing_gw-&gt;determine_standing_not_hold_hearing</text>
+        </name>
+      </place>
+      <place id="hold_hearing-&gt;_and1">
+        <name>
+          <text>hold_hearing-&gt;_and1</text>
+        </name>
+      </place>
+      <place id="hold_hearing_par-&gt;consider_evidence">
+        <name>
+          <text>hold_hearing_par-&gt;consider_evidence</text>
+        </name>
+      </place>
+      <place id="transcribe-&gt;transcribe_done">
+        <name>
+          <text>transcribe-&gt;transcribe_done</text>
+        </name>
+      </place>
+      <place id="__start-&gt;start">
+        <name>
+          <text>__start-&gt;start</text>
+        </name>
+      </place>
+      <place id="file_request-&gt;determine_standing">
+        <name>
+          <text>file_request-&gt;determine_standing</text>
+        </name>
+      </place>
+      <place id="file_request_wait-&gt;file_request">
+        <name>
+          <text>file_request_wait-&gt;file_request</text>
+        </name>
+      </place>
+      <place id="issue_decision_join-&gt;issue_decision">
+        <name>
+          <text>issue_decision_join-&gt;issue_decision</text>
+        </name>
+      </place>
+      <place id="appeal_to_court_wait-&gt;appeal_to_court">
+        <name>
+          <text>appeal_to_court_wait-&gt;appeal_to_court</text>
+        </name>
+      </place>
+      <place id="determine_standing_gw-&gt;_and0">
+        <name>
+          <text>determine_standing_gw-&gt;_and0</text>
+        </name>
+      </place>
+      <place id="xor:_xor3">
+        <name>
+          <text>xor:_xor3</text>
+        </name>
+      </place>
+      <place id="determine_standing-&gt;determine_standing_gw">
+        <name>
+          <text>determine_standing-&gt;determine_standing_gw</text>
+        </name>
+      </place>
+      <place id="xor:__done">
+        <name>
+          <text>xor:__done</text>
+        </name>
+      </place>
+      <transition id="t6_file_request_timeout">
+        <name>
+          <text>⏱ 30 days pass</text>
+        </name>
+      </transition>
+      <transition id="t11_hold_hearing_deadline">
+        <name>
+          <text>⏱ 30 days</text>
+        </name>
+      </transition>
+      <transition id="t16_issue_decision">
+        <name>
+          <text>Issue written decision</text>
+        </name>
+      </transition>
+      <transition id="t21_appeal_to_court_timeout">
+        <name>
+          <text>⏱ 30 days pass</text>
+        </name>
+      </transition>
+      <transition id="t39__xor3_in">
+        <name>
+          <text>t39__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="1130ce46-83f9-4df9-a969-9a1626418262"/>
+      </transition>
+      <transition id="t48___start">
+        <name>
+          <text>t48___start</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="794471a3-36a9-40ca-8032-6d9e7d47b203"/>
+      </transition>
+      <transition id="t9_determine_standing">
+        <name>
+          <text>Determine reviewability and standing</text>
+        </name>
+      </transition>
+      <transition id="t15_keep_record">
+        <name>
+          <text>Compile the hearing record</text>
+        </name>
+      </transition>
+      <transition id="t38__xor2_out">
+        <name>
+          <text>t38__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="67e93a85-89e0-4947-bd42-6b643d027be0"/>
+      </transition>
+      <transition id="t43___done_in">
+        <name>
+          <text>t43___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="1f9ccafb-0b2c-4b7e-851c-a4bbbc611336"/>
+      </transition>
+      <transition id="t44___done_in">
+        <name>
+          <text>t44___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="1311eda5-5e87-465e-aa03-1892f07d7c9c"/>
+      </transition>
+      <transition id="t4_file_request_wait_out">
+        <name>
+          <text>t4_file_request_wait_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="cda439d2-7bf1-48f0-a8de-74629c528af8"/>
+      </transition>
+      <transition id="t14_consider_evidence">
+        <name>
+          <text>Consider relevant law and evidence</text>
+        </name>
+      </transition>
+      <transition id="t19_appeal_to_court_wait_out">
+        <name>
+          <text>t19_appeal_to_court_wait_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="8beac128-9d38-4d24-84f1-8eb0f57457c4"/>
+      </transition>
+      <transition id="t28_determine_standing_gw_out">
+        <name>
+          <text>t28_determine_standing_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="8a250eae-ec81-436e-9700-c448eb1dc496"/>
+      </transition>
+      <transition id="t37__xor2_out">
+        <name>
+          <text>t37__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="cc49dec4-0a96-4a8c-9a4c-975b503c7561"/>
+      </transition>
+      <transition id="t46___done_in">
+        <name>
+          <text>t46___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="6b6ed98b-92fe-4cc4-88bb-0909364714aa"/>
+      </transition>
+      <transition id="t10_hold_hearing">
+        <name>
+          <text>Hold hearing with appellant and administrator</text>
+        </name>
+      </transition>
+      <transition id="t18_appeal_to_court_wait_out">
+        <name>
+          <text>t18_appeal_to_court_wait_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="68377c42-4e96-4015-bd2d-aaa54777ed92"/>
+      </transition>
+      <transition id="t34__and0">
+        <name>
+          <text>t34__and0</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="ea2e8d68-fad6-44a9-9921-a5894289c6d0"/>
+      </transition>
+      <transition id="t3_file_request_wait_out">
+        <name>
+          <text>t3_file_request_wait_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="4d44dba9-ceb5-4c59-9043-d71d8123cb44"/>
+      </transition>
+      <transition id="t24_transcribe">
+        <name>
+          <text>Transcribe the hearing recording</text>
+        </name>
+      </transition>
+      <transition id="t25_issue_decision_join">
+        <name>
+          <text>t25_issue_decision_join</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="780dc1ad-96e4-4174-b879-9e79b2a72533"/>
+      </transition>
+      <transition id="t35__and1">
+        <name>
+          <text>t35__and1</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="988ac673-7253-4206-b0f2-018ceb372af8"/>
+      </transition>
+      <transition id="t42___end___done-&gt;__end">
+        <name>
+          <text>t42___end___done-&gt;__end</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="ee1ed079-6255-4225-88fb-077e5878dc5c"/>
+      </transition>
+      <transition id="t5_file_request">
+        <name>
+          <text>✉ File written request for hearing</text>
+        </name>
+      </transition>
+      <transition id="t20_appeal_to_court">
+        <name>
+          <text>✉ File appeal in circuit court</text>
+        </name>
+      </transition>
+      <transition id="t27_determine_standing_gw_out">
+        <name>
+          <text>t27_determine_standing_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="9fbb7b03-0648-422c-94e0-97a4196a505a"/>
+      </transition>
+      <transition id="t31_hold_hearing_par">
+        <name>
+          <text>t31_hold_hearing_par</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="ffcc5792-6fcc-48be-8b06-f0c3a1f67a21"/>
+      </transition>
+      <transition id="t40__xor3_in">
+        <name>
+          <text>t40__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="420655af-d5cc-4376-aa3f-8613fd6ce13c"/>
+      </transition>
+      <transition id="t45___done_in">
+        <name>
+          <text>t45___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="725c1e2e-c079-41b5-bcb9-0a2d265795f7"/>
+      </transition>
+      <arc id="140609945739776" source="determine_standing-&gt;determine_standing_gw" target="t27_determine_standing_gw_out"/>
+      <arc id="140609945732608" source="t34__and0" target="_and0-&gt;hold_hearing"/>
+      <arc id="140609945736192" source="t44___done_in" target="xor:__done"/>
+      <arc id="140609945811472" source="hold_hearing_par-&gt;keep_record" target="t15_keep_record"/>
+      <arc id="140609945745936" source="appeal_to_court-&gt;transcribe" target="t24_transcribe"/>
+      <arc id="140609945735184" source="t45___done_in" target="xor:__done"/>
+      <arc id="140609945741344" source="issue_decision-&gt;appeal_to_court_wait" target="t19_appeal_to_court_wait_out"/>
+      <arc id="140609945737760" source="_and0-&gt;_xor2" target="t38__xor2_out"/>
+      <arc id="140609945743920" source="t39__xor3_in" target="xor:_xor3"/>
+      <arc id="140609945740336" source="source" target="t48___start"/>
+      <arc id="140609945802848" source="t18_appeal_to_court_wait_out" target="appeal_to_court_wait-&gt;appeal_to_court"/>
+      <arc id="140609945733728" source="hold_hearing-&gt;_and1" target="t35__and1"/>
+      <arc id="140609945732720" source="t34__and0" target="_and0-&gt;_xor2"/>
+      <arc id="140609943881328" source="__start-&gt;start" target="t4_file_request_wait_out"/>
+      <arc id="140609945742464" source="t28_determine_standing_gw_out" target="determine_standing_gw-&gt;_and0"/>
+      <arc id="140609945738880" source="t48___start" target="__start-&gt;start"/>
+      <arc id="140609945803408" source="file_request_wait-&gt;file_request" target="t5_file_request"/>
+      <arc id="140609945799824" source="_xor2-&gt;hold_hearing_deadline" target="t11_hold_hearing_deadline"/>
+      <arc id="140609945740448" source="consider_evidence-&gt;issue_decision_join" target="t25_issue_decision_join"/>
+      <arc id="140609945736864" source="t42___end___done-&gt;__end" target="sink"/>
+      <arc id="140609945735856" source="t31_hold_hearing_par" target="hold_hearing_par-&gt;consider_evidence"/>
+      <arc id="140609945812144" source="file_request_wait-&gt;file_request_timeout" target="t6_file_request_timeout"/>
+      <arc id="140609945801392" source="t19_appeal_to_court_wait_out" target="appeal_to_court_wait-&gt;appeal_to_court_timeout"/>
+      <arc id="140609945743024" source="t25_issue_decision_join" target="issue_decision_join-&gt;issue_decision"/>
+      <arc id="140609945739440" source="t31_hold_hearing_par" target="hold_hearing_par-&gt;keep_record"/>
+      <arc id="140609945738432" source="t35__and1" target="_and1-&gt;hold_hearing_par"/>
+      <arc id="140609945803968" source="t5_file_request" target="file_request-&gt;determine_standing"/>
+      <arc id="140609945811136" source="t6_file_request_timeout" target="file_request_timeout-&gt;file_request_lapsed"/>
+      <arc id="140609945807552" source="t9_determine_standing" target="determine_standing-&gt;determine_standing_gw"/>
+      <arc id="140609945731264" source="determine_standing_gw-&gt;_and0" target="t34__and0"/>
+      <arc id="140609945740000" source="issue_decision-&gt;appeal_to_court_wait" target="t18_appeal_to_court_wait_out"/>
+      <arc id="140609945804528" source="file_request-&gt;determine_standing" target="t9_determine_standing"/>
+      <arc id="140609945800944" source="t4_file_request_wait_out" target="file_request_wait-&gt;file_request_timeout"/>
+      <arc id="140609945745152" source="appeal_to_court_wait-&gt;appeal_to_court" target="t20_appeal_to_court"/>
+      <arc id="140609945734400" source="transcribe-&gt;transcribe_done" target="t44___done_in"/>
+      <arc id="140609945740560" source="xor:__done" target="t42___end___done-&gt;__end"/>
+      <arc id="140609945802512" source="hold_hearing_par-&gt;consider_evidence" target="t14_consider_evidence"/>
+      <arc id="140609945735968" source="appeal_to_court_timeout-&gt;appeal_to_court_lapsed" target="t43___done_in"/>
+      <arc id="140609945743136" source="t37__xor2_out" target="_xor2-&gt;hold_hearing_deadline"/>
+      <arc id="140609945739552" source="determine_standing-&gt;determine_standing_gw" target="t28_determine_standing_gw_out"/>
+      <arc id="140609945732384" source="hold_hearing_deadline-&gt;hold_hearing_deadline_end" target="t40__xor3_in"/>
+      <arc id="140609943879984" source="file_request_timeout-&gt;file_request_lapsed" target="t45___done_in"/>
+      <arc id="140609945806656" source="t10_hold_hearing" target="hold_hearing-&gt;_and1"/>
+      <arc id="140609945803072" source="t14_consider_evidence" target="consider_evidence-&gt;issue_decision_join"/>
+      <arc id="140609945744704" source="t20_appeal_to_court" target="appeal_to_court-&gt;transcribe"/>
+      <arc id="140609945741120" source="_xor2-&gt;_xor3" target="t39__xor3_in"/>
+      <arc id="140609945733952" source="t40__xor3_in" target="xor:_xor3"/>
+      <arc id="140609945740112" source="__start-&gt;start" target="t3_file_request_wait_out"/>
+      <arc id="140609945801056" source="_and0-&gt;hold_hearing" target="t10_hold_hearing"/>
+      <arc id="140609945739104" source="t46___done_in" target="xor:__done"/>
+      <arc id="140609945802624" source="t16_issue_decision" target="issue_decision-&gt;appeal_to_court_wait"/>
+      <arc id="140609945737088" source="determine_standing_gw-&gt;determine_standing_not_hold_hearing" target="t46___done_in"/>
+      <arc id="140609945805200" source="issue_decision_join-&gt;issue_decision" target="t16_issue_decision"/>
+      <arc id="140609945736080" source="t24_transcribe" target="transcribe-&gt;transcribe_done"/>
+      <arc id="140609945746832" source="keep_record-&gt;issue_decision_join" target="t25_issue_decision_join"/>
+      <arc id="140609945806768" source="t15_keep_record" target="keep_record-&gt;issue_decision_join"/>
+      <arc id="140609945744816" source="appeal_to_court_wait-&gt;appeal_to_court_timeout" target="t21_appeal_to_court_timeout"/>
+      <arc id="140609945741232" source="t38__xor2_out" target="_xor2-&gt;_xor3"/>
+      <arc id="140609945734064" source="t43___done_in" target="xor:__done"/>
+      <arc id="140609945743808" source="t27_determine_standing_gw_out" target="determine_standing_gw-&gt;determine_standing_not_hold_hearing"/>
+      <arc id="140609945736640" source="_and0-&gt;_xor2" target="t37__xor2_out"/>
+      <arc id="140609945739216" source="_and1-&gt;hold_hearing_par" target="t31_hold_hearing_par"/>
+      <arc id="140609945732048" source="xor:_xor3" target="t35__and1"/>
+      <arc id="140609945745376" source="t21_appeal_to_court_timeout" target="appeal_to_court_timeout-&gt;appeal_to_court_lapsed"/>
+      <arc id="140609945806320" source="t3_file_request_wait_out" target="file_request_wait-&gt;file_request"/>
+      <arc id="140609945799152" source="t11_hold_hearing_deadline" target="hold_hearing_deadline-&gt;hold_hearing_deadline_end"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

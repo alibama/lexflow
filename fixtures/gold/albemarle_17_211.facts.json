@@ -1,0 +1,391 @@
+{
+  "process_name": "Review of administrator's action; judicial review",
+  "trigger": "A person is aggrieved by an action or inaction of the VESMP administrator",
+  "trigger_source": {
+    "section": "17-211",
+    "subsection": null,
+    "quote": "Any person aggrieved by an action or inaction of the administrator may request that the County review the action or inaction"
+  },
+  "actors": [
+    {
+      "id": "appellant",
+      "name": "Appellant (aggrieved person with standing)",
+      "kind": "private-party",
+      "source": {
+        "section": "17-211",
+        "subsection": "C",
+        "quote": "Any person who has standing under subsection (B) (hereinafter, the \"appellant\")"
+      }
+    },
+    {
+      "id": "county",
+      "name": "Albemarle County",
+      "kind": "public-body",
+      "source": {
+        "section": "17-211",
+        "subsection": null,
+        "quote": "request that the County review the action or inaction"
+      }
+    },
+    {
+      "id": "administrator",
+      "name": "VESMP administrator",
+      "kind": "official",
+      "source": {
+        "section": "17-211",
+        "subsection": "A",
+        "quote": "Any of the following actions by the administrator may be reviewed"
+      }
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk of the Board of Supervisors",
+      "kind": "official",
+      "source": {
+        "section": "17-211",
+        "subsection": "C",
+        "quote": "the clerk of the board of supervisors"
+      }
+    },
+    {
+      "id": "hearing_officer",
+      "name": "Director of Community Development (hearing officer)",
+      "kind": "official",
+      "source": {
+        "section": "17-211",
+        "subsection": "D.1",
+        "quote": "the Director of Community Development, who will act as the hearing officer for the County"
+      }
+    },
+    {
+      "id": "circuit_court",
+      "name": "Circuit court",
+      "kind": "court",
+      "source": {
+        "section": "17-211",
+        "subsection": "F",
+        "quote": "an appeal is filed by the person aggrieved in the circuit court"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "file_request",
+      "actor": "appellant",
+      "action": "File written request for hearing",
+      "kind": "filing",
+      "modality": "permission",
+      "after": [],
+      "condition": null,
+      "recipient": "clerk",
+      "deadline": {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "date of notice of the action",
+        "consequence": "right-lapses",
+        "source": {
+          "section": "17-211",
+          "subsection": "C.1",
+          "quote": "Within 30 days after the date of notice of the action"
+        }
+      },
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "C",
+        "quote": "may request in writing that the County conduct a hearing, provided that the request is filed with the clerk of the board of supervisors"
+      }
+    },
+    {
+      "id": "determine_standing",
+      "actor": "hearing_officer",
+      "action": "Determine reviewability and standing",
+      "kind": "decision",
+      "modality": "none",
+      "after": [
+        "file_request"
+      ],
+      "condition": null,
+      "recipient": null,
+      "deadline": null,
+      "decision": "standing",
+      "source": {
+        "section": "17-211",
+        "subsection": "B",
+        "quote": "has standing to seek review under this section"
+      }
+    },
+    {
+      "id": "hold_hearing",
+      "actor": "hearing_officer",
+      "action": "Hold hearing with appellant and administrator",
+      "kind": "hearing",
+      "modality": "obligation",
+      "after": [
+        "determine_standing"
+      ],
+      "condition": "has_standing",
+      "recipient": null,
+      "deadline": {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "receipt of the petition requesting a hearing",
+        "consequence": "directory-only",
+        "source": {
+          "section": "17-211",
+          "subsection": "D.2",
+          "quote": "The failure of the hearing officer to conduct the hearing within the 30-day period or any extension thereof does not divest the hearing officer of jurisdiction to consider the appeal."
+        }
+      },
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "D.2",
+        "quote": "The hearing will be held within 30 days after receipt of the petition requesting a hearing."
+      }
+    },
+    {
+      "id": "consider_evidence",
+      "actor": "hearing_officer",
+      "action": "Consider relevant law and evidence",
+      "kind": "review",
+      "modality": "obligation",
+      "after": [
+        "hold_hearing"
+      ],
+      "condition": null,
+      "recipient": null,
+      "deadline": null,
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "D.3",
+        "quote": "the hearing officer will consider relevant and material laws and evidence"
+      }
+    },
+    {
+      "id": "keep_record",
+      "actor": "hearing_officer",
+      "action": "Compile the hearing record",
+      "kind": "record",
+      "modality": "obligation",
+      "after": [
+        "hold_hearing"
+      ],
+      "condition": null,
+      "recipient": null,
+      "deadline": null,
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "D.4",
+        "quote": "The record of the hearing will be composed of relevant files, a recording of the hearing, and other writings."
+      }
+    },
+    {
+      "id": "issue_decision",
+      "actor": "hearing_officer",
+      "action": "Issue written decision",
+      "kind": "notice",
+      "modality": "obligation",
+      "after": [
+        "consider_evidence",
+        "keep_record"
+      ],
+      "condition": null,
+      "recipient": "appellant",
+      "deadline": null,
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "F",
+        "quote": "the hearing officer's written decision"
+      }
+    },
+    {
+      "id": "appeal_to_court",
+      "actor": "appellant",
+      "action": "File appeal in circuit court",
+      "kind": "filing",
+      "modality": "right",
+      "after": [
+        "issue_decision"
+      ],
+      "condition": null,
+      "recipient": "circuit_court",
+      "deadline": {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "date of the hearing officer's written decision",
+        "consequence": "right-lapses",
+        "source": {
+          "section": "17-211",
+          "subsection": "F",
+          "quote": "within 30 days after the date of the hearing officer's written decision"
+        }
+      },
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "F",
+        "quote": "provided that an appeal is filed by the person aggrieved in the circuit court within 30 days after the date of the hearing officer's written decision"
+      }
+    },
+    {
+      "id": "transcribe",
+      "actor": "county",
+      "action": "Transcribe the hearing recording",
+      "kind": "record",
+      "modality": "obligation",
+      "after": [
+        "appeal_to_court"
+      ],
+      "condition": null,
+      "recipient": null,
+      "deadline": null,
+      "decision": null,
+      "source": {
+        "section": "17-211",
+        "subsection": "D.4",
+        "quote": "The recording of the hearing will be transcribed only if judicial review of the decision is sought under subsection (F)."
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "standing",
+      "question": "Is the action reviewable and does this person have standing?",
+      "hit_policy": "FIRST",
+      "inputs": [
+        {
+          "name": "action_type",
+          "label": "Administrator action",
+          "type": "string"
+        },
+        {
+          "name": "person_role",
+          "label": "Person's role",
+          "type": "string"
+        },
+        {
+          "name": "aggrieved",
+          "label": "Aggrieved?",
+          "type": "boolean"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reviewable",
+          "label": "Reviewable",
+          "type": "boolean"
+        },
+        {
+          "name": "has_standing",
+          "label": "Has standing",
+          "type": "boolean"
+        }
+      ],
+      "rules": [
+        {
+          "when": [
+            "\"disapproval\",\"conditional_approval\",\"variance_disapproval\",\"status_determination\",\"general_permit_decision\",\"enforcement_decision\",\"failure_to_act\"",
+            "\"applicant\",\"permitted_operator\",\"general_permit_subject\"",
+            "true"
+          ],
+          "then": [
+            "true",
+            "true"
+          ],
+          "source": {
+            "section": "17-211",
+            "subsection": "B",
+            "quote": "who is aggrieved by any action or inaction under subsections (A)(i) through (vii) has standing to seek review"
+          }
+        },
+        {
+          "when": [
+            "\"approval_downstream_issue\"",
+            "\"downstream_owner\"",
+            "true"
+          ],
+          "then": [
+            "true",
+            "true"
+          ],
+          "source": {
+            "section": "17-211",
+            "subsection": "B",
+            "quote": "Any downstream owner who is aggrieved by an action under subsection (A)(viii) has standing to seek review under this section."
+          }
+        },
+        {
+          "when": [
+            "not(\"other\")",
+            "-",
+            "-"
+          ],
+          "then": [
+            "true",
+            "false"
+          ],
+          "source": {
+            "section": "17-211",
+            "subsection": "A",
+            "quote": "Any of the following actions by the administrator may be reviewed"
+          }
+        },
+        {
+          "when": [
+            "-",
+            "-",
+            "-"
+          ],
+          "then": [
+            "false",
+            "false"
+          ],
+          "source": {
+            "section": "17-211",
+            "subsection": "A",
+            "quote": "Any of the following actions by the administrator may be reviewed"
+          }
+        }
+      ]
+    }
+  ],
+  "outcomes": [],
+  "cross_references": [
+    {
+      "citation": "Va. Code § 62.1-44.15:46",
+      "role": "governs judicial review",
+      "source": {
+        "section": "17-211",
+        "subsection": "F",
+        "quote": "Judicial review will be conducted as provided in Virginia Code § 62.1-44.15:46."
+      }
+    },
+    {
+      "citation": "9VAC25-875-560(19)",
+      "role": "downstream-owner compliance issue reviewable under (A)(viii)",
+      "source": {
+        "section": "17-211",
+        "subsection": "A",
+        "quote": "compliance with 9VAC25-875-560(19)"
+      }
+    },
+    {
+      "citation": "Albemarle County Code §§ 17-300 to 17-306",
+      "role": "determinations reviewable under (A)(iv)",
+      "source": {
+        "section": "17-211",
+        "subsection": "A",
+        "quote": "any determination made under sections 17-300 through 17-306"
+      }
+    }
+  ],
+  "gaps": [
+    "Subsection E is missing from the source chunks; the written decision is presupposed by (F).",
+    "The section does not say who determines standing.",
+    "The consequence of an untimely request is not stated."
+  ]
+}

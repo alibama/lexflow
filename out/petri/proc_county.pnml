@@ -1,0 +1,577 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="proc_county" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>proc_county</text>
+    </name>
+    <page id="n0">
+      <place id="_and0-&gt;ph_schedule">
+        <name>
+          <text>_and0-&gt;ph_schedule</text>
+        </name>
+      </place>
+      <place id="_xor6-&gt;_xor7">
+        <name>
+          <text>_xor6-&gt;_xor7</text>
+        </name>
+      </place>
+      <place id="c_await_request-&gt;c_request">
+        <name>
+          <text>c_await_request-&gt;c_request</text>
+        </name>
+      </place>
+      <place id="c_jr_notice-&gt;c_transcribe">
+        <name>
+          <text>c_jr_notice-&gt;c_transcribe</text>
+        </name>
+      </place>
+      <place id="xor:_xor7">
+        <name>
+          <text>xor:_xor7</text>
+        </name>
+      </place>
+      <place id="c_review_rules-&gt;c_standing_gw">
+        <name>
+          <text>c_review_rules-&gt;c_standing_gw</text>
+        </name>
+      </place>
+      <place id="_and0-&gt;_xor2">
+        <name>
+          <text>_and0-&gt;_xor2</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;ph_ext">
+        <name>
+          <text>_xor2-&gt;ph_ext</text>
+        </name>
+      </place>
+      <place id="_xor2-&gt;_xor3">
+        <name>
+          <text>_xor2-&gt;_xor3</text>
+        </name>
+      </place>
+      <place id="c_notify-&gt;c_await_request">
+        <name>
+          <text>c_notify-&gt;c_await_request</text>
+        </name>
+      </place>
+      <place id="c_grounds_gw-&gt;c_grounds_join">
+        <name>
+          <text>c_grounds_gw-&gt;c_grounds_join</text>
+        </name>
+      </place>
+      <place id="c_standing_gw-&gt;_and4">
+        <name>
+          <text>c_standing_gw-&gt;_and4</text>
+        </name>
+      </place>
+      <place id="ph_extend-&gt;ph_ext_end">
+        <name>
+          <text>ph_extend-&gt;ph_ext_end</text>
+        </name>
+      </place>
+      <place id="_and4-&gt;_xor6">
+        <name>
+          <text>_and4-&gt;_xor6</text>
+        </name>
+      </place>
+      <place id="ph_schedule-&gt;_and1">
+        <name>
+          <text>ph_schedule-&gt;_and1</text>
+        </name>
+      </place>
+      <place id="c_await_request-&gt;c_window">
+        <name>
+          <text>c_await_request-&gt;c_window</text>
+        </name>
+      </place>
+      <place id="_and4-&gt;c_phase__in">
+        <name>
+          <text>_and4-&gt;c_phase__in</text>
+        </name>
+      </place>
+      <place id="ph_ext-&gt;ph_extend">
+        <name>
+          <text>ph_ext-&gt;ph_extend</text>
+        </name>
+      </place>
+      <place id="_and5-&gt;c_decide">
+        <name>
+          <text>_and5-&gt;c_decide</text>
+        </name>
+      </place>
+      <place id="xor:_xor3">
+        <name>
+          <text>xor:_xor3</text>
+        </name>
+      </place>
+      <place id="c_grounds_gw-&gt;c_await_grounds">
+        <name>
+          <text>c_grounds_gw-&gt;c_await_grounds</text>
+        </name>
+      </place>
+      <place id="c_jr_window-&gt;c_final">
+        <name>
+          <text>c_jr_window-&gt;c_final</text>
+        </name>
+      </place>
+      <place id="c_after_gw-&gt;c_jr_window">
+        <name>
+          <text>c_after_gw-&gt;c_jr_window</text>
+        </name>
+      </place>
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="_xor6-&gt;c_target">
+        <name>
+          <text>_xor6-&gt;c_target</text>
+        </name>
+      </place>
+      <place id="c_decide-&gt;c_after_gw">
+        <name>
+          <text>c_decide-&gt;c_after_gw</text>
+        </name>
+      </place>
+      <place id="c_window-&gt;c_lapsed">
+        <name>
+          <text>c_window-&gt;c_lapsed</text>
+        </name>
+      </place>
+      <place id="h_record-&gt;h_end">
+        <name>
+          <text>h_record-&gt;h_end</text>
+        </name>
+      </place>
+      <place id="xor:__done">
+        <name>
+          <text>xor:__done</text>
+        </name>
+      </place>
+      <place id="c_after_gw-&gt;c_jr_notice">
+        <name>
+          <text>c_after_gw-&gt;c_jr_notice</text>
+        </name>
+      </place>
+      <place id="c_request-&gt;c_grounds_gw">
+        <name>
+          <text>c_request-&gt;c_grounds_gw</text>
+        </name>
+      </place>
+      <place id="h_consider-&gt;h_record">
+        <name>
+          <text>h_consider-&gt;h_record</text>
+        </name>
+      </place>
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="c_target-&gt;c_target_end">
+        <name>
+          <text>c_target-&gt;c_target_end</text>
+        </name>
+      </place>
+      <place id="c_await_grounds-&gt;c_grounds_join">
+        <name>
+          <text>c_await_grounds-&gt;c_grounds_join</text>
+        </name>
+      </place>
+      <place id="c_transmit-&gt;c_jr_end">
+        <name>
+          <text>c_transmit-&gt;c_jr_end</text>
+        </name>
+      </place>
+      <place id="h_evidence-&gt;h_consider">
+        <name>
+          <text>h_evidence-&gt;h_consider</text>
+        </name>
+      </place>
+      <place id="_and1-&gt;ph_hearing__in">
+        <name>
+          <text>_and1-&gt;ph_hearing__in</text>
+        </name>
+      </place>
+      <place id="xor:c_grounds_join">
+        <name>
+          <text>xor:c_grounds_join</text>
+        </name>
+      </place>
+      <place id="c_transcribe-&gt;c_transmit">
+        <name>
+          <text>c_transcribe-&gt;c_transmit</text>
+        </name>
+      </place>
+      <place id="__start-&gt;c_start">
+        <name>
+          <text>__start-&gt;c_start</text>
+        </name>
+      </place>
+      <place id="c_standing_gw-&gt;c_dismiss">
+        <name>
+          <text>c_standing_gw-&gt;c_dismiss</text>
+        </name>
+      </place>
+      <transition id="t5_c_await_request_out">
+        <name>
+          <text>t5_c_await_request_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="ad06786d-d81a-40f6-b9be-97689e347c51"/>
+      </transition>
+      <transition id="t13_c_await_grounds">
+        <name>
+          <text>✉ Grounds supplied</text>
+        </name>
+      </transition>
+      <transition id="t40_h_evidence">
+        <name>
+          <text>Take evidence from owner, administrator, others</text>
+        </name>
+      </transition>
+      <transition id="t56_c_transmit">
+        <name>
+          <text>Send record to circuit court</text>
+        </name>
+      </transition>
+      <transition id="t81___done_in">
+        <name>
+          <text>t81___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="604f50e5-ce2c-4466-91db-6a37bf9f4182"/>
+      </transition>
+      <transition id="t66__xor2_out">
+        <name>
+          <text>t66__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="c1dfb7b1-f158-4a35-8c4a-1b89938369d7"/>
+      </transition>
+      <transition id="t14_c_grounds_join_in">
+        <name>
+          <text>t14_c_grounds_join_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="57be3156-61d5-45b3-803e-3a5e908eaceb"/>
+      </transition>
+      <transition id="t12_c_grounds_gw_out">
+        <name>
+          <text>t12_c_grounds_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="ee439e6e-6d5d-41ff-a39d-74e148775434"/>
+      </transition>
+      <transition id="t55_c_transcribe">
+        <name>
+          <text>Transcribe the hearing recording</text>
+        </name>
+      </transition>
+      <transition id="t78___end___done-&gt;__end">
+        <name>
+          <text>t78___end___done-&gt;__end</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="fb20e6d8-586a-42dc-bb54-480fb16c94a1"/>
+      </transition>
+      <transition id="t19_c_standing_gw_out">
+        <name>
+          <text>t19_c_standing_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="31dc058f-62ef-49c8-af16-7410841a64e9"/>
+      </transition>
+      <transition id="t54_c_jr_notice">
+        <name>
+          <text>✉ Notice of appeal received</text>
+        </name>
+      </transition>
+      <transition id="t17_c_review_rules">
+        <name>
+          <text>Determine reviewability and standing</text>
+        </name>
+      </transition>
+      <transition id="t71__and5">
+        <name>
+          <text>t71__and5</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="c3444b56-d452-4339-b8c0-25d966409c31"/>
+      </transition>
+      <transition id="t4_c_await_request_out">
+        <name>
+          <text>t4_c_await_request_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="f9922c86-c486-4d1f-a4c5-d2ce00921b90"/>
+      </transition>
+      <transition id="t82___done_in">
+        <name>
+          <text>t82___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="e2be8392-2157-4555-9e60-46f3f696209c"/>
+      </transition>
+      <transition id="t75__xor7_in">
+        <name>
+          <text>t75__xor7_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="4fa62227-f292-4499-bc80-f87ad9a14bfa"/>
+      </transition>
+      <transition id="t2_c_notify">
+        <name>
+          <text>Give notice of the action</text>
+        </name>
+      </transition>
+      <transition id="t53_c_after_gw_out">
+        <name>
+          <text>t53_c_after_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="c846e5bd-14d0-4a45-95c3-5d0eac349295"/>
+      </transition>
+      <transition id="t31_ph_extend">
+        <name>
+          <text>Decide whether to extend the date</text>
+        </name>
+      </transition>
+      <transition id="t29_ph_schedule">
+        <name>
+          <text>Set a date both parties can attend</text>
+        </name>
+      </transition>
+      <transition id="t11_c_grounds_gw_out">
+        <name>
+          <text>t11_c_grounds_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="2fc04ab2-cf59-460e-b98c-7213a001096a"/>
+      </transition>
+      <transition id="t84___start">
+        <name>
+          <text>t84___start</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="721b4064-37b7-4c2e-89af-44626e1afcfb"/>
+      </transition>
+      <transition id="t30_ph_ext">
+        <name>
+          <text>✉ Appellant asks for extension</text>
+        </name>
+      </transition>
+      <transition id="t68__xor3_in">
+        <name>
+          <text>t68__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="200f80a9-4bc8-4b11-b91f-9bd39111ec8e"/>
+      </transition>
+      <transition id="t70__and4">
+        <name>
+          <text>t70__and4</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="fe4e45af-0434-4db7-a768-e734daf14a5f"/>
+      </transition>
+      <transition id="t59_c_jr_window">
+        <name>
+          <text>⏱ 30 days after decision</text>
+        </name>
+      </transition>
+      <transition id="t63__and1">
+        <name>
+          <text>t63__and1</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="c568a6a0-9ea2-4618-a06c-2d720bea91bb"/>
+      </transition>
+      <transition id="t74__xor6_out">
+        <name>
+          <text>t74__xor6_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="937e3122-acf3-4f27-9203-6de4624a9a95"/>
+      </transition>
+      <transition id="t52_c_after_gw_out">
+        <name>
+          <text>t52_c_after_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="31995162-8513-4059-b2d7-c90ef0204acb"/>
+      </transition>
+      <transition id="t76__xor7_in">
+        <name>
+          <text>t76__xor7_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="2ccac2ae-6389-4f6d-a524-1a8d536ddb9d"/>
+      </transition>
+      <transition id="t7_c_window">
+        <name>
+          <text>⏱ 30 days pass, no request</text>
+        </name>
+      </transition>
+      <transition id="t15_c_grounds_join_in">
+        <name>
+          <text>t15_c_grounds_join_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="8f24c577-7abb-45c9-bfab-5b78288e6652"/>
+      </transition>
+      <transition id="t42_h_record">
+        <name>
+          <text>Compile the hearing record</text>
+        </name>
+      </transition>
+      <transition id="t62__and0">
+        <name>
+          <text>t62__and0</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="904f03b3-dc8a-4c34-8110-60e2b4620ddb"/>
+      </transition>
+      <transition id="t50_c_decide">
+        <name>
+          <text>Issue written decision</text>
+        </name>
+      </transition>
+      <transition id="t80___done_in">
+        <name>
+          <text>t80___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="f6a3264c-8257-4e59-a4a8-f84a916326d3"/>
+      </transition>
+      <transition id="t65__xor2_out">
+        <name>
+          <text>t65__xor2_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="80431b5b-90b1-437a-b48d-72be9e1554ef"/>
+      </transition>
+      <transition id="t67__xor3_in">
+        <name>
+          <text>t67__xor3_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="e00da7d9-b57a-4422-a3a9-1d6048ab7849"/>
+      </transition>
+      <transition id="t6_c_request">
+        <name>
+          <text>✉ Request for hearing filed</text>
+        </name>
+      </transition>
+      <transition id="t41_h_consider">
+        <name>
+          <text>Consider relevant law and evidence</text>
+        </name>
+      </transition>
+      <transition id="t20_c_standing_gw_out">
+        <name>
+          <text>t20_c_standing_gw_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="bfd36a2b-cb71-4610-838b-60898d392b80"/>
+      </transition>
+      <transition id="t47_c_target">
+        <name>
+          <text>⏱ 30 days after receipt</text>
+        </name>
+      </transition>
+      <transition id="t73__xor6_out">
+        <name>
+          <text>t73__xor6_out</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="21848bcc-71b0-45c6-95c9-94ef4e70cbf6"/>
+      </transition>
+      <transition id="t79___done_in">
+        <name>
+          <text>t79___done_in</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="fe7a7693-141e-4c40-823d-560f0d58f0f9"/>
+      </transition>
+      <arc id="140609945320960" source="c_notify-&gt;c_await_request" target="t5_c_await_request_out"/>
+      <arc id="140609943766528" source="xor:_xor7" target="t71__and5"/>
+      <arc id="140609943769104" source="t84___start" target="__start-&gt;c_start"/>
+      <arc id="140609943881776" source="c_await_request-&gt;c_request" target="t6_c_request"/>
+      <arc id="140609943930928" source="h_evidence-&gt;h_consider" target="t41_h_consider"/>
+      <arc id="140609943933504" source="_xor6-&gt;c_target" target="t47_c_target"/>
+      <arc id="140609945320512" source="c_jr_window-&gt;c_final" target="t81___done_in"/>
+      <arc id="140609943936080" source="t52_c_after_gw_out" target="c_after_gw-&gt;c_jr_window"/>
+      <arc id="140609943775824" source="t67__xor3_in" target="xor:_xor3"/>
+      <arc id="140609943768656" source="_and0-&gt;_xor2" target="t65__xor2_out"/>
+      <arc id="140609943882336" source="t7_c_window" target="c_window-&gt;c_lapsed"/>
+      <arc id="140609943885920" source="t15_c_grounds_join_in" target="xor:c_grounds_join"/>
+      <arc id="140609943931488" source="t42_h_record" target="h_record-&gt;h_end"/>
+      <arc id="140609943935072" source="t50_c_decide" target="c_decide-&gt;c_after_gw"/>
+      <arc id="140609945318496" source="c_request-&gt;c_grounds_gw" target="t12_c_grounds_gw_out"/>
+      <arc id="140609943884912" source="c_grounds_gw-&gt;c_await_grounds" target="t13_c_await_grounds"/>
+      <arc id="140609943937648" source="c_transcribe-&gt;c_transmit" target="t56_c_transmit"/>
+      <arc id="140609943766640" source="_and4-&gt;_xor6" target="t74__xor6_out"/>
+      <arc id="140609943772800" source="t75__xor7_in" target="xor:_xor7"/>
+      <arc id="140609943765632" source="_and4-&gt;_xor6" target="t73__xor6_out"/>
+      <arc id="140609945734288" source="xor:_xor3" target="t63__and1"/>
+      <arc id="140609943775376" source="_xor2-&gt;_xor3" target="t68__xor3_in"/>
+      <arc id="140609943771792" source="t76__xor7_in" target="xor:_xor7"/>
+      <arc id="140609943881888" source="t6_c_request" target="c_request-&gt;c_grounds_gw"/>
+      <arc id="140609943885472" source="c_grounds_gw-&gt;c_grounds_join" target="t14_c_grounds_join_in"/>
+      <arc id="140609943931040" source="t41_h_consider" target="h_consider-&gt;h_record"/>
+      <arc id="140609943777952" source="t62__and0" target="_and0-&gt;ph_schedule"/>
+      <arc id="140609943770784" source="t79___done_in" target="xor:__done"/>
+      <arc id="140609943888048" source="t20_c_standing_gw_out" target="c_standing_gw-&gt;_and4"/>
+      <arc id="140609943933616" source="t47_c_target" target="c_target-&gt;c_target_end"/>
+      <arc id="140609943937200" source="c_jr_notice-&gt;c_transcribe" target="t55_c_transcribe"/>
+      <arc id="140609945320624" source="c_standing_gw-&gt;c_dismiss" target="t80___done_in"/>
+      <arc id="140609945732272" source="_and4-&gt;c_phase__in" target="t62__and0"/>
+      <arc id="140609943768768" source="c_decide-&gt;c_after_gw" target="t53_c_after_gw_out"/>
+      <arc id="140609943774928" source="t70__and4" target="_and4-&gt;c_phase__in"/>
+      <arc id="140609945318608" source="c_target-&gt;c_target_end" target="t76__xor7_in"/>
+      <arc id="140609943881440" source="t5_c_await_request_out" target="c_await_request-&gt;c_window"/>
+      <arc id="140609943885024" source="t13_c_await_grounds" target="c_await_grounds-&gt;c_grounds_join"/>
+      <arc id="140609943930592" source="t40_h_evidence" target="h_evidence-&gt;h_consider"/>
+      <arc id="140609943766752" source="__start-&gt;c_start" target="t2_c_notify"/>
+      <arc id="140609943937760" source="t56_c_transmit" target="c_transmit-&gt;c_jr_end"/>
+      <arc id="140609943777504" source="t63__and1" target="_and1-&gt;ph_hearing__in"/>
+      <arc id="140609945321184" source="c_request-&gt;c_grounds_gw" target="t11_c_grounds_gw_out"/>
+      <arc id="140609943936752" source="c_after_gw-&gt;c_jr_notice" target="t54_c_jr_notice"/>
+      <arc id="140609943772912" source="t73__xor6_out" target="_xor6-&gt;c_target"/>
+      <arc id="140609943775488" source="t68__xor3_in" target="xor:_xor3"/>
+      <arc id="140609943885584" source="t14_c_grounds_join_in" target="xor:c_grounds_join"/>
+      <arc id="140609943778064" source="t62__and0" target="_and0-&gt;_xor2"/>
+      <arc id="140609943774480" source="t71__and5" target="_and5-&gt;c_decide"/>
+      <arc id="140609943884576" source="t12_c_grounds_gw_out" target="c_grounds_gw-&gt;c_await_grounds"/>
+      <arc id="140609943766304" source="_and1-&gt;ph_hearing__in" target="t40_h_evidence"/>
+      <arc id="140609943937312" source="t55_c_transcribe" target="c_transcribe-&gt;c_transmit"/>
+      <arc id="140609943772464" source="_xor6-&gt;_xor7" target="t75__xor7_in"/>
+      <arc id="140609943768880" source="_and0-&gt;_xor2" target="t66__xor2_out"/>
+      <arc id="140609943893312" source="ph_ext-&gt;ph_extend" target="t31_ph_extend"/>
+      <arc id="140609945737536" source="h_record-&gt;h_end" target="t71__and5"/>
+      <arc id="140609943892304" source="_and0-&gt;ph_schedule" target="t29_ph_schedule"/>
+      <arc id="140609945321296" source="c_notify-&gt;c_await_request" target="t4_c_await_request_out"/>
+      <arc id="140609943770448" source="t80___done_in" target="xor:__done"/>
+      <arc id="140609943887712" source="t19_c_standing_gw_out" target="c_standing_gw-&gt;c_dismiss"/>
+      <arc id="140609943936864" source="t54_c_jr_notice" target="c_jr_notice-&gt;c_transcribe"/>
+      <arc id="140609943776608" source="t66__xor2_out" target="_xor2-&gt;_xor3"/>
+      <arc id="140609945320288" source="c_transmit-&gt;c_jr_end" target="t79___done_in"/>
+      <arc id="140609943886704" source="t17_c_review_rules" target="c_review_rules-&gt;c_standing_gw"/>
+      <arc id="140609943892864" source="_xor2-&gt;ph_ext" target="t30_ph_ext"/>
+      <arc id="140609943774592" source="c_standing_gw-&gt;_and4" target="t70__and4"/>
+      <arc id="140609943881104" source="t4_c_await_request_out" target="c_await_request-&gt;c_request"/>
+      <arc id="140609945320848" source="c_window-&gt;c_lapsed" target="t82___done_in"/>
+      <arc id="140609943766416" source="xor:c_grounds_join" target="t17_c_review_rules"/>
+      <arc id="140609943880096" source="t2_c_notify" target="c_notify-&gt;c_await_request"/>
+      <arc id="140609943765408" source="c_review_rules-&gt;c_standing_gw" target="t19_c_standing_gw_out"/>
+      <arc id="140609943936416" source="t53_c_after_gw_out" target="c_after_gw-&gt;c_jr_notice"/>
+      <arc id="140609943772576" source="t74__xor6_out" target="_xor6-&gt;_xor7"/>
+      <arc id="140609943768992" source="source" target="t84___start"/>
+      <arc id="140609943893424" source="t31_ph_extend" target="ph_extend-&gt;ph_ext_end"/>
+      <arc id="140609943938992" source="c_after_gw-&gt;c_jr_window" target="t59_c_jr_window"/>
+      <arc id="140609943771568" source="t78___end___done-&gt;__end" target="sink"/>
+      <arc id="140609943767984" source="xor:__done" target="t78___end___done-&gt;__end"/>
+      <arc id="140609943892416" source="t29_ph_schedule" target="ph_schedule-&gt;_and1"/>
+      <arc id="140609943766976" source="ph_extend-&gt;ph_ext_end" target="t67__xor3_in"/>
+      <arc id="140609943777728" source="ph_schedule-&gt;_and1" target="t63__and1"/>
+      <arc id="140609943770560" source="t81___done_in" target="xor:__done"/>
+      <arc id="140609943884240" source="t11_c_grounds_gw_out" target="c_grounds_gw-&gt;c_grounds_join"/>
+      <arc id="140609943765968" source="c_review_rules-&gt;c_standing_gw" target="t20_c_standing_gw_out"/>
+      <arc id="140609943776720" source="t65__xor2_out" target="_xor2-&gt;ph_ext"/>
+      <arc id="140609943769552" source="t82___done_in" target="xor:__done"/>
+      <arc id="140609943779296" source="t59_c_jr_window" target="c_jr_window-&gt;c_final"/>
+      <arc id="140609943768544" source="c_decide-&gt;c_after_gw" target="t52_c_after_gw_out"/>
+      <arc id="140609943882224" source="c_await_request-&gt;c_window" target="t7_c_window"/>
+      <arc id="140609943885808" source="c_await_grounds-&gt;c_grounds_join" target="t15_c_grounds_join_in"/>
+      <arc id="140609943892976" source="t30_ph_ext" target="ph_ext-&gt;ph_extend"/>
+      <arc id="140609943931376" source="h_consider-&gt;h_record" target="t42_h_record"/>
+      <arc id="140609943934960" source="_and5-&gt;c_decide" target="t50_c_decide"/>
+      <arc id="140609943774704" source="t70__and4" target="_and4-&gt;_xor6"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

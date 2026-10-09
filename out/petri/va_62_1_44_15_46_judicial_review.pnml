@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="va_62_1_44_15_46_judicial_review" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>va_62_1_44_15_46_judicial_review</text>
+    </name>
+    <page id="n0">
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="__start-&gt;jr_start">
+        <name>
+          <text>__start-&gt;jr_start</text>
+        </name>
+      </place>
+      <place id="jr_review-&gt;jr_end">
+        <name>
+          <text>jr_review-&gt;jr_end</text>
+        </name>
+      </place>
+      <transition id="t2_jr_review">
+        <name>
+          <text>Court reviews the locality's final decision</text>
+        </name>
+      </transition>
+      <transition id="t8___start">
+        <name>
+          <text>t8___start</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="2b8f678f-577c-4098-8e03-9f59e0eba14e"/>
+      </transition>
+      <transition id="t5___end___done-&gt;__end">
+        <name>
+          <text>t5___end___done-&gt;__end</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="09926b43-b987-4345-81f8-59666ccb9aca"/>
+      </transition>
+      <arc id="140609945735184" source="t5___end___done-&gt;__end" target="sink"/>
+      <arc id="140609945739552" source="t2_jr_review" target="jr_review-&gt;jr_end"/>
+      <arc id="140609945732160" source="jr_review-&gt;jr_end" target="t5___end___done-&gt;__end"/>
+      <arc id="140609945732944" source="t8___start" target="__start-&gt;jr_start"/>
+      <arc id="140609945734624" source="source" target="t8___start"/>
+      <arc id="140609945736416" source="__start-&gt;jr_start" target="t2_jr_review"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>
