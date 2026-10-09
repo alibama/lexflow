@@ -1,0 +1,83 @@
+# lexflow stack.
+#
+#   docker compose up -d                          dashboard + pipeline on http://localhost:8000
+#   docker compose --profile llm up -d            + Ollama for local model builds
+#   docker compose --profile shared up -d         + a local libSQL server (a stand-in for Turso)
+#   docker compose --profile search up -d         + SearXNG
+#   docker compose --profile test run --rm test   the test suite
+#
+# GPU for Ollama (NVIDIA): add -f docker-compose.gpu.yml.  On a Mac, run Ollama natively (it uses
+# the GPU there) and set OLLAMA_URL=http://host.docker.internal:11434 in .env.
+name: lexflow
+
+x-app: &app
+  build: .
+  image: lexflow:latest
+  env_file:
+    - path: .env
+      required: false
+  environment:
+    LEXFLOW_DATA: /data
+    LEXFLOW_ORIGIN: ${LEXFLOW_ORIGIN:-lexflow-docker}
+    OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+    LEXFLOW_MODEL_A: ${LEXFLOW_MODEL_A:-qwen3:1.7b}
+    LEXFLOW_MODEL_B: ${LEXFLOW_MODEL_B:-gemma3:1b}
+    TURSO_DATABASE_URL: ${TURSO_DATABASE_URL:-}
+    TURSO_AUTH_TOKEN: ${TURSO_AUTH_TOKEN:-}
+    DOKUWIKI_URL: ${DOKUWIKI_URL:-}
+    DOKUWIKI_TOKEN: ${DOKUWIKI_TOKEN:-}
+    SEARXNG_URL: ${SEARXNG_URL:-}
+  volumes:
+    - lexflow-data:/data                 # the SQLite store, job logs, built models
+    - ./data/raw:/data/raw               # downloads stay on the host and survive `down -v`
+
+services:
+  app:
+    <<: *app
+    ports: ["${LEXFLOW_PORT:-8000}:8000"]
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["llm"]
+    volumes: ["ollama:/root/.ollama"]
+    environment:
+      OLLAMA_KEEP_ALIVE: "10m"
+      OLLAMA_CONTEXT_LENGTH: "16384"
+    restart: unless-stopped
+
+  libsql:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    profiles: ["shared"]
+    ports: ["${LIBSQL_PORT:-8081}:8080"]
+    environment:
+      SQLD_NODE: primary
+    volumes: ["libsql:/var/lib/sqld"]
+    restart: unless-stopped
+
+  searxng:
+    image: searxng/searxng:latest
+    profiles: ["search"]
+    volumes: ["./docker/searxng:/etc/searxng:rw"]
+    environment:
+      SEARXNG_BASE_URL: "http://localhost:8080/"
+      SEARXNG_SECRET: ${SEARXNG_SECRET:-change-me-to-64-random-characters}
+    restart: unless-stopped
+
+  test:
+    <<: *app
+    profiles: ["test"]
+    volumes: []
+    environment:                         # tests never touch your .env services
+      LEXFLOW_DATA: /tmp/lexflow-test
+      TURSO_DATABASE_URL: ""
+      TURSO_AUTH_TOKEN: ""
+      DOKUWIKI_URL: ""
+      DOKUWIKI_TOKEN: ""
+      OLLAMA_URL: http://127.0.0.1:9
+    command: ["python", "-m", "pytest", "-q"]
+
+volumes:
+  lexflow-data: {}
+  ollama: {}
+  libsql: {}

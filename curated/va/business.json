@@ -1,0 +1,69 @@
+{
+  "state": "va",
+  "question": "business",
+  "sections": ["13.1-1010", "13.1-1011", "13.1-1005", "13.1-1004"],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-09; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Form a limited liability company in Virginia",
+    "trigger": "Someone wants to form a limited liability company",
+    "trigger_source": {"section": "13.1-1010", "quote": "One or more persons may act as organizers of a limited liability company"},
+    "actors": [
+      {"id": "organizer", "name": "Organizer", "kind": "private-party",
+       "source": {"section": "13.1-1010", "quote": "An organizer need not be a member of the limited liability company after formation has occurred."}},
+      {"id": "commission", "name": "State Corporation Commission", "kind": "public-body",
+       "source": {"section": "13.1-1004", "subsection": "A", "quote": "The Commission shall admit any such certificate to record in its office."}}
+    ],
+    "steps": [
+      {"id": "deliver_articles", "actor": "organizer", "action": "Sign and deliver articles of organization",
+       "kind": "filing", "modality": "permission", "after": [], "recipient": "commission",
+       "source": {"section": "13.1-1010", "quote": "signing and delivering articles of organization to the Commission for filing"}},
+      {"id": "collect_fee", "actor": "commission", "action": "Collect the $100 filing fee",
+       "kind": "payment", "modality": "obligation", "after": ["deliver_articles"],
+       "source": {"section": "13.1-1005", "subsection": "1", "quote": "For filing any one of the following, the fee shall be $100"}},
+      {"id": "review_articles", "actor": "commission", "action": "Check articles and fees",
+       "kind": "decision", "modality": "obligation", "after": ["collect_fee"], "decision": "articles_comply",
+       "source": {"section": "13.1-1011", "subsection": "D", "quote": "If the Commission finds that the articles of organization comply with the requirements of law and that all required fees have been paid, it shall issue a certificate of organization."}},
+      {"id": "issue_certificate", "actor": "commission", "action": "Issue certificate of organization",
+       "kind": "notice", "modality": "obligation", "after": ["review_articles"], "condition": "articles_ok",
+       "recipient": "organizer",
+       "source": {"section": "13.1-1004", "subsection": "A", "quote": "the Commission shall by order issue the certificate if it finds that the document complies with the provisions of this chapter and that all required fees have been paid"}},
+      {"id": "record_certificate", "actor": "commission", "action": "Admit certificate to record",
+       "kind": "record", "modality": "obligation", "after": ["issue_certificate"],
+       "source": {"section": "13.1-1004", "subsection": "A", "quote": "The Commission shall admit any such certificate to record in its office."}}
+    ],
+    "decisions": [
+      {"id": "articles_comply", "question": "Do the articles of organization comply?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "name_ok", "label": "Name meets § 13.1-1012", "type": "boolean"},
+         {"name": "registered_agent", "label": "Registered office and agent given", "type": "boolean"},
+         {"name": "principal_office", "label": "Principal office address given", "type": "boolean"},
+         {"name": "fees_paid", "label": "Required fees paid", "type": "boolean"}
+       ],
+       "outputs": [{"name": "articles_ok", "label": "Articles comply", "type": "boolean"}],
+       "rules": [
+         {"when": ["false", "-", "-", "-"], "then": ["false"],
+          "source": {"section": "13.1-1011", "subsection": "A.1", "quote": "A name for the limited liability company that satisfies the requirements of § 13.1-1012"}},
+         {"when": ["-", "false", "-", "-"], "then": ["false"],
+          "source": {"section": "13.1-1011", "subsection": "A.2", "quote": "the name of its initial registered agent at that office"}},
+         {"when": ["-", "-", "false", "-"], "then": ["false"],
+          "source": {"section": "13.1-1011", "subsection": "A.3", "quote": "The post office address, including the street and number, if any, of the principal office of the limited liability company"}},
+         {"when": ["-", "-", "-", "false"], "then": ["false"],
+          "source": {"section": "13.1-1011", "subsection": "D", "quote": "all required fees have been paid"}},
+         {"when": ["true", "true", "true", "true"], "then": ["true"],
+          "source": {"section": "13.1-1011", "subsection": "D", "quote": "it shall issue a certificate of organization"}}
+       ]}
+    ],
+    "outcomes": [
+      {"id": "llc_exists", "description": "The LLC exists from the time the certificate issues", "after": ["record_certificate"],
+       "source": {"section": "13.1-1004", "subsection": "B", "quote": "The existence of a limited liability company or a protected series shall begin at the time the Commission issues a certificate of organization"}}
+    ],
+    "cross_references": [
+      {"citation": "Va. Code § 13.1-1012", "role": "requirements for the company's name",
+       "source": {"section": "13.1-1011", "subsection": "A.1", "quote": "satisfies the requirements of § 13.1-1012"}}
+    ],
+    "gaps": [
+      "State formation is only half of starting a business: most Virginia localities also require a local business licence (BPOL) under their own ordinances, authorised by Va. Code § 58.1-3700 et seq. That local step is scored separately.",
+      "A delayed effective date for the certificate (subsection D of § 13.1-1004) is not modelled."
+    ]
+  }
+}

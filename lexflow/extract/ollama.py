@@ -96,6 +96,7 @@ class OllamaClient:
     num_ctx: int = 32768
     timeout: int = 900
     keep_alive: str = "10m"
+    think: bool | None = False           # turn off "thinking" models' reasoning trace; None = model default
     log: list = field(default_factory=list)
 
     def chat(self, messages: list[dict], schema: dict | None = None, temperature: float = 0.0) -> str:
@@ -103,7 +104,13 @@ class OllamaClient:
                 "options": {"temperature": temperature, "num_ctx": self.num_ctx}}
         if schema is not None:
             body["format"] = schema
+        if self.think is not None:
+            body["think"] = self.think
         r = requests.post(f"{self.base_url.rstrip('/')}/api/chat", json=body, timeout=self.timeout)
+        if r.status_code == 400 and "think" in body and "think" in r.text.lower():
+            body.pop("think")                # the model has no thinking mode
+            self.think = None
+            r = requests.post(f"{self.base_url.rstrip('/')}/api/chat", json=body, timeout=self.timeout)
         r.raise_for_status()
         data = r.json()
         self.log.append({"request": {k: v for k, v in body.items() if k != "messages"},
