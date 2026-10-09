@@ -229,6 +229,7 @@ def rebuild(con, mid: str):
 
 def run(con, states_: list[str], questions_: list[str], *, use_llm=True, force=False, log: Log = print,
         progress=None) -> dict:
+    from . import scoring
     tiers: dict[str, int] = {}
     total = len(states_) * len(questions_)
     i = 0
@@ -243,4 +244,7 @@ def run(con, states_: list[str], questions_: list[str], *, use_llm=True, force=F
             i += 1
             if progress:
                 progress(i / total)
+        # re-score straight away so the confidence map follows each state as it is built
+        if db.scalar(con, "SELECT count(*) FROM governments WHERE state=?", st, default=0):
+            scoring.run(con, st, log=log)
     return tiers

@@ -186,6 +186,14 @@ def test_scoring_combines_state_local_and_contact(con, va_statutes):
     assert biz["tier"] == "none"
 
 
+def test_build_run_rescores_the_state(con, va_statutes):
+    _gov(con)
+    locator.run(con, QUESTIONS["records"], ["va"], log=lambda *_: None)
+    tiers = build.run(con, ["va"], ["records"], use_llm=False, log=lambda *_: None)
+    assert tiers == {"reviewed": 1}
+    assert db.scalar(con, "SELECT tier FROM answers WHERE gov_id='g1' AND question='records'") == "reviewed"
+
+
 def test_method_weights_can_be_changed(con):
     m = M.get(con)
     m["weights"]["records"] = {"state": 0.5, "local": 0.2, "contact": 0.3}

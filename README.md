@@ -128,7 +128,7 @@ flowchart LR
 3. **Locate the law.** Every section is ranked by its title, chapter and text. A known section number (for example Va. Code § 2.2-3704) is used only after it is found in the file, in force and on topic. Otherwise the top keyword match is used with a lower score, and the other candidates are kept for review.
 4. **Build the process model.** Curated facts come first: written by Claude or a person, with every quote re-checked against the downloaded text. Otherwise two local models from different families each extract quote-anchored facts, the existing deterministic compiler turns them into BPMN 2.0 and DMN 1.3, and the result is checked against the OMG schemas, bpmnlint with five legal rules, quote matching and Petri-net soundness. The pair counts as **two models agree** only when their steps, actors and deadlines match.
 5. **Local law and contacts.** LOCUS finds local ordinances on public records and business licences. Wikidata (the data behind govdirectory.org) and a polite home-page scan (robots.txt respected) find websites, emails, phone numbers and records or licence pages.
-6. **Score.** Each government's answer gets a confidence score (below), and the maps update.
+6. **Score.** Each government's answer gets a confidence score (below). A build re-scores each state as soon as its models are done, so the map follows along.
 7. **Share and publish.** Results can be pushed to Turso, and pages can be published to Lexipedia (DokuWiki over JSON-RPC, plus Wikibase QuickStatements).
 
 ## The dashboard
@@ -195,7 +195,7 @@ Each state model also records **completion** (eight stages: law located, text lo
 
 As of 9 October 2026, on a Windows laptop with no GPU:
 
-- **Tests:** 63 pass inside the Docker image, the 45 original ones plus 18 for the product layer. One more, a live DokuWiki round trip, is skipped unless a test wiki is configured.
+- **Tests:** 64 pass inside the Docker image, the 45 original ones plus 19 for the product layer. One more, a live DokuWiki round trip, is skipped unless a test wiki is configured.
 - **Checked Virginia models:** records (Va. Code § 2.2-3704) and business formation (§§ 13.1-1010, -1011, -1005, -1004). All 30 quotes match the statute text word for word; there are no schema or bpmnlint errors, and both Petri nets are sound. Quality is 0.98 and 1.00.
 - **Locator:** found all four laws for Virginia and DC through known section numbers, each verified against the downloaded text. With the known section numbers switched off, keyword ranking alone also picks the right section in all four cases on the full statute files (Va. Code §§ 2.2-3704 and 13.1-1011, D.C. Code §§ 2-532 and 29-802.01).
 - **Wikidata:** matched 319 of Virginia's 322 governments. **LOCUS:** read 106,155 Virginia rows in about 12 seconds and found local law on the two questions for 110 governments.
@@ -245,7 +245,7 @@ curated/            checked facts per state and question (curated/va/*.json)
 tools/web/          front-end libraries and the README chart renderer
 tools/node*         bpmnlint (+ legal rules), dmnlint, bpmn-auto-layout
 docs/               core documentation, status snapshot, README images
-tests/              63 tests
+tests/              64 tests
 fixtures/           LOCUS rows, gold facts, Legistar sample, Virginia statute sections
 ```
 
