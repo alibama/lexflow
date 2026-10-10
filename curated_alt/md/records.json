@@ -1,0 +1,518 @@
+{
+  "state": "md",
+  "question": "records",
+  "sections": [
+    "General Provisions § 4-202",
+    "General Provisions § 4-203",
+    "General Provisions § 4-206"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Apply to inspect a public record held by a Maryland custodian",
+    "trigger": "A person or governmental unit wants to inspect a Maryland public record",
+    "trigger_source": {
+      "section": "4-202",
+      "subsection": "a",
+      "quote": "a person or governmental unit that wishes to inspect a public record"
+    },
+    "actors": [
+      {
+        "id": "applicant",
+        "name": "Applicant (any person or governmental unit)",
+        "kind": "private-party",
+        "source": {
+          "section": "4-202",
+          "subsection": "b",
+          "quote": "A person or governmental unit need not submit a written application to the custodian if:"
+        }
+      },
+      {
+        "id": "custodian",
+        "name": "Custodian of the public record",
+        "kind": "official",
+        "source": {
+          "section": "4-202",
+          "subsection": "a",
+          "quote": "submit a written application to the custodian"
+        }
+      },
+      {
+        "id": "receiving_official",
+        "name": "Individual who received the application but is not the custodian",
+        "kind": "official",
+        "source": {
+          "section": "4-202",
+          "subsection": "c",
+          "quote": "the individual to whom the application is submitted is not the custodian of the public record"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_application",
+        "actor": "applicant",
+        "action": "Submit written application to the custodian",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [],
+        "recipient": "custodian",
+        "source": {
+          "section": "4-202",
+          "subsection": "a",
+          "quote": "shall submit a written application to the custodian."
+        }
+      },
+      {
+        "id": "redirect_not_custodian",
+        "actor": "receiving_official",
+        "action": "Tell applicant who and where custodian is",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["submit_application"],
+        "condition": "recipient_not_custodian",
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "receiving the application",
+          "consequence": "unstated",
+          "source": {
+            "section": "4-202",
+            "subsection": "c",
+            "quote": "within 10 working days after receiving the application"
+          }
+        },
+        "source": {
+          "section": "4-202",
+          "subsection": "c",
+          "quote": "If the individual to whom the application is submitted is not the custodian of the public record, within 10 working days after receiving the application, the individual shall give the applicant"
+        }
+      },
+      {
+        "id": "notify_no_record",
+        "actor": "custodian",
+        "action": "Notify applicant the record does not exist",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["submit_application"],
+        "condition": "record_does_not_exist",
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "receiving the application",
+          "consequence": "unstated",
+          "source": {
+            "section": "4-202",
+            "subsection": "d.2",
+            "quote": "promptly after the search is completed but not more than 30 days after receiving the application"
+          }
+        },
+        "source": {
+          "section": "4-202",
+          "subsection": "d",
+          "quote": "a custodian determines that the record does not exist, the custodian shall notify the applicant of this determination"
+        }
+      },
+      {
+        "id": "decide_application",
+        "actor": "custodian",
+        "action": "Grant or deny the application",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": ["submit_application"],
+        "decision": "application_decision",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "receiving the application",
+          "consequence": "unstated",
+          "source": {
+            "section": "4-203",
+            "subsection": "a.1",
+            "quote": "not more than 30 days after receiving the application"
+          }
+        },
+        "source": {
+          "section": "4-203",
+          "subsection": "a.1",
+          "quote": "the custodian shall grant or deny the application promptly"
+        }
+      },
+      {
+        "id": "deny_statement",
+        "actor": "custodian",
+        "action": "Give written statement of reasons and authority",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_application"],
+        "condition": "application_denied",
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "denial of the application (the text names no anchor)",
+          "consequence": "unstated",
+          "source": {
+            "section": "4-203",
+            "subsection": "c.1.i",
+            "quote": "within 10 working days, give the applicant a written statement"
+          }
+        },
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1",
+          "quote": "A custodian who denies the application shall"
+        }
+      },
+      {
+        "id": "allow_partial_inspection",
+        "actor": "custodian",
+        "action": "Allow inspection of the inspectable parts",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": ["deny_statement"],
+        "condition": "part_inspectable",
+        "recipient": "applicant",
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1.ii",
+          "quote": "allow inspection of any part of the record that is subject to inspection"
+        }
+      },
+      {
+        "id": "notify_delay",
+        "actor": "custodian",
+        "action": "State time needed, fee range, delay reason",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_application"],
+        "condition": "production_over_10_working_days",
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "receipt of the request",
+          "consequence": "unstated",
+          "on_miss": "produce_record",
+          "source": {
+            "section": "4-203",
+            "subsection": "b.2",
+            "quote": "within 10 working days after receipt of the request"
+          }
+        },
+        "source": {
+          "section": "4-203",
+          "subsection": "b.2",
+          "quote": "If the custodian reasonably believes that it will take more than 10 working days to produce the public record, the custodian shall indicate in writing or by electronic mail"
+        }
+      },
+      {
+        "id": "produce_record",
+        "actor": "custodian",
+        "action": "Produce the record for inspection",
+        "kind": "act",
+        "modality": "obligation",
+        "after": ["decide_application", "notify_delay"],
+        "join": "any",
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "receipt of the application",
+          "consequence": "deemed-denial",
+          "on_miss": "deemed_denied",
+          "source": {
+            "section": "4-203",
+            "subsection": "b.1",
+            "quote": "but not more than 30 days after receipt of the application"
+          }
+        },
+        "source": {
+          "section": "4-203",
+          "subsection": "b.1",
+          "quote": "A custodian who approves the application shall produce the public record immediately or within a reasonable period that is needed to retrieve the public record"
+        }
+      },
+      {
+        "id": "charge_fee",
+        "actor": "custodian",
+        "action": "Charge reasonable fee beyond first two hours",
+        "kind": "payment",
+        "modality": "permission",
+        "after": ["produce_record"],
+        "condition": "fee_charged",
+        "source": {
+          "section": "4-206",
+          "subsection": "b.1",
+          "quote": "the official custodian may charge an applicant a reasonable fee for"
+        }
+      },
+      {
+        "id": "waive_fee",
+        "actor": "custodian",
+        "action": "Decide whether to waive the fee",
+        "kind": "decision",
+        "modality": "permission",
+        "after": ["charge_fee"],
+        "condition": "waiver_requested",
+        "decision": "fee_waiver",
+        "source": {
+          "section": "4-206",
+          "subsection": "e",
+          "quote": "The official custodian may waive a fee under this section if:"
+        }
+      },
+      {
+        "id": "school_fee_notice",
+        "actor": "custodian",
+        "action": "Notify applicant of Board fee complaint",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["charge_fee"],
+        "condition": "local_school_system",
+        "recipient": "applicant",
+        "source": {
+          "section": "4-206",
+          "subsection": "f",
+          "quote": "the custodian shall provide written notice to the applicant that the applicant may file a complaint with the Board to contest the fee"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "application_decision",
+        "question": "Does the custodian grant the application, deny it, or deny it in part?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {
+            "name": "disclosable",
+            "label": "How much of the record is open to inspection (all, part, none)",
+            "type": "string"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "application_denied",
+            "label": "Application denied in whole or in part",
+            "type": "boolean"
+          },
+          {
+            "name": "part_inspectable",
+            "label": "Some part remains open to inspection",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": ["\"all\""],
+            "then": ["\"Grant; produce the record\"", "false", "false"],
+            "source": {
+              "section": "4-203",
+              "subsection": "b.1",
+              "quote": "A custodian who approves the application"
+            }
+          },
+          {
+            "when": ["\"part\""],
+            "then": ["\"Deny in part with written statement; allow inspection of the rest\"", "true", "true"],
+            "source": {
+              "section": "4-203",
+              "subsection": "c.1.ii",
+              "quote": "any part of the record that is subject to inspection"
+            }
+          },
+          {
+            "when": ["\"none\""],
+            "then": ["\"Deny with written statement\"", "true", "false"],
+            "source": {
+              "section": "4-203",
+              "subsection": "c.1",
+              "quote": "A custodian who denies the application"
+            }
+          }
+        ]
+      },
+      {
+        "id": "fee_waiver",
+        "question": "May the official custodian waive the fee the applicant asked to have waived?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "indigent_with_affidavit",
+            "label": "Applicant is indigent and filed an affidavit of indigency",
+            "type": "boolean"
+          },
+          {
+            "name": "public_interest",
+            "label": "Custodian finds the waiver in the public interest",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "waiver_permitted",
+            "label": "Custodian may waive the fee",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": ["true", "-"],
+            "then": ["true"],
+            "source": {
+              "section": "4-206",
+              "subsection": "e.2.i",
+              "quote": "the applicant is indigent and files an affidavit of indigency"
+            }
+          },
+          {
+            "when": ["-", "true"],
+            "then": ["true"],
+            "source": {
+              "section": "4-206",
+              "subsection": "e.2.ii",
+              "quote": "after consideration of the ability of the applicant to pay the fee and other relevant factors, the official custodian determines that the waiver would be in the public interest"
+            }
+          },
+          {
+            "when": ["false", "false"],
+            "then": ["false"],
+            "source": {
+              "section": "4-206",
+              "subsection": "e",
+              "quote": "may waive a fee under this section if"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "referred_to_custodian",
+        "description": "Applicant told of the custodian and record location",
+        "after": ["redirect_not_custodian"],
+        "source": {
+          "section": "4-202",
+          "subsection": "c.2.ii",
+          "quote": "the location or possible location of the public record"
+        }
+      },
+      {
+        "id": "no_record_found",
+        "description": "Applicant told the record does not exist",
+        "after": ["notify_no_record"],
+        "source": {
+          "section": "4-202",
+          "subsection": "d.1",
+          "quote": "if the custodian has reached this determination on initial review of the application, immediately"
+        }
+      },
+      {
+        "id": "application_denied_end",
+        "description": "Denied with written statement and notice of remedies",
+        "after": ["deny_statement"],
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1.i.5",
+          "quote": "notice of the remedies under this title for review of the denial"
+        }
+      },
+      {
+        "id": "partial_inspection",
+        "description": "Denied in part; the rest open to inspection",
+        "after": ["allow_partial_inspection"],
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1.ii",
+          "quote": "allow inspection of any part of the record"
+        }
+      },
+      {
+        "id": "records_produced",
+        "description": "Public record produced to the applicant",
+        "after": ["produce_record", "charge_fee", "waive_fee", "school_fee_notice"],
+        "join": "any",
+        "source": {
+          "section": "4-203",
+          "subsection": "b.1",
+          "quote": "shall produce the public record immediately"
+        }
+      },
+      {
+        "id": "deemed_denied",
+        "description": "Failure to produce in time is a denial",
+        "after": [],
+        "source": {
+          "section": "4-203",
+          "subsection": "b.3",
+          "quote": "Failure to produce the public record in accordance with this subsection constitutes a denial of an application"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Md. Code, General Provisions § 4-201(c)(2)",
+        "role": "records listed by an official custodian may be inspected without a written application",
+        "source": {
+          "section": "4-202",
+          "subsection": "b.1",
+          "quote": "the person or governmental unit seeks to inspect a public record listed by an official custodian in accordance with § 4–201(c)(2) of this subtitle"
+        }
+      },
+      {
+        "citation": "Md. Code, General Provisions § 4-356",
+        "role": "applications subject to it get 50 days instead of 30 to grant or deny",
+        "source": {
+          "section": "4-203",
+          "subsection": "a.2",
+          "quote": "The custodian shall grant or deny an application that is the subject of § 4–356 of this title not more than 50 days after receiving the application."
+        }
+      },
+      {
+        "citation": "Md. Code, General Provisions § 4-343",
+        "role": "a denial under it must also explain why it is necessary and why redaction would not suffice",
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1.i.2",
+          "quote": "if inspection is denied under § 4–343 of this title:"
+        }
+      },
+      {
+        "citation": "Md. Code, General Provisions Title 4, Subtitles 1A and 1B",
+        "role": "dispute resolution; every time limit in § 4-203 is extended while a dispute is pending",
+        "source": {
+          "section": "4-203",
+          "subsection": "d.2",
+          "quote": "if the applicant or custodian seeks resolution of a dispute under Subtitle 1A or 1B of this title, shall be extended pending resolution of that dispute"
+        }
+      },
+      {
+        "citation": "Md. Code, General Provisions Title 4 (remedies for review of a denial)",
+        "role": "the denial statement must give notice of the review remedies",
+        "source": {
+          "section": "4-203",
+          "subsection": "c.1.i.5",
+          "quote": "notice of the remedies under this title for review of the denial"
+        }
+      }
+    ],
+    "gaps": [
+      "Who may apply: § 4-202(a) speaks of \"a person or governmental unit\" with no residency or purpose limit, and § 4-203(c)(2) bars ignoring an application on the ground that it was meant to harass. The custodian, the official custodian and \"the Board\" are defined elsewhere in Title 4 (not in the modelled sections); the model uses one custodian lane for both custodian roles.",
+      "Written application (§ 4-202(b)): no written application is needed for records an official custodian has listed under § 4-201(c)(2) or when the custodian waives the requirement. The model shows only the written path; the waiver and the listed-records route would rejoin at the custodian's decision.",
+      "Wrong recipient (§ 4-202(c)) and nonexistent record (§ 4-202(d)) are modelled as exclusive alternatives to the custodian's grant-or-deny decision, reached directly from the application. § 4-202(d) requires notice immediately when the custodian concludes on initial review that no record exists, and otherwise promptly after the search but within 30 days; only the 30-day outer limit is a timer. The text does not say what a missed 10-working-day referral notice or 30-day no-record notice leads to, so both timers end at an implied 'deadline missed' state.",
+      "Grant or deny (§ 4-203(a)): 30 days after receiving the application (50 days for an application that is the subject of § 4-356; only the 30-day figure is shown). The section does not say what a missed grant-or-deny deadline means; only a failure to produce an approved record is declared a denial (§ 4-203(b)(3)), so the timer on decide_application ends at an implied end state rather than deemed_denied.",
+      "Deemed denial (§ 4-203(b)(3)): a failure to produce the record \"in accordance with this subsection\" is a denial, modelled by routing the 30-day production timer to deemed_denied. The text adds that such a denial may not be treated as the result of a bona fide dispute unless the custodian gave the (b)(2) delay notice and is working with the applicant in good faith; that qualification affects later remedies and is not modelled.",
+      "Delay notice (§ 4-203(b)(2)): required within 10 working days of receipt when the custodian reasonably believes production will take more than 10 working days, and must give the anticipated time, an estimate of the range of fees, and the reason for the delay. Missing it is not said to end anything, so its timer rejoins the production step (on_miss produce_record). The model routes from the decision by exclusive gateway, so a denial and a delay notice cannot both be shown; the 30-day production limit in (b)(1) still applies on the face of the text even after a delay notice.",
+      "Denial (§ 4-203(c)(1)): the written statement is due \"within 10 working days\" without saying from when; the timer anchor is assumed to be the denial. The statement must give the reasons, the legal authority, a description of the withheld record that lets the applicant assess the authority, and notice of the review remedies, plus, for § 4-343 denials, why the denial is necessary and why redaction would not address the reasons. A partial denial is modelled as a denial followed by inspection of the remaining parts.",
+      "Extensions (§ 4-203(d)): any time limit in § 4-203 may be extended by up to 30 days with the applicant's consent, and is extended while a dispute under Subtitle 1A or 1B is pending. Neither extension is drawn as a step; the timers show the unextended periods.",
+      "Fees (§ 4-206): the official custodian may charge a reasonable fee (one bearing a reasonable relationship to actual costs) for search, preparation and reproduction, with staff and attorney review costs prorated by salary and time; the first 2 hours of search and preparation are free; another law that sets a copy fee applies instead; and the cost of reproduction facilities the custodian lacked may be charged. The text does not say when the fee is charged relative to production, so charge_fee is placed after produce_record. Waiver needs a request plus either indigency with an affidavit (household income under 50% of the State median) or a public-interest finding; the waiver is discretionary ('may'), so waiver_permitted only allows it. For a local school system, the custodian must tell the applicant they may complain to the Board about the fee; waive_fee and school_fee_notice are shown as exclusive alternatives although both could apply.",
+      "This is the Maryland Public Information Act process; it governs requests to Maryland state agencies and to Baltimore and other Maryland local governments. Requests in Virginia (Va. Code § 2.2-3704) or the District of Columbia follow their own statutes and are modelled separately."
+    ]
+  }
+}

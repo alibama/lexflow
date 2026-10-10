@@ -127,7 +127,8 @@ label.field { display: inline-flex; align-items: center; gap: 8px; color: var(--
 .card-pad { padding: 16px 18px; }
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px 0; flex-wrap: wrap; }
 .card-head p { margin: 2px 0 0; color: var(--ink-2); font-size: 13px; }
-.grid { display: grid; gap: 16px; }
+.grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+.grid > * { min-width: 0; }               /* wide tables scroll inside their card instead of widening the page */
 .grid.kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 16px; }
 .grid.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .grid.map-layout { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; }

@@ -1,0 +1,753 @@
+{
+ "state": "oh",
+ "question": "business",
+ "sections": [
+  "1706.16",
+  "1706.17",
+  "1706.172",
+  "111.16",
+  "1701.04",
+  "1702.04",
+  "1785.02",
+  "1785.09",
+  "1782.08",
+  "1782.19",
+  "1329.01",
+  "1329.10",
+  "1776.22",
+  "1776.81"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in Ohio (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "1706.16",
+   "subsection": "A",
+   "quote": "In order to form a limited liability company, one or more persons shall execute articles of organization and deliver the articles to the secretary of state for filing."
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "1706.17",
+     "subsection": "A.1",
+     "quote": "A limited liability company's initial articles of organization shall be signed by at least one person."
+    }
+   },
+   {
+    "id": "secretary_of_state",
+    "name": "Secretary of State",
+    "kind": "public-body",
+    "source": {
+     "section": "111.16",
+     "quote": "the secretary of state shall charge and collect, for the benefit of the state, the following fees"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company, through an authorized representative",
+    "kind": "private-party",
+    "source": {
+     "section": "1329.01",
+     "subsection": "E",
+     "quote": "The report of use of a fictitious name shall be signed by the user or by any authorized representative of the user."
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "deliver_articles",
+    "actor": "organizer",
+    "action": "Sign and deliver articles of organization",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [],
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "1706.16",
+     "subsection": "A",
+     "quote": "execute articles of organization and deliver the articles to the secretary of state for filing"
+    }
+   },
+   {
+    "id": "collect_fee",
+    "actor": "secretary_of_state",
+    "action": "Collect the $99 filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_articles"
+    ],
+    "source": {
+     "section": "111.16",
+     "subsection": "F",
+     "quote": "For filing and recording articles of organization of a limited liability company"
+    }
+   },
+   {
+    "id": "review_articles",
+    "actor": "secretary_of_state",
+    "action": "Check articles against filing requirements",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "collect_fee"
+    ],
+    "decision": "articles_comply",
+    "source": {
+     "section": "1706.172",
+     "subsection": "B",
+     "quote": "Unless the secretary of state determines that a record does not comply with the filing requirements of this chapter"
+    }
+   },
+   {
+    "id": "file_articles",
+    "actor": "secretary_of_state",
+    "action": "File the articles of organization",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "condition": "articles_ok",
+    "source": {
+     "section": "1706.172",
+     "subsection": "B",
+     "quote": "the secretary of state shall file the record"
+    }
+   },
+   {
+    "id": "send_certificate",
+    "actor": "secretary_of_state",
+    "action": "Send certificate and fee receipt",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "file_articles"
+    ],
+    "recipient": "organizer",
+    "source": {
+     "section": "1706.172",
+     "subsection": "B",
+     "quote": "send a certificate and a receipt for the fees to the person who submitted the record"
+    }
+   },
+   {
+    "id": "register_trade_name",
+    "actor": "llc",
+    "action": "Register trade name with the $39 fee",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "send_certificate"
+    ],
+    "condition": "registers_as_trade_name",
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "1329.01",
+     "subsection": "B",
+     "quote": "any person may register with the secretary of state, on a form prescribed by the secretary of state, any trade name under which the person is operating"
+    }
+   },
+   {
+    "id": "report_fictitious_name",
+    "actor": "llc",
+    "action": "Report fictitious name with the $39 fee",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "send_certificate"
+    ],
+    "condition": "reports_as_fictitious_name",
+    "recipient": "secretary_of_state",
+    "deadline": {
+     "amount": 30,
+     "unit": "days",
+     "anchor": "the date of the first use of the fictitious name",
+     "consequence": "unstated",
+     "on_miss": "name_not_on_file",
+     "source": {
+      "section": "1329.01",
+      "subsection": "E",
+      "quote": "A report under this division shall be made within thirty days after the date of the first use of the fictitious name."
+     }
+    },
+    "source": {
+     "section": "1329.01",
+     "subsection": "D",
+     "quote": "Any person who does business under a fictitious name and who has not registered and does not wish to register the fictitious name as a trade name or who cannot do so because the name is not available for registration shall report the use of the fictitious name to the secretary of state"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "articles_comply",
+    "question": "Do the articles of organization meet the filing requirements?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "name_stated",
+      "label": "Name of the company stated (§ 1706.16 A.1)",
+      "type": "boolean"
+     },
+     {
+      "name": "statutory_agent",
+      "label": "Statutory agent's name and street address, with the agent's signed written acceptance (§ 1706.16 A.2)",
+      "type": "boolean"
+     },
+     {
+      "name": "signed",
+      "label": "Signed by at least one person (§ 1706.17 A.1)",
+      "type": "boolean"
+     },
+     {
+      "name": "acceptable_form",
+      "label": "In a medium and form acceptable to the secretary of state (§ 1706.172 A.2)",
+      "type": "boolean"
+     },
+     {
+      "name": "in_english",
+      "label": "In English (§ 1706.172 A.3)",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "articles_ok",
+      "label": "Articles comply",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "1706.16",
+       "subsection": "A.1",
+       "quote": "The name of the limited liability company"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "1706.16",
+       "subsection": "A.2",
+       "quote": "The name and street address of the limited liability company's statutory agent and a written acceptance of the appointment that is signed by the agent"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "1706.17",
+       "subsection": "A.1",
+       "quote": "A limited liability company's initial articles of organization shall be signed by at least one person."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "false",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "1706.172",
+       "subsection": "A.2",
+       "quote": "The record shall be on or in a medium and in such form acceptable to the secretary of state"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "1706.172",
+       "subsection": "A.3",
+       "quote": "The record shall be in English."
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "true",
+       "true",
+       "true"
+      ],
+      "then": [
+       "true"
+      ],
+      "source": {
+       "section": "1706.172",
+       "subsection": "B",
+       "quote": "the secretary of state shall file the record and send a certificate and a receipt for the fees to the person who submitted the record"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Nonprofit corporation (Chapter 1702)\"",
+       "\"Articles of incorporation, with a written appointment of a statutory agent unless the corporation is in an exempt class under § 1702.06 N, filed with the secretary of state\"",
+       "\"$99 (§ 111.16 A.1)\""
+      ],
+      "source": {
+       "section": "1702.04",
+       "subsection": "A",
+       "quote": "may form a corporation by signing and filing with the secretary of state articles of incorporation, which shall set forth the following"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Professional association (Chapter 1785; every shareholder licensed, certificated or otherwise legally authorized to render the same kind of professional service in Ohio, apart from the mixed groups § 1785.02 lists), or an ordinary corporation (§ 1701.03 B) or limited liability company (§ 1785.09)\"",
+       "\"Articles of incorporation (professional association, prepared and filed as § 1785.08 prescribes) or articles of organization (LLC), filed with the secretary of state\"",
+       "\"Professional association: share-based fee for articles of a corporation with shares, at least $99 (§ 111.16 A.2); LLC: $99 (§ 111.16 F)\""
+      ],
+      "source": {
+       "section": "1785.02",
+       "quote": "may organize and become a shareholder or shareholders of a professional association"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Corporation for profit (Chapter 1701)\"",
+       "\"Articles of incorporation, with a written appointment of a statutory agent unless the corporation is in an exempt class under § 1701.07 N, filed with the secretary of state\"",
+       "\"Share-based (§ 111.16 A.2): 10 cents a share for the first 1,000 authorized shares, falling to one-quarter cent a share above 500,000; at least $99 and at most $100,000\""
+      ],
+      "source": {
+       "section": "1701.04",
+       "subsection": "A",
+       "quote": "may form a corporation by signing and filing with the secretary of state articles of incorporation that shall set forth all of the following"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Limited partnership (limited partners are shielded unless they are also general partners or take part in control of the business; general partners stay personally liable)\"",
+       "\"Certificate of limited partnership on the secretary of state's form, with a written appointment of a statutory agent, filed with the secretary of state\"",
+       "\"$99 (§ 111.16 G)\""
+      ],
+      "source": {
+       "section": "1782.08",
+       "subsection": "A",
+       "quote": "To form a limited partnership, a certificate of limited partnership shall be executed and filed with the secretary of state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Articles of organization, filed with the secretary of state\"",
+       "\"$99 (§ 111.16 F)\""
+      ],
+      "source": {
+       "section": "1706.16",
+       "subsection": "A",
+       "quote": "In order to form a limited liability company, one or more persons shall execute articles of organization and deliver the articles to the secretary of state for filing."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "1",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; an owner doing business under a fictitious name must report it to the secretary of state within 30 days after first using it, unless the owner registers it as a trade name instead\"",
+       "\"None to form; $39 for a fictitious name report or a trade name registration (§ 1329.01 C, E; § 111.16 S.2)\""
+      ],
+      "source": {
+       "section": "1329.01",
+       "subsection": "D",
+       "quote": "Any person who does business under a fictitious name and who has not registered and does not wish to register the fictitious name as a trade name or who cannot do so because the name is not available for registration shall report the use of the fictitious name to the secretary of state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: two or more co-owners carrying on a business for profit form a partnership. A partnership using a fictitious name must report it to the secretary of state (§ 1329.01 D) or register it as a trade name. Optionally, after approval by the vote needed to amend the partnership agreement (§ 1776.81 B), the partnership may file a statement of qualification with the secretary of state to become a limited liability partnership (§ 1776.81 C)\"",
+       "\"None to form; $39 for a fictitious name report or trade name registration (§ 1329.01 C, E); $99 to become a limited liability partnership (§ 111.16 F)\""
+      ],
+      "source": {
+       "section": "1776.22",
+       "subsection": "A",
+       "quote": "any association of two or more persons to carry on as co-owners a business for-profit forms a partnership, whether or not the persons intend to form a partnership"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_exists",
+    "description": "LLC formed on filing; uses only its name of record",
+    "after": [
+     "send_certificate"
+    ],
+    "source": {
+     "section": "1706.16",
+     "subsection": "B",
+     "quote": "A limited liability company is formed when the articles of organization are filed by the secretary of state or at any later date or time specified in the articles of organization."
+    }
+   },
+   {
+    "id": "name_on_file",
+    "description": "LLC formed; its business name registered or reported",
+    "after": [
+     "register_trade_name",
+     "report_fictitious_name"
+    ],
+    "join": "any",
+    "source": {
+     "section": "1329.10",
+     "subsection": "B",
+     "quote": "upon compliance, such an action may be commenced or maintained on any contracts and transactions entered into prior to compliance"
+    }
+   },
+   {
+    "id": "name_not_on_file",
+    "description": "LLC formed; no suits in unreported name until it complies",
+    "after": [],
+    "source": {
+     "section": "1329.10",
+     "subsection": "B",
+     "quote": "No person doing business under a trade name or fictitious name shall commence or maintain an action in the trade name or fictitious name in any court in this state or on account of any contracts made or transactions had in the trade name or fictitious name until it has first complied with section 1329.01 of the Revised Code"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Ohio Rev. Code § 111.16(F)",
+    "role": "the same $99 fee for becoming a domestic limited liability partnership as for LLC articles of organization",
+    "source": {
+     "section": "111.16",
+     "subsection": "F",
+     "quote": "for filing and recording a registration application to become a domestic limited liability partnership, or for filing and recording an application to become a registered foreign limited liability partnership, ninety-nine dollars"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 111.16(A)(1)",
+    "role": "nonprofit (no-share) corporation articles fee",
+    "source": {
+     "section": "111.16",
+     "subsection": "A.1",
+     "quote": "Wherein the corporation shall not be authorized to issue any shares of capital stock, ninety-nine dollars"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 111.16(A)(2)",
+    "role": "share-based articles fee for corporations (and professional associations) with shares",
+    "source": {
+     "section": "111.16",
+     "subsection": "A.2",
+     "quote": "provided no fee shall be less than ninety-nine dollars or greater than one hundred thousand dollars"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 111.16(G)",
+    "role": "certificate of limited partnership fee",
+    "source": {
+     "section": "111.16",
+     "subsection": "G",
+     "quote": "For filing and recording a certificate of limited partnership or an application for registration as a foreign limited partnership"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 111.16(S)(2)",
+    "role": "trade name registration or fictitious name report fee",
+    "source": {
+     "section": "111.16",
+     "subsection": "S.2",
+     "quote": "A trade name or fictitious name registration or report, thirty-nine dollars"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 111.16(M)",
+    "role": "optional paid pre-filing review of a proposed filing",
+    "source": {
+     "section": "111.16",
+     "subsection": "M",
+     "quote": "For examining documents to be filed at a later date for the purpose of advising as to the acceptability of the proposed filing, fifty dollars"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1329.01(C)",
+    "role": "trade name registration fee",
+    "source": {
+     "section": "1329.01",
+     "subsection": "C",
+     "quote": "The trade name application shall be accompanied by a filing fee of thirty-nine dollars, payable to the secretary of state."
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1329.10(A)",
+    "role": "injunction by the attorney general against a person who does not comply after notice",
+    "source": {
+     "section": "1329.10",
+     "subsection": "A",
+     "quote": "The attorney general, upon the request of the secretary of state, shall bring an action for an injunction against any person who violates section 1329.01 or 1329.07 of the Revised Code"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1785.09",
+    "role": "professionals may also use an ordinary corporation or an LLC",
+    "source": {
+     "section": "1785.09",
+     "quote": "This chapter does not preclude the rendering of a professional service within this state by a corporation formed under division (B) of section 1701.03 of the Revised Code, a limited liability company formed under Chapter 1705. or 1706. of the Revised Code"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1782.19(A)",
+    "role": "limited partners are shielded unless they are also general partners or take part in control",
+    "source": {
+     "section": "1782.19",
+     "subsection": "A",
+     "quote": "a limited partner shall not become liable for the obligations of a limited partnership unless the limited partner is also a general partner"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1782.08(C)",
+    "role": "a limited partnership is formed when its certificate is filed",
+    "source": {
+     "section": "1782.08",
+     "subsection": "C",
+     "quote": "A limited partnership is an entity formed at the time of filing the certificate of limited partnership pursuant to section 1782.13 of the Revised Code"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1776.81(B)",
+    "role": "limited liability partnership election needs the vote required to amend the partnership agreement",
+    "source": {
+     "section": "1776.81",
+     "subsection": "B",
+     "quote": "shall be approved by the vote necessary to amend the partnership agreement"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1776.81(C)",
+    "role": "a partnership becomes a limited liability partnership by filing a statement of qualification",
+    "source": {
+     "section": "1776.81",
+     "subsection": "C",
+     "quote": "a partnership may become a limited liability partnership by filing with the secretary of state a statement of qualification"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1701.04(D)",
+    "role": "a for-profit corporation exists from the filing of its articles",
+    "source": {
+     "section": "1701.04",
+     "subsection": "D",
+     "quote": "The legal existence of the corporation begins upon the filing of the articles"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1706.16(D)",
+    "role": "the operating agreement may be made before, at or after filing",
+    "source": {
+     "section": "1706.16",
+     "subsection": "D",
+     "quote": "An operating agreement may be entered into before, at the time of, or after the filing of the articles of organization."
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1706.17(B)",
+    "role": "the articles may be signed by an agent, including an attorney-in-fact",
+    "source": {
+     "section": "1706.17",
+     "subsection": "B",
+     "quote": "Any record to be filed under this chapter may be signed by an agent, including an attorney-in-fact."
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1706.172(D)",
+    "role": "delayed effective date of up to ninety days",
+    "source": {
+     "section": "1706.172",
+     "subsection": "D",
+     "quote": "may specify an effective time and a delayed effective date of not more than ninety days following the date of receipt by the secretary of state"
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1329.01(E)",
+    "role": "fictitious name report fee",
+    "source": {
+     "section": "1329.01",
+     "subsection": "E",
+     "quote": "The fictitious name report shall be accompanied by a filing fee of thirty-nine dollars, payable to the secretary of state."
+    }
+   },
+   {
+    "citation": "Ohio Rev. Code § 1329.01(A)(2)",
+    "role": "an LLC's own name of record is not a fictitious name; only other names need a report",
+    "source": {
+     "section": "1329.01",
+     "subsection": "A.2",
+     "quote": "any domestic or foreign limited liability company that is formed under or registered pursuant to Chapter 1705. or 1706. of the Revised Code"
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step (articles of organization under § 1706.16 and § 1706.172). The other filed structures differ: a limited partnership is formed when its certificate is filed, if there has been substantial compliance with § 1782.08 A and B (§ 1782.08 C), and the secretary of state's duties for it are ministerial (§ 1782.13, not printed); corporations exist from the filing of their articles (§ 1701.04 D, § 1702.04 D), accepted under § 1701.08 or § 1702.07 (not printed); limited liability partnership status is effective on the later of the filing of the statement of qualification or a date it specifies (§ 1776.81 E). Their content checks are not modelled.",
+   "§ 1706.172 B gives the secretary of state no time limit and says nothing about silence, so no deadline or deemed decision is modelled for the review; nor does it say what happens to a record found not to comply (the rejection path ends there).",
+   "§ 1706.172 B does not itself make payment a condition of filing; § 111.16 requires the secretary of state to charge and collect the $99 fee, so the fee is modelled as collected on delivery, before review, and is not a column of the compliance table.",
+   "The compliance table checks only the contents § 1706.16 A.1-2 requires and the form rules of §§ 1706.17 and 1706.172 A. Name availability and distinguishability rules (§ 1706.07 and related sections) and the optional § 1706.761 B.3 statement (§ 1706.16 A.3) are not printed and not checked.",
+   "The business-name branch is modelled only for an LLC that does business under a name other than its name of record, which § 1329.01 A.2 excludes from 'fictitious name'; the LLC itself is formed when the articles are filed (§ 1706.16 B), whether or not it later uses another name, so every end of that branch also records that the LLC is formed. Such an LLC may register the name as a trade name (§ 1329.01 B, C; $39) or must report it as a fictitious name (§ 1329.01 D, E; $39); the two are modelled as exclusive choices, and the branch hangs after the certificate only for readability, since the duty arises on first use of the name, not on formation. Only the fictitious name report has a deadline: 30 days after first use (§ 1329.01 E); a trade name registration has none. The statute states no direct consequence for missing the 30 days. The bar on suits in § 1329.10 B is not triggered by the deadline: it applies to anyone doing business under the name from the first day of use until the name is registered or reported, and lifts on compliance (suits on earlier contracts may then proceed). The missed-deadline path is routed to that bar only to show the state of a user still not in compliance; a late report remains possible. The attorney general's injunction (§ 1329.10 A) requires a request by the secretary of state after notice and is not modelled.",
+   "§ 1706.172 A.2 makes an acceptable medium and form a mandatory requirement for the record, but for a record not delivered by the means and in the medium the secretary of state has established it says only that the secretary of state 'is not required to file' it; refusing to file on that ground is therefore discretionary, while the compliance table treats any unacceptable medium or form as non-compliant.",
+   "The statutory agent appointment is not required for a corporation in one of the classes listed in division N of § 1701.07 (for-profit) or § 1702.06 (nonprofit) (§ 1701.04 C, § 1702.04 C); those sections are not printed and the exempt classes are not modelled.",
+   "A partnership doing business under a trade or fictitious name must also comply with § 1777.02 (§ 1329.10 B), which is not printed.",
+   "§ 111.16 F charges $99 for 'a registration application to become a domestic limited liability partnership', while § 1776.81 C calls the filing a statement of qualification; the table assumes the same $99 fee applies.",
+   "The professional association fee assumes a professional association's articles are those of a corporation with shares (§ 111.16 A.2); § 1785.08, which prescribes how the articles are prepared and filed, is not printed. Professionals are not required to use a professional association (§ 1785.09, § 1701.03 B).",
+   "A limited partner who participates in control of the business is liable to persons who transact business with the partnership with actual knowledge of that participation (§ 1782.19 A); the safe-harbor activities of § 1782.19 B are not modelled.",
+   "Nonprofit corporation status under Chapter 1702 is a state corporate form, not tax exemption; federal 501(c) status is outside the Ohio Revised Code and not modelled.",
+   "State formation is not the whole of starting a business in Ohio: these sections create no general state business licence, but a business that sells taxable goods or services needs a vendor's license (Chapter 5739), and municipalities impose their own income tax registration, permits and licences. None of these is printed or modelled.",
+   "Biennial reports for limited liability partnerships and professional associations (§ 111.16 I.2, § 1785.06), certified copies (§ 1706.172 C) and certificates of full force and effect (§ 1706.175) are not modelled.",
+   "A delayed effective date or time for the articles (§ 1706.16 B, § 1706.172 D) is not modelled; the LLC is treated as formed when the articles are filed."
+  ]
+ }
+}

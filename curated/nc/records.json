@@ -1,0 +1,865 @@
+{
+  "state": "nc",
+  "question": "records",
+  "sections": [
+    "132-6",
+    "132-6.2",
+    "132-9",
+    "7A-38.3E"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records from a North Carolina custodian",
+    "trigger": "Any person asks a custodian of North Carolina public records to inspect, examine or copy them",
+    "trigger_source": {
+      "section": "132-6",
+      "subsection": "a",
+      "quote": "Every custodian of public records shall permit any record in the custodian's custody to be inspected and examined"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "132-6",
+          "subsection": "a",
+          "quote": "at reasonable times and under reasonable supervision by any person"
+        }
+      },
+      {
+        "id": "custodian",
+        "name": "Custodian of the public records (public agency)",
+        "kind": "public-body",
+        "source": {
+          "section": "132-6",
+          "subsection": "a",
+          "quote": "\"custodian\" does not mean an agency that holds the public records of other agencies solely for purposes of storage or safekeeping or solely to provide data processing"
+        }
+      },
+      {
+        "id": "state_cio",
+        "name": "State Chief Information Officer or designee",
+        "kind": "other-government",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "b",
+          "quote": "the requester may ask the State Chief Information Officer or his designee to mediate the dispute"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Appropriate division of the General Court of Justice",
+        "kind": "court",
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "may apply to the appropriate division of the General Court of Justice for an order compelling disclosure or copying"
+        }
+      },
+      {
+        "id": "clerk",
+        "name": "Clerk of superior court",
+        "kind": "court",
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "a",
+          "quote": "Mediation of a public records dispute shall be initiated by filing a request for mediation with the clerk of superior court in a county in which the action may be brought."
+        }
+      },
+      {
+        "id": "mediator",
+        "name": "Mediator certified by the Dispute Resolution Commission",
+        "kind": "private-party",
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "c",
+          "quote": "The clerk shall provide each party with a list of mediators certified by the Dispute Resolution Commission."
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request inspection or copies; no motive needed",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "custodian",
+        "source": {
+          "section": "132-6",
+          "subsection": "b",
+          "quote": "No person requesting to inspect and examine public records, or to obtain copies thereof, shall be required to disclose the purpose or motive for the request."
+        }
+      },
+      {
+        "id": "write_database_request",
+        "actor": "requester",
+        "action": "Submit database request in writing if required",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "condition": "database_copies_requested",
+        "recipient": "custodian",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "c",
+          "quote": "Persons requesting copies of computer databases may be required to make or submit such requests in writing."
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "custodian",
+        "action": "Respond to request as promptly as possible",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_request",
+          "write_database_request"
+        ],
+        "join": "any",
+        "decision": "response_type",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "c",
+          "quote": "Custodians of public records shall respond to all such requests as promptly as possible."
+        }
+      },
+      {
+        "id": "permit_inspection",
+        "actor": "custodian",
+        "action": "Permit inspection at reasonable times",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "inspection_permitted",
+        "recipient": "requester",
+        "source": {
+          "section": "132-6",
+          "subsection": "a",
+          "quote": "shall permit any record in the custodian's custody to be inspected and examined at reasonable times and under reasonable supervision by any person"
+        }
+      },
+      {
+        "id": "collect_fees",
+        "actor": "custodian",
+        "action": "Collect copy fees as allowed by law",
+        "kind": "payment",
+        "modality": "permission",
+        "after": [
+          "respond"
+        ],
+        "condition": "copies_released",
+        "decision": "fee_basis",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "a",
+          "quote": "The public agency may assess different fees for different media as prescribed by law."
+        }
+      },
+      {
+        "id": "request_fee_mediation",
+        "actor": "requester",
+        "action": "Ask State CIO to mediate fee",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "collect_fees"
+        ],
+        "condition": "fee_believed_unfair",
+        "recipient": "state_cio",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "b",
+          "quote": "If anyone requesting public information from any public agency is charged a fee that the requester believes to be unfair or unreasonable"
+        }
+      },
+      {
+        "id": "furnish_copies",
+        "actor": "custodian",
+        "action": "Furnish copies as promptly as possible",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "collect_fees"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "132-6",
+          "subsection": "a",
+          "quote": "shall, as promptly as possible, furnish copies thereof upon payment of any fees as may be prescribed by law"
+        }
+      },
+      {
+        "id": "explain_denial",
+        "actor": "custodian",
+        "action": "Explain the basis for the denial",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "request_denied",
+        "recipient": "requester",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "c",
+          "quote": "If the request is denied, the denial shall be accompanied by an explanation of the basis for the denial."
+        }
+      },
+      {
+        "id": "put_in_writing",
+        "actor": "custodian",
+        "action": "Put denial explanation in writing on request",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "explain_denial"
+        ],
+        "condition": "written_explanation_requested",
+        "recipient": "requester",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "c",
+          "quote": "If asked to do so, the person denying the request shall, as promptly as possible, reduce the explanation for the denial to writing."
+        }
+      },
+      {
+        "id": "disclose_announced",
+        "actor": "custodian",
+        "action": "Disclose project records once withholding ends",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "explain_denial"
+        ],
+        "condition": "project_announced",
+        "recipient": "requester",
+        "deadline": {
+          "amount": 25,
+          "unit": "business_days",
+          "anchor": "Once the provisions of this subsection no longer apply",
+          "consequence": "unstated",
+          "source": {
+            "section": "132-6",
+            "subsection": "d",
+            "quote": "the agency shall disclose as soon as practicable, and within 25 business days, public records requested for the announced project"
+          }
+        },
+        "source": {
+          "section": "132-6",
+          "subsection": "d",
+          "quote": "Once the provisions of this subsection no longer apply, the agency shall disclose as soon as practicable"
+        }
+      },
+      {
+        "id": "apply_to_court",
+        "actor": "requester",
+        "action": "Apply to court for order compelling disclosure",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "explain_denial",
+          "put_in_writing"
+        ],
+        "join": "any",
+        "recipient": "court",
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "Any person who is denied access to public records for purposes of inspection and examination, or who is denied copies of public records, may apply to the appropriate division of the General Court of Justice for an order compelling disclosure or copying"
+        }
+      },
+      {
+        "id": "initiate_mediation",
+        "actor": "requester",
+        "action": "File request for mediation with clerk",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [
+          "apply_to_court"
+        ],
+        "recipient": "clerk",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the filing of responsive pleadings",
+          "consequence": "action-invalid",
+          "on_miss": "no_jurisdiction",
+          "source": {
+            "section": "7A-38.3E",
+            "subsection": "b",
+            "quote": "Such mediation shall be initiated no later than 30 days from the filing of responsive pleadings with the clerk in the county where the action is filed."
+          }
+        },
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "b",
+          "quote": "Subsequent to filing a civil action under Chapter 132 of the General Statutes, a person shall initiate mediation pursuant to this section."
+        }
+      },
+      {
+        "id": "waive_mediation",
+        "actor": "requester",
+        "action": "Inform mediator of parties' written waiver",
+        "kind": "notice",
+        "modality": "permission",
+        "after": [
+          "initiate_mediation"
+        ],
+        "condition": "mediation_waived",
+        "recipient": "mediator",
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "e",
+          "quote": "The parties to the dispute may waive the mediation required by this section by informing the mediator of the parties' waiver in writing."
+        }
+      },
+      {
+        "id": "conduct_mediation",
+        "actor": "mediator",
+        "action": "Conduct mediation under mediated-settlement rules",
+        "kind": "hearing",
+        "modality": "obligation",
+        "after": [
+          "initiate_mediation"
+        ],
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "d",
+          "quote": "mediation under this section shall be conducted in accordance with the provisions for mediated settlement of civil cases in G.S. 7A-38.1 and G.S. 7A-38.2"
+        }
+      },
+      {
+        "id": "certify_mediation",
+        "actor": "mediator",
+        "action": "File certification that mediation concluded",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [
+          "waive_mediation",
+          "conduct_mediation"
+        ],
+        "join": "any",
+        "recipient": "clerk",
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "f",
+          "quote": "Immediately upon a waiver of mediation under subsection (e) of this section or upon the conclusion of mediation, the mediator shall prepare a certification stating the date on which the mediation was concluded"
+        }
+      },
+      {
+        "id": "hear_action",
+        "actor": "court",
+        "action": "Set action for immediate, priority hearing",
+        "kind": "hearing",
+        "modality": "obligation",
+        "after": [
+          "certify_mediation"
+        ],
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "Actions brought pursuant to this section shall be set down for immediate hearing, and subsequent proceedings in such actions shall be accorded priority by the trial and appellate courts."
+        }
+      },
+      {
+        "id": "rule_on_disclosure",
+        "actor": "court",
+        "action": "Rule on order compelling disclosure",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "hear_action"
+        ],
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "the court shall have jurisdiction to issue such orders"
+        }
+      },
+      {
+        "id": "rule_on_fees",
+        "actor": "court",
+        "action": "Rule on attorneys' fees",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "rule_on_disclosure"
+        ],
+        "decision": "attorney_fees",
+        "source": {
+          "section": "132-9",
+          "subsection": "c",
+          "quote": "the court shall allow a party seeking disclosure of public records who substantially prevails to recover its reasonable attorneys' fees"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "response_type",
+        "question": "How does the custodian answer the request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "project_record_frustrating",
+            "label": "Business-project or qualifying-site record whose release would frustrate its purpose",
+            "type": "boolean"
+          },
+          {
+            "name": "records_online",
+            "label": "Records available online to view and print or save",
+            "type": "boolean"
+          },
+          {
+            "name": "commingled_confidential",
+            "label": "Confidential information commingled with the requested records",
+            "type": "boolean"
+          },
+          {
+            "name": "copies_requested",
+            "label": "Requester asks for copies, not only inspection",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "inspection_permitted",
+            "label": "Records are made available for inspection",
+            "type": "boolean"
+          },
+          {
+            "name": "copies_released",
+            "label": "Copies are to be furnished",
+            "type": "boolean"
+          },
+          {
+            "name": "request_denied",
+            "label": "Request is denied",
+            "type": "boolean"
+          },
+          {
+            "name": "online_only",
+            "label": "Satisfied by online availability",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Withhold business-project or qualifying-site records while release would frustrate their purpose\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "d",
+              "quote": "may be withheld so long as their inspection, examination or copying would frustrate the purpose for which such public records were created"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Records are online to view and print or save; no copies required in any other way\"",
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "a1",
+              "quote": "the public agency or custodian is not required to provide copies to these public records in any other way"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Separate the confidential information at the agency's cost and permit inspection of the rest\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "c",
+              "quote": "If it is necessary to separate confidential from nonconfidential information in order to permit the inspection, examination, or copying of the public records, the public agency shall bear the cost of such separation."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Separate the confidential information at the agency's cost and furnish copies of the rest\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "c",
+              "quote": "If it is necessary to separate confidential from nonconfidential information in order to permit the inspection, examination, or copying of the public records, the public agency shall bear the cost of such separation."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Permit inspection at reasonable times and under reasonable supervision\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "a",
+              "quote": "shall permit any record in the custodian's custody to be inspected and examined at reasonable times and under reasonable supervision by any person"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Furnish copies as promptly as possible upon payment of lawful fees\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "132-6",
+              "subsection": "a",
+              "quote": "shall, as promptly as possible, furnish copies thereof upon payment of any fees as may be prescribed by law"
+            }
+          }
+        ]
+      },
+      {
+        "id": "fee_basis",
+        "question": "What may the agency charge for the copies?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "certified",
+            "label": "Certified copies requested",
+            "type": "boolean"
+          },
+          {
+            "name": "extensive_use",
+            "label": "Extensive IT or clerical/supervisory assistance, or the requested medium uses more IT resources than the agency's standard for that volume",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "fee",
+            "label": "Fee",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Certification fee as provided by law\""
+            ],
+            "source": {
+              "section": "132-6.2",
+              "subsection": "b",
+              "quote": "The fees for certifying copies of public records shall be as provided by law."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Actual cost of duplication plus a reasonable special service charge based on actual cost\""
+            ],
+            "source": {
+              "section": "132-6.2",
+              "subsection": "b",
+              "quote": "the agency may charge, in addition to the actual cost of duplication, a special service charge, which shall be reasonable and shall be based on the actual cost incurred"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"No more than the actual cost of making the copy\""
+            ],
+            "source": {
+              "section": "132-6.2",
+              "subsection": "b",
+              "quote": "no public agency shall charge a fee for an uncertified copy of a public record that exceeds the actual cost to the public agency of making the copy"
+            }
+          }
+        ]
+      },
+      {
+        "id": "attorney_fees",
+        "question": "Who bears attorneys' fees in the action to compel disclosure?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "disclosure_compelled",
+            "label": "Requester substantially prevails in compelling disclosure",
+            "type": "boolean"
+          },
+          {
+            "name": "reasonable_reliance",
+            "label": "Body reasonably relied on a court order, appellate opinion, or Attorney General opinion",
+            "type": "boolean"
+          },
+          {
+            "name": "bad_faith_or_frivolous",
+            "label": "Action filed in bad faith or frivolous",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "fee_award",
+            "label": "Attorneys' fees",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "-",
+              "-",
+              "true"
+            ],
+            "then": [
+              "\"Reasonable attorney's fee assessed against the requester and awarded to the agency\""
+            ],
+            "source": {
+              "section": "132-9",
+              "subsection": "d",
+              "quote": "the court shall assess a reasonable attorney's fee against the person or persons instituting the action and award it to the public agency as part of the costs"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"No attorneys' fees assessed against the governmental body\""
+            ],
+            "source": {
+              "section": "132-9",
+              "subsection": "c",
+              "quote": "The court may not assess attorneys' fees against the governmental body or governmental unit if the court finds that the governmental body or governmental unit acted in reasonable reliance on any of the following"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Requester recovers reasonable attorneys' fees from the agency\""
+            ],
+            "source": {
+              "section": "132-9",
+              "subsection": "c",
+              "quote": "the court shall allow a party seeking disclosure of public records who substantially prevails to recover its reasonable attorneys' fees if attributed to those public records"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              "false"
+            ],
+            "then": [
+              "\"No attorneys' fees awarded; each side bears its own\""
+            ],
+            "source": {
+              "section": "132-9",
+              "subsection": "c",
+              "quote": "In any action brought pursuant to this section in which a party successfully compels the disclosure of public records"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "satisfied_online",
+        "description": "Request satisfied by records available online",
+        "after": [
+          "respond"
+        ],
+        "when": "online_only",
+        "source": {
+          "section": "132-6",
+          "subsection": "a1",
+          "quote": "A public agency or custodian may satisfy the requirements in subsection (a) of this section by making public records available online"
+        }
+      },
+      {
+        "id": "fee_dispute_mediated",
+        "description": "Fee dispute referred to the State CIO for mediation",
+        "after": [
+          "request_fee_mediation"
+        ],
+        "source": {
+          "section": "132-6.2",
+          "subsection": "b",
+          "quote": "the requester may ask the State Chief Information Officer or his designee to mediate the dispute"
+        }
+      },
+      {
+        "id": "records_released",
+        "description": "Records inspected or copies provided",
+        "after": [
+          "permit_inspection",
+          "furnish_copies",
+          "disclose_announced"
+        ],
+        "join": "any",
+        "source": {
+          "section": "132-6.2",
+          "subsection": "c",
+          "quote": "If the request is granted, the copies shall be provided as soon as reasonably possible."
+        }
+      },
+      {
+        "id": "disclosure_ordered",
+        "description": "Court orders disclosure or copying",
+        "after": [
+          "rule_on_fees"
+        ],
+        "when": "disclosure_compelled",
+        "source": {
+          "section": "132-9",
+          "subsection": "c",
+          "quote": "In any action brought pursuant to this section in which a party successfully compels the disclosure of public records"
+        }
+      },
+      {
+        "id": "no_jurisdiction",
+        "description": "Mediation not initiated in time; court lacks jurisdiction to order disclosure",
+        "after": [],
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "the court shall have jurisdiction to issue such orders if the person has complied with G.S. 7A-38.3E"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "N.C. Gen. Stat. § 7A-38.3E",
+        "role": "mediation of public records disputes, modelled as initiate_mediation through certify_mediation; the court has jurisdiction to order disclosure only if the requester has complied with it",
+        "source": {
+          "section": "132-9",
+          "subsection": "a",
+          "quote": "if the person has complied with G.S. 7A-38.3E"
+        }
+      },
+      {
+        "citation": "N.C. Gen. Stat. ch. 121, art. 1",
+        "role": "North Carolina Archives and History Act; the public records chapter is subject to it",
+        "source": {
+          "section": "132-6",
+          "subsection": "e",
+          "quote": "The application of this Chapter is subject to the provisions of Article 1 of Chapter 121 of the General Statutes, the North Carolina Archives and History Act."
+        }
+      },
+      {
+        "citation": "N.C. Gen. Stat. § 143B-431.01",
+        "role": "Department of Commerce contracts; business-project records held by Commerce or its contractor follow special disclosure rules",
+        "source": {
+          "section": "132-6",
+          "subsection": "d",
+          "quote": "an entity with which the Department contracts pursuant to G.S. 143B-431.01"
+        }
+      },
+      {
+        "citation": "N.C. Gen. Stat. ch. 131E, art. 2",
+        "role": "public hospitals; no attorneys' fees against them when a competing provider sues for competitive advantage",
+        "source": {
+          "section": "132-9",
+          "subsection": "e",
+          "quote": "the court may not assess attorneys' fees against a public hospital created under Article 2 of Chapter 131E of the General Statutes"
+        }
+      },
+      {
+        "citation": "N.C. Gen. Stat. §§ 7A-38.1, 7A-38.2",
+        "role": "mediated settlement of civil cases; governs how the public records mediation is conducted",
+        "source": {
+          "section": "7A-38.3E",
+          "subsection": "d",
+          "quote": "mediation under this section shall be conducted in accordance with the provisions for mediated settlement of civil cases in G.S. 7A-38.1 and G.S. 7A-38.2 and rules and standards adopted pursuant to those sections"
+        }
+      }
+    ],
+    "gaps": [
+      "No fixed response deadline: § 132-6(a) requires copies to be furnished \"as promptly as possible\" and § 132-6.2(c) requires custodians to respond \"as promptly as possible\", so the respond, permit_inspection and furnish_copies steps carry no timer. Nothing in these sections says that silence or delay counts as a denial; there is no deemed-denial route. Whether unreasonable delay is a denial of access for § 132-9 purposes is left to the courts.",
+      "Request form: the sections require no written request, no particular form and no statement of purpose (§ 132-6(b)); only requests for copies of computer databases may be required in writing (§ 132-6.2(c)). The requester may choose any medium the agency is capable of providing and may ask for certified or uncertified copies (§ 132-6.2(a), (b)); these elections are part of submit_request rather than separate steps.",
+      "Written denial: the only express duty to explain a denial, and to reduce the explanation to writing if asked, is in § 132-6.2(c), whose sentences follow and on their face concern requests for copies of computer databases. The model applies explain_denial and put_in_writing to every denial; for other requests the text states no explanation duty.",
+      "Inspection or copies: the response_type table sends a granted request either to permit_inspection or, when the requester asks for copies (copies_requested), to collect_fees and furnish_copies. A requester who wants to inspect and also obtain copies follows the copies path; the statute treats both as rights under § 132-6(a) and does not make them exclusive.",
+      "Grounds for denial: the response_type table covers only the grounds in these sections (business-project and qualifying-site records under § 132-6(d) and (d1), online availability under (a1), and commingled confidential information under (c), which can never justify a denial). Records made confidential by other statutes, the act's definition of public records (§ 132-1) and its other exemptions are outside these sections and not modelled; such a denial would follow the explain_denial path.",
+      "Business-project records (§ 132-6(d)): once the commitment is announced or the business decides not to proceed, the agency must disclose within 25 business days; for qualifying sites ((d1)) the same 25 business days run once the site is acquired, optioned or found unsuitable; for Department of Commerce records with discretionary incentives ((d)(4)) the period is 25 days from the date of announcement. The timer shows only the 25-business-day figure, and the statute does not state the consequence of missing it (consequence 'unstated'). Department of Commerce records for projects without incentive requests that locate in the State are never disclosed ((d)(2)). Local government records need not be disclosed until a specific location is selected. disclose_announced is shown as an exclusive alternative to going to court, although in practice the requester could do both.",
+      "Fees: inspection itself carries no fee in these sections, so permit_inspection follows respond directly while only the copies path passes through collect_fees; copies are furnished \"upon payment of any fees as may be prescribed by law\". Fee mediation by the State Chief Information Officer is an optional side route; the statute does not say whether it suspends the request or what the mediation produces, so the path ends at the referral. A voluntarily created or compiled record may carry a negotiated charge (§ 132-6.2(e)); the agency need not create or compile records, convert records to electronic form, or answer outside usual business hours (§ 132-6.2(d), (e)).",
+      "Mediation (G.S. 7A-38.3E): after filing a civil action the requester must initiate mediation by filing a request with the clerk no later than 30 days from the filing of responsive pleadings ((b)); the timer runs from responsive pleadings, which the model does not show as a step. The statute does not say what happens if the 30 days pass; the route to no_jurisdiction (consequence 'action-invalid') is an inference from § 132-9(a), which gives the court jurisdiction to issue orders only \"if the person has complied with G.S. 7A-38.3E\". Not modelled: the request form prescribed by the Administrative Office of the Courts and service by certified mail, mediator selection or appointment by the senior resident superior court judge ((c)), no costs if all parties waive before the first meeting ((e)), the outcomes the certification records (agreement, impasse, failure to attend) ((f)), tolling of time periods from the request until 30 days after the mediation concludes ((g)), and voluntary mediation before any suit ((a)), after which the requester may still sue. Under (h) the requester may seek injunctive or other relief, including production, before any scheduled mediation; the model places the hearing after the mediator's certification, although § 132-9(a) sets the action down for immediate hearing.",
+      "Court action (§ 132-9): when withholding rests on § 132-6(d), the custodian bears the burden of showing disclosure would frustrate the purpose of attracting the project ((b)). The court's ruling on disclosure (rule_on_disclosure) is the input disclosure_compelled to the attorney_fees table applied in rule_on_fees; a ruling against disclosure ends at the generated 'not disclosure compelled' end. The last attorney_fees rule (no fees when disclosure is not compelled and the action was not in bad faith or frivolous) is a negative inference: § 132-9(c) shifts fees only in an action \"in which a party successfully compels the disclosure\" and (d) only for bad-faith or frivolous actions, and no text expressly says that each side bears its own fees. Fees ordered paid personally by an employee or official who knowingly violated the Article, the advice-of-counsel bar to such orders ((c)), and the public-hospital exception ((e)) are not modelled as rules.",
+      "Fragile records may be subject to reasonable preservation restrictions (§ 132-6(f)), and an agency that holds other agencies' records only for storage, safekeeping or data processing is not their custodian (§ 132-6(a)); requests go to the agency that is the custodian. This is the North Carolina state process; it covers counties, cities and other North Carolina public agencies, and local portals or forms are not part of the statute."
+    ]
+  }
+}

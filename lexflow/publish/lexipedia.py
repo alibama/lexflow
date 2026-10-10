@@ -64,7 +64,7 @@ def render_state_model(con, state: str, question: str) -> str | None:
     facts = m.get("facts") or {}
     L = [f"====== {esc(m['title'] or q.title)} ======", "",
          f"**{S.NAME[state]} · {q.title}** · state model "
-         + {"reviewed": "checked by Claude", "agreed": "two local models agree", "single": "one local model"}.get(
+         + {"reviewed": "checked by Claude", "agreed": "two independent extractions agree", "single": "one extraction (unreviewed)"}.get(
              m["tier"], m["tier"]) + f" · quality {m['quality']:.2f}", "", NOTE, ""]
     if law.get("citation"):
         L += [f"**Governing law:** [[{law['url']}|{esc(law['citation'])}]]" + (f" — {esc(law['heading'])}" if law.get("heading") else ""), ""]
@@ -81,6 +81,16 @@ def render_state_model(con, state: str, question: str) -> str | None:
         L += _table(d) + [""]
     if metrics.get("gaps"):
         L += ["===== What the text leaves open =====", ""] + [f"  * {esc(g)}" for g in metrics["gaps"]] + [""]
+    if m.get("cases"):
+        L += ["===== Court decisions citing this law =====", "",
+              "//Found with [[https://www.courtlistener.com|CourtListener]] (Free Law Project): opinions in the state's "
+              "appellate courts whose text cites these sections. Listed for research; not every citing case "
+              "construes the section.//", ""]
+        for c in m["cases"][:20]:
+            cite = f", {esc(c['citation'])}" if c.get("citation") else ""
+            L.append(f"  * [[{c['url']}|{esc(c['case_name'])}]] ({esc(c.get('court') or '')}, "
+                     f"{esc((c.get('date_filed') or '')[:4])}{cite}) — cites § {esc(c['section'])}")
+        L.append("")
     sections = metrics.get("sections") or []
     L += ["===== Checks =====", "",
           f"  * Quotes checked word for word: {metrics.get('quotes_checked')} ({metrics.get('quote_misses')} not exact)",

@@ -687,7 +687,7 @@ function decisionTable(d) {
 async function viewBenchmark() {
   const body = h("div");
   rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Local models vs Claude"),
-    h("p", {}, "Each strategy turns statute text into process facts with a small local model; equivalence compares the result with Claude's checked model of the same text (0.5 × step F1 + 0.2 × actors + 0.2 × deadlines + 0.1 × duty type). A run whose quotes are not word for word scores 0."))), body);
+    h("p", {}, "Each strategy turns statute text into process facts on this machine: the stack_* strategies use the learned selector, trained on Claude's references for the other states (a state never trains on itself); the others ask a small local model. Equivalence compares the result with Claude's checked model of the same text (0.5 × step F1 + 0.2 × actors + 0.2 × deadlines + 0.1 × duty type). A run whose quotes are not word for word scores 0."))), body);
   async function load() {
     const d = await api("/api/benchmark");
     if (!d.rows.length) {
@@ -702,11 +702,16 @@ async function viewBenchmark() {
       covered: rs.length, secs: rs.reduce((a, r) => a + (r.seconds || 0), 0) / rs.length }))
       .sort((a, b) => b.mean - a.mean);
     const max = 1, barW = 360;
+    // the realistic target is how far two Claude drafts agree; perfect selection bounds the selector strategies
+    const ceiling = d.ceiling?.claude_vs_claude?.mean ?? d.target;
+    const perfect = d.ceiling?.oracle?.wide;
+    const mark = (v, dashed) => h("span", { style: `position:absolute;left:${v * 100}%;top:-3px;bottom:-3px;border-left:1px ${dashed ? "dashed" : "solid"} var(--ink-2)` });
     const bars = h("div", { class: "funnel" }, means.map((m) => h("div", { class: "funnel-row", style: "grid-template-columns: 260px minmax(0,1fr) 60px", title: `${m.k}: mean ${fx(m.mean)} over ${d.cases.length} cases (${m.covered} run)` },
       h("span", { class: "lab mono", style: "font-size:12px" }, m.k),
       h("span", { class: "track" }, h("span", { class: "fill", style: `width:${(m.mean / max) * 100}%` }),
-        h("span", { style: `position:absolute;left:${d.target * 100}%;top:-3px;bottom:-3px;border-left:1px solid var(--ink-2)` })),
+        mark(ceiling, false), perfect != null ? mark(perfect, true) : null),
       h("span", { class: "num", style: "text-align:right" }, fx(m.mean)))));
+    const curve = d.learning_curve?.curve || [];
     const seq = (v) => { const bins = [0.35, 0.5, 0.65, 0.75]; let i = 0; while (i < bins.length && v >= bins[i]) i++; return [css(`--seq-${i + 1}`), i >= 2]; };
     const dark = () => (document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark";
     const heat = h("table", { class: "data" },
@@ -722,7 +727,9 @@ async function viewBenchmark() {
       })))));
     rc(body,
       h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Mean equivalence by strategy"),
-        h("p", {}, `Averaged over ${d.cases.length} cases (a case not run counts 0). The line marks the ${fx(d.target)} target. ${fmtInt(d.runs)} runs so far.`))), bars),
+        h("p", {}, `Averaged over ${d.cases.length} cases (a case not run counts 0). ${d.ceiling ? `The solid line is how far two independent Claude drafts agree (${fx(ceiling)}), the realistic target; the dashed line is what perfect sentence selection would score (${fx(perfect)}).` : `The line marks the ${fx(d.target)} target.`} ${fmtInt(d.runs)} runs so far.`))), bars,
+        curve.length ? h("p", { class: "muted", style: "margin:12px 16px 16px" }, `More references, better selector (${d.learning_curve.vectors}): `
+          + curve.map((p) => `${p.training_states} states ${fx(p.mean)}`).join(" · ")) : null),
       h("div", { class: "spacer" }),
       h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "By case"),
         h("p", {}, "Darker is closer to Claude. Hover a cell for steps, F1, deadlines, time and any quote problem."))),

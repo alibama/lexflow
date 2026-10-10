@@ -1149,6 +1149,16 @@ Decision table (DMN), hit policy FIRST.
   * A corrected filing delivered within 60 days of the rejection goes back to the Mayor's review without a fee (§ 29-102.06%%(c)%%); when the 60 days pass first, the fee-free right lapses and the model ends at filing_refused, since a later corrected filing is a new delivery that pays the applicable fee. The statute does not limit the number of corrections, so the model lets the review-and-correct loop repeat. BPMN restarts the 60-day timer on each pass through the loop, but the statute runs the fee-free period only from the initial rejection; on a later rejection only the time left of the original 60 days is fee-free.
   * After a refusal the model offers court review (§ 29-102.06(d)) and fee-free correction (§ 29-102.06%%(c)%%) as alternatives, although the statute does not make them exclusive: a founder may correct within 60 days while a petition is pending. A correction after the court takes other action is not drawn.
 
+===== Court decisions citing this law =====
+
+//Found with [[https://www.courtlistener.com|CourtListener]] (Free Law Project): opinions in the state's appellate courts whose text cites these sections. Listed for research; not every citing case construes the section.//
+
+  * [[https://www.courtlistener.com/opinion/1533386/community-credit-union-services-inc-v-federal-express-services-corp/|Community Credit Union Services, Inc. v. Federal Express Services Corp.]] (District of Columbia Court of Appeals, 1987, 534 A.2d 331; 1987 D.C. App. LEXIS 488; 1987 WL 20710) — cites § 29-506
+  * [[https://www.courtlistener.com/opinion/2329534/save-immaculatadunblane-inc-v-immaculata-preparatory-school-inc/|Save Immaculata/Dunblane, Inc. v. Immaculata Preparatory School, Inc.]] (District of Columbia Court of Appeals, 1986, 514 A.2d 1152; 35 Educ. L. Rep. 212; 1986 D.C. App. LEXIS 423) — cites § 29-506
+  * [[https://www.courtlistener.com/opinion/4594901/hvac-specialist-inc-v-dominion-mechanical-contractors-inc/|HVAC Specialist, Inc. v. Dominion Mechanical Contractors, Inc.]] (District of Columbia Court of Appeals, 2019, 201 A.3d 1205) — cites § 47-2851.02
+  * [[https://www.courtlistener.com/opinion/4768226/dc-dcra-v-aa/|DC DCRA v. A&A]] (District of Columbia Court of Appeals, 2020) — cites § 47-2851.02
+  * [[https://www.courtlistener.com/opinion/2107654/charlery-v-district-of-columbia-department-of-consumer-regulatory/|Charlery v. District of Columbia Department of Consumer & Regulatory Affairs]] (District of Columbia Court of Appeals, 2009, 970 A.2d 280; 2009 D.C. App. LEXIS 72; 2009 WL 1150999) — cites § 47-2851.02
+
 ===== Checks =====
 
   * Quotes checked word for word: 38 (0 not exact)
@@ -1158,6 +1168,6 @@ Decision table (DMN), hit policy FIRST.
 
 ===== Local answers =====
 
-  * [[lexflow:dc:washington_dc|City of Washington Dc]]
+  * [[lexflow:dc:washington_dc|City of Washington DC]]
 
 ← [[lexflow:start|lexflow models]]

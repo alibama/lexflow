@@ -221,7 +221,7 @@ class SectionText(BaseModel):
 
 class Provenance(BaseModel):
     generator: str = "lexflow"
-    method: Literal["gold-manual", "llm-extraction", "assistant-edited"] = "gold-manual"
+    method: Literal["gold-manual", "llm-extraction", "learned-selector", "assistant-edited"] = "gold-manual"
     model: Optional[str] = None
     prompt_hash: Optional[str] = None
     dataset_rows: list[str] = Field(default_factory=list)

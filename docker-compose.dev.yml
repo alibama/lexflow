@@ -8,7 +8,9 @@ services:
       - ./data/raw:/data/raw
       - ./lexflow:/app/lexflow
       - ./curated:/app/curated
+      - ./curated_alt:/app/curated_alt
       - ./dashboard:/app/dashboard
       - ./fixtures:/app/fixtures
       - ./tests:/app/tests
       - ./docs:/app/docs
+      - ./scripts:/app/scripts

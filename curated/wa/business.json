@@ -1,0 +1,1116 @@
+{
+ "state": "wa",
+ "question": "business",
+ "sections": [
+  "RCW 25.15.071",
+  "RCW 23.95.200",
+  "RCW 23.95.225",
+  "RCW 23.95.260",
+  "RCW 24.03A.090",
+  "RCW 18.100.050",
+  "RCW 25.15.046",
+  "RCW 23B.02.010",
+  "RCW 25.10.201",
+  "RCW 25.10.321",
+  "RCW 19.80.010",
+  "RCW 19.80.005",
+  "RCW 25.05.055",
+  "RCW 25.05.500",
+  "RCW 19.02.070",
+  "RCW 19.02.020",
+  "RCW 23.95.210",
+  "RCW 19.80.045"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in Washington (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "071",
+   "subsection": "1",
+   "quote": "In order to form a limited liability company, one or more persons must execute a certificate of formation."
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Person executing the certificate of formation (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "071",
+     "subsection": "1.f",
+     "quote": "The name and address of each person executing the certificate of formation."
+    }
+   },
+   {
+    "id": "secretary",
+    "name": "Secretary of state",
+    "kind": "public-body",
+    "source": {
+     "section": "225",
+     "subsection": "1",
+     "quote": "The secretary of state shall file an entity filing that satisfies this chapter."
+    }
+   },
+   {
+    "id": "department",
+    "name": "Department of revenue (business licensing service)",
+    "kind": "other-government",
+    "source": {
+     "section": "020",
+     "subsection": "3",
+     "quote": "\"Business licensing service\" means the business registration and licensing service established by this chapter and located in and under the administrative control of the department of revenue."
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company",
+    "kind": "private-party",
+    "source": {
+     "section": "010",
+     "subsection": "3",
+     "quote": "Foreign or domestic limited liability company: The registration must set forth the limited liability company name as filed with the office of the secretary of state."
+    }
+   },
+   {
+    "id": "regulatory_agency",
+    "name": "Regulatory agency with authority over the license",
+    "kind": "other-government",
+    "source": {
+     "section": "020",
+     "subsection": "11",
+     "quote": "\"Regulatory agency\" means any state agency, board, commission, division, or local government that regulates one or more professions, occupations, industries, businesses, or activities."
+    }
+   },
+   {
+    "id": "superior_court",
+    "name": "Superior court",
+    "kind": "court",
+    "source": {
+     "section": "225",
+     "subsection": "4",
+     "quote": "the person that submitted the entity filing may petition the superior court to compel its filing"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "execute_certificate",
+    "actor": "organizer",
+    "action": "Execute certificate of formation",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [],
+    "source": {
+     "section": "071",
+     "subsection": "1",
+     "quote": "one or more persons must execute a certificate of formation"
+    }
+   },
+   {
+    "id": "deliver_certificate",
+    "actor": "organizer",
+    "action": "Deliver certificate to secretary of state",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "execute_certificate"
+    ],
+    "recipient": "secretary",
+    "source": {
+     "section": "071",
+     "subsection": "1",
+     "quote": "The certificate of formation must be delivered to the office of the secretary of state for filing in accordance with Article 2 of chapter 23.95 RCW"
+    }
+   },
+   {
+    "id": "pay_filing_fee",
+    "actor": "organizer",
+    "action": "Pay filing fee set by rule",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_certificate"
+    ],
+    "recipient": "secretary",
+    "source": {
+     "section": "200",
+     "subsection": "2",
+     "quote": "When an entity filing is delivered to the secretary of state for filing, any fee required under this chapter and any fee, interest, or penalty required to be paid under this chapter or law other than this chapter must be paid in a manner permitted by the secretary of state or by that law."
+    }
+   },
+   {
+    "id": "document_receipt",
+    "actor": "secretary",
+    "action": "Document date the filing was received",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "pay_filing_fee"
+    ],
+    "source": {
+     "section": "225",
+     "subsection": "2",
+     "quote": "The secretary of state shall document the date of receipt of an entity filing."
+    }
+   },
+   {
+    "id": "review_filing",
+    "actor": "secretary",
+    "action": "Check certificate meets filing requirements",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "document_receipt"
+    ],
+    "decision": "filing_complies",
+    "source": {
+     "section": "200",
+     "subsection": "1",
+     "quote": "To be filed by the secretary of state pursuant to this chapter, an entity filing must be received by the secretary of state, comply with this chapter, and satisfy the following"
+    }
+   },
+   {
+    "id": "file_certificate",
+    "actor": "secretary",
+    "action": "File the certificate of formation",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_filing"
+    ],
+    "condition": "filing_ok",
+    "source": {
+     "section": "225",
+     "subsection": "1",
+     "quote": "The secretary of state shall file an entity filing that satisfies this chapter. The duty of the secretary of state under this section is ministerial."
+    }
+   },
+   {
+    "id": "deliver_filed_copy",
+    "actor": "secretary",
+    "action": "Deliver filed copy with acknowledgment",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "file_certificate"
+    ],
+    "recipient": "organizer",
+    "source": {
+     "section": "225",
+     "subsection": "2",
+     "quote": "After processing and accepting an entity filing, the secretary of state shall deliver to the person that submitted the filing a copy of the filed record with an acknowledgment of the date and time of processing."
+    }
+   },
+   {
+    "id": "refuse_filing",
+    "actor": "secretary",
+    "action": "Return filing or notify refusal; explain in record",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "review_filing"
+    ],
+    "condition": "filing_refused",
+    "recipient": "organizer",
+    "deadline": {
+     "amount": 15,
+     "unit": "business_days",
+     "anchor": "after the filing is received",
+     "consequence": "unstated",
+     "source": {
+      "section": "225",
+      "subsection": "3",
+      "quote": "not later than fifteen business days after the filing is received"
+     }
+    },
+    "source": {
+     "section": "225",
+     "subsection": "3",
+     "quote": "Return the entity filing or notify the person that submitted the filing of the refusal; and (b) Provide a brief explanation in a record of the reason for the refusal."
+    }
+   },
+   {
+    "id": "petition_court",
+    "actor": "organizer",
+    "action": "Petition court, attaching filing and refusal explanation",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "refuse_filing"
+    ],
+    "recipient": "superior_court",
+    "source": {
+     "section": "225",
+     "subsection": "4",
+     "quote": "the person that submitted the entity filing may petition the superior court to compel its filing. The entity filing and the explanation of the secretary of state of the refusal to file must be attached to the petition."
+    }
+   },
+   {
+    "id": "register_trade_name",
+    "actor": "llc",
+    "action": "Register trade name with department",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "deliver_filed_copy"
+    ],
+    "condition": "uses_trade_name",
+    "recipient": "department",
+    "source": {
+     "section": "010",
+     "quote": "Each person or persons who carries on, conducts, or transacts business in this state under any trade name must register that trade name with the department as provided in this section."
+    }
+   },
+   {
+    "id": "apply_business_license",
+    "actor": "llc",
+    "action": "Submit business license application to department",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "deliver_filed_copy",
+     "register_trade_name"
+    ],
+    "join": "any",
+    "condition": "requires_state_licenses",
+    "recipient": "department",
+    "source": {
+     "section": "070",
+     "subsection": "1",
+     "quote": "Any person requiring licenses that have been incorporated into the system must submit a business license application to the department requesting the issuance of the licenses."
+    }
+   },
+   {
+    "id": "pay_license_fees",
+    "actor": "llc",
+    "action": "Include license fees and handling fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "apply_business_license"
+    ],
+    "recipient": "department",
+    "source": {
+     "section": "070",
+     "subsection": "2",
+     "quote": "The applicant must include with the application the sum of all fees and deposits required for the requested individual license endorsements as well as the handling fee established by the department under the authority of RCW 19.02.075 ."
+    }
+   },
+   {
+    "id": "notify_agency",
+    "actor": "department",
+    "action": "Notify regulatory agency of license application",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "pay_license_fees"
+    ],
+    "condition": "agency_review_required",
+    "recipient": "regulatory_agency",
+    "source": {
+     "section": "070",
+     "subsection": "4",
+     "quote": "Upon receipt of the application and proper fee payment for any license for which issuance is subject to regulatory agency action under subsection (3) of this section, the department must immediately notify the regulatory agency with authority to approve issuance or renewal of the license requested by the applicant."
+    }
+   },
+   {
+    "id": "agency_advises",
+    "actor": "regulatory_agency",
+    "action": "Advise department: approve, deny, or pending",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "notify_agency"
+    ],
+    "recipient": "department",
+    "decision": "agency_response",
+    "source": {
+     "section": "070",
+     "subsection": "4",
+     "quote": "Each regulatory agency must advise the department within a reasonable time after receiving the notice"
+    }
+   },
+   {
+    "id": "issue_business_license",
+    "actor": "department",
+    "action": "Issue business license with approved endorsements",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "pay_license_fees",
+     "agency_advises"
+    ],
+    "join": "any",
+    "recipient": "llc",
+    "source": {
+     "section": "070",
+     "subsection": "5",
+     "quote": "The department must issue a business license endorsed for all the approved licenses to the applicant and advise the applicant of the status of other requested licenses."
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "filing_complies",
+    "question": "Does the certificate of formation satisfy the filing requirements?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "name_stated",
+      "label": "Company name stated (RCW 25.15.071(1)(a); name rules in Article 3 of chapter 23.95 RCW)",
+      "type": "boolean"
+     },
+     {
+      "name": "registered_agent",
+      "label": "Registered agent's name and address stated (RCW 25.15.071(1)(b))",
+      "type": "boolean"
+     },
+     {
+      "name": "principal_office",
+      "label": "Principal office address stated (RCW 25.15.071(1)(c))",
+      "type": "boolean"
+     },
+     {
+      "name": "executors_named",
+      "label": "Name and address of each person executing it stated (RCW 25.15.071(1)(f))",
+      "type": "boolean"
+     },
+     {
+      "name": "properly_executed",
+      "label": "Executed by or on behalf of an authorized person (RCW 23.95.200(1)(d))",
+      "type": "boolean"
+     },
+     {
+      "name": "signers_named",
+      "label": "Name and capacity of each individual who executed it stated (RCW 23.95.200(1)(e))",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "Required fees paid (RCW 23.95.200(2))",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "filing_ok",
+      "label": "Secretary of state files the certificate",
+      "type": "boolean"
+     },
+     {
+      "name": "filing_refused",
+      "label": "Secretary of state refuses to file",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "071",
+       "subsection": "1.a",
+       "quote": "The name of the limited liability company"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "071",
+       "subsection": "1.b",
+       "quote": "The name and address of the registered agent for service of process required to be maintained by RCW 25.15.021 and Article 4 of chapter 23.95 RCW"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "071",
+       "subsection": "1.c",
+       "quote": "The address of the principal office of the limited liability company"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "071",
+       "subsection": "1.f",
+       "quote": "The name and address of each person executing the certificate of formation."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "200",
+       "subsection": "1.d",
+       "quote": "The entity filing must be executed by or on behalf of a person authorized or required under this chapter or the entity's organic law to execute the filing."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "200",
+       "subsection": "1.e",
+       "quote": "The entity filing must state the name and capacity, if any, of each individual who executed it, on behalf of either the individual or the person authorized or required to execute the filing"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "200",
+       "subsection": "2",
+       "quote": "any fee required under this chapter and any fee, interest, or penalty required to be paid under this chapter or law other than this chapter must be paid"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true"
+      ],
+      "then": [
+       "true",
+       "false"
+      ],
+      "source": {
+       "section": "225",
+       "subsection": "1",
+       "quote": "The secretary of state shall file an entity filing that satisfies this chapter."
+      }
+     }
+    ]
+   },
+   {
+    "id": "agency_response",
+    "question": "How does the regulatory agency advise the department on the requested license?",
+    "hit_policy": "UNIQUE",
+    "inputs": [
+     {
+      "name": "review_complete",
+      "label": "Agency has finished its prelicensing investigation, inspection, testing or other review (RCW 19.02.070(3))",
+      "type": "boolean"
+     },
+     {
+      "name": "requirements_met",
+      "label": "Applicant meets the agency's requirements for the license",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "agency_advice",
+      "label": "What the agency advises the department",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-"
+      ],
+      "then": [
+       "\"pending\""
+      ],
+      "source": {
+       "section": "070",
+       "subsection": "4.c",
+       "quote": "that the application is pending"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true"
+      ],
+      "then": [
+       "\"approved; the agency advises the applicant of any specific conditions\""
+      ],
+      "source": {
+       "section": "070",
+       "subsection": "4.a",
+       "quote": "That the agency approves the issuance of the requested license and will advise the applicant of any specific conditions required for issuing the license"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "false"
+      ],
+      "then": [
+       "\"denied; the agency gives the applicant reasons for the denial\""
+      ],
+      "source": {
+       "section": "070",
+       "subsection": "4.b",
+       "quote": "that the agency denies the issuance of the license and gives the applicant reasons for the denial"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Nonprofit corporation (chapter 24.03A RCW); incorporators must be individuals at least eighteen years old\"",
+       "\"Articles of incorporation, delivered to the secretary of state for filing\"",
+       "\"Set by secretary of state rule under RCW 23.95.260; no amount is stated in the RCW\""
+      ],
+      "source": {
+       "section": "090",
+       "quote": "One or more individuals may act as the incorporators of a nonprofit corporation by delivering articles of incorporation to the secretary of state for filing."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Professional service corporation (Title 23B RCW and chapter 18.100 RCW) or professional limited liability company (RCW 25.15.046); all owners must be licensed or otherwise legally authorized to render the same professional services in Washington, and one or more of them must be the incorporators (RCW 18.100.050(1)); architects, engineers and listed health care professionals have special rules (RCW 18.100.050(2), (3), (5))\"",
+       "\"Articles of incorporation (professional service corporation) or certificate of formation (professional LLC), delivered to the secretary of state for filing\"",
+       "\"Set by secretary of state rule under RCW 23.95.260; no amount is stated in the RCW\""
+      ],
+      "source": {
+       "section": "050",
+       "subsection": "1",
+       "quote": "An individual or group of individuals duly licensed or otherwise legally authorized to render the same professional services within this state may organize and become a shareholder or shareholders of a professional corporation for pecuniary profit under the provisions of Title 23B RCW for the purpose of rendering professional service."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Stock corporation (Title 23B RCW)\"",
+       "\"Articles of incorporation, delivered to the secretary of state for filing\"",
+       "\"Set by secretary of state rule under RCW 23.95.260; no amount is stated in the RCW\""
+      ],
+      "source": {
+       "section": "010",
+       "quote": "One or more persons may act as the incorporator or incorporators of a corporation by delivering articles of incorporation to the secretary of state for filing."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Limited partnership (limited partners are not personally liable for its obligations, even if they take part in management, RCW 25.10.321; a general partner is shielded only if the certificate elects limited liability limited partnership status, RCW 25.10.201(1)(d))\"",
+       "\"Certificate of limited partnership, delivered to the secretary of state for filing\"",
+       "\"Set by secretary of state rule under RCW 23.95.260; no amount is stated in the RCW\""
+      ],
+      "source": {
+       "section": "201",
+       "subsection": "1",
+       "quote": "In order for a limited partnership to be formed, a certificate of limited partnership must be delivered to the secretary of state for filing in accordance with Article 2 of chapter 23.95 RCW."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Certificate of formation, delivered to the secretary of state for filing\"",
+       "\"Set by secretary of state rule under RCW 23.95.260; no amount is stated in the RCW\""
+      ],
+      "source": {
+       "section": "071",
+       "subsection": "1",
+       "quote": "In order to form a limited liability company, one or more persons must execute a certificate of formation."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "1",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; a person who does business under a trade name (a name that is not, or does not include, the owner's true and real name, or that suggests other parties, such as 'company' or 'and sons') must register it with the department of revenue\"",
+       "\"None to form; trade name registration fee set by department of revenue rule, not more than the actual cost of administering chapter 19.80 RCW (RCW 19.80.045)\""
+      ],
+      "source": {
+       "section": "010",
+       "quote": "Each person or persons who carries on, conducts, or transacts business in this state under any trade name must register that trade name with the department as provided in this section."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: two or more co-owners carrying on a business for profit form a partnership. A partnership doing business under a trade name must register it with the department of revenue. Optionally, the partnership may become a limited liability partnership by approving the terms by the vote needed to amend the partnership agreement and delivering an application to the secretary of state for filing (RCW 25.05.500(1)-(2))\"",
+       "\"None to form; trade name registration fee set by department of revenue rule, not more than the actual cost of administering chapter 19.80 RCW (RCW 19.80.045); optional LLP application fee set by the secretary of state under RCW 23.95.260 (RCW 25.05.500(3))\""
+      ],
+      "source": {
+       "section": "055",
+       "subsection": "1",
+       "quote": "the association of two or more persons to carry on as co-owners a business for profit forms a partnership, whether or not the persons intend to form a partnership"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_formed",
+    "description": "The LLC is formed; no state business license step follows",
+    "after": [
+     "deliver_filed_copy",
+     "register_trade_name"
+    ],
+    "join": "any",
+    "source": {
+     "section": "071",
+     "subsection": "2.a",
+     "quote": "Unless a delayed effective date is specified in accordance with RCW 23.95.210 , a limited liability company is formed when its certificate of formation is filed by the secretary of state."
+    }
+   },
+   {
+    "id": "llc_licensed",
+    "description": "The LLC holds a business license endorsed for its approved licenses",
+    "after": [
+     "issue_business_license"
+    ],
+    "source": {
+     "section": "070",
+     "subsection": "5",
+     "quote": "The department must issue a business license endorsed for all the approved licenses to the applicant"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "RCW 23.95.260",
+    "role": "filing fees for entity filings are set by secretary of state rule, not by statute",
+    "source": {
+     "section": "260",
+     "subsection": "1.a.i",
+     "quote": "Filing entity filings"
+    }
+   },
+   {
+    "citation": "RCW 23.95.260",
+    "role": "fee schedule capped at the amounts in effect on January 1, 2016",
+    "source": {
+     "section": "260",
+     "subsection": "4",
+     "quote": "The amounts of fees, charges, and penalties established under this section may be no greater than the amounts applicable to entity filings, penalties, and other charges in effect on January 1, 2016."
+    }
+   },
+   {
+    "citation": "RCW 23.95.260",
+    "role": "annual license or renewal fees collected by the secretary of state",
+    "source": {
+     "section": "260",
+     "subsection": "1.b.ii",
+     "quote": "The secretary of state must collect the annual license or renewal fees established by rule."
+    }
+   },
+   {
+    "citation": "RCW 23.95.210",
+    "role": "an entity filing may take effect at a delayed date, no more than ninety days after filing",
+    "source": {
+     "section": "210",
+     "subsection": "2",
+     "quote": "at a specified delayed effective date and time, which may not be more than ninety days after the date of filing"
+    }
+   },
+   {
+    "citation": "RCW 25.15.071",
+    "role": "the secretary of state's filing is conclusive proof that conditions precedent to formation were met",
+    "source": {
+     "section": "071",
+     "subsection": "2.b",
+     "quote": "The secretary of state's filing of the certificate of formation is conclusive proof that the persons executing the certificate satisfied all conditions precedent to the formation."
+    }
+   },
+   {
+    "citation": "RCW 25.15.071",
+    "role": "the LLC is a separate legal entity with perpetual existence",
+    "source": {
+     "section": "071",
+     "subsection": "3",
+     "quote": "A limited liability company formed under this chapter is a separate legal entity and has a perpetual existence."
+    }
+   },
+   {
+    "citation": "RCW 23.95.235",
+    "role": "certificate of existence on request, after formation",
+    "source": {
+     "section": "071",
+     "subsection": "4",
+     "quote": "Any person may apply to the secretary of state under RCW 23.95.235 to furnish a certificate of existence for a domestic limited liability company"
+    }
+   },
+   {
+    "citation": "RCW 23.95.225",
+    "role": "filing or refusal does not validate the filing or its contents",
+    "source": {
+     "section": "225",
+     "subsection": "5",
+     "quote": "Create a presumption that the information contained in the filing is correct or incorrect."
+    }
+   },
+   {
+    "citation": "RCW 23.95.225",
+    "role": "the court may decide a petition to compel filing in a summary proceeding",
+    "source": {
+     "section": "225",
+     "subsection": "4",
+     "quote": "The court may decide the matter in a summary proceeding."
+    }
+   },
+   {
+    "citation": "RCW 23.95.200",
+    "role": "form requirements for any entity filing (English, tangible medium unless electronic delivery permitted)",
+    "source": {
+     "section": "200",
+     "subsection": "1.c",
+     "quote": "The words in the entity filing must be in English"
+    }
+   },
+   {
+    "citation": "RCW 18.100.050",
+    "role": "a professional service corporation may instead be a nonprofit nonstock corporation",
+    "source": {
+     "section": "050",
+     "subsection": "4",
+     "quote": "Professionals may organize a nonprofit nonstock corporation under this chapter and chapter 24.03A RCW to provide professional services"
+    }
+   },
+   {
+    "citation": "RCW 25.15.046",
+    "role": "professional limited liability company, formed under the LLC Act and subject to chapter 18.100 RCW",
+    "source": {
+     "section": "046",
+     "subsection": "1",
+     "quote": "A person or group of persons duly licensed or otherwise legally authorized to render the same professional services within this state may form and become a member or members of a professional limited liability company under the provisions of this chapter for the purposes of rendering professional service."
+    }
+   },
+   {
+    "citation": "RCW 25.15.046",
+    "role": "PLLC members lose the shield up to the cover of missing professional liability insurance of at least one million dollars",
+    "source": {
+     "section": "046",
+     "subsection": "3",
+     "quote": "then the limited liability company's members are personally liable to the extent that, had the insurance, bond, or other evidence of responsibility been maintained, it would have covered the liability in question"
+    }
+   },
+   {
+    "citation": "RCW 24.03A.090",
+    "role": "nonprofit incorporators must be adults",
+    "source": {
+     "section": "090",
+     "quote": "Individuals acting as incorporators must be at least eighteen years old."
+    }
+   },
+   {
+    "citation": "RCW 25.10.201",
+    "role": "a limited partnership is formed when the secretary of state files its certificate",
+    "source": {
+     "section": "201",
+     "subsection": "3",
+     "quote": "a limited partnership is formed when the secretary of state files the certificate of limited partnership"
+    }
+   },
+   {
+    "citation": "RCW 25.10.201",
+    "role": "the certificate states whether the partnership is a limited liability limited partnership",
+    "source": {
+     "section": "201",
+     "subsection": "1.d",
+     "quote": "Whether the limited partnership is a limited liability limited partnership"
+    }
+   },
+   {
+    "citation": "RCW 25.10.321",
+    "role": "limited partners are shielded even if they participate in management",
+    "source": {
+     "section": "321",
+     "quote": "A limited partner is not personally liable, directly or indirectly, by way of contribution or otherwise, for an obligation of the limited partnership solely by reason of being a limited partner, even if the limited partner participates in the management and control of the limited partnership."
+    }
+   },
+   {
+    "citation": "RCW 25.05.500",
+    "role": "a partnership becomes an LLP by approving the terms and delivering an application to the secretary of state",
+    "source": {
+     "section": "500",
+     "subsection": "1",
+     "quote": "by delivering to the secretary of state for filing the applications required by subsection (2) of this section"
+    }
+   },
+   {
+    "citation": "RCW 25.05.500",
+    "role": "LLP application fee set by the secretary of state",
+    "source": {
+     "section": "500",
+     "subsection": "3",
+     "quote": "The application must be accompanied by a fee for each partnership as established by the secretary of state under RCW 23.95.260 ."
+    }
+   },
+   {
+    "citation": "RCW 25.05.500",
+    "role": "the secretary of state must register any partnership that submits a completed application with the fee",
+    "source": {
+     "section": "500",
+     "subsection": "4",
+     "quote": "The secretary of state must register as a limited liability partnership any partnership that submits a completed application with the required fee."
+    }
+   },
+   {
+    "citation": "RCW 19.80.010",
+    "role": "a sole proprietor's or general partnership's trade name registration gives each owner's true and real name and address",
+    "source": {
+     "section": "010",
+     "subsection": "1",
+     "quote": "Sole proprietorship or general partnership: The registration must set forth the true and real name or names of each person conducting the same"
+    }
+   },
+   {
+    "citation": "RCW 19.80.005",
+    "role": "what counts as a trade name (a name that is not, or does not include, the true and real name of all owners, or that suggests other parties)",
+    "source": {
+     "section": "005",
+     "subsection": "4",
+     "quote": "Is not, or does not include, the true and real name of all persons conducting the business"
+    }
+   },
+   {
+    "citation": "RCW 19.02.070",
+    "role": "licenses needing a regulatory agency's investigation, inspection or testing stay with that agency",
+    "source": {
+     "section": "070",
+     "subsection": "3",
+     "quote": "the authority for approving issuance and renewal of any requested license that requires a prelicensing or renewal investigation, inspection, testing, or other judgmental review by the regulatory agency otherwise legally authorized to issue the license must remain with that agency"
+    }
+   },
+   {
+    "citation": "RCW 19.80.045",
+    "role": "trade name fees are set by department of revenue rule, capped at the cost of administering chapter 19.80 RCW",
+    "source": {
+     "section": "045",
+     "quote": "Fees may not exceed the actual cost of administering this chapter."
+    }
+   },
+   {
+    "citation": "RCW 19.80.005",
+    "role": "filed names of domestic corporations and limited partnerships count as true and real names (the list has no LLC entry)",
+    "source": {
+     "section": "005",
+     "subsection": "5.c",
+     "quote": "The registered corporate name of a domestic corporation as filed with the secretary of state"
+    }
+   },
+   {
+    "citation": "RCW 19.02.070",
+    "role": "the business licensing service issues directly the licenses that need no agency approval",
+    "source": {
+     "section": "070",
+     "subsection": "3",
+     "quote": "The business licensing service has the authority to issue those licenses for which proper fee payment and a completed application form have been received and for which no prelicensing or renewal approval action is required by the regulatory agency."
+    }
+   },
+   {
+    "citation": "RCW 19.02.020",
+    "role": "'department' in chapter 19.02 RCW means the department of revenue",
+    "source": {
+     "section": "020",
+     "subsection": "4",
+     "quote": "\"Department\" means the department of revenue."
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step (certificate of formation under RCW 25.15.071, filed under Article 2 of chapter 23.95 RCW). The other filed structures follow the same Article 2 filing rules (RCW 23.95.200, 23.95.225): a corporation or nonprofit corporation delivers articles of incorporation (RCW 23B.02.010, RCW 24.03A.090), a limited partnership is formed when the secretary of state files its certificate (RCW 25.10.201(3)), and the secretary of state must register an LLP that submits a completed application with the fee (RCW 25.05.500(4)). Their content checks are not modelled.",
+   "No filing fee amount appears in the RCW: the secretary of state sets entity filing fees by rule (RCW 23.95.260, chapter 34.05 RCW), capped at the January 1, 2016 amounts, and the department of revenue sets trade name fees by rule, which may not exceed the actual cost of administering chapter 19.80 RCW (RCW 19.80.045). The amounts are in the Washington Administrative Code, which is not in the corpus.",
+   "Washington issues no separate certificate of organization: the LLC is formed when the secretary of state files the certificate of formation (RCW 25.15.071(2)(a)), and the secretary of state then delivers a copy of the filed record with an acknowledgment (RCW 23.95.225(2)). The filed copy is modelled as that delivery; a certificate of existence is available on request (RCW 23.95.235).",
+   "The refusal deadline (fifteen business days after receipt, RCW 23.95.225(3)) runs from the date of receipt that the secretary of state must document (RCW 23.95.225(2)); the text gives no consequence for missing it, so it is marked 'unstated'. The remedy for a refusal is a petition to the superior court, with the filing and the secretary of state's explanation of the refusal attached (RCW 23.95.225(4)); the court's decision is not modelled.",
+   "The filing checks in filing_complies cover the certificate's required contents (RCW 25.15.071(1)(a)-(c), (f)) and the general execution, signer and fee rules (RCW 23.95.200(1)(d)-(e), (2)). Optional contents ((1)(d) dissolution date, (1)(e) other matters), the English-language and delivery-medium rules (RCW 23.95.200(1)(b)-(c)), and the name requirements of Article 3 of chapter 23.95 RCW (RCW 23.95.305) are not checked separately.",
+   "After filing, a company doing business under a trade name must register it with the department of revenue (RCW 19.80.010), and a company requiring licenses incorporated into the system must apply for a business license (RCW 19.02.070(1)). Nothing in these sections orders the two: the model puts trade name registration first only as a modelling convention. The two conditions are not mutually exclusive, and the model's exclusive gateways take both paths only because uses_trade_name is evaluated first, in document order; this model has no inclusive split. In practice the department takes trade name registrations through the same business license application, which these sections do not say. Whether an LLC doing business only under its filed name 'uses a trade name' is open on the literal text: RCW 19.80.005(5) lists the filed names of domestic corporations and limited partnerships as true and real names but has no entry for limited liability company names, while RCW 19.80.010(3) sets the registration contents for an LLC.",
+   "The business license application under chapter 19.02 RCW applies to persons 'requiring licenses that have been incorporated into the system'; which licenses those are, and when a city or state agency license or endorsement is needed, is outside these sections. The model routes the application through the regulatory agency when any requested license needs that agency's prelicensing review (RCW 19.02.070(3)-(4)); otherwise the business licensing service issues the license directly. An application can mix both kinds; the business license is then endorsed for the approved licenses, and the department advises the applicant of the status of the others (RCW 19.02.070(5)). The agency must advise the department 'within a reasonable time', which sets no fixed period, so no timer is modelled. The applicant's route to contest conditions or a denial (RCW 19.02.070(5)) is not modelled.",
+   "Local business licenses and taxes (city business license endorsements, business and occupation taxes) are not modelled; the local layer attaches at the business license step.",
+   "Professionals are not required to use a professional entity in every case; RCW 18.100.050 only authorizes one. Members of a professional LLC lose the shield to the extent required professional liability insurance or bond would have covered a claim (RCW 25.15.046(3)); professional discipline still applies (RCW 18.100.050(5)(b), RCW 25.15.046(7)).",
+   "Later amendments of the certificate of formation (RCW 25.15.076) and annual reports (RCW 23.95.255) are outside these sections and not modelled.",
+   "Nonprofit corporation status is a state corporate form, not tax exemption; federal 501(c) status and charitable solicitation registration are outside these sections.",
+   "A delayed effective date (RCW 23.95.210(2): unless the organic law prohibits it, no more than ninety days after the date of filing) is not modelled."
+  ]
+ }
+}

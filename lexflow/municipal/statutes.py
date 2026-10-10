@@ -92,7 +92,36 @@ def load(state: str):
     p = path_for(state)
     if not p.exists():
         raise FileNotFoundError(f"statutes for {state} are not downloaded")
-    df = pd.read_parquet(p, columns=COLUMNS)
+    return _prepare(pd.read_parquet(p, columns=COLUMNS))
+
+
+FIXTURES = config.ROOT / "fixtures" / "statutes"
+
+
+@lru_cache(maxsize=None)
+def load_fixture(state: str):
+    """fixtures/statutes/<state>_sections.json (the sections the curated files cite) in the shape of load():
+    a few kilobytes instead of a whole state's file, for code that only needs the reference sections."""
+    import pandas as pd
+    p = FIXTURES / f"{state}_sections.json"
+    if not p.exists():
+        return None
+    df = pd.DataFrame(json.loads(p.read_text(encoding="utf-8"))["sections"])
+    for c in COLUMNS:
+        if c not in df:
+            df[c] = None
+    return _prepare(df[COLUMNS])
+
+
+def reference_texts(state: str, numbers: list[str]) -> list[SectionText]:
+    """section_texts() served from the fixture file when it holds every section, else from the statutes."""
+    fx = load_fixture(state)
+    if fx is not None and all(not find(fx, n).empty for n in numbers):
+        return section_texts(state, numbers, df=fx)
+    return section_texts(state, numbers)
+
+
+def _prepare(df):
     df = df[df["act_status"].isin(["in_force"]) | df["act_status"].isna()].copy()
     df["section_title"] = df["section_title"].fillna("").str.replace(r"^§\s*[\w.:\-/]+\.?\s*", "", regex=True)
     # Maryland's file carries only stubs like "–203." instead of headings: treat those as no heading
@@ -121,11 +150,20 @@ SINGLE_CODE = {"va": "Code of Virginia", "dc": "D.C. Code"}
 def find(df, ref: str):
     """Rows for a section reference: '2.2-3704', or 'General Provisions § 4-203' where a state numbers
     sections within each article or code (Maryland, Texas, California, New York ...)."""
+    # a full citation first: some files number sections without their title ("121.01" for A.R.S. § 39-121.01),
+    # and some citations have no "§" at all ("5 ILCS 140/3", "La. R.S. 44:33")
+    exact = df[df["citation"].fillna("").map(_norm_cite) == _norm_cite(ref)]
+    if not exact.empty:
+        return exact
     if "§" in ref:
         article, number = (x.strip() for x in ref.rsplit("§", 1))
         hit = df[df["norm_section"] == norm_section(number)]
         return hit[hit["citation"].str.contains(re.escape(article), case=False, regex=True)]
     return df[df["norm_section"] == norm_section(ref)]
+
+
+def _norm_cite(s: str) -> str:
+    return re.sub(r"[\s.]+", " ", str(s or "")).strip().lower()
 
 
 def ref_of(state: str, row) -> str:
@@ -142,8 +180,8 @@ def code_of(state: str, row) -> str:
     return str(row["citation"]).rsplit("§", 1)[0].strip().rstrip(",") or f"{S.NAME[state]} statutes"
 
 
-def section_texts(state: str, numbers: list[str], code: str | None = None) -> list[SectionText]:
-    df = load(state)
+def section_texts(state: str, numbers: list[str], code: str | None = None, df=None) -> list[SectionText]:
+    df = load(state) if df is None else df
     out = []
     for n in numbers:
         hit = find(df, n)

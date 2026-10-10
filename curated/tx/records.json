@@ -1,0 +1,835 @@
+{
+  "state": "tx",
+  "question": "records",
+  "sections": [
+    "Tex. Government Code § 552.221",
+    "Tex. Government Code § 552.301",
+    "Tex. Government Code § 552.302",
+    "Tex. Government Code § 552.261"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public information from a Texas governmental body",
+    "trigger": "Any person applies to a governmental body's officer for public information, for inspection or copies",
+    "trigger_source": {
+      "section": "552.221",
+      "subsection": "a",
+      "quote": "shall promptly produce public information for inspection, duplication, or both on application by any person to the officer"
+    },
+    "actors": [
+      {
+        "id": "governmental_body",
+        "name": "Governmental body",
+        "kind": "public-body",
+        "source": {
+          "section": "552.301",
+          "subsection": "a",
+          "quote": "A governmental body that receives a written request for information"
+        }
+      },
+      {
+        "id": "officer",
+        "name": "Officer for public information",
+        "kind": "official",
+        "source": {
+          "section": "552.221",
+          "subsection": "a",
+          "quote": "An officer for public information of a governmental body"
+        }
+      },
+      {
+        "id": "attorney_general",
+        "name": "Attorney general",
+        "kind": "other-government",
+        "source": {
+          "section": "552.301",
+          "subsection": "a",
+          "quote": "must ask for a decision from the attorney general"
+        }
+      },
+      {
+        "id": "requester",
+        "name": "Requestor (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "552.221",
+          "subsection": "b.2",
+          "quote": "if the person requesting the information requests that copies be provided"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Apply to officer for public information",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "officer",
+        "source": {
+          "section": "552.221",
+          "subsection": "a",
+          "quote": "on application by any person to the officer"
+        }
+      },
+      {
+        "id": "decide_response",
+        "actor": "officer",
+        "action": "Decide how to answer the request",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "decision": "response_path",
+        "source": {
+          "section": "552.221",
+          "subsection": "a",
+          "quote": "An officer for public information of a governmental body shall promptly produce public information"
+        }
+      },
+      {
+        "id": "notify_no_information",
+        "actor": "officer",
+        "action": "Notify requestor in writing: no responsive information",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_response"
+        ],
+        "condition": "no_responsive_information",
+        "recipient": "requester",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "the date the request is received",
+          "consequence": "unstated",
+          "source": {
+            "section": "552.221",
+            "subsection": "f",
+            "quote": "not later than the 10th business day after the date the request is received"
+          }
+        },
+        "source": {
+          "section": "552.221",
+          "subsection": "f",
+          "quote": "the officer for public information shall notify the requestor in writing"
+        }
+      },
+      {
+        "id": "notify_withheld_prior",
+        "actor": "officer",
+        "action": "Notify withholding; identify previous determination relied on",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_response"
+        ],
+        "condition": "withheld_by_prior_determination",
+        "recipient": "requester",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "the date the request is received",
+          "consequence": "unstated",
+          "source": {
+            "section": "552.221",
+            "subsection": "g",
+            "quote": "not later than the 10th business day after the date the request is received"
+          }
+        },
+        "source": {
+          "section": "552.221",
+          "subsection": "g.2",
+          "quote": "identify in the notice the specific previous determination the governmental body is relying on to withhold the requested information"
+        }
+      },
+      {
+        "id": "request_ag_decision",
+        "actor": "governmental_body",
+        "action": "Ask attorney general for decision, stating exceptions",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_response"
+        ],
+        "condition": "seeks_ag_decision",
+        "recipient": "attorney_general",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "the date of receiving the written request",
+          "consequence": "right-lapses",
+          "on_miss": "release_presumed_public",
+          "source": {
+            "section": "552.301",
+            "subsection": "b",
+            "quote": "within a reasonable time but not later than the 10th business day after the date of receiving the written request"
+          }
+        },
+        "source": {
+          "section": "552.301",
+          "subsection": "b",
+          "quote": "must ask for the attorney general's decision and state the specific exceptions that apply"
+        }
+      },
+      {
+        "id": "inform_requestor_ag",
+        "actor": "governmental_body",
+        "action": "Send requestor statement and copy of AG request",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "request_ag_decision"
+        ],
+        "recipient": "requester",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "the date of receiving the requestor's written request",
+          "consequence": "right-lapses",
+          "on_miss": "release_presumed_public",
+          "source": {
+            "section": "552.301",
+            "subsection": "d",
+            "quote": "not later than the 10th business day after the date of receiving the requestor's written request"
+          }
+        },
+        "source": {
+          "section": "552.301",
+          "subsection": "d.2",
+          "quote": "a copy of the governmental body's written communication to the attorney general asking for the decision"
+        }
+      },
+      {
+        "id": "submit_to_ag",
+        "actor": "governmental_body",
+        "action": "Submit reasons, request, receipt date, labeled copy/samples",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "inform_requestor_ag"
+        ],
+        "recipient": "attorney_general",
+        "deadline": {
+          "amount": 15,
+          "unit": "business_days",
+          "anchor": "the date of receiving the written request",
+          "consequence": "right-lapses",
+          "on_miss": "release_presumed_public",
+          "source": {
+            "section": "552.301",
+            "subsection": "e",
+            "quote": "within a reasonable time but not later than the 15th business day after the date of receiving the written request"
+          }
+        },
+        "source": {
+          "section": "552.301",
+          "subsection": "e.1.A",
+          "quote": "written comments stating the reasons why the stated exceptions apply that would allow the information to be withheld"
+        }
+      },
+      {
+        "id": "copy_comments_to_requestor",
+        "actor": "governmental_body",
+        "action": "Send requestor copy of comments to AG",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "submit_to_ag"
+        ],
+        "recipient": "requester",
+        "deadline": {
+          "amount": 15,
+          "unit": "business_days",
+          "anchor": "the date of receiving the written request",
+          "consequence": "right-lapses",
+          "on_miss": "release_presumed_public",
+          "source": {
+            "section": "552.301",
+            "subsection": "e-1",
+            "quote": "not later than the 15th business day after the date of receiving the written request"
+          }
+        },
+        "source": {
+          "section": "552.301",
+          "subsection": "e-1",
+          "quote": "shall send a copy of those comments to the person who requested the information from the governmental body"
+        }
+      },
+      {
+        "id": "release_presumed_public",
+        "actor": "governmental_body",
+        "action": "Release information presumed public",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [],
+        "source": {
+          "section": "552.302",
+          "quote": "the information requested in writing is presumed to be subject to required public disclosure and must be released unless there is a compelling reason to withhold the information"
+        }
+      },
+      {
+        "id": "certify_delay",
+        "actor": "officer",
+        "action": "Certify delay in writing; set date and hour",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_response"
+        ],
+        "condition": "delayed_production",
+        "recipient": "requester",
+        "source": {
+          "section": "552.221",
+          "subsection": "d",
+          "quote": "the officer shall certify that fact in writing to the requestor and set a date and hour within a reasonable time when the information will be available for inspection or duplication"
+        }
+      },
+      {
+        "id": "produce",
+        "actor": "officer",
+        "action": "Produce information by an allowed method",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "decide_response",
+          "certify_delay",
+          "release_presumed_public"
+        ],
+        "join": "any",
+        "decision": "production_method",
+        "source": {
+          "section": "552.221",
+          "subsection": "b",
+          "quote": "An officer for public information complies with Subsection (a) by"
+        }
+      },
+      {
+        "id": "advise_charges",
+        "actor": "officer",
+        "action": "Advise copies available on payment of charges",
+        "kind": "notice",
+        "modality": "none",
+        "after": [
+          "produce"
+        ],
+        "condition": "charges_apply",
+        "recipient": "requester",
+        "source": {
+          "section": "552.261",
+          "subsection": "d",
+          "quote": "the governmental body advises the requestor that the copy is available on payment of the applicable charges"
+        }
+      },
+      {
+        "id": "pay_charges",
+        "actor": "requester",
+        "action": "Pay postage and applicable charges",
+        "kind": "payment",
+        "modality": "none",
+        "after": [
+          "advise_charges"
+        ],
+        "recipient": "officer",
+        "deadline": {
+          "amount": 60,
+          "unit": "days",
+          "anchor": "the date the requestor is informed of the charges",
+          "consequence": "right-lapses",
+          "on_miss": "request_withdrawn",
+          "source": {
+            "section": "552.221",
+            "subsection": "e",
+            "quote": "fails to pay the postage and any other applicable charges accrued under Subchapter F on or before the 60th day after the date the requestor is informed of the charges"
+          }
+        },
+        "source": {
+          "section": "552.221",
+          "subsection": "b.2",
+          "quote": "pays the postage and any other applicable charges that the requestor has accrued under Subchapter F"
+        }
+      },
+      {
+        "id": "mail_copies",
+        "actor": "officer",
+        "action": "Mail copies by first class mail",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "pay_charges"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "552.221",
+          "subsection": "b.2",
+          "quote": "sending copies of the public information by first class United States mail"
+        }
+      },
+      {
+        "id": "refer_to_url",
+        "actor": "officer",
+        "action": "Give exact URL; e-mail must state alternatives",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "produce"
+        ],
+        "condition": "url_referral",
+        "recipient": "requester",
+        "source": {
+          "section": "552.221",
+          "subsection": "b-2",
+          "quote": "the e-mail must contain a statement in a conspicuous font clearly indicating that the requestor may nonetheless access the requested information by inspection or duplication or by receipt through United States mail"
+        }
+      },
+      {
+        "id": "inspect_or_duplicate",
+        "actor": "requester",
+        "action": "Inspect or duplicate information at body's offices",
+        "kind": "inspection",
+        "modality": "right",
+        "after": [
+          "produce"
+        ],
+        "condition": "inspection_in_offices",
+        "recipient": "officer",
+        "deadline": {
+          "amount": 60,
+          "unit": "days",
+          "anchor": "the date the information is made available",
+          "consequence": "right-lapses",
+          "on_miss": "request_withdrawn",
+          "source": {
+            "section": "552.221",
+            "subsection": "e",
+            "quote": "fails to inspect or duplicate the public information in the offices of the governmental body on or before the 60th day after the date the information is made available"
+          }
+        },
+        "source": {
+          "section": "552.221",
+          "subsection": "e",
+          "quote": "inspect or duplicate the public information in the offices of the governmental body"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "response_path",
+        "question": "How does the officer answer the request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "has_responsive_info",
+            "label": "Body has responsive information",
+            "type": "boolean"
+          },
+          {
+            "name": "prior_determination_withholds",
+            "label": "A previous determination permits or requires withholding",
+            "type": "boolean"
+          },
+          {
+            "name": "wishes_to_withhold",
+            "label": "Body wishes to withhold under a Subchapter C exception",
+            "type": "boolean"
+          },
+          {
+            "name": "in_use_or_storage",
+            "label": "Information in active use or in storage",
+            "type": "boolean"
+          },
+          {
+            "name": "producible_in_10_days",
+            "label": "Can be produced within 10 business days",
+            "type": "boolean"
+          },
+          {
+            "name": "prior_determination_public",
+            "label": "Attorney general or court already held this precise information public",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "no_responsive_information",
+            "label": "No responsive information",
+            "type": "boolean"
+          },
+          {
+            "name": "withheld_by_prior_determination",
+            "label": "Withheld under previous determination",
+            "type": "boolean"
+          },
+          {
+            "name": "seeks_ag_decision",
+            "label": "Attorney general decision sought",
+            "type": "boolean"
+          },
+          {
+            "name": "delayed_production",
+            "label": "Production certified for a later date",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Notify in writing that no responsive information exists\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "f",
+              "quote": "If the governmental body determines it has no information responsive to a request for information"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Notify withholding and identify the previous determination\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "g",
+              "quote": "If a governmental body determines the requested information is subject to a previous determination that permits or requires the governmental body to withhold the requested information"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "-",
+              "-",
+              "-",
+              "true"
+            ],
+            "then": [
+              "\"Release; may not ask the attorney general\"",
+              "false",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "552.301",
+              "subsection": "f",
+              "quote": "A governmental body must release the requested information and is prohibited from asking for a decision from the attorney general"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Ask the attorney general for a decision and inform the requestor\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "552.301",
+              "subsection": "a",
+              "quote": "must ask for a decision from the attorney general about whether the information is within that exception if there has not been a previous determination"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Certify unavailability in writing; set date and hour\"",
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "c",
+              "quote": "If the requested information is unavailable at the time of the request to examine because it is in active use or in storage"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false",
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Certify that production will take longer; set date and hour\"",
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "d",
+              "quote": "If an officer for public information cannot produce public information for inspection or duplication within 10 business days after the date the information is requested under Subsection (a)"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false",
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Produce promptly\"",
+              "false",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "a",
+              "quote": "means as soon as possible under the circumstances, that is, within a reasonable time, without delay"
+            }
+          }
+        ]
+      },
+      {
+        "id": "production_method",
+        "question": "How is the information produced?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "mail_requested",
+            "label": "Requestor asks for copies by mail",
+            "type": "boolean"
+          },
+          {
+            "name": "on_public_website",
+            "label": "Identifiable and readily available on the body's public website",
+            "type": "boolean"
+          },
+          {
+            "name": "prefers_other_manner",
+            "label": "Requestor prefers a manner other than the URL",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "method",
+            "label": "Method of production",
+            "type": "string"
+          },
+          {
+            "name": "charges_apply",
+            "label": "Postage and charges to be paid first",
+            "type": "boolean"
+          },
+          {
+            "name": "inspection_in_offices",
+            "label": "Inspection or duplication in the body's offices",
+            "type": "boolean"
+          },
+          {
+            "name": "url_referral",
+            "label": "Requestor referred to the exact URL",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Mail copies first class once postage and charges are paid\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "b.2",
+              "quote": "sending copies of the public information by first class United States mail if the person requesting the information requests that copies be provided"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Refer the requestor to the exact URL on the body's website\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "b-1",
+              "quote": "referring a requestor to an exact Internet location or uniform resource locator (URL) address on a website maintained by the governmental body and accessible to the public if the requested information is identifiable and readily available on that website"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Provide for inspection or duplication in the body's offices\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "552.221",
+              "subsection": "b.1",
+              "quote": "providing the public information for inspection or duplication in the offices of the governmental body"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "no_information",
+        "description": "Requestor told no responsive information exists",
+        "after": [
+          "notify_no_information"
+        ],
+        "source": {
+          "section": "552.221",
+          "subsection": "f",
+          "quote": "determines it has no information responsive to a request for information"
+        }
+      },
+      {
+        "id": "withheld_prior_determination",
+        "description": "Withheld under a previous determination",
+        "after": [
+          "notify_withheld_prior"
+        ],
+        "source": {
+          "section": "552.221",
+          "subsection": "g.1",
+          "quote": "notify the requestor in writing that the information is being withheld"
+        }
+      },
+      {
+        "id": "awaiting_ag_decision",
+        "description": "Withheld pending the attorney general's decision",
+        "after": [
+          "copy_comments_to_requestor"
+        ],
+        "source": {
+          "section": "552.301",
+          "subsection": "d.1",
+          "quote": "has asked for a decision from the attorney general about whether the information is within an exception to public disclosure"
+        }
+      },
+      {
+        "id": "information_provided",
+        "description": "Information produced to the requestor",
+        "after": [
+          "refer_to_url",
+          "mail_copies",
+          "inspect_or_duplicate"
+        ],
+        "join": "any",
+        "source": {
+          "section": "552.221",
+          "subsection": "a",
+          "quote": "produce public information for inspection, duplication, or both"
+        }
+      },
+      {
+        "id": "request_withdrawn",
+        "description": "Request considered withdrawn",
+        "after": [],
+        "source": {
+          "section": "552.221",
+          "subsection": "e",
+          "quote": "A request is considered to have been withdrawn"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Tex. Gov't Code ch. 552, subch. C",
+        "role": "exceptions to required public disclosure that a body may ask the attorney general to apply",
+        "source": {
+          "section": "552.301",
+          "subsection": "a",
+          "quote": "considers to be within one of the exceptions under Subchapter C"
+        }
+      },
+      {
+        "citation": "Tex. Gov't Code ch. 552, subch. F",
+        "role": "charges for copies of public information, including § 552.261",
+        "source": {
+          "section": "552.221",
+          "subsection": "b.2",
+          "quote": "any other applicable charges that the requestor has accrued under Subchapter F"
+        }
+      }
+    ],
+    "gaps": [
+      "Texas has no deemed-denial rule in these sections. If a governmental body misses a § 552.301 deadline (asking the attorney general within 10 business days, sending the requestor the (d) statement and copy within 10 business days, or submitting the (e) materials and sending the (e-1) copy of comments within 15 business days), § 552.302 presumes the information public: it must be released unless there is a compelling reason to withhold it. Each of those timers is modelled as 'right-lapses' and routes to release_presumed_public, which rejoins production. The compelling-reason exception is not modelled as a branch.",
+      "The four attorney-general steps are modelled in sequence (ask, inform the requestor, submit, copy comments) because sequential interrupting timers keep the model sound. The statute sets only outer deadlines and does not fix the order: (b) and (d) share the 10-business-day limit, and (e) and (e-1) share the 15-business-day limit.",
+      "The attorney general's ruling, its deadline and any suit after it (§ 552.306 and later sections) are outside the sections used, so the attorney-general path ends at awaiting_ag_decision. § 552.301(f) is modelled by the prior_determination_public column: when the body previously requested and received a determination and the attorney general or a court held the precise information public, the body must release it and may not ask for a decision, so the rule falls through to production. On that row the table does not also test the (c) or (d) delay conditions. § 552.301(g) (asking for another decision after a suit) is not modelled.",
+      "§ 552.301 speaks of a 'written request', while § 552.221(a) requires production 'on application by any person' without saying the application must be in writing. How requests may be submitted (§ 552.234) is outside the sections used. Under (a-1), a mailed request whose receipt date cannot be established counts as received on the third business day after the postmark. This affects every clock but is not a separate step.",
+      "Delayed production (c), (d): both certifications use one step, certify_delay, reached through the delayed_production output. The statute requires the certification when production cannot occur within 10 business days but does not say by when the certificate itself must be sent, so no timer is attached. The 10-business-day deadlines in (f) and (g) state no consequence for missing them and are marked 'unstated'.",
+      "Production methods (b), (b-1), (b-2): a URL referral is allowed only when the information is identifiable and readily available on the body's public website, and if the requestor prefers another manner the body must use (b). The production_method table encodes this with FIRST hit policy. The refer_to_url step carries the (b-2) duty: if the URL is sent by e-mail, the e-mail must state in a conspicuous font that the requestor may still inspect, duplicate or receive the information by mail. The statute does not require the referral itself to be by e-mail.",
+      "Charges (§ 552.261): copies are charged at an amount covering materials, labor and overhead, but requests for 50 or fewer pages of paper records are limited to a per-page charge unless the pages are in two or more separate buildings or a remote storage facility (a, c). The requestor may require a signed written statement of the labor time, free of charge (b), and same-day requests from one individual may be combined for cost purposes (e). Charges accrue when the body advises that the copy is available on payment (d). Only mailed copies are modelled as requiring payment first; charges for copies made at the offices are not modelled.",
+      "Withdrawal (§ 552.221(e)): the 60-day periods are stated as 'the 60th day', so the timers use calendar days. One runs from when the information is made available for inspection or duplication at the offices, the other from when the requestor is informed of the charges; both lead to request_withdrawn.",
+      "Only some branches must be in writing: the no-information notice (f), withholding under a previous determination (g), the attorney-general statement (§ 552.301(d)) and the delay certificates (c), (d). The statute does not say whether ordinary production must be preceded by any written response.",
+      "Submission to the attorney general (§ 552.301(e)): the body submits the (e)(1)(A) comments, a copy of the request, a signed statement or evidence of the receipt date, and a copy of the specific information or, for a voluminous request, representative samples; under (e)(2) that copy or those samples must be labeled to show which exceptions apply to which parts. These are modelled as one step under the 15-business-day deadline."
+    ]
+  }
+}

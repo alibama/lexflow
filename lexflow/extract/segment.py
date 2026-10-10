@@ -20,11 +20,16 @@ MODAL = re.compile(r"\b(shall not|shall|must not|must|may not|may|is entitled to
                    r"have the right to|is required to|are required to|is authorized to|are authorized to)\b", re.I)
 WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
            "eleven": 11, "twelve": 12, "fourteen": 14, "fifteen": 15, "twenty": 20, "thirty": 30, "forty-five": 45,
-           "forty": 40, "sixty": 60, "ninety": 90}
+           "forty": 40, "sixty": 60, "ninety": 90,
+           # ordinals: "not later than the 10th business day", "before the tenth day"
+           "first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5, "sixth": 6, "seventh": 7, "eighth": 8,
+           "ninth": 9, "tenth": 10, "fifteenth": 15, "twentieth": 20, "thirtieth": 30, "forty-fifth": 45,
+           "sixtieth": 60, "ninetieth": 90}
 DEADLINE = re.compile(
     r"\b(?:within|not more than|no more than|not later than|no later than|at least|before the end of|"
-    r"an additional|additional|by)\s+"
-    r"(?P<amount>\d+|[a-z]+(?:-[a-z]+)?)\s*(?:\(\d+\)\s*)?(?P<adj>working|business|calendar|work)?[\s-]*"
+    r"an additional|additional|by|before|has|have|shall have)\s+(?:the\s+)?"
+    r"(?P<amount>\d+(?=st\b|nd\b|rd\b|th\b|\s|-|\()|[a-z]+(?:-[a-z]+)?)(?:st|nd|rd|th)?\s*(?:\(\d+(?:st|nd|rd|th)?\)\s*)?"
+    r"(?P<adj>working|business|calendar|work)?[\s-]*"
     r"(?P<unit>days?|weeks?|months?|years?|hours?)\b(?P<rest>[^.;,]{0,90})", re.I)
 
 
@@ -80,16 +85,37 @@ def _sentences(par: str) -> list[tuple[int, str]]:
     return [(o + len(s) - len(s.lstrip()), s.strip()) for o, s in out if s.strip()]
 
 
+JOIN_WRAPPED = True        # join hard-wrapped lines (switchable for experiments)
+
+
+def _paragraphs(text: str) -> list[tuple[int, str]]:
+    """(offset, paragraph) pairs, each an exact span of ``text``.  Hard-wrapped lines are joined back together
+    (New York's files break every 72 characters, mid-sentence): a line continues the one before it when that
+    one is long, does not end a sentence and is not a section header, and the line opens no label of its own."""
+    out: list[list[int]] = []
+    pos = 0
+    prev = ""
+    for line in text.split("\n"):
+        start, end = pos, pos + len(line)
+        pos = end + 1
+        if not line.strip():
+            prev = ""
+            continue
+        joins = (JOIN_WRAPPED and out and prev and len(prev.rstrip()) >= 55 and not re.search(r"[.;:]\s*$", prev)
+                 and not SECTION_HEAD.match(prev) and not SECTION_HEAD.match(line) and not LABEL.match(line))
+        if joins:
+            out[-1][1] = end
+        else:
+            out.append([start, end])
+        prev = line
+    return [(a, text[a:b]) for a, b in out]
+
+
 def segment(text: str) -> list[Clause]:
     clauses: list[Clause] = []
     stack: list[tuple[str, str]] = []          # (kind, label) from outermost to innermost
-    pos = 0
     section = None
-    for p_index, par in enumerate(text.split("\n")):
-        offset = text.index(par, pos) if par else pos
-        pos = offset + len(par)
-        if not par.strip():
-            continue
+    for p_index, (offset, par) in enumerate(_paragraphs(text)):
         head = SECTION_HEAD.match(par)
         if head:
             section, stack = head.group(1), []
@@ -136,9 +162,14 @@ def annotate(c: Clause) -> None:
     if d:
         unit = d.group("unit").lower().rstrip("s")
         adj = (d.group("adj") or "").lower()
-        unit = {"day": "business_days" if adj in ("working", "business", "work") else "days", "week": "weeks",
+        # "15 days (except Saturdays, Sundays, and legal public holidays)" counts business days
+        no_weekends = re.match(r"\s*\(?\s*(?:except|excluding|exclusive of|not counting)\s+(?:saturdays|weekends)",
+                               d.group("rest"), re.I)
+        business = adj in ("working", "business", "work") or bool(no_weekends)
+        unit = {"day": "business_days" if business else "days", "week": "weeks",
                 "month": "months", "year": "years", "hour": "hours"}[unit]
-        anchor = re.sub(r"^\s*(?:of|after|from|following)\s+", "", d.group("rest").strip(" ,")).strip()
+        rest = re.sub(r"^\s*\([^)]*\)?", "", d.group("rest")) if no_weekends else d.group("rest")
+        anchor = re.sub(r"^\s*(?:of|after|from|following)\s+", "", rest.strip(" ,")).strip()
         c.deadline = {"amount": _amount(d.group("amount")), "unit": unit, "anchor": anchor[:80] or "the triggering event",
                       "phrase": d.group(0)[:120]}
         c.tags.append("deadline")
@@ -156,10 +187,20 @@ def subject_of(before: str, after: str) -> str | None:
     if passive:
         return _clean_subject(passive.group(1))
     s = before.strip()
-    s = re.split(r",\s*(?=[a-z]*\s*(?:the|a|an|any|each|every|no)\b)", s)[-1] if "," in s else s
-    s = re.sub(r"^(?:except|subject to|unless|if|when|whenever|before|after|notwithstanding)\b[^,]*,\s*", "", s, flags=re.I)
-    s = re.split(r"\s+(?:that|who|which|whose|whom)\s+", s)[0]
-    return _clean_subject(s) if s else None
+    # set aside leading dependent clauses: "Except as provided ..., ", "If ..., ", "In responding to ..., "
+    while True:
+        m = LEADING_CLAUSE.match(s)
+        if not m:
+            break
+        s = s[m.end():]
+    # the subject is the noun phrase that opens what is left: "A public body, upon request ..., shall"
+    s = s.split(",")[0]
+    s = re.split(r"\s+(?:that|who|which|whose|whom)\b", s)[0]
+    return _clean_subject(s) if s.strip() else None
+
+
+LEADING_CLAUSE = re.compile(r"^(?:except|if|when|whenever|unless|subject to|notwithstanding|in|upon|after|before|"
+                            r"for|to the extent|where|once|within|at|during|on|pursuant to)\b[^,]*,\s*", re.I)
 
 
 def _clean_subject(s: str) -> str | None:

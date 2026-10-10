@@ -1,0 +1,71 @@
+{
+ "generated": "2026-10-10",
+ "cases": 22,
+ "strategies": [
+  {
+   "strategy": "stack_combo",
+   "equivalence": 0.604,
+   "step_f1": 0.479,
+   "step_recall": 0.467,
+   "step_precision": 0.542,
+   "actors": 0.739,
+   "deadlines": 0.661,
+   "modality": 0.839,
+   "records": 0.554,
+   "business": 0.653,
+   "seconds": 27.4
+  },
+  {
+   "strategy": "stack_embed",
+   "equivalence": 0.578,
+   "step_f1": 0.45,
+   "step_recall": 0.495,
+   "step_precision": 0.444,
+   "actors": 0.696,
+   "deadlines": 0.655,
+   "modality": 0.831,
+   "records": 0.542,
+   "business": 0.614,
+   "seconds": 8.5
+  },
+  {
+   "strategy": "stack_tfidf",
+   "equivalence": 0.559,
+   "step_f1": 0.424,
+   "step_recall": 0.426,
+   "step_precision": 0.461,
+   "actors": 0.697,
+   "deadlines": 0.616,
+   "modality": 0.846,
+   "records": 0.526,
+   "business": 0.592,
+   "seconds": 4.6
+  },
+  {
+   "strategy": "stack_nb",
+   "equivalence": 0.511,
+   "step_f1": 0.366,
+   "step_recall": 0.545,
+   "step_precision": 0.315,
+   "actors": 0.63,
+   "deadlines": 0.61,
+   "modality": 0.799,
+   "records": 0.502,
+   "business": 0.519,
+   "seconds": 2.2
+  },
+  {
+   "strategy": "rules",
+   "equivalence": 0.463,
+   "step_f1": 0.313,
+   "step_recall": 0.461,
+   "step_precision": 0.275,
+   "actors": 0.736,
+   "deadlines": 0.4,
+   "modality": 0.788,
+   "records": 0.474,
+   "business": 0.451,
+   "seconds": 0.0
+  }
+ ]
+}

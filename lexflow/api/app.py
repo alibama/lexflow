@@ -316,8 +316,13 @@ def benchmark():
     c = con()
     try:
         rows = BM.best(c)
+        extra = {}
+        for name in ("ceiling", "learning_curve"):          # written by `lexflow ceiling` / scripts/learning_curve.py
+            p = config.ROOT / "docs" / f"{name}.json"
+            if p.exists():
+                extra[name] = json.loads(p.read_text(encoding="utf-8"))
         return {"rows": rows, "cases": BM.cases(), "target": 0.75,
-                "runs": db.scalar(c, "SELECT count(*) FROM benchmarks", default=0)}
+                "runs": db.scalar(c, "SELECT count(*) FROM benchmarks", default=0), **extra}
     finally:
         c.close()
 
@@ -410,7 +415,13 @@ app.mount("/static", StaticFiles(directory=str(config.DASHBOARD_DIR)), name="sta
 
 @app.get("/", include_in_schema=False)
 def index():
-    return FileResponse(config.DASHBOARD_DIR / "index.html")
+    """The dashboard, with a version stamp on its own script and stylesheet so browsers fetch new copies."""
+    from fastapi.responses import HTMLResponse
+    html = (config.DASHBOARD_DIR / "index.html").read_text(encoding="utf-8")
+    for name in ("styles.css", "app.js"):
+        stamp = int((config.DASHBOARD_DIR / name).stat().st_mtime)
+        html = html.replace(f"/static/{name}\"", f"/static/{name}?v={stamp}\"")
+    return HTMLResponse(html, headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/robots.txt", include_in_schema=False)

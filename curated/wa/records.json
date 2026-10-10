@@ -1,0 +1,725 @@
+{
+  "state": "wa",
+  "question": "records",
+  "sections": [
+    "RCW 42.56.520",
+    "RCW 42.56.080",
+    "RCW 42.56.550"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records under the Washington Public Records Act",
+    "trigger": "Any person asks a Washington agency for identifiable public records, in person, by mail or by email",
+    "trigger_source": {
+      "section": "080",
+      "subsection": "2",
+      "quote": "Agencies shall honor requests received in person during an agency's normal office hours, or by mail or email, for identifiable public records unless exempted by provisions of this chapter."
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "080",
+          "subsection": "2",
+          "quote": "make them promptly available to any person"
+        }
+      },
+      {
+        "id": "agency",
+        "name": "Agency (or the office of the secretary of the senate or chief clerk of the house)",
+        "kind": "public-body",
+        "source": {
+          "section": "520",
+          "subsection": "1",
+          "quote": "Responses to requests for public records shall be made promptly by agencies, the office of the secretary of the senate, and the office of the chief clerk of the house of representatives."
+        }
+      },
+      {
+        "id": "court",
+        "name": "Superior court of the county where the record is maintained",
+        "kind": "court",
+        "source": {
+          "section": "550",
+          "subsection": "1",
+          "quote": "the superior court in the county in which a record is maintained"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request identifiable records in person, mail or email",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "agency",
+        "source": {
+          "section": "080",
+          "subsection": "2",
+          "quote": "agencies shall, upon request for identifiable public records, make them promptly available to any person"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "agency",
+        "action": "Respond in one of five ways",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "decision": "initial_response",
+        "deadline": {
+          "amount": 5,
+          "unit": "business_days",
+          "anchor": "receiving a public record request",
+          "consequence": "unstated",
+          "on_miss": "file_motion",
+          "source": {
+            "section": "520",
+            "subsection": "1",
+            "quote": "Within five business days of receiving a public record request"
+          }
+        },
+        "source": {
+          "section": "520",
+          "subsection": "1",
+          "quote": "must respond in one of the ways provided in this subsection (1)"
+        }
+      },
+      {
+        "id": "challenge_estimate",
+        "actor": "requester",
+        "action": "Move superior court to test the estimate",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "respond"
+        ],
+        "condition": "estimate_contested",
+        "recipient": "court",
+        "source": {
+          "section": "550",
+          "subsection": "2",
+          "quote": "Upon the motion of any person who believes that an agency has not made a reasonable estimate of the time that the agency requires to respond to a public record request or a reasonable estimate of the charges to produce copies of public records"
+        }
+      },
+      {
+        "id": "respond_later",
+        "actor": "agency",
+        "action": "Respond within estimate, after any clarification",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "more_time_needed",
+        "decision": "final_response",
+        "source": {
+          "section": "520",
+          "subsection": "2",
+          "quote": "Additional time required to respond to a request may be based upon the need to clarify the intent of the request, to locate and assemble the information requested, to notify third persons or agencies affected by the request"
+        }
+      },
+      {
+        "id": "state_reasons",
+        "actor": "agency",
+        "action": "Give written statement of specific denial reasons",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "respond",
+          "respond_later"
+        ],
+        "join": "any",
+        "condition": "denial_made",
+        "recipient": "requester",
+        "source": {
+          "section": "520",
+          "subsection": "4",
+          "quote": "Denials of requests must be accompanied by a written statement of the specific reasons therefor."
+        }
+      },
+      {
+        "id": "internal_review",
+        "actor": "agency",
+        "action": "Review the denial as promptly as possible",
+        "kind": "review",
+        "modality": "obligation",
+        "after": [
+          "state_reasons"
+        ],
+        "deadline": {
+          "amount": 2,
+          "unit": "business_days",
+          "anchor": "the denial of inspection",
+          "consequence": "deemed-denial",
+          "on_miss": "file_motion",
+          "source": {
+            "section": "520",
+            "subsection": "4",
+            "quote": "such review shall be deemed completed at the end of the second business day following the denial of inspection"
+          }
+        },
+        "source": {
+          "section": "520",
+          "subsection": "4",
+          "quote": "shall establish mechanisms for the most prompt possible review of decisions denying inspection"
+        }
+      },
+      {
+        "id": "produce",
+        "actor": "agency",
+        "action": "Make records promptly available, in installments if needed",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": [
+          "respond",
+          "respond_later",
+          "internal_review"
+        ],
+        "join": "any",
+        "condition": "records_provided",
+        "recipient": "requester",
+        "source": {
+          "section": "080",
+          "subsection": "2",
+          "quote": "on a partial or installment basis as records that are part of a larger set of requested records are assembled or made ready for inspection or disclosure"
+        }
+      },
+      {
+        "id": "file_motion",
+        "actor": "requester",
+        "action": "Move superior court to order show cause",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "internal_review",
+          "produce"
+        ],
+        "join": "any",
+        "condition": "denial_contested",
+        "recipient": "court",
+        "deadline": {
+          "amount": 1,
+          "unit": "years",
+          "anchor": "the agency's claim of exemption or the last production of a record on a partial or installment basis",
+          "consequence": "right-lapses",
+          "source": {
+            "section": "550",
+            "subsection": "6",
+            "quote": "Actions under this section must be filed within one year of the agency's claim of exemption or the last production of a record on a partial or installment basis."
+          }
+        },
+        "source": {
+          "section": "550",
+          "subsection": "1",
+          "quote": "Upon the motion of any person having been denied an opportunity to inspect or copy a public record by an agency"
+        }
+      },
+      {
+        "id": "court_review",
+        "actor": "court",
+        "action": "Require agency to show cause; review de novo",
+        "kind": "hearing",
+        "modality": "permission",
+        "after": [
+          "file_motion"
+        ],
+        "recipient": "agency",
+        "source": {
+          "section": "550",
+          "subsection": "1",
+          "quote": "may require the responsible agency to show cause why it has refused to allow inspection or copying of a specific public record or class of records"
+        }
+      },
+      {
+        "id": "test_estimate",
+        "actor": "court",
+        "action": "Require agency to show estimate is reasonable",
+        "kind": "hearing",
+        "modality": "permission",
+        "after": [
+          "challenge_estimate"
+        ],
+        "recipient": "agency",
+        "source": {
+          "section": "550",
+          "subsection": "2",
+          "quote": "may require the responsible agency to show that the estimate it provided is reasonable"
+        }
+      },
+      {
+        "id": "award_costs",
+        "actor": "court",
+        "action": "Award prevailing requester costs and attorney fees",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "court_review",
+          "test_estimate"
+        ],
+        "condition": "requester_prevails",
+        "recipient": "requester",
+        "source": {
+          "section": "550",
+          "subsection": "4",
+          "quote": "shall be awarded all costs, including reasonable attorney fees, incurred in connection with such legal action"
+        },
+        "join": "any"
+      }
+    ],
+    "decisions": [
+      {
+        "id": "initial_response",
+        "question": "Which of the five responses does the agency give within five business days?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "denies",
+            "label": "Agency denies the request",
+            "type": "boolean"
+          },
+          {
+            "name": "agency_seeks_clarification",
+            "label": "Agency asks requester to clarify an unclear request",
+            "type": "boolean"
+          },
+          {
+            "name": "ready",
+            "label": "Records can be provided now",
+            "type": "boolean"
+          },
+          {
+            "name": "on_website",
+            "label": "Specific records are on the agency website",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "denial_made",
+            "label": "Request denied",
+            "type": "boolean"
+          },
+          {
+            "name": "more_time_needed",
+            "label": "Agency takes more time",
+            "type": "boolean"
+          },
+          {
+            "name": "records_provided",
+            "label": "Records provided",
+            "type": "boolean"
+          },
+          {
+            "name": "clarification_requested",
+            "label": "Clarification requested",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Deny the request\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.e",
+              "quote": "Denying the public record request."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Acknowledge receipt; ask for clarification; estimate time if not clarified\"",
+              "false",
+              "true",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.d",
+              "quote": "asking the requestor to provide clarification for a request that is unclear"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Give link; copies or agency computer if requester cannot go online\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.b",
+              "quote": "Providing an internet address and link on the agency's website to the specific records requested, except that if the requester notifies the agency that he or she cannot access the records through the internet, then the agency must provide copies of the record or allow the requester to view copies using an agency computer"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Provide the record\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.a",
+              "quote": "Providing the record"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Acknowledge receipt; give reasonable estimate of time to respond\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.c",
+              "quote": "has received the request and providing a reasonable estimate of the time the agency, the office of the secretary of the senate, or the office of the chief clerk of the house of representatives will require to respond to the request;"
+            }
+          }
+        ]
+      },
+      {
+        "id": "final_response",
+        "question": "How does the agency respond once the estimated time has run or clarification is sought?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "clarification_requested",
+            "label": "Clarification was requested",
+            "type": "boolean"
+          },
+          {
+            "name": "clarified",
+            "label": "Requester answered the clarification request",
+            "type": "boolean"
+          },
+          {
+            "name": "entirely_unclear",
+            "label": "Entire request is unclear",
+            "type": "boolean"
+          },
+          {
+            "name": "all_exempt",
+            "label": "All requested records are exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "partly_exempt",
+            "label": "Part of the requested records is exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "on_website",
+            "label": "Specific records are on the agency website",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "denial_made",
+            "label": "Request denied",
+            "type": "boolean"
+          },
+          {
+            "name": "records_provided",
+            "label": "Records provided (in whole or in part)",
+            "type": "boolean"
+          },
+          {
+            "name": "no_response_required",
+            "label": "No response required",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "false",
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No response required: entire request unclear and not clarified\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "3.b",
+              "quote": "If the requestor fails to respond to an agency request to clarify the request, and the entire request is unclear"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Deny the request\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "2",
+              "quote": "to determine whether any of the information requested is exempt and that a denial should be made as to all or part of the request"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Deny the exempt part in writing with reasons; release the rest after review\"",
+              "true",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "2",
+              "quote": "a denial should be made as to all or part of the request"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "false",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Give link to the records; copies or agency computer if requester cannot access the internet\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "1.b",
+              "quote": "if the requester notifies the agency that he or she cannot access the records through the internet, then the agency must provide copies of the record or allow the requester to view copies using an agency computer"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Provide the records (at least the portions of the request that are clear)\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "520",
+              "subsection": "3.b",
+              "quote": "the agency must respond, pursuant to this section, to those portions of the request that are clear"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "no_response_required",
+        "description": "Entire request unclear and not clarified: no response required",
+        "after": [
+          "respond_later"
+        ],
+        "when": "no_response_required",
+        "source": {
+          "section": "520",
+          "subsection": "3.b",
+          "quote": "need not respond to it"
+        }
+      },
+      {
+        "id": "denial_final",
+        "description": "Denial stands as final agency action; not taken to court",
+        "after": [
+          "internal_review"
+        ],
+        "source": {
+          "section": "520",
+          "subsection": "4",
+          "quote": "shall constitute final agency action"
+        }
+      },
+      {
+        "id": "records_released",
+        "description": "Records made available for inspection and copying",
+        "after": [
+          "produce"
+        ],
+        "source": {
+          "section": "080",
+          "subsection": "2",
+          "quote": "Public records shall be available for inspection and copying"
+        }
+      },
+      {
+        "id": "agency_upheld",
+        "description": "Agency shows its refusal rests on an exempting statute",
+        "after": [
+          "court_review"
+        ],
+        "source": {
+          "section": "550",
+          "subsection": "1",
+          "quote": "The burden of proof shall be on the agency to establish that refusal to permit public inspection and copying is in accordance with a statute that exempts or prohibits disclosure in whole or in part of specific information or records."
+        }
+      },
+      {
+        "id": "estimate_upheld",
+        "description": "Agency shows its estimate is reasonable",
+        "after": [
+          "test_estimate"
+        ],
+        "source": {
+          "section": "550",
+          "subsection": "2",
+          "quote": "The burden of proof shall be on the agency to show that the estimate it provided is reasonable."
+        }
+      },
+      {
+        "id": "costs_awarded",
+        "description": "Costs and fees awarded; court may add up to $100 a day",
+        "after": [
+          "award_costs"
+        ],
+        "source": {
+          "section": "550",
+          "subsection": "4",
+          "quote": "In addition, it shall be within the discretion of the court to award such person an amount not to exceed one hundred dollars for each day"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "RCW 42.56.070(8); RCW 42.56.240(14)",
+        "role": "the only grounds (with other statutes barring disclosure to certain persons) on which an agency may ask the purpose of a request",
+        "source": {
+          "section": "080",
+          "subsection": "2",
+          "quote": "except to establish whether inspection and copying would violate RCW 42.56.070 (8) or 42.56.240 (14)"
+        }
+      },
+      {
+        "citation": "RCW 42.30.035(2)",
+        "role": "school board meeting recordings are identifiable only when the request gives a date or range of dates",
+        "source": {
+          "section": "080",
+          "subsection": "1.b",
+          "quote": "A request for a recording required to be maintained by a school district board of directors under RCW 42.30.035 (2)"
+        }
+      },
+      {
+        "citation": "RCW 42.56.030 through 42.56.520",
+        "role": "agency actions under these sections are reviewed de novo",
+        "source": {
+          "section": "550",
+          "subsection": "3",
+          "quote": "Judicial review of all agency actions taken or challenged under RCW 42.56.030 through 42.56.520 shall be de novo."
+        }
+      },
+      {
+        "citation": "RCW 36.01.050",
+        "role": "venue for actions against counties",
+        "source": {
+          "section": "550",
+          "subsection": "5",
+          "quote": "For actions under this section against counties, the venue provisions of RCW 36.01.050 apply."
+        }
+      }
+    ],
+    "gaps": [
+      "Missed five-business-day deadline (RCW 42.56.520(1)): the act does not say that silence is a denial, so the consequence is 'unstated'. The timer routes to the requester's court motion because RCW 42.56.550(4) awards costs to a person who prevails in an action seeking 'the right to receive a response to a public record request within a reasonable amount of time'; that this is the route for a missed five-day response is an inference, and 550(1) itself speaks of a person 'denied an opportunity to inspect or copy'. On that no-response path neither anchor of the 550(6) one-year limit (a claim of exemption or a last installment production) occurs, so the act sets no start for that period; the one-year timer on file_motion still runs there in the model, which is an inference.",
+      "Internal review (520(4)): the statute requires agencies to establish review mechanisms but does not say who starts the review, whether the requester must ask for it, or what a review that reverses the denial leads to. Review is shown as following every written denial; at the end of the second business day it is deemed completed and becomes final agency action, which the model treats as 'deemed-denial' with the timer leading to the court motion. The model does not require the review to be exhausted before suit, and the statute does not say it must be.",
+      "Partial denials: under 520(2) a denial may be made 'as to all or part of the request', so a response that releases part of the records and withholds the rest is a denial (denial_made) that also provides records (records_provided). It goes through the written statement of reasons and the 520(4) internal review, and the non-exempt part is then released at produce, from which the requester may still contest the withholding in court. The statute does not say the release must wait for the review; the order is a modelling convenience, because one exclusive gateway cannot send the same case down two paths at once. The first-response table has no partial-denial rule because 520(1) lists only full denial as option (e).",
+      "Clarification (520(1)(d) and (3)): asking for clarification of an unclear request is permitted, not required ('may ask', 520(3)(a)); an agency may instead answer an unclear request in another of the five ways, such as an estimate under (c), so the table's input is whether the agency chooses to seek clarification rather than whether the request is unclear. The requester's answer is not a separate step; whether the requester clarified is an input to final_response. If the requester does not answer and the entire request is unclear, the agency need not respond; otherwise it must respond to the clear portions. No time limit for the requester's answer is stated.",
+      "Estimates (520(1)(c)-(d), 550(2)): the agency's later response must come within its own 'reasonable estimate', not a fixed period, so respond_later has no timer. A requester who thinks an estimate of time or of charges is unreasonable may move the superior court under 550(2), where the agency bears the burden of showing it is reasonable (challenge_estimate, test_estimate). The model offers that motion right after the first response (condition estimate_contested, evaluated before the agency's later response); the statute sets no time for it and does not say what order the court makes, so the path ends with the estimate upheld or with an award of costs. That the 550(4) award applies is an inference for time estimates (an action for 'the right to receive a response to a public record request within a reasonable amount of time') and is not stated for estimates of charges. The duty to respond continues during the motion, which the model does not show.",
+      "Internet links (520(1)(b)): if the requester says they cannot access the records online, the agency must provide copies or allow viewing on an agency computer. This duty is carried in the response text of the link rules of both tables rather than as a separate step, and the act gives no deadline for it.",
+      "Request form and content (080): no official format is required, though agencies may recommend a form or web page; a request for all or substantially all of an agency's records is not a valid request for identifiable records, but a request for all records on a topic, keyword or name is; an agency may not deny a request solely as overbroad; it may not distinguish among requesters or ask their purpose except under the cited exemptions; and it may deny a 'bot request' that is one of several from the same requester within 24 hours if responding would cause excessive interference. These shape the request and the denial input but are not separate steps.",
+      "Fees: charges for copies are governed by RCW 42.56.120, which is not among these sections; 080(2) only requires agency copying facilities to be made available unless that would unreasonably disrupt operations. No payment step is modelled.",
+      "The legislature's offices (secretary of the senate, chief clerk of the house) follow 520 alongside agencies and are folded into the single 'agency' actor. Court outcomes: 550 sets the agency's burden of proof, de novo review, in camera examination and hearings on affidavits, and mandatory costs and fees plus a discretionary penalty of up to $100 a day for a prevailing requester; it does not spell out an order to produce, so the court path ends at the award or at the agency being upheld.",
+      "Actions under 550 must be filed within one year of the agency's claim of exemption or the last production of a record on a partial or installment basis (550(6)); the timer on file_motion runs from whichever of these applies, which the model does not distinguish."
+    ]
+  }
+}

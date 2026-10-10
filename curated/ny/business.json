@@ -1,0 +1,915 @@
+{
+ "state": "ny",
+ "question": "business",
+ "sections": [
+  "N.Y. LLC Law § 203",
+  "N.Y. LLC Law § 209",
+  "N.Y. LLC Law § 206",
+  "N.Y. LLC Law § 1101",
+  "N.Y. LLC Law § 1203",
+  "N.Y. GBS Law § 130",
+  "N.Y. BSC Law § 402",
+  "N.Y. BSC Law § 104-A",
+  "N.Y. BSC Law § 1503",
+  "N.Y. NPC Law § 402",
+  "N.Y. NPC Law § 104-A",
+  "N.Y. PTR Law § 10",
+  "N.Y. PTR Law § 121-201",
+  "N.Y. PTR Law § 121-1300",
+  "N.Y. PTR Law § 121-1500"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in New York (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "203",
+   "subsection": "a",
+   "quote": "One or more persons may act as an organizer or organizers to form a limited liability company"
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "203",
+     "subsection": "b",
+     "quote": "An organizer may, but need not be, a member of the limited liability company that he or she forms."
+    }
+   },
+   {
+    "id": "department",
+    "name": "Department of State (Secretary of State)",
+    "kind": "public-body",
+    "source": {
+     "section": "209",
+     "quote": "the instrument shall be filed and indexed by the department of state"
+    }
+   },
+   {
+    "id": "county_clerk",
+    "name": "County clerk",
+    "kind": "other-government",
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "one newspaper to be printed weekly and one newspaper to be printed daily, to be designated by the county clerk"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company, through a member, manager or authorized person",
+    "kind": "private-party",
+    "source": {
+     "section": "203",
+     "subsection": "d",
+     "quote": "A limited liability company formed under this chapter shall be a separate legal entity"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "deliver_articles",
+    "actor": "organizer",
+    "action": "Sign and deliver articles of organization",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "department",
+    "source": {
+     "section": "203",
+     "subsection": "a",
+     "quote": "(ii) executing such articles of organization in accordance with section two hundred seven of this article and (iii) filing such articles"
+    }
+   },
+   {
+    "id": "collect_fee",
+    "actor": "department",
+    "action": "Collect the $200 filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_articles"
+    ],
+    "source": {
+     "section": "1101",
+     "subsection": "f",
+     "quote": "For filing articles of organization pursuant to section two hundred nine of this chapter, two hundred dollars."
+    }
+   },
+   {
+    "id": "review_articles",
+    "actor": "department",
+    "action": "Check articles for form and fee",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "collect_fee"
+    ],
+    "decision": "articles_comply",
+    "source": {
+     "section": "209",
+     "quote": "If the instrument that is delivered to the department of state for filing complies as to form with the requirements of law and the filing fee required by any statute of this state in connection therewith has been paid, the instrument shall be filed and indexed by the department of state."
+    }
+   },
+   {
+    "id": "file_articles",
+    "actor": "department",
+    "action": "File and index the articles",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "condition": "articles_ok",
+    "source": {
+     "section": "209",
+     "quote": "the instrument shall be filed and indexed by the department of state"
+    }
+   },
+   {
+    "id": "designate_newspapers",
+    "actor": "county_clerk",
+    "action": "Designate a weekly and a daily newspaper",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "file_articles"
+    ],
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "in two newspapers of the county in which the office of the limited liability company is located, one newspaper to be printed weekly and one newspaper to be printed daily, to be designated by the county clerk"
+    }
+   },
+   {
+    "id": "publish_notice",
+    "actor": "llc",
+    "action": "Publish notice weekly for six weeks",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "designate_newspapers"
+    ],
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "a copy of the same or a notice containing the substance thereof shall be published once in each week for six successive weeks"
+    },
+    "deadline": {
+     "amount": 120,
+     "unit": "days",
+     "anchor": "after the effectiveness of the initial articles of organization",
+     "consequence": "right-lapses",
+     "on_miss": "authority_suspended",
+     "source": {
+      "section": "206",
+      "subsection": "a",
+      "quote": "Within one hundred twenty days after the effectiveness of the initial articles of organization as determined pursuant to subdivision (d) of section two hundred three of this article, a copy of the same or a notice containing the substance thereof shall be published once in each week for six successive weeks"
+     }
+    }
+   },
+   {
+    "id": "file_publication_proof",
+    "actor": "llc",
+    "action": "File certificate of publication with affidavits",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "publish_notice"
+    ],
+    "recipient": "department",
+    "deadline": {
+     "amount": 120,
+     "unit": "days",
+     "anchor": "after its formation",
+     "consequence": "right-lapses",
+     "on_miss": "authority_suspended",
+     "source": {
+      "section": "206",
+      "subsection": "a",
+      "quote": "If within one hundred twenty days after its formation, proof of such publication, consisting of the certificate of publication of the limited liability company with the affidavits of publication of the newspapers annexed thereto has not been filed with the department of state, the authority of such limited liability company to carry on, conduct or transact any business in this state shall be suspended"
+     }
+    },
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "Proof of the publication required by this subdivision, consisting of the certificate of publication of the limited liability company with the affidavits of publication of such newspapers annexed thereto, must be filed with the department of state."
+    }
+   },
+   {
+    "id": "collect_publication_fee",
+    "actor": "department",
+    "action": "Collect the $50 publication filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "file_publication_proof"
+    ],
+    "source": {
+     "section": "1101",
+     "subsection": "s",
+     "quote": "For filing a certificate of publication with affidavits of publication annexed thereto pursuant to section two hundred six, eight hundred two, twelve hundred three or thirteen hundred six of this chapter, fifty dollars."
+    }
+   },
+   {
+    "id": "file_assumed_name",
+    "actor": "llc",
+    "action": "File assumed name certificate with Secretary",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "collect_publication_fee"
+    ],
+    "condition": "uses_assumed_name",
+    "recipient": "department",
+    "source": {
+     "section": "130",
+     "subsection": "1.b",
+     "quote": "Such person, if a corporation, limited partnership or limited liability company, shall file, together with the fees as set forth in subdivision five of this section, in the office of the secretary of state a certificate setting forth the name or designation under which business is carried on or conducted or transacted"
+    }
+   },
+   {
+    "id": "collect_assumed_name_fee",
+    "actor": "department",
+    "action": "Collect the $25 assumed name fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "file_assumed_name"
+    ],
+    "source": {
+     "section": "130",
+     "subsection": "5.b.1",
+     "quote": "for the indexing and filing of such certificates, the secretary of state shall receive a fee of twenty-five dollars ($25.00)"
+    }
+   },
+   {
+    "id": "index_assumed_name",
+    "actor": "department",
+    "action": "Index the assumed name certificate",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "collect_assumed_name_fee"
+    ],
+    "source": {
+     "section": "130",
+     "subsection": "5.b.1",
+     "quote": "The secretary of state shall keep an alphabetical index of all certificates filed pursuant to paragraph (b) of subdivision one of this section"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "articles_comply",
+    "question": "Are the articles of organization signed and complete as to form, with the fee paid?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "name_stated",
+      "label": "Articles state the company's name (§ 203(e)(1))",
+      "type": "boolean"
+     },
+     {
+      "name": "county_stated",
+      "label": "Articles state the county where the office is located (§ 203(e)(2))",
+      "type": "boolean"
+     },
+     {
+      "name": "sos_designated",
+      "label": "Articles designate the secretary of state as agent for process, with a mailing address (§ 203(e)(4))",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "Filing fee paid",
+      "type": "boolean"
+     },
+     {
+      "name": "articles_signed",
+      "label": "Articles signed by an organizer per § 207 (§ 203(a)(ii), § 209)",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "articles_ok",
+      "label": "Articles accepted for filing",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "203",
+       "subsection": "e.1",
+       "quote": "(1) the name of the limited liability company;"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "203",
+       "subsection": "e.2",
+       "quote": "the county within this state in which the office of the limited liability company is to be located"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "203",
+       "subsection": "e.4",
+       "quote": "a designation of the secretary of state as agent of the limited liability company upon whom process against it may be served"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "false",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "209",
+       "quote": "the filing fee required by any statute of this state in connection therewith has been paid"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "209",
+       "quote": "A signed articles of organization and any signed certificate of amendment or other certificates filed pursuant to this chapter"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "true",
+       "true",
+       "true"
+      ],
+      "then": [
+       "true"
+      ],
+      "source": {
+       "section": "209",
+       "quote": "its review shall be limited to determining that the form has been completed"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not-for-profit corporation\"",
+       "\"Certificate of incorporation under section 402 of the Not-for-Profit Corporation Law, signed by each incorporator and delivered to the Department of State\"",
+       "\"$75 (N-PCL § 104-A(e))\""
+      ],
+      "source": {
+       "section": "402",
+       "subsection": "a",
+       "quote": "shall be signed by each incorporator with his name and address included in such certificate and delivered to the department of state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Professional service corporation (Business Corporation Law Article 15) or professional service limited liability company (LLC Law Article 12); a partnership without limited partners whose partners are professionals may instead register as a registered limited liability partnership (Partnership Law § 121-1500). PC: organized by individuals licensed to render the same professional service, with licensing-authority certificates attached for every proposed shareholder, director and officer (BCL § 1503(a)-(b)). PLLC and LLP: members or partners must be professionals, at least one authorized to practise in New York, but every member or partner must be licensed in listed professions such as medicine, dentistry and engineering (LLC Law § 1203(a), Partnership Law § 121-1500(a)(I), (q)); PLLC articles attach licensing-authority certificates for its individual members and managers (LLC Law § 1203(b))\"",
+       "\"Certificate of incorporation (PC) or articles of organization (PLLC) delivered to the Department of State, then a certified copy filed with the licensing authority within 30 days (BCL § 1503(c), LLC Law § 1203(c)(1)); an LLP files a registration with the Department of State. A PLLC and an LLP must also publish notice for six weeks and file proof of publication within 120 days (LLC Law § 1203(c)(2), Partnership Law § 121-1500(a)(II))\"",
+       "\"PC: $125 (BCL § 104-A(q)); PLLC: $200 for the articles (LLC Law § 1101(f)) plus $50 for the certificate of publication (§ 1101(s)); LLP: $200 registration (Partnership Law § 121-1500(c)) plus $50 for the proof of publication\""
+      ],
+      "source": {
+       "section": "1503",
+       "subsection": "a",
+       "quote": "may organize, or cause to be organized, a professional service corporation for pecuniary profit under this article for the purpose of rendering the same professional service"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Business corporation\"",
+       "\"Certificate of incorporation under section 402 of the Business Corporation Law, signed by each incorporator and delivered to the Department of State\"",
+       "\"$125 (BCL § 104-A(d))\""
+      ],
+      "source": {
+       "section": "402",
+       "subsection": "a",
+       "quote": "shall be signed by each incorporator, with his name and address included in such certificate and delivered to the department of state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Limited partnership (one or more general partners run it; passive investors join as limited partners)\"",
+       "\"Partnership agreement among the general partners, and a certificate of limited partnership filed with the Department of State; then notice published for six weeks and a certificate of publication filed within 120 days (Partnership Law § 121-201(c))\"",
+       "\"$200 (Partnership Law § 121-1300(e)) plus $50 for the certificate of publication (§ 121-1300(f))\""
+      ],
+      "source": {
+       "section": "121-201",
+       "subsection": "a",
+       "quote": "In order to form a limited partnership the general partners shall execute a partnership agreement, and a certificate of limited partnership shall be executed in accordance with section 121-204 of this article."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Articles of organization filed with the Department of State; then notice published once a week for six weeks in two newspapers designated by the county clerk, and a certificate of publication filed within 120 days (LLC Law § 206)\"",
+       "\"$200 (LLC Law § 1101(f)) plus $50 for the certificate of publication (§ 1101(s)); newspaper charges are extra and not set by statute\""
+      ],
+      "source": {
+       "section": "203",
+       "subsection": "a",
+       "quote": "to form a limited liability company by (i) preparing the articles of organization of such limited liability company"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "1",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; a certificate must be filed in the office of the clerk of each county where the business is conducted before trading under any name other than the owner's real name (Gen. Bus. Law § 130(1)(a))\"",
+       "\"None to form; the county clerk's fee for the certificate is set by CPLR § 8021(b)(2) (not printed here)\""
+      ],
+      "source": {
+       "section": "130",
+       "subsection": "1.a",
+       "quote": "shall file in the office of the clerk of each county in which such business is conducted or transacted a certificate setting forth the name or designation under which and the address within the county at which such business is conducted or transacted"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: two or more persons carrying on as co-owners a business for profit are a partnership. Every partnership, whatever its name, must file a certificate naming all partners, with their residence addresses, in the office of the clerk of each county where it does business, executed and acknowledged by all partners (Gen. Bus. Law § 130(1)(a)); law partnerships and firms holding a certificate of continued use of firm name are exempt (§ 130(7)). A partnership of licensed professionals without limited partners may instead register as a registered limited liability partnership with the Department of State (Partnership Law § 121-1500)\"",
+       "\"None to form; the county clerk's fee is set by CPLR § 8021(b)(2) (not printed here); $200 for an optional LLP registration (Partnership Law § 121-1500(c)) plus $50 for its proof of publication\""
+      ],
+      "source": {
+       "section": "10",
+       "subsection": "1",
+       "quote": "A partnership is an association of two or more persons to carry on as co-owners a business for profit"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_active",
+    "description": "LLC formed at filing; publication proved, authority intact",
+    "after": [
+     "collect_publication_fee",
+     "index_assumed_name"
+    ],
+    "join": "any",
+    "source": {
+     "section": "203",
+     "subsection": "d",
+     "quote": "A limited liability company is formed at the time of the filing of the initial articles of organization with the department of state"
+    }
+   },
+   {
+    "id": "authority_suspended",
+    "description": "The LLC exists, but its authority to do business is suspended until proof of publication is filed",
+    "after": [],
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "the authority of such limited liability company to carry on, conduct or transact any business in this state shall be suspended, effective as of the expiration of such one hundred twenty day period"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "N.Y. LLC Law § 207",
+    "role": "how the articles of organization must be signed",
+    "source": {
+     "section": "203",
+     "subsection": "a",
+     "quote": "executing such articles of organization in accordance with section two hundred seven of this article"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 203",
+    "role": "formation may be delayed to a date stated in the articles, up to 60 days after filing",
+    "source": {
+     "section": "203",
+     "subsection": "d",
+     "quote": "or at any later time specified in the articles of organization, not to exceed sixty days from the date of such filing"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 203",
+    "role": "an LLC must have at least one member when formed",
+    "source": {
+     "section": "203",
+     "subsection": "c",
+     "quote": "At the time of its formation, a limited liability company must have at least one member."
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 206",
+    "role": "contents of the published notice (name, filing date, county, street address, process agent, registered agent, dissolution date, purpose)",
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "The notice shall include: (1) the name of the limited liability company;"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 206",
+    "role": "in New York City, newspapers are designated as for notices of judicial proceedings",
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "When such county is located within a city with a population of one million or more, such designation shall be as though the copy or notice were a notice or advertisement of judicial proceedings."
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 206",
+    "role": "a late filing of proof of publication annuls the suspension",
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "such limited liability company shall cause proof of publication in substantial compliance with the provisions (other than the one hundred twenty day period) of this subdivision"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 206",
+    "role": "suspension does not void the LLC's contracts or make members liable",
+    "source": {
+     "section": "206",
+     "subsection": "a",
+     "quote": "shall not limit or impair the validity of any contract or act of such limited liability company"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 1203",
+    "role": "professional service limited liability company (PLLC)",
+    "source": {
+     "section": "1203",
+     "subsection": "a",
+     "quote": "may form, or cause to be formed, a professional service limited liability company for pecuniary profit under this article"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 1203",
+    "role": "a PLLC files a certified copy of its articles with the licensing authority within 30 days",
+    "source": {
+     "section": "1203",
+     "subsection": "c.1",
+     "quote": "A certified copy of the articles of organization and of each amendment thereto and restatement thereof shall be filed by the professional service limited liability company with the licensing authority within thirty days"
+    }
+   },
+   {
+    "citation": "N.Y. LLC Law § 1203",
+    "role": "a PLLC must also publish within 120 days",
+    "source": {
+     "section": "1203",
+     "subsection": "c.2.A",
+     "quote": "Within one hundred twenty days after the filing of the articles of organization, a copy of the same or a notice containing the substance thereof shall be published once in each week for six successive weeks"
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "who files an assumed-name certificate: individuals and partnerships with the county clerk, corporations, LPs and LLCs with the secretary of state",
+    "source": {
+     "section": "130",
+     "subsection": "1",
+     "quote": "No person shall hereafter (i) carry on or conduct or transact business in this state under any name or designation other than his or its real name, or (ii) carry on or conduct or transact business in this state as a member of a partnership"
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "county clerk's fee for certificates, set by CPLR § 8021(b)(2)",
+    "source": {
+     "section": "130",
+     "subsection": "5.a.1",
+     "quote": "they shall receive a fee as specified in paragraph two of subdivision (b) of section eight thousand twenty-one of the civil practice law and rules"
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "a certified copy of the certificate must be displayed at each place of business",
+    "source": {
+     "section": "130",
+     "subsection": "4",
+     "quote": "shall be conspicuously displayed on the premises at each place in which the business for which the same was filed is conducted"
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "failing to file bars suits on contracts made in the assumed name, and knowing failure is a misdemeanor",
+    "source": {
+     "section": "130",
+     "subsection": "9",
+     "quote": "shall be prohibited from maintaining any action or proceeding in any court in this state on any contract, account or transaction made in a name other than its real name until the certificate required by this section has been executed and filed"
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "restricted words in an LLC's name (LLC Law § 204(d)-(i)) also bar an assumed name without the needed consents",
+    "source": {
+     "section": "130",
+     "subsection": "2.c",
+     "quote": "subdivisions (d) through (i) of section two hundred four of the limited liability company law"
+    }
+   },
+   {
+    "citation": "N.Y. Not-for-Profit Corp. Law § 104-A",
+    "role": "not-for-profit certificate of incorporation fee",
+    "source": {
+     "section": "104-A",
+     "subsection": "e",
+     "quote": "For filing a certificate of incorporation pursuant to section four hundred two of this chapter, seventy-five dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Bus. Corp. Law § 104-A",
+    "role": "business corporation certificate of incorporation fee",
+    "source": {
+     "section": "104-A",
+     "subsection": "d",
+     "quote": "For filing a certificate of incorporation pursuant to section four hundred two of this chapter, one hundred twenty-five dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Bus. Corp. Law § 104-A",
+    "role": "professional service corporation certificate of incorporation fee",
+    "source": {
+     "section": "104-A",
+     "subsection": "q",
+     "quote": "For filing a certificate of incorporation by a professional service corporation pursuant to section fifteen hundred three of this chapter, one hundred twenty-five dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Bus. Corp. Law § 1503",
+    "role": "a professional service corporation's certificate must attach licensing-authority certificates for every shareholder, director and officer",
+    "source": {
+     "section": "1503",
+     "subsection": "b",
+     "quote": "shall have attached thereto a certificate or certificates issued by the licensing authority certifying that each of the proposed shareholders, directors and officers is authorized by law to practice a profession which the corporation is being organized to practice"
+    }
+   },
+   {
+    "citation": "N.Y. Bus. Corp. Law § 1503",
+    "role": "a professional service corporation files a certified copy with the licensing authority within 30 days",
+    "source": {
+     "section": "1503",
+     "subsection": "c",
+     "quote": "A certified copy of the certificate of incorporation and of each amendment thereto shall be filed by the corporation with the licensing authority within thirty days after the filing of such certificate or amendment with the department of state."
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-201",
+    "role": "a limited partnership is formed when its certificate is filed",
+    "source": {
+     "section": "121-201",
+     "subsection": "b",
+     "quote": "A limited partnership is formed at the time of the filing of the initial certificate of limited partnership with the department of state"
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-201",
+    "role": "a limited partnership must also publish within 120 days",
+    "source": {
+     "section": "121-201",
+     "subsection": "c.i",
+     "quote": "Within one hundred twenty days after the filing of the initial certificate, a copy of the same or a notice containing the substance thereof shall be published once in each week for six successive weeks"
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1300",
+    "role": "limited partnership certificate fee",
+    "source": {
+     "section": "121-1300",
+     "subsection": "e",
+     "quote": "For filing a certificate of limited partnership pursuant to section 121-201 of this article, two hundred dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1300",
+    "role": "limited partnership certificate of publication fee",
+    "source": {
+     "section": "121-1300",
+     "subsection": "f",
+     "quote": "For filing a certificate of publication with affidavits of publication annexed thereto pursuant to either section 121-201 or 121-902 of this article, fifty dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1500",
+    "role": "registered limited liability partnership (LLP) option, open only to professional partnerships without limited partners",
+    "source": {
+     "section": "121-1500",
+     "subsection": "a.I",
+     "quote": "a partnership without limited partners each of whose partners is a professional authorized by law to render a professional service within this state"
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1500",
+    "role": "LLP registration is filed with the Department of State",
+    "source": {
+     "section": "121-1500",
+     "subsection": "a.I",
+     "quote": "may register as a registered limited liability partnership by filing with the department of state a registration which shall set forth"
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1500",
+    "role": "LLP registration is signed by one or more partners",
+    "source": {
+     "section": "121-1500",
+     "subsection": "b",
+     "quote": "The registration shall be executed by one or more partners of the partnership without limited partners."
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1500",
+    "role": "LLP registration fee",
+    "source": {
+     "section": "121-1500",
+     "subsection": "c",
+     "quote": "The registration shall be accompanied by a fee of two hundred dollars."
+    }
+   },
+   {
+    "citation": "N.Y. Partnership Law § 121-1500",
+    "role": "an LLP must publish and file proof of publication with a $50 fee",
+    "source": {
+     "section": "121-1500",
+     "subsection": "a.II.A",
+     "quote": "Proof of the publication required by this subparagraph, consisting of the certificate of publication of the registered limited liability partnership with the affidavits of publication annexed thereto, must be filed, with a fee of fifty dollars, with the department of state."
+    }
+   },
+   {
+    "citation": "N.Y. Gen. Bus. Law § 130",
+    "role": "law partnerships are exempt from the partnership certificate",
+    "source": {
+     "section": "130",
+     "subsection": "7",
+     "quote": "or to a partnership of attorneys and counsellors-at-law engaged in the practice of their profession"
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step. New York issues no certificate of organization: the Department of State only checks that the form is completed and the fee paid, then files and indexes the articles (§ 209), and the LLC is formed on filing or at a later date stated in the articles, up to 60 days (§ 203(d)). The step file_articles stands in for the certificate-and-record steps other states have.",
+   "The articles' contents (§ 203(e)) are reduced to the three required items the review can see (name, county, secretary of state as agent for process), the signature (§ 203(a)(ii), § 209) and the fee. Optional items (registered agent, dissolution date, member liability, internal provisions) are not checked. The name rules of LLC Law § 204 and the signing rules of § 207 are not printed here, so who may sign and how is not checked.",
+   "Publication (§ 206(a)) is New York's distinctive extra step: the county clerk designates the newspapers, the LLC publishes for six weeks and files proof. Both the six publications and the proof filing must fall within 120 days of formation (the effectiveness of the articles, § 203(d)); the model attaches that limit to both steps, though each timer can only start when its step is reached, not at formation. Missing it suspends the LLC's authority to do business (modelled as right-lapses, ending at authority_suspended). The LLC itself is formed at filing (§ 203(d)); the outcome llc_active marks that publication is proved, so its authority is not subject to suspension. The suspension is lifted whenever proof is filed later, and it does not void contracts or make members liable. Neither is modelled as a path. The publication itself costs whatever the newspapers charge; no statute sets that amount.",
+   "Whether the county clerk designates newspapers for each LLC or keeps a standing designation is not said; it is modelled as one step after filing. In counties where no newspaper is designated, newspapers of a neighbouring county may be used (§ 206(a)). Not modelled.",
+   "The assumed-name filing (Gen. Bus. Law § 130(1)(b)) is placed after publication only because the flow needs one order (a conditional sibling of publication would make the two exclusive); the statute ties it to doing business under another name, not to publication. An LLC trading only under its real name, or with a trade name used together with its real name (§ 130(1-a)(c)), files nothing. The certificate's contents, the 30-day amendment duty (§ 130(3)) and the display duty (§ 130(4)) are cited, not checked step by step. The extra county fees the secretary of state collects for corporations (§ 130(5)(b)(2)) do not apply to LLCs.",
+   "Sole proprietors and general partnerships file with the county clerk, not the Department of State (§ 130(1)(a)). The county clerk's fee is in CPLR § 8021(b)(2), which is not printed here. Every general partnership must file a county certificate naming its partners, even under the partners' own names (§ 130(1)(ii)), unless an exemption in § 130(7) applies.",
+   "There is no state business licence in this model. New York has no general state or local business-licence statute like Virginia's BPOL; licences are profession- and activity-specific, and New York City and other localities add their own permits. Sales tax registration and other tax registrations sit in the Tax Law and are not modelled.",
+   "A registered limited liability partnership is open only to partnerships of licensed professionals (§ 121-1500(a)(I)). Unlike Virginia, an ordinary general partnership cannot become an LLP. It also publishes within 120 days (§ 121-1500(a)(II)).",
+   "Limited partners' liability shield and its loss through control (Partnership Law § 121-303) are not printed here. The limited partnership row relies on § 121-201 only.",
+   "Professionals may face limits on using an ordinary business corporation or LLC instead of a professional entity under the Education Law; not checked here. Design professional service corporations (§ 1503(b-1) to (b-4)) and public accountancy firms (§ 1503(h)) have extra ownership rules not modelled.",
+   "A not-for-profit corporation whose purposes need a state official's or agency's consent must obtain it first (N-PCL § 402(a)(2-b), § 404). Not-for-profit status is a state corporate form, not federal tax exemption. Neither is modelled.",
+   "Ongoing filings after formation are not modelled: the LLC's statement of address under LLC Law § 301 ($9, § 1101(c)) and a corporation's statement under BCL § 408 ($9, § 104-A(r)); neither section is printed here."
+  ]
+ }
+}

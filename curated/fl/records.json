@@ -1,0 +1,729 @@
+{
+  "state": "fl",
+  "question": "records",
+  "sections": [
+    "119.07",
+    "119.01",
+    "119.12"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request to inspect or copy Florida public records",
+    "trigger": "Any person asks the custodian of a Florida state, county or municipal public record to inspect or copy it",
+    "trigger_source": {
+      "section": "119.01",
+      "subsection": "1",
+      "quote": "all state, county, and municipal records are open for personal inspection and copying by any person"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.a",
+          "quote": "by any person desiring to do so"
+        }
+      },
+      {
+        "id": "custodian",
+        "name": "Custodian of public records (or designee)",
+        "kind": "official",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.c",
+          "quote": "A custodian of public records and his or her designee"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Court (civil enforcement action)",
+        "kind": "court",
+        "source": {
+          "section": "119.12",
+          "subsection": "1",
+          "quote": "If a civil action is filed against an agency to enforce the provisions of this chapter"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Ask custodian to inspect or copy record",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "custodian",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.a",
+          "quote": "Every person who has custody of a public record shall permit the record to be inspected and copied by any person desiring to do so"
+        }
+      },
+      {
+        "id": "acknowledge",
+        "actor": "custodian",
+        "action": "Acknowledge the request promptly",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.c",
+          "quote": "must acknowledge requests to inspect or copy records promptly"
+        }
+      },
+      {
+        "id": "search",
+        "actor": "custodian",
+        "action": "Ask agency staff whether record exists",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "acknowledge"
+        ],
+        "source": {
+          "section": "119.07",
+          "subsection": "1.c",
+          "quote": "making reasonable efforts to determine from other officers or employees within the agency whether such a record exists and, if so, the location at which the record can be accessed"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "custodian",
+        "action": "Respond to the request in good faith",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "search"
+        ],
+        "decision": "access_response",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.c",
+          "quote": "respond to such requests in good faith"
+        }
+      },
+      {
+        "id": "permit_access",
+        "actor": "custodian",
+        "action": "Permit inspection and copying under supervision",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "no_exemption",
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.a",
+          "quote": "at any reasonable time, under reasonable conditions, and under supervision by the custodian of the public records"
+        }
+      },
+      {
+        "id": "state_basis",
+        "actor": "custodian",
+        "action": "State exemption basis and statutory citation",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "exemption_asserted",
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.e",
+          "quote": "he or she shall state the basis of the exemption that he or she contends is applicable to the record, including the statutory citation to an exemption created or afforded by statute"
+        }
+      },
+      {
+        "id": "written_reasons",
+        "actor": "custodian",
+        "action": "Give written reasons with particularity",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "state_basis"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.f",
+          "quote": "If requested by the person seeking to inspect or copy the record, the custodian of public records shall state in writing and with particularity the reasons for the conclusion that the record is exempt or confidential."
+        },
+        "condition": "reasons_requested"
+      },
+      {
+        "id": "produce_remainder",
+        "actor": "custodian",
+        "action": "Redact exempt part; produce the remainder",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": [
+          "state_basis",
+          "written_reasons"
+        ],
+        "condition": "partly_exempt",
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.d",
+          "quote": "shall redact that portion of the record to which an exemption has been asserted and validly applies, and such person shall produce the remainder of such record for inspection and copying"
+        },
+        "join": "any"
+      },
+      {
+        "id": "assess_fee",
+        "actor": "custodian",
+        "action": "Determine the fee for the copies",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "permit_access",
+          "produce_remainder"
+        ],
+        "join": "any",
+        "condition": "copies_requested",
+        "decision": "copy_fee",
+        "source": {
+          "section": "119.07",
+          "subsection": "4",
+          "quote": "If a fee is not prescribed by law, the following fees are authorized"
+        }
+      },
+      {
+        "id": "pay_fee",
+        "actor": "requester",
+        "action": "Pay the fee for the copies",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": [
+          "assess_fee"
+        ],
+        "recipient": "custodian",
+        "source": {
+          "section": "119.07",
+          "subsection": "4",
+          "quote": "upon payment of the fee prescribed by law"
+        }
+      },
+      {
+        "id": "furnish_copies",
+        "actor": "custodian",
+        "action": "Furnish a copy or certified copy",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "pay_fee"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "119.07",
+          "subsection": "4",
+          "quote": "The custodian of public records shall furnish a copy or a certified copy of the record"
+        }
+      },
+      {
+        "id": "give_notice",
+        "actor": "requester",
+        "action": "Give custodian written notice before suing",
+        "kind": "notice",
+        "modality": "permission",
+        "after": [
+          "respond",
+          "state_basis",
+          "written_reasons",
+          "produce_remainder"
+        ],
+        "join": "any",
+        "condition": "refusal_contested",
+        "recipient": "custodian",
+        "source": {
+          "section": "119.12",
+          "subsection": "1.b",
+          "quote": "The complainant provided written notice identifying the public record request to the agency’s custodian of public records at least 5 business days before filing the civil action"
+        }
+      },
+      {
+        "id": "file_suit",
+        "actor": "requester",
+        "action": "File civil action to enforce the chapter",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "give_notice"
+        ],
+        "recipient": "court",
+        "source": {
+          "section": "119.12",
+          "subsection": "1",
+          "quote": "If a civil action is filed against an agency to enforce the provisions of this chapter"
+        }
+      },
+      {
+        "id": "order_production",
+        "actor": "court",
+        "action": "Order immediate production of the record",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "file_suit"
+        ],
+        "condition": "exemption_not_applicable",
+        "recipient": "custodian",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.g",
+          "quote": "If the court finds that the asserted exemption is not applicable, it shall order the public record or part thereof in question to be immediately produced for inspection or copying as requested by the person seeking such access."
+        }
+      },
+      {
+        "id": "determine_purpose",
+        "actor": "court",
+        "action": "Determine whether purpose was improper",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "file_suit",
+          "order_production"
+        ],
+        "join": "any",
+        "source": {
+          "section": "119.12",
+          "subsection": "3",
+          "quote": "The court shall determine whether the complainant requested to inspect or copy a public record or participated in the civil action for an improper purpose."
+        }
+      },
+      {
+        "id": "award_costs",
+        "actor": "court",
+        "action": "Award enforcement costs and attorney fees",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "determine_purpose"
+        ],
+        "condition": "fee_award_due",
+        "recipient": "custodian",
+        "source": {
+          "section": "119.12",
+          "subsection": "1",
+          "quote": "the court shall assess and award the reasonable costs of enforcement, including reasonable attorney fees, against the responsible agency if the court determines that: (a) The agency unlawfully refused to permit a public record to be inspected or copied"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "access_response",
+        "question": "How does the custodian respond to the request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "record_exists",
+            "label": "A good-faith search finds the record",
+            "type": "boolean"
+          },
+          {
+            "name": "all_exempt",
+            "label": "The whole record is claimed exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "part_exempt",
+            "label": "Part of the record is claimed exempt",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "record_not_found",
+            "label": "No record located",
+            "type": "boolean"
+          },
+          {
+            "name": "no_exemption",
+            "label": "Record open in full",
+            "type": "boolean"
+          },
+          {
+            "name": "exemption_asserted",
+            "label": "An exemption is asserted",
+            "type": "boolean"
+          },
+          {
+            "name": "partly_exempt",
+            "label": "Only part is withheld",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No record located after a good-faith search\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "1.c",
+              "quote": "whether such a record exists"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Withhold the record; state the exemption and its statutory citation\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "1.e",
+              "quote": "contends that all or part of the record is exempt from inspection and copying"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Redact the exempt portion, produce the remainder, state the exemption\"",
+              "false",
+              "false",
+              "true",
+              "true"
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "1.d",
+              "quote": "shall redact that portion of the record to which an exemption has been asserted and validly applies"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Permit inspection and copying\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "1.a",
+              "quote": "shall permit the record to be inspected and copied by any person desiring to do so"
+            }
+          }
+        ]
+      },
+      {
+        "id": "copy_fee",
+        "question": "What may the custodian charge for the copies?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "fee_prescribed_by_law",
+            "label": "Another law prescribes the fee",
+            "type": "boolean"
+          },
+          {
+            "name": "extensive_assistance",
+            "label": "Request needs extensive IT or staff assistance",
+            "type": "boolean"
+          },
+          {
+            "name": "copy_type",
+            "label": "Kind of copy",
+            "type": "string"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "fee",
+            "label": "Authorized fee",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"The fee prescribed by law\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4",
+              "quote": "upon payment of the fee prescribed by law"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Actual cost of duplication plus a reasonable special service charge\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4.d",
+              "quote": "the agency may charge, in addition to the actual cost of duplication, a special service charge, which shall be reasonable"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "\"certified\""
+            ],
+            "then": [
+              "\"Up to $1 per certified copy\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4.c",
+              "quote": "An agency may charge up to $1 per copy for a certified copy of a public record."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "\"one-sided\""
+            ],
+            "then": [
+              "\"Up to 15 cents per one-sided copy up to 14 x 8.5 inches\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4.a.1",
+              "quote": "Up to 15 cents per one-sided copy for duplicated copies of not more than 14 inches by 8 1 / 2 inches"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "\"two-sided\""
+            ],
+            "then": [
+              "\"Up to 15 cents plus no more than 5 cents more per two-sided copy\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4.a.2",
+              "quote": "No more than an additional 5 cents for each two-sided copy"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "\"other\""
+            ],
+            "then": [
+              "\"Actual cost of duplication\""
+            ],
+            "source": {
+              "section": "119.07",
+              "subsection": "4.a.3",
+              "quote": "For all other copies, the actual cost of duplication of the public record."
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "record_not_found",
+        "description": "No record located after a good-faith search",
+        "after": [
+          "respond"
+        ],
+        "when": "record_not_found",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.c",
+          "quote": "A good faith response includes making reasonable efforts to determine from other officers or employees within the agency whether such a record exists"
+        }
+      },
+      {
+        "id": "records_inspected",
+        "description": "Record inspected without copies",
+        "after": [
+          "permit_access",
+          "produce_remainder"
+        ],
+        "join": "any",
+        "when": "inspection_only",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.a",
+          "quote": "shall permit the record to be inspected and copied"
+        }
+      },
+      {
+        "id": "copies_furnished",
+        "description": "Copies furnished to the requester",
+        "after": [
+          "furnish_copies"
+        ],
+        "source": {
+          "section": "119.07",
+          "subsection": "4",
+          "quote": "furnish a copy or a certified copy of the record upon payment of the fee prescribed by law"
+        }
+      },
+      {
+        "id": "record_withheld",
+        "description": "Record withheld as exempt; refusal not contested",
+        "after": [
+          "state_basis",
+          "written_reasons"
+        ],
+        "when": "refusal_accepted",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.e",
+          "quote": "contends that all or part of the record is exempt from inspection and copying"
+        },
+        "join": "any"
+      },
+      {
+        "id": "exemption_upheld",
+        "description": "Court finds the asserted exemption applies",
+        "after": [
+          "determine_purpose"
+        ],
+        "when": "exemption_applies",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.g",
+          "quote": "the public record or part thereof in question shall be submitted to the court for an inspection in camera"
+        }
+      },
+      {
+        "id": "costs_awarded",
+        "description": "Record produced; enforcement costs and fees awarded",
+        "after": [
+          "award_costs"
+        ],
+        "source": {
+          "section": "119.12",
+          "subsection": "1",
+          "quote": "the reasonable costs of enforcement, including reasonable attorney fees"
+        }
+      },
+      {
+        "id": "costs_to_agency",
+        "description": "Improper purpose: costs and fees awarded to the agency",
+        "after": [
+          "determine_purpose"
+        ],
+        "when": "improper_purpose",
+        "source": {
+          "section": "119.12",
+          "subsection": "3",
+          "quote": "shall assess and award against the complainant and to the agency the reasonable costs, including reasonable attorney fees, incurred by the agency in responding to the civil action"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Fla. Stat. § 119.071",
+        "role": "general exemptions; some require in camera inspection when asserted in a civil action",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.g",
+          "quote": "s. 119.071(1)(d), (2)(d), (e), or (f), or (4)(c)"
+        }
+      },
+      {
+        "citation": "Fla. Stat. § 119.0725",
+        "role": "exemption under (2)(h) also requires in camera inspection when asserted in a civil action",
+        "source": {
+          "section": "119.07",
+          "subsection": "1.g",
+          "quote": "s. 119.0725(2)(h)"
+        }
+      },
+      {
+        "citation": "Fla. Stat. § 119.011",
+        "role": "defines public record; an agency may not answer a request by suing for declaratory relief on that question",
+        "source": {
+          "section": "119.07",
+          "subsection": "9",
+          "quote": "whether the record is a public record as defined by s. 119.011"
+        }
+      },
+      {
+        "citation": "Fla. Const. art. I, § 24",
+        "role": "constitutional right of access; exempt or confidential portions must be protected from remote access",
+        "source": {
+          "section": "119.07",
+          "subsection": "2.b",
+          "quote": "s. 24, Art. I of the State Constitution"
+        }
+      },
+      {
+        "citation": "Fla. Stat. § 286.011",
+        "role": "open meetings law; an exemption from 119.07 does not imply one from it",
+        "source": {
+          "section": "119.07",
+          "subsection": "7",
+          "quote": "An exemption from this section does not imply an exemption from s. 286.011."
+        }
+      }
+    ],
+    "gaps": [
+      "No response deadline: 119.07(1)(c) requires the custodian to acknowledge requests \"promptly\" and respond \"in good faith\" but sets no number of days, and these sections do not make silence a deemed denial, so no response step has a timer. The fixed periods in the text are the 30-day hold in (1)(h) and the 5-business-day pre-suit notice period in 119.12(1)(b); neither is a time limit for a response (see the record-hold and enforcement notes).",
+      "The text sets no form for the request: it need not be written, and nothing here lets the custodian require the requester's name or purpose. A written request matters only for the 30-day hold in (1)(h) and the pre-suit notice in 119.12.",
+      "Record hold (1)(h)-(i): even if the custodian says the record is not public, it may not be disposed of for 30 days after a written request, and if a civil action is filed within that period, only by court order after notice to all affected parties. This is a standing duty, not a step, and is not modelled as a timer.",
+      "Designee (1)(b): the custodian may designate another officer or employee to handle inspection and copying but must disclose the designee's identity to the requester; this optional step is folded into the custodian lane.",
+      "Exemption paths: state_basis is the unconditional (1)(e) duty whenever all or part of the record is claimed exempt. The written statement with particularity under (1)(f) is due only if the requester asks (condition reasons_requested) and is an optional branch: redaction and production of the remainder under (1)(d) follow state_basis directly (partly_exempt) and do not wait for it.",
+      "Exclusive choices after the response: after state_basis (or the optional written reasons) the flow goes to produce_remainder (partly_exempt), give_notice (refusal_contested) or record_withheld (refusal_accepted); after a partial release, the requester takes copies, inspects only, or contests. A requester who both takes the released part and sues over the redaction follows only one of those paths in the diagram; in law both can happen.",
+      "Contesting a refusal: give_notice can follow the response itself (for example a contested 'no record located' answer), the exemption statement, the written reasons, or a partial release, since 119.12(1)(a) covers any unlawful refusal to permit inspection or copying. A request the custodian simply ignores is not shown, because these sections attach no event or timer to silence.",
+      "Enforcement (119.12): written notice at least 5 business days before suit is a condition of a fee award, not of the right to sue, and it is excused under 119.12(2) when the agency does not prominently post its custodian's contact information in its primary administrative building and on its website. The notice period begins on the day the custodian receives the notice, excludes Saturday, Sunday and legal holidays, and must run out before suit is filed. It is a minimum wait, not a time limit to act within, so it is not attached as a timer: the schema's deadlines model time limits whose expiry ends or redirects the flow, and a timer on give_notice or file_suit would wrongly show the right lapsing once 5 business days pass. Suing before the period ends, or without notice, can still produce an order under 119.07(1)(g) but no fee award; the model always routes through give_notice and does not show the excused or no-notice path.",
+      "Court ruling: order_production follows 119.07(1)(g). In camera inspection is mandatory for the exemptions listed in (1)(g) and discretionary for 119.071(2)(c); it is not a separate step. On either ruling the court must then determine improper purpose under 119.12(3) (determine_purpose). The branches after it are award_costs when fee_award_due (the court found an unlawful refusal under 119.12(1)(a), notice was given or excused, and there was no improper purpose); costs_to_agency when improper_purpose, which bars a fee award to the complainant and can follow either ruling; and exemption_upheld when the exemption applies and the purpose was proper. When an improper purpose is found after a production order, the order still stands although the end event names only the cost award. 119.12(4) bars money damages.",
+      "Fees (4): inspection itself carries no fee in this text, but the special service charge in (4)(d) applies to records 'requested to be inspected or copied', so it can arise on inspection-only requests; the model applies it only on the copy path. County maps and aerial photographs (4)(b), and photographing records under (3) and (4)(e), are not modelled.",
+      "Electronic records: 119.01(2)(f) requires a copy in the medium requested if the agency keeps the record in that medium, with fees under 119.07(4) for unusual media or programming; remote electronic access under 119.07(2) is optional. These shape furnish_copies but are not separate steps.",
+      "An agency may not answer a request by suing the requester for declaratory relief on whether the record is public or exempt (119.07(9)). Ballot inspection (5), auditor access (6) and criminal discovery (8) are special cases not modelled."
+    ]
+  }
+}

@@ -60,6 +60,17 @@ def candidates(q: Question, state: str, top: int = 8) -> list[dict]:
             for sc, r in scored[:top]]
 
 
+def verified_seeds() -> dict:
+    """curated/seeds.json: per state and question, a section reference with a quote that proves it (checked here)."""
+    from .. import config
+    path = config.CURATED_DIR / "seeds.json"
+    return json.loads(path.read_text(encoding="utf-8")).get("states", {}) if path.exists() else {}
+
+
+def _norm(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").replace("’", "'").replace("“", '"').replace("”", '"')).strip().lower()
+
+
 def locate(q: Question, state: str) -> dict:
     row = {"state": state, "question": q.id, "status": "not-found", "citation": None, "section": None, "heading": None,
            "act": None, "url": None, "method": None, "score": 0.0, "text": None, "related": "[]", "candidates": "[]"}
@@ -70,7 +81,17 @@ def locate(q: Question, state: str) -> dict:
     cands = candidates(q, state)
     row["candidates"] = json.dumps(cands)
     chosen, method, score = None, None, 0.0
-    for seed in q.seeds.get(state, ()):
+    v = verified_seeds().get(state, {}).get(q.id)
+    if v and v.get("found") and _norm(v.get("quote")):
+        hit = statutes.find(df, v["ref"])
+        # a number can repeat across acts (Illinois "140/3"): take the row whose text holds the proving quote
+        match = [r for _, r in hit.iterrows() if _norm(v["quote"]) in _norm(r["text"])]
+        if match:
+            chosen, method, score = match[0], "verified", 1.0
+    elif v and v.get("found") is False:
+        row["act"] = (v.get("why") or "")[:300]           # the law exists but is not in this dataset
+        return row
+    for seed in (() if chosen is not None else q.seeds.get(state, ())):
         hit = statutes.find(df, seed)
         for _, r in hit.iterrows():
             text = r["text"]
@@ -87,7 +108,8 @@ def locate(q: Question, state: str) -> dict:
         hit = statutes.find(df, best["section"])
         if not hit.empty and best["score"] >= 3:
             chosen, method = hit.iloc[0], "keyword"
-            score = 0.8 if best["score"] >= 8 else 0.6 if best["score"] >= 5 else 0.4
+            # an unverified keyword match is a guess: it never scores like a proven section
+            score = 0.6 if best["score"] >= 8 else 0.45 if best["score"] >= 5 else 0.3
     if chosen is None:
         return row
     act = None

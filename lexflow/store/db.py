@@ -164,6 +164,31 @@ CREATE TABLE IF NOT EXISTS local_answers (
   PRIMARY KEY (gov_id, question)
 );
 
+CREATE TABLE IF NOT EXISTS case_law (
+  state TEXT NOT NULL,
+  section TEXT NOT NULL,
+  question TEXT,
+  cluster_id TEXT NOT NULL,
+  case_name TEXT,
+  court TEXT,
+  court_id TEXT,
+  date_filed TEXT,
+  citation TEXT,
+  cite_count INTEGER,
+  url TEXT,
+  source TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (state, section, cluster_id)
+);
+
+CREATE TABLE IF NOT EXISTS wikibase_items (
+  key TEXT PRIMARY KEY,
+  qid TEXT,
+  label TEXT,
+  updated_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS statute_files (
   state TEXT PRIMARY KEY,
   file TEXT,
@@ -279,6 +304,7 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "local_law": ("gov_id", "question", "source", "ref"),
     "answers": ("gov_id", "question"),
     "local_answers": ("gov_id", "question"),
+    "case_law": ("state", "section", "cluster_id"),
 }
 
 # columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists)

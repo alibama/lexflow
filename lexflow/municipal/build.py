@@ -83,14 +83,61 @@ def _row(state, question, *, tier, built_by, stages, title=None, metrics=None, q
             "citation": (loc or {}).get("citation"), "source_url": (loc or {}).get("url")}
 
 
-def _pin_sections(facts: LegalProcessFacts, section: str) -> LegalProcessFacts:
-    """A model reading one section sometimes writes '§ 2-532' or '2-532(a)'; quotes all come from ``section``."""
+def _norm_ws(s: str) -> str:
+    import re
+    return re.sub(r"\s+", " ", s or "").strip().lower()
+
+
+def related_sections(state: str, question: str, loc: dict, limit: int = 6) -> list[str]:
+    """The located section plus the related ones the verification listed for it (requests, responses, fees,
+    appeals ...): Claude's reference models draw on 3 to 28 sections, and a process read from one section alone
+    misses most of its steps.  Only for a verified section; definitions and sections not in the file are skipped."""
+    import re
+    from .locator import verified_seeds
+    refs = [loc["section"]]
+    v = verified_seeds().get(state, {}).get(question) or {}
+    if loc.get("method") != "verified" or not v.get("alternates"):
+        return refs
+    df = statutes.load(state)
+    prefix = loc["citation"].rsplit("§", 1)[0].strip() if "§" in (loc.get("citation") or "") else ""
+    for alt in v["alternates"]:
+        if re.search(r"definition|not present|not in the|repealed|missing", alt, re.I):
+            continue
+        ref = re.split(r"\s+\(|;", alt, maxsplit=1)[0].strip().rstrip(".,")
+        for cand in dict.fromkeys(x for x in (ref, f"{prefix} § {ref}" if prefix and "§" not in ref else None) if x):
+            try:
+                hit = statutes.find(df, cand)
+            except Exception:  # noqa: BLE001 - a malformed reference
+                continue
+            if len(hit) == 1:
+                r = statutes.ref_of(state, hit.iloc[0])
+                if r not in refs:
+                    refs.append(r)
+                break
+        if len(refs) >= limit:
+            break
+    return refs
+
+
+def _pin_sections(facts: LegalProcessFacts, texts) -> LegalProcessFacts:
+    """A model reading one section sometimes writes '§ 2-532' or '2-532(a)'.  Every quote gets the section whose
+    text holds it (with one section, that section)."""
     data = facts.model_dump()
+    texts = texts if isinstance(texts, list) else None
+    known = {t.section for t in texts} if texts else set()
+
+    def home(quote: str, current: str) -> str:
+        if not texts or len(texts) == 1:
+            return texts[0].section if texts else current
+        if current in known:
+            return current
+        q = _norm_ws(quote)
+        return next((t.section for t in texts if q and q in _norm_ws(t.text)), texts[0].section)
 
     def walk(node):
         if isinstance(node, dict):
             if {"section", "quote"} <= node.keys():
-                node["section"] = section
+                node["section"] = home(node.get("quote") or "", node.get("section") or "")
             for v in node.values():
                 walk(v)
         elif isinstance(node, list):
@@ -146,7 +193,8 @@ def _compile(facts: LegalProcessFacts, state: str, question: str, texts, provena
     return model
 
 
-def build(con, state: str, question: str, *, use_llm: bool = True, force: bool = False, log: Log = print) -> dict:
+def build(con, state: str, question: str, *, use_llm: bool = True, force: bool = False, log: Log = print,
+          use_curated: bool = True) -> dict:
     q = get_question(question)
     meth = M.get(con)
     loc = db.one(con, "SELECT * FROM located_law WHERE state=? AND question=?", state, question)
@@ -163,7 +211,7 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
         return {"tier": "none"}
 
     curated = config.CURATED_DIR / state / f"{question}.json"
-    if curated.exists():
+    if use_curated and curated.exists():
         spec = json.loads(curated.read_text(encoding="utf-8"))
         texts = statutes.section_texts(state, spec["sections"])
         text = statutes.combined_text(texts)
@@ -192,33 +240,44 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
                 f"validated={res['validated']})")
             return {"tier": "reviewed", "quality": res["quality"]}
 
-    texts = statutes.section_texts(state, [loc["section"]])
-    text = texts[0].text
+    sections = related_sections(state, question, loc)
+    texts = statutes.section_texts(state, sections)
+    text = statutes.combined_text(texts)
     available = ollama_models() if use_llm else []
     llms = [m for m in (config.MODEL_A, config.MODEL_B) if _has(available, m)]
     if use_llm and not llms:
         log(f"{state} {question}: Ollama has neither {config.MODEL_A} nor {config.MODEL_B}; "
             f"run the 'Pull local models' step (Ollama at {config.OLLAMA_URL}, has: {available or 'nothing'})")
+    from ..extract.benchmark import LLM_FREE
+    strategy = config.STRATEGY
+    # a strategy that needs no chat model runs once; the cross-check is then a different method with a local
+    # model, so "two models agree" always means two independent extractions agree
+    if strategy in LLM_FREE:
+        runs = [(f"selector:{strategy}", strategy, None)]
+        if llms and config.CHECK_STRATEGY:
+            runs.append((llms[0], config.CHECK_STRATEGY, llms[0]))
+    else:
+        runs = [(llm, strategy, llm) for llm in llms]
     results = {}
-    for llm in llms:
-        strategy = config.STRATEGY
-        oneshot = strategy == "oneshot"
+    for label, strat, llm in runs:
+        oneshot = strat == "oneshot"
         client = OllamaClient(base_url=config.OLLAMA_URL, model=llm, num_ctx=config.NUM_CTX if oneshot else 4096,
-                              timeout=1800)
+                              timeout=1800) if llm else None
         t0 = time.time()
-        log(f"{state} {question}: extracting with {llm} ({strategy}) from {loc['citation']} ({len(text.split())} words)")
+        log(f"{state} {question}: extracting with {label} ({strat}) from {loc['citation']} ({len(text.split())} words)")
         try:
             if oneshot:
                 res = extract(client, text=text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
                               jurisdiction=S.NAME[state], max_repairs=2)
             else:
                 from ..extract import strategies as ST
-                run_ = ST.run(strategy, text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
+                run_ = ST.run(strat, text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
                               jurisdiction=S.NAME[state], question=question, client=client, state=state)
-                res = ExtractionResult(run_.facts, run_.calls, run_.problems, llm, strategy)
+                res = ExtractionResult(run_.facts, run_.calls, run_.problems, label, strat)
         except requests.RequestException as e:
-            log(f"{state} {question}: {llm} failed: {e}")
+            log(f"{state} {question}: {label} failed: {e}")
             continue
+        llm = label
         secs = round(time.time() - t0, 1)
         ok = res.facts is not None and not res.problems
         db.upsert(con, "extractions", [{"model_id": model_id(state, question), "llm": llm, "state": state,
@@ -229,7 +288,7 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
         log(f"{state} {question}: {llm} {'passed' if ok else 'failed'} quote checks in {res.rounds} round(s), {secs}s"
             + ("" if ok else f" - {len(res.problems)} problems, e.g. {res.problems[0][:120] if res.problems else ''}"))
         if ok:
-            results[llm] = _pin_sections(res.facts, texts[0].section)
+            results[llm] = _pin_sections(res.facts, texts)
 
     if not results:
         tier = "found"
@@ -250,7 +309,8 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
     built = []
     for llm, facts in results.items():
         model = _compile(facts, state, question, texts,
-                         Provenance(method="llm-extraction", model=llm, created=db.now()))
+                         Provenance(method="learned-selector" if llm.startswith("selector:") else "llm-extraction",
+                                    model=llm, created=db.now()))
         built.append((llm, facts, assess(model, agreement=agree["value"] if agree else None)))
     built.sort(key=lambda x: (x[2]["validated"], x[2]["quality"], len(x[1].steps)), reverse=True)
     llm, facts, res = built[0]
@@ -258,11 +318,12 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
     tier = "agreed" if two else "single"
     stages = _stages(located=True, text=True, extracted=True, cross_checked=two, compiled=True,
                      validated=res["validated"])
-    row = _row(state, question, tier=tier, built_by="ollama:" + "+".join(results), stages=stages,
+    row = _row(state, question, tier=tier, built_by="+".join(r if r.startswith("selector:") else f"ollama:{r}"
+                                                             for r in results), stages=stages,
                title=facts.process_name, quality=res["quality"], facts=facts.model_dump(), bpmn=res["bpmn"],
                dmn=res["dmn"], svg=res["svg"], loc=loc,
                metrics={**res["metrics"], "chosen": llm, "agreement_detail": agree, "errors": res["errors"],
-                        "sections": [loc["section"]], "gaps": facts.gaps})
+                        "sections": sections, "gaps": facts.gaps})
     db.upsert(con, "process_models", [row])
     db.bump(con)
     con.commit()

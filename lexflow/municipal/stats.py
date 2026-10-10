@@ -184,6 +184,9 @@ def model_detail(con, mid: str) -> dict | None:
     for e in r["extractions"]:
         e["problems"] = db.loads(e["problems"], [])
     r["governments"] = db.scalar(con, "SELECT count(*) FROM answers WHERE model_id=?", mid, default=0)
+    from .caselaw import for_model
+    r["cases"] = for_model(con, r["state"], (r["metrics"] or {}).get("sections") or
+                           ([r["law"]["section"]] if r.get("law") and r["law"].get("section") else []))
     return r
 
 

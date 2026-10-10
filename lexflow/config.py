@@ -32,7 +32,11 @@ MODEL_A = _env("LEXFLOW_MODEL_A", "qwen3:1.7b")
 MODEL_B = _env("LEXFLOW_MODEL_B", "gemma3:1b")
 NUM_CTX = int(_env("LEXFLOW_NUM_CTX", "16384"))
 # how local models extract facts: see lexflow/extract/strategies.py and the Benchmark page
-STRATEGY = _env("LEXFLOW_STRATEGY", "pick_review")
+STRATEGY = _env("LEXFLOW_STRATEGY", "stack")
+# the independent second extraction when STRATEGY needs no chat model ("" = none: such models stay single)
+CHECK_STRATEGY = _env("LEXFLOW_CHECK_STRATEGY", "pick_review")
+EMBED_MODEL = _env("LEXFLOW_EMBED_MODEL", "nomic-embed-text")
+VECTORS = _env("LEXFLOW_VECTORS", "combo")     # clause vectors for the learned selector: combo | tfidf | embed | none
 
 TURSO_URL = _env("TURSO_DATABASE_URL")
 TURSO_TOKEN = _env("TURSO_AUTH_TOKEN")
@@ -41,6 +45,11 @@ ORIGIN = _env("LEXFLOW_ORIGIN", socket.gethostname())
 # The wiki to publish to.  LEXIPEDIA_TOKEN is accepted as a shorthand for lexipedia.xyz.
 DOKUWIKI_TOKEN = _env("DOKUWIKI_TOKEN") or _env("LEXIPEDIA_TOKEN")
 DOKUWIKI_URL = _env("DOKUWIKI_URL") or ("https://lexipedia.xyz" if _env("LEXIPEDIA_TOKEN") else "")
+
+COURTLISTENER_TOKEN = _env("COURTLISTENER_TOKEN")   # optional: higher rate limits for case-law search
+WIKIBASE_URL = _env("WIKIBASE_URL", "https://lexipedia.wikibase.cloud")
+WIKIBASE_BOT_USER = _env("WIKIBASE_BOT_USER") or _env("LEXI_USER")          # a bot password (Special:BotPasswords)
+WIKIBASE_BOT_PASSWORD = _env("WIKIBASE_BOT_PASSWORD") or _env("LEXI_PASS")
 
 USER_AGENT = _env("LEXFLOW_USER_AGENT", "lexflow/1.0 (+https://github.com/alibama/lexflow)")
 MAX_JOBS = int(_env("LEXFLOW_MAX_JOBS", "2"))

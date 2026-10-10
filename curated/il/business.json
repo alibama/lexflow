@@ -1,0 +1,824 @@
+{
+ "state": "il",
+ "question": "business",
+ "sections": [
+  "805 ILCS 180/5-1",
+  "805 ILCS 180/5-5",
+  "805 ILCS 180/5-55",
+  "805 ILCS 180/5-60",
+  "805 ILCS 180/50-10",
+  "805 ILCS 180/1-20",
+  "805 ILCS 180/1-25",
+  "805 ILCS 185/11",
+  "805 ILCS 185/15",
+  "805 ILCS 405/1",
+  "805 ILCS 405/4",
+  "805 ILCS 5/2.05",
+  "805 ILCS 5/2.10",
+  "805 ILCS 5/15.10",
+  "805 ILCS 105/102.05",
+  "805 ILCS 105/115.10",
+  "805 ILCS 10/6",
+  "805 ILCS 10/12",
+  "805 ILCS 215/201",
+  "805 ILCS 215/404",
+  "805 ILCS 215/1302",
+  "805 ILCS 206/202",
+  "805 ILCS 206/1001"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in Illinois (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "5-1",
+   "subsection": "a",
+   "quote": "One or more persons, other than natural persons under 18 years of age, may organize a limited liability company"
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "5-1",
+     "subsection": "a",
+     "quote": "The organizers need not be members of the limited liability company."
+    }
+   },
+   {
+    "id": "sos",
+    "name": "Secretary of State",
+    "kind": "public-body",
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3.B",
+     "quote": "file in his or her office the original of the document"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company (its managers or, if none, its members)",
+    "kind": "private-party",
+    "source": {
+     "section": "1-20",
+     "subsection": "a",
+     "quote": "A limited liability company or a foreign limited liability company admitted to transact business or making application for admission to transact business in Illinois may elect to adopt an assumed name"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "deliver_articles",
+    "actor": "organizer",
+    "action": "Execute and deliver articles of organization",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "sos",
+    "source": {
+     "section": "5-1",
+     "subsection": "a",
+     "quote": "may organize a limited liability company by executing and delivering articles of organization to the Secretary of State as specified in Sections 5-5 and 5-45"
+    }
+   },
+   {
+    "id": "collect_fee",
+    "actor": "sos",
+    "action": "Collect the $150 filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_articles"
+    ],
+    "source": {
+     "section": "50-10",
+     "subsection": "b.1",
+     "quote": "Filing articles of organization (domestic), application for admission (foreign), and restated articles of organization (domestic), $150."
+    }
+   },
+   {
+    "id": "send_interrogatories",
+    "actor": "sos",
+    "action": "Send interrogatories on compliance",
+    "kind": "notice",
+    "modality": "permission",
+    "after": [
+     "collect_fee"
+    ],
+    "condition": "interrogatories_propounded",
+    "recipient": "llc",
+    "source": {
+     "section": "5-60",
+     "quote": "The Secretary of State may propound to any limited liability company or foreign limited liability company subject to the provisions of this Act"
+    }
+   },
+   {
+    "id": "answer_interrogatories",
+    "actor": "llc",
+    "action": "Answer interrogatories in writing under oath",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "send_interrogatories"
+    ],
+    "recipient": "sos",
+    "deadline": {
+     "amount": 30,
+     "unit": "days",
+     "anchor": "after the mailing thereof",
+     "consequence": "unstated",
+     "on_miss": "articles_not_filed",
+     "source": {
+      "section": "5-60",
+      "quote": "The interrogatories shall be answered within 30 days after the mailing thereof, or within such additional time as shall be fixed by the Secretary of State"
+     }
+    },
+    "source": {
+     "section": "5-60",
+     "quote": "the answers thereto shall be full and complete and shall be made in writing and under oath"
+    }
+   },
+   {
+    "id": "review_articles",
+    "actor": "sos",
+    "action": "Check articles conform and fees paid",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "collect_fee",
+     "answer_interrogatories"
+    ],
+    "join": "any",
+    "decision": "articles_conform",
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3",
+     "quote": "unless the Secretary of State finds that the document does not conform to law, he or she shall, when all fees have been paid"
+    }
+   },
+   {
+    "id": "endorse_filed",
+    "actor": "sos",
+    "action": "Endorse \"Filed\" and the filing date",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "condition": "articles_ok",
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3.A",
+     "quote": "endorse on the original and on the copy the word \"Filed\" and the month, day, and year of the filing thereof"
+    }
+   },
+   {
+    "id": "file_original",
+    "actor": "sos",
+    "action": "File the original articles",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "endorse_filed"
+    ],
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3.B",
+     "quote": "file in his or her office the original of the document"
+    }
+   },
+   {
+    "id": "file_assumed_name",
+    "actor": "llc",
+    "action": "File assumed name application in duplicate",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "file_original"
+    ],
+    "condition": "uses_assumed_name",
+    "recipient": "sos",
+    "source": {
+     "section": "1-20",
+     "subsection": "b",
+     "quote": "Before transacting any business in Illinois under an assumed limited liability company name or names, the limited liability company shall, for each assumed name, execute and file in duplicate an application"
+    }
+   },
+   {
+    "id": "collect_assumed_name_fee",
+    "actor": "sos",
+    "action": "Collect the prorated assumed name fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "file_assumed_name"
+    ],
+    "source": {
+     "section": "50-10",
+     "subsection": "b.9",
+     "quote": "Filing an application for use of an assumed name under Section 1-20 of this Act, $150 for each year or part thereof ending in 0 or 5"
+    }
+   },
+   {
+    "id": "file_name_application",
+    "actor": "sos",
+    "action": "Endorse and file the assumed name application",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "collect_assumed_name_fee"
+    ],
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3.B",
+     "quote": "file in his or her office the original of the document"
+    }
+   },
+   {
+    "id": "return_name_copy",
+    "actor": "sos",
+    "action": "Return the filed duplicate to the company",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "file_name_application"
+    ],
+    "recipient": "llc",
+    "source": {
+     "section": "5-55",
+     "subsection": "a.3.C",
+     "quote": "return the copy to the person who filed it or to that person's representative"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "articles_conform",
+    "question": "Do the articles of organization conform to law, with all fees paid?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "organizer_eligible",
+      "label": "No organizer is a natural person under 18 (for a medical LLC, each organizer is an Illinois physician or attorney)",
+      "type": "boolean"
+     },
+     {
+      "name": "name_and_office",
+      "label": "Company name (meeting § 1-10) and principal place of business stated",
+      "type": "boolean"
+     },
+     {
+      "name": "purposes_stated",
+      "label": "Purposes for which the company is organized stated",
+      "type": "boolean"
+     },
+     {
+      "name": "registered_agent",
+      "label": "Registered agent and registered office stated",
+      "type": "boolean"
+     },
+     {
+      "name": "members_confirmed",
+      "label": "Confirmation that the company has one or more members",
+      "type": "boolean"
+     },
+     {
+      "name": "managers_listed",
+      "label": "Name and business address of all managers (and members with a manager's authority) stated",
+      "type": "boolean"
+     },
+     {
+      "name": "organizers_listed",
+      "label": "Name and address of each organizer stated",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "All fees and charges tendered",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "articles_ok",
+      "label": "Articles conform and may be filed",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": ["false", "-", "-", "-", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-1",
+       "subsection": "a",
+       "quote": "One or more persons, other than natural persons under 18 years of age, may organize a limited liability company"
+      }
+     },
+     {
+      "when": ["-", "false", "-", "-", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.1",
+       "quote": "The name of the limited liability company and the address of its principal place of business"
+      }
+     },
+     {
+      "when": ["-", "-", "false", "-", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.2",
+       "quote": "The purposes for which the limited liability company is organized"
+      }
+     },
+     {
+      "when": ["-", "-", "-", "false", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.3",
+       "quote": "The name of its registered agent and the address of its registered office."
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "false", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.4",
+       "quote": "A confirmation that the limited liability company complies with the requirement in subsection (b) of Section 5-1 that the company has one or more members at the time of filing"
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "-", "false", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.5",
+       "quote": "The name and business address of all of the managers and any member having the authority of a manager."
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "-", "-", "false", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "5-5",
+       "subsection": "a.7",
+       "quote": "The name and address of each organizer."
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "-", "-", "-", "false"],
+      "then": ["false"],
+      "source": {
+       "section": "5-55",
+       "subsection": "a.2",
+       "quote": "all fees and charges authorized by law to be collected by the Secretary of State in connection with the filing of the document shall be tendered to the Secretary of State"
+      }
+     },
+     {
+      "when": ["true", "true", "true", "true", "true", "true", "true", "true"],
+      "then": ["true"],
+      "source": {
+       "section": "5-55",
+       "subsection": "a.3",
+       "quote": "unless the Secretary of State finds that the document does not conform to law, he or she shall, when all fees have been paid"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": ["true", "-", "-", "-", "-", "-"],
+      "then": [
+       "\"Not-for-profit corporation (General Not For Profit Corporation Act of 1986)\"",
+       "\"Articles of incorporation, filed with the Secretary of State\"",
+       "\"$50 for filing articles of incorporation (805 ILCS 105/115.10(a))\""
+      ],
+      "source": {
+       "section": "102.05",
+       "quote": "One or more incorporators may organize a corporation under this Act. Each incorporator shall be either a corporation, domestic or foreign, whether not for profit or otherwise, or a natural person of the age of 18 years or more."
+      }
+     },
+     {
+      "when": ["false", "true", "-", "true", "-", "-"],
+      "then": [
+       "\"Professional corporation (Professional Service Corporation Act, 805 ILCS 10) or professional limited liability company (Professional Limited Liability Company Act, 805 ILCS 185; an LLC providing a professional service licensed by the Department of Financial and Professional Regulation must be formed under that Act, 805 ILCS 180/1-25(d)); each organizer of a professional corporation must be licensed in Illinois to perform the same professional service or related professional services (805 ILCS 10/6)\"",
+       "\"Articles of incorporation (professional corporation) or articles of organization (professional LLC, 805 ILCS 185/11), filed with the Secretary of State on the Secretary's forms and stating the specific profession; before opening an establishment, a professional corporation needs a certificate of registration from the regulating authority (805 ILCS 10/12(a)) and a professional LLC needs a certificate of registration from the Department of Financial and Professional Regulation (805 ILCS 185/15(b))\"",
+       "\"Professional corporation: $150 for articles of incorporation (805 ILCS 5/15.10(a)) plus initial franchise tax under the Business Corporation Act, and a $50 certificate of registration (805 ILCS 10/12(a)); professional LLC: $150 (805 ILCS 180/50-10(b)(1)) + $50 certificate of registration (805 ILCS 185/15(c))\""
+      ],
+      "source": {
+       "section": "6",
+       "quote": "One or more individuals each of whom is licensed to perform the same professional service or related professional services in this State may organize a professional corporation by filing articles of incorporation with the Secretary of State on forms furnished by the Secretary."
+      }
+     },
+     {
+      "when": ["false", "-", "-", "true", "true", "-"],
+      "then": [
+       "\"Business corporation (Business Corporation Act of 1983)\"",
+       "\"Articles of incorporation, executed and filed in duplicate with the Secretary of State (805 ILCS 5/2.10)\"",
+       "\"$150 for filing articles of incorporation (805 ILCS 5/15.10(a)), plus initial franchise tax under the Business Corporation Act (not printed here)\""
+      ],
+      "source": {
+       "section": "2.05",
+       "subsection": "a",
+       "quote": "One or more incorporators may organize a corporation under this Act. Each incorporator shall be either a corporation, domestic or foreign, or a natural person of the age of 18 years or more."
+      }
+     },
+     {
+      "when": ["false", "-", ">= 2", "true", "-", "true"],
+      "then": [
+       "\"Limited partnership (limited partners are shielded; all general partners are liable jointly and severally for the partnership's obligations, 805 ILCS 215/404(a), except for obligations incurred while it is a limited liability limited partnership, 805 ILCS 215/404(c); the certificate must state whether it is one, 805 ILCS 215/201(a)(4))\"",
+       "\"Certificate of limited partnership, delivered to the Secretary of State for filing\"",
+       "\"$150 (805 ILCS 215/1302(b)(1))\""
+      ],
+      "source": {
+       "section": "201",
+       "subsection": "a",
+       "quote": "In order for a limited partnership to be formed, a certificate of limited partnership must be delivered to the Secretary of State for filing."
+      }
+     },
+     {
+      "when": ["false", "-", "-", "true", "-", "-"],
+      "then": [
+       "\"Limited liability company (with 2 or more owners, an alternative shield is a general partnership registered as a limited liability partnership by filing a statement of qualification, 805 ILCS 206/1001(a), (c))\"",
+       "\"Articles of organization, executed and delivered to the Secretary of State\"",
+       "\"$150; $400 for a company with series (805 ILCS 180/50-10(b)(1))\""
+      ],
+      "source": {
+       "section": "5-1",
+       "subsection": "a",
+       "quote": "may organize a limited liability company by executing and delivering articles of organization to the Secretary of State as specified in Sections 5-5 and 5-45"
+      }
+     },
+     {
+      "when": ["false", "-", "1", "false", "-", "-"],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; before trading under any name other than the owner's real name, file an assumed name certificate with the County Clerk of each county where the business is conducted, publish notice of the filing once a week for 3 consecutive weeks (first within 15 days), and file proof of publication with the County Clerk within 50 days, or the registration is void (805 ILCS 405/1)\"",
+       "\"None to form; the County Clerk's filing fee and the newspaper's publication charge for an assumed name are not set in 805 ILCS 405/1\""
+      ],
+      "source": {
+       "section": "1",
+       "quote": "unless such person or persons shall file in the office of the County Clerk of the County in which such person or persons conduct or transact or intend to conduct or transact such business, a certificate setting forth the name under which the business is, or is to be, conducted or transacted"
+      }
+     },
+     {
+      "when": ["false", "-", ">= 2", "false", "-", "-"],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: 2 or more co-owners carrying on a business for profit form a partnership. A partnership trading under a name that does not include its partners' real names must file an assumed name certificate with the County Clerk and publish notice (805 ILCS 405/1, 405/4). Optionally, after approval by the vote needed to amend the partnership agreement, the partnership may file a statement of qualification with the Secretary of State to become a limited liability partnership; the status remains effective for one year after filing (805 ILCS 206/1001(b), (c), (e))\"",
+       "\"None to form; County Clerk fee and publication charge for an assumed name; the 'required fee' for an LLP statement of qualification (805 ILCS 206/1001(e)) is set outside the sections printed here\""
+      ],
+      "source": {
+       "section": "202",
+       "subsection": "a",
+       "quote": "the association of 2 or more persons to carry on as co-owners a business for profit forms a partnership, whether or not the persons intend to form a partnership"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_exists",
+    "description": "The LLC is organized",
+    "after": [
+     "file_original"
+    ],
+    "source": {
+     "section": "5-5",
+     "subsection": "b",
+     "quote": "A limited liability company is organized at the time articles of organization are filed by the Secretary of State or at any later time, not more than 60 days after the filing of the articles of organization, specified in the articles of organization."
+    }
+   },
+   {
+    "id": "assumed_name_effective",
+    "description": "The LLC is organized; its assumed name is in effect",
+    "after": [
+     "return_name_copy"
+    ],
+    "source": {
+     "section": "1-20",
+     "subsection": "c",
+     "quote": "The right to use an assumed name shall be effective from the date of filing by the Secretary of State"
+    }
+   },
+   {
+    "id": "articles_not_filed",
+    "description": "Articles held unfiled; interrogatories unanswered",
+    "after": [],
+    "source": {
+     "section": "5-60",
+     "quote": "The Secretary of State need not file any document to which the interrogatories relate until the interrogatories are answered as herein provided"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "805 ILCS 180/5-45",
+    "role": "forms and signing of the articles (signed by the organizer or organizers)",
+    "source": {
+     "section": "5-1",
+     "subsection": "a",
+     "quote": "as specified in Sections 5-5 and 5-45"
+    }
+   },
+   {
+    "citation": "805 ILCS 180/5-1",
+    "role": "signing the articles is an affirmation under penalty of perjury",
+    "source": {
+     "section": "5-1",
+     "subsection": "a",
+     "quote": "The execution of the articles of organization constitutes an affirmation by the person, under penalty of perjury, that the facts stated therein are true."
+    }
+   },
+   {
+    "citation": "805 ILCS 180/5-1",
+    "role": "medical LLCs: every organizer must be an Illinois physician or attorney",
+    "source": {
+     "section": "5-1",
+     "subsection": "a",
+     "quote": "Each organizer of a limited liability company organized to engage in the practice of medicine shall be a licensed physician of this State or an attorney licensed to practice law in this State."
+    }
+   },
+   {
+    "citation": "805 ILCS 180/5-55",
+    "role": "a copy is delivered with the original only when the Act requires the document to be filed in duplicate",
+    "source": {
+     "section": "5-55",
+     "subsection": "a.1",
+     "quote": "if required by this Act to be filed in duplicate, one copy (which may be a signed carbon or photocopy) shall be delivered to the Office of the Secretary of State"
+    }
+   },
+   {
+    "citation": "805 ILCS 180/1-20",
+    "role": "failing to answer the Secretary of State's interrogatories in time is a petty offense",
+    "source": {
+     "section": "1-20",
+     "subsection": "h",
+     "quote": "fails or refuses (1) to answer truthfully and fully within the time prescribed by this Act interrogatories propounded by the Secretary of State in accordance with this Act"
+    }
+   },
+   {
+    "citation": "805 ILCS 180/50-10",
+    "role": "LLC annual report fee",
+    "source": {
+     "section": "50-10",
+     "subsection": "b.11",
+     "quote": "Filing an annual report of a limited liability company or foreign limited liability company, $75, if filed as required by this Act, plus a penalty if delinquent."
+    }
+   },
+   {
+    "citation": "805 ILCS 180/1-25",
+    "role": "an LLC providing a professional service licensed by the Department must be a professional LLC",
+    "source": {
+     "section": "1-25",
+     "subsection": "d",
+     "quote": "A limited liability company that intends to provide a professional service licensed by the Department of Financial and Professional Regulation must be formed in compliance with the Professional Limited Liability Company Act."
+    }
+   },
+   {
+    "citation": "805 ILCS 185/11",
+    "role": "professional LLC articles of organization must state the professional service",
+    "source": {
+     "section": "11",
+     "quote": "must also state the specific professional service or related professional services to be rendered by the professional limited liability company"
+    }
+   },
+   {
+    "citation": "805 ILCS 185/15",
+    "role": "professional LLC needs a Department certificate of registration before opening an establishment",
+    "source": {
+     "section": "15",
+     "subsection": "b",
+     "quote": "A professional limited liability company shall not open, operate, or maintain an establishment for any of the purposes for which a limited liability company may be organized without obtaining a certificate of registration from the Department."
+    }
+   },
+   {
+    "citation": "805 ILCS 185/15",
+    "role": "professional LLC certificate of registration fee",
+    "source": {
+     "section": "15",
+     "subsection": "c",
+     "quote": "the Department shall issue, upon payment of a registration fee of $50, a certificate of registration"
+    }
+   },
+   {
+    "citation": "805 ILCS 10/12",
+    "role": "professional corporation needs a certificate of registration before opening an establishment",
+    "source": {
+     "section": "12",
+     "subsection": "a",
+     "quote": "No corporation shall open, operate or maintain an establishment for any of the purposes for which a corporation may be organized under this Act without a certificate of registration from the regulating authority"
+    }
+   },
+   {
+    "citation": "805 ILCS 10/12",
+    "role": "professional corporation certificate of registration fee",
+    "source": {
+     "section": "12",
+     "subsection": "a",
+     "quote": "shall issue, upon payment of a registration fee of $50, a certificate of registration"
+    }
+   },
+   {
+    "citation": "805 ILCS 5/2.10",
+    "role": "business corporation articles are filed in duplicate",
+    "source": {
+     "section": "2.10",
+     "quote": "The articles of incorporation shall be executed and filed in duplicate in accordance with Section 1.10 of this Act."
+    }
+   },
+   {
+    "citation": "805 ILCS 405/1",
+    "role": "sole proprietors and general partnerships: newspaper notice of the county assumed name certificate",
+    "source": {
+     "section": "1",
+     "quote": "Notice of the filing of such certificate shall be published in a newspaper of general circulation published within the county in which the certificate is filed."
+    }
+   },
+   {
+    "citation": "805 ILCS 405/1",
+    "role": "a county assumed name registration is void without proof of publication",
+    "source": {
+     "section": "1",
+     "quote": "Unless proof of publication is made to the clerk, the certificate of registration of the assumed name is void."
+    }
+   },
+   {
+    "citation": "805 ILCS 405/4",
+    "role": "the county assumed name rules do not apply to corporations, LLCs, limited partnerships or LLPs",
+    "source": {
+     "section": "4",
+     "quote": "This Act shall in no way affect or apply to any corporation, limited liability company, limited partnership, or limited liability partnership duly organized under the laws of this State"
+    }
+   },
+   {
+    "citation": "805 ILCS 215/201",
+    "role": "a limited partnership is formed when the Secretary of State files its certificate",
+    "source": {
+     "section": "201",
+     "subsection": "c",
+     "quote": "a limited partnership is formed when the Secretary of State files the certificate of limited partnership"
+    }
+   },
+   {
+    "citation": "805 ILCS 215/201",
+    "role": "the certificate of limited partnership must say whether it is a limited liability limited partnership",
+    "source": {
+     "section": "201",
+     "subsection": "a.4",
+     "quote": "whether the limited partnership is a limited liability limited partnership"
+    }
+   },
+   {
+    "citation": "805 ILCS 215/404",
+    "role": "general partners are jointly and severally liable for the limited partnership's obligations",
+    "source": {
+     "section": "404",
+     "subsection": "a",
+     "quote": "all general partners are liable jointly and severally for all obligations of the limited partnership unless otherwise agreed by the claimant or provided by law"
+    }
+   },
+   {
+    "citation": "805 ILCS 215/404",
+    "role": "no personal liability of general partners for obligations of a limited liability limited partnership",
+    "source": {
+     "section": "404",
+     "subsection": "c",
+     "quote": "A general partner is not personally liable, directly or indirectly, by way of contribution or otherwise, for such an obligation solely by reason of being or acting as a general partner."
+    }
+   },
+   {
+    "citation": "805 ILCS 206/1001",
+    "role": "LLP: partners must approve by the vote needed to amend the partnership agreement",
+    "source": {
+     "section": "1001",
+     "subsection": "b",
+     "quote": "must be approved by the vote necessary to amend the partnership agreement"
+    }
+   },
+   {
+    "citation": "805 ILCS 206/1001",
+    "role": "a partnership becomes an LLP by filing a statement of qualification",
+    "source": {
+     "section": "1001",
+     "subsection": "c",
+     "quote": "a partnership may become a limited liability partnership by filing a statement of qualification with the Secretary of State"
+    }
+   },
+   {
+    "citation": "805 ILCS 206/1001",
+    "role": "the Secretary of State registers any partnership that submits a completed LLP application with the fee",
+    "source": {
+     "section": "1001",
+     "subsection": "i",
+     "quote": "The Secretary of State shall register as a limited liability partnership any partnership that submits a completed application with the required fee."
+    }
+   },
+   {
+    "citation": "805 ILCS 5/15.10",
+    "role": "business corporation articles of incorporation fee",
+    "source": {
+     "section": "15.10",
+     "subsection": "a",
+     "quote": "Filing articles of incorporation, $150."
+    }
+   },
+   {
+    "citation": "805 ILCS 105/115.10",
+    "role": "not-for-profit corporation articles of incorporation fee",
+    "source": {
+     "section": "115.10",
+     "subsection": "a",
+     "quote": "Filing articles of incorporation, $50."
+    }
+   },
+   {
+    "citation": "805 ILCS 215/1302",
+    "role": "certificate of limited partnership fee",
+    "source": {
+     "section": "1302",
+     "subsection": "b.1",
+     "quote": "filing a certificate of limited partnership (domestic), a certificate of authority (foreign), and a restated certificate of limited partnership (domestic), $150"
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step (articles of organization under 805 ILCS 180/5-1, 5-5 and 5-55). Illinois issues no separate certificate of organization: the Secretary of State endorses \"Filed\" and the date and files the original (§ 5-55(a)(3)(A), (B)), and the company is organized when the articles are filed or on a later date specified in them (§ 5-5(b)). The other structures are not modelled step by step: a limited partnership is formed when the Secretary of State files its certificate (805 ILCS 215/201(c)); a partnership becomes an LLP by filing a statement of qualification, and the Secretary of State must register any partnership that submits a completed application with the required fee (805 ILCS 206/1001(c), (i)).",
+   "Filing evidence for the articles is the Secretary of State's filing itself (§ 5-5(b)), not necessarily a returned copy. Under § 5-55(a)(1) a copy is delivered only when the Act requires the document to be filed in duplicate; the LLC Act requires duplicates for an assumed name application (§ 1-20(b)) but not for articles of organization (§§ 5-5 and 5-45 are silent). So the endorse-and-return-the-copy duty (§ 5-55(a)(3)(A), (C)) is modelled only on the assumed name branch; if a filer does deliver a copy of the articles, the endorsement on \"the copy\" and its return would apply there too.",
+   "The delayed effective date in § 5-5(b) (any later time specified in the articles, not more than 60 days after filing) is a ceiling on the date the articles may choose, not a period for anyone to act, and nothing happens when it runs; it is therefore not drawn as a timer. The outcome llc_exists follows the filing; with a delayed date the company is organized on the specified date instead.",
+   "The Secretary of State's review is modelled from the contents list in § 5-5(a), organizer eligibility under § 5-1(a) and the fee rule in § 5-55(a). The name requirements of § 1-10, the duration clause (§ 5-5(a)(5.5), perpetual unless stated) and the signing rules of § 5-45 are not checked here.",
+   "Interrogatories (§ 5-60): the Secretary of State may send them; they must be answered in writing and under oath within 30 days after mailing or any additional time the Secretary fixes (the extension is not modelled), and the document need not be filed until they are answered, and not then if the answers show non-conformity (that second limb is covered by the review decision). Failing to answer in time is also a petty offense (§ 1-20(h)). § 5-60 directs interrogatories to the company's managers or members; how they reach an organizer before the company exists is not stated, so the company is shown as the answering party. The missed-deadline consequence is recorded as 'unstated' because the text says only that the Secretary need not file, not that the filing is refused or deemed denied.",
+   "The statute sets no time limit for the Secretary of State to act on the articles, and says nothing about what happens to non-conforming articles beyond not filing them; rejection and resubmission are not modelled.",
+   "Trust-company LLCs need a statement from the Secretary of Financial and Professional Regulation before filing, and bank or savings-bank LLCs file with that Department or a federal regulator instead (§ 5-5(c), (d)); not modelled.",
+   "An LLC that trades under an assumed name files in duplicate with the Secretary of State under § 1-20, not with the County Clerk (805 ILCS 405/4). The assumed-name fee is prorated by the year in the five-year cycle (§ 50-10(b)(9)); the right runs from the Secretary's filing date (§ 1-20(c)). Renewal every five years with the annual report (§ 1-20(c), (d)) is not modelled.",
+   "Sole proprietors and general partnerships using an assumed name file with the County Clerk of every county where they do business, publish notice for 3 consecutive weeks starting within 15 days, and file proof of publication within 50 days or the registration is void (805 ILCS 405/1); trading without complying is a Class C misdemeanor, each day a separate offence (805 ILCS 405/5, not cited in sections). The county's filing fee is not stated in the Act.",
+   "State formation is only part of starting a business: Illinois has no single statewide general business licence. Municipal and county licences, state tax registration (Illinois Department of Revenue) and occupational licences come from other laws and local ordinances, which are scored separately.",
+   "Professionals: a professional corporation needs every organizer licensed for the same or related professional services (805 ILCS 10/6) and a certificate of registration from the regulating authority before opening an establishment ($50, 805 ILCS 10/12(a)); a professional LLC files articles stating the professional service (805 ILCS 185/11) and needs a Department certificate of registration before opening an establishment ($50, 805 ILCS 185/15(b), (c)). A separate registration application is needed for each business location (805 ILCS 185/15(d)), and registrations expire every third January 1 with a $40 renewal (805 ILCS 185/15(e)); these are not modelled as steps. Licensed persons may still use other permitted business forms (805 ILCS 10/4, not cited in sections).",
+   "LLP as a liability shield: the structure table keeps the seven-rule order shared with other states, so a multi-owner business wanting limited liability is routed to the LLC rule, which names the LLP (805 ILCS 206/1001) as an alternative; the general-partnership rule names it as an optional later step.",
+   "Business corporations owe an initial franchise tax under the Business Corporation Act in addition to the $150 filing fee; the tax sections are not printed here.",
+   "The 'required fee' for an LLP statement of qualification is not stated in the sections printed (805 ILCS 206/1001(e)); LLP status lasts one year after filing, so renewal is presupposed but not modelled.",
+   "Not-for-profit corporation status is a state corporate form, not tax exemption; federal 501(c) status is outside the Illinois Compiled Statutes and not modelled.",
+   "Annual reports ($75 for an LLC, § 50-10(b)(11); $75 for a business corporation, 805 ILCS 5/15.10(o); $10 for a not-for-profit, 805 ILCS 105/115.10(m); $100 for a limited partnership, 805 ILCS 215/1302(b)(6)) are not modelled.",
+   "LLCs with series or the ability to establish a series pay $400 instead of $150 (§ 50-10(b)(1)); not modelled in the fee step."
+  ]
+ }
+}

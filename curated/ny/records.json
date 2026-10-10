@@ -1,0 +1,747 @@
+{
+  "state": "ny",
+  "question": "records",
+  "sections": [
+    "N.Y. PBO Law § 89"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request records under the New York Freedom of Information Law",
+    "trigger": "A person asks a New York agency in writing for a record",
+    "trigger_source": {
+      "section": "89",
+      "subsection": null,
+      "quote": "The provisions of this section apply to access to all records"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Person requesting the record",
+        "kind": "private-party",
+        "source": {
+          "section": "89",
+          "subsection": "4.a",
+          "quote": "the person requesting the record"
+        }
+      },
+      {
+        "id": "agency",
+        "name": "Agency or entity subject to FOIL",
+        "kind": "public-body",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "Each entity subject to the provisions of this article"
+        }
+      },
+      {
+        "id": "appeals_officer",
+        "name": "Head, chief executive or governing body (or designee)",
+        "kind": "official",
+        "source": {
+          "section": "89",
+          "subsection": "4.a",
+          "quote": "the head, chief executive or governing body of the entity, or the person therefor designated by such head, chief executive, or governing body"
+        }
+      },
+      {
+        "id": "committee",
+        "name": "Committee on Open Government",
+        "kind": "other-government",
+        "source": {
+          "section": "89",
+          "subsection": "1.a",
+          "quote": "The committee on open government is continued"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Court (Article 78 proceeding)",
+        "kind": "court",
+        "source": {
+          "section": "89",
+          "subsection": "4.c",
+          "quote": "The court in such a proceeding"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Submit written request reasonably describing the record",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "agency",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "the receipt of a written request for a record reasonably described"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "agency",
+        "action": "Grant, deny, or acknowledge request in writing",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "decision": "response_type",
+        "deadline": {
+          "amount": 5,
+          "unit": "business_days",
+          "anchor": "receipt of a written request for a record reasonably described",
+          "consequence": "deemed-denial",
+          "on_miss": "appeal",
+          "source": {
+            "section": "89",
+            "subsection": "3.a",
+            "quote": "within five business days of the receipt of a written request for a record reasonably described"
+          }
+        },
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "shall make such record available to the person requesting it, deny such request in writing or furnish a written acknowledgement of the receipt of such request"
+        }
+      },
+      {
+        "id": "decide_later",
+        "actor": "agency",
+        "action": "Grant or deny by the stated date",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "acknowledged",
+        "decision": "later_response",
+        "deadline": {
+          "amount": 0,
+          "unit": "days",
+          "anchor": "the approximate date stated in the acknowledgement, which must be reasonable under the circumstances",
+          "consequence": "deemed-denial",
+          "on_miss": "appeal",
+          "source": {
+            "section": "89",
+            "subsection": "3.a",
+            "quote": "a statement of the approximate date, which shall be reasonable under the circumstances of the request, when such request will be granted or denied"
+          }
+        },
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "when such request will be granted or denied"
+        }
+      },
+      {
+        "id": "appeal",
+        "actor": "requester",
+        "action": "Appeal denial in writing to entity head",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "respond",
+          "decide_later"
+        ],
+        "join": "any",
+        "condition": "request_denied",
+        "recipient": "appeals_officer",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the denial of access (written, or by failure to respond in time)",
+          "consequence": "right-lapses",
+          "source": {
+            "section": "89",
+            "subsection": "4.a",
+            "quote": "may within thirty days appeal in writing such denial"
+          }
+        },
+        "source": {
+          "section": "89",
+          "subsection": "4.a",
+          "quote": "any person denied access to a record may within thirty days appeal in writing such denial to the head, chief executive or governing body of the entity"
+        }
+      },
+      {
+        "id": "decide_appeal",
+        "actor": "appeals_officer",
+        "action": "Explain further denial or provide access",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "appeal"
+        ],
+        "decision": "appeal_result",
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "receipt of the appeal",
+          "consequence": "deemed-denial",
+          "on_miss": "forward_to_committee",
+          "source": {
+            "section": "89",
+            "subsection": "4.a",
+            "quote": "within ten business days of the receipt of such appeal"
+          }
+        },
+        "source": {
+          "section": "89",
+          "subsection": "4.a",
+          "quote": "fully explain in writing to the person requesting the record the reasons for further denial, or provide access to the record sought"
+        }
+      },
+      {
+        "id": "forward_to_committee",
+        "actor": "agency",
+        "action": "Immediately forward appeal and determination to Committee",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_appeal"
+        ],
+        "recipient": "committee",
+        "source": {
+          "section": "89",
+          "subsection": "4.a",
+          "quote": "In addition, each agency shall immediately forward to the committee on open government a copy of such appeal when received by the agency and the ensuing determination thereon"
+        }
+      },
+      {
+        "id": "pay_fee",
+        "actor": "requester",
+        "action": "Pay or offer to pay the fee",
+        "kind": "payment",
+        "modality": "none",
+        "after": [
+          "respond",
+          "decide_later",
+          "forward_to_committee"
+        ],
+        "join": "any",
+        "condition": "records_granted",
+        "recipient": "agency",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "Upon payment of, or offer to pay, the fee prescribed therefor"
+        }
+      },
+      {
+        "id": "provide_copy",
+        "actor": "agency",
+        "action": "Provide copy and certify it if asked",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "pay_fee"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "the entity shall provide a copy of such record and certify to the correctness of such copy if so requested"
+        }
+      },
+      {
+        "id": "seek_review",
+        "actor": "requester",
+        "action": "Seek Article 78 review in court",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "forward_to_committee"
+        ],
+        "recipient": "court",
+        "source": {
+          "section": "89",
+          "subsection": "4.b",
+          "quote": "may bring a proceeding for review of such denial pursuant to article seventy-eight of the civil practice law and rules"
+        }
+      },
+      {
+        "id": "rule_on_fees",
+        "actor": "court",
+        "action": "Rule on attorney's fees and litigation costs",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "seek_review"
+        ],
+        "decision": "attorney_fees",
+        "source": {
+          "section": "89",
+          "subsection": "4.c",
+          "quote": "The court in such a proceeding: (i) may assess, against such agency involved, reasonable attorney's fees and other litigation costs"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "response_type",
+        "question": "Which response does the agency give within five business days?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "decidable",
+            "label": "Request can be decided within five business days",
+            "type": "boolean"
+          },
+          {
+            "name": "held",
+            "label": "Agency has the record and can find it",
+            "type": "boolean"
+          },
+          {
+            "name": "grant",
+            "label": "Agency grants access",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "records_granted",
+            "label": "Access granted",
+            "type": "boolean"
+          },
+          {
+            "name": "request_denied",
+            "label": "Request denied",
+            "type": "boolean"
+          },
+          {
+            "name": "acknowledged",
+            "label": "Receipt acknowledged with approximate date",
+            "type": "boolean"
+          },
+          {
+            "name": "not_held",
+            "label": "Record not held or not found",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Written acknowledgement of receipt with a reasonable approximate date for grant or denial\"",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "furnish a written acknowledgement of the receipt of such request and a statement of the approximate date"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Certify that the record is not held or cannot be found after diligent search\"",
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "shall certify that it does not have possession of such record or that such record cannot be found after diligent search"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Make the record available\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "shall make such record available to the person requesting it"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Deny the request in writing\"",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "deny such request in writing"
+            }
+          }
+        ]
+      },
+      {
+        "id": "later_response",
+        "question": "How does the agency answer an acknowledged request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "held",
+            "label": "Agency has the record and can find it",
+            "type": "boolean"
+          },
+          {
+            "name": "grant",
+            "label": "Agency grants access in whole or in part",
+            "type": "boolean"
+          },
+          {
+            "name": "within_twenty",
+            "label": "Disclosure possible within twenty business days of the acknowledgement",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "records_granted",
+            "label": "Access granted",
+            "type": "boolean"
+          },
+          {
+            "name": "request_denied",
+            "label": "Request denied",
+            "type": "boolean"
+          },
+          {
+            "name": "not_held",
+            "label": "Record not held or not found",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Certify that the record is not held or cannot be found after diligent search\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "that such record cannot be found after diligent search"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Deny the request in writing\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "when such request will be granted or denied"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Grant and disclose within twenty business days of the acknowledgement\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "If an agency determines to grant a request in whole or in part"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Grant; state in writing the reason for delay and a date certain for disclosure\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "3.a",
+              "quote": "the agency shall state, in writing, both the reason for the inability to grant the request within twenty business days and a date certain within a reasonable period"
+            }
+          }
+        ]
+      },
+      {
+        "id": "appeal_result",
+        "question": "What does the appeals officer decide?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {
+            "name": "access_on_appeal",
+            "label": "Access provided on appeal",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Appeal determination",
+            "type": "string"
+          },
+          {
+            "name": "records_granted",
+            "label": "Access granted",
+            "type": "boolean"
+          },
+          {
+            "name": "further_denied",
+            "label": "Denial upheld",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true"
+            ],
+            "then": [
+              "\"Provide access to the record sought\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "4.a",
+              "quote": "provide access to the record sought"
+            }
+          },
+          {
+            "when": [
+              "false"
+            ],
+            "then": [
+              "\"Explain in writing the reasons for further denial\"",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "4.a",
+              "quote": "fully explain in writing to the person requesting the record the reasons for further denial"
+            }
+          }
+        ]
+      },
+      {
+        "id": "attorney_fees",
+        "question": "Does the court award the requester attorney's fees and litigation costs?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "substantially_prevailed",
+            "label": "Requester substantially prevailed",
+            "type": "boolean"
+          },
+          {
+            "name": "missed_statutory_time",
+            "label": "Agency failed to respond to the request or appeal within the statutory time",
+            "type": "boolean"
+          },
+          {
+            "name": "no_reasonable_basis",
+            "label": "Court finds the agency had no reasonable basis for denying access",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "fee_award",
+            "label": "Attorney's fees and litigation costs",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "true"
+            ],
+            "then": [
+              "\"Court shall assess reasonable attorney's fees and litigation costs against the agency\""
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "4.c",
+              "quote": "shall assess, against such agency involved, reasonable attorney's fees and other litigation costs reasonably incurred by such person in any case under the provisions of this section in which such person has substantially prevailed and the court finds that the agency had no reasonable basis for denying access"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Court may assess reasonable attorney's fees and litigation costs against the agency\""
+            ],
+            "source": {
+              "section": "89",
+              "subsection": "4.c",
+              "quote": "may assess, against such agency involved, reasonable attorney's fees and other litigation costs reasonably incurred by such person in any case under the provisions of this section in which such person has substantially prevailed, and when the agency failed to respond to a request or appeal within the statutory time"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "records_provided",
+        "description": "Copy of the record provided to the requester",
+        "after": [
+          "provide_copy"
+        ],
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "certify to the correctness of such copy if so requested"
+        }
+      },
+      {
+        "id": "record_not_held",
+        "description": "Agency certifies the record is not held or cannot be found",
+        "after": [
+          "respond",
+          "decide_later"
+        ],
+        "join": "any",
+        "when": "not_held",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "certify that it does not have possession of such record"
+        }
+      },
+      {
+        "id": "court_review",
+        "description": "Court reviews the denial; agency bears the burden for § 87(2) exemptions",
+        "after": [
+          "rule_on_fees"
+        ],
+        "source": {
+          "section": "89",
+          "subsection": "4.b",
+          "quote": "the agency involved shall have the burden of proving that such record falls within the provisions of such subdivision two"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "N.Y. Pub. Off. Law § 87(1)(c)",
+        "role": "defines the actual cost an agency may recover for a copy; an outside professional service may be charged only when the agency's information technology equipment is inadequate to prepare the copy",
+        "source": {
+          "section": "89",
+          "subsection": "3.a",
+          "quote": "the costs of which the agency may recover pursuant to paragraph (c) of subdivision one of section eighty-seven of this article"
+        }
+      },
+      {
+        "citation": "N.Y. Pub. Off. Law § 87(2)",
+        "role": "grounds on which access may be denied; agency bears the burden in court",
+        "source": {
+          "section": "89",
+          "subsection": "4.b",
+          "quote": "In the event that access to any record is denied pursuant to the provisions of subdivision two of section eighty-seven of this article"
+        }
+      },
+      {
+        "citation": "N.Y. CPLR art. 78",
+        "role": "governs judicial review of a denial upheld on appeal",
+        "source": {
+          "section": "89",
+          "subsection": "4.b",
+          "quote": "pursuant to article seventy-eight of the civil practice law and rules"
+        }
+      },
+      {
+        "citation": "N.Y. CPLR 5513(a)",
+        "role": "time to appeal the Article 78 judgment to the Appellate Division",
+        "source": {
+          "section": "89",
+          "subsection": "4.d",
+          "quote": "Appeal to the appellate division of the supreme court must be made in accordance with subdivision (a) of section fifty-five hundred thirteen of the civil practice law and rules"
+        }
+      }
+    ],
+    "gaps": [
+      "Scope: only § 89 is modelled, to keep the benchmark text short (§ 89 alone is about 3,800 words). Section 87 is not included. It sets the fees: paper photocopies up to 9 x 14 inches cost at most 25 cents each (§ 87(1)(b)(iii)); other records are charged at the actual cost of reproduction under § 87(1)(c); no fee may be charged for preparing such a copy unless at least two hours of agency employee time is needed; and the requester must be told the estimated cost when more than two hours of employee time is needed or an outside professional service would be used. Section 87 also requires that a denial rest on a \"particularized and specific justification\" and lists the § 87(2) exemptions. In this model those appear only as cross-references, and the denial-contents rule is not modelled.",
+      "Constructive denial: § 89(4)(a) says failure to conform to subdivision three \"shall constitute a denial\", and § 89(4)(b) says the same for a failure to decide an appeal on time. Both missed deadlines therefore route to the next remedy rather than to an end state: a missed five-business-day response, or a missed approximate date after an acknowledgement, leads to the administrative appeal, and a missed ten-business-day appeal decision leads (through the committee copy) to Article 78 review, which is the default path after the appeal whenever access was not provided.",
+      "Acknowledged requests: the text sets no fixed number of days for granting or denying after an acknowledgement, only the 'approximate date' stated in it, which must be 'reasonable under the circumstances'. The timer on decide_later therefore has no fixed length (zero days after the stated date). Treating a missed approximate date as a denial is an inference from § 89(4)(a) ('Failure by an agency to conform to the provisions of subdivision three'), not an express rule. The twenty-business-day mark applies only after the agency decides to grant: if disclosure cannot happen within twenty business days of the acknowledgement, the agency must state in writing the reason and a date certain. That is modelled as a rule of later_response, not as a timer, and it does not apply to denials. The model does not represent a grant that misses the stated date certain.",
+      "Not-held certification: § 89(3)(a) lists exactly three five-business-day responses (make available, deny in writing, or acknowledge). The duty to certify that the agency does not have the record or cannot find it after diligent search appears later, as the alternative to providing a copy 'Upon payment of, or offer to pay, the fee'. Placing that certification among the responses in response_type and later_response (and the record_not_held outcome after respond or decide_later) is an inference; the text does not list it as a fourth five-day response.",
+      "Partial grants: a request may be granted 'in whole or in part'. The model gives one outcome per response, so it does not show the appeal of the denied portion of a partial grant running alongside production of the granted portion.",
+      "Request form and channels: entities with reasonable means must accept and answer requests by e-mail (3(b)); state agencies with websites must accept requests online (3(c)); the Committee on Open Government must publish a request form (1(b)(v)). An agency may require a written certification that lists of names and addresses will not be used for solicitation or fund-raising. These shape submit_request but are not separate steps.",
+      "Grounds an agency may not use: an agency may not deny a request as voluminous or burdensome for lack of staff if it could hire an outside professional service (3(a)). It must retrieve electronic data with reasonable effort, and programming done to retrieve a record is not the creation of a new record. These limit the 'grant' input but are not modelled as rules.",
+      "Fees: copies are provided 'upon payment of, or offer to pay, the fee prescribed therefor'. pay_fee therefore comes before provide_copy, but the amount is set by § 87, which is not in this model. Inspection without copies, which § 87(2) provides for, is not modelled separately.",
+      "Committee copies: the agency must 'immediately' forward to the Committee on Open Government 'a copy of such appeal when received by the agency and the ensuing determination thereon'. The ten-business-day clock for the appeal decision runs from receipt of the appeal and does not depend on that forwarding, so decide_appeal follows the appeal directly. Both copies are drawn as one step (forward_to_committee) after the decision, which is also reached when the decision deadline is missed, since the appeal copy is owed either way. In the text the appeal copy is due on receipt, alongside the decision; it is drawn after the decision because a parallel forwarding branch could not rejoin the process once the deemed-denial timer leaves decide_appeal. The requester's next step (pay_fee if access was provided on appeal, otherwise seek_review) is drawn after the forwarding; the statute does not make the requester's rights wait on it.",
+      "Trade secret and critical infrastructure information: § 89(4)(a) and (b) apply 'Except as provided in subdivision five'. Subdivision five has its own procedure for records excepted at the submitter's request (seven-business-day appeal, ten-business-day decision, fifteen-day limit for the submitter's Article 78 proceeding). That procedure is not modelled.",
+      "Judicial review: the section does not state a time limit for starting the Article 78 proceeding; that limit comes from the CPLR, which is not in this text. The attorney's fee rule of § 89(4)(c) is modelled as attorney_fees: the court may award fees if the requester substantially prevails and the agency missed a statutory time limit, and must award them if the requester substantially prevails and the agency had no reasonable basis for denying access. The table gives no output where neither rule applies, because § 89 is silent there. The missed_statutory_time input corresponds to the deemed-denial timers on respond, decide_later and decide_appeal. An agency's appeal from a disclosure order gets preference and is deemed abandoned if the agency does not file its record and brief within sixty days (4(d)). The model ends at court_review.",
+      "Privacy and redaction: an agency may delete identifying details to prevent an unwarranted invasion of personal privacy (2). Law enforcement disciplinary records must, or may, be redacted before disclosure (2-b, 2-c). Home addresses of employees and retirees need not be disclosed (7). These limit what is released but are not modelled as steps.",
+      "The three ways a request is granted (in the first response, after an acknowledgement, or on appeal) rejoin at pay_fee as an exclusive merge (join 'any'), and the two ways of denying, written or by missed deadline, rejoin at appeal the same way. Willful concealment or destruction of a record to prevent inspection is a violation (8). That is an offence, not a step."
+    ]
+  }
+}

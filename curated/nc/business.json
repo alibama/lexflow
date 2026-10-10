@@ -1,0 +1,790 @@
+{
+ "state": "nc",
+ "question": "business",
+ "sections": [
+  "57D-2-20",
+  "57D-2-21",
+  "57D-2-02",
+  "57D-1-22",
+  "55D-10",
+  "55D-15",
+  "55D-16",
+  "55A-2-01",
+  "55A-1-22",
+  "55B-4",
+  "55-2-01",
+  "55-1-22",
+  "59-201",
+  "59-1106",
+  "59-36",
+  "66-71.4"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in North Carolina (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "57D-2-20",
+   "subsection": "a",
+   "quote": "One or more persons may cause an LLC to be formed"
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "c",
+     "quote": "the organizer or organizers shall either identify the initial members of the LLC or dissolve the LLC"
+    }
+   },
+   {
+    "id": "secretary_of_state",
+    "name": "Secretary of State",
+    "kind": "public-body",
+    "source": {
+     "section": "55D-15",
+     "subsection": "a",
+     "quote": "If a document delivered to the office of the Secretary of State for filing satisfies the requirements of this Chapter and of Chapter 55, 55A, 55B, 57D, or 59 of the General Statutes, the Secretary of State shall file it."
+    }
+   },
+   {
+    "id": "court",
+    "name": "Superior Court of Wake County",
+    "kind": "court",
+    "source": {
+     "section": "55D-16",
+     "subsection": "a",
+     "quote": "appeal the refusal to the Superior Court of Wake County"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company",
+    "kind": "private-party",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "b",
+     "quote": "An LLC is formed at the time the articles of organization filed by the Secretary of State become effective."
+    }
+   },
+   {
+    "id": "register_of_deeds",
+    "name": "Register of deeds of the county",
+    "kind": "other-government",
+    "source": {
+     "section": "66-71.4",
+     "subsection": "a",
+     "quote": "the office of the register of deeds of the county in which the person is or will be engaged in business"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "deliver_articles",
+    "actor": "organizer",
+    "action": "Deliver executed articles of organization",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "a",
+     "quote": "One or more persons may cause an LLC to be formed by delivering executed articles of organization to the Secretary of State for filing"
+    }
+   },
+   {
+    "id": "collect_fee",
+    "actor": "secretary_of_state",
+    "action": "Collect the $125 filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_articles"
+    ],
+    "source": {
+     "section": "57D-1-22",
+     "subsection": "a",
+     "quote": "The Secretary of State shall collect the following fees when the documents described in this subsection are delivered to the Secretary of State for filing"
+    }
+   },
+   {
+    "id": "review_articles",
+    "actor": "secretary_of_state",
+    "action": "Review articles and fees",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "collect_fee"
+    ],
+    "decision": "articles_comply",
+    "source": {
+     "section": "55D-15",
+     "subsection": "d",
+     "quote": "The Secretary of State's duty is to review and file documents that satisfy the requirements of this Chapter and of Chapter 55, 55A, 55B, 57D, or 59 of the General Statutes."
+    }
+   },
+   {
+    "id": "file_articles",
+    "actor": "secretary_of_state",
+    "action": "Endorse articles \"Filed\" with date, time",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "condition": "articles_ok",
+    "source": {
+     "section": "55D-15",
+     "subsection": "b",
+     "quote": "The Secretary of State files a document by endorsing \"Filed\", together with the Secretary's name and official title and the date and time of filing, on the document."
+    }
+   },
+   {
+    "id": "deliver_copy",
+    "actor": "secretary_of_state",
+    "action": "Deliver filed copy to the submitter",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "articles_effective",
+     "identify_members"
+    ],
+    "join": "any",
+    "recipient": "organizer",
+    "source": {
+     "section": "55D-15",
+     "subsection": "b",
+     "quote": "After filing a document, the Secretary of State shall deliver a document copy to the person submitting the document for filing"
+    }
+   },
+   {
+    "id": "refuse_filing",
+    "actor": "secretary_of_state",
+    "action": "Return articles with reason for refusal",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "recipient": "organizer",
+    "deadline": {
+     "amount": 5,
+     "unit": "days",
+     "anchor": "after the document was received",
+     "consequence": "unstated",
+     "source": {
+      "section": "55D-15",
+      "subsection": "c",
+      "quote": "within five days after the document was received"
+     }
+    },
+    "source": {
+     "section": "55D-15",
+     "subsection": "c",
+     "quote": "If the Secretary of State refuses to file a document, the Secretary shall return it to the person submitting the document for filing within five days after the document was received, together with a written statement of the date of the refusal and a brief explanation of the reason for refusal."
+    }
+   },
+   {
+    "id": "appeal_refusal",
+    "actor": "organizer",
+    "action": "Petition court, attaching articles and refusal explanation",
+    "kind": "filing",
+    "modality": "right",
+    "after": [
+     "refuse_filing"
+    ],
+    "condition": "appeals_refusal",
+    "recipient": "court",
+    "deadline": {
+     "amount": 30,
+     "unit": "days",
+     "anchor": "after the date of the refusal",
+     "consequence": "right-lapses",
+     "on_miss": "filing_refused",
+     "source": {
+      "section": "55D-16",
+      "subsection": "a",
+      "quote": "within 30 days after the date of the refusal"
+     }
+    },
+    "source": {
+     "section": "55D-16",
+     "subsection": "a",
+     "quote": "The appeal is commenced by filing a petition with the court and with the Secretary of State requesting the court to compel the Secretary of State to file the document."
+    }
+   },
+   {
+    "id": "petition_to_sos",
+    "actor": "organizer",
+    "action": "File same petition with Secretary of State",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "appeal_refusal"
+    ],
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "55D-16",
+     "subsection": "a",
+     "quote": "No service of process on the Secretary of State is required except for the filing of the petition as set forth in this subsection."
+    }
+   },
+   {
+    "id": "court_order",
+    "actor": "court",
+    "action": "Order filing or other appropriate action",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [
+     "petition_to_sos"
+    ],
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "55D-16",
+     "subsection": "b",
+     "quote": "the court may, prior to entering final judgment, order the Secretary of State to file the document or take other action the court considers appropriate"
+    }
+   },
+   {
+    "id": "file_on_order",
+    "actor": "secretary_of_state",
+    "action": "File articles as the court orders",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "court_order"
+    ],
+    "condition": "court_orders_filing",
+    "source": {
+     "section": "55D-16",
+     "subsection": "b",
+     "quote": "order the Secretary of State to file the document"
+    }
+   },
+   {
+    "id": "identify_members",
+    "actor": "organizer",
+    "action": "Identify initial members or dissolve the LLC",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "articles_effective"
+    ],
+    "condition": "members_not_in_articles",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "c",
+     "quote": "If initial members are not identified in the articles of organization of an LLC in the manner provided in G.S. 57D-3-01(a)(1), the organizer or organizers shall either identify the initial members of the LLC or dissolve the LLC."
+    }
+   },
+   {
+    "id": "articles_effective",
+    "actor": "secretary_of_state",
+    "action": "Filed articles take effect; LLC formed",
+    "kind": "record",
+    "modality": "none",
+    "after": [
+     "file_articles",
+     "file_on_order"
+    ],
+    "join": "any",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "b",
+     "quote": "An LLC is formed at the time the articles of organization filed by the Secretary of State become effective."
+    }
+   },
+   {
+    "id": "file_assumed_name",
+    "actor": "llc",
+    "action": "File assumed business name certificate with county",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "deliver_copy"
+    ],
+    "condition": "uses_assumed_name",
+    "recipient": "register_of_deeds",
+    "source": {
+     "section": "66-71.4",
+     "subsection": "a",
+     "quote": "Before any person engages in business in this State under an assumed business name, the person must file an assumed business name certificate in the office of the register of deeds of the county in which the person is or will be engaged in business."
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "articles_comply",
+    "question": "Do the articles of organization satisfy the filing requirements?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "name_ok",
+      "label": "Name satisfies G.S. 55D-20 and 55D-21",
+      "type": "boolean"
+     },
+     {
+      "name": "executors_stated",
+      "label": "Name, address and capacity (member or organizer) of each person executing the articles",
+      "type": "boolean"
+     },
+     {
+      "name": "registered_agent",
+      "label": "Registered office street and mailing address, county, and initial registered agent stated",
+      "type": "boolean"
+     },
+     {
+      "name": "principal_office",
+      "label": "Principal office address and county stated, if there is a principal office",
+      "type": "boolean"
+     },
+     {
+      "name": "signed",
+      "label": "Signed, with the signer's name and capacity stated",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "Accompanied by the applicable fees",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "articles_ok",
+      "label": "Articles entitled to filing",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": ["false", "-", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "57D-2-21",
+       "subsection": "a.1",
+       "quote": "A name of the LLC that satisfies the provisions of G.S. 55D-20 and G.S. 55D-21."
+      }
+     },
+     {
+      "when": ["-", "false", "-", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "57D-2-21",
+       "subsection": "a.2",
+       "quote": "The name and address of each person executing the articles of organization and whether the person is executing the articles of organization in the capacity of a member or an organizer."
+      }
+     },
+     {
+      "when": ["-", "-", "false", "-", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "57D-2-21",
+       "subsection": "a.3",
+       "quote": "the county in which the initial registered office is located, and the name of the LLC's initial registered agent at that address"
+      }
+     },
+     {
+      "when": ["-", "-", "-", "false", "-", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "57D-2-21",
+       "subsection": "a.4",
+       "quote": "The street address, and the mailing address if different from the street address, of the LLC's principal office, if any, and the county in which the principal office, if any, is located."
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "false", "-"],
+      "then": ["false"],
+      "source": {
+       "section": "55D-10",
+       "subsection": "b.6",
+       "quote": "The person executing the document must sign it and state beneath or opposite the person's signature, the person's name, and the capacity in which the person signs."
+      }
+     },
+     {
+      "when": ["-", "-", "-", "-", "-", "false"],
+      "then": ["false"],
+      "source": {
+       "section": "55D-10",
+       "subsection": "b.8",
+       "quote": "The document must be delivered to the office of the Secretary of State for filing and must be accompanied by the applicable fees."
+      }
+     },
+     {
+      "when": ["true", "true", "true", "true", "true", "true"],
+      "then": ["true"],
+      "source": {
+       "section": "55D-15",
+       "subsection": "a",
+       "quote": "the Secretary of State shall file it"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": ["true", "-", "-", "-", "-", "-"],
+      "then": [
+       "\"Nonprofit corporation (Chapter 55A)\"",
+       "\"Articles of incorporation, delivered to the Secretary of State for filing\"",
+       "\"$60 (§ 55A-1-22(a)(1))\""
+      ],
+      "source": {
+       "section": "55A-2-01",
+       "quote": "One or more persons may act as the incorporator or incorporators of a corporation by delivering articles of incorporation to the Secretary of State for filing."
+      }
+     },
+     {
+      "when": ["false", "true", "-", "true", "-", "-"],
+      "then": [
+       "\"Professional corporation (Chapter 55B, formed under the Business Corporation Act) or professional limited liability company (§ 57D-2-02); in a professional corporation at least one incorporator, every shareholder (except as § 55B-6 permits), and at least one director and one officer must be licensees (§ 55B-4(1)-(3)); a professional LLC's name must contain the word Professional or the abbreviation P.L.L.C. or PLLC (§ 57D-2-02(a)(10))\"",
+       "\"Professional corporation: articles of incorporation designating the professional services, accompanied by the licensing board's certification that share ownership complies (§ 55B-4(4)); professional LLC: articles of organization stating the professional services to be rendered (§ 57D-2-21(a)(5)), likewise accompanied by the licensing board's certification, because Chapter 55B applies to professional LLCs with articles of incorporation read as articles of organization (§§ 57D-2-02(a)(2), 55B-4(4)); both filed with the Secretary of State. Either entity also needs a certificate of registration from its licensing board before opening an establishment (§ 55B-10, applied to LLCs by § 57D-2-02(a))\"",
+       "\"$125 for articles of incorporation (§ 55-1-22(a)(1)) or articles of organization (§ 57D-1-22(a)(1)); licensing board registration fee up to $50 for either a professional corporation or a professional LLC (§ 55B-10; § 57D-2-02(a))\""
+      ],
+      "source": {
+       "section": "55B-4",
+       "quote": "A professional corporation under this Chapter may be formed pursuant to the provisions of Chapter 55, the North Carolina Business Corporation Act, with the following limitations"
+      }
+     },
+     {
+      "when": ["false", "-", "-", "true", "true", "-"],
+      "then": [
+       "\"Business corporation (Chapter 55)\"",
+       "\"Articles of incorporation, delivered to the Secretary of State for filing\"",
+       "\"$125 (§ 55-1-22(a)(1))\""
+      ],
+      "source": {
+       "section": "55-2-01",
+       "quote": "One or more persons may act as the incorporator or incorporators of a corporation by delivering articles of incorporation to the Secretary of State for filing."
+      }
+     },
+     {
+      "when": ["false", "-", ">= 2", "true", "-", "true"],
+      "then": [
+       "\"Limited partnership (each general partner is named in the certificate, § 59-201(a)(4); a limited partner is not liable for the partnership's obligations by reason of being a limited partner, § 59-303)\"",
+       "\"Certificate of limited partnership, executed and filed in the office of the Secretary of State; to be a limited liability limited partnership from formation, the application for registration is included in the certificate (§ 59-201(e))\"",
+       "\"$50; $125 if the certificate includes an application for registration as a limited liability limited partnership (§ 59-1106(a)(1), (2))\""
+      ],
+      "source": {
+       "section": "59-201",
+       "subsection": "a",
+       "quote": "In order to form a limited partnership, a certificate of limited partnership must be executed and filed in the office of the Secretary of State"
+      }
+     },
+     {
+      "when": ["false", "-", "-", "true", "-", "-"],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Articles of organization, delivered to the Secretary of State for filing\"",
+       "\"$125 (§ 57D-1-22(a)(1))\""
+      ],
+      "source": {
+       "section": "57D-2-20",
+       "subsection": "a",
+       "quote": "One or more persons may cause an LLC to be formed by delivering executed articles of organization to the Secretary of State for filing"
+      }
+     },
+     {
+      "when": ["false", "-", "1", "false", "-", "-"],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; before doing business under any name other than the owner's real name, the owner must file an assumed business name certificate with the register of deeds of the county where the business is or will be engaged in business (one county suffices if several, § 66-71.4(a))\"",
+       "\"None to form; the register of deeds' fee for filing an instrument if trading under an assumed business name (§ 161-10(a)(1): $26 for the first 15 pages)\""
+      ],
+      "source": {
+       "section": "66-71.4",
+       "subsection": "a",
+       "quote": "the person must file an assumed business name certificate in the office of the register of deeds of the county in which the person is or will be engaged in business"
+      }
+     },
+     {
+      "when": ["false", "-", ">= 2", "false", "-", "-"],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: an association of two or more persons to carry on as co-owners a business for profit is a partnership (§ 59-36(a)). A partnership doing business under a name other than the real names of each general partner must file an assumed business name certificate with the county register of deeds (§§ 59-84.1(a), 66-71.3(1)b, 66-71.4(a)). Optionally, the partnership may become a registered limited liability partnership by filing an application with the Secretary of State, on terms approved as the partnership agreement provides or, failing that, as needed to amend it (§ 59-84.2(a), (a1))\"",
+       "\"None to form; the register of deeds' fee for filing an instrument if trading under an assumed business name (§ 161-10(a)(1): $26 for the first 15 pages); $125 for an optional application for registration as a registered limited liability partnership (§ 59-35.2(a)(11))\""
+      ],
+      "source": {
+       "section": "59-36",
+       "subsection": "a",
+       "quote": "A partnership is an association of two or more persons to carry on as co-owners a business for profit."
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_exists",
+    "description": "LLC formed and ready to do business under its name",
+    "after": [
+     "deliver_copy",
+     "file_assumed_name"
+    ],
+    "join": "any",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "b",
+     "quote": "Filing of the articles of organization by the Secretary of State is conclusive proof that all conditions to the formation of the LLC have been satisfied"
+    }
+   },
+   {
+    "id": "appeal_unsuccessful",
+    "description": "Court does not order filing; final decision appealable",
+    "after": [
+     "court_order"
+    ],
+    "source": {
+     "section": "55D-16",
+     "subsection": "c",
+     "quote": "The court's final decision may be appealed as in other civil proceedings."
+    }
+   },
+   {
+    "id": "filing_refused",
+    "description": "Filing refused and not appealed in time",
+    "after": [
+     "refuse_filing"
+    ],
+    "source": {
+     "section": "55D-16",
+     "subsection": "a",
+     "quote": "If the Secretary of State refuses to file a document delivered to the Secretary of State's office for filing"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "N.C. Gen. Stat. §§ 55D-20, 55D-21",
+    "role": "requirements for the company's name",
+    "source": {
+     "section": "57D-2-21",
+     "subsection": "a.1",
+     "quote": "satisfies the provisions of G.S. 55D-20 and G.S. 55D-21"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-3-01",
+    "role": "if the articles do not identify the initial members, the organizers must identify them or dissolve the LLC",
+    "source": {
+     "section": "57D-2-20",
+     "subsection": "c",
+     "quote": "If initial members are not identified in the articles of organization of an LLC in the manner provided in G.S. 57D-3-01(a)(1)"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-2-02",
+    "role": "professional limited liability companies must state the professional services in their articles",
+    "source": {
+     "section": "57D-2-21",
+     "subsection": "a.5",
+     "quote": "If the LLC is to render professional services and is subject to G.S. 57D-2-02 as a professional limited liability company, the professional services to be rendered by the LLC."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-2-02",
+    "role": "Chapter 55B (licensing board certification of the articles, § 55B-4(4); board registration, § 55B-10) applies to professional LLCs",
+    "source": {
+     "section": "57D-2-02",
+     "subsection": "a",
+     "quote": "a limited liability company may engage in rendering professional services only to the extent that it would be able to render those services were it a corporation, including, as applicable, complying with Chapter 55B of the General Statutes"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-2-02",
+    "role": "for professional LLCs, Chapter 55B's references to articles of incorporation mean articles of organization",
+    "source": {
+     "section": "57D-2-02",
+     "subsection": "a.2",
+     "quote": "References to \"articles of incorporation\" are treated as references to articles of organization."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55D-16",
+    "role": "documents the appeal petition must carry",
+    "source": {
+     "section": "55D-16",
+     "subsection": "a",
+     "quote": "The petition must have attached to it the document to be filed and the Secretary of State's explanation for the refusal to file."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-1-22",
+    "role": "fee for articles of organization",
+    "source": {
+     "section": "57D-1-22",
+     "subsection": "a.1",
+     "quote": "Articles of organization $125.00"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 57D-1-22",
+    "role": "LLC annual report fee (annual reports not modelled)",
+    "source": {
+     "section": "57D-1-22",
+     "subsection": "a.28",
+     "quote": "Annual report 200.00"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55D-32",
+    "role": "further delivery of a copy of the filed document",
+    "source": {
+     "section": "55D-15",
+     "subsection": "b",
+     "quote": "as provided in G.S. 55D-32"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55D-15",
+    "role": "the Secretary of State may correct apparent errors with the submitter's authorization instead of refusing",
+    "source": {
+     "section": "55D-15",
+     "subsection": "c",
+     "quote": "The Secretary of State may correct apparent errors and omissions on a document submitted for filing if authorized to make the corrections by the person submitting the document for filing."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55D-16",
+    "role": "the court's final decision on a refused filing may be appealed",
+    "source": {
+     "section": "55D-16",
+     "subsection": "c",
+     "quote": "The court's final decision may be appealed as in other civil proceedings."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55A-1-22",
+    "role": "nonprofit corporation articles of incorporation fee",
+    "source": {
+     "section": "55A-1-22",
+     "subsection": "a.1",
+     "quote": "Articles of incorporation $60.00"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55-1-22",
+    "role": "business (and professional) corporation articles of incorporation fee",
+    "source": {
+     "section": "55-1-22",
+     "subsection": "a.1",
+     "quote": "Articles of incorporation $125.00"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55B-4",
+    "role": "professional corporation articles must designate the services and carry the licensing board's certification",
+    "source": {
+     "section": "55B-4",
+     "subsection": "4",
+     "quote": "shall designate the personal services to be rendered by the professional corporation and shall be accompanied by a certification by the appropriate licensing board"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 59-1106",
+    "role": "limited partnership certificate fee, with or without limited liability limited partnership registration",
+    "source": {
+     "section": "59-1106",
+     "subsection": "a.2",
+     "quote": "Certificate of limited partnership which includes an application for registration as a limited liability limited partnership"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 59-201",
+    "role": "a limited partnership is formed when its certificate's filing takes effect, given substantial compliance",
+    "source": {
+     "section": "59-201",
+     "subsection": "b",
+     "quote": "a limited partnership is formed at the effective time and date of the filing of the certificate of limited partnership in the office of the Secretary of State if there has been substantial compliance with the requirements of this section"
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 66-71.4",
+    "role": "one assumed business name certificate for each assumed name (up to five names per certificate)",
+    "source": {
+     "section": "66-71.4",
+     "subsection": "b",
+     "quote": "A person who engages in business in this State under more than one assumed business name must file an assumed business name certificate for each assumed business name."
+    }
+   },
+   {
+    "citation": "N.C. Gen. Stat. § 55D-10",
+    "role": "a mandatory form prescribed by the Secretary of State must be used",
+    "source": {
+     "section": "55D-10",
+     "subsection": "b.7",
+     "quote": "If the Secretary of State has prescribed a mandatory form for the document, the document must be in or on the prescribed form."
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step (articles of organization under §§ 57D-2-20 and 57D-2-21, filed under Chapter 55D). Corporations, nonprofit corporations and limited partnerships are filed the same way under the shared Chapter 55D filing rules (§§ 55D-10, 55D-15), but their content checks are not modelled. North Carolina issues no separate certificate of organization: the Secretary of State files by endorsing the document \"Filed\" and delivers a copy (§ 55D-15(b)).",
+   "The review decision checks only the contents § 57D-2-21(a)(1)-(4) requires and two § 55D-10(b) formalities (signature with name and capacity, fees). The other § 55D-10(b) requirements (typewritten or acceptable electronic form, English, authority to execute, mandatory form) and the professional-services statement of § 57D-2-21(a)(5) are not separate inputs.",
+   "Refusal is modelled as the default branch after review. The statute does not say what happens if the Secretary of State misses the five-day return deadline of § 55D-15(c); the model ends that branch unresolved. The Secretary of State may instead correct apparent errors with the submitter's authorization (§ 55D-15(c)); resubmitting corrected articles is not modelled.",
+   "The appeal petition is filed with both the court and the Secretary of State (§ 55D-16(a)); the statute sets no order between the two filings, and the model shows the court filing first. A court order to file (§ 55D-16(b)) leads to its own filing step, without the Secretary of State's articles_ok review; any other action, or a final judgment against the petitioner, ends the model at appeal_unsuccessful, and the further civil appeal of § 55D-16(c) is not modelled step by step. The statute does not say how long the court has to decide, or whether the 30-day appeal period also runs for the filing with the Secretary of State.",
+   "A delayed effective time may be specified, no later than the 90th day after filing (§ 55D-13(b), not printed among the model's sections); the model's articles_effective step stands for that moment, at which the LLC is formed (§ 57D-2-20(b)), and does not time the delay. The model orders formation, the organizers' member duty, delivery of the filed copy and the assumed name filing one after another; the statute requires delivery only 'After filing' (§ 55D-15(b)), so with a delayed effective date the copy may arrive before the LLC is formed. If the organizers choose to dissolve the LLC under § 57D-2-20(c), the dissolution is not followed.",
+   "The organizers' duty to identify the initial members or dissolve the LLC when the articles do not identify them (§ 57D-2-20(c)) has no deadline in the text; how members are identified outside the articles (§ 57D-3-01(a)(1)) is not printed among the model's sections.",
+   "The assumed business name certificate is filed with the register of deeds of one county where the business is or will be engaged in business (§ 66-71.4(a)); for an LLC, an assumed business name is any name other than the one in its articles (§ 66-71.3(1)e, not printed). The certificate's contents and execution (§§ 66-71.5, 66-71.6) are not modelled, and the filing fee comes from the general register of deeds fee schedule (§ 161-10(a)(1)), not from the Assumed Business Name Act.",
+   "Local and occupational licences and privilege taxes (city or county) are not covered; the Chapter 55B licensing board registration of professional corporations and, through § 57D-2-02(a), professional LLCs (§ 55B-10, not printed among the model's sections) is cited in the structure table but not modelled as a step, and the board certification that must accompany a professional LLC's articles (§ 55B-4(4)) is not an input of the articles review.",
+   "Nonprofit corporation status under Chapter 55A is a state corporate form, not tax exemption; federal 501(c) status is outside the General Statutes and not modelled.",
+   "Annual reports (e.g. the $200 LLC annual report fee, § 57D-1-22(a)(28)) are not modelled."
+  ]
+ }
+}

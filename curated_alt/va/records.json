@@ -1,0 +1,562 @@
+{
+  "state": "va",
+  "question": "records",
+  "sections": [
+    "2.2-3704"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records from a Virginia public body",
+    "trigger": "A requester asks a Virginia public body for public records",
+    "trigger_source": {
+      "section": "2.2-3704",
+      "subsection": "A",
+      "quote": "all public records shall be open to citizens of the Commonwealth"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (Virginia citizen or in-state media representative)",
+        "kind": "private-party",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "A",
+          "quote": "citizens of the Commonwealth, representatives of newspapers and magazines with circulation in the Commonwealth, and representatives of radio and television stations broadcasting in or into the Commonwealth"
+        }
+      },
+      {
+        "id": "public_body",
+        "name": "Public body that is custodian of the records",
+        "kind": "public-body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "Any public body that is subject to this chapter and that is the custodian of the requested records"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Appropriate court",
+        "kind": "court",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request records with reasonable specificity",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [],
+        "recipient": "public_body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "A request for public records shall identify the requested records with reasonable specificity."
+        }
+      },
+      {
+        "id": "require_prior_payment",
+        "actor": "public_body",
+        "action": "Require payment of overdue prior-request charges",
+        "kind": "payment",
+        "modality": "permission",
+        "after": ["submit_request"],
+        "condition": "prior_charges_unpaid_30_days",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "I",
+          "quote": "Before processing a request for records, a public body may require the requester to pay any amounts owed to the public body for previous requests for records that remain unpaid 30 days or more after billing."
+        }
+      },
+      {
+        "id": "notify_charges",
+        "actor": "public_body",
+        "action": "Notify requester of charges; offer cost estimate",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["submit_request", "require_prior_payment"],
+        "join": "any",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "Prior to conducting a search for records, the public body shall notify the requester in writing that the public body may make reasonable charges not to exceed its actual cost incurred in accessing, duplicating, supplying, or searching for requested records"
+        }
+      },
+      {
+        "id": "request_estimate",
+        "actor": "requester",
+        "action": "Ask for an advance cost estimate",
+        "kind": "filing",
+        "modality": "permission",
+        "after": ["notify_charges"],
+        "condition": "wants_cost_estimate",
+        "recipient": "public_body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "inquire of the requester whether he would like to request a cost estimate in advance of the supplying of the requested records"
+        }
+      },
+      {
+        "id": "provide_estimate",
+        "actor": "public_body",
+        "action": "Send requester the cost estimate",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["request_estimate"],
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "The public body shall provide the requester with a cost estimate if requested."
+        }
+      },
+      {
+        "id": "answer_estimate",
+        "actor": "requester",
+        "action": "Respond to the cost estimate",
+        "kind": "filing",
+        "modality": "none",
+        "after": ["provide_estimate"],
+        "recipient": "public_body",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "sending the cost estimate",
+          "consequence": "right-lapses",
+          "on_miss": "request_withdrawn",
+          "source": {
+            "section": "2.2-3704",
+            "subsection": "F",
+            "quote": "If the public body receives no response from the requester within 30 days of sending the cost estimate, the request shall be deemed to be withdrawn."
+          }
+        },
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "The period within which the public body shall respond under this section shall be tolled for the amount of time that elapses between notice of the cost estimate and the response of the requester."
+        }
+      },
+      {
+        "id": "require_deposit",
+        "actor": "public_body",
+        "action": "Require deposit up to advance charge determination",
+        "kind": "notice",
+        "modality": "permission",
+        "after": ["notify_charges", "answer_estimate"],
+        "join": "any",
+        "condition": "charges_likely_over_200",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "H",
+          "quote": "In any case where a public body determines in advance that charges for producing the requested records are likely to exceed $200, the public body may, before continuing to process the request, require the requester to pay a deposit not to exceed the amount of the advance determination."
+        }
+      },
+      {
+        "id": "pay_deposit",
+        "actor": "requester",
+        "action": "Pay the required deposit",
+        "kind": "payment",
+        "modality": "none",
+        "after": ["require_deposit"],
+        "recipient": "public_body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "H",
+          "quote": "The deposit shall be credited toward the final cost of supplying the requested records."
+        }
+      },
+      {
+        "id": "decide_response",
+        "actor": "public_body",
+        "action": "Provide records or give written response",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": ["notify_charges", "answer_estimate", "pay_deposit"],
+        "join": "any",
+        "decision": "first_response",
+        "deadline": {
+          "amount": 5,
+          "unit": "business_days",
+          "anchor": "receiving a request",
+          "consequence": "deemed-denial",
+          "on_miss": "deemed_denial",
+          "source": {
+            "section": "2.2-3704",
+            "subsection": "B",
+            "quote": "promptly, but in all cases within five working days of receiving a request"
+          }
+        },
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "provide the requested records to the requester or make one of the following responses in writing"
+        }
+      },
+      {
+        "id": "send_extension_notice",
+        "actor": "public_body",
+        "action": "State conditions making timely response impossible",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_response"],
+        "condition": "not_practicable",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.4",
+          "quote": "It is not practically possible to provide the requested records or to determine whether they are available within the five-work-day period. Such response shall specify the conditions that make a response impossible."
+        }
+      },
+      {
+        "id": "decide_after_extension",
+        "actor": "public_body",
+        "action": "Give one of the four responses",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": ["send_extension_notice"],
+        "decision": "extended_response",
+        "deadline": {
+          "amount": 7,
+          "unit": "business_days",
+          "anchor": "end of the five-work-day period (an 'additional' seven work days)",
+          "consequence": "deemed-denial",
+          "on_miss": "deemed_denial",
+          "source": {
+            "section": "2.2-3704",
+            "subsection": "B.4",
+            "quote": "If the response is made within five working days, the public body shall have an additional seven work days"
+          }
+        },
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.4",
+          "quote": "in which to provide one of the four preceding responses"
+        }
+      },
+      {
+        "id": "seek_agreement",
+        "actor": "public_body",
+        "action": "Try to agree production terms with requester",
+        "kind": "act",
+        "modality": "obligation",
+        "after": ["send_extension_notice"],
+        "condition": "extraordinary_request",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Before proceeding with the petition, however, the public body shall make reasonable efforts to reach an agreement with the requester concerning the production of the records requested."
+        }
+      },
+      {
+        "id": "petition_court",
+        "actor": "public_body",
+        "action": "Petition court for more time to respond",
+        "kind": "filing",
+        "modality": "permission",
+        "after": ["seek_agreement"],
+        "recipient": "court",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records"
+        }
+      },
+      {
+        "id": "rule_on_petition",
+        "actor": "court",
+        "action": "Rule on petition for additional time",
+        "kind": "decision",
+        "modality": "none",
+        "after": ["petition_court"],
+        "recipient": "public_body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "when the request is for an extraordinary volume of records or requires an extraordinarily lengthy search, and a response by the public body within the time required by this chapter will prevent the public body from meeting its operational responsibilities"
+        }
+      },
+      {
+        "id": "provide_records",
+        "actor": "public_body",
+        "action": "Give access by inspection or copies",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": ["decide_response", "decide_after_extension"],
+        "join": "any",
+        "condition": "release_all",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "A",
+          "quote": "Access to such records shall be provided by the custodian in accordance with this chapter by inspection or by providing copies of the requested records, at the option of the requester."
+        }
+      },
+      {
+        "id": "send_partial_response",
+        "actor": "public_body",
+        "action": "Release part; describe and cite withheld portions",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_response", "decide_after_extension"],
+        "join": "any",
+        "condition": "release_part",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.2",
+          "quote": "The requested records are being provided in part and are being withheld in part. Such response shall identify with reasonable particularity the subject matter of withheld portions"
+        }
+      },
+      {
+        "id": "send_withholding_response",
+        "actor": "public_body",
+        "action": "Withhold all; give volume, subject, Code cite",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_response", "decide_after_extension"],
+        "join": "any",
+        "condition": "withhold_all",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.1",
+          "quote": "The requested records are being entirely withheld. Such response shall identify with reasonable particularity the volume and subject matter of withheld records"
+        }
+      },
+      {
+        "id": "send_not_found_response",
+        "actor": "public_body",
+        "action": "Report records not found; refer if known",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["decide_response", "decide_after_extension"],
+        "join": "any",
+        "condition": "not_found",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.3",
+          "quote": "The requested records could not be found or do not exist. However, if the public body that received the request knows that another public body has the requested records, the response shall include contact information for the other public body."
+        }
+      },
+      {
+        "id": "charge_costs",
+        "actor": "public_body",
+        "action": "Charge no more than actual cost",
+        "kind": "payment",
+        "modality": "permission",
+        "after": ["provide_records", "send_partial_response"],
+        "join": "any",
+        "decision": "allowed_charges",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "a public body may make reasonable charges not to exceed its actual cost incurred in accessing, duplicating, supplying, or searching for the requested records and shall make all reasonable efforts to supply the requested records at the lowest possible cost"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "first_response",
+        "question": "Which response does the public body give within five working days?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {"name": "records_located", "label": "The requested records were found and exist", "type": "boolean"},
+          {"name": "withheld_scope", "label": "How much is withheld under a Code exemption (\"none\", \"part\", \"all\")", "type": "string"},
+          {"name": "practically_possible", "label": "It is practically possible to respond within five work days", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "release_all", "label": "Provide all requested records", "type": "boolean"},
+          {"name": "release_part", "label": "Provide in part, withhold in part", "type": "boolean"},
+          {"name": "withhold_all", "label": "Withhold entirely", "type": "boolean"},
+          {"name": "not_found", "label": "Records not found or do not exist", "type": "boolean"},
+          {"name": "not_practicable", "label": "Response not practically possible yet", "type": "boolean"},
+          {"name": "response", "label": "Response", "type": "string"}
+        ],
+        "rules": [
+          {
+            "when": ["-", "-", "false"],
+            "then": ["false", "false", "false", "false", "true", "\"Written notice: not practically possible; seven more work days\""],
+            "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "It is not practically possible to provide the requested records or to determine whether they are available within the five-work-day period."}
+          },
+          {
+            "when": ["false", "-", "true"],
+            "then": ["false", "false", "false", "true", "false", "\"Written response: records not found or do not exist\""],
+            "source": {"section": "2.2-3704", "subsection": "B.3", "quote": "The requested records could not be found or do not exist."}
+          },
+          {
+            "when": ["true", "\"all\"", "true"],
+            "then": ["false", "false", "true", "false", "false", "\"Written response: entirely withheld, with Code citations\""],
+            "source": {"section": "2.2-3704", "subsection": "B.1", "quote": "The requested records are being entirely withheld."}
+          },
+          {
+            "when": ["true", "\"part\"", "true"],
+            "then": ["false", "true", "false", "false", "false", "\"Written response: provided in part, withheld in part\""],
+            "source": {"section": "2.2-3704", "subsection": "B.2", "quote": "The requested records are being provided in part and are being withheld in part."}
+          },
+          {
+            "when": ["true", "\"none\"", "true"],
+            "then": ["true", "false", "false", "false", "false", "\"Provide the requested records\""],
+            "source": {"section": "2.2-3704", "subsection": "B", "quote": "provide the requested records to the requester"}
+          }
+        ]
+      },
+      {
+        "id": "extended_response",
+        "question": "Which of the four responses does the public body give within the additional seven work days?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {"name": "records_located", "label": "The requested records were found and exist", "type": "boolean"},
+          {"name": "withheld_scope", "label": "How much is withheld under a Code exemption (\"none\", \"part\", \"all\")", "type": "string"}
+        ],
+        "outputs": [
+          {"name": "release_all", "label": "Provide all requested records", "type": "boolean"},
+          {"name": "release_part", "label": "Provide in part, withhold in part", "type": "boolean"},
+          {"name": "withhold_all", "label": "Withhold entirely", "type": "boolean"},
+          {"name": "not_found", "label": "Records not found or do not exist", "type": "boolean"},
+          {"name": "response", "label": "Response", "type": "string"}
+        ],
+        "rules": [
+          {
+            "when": ["false", "-"],
+            "then": ["false", "false", "false", "true", "\"Written response: records not found or do not exist\""],
+            "source": {"section": "2.2-3704", "subsection": "B.3", "quote": "The requested records could not be found or do not exist."}
+          },
+          {
+            "when": ["true", "\"all\""],
+            "then": ["false", "false", "true", "false", "\"Written response: entirely withheld, with Code citations\""],
+            "source": {"section": "2.2-3704", "subsection": "B.1", "quote": "The requested records are being entirely withheld."}
+          },
+          {
+            "when": ["true", "\"part\""],
+            "then": ["false", "true", "false", "false", "\"Written response: provided in part, withheld in part\""],
+            "source": {"section": "2.2-3704", "subsection": "B.2", "quote": "The requested records are being provided in part and are being withheld in part."}
+          },
+          {
+            "when": ["true", "\"none\""],
+            "then": ["true", "false", "false", "false", "\"Provide the requested records\""],
+            "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "one of the four preceding responses"}
+          }
+        ]
+      },
+      {
+        "id": "allowed_charges",
+        "question": "What may the public body charge for supplying the records?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {"name": "ferpa_scholastic_request", "label": "Scholastic records request under § 2.2-3705.4(A)(1) that FERPA requires to be made available, by a parent or guardian of a minor student or an adult student", "type": "boolean"},
+          {"name": "gis_for_non_owner", "label": "Records produced from a geographic information system for someone other than the landowner", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "charges", "label": "Permitted charges", "type": "string"}
+        ],
+        "rules": [
+          {
+            "when": ["true", "-"],
+            "then": ["\"Subsection F cost-recovery charges do not apply\""],
+            "source": {"section": "2.2-3704", "subsection": "F", "quote": "Except with regard to scholastic records requested pursuant to subdivision A 1 of"}
+          },
+          {
+            "when": ["false", "true"],
+            "then": ["\"Actual cost, including a reasonable GIS supply charge; topographical maps over 50 contiguous acres may be charged pro rata per acre\""],
+            "source": {"section": "2.2-3704", "subsection": "F", "quote": "The public body may also make a reasonable charge for the cost incurred in supplying records produced from a geographic information system at the request of anyone other than the owner of the land that is the subject of the request."}
+          },
+          {
+            "when": ["false", "false"],
+            "then": ["\"Reasonable charges up to actual cost of accessing, duplicating, supplying or searching; duplication at actual cost; no extraneous or surplus fees\""],
+            "source": {"section": "2.2-3704", "subsection": "F", "quote": "No public body shall impose any extraneous, intermediary, or surplus fees or expenses to recoup the general costs associated with creating or maintaining records or transacting the general business of the public body."}
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "records_supplied",
+        "description": "Records supplied (all or part) at no more than actual cost",
+        "after": ["charge_costs"],
+        "source": {"section": "2.2-3704", "subsection": "F", "quote": "Any duplicating fee charged by a public body shall not exceed the actual cost of duplication."}
+      },
+      {
+        "id": "records_withheld",
+        "description": "Records withheld by written response citing the Code",
+        "after": ["send_withholding_response"],
+        "source": {"section": "2.2-3704", "subsection": "B.1", "quote": "cite, as to each category of withheld records, the specific Code section that authorizes the withholding of the records"}
+      },
+      {
+        "id": "records_not_found",
+        "description": "Requester told the records could not be found",
+        "after": ["send_not_found_response"],
+        "source": {"section": "2.2-3704", "subsection": "B.3", "quote": "the response shall include contact information for the other public body"}
+      },
+      {
+        "id": "deemed_denial",
+        "description": "No timely response: deemed denial and a violation",
+        "after": [],
+        "source": {"section": "2.2-3704", "subsection": "E", "quote": "Failure to respond to a request for records shall be deemed a denial of the request and shall constitute a violation of this chapter."}
+      },
+      {
+        "id": "request_withdrawn",
+        "description": "No reply to cost estimate in 30 days: request withdrawn",
+        "after": [],
+        "source": {"section": "2.2-3704", "subsection": "F", "quote": "the request shall be deemed to be withdrawn"}
+      },
+      {
+        "id": "production_agreed",
+        "description": "Public body and requester agree on production",
+        "after": ["seek_agreement"],
+        "when": "agreement_reached",
+        "source": {"section": "2.2-3704", "subsection": "C", "quote": "reach an agreement with the requester concerning the production of the records requested"}
+      },
+      {
+        "id": "court_ruled",
+        "description": "Court rules on the petition for additional time",
+        "after": ["rule_on_petition"],
+        "source": {"section": "2.2-3704", "subsection": "C", "quote": "petition the appropriate court for additional time to respond to a request for records"}
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Code of Virginia § 2.2-3706.1",
+        "role": "a request for criminal investigative files gets 60 work days instead of seven after a not-practicable response",
+        "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "in the case of a request for criminal investigative files pursuant to"}
+      },
+      {
+        "citation": "Code of Virginia § 2.2-3705.4(A)(1); 20 U.S.C. § 1232g (FERPA)",
+        "role": "scholastic records that FERPA requires to be made available are excepted from the subsection F charges",
+        "source": {"section": "2.2-3704", "subsection": "F", "quote": "that must be made available for inspection pursuant to the federal Family Educational Rights and Privacy Act"}
+      },
+      {
+        "citation": "Virginia Public Records Act, Code of Virginia § 42.1-76 et seq.; § 42.1-79",
+        "role": "the Library of Virginia is custodian of, and answers requests for, records transferred to it for permanent archiving",
+        "source": {"section": "2.2-3704", "subsection": "J", "quote": "the Library of Virginia shall be the custodian of such permanently archived records and shall be responsible for responding to requests for such records made pursuant to this chapter"}
+      }
+    ],
+    "gaps": [
+      "Subsection A opens the records to citizens of the Commonwealth and to representatives of in-state newspapers, magazines, radio and television stations; the text does not say how a request from anyone else is handled. The requester is typed as one private party.",
+      "The custodian may require the requester's name and legal address (§ 2.2-3704(A)); this optional exchange is not modelled as a step.",
+      "The text does not set a form or medium for the request (written, oral, electronic); it says only that the request must identify the records with reasonable specificity and need not mention the chapter to start the time limits (§ 2.2-3704(B)).",
+      "The written notice of possible charges is due 'Prior to conducting a search for records' (§ 2.2-3704(F)); the text does not say whether it is needed when no search is required. The model sends it before every response decision.",
+      "The response periods are tolled between notice of the cost estimate and the requester's response (§ 2.2-3704(F)) and between notice of the advance determination and the requester's response (§ 2.2-3704(H)); the five- and seven-work-day timers do not show the tolling.",
+      "The text does not say what the requester's response to a cost estimate may be (accept, narrow, abandon); the model shows only a response or the 30-day lapse to a deemed withdrawal. The estimating costs are applied toward the overall charges (§ 2.2-3704(F)).",
+      "A requester may both ask for a cost estimate and be required to pay a deposit; the model routes the estimate first and then the deposit. Processing waits for the deposit ('before continuing to process the request'), but the text gives no deadline or consequence if the deposit is never paid; the same is true of overdue prior charges under § 2.2-3704(I).",
+      "The 'additional seven work days' of § 2.2-3704(B)(4) are counted from the end of the first five-work-day period, and are available only if the not-practicable response was itself made within five working days; missing either period is modelled as the deemed denial of § 2.2-3704(E).",
+      "Subsection C does not tie the court petition to the not-practicable response or set a time for it; the model places it after that notice for requests of extraordinary volume or search length. The text does not say what the court may order, what happens to the response deadlines while the petition is pending, or how production proceeds under an agreement with the requester.",
+      "The grounds for withholding are in other sections of the chapter that are not included; the 'withheld_scope' input of the response tables stands in for them. Each withholding response must cite, for each category, the specific Code section authorising the withholding (§ 2.2-3704(B)(1)-(2)).",
+      "The text states no administrative appeal; a failure to respond is a deemed denial and a violation of the chapter (§ 2.2-3704(E)), but the enforcement remedy is elsewhere in the chapter and is not cited here. Whether a late response cures the deemed denial is not stated.",
+      "No new record need be created, but the public body may abstract or summarise information on agreed terms (§ 2.2-3704(D)); this is not modelled as a step.",
+      "Database records (§ 2.2-3704(G)) must be produced at actual cost in any tangible medium the requester identifies that the body uses in the regular course of business, with nonexempt records released even where exempt records are combined; these format rules are not modelled as steps.",
+      "When records were transferred for storage, maintenance or archiving, the transferring body, its successor or the possessor is the custodian for responding (§ 2.2-3704(J)); the model assumes the request reaches the right custodian.",
+      "The text does not say when charges are billed or paid relative to access; the model places the charge after records are supplied, in whole or in part. A local public body that charges may offer an electronic method of payment (§ 2.2-3704(F)); this option is not modelled.",
+      "The GIS charge may not exceed the public body's actual cost, except that topographical maps covering a contiguous area greater than 50 acres may be charged on a pro rata per acre basis (§ 2.2-3704(F)); the fee table summarises this in one rule."
+    ]
+  }
+}

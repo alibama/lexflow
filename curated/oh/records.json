@@ -1,0 +1,1058 @@
+{
+  "state": "oh",
+  "question": "records",
+  "sections": [
+    "149.43"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records under the Ohio Public Records Act",
+    "trigger": "Any person asks an Ohio public office to inspect or copy public records",
+    "trigger_source": {
+      "section": "149.43",
+      "subsection": "B.1",
+      "quote": "Upon request by any person and subject to division (B)(8) of this section, all public records responsive to the request shall be promptly prepared and made available for inspection to the requester at all reasonable times during regular business hours."
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "Upon request by any person"
+        }
+      },
+      {
+        "id": "public_office",
+        "name": "Public office or person responsible for public records",
+        "kind": "public-body",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "a public office or person responsible for public records shall make copies of the requested public record available to the requester at cost and within a reasonable period of time"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Court (court of claims or common pleas clerk under § 2743.75, or a mandamus court)",
+        "kind": "court",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1.a",
+          "quote": "File a complaint with the clerk of the court of claims or the clerk of the court of common pleas under section 2743.75 of the Revised Code"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request to inspect or copy records",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "public_office",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "upon request by any person, a public office or person responsible for public records shall make copies of the requested public record available to the requester"
+        }
+      },
+      {
+        "id": "offer_revision",
+        "actor": "public_office",
+        "action": "Deny; explain how records are kept",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "condition": "request_ambiguous",
+        "recipient": "requester",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.2",
+          "quote": "may deny the request but shall provide the requester with an opportunity to revise the request by informing the requester of the manner in which records are maintained by the public office and accessed in the ordinary course of the public office's or person's duties"
+        }
+      },
+      {
+        "id": "revise_request",
+        "actor": "requester",
+        "action": "Revise the request",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "offer_revision"
+        ],
+        "condition": "requester_revises",
+        "recipient": "public_office",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.2",
+          "quote": "an opportunity to revise the request"
+        }
+      },
+      {
+        "id": "provide_video_cost_estimate",
+        "actor": "public_office",
+        "action": "Give estimated actual cost of video",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "condition": "law_enforcement_video_request",
+        "recipient": "requester",
+        "deadline": {
+          "amount": 5,
+          "unit": "business_days",
+          "anchor": "receipt of the public records request",
+          "consequence": "unstated",
+          "on_miss": "serve_complaint",
+          "source": {
+            "section": "149.43",
+            "subsection": "B.1",
+            "quote": "A state or local law enforcement agency or a prosecuting attorney's office shall provide the requester with the estimated actual cost within five business days of receipt of the public records request."
+          }
+        },
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "shall provide the requester with the estimated actual cost within five business days of receipt of the public records request"
+        }
+      },
+      {
+        "id": "pay_video_estimate",
+        "actor": "requester",
+        "action": "Pay the estimated video cost in full",
+        "kind": "payment",
+        "modality": "none",
+        "after": [
+          "provide_video_cost_estimate"
+        ],
+        "condition": "prepayment_required",
+        "recipient": "public_office",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "its obligation to produce a video or make it available for inspection begins once the estimated actual cost is paid in full by the requester"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "public_office",
+        "action": "Decide what to release or withhold",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_request",
+          "revise_request",
+          "provide_video_cost_estimate",
+          "pay_video_estimate"
+        ],
+        "join": "any",
+        "decision": "response_type",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "If a public record contains information that is exempt from the duty to permit public inspection or to copy the public record, the public office or the person responsible for the public record shall make available all of the information within the public record that is not exempt."
+        }
+      },
+      {
+        "id": "explain_denial",
+        "actor": "public_office",
+        "action": "Explain denial, citing legal authority",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "whole_denial",
+        "recipient": "requester",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.3",
+          "quote": "the public office or the person responsible for the requested public record shall provide the requester with an explanation, including legal authority, setting forth why the request was denied"
+        }
+      },
+      {
+        "id": "explain_partial_denial",
+        "actor": "public_office",
+        "action": "Explain partial denial, citing legal authority",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "partial_denial",
+        "recipient": "requester",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.3",
+          "quote": "If a request is ultimately denied, in part or in whole, the public office or the person responsible for the requested public record shall provide the requester with an explanation, including legal authority, setting forth why the request was denied."
+        }
+      },
+      {
+        "id": "prepare_records",
+        "actor": "public_office",
+        "action": "Prepare records; disclose any redactions",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "respond",
+          "explain_partial_denial"
+        ],
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "shall notify the requester of any redaction or make the redaction plainly visible"
+        },
+        "join": "any"
+      },
+      {
+        "id": "collect_costs",
+        "actor": "public_office",
+        "action": "Charge copy costs, in advance if required",
+        "kind": "payment",
+        "modality": "permission",
+        "after": [
+          "prepare_records"
+        ],
+        "condition": "copies_requested",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.6",
+          "quote": "may require the requester to pay in advance the cost involved in providing the copy of the public record in accordance with the choice made by the requester under this division"
+        }
+      },
+      {
+        "id": "provide_copies",
+        "actor": "public_office",
+        "action": "Copy on chosen medium; send if asked",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "collect_costs"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.6",
+          "quote": "When the requester makes a choice under this division, the public office or person responsible for the public record shall provide a copy of it in accordance with the choice made by the requester."
+        }
+      },
+      {
+        "id": "permit_inspection",
+        "actor": "public_office",
+        "action": "Make records available for inspection",
+        "kind": "inspection",
+        "modality": "obligation",
+        "after": [
+          "prepare_records"
+        ],
+        "source": {
+          "section": "149.43",
+          "subsection": "B.1",
+          "quote": "made available for inspection to the requester at all reasonable times during regular business hours"
+        }
+      },
+      {
+        "id": "serve_complaint",
+        "actor": "requester",
+        "action": "Serve complaint on court-of-claims form",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "submit_request",
+          "offer_revision",
+          "explain_denial",
+          "provide_copies",
+          "permit_inspection"
+        ],
+        "join": "any",
+        "condition": "aggrieved",
+        "recipient": "public_office",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1",
+          "quote": "may serve pursuant to Rule 4 of the Ohio Rules of Civil Procedure a complaint, on a form prescribed by the clerk of the court of claims, to the public office or person responsible for public records allegedly responsible for the alleged failure"
+        }
+      },
+      {
+        "id": "cure",
+        "actor": "public_office",
+        "action": "Cure failure to requester's satisfaction",
+        "kind": "act",
+        "modality": "permission",
+        "after": [
+          "serve_complaint"
+        ],
+        "deadline": {
+          "amount": 3,
+          "unit": "business_days",
+          "anchor": "receipt of the complaint of the person allegedly aggrieved",
+          "consequence": "right-lapses",
+          "on_miss": "file_suit",
+          "source": {
+            "section": "149.43",
+            "subsection": "C.1",
+            "quote": "Upon receipt of the complaint of the person allegedly aggrieved, the public office or person responsible for public records has three business days to cure or otherwise address the failure alleged in the complaint."
+          }
+        },
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1",
+          "quote": "to cure or otherwise address the failure alleged in the complaint"
+        }
+      },
+      {
+        "id": "file_suit",
+        "actor": "requester",
+        "action": "File one suit, with written affirmation",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "recipient": "court",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1",
+          "quote": "Upon the expiration of the three-day period, the person allegedly aggrieved may, subject to the requirements of division (C)(2) of this section, do only one of the following, and not both"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "response_type",
+        "question": "How does the public office answer the request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "identity_or_use_required",
+            "label": "Office required the requester's identity or intended use, without state or federal authority",
+            "type": "boolean"
+          },
+          {
+            "name": "incarcerated_criminal_record",
+            "label": "Incarcerated requester seeks a criminal investigation or prosecution record, without the sentencing judge's finding",
+            "type": "boolean"
+          },
+          {
+            "name": "all_exempt",
+            "label": "All responsive records are exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "some_exempt",
+            "label": "Some information in the records is exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "redaction_authorized_by_law",
+            "label": "Federal or state law authorizes or requires each redaction",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "whole_denial",
+            "label": "Request denied in whole",
+            "type": "boolean"
+          },
+          {
+            "name": "partial_denial",
+            "label": "Request denied in part (records released with redactions that count as denials)",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Denied: identity or intended use was required; explanation with legal authority\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.4",
+              "quote": "Any requirement that the requester disclose the requester's identity or the intended use of the requested public record constitutes a denial of the request."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Not required to permit inspection or copies; explanation with legal authority\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.8",
+              "quote": "A public office or person responsible for public records is not required to permit a person who is incarcerated pursuant to a criminal conviction or a juvenile adjudication to inspect or to obtain a copy of any public record concerning a criminal investigation or prosecution"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Denied in whole; explanation with legal authority, in writing if the request was written\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.3",
+              "quote": "If a request is ultimately denied, in part or in whole"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Non-exempt information released; each redaction is a denial needing an explanation with legal authority\"",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "A redaction shall be deemed a denial of a request to inspect or copy the redacted information"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Non-exempt information released; authorized redactions disclosed or plainly visible\"",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "except if federal or state law authorizes or requires a public office to make the redaction"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"All responsive records made available for inspection, or copied at cost\"",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "all public records responsive to the request shall be promptly prepared and made available for inspection"
+            }
+          }
+        ]
+      },
+      {
+        "id": "video_fee",
+        "question": "What may a law enforcement agency or prosecutor charge for a video record?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "victim_with_affidavit",
+            "label": "Requester is a victim (or the victim's counsel or insurer) and the victim's affidavit was received",
+            "type": "boolean"
+          },
+          {
+            "name": "actual_exceeds_estimate",
+            "label": "Actual cost exceeds the estimated actual cost",
+            "type": "boolean"
+          },
+          {
+            "name": "overage_notice_given",
+            "label": "Requester was told in advance the cost may be up to 20% higher",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "video_charge",
+            "label": "Charge for preparing or copying the video",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No fee\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.11",
+              "quote": "shall not charge a fee for preparing a video record for inspection, or producing a copy of a video record, when the requester of the video record is a victim"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Actual cost, at most $75 per hour of video and $750 total\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "may charge a requester the actual cost associated with preparing a video record for inspection or production, not to exceed seventy-five dollars per hour of video produced, nor seven hundred fifty dollars total"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Estimate plus the difference, the difference at most 20% of the estimate, within the caps\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "A state or local law enforcement agency or a prosecuting attorney's office shall not charge a requester a difference that exceeds twenty per cent of the estimated actual cost."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Estimated actual cost only; no difference charged\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "B.1",
+              "quote": "may charge a requester for the difference upon fulfilling a request for video records if the requester is notified in advance that the actual cost may be up to twenty per cent higher than the estimated actual cost"
+            }
+          }
+        ]
+      },
+      {
+        "id": "statutory_damages",
+        "question": "Does a requester who wins in mandamus get statutory damages?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "failure_found",
+            "label": "Court finds the office failed to comply with division (B)",
+            "type": "boolean"
+          },
+          {
+            "name": "committed_to_custody",
+            "label": "Requester is committed to DRC, federal prison or DYS custody",
+            "type": "boolean"
+          },
+          {
+            "name": "qualifying_written_request",
+            "label": "Written request fairly describing the records, sent by hand delivery, electronic submission or certified mail",
+            "type": "boolean"
+          },
+          {
+            "name": "well_informed_office_test",
+            "label": "Court finds both well-informed-office conditions of (C)(3)(a) and (b)",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "damages",
+            "label": "Statutory damages",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"None\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.3",
+              "quote": "if a court determines that the public office or the person responsible for public records failed to comply with an obligation in accordance with division (B) of this section"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"None\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.3",
+              "quote": "Statutory damages are not available pursuant to this section to a person committed to the custody of the department of rehabilitation and correction or the United States bureau of prisons"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"None\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.3",
+              "quote": "If a requester transmits a written request by hand delivery, electronic submission, or certified mail to inspect or receive copies of any public record in a manner that fairly describes the public record or class of public records"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Court may reduce or deny statutory damages\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.3",
+              "quote": "The court may reduce an award of statutory damages or not award statutory damages if the court determines both of the following"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"$100 per business day from filing the mandamus action, up to $1,000\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.3",
+              "quote": "The amount of statutory damages shall be fixed at one hundred dollars for each business day during which the public office or person responsible for the requested public records failed to comply with an obligation in accordance with division (B) of this section, beginning with the day on which the requester files a mandamus action to recover statutory damages, up to a maximum of one thousand dollars."
+            }
+          }
+        ]
+      },
+      {
+        "id": "court_costs",
+        "question": "Who gets court costs in a public records mandamus action?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "compliance_ordered",
+            "label": "Court orders the office to comply with division (B)",
+            "type": "boolean"
+          },
+          {
+            "name": "bad_faith_late_release",
+            "label": "Office acted in bad faith releasing records first after suit, before any order",
+            "type": "boolean"
+          },
+          {
+            "name": "frivolous_suit",
+            "label": "Writ not issued and the action was frivolous conduct under § 2323.51(A)",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "costs",
+            "label": "Court costs",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"All court costs to the relator (mandatory)\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.a.i",
+              "quote": "If the court orders the public office or the person responsible for the public record to comply with division (B) of this section, the court shall determine and award to the relator all court costs"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"All court costs to the relator (mandatory)\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.a.ii",
+              "quote": "If the court makes a determination described in division (C)(4)(b)(iii) of this section, the court shall determine and award to the relator all court costs"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Court may award the office all court costs and expenses\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.6",
+              "quote": "the court may award to the public office all court costs, expenses, and reasonable attorney's fees, as determined by the court"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"No costs award under this section\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.a.i",
+              "quote": "If the court orders the public office or the person responsible for the public record to comply with division (B) of this section"
+            }
+          }
+        ]
+      },
+      {
+        "id": "attorney_fees",
+        "question": "Who may get attorney's fees in a public records mandamus action?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "frivolous_suit",
+            "label": "Writ not issued and the action was frivolous conduct under § 2323.51(A)",
+            "type": "boolean"
+          },
+          {
+            "name": "well_informed_office_fees",
+            "label": "Court finds both well-informed-office conditions of (C)(4)(c)",
+            "type": "boolean"
+          },
+          {
+            "name": "compliance_ordered",
+            "label": "Court orders the office to comply with division (B)",
+            "type": "boolean"
+          },
+          {
+            "name": "fee_ground",
+            "label": "Office missed the response time, broke a promised date, or released in bad faith after suit ((C)(4)(b)(i)-(iii))",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "fees",
+            "label": "Attorney's fees",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Court may award the office reasonable attorney's fees\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.6",
+              "quote": "If the court does not issue a writ of mandamus under division (C) of this section and the court determines at that time that the bringing of the mandamus action was frivolous conduct"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No attorney's fees to the relator\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.c",
+              "quote": "The court shall not award attorney's fees to the relator if the court determines both of the following"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Court may award the relator reasonable fees, capped under (C)(5)\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.b",
+              "quote": "the court may award reasonable attorney's fees to the relator, subject to division (C)(5) of this section"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Court may award the relator reasonable fees, capped under (C)(5)\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.b",
+              "quote": "or if the court determines any of the following, the court may award reasonable attorney's fees to the relator"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"No attorney's fees under this section\""
+            ],
+            "source": {
+              "section": "149.43",
+              "subsection": "C.4.b",
+              "quote": "If the court renders a judgment that orders the public office or the person responsible for the public record to comply with division (B) of this section or if the court determines any of the following"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "records_provided",
+        "description": "Records inspected or copies provided",
+        "after": [
+          "provide_copies",
+          "permit_inspection"
+        ],
+        "join": "any",
+        "source": {
+          "section": "149.43",
+          "subsection": "B.7.a",
+          "quote": "shall transmit a copy of a public record to any person by United States mail or by any other means of delivery or transmission within a reasonable period of time after receiving the request for the copy"
+        }
+      },
+      {
+        "id": "ambiguous_request_denied",
+        "description": "Ambiguous request stays denied",
+        "after": [
+          "offer_revision"
+        ],
+        "source": {
+          "section": "149.43",
+          "subsection": "B.2",
+          "quote": "cannot reasonably identify what public records are being requested, the public office or the person responsible for the requested public record may deny the request"
+        }
+      },
+      {
+        "id": "failure_resolved",
+        "description": "Failure cured or resolved to the requester's satisfaction",
+        "after": [
+          "cure"
+        ],
+        "source": {
+          "section": "149.43",
+          "subsection": "C.2",
+          "quote": "the failure alleged in the complaint has not been cured or otherwise resolved to the person's satisfaction"
+        }
+      },
+      {
+        "id": "suit_dismissed",
+        "description": "Suit dismissed for want of the written affirmation",
+        "after": [
+          "file_suit"
+        ],
+        "when": "no_affirmation",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.2",
+          "quote": "If the person fails to file an affirmation pursuant to this division, the suit shall be dismissed."
+        }
+      },
+      {
+        "id": "claims_complaint",
+        "description": "Complaint proceeds in the court of claims under § 2743.75",
+        "after": [
+          "file_suit"
+        ],
+        "when": "chose_court_of_claims",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1.a",
+          "quote": "File a complaint with the clerk of the court of claims or the clerk of the court of common pleas under section 2743.75 of the Revised Code"
+        }
+      },
+      {
+        "id": "writ_denied",
+        "description": "Writ denied; costs and fees per the tables",
+        "after": [
+          "file_suit"
+        ],
+        "when": "writ_denied",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.6",
+          "quote": "If the court does not issue a writ of mandamus under division (C) of this section"
+        }
+      },
+      {
+        "id": "mandamus_judgment",
+        "description": "Writ granted: compliance order and all court costs",
+        "after": [
+          "file_suit"
+        ],
+        "source": {
+          "section": "149.43",
+          "subsection": "C.4.a.i",
+          "quote": "If the court orders the public office or the person responsible for the public record to comply with division (B) of this section, the court shall determine and award to the relator all court costs, which shall be construed as remedial and not punitive."
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Ohio Rev. Code § 2743.75",
+        "role": "court of claims (or common pleas) complaint procedure, the alternative to mandamus",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1.a",
+          "quote": "under section 2743.75 of the Revised Code"
+        }
+      },
+      {
+        "citation": "Ohio Civ. R. 4",
+        "role": "how the pre-suit complaint is served on the public office",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1",
+          "quote": "pursuant to Rule 4 of the Ohio Rules of Civil Procedure"
+        }
+      },
+      {
+        "citation": "Ohio Const. art. IV, §§ 2 and 3",
+        "role": "original mandamus jurisdiction of the supreme court and the courts of appeals",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.1.b",
+          "quote": "in the supreme court pursuant to its original jurisdiction under Section 2 of Article IV, Ohio Constitution"
+        }
+      },
+      {
+        "citation": "Ohio Rev. Code § 109.43",
+        "role": "attorney general's model public records policy and required training",
+        "source": {
+          "section": "149.43",
+          "subsection": "E.2",
+          "quote": "the model public records policy developed and provided to the public office by the attorney general under section 109.43 of the Revised Code"
+        }
+      },
+      {
+        "citation": "Ohio Rev. Code § 2323.51",
+        "role": "frivolous mandamus actions can cost the requester the office's costs and attorney's fees",
+        "source": {
+          "section": "149.43",
+          "subsection": "C.6",
+          "quote": "frivolous conduct as defined in division (A) of section 2323.51 of the Revised Code"
+        }
+      }
+    ],
+    "gaps": [
+      "Scope: only § 149.43 is modelled, but it alone is about 10,600 words, far above the benchmark budget; it cannot be shortened because the request duties (B), the remedies (C) and the policy rules (E) are all in this one section. Most of the text is the division (A) definitions and exemption list, which feed the all_exempt and some_exempt inputs but are not modelled rule by rule. The court of claims procedure (§ 2743.75) is not printed; the model ends at claims_complaint.",
+      "No fixed response deadline: records must be 'promptly prepared' for inspection and copies made 'within a reasonable period of time' (B)(1), and mailed copies sent 'within a reasonable period of time after receiving the request' (B)(7)(a). The act has no deemed-denial rule, so respond carries no timer. A public records policy 'may not establish a fixed period of time before it will respond' unless it is less than eight hours (E)(2). A failure to respond promptly or within a reasonable time is modelled as the 'aggrieved' branch straight from submit_request to serve_complaint (C)(1); it is a condition, not a timer, because the statute sets no period. The same failure supports attorney's fees under (C)(4)(b)(i).",
+      "Who may request and how: any person may ask, orally or in writing. The office may ask for a written request, the requester's identity or the intended use only after saying that none is mandatory and how it would help (B)(5). Requiring identity or intended use, unless law requires or authorizes it, 'constitutes a denial of the request' (B)(4); this is the first response_type rule.",
+      "Ambiguous or overly broad requests (B)(2): the office may deny but must explain how its records are kept and accessed so the requester can revise. A revised request goes back to respond (exclusive merge, join 'any'); the requester may instead serve a (C)(1) complaint, or the request ends at ambiguous_request_denied. The statute does not say whether this first denial also needs a (B)(3) explanation, which applies to a request 'ultimately denied'.",
+      "Denials and redactions: any denial, in part or in whole, needs an explanation with legal authority, in writing if the request was written, and the office may later rely on additional reasons in court (B)(3). A redaction is a denial of the redacted information unless federal or state law authorizes or requires it (B)(1). response_type sets whole_denial (explain_denial, then possibly a complaint) or partial_denial (explain_partial_denial, then prepare_records releases the rest); an authorized redaction is not a denial and goes straight to prepare_records, which discloses it. The statute does not order the explanation and the release; the model explains first. Whether a redaction of information exempt under (A)(1) is itself 'authorized' by state law is left to the redaction_authorized_by_law input.",
+      "Costs: inspection carries no general fee, except that law enforcement agencies and prosecutors may charge the actual cost of preparing video records for inspection or copying, up to $75 per hour of video and $750 total, and victims who give the affidavit are exempt (B)(1), (B)(11). Copies are 'at cost' (B)(1), on paper, the medium the office keeps the record on, or another medium it can reasonably use, at the requester's choice (B)(6). The office may require advance payment of copy costs, postage, delivery and supplies (B)(6), (B)(7)(a). A policy may limit mailed or digital deliveries to ten per month unless the requester certifies a non-commercial purpose (B)(7)(c); 'commercial' is narrowly construed. For video records the estimate due within five business days is provide_video_cost_estimate; if its policy requires prepayment the duty to produce begins only on payment in full (pay_video_estimate); the caps, the 20% overage rule and the victim waiver are the video_fee table, which no task invokes. Missing the five-day estimate is treated as a division (B) failure that opens the complaint path; the statute states no other consequence. The video path is drawn before respond; the statute does not say whether the estimate precedes the response.",
+      "Requesters with special rules: incarcerated persons have no right to criminal investigation or prosecution records unless the sentencing judge finds the information necessary to support a justiciable claim (B)(8), modelled as the first response rule. Journalists may obtain certain information about designated public service workers by a signed written request stating the public interest (B)(9). Victims may obtain depictions of themselves (B)(10). The auditor of state may redirect requests for audit records to the original office (B)(1). Only (B)(8) is modelled.",
+      "Pre-suit complaint (C)(1): the aggrieved person must serve a complaint on the court of claims form under Civ. R. 4. The office then has three business days to cure, and the requester 'shall not file' within that period. cure carries an interrupting three-business-day timer whose expiry is the only way to file_suit, so a suit can never start inside the window; cure completing means the failure was resolved to the requester's satisfaction (failure_resolved). An office that 'otherwise addresses' the failure without satisfying the requester leaves cure open until the timer expires. (C)(2) restates the anchor: the complaint must have been transmitted 'at least three business days before the filing of the suit'. Consequence 'right-lapses' stands for the end of the office's pre-suit cure window, not a loss of the right to cure later.",
+      "One remedy, not both (C)(1): file_suit stands for either a complaint with the clerk of the court of claims or common pleas under § 2743.75, or a mandamus action in common pleas, the court of appeals, or the supreme court. Each must be filed with a written affirmation that the complaint was served, the failure is unresolved, and at least three business days passed (C)(2); without it the suit 'shall be dismissed'. The outcome gateway must be read in the order written: suit_dismissed (no_affirmation), then claims_complaint (chose_court_of_claims), then writ_denied, otherwise mandamus_judgment. Likewise the gateway after submit_request is read in order: request_ambiguous, law_enforcement_video_request, aggrieved, otherwise respond.",
+      "Mandamus remedies (C)(3)-(6) are tables that no task invokes, because the court is outside the agency process: statutory_damages; court_costs (mandatory to the relator on a compliance order or a (C)(4)(b)(iii) bad-faith finding, and the office may recover costs and expenses if a denied writ was frivolous, (C)(4)(a), (C)(6)); and attorney_fees (discretionary on a compliance order or a (C)(4)(b)(i)-(iii) ground, barred when both (C)(4)(c) well-informed-office conditions hold, office's fees if frivolous). The (C)(5) limits on fees (only fees incurred before release plus fees litigating the fees, reducible where an alternative means should have been pursued) are summarised, not modelled.",
+      "Office duties outside a single request: keep records organised and the retention schedule available (B)(2), adopt and post a public records policy (E)(2), and send elected officials to attorney-general training (E)(1). These are standing duties, not steps in the request."
+    ]
+  }
+}

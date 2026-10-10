@@ -95,7 +95,7 @@ def test_locator_uses_verified_seed_and_skips_decoys(va_statutes):
 def test_locator_falls_back_to_keywords(va_statutes, monkeypatch):
     monkeypatch.setitem(QUESTIONS["records"].seeds, "va", ("99-999",))
     r = locator.locate(QUESTIONS["records"], "va")
-    assert r["method"] == "keyword" and r["section"] == "2.2-3704" and 0.4 <= r["score"] < 1.0
+    assert r["method"] == "keyword" and r["section"] == "2.2-3704" and 0.3 <= r["score"] <= 0.6
     assert "18.2-107" not in [c["section"] for c in json.loads(r["candidates"])][:1]
 
 
@@ -128,6 +128,23 @@ def test_found_tier_when_no_model_available(con, va_statutes, monkeypatch):
     assert out["tier"] == "found"
     row = db.one(con, "SELECT completion, stages FROM process_models WHERE model_id='va.records'")
     assert row["completion"] == pytest.approx(2 / 8)
+
+
+def test_selector_builds_a_single_model_from_related_sections(con, va_statutes, monkeypatch):
+    """Without its reference, Virginia records is built by the selector trained on the other states'
+    references, from the located section and its verified related sections; it stays 'single' (one method)."""
+    monkeypatch.setattr(config, "STRATEGY", "stack")
+    monkeypatch.setattr(config, "VECTORS", "tfidf")
+    locator.run(con, QUESTIONS["records"], ["va"], log=lambda *_: None)
+    loc = db.one(con, "SELECT * FROM located_law WHERE state='va' AND question='records'")
+    assert build.related_sections("va", "records", loc)[0] == "2.2-3704"
+    out = build.build(con, "va", "records", use_llm=False, use_curated=False, log=lambda *_: None)
+    assert out["tier"] == "single"
+    row = db.one(con, "SELECT built_by, metrics, facts FROM process_models WHERE model_id='va.records'")
+    assert row["built_by"] == "selector:stack"
+    m = json.loads(row["metrics"])
+    assert m["quote_misses"] == 0 and m["chosen"] == "selector:stack"
+    assert len(json.loads(row["facts"])["steps"]) >= 3
 
 
 def test_agreement_is_one_for_identical_facts():

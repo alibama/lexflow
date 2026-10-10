@@ -397,7 +397,7 @@ def few_shot(question: str, exclude_state: str | None, n: int = 4) -> str:
             continue
         try:
             spec = _json.loads(path.read_text(encoding="utf-8"))
-            texts = _statutes.section_texts(st, spec["sections"][:6])
+            texts = _statutes.reference_texts(st, spec["sections"][:6])
         except Exception:  # noqa: BLE001 - statutes not downloaded for that state
             continue
         text = _statutes.combined_text(texts)
@@ -412,6 +412,104 @@ def few_shot(question: str, exclude_state: str | None, n: int = 4) -> str:
             ex = [f'STEP: "{t[:200]}"' for t in pos[:n]] + [f'NOT A STEP: "{t[:200]}"' for t in neg[:n]]
             return "Examples, decided by a careful lawyer for another state's law:\n" + "\n".join(ex) + "\n"
     return ""
+
+
+def _features(d: dict) -> list[str]:
+    """What the learned selector looks at for one candidate clause."""
+    c: Clause = d["clause"]
+    m = re.search(r"\b(?:shall|may|must)\b(.*)", c.text, re.I | re.S)
+    words = [w.lower() for w in re.findall(r"[A-Za-z]+", verb_phrase(m.group(1)) if m else "")]
+    words = [w for w in words if w not in ("either", "also", "then", "only", "not", "be", "immediately", "promptly")]
+    verb = (words[0] if words else "?")[:6]                 # "shall within 15 days ... either make" -> "make"
+    who = actor_kind(d["actor"])
+    depth = len((c.label or "").split("."))
+    return [f"modal={modality_of(c.modal)}", f"who={who}", f"verb={verb}", f"kind={d['kind']}",
+            f"deadline={bool(c.deadline)}", f"depth={min(depth, 3)}", f"who_modal={who}:{modality_of(c.modal)}",
+            f"passive={bool(re.search(r'be [a-z]+ed by', c.text))}"]
+
+
+def _training(question: str, exclude: tuple[str, str]) -> list[tuple[list[str], bool]]:
+    """Labelled candidates from Claude's reference models of other cases: a candidate is a positive when its
+    clause contains (or is contained in) the quote of one of Claude's steps."""
+    import json as _json
+    from .. import config as _config
+    from ..municipal import statutes as _statutes
+    data = []
+    for path in sorted(_config.CURATED_DIR.glob("*/*.json")):
+        st, q = path.parent.name, path.stem
+        if st == "places" or st == exclude[0]:      # hold out the whole state, as a new state would be
+            continue
+        try:
+            spec = _json.loads(path.read_text(encoding="utf-8"))
+            text = _statutes.combined_text(_statutes.reference_texts(st, spec["sections"]))
+        except Exception:  # noqa: BLE001 - that state's statutes are not downloaded
+            continue
+        quotes = [(s["source"]["section"], re.sub(r"\s+", " ", s["source"]["quote"]).lower())
+                  for s in spec["facts"]["steps"]]
+        for d in rule_drafts(segment(text), q):
+            c = d["clause"]
+            norm = re.sub(r"\s+", " ", c.text).lower()
+            pos = any(sec == (c.section or sec) and (qt in norm or norm in qt) for sec, qt in quotes)
+            weight = 1.0 if q == question else 0.5          # other questions teach a little, same question more
+            data.append((_features(d), pos, weight))
+    return data
+
+
+def learned_scores(clauses: list[Clause], question: str, state: str | None) -> list[tuple[float, dict]]:
+    """(log-odds, draft) for every candidate clause, from a Naive Bayes selector trained on Claude's choices
+    in the other cases (never this one)."""
+    import math
+    data = _training(question, (state or "", question))
+    cands = rule_drafts(clauses, question)
+    if not data or not cands:
+        return [(0.0, d) for d in cands]
+    pos_w = sum(w for _, y, w in data if y) or 1e-9
+    neg_w = sum(w for _, y, w in data if not y) or 1e-9
+    counts: dict[tuple[str, bool], float] = {}
+    for feats, y, w in data:
+        for f in feats:
+            counts[(f, y)] = counts.get((f, y), 0.0) + w
+    vocab = {f for feats, _, _ in data for f in feats}
+
+    def log_odds(feats):
+        lo = math.log(pos_w / neg_w)
+        for f in feats:
+            p = (counts.get((f, True), 0.0) + 1) / (pos_w + len(vocab))
+            n = (counts.get((f, False), 0.0) + 1) / (neg_w + len(vocab))
+            lo += math.log(p / n)
+        return lo
+    return [(log_odds(_features(d)), d) for d in cands]
+
+
+def learned_llm_drafts(asker: Asker, clauses: list[Clause], question: str, goal: str, state: str | None) -> list[dict]:
+    """The learned selector keeps its top third and drops its bottom third; the local model judges each
+    clause in the middle third on its own."""
+    ranked = [d for _, d in sorted(learned_scores(clauses, question, state), key=lambda x: -x[0])]
+    n = len(ranked)
+    top, middle = ranked[:max(2, n // 3)], ranked[max(2, n // 3):max(2, 2 * n // 3)]
+    out = list(top)
+    for d in middle:
+        c = d["clause"]
+        r = asker.ask(LABEL_SYSTEM.format(goal=goal), f"Sentence ({c.label or '-'}): {c.text[:600]}\n"
+                      f"Who acts: {d['actor']}", LABEL_SCHEMA)
+        if r and r.get("is_step"):
+            out.append(d)
+    return sorted(out, key=lambda d: d["clause"].start)
+
+
+def learned_drafts(clauses: list[Clause], question: str, state: str | None, share: float | None = None) -> list[dict]:
+    """Keep the best-ranked candidates.  Naive Bayes ranks well but its probabilities are not calibrated, so the
+    number kept is the share of candidates Claude made steps in the training cases, plus a little for recall."""
+    scored = learned_scores(clauses, question, state)
+    if not scored:
+        return []
+    if share is None:
+        data = _training(question, (state or "", question))
+        pos = sum(w for _, y, w in data if y)
+        share = min(0.8, 1.25 * pos / max(1e-9, sum(w for _, _, w in data))) if data else 0.5
+    k = max(3, round(share * len(scored)))
+    keep = [d for _, d in sorted(scored, key=lambda x: -x[0])[:k]]
+    return sorted(keep, key=lambda d: d["clause"].start)
 
 
 def select_drafts(asker: Asker, clauses: list[Clause], question: str, goal: str, examples: str = "") -> list[dict]:
@@ -500,6 +598,79 @@ def review(asker: Asker, drafts: list[dict], goal: str) -> list[dict]:
     return kept if len(kept) >= 3 else drafts
 
 
+JUDGE_SCHEMA = {"type": "object", "properties": {"is_step": {"type": "boolean"}}, "required": ["is_step"]}
+JUDGE_SYSTEM = """You decide whether one sentence of a statute is a STEP of the process "{goal}": something a person or
+office does while handling one case (submit, respond, decide, notify, extend the time, appeal, pay, issue, record).
+Definitions, caps, exceptions and general policy are not steps.
+Here is how a careful lawyer decided the most similar sentences in other states' laws:
+{examples}
+Return JSON only."""
+
+
+def config_vectors() -> str:
+    from .. import config
+    return config.VECTORS
+
+
+def stacked_drafts(clauses: list[Clause], question: str, state: str | None, *, vectors: str | None = None,
+                   asker: Asker | None = None, goal: str = "", band: float = 0.12, notes: list | None = None,
+                   only_states: set[str] | None = None) -> list[dict]:
+    """Wide candidates scored by the selector trained on Claude's references in other states; with an asker,
+    the local model re-judges the borderline ones, shown the nearest labelled sentences as examples."""
+    from . import selector as SEL
+    cands = SEL.wide_drafts(clauses, question)
+    if not cands:
+        return []
+    vectors = vectors or config_vectors()
+    emb = (SEL.tfidf() if vectors == "tfidf" else SEL.Embedder() if vectors == "embed"
+           else SEL.Combo(SEL.tfidf(), SEL.Embedder()) if vectors == "combo" else None)
+    sel = SEL.Selector(question, state, emb, use_embeddings=emb is not None, only_states=only_states)
+    if sel.emb is None and vectors in ("embed", "combo"):
+        sel = SEL.Selector(question, state, SEL.tfidf(), only_states=only_states)   # no embedding server: words only
+    if not sel.refs:
+        if notes is not None:
+            notes.append("no reference models to learn from")
+        return []                                   # nothing learned: better no model than every clause
+    sel = sel.fit()
+    probs = sel.predict(cands)
+    t = sel.threshold
+    keep = []
+    judged = 0
+    judge = Asker(asker.client, mode=asker.mode, max_tokens=12) if asker else None   # a yes or no: no rambling
+    for d, p in zip(cands, probs):
+        if judge is not None and abs(p - t) < band:
+            ex = "\n".join(f'{"STEP" if y else "NOT A STEP"}: "{" ".join(txt.split()[:45])}"'
+                           for txt, y in sel.neighbours(d))
+            r = judge.ask(JUDGE_SYSTEM.format(goal=goal, examples=ex),
+                          f'Sentence: "{" ".join(d["clause"].text.split()[:90])}"\nWho acts: {d["actor"]}', JUDGE_SCHEMA)
+            judged += 1
+            if r is not None:
+                if r.get("is_step"):
+                    keep.append(d)
+                continue
+        if p >= t:
+            keep.append(d)
+    # who acts: the rules, except where they fall back to "public body" - there the actor kind Claude gave the
+    # most similar step clauses in other states wins (a passive "may be inspected" is usually the requester's act)
+    kinds = dict(zip((id(d) for d in cands), sel.neighbour_kinds(cands)))
+    rename = {"private-party": filer_for(question), "court": "court", "official": "responsible official",
+              "other-government": "local government"}
+    for d in keep:
+        rule, near = actor_kind(d["actor"]), kinds.get(id(d))
+        if near and rule == "public-body" and near != rule:
+            d["actor"], d["actor_kind"] = rename[near], near
+        else:
+            d["actor_kind"] = rule
+    if notes is not None:
+        notes.append(f"{len(keep)} of {len(cands)} candidates kept (threshold {t:.2f}, train F1 "
+                     f"{getattr(sel, 'train_f1', 0):.2f}, {len(sel.refs)} references, vectors "
+                     f"{sel.emb.name if sel.emb is not None else 'none'}"
+                     + (f", {judged} judged by the model)" if asker else ")"))
+    if judge is not None:
+        asker.calls += judge.calls
+    return sorted(keep, key=lambda d: d["clause"].start)
+
+
 # ------------------------------------------------------------------ snapping
 def snap_quotes(facts: LegalProcessFacts, text: str, threshold: float = 0.72) -> tuple[LegalProcessFacts, int]:
     """Replace each quote that is not an exact span with the most similar clause (if similar enough)."""
@@ -529,7 +700,8 @@ def snap_quotes(facts: LegalProcessFacts, text: str, threshold: float = 0.72) ->
 
 
 # ------------------------------------------------------------------ entry point
-STRATEGIES = ["rules", "rules_sub", "select", "select_fewshot", "select_fewshot_review", "pick", "pick_review",
+STRATEGIES = ["stack", "stack_combo", "stack_tfidf", "stack_embed", "stack_nb", "stack_llm", "stack_llm_lines", "wide", "rules", "rules_sub", "learned", "learned_wide", "learned_llm", "learned_llm_review", "select", "select_fewshot", "select_fewshot_dl", "select_fewshot_review", "pick",
+              "pick_review",
               "pick_lines", "hybrid", "hybrid_review", "outline",
               "outline_review", "hybrid_lines", "hybrid_review_lines",
               "outline_lines", "outline_review_lines", "snap", "oneshot"]
@@ -561,15 +733,36 @@ def run(strategy: str, text: str, *, section: str, title: str, code: str, jurisd
             notes.append(f"{n} quotes snapped")
             return Run(strategy_name, client.model if client else None, facts, check_facts(facts, text), 0,
                        time.time() - t0, notes)
-        if strategy == "rules_sub":
+        if strategy == "wide":
+            from .selector import wide_drafts
+            drafts = wide_drafts(clauses, question)
+        elif strategy in ("stack", "stack_nb", "stack_tfidf", "stack_embed", "stack_combo"):
+            vectors = {"stack_nb": "none", "stack_tfidf": "tfidf", "stack_embed": "embed", "stack_combo": "combo"}.get(strategy)
+            drafts = stacked_drafts(clauses, question, state, vectors=vectors, notes=notes)
+        elif strategy.startswith("stack_llm"):
+            drafts = stacked_drafts(clauses, question, state, asker=asker, goal=goal, notes=notes)
+        elif strategy == "rules_sub":
             drafts = subsection_rule_drafts(clauses, question)
         elif strategy == "rules":
             drafts = rule_drafts(clauses, question)
+        elif strategy.startswith("learned_llm"):
+            drafts = learned_llm_drafts(asker, clauses, question, goal, state)
+        elif strategy.startswith("learned_wide"):
+            drafts = learned_drafts(clauses, question, state, share=0.6)
+        elif strategy.startswith("learned"):
+            drafts = learned_drafts(clauses, question, state)
+            notes.append("selector trained on Claude's other reference models")
         elif strategy.startswith("select"):
             examples = few_shot(question, state) if "fewshot" in strategy else ""
             if examples:
                 notes.append("few-shot examples from another state's reference model")
             drafts = select_drafts(asker, clauses, question, goal, examples)
+            if strategy.endswith("_dl") or "_dl_" in strategy:
+                # domain prior: a clause that sets a time limit is almost always a step
+                chosen = {d["clause"].id for d in drafts}
+                extra = [d for d in rule_drafts(clauses, question) if d["deadline"] and d["clause"].id not in chosen]
+                drafts = sorted(drafts + extra, key=lambda d: d["clause"].start)
+                notes.append(f"{len(extra)} deadline clauses added")
         elif strategy.startswith("pick"):
             drafts = pick_drafts(asker, clauses, question, goal)
         elif strategy.startswith("hybrid"):

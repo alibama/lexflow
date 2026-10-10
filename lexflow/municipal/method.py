@@ -18,8 +18,8 @@ from ..store import db
 TIERS = ["none", "found", "single", "agreed", "reviewed"]
 TIER_LABEL = {
     "reviewed": "Checked by Claude or a person",
-    "agreed": "Two local models agree",
-    "single": "One local model",
+    "agreed": "Two independent extractions agree",
+    "single": "One extraction",
     "found": "Law found, no steps yet",
     "none": "No state law found",
 }

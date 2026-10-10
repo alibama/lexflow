@@ -1,0 +1,962 @@
+{
+ "state": "ca",
+ "question": "business",
+ "sections": [
+  "17702.01",
+  "17702.05",
+  "17702.09",
+  "12190",
+  "17701.04",
+  "Cal. CORP § 200",
+  "12186",
+  "Cal. CORP § 5120",
+  "Cal. CORP § 13404",
+  "15902.01",
+  "12188",
+  "Cal. CORP § 16202",
+  "Cal. BPC § 17910",
+  "Cal. BPC § 17915",
+  "Cal. BPC § 17929"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in California (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "17702.01",
+   "subsection": "a",
+   "quote": "One or more persons may act as organizers to form a limited liability company"
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "17702.01",
+     "subsection": "a",
+     "quote": "One or more persons may act as organizers to form a limited liability company"
+    }
+   },
+   {
+    "id": "sos",
+    "name": "Secretary of State",
+    "kind": "public-body",
+    "source": {
+     "section": "17702.05",
+     "subsection": "a",
+     "quote": "unless the Secretary of State determines that a record does not comply with applicable laws, the Secretary of State shall file the record"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company",
+    "kind": "private-party",
+    "source": {
+     "section": "17702.09",
+     "subsection": "a",
+     "quote": "Every limited liability company and every foreign limited liability company registered to transact intrastate business in this state"
+    }
+   },
+   {
+    "id": "county_clerk",
+    "name": "County clerk",
+    "kind": "other-government",
+    "source": {
+     "section": "17915",
+     "quote": "A fictitious business name statement shall be filed with the clerk of the county in which the registrant has his or her principal place of business in this state"
+    }
+   },
+   {
+    "id": "ftb",
+    "name": "Franchise Tax Board",
+    "kind": "other-government",
+    "source": {
+     "section": "17702.01",
+     "subsection": "g",
+     "quote": "an annual tax for that taxable year to the Franchise Tax Board"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "deliver_articles",
+    "actor": "organizer",
+    "action": "Sign and deliver articles of organization",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "sos",
+    "source": {
+     "section": "17702.01",
+     "subsection": "a",
+     "quote": "by signing and delivering to the Secretary of State for filing articles of organization on a form prescribed by the Secretary of State"
+    }
+   },
+   {
+    "id": "pay_fee",
+    "actor": "organizer",
+    "action": "Pay the $70 filing fee",
+    "kind": "payment",
+    "modality": "none",
+    "after": [
+     "deliver_articles"
+    ],
+    "recipient": "sos",
+    "source": {
+     "section": "12190",
+     "subsection": "b",
+     "quote": "Filing articles of organization of a limited liability company: Seventy dollars ($70)."
+    }
+   },
+   {
+    "id": "review_articles",
+    "actor": "sos",
+    "action": "Check articles and fees",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "pay_fee"
+    ],
+    "decision": "articles_comply",
+    "source": {
+     "section": "17702.05",
+     "subsection": "a",
+     "quote": "If the filing fees have been paid, unless the Secretary of State determines that a record does not comply with applicable laws, the Secretary of State shall file the record."
+    }
+   },
+   {
+    "id": "file_articles",
+    "actor": "sos",
+    "action": "File the articles of organization",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_articles"
+    ],
+    "condition": "articles_ok",
+    "source": {
+     "section": "17702.05",
+     "subsection": "a",
+     "quote": "the Secretary of State shall file the record"
+    }
+   },
+   {
+    "id": "endorse_filing",
+    "actor": "sos",
+    "action": "Endorse filing date on the articles",
+    "kind": "record",
+    "modality": "none",
+    "after": [
+     "file_articles"
+    ],
+    "source": {
+     "section": "17702.05",
+     "subsection": "c.1",
+     "quote": "on the date the record is filed as evidenced by the Secretary of State’s endorsement of the date on the record"
+    }
+   },
+   {
+    "id": "file_soi",
+    "actor": "llc",
+    "action": "File statement of information",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "endorse_filing"
+    ],
+    "recipient": "sos",
+    "deadline": {
+     "amount": 90,
+     "unit": "days",
+     "anchor": "after the filing of its original articles of organization",
+     "consequence": "unstated",
+     "on_miss": "refile_soi",
+     "source": {
+      "section": "17702.09",
+      "subsection": "a",
+      "quote": "within 90 days after the filing of its original articles of organization"
+     }
+    },
+    "source": {
+     "section": "17702.09",
+     "subsection": "a",
+     "quote": "shall deliver to the Secretary of State for filing within 90 days after the filing of its original articles of organization or registering to transact intrastate business and biennially thereafter during the applicable filing period, on a form prescribed by the Secretary of State, a statement of information"
+    }
+   },
+   {
+    "id": "pay_soi_fee",
+    "actor": "llc",
+    "action": "Pay the $20 statement fee",
+    "kind": "payment",
+    "modality": "none",
+    "after": [
+     "file_soi"
+    ],
+    "recipient": "sos",
+    "source": {
+     "section": "12190",
+     "subsection": "k",
+     "quote": "Filing the statement of information of a limited liability company or of a foreign limited liability company pursuant to Section 17702.09 of the Corporations Code: Twenty dollars ($20)."
+    }
+   },
+   {
+    "id": "refile_soi",
+    "actor": "llc",
+    "action": "Refile statement of information every two years",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "pay_soi_fee"
+    ],
+    "recipient": "sos",
+    "source": {
+     "section": "17702.09",
+     "subsection": "a",
+     "quote": "biennially thereafter during the applicable filing period"
+    }
+   },
+   {
+    "id": "commence_business",
+    "actor": "llc",
+    "action": "Start transacting business",
+    "kind": "act",
+    "modality": "none",
+    "after": [
+     "endorse_filing"
+    ],
+    "source": {
+     "section": "17910",
+     "subsection": "a",
+     "quote": "from the time the registrant commences to transact such business"
+    }
+   },
+   {
+    "id": "file_fbn",
+    "actor": "llc",
+    "action": "File fictitious business name statement",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "commence_business"
+    ],
+    "condition": "uses_fictitious_name",
+    "recipient": "county_clerk",
+    "deadline": {
+     "amount": 40,
+     "unit": "days",
+     "anchor": "from the time the registrant commences to transact such business",
+     "consequence": "unstated",
+     "on_miss": "pay_annual_tax",
+     "source": {
+      "section": "17910",
+      "subsection": "a",
+      "quote": "not later than 40 days from the time the registrant commences to transact such business"
+     }
+    },
+    "source": {
+     "section": "17910",
+     "subsection": "a",
+     "quote": "File a fictitious business name statement in accordance with this chapter not later than 40 days from the time the registrant commences to transact such business."
+    }
+   },
+   {
+    "id": "pay_fbn_fee",
+    "actor": "llc",
+    "action": "Pay the $10 statement fee",
+    "kind": "payment",
+    "modality": "none",
+    "after": [
+     "file_fbn"
+    ],
+    "recipient": "county_clerk",
+    "source": {
+     "section": "17929",
+     "subsection": "a",
+     "quote": "The fee for filing a fictitious business name statement is ten dollars ($10) for the first fictitious business name and owner and two dollars ($2) for each additional fictitious business name or owner filed on the same statement and doing business at the same location."
+    }
+   },
+   {
+    "id": "pay_annual_tax",
+    "actor": "llc",
+    "action": "Pay annual tax to Franchise Tax Board",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "commence_business",
+     "pay_fbn_fee"
+    ],
+    "join": "any",
+    "recipient": "ftb",
+    "source": {
+     "section": "17702.01",
+     "subsection": "g",
+     "quote": "filing the registration will obligate the limited liability company to pay an annual tax for that taxable year to the Franchise Tax Board"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "articles_comply",
+    "question": "Do the articles of organization comply?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "purpose_stated",
+      "label": "Lawful-purpose statement included (§ 17702.01 (b)(1))",
+      "type": "boolean"
+     },
+     {
+      "name": "name_ok",
+      "label": "Name complies with § 17701.08",
+      "type": "boolean"
+     },
+     {
+      "name": "principal_office",
+      "label": "Street address of initial principal office (and mailing address if different) given",
+      "type": "boolean"
+     },
+     {
+      "name": "agent_named",
+      "label": "Initial agent for service of process named, qualified under § 17701.13 (c)",
+      "type": "boolean"
+     },
+     {
+      "name": "manager_statement",
+      "label": "If manager-managed, the articles say so (§ 17702.01 (b)(5))",
+      "type": "boolean"
+     },
+     {
+      "name": "one_manager_statement",
+      "label": "If managed by only one manager, the articles say so (§ 17702.01 (b)(6))",
+      "type": "boolean"
+     },
+     {
+      "name": "captioned_medium",
+      "label": "Record captioned to describe its purpose, in a medium the Secretary of State permits (§ 17702.05 (a))",
+      "type": "boolean"
+     },
+     {
+      "name": "prescribed_form",
+      "label": "Articles on the form prescribed by the Secretary of State (§ 17702.01 (a))",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "Filing fees paid",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "articles_ok",
+      "label": "Articles comply",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.1",
+       "quote": "A statement that the purpose of the limited liability company is to engage in any lawful act or activity for which a limited liability company may be organized under this title."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.2",
+       "quote": "The name of the limited liability company, which shall comply with Section 17701.08."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.3",
+       "quote": "The street address of the initial principal office and the mailing address of the limited liability company if different from the street address of the initial principal office."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.4",
+       "quote": "The name and street address of the initial agent for service of process of the limited liability company who meets the qualifications specified in subdivision (c) of Section 17701.13."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.5",
+       "quote": "If the limited liability company is to be manager-managed, the articles of organization shall contain a statement to that effect."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "b.6",
+       "quote": "If the limited liability company is to be managed by only one manager, the articles of organization shall contain a statement to that effect."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.05",
+       "subsection": "a",
+       "quote": "shall be captioned to describe the record’s purpose, be in a medium permitted by the Secretary of State"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "a",
+       "quote": "on a form prescribed by the Secretary of State"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "17702.05",
+       "subsection": "a",
+       "quote": "If the filing fees have been paid"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true"
+      ],
+      "then": [
+       "true"
+      ],
+      "source": {
+       "section": "17702.05",
+       "subsection": "a",
+       "quote": "the Secretary of State shall file the record"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Nonprofit public benefit corporation\"",
+       "\"Articles of incorporation, filed with the Secretary of State (which makes the filed articles available to the Attorney General, § 5120 (d)); then a statement of information (Corp. Code § 6210, not printed here)\"",
+       "\"$30 for articles of incorporation not providing for shares (Gov. Code § 12186 (d)); $20 for each statement of information (Gov. Code § 12186 (g))\""
+      ],
+      "source": {
+       "section": "5120",
+       "subsection": "a",
+       "quote": "One or more persons may form a corporation under this part by executing and filing articles of incorporation."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Professional corporation, formed under the General Corporation Law, for professional services as defined in Corp. Code §§ 13401 (a) and 13401.3, which a California LLC may not render (§ 17701.04 (e)); other licensed services may use an LLC where the licensing law lets an LLC hold the licence (§ 17701.04 (b))\"",
+       "\"Articles of incorporation stating that the corporation is a professional corporation, filed with the Secretary of State; then a certificate of registration from the agency that regulates the profession before rendering professional services (§ 13404), and a statement of information (Corp. Code § 1502, not printed here)\"",
+       "\"$100 for articles of incorporation providing for shares (Gov. Code § 12186 (c)); $20 for each statement of information (Gov. Code § 12186 (g)); the licensing agency's registration fee is set by the Business and Professions Code\""
+      ],
+      "source": {
+       "section": "13404",
+       "quote": "A corporation may be formed under the General Corporation Law or pursuant to subdivision (b) of Section 13406 for the purposes of qualifying as a professional corporation in the manner provided in this part and rendering professional services."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Stock corporation (General Corporation Law)\"",
+       "\"Articles of incorporation, filed with the Secretary of State; the corporation exists from filing (§ 200 (c)); then a statement of information (Corp. Code § 1502, not printed here)\"",
+       "\"$100 for articles of incorporation providing for shares (Gov. Code § 12186 (c)); $20 for each statement of information (Gov. Code § 12186 (g))\""
+      ],
+      "source": {
+       "section": "200",
+       "subsection": "a",
+       "quote": "One or more natural persons, partnerships, associations or corporations, domestic or foreign, may form a corporation under this division by executing and filing articles of incorporation."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Limited partnership (the certificate names each general partner, § 15902.01 (a)(4))\"",
+       "\"Certificate of limited partnership, filed with the Secretary of State on its form and naming each general partner; the partners must also enter into a partnership agreement, before or after the filing (§ 15902.01 (a)). Filing the certificate obligates the partnership to pay an annual tax to the Franchise Tax Board (§ 15902.01 (g))\"",
+       "\"$70 (Gov. Code § 12188 (b)); the annual Franchise Tax Board tax is set by Rev. & Tax. Code § 17935 (not printed here)\""
+      ],
+      "source": {
+       "section": "15902.01",
+       "subsection": "a",
+       "quote": "In order for a limited partnership to be formed, a certificate of limited partnership must be filed with and on a form prescribed by the Secretary of State"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Articles of organization, filed with the Secretary of State on its form; then a statement of information within 90 days after the filing (§ 17702.09 (a)); a fictitious business name statement with the county clerk if it trades under another name (Bus. & Prof. Code § 17910)\"",
+       "\"$70 for articles of organization (Gov. Code § 12190 (b)); $20 for the statement of information (§ 12190 (k))\""
+      ],
+      "source": {
+       "section": "17702.01",
+       "subsection": "a",
+       "quote": "One or more persons may act as organizers to form a limited liability company by signing and delivering to the Secretary of State for filing articles of organization on a form prescribed by the Secretary of State."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "1",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing appears in the printed text; the only state filing is the fictitious business name statement, which an owner trading under a fictitious business name must file with the clerk of the county of the principal place of business (§ 17915) within 40 days of starting to trade (Bus. & Prof. Code § 17910 (a))\"",
+       "\"None to form; $10 for a fictitious business name statement for the first name and owner, plus $2 for each additional name or owner filed on the same statement and doing business at the same location (Bus. & Prof. Code § 17929 (a))\""
+      ],
+      "source": {
+       "section": "17910",
+       "quote": "Every person who regularly transacts business in this state for profit under a fictitious business name shall do all of the following"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: two or more co-owners carrying on a business for profit form a partnership. A partnership trading under a fictitious business name must file a fictitious business name statement with the county clerk within 40 days of starting to trade (Bus. & Prof. Code §§ 17910, 17915). Partnerships in certain professions may register as a registered limited liability partnership with the Secretary of State (Corp. Code § 16953, not printed here)\"",
+       "\"None to form; $10 for a fictitious business name statement for the first name and owner, plus $2 for each additional name or owner filed on the same statement and doing business at the same location (Bus. & Prof. Code § 17929 (a))\""
+      ],
+      "source": {
+       "section": "16202",
+       "subsection": "a",
+       "quote": "the association of two or more persons to carry on as coowners a business for profit forms a partnership, whether or not the persons intend to form a partnership"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_formed",
+    "description": "LLC formed at filing; ongoing duties continue",
+    "after": [
+     "refile_soi",
+     "pay_annual_tax"
+    ],
+    "join": "all",
+    "source": {
+     "section": "17702.01",
+     "subsection": "e",
+     "quote": "the filing of the articles of organization by the Secretary of State is conclusive proof that the organizer satisfied all conditions to the formation of a limited liability company"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Cal. Corp. Code § 17701.08",
+    "role": "requirements for the company's name",
+    "source": {
+     "section": "17702.01",
+     "subsection": "b.2",
+     "quote": "which shall comply with Section 17701.08"
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 17701.13",
+    "role": "qualifications of the agent for service of process",
+    "source": {
+     "section": "17702.01",
+     "subsection": "b.4",
+     "quote": "who meets the qualifications specified in subdivision (c) of Section 17701.13"
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 17702.01",
+    "role": "the LLC is formed when the articles are filed, before any post-formation filing",
+    "source": {
+     "section": "17702.01",
+     "subsection": "d",
+     "quote": "A limited liability company is formed when the Secretary of State has filed the articles of organization."
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 17702.09",
+    "role": "an incomplete statement of information is returned for correction",
+    "source": {
+     "section": "17702.09",
+     "subsection": "e",
+     "quote": "the Secretary of State shall promptly return the statement of information to the reporting limited liability company or foreign limited liability company for correction"
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 17701.04",
+    "role": "an LLC may render other licensed services where the licensing law lets an LLC hold the licence",
+    "source": {
+     "section": "17701.04",
+     "subsection": "b",
+     "quote": "if the applicable provisions of the Business and Professions Code, the Chiropractic Act, the Osteopathic Act, or the Yacht and Ship Brokers Act authorize a limited liability company or foreign limited liability company to hold that license, certificate, or registration"
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 17701.04",
+    "role": "a California LLC may not render professional services as defined in Corp. Code §§ 13401 (a) and 13401.3; those professionals use a professional corporation",
+    "source": {
+     "section": "17701.04",
+     "subsection": "e",
+     "quote": "Nothing in this title shall be construed to permit a domestic or foreign limited liability company to render professional services, as defined in subdivision (a) of Section 13401 and in Section 13401.3, in this state."
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 13404",
+    "role": "a professional corporation also needs a certificate of registration from the licensing agency",
+    "source": {
+     "section": "13404",
+     "quote": "no professional corporation shall render professional services in this state without a currently effective certificate of registration issued by the governmental agency regulating the profession"
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 13404",
+    "role": "the articles must say the corporation is a professional corporation",
+    "source": {
+     "section": "13404",
+     "quote": "The articles of incorporation of a professional corporation shall contain a specific statement that the corporation is a professional corporation within the meaning of this part."
+    }
+   },
+   {
+    "citation": "Cal. Gov. Code § 12186",
+    "role": "stock (and professional) corporation articles fee",
+    "source": {
+     "section": "12186",
+     "subsection": "c",
+     "quote": "Filing articles of incorporation providing for shares: One hundred dollars ($100)."
+    }
+   },
+   {
+    "citation": "Cal. Gov. Code § 12186",
+    "role": "nonprofit (nonstock) corporation articles fee",
+    "source": {
+     "section": "12186",
+     "subsection": "d",
+     "quote": "Filing articles of incorporation not providing for shares: Thirty dollars ($30)."
+    }
+   },
+   {
+    "citation": "Cal. Gov. Code § 12186",
+    "role": "corporation statement of information fee",
+    "source": {
+     "section": "12186",
+     "subsection": "g",
+     "quote": "Filing the statement of information for every corporation pursuant to Sections 1502, 6210, 8210, 9660, and 12570 of the Corporations Code and Section 14101.6 of the Financial Code: Twenty dollars ($20)."
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 200",
+    "role": "a corporation exists from the filing of its articles",
+    "source": {
+     "section": "200",
+     "subsection": "c",
+     "quote": "The corporate existence begins upon the filing of the articles and continues perpetually, unless otherwise expressly provided by law or in the articles."
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 5120",
+    "role": "the Attorney General receives a nonprofit public benefit corporation's filed articles",
+    "source": {
+     "section": "5120",
+     "subsection": "d",
+     "quote": "the Secretary of State shall make available the filed articles of incorporation to the Attorney General"
+    }
+   },
+   {
+    "citation": "Cal. Gov. Code § 12188",
+    "role": "limited partnership certificate filing fee",
+    "source": {
+     "section": "12188",
+     "subsection": "b",
+     "quote": "Filing a certificate of limited partnership of a limited partnership: seventy dollars ($70)."
+    }
+   },
+   {
+    "citation": "Cal. Corp. Code § 15902.01",
+    "role": "a limited partnership is formed when its certificate is filed",
+    "source": {
+     "section": "15902.01",
+     "subsection": "c",
+     "quote": "A limited partnership is formed when the Secretary of State files the certificate of limited partnership."
+    }
+   },
+   {
+    "citation": "Cal. Rev. & Tax. Code § 17935",
+    "role": "annual limited partnership tax to the Franchise Tax Board, triggered by filing the certificate",
+    "source": {
+     "section": "15902.01",
+     "subsection": "g",
+     "quote": "the filing of the certificate of limited partnership will obligate the limited partnership to pay an annual tax for that taxable year to the Franchise Tax Board pursuant to Section 17935 of the Revenue and Taxation Code"
+    }
+   },
+   {
+    "citation": "Cal. Bus. & Prof. Code § 17929",
+    "role": "fictitious business name statement fee",
+    "source": {
+     "section": "17929",
+     "subsection": "a",
+     "quote": "The fee for filing a fictitious business name statement is ten dollars ($10) for the first fictitious business name and owner and two dollars ($2) for each additional fictitious business name or owner filed on the same statement and doing business at the same location."
+    }
+   },
+   {
+    "citation": "Cal. Bus. & Prof. Code § 17910",
+    "role": "a fictitious business name statement must be refiled after a change in the facts",
+    "source": {
+     "section": "17910",
+     "subsection": "b",
+     "quote": "File a new statement after any change in the facts, in accordance with subdivision (b) of Section 17920."
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step (articles of organization under § 17702.01). The other filed structures follow a similar deliver-and-file pattern with the Secretary of State: a corporation (stock, professional or nonprofit) exists from the filing of its articles (§ 200 (c), § 5120 (c)); a limited partnership is formed when the Secretary of State files its certificate (§ 15902.01 (c)). Their content and compliance checks are not modelled. A general partnership and a sole proprietorship need no formation filing.",
+   "A rejected filing ends the model at 'Not articles ok'. The text printed here does not say how a rejection is communicated; § 17702.03 (d) (not in the sections list) lets a returned instrument be resubmitted with a State Bar member's written opinion, which the Secretary of State must rely on for disputed points of law other than the name and similar sections.",
+   "Original articles of organization cannot specify a delayed effective date (§ 17702.05 (c)); they are effective when filed, as shown by the Secretary of State's endorsement of the date.",
+   "The statement of information is due within 90 days after the articles are filed and every two years after that, for a $20 fee (§ 17702.09 (a), Gov. Code § 12190 (k)). The printed text does not say what happens if it is late (penalties and suspension are in other sections, not printed), so the deadline's consequence is 'unstated' and a missed deadline rejoins the branch at the biennial refiling duty; the model does not show a late first filing. Formation does not depend on either post-formation filing: the LLC is formed when the articles are filed (§ 17702.01 (d)), which the model marks with the Secretary of State's endorsement of the filing date (§ 17702.05 (c)(1)); the end event repeats only that the filing is conclusive proof of formation (§ 17702.01 (e)).",
+   "The fictitious business name statement is an independent duty of anyone trading under a fictitious business name (§ 17910); it is not tied to the statement of information. Its 40-day clock runs from when the business starts trading (§ 17910 (a)), so the model starts it at commence_business, which follows the filing of the articles in parallel with the statement of information. Which names are 'fictitious' (for an LLC, generally any name other than the one in its articles) is defined in Bus. & Prof. Code § 17900, the newspaper publication requirement is in § 17917, and the bar on suing until the statement is filed is in § 17918; none of those is printed here. A missed 40-day deadline has no consequence in the printed text and rejoins the branch.",
+   "After the filing date is endorsed, two branches run in parallel: the statement of information (then its fee and the biennial refiling duty; a missed 90-day deadline rejoins at the refiling duty), and commence_business, whose uses_fictitious_name gateway leads to the fictitious business name statement and its fee or straight on. The trading branch rejoins at the annual Franchise Tax Board tax, which every LLC owes because its articles were filed (§ 17702.01 (g)); placing the tax on that branch is a modelling convenience, not a statutory sequence. Both branches meet at a parallel join before the end.",
+   "California LLCs may not render professional services as defined in Corp. Code §§ 13401 (a) and 13401.3 (§ 17701.04 (e)), but may render other licensed services where the licensing law lets an LLC hold the licence (§ 17701.04 (b)). The table's licensed_profession input keeps the wording shared with other states, so a yes there means professional services in the § 13401 sense; owners in other licensed occupations should answer no and check their licensing law. Professionals who want limited liability use a professional corporation (§ 13404), which also needs a certificate of registration from the agency regulating the profession, or, for certain professions only, a registered limited liability partnership (Corp. Code §§ 16101 and 16953, fee in Gov. Code § 12189; not printed here). The decision table's general-partnership row mentions the LLP only by citation.",
+   "Filing articles obligates an LLC (and an LLP) to pay an annual tax to the Franchise Tax Board (Rev. & Tax. Code § 17941, cited in § 17702.01 (g)); the amount and due date are not in the printed text. The model shows the duty as one step without a deadline. Corporations are taxed under other parts of that Code, not modelled.",
+   "The operating agreement (§ 17701.10) governs relations among the members and the company's activities but is not filed with the Secretary of State and is not a step here. Amending or restating the articles (§ 17702.02) is outside the start-up process.",
+   "Nonprofit status here means the Nonprofit Public Benefit Corporation Law (§ 5120); mutual benefit and religious corporations are formed under their own parts (not printed). Incorporating as a nonprofit is not tax exemption; federal 501(c) and Franchise Tax Board exemption are not modelled.",
+   "State formation is only part of starting a business: cities and counties issue business licences or business tax certificates under their own ordinances, which are scored separately, and some activities need a state seller's permit or professional licence (not modelled).",
+   "The table's limited-partnership row is reached through the shared limited_liability and passive_partners inputs, but the printed § 15902.01 says nothing about liability. A limited partner's liability shield and its limits (Corp. Code § 15903.03 et seq.) are not printed here, and the limited partnership form does not shield a general partner; the row says only what § 15902.01 supports (a certificate naming each general partner, a partnership agreement, and the annual Franchise Tax Board tax under § 15902.01 (g)).",
+   "The Secretary of State may cancel the articles if the check for the filing fee bounces, after two written notices (§ 17702.01 (f)); not modelled.",
+   "The printed text has no section that creates a sole proprietorship; the sole-proprietorship row cites § 17910 only for the fictitious business name duty, and 'no formation filing' means that none appears in the printed text.",
+   "Corporations (stock, professional and nonprofit) also file a statement of information for $20 (Gov. Code § 12186 (g)); its timing and contents are in Corp. Code §§ 1502 and 6210, not printed here.",
+   "The articles fee is paid by the organizer as a condition of filing (§ 17702.05 (a) 'If the filing fees have been paid'), checked by the fees_paid input of articles_comply; the printed text puts no duty on the Secretary of State to collect it."
+  ]
+ }
+}

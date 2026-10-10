@@ -138,6 +138,32 @@ def cmd_statute_search(args) -> int:
     return 0
 
 
+def cmd_ceiling(args) -> int:
+    """How far two independent Claude drafts agree (curated/ vs curated_alt/), and what perfect selection over
+    each candidate generator would score: the bounds the local strategies are measured against."""
+    from .extract import benchmark as BM
+    rows = BM.ceiling()
+    ok = [r for r in rows if "value" in r]
+    oracle = {}
+    for case in BM.cases():
+        try:
+            oracle[case] = {k: v["value"] for k, v in BM.oracle(case).items()}
+        except Exception as e:  # noqa: BLE001
+            oracle[case] = {"error": str(e)[:120]}
+    vals = [o for o in oracle.values() if "wide" in o]
+    out = {"claude_vs_claude": {"mean": round(sum(r["value"] for r in ok) / len(ok), 3) if ok else None,
+                                "cases": [{"case": r["case"], "value": r.get("value"), "steps": r.get("steps")}
+                                          for r in rows]},
+           "oracle": {"rules": round(sum(o["rules"] for o in vals) / len(vals), 3) if vals else None,
+                      "wide": round(sum(o["wide"] for o in vals) / len(vals), 3) if vals else None,
+                      "cases": oracle}}
+    path = config.ROOT / "docs" / "ceiling.json"
+    path.write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print(f"Claude vs Claude: {out['claude_vs_claude']['mean']} over {len(ok)} cases; perfect selection: "
+          f"rules {out['oracle']['rules']}, wide {out['oracle']['wide']} over {len(vals)} cases -> {path}")
+    return 0
+
+
 def cmd_check_curated(args) -> int:
     """Check a curated facts file the way the build does, and print the problems and quality numbers."""
     from .extract.ollama import check_facts
@@ -148,7 +174,8 @@ def cmd_check_curated(args) -> int:
     from .municipal import statutes
     from .municipal.quality import assess
     st = S.normalise(args.state)
-    path = config.CURATED_DIR / st / f"{args.question}.json"
+    base = config.ROOT / "curated_alt" if getattr(args, "alt", False) else config.CURATED_DIR
+    path = base / st / f"{args.question}.json"
     spec = json.loads(path.read_text(encoding="utf-8"))
     texts = statutes.section_texts(st, spec["sections"])
     text = statutes.combined_text(texts)
@@ -290,6 +317,12 @@ def main(argv: list[str] | None = None) -> int:
     an.set_defaults(fn=cmd_answer)
     sub.add_parser("export-fixtures", help="write fixtures/statutes/<state>_sections.json for the tests").set_defaults(
         fn=cmd_export_fixtures)
+    sub.add_parser("ceiling", help="Claude-vs-Claude agreement and perfect-selection bounds -> docs/ceiling.json"
+                   ).set_defaults(fn=cmd_ceiling)
+    ka = sub.add_parser("check-curated-alt", help="check an independent second draft in curated_alt/")
+    ka.add_argument("state")
+    ka.add_argument("question")
+    ka.set_defaults(fn=cmd_check_curated, alt=True)
     k = sub.add_parser("check-curated", help="check curated/<state>/<question>.json like a build would")
     k.add_argument("state")
     k.add_argument("question")

@@ -187,6 +187,18 @@ def st_local(con):
             "detail": f"{plural(n, 'place')} loaded of {plural(files, 'researched place')}"}
 
 
+def st_cases(con):
+    models = db.rows(con, "SELECT DISTINCT state FROM process_models WHERE tier IN ('reviewed','agreed','single')")
+    if not models:
+        return {"status": "blocked", "done": 0, "total": 0, "detail": "Build state models first"}
+    done = {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM case_law")}
+    n = db.scalar(con, "SELECT count(*) FROM case_law", default=0)
+    k = len(models)
+    have = sum(1 for r in models if r["state"] in done)
+    return {"status": "done" if have >= k else "partial" if have else "todo", "done": have, "total": k,
+            "detail": f"{plural(n, 'court decision')} found for {plural(have, 'state')} with models"}
+
+
 def st_publish(con):
     if not (config.DOKUWIKI_URL and config.DOKUWIKI_TOKEN):
         return {"status": "optional", "done": 0, "total": 0,
@@ -325,6 +337,39 @@ def run_score(con, args, log, progress):
     return {"states": len(out)}
 
 
+def run_cases(con, args, log, progress):
+    from ..municipal import caselaw
+    have = {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM process_models")} |         {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM located_law WHERE status='found' "
+                                          "AND method IN ('seed','verified')")}
+    sts = [s for s in _states(args, con) if s in have] if (args.get("states") or args.get("places")) else sorted(have)
+    out = {}
+    for i, st in enumerate(sts):
+        try:
+            out[st] = caselaw.run(con, st, log=log, progress=lambda p, i=i: progress((i + p) / len(sts)))
+        except caselaw.RateLimited as e:
+            log(f"stopped: {e}. Run this step again later; sections already searched keep their results.")
+            out["stopped"] = str(e)
+            break
+    return out
+
+
+def st_wikibase(con):
+    if not (config.WIKIBASE_BOT_USER and config.WIKIBASE_BOT_PASSWORD):
+        return {"status": "optional", "done": 0, "total": 0,
+                "detail": f"Set WIKIBASE_BOT_USER and WIKIBASE_BOT_PASSWORD (a bot password on {config.WIKIBASE_URL})"}
+    n = db.scalar(con, "SELECT count(*) FROM wikibase_items", default=0)
+    return {"status": "done" if n else "todo", "done": n, "total": n,
+            "detail": f"{plural(n, 'item')} on {config.WIKIBASE_URL}" if n else f"Ready to load {config.WIKIBASE_URL}"}
+
+
+def run_wikibase(con, args, log, progress):
+    from ..publish import wikibase_lexipedia as WL
+    sts = S.parse_states(args["states"]) if args.get("states") else None
+    out = WL.run(con, dry_run=bool(args.get("dry_run")), states=sts, log=log)
+    progress(1.0)
+    return out
+
+
 def run_publish(con, args, log, progress):
     """Post the lexflow: pages to the wiki (lexipedia.xyz) over JSON-RPC.  Only the lexflow: namespace is ever
     written; a dry run renders and checks every page and reports what would change, without saving."""
@@ -448,6 +493,16 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "CC BY-NC and machine-labelled, so it is used to find law, never to cite it.",
          "optional", st_locus, run_locus, needs=["governments"], params=["states"],
          cost="ranged reads of a 1.8 GB dataset"),
+    Step("cases", "Find court decisions that cite the law",
+         "Searches CourtListener (Free Law Project) for opinions in each state's appellate courts that cite the "
+         "sections behind its models. Shown on model pages, the wiki and the Wikibase.",
+         "optional", st_cases, run_cases, needs=["build"], params=["states", "places"],
+         cost="one request a second; about a minute per state"),
+    Step("wikibase", "Load the Lexipedia Wikibase",
+         "Statutes, process models and their steps, jurisdictions and the court decisions that cite them, as linked "
+         "items in the wiki's own ontology (part of, follows, deontic modality, bearer, references).",
+         "optional", st_wikibase, run_wikibase, needs=["build"], params=["states", "dry_run"],
+         cost="one edit per item; a few minutes"),
     Step("publish", "Publish to Lexipedia",
          "Writes law and process pages to DokuWiki over JSON-RPC (bot account, API limited to @bots).",
          "optional", st_publish, run_publish, needs=["build"], params=["dry_run"]),

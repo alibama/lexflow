@@ -1,0 +1,899 @@
+{
+ "state": "tx",
+ "question": "business",
+ "sections": [
+  "Tex. Business Organizations Code § 3.001",
+  "Tex. Business Organizations Code § 3.004",
+  "Tex. Business Organizations Code § 3.005",
+  "Tex. Business Organizations Code § 3.010",
+  "Tex. Business Organizations Code § 4.001",
+  "Tex. Business Organizations Code § 4.002",
+  "Tex. Business Organizations Code § 4.152",
+  "Tex. Business Organizations Code § 4.154",
+  "Tex. Business Organizations Code § 3.009",
+  "Tex. Business Organizations Code § 4.153",
+  "Tex. Business Organizations Code § 3.014",
+  "Tex. Business Organizations Code § 3.007",
+  "Tex. Business Organizations Code § 3.011",
+  "Tex. Business Organizations Code § 4.155",
+  "Tex. Business Organizations Code § 4.156",
+  "Tex. Business Organizations Code § 4.157",
+  "Tex. Business Organizations Code § 4.158",
+  "Tex. Business Organizations Code § 152.051",
+  "Tex. Business Organizations Code § 152.802",
+  "Tex. Business & Commerce Code § 71.051",
+  "Tex. Business & Commerce Code § 71.054",
+  "Tex. Business & Commerce Code § 71.101",
+  "Tex. Business & Commerce Code § 71.103",
+  "Tex. Business & Commerce Code § 71.155"
+ ],
+ "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+ "facts": {
+  "process_name": "Start a business in Texas (LLC filing path)",
+  "trigger": "Someone wants to start a business, here as a limited liability company",
+  "trigger_source": {
+   "section": "3.001",
+   "subsection": "a",
+   "quote": "to form a filing entity, a certificate of formation complying with Sections 3.003, 3.004, and 3.005 must be filed in accordance with Chapter 4"
+  },
+  "actors": [
+   {
+    "id": "organizer",
+    "name": "Organizer (founder)",
+    "kind": "private-party",
+    "source": {
+     "section": "3.004",
+     "subsection": "a",
+     "quote": "Any person having the capacity to contract for the person or for another may be an organizer of a filing entity."
+    }
+   },
+   {
+    "id": "secretary_of_state",
+    "name": "Secretary of State",
+    "kind": "public-body",
+    "source": {
+     "section": "4.002",
+     "subsection": "a",
+     "quote": "If the secretary of state finds that a filing instrument delivered under Section 4.001 conforms to the provisions of this code that apply to the entity"
+    }
+   },
+   {
+    "id": "llc",
+    "name": "Limited liability company",
+    "kind": "private-party",
+    "source": {
+     "section": "71.101",
+     "quote": "A corporation, limited partnership, limited liability partnership, limited liability company, registered series of a limited liability company, or foreign filing entity must file a certificate under this subchapter"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "sign_certificate",
+    "actor": "organizer",
+    "action": "Each organizer signs certificate of formation",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [],
+    "source": {
+     "section": "3.004",
+     "subsection": "b",
+     "quote": "Each organizer of a filing entity must sign the certificate of formation of the filing entity"
+    }
+   },
+   {
+    "id": "deliver_certificate",
+    "actor": "organizer",
+    "action": "Deliver certificate of formation",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "sign_certificate"
+    ],
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "4.001",
+     "subsection": "a.2",
+     "quote": "delivered to the secretary of state in person or by mail, courier, electronic transmission, or any other method approved by the secretary of state"
+    }
+   },
+   {
+    "id": "collect_fee",
+    "actor": "secretary_of_state",
+    "action": "Collect the $300 filing fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "deliver_certificate"
+    ],
+    "source": {
+     "section": "4.154",
+     "quote": "For a filing by or for a limited liability company, the secretary of state shall impose the same fee as the filing fee for a similar instrument under Section 4.152."
+    }
+   },
+   {
+    "id": "review_certificate",
+    "actor": "secretary_of_state",
+    "action": "Check certificate and fees",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "collect_fee"
+    ],
+    "decision": "certificate_conforms",
+    "source": {
+     "section": "4.002",
+     "subsection": "a",
+     "quote": "If the secretary of state finds that a filing instrument delivered under Section 4.001 conforms to the provisions of this code that apply to the entity and to applicable rules adopted under Section 12.001 and that all required fees have been paid"
+    }
+   },
+   {
+    "id": "file_certificate",
+    "actor": "secretary_of_state",
+    "action": "File certificate and assign filing date",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "review_certificate"
+    ],
+    "condition": "certificate_ok",
+    "source": {
+     "section": "4.002",
+     "subsection": "a.1",
+     "quote": "file the instrument by accepting it into the filing system adopted by the secretary of state and assigning the instrument a date of filing"
+    }
+   },
+   {
+    "id": "deliver_acknowledgment",
+    "actor": "secretary_of_state",
+    "action": "Deliver written acknowledgment of filing",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "file_certificate"
+    ],
+    "recipient": "organizer",
+    "source": {
+     "section": "4.002",
+     "subsection": "a.2",
+     "quote": "deliver a written acknowledgment of filing to the entity or its representative"
+    }
+   },
+   {
+    "id": "file_assumed_name",
+    "actor": "llc",
+    "action": "Company files assumed name certificate",
+    "kind": "filing",
+    "modality": "obligation",
+    "after": [
+     "deliver_acknowledgment"
+    ],
+    "condition": "assumed_name_required",
+    "recipient": "secretary_of_state",
+    "source": {
+     "section": "71.103",
+     "subsection": "a",
+     "quote": "required to file a certificate under Section 71.101 shall file the certificate in the office of the secretary of state"
+    }
+   },
+   {
+    "id": "collect_assumed_name_fee",
+    "actor": "secretary_of_state",
+    "action": "Collect the $25 assumed name fee",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "file_assumed_name"
+    ],
+    "source": {
+     "section": "71.155",
+     "subsection": "b.1",
+     "quote": "$25 for indexing and filing each certificate or statement required or permitted to be filed under this chapter"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "certificate_conforms",
+    "question": "Does the certificate of formation conform?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "name_and_type",
+      "label": "Name and type of entity stated (§ 3.005(a)(1)-(2))",
+      "type": "boolean"
+     },
+     {
+      "name": "purpose_stated",
+      "label": "Purpose or purposes stated (§ 3.005(a)(3))",
+      "type": "boolean"
+     },
+     {
+      "name": "registered_agent",
+      "label": "Registered office street address and registered agent named (§ 3.005(a)(5))",
+      "type": "boolean"
+     },
+     {
+      "name": "mailing_address",
+      "label": "Initial mailing address given (§ 3.005(a)(6))",
+      "type": "boolean"
+     },
+     {
+      "name": "organizer_named",
+      "label": "Name and address of each organizer given (§ 3.005(a)(7)(A))",
+      "type": "boolean"
+     },
+     {
+      "name": "management_stated",
+      "label": "States whether it has managers, and names the initial managers or members (§ 3.010)",
+      "type": "boolean"
+     },
+     {
+      "name": "signed_by_organizers",
+      "label": "Signed by each organizer (§ 3.004(b); § 4.001(a)(1))",
+      "type": "boolean"
+     },
+     {
+      "name": "fees_paid",
+      "label": "Required fees paid",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "certificate_ok",
+      "label": "Certificate conforms",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.005",
+       "subsection": "a.1",
+       "quote": "the name of the filing entity being formed"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.005",
+       "subsection": "a.3",
+       "quote": "for filing entities other than limited partnerships, the purpose or purposes for which the filing entity is formed"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.005",
+       "subsection": "a.5",
+       "quote": "the street address of the initial registered office of the filing entity and the name of the initial registered agent of the filing entity at the office"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.005",
+       "subsection": "a.6",
+       "quote": "the initial mailing address of the filing entity"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.005",
+       "subsection": "a.7.A",
+       "quote": "organizer for the filing entity, unless the entity is formed under a plan of conversion or merger"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "3.010",
+       "subsection": "1",
+       "quote": "whether the limited liability company initially has or does not have managers"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false",
+       "-"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "4.001",
+       "subsection": "a.1",
+       "quote": "signed by a person authorized by this code to act on behalf of the entity in regard to the filing instrument"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "false"
+      ],
+      "source": {
+       "section": "4.002",
+       "subsection": "a",
+       "quote": "that all required fees have been paid"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true",
+       "true"
+      ],
+      "then": [
+       "true"
+      ],
+      "source": {
+       "section": "4.002",
+       "subsection": "a.1",
+       "quote": "file the instrument by accepting it into the filing system adopted by the secretary of state"
+      }
+     }
+    ]
+   },
+   {
+    "id": "business_structure",
+    "question": "Which business structure fits, and what must be filed with the state?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "nonprofit",
+      "label": "Organized for a nonprofit or charitable purpose",
+      "type": "boolean"
+     },
+     {
+      "name": "licensed_profession",
+      "label": "Owners render a licensed professional service",
+      "type": "boolean"
+     },
+     {
+      "name": "owners",
+      "label": "Number of owners",
+      "type": "number"
+     },
+     {
+      "name": "limited_liability",
+      "label": "Owners want protection from the business's debts",
+      "type": "boolean"
+     },
+     {
+      "name": "outside_investors",
+      "label": "Plans to sell shares to outside investors",
+      "type": "boolean"
+     },
+     {
+      "name": "passive_partners",
+      "label": "Some co-owners will be passive investors only",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "structure",
+      "label": "Business structure",
+      "type": "string"
+     },
+     {
+      "name": "state_filing",
+      "label": "What is filed, and where",
+      "type": "string"
+     },
+     {
+      "name": "fee",
+      "label": "State filing fee",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Nonprofit corporation\"",
+       "\"Certificate of formation (with the § 3.009 statements on members, management and initial directors), filed with the secretary of state\"",
+       "\"$25 (§ 4.153(1))\""
+      ],
+      "source": {
+       "section": "3.009",
+       "quote": "In addition to the information required by Section 3.005, the certificate of formation of a nonprofit corporation must include"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Professional entity: a professional corporation, professional limited liability company or professional association; its certificate of formation must state the type of professional service it provides and which of the three it is (§ 3.014)\"",
+       "\"Certificate of formation, filed with the secretary of state\"",
+       "\"Professional corporation: $300 (§ 4.157, applying § 4.152(1)); professional LLC: $300 (§ 4.154, applying § 4.152(1)); professional association: $750 (§ 4.156(1))\""
+      ],
+      "source": {
+       "section": "3.014",
+       "quote": "In addition to the information required by Section 3.005, the certificate of formation of a professional entity must state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"For-profit corporation\"",
+       "\"Certificate of formation stating the shares the corporation is authorized to issue and its initial directors (§ 3.007), filed with the secretary of state\"",
+       "\"$300 (§ 4.152(1))\""
+      ],
+      "source": {
+       "section": "3.007",
+       "subsection": "a.1",
+       "quote": "the aggregate number of shares the corporation is authorized to issue"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Limited partnership (the partners must enter into a partnership agreement; general partners are named in the certificate)\"",
+       "\"Certificate of formation naming each general partner (§ 3.005(a)(7)(B)) and the principal office where records are kept (§ 3.011(c)), filed with the secretary of state\"",
+       "\"$750 (§ 4.155(1))\""
+      ],
+      "source": {
+       "section": "3.011",
+       "subsection": "a",
+       "quote": "To form a limited partnership, the partners must enter into a partnership agreement and file a certificate of formation."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Limited liability company\"",
+       "\"Certificate of formation, filed with the secretary of state\"",
+       "\"$300 (§ 4.154, applying § 4.152(1))\""
+      ],
+      "source": {
+       "section": "3.010",
+       "quote": "In addition to the information required by Section 3.005, the certificate of formation of a limited liability company must state"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       "1",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Sole proprietorship\"",
+       "\"No formation filing; an owner who regularly does business under an assumed name must file an assumed name certificate with the county clerk of each county where the business keeps premises, or where it does business if it has none (Bus. & Com. Code §§ 71.051, 71.054)\"",
+       "\"None to form; $2 per assumed name certificate plus 50 cents for each name indexed, paid to the county clerk, if trading under an assumed name (Bus. & Com. Code § 71.155(a))\""
+      ],
+      "source": {
+       "section": "71.051",
+       "quote": "A person must file a certificate under this subchapter if the person regularly conducts business or renders a professional service in this state under an assumed name"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "-",
+       ">= 2",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"General partnership\"",
+       "\"No formation filing: two or more persons carrying on a business for profit as owners create a partnership, whether or not they intend to (§ 152.051(b)). A partnership regularly doing business under an assumed name files an assumed name certificate with the county clerk (Bus. & Com. Code §§ 71.051, 71.054). Optionally, the partnership may become a limited liability partnership by filing an application for registration with the secretary of state, signed by a majority-in-interest of the partners or partners they authorize (§ 152.802(a), (b))\"",
+       "\"None to form; $2 per assumed name certificate plus 50 cents for each name indexed, paid to the county clerk, if trading under an assumed name (Bus. & Com. Code § 71.155(a)); $200 for each partner for an optional limited liability partnership application (§ 4.158(1))\""
+      ],
+      "source": {
+       "section": "152.051",
+       "subsection": "b",
+       "quote": "an association of two or more persons to carry on a business for profit as owners creates a partnership, regardless of whether"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "llc_exists",
+    "description": "The LLC exists from the date its certificate of formation was filed",
+    "after": [
+     "deliver_acknowledgment"
+    ],
+    "source": {
+     "section": "3.001",
+     "subsection": "c",
+     "quote": "The existence of a filing entity commences when the filing of the certificate of formation takes effect as provided by Chapter 4."
+    }
+   },
+   {
+    "id": "llc_exists_assumed_name_filed",
+    "description": "The LLC exists from its filing date; its assumed name certificate is on file",
+    "after": [
+     "collect_assumed_name_fee"
+    ],
+    "source": {
+     "section": "3.001",
+     "subsection": "c",
+     "quote": "The existence of a filing entity commences when the filing of the certificate of formation takes effect as provided by Chapter 4."
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.003",
+    "role": "further requirements for the certificate of formation (§ 3.003; the § 3.004 signing rule is modelled as sign_certificate)",
+    "source": {
+     "section": "3.001",
+     "subsection": "a",
+     "quote": "a certificate of formation complying with Sections 3.003, 3.004, and 3.005 must be filed in accordance with Chapter 4"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.001",
+    "role": "the signer need not prove authority",
+    "source": {
+     "section": "4.001",
+     "subsection": "b",
+     "quote": "A person authorized by this code to sign a filing instrument for an entity is not required to show evidence of the person's authority as a requirement for filing."
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.152",
+    "role": "certificate of formation fee that § 4.154 applies to LLCs",
+    "source": {
+     "section": "4.152",
+     "subsection": "1",
+     "quote": "for filing a certificate of formation, $300"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.001",
+    "role": "the acknowledgment of filing is conclusive evidence of formation and of authority to transact business",
+    "source": {
+     "section": "3.001",
+     "subsection": "d",
+     "quote": "an acknowledgment of the filing of a certificate of formation issued by the filing officer is conclusive evidence of"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.002",
+    "role": "a duplicate copy delivered with the certificate is returned endorsed \"Filed\"",
+    "source": {
+     "section": "4.002",
+     "subsection": "b",
+     "quote": "If a duplicate copy of the filing instrument is delivered to the secretary of state, on accepting the filing instrument, the secretary of state shall return the duplicate copy"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.010",
+    "role": "an LLC's certificate names its initial managers, or its initial members if it has no managers",
+    "source": {
+     "section": "3.010",
+     "subsection": "3",
+     "quote": "if the limited liability company does not initially have managers, the name and address of each initial member of the limited liability company"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.153",
+    "role": "nonprofit corporation certificate of formation fee",
+    "source": {
+     "section": "4.153",
+     "subsection": "1",
+     "quote": "for filing a certificate of formation, $25"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.014",
+    "role": "a professional entity's certificate states the professional service it provides",
+    "source": {
+     "section": "3.014",
+     "subsection": "1",
+     "quote": "the type of professional service to be provided by the professional entity as the purpose of the entity"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.007",
+    "role": "a corporation's certificate names its initial board of directors",
+    "source": {
+     "section": "3.007",
+     "subsection": "a.3",
+     "quote": "the number of directors constituting the initial board of directors and the name and address of each individual who will serve as director"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.155",
+    "role": "limited partnership certificate of formation fee",
+    "source": {
+     "section": "4.155",
+     "subsection": "1",
+     "quote": "for filing a certificate of formation or an application for registration as a foreign limited partnership, $750"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.005",
+    "role": "a limited partnership's certificate names each general partner",
+    "source": {
+     "section": "3.005",
+     "subsection": "a.7.B",
+     "quote": "general partner, if the filing entity is a limited partnership"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 152.802",
+    "role": "limited liability partnership registration option for a general partnership",
+    "source": {
+     "section": "152.802",
+     "subsection": "a",
+     "quote": "a partnership, to become a limited liability partnership, must file an application for registration with the secretary of state in accordance with Chapter 4 and this section"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 152.802",
+    "role": "who signs the LLP application",
+    "source": {
+     "section": "152.802",
+     "subsection": "b",
+     "quote": "a majority-in-interest of the partners"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 152.802",
+    "role": "when a partnership becomes registered as an LLP",
+    "source": {
+     "section": "152.802",
+     "subsection": "c.1",
+     "quote": "the date on which a completed application is filed in accordance with Chapter 4"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.051",
+    "role": "who files an assumed name certificate with the county clerk: anyone other than a filing entity or LLP (sole proprietors, general partnerships)",
+    "source": {
+     "section": "71.051",
+     "quote": "other than as a corporation, limited partnership, limited liability partnership, limited liability company, protected series or registered series of a limited liability company, or foreign filing entity"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.155",
+    "role": "county clerk fees for assumed name certificates",
+    "source": {
+     "section": "71.155",
+     "subsection": "a.1",
+     "quote": "$2 for filing each certificate or statement required or permitted to be filed under this chapter"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.155",
+    "role": "county clerks may waive their assumed name fees for military veterans",
+    "source": {
+     "section": "71.155",
+     "subsection": "a-1",
+     "quote": "The county clerk may waive all fees under Subsection (a) for a registrant who is a military veteran."
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.101",
+    "role": "an entity required by law to use an assumed name must also file",
+    "source": {
+     "section": "71.101",
+     "subsection": "2",
+     "quote": "is required by law to use an assumed name in this state to conduct business or render professional services"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.005",
+    "role": "a certificate states a period of duration only if the entity is not to exist perpetually (not checked in certificate_conforms)",
+    "source": {
+     "section": "3.005",
+     "subsection": "a.4",
+     "quote": "the period of duration, if the entity is not formed to exist perpetually and is intended to have a specific period of duration"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 3.004",
+    "role": "a limited partnership's certificate is signed by each general partner instead",
+    "source": {
+     "section": "3.004",
+     "subsection": "b.1",
+     "quote": "each general partner must sign the certificate of formation of a domestic limited partnership"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.156",
+    "role": "professional association certificate of formation fee",
+    "source": {
+     "section": "4.156",
+     "subsection": "1",
+     "quote": "for filing a certificate of formation or an application for registration as a foreign professional association, $750"
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.157",
+    "role": "professional corporation fees follow § 4.152",
+    "source": {
+     "section": "4.157",
+     "quote": "For a filing by or for a professional corporation, the secretary of state shall impose the same fee as the filing fee for a similar instrument under Section 4.152."
+    }
+   },
+   {
+    "citation": "Tex. Bus. Orgs. Code § 4.158",
+    "role": "limited liability partnership application fee",
+    "source": {
+     "section": "4.158",
+     "subsection": "1",
+     "quote": "for filing a limited liability partnership application, $200 for each partner"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.054",
+    "role": "sole proprietors and general partnerships file assumed name certificates with the county clerk",
+    "source": {
+     "section": "71.054",
+     "quote": "A person shall file the certificate in the office of the county clerk in each county in which the person:"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.054",
+    "role": "where to file when the person keeps no business premises",
+    "source": {
+     "section": "71.054",
+     "subsection": "2",
+     "quote": "conducts business or renders a professional service, if the person does not or will not maintain business or professional premises in any county"
+    }
+   },
+   {
+    "citation": "Tex. Bus. & Com. Code § 71.101",
+    "role": "an entity that regularly does business under an assumed name must file (one of the two triggers for assumed_name_required)",
+    "source": {
+     "section": "71.101",
+     "subsection": "1",
+     "quote": "regularly conducts business or renders professional services in this state under an assumed name"
+    }
+   }
+  ],
+  "gaps": [
+   "Only the LLC filing path is modelled step by step. The same Chapter 4 path (sign, deliver, pay, review under § 4.002, file, acknowledge) applies to every filing entity in the table (nonprofit, for-profit and professional corporations, professional associations and LLCs, limited partnerships), since § 3.001(a) sends every certificate of formation through Chapter 4; only the supplemental contents (§§ 3.007, 3.009, 3.011, 3.014) and the fees differ. Those supplemental contents are not checked step by step.",
+   "certificate_conforms checks the § 3.005(a) contents that apply to an LLC (name and type, purpose, registered office and agent, mailing address, organizers), the § 3.010 management statement, the organizers' signatures (§ 3.004(b), § 4.001(a)(1)) and the fees. It does not check the period of duration, which § 3.005(a)(4) requires only when the entity is not to exist perpetually, the plan-of-conversion or merger statement (§ 3.005(a)(8)), or the organizers' capacity to contract (§ 3.004(a)).",
+   "§ 4.002 says what the secretary of state does when a certificate conforms, but not what happens when it does not (no rejection notice, reasons or deadline for review are stated in the printed sections), so a non-conforming certificate simply ends the path; the secretary of state's rules under § 12.001 are not modelled.",
+   "Existence begins when the filing takes effect (§ 3.001(c)); filings take effect on filing unless a delayed effective date is used (§§ 4.051, 4.052, not printed here). The flow is a single path, so both outcomes are drawn at its end: llc_exists after the acknowledgment, or llc_exists_assumed_name_filed after the assumed name filing. On both, existence dates from file_certificate; neither the acknowledgment nor the assumed name filing is a precondition of existence. The assumed name filing is a separate obligation that arises from doing business under an assumed name (Bus. & Com. Code § 71.101), not from the acknowledgment; it is drawn after the acknowledgment and ends at its own outcome. It is not drawn as a parallel branch from file_certificate because a parallel split with no join leaves the process net unsound.",
+   "assumed_name_required is true when either clause of Bus. & Com. Code § 71.101 applies: the company regularly does business or renders professional services in Texas under an assumed name (clause (1)), or it is required by law to use one (clause (2)). The company files with the secretary of state (§ 71.103(a)) for $25 (§ 71.155(b)(1)); the certificate's contents are not modelled. Sole proprietors and general partnerships file instead with the county clerk of each county where they keep business premises, or where they do business if they keep none (§ 71.054), for the county fees in § 71.155(a). What counts as an 'assumed name' is defined in § 71.002, not printed here. Using a name other than the one in the certificate of formation without filing can carry consequences under Chapter 71 that are not modelled.",
+   "Name availability and optional name reservation (Chapter 5; $40 to reserve a name under § 4.151(2)) are not modelled.",
+   "Texas has no general state or local business licence comparable to Virginia's BPOL; state tax registration (e.g. a sales and use tax permit, Tax Code Chapter 151; franchise tax, Tax Code Chapter 171), occupational licences and local permits are outside the printed sections and not modelled.",
+   "Nonprofit corporation status is a state corporate form, not tax exemption; federal 501(c) status is outside the Texas codes and not modelled.",
+   "Professionals are not required to use a professional entity, and a professional entity may provide only one type of professional service unless state law regulating it expressly allows more (§ 2.004, not printed here); who may own a professional entity (Title 7, Chapter 301 and following) is not modelled. The professional association fee is $750 (§ 4.156(1)); professional corporation fees follow § 4.152 (§ 4.157).",
+   "The limited partnership row does not model the liability rules for limited and general partners (Chapter 153, not printed here); § 3.011(a) requires a partnership agreement as well as the certificate, and each general partner, not each organizer, signs a limited partnership's certificate (§ 3.004(b)(1)). The LLP option for a general partnership also requires compliance with § 152.803 (not printed here), and its fee is $200 for each partner (§ 4.158(1)); annual LLP reports (§ 152.806, fee in § 4.158(2)) and LP periodic reports are not modelled.",
+   "A general partnership is created by conduct, not filing (§ 152.051(b)); the factors for deciding whether a partnership exists (§ 152.052) are not modelled.",
+   "The business_structure table is guidance, not statute, in how it picks a structure: no cited section makes the wish for limited liability, outside investors or passive co-owners a legal test for choosing an entity. Each rule's source is the statute that governs forming that structure (its certificate contents, or for a sole proprietorship the assumed name statute), not a selection rule. Only two rows rest on legally determinative facts: two or more persons carrying on a business for profit as owners form a general partnership whether or not they intend to (§ 152.051(b)), and the nonprofit row applies the nonprofit corporation's certificate contents (§ 3.009). Founders may lawfully choose any structure whose requirements they meet."
+  ]
+ }
+}

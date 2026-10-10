@@ -29,7 +29,7 @@ const THEMES = {
     seq: ["#184f95", "#2a78d6", "#5598e7", "#86b6ef", "#cde2fb"], bar: "#3987e5" },
 };
 const FONT = `font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"`;
-const TIER_LABEL = { reviewed: "Checked by Claude or a person", agreed: "Two local models agree", single: "One local model",
+const TIER_LABEL = { reviewed: "Checked by Claude or a person", agreed: "Two independent extractions agree", single: "One extraction",
   found: "Law found, no steps yet", none: "No state law found" };
 const STAGES = ["located", "text", "extracted", "cross_checked", "compiled", "validated", "reviewed", "published"];
 const STAGE_LABEL = { located: "Law located", text: "Text loaded", extracted: "Facts extracted", cross_checked: "Cross-checked",
@@ -78,7 +78,7 @@ function tierMaps(themeName) {
     }
     body += `</g>`;
   });
-  const legend = legendRow(t, [["Checked by Claude", t.tier.reviewed], ["Two models agree", t.tier.agreed], ["One model", t.tier.single],
+  const legend = legendRow(t, [["Checked by Claude", t.tier.reviewed], ["Two extractions agree", t.tier.agreed], ["One extraction", t.tier.single],
     ["Law found, no steps", t.tier.found], ["No law found", t.neutral], ["Statutes not downloaded", "url(#nd)"]], 0, height - 16);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" ${FONT} role="img" aria-label="Maps of who built each state's process model">
 <defs>${hatch(t)}</defs><rect width="100%" height="100%" rx="10" fill="${t.surface}"/>
@@ -173,7 +173,57 @@ function countyMap(themeName, stateFips, question) {
 ${body}${legend}</g></svg>`;
 }
 
-// ------------------------------------------------ 5. the README's checklist block
+// ------------------------------------------------ 5. local extraction vs Claude (benchmark + learning curve)
+const STRATEGY_LABEL = { stack_combo: "Learned selector: words + embeddings", stack_embed: "Learned selector: embeddings",
+  stack_tfidf: "Learned selector: words", stack_nb: "Learned selector: features only", rules: "Duty-sentence rules (baseline)" };
+function benchmarkChart(themeName, bench, ceiling, curve) {
+  const t = THEMES[themeName];
+  const rows = bench.strategies.filter((s) => STRATEGY_LABEL[s.strategy]);
+  const labelW = 238, barW = 330, rowH = 30, top = 96, rightX = labelW + barW + 70, curveW = 250, curveH = 150;
+  const width = rightX + curveW + 40, height = Math.max(top + rows.length * rowH + 64, top + curveH + 90);
+  const x = (v) => labelW + v * barW;
+  let body = `<text x="0" y="${top - 22}" font-size="13" font-weight="600" fill="${t.ink}">Mean equivalence, ${bench.cases} cases</text>`;
+  rows.forEach((s, i) => {
+    const y = top + i * rowH;
+    body += `<text x="0" y="${y + 14}" font-size="12" fill="${t.ink2}">${esc(STRATEGY_LABEL[s.strategy])}</text>`;
+    body += `<rect x="${labelW}" y="${y + 3}" width="${barW}" height="15" rx="4" fill="${t.grid}" opacity="0.6"/>`;
+    body += `<path d="M${labelW},${y + 3}h${s.equivalence * barW - 4}a4,4 0 0 1 4,4v7a4,4 0 0 1 -4,4h-${s.equivalence * barW - 4}z" fill="${t.bar}"><title>${esc(s.strategy)}: ${s.equivalence} (records ${s.records}, business ${s.business})</title></path>`;
+    body += `<text x="${x(s.equivalence) + 6}" y="${y + 15}" font-size="12" fill="${t.ink}" font-variant-numeric="tabular-nums">${s.equivalence.toFixed(2)}</text>`;
+  });
+  const bottom = top + rows.length * rowH;
+  const marks = [];
+  if (ceiling?.oracle?.wide != null) marks.push([ceiling.oracle.wide, "perfect selection"]);
+  if (ceiling?.claude_vs_claude?.mean != null) marks.push([ceiling.claude_vs_claude.mean, "Claude vs Claude"]);
+  marks.forEach(([v, label], k) => {
+    body += `<line x1="${x(v)}" x2="${x(v)}" y1="${top - 6}" y2="${bottom}" stroke="${t.ink2}" stroke-dasharray="3 3"/>`;
+    body += `<text x="${x(v)}" y="${bottom + 16 + k * 14}" font-size="11" text-anchor="middle" fill="${t.ink2}">${esc(label)} ${v.toFixed(2)}</text>`;
+  });
+  if (curve?.curve?.length) {
+    const pts = curve.curve;
+    const xs = d3.scaleLinear().domain([d3.min(pts, (p) => p.training_states), d3.max(pts, (p) => p.training_states)]).range([0, curveW]);
+    const ys = d3.scaleLinear().domain([0.4, 0.65]).range([curveH, 0]);
+    const ox = rightX, oy = top;
+    body += `<text x="${ox}" y="${top - 22}" font-size="13" font-weight="600" fill="${t.ink}">More references, better selector</text>`;
+    [0.4, 0.5, 0.6].forEach((v) => {
+      body += `<line x1="${ox}" x2="${ox + curveW}" y1="${oy + ys(v)}" y2="${oy + ys(v)}" stroke="${t.grid}"/>`;
+      body += `<text x="${ox - 6}" y="${oy + ys(v) + 4}" font-size="11" text-anchor="end" fill="${t.muted}">${v.toFixed(1)}</text>`;
+    });
+    const line = d3.line().x((p) => ox + xs(p.training_states)).y((p) => oy + ys(p.mean));
+    body += `<path d="${line(pts)}" fill="none" stroke="${t.bar}" stroke-width="2.5"/>`;
+    for (const p of pts) {
+      body += `<circle cx="${ox + xs(p.training_states)}" cy="${oy + ys(p.mean)}" r="3.5" fill="${t.bar}"><title>${p.training_states} training states: ${p.mean}</title></circle>`;
+      body += `<text x="${ox + xs(p.training_states)}" y="${oy + curveH + 16}" font-size="11" text-anchor="middle" fill="${t.muted}">${p.training_states}</text>`;
+    }
+    body += `<text x="${ox + curveW / 2}" y="${oy + curveH + 34}" font-size="11.5" text-anchor="middle" fill="${t.ink2}">states with a Claude reference (${esc(curve.vectors)} selector)</text>`;
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" ${FONT} role="img" aria-label="Local extraction strategies scored against Claude's reference models">
+<rect width="100%" height="100%" rx="10" fill="${t.surface}"/><g transform="translate(16,0)">
+<text x="0" y="24" font-size="15" font-weight="650" fill="${t.ink}">Local extraction vs Claude's reference models</text>
+<text x="0" y="42" font-size="12" fill="${t.ink2}">0.5 × step F1 + 0.2 × actors + 0.2 × deadlines + 0.1 × duty type; every state held out of its own training · ${esc(bench.generated)}</text>
+${body}</g></svg>`;
+}
+
+// ------------------------------------------------ 6. the README's checklist block
 function updateReadme(readmePath) {
   if (!fs.existsSync(readmePath)) return null;
   const text = fs.readFileSync(readmePath, "utf8");
@@ -199,4 +249,9 @@ for (const theme of ["light", "dark"]) {
   written.push(write("confidence", theme, confidence(theme)));
   if (status.focus_state) written.push(write("county-confidence", theme, countyMap(theme, status.focus_state, "business")));
 }
+const docs = path.dirname(path.resolve(statusPath));
+const readJson = (name) => (fs.existsSync(path.join(docs, name)) ? JSON.parse(fs.readFileSync(path.join(docs, name), "utf8")) : null);
+const bench = readJson("benchmark.json");
+if (bench) for (const theme of ["light", "dark"])
+  written.push(write("benchmark", theme, benchmarkChart(theme, bench, readJson("ceiling.json"), readJson("learning_curve.json"))));
 console.log(written.join("\n"));

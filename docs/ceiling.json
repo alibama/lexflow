@@ -1,0 +1,149 @@
+{
+ "claude_vs_claude": {
+  "mean": 0.887,
+  "cases": [
+   {
+    "case": "dc.business",
+    "value": 0.937,
+    "steps": [
+     14,
+     12
+    ]
+   },
+   {
+    "case": "dc.records",
+    "value": 0.805,
+    "steps": [
+     15,
+     14
+    ]
+   },
+   {
+    "case": "md.business",
+    "value": 0.989,
+    "steps": [
+     9,
+     9
+    ]
+   },
+   {
+    "case": "md.records",
+    "value": 0.976,
+    "steps": [
+     10,
+     11
+    ]
+   },
+   {
+    "case": "va.business",
+    "value": 0.894,
+    "steps": [
+     8,
+     10
+    ]
+   },
+   {
+    "case": "va.records",
+    "value": 0.722,
+    "steps": [
+     7,
+     19
+    ]
+   }
+  ]
+ },
+ "oracle": {
+  "rules": 0.583,
+  "wide": 0.761,
+  "cases": {
+   "ca.business": {
+    "rules": 0.367,
+    "wide": 0.717
+   },
+   "ca.records": {
+    "rules": 0.485,
+    "wide": 0.636
+   },
+   "dc.business": {
+    "rules": 0.705,
+    "wide": 0.881
+   },
+   "dc.records": {
+    "rules": 0.552,
+    "wide": 0.769
+   },
+   "fl.business": {
+    "rules": 0.494,
+    "wide": 0.755
+   },
+   "fl.records": {
+    "rules": 0.606,
+    "wide": 0.615
+   },
+   "il.business": {
+    "rules": 0.354,
+    "wide": 0.906
+   },
+   "il.records": {
+    "rules": 0.677,
+    "wide": 0.901
+   },
+   "md.business": {
+    "rules": 0.808,
+    "wide": 0.885
+   },
+   "md.records": {
+    "rules": 0.644,
+    "wide": 0.674
+   },
+   "nc.business": {
+    "rules": 0.721,
+    "wide": 0.787
+   },
+   "nc.records": {
+    "rules": 0.626,
+    "wide": 0.738
+   },
+   "ny.business": {
+    "rules": 0.454,
+    "wide": 0.532
+   },
+   "ny.records": {
+    "rules": 0.467,
+    "wide": 0.633
+   },
+   "oh.business": {
+    "rules": 0.522,
+    "wide": 0.614
+   },
+   "oh.records": {
+    "rules": 0.3,
+    "wide": 0.819
+   },
+   "tx.business": {
+    "rules": 0.833,
+    "wide": 0.975
+   },
+   "tx.records": {
+    "rules": 0.473,
+    "wide": 0.664
+   },
+   "va.business": {
+    "rules": 0.758,
+    "wide": 0.881
+   },
+   "va.records": {
+    "rules": 0.864,
+    "wide": 1.0
+   },
+   "wa.business": {
+    "rules": 0.64,
+    "wide": 0.713
+   },
+   "wa.records": {
+    "rules": 0.483,
+    "wide": 0.638
+   }
+  }
+ }
+}

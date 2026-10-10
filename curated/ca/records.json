@@ -1,0 +1,754 @@
+{
+  "state": "ca",
+  "question": "records",
+  "sections": [
+    "7922.530",
+    "7922.535",
+    "7922.540",
+    "7922.000"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-09; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records from a California state or local agency",
+    "trigger": "Any person asks a California state or local agency for a copy of public records",
+    "trigger_source": {
+      "section": "7922.530",
+      "subsection": "a",
+      "quote": "upon a request for a copy of records that reasonably describes an identifiable record or records, shall make the records promptly available to any person"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester (any person)",
+        "kind": "private-party",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "shall make the records promptly available to any person"
+        }
+      },
+      {
+        "id": "agency",
+        "name": "State or local agency",
+        "kind": "public-body",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "each state or local agency"
+        }
+      },
+      {
+        "id": "agency_head",
+        "name": "Head of the agency or a designee",
+        "kind": "official",
+        "source": {
+          "section": "7922.535",
+          "subsection": "b",
+          "quote": "written notice from the head of the agency or a designee to the person making the request"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request copies, reasonably describing the records",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "agency",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "a request for a copy of records that reasonably describes an identifiable record or records"
+        }
+      },
+      {
+        "id": "assess_unusual",
+        "actor": "agency_head",
+        "action": "Decide whether unusual circumstances justify extension",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "submit_request"
+        ],
+        "decision": "unusual_circumstances",
+        "source": {
+          "section": "7922.535",
+          "subsection": "b",
+          "quote": "In unusual circumstances, the time limit prescribed in this article and Article 1 (commencing with Section 7922.500) may be extended"
+        }
+      },
+      {
+        "id": "extend_time",
+        "actor": "agency_head",
+        "action": "Send written extension notice with reasons",
+        "kind": "notice",
+        "modality": "permission",
+        "after": [
+          "assess_unusual"
+        ],
+        "condition": "unusual_circumstances",
+        "recipient": "requester",
+        "source": {
+          "section": "7922.535",
+          "subsection": "b",
+          "quote": "setting forth the reasons for the extension and the date on which a determination is expected to be dispatched"
+        }
+      },
+      {
+        "id": "determine",
+        "actor": "agency",
+        "action": "Determine whether records are disclosable",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "assess_unusual"
+        ],
+        "decision": "determination",
+        "deadline": {
+          "amount": 10,
+          "unit": "days",
+          "anchor": "receipt of the request",
+          "consequence": "unstated",
+          "source": {
+            "section": "7922.535",
+            "subsection": "a",
+            "quote": "within 10 days from receipt of the request"
+          }
+        },
+        "source": {
+          "section": "7922.535",
+          "subsection": "a",
+          "quote": "determine whether the request, in whole or in part, seeks copies of disclosable public records in the possession of the agency"
+        }
+      },
+      {
+        "id": "determine_extended",
+        "actor": "agency",
+        "action": "Determine by the date in notice",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "extend_time"
+        ],
+        "decision": "determination",
+        "deadline": {
+          "amount": 24,
+          "unit": "days",
+          "anchor": "receipt of the request (outer limit: the 10 days plus at most 14 days of extension)",
+          "consequence": "unstated",
+          "source": {
+            "section": "7922.535",
+            "subsection": "b",
+            "quote": "The notice shall not specify a date that would result in an extension for more than 14 days."
+          }
+        },
+        "source": {
+          "section": "7922.535",
+          "subsection": "b",
+          "quote": "the date on which a determination is expected to be dispatched"
+        }
+      },
+      {
+        "id": "notify_determination",
+        "actor": "agency",
+        "action": "Promptly notify requester of determination and reasons",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "determine",
+          "determine_extended"
+        ],
+        "join": "any",
+        "recipient": "requester",
+        "source": {
+          "section": "7922.535",
+          "subsection": "a",
+          "quote": "shall promptly notify the person making the request of the determination and the reasons therefor"
+        }
+      },
+      {
+        "id": "deny_in_writing",
+        "actor": "agency",
+        "action": "Issue written denial naming those responsible",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "notify_determination"
+        ],
+        "condition": "denied_in_whole_or_part",
+        "recipient": "requester",
+        "source": {
+          "section": "7922.540",
+          "subsection": "a",
+          "quote": "A response to a written request for inspection or copies of public records that includes a determination that the request is denied, in whole or in part, shall be in writing."
+        }
+      },
+      {
+        "id": "state_availability_date",
+        "actor": "agency",
+        "action": "State estimated date and time of availability",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "notify_determination",
+          "deny_in_writing"
+        ],
+        "join": "any",
+        "recipient": "requester",
+        "source": {
+          "section": "7922.535",
+          "subsection": "a",
+          "quote": "the agency shall also state the estimated date and time when the records will be made available"
+        }
+      },
+      {
+        "id": "allow_own_equipment",
+        "actor": "agency",
+        "action": "Decide whether own-equipment copying is allowed",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "state_availability_date"
+        ],
+        "decision": "own_equipment_copying",
+        "source": {
+          "section": "7922.530",
+          "subsection": "b",
+          "quote": "unless the means of copy or reproduction would result in either of the following"
+        }
+      },
+      {
+        "id": "pay_fees",
+        "actor": "requester",
+        "action": "Pay direct duplication costs or statutory fee",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": [
+          "allow_own_equipment"
+        ],
+        "recipient": "agency",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "upon payment of fees covering direct costs of duplication, or a statutory fee if applicable"
+        }
+      },
+      {
+        "id": "copy_own_equipment",
+        "actor": "requester",
+        "action": "Copy record on premises with own equipment",
+        "kind": "inspection",
+        "modality": "right",
+        "after": [
+          "allow_own_equipment"
+        ],
+        "condition": "own_equipment_copying",
+        "recipient": "agency",
+        "source": {
+          "section": "7922.530",
+          "subsection": "b",
+          "quote": "A requester who inspects a disclosable record on the premises of the agency has the right to use the requester’s equipment on those premises, without being charged any fees or costs, to photograph or otherwise copy or reproduce the record"
+        }
+      },
+      {
+        "id": "make_available",
+        "actor": "agency",
+        "action": "Make copies promptly available",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "pay_fees"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "shall make the records promptly available to any person"
+        }
+      },
+      {
+        "id": "provide_exact_copy",
+        "actor": "agency",
+        "action": "Provide exact copy unless impracticable",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "pay_fees"
+        ],
+        "condition": "exact_copy_requested",
+        "recipient": "requester",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "Upon request, an exact copy shall be provided unless impracticable to do so."
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "unusual_circumstances",
+        "question": "Do unusual circumstances allow the agency to extend the time limit?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "field_facilities",
+            "label": "Records must be collected from separate field facilities",
+            "type": "boolean"
+          },
+          {
+            "name": "voluminous",
+            "label": "Voluminous separate records demanded in a single request",
+            "type": "boolean"
+          },
+          {
+            "name": "consultation",
+            "label": "Consultation needed with another agency or among agency components",
+            "type": "boolean"
+          },
+          {
+            "name": "compile_data",
+            "label": "Data must be compiled or a program or report written to extract it",
+            "type": "boolean"
+          },
+          {
+            "name": "cyberattack",
+            "label": "Cyberattack prevents access to servers holding electronic responsive records",
+            "type": "boolean"
+          },
+          {
+            "name": "emergency",
+            "label": "Governor's state of emergency directly impairs timely response (not records about the emergency)",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "unusual_circumstances",
+            "label": "Extension of up to 14 days available",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.1",
+              "quote": "The need to search for and collect the requested records from field facilities or other establishments that are separate from the office processing the request."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "true",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.2",
+              "quote": "The need to search for, collect, and appropriately examine a voluminous amount of separate and distinct records that are demanded in a single request."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.3",
+              "quote": "The need for consultation, which shall be conducted with all practicable speed, with another agency having substantial interest in the determination of the request or among two or more components of the agency having substantial subject matter interest therein."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.4",
+              "quote": "The need to compile data, to write programming language or a computer program, or to construct a computer report to extract data."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "true",
+              "-"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.5",
+              "quote": "The inability of the agency, because of a cyberattack, to access its electronic servers or systems in order to search for and obtain a record that the agency believes is responsive to a request and is maintained on the servers or systems in an electronic format."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "true"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c.6",
+              "quote": "The need to search for, collect, and appropriately examine records during a state of emergency proclaimed by the Governor in the jurisdiction where the agency is located when the state of emergency currently and directly affects, due to the state of emergency, the agency’s ability to timely respond to requests due to staffing shortages or closure of facilities where the requested records are located"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "c",
+              "quote": "“unusual circumstances” means the following"
+            }
+          }
+        ]
+      },
+      {
+        "id": "determination",
+        "question": "Does the request seek disclosable public records in the agency's possession?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "in_possession",
+            "label": "Agency possesses records the request seeks",
+            "type": "boolean"
+          },
+          {
+            "name": "all_withheld",
+            "label": "Every requested record justifiably withheld under § 7922.000",
+            "type": "boolean"
+          },
+          {
+            "name": "some_withheld",
+            "label": "Some requested records justifiably withheld under § 7922.000",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "determination",
+            "label": "Determination notified to the requester",
+            "type": "string"
+          },
+          {
+            "name": "records_disclosable",
+            "label": "Some records will be made available",
+            "type": "boolean"
+          },
+          {
+            "name": "denied_in_whole_or_part",
+            "label": "Written denial required",
+            "type": "boolean"
+          },
+          {
+            "name": "denied_in_whole",
+            "label": "Request denied in whole",
+            "type": "boolean"
+          },
+          {
+            "name": "records_not_held",
+            "label": "Agency holds no records the request seeks",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No requested records in the agency's possession\"",
+              "false",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "a",
+              "quote": "seeks copies of disclosable public records in the possession of the agency"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Denied in whole; written denial naming each person responsible\"",
+              "false",
+              "true",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "7922.540",
+              "subsection": "b",
+              "quote": "The notification of denial shall set forth the names and titles or positions of each person responsible for the denial."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Disclosable in part; written denial of the rest; estimated date and time stated\"",
+              "true",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "7922.000",
+              "quote": "the record in question is exempt under express provisions of this division, or that on the facts of the particular case the public interest served by not disclosing the record clearly outweighs the public interest served by disclosure of the record"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Disclosable; estimated date and time stated\"",
+              "true",
+              "false",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "7922.535",
+              "subsection": "a",
+              "quote": "If the agency determines that the request seeks disclosable public records"
+            }
+          }
+        ]
+      },
+      {
+        "id": "own_equipment_copying",
+        "question": "May the requester copy the record on the premises with their own equipment, free of charge?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "inspects_on_premises",
+            "label": "Requester inspects a disclosable record on the agency's premises",
+            "type": "boolean"
+          },
+          {
+            "name": "would_damage_record",
+            "label": "The means of copying would damage the record",
+            "type": "boolean"
+          },
+          {
+            "name": "unauthorized_access",
+            "label": "The means of copying would give unauthorized access to agency systems or secured networks",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "own_equipment_copying",
+            "label": "Free copying with own equipment allowed",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "7922.530",
+              "subsection": "b",
+              "quote": "A requester who inspects a disclosable record on the premises of the agency"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "7922.530",
+              "subsection": "b.1",
+              "quote": "Damage to the record."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "-",
+              "true"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "7922.530",
+              "subsection": "b.2",
+              "quote": "Unauthorized access to the agency’s computer systems or secured networks by using software, equipment, or any other technology capable of accessing, altering, or compromising the agency’s electronic records."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "7922.530",
+              "subsection": "b",
+              "quote": "has the right to use the requester’s equipment on those premises, without being charged any fees or costs, to photograph or otherwise copy or reproduce the record in a manner that does not require the equipment to make physical contact with the record"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "records_released",
+        "description": "Records copied or made available to the requester",
+        "after": [
+          "make_available",
+          "provide_exact_copy",
+          "copy_own_equipment"
+        ],
+        "join": "any",
+        "source": {
+          "section": "7922.530",
+          "subsection": "a",
+          "quote": "shall make the records promptly available to any person"
+        }
+      },
+      {
+        "id": "request_denied",
+        "description": "Request denied in whole, in writing",
+        "after": [
+          "deny_in_writing"
+        ],
+        "when": "denied_in_whole",
+        "source": {
+          "section": "7922.540",
+          "subsection": "c",
+          "quote": "An agency shall justify withholding any record by complying with Section 7922.000."
+        }
+      },
+      {
+        "id": "no_records_held",
+        "description": "Agency holds no records the request seeks",
+        "after": [
+          "notify_determination"
+        ],
+        "when": "records_not_held",
+        "source": {
+          "section": "7922.535",
+          "subsection": "a",
+          "quote": "determine whether the request, in whole or in part, seeks copies of disclosable public records in the possession of the agency"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Cal. Gov. Code § 7922.500 et seq.",
+        "role": "Article 1 time limits are extended together with this article's in unusual circumstances",
+        "source": {
+          "section": "7922.535",
+          "subsection": "b",
+          "quote": "Article 1 (commencing with Section 7922.500)"
+        }
+      },
+      {
+        "citation": "Cal. Gov. Code § 8625",
+        "role": "defines the Governor's state of emergency that can justify an extension",
+        "source": {
+          "section": "7922.535",
+          "subsection": "c.6.B",
+          "quote": "a state of emergency proclaimed pursuant to Section 8625 of the California Emergency Services Act"
+        }
+      }
+    ],
+    "gaps": [
+      "None of the four sections states what happens if the agency misses the 10-day determination deadline or the extended date; the Act's enforcement provisions (Cal. Gov. Code § 7923.000 et seq.) are not among the modelled sections, and nothing here makes silence a deemed denial. Both timers therefore carry consequence 'unstated' and end in their own deadline-missed end states.",
+      "Extension (7922.535(b)): the notice must be sent by the head of the agency or a designee, must give the reasons and the date a determination is expected to be dispatched, and may not specify a date that would extend the time by more than 14 days. The text does not say the notice must be sent within the original 10 days, though an extension of a time limit implies it. The determine_extended timer is set to the outer limit, 24 days (10 + 14) from receipt of the request; the binding deadline is the earlier date stated in the notice, which the timer cannot carry. Because the timer is a boundary event on determine_extended, an engine starts it when that task starts (after the extension notice), so a strict implementation must offset it by the days already elapsed since receipt.",
+      "Unusual circumstances count only to the extent reasonably necessary to process the particular request (7922.535(c)). The cyberattack ground does not excuse records held elsewhere or on paper and lasts only until access is regained (c)(5)(A)-(B); the emergency ground does not apply to records created during and related to the emergency (c)(6)(A). These limits are folded into the decision's input labels, not modelled as separate rules. The all-false rule giving no unusual circumstances is implied by the closed list in (c), not stated.",
+      "The '10 days' and '14 days' are not stated to be business days and are modelled as calendar days.",
+      "The written-denial rule (7922.540(a)) applies to a response to a written request; these sections do not say what form a denial of an oral request takes, or whether a request must be written at all. A request need only reasonably describe an identifiable record (7922.530(a)); these sections ask for no form, purpose or identification.",
+      "A partial denial goes through deny_in_writing and then on to state_availability_date (join 'any'), so the written denial of the withheld part and the release of the rest are one path; a whole denial ends at request_denied. state_availability_date carries no condition: out of notify_determination it is the default branch, taken only when neither deny_in_writing (denied_in_whole_or_part) nor no_records_held (records_not_held) applies, i.e. on full disclosure; out of deny_in_writing it is the default when the denial is not whole. This keeps every split mutually exclusive, so a partial denial cannot skip the written denial that 7922.540(a) requires. The written denial must name each person responsible (7922.540(b)), which appears in the decision's output text rather than as a separate step. The agency carries the burden of justifying withholding under § 7922.000 (express exemption or a public-interest balance that clearly favours withholding); the sections do not say whether that justification must appear in the denial notice itself.",
+      "Records 'exempt from disclosure by express provisions of law' (7922.530(a)) are not listed here; the exemptions themselves sit elsewhere in the Act.",
+      "Fees (7922.530(a)) cover the direct costs of duplication or a statutory fee if one applies; no amounts, deposits or waivers are stated. An exact copy must be provided on request unless impracticable (provide_exact_copy, condition exact_copy_requested, a fact of the request); the sections do not say who decides impracticability or what is provided instead, so the impracticable case is left in the action text and make_available is the default. The requester's free on-premises copying right (7922.530(b)) arises when the requester inspects a record; the right to inspect itself is in another section not modelled here. The own_equipment_copying decision allows it unless copying would damage the record or give unauthorized access to agency systems ((b)(1)-(2)); the (b) requirement that the equipment not touch the record is in the allowing rule's quote, not a separate input. The agency may also impose reasonable limits to protect records, avoid undue burden, or preserve historic or high-value records (7922.530(c)); these limits are not modelled. Inspection with own equipment is modelled as an alternative to paying for copies."
+    ]
+  }
+}

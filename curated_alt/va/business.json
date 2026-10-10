@@ -1,0 +1,440 @@
+{
+  "state": "va",
+  "question": "business",
+  "sections": ["13.1-1010", "13.1-1011", "13.1-1005", "13.1-1004", "58.1-3703", "59.1-69", "59.1-70", "59.1-74", "13.1-818", "13.1-815.1", "13.1-816", "13.1-544", "13.1-1103", "13.1-618", "13.1-615.1", "13.1-616", "50-73.11", "50-73.17", "50-73.24", "50-73.88", "50-73.132", "50-73.83"],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Start a business in Virginia (form a limited liability company)",
+    "trigger": "Someone wants to start a business and form a limited liability company",
+    "trigger_source": {
+      "section": "13.1-1010",
+      "quote": "One or more persons may act as organizers of a limited liability company by signing and delivering articles of organization to the Commission for filing."
+    },
+    "actors": [
+      {
+        "id": "organizer",
+        "name": "Organizer (person forming the business)",
+        "kind": "private-party",
+        "source": {"section": "13.1-1010", "quote": "One or more persons may act as organizers of a limited liability company"}
+      },
+      {
+        "id": "commission",
+        "name": "State Corporation Commission",
+        "kind": "public-body",
+        "source": {"section": "59.1-69", "subsection": "A", "quote": "\"Commission\" means the State Corporation Commission."}
+      },
+      {
+        "id": "commission_clerk",
+        "name": "Clerk of the State Corporation Commission",
+        "kind": "official",
+        "source": {"section": "59.1-70", "subsection": "C", "quote": "The clerk of the Commission shall charge a fee of $10"}
+      },
+      {
+        "id": "company",
+        "name": "The limited liability company",
+        "kind": "private-party",
+        "source": {"section": "13.1-1004", "subsection": "B", "quote": "the limited liability company has been formed under this chapter"}
+      },
+      {
+        "id": "commissioner_revenue",
+        "name": "Local commissioner of the revenue",
+        "kind": "other-government",
+        "source": {"section": "59.1-74", "subsection": "B", "quote": "No license shall be issued by a commissioner of the revenue"}
+      },
+      {
+        "id": "locality",
+        "name": "Governing body of the county, city or town",
+        "kind": "other-government",
+        "source": {"section": "58.1-3703", "subsection": "A", "quote": "The governing body of any county, city or town may charge a fee for issuing a license"}
+      }
+    ],
+    "steps": [
+      {
+        "id": "deliver_articles",
+        "actor": "organizer",
+        "action": "Sign and deliver articles of organization",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "recipient": "commission",
+        "source": {"section": "13.1-1010", "quote": "by signing and delivering articles of organization to the Commission for filing"}
+      },
+      {
+        "id": "collect_fee",
+        "actor": "commission",
+        "action": "Collect the $100 filing fee",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": ["deliver_articles"],
+        "source": {"section": "13.1-1005", "subsection": "1", "quote": "For filing any one of the following, the fee shall be $100"}
+      },
+      {
+        "id": "review_articles",
+        "actor": "commission",
+        "action": "Check articles comply and fees paid",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": ["collect_fee"],
+        "decision": "articles_comply",
+        "source": {"section": "13.1-1011", "subsection": "D", "quote": "If the Commission finds that the articles of organization comply with the requirements of law and that all required fees have been paid"}
+      },
+      {
+        "id": "issue_certificate",
+        "actor": "commission",
+        "action": "Issue certificate of organization",
+        "kind": "act",
+        "modality": "obligation",
+        "after": ["review_articles"],
+        "condition": "articles_ok",
+        "source": {"section": "13.1-1011", "subsection": "D", "quote": "it shall issue a certificate of organization"}
+      },
+      {
+        "id": "record_certificate",
+        "actor": "commission",
+        "action": "Admit certificate to record",
+        "kind": "record",
+        "modality": "obligation",
+        "after": ["issue_certificate"],
+        "source": {"section": "13.1-1004", "subsection": "A", "quote": "The Commission shall admit any such certificate to record in its office."}
+      },
+      {
+        "id": "file_assumed_name",
+        "actor": "company",
+        "action": "File certificate of assumed or fictitious name",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": ["record_certificate"],
+        "condition": "uses_assumed_name",
+        "recipient": "commission_clerk",
+        "source": {"section": "59.1-69", "subsection": "B", "quote": "No person shall conduct or transact business in the Commonwealth under any assumed or fictitious name unless such person files in the office of the clerk of the Commission a certificate of assumed or fictitious name."}
+      },
+      {
+        "id": "charge_assumed_name_fee",
+        "actor": "commission_clerk",
+        "action": "Charge $10 assumed name filing fee",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": ["file_assumed_name"],
+        "source": {"section": "59.1-70", "subsection": "C", "quote": "The clerk of the Commission shall charge a fee of $10 for the filing of a certificate of assumed or fictitious name."}
+      },
+      {
+        "id": "give_filing_evidence",
+        "actor": "company",
+        "action": "Give commissioner of revenue filing evidence",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": ["charge_assumed_name_fee"],
+        "recipient": "commissioner_revenue",
+        "source": {"section": "59.1-74", "subsection": "B", "quote": "evidence of the filing has been provided to the commissioner of the revenue by the person conducting business under the assumed or fictitious name"}
+      },
+      {
+        "id": "check_license_bar",
+        "actor": "commissioner_revenue",
+        "action": "Withhold license until assumed name filed",
+        "kind": "review",
+        "modality": "prohibition",
+        "after": ["record_certificate", "give_filing_evidence"],
+        "join": "any",
+        "source": {"section": "59.1-74", "subsection": "B", "quote": "No license shall be issued by a commissioner of the revenue until a certificate of assumed or fictitious name has been made and filed"}
+      },
+      {
+        "id": "charge_license_fee",
+        "actor": "locality",
+        "action": "Charge capped fee for issuing license",
+        "kind": "payment",
+        "modality": "permission",
+        "after": ["check_license_bar"],
+        "source": {"section": "58.1-3703", "subsection": "A", "quote": "may charge a fee for issuing a license in an amount not to exceed $100 for any locality with a population greater than 50,000, $50 for any locality with a population of 25,000 but no more than 50,000 and $30 for any locality with a population smaller than 25,000"}
+      }
+    ],
+    "decisions": [
+      {
+        "id": "articles_comply",
+        "question": "Can the Commission issue a certificate of organization for the articles?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {"name": "name_ok", "label": "Name satisfies § 13.1-1012", "type": "boolean"},
+          {"name": "registered_office_given", "label": "Registered office address, city or county and agent name given", "type": "boolean"},
+          {"name": "agent_qualifies", "label": "Registered agent is a qualifying Virginia resident or authorized entity", "type": "boolean"},
+          {"name": "principal_office_given", "label": "Principal office address given", "type": "boolean"},
+          {"name": "fees_paid", "label": "All required fees paid", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "articles_ok", "label": "Certificate of organization issued", "type": "boolean"}
+        ],
+        "rules": [
+          {
+            "when": ["false", "-", "-", "-", "-"],
+            "then": ["false"],
+            "source": {"section": "13.1-1011", "subsection": "A.1", "quote": "A name for the limited liability company that satisfies the requirements of § 13.1-1012"}
+          },
+          {
+            "when": ["-", "false", "-", "-", "-"],
+            "then": ["false"],
+            "source": {"section": "13.1-1011", "subsection": "A.2", "quote": "The post office address, including the street and number, if any, of the limited liability company's initial registered office, the name of the city or county in which it is located, the name of its initial registered agent at that office"}
+          },
+          {
+            "when": ["-", "-", "false", "-", "-"],
+            "then": ["false"],
+            "source": {"section": "13.1-1011", "subsection": "A.2", "quote": "that the agent is either (i) an individual who is a resident of Virginia and one of the following"}
+          },
+          {
+            "when": ["-", "-", "-", "false", "-"],
+            "then": ["false"],
+            "source": {"section": "13.1-1011", "subsection": "A.3", "quote": "The post office address, including the street and number, if any, of the principal office of the limited liability company, which may be the same as the registered office, but need not be within the Commonwealth"}
+          },
+          {
+            "when": ["-", "-", "-", "-", "false"],
+            "then": ["false"],
+            "source": {"section": "13.1-1004", "subsection": "A", "quote": "if it finds that the document complies with the provisions of this chapter and that all required fees have been paid"}
+          },
+          {
+            "when": ["true", "true", "true", "true", "true"],
+            "then": ["true"],
+            "source": {"section": "13.1-1011", "subsection": "D", "quote": "If the Commission finds that the articles of organization comply with the requirements of law and that all required fees have been paid, it shall issue a certificate of organization."}
+          }
+        ]
+      },
+      {
+        "id": "business_structure",
+        "question": "Which business structure fits, and what must be filed with the state?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {"name": "nonprofit", "label": "Organized for a nonprofit or charitable purpose", "type": "boolean"},
+          {"name": "licensed_profession", "label": "Owners render a licensed professional service", "type": "boolean"},
+          {"name": "owners", "label": "Number of owners", "type": "number"},
+          {"name": "limited_liability", "label": "Owners want protection from the business's debts", "type": "boolean"},
+          {"name": "outside_investors", "label": "Plans to sell shares to outside investors", "type": "boolean"},
+          {"name": "passive_partners", "label": "Some co-owners will be passive investors only", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "structure", "label": "Business structure", "type": "string"},
+          {"name": "state_filing", "label": "What is filed with the state, and where", "type": "string"},
+          {"name": "fee", "label": "State filing fee", "type": "string"}
+        ],
+        "rules": [
+          {
+            "when": ["true", "-", "-", "-", "-", "-"],
+            "then": [
+              "\"Nonstock corporation\"",
+              "\"Articles of incorporation signed and delivered by one or more incorporators to the State Corporation Commission for filing (Virginia Nonstock Corporation Act)\"",
+              "\"$75 ($25 filing fee + $50 charter fee, under the fee sections in force until January 1, 2027)\""
+            ],
+            "source": {"section": "13.1-818", "quote": "One or more persons may act as the incorporator or incorporators of a corporation by signing and delivering articles of incorporation to the Commission for filing."}
+          },
+          {
+            "when": ["-", "true", "-", "true", "-", "-"],
+            "then": [
+              "\"Professional limited liability company (or a professional corporation under § 13.1-544); architects, professional engineers, land surveyors, certified landscape architects and certified interior designers must also meet § 13.1-1111 or § 13.1-549\"",
+              "\"Articles of organization delivered to the State Corporation Commission for filing; the members must be licensed to render the same professional service\"",
+              "\"$100 (a professional corporation pays the corporation fees instead)\""
+            ],
+            "source": {"section": "13.1-1103", "quote": "may become members of a limited liability company for pecuniary profit under the provisions of Chapter 12 (§ 13.1-1000 et seq.) of this title, for the sole and specific purpose of rendering the same and specific professional service"}
+          },
+          {
+            "when": ["-", "-", "-", "true", "true", "-"],
+            "then": [
+              "\"Stock corporation\"",
+              "\"Articles of incorporation signed and delivered by one or more incorporators to the State Corporation Commission for filing\"",
+              "\"$25 filing fee + charter fee of $50 for each 25,000 authorized shares or fraction ($2,500 above 1,000,000 shares); $75 for up to 25,000 shares\""
+            ],
+            "source": {"section": "13.1-618", "quote": "One or more persons may act as the incorporator or incorporators of a corporation by signing and delivering articles of incorporation to the Commission for filing."}
+          },
+          {
+            "when": ["-", "-", ">= 2", "true", "-", "true"],
+            "then": [
+              "\"Limited partnership (limited partners who stay out of control of the business are not liable for its obligations; the general partner stays liable, so if every owner needs protection choose a limited liability company)\"",
+              "\"Certificate of limited partnership executed and filed with the State Corporation Commission\"",
+              "\"$100\""
+            ],
+            "source": {"section": "50-73.11", "subsection": "A", "quote": "In order to form a limited partnership, a certificate of limited partnership shall be executed and filed with the Commission"}
+          },
+          {
+            "when": ["-", "-", "-", "true", "-", "-"],
+            "then": [
+              "\"Limited liability company\"",
+              "\"Articles of organization signed and delivered by one or more organizers to the State Corporation Commission for filing\"",
+              "\"$100\""
+            ],
+            "source": {"section": "13.1-1010", "quote": "One or more persons may act as organizers of a limited liability company by signing and delivering articles of organization to the Commission for filing."}
+          },
+          {
+            "when": ["-", "-", "1", "false", "-", "-"],
+            "then": [
+              "\"Sole proprietorship\"",
+              "\"No formation filing; before doing business under any name other than the owner's own, file a certificate of assumed or fictitious name ($10) in the office of the clerk of the State Corporation Commission\"",
+              "\"None\""
+            ],
+            "source": {"section": "59.1-69", "subsection": "B", "quote": "No person shall conduct or transact business in the Commonwealth under any assumed or fictitious name unless such person files in the office of the clerk of the Commission a certificate of assumed or fictitious name."}
+          },
+          {
+            "when": ["-", "-", ">= 2", "false", "-", "-"],
+            "then": [
+              "\"General partnership\"",
+              "\"No formation filing (a partnership forms by association); the partners may register as a registered limited liability partnership by filing a statement of registration ($100) with the State Corporation Commission\"",
+              "\"None\""
+            ],
+            "source": {"section": "50-73.88", "subsection": "A", "quote": "the association of two or more persons to carry on as co-owners a business for profit forms a partnership, whether or not the persons intend to form a partnership"}
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "llc_formed",
+        "description": "LLC exists (from the certificate of organization or a later stated time); assumed name filed if used; local license can issue",
+        "after": ["charge_license_fee"],
+        "join": "any",
+        "source": {"section": "13.1-1004", "subsection": "B", "quote": "The existence of a limited liability company or a protected series shall begin at the time the Commission issues a certificate of organization or certificate of protected series designation unless a later date and time are specified as provided by subsection D."}
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Va. Code § 13.1-1004(A)",
+        "role": "the Commission issues the certificate by order once it finds compliance and payment of fees",
+        "source": {"section": "13.1-1004", "subsection": "A", "quote": "the Commission shall by order issue the certificate if it finds that the document complies with the provisions of this chapter and that all required fees have been paid"}
+      },
+      {
+        "citation": "Va. Code § 13.1-1004(B)",
+        "role": "the certificate of organization is conclusive evidence of formation",
+        "source": {"section": "13.1-1004", "subsection": "B", "quote": "The certificate of organization shall be conclusive evidence that all conditions precedent required to be performed by the person(s) forming the limited liability company have been complied with"}
+      },
+      {
+        "citation": "Va. Code § 13.1-1004(D)(1)",
+        "role": "delayed effective time: no later than 11:59 p.m. on the fifteenth day after issuance",
+        "source": {"section": "13.1-1004", "subsection": "D.1", "quote": "the certificate shall become effective at the earlier of the time and date so specified or 11:59 p.m. on the fifteenth day after the date on which the certificate is issued by the Commission"}
+      },
+      {
+        "citation": "Va. Code § 13.1-1004(D)(2)",
+        "role": "a delayed certificate can be stopped by a statement of cancellation filed before it takes effect",
+        "source": {"section": "13.1-1004", "subsection": "D.2", "quote": "a statement of cancellation signed by each party to the articles or statement to which the certificate relates is delivered to the Commission for filing"}
+      },
+      {
+        "citation": "Va. Code § 13.1-1010",
+        "role": "organizers need not stay on as members",
+        "source": {"section": "13.1-1010", "quote": "An organizer need not be a member of the limited liability company after formation has occurred."}
+      },
+      {
+        "citation": "Va. Code § 13.1-1011(B)",
+        "role": "optional contents of the articles of organization",
+        "source": {"section": "13.1-1011", "subsection": "B", "quote": "The articles of organization may set forth any other matter that under this chapter is permitted to be set forth in an operating agreement of a limited liability company."}
+      },
+      {
+        "citation": "Va. Code § 13.1-1012",
+        "role": "naming rules for the LLC (not printed here)",
+        "source": {"section": "13.1-1011", "subsection": "A.1", "quote": "satisfies the requirements of § 13.1-1012"}
+      },
+      {
+        "citation": "Va. Code § 13.1-1005(3)(a)",
+        "role": "optional $10 reservation of the LLC name",
+        "source": {"section": "13.1-1005", "subsection": "3.a", "quote": "An application to reserve or to renew the reservation of a name for use by a domestic or foreign limited liability company."}
+      },
+      {
+        "citation": "Va. Code § 13.1-816(2)(a) (effective until January 1, 2027)",
+        "role": "$25 fee for articles of incorporation of a nonstock corporation",
+        "source": {"section": "13.1-816", "subsection": "2.a", "quote": "Articles of incorporation, domestication, or incorporation surrender."}
+      },
+      {
+        "citation": "Va. Code § 13.1-815.1(A) (effective until January 1, 2027)",
+        "role": "$50 charter fee for a nonstock corporation",
+        "source": {"section": "13.1-815.1", "subsection": "A", "quote": "shall pay a charter fee in the amount of $50 into the state treasury"}
+      },
+      {
+        "citation": "Va. Code § 13.1-616(2)(a)",
+        "role": "$25 fee for articles of incorporation of a stock corporation",
+        "source": {"section": "13.1-616", "subsection": "2.a", "quote": "Articles of incorporation or domestication."}
+      },
+      {
+        "citation": "Va. Code § 13.1-615.1(A)",
+        "role": "stock corporation charter fee scaled to authorized shares",
+        "source": {"section": "13.1-615.1", "subsection": "A", "quote": "For any domestic or foreign corporation whose number of authorized shares is 1,000,000 or fewer shares: $50 for each 25,000 shares or fraction thereof"}
+      },
+      {
+        "citation": "Va. Code § 13.1-544(A)",
+        "role": "licensed professionals may instead organize a professional corporation (stock or nonstock)",
+        "source": {"section": "13.1-544", "subsection": "A", "quote": "may organize a professional corporation for pecuniary profit under the provisions of Chapter 9 (§ 13.1-601 et seq.) of this title or organize a professional corporation as a nonstock corporation under the provisions of Chapter 10 (§ 13.1-801 et seq.) of this title"}
+      },
+      {
+        "citation": "Va. Code §§ 13.1-1103, 13.1-1111",
+        "role": "architects, professional engineers and land surveyors join a professional LLC only by complying with § 13.1-1111",
+        "source": {"section": "13.1-1103", "quote": "complying with the provisions of § 13.1-1111 and duly licensed to render within the Commonwealth the professional services of architects, professional engineers or land surveyors"}
+      },
+      {
+        "citation": "Va. Code § 50-73.11(C)",
+        "role": "a limited partnership is formed when its certificate is filed",
+        "source": {"section": "50-73.11", "subsection": "C", "quote": "A limited partnership is formed at the time of the filing of the certificate of limited partnership with the Commission"}
+      },
+      {
+        "citation": "Va. Code § 50-73.17(B)(2)(a)",
+        "role": "$100 fee for a certificate of limited partnership",
+        "source": {"section": "50-73.17", "subsection": "B.2", "quote": "For filing any one of the following, the fee shall be $100"}
+      },
+      {
+        "citation": "Va. Code § 50-73.24(A)",
+        "role": "limited partners are shielded unless they are general partners or take part in control",
+        "source": {"section": "50-73.24", "subsection": "A", "quote": "a limited partner is not liable for the obligations of a limited partnership unless he is also a general partner or, in addition to the exercise of his rights and powers as a limited partner, he participates in the control of the business"}
+      },
+      {
+        "citation": "Va. Code § 50-73.132(A)",
+        "role": "a general partnership may register as a registered limited liability partnership",
+        "source": {"section": "50-73.132", "subsection": "A", "quote": "To become a registered limited liability partnership, a partnership formed under the laws of the Commonwealth shall file with the Commission a statement of registration as a registered limited liability partnership"}
+      },
+      {
+        "citation": "Va. Code § 50-73.132(C)",
+        "role": "partner approval needed for the registration",
+        "source": {"section": "50-73.132", "subsection": "C", "quote": "if no provision is made in the partnership agreement, by all of the partners"}
+      },
+      {
+        "citation": "Va. Code § 50-73.83(F)(1)(a)",
+        "role": "$100 fee for the statement of registration",
+        "source": {"section": "50-73.83", "subsection": "F.1", "quote": "The fee shall be $100 for filing any one of the following"}
+      },
+      {
+        "citation": "Va. Code § 59.1-70(A)",
+        "role": "contents of the certificate of assumed or fictitious name (Commission form)",
+        "source": {"section": "59.1-70", "subsection": "A", "quote": "The certificate of assumed or fictitious name shall be on a form prescribed by the Commission"}
+      },
+      {
+        "citation": "Va. Code § 59.1-70(A)(5)",
+        "role": "an LLC gives its Commission identification number on the certificate",
+        "source": {"section": "59.1-70", "subsection": "A.5", "quote": "the identification number issued by the Commission to the person"}
+      },
+      {
+        "citation": "Va. Code § 59.1-69(C)",
+        "role": "an assumed name may not misrepresent where the business is",
+        "source": {"section": "59.1-69", "subsection": "C", "quote": "No person shall use an assumed or fictitious name in the conduct of the person's business to intentionally misrepresent the geographic origin or location of the person."}
+      },
+      {
+        "citation": "Va. Code § 58.1-3703(A)",
+        "role": "localities may levy license taxes on businesses (BPOL), in addition to the license fee",
+        "source": {"section": "58.1-3703", "subsection": "A", "quote": "Such governing body may levy and provide for the assessment and collection of county, city or town license taxes on businesses, trades, professions, occupations and callings"}
+      },
+      {
+        "citation": "Va. Code § 58.1-3703(A)",
+        "role": "localities over 50,000 had to cut the fee cap to $50",
+        "source": {"section": "58.1-3703", "subsection": "A", "quote": "Any county, city or town with a population greater than 50,000 shall reduce the fee to an amount not to exceed $50 by January 1, 2000."}
+      },
+      {
+        "citation": "Va. Code § 58.1-3703(D)",
+        "role": "optional local license incentive for businesses new to the locality, up to two years",
+        "source": {"section": "58.1-3703", "subsection": "D", "quote": "Any county, city or town may establish by ordinance a business license incentive program for \"qualifying businesses.\""}
+      }
+    ],
+    "gaps": [
+      "The filing path models the LLC. Corporations (§§ 13.1-618, 13.1-818) and limited partnerships (§ 50-73.11) follow a similar delivery to the Commission, but their review and certificate sections are not printed here; a limited partnership is formed when its certificate is filed (§ 50-73.11(C)), and a partnership becomes a registered limited liability partnership when its statement of registration is filed (§ 50-73.132(A)).",
+      "§ 13.1-1011(D) says the Commission issues the certificate if the articles comply and the fees are paid; it does not say what happens when they do not (rejection, return or correction), so the 'not ok' branch ends without a stated result.",
+      "The review that applies § 13.1-1011(A) and (D) is implied; the printed text names the required contents but not who checks them or how long the check may take. No deadline for the Commission is stated.",
+      "The naming rules of § 13.1-1012 are not printed here; the 'name_ok' input stands for them.",
+      "LLC existence begins when the certificate of organization issues, or at a later time stated in the articles, but no later than 11:59 p.m. on the fifteenth day after issuance (§ 13.1-1004(B), (D)(1)). The single end event sits after the local licensing steps only because one BPMN end event cannot mark a midpoint; the LLC is formed at issue_certificate.",
+      "The assumed name branch is conditional: a company that does business under its exact registered name skips it, and the branches rejoin through an exclusive merge in front of the commissioner of the revenue's check.",
+      "§ 59.1-69(B) bars doing business under an assumed name before the certificate is filed; the schema has no 'before' deadline, so this stays in the step text. § 59.1-74(A) still speaks of 'the clerk of the court' keeping the book of certificates, while § 59.1-69(B) and § 59.1-74(B) send filings (since January 1, 2020) to the clerk of the Commission; who now keeps the register is not stated, so no recording step is modelled.",
+      "The local business license is applied for under each locality's own ordinance (§ 58.1-3703 only authorizes the fee and license taxes); the application step, who issues the license and the license tax rates are not in the printed text. The fee caps in § 58.1-3703(A) are $100, $50 and $30 by population, but localities over 50,000 had to reduce theirs to $50 by January 1, 2000, so the effective cap is $50 or $30. Many activities are exempt under § 58.1-3703(C).",
+      "§ 59.1-74(B) is phrased as a prohibition on the commissioner of the revenue; it applies only where the business uses an assumed or fictitious name. When no assumed name is used, the check passes trivially.",
+      "§§ 13.1-815.1 and 13.1-816 (nonstock corporation fees) are printed as effective until January 1, 2027; the versions that replace them are not printed here, so the nonstock fee in the comparison table may change on that date.",
+      "Virginia has both professional corporations (§ 13.1-544) and professional limited liability companies (§ 13.1-1103); the comparison table names the PLLC because it uses the LLC filing path and fee. The professional rule fires only when liability protection is wanted; a licensed professional without that need falls to the sole proprietorship or partnership rows.",
+      "The limited partnership rule fires before the LLC rule (the table's fixed priority) whenever protection and passive co-owners are both wanted, although the general partner stays liable (§ 50-73.24(A)); the output points owners who all need protection to the LLC.",
+      "The stock corporation charter fee depends on the number of authorized shares (§ 13.1-615.1(A)); the table states the formula and the amount for 25,000 shares or fewer.",
+      "State tax registration, employer registration, the annual registration fee and industry licences follow formation and are not modelled."
+    ]
+  }
+}

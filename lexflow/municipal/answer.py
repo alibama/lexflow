@@ -66,7 +66,7 @@ def markdown(con, gov_id: str) -> str:
             continue
         loc = a.get("local") or {}
         law = a.get("law") or {}
-        tier = {"reviewed": "checked by Claude", "agreed": "two local models agree", "single": "one local model",
+        tier = {"reviewed": "checked by Claude", "agreed": "two independent extractions agree", "single": "one extraction (unreviewed)",
                 "found": "law located, steps not modelled", "none": "no state law found"}.get(a["tier"], a["tier"])
         L += [f"**Confidence {a['confidence']:.2f}** (state law {a['state_score']:.2f}, local {a['local_score']:.2f}, "
               f"contact {a['contact_score']:.2f}; state model {tier}).", ""]
@@ -104,6 +104,13 @@ def markdown(con, gov_id: str) -> str:
                                           else f"- {x['citation']}: {x['summary']}" for x in loc["local_law"]] + [""]
         if loc.get("fees"):
             L += [f"**Fees.** {loc['fees']}", ""]
+        cases = (stats.model_detail(con, a["model_id"]) or {}).get("cases") if a.get("model_id") else None
+        if cases:
+            L += ["### Court decisions citing this law", ""]
+            for c in cases[:8]:
+                cite = f", {c['citation']}" if c.get("citation") else ""
+                L.append(f"- [{c['case_name']}]({c['url']}) ({c.get('court') or ''}, {(c.get('date_filed') or '')[:4]}{cite})")
+            L.append("")
         caveats = (loc.get("caveats") or []) + (a.get("gaps") or [])
         if caveats:
             L += ["### Caveats and gaps", ""] + [f"- {c}" for c in caveats] + [""]

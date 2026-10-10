@@ -19,7 +19,7 @@ from .ollama import OllamaClient
 from .schema import LegalProcessFacts
 from . import strategies as ST
 
-LLM_FREE = {"rules", "rules_sub"}
+LLM_FREE = {"rules", "rules_sub", "learned", "learned_wide", "wide", "stack_nb", "stack", "stack_tfidf", "stack_embed", "stack_combo"}
 
 
 def cases() -> list[str]:
@@ -29,7 +29,7 @@ def cases() -> list[str]:
 def load_case(case: str):
     state, question = case.split(".", 1)
     spec = json.loads((config.CURATED_DIR / state / f"{question}.json").read_text(encoding="utf-8"))
-    texts = statutes.section_texts(state, spec["sections"])
+    texts = statutes.reference_texts(state, spec["sections"])
     gold = LegalProcessFacts.model_validate(spec["facts"])
     ghash = hashlib.sha256(json.dumps(spec["facts"], sort_keys=True).encode()).hexdigest()[:12]
     return state, question, texts, statutes.combined_text(texts), gold, ghash
@@ -61,18 +61,25 @@ def equivalence(cand: LegalProcessFacts, gold: LegalProcessFacts, threshold: flo
     + 0.1 x duty type, with steps matched by the clause they quote (or failing that, by their wording)."""
     kinds_c = {a.id: a.kind for a in cand.actors}
     kinds_g = {a.id: a.kind for a in gold.actors}
-    pairs, used = [], set()
-    for g in gold.steps:
-        best, best_s = None, 0.0
-        for i, c in enumerate(cand.steps):
-            if i in used:
-                continue
+    # global best-first assignment: when one clause supports two reference steps (a request and its response
+    # in the same sentence), the candidate goes to the step it fits best, preferring matching deadlines
+    scored = []
+    for gi, g in enumerate(gold.steps):
+        for ci, c in enumerate(cand.steps):
             s = same_act(c, g)
-            if s > best_s:
-                best, best_s = i, s
-        if best is not None and best_s >= threshold:
-            used.add(best)
-            pairs.append((cand.steps[best], g))
+            if s < threshold:
+                continue
+            dl = bool(g.deadline and c.deadline and g.deadline.amount == c.deadline.amount
+                      and g.deadline.unit == c.deadline.unit)
+            scored.append((s + (0.2 if dl else 0.0), gi, ci))
+    scored.sort(key=lambda x: -x[0])
+    pairs, used_g, used_c = [], set(), set()
+    for _, gi, ci in scored:
+        if gi in used_g or ci in used_c:
+            continue
+        used_g.add(gi)
+        used_c.add(ci)
+        pairs.append((cand.steps[ci], gold.steps[gi]))
     p = len(pairs) / max(1, len(cand.steps))
     r = len(pairs) / max(1, len(gold.steps))
     f1 = 2 * p * r / (p + r) if p + r else 0.0
@@ -90,6 +97,46 @@ def equivalence(cand: LegalProcessFacts, gold: LegalProcessFacts, threshold: flo
     return {"value": round(value, 3), "step_f1": round(f1, 3), "precision": round(p, 3), "recall": round(r, 3),
             "actors": round(actors, 3), "deadlines": round(deadlines, 3), "modality": round(modality, 3),
             "matched": len(pairs)}
+
+
+def ceiling() -> list[dict]:
+    """How far two careful drafts by Claude agree: each curated_alt/<state>/<question>.json is an independent
+    second reference, written without seeing the first.  Equivalence is not symmetric (precision and recall
+    swap), so both directions are reported; their mean is the ceiling any local strategy can be measured to."""
+    out = []
+    for p in sorted((config.ROOT / "curated_alt").glob("*/*.json")):
+        case = f"{p.parent.name}.{p.stem}"
+        try:
+            gold = load_case(case)[4]
+            alt = LegalProcessFacts.model_validate(json.loads(p.read_text(encoding="utf-8"))["facts"])
+        except Exception as e:  # noqa: BLE001 - no first reference for this case, or a draft that does not load
+            out.append({"case": case, "error": f"{type(e).__name__}: {e}"[:200]})
+            continue
+        a, b = equivalence(alt, gold), equivalence(gold, alt)
+        out.append({"case": case, "value": round((a["value"] + b["value"]) / 2, 3), "alt_vs_ref": a,
+                    "ref_vs_alt": b, "steps": [len(gold.steps), len(alt.steps)]})
+    return out
+
+
+def oracle(case: str) -> dict:
+    """The best a selector could do with each candidate generator: keep exactly the candidates whose clause
+    Claude quoted for a step.  What is left below 1.0 is lost to candidate recall, actors or deadlines."""
+    from . import selector as SEL
+    from .segment import segment
+    state, question, texts, text, gold, _ = load_case(case)
+    clauses = segment(text)
+    out = {}
+    for name, cands in (("rules", ST.rule_drafts(clauses, question)), ("wide", SEL.wide_drafts(clauses, question))):
+        labels, kinds = SEL.labels_for(cands, gold.model_dump())
+        keep = [d for d, y in zip(cands, labels) if y]
+        for d in keep:
+            d["actor_kind"] = ST.actor_kind(d["actor"])
+        if keep:
+            eq = equivalence(ST.assemble(keep, clauses, texts[0].section, question, "oracle"), gold)
+            out[name] = {**eq, "candidates": len(cands)}
+        else:
+            out[name] = {"value": 0.0, "candidates": len(cands)}
+    return out
 
 
 def _prior(con, state: str, question: str, model: str):
