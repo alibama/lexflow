@@ -269,23 +269,25 @@ def model_file(mid: str, kind: str):
 # ----------------------------------------------------------------- answers
 @app.get("/api/answers/{gov_id}")
 def answers(gov_id: str):
+    from ..municipal.answer import answers_for
     c = con()
     try:
-        g = db.one(c, "SELECT * FROM governments WHERE gov_id=?", gov_id)
-        if not g:
+        out = answers_for(c, gov_id)
+        if out is None:
             raise HTTPException(404)
-        out = {"government": g, "answers": {}}
-        for a in db.rows(c, "SELECT * FROM answers WHERE gov_id=?", gov_id):
-            a["summary"] = db.loads(a["summary"], {})
-            m = stats.model_detail(c, a["model_id"]) if a["model_id"] else None
-            a["steps"] = stats.steps_of(m)
-            a["law"] = db.one(c, "SELECT citation, heading, url, method, score FROM located_law "
-                                 "WHERE state=? AND question=?", a["state"], a["question"])
-            a["model"] = {k: m[k] for k in ("model_id", "title", "tier", "built_by", "quality", "completion")} if m \
-                else None
-            out["answers"][a["question"]] = a
-        out["contacts"] = db.rows(c, "SELECT question, kind, value, label, source FROM contacts WHERE gov_id=?", gov_id)
         return out
+    finally:
+        c.close()
+
+
+@app.get("/api/answers/{gov_id}.md", include_in_schema=False)
+def answers_markdown(gov_id: str):
+    from ..municipal.answer import markdown
+    c = con()
+    try:
+        return PlainTextResponse(markdown(c, gov_id), media_type="text/markdown")
+    except KeyError:
+        raise HTTPException(404)
     finally:
         c.close()
 
@@ -303,6 +305,39 @@ def lookup(url: str = Query(..., description="any page on a government's website
         if not rows:
             return JSONResponse({"host": host, "matches": []}, status_code=404)
         return {"host": host, "matches": [answers(r["gov_id"]) for r in rows]}
+    finally:
+        c.close()
+
+
+@app.get("/api/benchmark")
+def benchmark():
+    """Latest score per (case, strategy, model) against the current Claude reference models."""
+    from ..extract import benchmark as BM
+    c = con()
+    try:
+        rows = BM.best(c)
+        return {"rows": rows, "cases": BM.cases(), "target": 0.75,
+                "runs": db.scalar(c, "SELECT count(*) FROM benchmarks", default=0)}
+    finally:
+        c.close()
+
+
+@app.get("/api/places")
+def places_list(spec: str | None = None):
+    """Places with researched local answers, or the governments a spec like 'va:charlottesville' names."""
+    from ..municipal import places as P
+    c = con()
+    try:
+        if spec:
+            try:
+                return P.resolve_all(c, spec)
+            except ValueError as e:
+                raise HTTPException(404, str(e)) from e
+        return db.rows(c, """
+            SELECT g.gov_id, g.name, g.kind, g.state, g.population, count(l.question) AS researched,
+                   max(l.verified) AS verified, max(l.researched) AS researched_on
+            FROM local_answers l JOIN governments g ON g.gov_id = l.gov_id
+            GROUP BY g.gov_id ORDER BY g.population DESC""")
     finally:
         c.close()
 

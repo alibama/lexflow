@@ -12,6 +12,63 @@ from lexflow.dmn_xml import write_dmn, write_dmn_split  # noqa: E402
 from lexflow.layout import auto_layout  # noqa: E402
 
 
+FIXTURES = ROOT / "fixtures" / "statutes"
+
+
+@pytest.fixture()
+def con(tmp_path, monkeypatch):
+    """An empty store in a temp dir, with no shared database or wiki configured."""
+    from lexflow import config
+    from lexflow.store import db
+    monkeypatch.setattr(config, "TURSO_URL", "")
+    monkeypatch.setattr(config, "DOKUWIKI_URL", "")
+    monkeypatch.setattr(config, "DB_PATH", tmp_path / "t.db")
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(config, "JOBS_DIR", tmp_path / "jobs")
+    c = db.connect(tmp_path / "t.db")
+    yield c
+    c.close()
+
+
+def fixture_frame(state: str):
+    """fixtures/statutes/<state>_sections.json (every section the curated files cite) as the loader's DataFrame."""
+    import json
+    import pandas as pd
+    from lexflow.municipal import statutes
+    path = FIXTURES / f"{state}_sections.json"
+    if not path.exists():
+        raise FileNotFoundError(path)
+    secs = json.loads(path.read_text(encoding="utf-8"))["sections"]
+    rows = [dict(act_id=s.get("act_id", f"FIX_{s['section_number']}"), citation=s["citation"],
+                 section_number=s["section_number"], section_title=s.get("section_title", ""),
+                 chapter_name=s.get("chapter_name", ""), display_path="", act_status="in_force", text=s["text"],
+                 source_url=s["source_url"], word_count=len(s["text"].split()), last_amended_year=2023) for s in secs]
+    if state == "va":
+        rows.append(dict(act_id="decoy", citation="Va. Code Ann. § 18.2-107", section_number="18.2-107",
+                         section_title="Theft or destruction of public records by others than officers",
+                         chapter_name="", display_path="", act_status="in_force",
+                         text="If any person steal public records...", source_url="u", word_count=10,
+                         last_amended_year=1975))
+    df = pd.DataFrame(rows)
+    df["norm_section"] = df["section_number"].map(statutes.norm_section)
+    return df
+
+
+@pytest.fixture()
+def va_statutes(monkeypatch):
+    """Serve the fixture sections of every state that has a fixture file, as if its parquet were downloaded."""
+    from lexflow.municipal import statutes
+    frames = {p.name.split("_")[0]: None for p in FIXTURES.glob("*_sections.json")}
+
+    def load(state):
+        if frames.get(state) is None:
+            frames[state] = fixture_frame(state)
+        return frames[state]
+    monkeypatch.setattr(statutes, "load", load)
+    monkeypatch.setattr(statutes, "have", lambda state: state in frames)
+    return load("va")
+
+
 @pytest.fixture(scope="session")
 def models():
     return {name: fn() for name, fn in gold.ALL.items()}

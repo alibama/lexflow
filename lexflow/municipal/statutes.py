@@ -95,6 +95,8 @@ def load(state: str):
     df = pd.read_parquet(p, columns=COLUMNS)
     df = df[df["act_status"].isin(["in_force"]) | df["act_status"].isna()].copy()
     df["section_title"] = df["section_title"].fillna("").str.replace(r"^§\s*[\w.:\-/]+\.?\s*", "", regex=True)
+    # Maryland's file carries only stubs like "–203." instead of headings: treat those as no heading
+    df.loc[df["section_title"].str.fullmatch(r"[–\-]?[\w.\-–]*\d[\w.\-–]*\.?"), "section_title"] = ""
     df["chapter_name"] = df["chapter_name"].fillna("")
     df["text"] = df["text"].fillna("")
     df["norm_section"] = df["section_number"].fillna("").map(norm_section)
@@ -113,15 +115,45 @@ def strip_history(text: str) -> str:
     return "\n".join(paras).rstrip()
 
 
+SINGLE_CODE = {"va": "Code of Virginia", "dc": "D.C. Code"}
+
+
+def find(df, ref: str):
+    """Rows for a section reference: '2.2-3704', or 'General Provisions § 4-203' where a state numbers
+    sections within each article or code (Maryland, Texas, California, New York ...)."""
+    if "§" in ref:
+        article, number = (x.strip() for x in ref.rsplit("§", 1))
+        hit = df[df["norm_section"] == norm_section(number)]
+        return hit[hit["citation"].str.contains(re.escape(article), case=False, regex=True)]
+    return df[df["norm_section"] == norm_section(ref)]
+
+
+def ref_of(state: str, row) -> str:
+    """The reference to store for a row: the bare number where numbers are unique, else the citation."""
+    if state in SINGLE_CODE:
+        return row["section_number"]
+    df = load(state)
+    return row["section_number"] if (df["norm_section"] == row["norm_section"]).sum() == 1 else row["citation"]
+
+
+def code_of(state: str, row) -> str:
+    if state in SINGLE_CODE:
+        return SINGLE_CODE[state]
+    return str(row["citation"]).rsplit("§", 1)[0].strip().rstrip(",") or f"{S.NAME[state]} statutes"
+
+
 def section_texts(state: str, numbers: list[str], code: str | None = None) -> list[SectionText]:
     df = load(state)
     out = []
     for n in numbers:
-        hit = df[df["norm_section"] == norm_section(n)]
+        hit = find(df, n)
         if hit.empty:
             raise KeyError(f"{state}: section {n} not found in the downloaded statutes")
+        if len(hit) > 1 and "§" not in n:
+            raise KeyError(f"{state}: section {n} is ambiguous; name the article, e.g. "
+                           + "; ".join(hit["citation"].head(4)))
         r = hit.iloc[0]
-        out.append(SectionText(section=r["section_number"], title=r["section_title"], code=code or code_name(state),
+        out.append(SectionText(section=r["section_number"], title=r["section_title"], code=code or code_of(state, r),
                                jurisdiction=state, text=strip_history(r["text"]), url=r["source_url"],
                                retrieved_from=f"open-us-law {r['act_id']}",
                                license_note="open-us-law (Vaquill AI), CC BY-NC 4.0; text from the government "
@@ -130,7 +162,7 @@ def section_texts(state: str, numbers: list[str], code: str | None = None) -> li
 
 
 def code_name(state: str) -> str:
-    return {"va": "Code of Virginia", "dc": "D.C. Code"}.get(state, f"{S.NAME[state]} statutes")
+    return SINGLE_CODE.get(state, f"{S.NAME[state]} statutes")
 
 
 def combined_text(texts: list[SectionText]) -> str:

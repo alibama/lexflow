@@ -26,6 +26,7 @@ x-app: &app
     TURSO_AUTH_TOKEN: ${TURSO_AUTH_TOKEN:-}
     DOKUWIKI_URL: ${DOKUWIKI_URL:-}
     DOKUWIKI_TOKEN: ${DOKUWIKI_TOKEN:-}
+    LEXIPEDIA_TOKEN: ${LEXIPEDIA_TOKEN:-}
     SEARXNG_URL: ${SEARXNG_URL:-}
   volumes:
     - lexflow-data:/data                 # the SQLite store, job logs, built models
@@ -74,6 +75,7 @@ services:
       TURSO_AUTH_TOKEN: ""
       DOKUWIKI_URL: ""
       DOKUWIKI_TOKEN: ""
+      LEXIPEDIA_TOKEN: ""
       OLLAMA_URL: http://127.0.0.1:9
     command: ["python", "-m", "pytest", "-q"]
 

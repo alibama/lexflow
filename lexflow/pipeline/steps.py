@@ -177,6 +177,16 @@ def st_score(con):
     return {"status": status, "done": n, "total": total, "detail": detail, "stale": stale}
 
 
+def st_local(con):
+    from ..municipal import places as P
+    files = len(P.local_files())
+    n = db.scalar(con, "SELECT count(DISTINCT gov_id) FROM local_answers", default=0)
+    if not files:
+        return {"status": "optional", "done": 0, "total": 0, "detail": "No researched places yet"}
+    return {"status": "done" if n >= files else "partial" if n else "todo", "done": n, "total": files,
+            "detail": f"{plural(n, 'place')} loaded of {plural(files, 'researched place')}"}
+
+
 def st_publish(con):
     if not (config.DOKUWIKI_URL and config.DOKUWIKI_TOKEN):
         return {"status": "optional", "done": 0, "total": 0,
@@ -200,7 +210,15 @@ def st_sync(con):
 
 
 # ----------------------------------------------------------------------- runs
+def _places(con, args) -> list[dict] | None:
+    from ..municipal import places as P
+    return P.resolve_all(con, args["places"]) if args.get("places") else None
+
+
 def _states(args, con=None) -> list[str]:
+    """States named directly, or the states of the places named (``places`` narrows a run to a few governments)."""
+    if args.get("places") and not args.get("states") and con is not None:
+        return sorted({g["state"] for g in _places(con, args)})
     return S.parse_states(args.get("states"))
 
 
@@ -210,7 +228,7 @@ def run_governments(con, args, log, progress):
 
 def run_statutes(con, args, log, progress):
     kinds = ("statutes", "regulations") if args.get("regulations") else ("statutes",)
-    sts = _states(args)
+    sts = _states(args, con)
     out = {}
     for i, st in enumerate(sts):
         out[st] = statutes.fetch_state(con, st, kinds=kinds, log=log)
@@ -222,7 +240,7 @@ def run_statutes(con, args, log, progress):
 
 
 def run_locate(con, args, log, progress):
-    sts = [s for s in _states(args)]
+    sts = [s for s in _states(args, con)]
     out = {}
     for i, qid in enumerate(QUESTIONS if not args.get("questions") else args["questions"].split(",")):
         out[qid] = locator.run(con, get_question(qid), sts, log=log)
@@ -231,7 +249,7 @@ def run_locate(con, args, log, progress):
 
 
 def run_contacts(con, args, log, progress):
-    sts = [s for s in _states(args) if s in set(_gov_states(con))]
+    sts = [s for s in _states(args, con) if s in set(_gov_states(con))]
     out = {}
     for i, st in enumerate(sts):
         out[st] = contacts.wikidata(con, st, log=log)
@@ -241,17 +259,20 @@ def run_contacts(con, args, log, progress):
 
 
 def run_crawl(con, args, log, progress):
-    sts = [s for s in _states(args) if s in set(_gov_states(con))]
+    sts = [s for s in _states(args, con) if s in set(_gov_states(con))]
+    govs = _places(con, args)
     out = {}
     for i, st in enumerate(sts):
-        out[st] = crawl.run(con, st, force=bool(args.get("force")), log=log,
+        ids = [g["gov_id"] for g in govs if g["state"] == st] if govs else None
+        out[st] = crawl.run(con, st, force=bool(args.get("force")), log=log, gov_ids=ids,
                             progress=lambda p, i=i: progress((i + p) / len(sts)))
-        _mark_scan(con, "crawl", st, rows=out[st]["sites"], matched=out[st]["records"] + out[st]["business"])
+        if ids is None:
+            _mark_scan(con, "crawl", st, rows=out[st]["sites"], matched=out[st]["records"] + out[st]["business"])
     return out
 
 
 def run_locus(con, args, log, progress):
-    sts = [s for s in _states(args) if s in set(_gov_states(con))]
+    sts = [s for s in _states(args, con) if s in set(_gov_states(con))]
     out = {}
     for i, st in enumerate(sts):
         out[st] = locus_scan.run(con, st, log=log)
@@ -284,44 +305,61 @@ def run_models(con, args, log, progress):
 
 
 def run_build(con, args, log, progress):
-    sts = _states(args)
+    sts = _states(args, con)
     located = {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM located_law WHERE status='found'")}
     sts = [s for s in sts if s in located or args.get("states")]
     qs = args.get("questions").split(",") if args.get("questions") else list(QUESTIONS)
+    govs = _places(con, args)
     return B.run(con, sts, qs, use_llm=not args.get("no_llm"), force=bool(args.get("force")), log=log,
-                 progress=progress)
+                 progress=progress, gov_ids=[g["gov_id"] for g in govs] if govs else None)
 
 
 def run_score(con, args, log, progress):
-    sts = [s for s in _states(args) if s in set(_gov_states(con))]
+    sts = [s for s in _states(args, con) if s in set(_gov_states(con))]
+    govs = _places(con, args)
     out = {}
     for i, st in enumerate(sts):
-        out[st] = scoring.run(con, st, log=log)
+        ids = [g["gov_id"] for g in govs if g["state"] == st] if govs else None
+        out[st] = scoring.run(con, st, log=log, gov_ids=ids)
         progress((i + 1) / len(sts))
     return {"states": len(out)}
 
 
 def run_publish(con, args, log, progress):
-    from ..publish.dokuwiki import DokuWiki, publish
-    wiki = DokuWiki(config.DOKUWIKI_URL, token=config.DOKUWIKI_TOKEN, dry_run=bool(args.get("dry_run")))
-    rows = db.rows(con, "SELECT model_id, bpmn, dmn, stages FROM process_models WHERE tier IN ('reviewed','agreed') "
-                        "AND bpmn IS NOT NULL")
-    done = 0
-    for i, r in enumerate(rows):
-        model = B.rebuild(con, r["model_id"])
-        res = publish(model, wiki, r["bpmn"], r["dmn"])
-        stages = db.loads(r["stages"], {})
-        if not args.get("dry_run"):
-            stages["published"] = db.now()
+    """Post the lexflow: pages to the wiki (lexipedia.xyz) over JSON-RPC.  Only the lexflow: namespace is ever
+    written; a dry run renders and checks every page and reports what would change, without saving."""
+    from ..publish.dokuwiki import DokuWiki
+    from ..publish.lexipedia import NS, all_pages
+    dry = bool(args.get("dry_run"))
+    wiki = DokuWiki(config.DOKUWIKI_URL, token=config.DOKUWIKI_TOKEN, dry_run=dry)
+    if not dry:
+        who = wiki.whoami()
+        log(f"signed in to {config.DOKUWIKI_URL} as {who.get('login') if isinstance(who, dict) else who}")
+    pages = all_pages(con)
+    done, unchanged = [], []
+    for i, (pid, text) in enumerate(sorted(pages.items())):
+        if not pid.startswith(f"{NS}:"):
+            raise RuntimeError(f"refusing to write {pid}: outside the {NS}: namespace")
+        current = None if dry else wiki.get_page(pid)
+        if current is not None and current.strip() == text.strip():
+            unchanged.append(pid)
+        else:
+            wiki.save_page(pid, text, summary="lexflow: Claude-checked process model and local answers")
+            done.append(pid)
+        log(f"{'would write' if dry else 'wrote' if pid in done else 'unchanged'} {pid} ({len(text):,} chars)")
+        progress((i + 1) / len(pages))
+    if not dry:
+        ts = db.now()
+        for r in db.rows(con, "SELECT model_id, stages FROM process_models WHERE tier IN ('reviewed','agreed')"):
+            stages = db.loads(r["stages"], {})
+            stages["published"] = stages.get("published") or ts
             done_n = sum(1 for v in stages.values() if v)
             con.execute("UPDATE process_models SET stages=?, completion=?, updated_at=? WHERE model_id=?",
-                        (json.dumps(stages), round(done_n / len(M.STAGES), 3), db.now(), r["model_id"]))
-        log(f"{r['model_id']}: {res['process_page']} ({len(res['law_pages'])} law pages)")
-        done += 1
-        progress((i + 1) / len(rows))
-    db.bump(con)
-    con.commit()
-    return {"published": done, "dry_run": bool(args.get("dry_run"))}
+                        (json.dumps(stages), round(done_n / len(M.STAGES), 3), ts, r["model_id"]))
+        db.bump(con)
+        con.commit()
+    return {"written": done, "unchanged": unchanged, "dry_run": dry,
+            "index": f"{config.DOKUWIKI_URL.rstrip('/')}/doku.php?id={NS}:start" if config.DOKUWIKI_URL else None}
 
 
 def run_sync(con, args, log, progress):
@@ -342,10 +380,23 @@ def run_sync(con, args, log, progress):
         raise
 
 
+def run_local(con, args, log, progress):
+    """Load checked local answers (curated/places/*/*.json) for the places named, or all of them."""
+    from ..municipal import places as P
+    out = P.load_local(con, _places(con, args), log=log)
+    progress(1.0)
+    return out
+
+
 def run_quickstart(con, args, log, progress):
-    """Tick every required box in order: governments, statutes, locate, build, score."""
-    plan = [("governments", run_governments), ("statutes", run_statutes), ("locate", run_locate),
-            ("contacts", run_contacts), ("build", run_build), ("score", run_score)]
+    """Tick every required box in order: governments, statutes, locate, build, score.
+    With ``places``, also scan those governments' websites and load their local answers."""
+    plan = [("statutes", run_statutes), ("locate", run_locate), ("contacts", run_contacts)]
+    if not db.scalar(con, "SELECT count(*) FROM governments", default=0) or not args.get("places"):
+        plan.insert(0, ("governments", run_governments))
+    if args.get("places"):
+        plan += [("crawl", run_crawl), ("local", run_local)]
+    plan += [("build", run_build), ("score", run_score)]
     out = {}
     for i, (name, fn) in enumerate(plan):
         log(f"== {STEPS[name].title}")
@@ -378,15 +429,20 @@ STEPS: dict[str, Step] = {s.id: s for s in [
     Step("build", "Build the state process models",
          "Curated (checked) facts first; otherwise both local models extract quote-anchored facts, compiled to "
          "BPMN and DMN and checked (schemas, bpmnlint, quotes, Petri-net soundness).",
-         "required", st_build, run_build, needs=["locate"], params=["states", "questions", "force", "no_llm"],
+         "required", st_build, run_build, needs=["locate"], params=["states", "places", "questions", "force", "no_llm"],
          cost="minutes per state on CPU"),
+    Step("local", "Load checked local answers",
+         "Local procedures researched for particular places (curated/places/<state>/<place>.json): portals, "
+         "offices, local ordinances and fees, each with its source. Scored as local law and contacts.",
+         "optional", lambda con: st_local(con), run_local, needs=["governments"], params=["places"],
+         cost="seconds"),
     Step("score", "Score every government and refresh the maps",
          "Confidence = state law + local law + contacts, with the weights on the Method page.",
-         "required", st_score, run_score, needs=["governments"], params=["states"], cost="seconds"),
+         "required", st_score, run_score, needs=["governments"], params=["states", "places"], cost="seconds"),
     Step("crawl", "Look for records and licence pages on official websites",
          "Reads each government's home page (robots.txt respected) for a public-records page, a business-licence "
          "page, and email or phone links.", "optional", st_crawl, run_crawl, needs=["governments"],
-         params=["states", "force"], cost="about 1 request per government; a few minutes per state"),
+         params=["states", "places", "force"], cost="about 1 request per government; a few minutes per state"),
     Step("locus", "Scan local ordinances (LOCUS-v1)",
          "Finds local ordinances on public records and business licences for each city and county. LOCUS is "
          "CC BY-NC and machine-labelled, so it is used to find law, never to cite it.",
@@ -400,9 +456,28 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "optional", st_sync, run_sync, params=["direction", "states", "tables", "full"]),
 ]}
 
-COMPOSITE = {"quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
-                                "models and scores in one job.", "required", lambda con: {}, run_quickstart,
-                                params=["states", "no_llm"])}
+def run_benchmark(con, args, log, progress):
+    """Score extraction strategies x local models against Claude's reference models."""
+    from ..extract import benchmark as BM
+    from ..extract.strategies import STRATEGIES
+    case_list = [c.strip() for c in (args.get("cases") or "").split(",") if c.strip()] or BM.cases()
+    strategy_list = [s.strip() for s in (args.get("strategies") or "").split(",") if s.strip()] or \
+        [s for s in STRATEGIES if s != "oneshot"]
+    model_list = [m.strip() for m in (args.get("models") or "").split(",") if m.strip()] or \
+        [config.MODEL_A, config.MODEL_B]
+    log(f"benchmark: {len(case_list)} cases x {len(strategy_list)} strategies x {len(model_list)} models")
+    return BM.run(con, case_list, strategy_list, model_list, log=log, progress=progress)
+
+
+COMPOSITE = {
+    "quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
+                       "models and scores in one job.", "required", lambda con: {}, run_quickstart,
+                       params=["states", "places", "no_llm"]),
+    "benchmark": Step("benchmark", "Benchmark local models against Claude",
+                      "Runs each extraction strategy with each local model on every curated case and scores it "
+                      "against Claude's reference model.", "optional", lambda con: {}, run_benchmark,
+                      params=["cases", "strategies", "models"]),
+}
 
 
 def checklist(con) -> list[dict]:

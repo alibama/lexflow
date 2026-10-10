@@ -1,0 +1,790 @@
+{
+  "state": "dc",
+  "question": "records",
+  "sections": [
+    "2-532",
+    "2-537",
+    "2-534"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; timed answer, extension notice and extended limit, Mayor timeout and no-suit ends; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Request public records from a District of Columbia public body",
+    "trigger": "A person asks a D.C. public body for a public record",
+    "trigger_source": {
+      "section": "2-532",
+      "subsection": "a",
+      "quote": "Any person has a right to inspect, and at his or her discretion, to copy any public record of a public body"
+    },
+    "actors": [
+      {
+        "id": "requester",
+        "name": "Requester",
+        "kind": "private-party",
+        "source": {
+          "section": "2-532",
+          "subsection": "c.1",
+          "quote": "notify the person making such request"
+        }
+      },
+      {
+        "id": "public_body",
+        "name": "D.C. public body",
+        "kind": "public-body",
+        "source": {
+          "section": "2-532",
+          "subsection": "c.1",
+          "quote": "a public body, upon request reasonably describing any public record"
+        }
+      },
+      {
+        "id": "mayor",
+        "name": "Mayor (FOIA appeals)",
+        "kind": "official",
+        "source": {
+          "section": "2-537",
+          "subsection": "a",
+          "quote": "may petition the Mayor to review the public record to determine whether it may be withheld from public inspection"
+        }
+      },
+      {
+        "id": "superior_court",
+        "name": "Superior Court for the District of Columbia",
+        "kind": "court",
+        "source": {
+          "section": "2-537",
+          "subsection": "b",
+          "quote": "the Superior Court for the District of Columbia may enjoin the public body from withholding records"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request record, reasonably describing it",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "public_body",
+        "source": {
+          "section": "2-532",
+          "subsection": "c.1",
+          "quote": "upon request reasonably describing any public record"
+        }
+      },
+      {
+        "id": "consider_extension",
+        "actor": "public_body",
+        "action": "Decide whether to extend the time limit",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "submit_request"
+        ],
+        "decision": "extension_grounds",
+        "source": {
+          "section": "2-532",
+          "subsection": "d.1",
+          "quote": "In unusual circumstances, the time limits prescribed in subsection (c)(1) and (c)(2) of this section may be extended"
+        }
+      },
+      {
+        "id": "notify_extension",
+        "actor": "public_body",
+        "action": "Send written notice of reasons and expected date",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "consider_extension"
+        ],
+        "condition": "extension_taken",
+        "recipient": "requester",
+        "source": {
+          "section": "2-532",
+          "subsection": "d.1",
+          "quote": "may be extended by written notice to the person making such request setting forth the reasons for extension and expected date for determination"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "public_body",
+        "action": "Grant access or give written reasons for denial",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "consider_extension"
+        ],
+        "decision": "response_type",
+        "source": {
+          "section": "2-532",
+          "subsection": "c.1",
+          "quote": "shall within 15 days (except Saturdays, Sundays, and legal public holidays) of the receipt of any such request either make the requested public record accessible or notify the person making such request of its determination not to make the requested public record or any part thereof accessible and the reasons therefor"
+        },
+        "deadline": {
+          "amount": 15,
+          "unit": "business_days",
+          "anchor": "the receipt of any such request",
+          "consequence": "deemed-denial",
+          "on_miss": "deemed_denied",
+          "source": {
+            "section": "2-532",
+            "subsection": "e",
+            "quote": "Any failure on the part of a public body to comply with a request under subsection (a) of this section within the time provisions of subsections (c) and (d) of this section shall be deemed a denial of the request"
+          }
+        }
+      },
+      {
+        "id": "respond_extended",
+        "actor": "public_body",
+        "action": "Grant access or give reasons by extended date",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "notify_extension"
+        ],
+        "decision": "response_type",
+        "source": {
+          "section": "2-532",
+          "subsection": "d.1",
+          "quote": "Such extension shall not exceed 10 days (except Saturdays, Sundays, and legal public holidays) for records requested under subsection (c)(1) of this section"
+        },
+        "deadline": {
+          "amount": 25,
+          "unit": "business_days",
+          "anchor": "the receipt of any such request",
+          "consequence": "deemed-denial",
+          "on_miss": "deemed_denied",
+          "source": {
+            "section": "2-532",
+            "subsection": "e",
+            "quote": "Any failure on the part of a public body to comply with a request under subsection (a) of this section within the time provisions of subsections (c) and (d) of this section shall be deemed a denial of the request"
+          }
+        }
+      },
+      {
+        "id": "deemed_denied",
+        "actor": "public_body",
+        "action": "Request deemed denied",
+        "kind": "record",
+        "modality": "none",
+        "after": [],
+        "source": {
+          "section": "2-532",
+          "subsection": "e",
+          "quote": "shall be deemed a denial of the request, and the person making such request shall be deemed to have exhausted his administrative remedies with respect to such request"
+        }
+      },
+      {
+        "id": "release_segregable",
+        "actor": "public_body",
+        "action": "Provide segregable portion; mark and explain deletions",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "respond",
+          "respond_extended"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "2-534",
+          "subsection": "b",
+          "quote": "Any reasonably segregable portion of a public record shall be provided to any person requesting the record after deletion of those portions which may be withheld from disclosure"
+        },
+        "join": "any",
+        "condition": "record_withheld"
+      },
+      {
+        "id": "assess_fees",
+        "actor": "public_body",
+        "action": "Set fees within the statutory limits",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "respond",
+          "respond_extended"
+        ],
+        "condition": "record_released",
+        "decision": "fee_basis",
+        "source": {
+          "section": "2-532",
+          "subsection": "b",
+          "quote": "A public body may establish and collect fees not to exceed the actual cost of searching for, reviewing, redacting, and making copies of records."
+        },
+        "join": "any"
+      },
+      {
+        "id": "make_accessible",
+        "actor": "public_body",
+        "action": "Provide record in the requested format",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "assess_fees"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "2-532",
+          "subsection": "a-1",
+          "quote": "a public body shall provide the record in any form or format requested by the person"
+        }
+      },
+      {
+        "id": "petition_mayor",
+        "actor": "requester",
+        "action": "Petition the Mayor to review the denial",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "release_segregable",
+          "deemed_denied"
+        ],
+        "condition": "requester_petitions_mayor",
+        "recipient": "mayor",
+        "source": {
+          "section": "2-537",
+          "subsection": "a",
+          "quote": "any person denied the right to inspect a public record of a public body may petition the Mayor"
+        },
+        "join": "any"
+      },
+      {
+        "id": "mayor_review",
+        "actor": "mayor",
+        "action": "Decide in writing whether record may be withheld",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "petition_mayor"
+        ],
+        "decision": "mayor_ruling",
+        "source": {
+          "section": "2-537",
+          "subsection": "a",
+          "quote": "Such determination shall be made in writing with a statement of reasons therefor in writing within 10 days (excluding Saturdays, Sundays, and legal holidays) of the submission of the petition"
+        },
+        "deadline": {
+          "amount": 10,
+          "unit": "business_days",
+          "anchor": "the submission of the petition",
+          "consequence": "unstated",
+          "on_miss": "mayor_no_decision",
+          "source": {
+            "section": "2-537",
+            "subsection": "a.1",
+            "quote": "does not make a determination within the time limits provided in this subsection"
+          }
+        }
+      },
+      {
+        "id": "mayor_no_decision",
+        "actor": "mayor",
+        "action": "Mayor did not decide in time",
+        "kind": "record",
+        "modality": "none",
+        "after": [],
+        "source": {
+          "section": "2-537",
+          "subsection": "a.1",
+          "quote": "does not make a determination within the time limits provided in this subsection"
+        }
+      },
+      {
+        "id": "order_disclosure",
+        "actor": "mayor",
+        "action": "Order public body to disclose immediately",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "mayor_review"
+        ],
+        "condition": "record_may_not_be_withheld",
+        "source": {
+          "section": "2-537",
+          "subsection": "a.2",
+          "quote": "he shall order the public body to disclose the record immediately"
+        }
+      },
+      {
+        "id": "sue_superior_court",
+        "actor": "requester",
+        "action": "Sue in D.C. Superior Court",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "release_segregable",
+          "deemed_denied",
+          "mayor_review",
+          "mayor_no_decision"
+        ],
+        "join": "any",
+        "condition": "requester_sues",
+        "recipient": "superior_court",
+        "source": {
+          "section": "2-537",
+          "subsection": "a.1",
+          "quote": "the person seeking disclosure may institute proceedings for injunctive or declaratory relief in the Superior Court for the District of Columbia"
+        }
+      },
+      {
+        "id": "sue_to_compel",
+        "actor": "requester",
+        "action": "Sue to compel production of the record",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "order_disclosure"
+        ],
+        "condition": "public_body_continues_withholding",
+        "recipient": "superior_court",
+        "source": {
+          "section": "2-537",
+          "subsection": "a.2",
+          "quote": "If the public body continues to withhold the record, the person seeking disclosure may bring suit"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "extension_grounds",
+        "question": "Does the public body extend the time to decide?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "body_elects_extension",
+            "label": "Public body chooses to extend (the statute permits, does not require)",
+            "type": "boolean"
+          },
+          {
+            "name": "voluminous_records",
+            "label": "Request needs search and review of a voluminous amount of separate records",
+            "type": "boolean"
+          },
+          {
+            "name": "consultation_needed",
+            "label": "Consultation needed with another public body or among components",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "extension",
+            "label": "Extension",
+            "type": "string"
+          },
+          {
+            "name": "extension_taken",
+            "label": "Time limit extended",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No extension: determine within 15 working days of receipt\"",
+              "false"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "d.1",
+              "quote": "In unusual circumstances, the time limits prescribed in subsection (c)(1) and (c)(2) of this section may be extended"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Written notice with reasons and expected date; at most 10 more working days\"",
+              "true"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "d.2.A",
+              "quote": "The need to search for, collect, and appropriately examine a voluminous amount of separate and distinct records that are demanded in a single request"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Written notice with reasons and expected date; at most 10 more working days\"",
+              "true"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "d.2.B",
+              "quote": "The need for consultation, which shall be conducted with all practicable speed"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"No extension: no unusual circumstances\"",
+              "false"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "d.2",
+              "quote": "“unusual circumstances” are limited to"
+            }
+          }
+        ]
+      },
+      {
+        "id": "response_type",
+        "question": "How does the public body answer the request?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "exempt_in_whole",
+            "label": "Whole record exempt under § 2-534",
+            "type": "boolean"
+          },
+          {
+            "name": "exempt_in_part",
+            "label": "Part of the record exempt under § 2-534",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "record_withheld",
+            "label": "Record withheld in whole or part",
+            "type": "boolean"
+          },
+          {
+            "name": "record_released",
+            "label": "Whole record made accessible",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Deny access in writing with reasons\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "c.1",
+              "quote": "its determination not to make the requested public record"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Withhold the exempt part with reasons; provide the segregable rest\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "2-534",
+              "subsection": "b",
+              "quote": "the justification for the deletion shall be explained fully in writing, and the extent of the deletion shall be indicated"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Make the requested record accessible\"",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "c.1",
+              "quote": "make the requested public record accessible"
+            }
+          }
+        ]
+      },
+      {
+        "id": "mayor_ruling",
+        "question": "What does the Mayor decide on the petition?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "record_may_be_withheld",
+            "label": "Record may be withheld from public inspection",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ruling",
+            "label": "Ruling",
+            "type": "string"
+          },
+          {
+            "name": "record_may_not_be_withheld",
+            "label": "Disclosure ordered",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true"
+            ],
+            "then": [
+              "\"Petition denied in writing with reasons; requester may sue\"",
+              "false"
+            ],
+            "source": {
+              "section": "2-537",
+              "subsection": "a.1",
+              "quote": "If the Mayor denies the petition"
+            }
+          },
+          {
+            "when": [
+              "false"
+            ],
+            "then": [
+              "\"Record may not be withheld: disclose immediately\"",
+              "true"
+            ],
+            "source": {
+              "section": "2-537",
+              "subsection": "a.2",
+              "quote": "If the Mayor decides that the public record may not be withheld"
+            }
+          }
+        ]
+      },
+      {
+        "id": "fee_basis",
+        "question": "Which costs may the public body charge?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "public_interest_waiver",
+            "label": "Furnishing the record primarily benefits the general public",
+            "type": "boolean"
+          },
+          {
+            "name": "commercial_use",
+            "label": "Records requested for commercial use",
+            "type": "boolean"
+          },
+          {
+            "name": "scholarly_or_news_media",
+            "label": "Educational or non-commercial scientific institution, or news media",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "chargeable",
+            "label": "Chargeable costs",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Fee may be waived or reduced\""
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "b",
+              "quote": "Documents may be furnished without charge or at a reduced charge where a public body determines that waiver or reduction of the fee is in the public interest"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Search, duplication and review\""
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "b-1.1",
+              "quote": "Fees shall be limited to reasonable standard charges for document search, duplication, and review when records are requested for commercial use"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Duplication only\""
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "b-1.2",
+              "quote": "Fees shall be limited to reasonable standard charges for document duplication when records are not sought for commercial use"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Search and duplication\""
+            ],
+            "source": {
+              "section": "2-532",
+              "subsection": "b-1.3",
+              "quote": "fees shall be limited to reasonable standard charges for document search and duplication"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "record_provided",
+        "description": "Record provided; requester pays reproduction costs",
+        "after": [
+          "make_accessible"
+        ],
+        "source": {
+          "section": "2-532",
+          "subsection": "a-1",
+          "quote": "provided that the person shall pay the costs of reproducing the record in that form or format"
+        }
+      },
+      {
+        "id": "deemed_denial_not_challenged",
+        "description": "Deemed denial not challenged",
+        "after": [
+          "deemed_denied"
+        ],
+        "source": {
+          "section": "2-532",
+          "subsection": "e",
+          "quote": "unless such person chooses to petition the Mayor"
+        }
+      },
+      {
+        "id": "withholding_not_appealed",
+        "description": "Non-exempt part released; withholding not appealed",
+        "after": [
+          "release_segregable"
+        ],
+        "source": {
+          "section": "2-534",
+          "subsection": "b",
+          "quote": "the extent of the deletion shall be indicated on the portion of the record which is made available or published"
+        }
+      },
+      {
+        "id": "disclosure_ordered",
+        "description": "Disclosure ordered on the Mayor petition",
+        "after": [
+          "order_disclosure"
+        ],
+        "source": {
+          "section": "2-537",
+          "subsection": "a.2",
+          "quote": "disclose the record immediately"
+        }
+      },
+      {
+        "id": "mayor_denial_not_challenged",
+        "description": "Mayor denial or silence not challenged in court",
+        "after": [
+          "mayor_review",
+          "mayor_no_decision"
+        ],
+        "join": "any",
+        "source": {
+          "section": "2-537",
+          "subsection": "a.1",
+          "quote": "the person seeking disclosure may institute proceedings for injunctive or declaratory relief in the Superior Court for the District of Columbia"
+        }
+      },
+      {
+        "id": "court_decides",
+        "description": "Court decides de novo; burden on the public body",
+        "after": [
+          "sue_superior_court",
+          "sue_to_compel"
+        ],
+        "join": "any",
+        "source": {
+          "section": "2-537",
+          "subsection": "b",
+          "quote": "the Superior Court for the District of Columbia may enjoin the public body from withholding records and order the production of any records improperly withheld from the person seeking disclosure"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "D.C. Code § 2-534",
+        "role": "exemptions that allow a public body to withhold a record",
+        "source": {
+          "section": "2-532",
+          "subsection": "a",
+          "quote": "except as otherwise expressly provided by § 2-534"
+        }
+      },
+      {
+        "citation": "6 DCMR § 1803",
+        "role": "employee responsibility for FOIA compliance in personnel regulations",
+        "source": {
+          "section": "2-537",
+          "subsection": "e",
+          "quote": "section 1803 of Title 6 of the District of Columbia Municipal Regulations"
+        }
+      }
+    ],
+    "gaps": [
+      "'respond' stands for the whole answer under § 2-532(c)(1): the determination together with making the record accessible or notifying the requester of the denial and its reasons. It carries the 15-working-day timer, and a miss routes to deemed_denied (consequence 'deemed-denial', § 2-532(e)). The compiler draws a decision step as a business-rule task without a message flow, so the answer reaches the requester through release_segregable (written explanation, segregable part) or make_accessible (the record). Those follow-up acts, and the fee step before release, carry no timer of their own: the model treats the timed answer as the act the time limit governs. The drawn timer starts when 'respond' starts, just after the extension choice, rather than at receipt itself.",
+      "An extension under § 2-532(d)(1) takes effect by written notice (notify_extension, when extension_taken). The extended answer is a separate step, respond_extended, timed at 25 working days from receipt (15 plus at most 10); the expected date in the notice may be earlier, and the model does not draw that date. The drawn timer of respond_extended starts after the notice, so it can run somewhat past 25 working days from receipt. The statute does not say when the extension notice must be sent; because it extends 'the time limits', it presumably has to go out before the 15 working days end.",
+      "A deemed denial is also deemed exhaustion of administrative remedies (§ 2-532(e)): that status is what lets the requester sue directly (§ 2-537(a)(1)) instead of petitioning the Mayor. deemed_denial_not_challenged is the end for a requester who does neither.",
+      "A written withholding (after release_segregable), a deemed denial, a Mayor denial and a Mayor who does not decide in time all lead to the one sue_superior_court step (join 'any'). requester_sues is the requester's choice and is supplied with the case. The statute gives the right to sue after a deemed denial, after the Mayor denies or does not decide in time (§ 2-537(a)(1)), and after a written withholding only for records of the Council or the Attorney General (§ 2-537(a-1), (a-2)), which skip the Mayor; the model does not enforce these limits. A suit to enforce the Mayor's disclosure order (§ 2-537(a)(2)) is a separate step, sue_to_compel.",
+      "§ 2-537(a)(1) gives a missed Mayor deadline the same remedy as a denial but does not call it a deemed denial, so the deadline's consequence is 'unstated' and the timer leads to mayor_no_decision. The drawn timer is interrupting, which ends the Mayor's review; the text does not say that the Mayor loses the power to decide late, and a late decision is not modelled.",
+      "release_segregable follows every written withholding: § 2-534(b) applies to any withheld record, and when the whole record is exempt there is no segregable portion to provide. Fees for a partial release (§ 2-532(b)) are not drawn on that branch.",
+      "Advance payment may be required only if the requester previously failed to pay on time or the fee will exceed $250 (§ 2-532(b-3)); otherwise release does not wait for payment. Review costs exclude legal or policy analysis (b-2); 'reasonable efforts' caps reprogramming or reformatting at 8 hours of personnel time (f)(1). These limits are not separate steps.",
+      "Petitioning the Mayor is not available for records of the Council (§ 2-537(a-1)) or the Attorney General (a-2) ('Except as provided in subsections (a-1) and (a-2)'); the model leaves requester_petitions_mayor to the case and does not enforce this.",
+      "Body-worn camera recordings of the Metropolitan Police Department have 25 working days plus up to 15 more in unusual circumstances, including the inability to procure a redaction vendor, and may only be requested from MPD (§ 2-532(c)(2), (d)(1), (d)(2)(C)). Not modelled separately.",
+      "Where and how to file (which office, which form) is set by each public body's rules issued after notice and comment under § 2-532(a); the statute text does not say.",
+      "No deadline for petitioning the Mayor or for suing is stated in these sections.",
+      "In court the burden is on the agency, review is de novo and records may be examined in camera (§ 2-537(b)); a prevailing requester may recover fees (c); an arbitrary or capricious violation is a misdemeanor with a fine of up to $100 (§ 2-537(d)). Not modelled as steps."
+    ]
+  }
+}

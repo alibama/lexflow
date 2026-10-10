@@ -55,7 +55,7 @@ def candidates(q: Question, state: str, top: int = 8) -> list[dict]:
         if sc > 0:
             scored.append((sc, r))
     scored.sort(key=lambda x: (-x[0], len(x[1]["text"])))
-    return [{"section": r["section_number"], "citation": r["citation"], "heading": r["section_title"],
+    return [{"section": statutes.ref_of(state, r), "citation": r["citation"], "heading": r["section_title"],
              "chapter": r["chapter_name"], "url": r["source_url"], "score": round(sc, 2), "words": int(r["word_count"] or 0)}
             for sc, r in scored[:top]]
 
@@ -71,7 +71,7 @@ def locate(q: Question, state: str) -> dict:
     row["candidates"] = json.dumps(cands)
     chosen, method, score = None, None, 0.0
     for seed in q.seeds.get(state, ()):
-        hit = df[df["norm_section"] == statutes.norm_section(seed)]
+        hit = statutes.find(df, seed)
         for _, r in hit.iterrows():
             text = r["text"]
             if q.text_required is not None and not q.text_required.search(text):
@@ -84,7 +84,7 @@ def locate(q: Question, state: str) -> dict:
             break
     if chosen is None and cands:
         best = cands[0]
-        hit = df[df["section_number"] == best["section"]]
+        hit = statutes.find(df, best["section"])
         if not hit.empty and best["score"] >= 3:
             chosen, method = hit.iloc[0], "keyword"
             score = 0.8 if best["score"] >= 8 else 0.6 if best["score"] >= 5 else 0.4
@@ -94,8 +94,9 @@ def locate(q: Question, state: str) -> dict:
     m = re.search(r'(?:cited as|known as)\s+(?:the\s+)?["“]([^"”]{4,120})["”]', chosen["text"])
     if m:
         act = m.group(1)
-    related = [c for c in cands if c["section"] != chosen["section_number"]][:3]
-    row.update(status="found", citation=chosen["citation"], section=chosen["section_number"],
+    ref = statutes.ref_of(state, chosen)
+    related = [c for c in cands if c["section"] != ref][:3]
+    row.update(status="found", citation=chosen["citation"], section=ref,
                heading=chosen["section_title"], url=chosen["source_url"], method=method, score=score, act=act,
                text=statutes.strip_history(chosen["text"]), related=json.dumps(related))
     return row

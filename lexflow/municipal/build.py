@@ -19,7 +19,7 @@ import requests
 from .. import config
 from ..extract.compile import compile_facts
 from ..extract.evaluate import score as compare
-from ..extract.ollama import OllamaClient, check_facts, extract
+from ..extract.ollama import ExtractionResult, OllamaClient, check_facts, extract
 from ..extract.schema import LegalProcessFacts
 from ..ir import Provenance
 from ..store import db
@@ -49,6 +49,14 @@ def _has(available: list[str], name: str) -> bool:
 
 
 def agreement(a: LegalProcessFacts, b: LegalProcessFacts, text: str) -> dict:
+    """How far two models' facts agree, averaged both ways, with steps matched by the clause they quote."""
+    from ..extract.benchmark import equivalence
+    ab, ba = equivalence(a, b), equivalence(b, a)
+    return {k: round((ab[k] + ba[k]) / 2, 3) for k in ("value", "step_f1", "actors", "deadlines", "modality")}
+
+
+def lexical_agreement(a: LegalProcessFacts, b: LegalProcessFacts, text: str) -> dict:
+    """The earlier measure: steps matched by the wording of their actions only."""
     ab, ba = compare(a, b, text), compare(b, a, text)
     p, r = ab.step_precision, ab.step_recall
     f1 = 2 * p * r / (p + r) if p + r else 0.0
@@ -92,9 +100,50 @@ def _pin_sections(facts: LegalProcessFacts, section: str) -> LegalProcessFacts:
     return LegalProcessFacts.model_validate(data)
 
 
+def _fix_sources(model, texts) -> None:
+    """Point every source at the text it quotes, so citations name the right article or code
+    (a Maryland model can quote General Provisions and Corporations and Associations at once)."""
+    import re as _re
+    by_section: dict[str, list] = {}
+    for t in texts:
+        by_section.setdefault(t.section, []).append(t)
+
+    def fix(src):
+        cands = by_section.get(src.section) or []
+        if not cands:
+            return
+        t = cands[0]
+        if len(cands) > 1 and src.quote:
+            norm = lambda s: _re.sub(r"\s+", " ", s)  # noqa: E731
+            t = next((c for c in cands if norm(src.quote) in norm(c.text)), cands[0])
+        sub = "".join(f"({p})" for p in src.subsection.split(".")) if src.subsection else ""
+        src.code, src.url = t.code, t.url
+        src.citation = f"{t.code} § {src.section}{sub}"
+
+    for _, _, n in model.iter_nodes():
+        for s in n.sources:
+            fix(s)
+    for p in model.processes():
+        for f in p.flows:
+            for s in f.sources:
+                fix(s)
+    for mf in model.message_flows:
+        for s in mf.sources:
+            fix(s)
+    for d in model.decisions:
+        for s in d.sources:
+            fix(s)
+        for r in d.rules:
+            for s in r.sources:
+                fix(s)
+
+
 def _compile(facts: LegalProcessFacts, state: str, question: str, texts, provenance: Provenance):
-    return compile_facts(facts, model_id=f"{state}-{question}", jurisdiction=state,
-                         jurisdiction_name=S.NAME[state], code=texts[0].code, text=texts[0], provenance=provenance)
+    model = compile_facts(facts, model_id=f"{state}-{question}", jurisdiction=state,
+                          jurisdiction_name=S.NAME[state], code=texts[0].code, text=texts[0], provenance=provenance)
+    model.texts = list(texts)
+    _fix_sources(model, texts)
+    return model
 
 
 def build(con, state: str, question: str, *, use_llm: bool = True, force: bool = False, log: Log = print) -> dict:
@@ -152,12 +201,21 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
             f"run the 'Pull local models' step (Ollama at {config.OLLAMA_URL}, has: {available or 'nothing'})")
     results = {}
     for llm in llms:
-        client = OllamaClient(base_url=config.OLLAMA_URL, model=llm, num_ctx=config.NUM_CTX, timeout=1800)
+        strategy = config.STRATEGY
+        oneshot = strategy == "oneshot"
+        client = OllamaClient(base_url=config.OLLAMA_URL, model=llm, num_ctx=config.NUM_CTX if oneshot else 4096,
+                              timeout=1800)
         t0 = time.time()
-        log(f"{state} {question}: extracting with {llm} from {loc['citation']} ({len(text.split())} words)")
+        log(f"{state} {question}: extracting with {llm} ({strategy}) from {loc['citation']} ({len(text.split())} words)")
         try:
-            res = extract(client, text=text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
-                          jurisdiction=S.NAME[state], max_repairs=2)
+            if oneshot:
+                res = extract(client, text=text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
+                              jurisdiction=S.NAME[state], max_repairs=2)
+            else:
+                from ..extract import strategies as ST
+                run_ = ST.run(strategy, text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
+                              jurisdiction=S.NAME[state], question=question, client=client, state=state)
+                res = ExtractionResult(run_.facts, run_.calls, run_.problems, llm, strategy)
         except requests.RequestException as e:
             log(f"{state} {question}: {llm} failed: {e}")
             continue
@@ -228,7 +286,7 @@ def rebuild(con, mid: str):
 
 
 def run(con, states_: list[str], questions_: list[str], *, use_llm=True, force=False, log: Log = print,
-        progress=None) -> dict:
+        progress=None, gov_ids: list[str] | None = None) -> dict:
     from . import scoring
     tiers: dict[str, int] = {}
     total = len(states_) * len(questions_)
@@ -246,5 +304,5 @@ def run(con, states_: list[str], questions_: list[str], *, use_llm=True, force=F
                 progress(i / total)
         # re-score straight away so the confidence map follows each state as it is built
         if db.scalar(con, "SELECT count(*) FROM governments WHERE state=?", st, default=0):
-            scoring.run(con, st, log=log)
+            scoring.run(con, st, log=log, gov_ids=gov_ids)
     return tiers

@@ -32,7 +32,7 @@ def nice_name(raw: str, kind: str) -> str:
             words.append("Mc" + w[2:].capitalize())
         else:
             words.append("-".join(p[:1].upper() + p[1:] for p in w.split("-")))
-    name = " ".join(words)
+    name = " ".join(words).replace(" Dc", " DC")
     m = re.match(r"^(County|Parish|Borough|Municipality|City and Borough) of (.+)$", name)
     if kind == "county" and m:
         return f"{m.group(2)} {m.group(1)}"

@@ -116,7 +116,7 @@ async function poll() {
 function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400); }
 
 // ---------------------------------------------------------------- routing
-const routes = { map: viewMap, setup: viewSetup, processes: viewProcesses, model: viewModel, data: viewData,
+const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
   jobs: viewJobs, job: viewJob, method: viewMethod };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
@@ -124,7 +124,7 @@ async function route() {
   hideTip();
   for (const a of document.querySelectorAll("nav.tabs a")) {
     const target = a.getAttribute("href").split("/")[1];
-    const active = target === name || (name === "model" && target === "processes") || (name === "job" && target === "jobs");
+    const active = target === name || (name === "model" && target === "processes") || (name === "job" && target === "jobs") || (name === "place" && target === "places");
     if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
   }
   rc(view, h("p", { class: "muted" }, "Loading…"));
@@ -502,6 +502,11 @@ async function viewSetup() {
       values.states = () => { store(`lexflow-st-${s.id}`, inp.value); return inp.value; };
       opts.append(inp);
     }
+    if (s.params.includes("places")) {
+      const inp = h("input", { type: "text", placeholder: "places: va:charlottesville,dc", value: store(`lexflow-pl-${s.id}`) || "", "aria-label": `Places for ${s.title}` });
+      values.places = () => { store(`lexflow-pl-${s.id}`, inp.value); return inp.value || undefined; };
+      opts.append(inp);
+    }
     if (s.params.includes("direction")) {
       const sel = h("select", { "aria-label": "Direction" }, h("option", { value: "push" }, "Push"), h("option", { value: "pull" }, "Pull"));
       values.direction = () => sel.value;
@@ -610,10 +615,7 @@ async function viewModel(mid) {
     s.quote ? h("p", { class: "quote" }, `“${s.quote}”`) : null)));
   const decisions = (m.facts?.decisions || []).map((d) => h("section", { class: "card" },
     h("div", { class: "card-head" }, h("div", {}, h("h2", {}, d.question), h("p", {}, `Decision table · hit policy ${d.hit_policy}`))),
-    h("div", { class: "dmn table-wrap" }, h("table", { class: "data" },
-      h("thead", {}, h("tr", {}, d.inputs.map((c) => h("th", { scope: "col" }, c.label)), d.outputs.map((c) => h("th", { scope: "col", style: "color:var(--accent-ink)" }, `→ ${c.label}`)), h("th", { scope: "col" }, "Source"))),
-      h("tbody", {}, d.rules.map((r) => h("tr", {}, r.when.map((x) => h("td", { class: "mono" }, x)), r.then.map((x) => h("td", { class: "mono" }, x)),
-        h("td", { class: "muted", style: "font-size:12px" }, r.source?.subsection ? `(${r.source.subsection})` : ""))))))));
+    decisionTable(d)));
   const quotes = [];
   (function collect(o) { if (o && typeof o === "object") { if (o.quote && typeof o.quote === "string") quotes.push(o.quote); Object.values(o).forEach(collect); } })(m.facts);
   const lawText = h("div", { class: "lawtext" });
@@ -668,6 +670,167 @@ async function viewModel(mid) {
       viewer.get("canvas").zoom("fit-viewport", "auto");
     } catch (e) { rc(bpmnHost, h("p", { class: "card-pad muted" }, `Could not draw the diagram: ${e.message}`)); }
   }
+}
+
+// A DMN table as HTML: inputs, then outputs (marked →), then the source of each rule
+function decisionTable(d) {
+  const cell = (x) => h("td", { class: "mono" }, String(x).replace(/^"(.*)"$/, "$1"));
+  return h("div", { class: "dmn table-wrap" }, h("table", { class: "data" },
+    h("thead", {}, h("tr", {}, d.inputs.map((c) => h("th", { scope: "col" }, c.label)),
+      d.outputs.map((c) => h("th", { scope: "col", style: "color:var(--accent-ink)" }, `→ ${c.label}`)), h("th", { scope: "col" }, "Source"))),
+    h("tbody", {}, d.rules.map((r) => h("tr", {}, r.when.map(cell), r.then.map(cell),
+      h("td", { class: "muted", style: "font-size:12px", title: r.source?.quote || "" },
+        `§ ${r.source?.section || ""}${r.source?.subsection ? `(${r.source.subsection.split(".").join(")(")})` : ""}`))))));
+}
+
+// ============================================================== BENCHMARK
+async function viewBenchmark() {
+  const body = h("div");
+  rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Local models vs Claude"),
+    h("p", {}, "Each strategy turns statute text into process facts with a small local model; equivalence compares the result with Claude's checked model of the same text (0.5 × step F1 + 0.2 × actors + 0.2 × deadlines + 0.1 × duty type). A run whose quotes are not word for word scores 0."))), body);
+  async function load() {
+    const d = await api("/api/benchmark");
+    if (!d.rows.length) {
+      rc(body, h("div", { class: "notice" }, icon("info"), h("div", {}, "No benchmark runs yet. Start one with ",
+        h("code", {}, "lexflow run benchmark"), " or the button below."), h("button", { class: "btn right", onclick: async () => { await startRunJob("benchmark", {}); location.hash = "#/jobs"; } }, "Run the benchmark")));
+      return;
+    }
+    const key = (r) => `${r.strategy}${r.model && r.model !== "-" ? ` · ${r.model}` : ""}`;
+    const groups = {};
+    for (const r of d.rows) (groups[key(r)] ||= []).push(r);
+    const means = Object.entries(groups).map(([k, rs]) => ({ k, mean: rs.reduce((a, r) => a + (r.equivalence || 0), 0) / d.cases.length,
+      covered: rs.length, secs: rs.reduce((a, r) => a + (r.seconds || 0), 0) / rs.length }))
+      .sort((a, b) => b.mean - a.mean);
+    const max = 1, barW = 360;
+    const bars = h("div", { class: "funnel" }, means.map((m) => h("div", { class: "funnel-row", style: "grid-template-columns: 260px minmax(0,1fr) 60px", title: `${m.k}: mean ${fx(m.mean)} over ${d.cases.length} cases (${m.covered} run)` },
+      h("span", { class: "lab mono", style: "font-size:12px" }, m.k),
+      h("span", { class: "track" }, h("span", { class: "fill", style: `width:${(m.mean / max) * 100}%` }),
+        h("span", { style: `position:absolute;left:${d.target * 100}%;top:-3px;bottom:-3px;border-left:1px solid var(--ink-2)` })),
+      h("span", { class: "num", style: "text-align:right" }, fx(m.mean)))));
+    const seq = (v) => { const bins = [0.35, 0.5, 0.65, 0.75]; let i = 0; while (i < bins.length && v >= bins[i]) i++; return [css(`--seq-${i + 1}`), i >= 2]; };
+    const dark = () => (document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark";
+    const heat = h("table", { class: "data" },
+      h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Strategy · model"), d.cases.map((c) => h("th", { scope: "col", class: "num" }, c)))),
+      h("tbody", {}, means.map((m) => h("tr", {}, h("td", { class: "mono", style: "font-size:12px" }, m.k), d.cases.map((c) => {
+        const r = groups[m.k].find((x) => x.case === c);
+        if (!r) return h("td", { class: "num muted" }, "–");
+        const [bg, deep] = seq(r.equivalence || 0);
+        const ink = deep !== dark() ? "#ffffff" : "#0b0b0b";
+        return h("td", { class: "num", style: `background:${bg};color:${ink};border:2px solid var(--surface)`,
+          title: `${c} ${m.k}: equivalence ${fx(r.equivalence)}; steps ${r.steps} vs ${r.gold_steps}; F1 ${fx(r.step_f1)}; deadlines ${fx(r.deadlines)}; ${Math.round(r.seconds)} s, ${r.calls} calls${r.problems?.length ? `; ${r.problems[0]}` : ""}` },
+          fx(r.equivalence));
+      })))));
+    rc(body,
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Mean equivalence by strategy"),
+        h("p", {}, `Averaged over ${d.cases.length} cases (a case not run counts 0). The line marks the ${fx(d.target)} target. ${fmtInt(d.runs)} runs so far.`))), bars),
+      h("div", { class: "spacer" }),
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "By case"),
+        h("p", {}, "Darker is closer to Claude. Hover a cell for steps, F1, deadlines, time and any quote problem."))),
+        h("div", { class: "card-pad table-wrap" }, heat),
+        h("div", { class: "legend" }, h("span", { class: "title" }, "Equivalence"),
+          ...["under 0.35", "0.35–0.50", "0.50–0.65", "0.65–0.75", "0.75 and up"].map((l, i) => h("span", {}, h("span", { class: "sw", style: `background:var(--seq-${i + 1})` }), l)))),
+      h("div", { class: "row-flex", style: "margin-top:16px" },
+        h("button", { class: "btn", onclick: async () => { await startRunJob("benchmark", {}); location.hash = "#/jobs"; } }, "Run the full benchmark")));
+  }
+  onRefresh(load);
+  await load();
+}
+
+// ================================================================= PLACES
+async function viewPlaces() {
+  const results = h("div", { class: "model-grid" });
+  const researched = h("div", { class: "model-grid" });
+  const q = h("input", { type: "search", placeholder: "Search a county, city or town", "aria-label": "Search governments", style: "min-width:280px" });
+  const spec = h("input", { type: "text", value: store("lexflow-place-spec") || "va:charlottesville,dc,md:baltimore", "aria-label": "Places", style: "min-width:300px" });
+  const card = (g) => h("a", { class: "card model-card", href: `#/place/${g.gov_id}` },
+    h("div", { class: "top" }, h("strong", {}, g.name), h("span", { class: "muted" }, (g.state || "").toUpperCase())),
+    h("div", { class: "cite" }, `${g.kind}${g.population ? ` · pop. ${fmtInt(g.population)}` : ""}`),
+    g.researched ? h("div", { class: "row-flex" }, statusEl(g.verified ? "done" : "partial", g.verified ? "Local answers checked" : "Local answers, not yet checked")) : null);
+  let timer = null;
+  q.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      if (q.value.trim().length < 3) { rc(results); return; }
+      const rows = await api(`/api/search?q=${encodeURIComponent(q.value.trim())}`);
+      rc(results, rows.length ? rows.map(card) : h("p", { class: "muted" }, "No match."));
+    }, 250);
+  });
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Places"),
+      h("p", {}, "Answers for one government at a time: the state law steps, the local procedure, who to contact and the local law, each with its source. Use this to test a few places before running whole states."))),
+    h("section", { class: "card card-pad", style: "margin-bottom:16px" },
+      h("div", { class: "row-flex" },
+        h("div", {}, h("h2", {}, "Answer some places"), h("p", { class: "ink-2", style: "margin:2px 0 0" }, "Runs the pipeline for just these governments: statutes, law, contacts, website scan, local answers, models and scores. Format: va:charlottesville, dc, md:baltimore, md:baltimore county.")),
+        h("div", { class: "right row-flex" }, spec,
+          h("button", { class: "btn primary", onclick: async (e) => {
+            store("lexflow-place-spec", spec.value);
+            e.target.disabled = true;
+            await startRunJob("quickstart", { places: spec.value });
+            location.hash = "#/jobs";
+          } }, "Run")))),
+    h("div", { class: "filters" }, q), results, h("div", { class: "spacer" }),
+    h("h2", { style: "margin:8px 0 12px" }, "Researched places"), researched);
+  const load = async () => {
+    const rows = await api("/api/places");
+    rc(researched, rows.length ? rows.map(card) : h("p", { class: "muted" }, "None yet. Research files go in curated/places/<state>/<place>.json; load them with the “Load checked local answers” step."));
+  };
+  onRefresh(load);
+  await load();
+}
+
+async function viewPlace(govId) {
+  const d = await api(`/api/answers/${encodeURIComponent(govId)}`);
+  const g = d.government;
+  const cards = Object.entries(S.meta.questions).map(([qid, q]) => {
+    const a = d.answers[qid];
+    if (!a) return h("section", { class: "card card-pad" }, h("h2", {}, q.title), h("p", { class: "muted" }, "Not scored yet."));
+    const loc = a.local || {};
+    const law = a.law || {};
+    const contacts = [...(loc.contacts || []).map((c) => ({ ...c, src: "local" })),
+      ...d.contacts.filter((c) => c.question === qid || c.question === "general")
+        .filter((c) => !(loc.contacts || []).some((x) => x.value === c.value))];
+    const link = (c) => c.kind === "email" ? h("a", { href: `mailto:${c.value}` }, c.value)
+      : /^https?:/.test(c.value) ? h("a", { href: c.value, target: "_blank", rel: "noopener" }, c.label || c.value)
+        : `${c.label ? c.label + ": " : ""}${c.value}`;
+    const parts = [a.state_score, a.local_score, a.contact_score];
+    return h("section", { class: "card" },
+      h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `${q.title.replace(/\?$/, "")} in ${g.name}?`),
+        h("p", {}, `Confidence ${fx(a.confidence)} · state law ${fx(parts[0])} · local ${fx(parts[1])} · contact ${fx(parts[2])}`)),
+        tierBadge(a.tier)),
+      h("div", { class: "card-pad" },
+        h("div", { class: "meter", style: "margin:0 0 12px" }, h("span", { style: `width:${Math.round((a.confidence || 0) * 100)}%` })),
+        loc.summary ? h("p", { style: "margin:0 0 12px;font-size:14.5px" }, loc.summary)
+          : h("p", { class: "muted", style: "margin:0 0 12px" }, "No researched local answer yet; the steps below come from state law."),
+        a.steps?.length ? h("div", {}, h("h3", {}, "What state law says", law.citation ? h("span", { class: "muted", style: "font-weight:400" }, ` · ${law.citation}`) : null),
+          h("ol", { class: "steps-list", style: "padding-left:20px" }, a.steps.map((s) => h("li", {},
+            h("div", { class: "row-flex" }, h("strong", {}, s.step), h("span", { class: "muted" }, `· ${s.who}`), s.deadline ? h("span", { class: "badge" }, `within ${s.deadline}`) : null,
+              h("span", { class: "right muted mono" }, s.cite)),
+            s.quote ? h("details", {}, h("summary", { class: "muted", style: "font-size:12px;cursor:pointer" }, "The words of the law"), h("p", { class: "quote" }, `“${s.quote}”`)) : null))),
+          a.model ? h("p", { style: "margin:4px 0 12px" }, h("a", { href: `#/model/${a.model.model_id}` }, "Open the process map →")) : null) : null,
+        (a.decisions || []).filter((t) => t.id === "business_structure" || a.question === "records").map((t) => h("div", { style: "margin-bottom:12px" },
+          h("h3", {}, t.question), decisionTable({ ...t, inputs: t.inputs, outputs: t.outputs, rules: t.rules.map((r) => ({ ...r, when: r.when, then: r.then })) }))),
+        loc.steps?.length ? h("div", {}, h("h3", {}, `What ${g.name} adds`),
+          h("ol", { class: "steps-list", style: "padding-left:20px" }, loc.steps.map((s) => h("li", {},
+            h("div", {}, h("strong", {}, s.step), s.who ? h("span", { class: "muted" }, ` · ${s.who}`) : null),
+            s.how ? h("div", { class: "ink-2" }, s.how) : null,
+            s.url ? h("div", { style: "font-size:12px" }, h("a", { href: s.url, target: "_blank", rel: "noopener" }, "Source"), s.quote ? h("span", { class: "muted" }, ` · “${s.quote}”`) : null) : null)))) : null,
+        contacts.length ? h("div", {}, h("h3", {}, "Who to contact"), h("ul", { class: "contacts", style: "padding-left:18px;list-style:disc" }, contacts.slice(0, 8).map((c) => h("li", {}, link(c))))) : null,
+        (loc.local_law?.length || a.locus?.length) ? h("div", { style: "margin-top:10px" }, h("h3", {}, "Local law"),
+          h("ul", { style: "padding-left:18px;margin:4px 0" }, [...(loc.local_law || []).map((l) => h("li", {}, l.url ? h("a", { href: l.url, target: "_blank", rel: "noopener" }, l.citation) : l.citation, ` — ${l.summary}`)),
+            ...(a.locus || []).slice(0, 4).map((l) => h("li", { class: "muted" }, `${l.header} (LOCUS, for finding only)`))])) : null,
+        loc.fees ? h("p", {}, h("strong", {}, "Fees: "), loc.fees) : null,
+        (loc.caveats || []).length || (a.gaps || []).length ? h("details", { style: "margin-top:8px" }, h("summary", { style: "cursor:pointer" }, "Caveats and gaps"),
+          h("ul", { style: "padding-left:18px" }, [...(loc.caveats || []), ...(a.gaps || [])].map((x) => h("li", { class: "ink-2" }, x)))) : null,
+        loc.researched ? h("p", { class: "muted", style: "font-size:12px;margin-top:10px" },
+          `Local answer researched ${loc.researched} by ${loc.built_by || "Claude"}${loc.verified ? "; sources re-checked by a second reviewer" : ""}.`) : null));
+  });
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {},
+      h("div", { class: "muted" }, h("a", { href: "#/places" }, "Places"), ` / ${(g.state || "").toUpperCase()}`),
+      h("h1", {}, g.name),
+      h("p", {}, `${g.kind}${g.population ? ` · population ${fmtInt(g.population)}` : ""}${g.county_name ? ` · ${g.county_name}` : ""}`)),
+      g.website ? h("a", { class: "btn", href: g.website, target: "_blank", rel: "noopener" }, "Official website ↗") : null),
+    h("div", { class: "grid", style: "gap:16px" }, cards));
 }
 
 // ================================================================== DATA

@@ -1,0 +1,941 @@
+{
+  "state": "dc",
+  "question": "business",
+  "sections": [
+    "29-802.01",
+    "29-102.06",
+    "29-102.01",
+    "29-102.12",
+    "47-2851.02",
+    "47-2855.02",
+    "29-402.01",
+    "29-506",
+    "29-803.04",
+    "29-302.01",
+    "29-702.01",
+    "29-704.04",
+    "29-602.02",
+    "29-610.01"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Start a business in the District of Columbia",
+    "trigger": "Someone wants to form a business entity in the District",
+    "trigger_source": {
+      "section": "29-802.01",
+      "subsection": "a",
+      "quote": "One or more persons may act as organizers to form a limited liability company"
+    },
+    "actors": [
+      {
+        "id": "founder",
+        "name": "Founder (organizer or incorporator)",
+        "kind": "private-party",
+        "source": {
+          "section": "29-802.01",
+          "subsection": "a",
+          "quote": "One or more persons may act as organizers"
+        }
+      },
+      {
+        "id": "mayor",
+        "name": "Mayor (entity filing office)",
+        "kind": "public-body",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "a",
+          "quote": "The Mayor shall file an entity filing delivered to the Mayor for filing which satisfies this title."
+        }
+      },
+      {
+        "id": "department",
+        "name": "Department (business licensing)",
+        "kind": "public-body",
+        "source": {
+          "section": "47-2851.02",
+          "subsection": "f",
+          "quote": "The Department shall maintain and periodically update a roster of all businesses that have been issued a basic business license"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Superior Court",
+        "kind": "court",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "d",
+          "quote": "the person that submitted the filing may seek review of the refusal by the Superior Court"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "deliver_filing",
+        "actor": "founder",
+        "action": "Sign and deliver formation filing to Mayor",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "recipient": "mayor",
+        "source": {
+          "section": "29-802.01",
+          "subsection": "a",
+          "quote": "signing and delivering to the Mayor for filing a certificate of organization"
+        }
+      },
+      {
+        "id": "pay_fee",
+        "actor": "founder",
+        "action": "Pay filing fee in permitted manner",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": [
+          "deliver_filing"
+        ],
+        "source": {
+          "section": "29-102.01",
+          "subsection": "c",
+          "quote": "When an entity filing is delivered to the Mayor for filing, any fee required under this chapter"
+        },
+        "recipient": "mayor"
+      },
+      {
+        "id": "review_filing",
+        "actor": "mayor",
+        "action": "Check filing satisfies Title 29",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "pay_fee",
+          "refile_corrected"
+        ],
+        "decision": "filing_complies",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "a",
+          "quote": "The duty of the Mayor under this section is ministerial."
+        },
+        "join": "any"
+      },
+      {
+        "id": "file_record",
+        "actor": "mayor",
+        "action": "Record filing as of delivery time",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [
+          "review_filing",
+          "court_order"
+        ],
+        "condition": "filing_ok",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "b",
+          "quote": "the Mayor shall record it as filed on the date and at the time of its delivery"
+        },
+        "join": "any"
+      },
+      {
+        "id": "refuse_filing",
+        "actor": "mayor",
+        "action": "Return or notify with recorded reason for refusal",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "review_filing"
+        ],
+        "recipient": "founder",
+        "deadline": {
+          "amount": 15,
+          "unit": "business_days",
+          "anchor": "after the filing is delivered",
+          "consequence": "unstated",
+          "source": {
+            "section": "29-102.06",
+            "subsection": "c",
+            "quote": "not later than 15 business days after the filing is delivered"
+          }
+        },
+        "source": {
+          "section": "29-102.06",
+          "subsection": "c",
+          "quote": "the Mayor shall return the entity filing or notify the person that submitted the filing"
+        }
+      },
+      {
+        "id": "petition_court",
+        "actor": "founder",
+        "action": "Petition Superior Court to compel filing",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "refuse_filing"
+        ],
+        "condition": "seeks_review",
+        "recipient": "court",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "d.1",
+          "quote": "The review proceeding shall be commenced by petitioning the court to compel filing of the filing and by attaching to the petition the filing and the explanation of the Mayor of the refusal to file."
+        }
+      },
+      {
+        "id": "refile_corrected",
+        "actor": "founder",
+        "action": "Deliver corrected filing without fee",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "refuse_filing"
+        ],
+        "condition": "corrects_filing",
+        "recipient": "mayor",
+        "deadline": {
+          "amount": 60,
+          "unit": "days",
+          "anchor": "the date the document was initially rejected for filing",
+          "consequence": "right-lapses",
+          "source": {
+            "section": "29-102.06",
+            "subsection": "c",
+            "quote": "within 60 days of the date the document was initially rejected for filing, it shall not be required to pay a filing fee"
+          },
+          "on_miss": "filing_refused"
+        },
+        "source": {
+          "section": "29-102.06",
+          "subsection": "c",
+          "quote": "If an entity files a corrected entity filing"
+        }
+      },
+      {
+        "id": "court_order",
+        "actor": "court",
+        "action": "Summarily order filing or other action",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "petition_court"
+        ],
+        "source": {
+          "section": "29-102.06",
+          "subsection": "d.2",
+          "quote": "The court may summarily order the Mayor to file the filing or take other action the court considers appropriate."
+        }
+      },
+      {
+        "id": "send_acknowledgment",
+        "actor": "mayor",
+        "action": "Deliver filed copy with acknowledgment",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "file_record"
+        ],
+        "recipient": "founder",
+        "source": {
+          "section": "29-102.06",
+          "subsection": "b",
+          "quote": "the Mayor shall deliver to the person that submitted the filing a copy of the filing with an acknowledgment of the date and time of filing"
+        }
+      },
+      {
+        "id": "admit_member",
+        "actor": "founder",
+        "action": "Admit at least one member",
+        "kind": "act",
+        "modality": "none",
+        "after": [
+          "send_acknowledgment"
+        ],
+        "condition": "certificate_effective",
+        "source": {
+          "section": "29-802.01",
+          "subsection": "d",
+          "quote": "A limited liability company is formed when the Mayor has filed the company’s certificate of organization and it becomes effective and at least one person becomes a member."
+        }
+      },
+      {
+        "id": "apply_license",
+        "actor": "founder",
+        "action": "Apply for basic business license per location",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [
+          "admit_member"
+        ],
+        "recipient": "department",
+        "source": {
+          "section": "47-2851.02",
+          "subsection": "a",
+          "quote": "A person doing business in the District of Columbia shall maintain a basic business license in accordance with this subchapter"
+        },
+        "condition": "doing_business_not_exempt"
+      },
+      {
+        "id": "issue_license",
+        "actor": "department",
+        "action": "Issue license to complying applicant",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "apply_license"
+        ],
+        "recipient": "founder",
+        "source": {
+          "section": "47-2851.02",
+          "subsection": "b",
+          "quote": "The Department shall issue or renew a basic business license to an applicant who complies with all applicable District and federal laws and regulations."
+        },
+        "condition": "applicant_complies"
+      },
+      {
+        "id": "register_trade_name",
+        "actor": "founder",
+        "action": "Register trade name, executed by proprietor or governor",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [
+          "issue_license"
+        ],
+        "condition": "uses_trade_name",
+        "recipient": "department",
+        "source": {
+          "section": "47-2855.02",
+          "subsection": "c",
+          "quote": "The trade name application shall be executed by"
+        }
+      },
+      {
+        "id": "check_trade_name",
+        "actor": "department",
+        "action": "Check trade name is distinguishable",
+        "kind": "review",
+        "modality": "none",
+        "after": [
+          "register_trade_name"
+        ],
+        "source": {
+          "section": "47-2855.02",
+          "subsection": "d",
+          "quote": "The trade name shall be distinguishable on the records of the Mayor from any"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "business_structure",
+        "question": "Which business structure fits, and what must be filed with the state?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "nonprofit",
+            "label": "Organized for a nonprofit or charitable purpose",
+            "type": "boolean"
+          },
+          {
+            "name": "licensed_profession",
+            "label": "Owners render a licensed professional service",
+            "type": "boolean"
+          },
+          {
+            "name": "owners",
+            "label": "Number of owners",
+            "type": "number"
+          },
+          {
+            "name": "limited_liability",
+            "label": "Owners want protection from the business's debts",
+            "type": "boolean"
+          },
+          {
+            "name": "outside_investors",
+            "label": "Plans to sell shares to outside investors",
+            "type": "boolean"
+          },
+          {
+            "name": "passive_partners",
+            "label": "Some co-owners will be passive investors only",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "structure",
+            "label": "Business structure",
+            "type": "string"
+          },
+          {
+            "name": "state_filing",
+            "label": "Formation document and filing office",
+            "type": "string"
+          },
+          {
+            "name": "fee",
+            "label": "State filing fee",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Nonprofit corporation\"",
+              "\"Articles of incorporation delivered to the Mayor for filing\"",
+              "\"See § 29-102.12\""
+            ],
+            "source": {
+              "section": "29-402.01",
+              "quote": "One or more persons may act as the incorporators of a nonprofit corporation by delivering articles of incorporation to the Mayor for filing."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Professional corporation or professional limited liability company\"",
+              "\"Articles of incorporation (meeting Chapter 3, and stating the professional services, the original shareholders' names and addresses, and that each original shareholder and director is licensed) or certificate of organization (professional LLC) delivered to the Mayor for filing\"",
+              "\"See § 29-102.12\""
+            ],
+            "source": {
+              "section": "29-506",
+              "quote": "One or more individuals may incorporate a professional corporation by delivering articles of incorporation for filing to the Mayor."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "-",
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Stock corporation\"",
+              "\"Articles of incorporation delivered to the Mayor for filing\"",
+              "\"See § 29-102.12\""
+            ],
+            "source": {
+              "section": "29-302.01",
+              "quote": "One or more persons may act as the incorporator or incorporators of a corporation by delivering articles of incorporation to the Mayor for filing."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              ">= 2",
+              "true",
+              "-",
+              "true"
+            ],
+            "then": [
+              "\"Limited partnership (general partners stay personally liable unless it is a limited liability limited partnership)\"",
+              "\"Certificate of limited partnership delivered to the Mayor for filing\"",
+              "\"See § 29-102.12\""
+            ],
+            "source": {
+              "section": "29-702.01",
+              "subsection": "a",
+              "quote": "In order for a limited partnership to be formed, a certificate of limited partnership shall be delivered to the Mayor for filing."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Limited liability company\"",
+              "\"Certificate of organization delivered to the Mayor for filing\"",
+              "\"See § 29-102.12\""
+            ],
+            "source": {
+              "section": "29-802.01",
+              "subsection": "a",
+              "quote": "One or more persons may act as organizers to form a limited liability company by signing and delivering to the Mayor for filing a certificate of organization."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              "1",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Sole proprietorship\"",
+              "\"No formation filing\"",
+              "\"None\""
+            ],
+            "source": {
+              "section": "47-2855.02",
+              "subsection": "a.1",
+              "quote": "A sole proprietorship or general partnership shall register by setting forth the true and real name or names of each person comprising the sole proprietorship or general partnership"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              ">= 2",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"General partnership\"",
+              "\"No formation filing (formed by association); after approval by the vote needed to amend the partnership agreement, a statement of qualification may be delivered to the Mayor to become a limited liability partnership, which changes the liability answer\"",
+              "\"None\""
+            ],
+            "source": {
+              "section": "29-602.02",
+              "subsection": "a",
+              "quote": "the association of 2 or more persons to carry on as co-owners of a business for profit shall form a partnership, whether or not the persons intend to form a partnership"
+            }
+          }
+        ]
+      },
+      {
+        "id": "filing_complies",
+        "question": "Does the entity filing satisfy Title 29 so the Mayor must file it?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "permitted_filing",
+            "label": "Filing is required or permitted by Title 29",
+            "type": "boolean"
+          },
+          {
+            "name": "delivery_form_ok",
+            "label": "Delivered in written form, or electronically where the Mayor permits",
+            "type": "boolean"
+          },
+          {
+            "name": "language_ok",
+            "label": "Words in English, numbers in Arabic or Roman numerals",
+            "type": "boolean"
+          },
+          {
+            "name": "signed",
+            "label": "Signed by or for an authorized person",
+            "type": "boolean"
+          },
+          {
+            "name": "signer_named",
+            "label": "States name and capacity of each signer",
+            "type": "boolean"
+          },
+          {
+            "name": "contents_ok",
+            "label": "States what its chapter requires (name, agent, office)",
+            "type": "boolean"
+          },
+          {
+            "name": "registration_filing",
+            "label": "Entity registration filing made on or after 1 January 2020",
+            "type": "boolean"
+          },
+          {
+            "name": "owners_listed",
+            "label": "Owners over 10% or in control are listed",
+            "type": "boolean"
+          },
+          {
+            "name": "fees_paid",
+            "label": "Required fees paid",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "filing_ok",
+            "label": "Filing satisfies Title 29",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.1",
+              "quote": "The entity filing shall be required or permitted by this title."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.2",
+              "quote": "The entity filing shall be physically delivered in written form unless and to the extent the Mayor permits electronic delivery of entity filings in other than written form."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.3",
+              "quote": "The words in the entity filing shall be in English and numbers shall be in Arabic or Roman numerals"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.4",
+              "quote": "The entity filing shall be signed by or on behalf of a person authorized or required under this title to sign the filing."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.5",
+              "quote": "The entity filing shall state the name and capacity, if any, of each individual who signed it"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-802.01",
+              "subsection": "b.1",
+              "quote": "The name of the limited liability company, which shall comply with §§ 29-103.01 and 29-103.02(f)"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "true",
+              "false",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "a.6",
+              "quote": "For entity registration filings made on or after January 1, 2020, the filing shall state the names, residence and business addresses of each person"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "false"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "29-102.01",
+              "subsection": "c",
+              "quote": "any fee required under this chapter and any fee, tax, or penalty required to be paid under this title or law other than this title shall be paid in a manner permitted by the Mayor or by that law"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "true",
+              "true",
+              "true",
+              "true",
+              "-",
+              "-",
+              "true"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "29-102.06",
+              "subsection": "a",
+              "quote": "The Mayor shall file an entity filing delivered to the Mayor for filing which satisfies this title."
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "filing_refused",
+        "description": "Refused, not corrected (correction after 60 days pays fee)",
+        "after": [
+          "refuse_filing"
+        ],
+        "source": {
+          "section": "29-102.06",
+          "subsection": "c",
+          "quote": "If the entity files a corrected entity filing after that date, it shall be required to pay the applicable filing fee."
+        }
+      },
+      {
+        "id": "licensed_to_operate",
+        "description": "Entity formed and licensed to do business at the location",
+        "after": [
+          "issue_license"
+        ],
+        "source": {
+          "section": "47-2851.02",
+          "subsection": "b",
+          "quote": "The Department shall issue or renew a basic business license"
+        }
+      },
+      {
+        "id": "trade_name_registered",
+        "description": "Licensed business trading under a registered trade name",
+        "after": [
+          "check_trade_name"
+        ],
+        "source": {
+          "section": "47-2855.02",
+          "subsection": "a",
+          "quote": "shall register that trade name with the Department"
+        },
+        "when": "name_distinguishable"
+      },
+      {
+        "id": "court_decided",
+        "description": "Court took other action; final decision appealable",
+        "after": [
+          "court_order"
+        ],
+        "source": {
+          "section": "29-102.06",
+          "subsection": "d.3",
+          "quote": "The final decision of the court may be appealed as in other civil proceedings."
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "D.C. Code § 29-102.12",
+        "role": "entity filing fees are set by the Mayor's rules, not stated in the Code",
+        "source": {
+          "section": "29-102.12",
+          "subsection": "a",
+          "quote": "shall adopt rules, to establish or revise fees for entity filings"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-803.04",
+        "role": "liability shield of LLC members and managers",
+        "source": {
+          "section": "29-803.04",
+          "subsection": "a.1",
+          "quote": "Be solely the debts, obligations, or other liabilities of the company"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-803.04(c)",
+        "role": "DC recognises professional limited liability companies; members stay personally liable for their own negligent or wrongful acts or misconduct and those of individuals under their supervision and control in rendering professional services, but not merely because of membership",
+        "source": {
+          "section": "29-803.04",
+          "subsection": "c",
+          "quote": "a member shall be personally liable and accountable only for any negligent or wrongful acts or misconduct committed by the member, or by any individual under the member’s supervision and control"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-704.04(a)",
+        "role": "general partners of a limited partnership are personally liable",
+        "source": {
+          "section": "29-704.04",
+          "subsection": "a",
+          "quote": "all general partners shall be liable jointly and severally for all debts, obligations, and other liabilities of the limited partnership"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-702.01(a)(4)",
+        "role": "the certificate states whether the partnership elects limited liability limited partnership status",
+        "source": {
+          "section": "29-702.01",
+          "subsection": "a.4",
+          "quote": "Whether the limited partnership is a limited liability limited partnership"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-702.01(c)",
+        "role": "a limited partnership is formed only once the certificate is effective and it has at least 2 partners, one general and one limited",
+        "source": {
+          "section": "29-702.01",
+          "subsection": "c.4",
+          "quote": "At least one person has become a limited partner."
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-610.01",
+        "role": "a general partnership may become a limited liability partnership by filing a statement of qualification, after approval by the vote necessary to amend the partnership agreement",
+        "source": {
+          "section": "29-610.01",
+          "subsection": "c",
+          "quote": "a partnership may become a limited liability partnership by delivering to the Mayor for filing a statement of qualification"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-610.01(b)",
+        "role": "partner approval required before a partnership becomes a limited liability partnership",
+        "source": {
+          "section": "29-610.01",
+          "subsection": "b",
+          "quote": "The terms and conditions on which a partnership becomes a limited liability partnership shall be approved by the vote necessary to amend the partnership agreement"
+        }
+      },
+      {
+        "citation": "D.C. Code § 47-2851.02(h)(1)(B)",
+        "role": "exemption from the basic business license for very small activities",
+        "source": {
+          "section": "47-2851.02",
+          "subsection": "h.1.B",
+          "quote": "A business activity that has a gross annual revenue of $2,000 or less"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-102.01(b)",
+        "role": "the Mayor must accept an otherwise complying filing containing information other law bars from disclosure, and may redact it",
+        "source": {
+          "section": "29-102.01",
+          "subsection": "b",
+          "quote": "the Mayor shall accept the filing if it otherwise complies with this title, but the Mayor may redact the information"
+        }
+      },
+      {
+        "citation": "D.C. Code § 29-102.01(a)(8)",
+        "role": "separate consequence of omitting the ownership disclosure: the entity may not register or do business in the District",
+        "source": {
+          "section": "29-102.01",
+          "subsection": "a.8",
+          "quote": "the entity shall not be allowed to register or do business in the District"
+        }
+      }
+    ],
+    "gaps": [
+      "The Code assigns entity filings to 'the Mayor' and licences and trade names to 'the Department'; which office (in practice the Department of Licensing and Consumer Protection, Corporations Division) acts is a delegation not stated in the printed sections.",
+      "No filing fee amount appears in the Code: § 29-102.12 leaves entity filing fees to the Mayor's rules (DCMR), so every fee cell reads 'See § 29-102.12'. Basic business license and trade name fees are likewise set under §§ 47-2851.04 and 47-2855.04, which were not printed.",
+      "The filing path is modelled with the LLC certificate of organization (§ 29-802.01); the other filed structures in business_structure (nonprofit, stock and professional corporations, limited partnership, LLP) use their own documents but the same Chapter 1 filing duty in § 29-102.06. Each chapter's own content requirements are collapsed into the single contents_ok input.",
+      "DC law does not call the result a 'certificate'; the Mayor delivers a copy of the filing with an acknowledgment of the date and time of filing (§ 29-102.06(b)). Corporations exist when the articles are filed unless a delayed effective date is given (§§ 29-302.03, 29-402.03, not used as quotes).",
+      "Sole proprietorships and general partnerships make no formation filing, so they skip the Mayor's path and go straight to the basic business license and, if they trade under another name, trade name registration; no act in the printed sections precedes both paths, so that shorter path is not drawn separately.",
+      "No statute creates the sole proprietorship; § 47-2855.02(a)(1) and (c)(1) recognise it for trade name registration.",
+      "The beneficial-ownership disclosure in § 29-102.01(a)(6) applies only to 'entity registration filings made on or after January 1, 2020'; whether that term covers every formation filing depends on the definitions in § 29-101.02, which were not printed, so filing_complies takes it as a separate registration_filing input.",
+      "The professional LLC is recognised in § 29-803.04(c), but the provisions governing who may form one were not located in the printed sections. A professional corporation may be incorporated by any individuals; its articles must state the professional services, the original shareholders' names and addresses, and that each original shareholder and director is licensed (§ 29-506).",
+      "The statute does not order the basic business license and the trade name registration; the model registers the trade name after licensing. Licence categories, endorsements, Clean Hands certification, certificates of occupancy and zoning are not modelled.",
+      "The refusal deadline (15 business days) has no stated consequence, but the BPMN draws it as an interrupting timer on the refusal task leading to a 'Deadline missed' end, which the text does not support: a late return or notice is still an effective refusal, and the 15 business days run from delivery of the filing, not from the start of the refusal task. Who may appeal the Superior Court's final decision is not stated beyond 'as in other civil proceedings'. A court order to file is modelled as making filing_ok true, so the Mayor's recording and acknowledgment are drawn once for both the ordinary and the court-ordered path.",
+      "Formation of an LLC also requires the certificate to become effective and at least one person to become a member (§ 29-802.01(d)); the model gates licensing on certificate_effective and the admission of a member. A delayed effective date means waiting rather than abandonment, although the diagram shows the not-yet-effective branch as an end.",
+      "The fixed business_structure inputs have no column for preferring a partnership over an LLC, so a limited liability partnership cannot get its own row; it is offered in the general partnership row instead. The LLP liability shield itself is in a section not printed here.",
+      "The basic business licence duty applies to a person 'doing business' and not to the activities exempted by § 47-2851.02(h)(1), including those with gross annual revenue of $2,000 or less (self-certified by letter on request under (h)(2)). Beyond the Department's duty running only to complying applicants, the statute does not say what happens to an applicant who does not comply.",
+      "Who checks that a trade name is distinguishable is not stated; the model assigns the check to the Department, with which the name is registered.",
+      "A corrected filing delivered within 60 days of the rejection goes back to the Mayor's review without a fee (§ 29-102.06(c)); when the 60 days pass first, the fee-free right lapses and the model ends at filing_refused, since a later corrected filing is a new delivery that pays the applicable fee. The statute does not limit the number of corrections, so the model lets the review-and-correct loop repeat. BPMN restarts the 60-day timer on each pass through the loop, but the statute runs the fee-free period only from the initial rejection; on a later rejection only the time left of the original 60 days is fee-free.",
+      "After a refusal the model offers court review (§ 29-102.06(d)) and fee-free correction (§ 29-102.06(c)) as alternatives, although the statute does not make them exclusive: a founder may correct within 60 days while a petition is pending. A correction after the court takes other action is not drawn."
+    ]
+  }
+}

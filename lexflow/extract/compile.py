@@ -62,6 +62,7 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     nodes.append(start)
     entry: dict[str, str] = {}      # step id -> first node id of its block
     exit_: dict[str, str] = {}      # step id -> last node id of its block (where successors attach)
+    miss_flows: list[tuple[str, str]] = []   # (timer node id, step/outcome id) for deadlines with on_miss
     pool_of_external = {a.id: f"p_{a.id}" for a in external}
 
     for s in facts.steps:
@@ -86,11 +87,16 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
                          event="timer", name=f"{d.amount} {d.unit.replace('_', ' ')}",
                          timer=Timer(value=iso_duration(d.amount, d.unit), anchor=d.anchor, strict=not soft),
                          sources=[src(d.source)])
-                end = Node(id=f"{s.id}_deadline_end", type="endEvent", lane=lane_of(a.id),
-                           name="Deadline passed (no effect)" if soft else f"Deadline missed: {s.action}"[:60],
-                           sources=[src(d.source, "explicit" if soft else "implied")])
-                nodes += [b, end]
-                flows.append(SequenceFlow(id=fid(), source=b.id, target=end.id))
+                if d.on_miss:
+                    nodes.append(b)
+                    miss_flows.append((b.id, d.on_miss))
+                else:
+                    name = ("Deadline passed (no effect)" if soft else "Deemed denied" if d.consequence == "deemed-denial"
+                            else f"Deadline missed: {s.action}"[:60])
+                    end = Node(id=f"{s.id}_deadline_end", type="endEvent", lane=lane_of(a.id), name=name,
+                               sources=[src(d.source, "explicit" if soft or d.consequence == "deemed-denial" else "implied")])
+                    nodes += [b, end]
+                    flows.append(SequenceFlow(id=fid(), source=b.id, target=end.id))
         else:
             # observed from the agency side: a message arrives (optionally racing a deadline)
             recv_lane = lane_of(s.recipient) if s.recipient else default_lane
@@ -98,19 +104,23 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
                          name=f"{s.action}"[:60], lane=recv_lane, sources=sources,
                          deontic=None if s.modality == "none" else s.modality, bearer=a.id if s.modality != "none" else None)
             mflows.append(MessageFlow(id=f"mf_{s.id}", source=pool_of_external[a.id], target=s.id, name=s.action))
-            if s.deadline and s.deadline.consequence in ("right-lapses", "action-invalid", "unstated"):
+            if s.deadline and s.deadline.consequence in ("right-lapses", "action-invalid", "deemed-denial", "unstated"):
                 d = s.deadline
                 gw = Node(id=f"{s.id}_wait", type="eventBasedGateway", name=f"{s.action} in time?"[:60], lane=recv_lane)
                 timer = Node(id=f"{s.id}_timeout", type="intermediateCatchEvent", event="timer", lane=recv_lane,
                              name=f"{d.amount} {d.unit.replace('_', ' ')} pass",
                              timer=Timer(value=iso_duration(d.amount, d.unit), anchor=d.anchor),
                              sources=[src(d.source)])
-                lapse = Node(id=f"{s.id}_lapsed", type="endEvent", lane=recv_lane, name=f"Time to act lapsed"[:60],
-                             sources=[src(d.source, "implied", "Consequence of missing the deadline inferred")])
-                nodes += [gw, catch, timer, lapse]
+                nodes += [gw, catch, timer]
                 flows += [SequenceFlow(id=fid(), source=gw.id, target=catch.id),
-                          SequenceFlow(id=fid(), source=gw.id, target=timer.id),
-                          SequenceFlow(id=fid(), source=timer.id, target=lapse.id)]
+                          SequenceFlow(id=fid(), source=gw.id, target=timer.id)]
+                if d.on_miss:
+                    miss_flows.append((timer.id, d.on_miss))
+                else:
+                    lapse = Node(id=f"{s.id}_lapsed", type="endEvent", lane=recv_lane, name="Time to act lapsed",
+                                 sources=[src(d.source, "implied", "Consequence of missing the deadline inferred")])
+                    nodes.append(lapse)
+                    flows.append(SequenceFlow(id=fid(), source=timer.id, target=lapse.id))
                 entry[s.id], exit_[s.id] = gw.id, catch.id
             else:
                 nodes.append(catch)
@@ -122,7 +132,9 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
 
     # ---------------------------------------------------------------- wiring
     items = [(s.id, s.after, s.condition) for s in facts.steps] + [(o.id, o.after, o.when) for o in facts.outcomes]
-    preds = {i: (after or ["__start"]) for i, after, _ in items}
+    # an item with no 'after' follows the start, unless it is only ever reached by a missed deadline
+    miss_only = {s.deadline.on_miss for s in facts.steps if s.deadline and s.deadline.on_miss}
+    preds = {i: (after or ([] if i in miss_only else ["__start"])) for i, after, _ in items}
     cond = {i: c for i, _, c in items}
     succs: dict[str, list[str]] = {}
     for i, after in preds.items():
@@ -132,10 +144,13 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     def out_of(p):
         return start.id if p == "__start" else exit_[p]
 
+    join_mode = {s.id: s.join for s in facts.steps} | {o.id: o.join for o in facts.outcomes}
     join_for: dict[str, str] = {}
     for i, after in preds.items():
         if len(after) > 1:
-            j = Node(id=f"{i}_join", type="parallelGateway", name="", lane=nodes[[n.id for n in nodes].index(entry[i])].lane)
+            # 'all': wait for every prerequisite (parallel join); 'any': branches that rejoin (exclusive merge)
+            jtype = "parallelGateway" if join_mode.get(i, "all") == "all" else "exclusiveGateway"
+            j = Node(id=f"{i}_join", type=jtype, name="", lane=nodes[[n.id for n in nodes].index(entry[i])].lane)
             nodes.append(j)
             flows.append(SequenceFlow(id=fid(), source=j.id, target=entry[i]))
             join_for[i] = j.id
@@ -187,6 +202,26 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
             flows.append(SequenceFlow(id=fid(), source=src_node, target=split.id))
             for c in children:
                 flows.append(SequenceFlow(id=fid(), source=split.id, target=target_of(c)))
+
+    for timer_id, item in miss_flows:
+        if item not in entry:
+            raise ValueError(f"deadline on_miss {item!r} is not a step or outcome id")
+        flows.append(SequenceFlow(id=fid(), source=timer_id, target=target_of(item)))
+
+    # a node reached from several places gets an exclusive merge in front (missed deadlines rejoining a path)
+    incoming: dict[str, list[SequenceFlow]] = {}
+    for f in flows:
+        incoming.setdefault(f.target, []).append(f)
+    by_id = {n.id: n for n in nodes}
+    for target, fs in list(incoming.items()):
+        n = by_id.get(target)
+        if n is None or len(fs) < 2 or n.type.endswith("Gateway"):
+            continue
+        m = Node(id=f"{target}_merge", type="exclusiveGateway", name="", lane=n.lane)
+        nodes.append(m)
+        for f in fs:
+            f.target = m.id
+        flows.append(SequenceFlow(id=fid(), source=m.id, target=target))
 
     # dangling ends
     has_out = {f.source for f in flows}

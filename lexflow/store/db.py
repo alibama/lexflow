@@ -145,6 +145,25 @@ CREATE TABLE IF NOT EXISTS answers (
 CREATE INDEX IF NOT EXISTS answers_state ON answers(state, question);
 CREATE INDEX IF NOT EXISTS answers_county ON answers(county_fips, question);
 
+CREATE TABLE IF NOT EXISTS local_answers (
+  gov_id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  question TEXT NOT NULL,
+  summary TEXT,
+  steps TEXT,
+  contacts TEXT,
+  local_law TEXT,
+  fees TEXT,
+  caveats TEXT,
+  sources TEXT,
+  built_by TEXT,
+  verified INTEGER,
+  researched TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (gov_id, question)
+);
+
 CREATE TABLE IF NOT EXISTS statute_files (
   state TEXT PRIMARY KEY,
   file TEXT,
@@ -175,6 +194,33 @@ CREATE TABLE IF NOT EXISTS scans (
   status TEXT,
   scanned_at TEXT,
   PRIMARY KEY (source, state)
+);
+
+CREATE TABLE IF NOT EXISTS benchmarks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  "case" TEXT NOT NULL,
+  strategy TEXT NOT NULL,
+  model TEXT NOT NULL,
+  gold_hash TEXT,
+  equivalence REAL,
+  raw_equivalence REAL,
+  lexical REAL,
+  step_f1 REAL,
+  actors REAL,
+  deadlines REAL,
+  modality REAL,
+  step_recall REAL,
+  step_precision REAL,
+  quote_validity REAL,
+  steps INTEGER,
+  gold_steps INTEGER,
+  valid INTEGER,
+  seconds REAL,
+  calls INTEGER,
+  notes TEXT,
+  problems TEXT,
+  facts TEXT,
+  created_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS jobs (
@@ -232,7 +278,11 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "extractions": ("model_id", "llm"),
     "local_law": ("gov_id", "question", "source", "ref"),
     "answers": ("gov_id", "question"),
+    "local_answers": ("gov_id", "question"),
 }
+
+# columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists)
+MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL"]
 
 _ready: set[str] = set()
 _lock = threading.Lock()
@@ -254,6 +304,11 @@ def connect(path: Path | str | None = None) -> sqlite3.Connection:
     if key not in _ready:
         with _lock:
             con.executescript(SCHEMA)
+            for m in MIGRATIONS:
+                try:
+                    con.execute(m)
+                except sqlite3.OperationalError:
+                    pass
             _ready.add(key)
     return con
 

@@ -2,7 +2,6 @@
 import json
 from pathlib import Path
 
-import pandas as pd
 import pytest
 import responses
 
@@ -15,36 +14,6 @@ from lexflow.store import turso as T
 
 ROOT = Path(__file__).resolve().parents[1]
 VA = json.loads((ROOT / "fixtures/statutes/va_sections.json").read_text())["sections"]
-
-
-@pytest.fixture()
-def con(tmp_path, monkeypatch):
-    monkeypatch.setattr(config, "TURSO_URL", "")
-    monkeypatch.setattr(config, "DOKUWIKI_URL", "")
-    monkeypatch.setattr(config, "DB_PATH", tmp_path / "t.db")
-    monkeypatch.setattr(config, "DATA_DIR", tmp_path)
-    monkeypatch.setattr(config, "JOBS_DIR", tmp_path / "jobs")
-    c = db.connect(tmp_path / "t.db")
-    yield c
-    c.close()
-
-
-@pytest.fixture()
-def va_statutes(monkeypatch):
-    """Serve the five fixture sections plus decoys as if the VA parquet were downloaded."""
-    rows = [dict(act_id=f"STATE_VA_{s['section_number']}", citation=s["citation"], section_number=s["section_number"],
-                 section_title=s["section_title"], chapter_name="", display_path="", act_status="in_force",
-                 text=s["text"], source_url=s["source_url"], word_count=len(s["text"].split()), last_amended_year=2023)
-            for s in VA]
-    rows += [dict(act_id="d1", citation="Va. Code Ann. § 18.2-107", section_number="18.2-107",
-                  section_title="Theft or destruction of public records by others than officers", chapter_name="",
-                  display_path="", act_status="in_force", text="If any person steal public records...",
-                  source_url="u", word_count=10, last_amended_year=1975)]
-    df = pd.DataFrame(rows)
-    df["norm_section"] = df["section_number"].map(statutes.norm_section)
-    monkeypatch.setattr(statutes, "load", lambda state: df)
-    monkeypatch.setattr(statutes, "have", lambda state: state == "va")
-    return df
 
 
 def _gov(con, n=3):

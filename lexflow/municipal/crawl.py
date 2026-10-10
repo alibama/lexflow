@@ -89,14 +89,15 @@ def scan_page(url: str) -> dict:
     return out
 
 
-def run(con, state: str, *, force: bool = False, workers: int = 16, log: Log = print, progress=None) -> dict:
+def run(con, state: str, *, force: bool = False, workers: int = 16, log: Log = print, progress=None,
+        gov_ids: list[str] | None = None) -> dict:
     where = "" if force else " AND (c.checked_at IS NULL OR c.checked_at < datetime('now','-30 days'))"
     targets = db.rows(con, f"""
         SELECT g.gov_id, g.state, COALESCE(g.website, (SELECT value FROM contacts k WHERE k.gov_id=g.gov_id
                AND k.kind='website' LIMIT 1)) AS url
         FROM governments g LEFT JOIN crawl_log c ON c.gov_id = g.gov_id
         WHERE g.state=?{where}""", state)
-    targets = [t for t in targets if t["url"]]
+    targets = [t for t in targets if t["url"] and (gov_ids is None or t["gov_id"] in gov_ids)]
     log(f"{state}: checking {len(targets)} websites")
     found = {"records": 0, "business": 0, "direct": 0}
     done = 0

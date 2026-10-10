@@ -26,9 +26,11 @@ def state_part(con, state: str, question: str, meth: dict) -> dict:
             "model_id": pm["model_id"] if pm and tier not in ("none",) else None}
 
 
-def run(con, state: str, log: Log = print) -> dict:
+def run(con, state: str, log: Log = print, gov_ids: list[str] | None = None) -> dict:
     meth = M.get(con)
     govs = db.rows(con, "SELECT gov_id, county_fips FROM governments WHERE state=?", state)
+    if gov_ids is not None:
+        govs = [g for g in govs if g["gov_id"] in set(gov_ids)]
     if not govs:
         log(f"{state}: no governments loaded")
         return {"answers": 0}
@@ -39,6 +41,8 @@ def run(con, state: str, log: Log = print) -> dict:
     for r in db.rows(con, "SELECT gov_id, question, header, score FROM local_law WHERE state=? AND score > 0 ORDER BY score DESC",
                      state):
         local[(r["gov_id"], r["question"])].append(r)
+    researched = {(r["gov_id"], r["question"]): r for r in db.rows(
+        con, "SELECT gov_id, question, summary, verified FROM local_answers WHERE state=?", state)}
     rows, ts = [], db.now()
     totals = {}
     for qid in QUESTIONS:
@@ -51,6 +55,10 @@ def run(con, state: str, log: Log = print) -> dict:
             contact_score = meth["contact_score"][level]
             loc_rows = local.get((g["gov_id"], qid), [])
             local_score = meth["local_found_score"] * max((r["score"] for r in loc_rows), default=0.0)
+            res = researched.get((g["gov_id"], qid))
+            if res:                         # a researched local answer outranks a LOCUS match
+                local_score = max(local_score, meth["local_researched_score"][
+                    "verified" if res["verified"] else "unverified"])
             confidence = w["state"] * sp["score"] + w["local"] * local_score + w["contact"] * contact_score
             offices = sorted((c for c in cs if c["question"] in (qid, "general")),
                              key=lambda c: (c["question"] != qid, CONTACT_ORDER.get(c["kind"], 9)))[:4]
@@ -60,7 +68,8 @@ def run(con, state: str, log: Log = print) -> dict:
                 "contact_score": contact_score, "tier": sp["tier"], "built_by": sp["built_by"],
                 "contact_level": level, "model_id": sp["model_id"], "updated_at": ts,
                 "summary": {"offices": [{k: c[k] for k in ("kind", "value", "label")} for c in offices],
-                            "local": [r["header"] for r in loc_rows[:3]]},
+                            "local": [r["header"] for r in loc_rows[:3]],
+                            "researched": bool(res)},
             })
             conf_sum += confidence
         totals[qid] = round(conf_sum / len(govs), 3)

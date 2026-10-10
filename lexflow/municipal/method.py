@@ -42,6 +42,7 @@ DEFAULTS = {
     "tier_score": {"reviewed": 1.0, "agreed": 0.8, "single": 0.5, "found": 0.3, "none": 0.0},
     "contact_score": {"page": 1.0, "direct": 0.6, "website": 0.35, "postal": 0.15, "none": 0.0},
     "local_found_score": 0.6,
+    "local_researched_score": {"verified": 1.0, "unverified": 0.8},
     "agreement_threshold": 0.6,
 }
 

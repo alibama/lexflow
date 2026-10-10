@@ -32,8 +32,11 @@ class FDeadline(BaseModel):
     amount: int = Field(ge=0)
     unit: Literal["hours", "days", "business_days", "weeks", "months", "years"]
     anchor: str = Field(description="What starts the clock, in the law's words")
-    consequence: Literal["right-lapses", "action-invalid", "directory-only", "unstated"] = Field(
-        description="What happens if missed: 'directory-only' when the text says missing it has no effect")
+    consequence: Literal["right-lapses", "action-invalid", "directory-only", "deemed-denial", "unstated"] = Field(
+        description="What happens if missed: 'directory-only' when the text says missing it has no effect; "
+                    "'deemed-denial' when silence counts as a denial")
+    on_miss: Optional[str] = Field(None, description="Id of the outcome or step reached when the deadline passes "
+                                                      "(default: an end event of its own)")
     source: Quote
 
 
@@ -44,6 +47,9 @@ class FStep(BaseModel):
     kind: Literal["act", "notice", "filing", "hearing", "decision", "payment", "inspection", "record", "review"]
     modality: Literal["obligation", "permission", "prohibition", "right", "none"]
     after: list[str] = Field(default_factory=list, description="Ids of steps that must happen first; empty = right after the trigger")
+    join: Literal["all", "any"] = Field("all", description="With several 'after' ids: 'all' waits for every one "
+                                                         "(parallel join); 'any' continues after whichever happened "
+                                                         "(exclusive merge, for branches that rejoin)")
     condition: Optional[str] = Field(None, description="Boolean variable name that must be true, snake_case")
     recipient: Optional[str] = Field(None, description="FActor.id receiving a notice or filing")
     deadline: Optional[FDeadline] = None
@@ -76,6 +82,8 @@ class FOutcome(BaseModel):
     id: str = Field(pattern=ID)
     description: str
     after: list[str]
+    join: Literal["all", "any"] = Field("any", description="With several 'after' ids, an outcome is usually reached "
+                                                         "by whichever path happened ('any')")
     when: Optional[str] = Field(None, description="Boolean variable name, if the outcome is conditional")
     source: Quote
 

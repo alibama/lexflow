@@ -1,0 +1,824 @@
+{
+  "state": "md",
+  "question": "business",
+  "sections": [
+    "Corporations and Associations § 4A-202",
+    "Corporations and Associations § 4A-204",
+    "Corporations and Associations § 4A-206",
+    "Corporations and Associations § 4A-207",
+    "Corporations and Associations § 4A-208",
+    "Corporations and Associations § 1-101",
+    "Corporations and Associations § 1-203",
+    "Corporations and Associations § 1-204",
+    "Corporations and Associations § 1-406",
+    "Corporations and Associations § 5-202",
+    "Corporations and Associations § 5-112",
+    "Corporations and Associations § 5-102",
+    "Corporations and Associations § 4A-203",
+    "Corporations and Associations § 2-102",
+    "Corporations and Associations § 10-201",
+    "Corporations and Associations § 10-303",
+    "Corporations and Associations § 10-403",
+    "Corporations and Associations § 9A-202",
+    "Corporations and Associations § 9A-1001",
+    "Business Regulation § 17-1803"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "facts": {
+    "process_name": "Start a business in Maryland (form a limited liability company)",
+    "trigger": "Someone wants to start a business and form a limited liability company",
+    "trigger_source": {
+      "section": "4A-202",
+      "subsection": "a",
+      "quote": "Any person may form a limited liability company by causing articles of organization to be executed and filed for record with the Department."
+    },
+    "actors": [
+      {
+        "id": "founder",
+        "name": "Founder (person forming the business)",
+        "kind": "private-party",
+        "source": {
+          "section": "4A-202",
+          "subsection": "a",
+          "quote": "Any person may form a limited liability company"
+        }
+      },
+      {
+        "id": "department",
+        "name": "State Department of Assessments and Taxation",
+        "kind": "public-body",
+        "source": {
+          "section": "1-101",
+          "subsection": "k",
+          "quote": "“Department” means the State Department of Assessments and Taxation."
+        }
+      },
+      {
+        "id": "company",
+        "name": "The limited liability company, its attorney, or its agent",
+        "kind": "private-party",
+        "source": {
+          "section": "4A-207",
+          "subsection": "c.3",
+          "quote": "Send an acknowledgment to the limited liability company, its attorney, or its agent"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "deliver_articles",
+        "actor": "founder",
+        "action": "File articles of organization for record",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "recipient": "department",
+        "source": {
+          "section": "4A-202",
+          "subsection": "a",
+          "quote": "causing articles of organization to be executed and filed for record with the Department"
+        }
+      },
+      {
+        "id": "collect_fee",
+        "actor": "department",
+        "action": "Collect the $100 processing fee",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": [
+          "deliver_articles"
+        ],
+        "source": {
+          "section": "1-203",
+          "subsection": "b.4",
+          "quote": "For each of the following documents recorded or filed the nonrefundable processing fee is $100"
+        }
+      },
+      {
+        "id": "review_articles",
+        "actor": "department",
+        "action": "Accept no nonconforming or unpaid articles",
+        "kind": "decision",
+        "modality": "prohibition",
+        "after": [
+          "collect_fee"
+        ],
+        "decision": "articles_comply",
+        "source": {
+          "section": "4A-207",
+          "subsection": "a.1",
+          "quote": "The Department may not accept for record or filing any document of a limited liability company that does not conform with law."
+        }
+      },
+      {
+        "id": "endorse_acceptance",
+        "actor": "department",
+        "action": "Endorse acceptance with date and time",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [
+          "review_articles"
+        ],
+        "condition": "articles_ok",
+        "source": {
+          "section": "4A-207",
+          "subsection": "c.1",
+          "quote": "Endorse on the document its acceptance for record and the date and time of acceptance"
+        }
+      },
+      {
+        "id": "record_articles",
+        "actor": "department",
+        "action": "Record the articles promptly",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [
+          "endorse_acceptance"
+        ],
+        "source": {
+          "section": "4A-207",
+          "subsection": "c.2",
+          "quote": "Record promptly the document"
+        }
+      },
+      {
+        "id": "send_acknowledgment",
+        "actor": "department",
+        "action": "Send acknowledgment of acceptance",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "record_articles"
+        ],
+        "recipient": "company",
+        "source": {
+          "section": "4A-207",
+          "subsection": "c.3",
+          "quote": "Send an acknowledgment to the limited liability company, its attorney, or its agent stating the date and time that the document was accepted for record"
+        }
+      },
+      {
+        "id": "file_trade_name",
+        "actor": "company",
+        "action": "File trade name certificate before trading",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [
+          "send_acknowledgment"
+        ],
+        "condition": "trades_under_other_name_or_as_agent",
+        "recipient": "department",
+        "source": {
+          "section": "1-406",
+          "subsection": "a",
+          "quote": "engaged in any mercantile, trading, or manufacturing business as an agent or doing business or trading under any designation, title, or name other than the person’s own name, prior to commencing operation of the business, shall file with the Department a certificate"
+        }
+      },
+      {
+        "id": "collect_trade_name_fee",
+        "actor": "department",
+        "action": "Collect $25 trade name recording fee",
+        "kind": "payment",
+        "modality": "obligation",
+        "after": [
+          "file_trade_name"
+        ],
+        "source": {
+          "section": "1-406",
+          "subsection": "e.1",
+          "quote": "$25 for recording the certificates under this section"
+        }
+      },
+      {
+        "id": "record_trade_name",
+        "actor": "department",
+        "action": "Record certificate in agency record",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [
+          "collect_trade_name_fee"
+        ],
+        "source": {
+          "section": "1-406",
+          "subsection": "d.2",
+          "quote": "The agency record shall record all certificates filed in accordance with this section, and the certificates shall be properly indexed."
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "articles_comply",
+        "question": "Can the Department accept the articles of organization for record?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "name_given",
+            "label": "Articles state the company's name",
+            "type": "boolean"
+          },
+          {
+            "name": "name_complies",
+            "label": "Name meets the Title 1, Subtitle 5 naming rules",
+            "type": "boolean"
+          },
+          {
+            "name": "principal_office",
+            "label": "Principal office in Maryland given",
+            "type": "boolean"
+          },
+          {
+            "name": "resident_agent",
+            "label": "Resident agent name and address given",
+            "type": "boolean"
+          },
+          {
+            "name": "agent_qualifies",
+            "label": "Agent is a Maryland resident or Maryland corporation, LLC or LP",
+            "type": "boolean"
+          },
+          {
+            "name": "executed_by_authorized",
+            "label": "Executed by an individual authorized by the persons forming the LLC",
+            "type": "boolean"
+          },
+          {
+            "name": "fees_paid",
+            "label": "All required fees paid",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "articles_ok",
+            "label": "Articles accepted for record",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-204",
+              "subsection": "a.1",
+              "quote": "The name of the limited liability company"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-208",
+              "quote": "The name of each limited liability company as set forth in its articles of organization shall comply with the requirements of Title 1, Subtitle 5 of this article."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-204",
+              "subsection": "a.2",
+              "quote": "The address of its principal office in this State"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "false",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-204",
+              "subsection": "a.2",
+              "quote": "the name and address of its resident agent"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "1-101",
+              "subsection": "x",
+              "quote": "“Resident agent” means an individual residing in this State or a Maryland corporation, limited liability company, or limited partnership"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "false",
+              "-"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-206",
+              "subsection": "a.1",
+              "quote": "Articles of organization shall be executed by any individual authorized to do so by the persons forming the limited liability company"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-",
+              "false"
+            ],
+            "then": [
+              "false"
+            ],
+            "source": {
+              "section": "4A-207",
+              "subsection": "b",
+              "quote": "until all required recording, filing, and other fees have been paid to the Department"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "true",
+              "true",
+              "true",
+              "true",
+              "true"
+            ],
+            "then": [
+              "true"
+            ],
+            "source": {
+              "section": "4A-207",
+              "subsection": "a.1",
+              "quote": "The Department may not accept for record or filing any document of a limited liability company that does not conform with law."
+            }
+          }
+        ]
+      },
+      {
+        "id": "business_structure",
+        "question": "Which business structure fits, and what must be filed with the state?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "nonprofit",
+            "label": "Organized for a nonprofit or charitable purpose",
+            "type": "boolean"
+          },
+          {
+            "name": "licensed_profession",
+            "label": "Owners render a licensed professional service",
+            "type": "boolean"
+          },
+          {
+            "name": "owners",
+            "label": "Number of owners",
+            "type": "number"
+          },
+          {
+            "name": "limited_liability",
+            "label": "Owners want protection from the business's debts",
+            "type": "boolean"
+          },
+          {
+            "name": "outside_investors",
+            "label": "Plans to sell shares to outside investors",
+            "type": "boolean"
+          },
+          {
+            "name": "passive_partners",
+            "label": "Some co-owners will be passive investors only",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "structure",
+            "label": "Business structure",
+            "type": "string"
+          },
+          {
+            "name": "state_filing",
+            "label": "What is filed with the state, and where",
+            "type": "string"
+          },
+          {
+            "name": "fee",
+            "label": "State filing fee",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Nonstock (nonprofit) corporation\"",
+              "\"Articles of incorporation whose charter provides the corporation has no authority to issue capital stock, filed for record with the State Department of Assessments and Taxation\"",
+              "\"$100 + $20 organization and capitalization fee ($120), or $150 + $20 ($170) for a 501(c)(3), (4) or (6) nonprofit\""
+            ],
+            "source": {
+              "section": "5-202",
+              "subsection": "a",
+              "quote": "The charter of each nonstock corporation formed after June 1, 1951, shall provide that the corporation has no authority to issue capital stock."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "true",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Professional corporation (a limited liability company may also render professional services; Maryland has no separate professional LLC form; architects, professional engineers, real estate licensees and veterinarians may instead use an ordinary corporation, § 5-102(a)(3))\"",
+              "\"Articles of incorporation stating that the corporation is a professional corporation and the professional services it renders, filed for record with the State Department of Assessments and Taxation\"",
+              "\"$100 plus the organization and capitalization fee (See 1-204)\""
+            ],
+            "source": {
+              "section": "5-112",
+              "subsection": "a",
+              "quote": "A corporation may elect to be a professional corporation under this subtitle by including in the articles of incorporation a statement that"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Stock corporation\"",
+              "\"Articles of incorporation signed and acknowledged by one or more adult incorporators, filed for record with the State Department of Assessments and Taxation\"",
+              "\"$100 plus the organization and capitalization fee (See 1-204)\""
+            ],
+            "source": {
+              "section": "2-102",
+              "subsection": "a",
+              "quote": "in order to form a corporation, one or more adult individuals acting as incorporators shall"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              ">= 2",
+              "true",
+              "-",
+              "true"
+            ],
+            "then": [
+              "\"Limited partnership (limited partners who stay out of control of the business are not liable for its obligations; the general partner cannot limit its liability to outsiders, so if every owner needs protection choose a limited liability company)\"",
+              "\"Certificate of limited partnership executed by all general partners, filed with the State Department of Assessments and Taxation\"",
+              "\"$100\""
+            ],
+            "source": {
+              "section": "10-201",
+              "subsection": "a",
+              "quote": "To do so all of the general partners must execute a certificate of limited partnership."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "-",
+              "true",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Limited liability company (worker-owned businesses may elect in the articles to be a limited worker cooperative association)\"",
+              "\"Articles of organization filed for record with the State Department of Assessments and Taxation\"",
+              "\"$100\""
+            ],
+            "source": {
+              "section": "4A-202",
+              "subsection": "a",
+              "quote": "Any person may form a limited liability company by causing articles of organization to be executed and filed for record with the Department."
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              "1",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Sole proprietorship\"",
+              "\"No formation filing; before trading under any name other than the owner's own, file a trade name certificate ($25) with the State Department of Assessments and Taxation\"",
+              "\"None\""
+            ],
+            "source": {
+              "section": "1-406",
+              "subsection": "a",
+              "quote": "doing business or trading under any designation, title, or name other than the person’s own name, prior to commencing operation of the business, shall file with the Department a certificate"
+            }
+          },
+          {
+            "when": [
+              "-",
+              "-",
+              ">= 2",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"General partnership\"",
+              "\"No formation filing (a partnership forms by association); the partners may register as a limited liability partnership by filing a certificate of limited liability partnership ($100) with the State Department of Assessments and Taxation\"",
+              "\"None\""
+            ],
+            "source": {
+              "section": "9A-202",
+              "subsection": "a",
+              "quote": "the unincorporated association of two or more persons to carry on as co–owners a business for profit forms a partnership"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "llc_formed",
+        "description": "LLC formed (as of endorsed acceptance or later time in articles); trade name certificate recorded if one is used",
+        "after": [
+          "send_acknowledgment",
+          "record_trade_name"
+        ],
+        "source": {
+          "section": "4A-202",
+          "subsection": "b",
+          "quote": "A limited liability company is formed at the time when the Department accepts the articles of organization for record or at a later time specified in the articles, if in either case there has been substantial compliance with this title."
+        },
+        "join": "any"
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-204",
+        "role": "organization and capitalization fee owed on articles of incorporation in addition to the $100 processing fee",
+        "source": {
+          "section": "1-203",
+          "subsection": "a",
+          "quote": "In addition to any organization and capitalization fee required under § 1–204 of this subtitle"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-204(c)(2)",
+        "role": "$20 organization and capitalization fee for a corporation with no capital stock (nonstock corporation)",
+        "source": {
+          "section": "1-204",
+          "subsection": "c.2",
+          "quote": "The organization and capitalization fee is $20 for the incorporation of"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-204(c)(1)",
+        "role": "stock corporations: sliding scale on aggregate par value of capital stock, $20 when not over $100,000",
+        "source": {
+          "section": "1-204",
+          "subsection": "c.1",
+          "quote": "the organization and capitalization fee is as provided in the following schedule"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-203(b)(1)",
+        "role": "$100 processing fee for articles of incorporation (stock, nonstock and professional corporations)",
+        "source": {
+          "section": "1-203",
+          "subsection": "b.1",
+          "quote": "Except as provided in paragraph (10) of this subsection, for each of the following documents, the nonrefundable processing fee is $100"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-203(b)(10)",
+        "role": "$150 processing fee for articles of a 501(c)(3), (4) or (6) nonstock corporation",
+        "source": {
+          "section": "1-203",
+          "subsection": "b.10",
+          "quote": "A nonrefundable processing fee for articles of incorporation of a nonstock corporation that is organized to operate as a nonprofit entity under § 501(c)(3), (4), or (6) of the Internal Revenue Code is $150."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-203(b)(4)",
+        "role": "$100 fee for certificates of limited partnership and limited liability partnership and LLC articles of organization",
+        "source": {
+          "section": "1-203",
+          "subsection": "b.4.i",
+          "quote": "Certificate of limited partnership, certificate of limited liability partnership, articles of organization of a limited liability company"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-203(b)(4)(i) (as amended effective October 1, 2026); Title 4A, Subtitle 12A",
+        "role": "limited worker cooperative association: an LLC that elects that status in its articles of organization; same $100 fee",
+        "source": {
+          "section": "1-203",
+          "subsection": "b.4.i",
+          "quote": "articles of organization of a limited worker cooperative association"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-203(b)(12)",
+        "role": "optional $275 preclearance of draft articles (expedited processing under (b)(8) adds $425 or $50)",
+        "source": {
+          "section": "1-203",
+          "subsection": "b.12",
+          "quote": "A nonrefundable processing fee for preclearance of a document or draft of a document listed in paragraph (1) or (4) of this subsection is $275."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 2-102",
+        "role": "every corporation, including nonstock and professional corporations (General Corporation Law applies to nonstock corporations under § 5-201), files articles of incorporation for record",
+        "source": {
+          "section": "2-102",
+          "subsection": "a.2",
+          "quote": "File them for record with the Department."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 5-102(a)(2)",
+        "role": "a business eligible to be a professional corporation may not use another corporate form",
+        "source": {
+          "section": "5-102",
+          "subsection": "a.2",
+          "quote": "a corporation that is eligible to be a professional corporation under this subtitle may not organize under any other corporate form permitted by this article."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 5-102(a)(3)",
+        "role": "exception for architects, professional engineers, real estate licensees and veterinarians, who may use an ordinary corporation",
+        "source": {
+          "section": "5-102",
+          "subsection": "a.3",
+          "quote": "Paragraph (2) of this subsection does not apply to professional services rendered by:"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 4A-203(10)",
+        "role": "an ordinary LLC may render professional services (alternative to a professional corporation)",
+        "source": {
+          "section": "4A-203",
+          "subsection": "10",
+          "quote": "Render professional services within or without this State"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 10-303(a)",
+        "role": "limited partners are shielded from the limited partnership's obligations unless they are also general partners or take part in control",
+        "source": {
+          "section": "10-303",
+          "subsection": "a",
+          "quote": "a limited partner is not liable for the obligations of a limited partnership unless the limited partner is also a general partner"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 10-403",
+        "role": "the general partner carries a partner's liabilities and cannot contract them away as to outsiders",
+        "source": {
+          "section": "10-403",
+          "subsection": "b",
+          "quote": "A general partner may not limit the general partner’s liability in the partnership agreement to persons other than his partners or the limited partnership."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 9A-1001",
+        "role": "LLP registration option for a general partnership",
+        "source": {
+          "section": "9A-1001",
+          "subsection": "a",
+          "quote": "may register as a limited liability partnership by filing with the Department a certificate of limited liability partnership"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-406(a)",
+        "role": "contents of the trade name certificate: in writing, under oath, with owner names and addresses, character and location, trade name and Department ID number",
+        "source": {
+          "section": "1-406",
+          "subsection": "a.2",
+          "quote": "Affirmed or acknowledged under oath"
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-406(f)",
+        "role": "a recorded trade name certificate is effective for 5 years and may be renewed",
+        "source": {
+          "section": "1-406",
+          "subsection": "f.1",
+          "quote": "A certificate filed under this section is effective for a period of 5 years from the date the certificate is filed."
+        }
+      },
+      {
+        "citation": "Md. Code, Corps. & Ass'ns § 1-406(h)",
+        "role": "penalty for a wilfully false trade name certificate",
+        "source": {
+          "section": "1-406",
+          "subsection": "h",
+          "quote": "is guilty of a misdemeanor and on conviction is subject to a fine not exceeding $1,000 or imprisonment not exceeding 1 year or both"
+        }
+      },
+      {
+        "citation": "Md. Code, Bus. Reg. § 17-1803",
+        "role": "trader's licence for each store or place of business (the local layer: applied for with and issued by the clerk, see Title 17, Subtitle 18)",
+        "source": {
+          "section": "17-1803",
+          "subsection": "a",
+          "quote": "a person must have a trader’s license whenever the person"
+        }
+      },
+      {
+        "citation": "Md. Code, Bus. Reg. § 17-1803(b)",
+        "role": "a separate trader's licence for each location",
+        "source": {
+          "section": "17-1803",
+          "subsection": "b",
+          "quote": "A separate trader’s license is required for each store or place of business that a person operates in the State."
+        }
+      }
+    ],
+    "gaps": [
+      "The filing path models the LLC; corporations follow the parallel procedure in §§ 1-201 and 1-202 (not printed here), and limited partnerships are formed, and partnerships qualify as LLPs, at filing of their certificates (§ 10-201(b), § 9A-1001(b)).",
+      "Maryland does not issue a 'certificate of organization': the Department endorses its acceptance, records the articles and sends an acknowledgment (§ 4A-207(c)); the LLC exists from acceptance or a later time stated in the articles, if there has been substantial compliance (§ 4A-202(b)).",
+      "Formation happens at the acceptance the Department endorses (endorse_acceptance) or a later time in the articles; the single 'LLC formed' end event sits after the acknowledgment (and after the trade name certificate is recorded, when one is needed) only because a BPMN end event cannot mark a midpoint without an unsound parallel split, and the acknowledgment states the acceptance date and time (§ 4A-207(c)(3)). The optional trade name branch rejoins the main path through an exclusive merge in front of that end event, so a company that trades under another name is still shown as formed.",
+      "§ 4A-207(a) and (b) are prohibitions (the Department may not accept nonconforming or unpaid documents); the review that applies them is implied, not stated. Under § 4A-207(a)(2) the Department may treat a document that purports to be acknowledged as properly acknowledged.",
+      "The naming rules of Title 1, Subtitle 5 that § 4A-208 applies to the articles are not printed here; the 'name_complies' input stands for them.",
+      "The stock-corporation organization and capitalization fee under § 1-204(c)(1) depends on the aggregate par value of the capital stock, so the stock and professional corporation fee cells say 'See 1-204'.",
+      "The limited partnership rule fires before the LLC rule (the comparison table's fixed priority) whenever protection and passive co-owners are both wanted, although its general partner stays exposed (§ 10-403); the output points owners who all need protection to the LLC.",
+      "§ 5-102(a)(2) says a corporation eligible to be a professional corporation may not organize under any other corporate form (with the § 5-102(a)(3) exceptions); whether that bars choosing an LLC instead is not settled by the printed text, which speaks only of 'corporate form'.",
+      "Maryland has no separate professional limited liability company statute; § 4A-203(10) lets any LLC render professional services, subject to the licensing board for the profession.",
+      "Trader's licences under Business Regulation Title 17, Subtitle 18 are applied for with, and issued by, 'the clerk' (§ 17-1804, § 17-1805; not printed in full here); the printed sections do not name which clerk. Fees vary by county, with separate schedules for Baltimore City and Baltimore County (§ 17-1807). Growers, makers and manufacturers are exempt (§ 17-1803(d)). Local zoning, health and occupancy permits are outside the state statutes and attach in the local layer.",
+      "The trade name certificate must be filed before the business starts operating (§ 1-406(a)); the schema has no 'before' deadline, so this stays in the step text. It must be in writing, affirmed or acknowledged under oath, and give the owner's names and addresses, the character and location of the business, the trade name, and the identification number the Department assigned to the business (§ 1-406(a)(1)-(3)), which is why it follows formation.",
+      "The trade name certificate is effective for 5 years; the filer may renew it by applying within 6 months before the 5-year period ends, and each renewal extends it 5 years (fee $25 under § 1-406(e)(2), § 1-406(f)).",
+      "The version of § 1-203 that takes effect October 1, 2026 (Chapters 198 and 199 of 2025) is now in force; it keeps every fee used here and adds the limited worker cooperative association (an LLC that elects that status under § 4A-12A-04, $100 articles of organization). The comparison table has no input that separates a worker cooperative from an ordinary LLC, so it is noted on the LLC row rather than given its own rule.",
+      "State tax registration (Comptroller), employer registration and the annual report ($300, § 1-203(b)(3)(ii)) follow formation and are not modelled.",
+      "Once the LLC is formed it is the person doing business, so the company files the trade name certificate (§ 1-406(a)), which must give the Department's identification number for the business (§ 1-406(a)(3)(iv)). § 1-406(a) also requires the certificate from anyone engaged in a mercantile, trading, or manufacturing business as an agent, even under its own name."
+    ]
+  }
+}

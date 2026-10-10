@@ -80,6 +80,10 @@ def check_facts(facts: LegalProcessFacts, text: str) -> list[str]:
         for a in o.after:
             if a not in step_ids:
                 problems.append(f"outcome {o.id}: 'after' references unknown step {a}")
+    targets = step_ids | {o.id for o in facts.outcomes}
+    for s in facts.steps:
+        if s.deadline and s.deadline.on_miss and s.deadline.on_miss not in targets:
+            problems.append(f"step {s.id}: deadline on_miss references unknown step or outcome {s.deadline.on_miss}")
     for d in facts.decisions:
         for i, r in enumerate(d.rules):
             if len(r.when) != len(d.inputs) or len(r.then) != len(d.outputs):
@@ -99,9 +103,12 @@ class OllamaClient:
     think: bool | None = False           # turn off "thinking" models' reasoning trace; None = model default
     log: list = field(default_factory=list)
 
-    def chat(self, messages: list[dict], schema: dict | None = None, temperature: float = 0.0) -> str:
+    def chat(self, messages: list[dict], schema: dict | None = None, temperature: float = 0.0,
+             max_tokens: int | None = None) -> str:
         body = {"model": self.model, "messages": messages, "stream": False, "keep_alive": self.keep_alive,
                 "options": {"temperature": temperature, "num_ctx": self.num_ctx}}
+        if max_tokens:
+            body["options"]["num_predict"] = max_tokens
         if schema is not None:
             body["format"] = schema
         if self.think is not None:

@@ -31,13 +31,16 @@ SEARXNG_URL = _env("SEARXNG_URL", "")
 MODEL_A = _env("LEXFLOW_MODEL_A", "qwen3:1.7b")
 MODEL_B = _env("LEXFLOW_MODEL_B", "gemma3:1b")
 NUM_CTX = int(_env("LEXFLOW_NUM_CTX", "16384"))
+# how local models extract facts: see lexflow/extract/strategies.py and the Benchmark page
+STRATEGY = _env("LEXFLOW_STRATEGY", "pick_review")
 
 TURSO_URL = _env("TURSO_DATABASE_URL")
 TURSO_TOKEN = _env("TURSO_AUTH_TOKEN")
 ORIGIN = _env("LEXFLOW_ORIGIN", socket.gethostname())
 
-DOKUWIKI_URL = _env("DOKUWIKI_URL")
-DOKUWIKI_TOKEN = _env("DOKUWIKI_TOKEN")
+# The wiki to publish to.  LEXIPEDIA_TOKEN is accepted as a shorthand for lexipedia.xyz.
+DOKUWIKI_TOKEN = _env("DOKUWIKI_TOKEN") or _env("LEXIPEDIA_TOKEN")
+DOKUWIKI_URL = _env("DOKUWIKI_URL") or ("https://lexipedia.xyz" if _env("LEXIPEDIA_TOKEN") else "")
 
 USER_AGENT = _env("LEXFLOW_USER_AGENT", "lexflow/1.0 (+https://github.com/alibama/lexflow)")
 MAX_JOBS = int(_env("LEXFLOW_MAX_JOBS", "2"))

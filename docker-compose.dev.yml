@@ -1,0 +1,14 @@
+# Development: run the app from your working copy, so edits take effect without rebuilding the image.
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile llm up -d
+# New jobs pick up Python changes at once; restart the app for changes to the API itself.
+services:
+  app:
+    volumes:
+      - lexflow-data:/data
+      - ./data/raw:/data/raw
+      - ./lexflow:/app/lexflow
+      - ./curated:/app/curated
+      - ./dashboard:/app/dashboard
+      - ./fixtures:/app/fixtures
+      - ./tests:/app/tests
+      - ./docs:/app/docs

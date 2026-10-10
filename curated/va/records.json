@@ -1,82 +1,520 @@
 {
   "state": "va",
   "question": "records",
-  "sections": ["2.2-3704"],
-  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-09; every quote checked against open-us-law v2026.09.1",
+  "sections": [
+    "2.2-3704"
+  ],
+  "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
   "facts": {
     "process_name": "Request public records from a Virginia public body",
-    "trigger": "A person asks a public body for its public records",
-    "trigger_source": {"section": "2.2-3704", "subsection": "A", "quote": "all public records shall be open to citizens of the Commonwealth"},
+    "trigger": "A Virginia citizen, or media circulating or broadcasting in Virginia, asks a public body for public records",
+    "trigger_source": {
+      "section": "2.2-3704",
+      "subsection": "A",
+      "quote": "all public records shall be open to citizens of the Commonwealth"
+    },
     "actors": [
-      {"id": "requester", "name": "Requester", "kind": "private-party",
-       "source": {"section": "2.2-3704", "subsection": "A", "quote": "The custodian may require the requester to provide his name and legal address."}},
-      {"id": "public_body", "name": "Public body (records custodian)", "kind": "public-body",
-       "source": {"section": "2.2-3704", "subsection": "B", "quote": "Any public body that is subject to this chapter and that is the custodian of the requested records"}},
-      {"id": "court", "name": "Circuit or general district court", "kind": "court",
-       "source": {"section": "2.2-3704", "subsection": "C", "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records"}}
+      {
+        "id": "requester",
+        "name": "Requester (citizen of the Commonwealth, or media circulating or broadcasting in Virginia)",
+        "kind": "private-party",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "A",
+          "quote": "representatives of newspapers and magazines with circulation in the Commonwealth, and representatives of radio and television stations broadcasting in or into the Commonwealth"
+        }
+      },
+      {
+        "id": "public_body",
+        "name": "Public body (records custodian)",
+        "kind": "public-body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "Any public body that is subject to this chapter and that is the custodian of the requested records"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Appropriate court",
+        "kind": "court",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records"
+        }
+      }
     ],
     "steps": [
-      {"id": "submit_request", "actor": "requester", "action": "Request records with reasonable specificity",
-       "kind": "filing", "modality": "obligation", "after": [], "recipient": "public_body",
-       "source": {"section": "2.2-3704", "subsection": "B", "quote": "A request for public records shall identify the requested records with reasonable specificity."}},
-      {"id": "notify_charges", "actor": "public_body", "action": "Tell requester charges may apply",
-       "kind": "notice", "modality": "obligation", "after": ["submit_request"], "recipient": "requester",
-       "source": {"section": "2.2-3704", "subsection": "F", "quote": "Prior to conducting a search for records, the public body shall notify the requester in writing that the public body may make reasonable charges"}},
-      {"id": "petition_court", "actor": "public_body", "action": "Petition court for more time",
-       "kind": "filing", "modality": "permission", "after": ["notify_charges"], "condition": "extraordinary_volume",
-       "recipient": "court",
-       "source": {"section": "2.2-3704", "subsection": "C", "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records when the request is for an extraordinary volume of records or requires an extraordinarily lengthy search"}},
-      {"id": "respond", "actor": "public_body", "action": "Provide records or answer in writing",
-       "kind": "decision", "modality": "obligation", "after": ["notify_charges"], "decision": "response_type",
-       "deadline": {"amount": 5, "unit": "business_days", "anchor": "receiving a request", "consequence": "action-invalid",
-                    "source": {"section": "2.2-3704", "subsection": "B", "quote": "promptly, but in all cases within five working days of receiving a request"}},
-       "source": {"section": "2.2-3704", "subsection": "B", "quote": "provide the requested records to the requester or make one of the following responses in writing"}},
-      {"id": "extend", "actor": "public_body", "action": "Use seven more work days",
-       "kind": "act", "modality": "right", "after": ["respond"], "condition": "not_practically_possible",
-       "deadline": {"amount": 7, "unit": "business_days", "anchor": "the end of the five-work-day period", "consequence": "action-invalid",
-                    "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "the public body shall have an additional seven work days"}},
-       "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "It is not practically possible to provide the requested records or to determine whether they are available within the five-work-day period."}},
-      {"id": "supply", "actor": "public_body", "action": "Supply records at lowest possible cost",
-       "kind": "act", "modality": "obligation", "after": ["respond"], "recipient": "requester",
-       "source": {"section": "2.2-3704", "subsection": "F", "quote": "shall make all reasonable efforts to supply the requested records at the lowest possible cost"}}
+      {
+        "id": "submit_request",
+        "actor": "requester",
+        "action": "Request records with reasonable specificity",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": [],
+        "recipient": "public_body",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "A request for public records shall identify the requested records with reasonable specificity."
+        }
+      },
+      {
+        "id": "notify_charges",
+        "actor": "public_body",
+        "action": "Notify of charges; offer cost estimate",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "submit_request"
+        ],
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "Prior to conducting a search for records, the public body shall notify the requester in writing that the public body may make reasonable charges"
+        }
+      },
+      {
+        "id": "seek_agreement",
+        "actor": "public_body",
+        "action": "Try to agree on production with requester",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "notify_charges"
+        ],
+        "condition": "extraordinary_burden_and_intends_petition",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Before proceeding with the petition, however, the public body shall make reasonable efforts to reach an agreement with the requester"
+        }
+      },
+      {
+        "id": "petition_court",
+        "actor": "public_body",
+        "action": "Petition court for more time",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "seek_agreement"
+        ],
+        "recipient": "court",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records when the request is for an extraordinary volume of records or requires an extraordinarily lengthy search"
+        }
+      },
+      {
+        "id": "respond",
+        "actor": "public_body",
+        "action": "Provide records or answer in writing",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "notify_charges"
+        ],
+        "decision": "response_type",
+        "deadline": {
+          "amount": 5,
+          "unit": "business_days",
+          "anchor": "receiving a request",
+          "consequence": "deemed-denial",
+          "source": {
+            "section": "2.2-3704",
+            "subsection": "B",
+            "quote": "promptly, but in all cases within five working days of receiving a request"
+          },
+          "on_miss": "deemed_denied"
+        },
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B",
+          "quote": "provide the requested records to the requester or make one of the following responses in writing"
+        }
+      },
+      {
+        "id": "supply",
+        "actor": "public_body",
+        "action": "Supply inspection or copies at lowest cost",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "respond",
+          "respond_extended"
+        ],
+        "condition": "records_provided",
+        "recipient": "requester",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "shall make all reasonable efforts to supply the requested records at the lowest possible cost"
+        },
+        "join": "any"
+      },
+      {
+        "id": "respond_extended",
+        "actor": "public_body",
+        "action": "Provide records or answer within extension",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "respond"
+        ],
+        "condition": "not_practically_possible",
+        "decision": "final_response_type",
+        "deadline": {
+          "amount": 7,
+          "unit": "business_days",
+          "anchor": "a B.4 response made within five working days",
+          "consequence": "deemed-denial",
+          "source": {
+            "section": "2.2-3704",
+            "subsection": "B.4",
+            "quote": "If the response is made within five working days, the public body shall have an additional seven work days"
+          },
+          "on_miss": "deemed_denied"
+        },
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.4",
+          "quote": "in which to provide one of the four preceding responses"
+        }
+      }
     ],
     "decisions": [
-      {"id": "response_type", "question": "Which written response does the public body give?", "hit_policy": "FIRST",
-       "inputs": [
-         {"name": "practical", "label": "Possible to answer within five work days", "type": "boolean"},
-         {"name": "records_exist", "label": "Records exist and can be found", "type": "boolean"},
-         {"name": "all_exempt", "label": "All requested records are exempt", "type": "boolean"},
-         {"name": "some_exempt", "label": "Some requested records are exempt", "type": "boolean"}
-       ],
-       "outputs": [{"name": "response", "label": "Response", "type": "string"}],
-       "rules": [
-         {"when": ["false", "-", "-", "-"], "then": ["\"Not practically possible: seven more work days\""],
-          "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "Such response shall specify the conditions that make a response impossible."}},
-         {"when": ["true", "false", "-", "-"], "then": ["\"Records could not be found or do not exist\""],
-          "source": {"section": "2.2-3704", "subsection": "B.3", "quote": "The requested records could not be found or do not exist."}},
-         {"when": ["true", "true", "true", "-"], "then": ["\"Entirely withheld, citing the Code sections\""],
-          "source": {"section": "2.2-3704", "subsection": "B.1", "quote": "The requested records are being entirely withheld."}},
-         {"when": ["true", "true", "false", "true"], "then": ["\"Provided in part and withheld in part\""],
-          "source": {"section": "2.2-3704", "subsection": "B.2", "quote": "The requested records are being provided in part and are being withheld in part."}},
-         {"when": ["true", "true", "false", "false"], "then": ["\"Provide the records\""],
-          "source": {"section": "2.2-3704", "subsection": "B", "quote": "provide the requested records to the requester"}}
-       ]}
+      {
+        "id": "response_type",
+        "question": "Which written response does the public body give?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "practical",
+            "label": "Possible to answer within five work days",
+            "type": "boolean"
+          },
+          {
+            "name": "records_exist",
+            "label": "Records exist and can be found",
+            "type": "boolean"
+          },
+          {
+            "name": "all_exempt",
+            "label": "All requested records are exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "some_exempt",
+            "label": "Some requested records are exempt",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Written response",
+            "type": "string"
+          },
+          {
+            "name": "not_practically_possible",
+            "label": "Takes the extension",
+            "type": "boolean"
+          },
+          {
+            "name": "records_provided",
+            "label": "Some records are provided",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Not practically possible within five work days; conditions stated\"",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.4",
+              "quote": "Such response shall specify the conditions that make a response impossible."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Records could not be found or do not exist; contact information for the other public body if known\"",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.3",
+              "quote": "The requested records could not be found or do not exist."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Entirely withheld; volume, subject matter and Code sections cited\"",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.1",
+              "quote": "The requested records are being entirely withheld."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Provided in part, withheld in part; subject matter of withheld portions and Code sections cited\"",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.2",
+              "quote": "The requested records are being provided in part and are being withheld in part."
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Provide the records\"",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B",
+              "quote": "provide the requested records to the requester"
+            }
+          }
+        ]
+      },
+      {
+        "id": "final_response_type",
+        "question": "Which response does the public body give within the extension?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "records_exist",
+            "label": "Records exist and can be found",
+            "type": "boolean"
+          },
+          {
+            "name": "all_exempt",
+            "label": "All requested records are exempt",
+            "type": "boolean"
+          },
+          {
+            "name": "some_exempt",
+            "label": "Some requested records are exempt",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "response",
+            "label": "Response",
+            "type": "string"
+          },
+          {
+            "name": "records_provided",
+            "label": "Some records are provided",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"Records could not be found or do not exist; contact information for the other public body if known\"",
+              "false"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.3",
+              "quote": "if the public body that received the request knows that another public body has the requested records, the response shall include contact information for the other public body"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"Entirely withheld; volume, subject matter and Code sections cited\"",
+              "false"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.1",
+              "quote": "Such response shall identify with reasonable particularity the volume and subject matter of withheld records"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"Provided in part, withheld in part; subject matter of withheld portions and Code sections cited\"",
+              "true"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B.2",
+              "quote": "Such response shall identify with reasonable particularity the subject matter of withheld portions"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Provide the records\"",
+              "true"
+            ],
+            "source": {
+              "section": "2.2-3704",
+              "subsection": "B",
+              "quote": "provide the requested records to the requester"
+            }
+          }
+        ]
+      }
     ],
     "outcomes": [
-      {"id": "answered_after_extension", "description": "One of the four responses given within the extension", "after": ["extend"],
-       "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "in which to provide one of the four preceding responses"}},
-      {"id": "records_supplied", "description": "Records supplied to the requester", "after": ["supply"],
-       "source": {"section": "2.2-3704", "subsection": "A", "quote": "Access to such records shall be provided by the custodian in accordance with this chapter by inspection or by providing copies of the requested records, at the option of the requester."}}
+      {
+        "id": "production_agreed",
+        "description": "Production of the records agreed with the requester",
+        "after": [
+          "seek_agreement"
+        ],
+        "when": "agreement_reached",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "C",
+          "quote": "reach an agreement with the requester concerning the production of the records requested"
+        }
+      },
+      {
+        "id": "no_records_released",
+        "description": "No records released: entirely withheld, or not found",
+        "after": [
+          "respond",
+          "respond_extended"
+        ],
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.1",
+          "quote": "The requested records are being entirely withheld."
+        },
+        "join": "any"
+      },
+      {
+        "id": "deemed_denied",
+        "description": "Deemed denied; violation of the chapter",
+        "after": [],
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "E",
+          "quote": "Failure to respond to a request for records shall be deemed a denial of the request and shall constitute a violation of this chapter."
+        }
+      },
+      {
+        "id": "records_supplied",
+        "description": "Records supplied to the requester",
+        "after": [
+          "supply"
+        ],
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "A",
+          "quote": "Access to such records shall be provided by the custodian in accordance with this chapter by inspection or by providing copies of the requested records, at the option of the requester."
+        },
+        "join": "any"
+      }
     ],
     "cross_references": [
-      {"citation": "Va. Code § 2.2-3706.1", "role": "criminal investigative files get 60 work days instead of seven",
-       "source": {"section": "2.2-3704", "subsection": "B.4", "quote": "in the case of a request for criminal investigative files pursuant to § 2.2-3706.1 , 60 work days"}},
-      {"citation": "Va. Code § 42.1-76 et seq.", "role": "Virginia Public Records Act; records archived at the Library of Virginia",
-       "source": {"section": "2.2-3704", "subsection": "J", "quote": "Virginia Public Records Act (§ 42.1-76 et seq.)"}}
+      {
+        "citation": "Va. Code § 2.2-3706.1",
+        "role": "criminal investigative files get 60 work days instead of seven",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "B.4",
+          "quote": "in the case of a request for criminal investigative files pursuant to § 2.2-3706.1 , 60 work days"
+        }
+      },
+      {
+        "citation": "Va. Code § 2.2-3705.4",
+        "role": "scholastic records requested by a parent or adult student are carved out of the charges rules",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "F",
+          "quote": "scholastic records requested pursuant to subdivision A 1 of § 2.2-3705.4"
+        }
+      },
+      {
+        "citation": "Va. Code § 42.1-76 et seq.",
+        "role": "Virginia Public Records Act; records archived at the Library of Virginia",
+        "source": {
+          "section": "2.2-3704",
+          "subsection": "J",
+          "quote": "Virginia Public Records Act (§ 42.1-76 et seq.)"
+        }
+      }
     ],
     "gaps": [
-      "Failure to respond within the time limits is deemed a denial (subsection E); the model ends the request there, and enforcement by petition for mandamus or injunction under Va. Code § 2.2-3713 is not modelled.",
-      "The cost-estimate exchange in subsection F (30 days to answer an estimate, or the request is deemed withdrawn) and the deposit for charges over $200 in subsection H are not modelled as separate steps."
+      "Subsection E: failure to respond \"shall be deemed a denial of the request and shall constitute a violation of this chapter.\" Both response deadlines route their timers (consequence 'deemed-denial') to the end state deemed_denied, kept separate from a written withholding or not-found response (no_records_released). For the five-working-day deadline this follows E directly. For the B.4 extension it is an inference: a written B.4 response has already been given when that timer runs, and deemed denial is read from E together with B.4's requirement to provide \"one of the four preceding responses\" within the extension. Enforcement by petition for mandamus or injunction under Va. Code § 2.2-3713 is not modelled.",
+      "Subsection A opens records to citizens of the Commonwealth and to representatives of newspapers and magazines circulating, and radio and television stations broadcasting, in or into Virginia; this section grants no right to anyone else, and whether a body answers other requesters is not stated here.",
+      "This is the Virginia process, so it governs Charlottesville and other Virginia localities only; requests to the District of Columbia (D.C. Code § 2-532) or to Baltimore (Md. Code, General Provisions § 4-203) follow their own statutes and are modelled separately.",
+      "Optional steps that would rejoin the main path are not modelled as separate steps: the custodian may require the requester's name and legal address (A); the cost-estimate exchange tolls the clock, and the request is deemed withdrawn if the requester does not answer an estimate within 30 days (F); a deposit may be required when charges are likely to exceed $200 (H); and unpaid bills 30 days or more past due may have to be paid first (I).",
+      "Court petition (C): the condition extraordinary_burden_and_intends_petition stands for both statutory prongs (an extraordinary volume of records or an extraordinarily lengthy search, and a timely response would prevent the body from meeting its operational responsibilities) plus the body's choice to petition, since the agreement duty applies only before proceeding with the petition. The path is an exclusive alternative to the ordinary response and ends at filing; the statute does not say what follows an agreement or the court's ruling.",
+      "Extension (B.4): the extra time is available only if the B.4 response is made within five working days, which the model reflects by reaching respond_extended only from a timely respond. The text says 'an additional seven work days' without saying whether they run from the end of the five-day period or from the B.4 response; the timer is a boundary event on respond_extended, so it runs from the B.4 response, which can be shorter than seven work days counted from the end of the five-day period. Criminal investigative files (§ 2.2-3706.1) get 60 work days instead; the timer shows only the seven-day figure.",
+      "Subsection F's opening exception for scholastic records under § 2.2-3705.4 A 1 qualifies the permission to make charges; the text does not say whether the later duty to notify the requester of charges before a search still applies to such requests, so notify_charges is shown without a condition.",
+      "No new record need be created (D), electronic records must be produced in a medium the body regularly uses (G), and a body that transferred records for storage remains their custodian (J); these shape the response but are not separate steps.",
+      "The first response and the B.4 extended response rejoin as exclusive merges: supply and no_records_released are each modelled once and reached from whichever response was given (join 'any'); both missed deadlines lead to the single deemed_denied end state. no_records_released cites B.1 but also covers the B.3 not-found response."
     ]
   }
 }

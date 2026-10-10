@@ -1,0 +1,341 @@
+{
+ "place": "md:baltimore",
+ "government": "Mayor and City Council of Baltimore (Baltimore City, an independent city with county-level status)",
+ "researched": "2026-10-10",
+ "researched_by": "Claude (claude-opus-5-5): one agent researched official sources, a second re-fetched every source and corrected or removed unsupported claims",
+ "verified": true,
+ "answers": {
+  "records": {
+   "summary": "In Baltimore City, you request public records under the Maryland Public Information Act (MPIA), Md. Code, General Provisions Title 4. There is no single citywide online portal on official city pages. Each city agency handles its own requests, so you send a written request to the agency that holds the records. Some agencies have a webform (the Board of Municipal and Zoning Appeals). Others take email or mail (Public Works, Housing & Community Development, the Inspector General, the Board of Finance). State law makes the first 2 hours of search and preparation free. After that the agency can charge a reasonable fee based on its actual costs. The fee can be waived if you cannot afford it or if waiving it is in the public interest. Agencies must respond promptly, and in no case later than 30 days. If you are denied, you must get a written statement of the reasons and your options. You can then ask the State Public Access Ombudsman for help resolving the dispute, or file a complaint in circuit court.",
+   "steps": [
+    {
+     "step": "Identify which city agency holds the records (each agency handles its own requests; there is no single citywide portal)",
+     "who": "Requester; use the agency's own MPIA page or the Maryland Manual directory of Baltimore City agencies",
+     "how": "Find the MPIA contact on the agency's page at baltimorecity.gov. To find the right city agency, the Department of Public Works (DPW) points requesters to the Maryland Manual's online directory.",
+     "url": "https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests",
+     "quote": "Maryland Manual's online directory"
+    },
+    {
+     "step": "Put the request in writing, describe the records specifically, and give a way to reply",
+     "who": "Requester, writing to the agency's records contact (example: DPW, Dominic Lamartina)",
+     "how": "Send it by email (DPW prefers email but does not require it) or by U.S. mail. Describe the records reasonably and specifically, and include an email or return mailing address.",
+     "url": "https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests",
+     "quote": "Requests must include a reasonable description of the records sought and should be as specific as possible."
+    },
+    {
+     "step": "Use an agency webform where one exists (example: Board of Municipal and Zoning Appeals)",
+     "who": "Board of Municipal and Zoning Appeals (BMZA)",
+     "how": "Fill out the BMZA MPIA Request Webform. Or download the BMZA Document Request Form and email it to bmza@baltimorecity.gov with the subject line 'MPIA Request'. Or mail it to BMZA, Attn: Carolyn Young, MPIA Request, 417 E. Fayette Street, Room 922, Baltimore, MD 21202.",
+     "url": "https://www.baltimorecity.gov/zoning/how-to-view-records",
+     "quote": "After we receive your request, someone will contact you within 10 days."
+    },
+    {
+     "step": "Agencies that take requests by email (example: Housing & Community Development)",
+     "who": "Department of Housing & Community Development (DHCD), which routes MPIA requests for processing",
+     "how": "Fill out the DHCD MPIA request form and email it to dhcd.mpia@baltimorecity.gov. If you want a search for outstanding fees and violations on a property, that is not an MPIA request. You apply for it through a separate process run by the City's Finance Department.",
+     "url": "https://www.baltimorecity.gov/dhcd/contact/public-information-act-request",
+     "quote": "email it to dhcd.mpia@baltimorecity.gov"
+    },
+    {
+     "step": "Requests to the Office of the Inspector General",
+     "who": "Baltimore City Office of the Inspector General (OIG)",
+     "how": "Email oig@baltimorecity.gov and Dereka.Bolden@baltimorecity.gov with the subject line 'MD Public Information Act Request'.",
+     "url": "https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request",
+     "quote": "Make a MD Public Information Act Request via email."
+    },
+    {
+     "step": "Know the fee rules: the first 2 hours are free, and after that fees must be reasonable and tied to actual costs",
+     "who": "Agency records custodian (state law applies to all city agencies)",
+     "how": "Under GP § 4-206(c), the first 2 hours of search and preparation are free. After that, the fee must reasonably relate to the agency's actual costs. DPW provides records at no cost if the request takes under 2 hours. For longer requests it gives a written time estimate first.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false",
+     "quote": "The official custodian may not charge a fee for the first 2 hours that are needed to search for a public record"
+    },
+    {
+     "step": "Ask for a fee waiver if you cannot pay or the request serves the public interest",
+     "who": "Requester, asking the custodian",
+     "how": "Ask for a waiver. Under GP § 4-206(e), the custodian may waive fees if you are indigent and file an affidavit of indigency. It may also waive fees if, after considering your ability to pay and other factors, it finds a waiver is in the public interest.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false",
+     "quote": "the applicant is indigent and files an affidavit of indigency"
+    },
+    {
+     "step": "Expect a response within the legal deadline",
+     "who": "Agency records custodian",
+     "how": "State law requires the custodian to grant or deny the request promptly, and no later than 30 days after receiving it. Within 10 days of receipt, DPW sends either the records or a written notice that processing may take up to 30 days.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-203&enactments=false",
+     "quote": "promptly, but not more than 30 days after receiving the application"
+    },
+    {
+     "step": "If you are denied, get a written statement of the reasons, the legal basis, and your options",
+     "who": "Agency records custodian",
+     "how": "A denial must come in writing within 10 working days. It must give the reasons, the legal authority, a brief description of the record being withheld, and notice of your remedies. You must still be allowed to see any part of the record that is open to inspection (GP § 4-203(c)).",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-203&enactments=false",
+     "quote": "within 10 working days, give the applicant a written statement that gives"
+    },
+    {
+     "step": "Appeal option 1: ask the Maryland Public Access Ombudsman for help resolving the dispute",
+     "who": "Maryland Public Access Ombudsman (state office, 200 St. Paul Place, Baltimore, MD 21202)",
+     "how": "Use the Request Mediation link on the Ombudsman's website, or call 410-576-6560.",
+     "url": "https://piaombuds.maryland.gov/",
+     "quote": "tasked with making reasonable attempts to help applicants/requesters and records custodians/agencies resolve disputes"
+    },
+    {
+     "step": "Appeal option 2: file a complaint in circuit court",
+     "who": "Circuit court for the county where you live or have your principal place of business, or where the record is located (for Baltimore City, the Circuit Court for Baltimore City)",
+     "how": "After you are denied inspection, file a complaint under GP § 4-362(a).",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-362&enactments=false",
+     "quote": "the person or governmental unit may file a complaint with the circuit court"
+    }
+   ],
+   "contacts": [
+    {
+     "kind": "email",
+     "value": "dominic.lamartina@baltimorecity.gov; 200 Holliday Street, Suite 203, Baltimore, MD 21202; 410-396-3312",
+     "label": "Department of Public Works MPIA contact",
+     "url": "https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests"
+    },
+    {
+     "kind": "email",
+     "value": "bmza@baltimorecity.gov (subject: MPIA Request); BMZA, Attn: Carolyn Young, 417 E. Fayette Street, Room 922, Baltimore, MD 21202",
+     "label": "Board of Municipal and Zoning Appeals MPIA requests",
+     "url": "https://www.baltimorecity.gov/zoning/how-to-view-records"
+    },
+    {
+     "kind": "email",
+     "value": "dhcd.mpia@baltimorecity.gov",
+     "label": "Department of Housing & Community Development MPIA requests",
+     "url": "https://www.baltimorecity.gov/dhcd/contact/public-information-act-request"
+    },
+    {
+     "kind": "email",
+     "value": "oig@baltimorecity.gov; Dereka.Bolden@baltimorecity.gov (subject: MD Public Information Act Request)",
+     "label": "Office of the Inspector General PIA requests",
+     "url": "https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request"
+    },
+    {
+     "kind": "office",
+     "value": "Baltimore City Law Department, City Hall, Room 101, 100 N. Holliday Street, Baltimore, MD 21202; (410) 396-3297",
+     "label": "Law Department (as listed on the OIG PIA page)",
+     "url": "https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request"
+    },
+    {
+     "kind": "office",
+     "value": "Jennell Rogers, 200 N. Holliday Street, Room 7, Baltimore, MD 21202; 410-396-4570; jrogers@baltimorecity.gov",
+     "label": "Board of Finance MPIA contact",
+     "url": "https://www.baltimorecity.gov/board-of-finance/contact"
+    },
+    {
+     "kind": "portal",
+     "value": "Request Mediation link; 410-576-6560; 200 St. Paul Place, Baltimore, MD 21202",
+     "label": "Maryland Public Access Ombudsman",
+     "url": "https://piaombuds.maryland.gov/"
+    }
+   ],
+   "local_law": [
+    {
+     "citation": "Md. Code, General Provisions §§ 4-101 et seq. (Maryland Public Information Act), incl. § 4-203 (time limits and denials)",
+     "summary": "State law that applies to all Baltimore City agencies. Custodians must grant or deny a request within 30 days. A denial must be in writing within 10 working days and give the reasons, legal authority, a description of the withheld record, and the requester's remedies. Any part of the record open to inspection must still be released.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-203&enactments=false"
+    },
+    {
+     "citation": "Md. Code, General Provisions § 4-206 (fees)",
+     "summary": "A reasonable fee must reasonably relate to the agency's actual costs. The first 2 hours of search and preparation are free. Fees may be waived for indigent requesters who file an affidavit, or when a waiver is in the public interest.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false"
+    },
+    {
+     "citation": "Md. Code, General Provisions § 4-362 (judicial review)",
+     "summary": "A person denied inspection may file a complaint in the circuit court for the county where they live or have their principal place of business, or where the record is located.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-362&enactments=false"
+    }
+   ],
+   "fees": "There is no application fee. Under GP § 4-206(c), the first 2 hours of search and preparation are free. After that, the agency may charge a reasonable fee tied to its actual costs. DPW provides records at no cost if a request takes under 2 hours. For longer requests it gives a written estimate first, and it bases the fee on staff and attorney salaries prorated for the time spent. Fees may be waived for indigent requesters who file an affidavit, or when a waiver is in the public interest. The agency pages reviewed did not list per-page copy charges.",
+   "caveats": [
+    "There is no single citywide MPIA portal on official Baltimore City pages. Requests go agency by agency, and BMZA was the only agency with a webform among the pages checked.",
+    "The city website has moved to www.baltimorecity.gov, and many older subdomain links (law.baltimorecity.gov, finance.baltimorecity.gov, publicworks.baltimorecity.gov) now redirect or no longer work. The Law Department's own PIA page was not verified. Older listings give a different room and phone (City Hall Room 171, (443) 984-3421) than the OIG page (Room 101, (410) 396-3297).",
+    "The Baltimore Police Department reportedly handles its own MPIA requests through its Document Compliance Unit (baltimorepolice.org). This was not checked against an official page.",
+    "The Ombudsman's home page does not say whether mediation is voluntary or binding, or which kinds of disputes it covers. Reports say that since July 1, 2022, requesters must first try the Ombudsman before complaining to the State PIA Compliance Board. This was not confirmed on an official page.",
+    "Agency contact names and emails change. Confirm them before you send a request."
+   ]
+  },
+  "business": {
+   "summary": "To start a business in Baltimore City, first register your business with the State Department of Assessments and Taxation (SDAT) through Maryland Business Express and make sure it stays in good standing. The City's business license application asks for your SDAT number. Most businesses that sell goods also need a state trader's license from the Clerk of the Circuit Court and a Maryland sales and use tax account. Baltimore City has its own trader's license fee schedule, from $20 up to $2,125 depending on the value of your stock-in-trade. Certain regulated activities need a city business license from the Department of Consumer Protection and Business Licensing (DCPBL). Examples are amusement devices, auctioneers, pawnbrokers, late-night operations, commercial parking, street vending, and massage establishments. You can apply online, by email, or by mail. Depending on your location and use, you may also need a Use & Occupancy permit through DHCD's ePermits system and an annual Fire Prevention Permit. Food businesses need Health Department plan review and a license. Home-based businesses must follow the home-occupation rules in Zoning Code § 15-507.",
+   "steps": [
+    {
+     "step": "Register the business with the state and get an SDAT number",
+     "who": "Maryland State Department of Assessments and Taxation (SDAT), through Maryland Business Express",
+     "how": "Register online at Maryland Business Express. You will need the SDAT number for the Baltimore City business license application.",
+     "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license",
+     "quote": "Register for a State Department of Assessments and Taxation (SDAT) number"
+    },
+    {
+     "step": "Confirm your business is in good standing with Maryland",
+     "who": "SDAT / Maryland Business Express",
+     "how": "Check your good standing on Maryland Business Express before you apply for city licenses.",
+     "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license",
+     "quote": "Check and ensure your entity is in Good Standing"
+    },
+    {
+     "step": "Open a Maryland sales and use tax account and get a trader's license if you sell goods",
+     "who": "Comptroller of Maryland (sales tax); Clerk of the Circuit Court for Baltimore City (trader's license)",
+     "how": "Register for sales and use tax with the Comptroller, then apply for a trader's license from the Clerk of the Circuit Court. Growers and manufacturers are exempt. The license year runs May 1 to April 30.",
+     "url": "https://www.marylandcomptroller.gov/businesses/new-business/business-licenses.html",
+     "quote": "without first obtaining a trader's license from the Clerk of the Circuit Court and opening a sales tax account"
+    },
+    {
+     "step": "Check the trader's license fee (based on the value of your stock-in-trade; Baltimore City has its own schedule)",
+     "who": "Clerk of the Circuit Court for Baltimore City",
+     "how": "Under Business Regulation § 17-1807(c)(3), Baltimore City fees range from $20 (stock-in-trade of $1,000 or less) to $2,125 (more than $750,000). Most other counties start at $15.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=17-1807&enactments=false",
+     "quote": "$2,125, if the value is more than $750,000"
+    },
+    {
+     "step": "Apply for a Baltimore City business license if your activity is regulated",
+     "who": "Department of Consumer Protection and Business Licensing (DCPBL), Business Licensing Division",
+     "how": "Pay the application fee online at pay.baltimorecity.gov. Submit the application and any required addendum online (Jotform), by email to COBBusinessLicense@baltimorecity.gov, or by mail to 200 Holliday Street, RM 3, Baltimore, MD 21202. Regulated activities include amusement devices, auctioneers, pawnbrokers, street entertainers, late-night commercial operations, commercial and special-event parking, street, mobile and merchant vendors, and massage establishments.",
+     "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license",
+     "quote": "Submit your business license application online"
+    },
+    {
+     "step": "Get a Use & Occupancy permit for a new tenant, change of use, or change of ownership",
+     "who": "Department of Housing & Community Development (DHCD), through ePermits",
+     "how": "Apply in the ePermits system under the 'Use and occupancy permit' category. A final inspection is required before the permit is issued.",
+     "url": "https://www.baltimorecity.gov/building-permits/permit-information-and-requirements/permit-information-use-occupancy",
+     "quote": "Use and Occupancy permits cover permits for new building constructions, ownership changes, tenant changes,"
+    },
+    {
+     "step": "Get an annual Fire Prevention Permit if your license type or occupancy requires one",
+     "who": "Baltimore City Fire Department, Fire Prevention Bureau",
+     "how": "Buildings where the public works, plays or spends time are inspected every year. Check whether your license type needs a Fire Prevention Permit, and get it before you apply for the business license.",
+     "url": "https://www.baltimorecity.gov/fire/about/who-we-are/fire-prevention",
+     "quote": "Every building in the city where the public works, plays or spends time is inspected annually."
+    },
+    {
+     "step": "Food businesses: complete Health Department plan review and get a food facility license",
+     "who": "Baltimore City Health Department, Environmental Health (Plan Review), 1001 E. Fayette Street; 410-396-4544",
+     "how": "New food service facilities, and facilities under new ownership, must submit plans and pass a plan review inspection before the license is approved.",
+     "url": "https://www.baltimorecity.gov/health/environmental-health/plan-review",
+     "quote": "must submit plans and undergo an initial Plan Review inspection prior to license approval"
+    },
+    {
+     "step": "Home-based businesses: follow the Zoning Code home-occupation limits",
+     "who": "Business owner (zoning enforcement)",
+     "how": "Under § 15-507, the business must be run entirely inside the dwelling and stay secondary to living there. You may employ no more than 1 person who is not a family member living there. Client visits are limited to 3 a day and 10 a week. Outside storage and motor-vehicle repair are not allowed.",
+     "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/15-507",
+     "quote": "Client or customer visits to the site are limited to no more than 3 a day and 10 a week."
+    }
+   ],
+   "contacts": [
+    {
+     "kind": "email",
+     "value": "COBBusinessLicense@baltimorecity.gov; mail: 200 Holliday Street, RM 3, Baltimore, MD 21202",
+     "label": "Baltimore City business license applications (DCPBL)",
+     "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license"
+    },
+    {
+     "kind": "phone",
+     "value": "City Operator (410) 396-3100; 3-1-1 within the city; (443) 263-2220 from outside",
+     "label": "City general information (listed on DCPBL and Fire pages)",
+     "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license"
+    },
+    {
+     "kind": "portal",
+     "value": "ePermits (Use and occupancy permit category)",
+     "label": "DHCD ePermits for Use & Occupancy permits",
+     "url": "https://www.baltimorecity.gov/building-permits/permit-information-and-requirements/permit-information-use-occupancy"
+    },
+    {
+     "kind": "phone",
+     "value": "410-396-4544; Environmental Health, 1001 E. Fayette Street, Baltimore, MD 21202",
+     "label": "Health Department Plan Review (food facilities)",
+     "url": "https://www.baltimorecity.gov/health/environmental-health/plan-review"
+    }
+   ],
+   "local_law": [
+    {
+     "citation": "Md. Code, Business Regulation § 17-1807 (trader's license fees)",
+     "summary": "Sets trader's license fees based on the value of stock-in-trade. Baltimore City has its own schedule, from $20 (up to $1,000) to $2,125 (over $750,000). Most other counties start at $15.",
+     "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=17-1807&enactments=false"
+    },
+    {
+     "citation": "Baltimore City Code, Art. 32 (Zoning) § 15-507 (Home occupation)",
+     "summary": "A home business must be run entirely inside the dwelling and stay secondary to the residential use. It may employ no more than 1 person who is not a resident family member, and client visits are limited to 3 a day and 10 a week. Other limits cover deliveries, vehicles, outside storage, and nuisances.",
+     "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/15-507"
+    }
+   ],
+   "fees": "Trader's license (Baltimore City schedule, Bus. Reg. § 17-1807(c)(3)): $20 to $2,125, based on the value of stock-in-trade. City business license application fees are paid online at pay.baltimorecity.gov, but the amounts were not listed on the DCPBL page reviewed. Use & Occupancy, Fire Prevention, and Health permit fees vary and were not verified. SDAT formation fees were not verified on the pages reviewed.",
+   "caveats": [
+    "The original research said DCPBL was created in 2025 and that the city license does not accept trade-name ('T') numbers. Neither claim appears on the DCPBL pages reviewed, so both were removed.",
+    "The license-type table seen on the DCPBL page covered addenda A–F. Other regulated categories from the original research (employment agencies, towing, second-hand dealers) were not confirmed and may be on parts of the page that were not retrieved.",
+    "The Comptroller's business licenses page does not list trader's license fees. The figures come directly from Bus. Reg. § 17-1807.",
+    "The original business research arrived cut off after the trader's license fee step. The later steps (licensing, U&O, fire, health, home occupation) were rebuilt and checked against official pages.",
+    "The Clerk of the Circuit Court for Baltimore City's trader's license page and contact details were not fetched. Confirm the filing location and hours with the Clerk.",
+    "Forming the entity (LLC, corporation, etc.) through SDAT has its own state filing fees and steps, which were not verified here."
+   ]
+  }
+ },
+ "sources": [
+  {
+   "url": "https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests",
+   "title": "Baltimore City DPW - Maryland Public Information Act Requests"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/zoning/how-to-view-records",
+   "title": "Baltimore City BMZA - How to View Records"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/dhcd/contact/public-information-act-request",
+   "title": "Baltimore City DHCD - Public Information Act Request"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request",
+   "title": "Baltimore City OIG - Public Information Act Request"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/board-of-finance/contact",
+   "title": "Baltimore City Board of Finance - Contact"
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-203&enactments=false",
+   "title": "Md. Code GP § 4-203"
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false",
+   "title": "Md. Code GP § 4-206"
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-362&enactments=false",
+   "title": "Md. Code GP § 4-362"
+  },
+  {
+   "url": "https://piaombuds.maryland.gov/",
+   "title": "Maryland Public Access Ombudsman"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/dcpbl/apply-for-a-license",
+   "title": "Baltimore City DCPBL - Apply for a License"
+  },
+  {
+   "url": "https://www.marylandcomptroller.gov/businesses/new-business/business-licenses.html",
+   "title": "Comptroller of Maryland - Business Licenses"
+  },
+  {
+   "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=17-1807&enactments=false",
+   "title": "Md. Code Bus. Reg. § 17-1807 (trader's license fees)"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/building-permits/permit-information-and-requirements/permit-information-use-occupancy",
+   "title": "Baltimore City - Permit Information: Use and Occupancy"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/fire/about/who-we-are/fire-prevention",
+   "title": "Baltimore City Fire Department - Fire Prevention and Investigation"
+  },
+  {
+   "url": "https://www.baltimorecity.gov/health/environmental-health/plan-review",
+   "title": "Baltimore City Health Department - Plan Review"
+  },
+  {
+   "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/15-507",
+   "title": "Baltimore City Zoning Code § 15-507 Home occupation"
+  }
+ ]
+}
