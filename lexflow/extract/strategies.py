@@ -607,6 +607,35 @@ Here is how a careful lawyer decided the most similar sentences in other states'
 Return JSON only."""
 
 
+def assign_actors(keep: list[dict], cands: list[dict], sel, question: str) -> None:
+    """Who acts: the rules, except where they fall back to "public body" - there the actor kind Claude gave the
+    most similar step clauses in other states wins (a passive "may be inspected" is usually the requester's act)."""
+    kinds = dict(zip((id(d) for d in cands), sel.neighbour_kinds(cands)))
+    rename = {"private-party": filer_for(question), "court": "court", "official": "responsible official",
+              "other-government": "local government"}
+    for d in keep:
+        rule, near = actor_kind(d["actor"]), kinds.get(id(d))
+        if near and rule == "public-body" and near != rule:
+            d["actor"], d["actor_kind"] = rename[near], near
+        else:
+            d["actor_kind"] = rule
+
+
+def expected_f1_budget(probs, floor: float = 0.03) -> int:
+    """How many of the best-ranked candidates to keep: the k that maximises the expected F1 when each candidate is
+    a step with its (calibrated) probability, 2·Σ_{i≤k} p_i / (k + Σ_all p).  One case at a time, so a business
+    statute with 400 candidates and a records statute with 30 each get their own cut (Lipton et al. 2014)."""
+    import numpy as np
+    p = np.sort(np.asarray(probs, dtype=float))[::-1]
+    if not len(p):
+        return 0
+    total = p.sum()
+    k = np.arange(1, len(p) + 1)
+    ef1 = 2 * np.cumsum(p) / (k + total)
+    best = int(np.argmax(ef1)) + 1
+    return max(1, min(best, int((p >= floor).sum()) or 1))
+
+
 def config_vectors() -> str:
     from .. import config
     return config.VECTORS
@@ -652,15 +681,7 @@ def stacked_drafts(clauses: list[Clause], question: str, state: str | None, *, v
             keep.append(d)
     # who acts: the rules, except where they fall back to "public body" - there the actor kind Claude gave the
     # most similar step clauses in other states wins (a passive "may be inspected" is usually the requester's act)
-    kinds = dict(zip((id(d) for d in cands), sel.neighbour_kinds(cands)))
-    rename = {"private-party": filer_for(question), "court": "court", "official": "responsible official",
-              "other-government": "local government"}
-    for d in keep:
-        rule, near = actor_kind(d["actor"]), kinds.get(id(d))
-        if near and rule == "public-body" and near != rule:
-            d["actor"], d["actor_kind"] = rename[near], near
-        else:
-            d["actor_kind"] = rule
+    assign_actors(keep, cands, sel, question)
     if notes is not None:
         notes.append(f"{len(keep)} of {len(cands)} candidates kept (threshold {t:.2f}, train F1 "
                      f"{getattr(sel, 'train_f1', 0):.2f}, {len(sel.refs)} references, vectors "

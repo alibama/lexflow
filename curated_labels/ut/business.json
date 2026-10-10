@@ -1,0 +1,294 @@
+{
+ "state": "ut",
+ "question": "business",
+ "sections": [
+  "48-3a-201",
+  "48-3a-202",
+  "48-3a-203",
+  "48-3a-205",
+  "48-3a-1103"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "48-3a-201",
+   "quote": "One or more persons may act as organizers to form a limited liability company by delivering to the division for filing a certificate of organization.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizers deliver certificate to division"
+  },
+  {
+   "section": "48-3a-201",
+   "quote": "(2) A certificate of organization must state:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "contents list lead-in"
+  },
+  {
+   "section": "48-3a-201",
+   "quote": "(a) the name of the limited liability company, which must comply with Section 48-3a-108;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item: name rule"
+  },
+  {
+   "section": "48-3a-201",
+   "quote": "(3) A certificate of organization may contain statements as to matters other than those required by Subsection (2), but may not vary or otherwise affect the provisions specified in Subsection 48-3a-112(3) in a manner inconsistent with that section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional contents rule"
+  },
+  {
+   "section": "48-3a-201",
+   "quote": "(4) A limited liability company is formed when the limited liability company's certificate of organization becomes effective and at least one person becomes a member.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "LLC formed when certificate effective"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "A certificate of organization may be amended or restated at any time, except that in accordance with Section 48-3a-1303, a low-profit limited liability company shall amend its certificate of organization if the limited liability company ceases to be a low-profit limited liability company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation amendment, separate case"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(2) To amend its certificate of organization, a limited liability company must deliver to the division for filing an amendment stating:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment filing, outside formation case"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(a) the name of the limited liability company;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(b) the date of filing of its initial certificate of organization; and (c) the changes the amendment makes to the certificate as most recently amended or restated.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents items"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(3) To restate its certificate of organization, a limited liability company must deliver to the division for filing a restatement designated as such in its heading.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "voluntary restatement, separate case"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(4) If a member of a member-managed limited liability company, or a manager of a manager-managed limited liability company, knows that any information in a filed certificate of organization was inaccurate when the certificate was filed or has become inaccurate due to changed circumstances, the member or manager shall promptly:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation duty to correct, lead-in"
+  },
+  {
+   "section": "48-3a-202",
+   "quote": "(a) cause the certificate to be amended; or (b) if appropriate, deliver to the division for filing a statement of change under Section 16-17-206 or a statement of correction under Section 48-3a-208.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation amendment/correction"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "A record delivered to the division for filing pursuant to this chapter must be signed as follows:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "signing rules lead-in"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(a) Except as otherwise provided in Subsections (1)(b) and (c), a record signed on behalf of a limited liability company must be signed by a person authorized by the limited liability company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing authority rule"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(b) A limited liability company's initial certificate of organization must be signed by at least one person acting as an organizer.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizer signs initial certificate"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(c) A record delivered on behalf of a dissolved limited liability company that has no member must be signed by the person winding up the limited liability company's activities and affairs under Subsection 48-3a-703(3) or a person appointed under Subsection 48-3a-703(4) to wind up the activities and affairs.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "dissolved company signing, not formation"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(d) A statement of denial by a person under Section 48-3a-303 must be signed by that person.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "statement of denial signing, unrelated"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(e) Any other record delivered on behalf of a person to the division for filing must be signed by that person.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing rule"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(2) Any record filed under this chapter may be signed by an agent.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general permission: agent may sign"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "Whenever this chapter requires a particular individual to sign a record and the individual is deceased or incompetent, the record may be signed by a legal representative of the individual.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "substitute signer rule"
+  },
+  {
+   "section": "48-3a-203",
+   "quote": "(3) A person that signs a record as an agent or legal representative thereby affirms as a fact that the person is authorized to sign the record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal effect of signing"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "To be filed by the division pursuant to this chapter, a record must be received by the division, comply with this chapter, and satisfy the following:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "division receives and checks record before filing"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(a) The filing of the record must be required or permitted by this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "filing condition"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(b) The record must be physically delivered in written form unless and to the extent the division permits electronic delivery of records.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer delivers the record"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(c) The record must be typewritten or computer generated.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "format rule"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(d) The words in the record must be in English, and numbers must be in Arabic or Roman numerals, but the name of an entity need not be in English if written in English letters or Arabic or Roman numerals.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "language/format rule"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(e) The record must be signed by a person authorized or required under this chapter to sign the record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing formality"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(f) The record must state the name and capacity, if any, of each individual who signed it, either on behalf of the individual or the person authorized or required to sign the record, but need not contain a seal, attestation, acknowledgment, or verification.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content requirement: signer name"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(2) If law other than this chapter prohibits the disclosure by the division of information contained in a record delivered to the division for filing, the division shall accept the record if the record otherwise complies with this chapter, but the division may redact the information.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "division accepts record, may redact"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(3) When a record is delivered to the division for filing, any fee required under this chapter and any fee, tax, interest, or penalty required to be paid under this chapter or law other than this chapter must be paid in a manner permitted by the division or by that law.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "pay filing fee on delivery"
+  },
+  {
+   "section": "48-3a-205",
+   "quote": "(4) The division may require that a record delivered in written form be accompanied by an identical or conformed copy.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "discretionary form requirement (copy)"
+  },
+  {
+   "section": "48-3a-1103",
+   "quote": "The certificate of organization of a professional services company shall:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "professional company contents lead-in"
+  },
+  {
+   "section": "48-3a-1103",
+   "quote": "(1) comply with Section 48-3a-201; and (2) contain the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "contents cross-reference"
+  },
+  {
+   "section": "48-3a-1103",
+   "quote": "(a) a name consistent with Section 48-3a-1104;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item: name rule"
+  },
+  {
+   "section": "48-3a-1103",
+   "quote": "(b) a description of the profession to be practiced through the professional services company; and (c) notwithstanding Section 48-3a-201, the name and street address of each member or manager of the professional services company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "professional company contents items"
+  }
+ ]
+}

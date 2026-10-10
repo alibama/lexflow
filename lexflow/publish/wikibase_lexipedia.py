@@ -8,12 +8,14 @@ lexflow needs that the wiki lacks (jurisdiction, court decision, legal role) are
 
 Every entity carries a ``legal identifier`` (P25 on this wiki) such as ``lexflow:statute:va:2.2-3704``;
 the ``wikibase_items`` table remembers the item each key became, so a re-run updates instead of
-duplicating.  Credentials: a bot password (Special:BotPasswords) in ``WIKIBASE_BOT_USER`` /
-``WIKIBASE_BOT_PASSWORD`` (or ``LEXI_USER`` / ``LEXI_PASS``).
+duplicating (without it, an item whose label clashes is reused when it carries the same key).
+Credentials: a bot password (Special:BotPasswords) in ``WIKIBASE_BOT_USER`` / ``WIKIBASE_BOT_PASSWORD``
+(or ``LEXI_USER`` / ``LEXI_PASS``).
 """
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import dataclass, field
 
@@ -135,6 +137,7 @@ class Loader:
         self.items = {r["key"]: r["qid"] for r in db.rows(con, "SELECT key, qid FROM wikibase_items")}
         self.counts: dict[str, int] = {}
         self.done: set[str] = set()
+        self.skipped: set[str] = set()            # models left out: their state has no jurisdiction item
 
     def prepare(self):
         props = self.wb.labels(122)
@@ -164,14 +167,24 @@ class Loader:
         if qid and not self.wb.dry_run:
             # replace our own statements wholesale on update: lexflow owns these items
             data["clear"] = True
-        try:
-            new = self.wb.save(data, qid=qid, summary=f"lexflow: {key}")
-        except WikibaseError as e:
-            # the wiki allows one item per label and description: two opinions with one name, court and date
-            if "already has label" not in str(e):
-                raise
-            data["descriptions"]["en"]["value"] = f"{description[:220]} [{key.rsplit(':', 1)[-1]}]"
-            new = self.wb.save(data, qid=qid, summary=f"lexflow: {key}")
+        suffixed = False
+        while True:
+            try:
+                new = self.wb.save(data, qid=qid, summary=f"lexflow: {key}")
+                break
+            except WikibaseError as e:
+                # the wiki allows one item per label and description: the item an earlier run wrote for this key
+                # (when wikibase_items was lost), or another entity, e.g. two opinions with one name, court and date
+                if "already has label" not in str(e):
+                    raise
+                mine = None if qid else self.owner(str(e), key)
+                if mine:
+                    qid, data["clear"] = mine, True
+                elif not suffixed:
+                    data["descriptions"]["en"]["value"] = f"{description[:220]} [{key.rsplit(':', 1)[-1]}]"
+                    suffixed = True
+                else:
+                    raise
         if not self.wb.dry_run:
             self.con.execute("INSERT INTO wikibase_items(key, qid, label, updated_at) VALUES (?,?,?,?) ON CONFLICT(key) "
                              "DO UPDATE SET qid=excluded.qid, label=excluded.label, updated_at=excluded.updated_at",
@@ -181,6 +194,17 @@ class Loader:
         self.touched.add(key)
         self.counts[kind] = self.counts.get(kind, 0) + 1
         return new
+
+    def owner(self, error: str, key: str) -> str | None:
+        """The item a label conflict names, when its legal identifier is ``key`` (lexflow wrote it before)."""
+        m = re.search(r"\bQ\d+\b", error.split("already has label")[0])
+        if not m or not self.p.get("key"):
+            return None
+        q = m.group(0)
+        ent = self.wb.get(action="wbgetentities", ids=q, props="claims").get("entities", {}).get(q, {})
+        keys = [((s.get("mainsnak") or {}).get("datavalue") or {}).get("value")
+                for s in (ent.get("claims") or {}).get(self.p["key"], [])]
+        return q if key in keys else None
 
     def retire_drafts(self):
         """Items an earlier version wrote for an unreviewed model that this run did not rewrite (the model was
@@ -195,7 +219,7 @@ class Loader:
                     (parts[1] == "role" and len(parts) < 5):
                 continue
             mid = parts[2] if parts[1] != "role" else f"{parts[2]}.{parts[3]}"
-            if mid in reviewed:
+            if mid in reviewed or mid in self.skipped:
                 continue
             ent = self.wb.get(action="wbgetentities", ids=qid, props="labels").get("entities", {}).get(qid, {})
             label = (ent.get("labels", {}).get("en") or {}).get("value") or key
@@ -210,19 +234,29 @@ class Loader:
     def item(self, key):
         return self.items.get(key)
 
+    def _log_skipped(self, what: str, by_state: dict[str, int]):
+        for st, n in sorted(by_state.items()):
+            self.log(f"skipped {n} {what} in {st}: no jurisdiction item for it yet (add {st} to the run's states)")
+
     # --- what lexflow knows
     def jurisdictions(self, states: list[str]):
         for st in states:
             self.entity(f"lexflow:jurisdiction:{st}", S.NAME[st], "US state or district (lexflow jurisdiction)",
                         [_snak(self.p["instance"], "item", self.c["jurisdiction"])], kind="jurisdiction")
+        skipped: dict[str, int] = {}
         for g in db.rows(self.con, "SELECT DISTINCT g.* FROM local_answers l JOIN governments g ON g.gov_id=l.gov_id"):
+            parent = self.item(f"lexflow:jurisdiction:{g['state']}")
+            if not parent:                        # a run for other states, before this one's item was written
+                skipped[g["state"]] = skipped.get(g["state"], 0) + 1
+                continue
             claims = [_snak(self.p["instance"], "item", self.c["jurisdiction"]),
-                      _snak(self.p["part_of"], "item", self.item(f"lexflow:jurisdiction:{g['state']}"))]
+                      _snak(self.p["part_of"], "item", parent)]
             if g.get("wikidata"):
                 claims.append(_snak(self.p["exact"], "string", f"http://www.wikidata.org/entity/{g['wikidata']}"))
             self.entity(f"lexflow:gov:{g['gov_id']}", f"{g['name']}, {S.NAME[g['state']]}",
                         f"{g['kind']} in {S.NAME[g['state']]} (Census government {g['gov_id']})", claims,
                         kind="jurisdiction")
+        self._log_skipped("places", skipped)
 
     def statute(self, state: str, ref: str, citation: str, heading: str | None, url: str | None) -> str:
         key = f"lexflow:statute:{state}:{ref}"
@@ -268,19 +302,25 @@ class Loader:
         """Processes checked by Claude or agreed by two independent extractions, with their roles and steps.
         Models from one extraction alone are drafts: they are not loaded, and the items an earlier version wrote
         for one are rewritten as unreviewed drafts."""
+        skipped: dict[str, int] = {}
         for m in db.rows(self.con, "SELECT * FROM process_models WHERE tier IN ('reviewed','agreed','single')"):
             st, qid_q = m["state"], m["question"]
             facts = db.loads(m["facts"], {}) or {}
             metrics = db.loads(m["metrics"], {}) or {}
-            refs = [self.item(f"lexflow:statute:{st}:{ref}") for ref in metrics.get("sections") or []]
-            claims = [_snak(self.p["instance"], "item", self.c["legal process"]),
-                      _snak(self.p["jurisdiction"], "item", self.item(f"lexflow:jurisdiction:{st}"))]
-            claims += [_snak(self.p["references"], "item", q) for q in refs if q]
             pkey = f"lexflow:process:{m['model_id']}"
             title = f"{m['title']} ({S.NAME[st]})"
             self.drafting = m["tier"] == "single"
             if self.drafting and not self.item(pkey):
                 continue
+            jur = self.item(f"lexflow:jurisdiction:{st}")
+            if not jur:                           # a run for other states, before this one's item was written
+                skipped[st] = skipped.get(st, 0) + 1
+                self.skipped.add(m["model_id"])
+                continue
+            refs = [self.item(f"lexflow:statute:{st}:{ref}") for ref in metrics.get("sections") or []]
+            claims = [_snak(self.p["instance"], "item", self.c["legal process"]),
+                      _snak(self.p["jurisdiction"], "item", jur)]
+            claims += [_snak(self.p["references"], "item", q) for q in refs if q]
             used_labels: set[tuple[str, str]] = set()
             how = {"reviewed": "checked by Claude", "agreed": "two independent extractions agree",
                    "single": "machine-extracted by the learned selector"}[m["tier"]]
@@ -291,7 +331,7 @@ class Loader:
                 self.entity(f"lexflow:role:{st}:{qid_q}:{a['id']}", f"{a['name']} ({S.NAME[st]})",
                             f"{a['kind']} in the {QUESTIONS[qid_q].short.lower()} process",
                             [_snak(self.p["instance"], "item", self.c["legal role"]),
-                             _snak(self.p["jurisdiction"], "item", self.item(f"lexflow:jurisdiction:{st}"))],
+                             _snak(self.p["jurisdiction"], "item", jur)],
                             kind="role")
             step_q = {}
             for s in facts.get("steps", []):
@@ -319,18 +359,19 @@ class Loader:
                                               kind="step")
             # has part, now that the steps exist
             claims = [_snak(self.p["instance"], "item", self.c["legal process"]),
-                      _snak(self.p["jurisdiction"], "item", self.item(f"lexflow:jurisdiction:{st}"))]
+                      _snak(self.p["jurisdiction"], "item", jur)]
             claims += [_snak(self.p["references"], "item", q) for q in refs if q]
             claims += [_snak(self.p["has_part"], "item", q) for q in step_q.values() if q]
             self.entity(pkey, title, f"{QUESTIONS[qid_q].title} Process model by lexflow, {how}.", claims,
                         kind="process-update")
         self.drafting = False
+        self._log_skipped("models", skipped)
 
     def cases(self, per_section: int = 15):
         cited: dict[str, dict] = {}
         for r in db.rows(self.con, "SELECT DISTINCT state, section FROM case_law"):
             skey = f"lexflow:statute:{r['state']}:{r['section']}"
-            if not self.item(skey):
+            if not self.item(skey) or not self.item(f"lexflow:jurisdiction:{r['state']}"):
                 continue
             for c in db.rows(self.con, "SELECT * FROM case_law WHERE state=? AND section=? ORDER BY cite_count DESC, "
                                        "date_filed DESC LIMIT ?", r["state"], r["section"], per_section):

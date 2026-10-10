@@ -1,0 +1,387 @@
+{
+  "qid": "phone_commissary",
+  "question": "Who sets the prices of phone calls, video visits and commissary items in prisons and jails, and can the facility or sheriff keep a commission?",
+  "state": "tx",
+  "as_of": "2026-10-10",
+  "question_type": "facts",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      [
+        "pay telephone",
+        "inmate pay telephone service",
+        "pay telephone service",
+        "telephone",
+        "local calls",
+        "uncompleted call",
+        "communication device",
+        "prepay"
+      ],
+      [
+        "video visitation",
+        "visitation by other electronic means",
+        "in-person visitation",
+        "uniform visitation policy",
+        "noncontact visitation",
+        "visitation"
+      ],
+      [
+        "commissary",
+        "commissaries",
+        "inmate commissaries",
+        "commissary food goods",
+        "commissary funds",
+        "commissary proceeds",
+        "commissary accounts"
+      ],
+      [
+        "commission",
+        "commissions",
+        "gross revenue",
+        "computed commissions",
+        "fixed rate of return",
+        "sales growth incentive",
+        "profits",
+        "proceeds"
+      ],
+      [
+        "rate structures",
+        "charge",
+        "highest rate",
+        "price of those items",
+        "menu items",
+        "request proposals",
+        "bid award",
+        "private vendor"
+      ],
+      [
+        "inmate",
+        "inmates",
+        "prisoner",
+        "prisoners",
+        "county jail",
+        "sheriff",
+        "sheriff's designee",
+        "board",
+        "department",
+        "Commission on Jail Standards",
+        "commissioners court"
+      ]
+    ],
+    "negative": [
+      "800-type call",
+      "coin sent-paid call",
+      "emergency telephone call",
+      "electronic visit verification",
+      "student trust fund",
+      "arts and crafts",
+      "telecommunications utility"
+    ],
+    "slots": [
+      "office",
+      "amount",
+      "yes_no"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "495.027",
+      "role": "primary",
+      "why": "State prisons (TDCJ): the Board of Criminal Justice requests proposals and awards a single-vendor inmate phone contract (initial term at least seven years); the vendor must pay the department a commission of at least 40 percent of gross revenue, may not charge for uncompleted calls, must cap local calls at the highest county jail inmate local rate, must allow prepayment and state auditor review of rate structures and commissions; commissions go to the crime victims compensation fund and general revenue. The commission requirement in (a)(2) and (c) is likely displaced by the FCC's site-commission ban (47 CFR 64.6015, compliance date April 6, 2026), which preempts state laws requiring site commissions."
+    },
+    {
+      "ref": "351.0415",
+      "role": "primary",
+      "why": "County jails: the sheriff or the sheriff's designee (including a private jail vendor) may run or contract out the commissary under Commission on Jail Standards rules, has exclusive control of commissary funds, must rebid supplier contracts every five years, must consider whether a contract should provide a fixed rate of return and the provider's menu items and prices, may spend proceeds only on the purposes in (c) (inmate programs, clothing, writing materials and hygiene supplies, commissary staff, libraries, and physical plant, technology and equipment for the well-being, health, safety and security of inmates and the facility), and the commissioners court may not use them for jail operating expenses."
+    },
+    {
+      "ref": "Tex. Government Code § 501.067",
+      "role": "primary",
+      "why": "State prison commissaries are operated by or under contract with the department; their profits must pay for over-the-counter medication for inmates who cannot pay."
+    },
+    {
+      "ref": "Tex. Government Code § 501.010",
+      "role": "supporting",
+      "why": "State prisons: the uniform visitation policy must allow in-person visitation regardless of video or other electronic visitation (no statute prices video visits)."
+    },
+    {
+      "ref": "507.030",
+      "role": "supporting",
+      "why": "State jail felony facilities (which 501.010(b) leaves out of the uniform visitation policy): in-person visitation must be allowed regardless of video visitation, though it may be suspended temporarily in a health or safety emergency."
+    },
+    {
+      "ref": "511.009",
+      "role": "supporting",
+      "why": "Commission on Jail Standards: guidelines to sheriffs on commissary contracts (a)(15); minimum standards giving county jail prisoners two in-person noncontact visits a week (a)(16), with an exemption for certain jails (a-1); and free in-person or video visits with the veterans county service officer for verified veterans (a)(17)(D), the only county jail visit price a Texas statute sets."
+    },
+    {
+      "ref": "495.025",
+      "role": "supporting",
+      "why": "TDCJ buys commissary food goods through bid awards (taste tests may count for at most 30 percent of the criteria), the only statute touching how prison commissary goods are procured."
+    },
+    {
+      "ref": "Tex. Government Code § 491.001",
+      "role": "definition",
+      "why": "\"Board\" means the Texas Board of Criminal Justice and \"department\" means the Texas Department of Criminal Justice in 495.027, 495.025, 501.010 and 501.067."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "The Texas Board of Criminal Justice must request proposals from private vendors for the contract to provide pay telephone service to inmates in TDCJ facilities.",
+      "importance": "vital",
+      "section": "495.027",
+      "quote": "The board shall request proposals from private vendors for a contract to provide pay telephone service to eligible inmates confined in facilities operated by the department.",
+      "slot": "office"
+    },
+    {
+      "id": "N2",
+      "text": "The prison phone vendor must pay TDCJ a commission of at least 40 percent of the gross revenue from the service.",
+      "importance": "vital",
+      "section": "495.027",
+      "quote": "pays the department a commission of not less than 40 percent of the gross revenue received from the use of any service provided",
+      "slot": "amount"
+    },
+    {
+      "id": "N3",
+      "text": "The prison phone contract must ensure no charge for uncompleted calls and that local calls cost no more than the highest local-call rate for county jail inmates.",
+      "importance": "vital",
+      "section": "495.027",
+      "quote": "ensures that no charge will be assessed for an uncompleted call and that the charge for local calls will not be greater than the highest rate for local calls for inmates in county jails",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "The state auditor periodically reviews the phone vendor's billing records, rate structures, computed commissions and service metering.",
+      "importance": "okay",
+      "section": "495.027",
+      "quote": "provides for periodic review by the state auditor of documents maintained by the vendor regarding billing procedures and statements, rate structures, computed commissions, and service metering",
+      "slot": "office"
+    },
+    {
+      "id": "N5",
+      "text": "TDCJ must transfer 50 percent of the phone commissions to the compensation to victims of crime fund and the other 50 percent to general revenue.",
+      "importance": "vital",
+      "section": "495.027",
+      "quote": "The department shall transfer 50 percent of all commissions paid to the department by a vendor under this section to the compensation to victims of crime fund established by Subchapter J, Chapter 56B, Code of Criminal Procedure, and the other 50 percent to the credit of the undedicated portion of the general revenue fund",
+      "slot": "amount"
+    },
+    {
+      "id": "N6",
+      "text": "The first $10 million of phone commissions collected each year goes to the compensation to victims of crime fund.",
+      "importance": "okay",
+      "section": "495.027",
+      "quote": "the department shall transfer the first $10 million of the commissions collected in any given year under a contract awarded under this section to the compensation to victims of crime fund",
+      "slot": "amount"
+    },
+    {
+      "id": "N7",
+      "text": "Even where video or other electronic visitation is used, the TDCJ uniform visitation policy must allow in-person visitation for eligible inmates, though it may allow a temporary suspension for a health or safety emergency.",
+      "importance": "okay",
+      "section": "Tex. Government Code § 501.010",
+      "quote": "Regardless of the implementation of video visitation or visitation by other electronic means, the uniform visitation policy must allow in-person visitation for eligible inmates, provided that the policy may allow the temporary suspension of in-person visitation for a health or safety emergency",
+      "slot": null
+    },
+    {
+      "id": "N8",
+      "text": "TDCJ must pay for over-the-counter medication for inmates who cannot pay out of the profits of commissaries operated by or under contract with the department.",
+      "importance": "okay",
+      "section": "Tex. Government Code § 501.067",
+      "quote": "The department shall pay for the cost of over-the-counter medication for inmates who are unable to pay for the medication out of the profits of inmate commissaries operated by or under contract with the department.",
+      "slot": null
+    },
+    {
+      "id": "N9",
+      "text": "The county sheriff or the sheriff's designee, including a private vendor running a detention facility for the county, may operate the jail commissary or contract with someone else to operate it.",
+      "importance": "vital",
+      "section": "351.0415",
+      "quote": "The sheriff of a county or the sheriff's designee, including a private vendor operating a detention facility under contract with the county, may operate, or contract with another person to operate, a commissary for the use of the inmates committed to the county jail",
+      "slot": "office"
+    },
+    {
+      "id": "N10",
+      "text": "The jail commissary must be operated under rules adopted by the Commission on Jail Standards.",
+      "importance": "okay",
+      "section": "351.0415",
+      "quote": "The commissary must be operated in accordance with rules adopted by the Commission on Jail Standards.",
+      "slot": "office"
+    },
+    {
+      "id": "N11",
+      "text": "The sheriff or the sheriff's designee has exclusive control of the commissary funds.",
+      "importance": "vital",
+      "section": "351.0415",
+      "quote": "has exclusive control of the commissary funds",
+      "slot": "office"
+    },
+    {
+      "id": "N12",
+      "text": "When contracting out the commissary, the sheriff must consider whether the contract should give a fixed rate of return with a sales growth incentive, and the items offered and their prices.",
+      "importance": "vital",
+      "section": "351.0415",
+      "quote": "whether the contract should provide for a fixed rate of return combined with a sales growth incentive; (2) the menu items offered by the provider and the price of those items",
+      "slot": null
+    },
+    {
+      "id": "N13",
+      "text": "The sheriff or the sheriff's designee may use commissary proceeds only for the purposes the statute lists, the first being programs addressing inmates' social needs, such as educational or recreational programs and religious or rehabilitative counseling.",
+      "importance": "vital",
+      "section": "351.0415",
+      "quote": "The sheriff or the sheriff's designee may use commissary proceeds only to: (1) fund, staff, and equip a program addressing the social needs of the inmates, including an educational or recreational program and religious or rehabilitative counseling",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "The commissioners court may not use commissary proceeds to pay the jail's budgetary operating expenses.",
+      "importance": "vital",
+      "section": "351.0415",
+      "quote": "A commissioners court may not use commissary proceeds to fund the budgetary operating expenses of a county jail.",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N15",
+      "text": "The Commission on Jail Standards must set minimum visitation standards giving each county jail prisoner at least two in-person, noncontact visits a week of at least 20 minutes each.",
+      "importance": "okay",
+      "section": "511.009",
+      "quote": "establishing minimum standards for prisoner visitation that provide each prisoner at a county jail with a minimum of two in-person, noncontact visitation periods per week of at least 20 minutes duration each",
+      "slot": null
+    },
+    {
+      "id": "N16",
+      "text": "The Board must award the inmate phone contract to a single private vendor, for an initial term of at least seven years.",
+      "importance": "okay",
+      "section": "495.027",
+      "quote": "The board shall award a contract to a single private vendor to install, operate, and maintain the inmate pay telephone service. The initial term of the contract may not be less than seven years.",
+      "slot": "office"
+    },
+    {
+      "id": "N17",
+      "text": "Permitted uses of jail commissary proceeds include physical plant improvements, technology, equipment, programs and services for the well-being, health, safety and security of the inmates and the facility.",
+      "importance": "okay",
+      "section": "351.0415",
+      "quote": "fund physical plant improvements, technology, equipment, programs, services, and activities that provide for the well-being, health, safety, and security of the inmates and the facility",
+      "slot": null
+    },
+    {
+      "id": "N18",
+      "text": "Each sheriff must let a prisoner whose veteran status has been verified have in-person or video visits with the veterans county service officer or a peer service coordinator at no cost to the prisoner.",
+      "importance": "okay",
+      "section": "511.009",
+      "quote": "allow for a prisoner whose veteran status has been verified under Paragraph (A) to have in-person or video visitation with the veterans county service officer for the county or a peer service coordinator at no cost to the prisoner",
+      "slot": "amount"
+    },
+    {
+      "id": "N19",
+      "text": "The sheriff or the sheriff's designee must accept new bids to renew commissary supplier contracts every five years.",
+      "importance": "okay",
+      "section": "351.0415",
+      "quote": "shall accept new bids to renew contracts of commissary suppliers every five years",
+      "slot": null
+    },
+    {
+      "id": "N20",
+      "text": "In state jail felony facilities, too, the visitation policy must allow in-person visitation regardless of video visitation, though it may allow a temporary suspension for a health or safety emergency.",
+      "importance": "okay",
+      "section": "507.030",
+      "quote": "Regardless of the implementation of video visitation or visitation by other electronic means, the visitation policy must allow in-person visitation for defendants who are eligible to receive visitors, provided that the policy may allow the temporary suspension of in-person visitation for a health or safety emergency",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "office": [
+      {
+        "value": "State prisons (TDCJ): the Texas Board of Criminal Justice requests proposals and awards the inmate phone contract to a single private vendor; the state auditor reviews the vendor's rate structures and commissions",
+        "nuggets": [
+          "N1",
+          "N16",
+          "N4"
+        ]
+      },
+      {
+        "value": "County jails: the sheriff or the sheriff's designee runs or contracts out the commissary under Commission on Jail Standards rules, rebids supplier contracts every five years, and has exclusive control of commissary funds",
+        "nuggets": [
+          "N9",
+          "N10",
+          "N19",
+          "N11"
+        ]
+      }
+    ],
+    "amount": [
+      {
+        "value": "Prison phone vendor commission to TDCJ: not less than 40 percent of gross revenue",
+        "nuggets": [
+          "N2"
+        ]
+      },
+      {
+        "value": "Use of prison phone commissions: 50 percent to the compensation to victims of crime fund and 50 percent to general revenue, except that the first $10 million each year goes to the victims fund",
+        "nuggets": [
+          "N5",
+          "N6"
+        ]
+      },
+      {
+        "value": "County jail in-person or video visits between a verified veteran prisoner and the veterans county service officer or a peer service coordinator: no cost to the prisoner",
+        "nuggets": [
+          "N18"
+        ]
+      }
+    ],
+    "yes_no": {
+      "value": "State prisons: the statute requires the phone vendor to pay the department a commission of at least 40 percent of gross revenue, but the department may not keep it (it goes to the crime victims fund and general revenue); federal FCC rules now in force bar providers from paying site commissions on audio and video calls and preempt state laws requiring them, so the statutory commission is likely unenforceable today. County jails: no Texas statute addresses phone or video commissions (the FCC ban reaches them as well); for the commissary, the sheriff controls the funds and must consider whether a contract should provide a fixed rate of return, but proceeds may be spent only on the listed purposes (which include facility technology, equipment and security), and the commissioners court may not use them for jail operating expenses",
+      "nuggets": [
+        "N2",
+        "N5",
+        "N11",
+        "N12",
+        "N13",
+        "N17",
+        "N14"
+      ]
+    }
+  },
+  "answer": "Texas statutes set who contracts and where money goes, not prices. For state prisons, the Board of Criminal Justice requests proposals [N1] and awards the phone contract to one vendor [N16]. The vendor must pay the Department of Criminal Justice a commission of at least 40 percent of gross revenue [N2], and may not charge for uncompleted calls or exceed the highest county jail local-call rate [N3]. The department keeps none: half goes to the crime victims fund and half to general revenue [N5], after the first $10 million yearly goes to that fund [N6]. But FCC rules effective April 2026 ban such commissions on calls and video calls and override state laws requiring them, so this rule is likely unenforceable. Prisons and state jails must keep in-person visits alongside video [N7][N20]. Prison commissary profits must cover over-the-counter medicine for inmates who cannot pay [N8]. In county jails, the sheriff or designee runs or contracts out the commissary [N9] under Commission on Jail Standards rules [N10], rebids suppliers every five years [N19], and controls the funds [N11]. The sheriff must consider whether a contract should give a fixed rate of return plus a sales growth incentive, and item prices [N12]. Proceeds may be spent only on listed purposes [N13], including facility technology, equipment and security [N17]; the commissioners court may not use them for jail operating expenses [N14]. No statute sets jail phone, video or commissary prices, though verified veterans get free visits with the county veterans service officer [N18].",
+  "steps": null,
+  "out_of_corpus": [
+    {
+      "kind": "federal",
+      "what": "The ban on providers paying site commissions to prisons and jails on audio and video calls, which preempts state and local laws requiring such commissions and so likely displaces the 40 percent commission in Gov. Code 495.027(a)(2) and (c) and any county jail phone or video commission; interim caps on audio and video call rates and ancillary fees; and an optional facility-cost additive of up to $0.02 per minute that providers may charge to cover a facility's costs of allowing the service. The FCC's 2025 order (FCC 25-75, adopted Oct. 28, 2025, 90 Fed. Reg. 56013, Dec. 5, 2025) kept the ban and set April 6, 2026 as the uniform compliance date; check later FCC orders and court challenges",
+      "where": "47 CFR 64.6015 (site commissions) and 47 CFR Part 64 Subpart FF, adopted under 47 U.S.C. 276 as amended by the Martha Wright-Reed Just and Reasonable Communications Act of 2022 (Pub. L. 117-338); FCC 24-75 (2024 order adopting the ban and the preemption) and FCC 25-75; WC Docket Nos. 23-62 and 12-375"
+    },
+    {
+      "kind": "contract",
+      "what": "The actual per-minute call rates, deposit and account fees, video visit and tablet message prices, and commissary item prices and markups in state prisons, within the limits of Gov. Code 495.027",
+      "where": "TDCJ's inmate telephone contract and its commissary and video visitation vendor contracts (public records under the Texas Public Information Act, Gov. Code Chapter 552)"
+    },
+    {
+      "kind": "contract",
+      "what": "County jail phone, video visitation, tablet and commissary rates, any commission or fixed rate of return paid to the county or sheriff, and where phone commissions are deposited (no Texas statute governs jail phone or video rates or commissions, apart from the free veterans service officer visits in Gov. Code 511.009(a)(17)(D); FCC rules cap the call rates and bar site commissions)",
+      "where": "Each county's and sheriff's vendor contracts and commissioners court records"
+    },
+    {
+      "kind": "regulation",
+      "what": "Commission on Jail Standards minimum standards for county jail commissary operations, inmate telephone access and visitation, including in-person and video visitation rules",
+      "where": "Texas Administrative Code, Title 37, Part 9 (Texas Commission on Jail Standards), including Chapter 291 (Services and Activities); commissary contract guidelines under Gov. Code 511.009(a)(15)"
+    },
+    {
+      "kind": "agency policy",
+      "what": "TDCJ's rules on inmate phone eligibility and use, video visitation, and commissary product lists, prices and spending limits",
+      "where": "TDCJ policies adopted subject to Board approval under Gov. Code 495.027(d), the uniform visitation policy under 501.010, and the Offender Orientation Handbook (tdcj.texas.gov)"
+    },
+    {
+      "kind": "regulation",
+      "what": "Public Utility Commission rules on pay telephone and operator service charges; the statutes do not say whether they reach inmate phones (Utilities Code 55.088(d) expressly exempts prison and jail telephones from the live operator requirement)",
+      "where": "16 Texas Administrative Code Chapter 26 (Public Utility Commission of Texas), adopted under Utilities Code Chapter 55"
+    },
+    {
+      "kind": "local",
+      "what": "The findings of county auditor examinations of jail commissary accounts and of the independent audits of private-vendor jail commissaries (the statutes require the audits, under Local Gov. Code 351.0415(d)-(e), and the filing of copies with the Commission on Jail Standards, under Gov. Code 511.016, but the results are not in the code)",
+      "where": "County auditor reports to each commissioners court, and the copies on file with the Texas Commission on Jail Standards"
+    }
+  ],
+  "version_flags": [],
+  "local_option": "Each sheriff (or the sheriff's designee, including a private jail vendor) decides whether to run the county jail commissary directly or contract it out, chooses the supplier (rebidding supplier contracts every five years), weighs the provider's items, prices and whether to provide a fixed rate of return, and controls the commissary funds, within Commission on Jail Standards rules (Local Gov. Code 351.0415). County jail phone, video visitation and tablet rates are set in each county's vendor contracts within the FCC's rate caps; no Texas statute addresses them (apart from free visits for verified veterans with the veterans county service officer, Gov. Code 511.009(a)(17)(D)) or phone commissions, and the FCC's site-commission ban now bars providers from paying them.",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Two regimes. State prisons (TDCJ, 'facilities operated by the department', which includes state jail felony facilities the department runs): Gov. Code 495.027 is the only statute on inmate phone pricing. It does not let the state set a dollar rate; it requires the Board to request proposals and award a single-vendor contract (initial term of at least seven years, renewable in two-year terms) under which the vendor installs and runs the system at no cost to the state, pays a commission of at least 40 percent of gross revenue, charges nothing for uncompleted calls, caps local calls at the highest county jail inmate local rate, lets inmates or people acting for them prepay, keeps at most 30 inmates per device, and submits to state auditor review of rate structures and computed commissions. Federal preemption: FCC 24-75 banned providers from paying site commissions on audio and video calls (47 CFR 64.6015) and preempted state and local laws requiring them; FCC 25-75 kept the ban and set a uniform compliance date of April 6, 2026, so as of 2026-10-10 the commission in 495.027(a)(2) and the transfers in (c) are likely unenforceable (the statute text is unchanged, so N2, N5 and N6 still state it). Commissions are not kept by TDCJ: the first $10 million a year goes to the compensation to victims of crime fund, and otherwise 50 percent to that fund and 50 percent to undedicated general revenue; the section 'does not reduce any appropriation to the department'. TDCJ's use policies must allow an average of eight calls a month of at least 10 minutes each. No Texas statute addresses video visit or tablet pricing; 501.010(b-2) and 507.030(c) only require that in-person visitation remain available (temporary suspension allowed for a health or safety emergency). TDCJ commissaries: no statute says who sets prices; 501.067 shows they are operated by or under contract with the department and that their profits must fund OTC medication for indigent inmates; 495.025 governs taste tests in bid awards for commissary food goods; 495.026 allows product bundling and bulk purchasing; 493.0082 treats education and recreation accounts as department financial assets. County jails: 351.0415 lets the sheriff or designee run or contract the commissary, gives the sheriff exclusive control of commissary funds, requires rebidding supplier contracts every five years, lists the only permitted uses of proceeds (inmate social-needs programs, clothing, writing and hygiene supplies, commissary operation and account staff, educational and law libraries, and physical plant, technology and programs for inmate and facility well-being, health, safety and security), bars the commissioners court from using proceeds for jail operating expenses, and requires an unannounced county auditor examination at least once each fiscal year (independent annual audit for private-vendor facilities). Interpretation, not statutory text: the 'fixed rate of return combined with a sales growth incentive' in 351.0415(f)(1) reads like a commissary commission, but the statute only requires the sheriff to consider whether a contract should provide one and does not say who receives the return or where it is deposited; if it is paid to the sheriff it would presumably be commissary proceeds subject to (c) and (g). Note the tension between (g) (the commissioners court may not use proceeds for the jail's budgetary operating expenses) and (c)(5), which lets the sheriff spend proceeds on physical plant, technology, equipment and services for the safety and security of the inmates and the facility. Gov. Code 511.009(a)(15) has the Commission on Jail Standards give sheriffs guidelines on commissary and food service contracts (conflicts of interest), and 511.009(a)(16) requires two in-person noncontact visits a week of at least 20 minutes, but (a-1) exempts jails that by September 1, 2015 had incurred significant costs for noncompliant visitation (for example video-only) or lack the physical plant; 511.009(a)(17)(D) makes video or in-person visits with the veterans county service officer free for verified veterans. No statute addresses county jail telephone or video commissions or rates, beyond 495.027(a)(8) using county jail local rates as the prison ceiling. Utilities Code 55.171-55.180 (PUC limits on pay telephone charges) do not mention prisons or jails, and 55.088(d) exempts prison and jail telephones from the live-operator rule; they are left out of the gold set because the statutes do not say they govern inmate phones. Left out of the nuggets to keep the set focused on prices and commissions (they are in the code and still accurate): 495.027(a)(1) (no cost to the state), (a)(9) (prepayment) and (d) (eight calls a month of at least 10 minutes); 351.0415(d)-(e) (county auditor and independent audits); 511.009(a)(15) (commissary contract guidelines), (a-1) (exemption from the two-visit standard) and (a-2) (disciplinary limits); and Gov. Code 511.016 (auditors send commissary audit copies to the Commission on Jail Standards), which is in the code but not gold because it governs audit filing, not prices or commissions."
+}

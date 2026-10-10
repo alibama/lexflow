@@ -1,0 +1,332 @@
+{
+ "state": "ma",
+ "question": "records",
+ "sections": [
+  "Mass. Gen. Laws ch. 66, sec. 10",
+  "Mass. Gen. Laws ch. 66, sec. 10A",
+  "Mass. Gen. Laws ch. 66, sec. 6A"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "10",
+   "quote": "(i) the request reasonably describes the public record sought;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "proviso condition on duty, not an act"
+  },
+  {
+   "section": "10",
+   "quote": "A request for public records may be delivered to the records access officer by hand or via first class mail at the record officer's business address, or via electronic mail to the address posted by the agency or municipality that the records access officer serves.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester delivers request"
+  },
+  {
+   "section": "10",
+   "quote": "(i) confirm receipt of the request;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content element of written response"
+  },
+  {
+   "section": "10",
+   "quote": "The records access officer shall, upon submitting the petition to the supervisor of records, furnish a copy of the petition to the requestor.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer copies extension petition to requester"
+  },
+  {
+   "section": "10",
+   "quote": "If the supervisor of records determines that the request is part of a series of contemporaneous requests that are frivolous or designed to intimidate or harass, and the requests are not intended for the broad dissemination of information to the public about actual or alleged government activity, the supervisor of records may grant a longer extension or relieve the agency or municipality of its obligation to provide copies of the records sought.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "supervisor grants longer extension or relieves"
+  },
+  {
+   "section": "10",
+   "quote": "(d) A records access officer may assess a reasonable fee for the production of a public record except those records that are freely available for public inspection.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer assesses fee"
+  },
+  {
+   "section": "10",
+   "quote": "(v) the records access officer may waive or reduce the amount of any fee charged under this subsection upon a showing that disclosure of a requested record is in the public interest because it is likely to contribute significantly to public understanding of the operations or activities of the government and is not primarily in the commercial interest of the requestor, or upon a showing that the requestor lacks the financial ability to pay the full amount of the reasonable fee;",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer waives or reduces fee"
+  },
+  {
+   "section": "10",
+   "quote": "(vii) the records access officer shall provide a written notification to the requester detailing the reasons behind the denial, including an itemized list of any balances attributed to previously produced records;",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer sends written denial notice"
+  },
+  {
+   "section": "10",
+   "quote": "The reasonable fee shall not exceed the actual cost of reproducing the record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee cap"
+  },
+  {
+   "section": "10",
+   "quote": "Unless expressly provided for otherwise, the fee shall be determined in accordance with the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to fee rules"
+  },
+  {
+   "section": "10",
+   "quote": "the supervisor of records shall provide the determination to the agency or municipality and the requestor and shall inform the requestor of the right to seek judicial review of an unfavorable decision by commencing a civil action in the superior court;",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "supervisor sends fee-petition determination"
+  },
+  {
+   "section": "10",
+   "quote": "the records access officer may deny public records requests from a requester who has failed to compensate the agency or municipality for previously produced public records;",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer denies request for unpaid balances"
+  },
+  {
+   "section": "10A",
+   "quote": "Section 10A. (a) If an agency or municipality fails to comply with a requirement of section 10 or issues a response the requestor believes in violation of section 10, the person who submitted the initial request for public records may petition the supervisor of records for a determination as to whether a violation has occurred.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester petitions supervisor of records"
+  },
+  {
+   "section": "10A",
+   "quote": "Upon a determination by the supervisor of records that a violation has occurred, the supervisor of records shall order timely and appropriate relief.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "supervisor orders relief"
+  },
+  {
+   "section": "10A",
+   "quote": "If the attorney general files an action to compel compliance, the action shall be filed in Suffolk superior court with respect to state agencies and, with respect to municipalities, in the superior court in the county in which the municipality is located.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "venue rule"
+  },
+  {
+   "section": "10A",
+   "quote": "The attorney general shall designate an individual within the office of the attorney general to serve as a primary point of contact for the supervisor of records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "organizational designation"
+  },
+  {
+   "section": "10A",
+   "quote": "(c) Notwithstanding the procedure in subsections (a) or (b), a requestor may initiate a civil action to enforce the requirements of this chapter.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester files civil action"
+  },
+  {
+   "section": "10A",
+   "quote": "The superior court shall have available all remedies at law or in equity; provided, however, that any damages awarded shall be consistent with subsection (d).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "available remedies, not an act"
+  },
+  {
+   "section": "10A",
+   "quote": "(i) the superior court shall have jurisdiction to enjoin agency or municipal action;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "jurisdiction grant"
+  },
+  {
+   "section": "10A",
+   "quote": "(ii) the superior court shall determine the propriety of any agency or municipal action de novo and may inspect the contents of any defendant agency or municipality record in camera, provided, however, that the in camera review shall not waive any legally applicable privileges, including without limitation, the attorney- client privilege and the attorney work product privilege;",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court reviews de novo, in camera"
+  },
+  {
+   "section": "10A",
+   "quote": "(iii) the superior court shall, when feasible, expedite the proceeding;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "pace directive, not a distinct act"
+  },
+  {
+   "section": "10A",
+   "quote": "(3) If the superior court awards reasonable attorneys' fees and other litigation costs reasonably incurred to the requestor, it shall order the agency or municipality to waive any fee assessed under subsection (d) of section 10.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court orders fee waiver"
+  },
+  {
+   "section": "10A",
+   "quote": "Whether the superior court determines to waive any fee assessed under said subsection (d) of said section 10, it shall issue findings specifying the basis for such decision.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court issues findings on fee waiver"
+  },
+  {
+   "section": "10A",
+   "quote": "In any action filed or in which the attorney general has intervened under this subsection, paragraphs (1) and (4) of subsection (d) shall apply and any public records the court orders produced shall be provided without a fee.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "applicability rule"
+  },
+  {
+   "section": "10A",
+   "quote": "If an agency or municipality refuses or fails to comply with an order issued by the supervisor of records, the supervisor of records may notify the attorney general who, after consultation with the supervisor of records, may take whatever measures the attorney general considers necessary to ensure compliance.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "supervisor notifies attorney general"
+  },
+  {
+   "section": "10A",
+   "quote": "a presumption shall exist that each record sought is public and the burden shall be on the defendant agency or municipality to prove, by a preponderance of the evidence, that such record or portion of the record may be withheld in accordance with state or federal law.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "presumption and burden of proof"
+  },
+  {
+   "section": "10A",
+   "quote": "The superior court may award reasonable attorney fees and costs in any case in which the requester obtains relief through a judicial order, consent decree, or the provision of requested documents after the filing of a complaint.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards attorney fees"
+  },
+  {
+   "section": "10A",
+   "quote": "If the superior court determines that an award of reasonable attorney fees or costs is not warranted, the judge shall issue written findings specifying the reasons for the denial.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court issues findings denying fees"
+  },
+  {
+   "section": "10A",
+   "quote": "Notwithstanding any other provision of this chapter, the attorney general may, at any time, file a complaint in Suffolk superior court with respect to agencies and, with respect to municipalities, in the superior court in the county in which the municipality is located, to ensure compliance with this chapter and may further intervene as of right in any action filed in accordance with this section.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG files complaint or intervenes"
+  },
+  {
+   "section": "6A",
+   "quote": "(b) A records access officer shall coordinate an agency's or a municipality's response to requests for access to public records and shall facilitate the resolution of such requests by the timely and thorough production of public records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general role duty"
+  },
+  {
+   "section": "6A",
+   "quote": "Any employee responsible for making public records available shall provide the records in accordance with this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general duty to comply"
+  },
+  {
+   "section": "6A",
+   "quote": "(d) The records access officer shall provide the public records to a requestor by electronic means unless the record is not available in electronic form or the requestor does not have the ability to receive or access the records in a usable electronic form.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer provides records electronically"
+  },
+  {
+   "section": "6A",
+   "quote": "The records access officer shall, to the extent feasible, provide the public record in the requestor's preferred format or, in the absence of a preferred format, in a searchable, machine readable format.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "format rule for delivery"
+  },
+  {
+   "section": "6A",
+   "quote": "If the public record requested is available on a public website pursuant to subsection (b) of section 19 of this chapter, section 14C of chapter 7 or any other appropriately indexed and searchable public website, the records access officer may furnish the public record by providing reasonable assistance in locating the requested record on the public website.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "officer points to record on website"
+  },
+  {
+   "section": "6A",
+   "quote": "An electronically produced document submitted to an agency or municipality for use in deliberations by a public body shall be provided in an electronic format at the time of submission.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "deliberation documents, unrelated"
+  },
+  {
+   "section": "6A",
+   "quote": "(iii) the date on which a public record is provided to the requestor;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "request log item, record-keeping"
+  },
+  {
+   "section": "6A",
+   "quote": "(v) fees charged to the person making the request, if any;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "request log item, record-keeping"
+  },
+  {
+   "section": "6A",
+   "quote": "The secretary of the commonwealth shall prescribe a form for recording such information and shall annually collect the information from the records access officers, post the information on a website maintained by the secretary and report the same to the clerks of the house of representatives and senate.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "statewide reporting duty"
+  },
+  {
+   "section": "6A",
+   "quote": "The records access officer shall not be required to create a new public record in order to comply with a request, provided that furnishing a segregable portion of a public record shall not be deemed to be creation of a new record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "no duty to create records"
+  },
+  {
+   "section": "6A",
+   "quote": "Each records access officer of an agency shall document each request for public records submitted to the records access officer.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "request logging, record-keeping"
+  }
+ ]
+}

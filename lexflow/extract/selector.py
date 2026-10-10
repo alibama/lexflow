@@ -143,6 +143,7 @@ def wide_drafts(clauses: list[Clause], question: str) -> list[dict]:
             out.append({**base[c.id], "origin": "rule", "actor_src": "subject"})
             continue
         src, modal, subject, list_item = c, c.modal, c.subject, False
+        lead_in = ""
         if not modal:
             p = _parent(clauses, i)
             if p is None:
@@ -151,6 +152,7 @@ def wide_drafts(clauses: list[Clause], question: str) -> list[dict]:
                     out.append({"clause": c, "condition": None, "deadline": c.deadline, "deemed": False, **u})
                 continue
             modal, subject, list_item = p.modal, p.subject, True
+            lead_in = p.text
             after, before = c.text, ""
         else:
             m = re.search(re.escape(modal.replace(" not", "")), c.text, re.I) or re.search(r"\b(shall|may|must)\b", c.text, re.I)
@@ -175,13 +177,58 @@ def wide_drafts(clauses: list[Clause], question: str) -> list[dict]:
         out.append({"clause": c, "actor": actor, "action": action, "kind": kind_of(action),
                     "modality": "none" if deemed else modality_of(modal), "condition": None,
                     "deadline": c.deadline, "origin": "list" if list_item else "wide", "actor_src": actor_src,
-                    "deemed": deemed})
+                    "deemed": deemed, "lead_in": lead_in if VIEWS else ""})
     out = [x for d in out for x in (_with_extras(d, question) if CANDIDATES["extras"] else [d])]
+    _borrow_deadlines(out, clauses)
     # where the clause sits: the first section of a reference list is usually the core procedure
     order = list(dict.fromkeys(c.section for c in clauses))
     for d in out:
         d["sec_idx"] = order.index(d["clause"].section)
     return out
+
+
+# train on curated_labels/ (active learning) too.  Batch 1 (758 labels, 12 states) moved the held-out score by
+# -0.0002 (90% interval -0.021 to +0.025): off until more labels show a gain
+USE_PARTIAL = False
+VIEWS = True        # embed list items with their lead-in ("A custodian who denies the application shall: within ...")
+
+
+def view(d: dict) -> str:
+    """The text the selector compares (words and embeddings): the clause, after its list lead-in when it is a list
+    item, so "(1) within 10 working days, give the applicant ..." carries who acts and when.  Quotes stay the exact
+    clause; only the comparison sees the lead-in."""
+    lead = d.get("lead_in") or ""
+    return f"{lead} {d['clause'].text}" if lead else d["clause"].text
+
+
+OPENS_WITH_TIME = re.compile(r"^\s*(?:\([A-Za-z0-9]+\)\s*)*(?:within|not later than|no later than|not more than|"
+                             r"promptly,? but)", re.I)
+
+
+def _borrow_deadlines(out: list[dict], clauses: list[Clause]) -> None:
+    """A step whose own clause sets no time limit often has one beside it: a list item under "shall:" inherits its
+    lead-in's limit, a lead-in takes its first item's, and a clause takes the limit of the next clause of the same
+    subsection when that clause opens with one ("within 10 working days, give the applicant ...")."""
+    idx = {c.id: i for i, c in enumerate(clauses)}
+    for d in out:
+        if d.get("deadline"):
+            continue
+        c = d["clause"]
+        i = idx.get(c.id)
+        if i is None:
+            continue
+        nxt = clauses[i + 1] if i + 1 < len(clauses) and clauses[i + 1].section == c.section else None
+        if d.get("origin") == "list":
+            p = _parent(clauses, i)
+            if p is not None and p.deadline:
+                d["deadline"], d["deadline_src"] = p.deadline, "parent"
+                continue
+        if nxt is not None and nxt.deadline and LIST_INTRO.search(c.text) and \
+                (nxt.label or "").startswith(c.label or ""):
+            d["deadline"], d["deadline_src"] = nxt.deadline, "first item"
+        elif nxt is not None and nxt.deadline and OPENS_WITH_TIME.match(nxt.text) and \
+                (nxt.label or "-").split(".")[0] == (c.label or "-").split(".")[0]:
+            d["deadline"], d["deadline_src"] = nxt.deadline, "next clause"
 
 
 # one sentence, two steps: "a public body, upon request ..., shall respond" holds the request and the response
@@ -258,6 +305,7 @@ class Reference:
     cands: list[dict] = field(default_factory=list)
     feats: list[list[str]] = field(default_factory=list)
     kinds: list[str | None] = field(default_factory=list)   # actor kind of the step a positive candidate matched
+    partial: bool = False          # Claude labelled chosen sentences only (curated_labels/), not the whole process
 
 
 def _label(d: dict, quotes: list[tuple[str, str]]) -> bool:
@@ -298,12 +346,50 @@ def _references(stamp: tuple) -> tuple[Reference, ...]:
         ref.labels, ref.kinds = labels_for(ref.cands, spec["facts"])
         ref.feats = [features(d) for d in ref.cands]
         out.append(ref)
+    if USE_PARTIAL:
+        out += _partial_references()
     return tuple(out)
 
 
+def labels_dir():
+    return config.ROOT / "curated_labels"
+
+
+def _partial_references() -> list[Reference]:
+    """curated_labels/<state>/<question>.json: Claude's yes/no on the sentences the selector was least sure of, in
+    states without a reference.  Only the labelled candidates are kept; such a reference trains the selector (at
+    a lower weight) but is never a test case and never sets the keep threshold, which needs the whole process."""
+    from ..municipal import statutes
+    out = []
+    for path in sorted(p for p in labels_dir().glob("*/*.json") if p.parent.name != "queue"):
+        st, q = path.parent.name, path.stem
+        try:
+            spec = json.loads(path.read_text(encoding="utf-8"))
+            text = statutes.combined_text(statutes.reference_texts(st, spec["sections"]))
+        except Exception:  # noqa: BLE001 - statutes not available here
+            continue
+        clauses = segment(text)
+        by_quote = {(_norm(x["quote"]), x.get("section")): x for x in spec.get("labels") or []}
+        ref = Reference(st, q, text, clauses, [], {}, partial=True)
+        for d in wide_drafts(clauses, q):
+            key = (_norm(d["clause"].text), d["clause"].section)
+            lab = by_quote.get(key) or by_quote.get((key[0], None))
+            if lab is None or d.get("origin") in ("trigger", "second"):
+                continue
+            ref.cands.append(d)
+            ref.labels.append(bool(lab["is_step"]))
+            ref.kinds.append(lab.get("actor_kind") if lab["is_step"] else None)
+        ref.feats = [features(d) for d in ref.cands]
+        if ref.cands:
+            out.append(ref)
+    return out
+
+
 def references() -> tuple[Reference, ...]:
-    """Every reference model with its candidate clauses labelled by Claude's choices (cached until a file changes)."""
-    stamp = tuple(sorted((str(p), p.stat().st_mtime) for p in config.CURATED_DIR.glob("*/*.json")))
+    """Every reference model with its candidate clauses labelled by Claude's choices, plus the partial labels
+    (cached until a file changes)."""
+    stamp = tuple(sorted((str(p), p.stat().st_mtime) for p in
+                         list(config.CURATED_DIR.glob("*/*.json")) + list(labels_dir().glob("*/*.json"))))
     return _references(stamp)
 
 
@@ -389,16 +475,18 @@ class Embedder:
     def key(text: str) -> str:
         return hashlib.sha1(text.encode("utf-8")).hexdigest()[:20]
 
-    def __call__(self, texts: list[str]):
+    def __call__(self, texts: list[str], prefix: str = "classification"):
         import numpy as np
-        prefixed = [f"classification: {' '.join(t.split()[:220])}" for t in texts]
+        prefixed = [f"{prefix}: {' '.join(t.split()[:220])}" for t in texts]
         missing = list(dict.fromkeys(t for t in prefixed if self.key(t) not in self.cache))
         if missing:
             self.path.parent.mkdir(parents=True, exist_ok=True)
             with self.path.open("a", encoding="utf-8") as f:
                 for i in range(0, len(missing), 32):
                     batch = missing[i:i + 32]
-                    r = requests.post(f"{self.base_url}/api/embed", json={"model": self.model, "input": batch},
+                    # texts are cut to ~300 tokens: a 512-token context embeds twice as fast as the default
+                    r = requests.post(f"{self.base_url}/api/embed", json={"model": self.model, "input": batch,
+                                                                          "options": {"num_ctx": 512}},
                                       timeout=600)
                     r.raise_for_status()
                     for t, v in zip(batch, r.json()["embeddings"]):
@@ -434,7 +522,7 @@ class Tfidf:
         words = [w[:7] for w in words]               # a crude stem: "requests", "requested" -> "request"
         return words + [f"{a}_{b}" for a, b in zip(words, words[1:])]
 
-    def __call__(self, texts: list[str]):
+    def __call__(self, texts: list[str], prefix: str = ""):
         import numpy as np
         m = np.zeros((len(texts), len(self.index)), dtype="float32")
         for i, t in enumerate(texts):
@@ -455,9 +543,9 @@ class Combo:
         self.floor = (a.floor + b.floor) / 2
         self.name = f"{a.name}+{b.name}"
 
-    def __call__(self, texts: list[str]):
+    def __call__(self, texts: list[str], prefix: str = "classification"):
         import numpy as np
-        return np.hstack([self.a(texts), self.b(texts)]) / math.sqrt(2)
+        return np.hstack([self.a(texts), self.b(texts, prefix=prefix)]) / math.sqrt(2)
 
 
 _TFIDF: dict[int, Tfidf] = {}
@@ -568,7 +656,7 @@ class Selector:
                 self.emb = None                    # no embedding model reachable: naive Bayes only
 
     def _w(self, r: Reference) -> float:
-        return 1.0 if r.question == self.question else 0.5
+        return (1.0 if r.question == self.question else 0.5) * (0.7 if r.partial else 1.0)
 
     def _embed_refs(self):
         import numpy as np
@@ -576,7 +664,7 @@ class Selector:
         if not refs:
             self.emb = None
             return
-        self.allx = self.emb([d["clause"].text for r in refs for d in r.cands])
+        self.allx = self.emb([view(d) for r in refs for d in r.cands])
         self.ally = np.concatenate([np.array(r.labels, dtype="float32") for r in refs]) if refs else np.zeros(0)
         at = 0
         for r in refs:
@@ -600,7 +688,7 @@ class Selector:
                 pos = idx[y > 0]
                 lib = sims[:, pos].max(axis=1) if len(pos) else np.zeros(len(cands))
                 blocks = []
-                for r in same:
+                for r in (x for x in same if not x.partial):     # alignment needs whole processes
                     a, b = self.span[id(r)]
                     blocks.append(sims[:, np.arange(a, b)[np.array(r.labels, dtype=bool)]])
                 al = align_sims(blocks, self.emb.floor)
@@ -631,8 +719,11 @@ class Selector:
         self.beta = _fit_lr((X - self.mu) / self.sd, y, w)
         # the keep threshold that maximises mean step F1 over the training cases of this question
         best, self.threshold = -1.0, 0.5
-        preds = [(_predict(self.beta, (Xi - self.mu) / self.sd), yi, r) for Xi, yi, r in zip(Xs, ys, groups)
-                 if r.question == self.question]
+        preds = [(_predict(self.beta, (Xi - self.mu) / self.sd), yi, r) for Xi, yi, r in zip(Xs, ys, groups)]
+        self.train_preds = preds                     # stage-1 scores of every training case (for stage 2)
+        # tune on this question's cases; a new question has none, so it is tuned on every reference
+        preds = [p for p in preds if not p[2].partial]          # F1 needs the whole process
+        preds = [p for p in preds if p[2].question == self.question] or preds
         for t in np.arange(0.03, 0.7, 0.01):
             f1s = []
             for p_, yi, r in preds:
@@ -652,7 +743,7 @@ class Selector:
             return np.zeros(0)
         sims = None
         if self.emb is not None:
-            self._x = self.emb([d["clause"].text for d in cands])
+            self._x = self.emb([view(d) for d in cands])
             sims = self._x @ self.allx.T
         X = self._scores(cands, self.refs, sims)
         if getattr(self, "beta", None) is None:
@@ -699,7 +790,7 @@ class Selector:
                 for i in range(len(r.cands))]
         if not pool:
             return []
-        x = self.emb([d["clause"].text])
+        x = self.emb([view(d)])
         rows = np.array([self.span[id(r)][0] + i for r, i in pool])
         order = np.argsort(-(x @ self.allx[rows].T)[0])
         out, pos, neg = [], 0, 0

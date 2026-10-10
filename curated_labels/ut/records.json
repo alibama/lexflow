@@ -1,0 +1,356 @@
+{
+ "state": "ut",
+ "question": "records",
+ "sections": [
+  "63G-2-204",
+  "63G-2-201",
+  "63G-2-203",
+  "63G-2-205",
+  "63G-2-401",
+  "63G-2-403"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "63G-2-204",
+   "quote": "(i) approve the request and provide a copy of the record;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "approve request and provide copy"
+  },
+  {
+   "section": "63G-2-204",
+   "quote": "(a) another governmental entity is using the record, in which case the originating governmental entity shall promptly request that the governmental entity currently in possession return the record;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "originating entity requests return of record in use"
+  },
+  {
+   "section": "63G-2-204",
+   "quote": "(g) segregating information that the requester is entitled to inspect from information that the requester is not entitled to inspect requires extensive editing; or (h) segregating information that the requester is entitled to inspect from information that the requester is not entitled to inspect requires computer programming.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "definition of extraordinary circumstances"
+  },
+  {
+   "section": "63G-2-204",
+   "quote": "(i) disclose the records that it has located which the requester is entitled to inspect;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "disclose located records"
+  },
+  {
+   "section": "63G-2-204",
+   "quote": "(iii) complete the work and disclose those records that the requester is entitled to inspect as soon as reasonably possible; and (iv) for any person that does not establish a right to an expedited response as authorized by Subsection (4), a governmental entity may choose to:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "complete work and disclose records"
+  },
+  {
+   "section": "63G-2-204",
+   "quote": "(8) (a) If a request for access is submitted to an office of a governmental entity other than that specified by rule in accordance with Subsection (3), the office shall promptly forward the request to the appropriate office.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "misdirected office forwards request"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(5) (a) A governmental entity may not disclose a record that is private, controlled, or protected to any person except as provided in Subsection (5)(b), Subsection (5)(c), Section 63G-2-202, 63G-2-206, or 63A-19-408.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general nondisclosure rule"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(c) In addition to the disclosure under Subsection (5)(b), a governmental entity may disclose a record that is protected under Subsection 63G-2-305(51) if:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "discretionary disclosure policy for protected records"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(6) A governmental entity shall provide a person with a certified copy of a record if:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "provide certified copy"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(v) fill a person's records request if:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "limit on duty to fill request"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(I) specifies to the person requesting the record where the record is accessible online; or (II) provides the person requesting the record with the public publication or product and specifies where the record can be found in the public publication or product; or (vi) fulfill a person's records request if:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "point requester to online/publication location"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(B) the order of the director of the Government Records Office determining the person to be a vexatious requester provides that the governmental entity is not required to fulfill a request from the person for a period of time; and (C) the period of time described in Subsection (7)(a)(vi)(B) has not expired.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "vexatious-requester condition"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(b) A governmental entity shall conduct a reasonable search for a requested record.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "conduct reasonable search"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(8) (a) Although not required to do so, a governmental entity may, upon request from the person who submitted the records request, compile, format, manipulate, package, summarize, or tailor information or provide a record in a format, medium, or program not currently maintained by the governmental entity.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "optionally compile or tailor record on request"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(c) A governmental entity may require a person who makes a request under Subsection (8)(a) to pay the governmental entity, in accordance with Section 63G-2-203, for providing the information or record as requested.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "require payment for tailored record"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(10) (a) A governmental entity may allow a person requesting more than 50 pages of records to copy the records if:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "allow requester to copy large requests"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(i) the records are contained in files that do not contain records that are exempt from disclosure, or the records may be segregated to remove private, protected, or controlled information from disclosure; and (ii) the governmental entity provides reasonable safeguards to protect the public from the potential for loss of a public record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "conditions for self-copying"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(13) Subject to the requirements of Subsection (7), a governmental entity shall provide access to an electronic copy of a record in lieu of providing access to its paper equivalent if:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "provide electronic copy"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(a) the person making the request requests or states a preference for an electronic copy;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "condition for electronic copy"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(14) In determining whether a record is properly classified as private under Subsection 63G-2-302(2)(d), the governmental entity, the director of the Government Records Office, local appeals board, or court shall consider and weigh:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "classification weighing standard"
+  },
+  {
+   "section": "63G-2-201",
+   "quote": "(a) is not required to provide a record in response to a record request that requests records received by the Department of Criminal Justice under Section 75E-2-210; and (b) shall inform the person making a record request for a record described in Subsection (15)(a) of the governmental entity from which the Department of Criminal Justice received the record.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "DCJ informs requester of source entity"
+  },
+  {
+   "section": "63G-2-203",
+   "quote": "(6) (a) A person who believes that there has been an unreasonable denial of a fee waiver under Subsection (4) may appeal the denial in the same manner as a person appeals when inspection of a public record is denied under Section 63G-2-205.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "appeal fee waiver denial"
+  },
+  {
+   "section": "63G-2-205",
+   "quote": "If the governmental entity denies the request in whole or part, it shall provide a notice of denial to the requester either in person or by sending the notice to the requester's address.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "send notice of denial"
+  },
+  {
+   "section": "63G-2-205",
+   "quote": "(2) The notice of denial shall contain the following information:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content of denial notice"
+  },
+  {
+   "section": "63G-2-205",
+   "quote": "(c) a statement that the requester has the right to appeal the denial to the chief administrative officer of the governmental entity; and (d) the time limits for filing an appeal, and the name and business address of the chief administrative officer of the governmental entity.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content of denial notice"
+  },
+  {
+   "section": "63G-2-401",
+   "quote": "(b) If a governmental entity claims extraordinary circumstances and specifies the date when the records will be available under Subsection 63G-2-204(4), and, if the requester believes the extraordinary circumstances do not exist or that the date specified is unreasonable, the requester may appeal the governmental entity's claim of extraordinary circumstances or date for compliance to the chief administrative officer by filing a notice of appeal with the chief administrative officer within 30 days after notification of a claim of extraordinary circumstances by the governmental entity, despite the lack of a \"determination\" or its equivalent under Subsection 63G-2-204(9).",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 30,
+    "unit": "days"
+   },
+   "why": "appeal extraordinary-circumstances claim"
+  },
+  {
+   "section": "63G-2-401",
+   "quote": "(i) send notice of the appeal to the business confidentiality claimant within three business days after receiving notice, except that if notice under this section must be given to more than 35 persons, it shall be given as soon as reasonably possible; and (ii) send notice of the business confidentiality claim and the schedule for the chief administrative officer's determination to the requester or interested party within three business days after receiving notice of the appeal.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": {
+    "amount": 3,
+    "unit": "business_days"
+   },
+   "why": "CAO notifies claimant and requester"
+  },
+  {
+   "section": "63G-2-401",
+   "quote": "(b) The business confidentiality claimant shall have seven business days after notice is sent by the administrative officer to submit further support for the claim of business confidentiality.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 7,
+    "unit": "business_days"
+   },
+   "why": "claimant submits further support"
+  },
+  {
+   "section": "63G-2-401",
+   "quote": "(ii) a statement that the requester or interested party has the right to appeal the decision, as provided in Section 63G-2-402, to:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content of decision notice"
+  },
+  {
+   "section": "63G-2-401",
+   "quote": "(b) If a nonrequester is the only appellant, the procedures provided in this section shall apply, except that the decision on the appeal shall be made within 30 days after the day on which the appellant files the notice of appeal.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": {
+    "amount": 30,
+    "unit": "days"
+   },
+   "why": "CAO decides nonrequester appeal"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(b) Notwithstanding Subsection (1)(a), a requester may file a notice of appeal with the director no later than 45 days after the day on which the record request is made if:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 45,
+    "unit": "days"
+   },
+   "why": "requester files appeal with director"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(A) the date that the government records ombudsman certifies in writing that the mediation is concluded; or (B) the date that the government records ombudsman certifies in writing that the mediation did not occur or was not concluded because of a lack of the required consent.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "end date of tolling period"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(b) (i) The director may decline to schedule a hearing if the record series that is the subject of the appeal has been found by the director in a previous hearing involving the same governmental entity to be appropriately classified as private, controlled, or protected.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "director declines to schedule hearing"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(ii) If the director declines to schedule a hearing, the director shall send a notice to the records appellant indicating that the request for hearing has been denied and the reason for the denial.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "director notifies hearing denied"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(c) The director may schedule a hearing on an appeal to the director on a regularly-scheduled hearing date that is later than the period described in Subsection (4)(a)(i) if that hearing date is the first regularly-scheduled hearing date at which there are fewer than 10 appeals scheduled to be heard.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "director schedules later hearing"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(5) (a) No later than five business days before the day of the hearing, a governmental entity shall submit to the director a written statement of facts, reasons, and legal authority in support of the governmental entity's position.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 5,
+    "unit": "business_days"
+   },
+   "why": "entity submits written statement"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(b) The governmental entity shall send a copy of the written statement by first class mail, postage prepaid, to the requester or interested party involved in the appeal.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "entity mails statement copy to requester"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(6) (a) No later than 10 business days after the day on which the director sends the notice of appeal, a person whose legal interests may be substantially affected by the proceeding may file a request for intervention with the director.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 10,
+    "unit": "business_days"
+   },
+   "why": "affected person requests intervention"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(7) (a) The director shall hold a hearing within the period of time described in Subsection (4).",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "director holds hearing"
+  },
+  {
+   "section": "63G-2-403",
+   "quote": "(a) shall allow the parties to testify, present evidence, and comment on the issues; and (b) may allow other interested persons to comment on the issues.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "director lets parties testify"
+  }
+ ]
+}

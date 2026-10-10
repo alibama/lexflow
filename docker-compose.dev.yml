@@ -9,6 +9,9 @@ services:
       - ./lexflow:/app/lexflow
       - ./curated:/app/curated
       - ./curated_alt:/app/curated_alt
+      - ./curated_ask:/app/curated_ask
+      - ./curated_ask_alt:/app/curated_ask_alt
+      - ./curated_labels:/app/curated_labels
       - ./dashboard:/app/dashboard
       - ./fixtures:/app/fixtures
       - ./tests:/app/tests

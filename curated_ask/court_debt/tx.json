@@ -1,0 +1,243 @@
+{
+  "qid": "court_debt",
+  "question": "I can't afford to pay my court fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments?",
+  "state": "tx",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      ["fine", "fines", "costs", "court costs", "restitution", "reimbursement fee"],
+      ["designated intervals", "specified portion", "later date", "installments", "payment plan"],
+      ["sufficient resources or income", "unable to pay", "indigent", "undue hardship", "ability to pay"],
+      ["community service", "discharge", "discharged"],
+      ["waive", "waiver", "waived"],
+      ["capias pro fine", "confined", "confinement", "default", "defaults", "revoke", "revocation", "recall", "past due", "habeas corpus"]
+    ],
+    "negative": ["tuition", "installation", "insurance premium", "bail bond forfeiture", "hunting license"],
+    "slots": ["yes_no", "order", "amount", "deadline", "fee"]
+  },
+  "gold_sections": [
+    {"ref": "Tex. Code of Criminal Procedure § 42.15", "role": "primary", "why": "Ability-to-pay inquiry at sentencing; options (later date or installments, community service, waiver, combination); misdemeanor installments are mandatory when the defendant cannot pay immediately."},
+    {"ref": "43.035", "role": "primary", "why": "After sentencing, a defendant who tells the court of difficulty paying gets an undue-hardship hearing (unless the court can decide without one) and reconsideration of how the fine and costs are satisfied."},
+    {"ref": "43.09", "role": "primary", "why": "County and district courts: community service to discharge fines and costs ($150 per eight hours, 16 hours a week cap) and jail or labor credit at $150 a day; does not apply to Chapter 45A courts."},
+    {"ref": "43.091", "role": "primary", "why": "Waiver of all or part of fines (indigence or insufficient resources plus undue hardship of every alternative) and of costs (indigence or insufficient resources); waivers for a defendant on community supervision can be reconsidered."},
+    {"ref": "Tex. Code of Criminal Procedure § 43.05", "role": "primary", "why": "No capias pro fine for nonpayment without an undue-hardship hearing; 30 days to comply when no hardship is found; mandatory recall of the capias on notice and a set hearing or a voluntary appearance."},
+    {"ref": "Tex. Code of Criminal Procedure § 43.03", "role": "primary", "why": "Jail for default only after a hearing and a written finding that the defendant is not indigent and made no good-faith effort (or is indigent and failed to do community service that would not be an undue hardship); term capped at the offense maximum."},
+    {"ref": "42A.751", "role": "primary", "why": "Community supervision revocation for unpaid fees or costs requires proof the defendant was able to pay."},
+    {"ref": "Tex. Code of Criminal Procedure § 42.037", "role": "primary", "why": "Restitution in installments, due immediately unless the court says otherwise, revocation for nonpayment weighed against ability to pay and willfulness, civil enforcement; narrow service-instead-of-money options."},
+    {"ref": "42A.655", "role": "primary", "why": "Probation payments: ability to pay considered before ordering and on a written request (not more than once in six months); alternatives (later or installments, waiver, community service); restitution excluded."},
+    {"ref": "45A.258", "role": "primary", "why": "Justice and municipal courts: undue-hardship hearing when the defendant reports difficulty paying."},
+    {"ref": "45A.252", "role": "supporting", "why": "Justice and municipal courts: ability-to-pay inquiry (not required to be on the record) and the same menu of options."},
+    {"ref": "45A.253", "role": "supporting", "why": "Justice and municipal courts must allow installments whenever the defendant cannot pay immediately."},
+    {"ref": "45A.254", "role": "supporting", "why": "Justice and municipal courts: community service, also after a failure to pay, credited at not less than $150 per eight hours."},
+    {"ref": "45A.257", "role": "supporting", "why": "Justice and municipal courts: waiver of fines and costs."},
+    {"ref": "45A.259", "role": "supporting", "why": "Justice and municipal courts: capias pro fine only after an undue-hardship hearing; 30 days to comply; recall."},
+    {"ref": "45A.260", "role": "supporting", "why": "Justice and municipal courts may let the defendant appear by telephone or videoconference at the hardship hearings when appearing in person would be an undue hardship."},
+    {"ref": "45A.261", "role": "supporting", "why": "Justice and municipal courts: commitment to jail only on the same written findings."},
+    {"ref": "45A.262", "role": "supporting", "why": "Justice and municipal courts: a defendant jailed for unpaid fines and costs is discharged on habeas corpus by showing indigence, or after serving enough time at not less than $150 per period of 8 to 24 hours set by the court."},
+    {"ref": "42A.652", "role": "supporting", "why": "Monthly community supervision reimbursement fee may be waived, reduced or suspended for significant financial hardship."},
+    {"ref": "Tex. Code of Criminal Procedure § 43.01", "role": "supporting", "why": "Ways a fine-and-costs judgment is discharged (payment, remission by the proper authority, custody, other means)."},
+    {"ref": "Tex. Code of Criminal Procedure § 48.01", "role": "supporting", "why": "The Governor may remit fines on the written recommendation of a majority of the Board of Pardons and Paroles (a rarely used remission under 43.01(a)(2))."},
+    {"ref": "43.07", "role": "supporting", "why": "Execution against property for fine and costs, alongside a capias pro fine."},
+    {"ref": "102.030", "role": "supporting", "why": "$15 time payment reimbursement fee when any part of a fine, costs or restitution is paid on or after the 31st day after judgment."},
+    {"ref": "Tex. Code of Criminal Procedure § 102.011", "role": "supporting", "why": "$75 reimbursement fee for executing or processing an arrest warrant, capias or capias pro fine."},
+    {"ref": "103.0031", "role": "supporting", "why": "Local collection contracts may add a 30% fee on items more than 60 days past due, not for a defendant the court found indigent or unable to pay."},
+    {"ref": "508.182", "role": "supporting", "why": "Parole supervision and administrative fees: deferral on request and inability to pay as an affirmative defense to revocation."},
+    {"ref": "501.014", "role": "supporting", "why": "Prison inmates: on a court's notification, TDCJ withdraws court-ordered amounts from the inmate trust account in priority order (child support, restitution, ..., court fees and costs, then fines)."},
+    {"ref": "Tex. Transportation Code § 706.004", "role": "supporting", "why": "Driver's license renewal may be denied for failure to pay a fine and cost as ordered, where the locality contracts with DPS."},
+    {"ref": "Tex. Transportation Code § 706.005", "role": "supporting", "why": "The license-renewal hold is lifted on payment or discharge of the fine and cost or another suitable arrangement within the court's discretion."},
+    {"ref": "Tex. Transportation Code § 502.010", "role": "supporting", "why": "County may refuse vehicle registration (including renewal) when the owner owes it a fine or fee 90 or more days past due, where it contracts with the department; payment or other discharge, including a waiver, clears the hold, and the past-due information expires after two years."},
+    {"ref": "Tex. Code of Criminal Procedure § 1.053", "role": "supporting", "why": "Ability to pay means present ability to pay unless otherwise specified."}
+  ],
+  "nuggets": [
+    {"id": "N1", "text": "At or right after sentencing (after a plea in open court), the court must ask on the record whether the defendant has enough resources or income to pay all or part of the fine and costs immediately.", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 42.15", "quote": "a court shall inquire on the record whether the defendant has sufficient resources or income to immediately pay all or part of the fine and costs", "slot": null},
+    {"id": "N2", "text": "If the defendant cannot pay immediately, the court must decide how the fine and costs will be satisfied; the first option is paying at a later date or in set portions at set intervals (a payment plan).", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 42.15", "quote": "required to be paid at some later date or in a specified portion at designated intervals", "slot": "order"},
+    {"id": "N3", "text": "A court may require (order) a defendant who is unable to pay a fine or costs to discharge all or part of them by performing community service.", "importance": "vital", "section": "43.09", "quote": "A court may require a defendant who is unable to pay a fine or costs to discharge all or part of the fine or costs by performing community service.", "slot": "order"},
+    {"id": "N4", "text": "In county and district courts, each eight hours of community service discharges $150 of fines or costs.", "importance": "okay", "section": "43.09", "quote": "A defendant is considered to have discharged $150 of fines or costs for each eight hours of community service performed under Subsection (f) of this article.", "slot": "amount"},
+    {"id": "N5", "text": "A court may waive all or part of a fine if the defendant is indigent or lacks sufficient resources or income and every alternative way of discharging the fine would be an undue hardship.", "importance": "vital", "section": "43.091", "quote": "each alternative method of discharging the fine under Article 43.09 or 42.15 would impose an undue hardship on the defendant", "slot": "order"},
+    {"id": "N6", "text": "A court may waive all or part of the court costs if the defendant is indigent or lacks sufficient resources or income to pay them (no undue-hardship finding is required for costs).", "importance": "vital", "section": "43.091", "quote": "A court may waive payment of all or part of the costs imposed on a defendant if the court determines that the defendant: (1) is indigent or does not have sufficient resources or income to pay all or part of the costs", "slot": "order"},
+    {"id": "N7", "text": "If the defendant later tells the court (in person, by motion, by letter or another way the court sets) that they are having trouble paying, the court must hold a hearing on whether the fine and costs impose an undue hardship, unless it already held one or can decide without one, and if so consider the payment-plan, community-service and waiver options.", "importance": "vital", "section": "43.035", "quote": "If a defendant notifies the court that the defendant has difficulty paying the fine and costs in compliance with the judgment, the court shall hold a hearing to determine whether that portion of the judgment imposes an undue hardship on the defendant.", "slot": null},
+    {"id": "N8", "text": "In a misdemeanor case, a defendant who cannot pay immediately must be allowed to pay in installments.", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 42.15", "quote": "When imposing a fine and costs in a misdemeanor case, if the court determines that the defendant is unable to immediately pay the fine and costs, the court shall allow the defendant to pay the fine and costs in specified portions at designated intervals.", "slot": "yes_no"},
+    {"id": "N9", "text": "For missed payments, the court may not issue a capias pro fine (arrest warrant) unless it first holds an undue-hardship hearing and the defendant fails to appear or fails to comply with the order from that hearing.", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 43.05", "quote": "A court may not issue a capias pro fine for the defendant's failure to satisfy the judgment according to its terms unless the court holds a hearing to determine whether the judgment imposes an undue hardship on the defendant", "slot": null},
+    {"id": "N10", "text": "If the court finds no undue hardship at that hearing, it must order the defendant to comply with the judgment within 30 days.", "importance": "okay", "section": "Tex. Code of Criminal Procedure § 43.05", "quote": "the court shall order the defendant to comply with the judgment not later than the 30th day after the date the determination is made", "slot": "deadline"},
+    {"id": "N11", "text": "A defendant who defaults can be jailed only after a hearing and a written finding that the defendant is not indigent and made no good-faith effort to pay, or is indigent, made no good-faith effort at community service, and could have done it without undue hardship.", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 43.03", "quote": "A court may not order a defendant confined under Subsection (a) of this article unless the court at a hearing makes a written determination that: (1) the defendant is not indigent and has failed to make a good faith effort to discharge the fines and costs; or (2) the defendant is indigent and: (A) has failed to make a good faith effort to discharge the fines and costs under Article 43.09(f); and (B) could have discharged the fines and costs under Article 43.09 without experiencing any undue hardship.", "slot": null},
+    {"id": "N12", "text": "When the only alleged probation violation is failing to pay community supervision fees or court costs (or legal-services costs), the state must prove by a preponderance of the evidence that the defendant was able to pay and did not.", "importance": "vital", "section": "42A.751", "quote": "the state must prove by a preponderance of the evidence that the defendant was able to pay and did not pay as ordered by the judge", "slot": null},
+    {"id": "N13", "text": "The court may set restitution to be paid within a specified period or in installments.", "importance": "okay", "section": "Tex. Code of Criminal Procedure § 42.037", "quote": "The court may require a defendant to make restitution under this article within a specified period or in specified installments.", "slot": null},
+    {"id": "N14", "text": "Failing to pay restitution ordered as a condition of probation, parole or mandatory supervision can lead to revocation, but in deciding whether to revoke, the court or parole panel must consider the defendant's employment status, current and future earning ability, current and future financial resources, the willfulness of the failure to pay, any other special circumstances affecting ability to pay, and the victim's financial resources.", "importance": "okay", "section": "Tex. Code of Criminal Procedure § 42.037", "quote": "The court may revoke community supervision and the parole panel may revoke parole or mandatory supervision if the defendant fails to comply with the order. In determining whether to revoke community supervision, parole, or mandatory supervision, the court or parole panel shall consider: (1) the defendant's employment status; (2) the defendant's current and future earning ability; (3) the defendant's current and future financial resources; (4) the willfulness of the defendant's failure to pay; (5) any other special circumstances that may affect the defendant's ability to pay; and (6) the victim's financial resources or ability to pay expenses incurred by the victim as a result of the offense.", "slot": null},
+    {"id": "N15", "text": "Justice and municipal courts (Chapter 45A, which handle most traffic and other fine-only cases) have the same reconsideration rule: a defendant who reports difficulty paying gets an undue-hardship hearing.", "importance": "okay", "section": "45A.258", "quote": "If the defendant notifies the justice or judge that the defendant has difficulty paying the fine and costs in compliance with the judgment, the justice or judge shall hold a hearing to determine whether the judgment imposes an undue hardship on the defendant.", "slot": null},
+    {"id": "N16", "text": "Restitution is treated differently from fines and costs: the waiver and community-service articles (43.091, 43.09, 45A.257, 45A.254) speak only of fines and costs, and the probation ability-to-pay review and its alternatives (later payment, waiver, community service) expressly exclude restitution.", "importance": "vital", "section": "42A.655", "quote": "Subsection (b) does not apply to consideration of a defendant's ability to pay restitution.", "slot": null},
+    {"id": "N17", "text": "A restitution order can be enforced by the state or the victim named in it in the same way as a civil judgment.", "importance": "okay", "section": "Tex. Code of Criminal Procedure § 42.037", "quote": "An order of restitution may be enforced by the state or a victim named in the order to receive the restitution in the same manner as a judgment in a civil action.", "slot": null},
+    {"id": "N18", "text": "If a capias pro fine has issued, the court must recall it if, before it is executed, the defendant notifies the court of difficulty paying and a hearing is set, or voluntarily appears and makes a good faith effort to resolve it.", "importance": "vital", "section": "Tex. Code of Criminal Procedure § 43.05", "quote": "The court shall recall a capias pro fine if, before the capias pro fine is executed, the defendant: (1) provides notice to the court under Article 43.035 and a hearing is set under that article; or (2) voluntarily appears and makes a good faith effort to resolve the capias pro fine.", "slot": null},
+    {"id": "N19", "text": "On probation (community supervision), a defendant ordered to make payments other than restitution may file a written request with the clerk, not more than once in six months unless there is a substantial and compelling reason, to have ability to pay reconsidered and the payment satisfied another way (later or in installments, waiver, or community service).", "importance": "okay", "section": "42A.655", "quote": "but not more than once in any six-month period unless the defendant shows a substantial and compelling reason for making an additional request during that period, file a written statement with the clerk of the court requesting reconsideration of the defendant's ability to make the payment", "slot": null},
+    {"id": "N20", "text": "In justice and municipal courts, a defendant jailed for failing to pay the fine and costs must be released on habeas corpus by showing they are indigent and cannot pay.", "importance": "okay", "section": "45A.262", "quote": "A defendant placed in jail due to failure to pay the fine and costs shall be discharged on habeas corpus by showing that the defendant: (1) is indigent and cannot pay the fine and costs", "slot": null},
+    {"id": "N21", "text": "A $15 time payment reimbursement fee is charged if any part of a fine, court costs or restitution is paid on or after the 31st day after the judgment, so a payment plan that runs past 30 days triggers it.", "importance": "okay", "section": "102.030", "quote": "A person convicted of an offense shall pay a reimbursement fee of $15 if the person: (1) has been convicted of a felony or misdemeanor; and (2) pays any part of a fine, court costs, or restitution, or another reimbursement fee, on or after the 31st day after the date on which a judgment is entered", "slot": "fee"},
+    {"id": "N22", "text": "Where a city or county sends past-due court debt to a private collector it may add a collection fee (30% on items more than 60 days past due, subsection (b)), but a defendant the court found indigent, without sufficient resources or income, or otherwise unable to pay is not liable for it.", "importance": "okay", "section": "103.0031", "quote": "A defendant is not liable for the collection fees authorized under Subsection (b) if the court of original jurisdiction has determined the defendant is indigent, or has insufficient resources or income, or is otherwise unable to pay all or part of the underlying fine or costs.", "slot": null},
+    {"id": "N23", "text": "Where the city or county has contracted with the Department of Public Safety, failing to pay a fine and cost as the court ordered can block renewal of the defendant's driver's license.", "importance": "okay", "section": "Tex. Transportation Code § 706.004", "quote": "the department may deny renewal of the person's driver's license for failure to appear based on a complaint or citation or failure to pay or satisfy a judgment ordering the payment of a fine and cost in the manner ordered by the court", "slot": null}
+  ],
+  "slots": {
+    "yes_no": {"value": "yes", "nuggets": ["N8", "N2"]},
+    "ordered_list": [
+      {"item": "pay at a later date or in specified portions at designated intervals", "nuggets": ["N2"]},
+      {"item": "discharge by community service", "nuggets": ["N3"]},
+      {"item": "waive the fine and/or costs in full or in part", "nuggets": ["N5", "N6"]}
+    ],
+    "amount": [{"value": "$150 discharged per 8 hours of community service (county and district courts)", "nuggets": ["N4"]}],
+    "fee": [{"value": "$15 time payment reimbursement fee when any part is paid on or after the 31st day after judgment", "nuggets": ["N21"]}],
+    "deadline": [{"amount": 30, "unit": "days", "anchor": "the court's finding, at the hearing required before a capias pro fine, that the judgment does not impose an undue hardship", "nuggets": ["N10"]}]
+  },
+  "answer": "Yes. In county and district courts, after a plea in open court, the judge must ask on the record whether you can pay now [N1]. If not, the judge chooses: paying later or in installments [N2], community service [N3], or a waiver. Misdemeanor installments are mandatory [N8]. Community service there earns $150 per eight hours [N4]. A fine can be waived if you are indigent or lack the resources and every alternative would be an undue hardship [N5]; costs, if you are indigent or lack the resources [N6]. If you fall behind, tell the court: it generally must hold a hardship hearing and can change the terms [N7]; justice and municipal courts too [N15].\n\nRestitution is different: these waiver and ability-to-pay rules do not cover it [N16]. It can be set in installments [N13] and enforced like a civil judgment [N17].\n\nIf you miss payments, no capias pro fine (arrest warrant) issues unless the court holds a hardship hearing and you skip it or ignore its order [N9]. A capias must be recalled if, before arrest, you notify the court and a hearing is set, or appear voluntarily to resolve it [N18]. Jail requires a hearing and written finding that you are not indigent and made no good-faith effort, or are indigent and skipped doable community service [N11]. Paying 31 or more days after judgment adds a $15 fee [N21]; license renewal can be blocked [N23]. On probation, revocation for unpaid fees or costs needs proof you could pay [N12].",
+  "steps": {
+    "process_name": "Satisfy a fine and costs you cannot pay (Texas county and district courts)",
+    "trigger": "A Texas county or district court sentences a defendant to pay a fine and court costs",
+    "trigger_source": {"section": "42.15", "subsection": "a", "quote": "When the defendant is fined, the judgment shall be that the defendant pay the amount of the fine and all costs to the state."},
+    "actors": [
+      {"id": "court", "name": "Sentencing court (county or district court)", "kind": "public-body", "source": {"section": "43.035", "subsection": "e", "quote": "The court retains jurisdiction for the purpose of making a determination under this article."}},
+      {"id": "peace_officer", "name": "Peace officer executing the capias pro fine", "kind": "official", "source": {"section": "43.05", "subsection": "b", "quote": "A capias pro fine authorizes a peace officer to place the defendant in jail until the business day following the date of the defendant's arrest"}},
+      {"id": "defendant", "name": "Defendant", "kind": "private-party", "source": {"section": "43.035", "subsection": "a", "quote": "If a defendant notifies the court that the defendant has difficulty paying the fine and costs in compliance with the judgment"}}
+    ],
+    "steps": [
+      {"id": "inquire_ability", "actor": "court", "action": "Ask on record about ability to pay", "kind": "review", "modality": "obligation", "after": [],
+       "source": {"section": "42.15", "subsection": "a-1", "quote": "a court shall inquire on the record whether the defendant has sufficient resources or income to immediately pay all or part of the fine and costs"}},
+      {"id": "set_payment_terms", "actor": "court", "action": "Decide how fine and costs are satisfied", "kind": "decision", "modality": "obligation", "after": ["inquire_ability"], "decision": "payment_method",
+       "source": {"section": "42.15", "subsection": "a-1", "quote": "If the court determines that the defendant does not have sufficient resources or income to immediately pay all or part of the fine and costs, the court shall determine whether the fine and costs should be"}},
+      {"id": "pay_as_ordered", "actor": "defendant", "action": "Pay or discharge as the judgment directs", "kind": "payment", "modality": "obligation", "after": ["set_payment_terms"], "recipient": "court",
+       "source": {"section": "42.15", "subsection": "b.3", "quote": "to pay a specified portion of the fine and costs at designated intervals"}},
+      {"id": "report_difficulty", "actor": "defendant", "action": "Tell the court of difficulty paying", "kind": "filing", "modality": "permission", "after": ["set_payment_terms"], "condition": "difficulty_paying", "recipient": "court",
+       "source": {"section": "43.035", "subsection": "b", "quote": "a defendant may notify the court by"}},
+      {"id": "hardship_hearing", "actor": "court", "action": "Hold undue-hardship hearing", "kind": "decision", "modality": "obligation", "after": ["report_difficulty"], "decision": "reconsideration_finding",
+       "source": {"section": "43.035", "subsection": "a", "quote": "the court shall hold a hearing to determine whether that portion of the judgment imposes an undue hardship on the defendant"}},
+      {"id": "default_hearing", "actor": "court", "action": "Hold hardship hearing before any capias", "kind": "decision", "modality": "obligation", "after": ["set_payment_terms"], "condition": "defaulted", "decision": "hardship_finding",
+       "source": {"section": "43.05", "subsection": "a-1", "quote": "unless the court holds a hearing to determine whether the judgment imposes an undue hardship on the defendant"}},
+      {"id": "modify_terms", "actor": "court", "action": "Set alternative ways to satisfy judgment", "kind": "decision", "modality": "obligation", "after": ["hardship_hearing", "default_hearing"], "join": "any", "condition": "undue_hardship", "decision": "payment_method",
+       "source": {"section": "43.035", "subsection": "c", "quote": "the court shall consider whether the fine and costs should be satisfied through one or more methods listed under Article 42.15(a-1)"}},
+      {"id": "order_compliance", "actor": "court", "action": "Order compliance within 30 days", "kind": "notice", "modality": "obligation", "after": ["default_hearing"], "condition": "no_hardship", "recipient": "defendant",
+       "source": {"section": "43.05", "subsection": "a-3", "quote": "the court shall order the defendant to comply with the judgment not later than the 30th day after the date the determination is made"}},
+      {"id": "comply_in_time", "actor": "defendant", "action": "Comply with the judgment", "kind": "payment", "modality": "obligation", "after": ["order_compliance"], "recipient": "court",
+       "deadline": {"amount": 30, "unit": "days", "anchor": "the date the determination is made", "consequence": "unstated", "on_miss": "issue_capias",
+                    "source": {"section": "43.05", "subsection": "a-3", "quote": "not later than the 30th day after the date the determination is made"}},
+       "source": {"section": "43.05", "subsection": "a-3", "quote": "order the defendant to comply with the judgment"}},
+      {"id": "issue_capias", "actor": "court", "action": "Issue capias pro fine", "kind": "act", "modality": "permission", "after": ["default_hearing"], "condition": "failed_to_appear",
+       "source": {"section": "43.05", "subsection": "a-1", "quote": "A court may not issue a capias pro fine for the defendant's failure to satisfy the judgment according to its terms unless the court holds a hearing"}},
+      {"id": "arrest", "actor": "peace_officer", "action": "Bring defendant before the court", "kind": "act", "modality": "obligation", "after": ["issue_capias"],
+       "source": {"section": "43.05", "subsection": "a", "quote": "command a peace officer to immediately bring the defendant before the court"}},
+      {"id": "commitment_hearing", "actor": "court", "action": "Decide jail, other discharge, or waiver", "kind": "decision", "modality": "permission", "after": ["arrest"], "decision": "commitment",
+       "source": {"section": "43.03", "subsection": "a", "quote": "the court after a hearing under Subsection (d) of this article may order the defendant confined in jail until discharged as provided by law"}}
+    ],
+    "decisions": [
+      {"id": "payment_method", "question": "How are the fine and costs to be satisfied?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "can_pay_now", "label": "Sufficient resources or income to pay immediately", "type": "boolean"},
+         {"name": "misdemeanor", "label": "Misdemeanor case", "type": "boolean"},
+         {"name": "alternatives_hardship", "label": "Every alternative way of discharging the fine is an undue hardship", "type": "boolean"}
+       ],
+       "outputs": [{"name": "method", "label": "How the fine and costs are satisfied", "type": "string"}],
+       "rules": [
+         {"when": ["true", "-", "-"], "then": ["\"Pay when sentence is pronounced, at a later date, or in portions at intervals, as the court directs\""],
+          "source": {"section": "42.15", "subsection": "b", "quote": "when imposing a fine and costs, a court may direct a defendant"}},
+         {"when": ["false", "-", "true"], "then": ["\"Waive all or part of the fine (and the costs)\""],
+          "source": {"section": "43.091", "subsection": "a", "quote": "A court may waive payment of all or part of a fine imposed on a defendant if the court determines that"}},
+         {"when": ["false", "true", "false"], "then": ["\"Installments must be allowed; community service or waiver of costs may be combined\""],
+          "source": {"section": "42.15", "subsection": "c", "quote": "the court shall allow the defendant to pay the fine and costs in specified portions at designated intervals"}},
+         {"when": ["false", "false", "false"], "then": ["\"Later date or installments, community service, waiver of costs, or a combination\""],
+          "source": {"section": "42.15", "subsection": "a-1", "quote": "required to be paid at some later date or in a specified portion at designated intervals"}}
+       ]},
+      {"id": "reconsideration_finding", "question": "What does the reconsideration hearing find?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "hardship", "label": "The fine-and-costs portion of the judgment imposes an undue hardship", "type": "boolean"}
+       ],
+       "outputs": [
+         {"name": "finding", "label": "Finding", "type": "string"},
+         {"name": "undue_hardship", "label": "Undue hardship found", "type": "boolean"}
+       ],
+       "rules": [
+         {"when": ["true"], "then": ["\"Undue hardship; consider methods in Article 42.15(a-1)\"", "true"],
+          "source": {"section": "43.035", "subsection": "c", "quote": "If the court determines at the hearing under Subsection (a) that the portion of the judgment regarding the fine and costs imposes an undue hardship on the defendant"}},
+         {"when": ["false"], "then": ["\"No undue hardship; the judgment stands as ordered\"", "false"],
+          "source": {"section": "43.035", "subsection": "a", "quote": "to determine whether that portion of the judgment imposes an undue hardship on the defendant"}}
+       ]},
+      {"id": "hardship_finding", "question": "What does the hearing before a capias pro fine find?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "appeared", "label": "Defendant appears at the hearing", "type": "boolean"},
+         {"name": "hardship", "label": "Judgment imposes an undue hardship", "type": "boolean"}
+       ],
+       "outputs": [
+         {"name": "finding", "label": "Finding", "type": "string"},
+         {"name": "failed_to_appear", "label": "Capias pro fine may issue", "type": "boolean"},
+         {"name": "undue_hardship", "label": "Undue hardship found", "type": "boolean"},
+         {"name": "no_hardship", "label": "No undue hardship found; 30-day compliance order", "type": "boolean"}
+       ],
+       "rules": [
+         {"when": ["false", "-"], "then": ["\"Defendant failed to appear; a capias pro fine may issue\"", "true", "false", "false"],
+          "source": {"section": "43.05", "subsection": "a-1.1", "quote": "appear at the hearing"}},
+         {"when": ["true", "true"], "then": ["\"Undue hardship; satisfy through methods in Article 42.15(a-1)\"", "false", "true", "false"],
+          "source": {"section": "43.05", "subsection": "a-2", "quote": "the court shall determine whether the fine and costs should be satisfied through one or more methods listed under Article 42.15(a-1)"}},
+         {"when": ["true", "false"], "then": ["\"No undue hardship; comply within 30 days\"", "false", "false", "true"],
+          "source": {"section": "43.05", "subsection": "a-3", "quote": "If the court determines at the hearing under Subsection (a-1) that the judgment does not impose an undue hardship on the defendant"}}
+       ]},
+      {"id": "commitment", "question": "May the court jail the defendant for the default?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "indigent", "label": "Defendant is indigent", "type": "boolean"},
+         {"name": "good_faith", "label": "Made a good faith effort to discharge (through community service, if indigent)", "type": "boolean"},
+         {"name": "service_without_hardship", "label": "Could have discharged under Article 43.09 without undue hardship", "type": "boolean"}
+       ],
+       "outputs": [
+         {"name": "disposition", "label": "Disposition", "type": "string"},
+         {"name": "confine", "label": "Confinement allowed", "type": "boolean"}
+       ],
+       "rules": [
+         {"when": ["-", "true", "-"], "then": ["\"No confinement; discharge under Article 43.09 or waive under Article 43.091\"", "false"],
+          "source": {"section": "43.03", "subsection": "a", "quote": "may waive payment of the fines and costs as provided by Article 43.091"}},
+         {"when": ["false", "false", "-"], "then": ["\"Confinement allowed on a written determination\"", "true"],
+          "source": {"section": "43.03", "subsection": "d.1", "quote": "the defendant is not indigent and has failed to make a good faith effort to discharge the fines and costs"}},
+         {"when": ["true", "false", "true"], "then": ["\"Confinement allowed on a written determination\"", "true"],
+          "source": {"section": "43.03", "subsection": "d.2.B", "quote": "could have discharged the fines and costs under Article 43.09 without experiencing any undue hardship"}},
+         {"when": ["true", "false", "false"], "then": ["\"No confinement; discharge under Article 43.09 or waive under Article 43.091\"", "false"],
+          "source": {"section": "43.03", "subsection": "d", "quote": "A court may not order a defendant confined under Subsection (a) of this article unless the court at a hearing makes a written determination that"}}
+       ]}
+    ],
+    "outcomes": [
+      {"id": "discharged", "description": "Fine and costs discharged by payment or other means", "after": ["pay_as_ordered", "comply_in_time"], "join": "any",
+       "source": {"section": "43.01", "subsection": "a.1", "quote": "when the amount thereof has been fully paid"}},
+      {"id": "terms_reset", "description": "Satisfied by later payment, installments, community service, waiver, or a mix", "after": ["modify_terms"],
+       "source": {"section": "42.15", "subsection": "a-1.4", "quote": "satisfied through any combination of methods under Subdivisions (1)-(3)"}},
+      {"id": "jailed", "description": "Confined until discharged, credited at $150 a day", "after": ["commitment_hearing"], "when": "confine",
+       "source": {"section": "43.09", "subsection": "a", "quote": "rating such confinement at $150 for each day and rating such labor at $150 for each day"}},
+      {"id": "discharged_otherwise", "description": "Ordered to discharge by Article 43.09 means, or payment waived", "after": ["commitment_hearing"],
+       "source": {"section": "43.03", "subsection": "a", "quote": "may order the defendant to discharge the fines and costs in any other manner provided by Article 43.09 of this code"}}
+    ],
+    "cross_references": [
+      {"citation": "Tex. Code Crim. Proc. art. 43.09(f)", "role": "community service to discharge fines and costs ($150 per eight hours)",
+       "source": {"section": "42.15", "subsection": "a-1.2", "quote": "discharged by performing community service under, as applicable, Article 43.09(f), 45A.254, 45A.459, or 45A.460"}},
+      {"citation": "Tex. Code Crim. Proc. art. 43.091", "role": "waiver of fines (indigence plus undue hardship) and of costs (indigence)",
+       "source": {"section": "42.15", "subsection": "a-1.3", "quote": "waived in full or in part under Article 43.091 or 45A.257"}},
+      {"citation": "Tex. Code Crim. Proc. ch. 45A", "role": "justice and municipal courts follow parallel rules (arts. 45A.252-45A.262), not Articles 43.03 and 43.09",
+       "source": {"section": "43.03", "subsection": "e", "quote": "This article does not apply to a court governed by Chapter 45A."}}
+    ],
+    "gaps": [
+      "Scope: this models county and district courts (Chapters 42 and 43). Justice and municipal courts, where most Class C (fine-only) debt sits, run the same path under Chapter 45A with some differences: the statute does not require the inquiry to be on the record (45A.252(a)); installments must be allowed whenever the defendant cannot pay immediately (45A.253(a)); community service may also be ordered after a failure to pay and is credited at not less than $150 per eight hours (45A.254(a), (e)); waiver (45A.257); reconsideration hearing (45A.258); appearance by telephone or videoconference when appearing in person is an undue hardship (45A.260); capias pro fine only after a hardship hearing, with 30 days to comply and mandatory recall (45A.259(d)-(g)); commitment on the same written findings (45A.261); and discharge from jail on habeas corpus by showing indigence, or after serving enough time at not less than $150 per period of 8 to 24 hours set by the court (45A.262).",
+      "The on-the-record inquiry (42.15(a-1)) applies when the plea was entered in open court under Article 27.13, 27.14(a) or 27.16(a); the defendant may waive having it on the record (42.15(a-2)). For a felony, installments are discretionary (42.15(b)); for a misdemeanor they are mandatory if the defendant cannot pay immediately (42.15(c)).",
+      "The payment_method decision is a simplification: waiver of costs (43.091(c)) needs only indigence or insufficient resources, while waiver of a fine (43.091(a)) also needs every alternative to be an undue hardship; the options may be combined (42.15(a-1)(4)). For a defendant on community supervision, the court may later reconsider a waiver and, after written notice and a chance to respond, order the waived amount paid if it finds the defendant now has sufficient resources or income (43.091(d); the same for supervision payments, 42A.655(j)).",
+      "The court may decline a reconsideration hearing if it already held one and can find no undue hardship, or can find hardship and the right method without a hearing (43.035(d)). When no undue hardship is found, the judgment stands as ordered (the generated 'Not undue hardship' end).",
+      "The hardship hearing before a capias pro fine (43.05(a-1)) is a precondition of the capias rather than a free-standing duty; it is drawn as a court step on the default branch. The capias may also issue if the defendant fails to comply with the 30-day order (43.05(a-1)(2), (a-3)), drawn as the missed deadline (the schema has no consequence value for 'capias may issue', so the deadline's consequence stays 'unstated' and on_miss routes to issue_capias). The court must recall the capias if, before it is executed, the defendant gives notice under 43.035 and a hearing is set, or voluntarily appears and makes a good faith effort to resolve it (43.05(a-4)). Until brought before the court, an arrested defendant may be held in jail until the next business day (43.05(b)).",
+      "Confinement for default may not exceed the maximum term for the offense and generally runs concurrently with other confinement (43.03(b)-(c)); jail or labor is credited at $150 a day (43.09(a)); the court may grant extra credit for work, rehabilitation, restitution or education programs (43.09(d)).",
+      "Other consequences of default not modelled as steps: execution against property (43.07); a $15 time payment reimbursement fee if any part is paid on or after the 31st day after judgment (102.030); a $75 reimbursement fee for executing or processing a capias pro fine (102.011(a)(2)); a 30% collection fee on items more than 60 days past due if the county or city contracts for collection, not for a defendant the court found unable to pay (103.0031(b), (d)); driver's license renewal denial (Transportation Code 706.004), lifted on payment, discharge or another suitable arrangement within the court's discretion (706.005(a)(4)-(5)); and vehicle registration refusal for a fine or fee 90 or more days past due (Transportation Code 502.010(a), (g); 702.003), lifted on payment or other discharge, including a waiver (502.010(c)), where the locality contracts for them.",
+      "Probation and parole are separate processes: revocation for unpaid supervision fees or court costs requires the state to prove ability to pay (42A.751(i)); the court must consider ability to pay before ordering probation payments and on a written request not more than once in six months (42A.655(a), (e)), with later or installment payment, waiver or community service as alternatives (42A.655(f)); the monthly fee may be waived or reduced for significant financial hardship (42A.652(b)); restitution nonpayment is weighed by the factors in 42.037(h); parole fees may be deferred and inability to pay is an affirmative defense to revocation (Gov't Code 508.182(c), (f)).",
+      "For people in state prison, TDCJ must, on a court's notification, withdraw court-ordered amounts from the inmate trust account in a fixed order of priority: child support, restitution, HHSC reimbursement, court fees and costs, fines, then other orders (Gov't Code 501.014(e))."
+    ]
+  },
+  "out_of_corpus": [
+    {"kind": "federal", "what": "Constitutional bar on jailing a person solely because they cannot pay a fine (Bearden v. Georgia, 461 U.S. 660 (1983); Tate v. Short, 401 U.S. 395 (1971)), which Articles 43.03(d) and 45A.261 track", "where": "U.S. Supreme Court case law"},
+    {"kind": "agency policy", "what": "Standardized form for asking the court to reconsider ability to pay during community supervision, and forms courts use for payment plans and community service", "where": "Office of Court Administration of the Texas Judicial System (form required by CCP art. 42A.655(h)); each court's own procedures"},
+    {"kind": "local", "what": "Installment amounts and schedules, community service programs, and whether the county or city uses license-renewal denial, registration refusal, or a private collection contract", "where": "Each court's order and local county or municipal contracts"},
+    {"kind": "regulation", "what": "Method of paying parole supervision and administrative fees", "where": "Texas Board of Criminal Justice rules under Government Code § 508.182(d)"}
+  ],
+  "version_flags": [
+    "Justice and municipal court rules are in Chapter 45A (Articles 45A.251-45A.264); older guides cite the former Chapter 45 articles (for example 45.041, 45.0445, 45.045, 45.049 and 45.0491) for the same rules.",
+    "Article 45A.251(a-1) was repealed by Acts 2025, 89th Leg., 2nd C.S., Ch. 7 (H.B. 16), eff. December 4, 2025, as noted in the downloaded text.",
+    "Article 43.05 prints two versions of Subsection (c) (from separate amendments); both say where an arresting officer may take the defendant when the issuing court is unavailable and differ only in wording."
+  ],
+  "local_option": "The judge sets the installment amounts and dates and the community service hours and deadline (and, in justice and municipal courts, the 8-to-24-hour jail period that satisfies each $150, 45A.262(b)); counties and cities decide whether to contract for driver's license renewal denial (Transportation Code ch. 706), vehicle registration refusal (Transportation Code 502.010, 702.003) and private collection with a 30% fee (CCP 103.0031).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Texas splits court debt into two parallel tracks: county and district courts (CCP Chapters 42, 42A and 43) and justice and municipal courts (Chapter 45A, which mirrors the same rules and handles most fine-only Class C debt). The core answer: an ability-to-pay inquiry at sentencing; payment later or in installments (mandatory for misdemeanors, and in every justice or municipal court case, when the defendant cannot pay immediately), community service ($150 per eight hours in county and district courts, not less than $150 in justice and municipal courts; 16 hours a week unless no undue hardship), and waiver (fines need indigence or insufficient resources plus undue hardship of every alternative; costs need only indigence or insufficient resources); a reconsideration hearing whenever the defendant reports difficulty paying; no capias pro fine without a prior hardship hearing, and mandatory recall on notice or voluntary appearance; jail only on written findings after a hearing. Restitution is not covered by the fine-and-cost waiver and community-service articles (43.091, 43.09, 45A.254, 45A.257 speak only of fines and costs; 'cost' includes fees, 43.015(3)): it is due immediately unless the court provides otherwise (42.037(g-1)), may be set in installments (42.037(g), ending no later than the end of probation or five years after imprisonment or sentencing), is enforceable as a civil judgment (42.037(m)), and is excluded from the probation ability-to-pay rule (42A.655(b)-(c)); narrow offense-specific provisions allow service instead of money with the victim's consent (42.037(b)(3)), community service for a financially unable minor (42.037(p)(2)) or for a graffiti offense (42.037(s)(3)). Ability to pay means present ability (1.053). Remission: on the written recommendation of a majority of the Board of Pardons and Paroles, the Governor may remit fines and forfeitures (48.01(a)), one of the 'remitted by the proper authority' discharges in 43.01(a)(2); 48.04 separately covers remission of bail bond forfeitures; a Type A general-law city council may remit a fine by a two-thirds vote (Local Gov't Code 54.003). Nugget quotes are chosen so that a model quoting the parallel Chapter 45A text (45A.252, 45A.253, 45A.254, 45A.257, 45A.258, 45A.259, 45A.261) still overlaps the Chapter 42/43 nugget; the reference has 23 nuggets, above the usual 15, because the question bundles three sub-questions (options, restitution, missed payments) across two court tracks."
+}

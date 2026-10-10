@@ -1,12 +1,19 @@
 """DokuWiki pages for lexipedia.xyz, in a ``lexflow:`` namespace beside the community's own pages.
 
-    lexflow:start                      what lexflow is, how the models are checked, links to everything
-    lexflow:<state>:<question>         a state process model: BPMN (bpmnio), steps with the words of the law,
-                                       decision tables, gaps, checks
-    lexflow:<state>:<place>            one place's answers to every question
+    lexflow:start                          what lexflow is, how the models are checked, links to every state
+    lexflow:<state>                        a state's main page: its process models, places and answered questions
+    lexflow:<state>:<question>             a state process model: BPMN (bpmnio), steps with the words of the law,
+                                           decision tables, gaps, checks
+    lexflow:<state>:<question id>          an answer to a question someone asked (when marked for the wiki)
+    lexflow:<state>:<place>                a place's main page: overview, contacts, one line per process
+    lexflow:<state>:<place>:<question>     one process for that place (its own sub-page, not one long page)
 
-Pages are plain DokuWiki syntax; the BPMN is embedded with the bpmnio plugin the wiki already uses.
-Write them with ``lexflow wiki-pages --out <dir>`` to review before posting.
+A page named like a namespace (``lexflow:va:charlottesville``) is that namespace's start page in DokuWiki, so
+each place's processes sit under its main page and the breadcrumbs follow.  When two governments in a state share
+a name, the more populous keeps it and the other adds its kind or county (``lexflow:tx:oak_ridge_cooke``).  An
+answer for a place with no main page is listed on the state's page.  Pages are plain DokuWiki syntax; the
+BPMN is embedded with the bpmnio plugin the wiki already uses.  Write them with ``lexflow wiki-pages --out <dir>``
+to review before posting.
 """
 from __future__ import annotations
 
@@ -34,12 +41,77 @@ def esc(text: str) -> str:
                   lambda m: f"%%{m.group(1)}%%", t, flags=re.I)
 
 
+def title_esc(text: str, heading: bool = False) -> str:
+    """Text for a heading or a [[link|title]].  DokuWiki shows those raw (a %% would show), so only what would
+    end the link or nest one in it is broken up; a heading also loses its outer '=' runs."""
+    t = re.sub(r"([\[\]{}])(?=\1)", r"\1 ", str(text or "").replace("\n", " "))
+    return t.strip().strip("=").strip() if heading else t
+
+
 def state_page(state: str, question: str) -> str:
     return f"{NS}:{state}:{question}"
 
 
-def place_page(g: dict) -> str:
-    return f"{NS}:{g['state']}:{P.place_slug(g)}"
+def _named(con, state: str, s: str) -> list[dict]:
+    """Governments in a state whose place slug is ``s``."""
+    like = "%" + "%".join(s.removesuffix("_county").split("_")) + "%"
+    return [h for h in db.rows(con, "SELECT * FROM governments WHERE state=? AND name LIKE ?", state, like)
+            if P.place_slug(h) == s]
+
+
+def _tags(g: dict) -> tuple[str, str]:
+    """The kind its name gives ('borough' for 'Borough of Litchfield', else the Census kind) and its county."""
+    m = P.PREFIX.match(g["name"])
+    return P.slug(m.group(1)) if m else g["kind"], P.slug(g.get("county_name") or "")
+
+
+def place_segment(con, g: dict) -> str:
+    """A place's name in page ids: its slug, unless another government in the state has the same one.  Then the
+    most populous keeps the slug and each other one adds its kind or county (its gov_id as a last resort)."""
+    s = P.place_slug(g)
+    same = sorted(_named(con, g["state"], s), key=lambda h: (-(h["population"] or 0), h["gov_id"]))
+    if len(same) < 2 or same[0]["gov_id"] == g["gov_id"]:
+        return s
+    mine, others = _tags(g), [_tags(h) for h in same if h["gov_id"] != g["gov_id"]]
+    for pick in ((0,), (1,), (0, 1)):
+        want = [mine[i] for i in pick]
+        seg = "_".join([s] + want)
+        if all(want) and all([t[i] for i in pick] != want for t in others) and not _named(con, g["state"], seg):
+            return seg
+    return f"{s}_{g['gov_id']}"
+
+
+def place_page(g: dict, con=None) -> str:
+    """A place's main page; pass ``con`` so that same-named governments in one state get distinct pages."""
+    return f"{NS}:{g['state']}:{place_segment(con, g) if con is not None else P.place_slug(g)}"
+
+
+def place_process_page(g: dict, question: str, con=None) -> str:
+    return f"{place_page(g, con)}:{question}"
+
+
+def has_place_page(con, gov_id: str | None) -> bool:
+    """Whether a government gets a main page (it has checked local answers)."""
+    return bool(gov_id and db.scalar(con, "SELECT 1 FROM local_answers l JOIN governments g ON g.gov_id=l.gov_id "
+                                          "WHERE l.gov_id=? LIMIT 1", gov_id))
+
+
+def state_index_page(state: str) -> str:
+    return f"{NS}:{state}"
+
+
+def asked_page(con, row: dict) -> str:
+    """Where an asked question's answer lives: under the place, or under the state.  A question id that would
+    collide with a state model or a place page gets a suffix."""
+    qid = re.sub(r"[^a-z0-9_]+", "_", row["question_id"].lower())
+    if row.get("gov_id"):
+        g = db.one(con, "SELECT * FROM governments WHERE gov_id=?", row["gov_id"])
+        if g:
+            return f"{place_page(g, con)}:{qid if qid not in QUESTIONS else qid + '_q'}"
+    taken = set(QUESTIONS) | {place_segment(con, g) for g in db.rows(
+        con, "SELECT DISTINCT g.* FROM local_answers l JOIN governments g ON g.gov_id=l.gov_id WHERE g.state=?",
+        row["state"])}
+    return f"{NS}:{row['state']}:{qid if qid not in taken else qid + '_q'}"
 
 
 def _table(d: dict) -> list[str]:
@@ -62,12 +134,13 @@ def render_state_model(con, state: str, question: str) -> str | None:
     law = m.get("law") or {}
     metrics = m.get("metrics") or {}
     facts = m.get("facts") or {}
-    L = [f"====== {esc(m['title'] or q.title)} ======", "",
+    L = [f"====== {title_esc(m['title'] or q.title, True)} ======", "",
          f"**{S.NAME[state]} · {q.title}** · state model "
          + {"reviewed": "checked by Claude", "agreed": "two independent extractions agree", "single": "one extraction (unreviewed)"}.get(
              m["tier"], m["tier"]) + f" · quality {m['quality']:.2f}", "", NOTE, ""]
     if law.get("citation"):
-        L += [f"**Governing law:** [[{law['url']}|{esc(law['citation'])}]]" + (f" — {esc(law['heading'])}" if law.get("heading") else ""), ""]
+        L += [f"**Governing law:** [[{law['url']}|{title_esc(law['citation'])}]]"
+              + (f" — {esc(law['heading'])}" if law.get("heading") else ""), ""]
     L += ["===== Process map =====", "", "<bpmnio type=\"bpmn\">", m["bpmn"].strip(), "</bpmnio>", "",
           "===== Steps and the words they come from =====", ""]
     for i, s in enumerate(stats.steps_of(m), 1):
@@ -77,7 +150,8 @@ def render_state_model(con, state: str, question: str) -> str | None:
         L.append(f"  - **{esc(s['step'])}** — {esc(s['who'])}{dl}{duty} ({esc(s['cite'])}){quote}")
     L.append("")
     for d in facts.get("decisions", []):
-        L += [f"===== {esc(d['question'])} =====", "", f"Decision table (DMN), hit policy {d['hit_policy']}.", ""]
+        L += [f"===== {title_esc(d['question'], True)} =====", "",
+              f"Decision table (DMN), hit policy {d['hit_policy']}.", ""]
         L += _table(d) + [""]
     if metrics.get("gaps"):
         L += ["===== What the text leaves open =====", ""] + [f"  * {esc(g)}" for g in metrics["gaps"]] + [""]
@@ -88,7 +162,7 @@ def render_state_model(con, state: str, question: str) -> str | None:
               "construes the section.//", ""]
         for c in m["cases"][:20]:
             cite = f", {esc(c['citation'])}" if c.get("citation") else ""
-            L.append(f"  * [[{c['url']}|{esc(c['case_name'])}]] ({esc(c.get('court') or '')}, "
+            L.append(f"  * [[{c['url']}|{title_esc(c['case_name'])}]] ({esc(c.get('court') or '')}, "
                      f"{esc((c.get('date_filed') or '')[:4])}{cite}) — cites § {esc(c['section'])}")
         L.append("")
     sections = metrics.get("sections") or []
@@ -101,107 +175,250 @@ def render_state_model(con, state: str, question: str) -> str | None:
     places = [r for r in db.rows(con, "SELECT g.* FROM local_answers l JOIN governments g ON g.gov_id=l.gov_id "
                                       "WHERE l.state=? AND l.question=?", state, question)]
     if places:
-        L += ["===== Local answers =====", ""] + [f"  * [[{place_page(g)}|{esc(g['name'])}]]" for g in places] + [""]
-    L += [f"← [[{NS}:start|lexflow models]]", ""]
+        L += ["===== Local answers =====", ""] + [f"  * [[{place_process_page(g, question, con)}|{title_esc(g['name'])}]]"
+                                                  for g in places] + [""]
+    L += [f"← [[{state_index_page(state)}|{title_esc(S.NAME[state])}]] · [[{NS}:start|lexflow models]]", ""]
     return "\n".join(x for x in L if x is not None)
 
 
+def _contacts_block(contacts: list[dict]) -> list[str]:
+    out = []
+    for c in contacts:
+        v = c.get("value") or c.get("url") or ""
+        if v.startswith("http"):
+            out.append(f"  * [[{v}|{title_esc(c.get('label') or v)}]]")
+        elif "@" in v and " " not in v:
+            out.append(f"  * {esc(c.get('label', ''))}: [[{v}]]")
+        else:
+            out.append(f"  * {esc(c.get('label') or c.get('kind', ''))}: {esc(v)}")
+    return out
+
+
+def published_asked(con, *, state: str | None = None, gov_id: str | None = None) -> list[dict]:
+    """Asked-question answers marked for the wiki (state answers when gov_id is None and state is given)."""
+    sql = "SELECT * FROM asked_answers WHERE published=1"
+    args: list = []
+    if gov_id:
+        sql += " AND gov_id=?"
+        args.append(gov_id)
+    elif state:
+        sql += " AND state=? AND gov_id IS NULL"
+        args.append(state)
+    return db.rows(con, sql + " ORDER BY question_id", *args)
+
+
 def render_place(con, gov_id: str) -> str:
+    """A place's main page: what it is, whom to contact, and one line per process (each on its own sub-page)."""
     d = answers_for(con, gov_id)
     g = d["government"]
-    L = [f"====== {esc(g['name'])} ======", "",
+    L = [f"====== {title_esc(g['name'], True)} ======", "",
          f"{g['kind'].title()}, {S.NAME[g['state']]}" + (f" · population {g['population']:,}" if g.get("population") else "")
-         + (f" · [[{g['website']}|official website]]" if g.get("website") else ""), "", NOTE, ""]
+         + (f" · [[{g['website']}|official website]]" if g.get("website") else ""), "", NOTE, "",
+         "===== Processes =====", "",
+         "Each process has its own page: what state law requires, what this place adds, whom to contact and the "
+         "sources.", ""]
     for qid, q in QUESTIONS.items():
         a = d["answers"].get(qid)
-        L += [f"===== {esc(q.title.rstrip('?'))} in {esc(g['name'])}? =====", ""]
         if not a:
-            L += ["Not answered yet.", ""]
+            L.append(f"  * {esc(q.title)} — not answered yet")
             continue
-        loc = a.get("local") or {}
-        if loc.get("summary"):
-            L += [esc(loc["summary"]), ""]
-        L += [f"//Confidence {a['confidence']:.2f}: state law {a['state_score']:.2f}, local {a['local_score']:.2f}, "
-              f"contact {a['contact_score']:.2f}.// Full state model: [[{state_page(g['state'], qid)}]]", ""]
-        if a.get("steps"):
-            L += ["==== What state law requires ====", ""]
-            for s in a["steps"]:
-                dl = f" · within {esc(s['deadline'])}" if s.get("deadline") else ""
-                L.append(f"  - **{esc(s['step'])}** — {esc(s['who'])}{dl} ({esc(s['cite'])})")
-            L.append("")
-        for t in a.get("decisions") or []:
-            if t["id"] == "business_structure":
-                L += [f"==== {esc(t['question'])} ====", ""] + _table(t) + [""]
-        if loc.get("steps"):
-            L += [f"==== What {esc(g['name'])} adds ====", ""]
-            for s in loc["steps"]:
-                src = f" ([[{s['url']}|source]])" if s.get("url") else ""
-                L.append(f"  - **{esc(s['step'])}**" + (f" — {esc(s['who'])}" if s.get("who") else "") +
-                         f". {esc(s.get('how', ''))}{src}")
-            L.append("")
-        if loc.get("contacts"):
-            L += ["==== Who to contact ====", ""]
-            for c in loc["contacts"]:
-                v = c.get("value") or c.get("url") or ""
-                if v.startswith("http"):
-                    L.append(f"  * [[{v}|{esc(c.get('label') or v)}]]")
-                elif "@" in v and " " not in v:
-                    L.append(f"  * {esc(c.get('label', ''))}: [[{v}]]")
-                else:
-                    L.append(f"  * {esc(c.get('label', ''))}: {esc(v)}")
-            L.append("")
-        if loc.get("local_law"):
-            L += ["==== Local law ====", ""] + [f"  * [[{x['url']}|{esc(x['citation'])}]]: {esc(x['summary'])}"
-                                                if x.get("url") else f"  * {esc(x['citation'])}: {esc(x['summary'])}"
-                                                for x in loc["local_law"]] + [""]
-        if loc.get("fees"):
-            L += [f"**Fees.** {esc(loc['fees'])}", ""]
-        if loc.get("caveats"):
-            L += ["==== Caveats ====", ""] + [f"  * {esc(c)}" for c in loc["caveats"]] + [""]
-    srcs = []
+        L.append(f"  * [[{place_process_page(g, qid, con)}|{title_esc(q.title)}]] — confidence {a['confidence']:.2f}"
+                 + (" · local procedure checked" if (a.get("local") or {}).get("summary") else ""))
+    asked = published_asked(con, gov_id=gov_id)
+    if asked:
+        L += ["", "===== Other questions =====", "",
+              "//Answers to questions people asked, written by lexflow from the statutes and not reviewed.//", ""]
+        L += [f"  * [[{asked_page(con, r)}|{title_esc(r['question_text'])}]]" for r in asked]
+    contacts = []
     for a in d["answers"].values():
-        for s in ((a.get("local") or {}).get("sources") or []):
-            if s.get("url") and s["url"] not in [x["url"] for x in srcs]:
-                srcs.append(s)
+        for c in ((a.get("local") or {}).get("contacts") or []):
+            if c not in contacts:
+                contacts.append(c)
+    if contacts:
+        L += ["", "===== Contacts =====", ""] + _contacts_block(contacts)
+    L += ["", f"← [[{state_index_page(g['state'])}|{title_esc(S.NAME[g['state']])}]] · [[{NS}:start|lexflow models]]", ""]
+    return "\n".join(L)
+
+
+def render_place_process(con, gov_id: str, qid: str) -> str | None:
+    """One process for one place: state law, the local procedure, contacts, local law, fees, caveats, sources."""
+    d = answers_for(con, gov_id)
+    g = d["government"]
+    a = d["answers"].get(qid)
+    if not a:
+        return None
+    q = QUESTIONS[qid]
+    loc = a.get("local") or {}
+    L = [f"====== {title_esc(q.title.rstrip('?') + ' in ' + g['name'] + '?', True)} ======", "", NOTE, ""]
+    if loc.get("summary"):
+        L += [esc(loc["summary"]), ""]
+    L += [f"//Confidence {a['confidence']:.2f}: state law {a['state_score']:.2f}, local {a['local_score']:.2f}, "
+          f"contact {a['contact_score']:.2f}.// Full state model: [[{state_page(g['state'], qid)}]]", ""]
+    if a.get("steps"):
+        L += ["===== What state law requires =====", ""]
+        for s in a["steps"]:
+            dl = f" · within {esc(s['deadline'])}" if s.get("deadline") else ""
+            L.append(f"  - **{esc(s['step'])}** — {esc(s['who'])}{dl} ({esc(s['cite'])})")
+        L.append("")
+    for t in a.get("decisions") or []:
+        if t["id"] == "business_structure":
+            L += [f"===== {title_esc(t['question'], True)} =====", ""] + _table(t) + [""]
+    if loc.get("steps"):
+        L += [f"===== {title_esc('What ' + g['name'] + ' adds', True)} =====", ""]
+        for s in loc["steps"]:
+            src = f" ([[{s['url']}|source]])" if s.get("url") else ""
+            L.append(f"  - **{esc(s['step'])}**" + (f" — {esc(s['who'])}" if s.get("who") else "") +
+                     f". {esc(s.get('how', ''))}{src}")
+        L.append("")
+    if loc.get("contacts"):
+        L += ["===== Who to contact =====", ""] + _contacts_block(loc["contacts"]) + [""]
+    if loc.get("local_law"):
+        L += ["===== Local law =====", ""] + [f"  * [[{x['url']}|{title_esc(x['citation'])}]]: {esc(x['summary'])}"
+                                             if x.get("url") else f"  * {esc(x['citation'])}: {esc(x['summary'])}"
+                                             for x in loc["local_law"]] + [""]
+    if loc.get("fees"):
+        L += [f"**Fees.** {esc(loc['fees'])}", ""]
+    if loc.get("caveats"):
+        L += ["===== Caveats =====", ""] + [f"  * {esc(c)}" for c in loc["caveats"]] + [""]
+    srcs = [s for s in (loc.get("sources") or []) if s.get("url")]
     if srcs:
-        L += ["===== Sources =====", ""] + [f"  * [[{s['url']}|{esc(s.get('title') or s['url'])}]]" for s in srcs] + [""]
+        L += ["===== Sources =====", ""] + [f"  * [[{s['url']}|{title_esc(s.get('title') or s['url'])}]]"
+                                            for s in srcs] + [""]
+    L += [f"← [[{place_page(g, con)}|{title_esc(g['name'])}]] · "
+          f"[[{state_index_page(g['state'])}|{title_esc(S.NAME[g['state']])}]]", ""]
+    return "\n".join(L)
+
+
+ASKED_NOTE = ("//Answered by lexflow from the state statutes (open-us-law, government publisher text): it searched the "
+              "code, chose the sections, and quoted the clauses below word for word. **Machine answer, not reviewed** "
+              "— read the sections before relying on it. Information, not legal advice.//")
+
+
+def render_asked(con, row: dict) -> str:
+    """An asked question's answer: the governing sections, the checked summary claims, the steps and the quotes."""
+    a = db.loads(row.get("answer"), {}) or {}
+    sec = db.loads(row.get("sections"), {}) or {}
+    local = db.loads(row.get("local"), {}) or {}
+    where = local.get("name") or S.NAME.get(row["state"], row["state"])
+    L = [f"====== {title_esc(row['question_text'], True)} ======", "",
+         f"**{esc(where)}** · {esc(row['status'] or '')}", "", ASKED_NOTE, ""]
+    if row["status"] == "not_found":
+        L += ["lexflow did not find a statute section that clearly governs this. The answer may be in regulations, "
+              "court rules, agency policy, contracts or local ordinances.", ""]
+    claims = (a.get("summary") or {}).get("claims") or []
+    if claims:
+        L += ["===== In short =====", "", "//Written by a local model from the quotes below; each claim cites them.//", ""]
+        L += [f"  * {esc(c['text'])} " + " ".join(f"[{esc(i)}]" for i in c["quotes"]) for c in claims] + [""]
+    if sec.get("chosen"):
+        L += ["===== Governing law =====", ""]
+        L += [f"  * [[{s['url']}|{title_esc(s['citation'])}]] — {esc(s['title'])}" if s.get("url")
+              else f"  * {esc(s['citation'])} — {esc(s['title'])}" for s in sec["chosen"]] + [""]
+    if a.get("steps"):
+        L += ["===== Steps =====", ""]
+        for s in a["steps"]:
+            dl = f" · within {esc(s['deadline'])}" if s.get("deadline") else ""
+            L.append(f"  - **{esc(s['action'])}** — {esc(s['actor'])}{dl} (§ {esc(s['section'])}) \\\\ "
+                     f"“//{esc(s['quote'])}//”")
+        L.append("")
+    if row.get("bpmn"):
+        L += ["===== Process map (draft) =====", "", "<bpmnio type=\"bpmn\">", row["bpmn"].strip(), "</bpmnio>", ""]
+    if a.get("quotes"):
+        L += ["===== Key provisions =====", ""]
+        L += [f"  * **{esc(q['id'])}** § {esc(q.get('section') or '')}: “//{esc(q['text'])}//”" for q in a["quotes"]]
+        L.append("")
+    if local.get("locus"):
+        L += [f"===== {title_esc('Local ordinances in ' + where, True)} =====", "",
+              "//Headings from LOCUS (Local Laws Observatory) that mention the question; read the ordinance itself.//",
+              ""] + [f"  * {esc(x['header'])}" for x in local["locus"]] + [""]
+    if local.get("web"):
+        L += ["===== Official pages =====", ""] + [f"  * [[{w['url']}|{title_esc(w.get('title') or w['url'])}]]"
+                                                  for w in local["web"]] + [""]
+    if a.get("cases"):
+        L += ["===== Court decisions citing these sections =====", ""]
+        L += [f"  * [[{c['url']}|{title_esc(c['case_name'])}]] ({esc(c.get('court') or '')}, "
+              f"{esc((c.get('date_filed') or '')[:4])}) — cites § {esc(c['section'])}" for c in a["cases"]] + [""]
+    if local.get("contacts"):
+        L += ["===== Contacts =====", ""] + _contacts_block(local["contacts"]) + [""]
+    # back to the place only when it has a main page; otherwise the state's page lists this answer
+    g = (db.one(con, "SELECT * FROM governments WHERE gov_id=?", row["gov_id"])
+         if has_place_page(con, row.get("gov_id")) else None)
+    back = f"[[{place_page(g, con)}|{title_esc(where)}]] · " if g else ""
+    L += [f"← {back}[[{state_index_page(row['state'])}|{title_esc(S.NAME.get(row['state'], row['state']))}]]", ""]
+    return "\n".join(L)
+
+
+def render_state_index(con, state: str, models: list[str], places: list[dict]) -> str:
+    """A state's main page: its process models, the places with checked local answers, and answered questions
+    (with the answers for places that have no main page of their own)."""
+    name = S.NAME[state]
+    L = [f"====== {title_esc(name, True)} ======", "", NOTE, ""]
+    if models:
+        L += ["===== Process models =====", ""] + [f"  * [[{state_page(state, q)}|{title_esc(QUESTIONS[q].title)}]]"
+                                                for q in models] + [""]
+    if places:
+        L += ["===== Places =====", ""] + [f"  * [[{place_page(g, con)}|{title_esc(g['name'])}]]" for g in places] + [""]
+    asked = published_asked(con, state=state)
+    loose = db.rows(con, "SELECT a.*, g.name AS gov_name FROM asked_answers a LEFT JOIN governments g ON "
+                         "g.gov_id=a.gov_id WHERE a.published=1 AND a.state=? AND a.gov_id IS NOT NULL AND a.gov_id "
+                         "NOT IN (SELECT l.gov_id FROM local_answers l JOIN governments h ON h.gov_id=l.gov_id) "
+                         "ORDER BY a.question_id, g.name", state)
+    if asked or loose:
+        L += ["===== Other questions =====", "", "//Answers to questions people asked; machine answers, not reviewed.//",
+              ""] + [f"  * [[{asked_page(con, r)}|{title_esc(r['question_text'])}]]" for r in asked]
+        L += [f"  * [[{asked_page(con, r)}|{title_esc(r['question_text'])}]] — {esc(r['gov_name'] or r['target'])}"
+              for r in loose] + [""]
     L += [f"← [[{NS}:start|lexflow models]]", ""]
     return "\n".join(L)
 
 
-def render_index(con, model_pages: list[tuple[str, str]], place_pages: list[tuple[str, str]]) -> str:
+def render_index(con, states: list[str], place_pages: list[tuple[str, str]]) -> str:
     L = ["====== lexflow: process maps of US law ======", "",
          "lexflow answers the same questions for every US county, city and town: it finds the state statute, "
          "turns it into a checked BPMN process map and DMN decision tables, adds each place's local procedure and "
          "contacts, and scores how confident each answer is. Source and method: "
          "[[https://github.com/alibama/lexflow|github.com/alibama/lexflow]].", "", NOTE, "",
-         "===== State models =====", ""]
-    L += [f"  * [[{pid}|{esc(title)}]]" for pid, title in model_pages] + ["", "===== Places =====", ""]
-    L += [f"  * [[{pid}|{esc(title)}]]" for pid, title in place_pages] + [""]
+         "===== States =====", ""]
+    L += [f"  * [[{state_index_page(st)}|{title_esc(S.NAME[st])}]]" for st in states] + ["", "===== Places =====", ""]
+    L += [f"  * [[{pid}|{title_esc(title)}]]" for pid, title in place_pages] + [""]
     L += ["===== How the models are checked =====", "",
           "  * The reference model for each state is written by Claude from the statute text; every quote must match the "
           "text word for word, and two adversarial reviews check accuracy and completeness against the statute.",
           "  * Each model must pass the OMG BPMN 2.0 and DMN 1.3 schemas, bpmnlint (with five Lexipedia legal rules) and a "
           "Petri-net soundness check.",
           "  * Local answers were researched from official sources and re-checked by a second reviewer who re-fetched "
-          "every source.", "", "← [[start|Lexipedia home]]", ""]
+          "every source.",
+          "  * Answers to asked questions are machine answers from the statute text: every quote is exact, every "
+          "summary claim cites one, and they are marked as not reviewed.", "", "← [[start|Lexipedia home]]", ""]
     return "\n".join(L)
 
 
 def all_pages(con) -> dict[str, str]:
     pages: dict[str, str] = {}
-    model_pages, place_pages = [], []
+    models: dict[str, list[str]] = {}
     for r in db.rows(con, "SELECT state, question, title FROM process_models WHERE tier IN ('reviewed','agreed') "
                           "ORDER BY state, question"):
         text = render_state_model(con, r["state"], r["question"])
         if text:
-            pid = state_page(r["state"], r["question"])
-            pages[pid] = text
-            model_pages.append((pid, f"{S.NAME[r['state']]}: {QUESTIONS[r['question']].title}"))
+            pages[state_page(r["state"], r["question"])] = text
+            models.setdefault(r["state"], []).append(r["question"])
+    places: dict[str, list[dict]] = {}
+    place_pages = []
     for g in db.rows(con, "SELECT DISTINCT g.* FROM local_answers l JOIN governments g ON g.gov_id=l.gov_id "
-                          "ORDER BY g.state"):
-        pid = place_page(g)
+                          "ORDER BY g.state, g.name"):
+        pid = place_page(g, con)
         pages[pid] = render_place(con, g["gov_id"])
+        for qid in QUESTIONS:
+            text = render_place_process(con, g["gov_id"], qid)
+            if text:
+                pages[f"{pid}:{qid}"] = text
+        places.setdefault(g["state"], []).append(g)
         place_pages.append((pid, f"{g['name']}, {S.NAME[g['state']]}"))
-    pages[f"{NS}:start"] = render_index(con, model_pages, place_pages)
+    asked_states = set()
+    for r in db.rows(con, "SELECT * FROM asked_answers WHERE published=1"):
+        pages[asked_page(con, r)] = render_asked(con, r)
+        asked_states.add(r["state"])
+    states = sorted(set(models) | set(places) | asked_states)
+    for st in states:
+        pages[state_index_page(st)] = render_state_index(con, st, models.get(st, []), places.get(st, []))
+    pages[f"{NS}:start"] = render_index(con, states, place_pages)
     return pages

@@ -1,0 +1,221 @@
+{
+ "state": "ma",
+ "question": "business",
+ "sections": [
+  "Mass. Gen. Laws ch. 156C, sec. 12",
+  "Mass. Gen. Laws ch. 156C, sec. 13",
+  "Mass. Gen. Laws ch. 156C, sec. 14",
+  "Mass. Gen. Laws ch. 156C, sec. 5"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "12",
+   "quote": "The certificate of organization shall be filed in the office of the state secretary and set forth:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "authorized person files certificate with state secretary"
+  },
+  {
+   "section": "12",
+   "quote": "(2) the address of the office in the commonwealth required to be maintained by section five;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "certificate contents: office address"
+  },
+  {
+   "section": "12",
+   "quote": "(3) the name and address of the resident agent for service of process required to be maintained by section 5; provided, however, that the agent's written consent to the appointment shall be either in the certificate or attached to it;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "certificate contents: agent name and consent"
+  },
+  {
+   "section": "12",
+   "quote": "(6) the name of any other person in addition to any manager who is authorized to execute any documents to be filed with the office of the state secretary and at least one such person shall be named if there are no managers;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "certificate contents: authorized signers"
+  },
+  {
+   "section": "12",
+   "quote": "(b) A limited liability company is formed at the time of the filing of the initial certificate of organization in the office of the state secretary or at any later date specified in the certificate of organization if, in either case, there has been substantial compliance with the requirements of this section.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "LLC formed on filing or later specified date"
+  },
+  {
+   "section": "12",
+   "quote": "(c) All limited liability companies formed under this chapter shall also file an annual report with the state secretary setting forth the information required in subsection (a).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "recurring annual report, not formation case"
+  },
+  {
+   "section": "12",
+   "quote": "(d) The fee for the filing of the certificate of organization required by subsection (a) shall be five hundred dollars.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "state secretary charges $500 filing fee"
+  },
+  {
+   "section": "12",
+   "quote": "The fee for the filing of the annual report required by subsection (c) shall be five hundred dollars.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "annual report fee, not formation case"
+  },
+  {
+   "section": "12",
+   "quote": "Such fees shall be paid to the state secretary at the time the certificate of organization or the annual report is filed.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer pays fee at time of filing"
+  },
+  {
+   "section": "12",
+   "quote": "Section 12. (a) In order to form a limited liability company, one or more authorized persons must execute a certificate of organization.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "authorized persons execute certificate"
+  },
+  {
+   "section": "12",
+   "quote": "A limited liability company formed under this chapter shall be a separate legal entity, the existence of which as a separate legal entity shall continue until cancellation of the limited liability company's certificate of organization.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal status of entity, no action"
+  },
+  {
+   "section": "13",
+   "quote": "Section 13. (a) A certificate of organization may be amended by filing a certificate of amendment thereto in the office of the state secretary.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation amendment, separate case"
+  },
+  {
+   "section": "13",
+   "quote": "The certificate of amendment shall set forth:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents header"
+  },
+  {
+   "section": "13",
+   "quote": "(1) the name of the limited liability company;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "13",
+   "quote": "(b) A manager or, it there is no manager, then any member, who becomes aware that any statement in a certificate of organization was false when made, or that any matter described in the certificate of organization has changed, making the certificate of organization false in any material respect, shall promptly amend the certificate of organization to correct such matter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation duty to correct certificate"
+  },
+  {
+   "section": "13",
+   "quote": "(c) A certificate of organization shall be amended to reflect (i) the designation of managers of a limited liability company which theretofore did not have managers or (ii) any change in the managers of a limited liability company or other authorized signatories.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation amendment trigger"
+  },
+  {
+   "section": "13",
+   "quote": "(d) A certificate of organization may be amended at any time for any other proper purpose.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "permissive amendment, general"
+  },
+  {
+   "section": "13",
+   "quote": "Unless otherwise provided in this chapter or unless a later effective date, which shall be a date certain, is provided for in the certificate of amendment, a certificate of amendment shall be effective at the time of its filing with the state secretary.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment effective date, separate case"
+  },
+  {
+   "section": "14",
+   "quote": "Section 14. A certificate of organization shall be cancelled upon the dissolution and the completion of winding up of a limited liability company, or at any other time there are no members, or upon the filing of a certificate of consolidation or merger if the limited liability company is not the resulting or surviving entity in a consolidation or merger.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cancellation on dissolution, not formation"
+  },
+  {
+   "section": "14",
+   "quote": "A certificate of cancellation shall be filed in the office of the state secretary to accomplish the cancellation of a certificate of organization upon the dissolution and the completion of winding up of a limited liability company or at any other time there are no members and shall set forth:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cancellation filing, not formation"
+  },
+  {
+   "section": "14",
+   "quote": "(2) the date of filing of its certificate of organization;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cancellation contents item"
+  },
+  {
+   "section": "14",
+   "quote": "(3) the reason for filing the certificate of cancellation;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cancellation contents item"
+  },
+  {
+   "section": "14",
+   "quote": "(4) the effective date, which shall be a date certain, of cancellation if it is not to be effective upon the filing of the certificate; and (5) any other information the person filing the certificate of cancellation determines.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cancellation contents item"
+  },
+  {
+   "section": "5",
+   "quote": "Section 5. Each limited liability company shall have and maintain in the commonwealth:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "ongoing office/agent maintenance header"
+  },
+  {
+   "section": "5",
+   "quote": "(1) an office, which may but need not be a place of its business in the commonwealth at which shall be kept the records required by section nine to be maintained; and (2) a resident agent for service of process on the limited liability company, which agent must be an individual resident of the commonwealth, a domestic corporation, or a foreign corporation authorized to do business in the commonwealth.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "ongoing office/agent maintenance requirement"
+  },
+  {
+   "section": "5",
+   "quote": "an office, which may but need not be a place of its business in the commonwealth at which shall be kept the records required by section nine to be maintained; and",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "ongoing office maintenance requirement"
+  }
+ ]
+}

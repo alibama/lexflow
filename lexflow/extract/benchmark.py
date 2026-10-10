@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from functools import lru_cache
 
 from .. import config
 from ..municipal import statutes
@@ -199,19 +200,32 @@ def run(con, case_list: list[str], strategy_list: list[str], model_list: list[st
     return {"runs": len([o for o in out if o]), "best": best(con)[:10]}
 
 
+def gold_hashes() -> dict[str, str]:
+    """The hash of every current reference, recomputed only when a reference file changes."""
+    stamp = tuple(sorted((str(p), p.stat().st_mtime) for p in config.CURATED_DIR.glob("*/*.json")))
+    return _gold_hashes(stamp)
+
+
+@lru_cache(maxsize=2)
+def _gold_hashes(stamp: tuple) -> dict[str, str]:
+    cur = {}
+    for case in cases():
+        try:
+            cur[case] = load_case(case)[5]
+        except Exception:  # noqa: BLE001 - a reference that no longer loads
+            continue
+    return cur
+
+
 def best(con, current_only: bool = True) -> list[dict]:
     """Latest run per (case, strategy, model), scored against the current reference."""
-    rows = db.rows(con, """
-        SELECT b.* FROM benchmarks b JOIN (SELECT case_id, strategy, model, max(id) AS id FROM
+    cols = ", ".join(f'b."{c}"' for c in db.columns(con, "benchmarks") if c != "facts")   # facts are large
+    rows = db.rows(con, f"""
+        SELECT {cols} FROM benchmarks b JOIN (SELECT case_id, strategy, model, max(id) AS id FROM
             (SELECT "case" AS case_id, strategy, model, id FROM benchmarks) GROUP BY case_id, strategy, model) m
         ON b.id = m.id ORDER BY b.equivalence DESC""")
     if current_only:
-        cur = {}
-        for case in cases():
-            try:
-                cur[case] = load_case(case)[5]
-            except Exception:  # noqa: BLE001 - a reference that no longer loads
-                continue
+        cur = gold_hashes()
         rows = [r for r in rows if cur.get(r["case"]) == r["gold_hash"]]
     for r in rows:
         r.pop("facts", None)

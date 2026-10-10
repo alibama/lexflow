@@ -1,0 +1,327 @@
+{
+  "qid": "pretrial_clock",
+  "question": "If I'm held in jail awaiting trial, how long can I be held before I must be indicted and tried, and what happens if that deadline passes?",
+  "state": "tx",
+  "as_of": "2026-10-10",
+  "question_type": "facts",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      [
+        "indictment",
+        "information",
+        "presented",
+        "grand jury",
+        "no indictment presented",
+        "waive the right to be accused by indictment"
+      ],
+      [
+        "detained in custody",
+        "detained in jail",
+        "held to bail",
+        "commitment",
+        "admission to bail",
+        "pending trial"
+      ],
+      [
+        "dismissed",
+        "bail discharged",
+        "discharge the defendant",
+        "bar to any further prosecution",
+        "rearrested",
+        "capias"
+      ],
+      [
+        "next term",
+        "term of the court",
+        "terms of court",
+        "180th day",
+        "first Mondays in January and July",
+        "commissioners court"
+      ],
+      [
+        "speedy trial",
+        "speedy public trial",
+        "failure to provide a speedy trial",
+        "discharge for delay",
+        "set aside an indictment"
+      ],
+      [
+        "not ready for trial",
+        "release because of delay",
+        "personal bond",
+        "reducing the amount of bail",
+        "90 days",
+        "commencement of his detention"
+      ],
+      [
+        "arrested without a warrant",
+        "probable cause",
+        "48th hour",
+        "24th hour",
+        "released on bond"
+      ],
+      [
+        "trial priorities",
+        "preference",
+        "good cause",
+        "affidavit"
+      ]
+    ],
+    "negative": [
+      "civil case",
+      "bond pending appeal",
+      "juvenile court",
+      "parole revocation",
+      "statute of limitations for civil"
+    ],
+    "slots": [
+      "deadline"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "Tex. Code of Criminal Procedure § 32.01",
+      "role": "primary",
+      "why": "The indictment clock: for a defendant jailed or on bail, the prosecution shall be dismissed and bail discharged if no indictment or information is presented by the later of the last day of the next term of court after commitment or the 180th day after commitment, unless the court orders otherwise for good cause shown by affidavit; a surety may move only to discharge the bail (so the dismissal is raised by motion, not automatic)."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 28.061",
+      "role": "primary",
+      "why": "The remedy for a speedy-trial violation: if a motion to set aside the charge for failure to provide a speedy trial is sustained, the court shall discharge the defendant, and the discharge bars further prosecution for that offense and same-transaction offenses."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 15.14",
+      "role": "supporting",
+      "why": "A 32.01 dismissal is not a permanent bar: the defendant may be rearrested for the same conduct only on a later indictment or information and a capias issued after it."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 1.05",
+      "role": "supporting",
+      "why": "The statutory right to a speedy public trial, and the rule that a felony must be prosecuted on a grand jury indictment (subject to waiver under Article 1.141)."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 1.141",
+      "role": "supporting",
+      "why": "A defendant with a lawyer may waive indictment for any non-capital felony and be charged by information, which is why the 32.01 clock runs to 'indictment or information' for felonies too."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 17.033",
+      "role": "supporting",
+      "why": "The first statutory limit on how long a person can be held: after a warrantless arrest, release on bond (not over $5,000) within 24 hours for a misdemeanor or (not over $10,000) within 48 hours for a felony if no magistrate has determined probable cause, extendable to 72 hours on the State's application."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 32A.01",
+      "role": "supporting",
+      "why": "Trial priorities: insofar as practicable, trials of defendants detained in jail get preference over other criminal trials (after child-victim and restored-competency cases)."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 17.03",
+      "role": "supporting",
+      "why": "The general ban on personal bonds for violent and certain other offenses (b-2) does not apply to release under Article 17.151 (or 17.033), the only text in the downloaded file that can be quoted about 17.151."
+    },
+    {
+      "ref": "Tex. Government Code § 24.012",
+      "role": "definition",
+      "why": "What a district court 'term' is for the 32.01 deadline: terms begin the first Mondays in January and July (in Harris County, February, May, August and November; Armstrong County's 47th District Court has one January term) and are continuous."
+    },
+    {
+      "ref": "Tex. Government Code § 25.0016",
+      "role": "definition",
+      "why": "Terms of statutory county courts (county courts at law, which try many misdemeanors): at least two a year, set by the commissioners court."
+    },
+    {
+      "ref": "Tex. Government Code § 26.002",
+      "role": "definition",
+      "why": "Terms of the constitutional county court: fixed by commissioners court order, including the four terms the constitution requires (many counties' terms are also set by county-specific statutes in Government Code chapter 26, subchapter C, which the commissioners court may change under this section)."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "An indictment or information must be presented against a jailed or bailed defendant by the later of the last day of the next term of court held after the defendant was jailed or admitted to bail, or the 180th day after that date.",
+      "importance": "vital",
+      "section": "Tex. Code of Criminal Procedure § 32.01",
+      "quote": "if indictment or information be not presented against the defendant on or before the last day of the next term of the court which is held after the defendant's commitment or admission to bail or on or before the 180th day after the date of commitment or admission to bail, whichever date is later",
+      "slot": "deadline"
+    },
+    {
+      "id": "N2",
+      "text": "If the deadline passes, the prosecution shall be dismissed and the bail discharged, unless the court orders otherwise for good cause shown and supported by affidavit.",
+      "importance": "vital",
+      "section": "Tex. Code of Criminal Procedure § 32.01",
+      "quote": "the prosecution, unless otherwise ordered by the court, for good cause shown, supported by affidavit, shall be dismissed and the bail discharged",
+      "slot": null
+    },
+    {
+      "id": "N3",
+      "text": "After a 32.01 dismissal the defendant can be rearrested for the same conduct, but only after an indictment or information is presented and a capias is issued on it.",
+      "importance": "vital",
+      "section": "Tex. Code of Criminal Procedure § 15.14",
+      "quote": "the defendant may be rearrested for the same criminal conduct alleged in the dismissed prosecution only upon presentation of indictment or information for the offense and the issuance of a capias subsequent to the indictment or information",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "Article 1.05 provides that no one may be held to answer for a felony except on a grand jury indictment (a right a represented defendant can waive for non-capital felonies; see N5).",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 1.05",
+      "quote": "No person shall be held to answer for a felony unless on indictment of a grand jury.",
+      "slot": null
+    },
+    {
+      "id": "N5",
+      "text": "A defendant represented by a lawyer may waive indictment for any offense other than a capital felony, and is then charged by information.",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 1.141",
+      "quote": "A person represented by legal counsel may in open court or by written instrument voluntarily waive the right to be accused by indictment of any offense other than a capital felony.",
+      "slot": null
+    },
+    {
+      "id": "N6",
+      "text": "The accused has a right to a speedy public trial.",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 1.05",
+      "quote": "In all criminal prosecutions the accused shall have a speedy public trial by an impartial jury.",
+      "slot": null
+    },
+    {
+      "id": "N7",
+      "text": "If a motion to set aside the indictment, information or complaint for failure to provide a speedy trial is granted, the court must discharge the defendant.",
+      "importance": "vital",
+      "section": "Tex. Code of Criminal Procedure § 28.061",
+      "quote": "If a motion to set aside an indictment, information, or complaint for failure to provide a speedy trial is sustained, the court shall discharge the defendant.",
+      "slot": null
+    },
+    {
+      "id": "N8",
+      "text": "A speedy-trial discharge bars any further prosecution for that offense and for other offenses from the same transaction (except certain higher-grade offenses another prosecutor has the primary duty to prosecute).",
+      "importance": "vital",
+      "section": "Tex. Code of Criminal Procedure § 28.061",
+      "quote": "A discharge under this article is a bar to any further prosecution for the offense discharged and for any other offense arising out of the same transaction",
+      "slot": null
+    },
+    {
+      "id": "N9",
+      "text": "A person arrested without a warrant for a felony and held in jail must be released on bond of no more than $10,000 by the 48th hour after arrest if a magistrate has not determined whether probable cause exists (subject to the State's application for a delay of up to 72 hours under Subsection (c)).",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 17.033",
+      "quote": "a person who is arrested without a warrant and who is detained in jail must be released on bond, in an amount not to exceed $10,000, not later than the 48th hour after the person's arrest if the person was arrested for a felony and a magistrate has not determined whether probable cause exists",
+      "slot": "deadline"
+    },
+    {
+      "id": "N10",
+      "text": "Release under Article 17.151 (or 17.033) can be on personal bond even where the defendant is charged with an offense involving violence or another offense that otherwise bars a personal bond.",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 17.03",
+      "quote": "Except as provided by Articles 15.21, 17.032, 17.033, and 17.151, a defendant may not be released on personal bond if the defendant",
+      "slot": null
+    },
+    {
+      "id": "N11",
+      "text": "Insofar as practicable, the trial of a defendant detained in jail is given preference over other criminal trials (other than child-victim and restored-competency cases) and over civil trials.",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 32A.01",
+      "quote": "Insofar as is practicable, the trial of a criminal action shall be given preference over trials of civil cases, and the trial of a criminal action against a defendant who is detained in jail pending trial of the action shall be given preference over trials of other criminal actions",
+      "slot": null
+    },
+    {
+      "id": "N12",
+      "text": "District court terms begin on the first Mondays in January and July each year (with exceptions for Harris County, Armstrong County's 47th District Court and disaster designations).",
+      "importance": "okay",
+      "section": "Tex. Government Code § 24.012",
+      "quote": "each district court holds in each county in the judicial district terms that commence on the first Mondays in January and July of each year",
+      "slot": null
+    },
+    {
+      "id": "N13",
+      "text": "In Harris County, district court terms begin on the first Mondays in February, May, August and November.",
+      "importance": "okay",
+      "section": "Tex. Government Code § 24.012",
+      "quote": "In Harris County each district court holds terms that commence on the first Mondays in February, May, August, and November of each year.",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "The commissioners court sets at least two terms a year for each statutory county court.",
+      "importance": "okay",
+      "section": "Tex. Government Code § 25.0016",
+      "quote": "The commissioners court, by order, shall set at least two terms a year for the statutory county court.",
+      "slot": null
+    },
+    {
+      "id": "N15",
+      "text": "For the constitutional county court, the commissioners court may by order fix the number, times and length of terms, including the four terms the constitution requires.",
+      "importance": "okay",
+      "section": "Tex. Government Code § 26.002",
+      "quote": "the commissioners court subject to Subsection (b-1) may fix the number of court terms, may set the times at which the terms shall be held, including the four terms required by the constitution, and may set the length of each term",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "deadline": [
+      {
+        "amount": 180,
+        "unit": "days",
+        "anchor": "the defendant's commitment to jail or admission to bail: an indictment or information must be presented by this day or by the last day of the next term of court after commitment, whichever is later, or the prosecution is dismissed (unless good cause is shown by affidavit)",
+        "nuggets": [
+          "N1",
+          "N2"
+        ]
+      },
+      {
+        "amount": "last day of the next",
+        "unit": "term of court",
+        "anchor": "the term of court held after the defendant's commitment or admission to bail (the later of this and the 180th day controls)",
+        "nuggets": [
+          "N1",
+          "N12"
+        ]
+      },
+      {
+        "amount": 48,
+        "unit": "hours",
+        "anchor": "a warrantless arrest for a felony: release on bond (not over $10,000) by this hour if no magistrate has determined probable cause (24 hours and $5,000 for a misdemeanor; up to 72 hours on the State's application)",
+        "nuggets": [
+          "N9"
+        ]
+      }
+    ]
+  },
+  "answer": "Texas sets a deadline to charge you but no general deadline to try you.\n\nCharging: if you are jailed or bailed, an indictment or information is due by the later of the end of the court's next term or 180 days after [N1]. A felony needs a grand jury indictment [N4] unless you, with a lawyer, waive it (not in capital cases) [N5]. District court terms start in January and July (quarterly in Harris County) [N12][N13]; county court terms are set by commissioners court order or county-specific statute [N14][N15]. If the deadline passes, you or your lawyer can move to dismiss and discharge bail, which the court must grant unless the State shows good cause by affidavit [N2]; move before you are indicted. You can be rearrested on a new indictment or information and capias [N3]. After a warrantless felony arrest, you generally must be released on bond within 48 hours if no magistrate has found probable cause [N9].\n\nTrial: under Article 17.151, if the State is not ready for trial within 90 days of your detention on a felony (30 for Class A misdemeanors, 15 for Class B, 5 for fine-only), you must be released on personal bond or lower bail, even on a violent charge [N10]; that is release, not dismissal. Where practicable, jailed defendants' trials get priority, after child-victim and restored-competency cases [N11]. If a court sustains a motion under your speedy-trial right [N6], you are discharged and cannot be retried for that offense or transaction [N7][N8].",
+  "steps": null,
+  "out_of_corpus": [
+    {
+      "kind": "federal",
+      "what": "When delay violates the constitutional speedy trial right that Article 28.061's discharge enforces: courts balance the length of delay, the reason for it, the defendant's assertion of the right and prejudice. Texas has no general statutory trial deadline because the Speedy Trial Act (former Article 32A.02) was held unconstitutional and later repealed; Texas's parallel guarantee is in its constitution",
+      "where": "Sixth Amendment to the U.S. Constitution; Barker v. Wingo, 407 U.S. 514 (1972); Texas Constitution, Article I, Section 10; Meshell v. State, 739 S.W.2d 246 (Tex. Crim. App. 1987)"
+    },
+    {
+      "kind": "case law",
+      "what": "How an Article 32.01 dismissal is obtained: the defendant raises it by motion or pretrial habeas corpus (a surety may move only to discharge bail), and courts generally hold that an indictment or information returned before the claim is heard makes it moot, even if returned after the deadline, so the remedy must be pursued before indictment",
+      "where": "Tatum v. State, 505 S.W.2d 548 (Tex. Crim. App. 1974), and Texas courts of appeals decisions applying it to Article 32.01 after the 1997 amendments; verify current Court of Criminal Appeals authority before relying on the mootness rule"
+    },
+    {
+      "kind": "case law",
+      "what": "How Article 17.151 works in practice: how the State shows it is 'ready for trial' (an announcement of readiness the defendant may rebut), that relief is sought by pretrial habeas corpus, and that a reduced bail must be an amount the defendant can make",
+      "where": "Decisions of the Texas Court of Criminal Appeals and courts of appeals interpreting Article 17.151 (e.g., Ex parte Gill, 413 S.W.3d 425 (Tex. Crim. App. 2013))"
+    },
+    {
+      "kind": "constitution",
+      "what": "Where bail is denied under Article I, Section 11a of the Texas Constitution (repeat or on-bail felony accusations and similar categories), the order denying bail is automatically set aside if the accused is not tried within 60 days of incarceration, unless the accused obtained a continuance. That 60-day clock governs Section 11a orders; it does not reach capital cases denied bail because 'the proof is evident' (Section 11), and the statutory no-bail holds under Code of Criminal Procedure Articles 17.152 and 17.153 ('pending trial') carry no statutory trial deadline; check Sections 11b-11d for their own terms",
+      "where": "Texas Constitution, Article I, Sections 11, 11a-11d"
+    },
+    {
+      "kind": "local",
+      "what": "The actual dates of each county court and county court at law term, which fix the 32.01 'next term' deadline for misdemeanors: Government Code chapter 26, subchapter C fixes many counties' constitutional county court terms by statute (often quarterly, e.g. 26.103 Angelina County), but the commissioners court may change them under 26.002 and sets statutory county court terms under 25.0016, so the terms in force are in the commissioners court's orders",
+      "where": "Each commissioners court's order entered on its records (Government Code 25.0016 and 26.002), available from the county clerk; county-specific sections of Government Code chapter 26, subchapter C"
+    }
+  ],
+  "version_flags": [
+    "Article 17.151 (release because of delay) has no row of its own in the downloaded file: its Sec. 1 and Sec. 2 are stored as anchor-only rows cited 'Tex. Code of Criminal Procedure § 1' and '§ 2' (CR.17.htm#1 and #2), citations shared with other articles' Sec. 1 and Sec. 2 rows (13 rows share '§ 1'), and a lookup by citation returns Article 11.07 Sec. 1 first, so 17.151 is neither a gold section nor quotable in a nugget here. The CR.17.htm '#N' rows mix sections of several chapter 17 articles (#3 is a surety-default section, #4 is Article 17.09 Sec. 4, #5 and #6 are personal bond office sections of Article 17.42, which also has no row of its own, and 17.09 is reduced to its heading), so the 2025 last_amended_year on the #1 and #2 rows may come from any of them and cannot be attributed to 17.151. Verify the current Article 17.151 against the official Code of Criminal Procedure before relying on it",
+    "No effective-date variants were found in the downloaded text for 32.01, 15.14, 28.061, 1.05, 1.141, 17.033, 32A.01, 17.03, Government Code 24.012, 25.0016 or 26.002; the downloaded versions are treated as in force on 2026-10-10 (17.03 was last amended in 2025)"
+  ],
+  "local_option": "The commissioners court sets the terms of statutory county courts (Government Code 25.0016) and may fix or change the terms of the constitutional county court (26.002), which for many counties are first fixed by a county-specific statute in Government Code chapter 26, subchapter C (often quarterly and not continuous), so the 32.01 'next term' indictment deadline for misdemeanors varies by county; district court terms are fixed by statute (January and July; quarterly in Harris County; a single January term for the 47th District Court in Armstrong County) unless a disaster leads the regional presiding judge to designate terms (24.0125).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Two different statutory remedies and one constitutional one. (1) Article 32.01: no indictment or information by the later of the end of the next term or day 180 means dismissal and discharge of bail unless the court finds good cause shown by affidavit; the dismissal is sought by motion or pretrial habeas (32.01(b) speaks of a surety's 'motion under Subsection (a)'), and case law (Tatum v. State, 505 S.W.2d 548 (Tex. Crim. App. 1974), and courts of appeals decisions) treats an indictment returned before the claim is heard as making it moot. Since 1997 this dismissal does not bar reprosecution (15.14 allows rearrest on a new indictment or information and capias; 28.061 no longer lists 32.01). With six-month continuous district court terms, the 'next term' date is usually later than day 180; with quarterly county court terms that run a few weeks, day 180 is usually the later date for misdemeanors. A represented defendant may waive indictment for a non-capital felony and be charged by information (1.141). (2) Article 17.151 (no row of its own in the downloaded file; text read from the anchor-only rows at CR.17.htm#1-#2; removed from gold_sections because its only citation, 'Code of Criminal Procedure § 1', resolves to Article 11.07 Sec. 1 in check-ask and the oracle arm and to 13 unrelated rows in retrieval scoring; once the parser gives anchor-only rows a parent-article citation, add it back as primary with a vital nugget for Sec. 1 and deadline slots of 90, 30, 15 and five days): 'A defendant who is detained in jail pending trial of an accusation against him must be released either on personal bond or by reducing the amount of bail required, if the state is not ready for trial of the criminal action for which he is being detained within' 90 days (felony), 30 days (misdemeanor punishable by more than 180 days in jail), 15 days (misdemeanor punishable by 180 days or less) or five days (fine-only misdemeanor) from the commencement of detention. Sec. 2 excludes a defendant serving a sentence for another offense, detained on another accusation whose period has not elapsed, incompetent to stand trial (during the incompetence), detained for violating a previous release condition related to victim or community safety, or civilly committed as a sexually violent predator. It only requires release, never dismissal. Gov't Code 71.0354(b)(3) makes prosecutors report the number of 17.151 releases, and Gov't Code 54.1356(a)(5) lets Cameron County criminal law hearing officers rule on writs of habeas corpus filed under 17.151 (pretrial habeas applications go to the court where the charge is pending, Articles 11.08 and 11.09). (3) Speedy trial (1.05; Tex. Const. art. I §10; Sixth Amendment): no fixed period; a sustained motion means discharge with a bar to reprosecution (28.061); the State may appeal an order dismissing a charge (44.01(a)(1)). Related clocks: a person arrested without a warrant must be released on bond (not over $5,000 for a misdemeanor within 24 hours, not over $10,000 for a felony within 48 hours) if no magistrate has determined probable cause, extendable to 72 hours on the State's application, with the clock starting at medical release for a person first taken to a hospital (17.033); a person discharged or bailed on habeas before indictment cannot be re-jailed for the same offense until indicted unless surrendered by bail (11.56); the Interstate Agreement on Detainers (51.14) is a true statutory trial deadline for people imprisoned in another party state: trial within 180 days after the prisoner's request for final disposition (Art. III(a)) or within 120 days of arrival in the receiving state (Art. IV(c)), continuances for good cause, and dismissal with prejudice if not met (Art. V(c)); statutory no-bail holds 'pending trial' for certain family-violence bond or protective-order violations (17.152) and child-victim bond-condition violations (17.153) carry no statutory trial deadline; competency restoration time is capped at the maximum term for the offense (46B.0095) and a restored defendant's trial gets preference (32A.01(c)); a detained juvenile's adjudication hearing must be set within 10 working days of the petition (Family Code 53.05). District court terms after a disaster may be designated by the regional presiding judge (Gov't Code 24.0125); Armstrong County's 47th District Court has a single term beginning the first Monday in January (24.012(a-1)). Many constitutional county courts' terms are fixed by county-specific statutes in Government Code chapter 26, subchapter C (e.g. 26.103 Angelina, 26.116 Blanco, 26.164 Dimmit, 26.261 Matagorda), which the commissioners court may change under 26.002."
+}

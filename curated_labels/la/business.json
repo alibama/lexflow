@@ -1,0 +1,72 @@
+{
+ "state": "la",
+ "question": "business",
+ "sections": [
+  "La. Rev. Stat. § 12:1304"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "1304",
+   "quote": "One or more persons capable of contracting may form a limited liability company by filing the articles of organization and the initial report with the secretary of state.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizers file articles and initial report with SoS"
+  },
+  {
+   "section": "1304",
+   "quote": "The articles of organization and initial report may be delivered to the secretary of state in advance for filing as of any specified date and, if specified upon such delivery, as of any given time on such date within thirty days after the date of delivery.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 30,
+    "unit": "days"
+   },
+   "why": "filer may deliver in advance for delayed filing date, up to 30 days"
+  },
+  {
+   "section": "1304",
+   "quote": "The secretary of state may prescribe and furnish forms for filing the articles of organization and initial report.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "forms policy"
+  },
+  {
+   "section": "1304",
+   "quote": "If the secretary of state finds that the articles of organization and initial report are in compliance with the provisions of this Chapter and after all fees have been paid as required by law, the secretary of state shall record the articles of organization and initial report in his office, endorse on each the date, and if requested, the hour of filing thereof with him, and issue a certificate of organization which shall show the date and, if endorsed on the articles of organization, the hour of filing of the articles of organization with him.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS reviews, records, endorses and issues certificate"
+  },
+  {
+   "section": "1304",
+   "quote": "The certificate of organization shall be conclusive evidence of the fact that the limited liability company has been duly organized, except that in any proceeding brought by the state to annul, forfeit, or vacate a limited liability company's articles of organization, the certificate of organization shall be only prima facie evidence of due organization.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "evidentiary effect of certificate"
+  },
+  {
+   "section": "1304",
+   "quote": "Upon the issuance of the certificate of organization, the limited liability company shall be duly organized, and its separate existence shall begin as of the time of filing of the articles of organization with the secretary of state.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "LLC takes effect on issuance, dated to filing"
+  },
+  {
+   "section": "1304",
+   "quote": "However, if the articles were so filed within five days, exclusive of legal holidays, after acknowledgment thereof or execution thereof as an authentic act, the limited liability company shall be duly organized, and its separate existence shall begin, as of the time of such acknowledgment or execution.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 5,
+    "unit": "business_days"
+   },
+   "why": "filing within 5 days (excl. legal holidays) of acknowledgment backdates existence"
+  }
+ ]
+}

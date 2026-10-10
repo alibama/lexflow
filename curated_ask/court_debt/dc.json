@@ -1,0 +1,170 @@
+{
+  "qid": "court_debt",
+  "question": "I can't afford to pay my court fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments?",
+  "state": "dc",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      ["fine", "fines", "assessment", "assessments", "collected as fines"],
+      ["restitution", "reparation", "plan of restitution", "manner of performing restitution"],
+      ["default in the payment", "non-payment", "nonpayment", "failure to pay", "unpaid"],
+      ["commit the defendant", "commitment", "imprisonment", "jail", "workhouse", "commutation of fine", "work release"],
+      ["community service", "reasonable services to the community", "non-monetary service", "in lieu"],
+      ["resources of the defendant", "ability to earn", "financial condition", "financially unable", "indigent"],
+      ["probation", "modify the terms and conditions", "terminate such probation", "discharging the probationer", "revoke the order of probation", "lesser sentence", "suspend the execution"],
+      ["judgment and lien", "civil judgment", "enforced by"],
+      ["completion of a sentence", "sealing", "seal"],
+      ["Superior Court", "probation officer", "probation office", "Court Services and Offender Supervision Agency", "Crime Victims Compensation"]
+    ],
+    "negative": ["parking", "notice of infraction", "Department of Motor Vehicles", "tax", "child support", "small claims", "rent", "water charges"],
+    "slots": ["fee", "amount", "office", "yes_no"]
+  },
+  "gold_sections": [
+    {"ref": "16-706", "role": "primary", "why": "What happens on default in paying a fine: except as otherwise provided by law and subject to the relief in 18 U.S.C. 3569 (whose content the corpus does not give), the court may commit the defendant for up to one year."},
+    {"ref": "16-711", "role": "primary", "why": "Restitution: when it is ordered the court must weigh the defendant's resources, earning ability and dependents and fixes the manner of payment; during probation or the restitution period the defendant may request, and the court may grant, a hearing on the plan."},
+    {"ref": "16-712", "role": "primary", "why": "Community service may be ordered as a condition of probation or as the sentence itself, up to 5 years; when it is ordered the court considers the defendant's financial condition and other circumstances, fixes the manner and may grant a hearing on the plan."},
+    {"ref": "4-516", "role": "primary", "why": "The mandatory victim-compensation assessment: amounts (including the flat $100 for listed DUI and leaving-after-colliding offenses), finality of the court's decision, payment from later wages for a defendant indigent at sentencing, monitoring of collection, collection as a fine, and 16-706 sanctions for failure to pay."},
+    {"ref": "24-304", "role": "primary", "why": "Probation may be modified at any time or terminated early when the ends of justice require, which discharges the probationer from serving the imposed penalty; on revocation the court may require the original sentence or fine, or any lesser sentence."},
+    {"ref": "16-710", "role": "supporting", "why": "The court may suspend imposition or execution of all or part of a sentence and place the defendant on probation (with consent), and probation with extensions may not exceed 5 years."},
+    {"ref": "24-201.04", "role": "supporting", "why": "A person jailed for default is credited for time served against the fine and released on paying the balance."},
+    {"ref": "16-711.01", "role": "supporting", "why": "A restitution order is a judgment and lien that victims and prosecutors may enforce like a civil judgment."},
+    {"ref": "16-801", "role": "supporting", "why": "Record sealing: nonpayment of fines, restitution or other monetary assessments does not prevent 'completion of a sentence', the point the sealing provisions (16-805, 16-806) measure from."},
+    {"ref": "24-241.01", "role": "supporting", "why": "A person imprisoned for nonpayment of a fine, or jailed after a 24-304 probation revocation, may be granted work release by the sentencing judge."},
+    {"ref": "24-133", "role": "supporting", "why": "CSOSA supervises all Superior Court probationers and reports to the court; it is today's 'probation office' that monitors collection of assessments under 4-516(b)."},
+    {"ref": "16-2320.01", "role": "supporting", "why": "Juvenile cases only: the Family Court Division weighs a child's or parent's financial ability and may order community service in lieu of restitution (the code's only express in-lieu rule)."}
+  ],
+  "nuggets": [
+    {"id": "N1", "text": "If a fine is not paid, the court may commit the defendant for up to one year, except as otherwise provided by law and subject to the relief in a federal provision (18 U.S.C. 3569) whose content and current status the D.C. Code does not state.", "importance": "vital", "section": "16-706",
+     "quote": "Except as otherwise provided by law, and subject to the relief provided in section 3569 of title 18, United States Code , in any case where the court imposes a fine, the court may, in the event of default in the payment of the fine imposed, commit the defendant for a term not to exceed one year", "slot": "amount"},
+    {"id": "N2", "text": "The court's decision on the victim-compensation assessment is final.", "importance": "okay", "section": "4-516",
+     "quote": "The decision of the Court regarding assessments is final.", "slot": null},
+    {"id": "N3", "text": "When restitution is ordered, the court must consider the defendant's resources, ability to earn and obligation to support dependents.", "importance": "vital", "section": "16-711",
+     "quote": "When restitution or reparation is ordered, the court shall take into consideration the number of victims, the actual damage of each victim, the resources of the defendant, the defendant’s ability to earn, any obligation of the defendant to support dependents", "slot": null},
+    {"id": "N4", "text": "The court sets how restitution is to be paid (for example a payment schedule).", "importance": "vital", "section": "16-711",
+     "quote": "The court shall fix the manner of performing restitution or reparation.", "slot": null},
+    {"id": "N5", "text": "During probation or the restitution period the defendant may ask for, and the court may grant, a hearing on any matter related to the restitution plan.", "importance": "vital", "section": "16-711",
+     "quote": "At any time during the probation period or period of restitution or reparation, the defendant may request and the court may grant a hearing on any matter related to the plan of restitution or reparation.", "slot": null},
+    {"id": "N6", "text": "The Superior Court may order community service, up to 5 years, as a condition of probation or as the sentence itself.", "importance": "vital", "section": "16-712",
+     "quote": "In criminal cases in the Superior Court of the District of Columbia, the court may, in addition to any other sentence imposed, require a person convicted of any offense as a condition of probation or as a sentence itself, to undertake reasonable services to the community for a period not to exceed 5 years in duration.", "slot": "amount"},
+    {"id": "N7", "text": "The court may suspend imposition of a sentence, or suspend execution of all or part of a sentence, on terms it sets.", "importance": "okay", "section": "16-710",
+     "quote": "the court may, upon conviction, suspend the imposition of sentence or impose sentence and suspend the execution thereof, or impose sentence and suspend the execution of a portion thereof, for such time and upon such terms as it deems best", "slot": null},
+    {"id": "N8", "text": "A defendant who is indigent at sentencing pays the victim-compensation assessment later out of salary or wages earned at work, on probation or parole, or while incarcerated.", "importance": "vital", "section": "4-516",
+     "quote": "If an offender is indigent at the time of sentencing and is later employed for salary, receives compensation while on probation or parole, or is incarcerated in a facility of the Department of Corrections or elsewhere and receives wages or compensation therein, the amount of assessments under this section shall be paid from such salary, wages, or other compensation.", "slot": null},
+    {"id": "N9", "text": "Assessments are collected as fines, and failing to pay them as ordered exposes the defendant to the 16-706 sanctions.", "importance": "vital", "section": "4-516",
+     "quote": "Assessments under this chapter shall be collected as fines. Failure to pay assessments as ordered by the Court will subject a defendant so ordered to sanctions provided pursuant to § 16-706", "slot": null},
+    {"id": "N10", "text": "Every person convicted must be charged the victim-compensation assessment: $100 for each listed offense (such as DUI or leaving after colliding), $50 to $250 for other serious traffic or misdemeanor offenses, and $100 to $5,000 for each felony.", "importance": "okay", "section": "4-516",
+     "quote": "an assessment of $100 for each violation of the following crimes, an assessment of between $50 and $250 for other serious traffic or misdemeanor offenses, and an assessment of between $100 and $5,000 for each felony offense shall be imposed upon each person convicted of or pleading guilty or nolo contendere to the offense", "slot": "fee"},
+    {"id": "N11", "text": "At any time during probation the court may change its terms, or terminate probation early when the ends of justice require, and on early termination it must discharge the probationer from serving the imposed penalty.", "importance": "vital", "section": "24-304",
+     "quote": "At any time during the probationary term the court may modify the terms and conditions of the order of probation, or may terminate such probation, when in the opinion of the court the ends of justice shall require, and when the probation is so terminated the court shall enter an order discharging the probationer from serving the imposed penalty", "slot": null},
+    {"id": "N12", "text": "The court may revoke probation, have the probationer rearrested, and require service of the sentence or payment of the fine originally imposed, or both, or any lesser sentence; if imposition of sentence was suspended, it may impose any sentence that could have been imposed.", "importance": "vital", "section": "24-304",
+     "quote": "the court may revoke the order of probation and cause the rearrest of the probationer and impose a sentence and require him to serve the sentence or pay the fine originally imposed, or both, as the case may be, or any lesser sentence. If imposition of sentence was suspended, the court may impose any sentence which might have been imposed.", "slot": null},
+    {"id": "N13", "text": "A person jailed for not paying a fine gets credit for the time served and is released on paying the remaining balance.", "importance": "okay", "section": "24-201.04",
+     "quote": "he shall be released upon the payment of the balance of the fine due by him after crediting thereon as paid an amount equal to the proportion the time thus served by him in the Jail or Workhouse bears to the whole time he was to serve under the sentence", "slot": null},
+    {"id": "N14", "text": "A restitution judgment may be enforced like a civil judgment by the U.S. Attorney, the D.C. Attorney General, the victim or other beneficiaries.", "importance": "okay", "section": "16-711.01",
+     "quote": "A judgment of restitution or reparation may be enforced by the United States Attorney for the District of Columbia, the Attorney General for the District of Columbia, a victim entitled under the order to receive restitution or reparation, a deceased victim’s estate, or any other beneficiary of the judgment in the same manner as a civil judgment.", "slot": null},
+    {"id": "N15", "text": "For record sealing, unpaid fines, restitution or other court-imposed monetary assessments do not prevent a sentence from counting as completed.", "importance": "okay", "section": "16-801",
+     "quote": "provided, that nonpayment of fines, restitution, or any other monetary assessments imposed by the Court shall not prevent completion of a sentence.", "slot": null}
+  ],
+  "slots": {
+    "fee": [
+      {"value": "victim-compensation assessment of $100 for each listed DUI, impaired-operation or leaving-after-colliding offense", "nuggets": ["N10"]},
+      {"value": "victim-compensation assessment of $50-$250 for other serious traffic or misdemeanor offenses", "nuggets": ["N10"]},
+      {"value": "victim-compensation assessment of $100-$5,000 for each felony offense", "nuggets": ["N10"]}
+    ],
+    "amount": [
+      {"value": "commitment on default in paying a fine: not more than 1 year", "nuggets": ["N1"]},
+      {"value": "community service: not more than 5 years", "nuggets": ["N6"]}
+    ],
+    "office": [
+      {"value": "Superior Court of the District of Columbia (the sentencing court sets restitution terms, community service and probation, and rules on default)", "nuggets": ["N6", "N4", "N1"]}
+    ],
+    "yes_no": {"value": "partly: no statute gives an adult a right to an installment plan, reduction or waiver, but the court has discretion: it fixes how restitution is paid and may hear plan issues, may suspend all or part of a sentence, may make community service the sentence itself, and may modify probation or end it early and discharge the imposed penalty", "nuggets": ["N4", "N5", "N6", "N7", "N11"]}
+  },
+  "answer": "No D.C. statute guarantees adults a payment plan, reduction or waiver; the Superior Court judge has discretion. For restitution the judge must weigh your resources, earning ability and dependents [N3] and sets how you pay [N4]; during probation or the restitution period you may request a plan hearing, which the court may grant [N5]. At sentencing the judge may suspend all or part of a sentence [N7] or make community service, up to 5 years, a probation condition or the sentence itself [N6]. During probation the judge may change its terms or, when justice requires, end it early and discharge you from serving the penalty [N11].\n\nThe code sets no general criminal court costs; the mandatory charge is a victim-compensation assessment: $100 for listed offenses like DUI, $50-$250 for other serious traffic or misdemeanor offenses, $100-$5,000 per felony [N10]. The court's assessment decision is final [N2]; if you are indigent at sentencing, it comes out of later wages [N8].\n\nIf you miss payments, assessments are collected as fines [N9], and for an unpaid fine the court may jail you up to one year, subject to other law and an unspecified federal relief provision [N1]. Jail time is credited; paying the rest frees you [N13]. The judge may also revoke probation and impose the original sentence or fine, or a lesser one [N12]. Victims and prosecutors can enforce restitution like a civil judgment [N14]. Unpaid amounts do not stop your sentence counting as complete for record sealing [N15].",
+  "steps": {
+    "process_name": "Pay, adjust or default on court-ordered fines, assessments and restitution in D.C. Superior Court",
+    "trigger": "A person convicted in D.C. Superior Court is ordered to pay the victim-compensation assessment and possibly a fine or restitution",
+    "trigger_source": {"section": "16-711", "subsection": "a", "quote": "require a person convicted of any offense to make reasonable restitution or reparation"},
+    "actors": [
+      {"id": "probation_officer", "name": "Probation officer (CSOSA community supervision officer; the 'probation office of the Court' in 4-516 b)", "kind": "official",
+       "source": {"section": "24-133", "subsection": "c.3", "quote": "the Agency shall supervise all offenders placed on probation by the Superior Court of the District of Columbia"}},
+      {"id": "court", "name": "Superior Court of the District of Columbia (sentencing judge)", "kind": "court",
+       "source": {"section": "16-706", "quote": "The Superior Court may enforce any of its judgments rendered in criminal cases by fine or imprisonment, or both."}},
+      {"id": "defendant", "name": "Defendant (person convicted)", "kind": "private-party",
+       "source": {"section": "16-711", "subsection": "d", "quote": "the defendant may request and the court may grant a hearing on any matter related to the plan of restitution or reparation"}},
+      {"id": "victim", "name": "Victim or other beneficiary of a restitution judgment", "kind": "private-party",
+       "source": {"section": "16-711.01", "subsection": "b", "quote": "a victim entitled under the order to receive restitution or reparation"}}
+    ],
+    "steps": [
+      {"id": "set_sentence", "actor": "court", "action": "Impose sentence or suspend all or part", "kind": "decision", "modality": "permission", "after": [],
+       "source": {"section": "16-710", "subsection": "a", "quote": "the court may, upon conviction, suspend the imposition of sentence or impose sentence and suspend the execution thereof, or impose sentence and suspend the execution of a portion thereof, for such time and upon such terms as it deems best"}},
+      {"id": "impose_assessment", "actor": "court", "action": "Impose victim-compensation assessment", "kind": "act", "modality": "obligation", "after": ["set_sentence"],
+       "source": {"section": "4-516", "subsection": "a.1", "quote": "shall be imposed upon each person convicted of or pleading guilty or nolo contendere to the offense"}},
+      {"id": "consider_ability", "actor": "court", "action": "Weigh ability to pay restitution", "kind": "review", "modality": "obligation", "after": ["impose_assessment"], "condition": "restitution_ordered",
+       "source": {"section": "16-711", "subsection": "b", "quote": "When restitution or reparation is ordered, the court shall take into consideration the number of victims, the actual damage of each victim, the resources of the defendant, the defendant’s ability to earn, any obligation of the defendant to support dependents"}},
+      {"id": "fix_payment_manner", "actor": "court", "action": "Fix manner of paying restitution", "kind": "act", "modality": "obligation", "after": ["consider_ability"],
+       "source": {"section": "16-711", "subsection": "c", "quote": "The court shall fix the manner of performing restitution or reparation."}},
+      {"id": "order_community_service", "actor": "court", "action": "Order community service as sentence or condition", "kind": "act", "modality": "permission", "after": ["impose_assessment"], "condition": "community_service_ordered",
+       "source": {"section": "16-712", "subsection": "a", "quote": "require a person convicted of any offense as a condition of probation or as a sentence itself, to undertake reasonable services to the community for a period not to exceed 5 years in duration"}},
+      {"id": "weigh_cs_factors", "actor": "court", "action": "Weigh health, circumstances and finances for service", "kind": "review", "modality": "obligation", "after": ["order_community_service"],
+       "source": {"section": "16-712", "subsection": "b", "quote": "When community service is ordered, the court shall take into consideration the physical and mental health of the defendant, his or her age, education, employment and vocational training, family circumstances, financial condition"}},
+      {"id": "place_on_probation", "actor": "court", "action": "Place defendant on probation", "kind": "act", "modality": "permission", "after": ["impose_assessment", "fix_payment_manner", "weigh_cs_factors"], "join": "any",
+       "source": {"section": "16-710", "subsection": "a", "quote": "the court may place the defendant on probation under the control and supervision of a probation officer"}},
+      {"id": "monitor_collection", "actor": "probation_officer", "action": "Monitor collection of assessments", "kind": "review", "modality": "obligation", "after": ["place_on_probation"],
+       "source": {"section": "4-516", "subsection": "b", "quote": "The probation office of the Court shall monitor collection of assessments levied against defendants released on probation."}},
+      {"id": "request_plan_hearing", "actor": "defendant", "action": "Request hearing on restitution plan", "kind": "filing", "modality": "permission", "after": ["monitor_collection"], "condition": "cannot_keep_up", "recipient": "court",
+       "source": {"section": "16-711", "subsection": "d", "quote": "At any time during the probation period or period of restitution or reparation, the defendant may request and the court may grant a hearing on any matter related to the plan of restitution or reparation."}},
+      {"id": "modify_terms", "actor": "court", "action": "Modify terms and conditions of probation", "kind": "decision", "modality": "permission", "after": ["request_plan_hearing"],
+       "source": {"section": "24-304", "subsection": "a", "quote": "At any time during the probationary term the court may modify the terms and conditions of the order of probation"}},
+      {"id": "terminate_probation", "actor": "court", "action": "Terminate probation early", "kind": "decision", "modality": "permission", "after": ["monitor_collection"], "condition": "ends_of_justice_require",
+       "source": {"section": "24-304", "subsection": "a", "quote": "or may terminate such probation, when in the opinion of the court the ends of justice shall require"}},
+      {"id": "commit_for_default", "actor": "court", "action": "Commit defendant for unpaid fine", "kind": "decision", "modality": "permission", "after": ["monitor_collection"], "condition": "fine_in_default",
+       "source": {"section": "16-706", "quote": "in any case where the court imposes a fine, the court may, in the event of default in the payment of the fine imposed, commit the defendant for a term not to exceed one year"}},
+      {"id": "revoke_probation", "actor": "court", "action": "Revoke probation; impose original or lesser sentence", "kind": "decision", "modality": "permission", "after": ["monitor_collection"], "condition": "probation_revoked",
+       "source": {"section": "24-304", "subsection": "a", "quote": "the court may revoke the order of probation and cause the rearrest of the probationer and impose a sentence and require him to serve the sentence or pay the fine originally imposed, or both, as the case may be, or any lesser sentence"}},
+      {"id": "enforce_restitution", "actor": "victim", "action": "Enforce restitution as civil judgment", "kind": "filing", "modality": "permission", "after": ["monitor_collection"], "condition": "restitution_unpaid", "recipient": "court",
+       "source": {"section": "16-711.01", "subsection": "b", "quote": "A judgment of restitution or reparation may be enforced by the United States Attorney for the District of Columbia, the Attorney General for the District of Columbia, a victim entitled under the order to receive restitution or reparation, a deceased victim’s estate, or any other beneficiary of the judgment in the same manner as a civil judgment."}},
+      {"id": "discharge_or_extend", "actor": "court", "action": "Discharge or extend probation (5-year cap)", "kind": "decision", "modality": "permission", "after": ["monitor_collection", "modify_terms"], "join": "any",
+       "source": {"section": "24-304", "subsection": "a", "quote": "Upon the expiration of the term fixed for such probation, the probation officer shall report that fact to the court, with a statement of the conduct of the probationer while on probation, and the court may thereupon discharge the probationer from further supervision, or may extend the probation, as shall seem advisable"}}
+    ],
+    "decisions": [],
+    "outcomes": [
+      {"id": "released_on_payment", "description": "Released from jail on paying the balance, with credit for time served", "after": ["commit_for_default"],
+       "source": {"section": "24-201.04", "quote": "he shall be released upon the payment of the balance of the fine due by him after crediting thereon as paid an amount equal to the proportion the time thus served by him in the Jail or Workhouse bears to the whole time he was to serve under the sentence"}},
+      {"id": "probation_ended_by_revocation", "description": "Probation revoked; probation time does not reduce the sentence", "after": ["revoke_probation"],
+       "source": {"section": "24-304", "subsection": "a", "quote": "If probation is revoked, the time of probation shall not be taken into account to diminish the time for which he was originally sentenced."}},
+      {"id": "civil_judgment_enforced", "description": "Restitution enforced as a judgment and lien on the defendant's property", "after": ["enforce_restitution"],
+       "source": {"section": "16-711.01", "subsection": "a", "quote": "constitutes a judgment and lien against all property of a liable defendant"}},
+      {"id": "discharged_from_penalty", "description": "Probation terminated early; discharged from serving the imposed penalty", "after": ["terminate_probation"],
+       "source": {"section": "24-304", "subsection": "a", "quote": "when the probation is so terminated the court shall enter an order discharging the probationer from serving the imposed penalty"}},
+      {"id": "discharged", "description": "Discharged from further probation supervision", "after": ["discharge_or_extend"],
+       "source": {"section": "24-304", "subsection": "a", "quote": "discharge the probationer from further supervision"}}
+    ],
+    "cross_references": [
+      {"citation": "18 U.S.C. § 3569", "role": "federal relief provision to which commitment for nonpayment is made subject; its content and current status are outside the corpus",
+       "source": {"section": "16-706", "quote": "subject to the relief provided in section 3569 of title 18, United States Code"}},
+      {"citation": "D.C. Code § 16-706", "role": "sanctions for failing to pay the victim-compensation assessment",
+       "source": {"section": "4-516", "subsection": "c", "quote": "Failure to pay assessments as ordered by the Court will subject a defendant so ordered to sanctions provided pursuant to § 16-706"}}
+    ],
+    "gaps": [
+      "The court is a black-box pool (actor kind 'court'), so its sentencing choices, modifications, termination, commitment and revocation appear as messages in the probation officer's process, matching the convention of the other curated models.",
+      "No D.C. statute sets an installment schedule, a due date, a grace period or an ability-to-pay hearing for adult fines or assessments, and none gives a right to reduce or waive a fine after sentencing; payment terms come from the sentencing order and Superior Court practice and rules. The ability-to-pay weighing in 16-711(b) and 16-712(b) applies only when restitution or community service is ordered. The express statutory accommodations are the restitution factors and plan hearing (16-711 b, d), the community-service factors and plan hearing (16-712 b, d), suspension of all or part of a sentence (16-710 a), modification or early termination of probation with discharge from the imposed penalty (24-304 a), a lesser sentence on revocation (24-304 a) and payment of the assessment from later wages for a defendant indigent at sentencing (4-516 a.3). The court's decision on assessments is final (4-516 a.2).",
+      "16-706 lets the court commit a defendant 'in the event of default' without stating a willfulness finding or hearing; the limits come from 'Except as otherwise provided by law' (for example 4-119 for children under 17), the referenced federal relief (18 U.S.C. 3569, whose content the corpus does not give) and constitutional case law outside the corpus. 24-304 likewise states no grounds or procedure for revocation or early termination.",
+      "Simplifications: restitution and community service are drawn as alternative branches at sentencing although both can be ordered, and probation is drawn on the main path although a fine or assessment can be imposed without probation (commitment under 16-706 does not require probation). After monitoring, a plan hearing, early termination, commitment for a defaulted fine, revocation and civil enforcement of restitution are drawn as alternatives though they can overlap, and the court may modify or terminate probation on its own at any time, not only after a request.",
+      "Probation requires the defendant's consent (16-710 a), and the period of probation together with any extension may not exceed 5 years (16-710 b); the discharge_or_extend step is bounded by that cap.",
+      "The 'probation office of the Court' named in 4-516(b) is today CSOSA, which supervises all Superior Court probationers and reports to the court (24-133 c.3). 4-516(b) also has the Department of Corrections monitor collection from incarcerated defendants and the Board of Parole consider satisfaction of assessments when deciding parole release; the Board was abolished and its functions passed to the U.S. Parole Commission for felons and to the Superior Court for misdemeanants (24-131 a, b).",
+      "Off the main path: the court fixes the manner of community service (16-712 c); juveniles, or their parents, who cannot pay restitution may be ordered to do community service instead (16-2320.01 i); a person imprisoned for nonpayment of a fine or jailed after a 24-304 revocation may be granted work release by the sentencing judge (24-241.01), and work-release plans may apply earnings to court fines (24-241.06); nonpayment does not prevent 'completion of a sentence' for record sealing (16-801 a.2)."
+    ]
+  },
+  "out_of_corpus": [
+    {"kind": "court rule", "what": "How fines, assessments and restitution are scheduled and collected in practice (payment plans, due dates, motions to modify or reduce a sentence or terminate probation, probation-revocation procedure)", "where": "Superior Court of the District of Columbia Rules of Criminal Procedure (sentencing, probation revocation and sentence-reduction rules) and the Superior Court's administrative orders and Finance Office / Crime Victims Compensation Program procedures"},
+    {"kind": "federal", "what": "Limits on jailing a person who cannot pay (an inquiry into willfulness and alternatives before imprisonment or revocation for nonpayment), and the content and current status of the 18 U.S.C. 3569 relief referenced in 16-706, a federal section repealed for federal offenses by the Sentencing Reform Act of 1984", "where": "Bearden v. Georgia, 461 U.S. 660 (1983); Tate v. Short, 401 U.S. 395 (1971); Williams v. Illinois, 399 U.S. 235 (1970); 18 U.S.C. § 3569 (as referenced by D.C. Code § 16-706) and D.C. case law applying it"},
+    {"kind": "agency policy", "what": "CSOSA's internal supervision and collection procedures for probationers and parolees, and the U.S. Parole Commission's parole-release rules (the statutory allocation of these functions is in the corpus at 24-133 and 24-131)", "where": "Court Services and Offender Supervision Agency (CSOSA) policy statements; U.S. Parole Commission rules, 28 C.F.R. part 2"}
+  ],
+  "version_flags": [],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "D.C. criminal court debt is mostly judicial discretion rather than statutory procedure: unlike Virginia or Maryland, the D.C. Code has no installment-payment, remission or show-cause statute for adult fines. Court costs: no D.C. statute charges general court costs to adult criminal defendants (ask-search for costs/court costs in criminal Superior Court cases finds only 'costs of prosecution' for D.C. tax crimes, 47-4101 to 47-4107); the mandatory charge is the Victims of Violent Crime Compensation assessment (4-516), separate from punishment. The only route in the code to being excused from an imposed penalty is early termination of probation, which requires an order discharging the probationer from serving the imposed penalty (24-304 a); whether that reaches restitution ordered as a probation condition is not stated. 4-516(b) still names the D.C. Board of Parole, which 24-131(b) abolished: felony parole went to the U.S. Parole Commission (24-131 a.1, a.2) and misdemeanant parole to the Superior Court (24-131 a.3). 18 U.S.C. § 3569, referenced in 16-706, was repealed for federal cases by the Sentencing Reform Act of 1984, so how that relief applies in D.C. is a question of federal and D.C. case law outside the corpus. Juvenile cases: the Family Court Division may order a child or parent who cannot pay restitution to do community service in lieu of it (16-2320.01 i); this is the code's only express in-lieu rule and is left out of the adult answer. A child under 17 who cannot pay a fine may not be committed to a jail or workhouse (4-119). Traffic and parking tickets are adjudicated by the DMV, whose Director may allow installment payments of substantial fines at his or her discretion (50-2301.05 c). The Clean Hands rule (47-2862) blocks most District licenses and permits for debts over $1,000 (47-2862 a), and DMV licenses and permits for debts over $100 in traffic, parking or conveyance charges (47-2862 a-1); the payment-schedule exception (47-2862 c) protects only denials under subsection (a), not DMV denials under (a-1)."
+}

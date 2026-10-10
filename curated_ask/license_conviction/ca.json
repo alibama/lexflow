@@ -1,0 +1,1284 @@
+{
+  "qid": "license_conviction",
+  "question": "Can a state licensing board deny me an occupational license because of a criminal conviction, and how can I challenge the denial?",
+  "state": "ca",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      [
+        "convicted of a crime",
+        "conviction",
+        "conviction history",
+        "criminal history",
+        "criminal conviction history"
+      ],
+      [
+        "deny a license",
+        "denied a license",
+        "denial of an application",
+        "denial or disqualification of licensure",
+        "application for licensure"
+      ],
+      [
+        "substantially related",
+        "qualifications, functions, or duties",
+        "nature and gravity of the offense",
+        "number of years elapsed"
+      ],
+      [
+        "rehabilitation",
+        "showing of rehabilitation",
+        "evidence of rehabilitation",
+        "criteria of rehabilitation",
+        "certificate of rehabilitation",
+        "clemency or a pardon"
+      ],
+      [
+        "preceding seven years",
+        "seven-year limitation",
+        "released from incarceration",
+        "serious felony",
+        "Section 1192.7",
+        "Section 290"
+      ],
+      [
+        "dismissed pursuant to Section 1203.4",
+        "1203.4a",
+        "1203.41",
+        "1203.42",
+        "1203.425",
+        "comparable dismissal or expungement"
+      ],
+      [
+        "board",
+        "bureau",
+        "commission",
+        "program",
+        "agency",
+        "licensing board"
+      ],
+      [
+        "notice of denial",
+        "right to a hearing",
+        "written request for hearing",
+        "statement of issues",
+        "deemed waived",
+        "reapply"
+      ],
+      [
+        "administrative law judge",
+        "Office of Administrative Hearings",
+        "proposed decision",
+        "reconsideration",
+        "writ of mandate",
+        "judicial review"
+      ]
+    ],
+    "negative": [
+      "driver's license",
+      "vehicle registration",
+      "concealed weapon",
+      "firearm",
+      "marriage license",
+      "hunting license",
+      "fishing license",
+      "business license tax"
+    ],
+    "slots": [
+      "yes_no",
+      "deadline",
+      "office",
+      "order"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "Cal. BPC § 480",
+      "role": "primary",
+      "why": "The general rule for denying a license regulated by the code on the basis of a conviction: a substantially related conviction or incarceration within seven years (no limit for serious felonies, sex-offender-registrable crimes and certain fiduciary financial felonies); no denial after a certificate of rehabilitation, clemency or pardon, showing of rehabilitation, or a 1203.4-type dismissal, or for arrests without conviction; false-statement ground; limits on requiring disclosure; written notice of denial with challenge, appeal and record-correction information; does not alter the authority of the three entities in 480(i)."
+    },
+    {
+      "ref": "Cal. BPC § 481",
+      "role": "primary",
+      "why": "Each board's substantial-relationship criteria must include the nature and gravity of the offense, years elapsed and the nature and duties of the profession; no denial without considering rehabilitation evidence; criteria posted online."
+    },
+    {
+      "ref": "Cal. BPC § 482",
+      "role": "primary",
+      "why": "Rehabilitation criteria; the board must consider a showing of rehabilitation when the applicant completed the sentence without a parole or probation violation, or its criteria find rehabilitation."
+    },
+    {
+      "ref": "Cal. BPC § 485",
+      "role": "primary",
+      "why": "On denial the board files a statement of issues or serves a notice of denial with the reason and the right to an APA hearing if requested in writing within 60 days; otherwise the hearing is waived; service by mail is complete on the date of mailing."
+    },
+    {
+      "ref": "Cal. BPC § 486",
+      "role": "primary",
+      "why": "The decision or notice must give the earliest reapplication date (one year from the effective date of the decision or service of the notice, by default), say rehabilitation evidence will be considered on reapplication, and include the rehabilitation criteria."
+    },
+    {
+      "ref": "Cal. BPC § 487",
+      "role": "primary",
+      "why": "A requested hearing must be held within 90 days unless the applicant requests or agrees in writing to a postponement; the Office of Administrative Hearings may add up to 45 days (180 in examination or licensing fraud cases), at most twice."
+    },
+    {
+      "ref": "Cal. BPC § 488",
+      "role": "primary",
+      "why": "After the hearing the board may grant the license, grant a probationary license (revoke, stay, conditions), deny it, or take other proper action."
+    },
+    {
+      "ref": "Cal. GOV § 11523",
+      "role": "primary",
+      "why": "Judicial review by petition for writ of mandate within 30 days after the last day reconsideration can be ordered; reconsideration is not a prerequisite; extension when the record is requested."
+    },
+    {
+      "ref": "Cal. GOV § 11521",
+      "role": "supporting",
+      "why": "Reconsideration on the agency's motion or a party's petition; power expires 30 days after delivery or mailing of the decision; petition deemed denied if not acted on."
+    },
+    {
+      "ref": "Cal. GOV § 11519",
+      "role": "supporting",
+      "why": "The decision takes effect 30 days after delivery or mailing unless reconsideration is ordered, the agency sets an earlier date, or a stay is granted; stays may carry probation terms."
+    },
+    {
+      "ref": "Cal. BPC § 493",
+      "role": "supporting",
+      "why": "Record of conviction is conclusive only that the conviction occurred; repeats the three substantial-relationship criteria; no categorical bar by type of conviction without considering rehabilitation."
+    },
+    {
+      "ref": "Cal. BPC § 475",
+      "role": "supporting",
+      "why": "Division 1.5 governs denials for convictions notwithstanding other provisions; no denial for lack of good moral character or similar character grounds."
+    },
+    {
+      "ref": "Cal. BPC § 476",
+      "role": "supporting",
+      "why": "Division 1.5 does not apply to State Bar (lawyer) licensure, alcoholic beverage licenses (Division 9) or gambling licenses (Gambling Control Act)."
+    },
+    {
+      "ref": "Cal. BPC § 480.2",
+      "role": "supporting",
+      "why": "Separate, broader rule for the Bureau for Private Postsecondary Education, the State Athletic Commission and the California Horse Racing Board (still limited to substantially related crimes or acts)."
+    },
+    {
+      "ref": "Cal. BPC § 489",
+      "role": "supporting",
+      "why": "A board may deny without a hearing if it denied the same applicant on the same ground after APA proceedings within the past year."
+    },
+    {
+      "ref": "Cal. BPC § 480.5",
+      "role": "supporting",
+      "why": "Licensure requirements completed while incarcerated cannot alone delay or defeat an application."
+    },
+    {
+      "ref": "Cal. BPC § 4202.6",
+      "role": "supporting",
+      "why": "Example of a practice act that departs from § 480: notwithstanding § 480, the Board of Pharmacy may deny for crimes that would bar a federal controlled-substance registration, health-care fraud or financial identity theft."
+    },
+    {
+      "ref": "Cal. BPC § 1687",
+      "role": "supporting",
+      "why": "Example of a mandatory denial: notwithstanding any other provision of law, the Dental Board shall deny an application by a person required to register as a sex offender (exceptions for relief from registration and Penal Code 314 misdemeanors)."
+    },
+    {
+      "ref": "Cal. GOV § 11504",
+      "role": "supporting",
+      "why": "A licensing hearing proceeds on a statement of issues; when the respondent requested the hearing it is mailed with the notice of hearing (Sections 11505-11506 do not apply)."
+    },
+    {
+      "ref": "Cal. GOV § 11506",
+      "role": "supporting",
+      "why": "If the board serves a statement of issues first (485(a)), the applicant has 15 days to file a notice of defense; failing to do so waives the hearing."
+    },
+    {
+      "ref": "Cal. GOV § 11509",
+      "role": "supporting",
+      "why": "Notice of hearing at least 10 days ahead; hearing rights: attend, counsel at own expense, present evidence, cross-examine, subpoenas."
+    },
+    {
+      "ref": "Cal. GOV § 11502",
+      "role": "supporting",
+      "why": "APA hearings of state agencies are conducted by administrative law judges of the Office of Administrative Hearings."
+    },
+    {
+      "ref": "Cal. GOV § 11517",
+      "role": "supporting",
+      "why": "An ALJ hearing alone prepares a proposed decision within 30 days (directory); the agency has 100 days to adopt, mitigate, change, remand or reject it, or it is deemed adopted."
+    },
+    {
+      "ref": "Cal. CCP § 1094.5",
+      "role": "supporting",
+      "why": "Administrative mandamus: the court reviews jurisdiction, fair trial and abuse of discretion, and either sets the decision aside (possibly ordering reconsideration) or denies the writ; stays pending judgment."
+    },
+    {
+      "ref": "Cal. PEN § 11122",
+      "role": "supporting",
+      "why": "How a person obtains a copy of their own state criminal record from the Department of Justice (fingerprint application)."
+    },
+    {
+      "ref": "Cal. PEN § 11126",
+      "role": "supporting",
+      "why": "How to challenge the accuracy or completeness of that record, with an APA hearing if the Department of Justice disagrees."
+    },
+    {
+      "ref": "Cal. PEN § 4852.01",
+      "role": "supporting",
+      "why": "Who may petition for a certificate of rehabilitation and pardon (generally persons convicted of a felony), the credential that bars a conviction-based denial under 480(b)."
+    },
+    {
+      "ref": "Cal. BPC § 7.5",
+      "role": "definition",
+      "why": "Conviction means a judgment after a guilty or no-contest plea or finding of guilt; a board may not deny an applicant otherwise qualified under 480(b) or (c); controls over practice-act definitions."
+    },
+    {
+      "ref": "Cal. BPC § 477",
+      "role": "definition",
+      "why": "In Division 1.5, board includes bureau, commission, committee, department, division, examining committee, program and agency; license includes certificate and registration."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "Under the general rule of Section 480(a), which applies notwithstanding other provisions of the code, a board may deny a license because of a criminal conviction (or formal discipline) only if one of its conditions is met; some practice acts nonetheless add grounds or require denial (N18, N19).",
+      "importance": "vital",
+      "section": "Cal. BPC § 480",
+      "quote": "a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N2",
+      "text": "The conviction must be substantially related to the qualifications, functions or duties of the licensed business or profession and must have occurred within the seven years before the application, or the applicant must be incarcerated for it now or have been released within those seven years.",
+      "importance": "vital",
+      "section": "Cal. BPC § 480",
+      "quote": "The applicant has been convicted of a crime within the preceding seven years from the date of application that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made, regardless of whether the applicant was incarcerated for that crime, or the applicant has been convicted of a crime that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made and for which the applicant is presently incarcerated or for which the applicant was released from incarceration within the preceding seven years from the date of application",
+      "slot": null
+    },
+    {
+      "id": "N3",
+      "text": "The seven-year limit does not apply to a serious felony (Penal Code 1192.7) or a crime requiring sex-offender registration under Penal Code 290(d)(2) or (3).",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "The applicant was convicted of a serious felony, as defined in Section 1192.7 of the Penal Code or a crime for which registration is required pursuant to paragraph (2) or (3) of subdivision (d) of Section 290 of the Penal Code.",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "A license may not be denied for a conviction (or its underlying acts) if the person has a certificate of rehabilitation, has been granted clemency or a pardon by a state or federal executive, or has made a showing of rehabilitation under Section 482.",
+      "importance": "vital",
+      "section": "Cal. BPC § 480",
+      "quote": "a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime, if that person has obtained a certificate of rehabilitation under Chapter 3.5 (commencing with Section 4852.01) of Title 6 of Part 3 of the Penal Code, has been granted clemency or a pardon by a state or federal executive, or has made a showing of rehabilitation pursuant to Section 482",
+      "slot": null
+    },
+    {
+      "id": "N5",
+      "text": "A license may not be denied for a conviction that was dismissed under Penal Code 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425, or a comparable dismissal or expungement.",
+      "importance": "vital",
+      "section": "Cal. BPC § 480",
+      "quote": "a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement",
+      "slot": null
+    },
+    {
+      "id": "N6",
+      "text": "These rules (Division 1.5) do not apply to licensing lawyers through the State Bar, alcoholic beverage licenses, or gambling licenses under the Gambling Control Act.",
+      "importance": "okay",
+      "section": "Cal. BPC § 476",
+      "quote": "nothing in this division shall apply to the licensure or registration of persons pursuant to Chapter 4 (commencing with Section 6000) of Division 3, or pursuant to Division 9 (commencing with Section 23000) or pursuant to Chapter 5 (commencing with Section 19800) of Division 8",
+      "slot": null
+    },
+    {
+      "id": "N7",
+      "text": "Each board's test of whether a crime is substantially related must include the nature and gravity of the offense, the years elapsed since the offense, and the nature and duties of the profession.",
+      "importance": "vital",
+      "section": "Cal. BPC § 481",
+      "quote": "shall include all of the following: (1) The nature and gravity of the offense. (2) The number of years elapsed since the date of the offense. (3) The nature and duties of the profession in which the applicant seeks licensure or in which the licensee is licensed.",
+      "slot": "order"
+    },
+    {
+      "id": "N8",
+      "text": "A board may not deny a license based in whole or in part on a conviction without considering the rehabilitation evidence the applicant submits.",
+      "importance": "vital",
+      "section": "Cal. BPC § 481",
+      "quote": "A board shall not deny a license based in whole or in part on a conviction without considering evidence of rehabilitation submitted by an applicant",
+      "slot": null
+    },
+    {
+      "id": "N9",
+      "text": "A board that denies an application based solely or partly on conviction history must notify the applicant in writing of the denial, any procedure to challenge it or seek reconsideration, the right to appeal, and how to get a copy of the conviction record and question its accuracy.",
+      "importance": "vital",
+      "section": "Cal. BPC § 480",
+      "quote": "If a board decides to deny an application for licensure based solely or in part on the applicant’s conviction history, the board shall notify the applicant in writing of all of the following",
+      "slot": null
+    },
+    {
+      "id": "N10",
+      "text": "The applicant has a right to an administrative hearing if a written request is made within 60 days after service of the notice of denial; without a timely request the right to a hearing is waived.",
+      "importance": "vital",
+      "section": "Cal. BPC § 485",
+      "quote": "if written request for hearing is made within 60 days after service of the notice of denial. Unless written request for hearing is made within the 60-day period, the applicant’s right to a hearing is deemed waived.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N11",
+      "text": "The board must hold a requested hearing within 90 days of the request unless the applicant asks for or agrees in writing to a postponement; the Office of Administrative Hearings may add up to 45 days.",
+      "importance": "okay",
+      "section": "Cal. BPC § 487",
+      "quote": "the board shall conduct such hearing within 90 days from the date the hearing is requested unless the applicant shall request or agree in writing to a postponement or continuance of the hearing. Notwithstanding the above, the Office of Administrative Hearings may order, or on a showing of good cause, grant a request for, up to 45 additional days within which to conduct a hearing",
+      "slot": "deadline"
+    },
+    {
+      "id": "N12",
+      "text": "After the hearing the board may grant the license, grant it on probation (revoke, stay the revocation and impose conditions, possibly including suspension), deny it, or take other proper action.",
+      "importance": "okay",
+      "section": "Cal. BPC § 488",
+      "quote": "Grant the license effective upon completion of all licensing requirements by the applicant, immediately revoke the license, stay the revocation, and impose probationary conditions on the license, which may include suspension.",
+      "slot": null
+    },
+    {
+      "id": "N13",
+      "text": "The applicant may petition the board to reconsider its decision; the board may also reconsider on its own motion.",
+      "importance": "okay",
+      "section": "Cal. GOV § 11521",
+      "quote": "The agency itself may order a reconsideration of all or part of the case on its own motion or on petition of any party.",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "Court review is by petition for a writ of mandate filed within 30 days after the last day on which reconsideration can be ordered; not asking for reconsideration does not forfeit it.",
+      "importance": "vital",
+      "section": "Cal. GOV § 11523",
+      "quote": "the petition shall be filed within 30 days after the last day on which reconsideration can be ordered. The right to petition shall not be affected by the failure to seek reconsideration before the agency.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N15",
+      "text": "The denial must state the earliest date to reapply, which is one year from the effective date of the decision or from service of the notice of denial, unless the board sets an earlier date or another statute a later one.",
+      "importance": "okay",
+      "section": "Cal. BPC § 486",
+      "quote": "The earliest date on which the applicant may reapply for a license which shall be one year from the effective date of the decision, or service of the notice under subdivision (b) of Section 485, unless the board prescribes an earlier date or a later date is prescribed by another statute.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N16",
+      "text": "The seven-year limit also does not apply to a felony financial crime directly and adversely related to the fiduciary duties of the profession, under board regulations, for professional fiduciary, contractor, private investigator, funeral director or cemetery manager, and real estate licenses.",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "The applicant was convicted of a financial crime currently classified as a felony that is directly and adversely related to the fiduciary qualifications, functions, or duties of the business or profession for which the application is made",
+      "slot": null
+    },
+    {
+      "id": "N17",
+      "text": "Each board must consider whether the applicant has made a showing of rehabilitation if the applicant completed the criminal sentence without a parole or probation violation (or if the board's own rehabilitation criteria find the applicant rehabilitated); the duty is to consider, not to find rehabilitation.",
+      "importance": "vital",
+      "section": "Cal. BPC § 482",
+      "quote": "Each board shall consider whether an applicant or licensee has made a showing of rehabilitation if either of the following are met: (1) The applicant or licensee has completed the criminal sentence at issue without a violation of parole or probation.",
+      "slot": null
+    },
+    {
+      "id": "N18",
+      "text": "Some practice acts override or add to Section 480: for example, notwithstanding Section 480, the Board of Pharmacy may deny for a crime that would bar a federal controlled-substance registration, health-care fraud, or financial identity theft.",
+      "importance": "okay",
+      "section": "Cal. BPC § 4202.6",
+      "quote": "Notwithstanding Section 480, the board may deny an application for licensure under this chapter if any of the following conditions apply",
+      "slot": null
+    },
+    {
+      "id": "N19",
+      "text": "Some practice acts require denial for registered sex offenders: notwithstanding any other provision of law, the Dental Board must deny a license to a person required to register under Penal Code 290 (unless relieved of the duty or registered only for a Penal Code 314 misdemeanor).",
+      "importance": "okay",
+      "section": "Cal. BPC § 1687",
+      "quote": "The board shall deny an application by the individual for licensure pursuant to this chapter.",
+      "slot": null
+    },
+    {
+      "id": "N20",
+      "text": "Section 480 does not change the licensing authority of the State Athletic Commission, the Bureau for Private Postsecondary Education or the California Horse Racing Board, which follow Section 480.2.",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "This section does not in any way modify or otherwise affect the existing authority of the following entities in regard to licensure: (1) The State Athletic Commission. (2) The Bureau for Private Postsecondary Education. (3) The California Horse Racing Board.",
+      "slot": null
+    },
+    {
+      "id": "N21",
+      "text": "When the notice of denial is served by mail, service is complete on the date of mailing (so the 60 days run from mailing, not receipt).",
+      "importance": "okay",
+      "section": "Cal. BPC § 485",
+      "quote": "Service by mail is complete on the date of mailing.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N22",
+      "text": "If the board files and serves a statement of issues instead of a notice of denial (and the hearing is not one the applicant requested), the applicant has 15 days after service to file a notice of defense requesting a hearing (Gov. Code 11504, 11506).",
+      "importance": "okay",
+      "section": "Cal. GOV § 11506",
+      "quote": "Within 15 days after service of the accusation or District Statement of Reduction in Force the respondent may file with the agency a notice of defense",
+      "slot": "deadline"
+    },
+    {
+      "id": "N23",
+      "text": "Failing to file a notice of defense waives the right to a hearing, although the agency may still grant one.",
+      "importance": "okay",
+      "section": "Cal. GOV § 11506",
+      "quote": "Failure to file a notice of defense or notice of participation shall constitute a waiver of respondent’s right to a hearing, but the agency in its discretion may nevertheless grant a hearing.",
+      "slot": null
+    },
+    {
+      "id": "N24",
+      "text": "The board's power to reconsider expires 30 days after the decision is delivered or mailed, or earlier on an earlier effective date the board sets (a stay of up to 30 days may extend it), so a petition must be filed in time for the board to act.",
+      "importance": "okay",
+      "section": "Cal. GOV § 11521",
+      "quote": "The power to order a reconsideration shall expire 30 days after the delivery or mailing of a decision to a respondent, or on the date set by the agency itself as the effective date of the decision if that date occurs prior to the expiration of the 30-day period",
+      "slot": "deadline"
+    },
+    {
+      "id": "N25",
+      "text": "A board may not deny a license because of an arrest that did not end in a conviction, including one that ended in an infraction, citation or juvenile adjudication.",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "a board shall not deny a license on the basis of an arrest that resulted in a disposition other than a conviction, including an arrest that resulted in an infraction, citation, or a juvenile adjudication",
+      "slot": null
+    },
+    {
+      "id": "N26",
+      "text": "A board may deny a license for knowingly making a false statement of a fact the application requires, but not solely for failing to disclose a fact that would not have justified denial.",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "A board may deny a license regulated by this code on the ground that the applicant knowingly made a false statement of fact that is required to be revealed in the application for the license. A board shall not deny a license based solely on an applicant’s failure to disclose a fact that would not have been cause for denial of the license had it been disclosed.",
+      "slot": null
+    },
+    {
+      "id": "N27",
+      "text": "Except for the boards listed in Section 480(f)(1), a board may not require an applicant to disclose criminal history (it may ask for mitigating information, which is voluntary).",
+      "importance": "okay",
+      "section": "Cal. BPC § 480",
+      "quote": "Except as provided in paragraph (1), a board shall not require an applicant for licensure to disclose any information or documentation regarding the applicant’s criminal history.",
+      "slot": null
+    },
+    {
+      "id": "N28",
+      "text": "A board may not categorically bar an applicant based only on the type of conviction without considering evidence of rehabilitation.",
+      "importance": "okay",
+      "section": "Cal. BPC § 493",
+      "quote": "A board shall not categorically bar an applicant based solely on the type of conviction without considering evidence of rehabilitation.",
+      "slot": null
+    },
+    {
+      "id": "N29",
+      "text": "A license may not be denied for lack of good moral character or a similar ground about the applicant's character, reputation, personality or habits.",
+      "importance": "okay",
+      "section": "Cal. BPC § 475",
+      "quote": "A license shall not be denied, suspended, or revoked on the grounds of a lack of good moral character or any similar ground relating to an applicant’s character, reputation, personality, or habits.",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "yes_no": {
+      "value": "yes",
+      "qualifier": "under the general rule, only for a substantially related conviction (or incarceration) within the past seven years, with no seven-year limit for serious felonies, registrable sex offenses and certain fiduciary financial felonies, and not after a dismissal, certificate of rehabilitation, clemency, pardon or showing of rehabilitation; some practice acts add grounds or require denial of registered sex offenders",
+      "nuggets": [
+        "N1",
+        "N2",
+        "N3",
+        "N16",
+        "N4",
+        "N5",
+        "N18",
+        "N19"
+      ]
+    },
+    "deadline": [
+      {
+        "amount": 60,
+        "unit": "days",
+        "anchor": "service of the notice of denial; service by mail is complete on the date of mailing (written request for a hearing, or the hearing is waived)",
+        "nuggets": [
+          "N10",
+          "N21"
+        ]
+      },
+      {
+        "amount": 15,
+        "unit": "days",
+        "anchor": "service of a statement of issues the board files first (notice of defense requesting a hearing, or the hearing is waived)",
+        "nuggets": [
+          "N22",
+          "N23"
+        ]
+      },
+      {
+        "amount": 90,
+        "unit": "days",
+        "anchor": "the date the hearing is requested (board must hold the hearing, unless postponed or extended)",
+        "nuggets": [
+          "N11"
+        ]
+      },
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "the delivery or mailing of the decision, or an earlier effective date the board sets (the board's power to order reconsideration expires)",
+        "nuggets": [
+          "N24"
+        ]
+      },
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "the last day on which reconsideration can be ordered (petition for writ of mandate)",
+        "nuggets": [
+          "N14"
+        ]
+      },
+      {
+        "amount": 1,
+        "unit": "years",
+        "anchor": "the effective date of the denial decision or service of the notice of denial (earliest reapplication, unless the board sets an earlier date)",
+        "nuggets": [
+          "N15"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "the board, bureau, commission or other agency that denied the license (hearing request and reconsideration)",
+        "nuggets": [
+          "N9",
+          "N10",
+          "N13",
+          "N22"
+        ]
+      },
+      {
+        "value": "a court, by petition for a writ of mandate (judicial review)",
+        "nuggets": [
+          "N14"
+        ]
+      }
+    ],
+    "ordered_list": [
+      {
+        "item": "The nature and gravity of the offense",
+        "nuggets": [
+          "N7"
+        ]
+      },
+      {
+        "item": "The number of years elapsed since the date of the offense",
+        "nuggets": [
+          "N7"
+        ]
+      },
+      {
+        "item": "The nature and duties of the profession",
+        "nuggets": [
+          "N7"
+        ]
+      }
+    ]
+  },
+  "answer": "Yes, but generally a board may deny a license for a conviction only if [N1] the crime is substantially related to the job and the conviction, or your release from incarceration, falls within seven years of applying [N2]. Serious felonies, registrable sex offenses [N3] and some fiduciary financial felonies [N16] have no time limit. Boards weigh the offense's gravity, time elapsed and the profession's duties [N7] and must consider your rehabilitation evidence [N8]. If you finished your sentence without violating parole or probation, they must consider whether you showed rehabilitation [N17]. A dismissal [N5], certificate of rehabilitation, clemency, pardon or showing of rehabilitation [N4] bars denial for the conviction. Some practice acts add grounds, as for pharmacists [N18], or require denying registered sex offenders [N19]. Lawyer [N6] and horse racing [N20] licenses follow other rules.\n\nA denial must explain in writing how to challenge it and correct your record [N9]. Request a hearing in writing within 60 days after the notice is served; mailing counts [N10][N21]. If instead it serves a statement of issues, file a notice of defense within 15 days [N22] or risk losing the hearing [N23]. The hearing must be held within 90 days unless postponed or extended [N11]. The board may then grant, grant on probation or deny [N12]. Reconsideration [N13] must be ordered within 30 days of the decision's delivery or mailing, or sooner [N24]; a court writ petition is due 30 days later [N14]. Reapplying is usually allowed after a year [N15].",
+  "steps": {
+    "process_name": "Challenge a California license denial based on a criminal conviction",
+    "trigger": "A person with a criminal conviction applies for a license regulated by the Business and Professions Code",
+    "trigger_source": {
+      "section": "480",
+      "subsection": "a",
+      "quote": "a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met"
+    },
+    "actors": [
+      {
+        "id": "board",
+        "name": "Licensing board (board, bureau, commission, department, program or agency)",
+        "kind": "public-body",
+        "source": {
+          "section": "481",
+          "subsection": "a",
+          "quote": "Each board under this code shall develop criteria to aid it, when considering the denial, suspension, or revocation of a license"
+        }
+      },
+      {
+        "id": "oah",
+        "name": "Office of Administrative Hearings (administrative law judge)",
+        "kind": "other-government",
+        "source": {
+          "section": "11502",
+          "subsection": "a",
+          "quote": "All hearings of state agencies required to be conducted under this chapter shall be conducted by administrative law judges on the staff of the Office of Administrative Hearings."
+        }
+      },
+      {
+        "id": "applicant",
+        "name": "License applicant with a conviction",
+        "kind": "private-party",
+        "source": {
+          "section": "480",
+          "subsection": "a.1",
+          "quote": "The applicant has been convicted of a crime within the preceding seven years from the date of application"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Court hearing a petition for writ of mandate",
+        "kind": "court",
+        "source": {
+          "section": "11523",
+          "subsection": null,
+          "quote": "Judicial review may be had by filing a petition for a writ of mandate in accordance with the provisions of the Code of Civil Procedure"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "submit_rehab_evidence",
+        "actor": "applicant",
+        "action": "Submit rehabilitation and mitigation evidence",
+        "kind": "filing",
+        "modality": "right",
+        "after": [],
+        "recipient": "board",
+        "source": {
+          "section": "481",
+          "subsection": "c",
+          "quote": "considering evidence of rehabilitation submitted by an applicant pursuant to any process established in the practice act or regulations of the particular board"
+        }
+      },
+      {
+        "id": "decide_ground",
+        "actor": "board",
+        "action": "Decide whether conviction permits denial",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "submit_rehab_evidence"
+        ],
+        "decision": "conviction_ground",
+        "source": {
+          "section": "481",
+          "subsection": "c",
+          "quote": "A board shall not deny a license based in whole or in part on a conviction without considering evidence of rehabilitation submitted by an applicant"
+        }
+      },
+      {
+        "id": "notify_denial",
+        "actor": "board",
+        "action": "Serve written denial with hearing rights",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_ground"
+        ],
+        "condition": "denial_permitted",
+        "recipient": "applicant",
+        "source": {
+          "section": "485",
+          "subsection": "b",
+          "quote": "Notify the applicant that the application is denied, stating (1) the reason for the denial, and (2) that the applicant has the right to a hearing"
+        }
+      },
+      {
+        "id": "request_hearing",
+        "actor": "applicant",
+        "action": "Request a hearing in writing",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "notify_denial"
+        ],
+        "recipient": "board",
+        "deadline": {
+          "amount": 60,
+          "unit": "days",
+          "anchor": "service of the notice of denial (service by mail is complete on the date of mailing)",
+          "consequence": "right-lapses",
+          "on_miss": "hearing_waived",
+          "source": {
+            "section": "485",
+            "subsection": "b",
+            "quote": "Unless written request for hearing is made within the 60-day period, the applicant’s right to a hearing is deemed waived."
+          }
+        },
+        "source": {
+          "section": "485",
+          "subsection": "b",
+          "quote": "the applicant has the right to a hearing under Chapter 5 (commencing with Section 11500) of Part 1 of Division 3 of Title 2 of the Government Code if written request for hearing is made within 60 days after service of the notice of denial"
+        }
+      },
+      {
+        "id": "serve_statement_of_issues",
+        "actor": "board",
+        "action": "Mail statement of issues and hearing notice",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "request_hearing"
+        ],
+        "recipient": "applicant",
+        "source": {
+          "section": "11504",
+          "subsection": null,
+          "quote": "if the hearing is held at the request of the respondent, Sections 11505 and 11506 shall not apply and the statement of issues together with the notice of hearing shall be delivered or mailed to the parties as provided in Section 11509"
+        }
+      },
+      {
+        "id": "hold_hearing",
+        "actor": "board",
+        "action": "Conduct the hearing, with an administrative law judge presiding",
+        "kind": "hearing",
+        "modality": "obligation",
+        "after": [
+          "serve_statement_of_issues"
+        ],
+        "source": {
+          "section": "487",
+          "subsection": null,
+          "quote": "If a hearing is requested by the applicant, the board shall conduct such hearing within 90 days from the date the hearing is requested"
+        }
+      },
+      {
+        "id": "propose_decision",
+        "actor": "oah",
+        "action": "Prepare proposed decision for the board",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "hold_hearing"
+        ],
+        "recipient": "board",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the case is submitted to the administrative law judge",
+          "consequence": "directory-only",
+          "source": {
+            "section": "11517",
+            "subsection": "c.1",
+            "quote": "Failure of the administrative law judge to deliver a proposed decision within the time required does not prejudice the rights of the agency in the case."
+          }
+        },
+        "source": {
+          "section": "11517",
+          "subsection": "c.1",
+          "quote": "If a contested case is originally heard by an administrative law judge alone, he or she shall prepare within 30 days after the case is submitted to him or her a proposed decision in a form that may be adopted by the agency as the final decision in the case."
+        }
+      },
+      {
+        "id": "decide_application",
+        "actor": "board",
+        "action": "Grant, grant on probation, or deny",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "propose_decision"
+        ],
+        "decision": "hearing_result",
+        "source": {
+          "section": "488",
+          "subsection": "a",
+          "quote": "following a hearing requested by an applicant pursuant to subdivision (b) of Section 485, the board may take any of the following actions"
+        }
+      },
+      {
+        "id": "petition_reconsideration",
+        "actor": "applicant",
+        "action": "Petition board for reconsideration",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "decide_application"
+        ],
+        "recipient": "board",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the delivery or mailing of the decision to the applicant",
+          "consequence": "right-lapses",
+          "on_miss": "decision_effective",
+          "source": {
+            "section": "11521",
+            "subsection": "a",
+            "quote": "The power to order a reconsideration shall expire 30 days after the delivery or mailing of a decision to a respondent"
+          }
+        },
+        "source": {
+          "section": "11521",
+          "subsection": "a",
+          "quote": "The agency itself may order a reconsideration of all or part of the case on its own motion or on petition of any party."
+        }
+      },
+      {
+        "id": "decide_reconsideration",
+        "actor": "board",
+        "action": "Decide whether to reconsider the case",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "petition_reconsideration"
+        ],
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the delivery or mailing of the decision (the time allowed for ordering reconsideration)",
+          "consequence": "deemed-denial",
+          "on_miss": "decision_effective",
+          "source": {
+            "section": "11521",
+            "subsection": "a",
+            "quote": "If no action is taken on a petition within the time allowed for ordering reconsideration, the petition shall be deemed denied."
+          }
+        },
+        "source": {
+          "section": "11521",
+          "subsection": "b",
+          "quote": "The case may be reconsidered by the agency itself on all the pertinent parts of the record and such additional evidence and argument as may be permitted, or may be assigned to an administrative law judge."
+        }
+      },
+      {
+        "id": "decision_effective",
+        "actor": "board",
+        "action": "Denial decision takes effect",
+        "kind": "record",
+        "modality": "none",
+        "after": [
+          "decide_reconsideration"
+        ],
+        "source": {
+          "section": "11519",
+          "subsection": "a",
+          "quote": "The decision shall become effective 30 days after it is delivered or mailed to respondent unless: a reconsideration is ordered within that time, or the agency itself orders that the decision shall become effective sooner, or a stay of execution is granted."
+        }
+      },
+      {
+        "id": "petition_writ",
+        "actor": "applicant",
+        "action": "File petition for writ of mandate",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "decision_effective"
+        ],
+        "recipient": "court",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the last day on which reconsideration can be ordered",
+          "consequence": "right-lapses",
+          "on_miss": "denial_final",
+          "source": {
+            "section": "11523",
+            "subsection": null,
+            "quote": "the petition shall be filed within 30 days after the last day on which reconsideration can be ordered"
+          }
+        },
+        "source": {
+          "section": "11523",
+          "subsection": null,
+          "quote": "Judicial review may be had by filing a petition for a writ of mandate in accordance with the provisions of the Code of Civil Procedure, subject, however, to the statutes relating to the particular agency."
+        }
+      },
+      {
+        "id": "court_review",
+        "actor": "court",
+        "action": "Enter judgment on the writ petition",
+        "kind": "review",
+        "modality": "obligation",
+        "after": [
+          "petition_writ"
+        ],
+        "recipient": "board",
+        "source": {
+          "section": "1094.5",
+          "subsection": "f",
+          "quote": "The court shall enter judgment either commanding respondent to set aside the order or decision, or denying the writ."
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "conviction_ground",
+        "question": "Does the conviction give the board a lawful ground to deny the license?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "dismissed",
+            "label": "Conviction dismissed under Penal Code 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425 (or comparable)",
+            "type": "boolean"
+          },
+          {
+            "name": "rehabilitated",
+            "label": "Certificate of rehabilitation, clemency or pardon, or a showing of rehabilitation under Section 482",
+            "type": "boolean"
+          },
+          {
+            "name": "substantially_related",
+            "label": "Crime substantially related to the license's qualifications, functions or duties",
+            "type": "boolean"
+          },
+          {
+            "name": "within_seven_years",
+            "label": "Convicted, or released from incarceration (or still incarcerated), within seven years before applying",
+            "type": "boolean"
+          },
+          {
+            "name": "lookback_exception",
+            "label": "Serious felony, sex-offender-registrable crime, or fiduciary financial felony for a listed license",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "denial_permitted",
+            "label": "Board may deny on the conviction",
+            "type": "boolean"
+          },
+          {
+            "name": "basis",
+            "label": "Why",
+            "type": "string"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false",
+              "\"Barred: the conviction was dismissed\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "c",
+              "quote": "a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false",
+              "\"Barred: certificate of rehabilitation, pardon or showing of rehabilitation\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "b",
+              "quote": "has been granted clemency or a pardon by a state or federal executive, or has made a showing of rehabilitation pursuant to Section 482"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "false",
+              "-",
+              "-"
+            ],
+            "then": [
+              "false",
+              "\"Barred: the crime is not substantially related to the license\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "a.1",
+              "quote": "that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "true",
+              "\"May deny: substantially related conviction or incarceration within seven years\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "a.1",
+              "quote": "The applicant has been convicted of a crime within the preceding seven years from the date of application"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "false",
+              "true"
+            ],
+            "then": [
+              "true",
+              "\"May deny: the seven-year limit does not apply\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "a.1",
+              "quote": "However, the preceding seven-year limitation shall not apply in either of the following situations"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "false",
+              "\"Barred: conviction and incarceration are more than seven years old\""
+            ],
+            "source": {
+              "section": "480",
+              "subsection": "a",
+              "quote": "only if either of the following conditions are met"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hearing_result",
+        "question": "What does the board do after the hearing?",
+        "hit_policy": "UNIQUE",
+        "inputs": [
+          {
+            "name": "board_action",
+            "label": "Action the board takes after the hearing (grant, probation, deny)",
+            "type": "string"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "result",
+            "label": "Result",
+            "type": "string"
+          },
+          {
+            "name": "licensed",
+            "label": "Applicant receives a license",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "\"grant\""
+            ],
+            "then": [
+              "\"License granted on completing all licensing requirements\"",
+              "true"
+            ],
+            "source": {
+              "section": "488",
+              "subsection": "a.1",
+              "quote": "Grant the license effective upon completion of all licensing requirements by the applicant."
+            }
+          },
+          {
+            "when": [
+              "\"probation\""
+            ],
+            "then": [
+              "\"License granted, revoked, revocation stayed, on probationary conditions\"",
+              "true"
+            ],
+            "source": {
+              "section": "488",
+              "subsection": "a.2",
+              "quote": "immediately revoke the license, stay the revocation, and impose probationary conditions on the license, which may include suspension"
+            }
+          },
+          {
+            "when": [
+              "\"deny\""
+            ],
+            "then": [
+              "\"License denied\"",
+              "false"
+            ],
+            "source": {
+              "section": "488",
+              "subsection": "a.3",
+              "quote": "Deny the license."
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "conviction_not_a_ground",
+        "description": "Conviction is not a lawful ground to deny; application decided on other requirements",
+        "after": [
+          "decide_ground"
+        ],
+        "source": {
+          "section": "7.5",
+          "subsection": "a",
+          "quote": "a board may not deny a license to an applicant who is otherwise qualified pursuant to subdivision (b) or (c) of Section 480"
+        }
+      },
+      {
+        "id": "hearing_waived",
+        "description": "Hearing waived; denial stands (reapply after the date given, one year by default)",
+        "after": [],
+        "source": {
+          "section": "486",
+          "subsection": "a",
+          "quote": "The earliest date on which the applicant may reapply for a license which shall be one year from the effective date of the decision, or service of the notice under subdivision (b) of Section 485"
+        }
+      },
+      {
+        "id": "license_granted",
+        "description": "License granted (outright or probationary)",
+        "after": [
+          "decide_application"
+        ],
+        "when": "licensed",
+        "source": {
+          "section": "488",
+          "subsection": "a.1",
+          "quote": "Grant the license effective upon completion of all licensing requirements by the applicant."
+        }
+      },
+      {
+        "id": "reconsidered",
+        "description": "Board reconsiders the case on the record or through an administrative law judge",
+        "after": [
+          "decide_reconsideration"
+        ],
+        "when": "reconsideration_granted",
+        "source": {
+          "section": "11521",
+          "subsection": "b",
+          "quote": "A reconsideration assigned to an administrative law judge shall be subject to the procedure provided in Section 11517."
+        }
+      },
+      {
+        "id": "decision_set_aside",
+        "description": "Denial set aside; court may order the board to reconsider",
+        "after": [
+          "court_review"
+        ],
+        "when": "writ_granted",
+        "source": {
+          "section": "1094.5",
+          "subsection": "f",
+          "quote": "it may order the reconsideration of the case in light of the court’s opinion and judgment"
+        }
+      },
+      {
+        "id": "writ_denied",
+        "description": "Writ denied; denial stands, rehabilitation evidence counts on reapplication",
+        "after": [
+          "court_review"
+        ],
+        "source": {
+          "section": "486",
+          "subsection": "b",
+          "quote": "That all competent evidence of rehabilitation presented will be considered upon a reapplication."
+        }
+      },
+      {
+        "id": "denial_final",
+        "description": "No timely writ petition; the denial is final",
+        "after": [],
+        "source": {
+          "section": "11523",
+          "subsection": null,
+          "quote": "Except as otherwise provided in this section, the petition shall be filed within 30 days after the last day on which reconsideration can be ordered."
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Cal. Penal Code §§ 11122-11127",
+        "role": "how to obtain one's own state criminal record and question its accuracy or completeness",
+        "source": {
+          "section": "480",
+          "subsection": "f.3.D",
+          "quote": "The processes for the applicant to request a copy of the applicant’s complete conviction history and question the accuracy or completeness of the record pursuant to Sections 11122 to 11127 of the Penal Code."
+        }
+      },
+      {
+        "citation": "Cal. Penal Code § 4852.01 et seq.",
+        "role": "certificate of rehabilitation and pardon, which bars a conviction-based denial",
+        "source": {
+          "section": "480",
+          "subsection": "b",
+          "quote": "has obtained a certificate of rehabilitation under Chapter 3.5 (commencing with Section 4852.01) of Title 6 of Part 3 of the Penal Code"
+        }
+      },
+      {
+        "citation": "Cal. Gov. Code § 11500 et seq.",
+        "role": "Administrative Procedure Act formal hearing that governs the denial hearing",
+        "source": {
+          "section": "485",
+          "subsection": "a",
+          "quote": "File and serve a statement of issues in accordance with Chapter 5 (commencing with Section 11500) of Part 1 of Division 3 of Title 2 of the Government Code."
+        }
+      },
+      {
+        "citation": "Cal. Code Civ. Proc. § 1094.5",
+        "role": "administrative mandamus procedure and scope of court review",
+        "source": {
+          "section": "11523",
+          "subsection": null,
+          "quote": "in accordance with the provisions of the Code of Civil Procedure"
+        }
+      }
+    ],
+    "gaps": [
+      "The model follows the notice-of-denial route of Bus. & Prof. Code § 485(b). A board may instead file and serve a statement of issues first (§ 485(a)); then the applicant has 15 days after service to file a notice of defense (Gov. Code § 11506(a)), failure to file waives the hearing although the agency may still grant one (§ 11506(c)), and a default decision may be vacated on a motion served within 7 days for good cause (§ 11520(c)). (Nuggets N22-N23 carry this route.)",
+      "denial_permitted only means the board may deny; § 480(a) is permissive, so a board may still grant. The formal-discipline ground (§ 480(a)(2)), the false-statement ground (§ 480(e)) and denials on grounds other than conviction are not modelled.",
+      "The 90-day hearing requirement of § 487 is not modelled as a timer because the statute states no consequence; the applicant can request or agree in writing to postpone, and the Office of Administrative Hearings may add up to 45 days (180 in examination or licensing fraud cases), with no more than two such orders.",
+      "The board's decision after the hearing is not timed in the model: under Gov. Code § 11517(c)(2) the agency has 100 days from receiving the proposed decision to adopt it, reduce the penalty, make minor changes, remand for more evidence, or reject it and decide on the record, and otherwise the proposed decision is deemed adopted. The board may instead hear the case itself with an ALJ present (§ 11517(b)).",
+      "The reconsideration window is 30 days after delivery or mailing of the decision, or the earlier effective date the agency sets, extendable by a stay of up to 30 days and a 10-day stay to consider a timely petition (Gov. Code § 11521(a)); the decision itself takes effect 30 days after delivery or mailing unless reconsideration is ordered or a stay granted (§ 11519(a)). Reconsideration is optional: the writ petition does not depend on it (§ 11523), which the model expresses by letting the reconsideration timers lead to the decision taking effect and then to the writ step.",
+      "The writ deadline is extended to 30 days after delivery of the record if the petitioner requests the record within 10 days after the last day reconsideration can be ordered (§ 11523). The scope of review is in Code Civ. Proc. § 1094.5(b)-(c); whether the court exercises independent judgment or substantial-evidence review is settled by case law, not these statutes.",
+      "Under § 489 a board may deny a new application without a hearing if, within the past year and after APA proceedings, it denied the same applicant on the same ground; § 486 sets the earliest reapplication date (one year by default).",
+      "reconsideration_granted and writ_granted are case facts. A reconsidered case or a writ remand returns to the board, which can again grant or deny; those loops are not drawn."
+    ]
+  },
+  "out_of_corpus": [
+    {
+      "kind": "regulation",
+      "what": "Each board's own criteria for deciding whether a crime is substantially related and for evaluating rehabilitation (required by Bus. & Prof. Code §§ 481-482), and board-specific application and disclosure procedures",
+      "where": "California Code of Regulations, Title 16 (Department of Consumer Affairs boards and bureaus), the chapter for the particular board; summaries posted on each board's website (§ 481(d))"
+    },
+    {
+      "kind": "regulation",
+      "what": "Procedure before the Office of Administrative Hearings in licensing cases (prehearing conferences, continuances, settlement)",
+      "where": "California Code of Regulations, Title 1, Division 2 (Office of Administrative Hearings procedural rules)"
+    },
+    {
+      "kind": "court rule",
+      "what": "Attorney admission and its moral-character review, which Division 1.5 of the Business and Professions Code does not govern",
+      "where": "Rules of the State Bar of California (Title 4, Admissions and Educational Standards) and California Supreme Court rules on admission"
+    },
+    {
+      "kind": "agency policy",
+      "what": "Whether and how a board requests voluntary mitigating information, how it weighs rehabilitation evidence in practice, and its disciplinary or probation guidelines",
+      "where": "The board's application forms, published disciplinary guidelines and website criteria summaries"
+    }
+  ],
+  "version_flags": [
+    "Bus. & Prof. Code §§ 7.5, 480.2, 481, 482, 488 and 493 each state they became operative July 1, 2020 (the 2018 fair-chance licensing reform); these are the versions in force on 2026-10-10. No pending, delayed or expired versions of the gold sections appear in the downloaded text."
+  ],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Scope: Division 1.5 of the Business and Professions Code (§§ 475-499) is the general California rule for boards, bureaus, commissions and programs under that code (§§ 22, 23.7, 477), including the Department of Real Estate and the Contractors State License Board (both named in § 480(a)(1)(B)). It does not cover the State Bar, alcoholic beverage licenses or Gambling Control Act licenses (§ 476), and § 480 does not alter the authority of the Bureau for Private Postsecondary Education, the State Athletic Commission or the California Horse Racing Board (§ 480(i)), which follow § 480.2 (denial for a crime or act only if substantially related; no denial solely for a felony after a certificate of rehabilitation, or for a 1203.4/1203.4a/1203.41/1203.425 dismissal). Licenses issued under other codes (insurance, financial services, teaching credentials, health facilities, EMTs) have their own conviction provisions and are not covered by this answer. Cannabis licenses are issued under Division 10 of the Business and Professions Code: § 26057(b)(2) applies the § 480 grounds 'except as otherwise specified' in §§ 26057 and 26059, and § 26057(b)(5) treats a prior drug conviction with a completed sentence as not substantially related, notwithstanding § 480. Practice-act departures from § 480: although § 480(a) applies 'Notwithstanding any other provision of this code', some practice-act sections expressly depart from it, e.g. the Board of Pharmacy may deny 'Notwithstanding Section 480' (§ 4202.6), and the Board of Accountancy has additional grounds, with no seven-year limit for fiduciary-related financial felonies (§ 5100.2). Several sections require denial for persons required to register as sex offenders: the Dental Board (§ 1687) and Dental Hygiene Board (§ 1958.1), 'notwithstanding any other provision of law'/'any other law', the Physical Therapy Board (§ 2660.5), and the educational psychologist board (§ 4989.24(a), whose subdivision (b) says such a denial shall comply with the conditions in § 480). The statute text does not say how these mandatory-denial sections interact with the § 480(b) rehabilitation bar. Some practice acts add their own review steps, e.g. a 30-day request for review by the Bureau of Security and Investigative Services disciplinary review committee for alarm-company licenses (§ 7591.10). Other details: a board may not deny for lack of good moral character (§ 475(c)); may not categorically bar by conviction type without considering rehabilitation (§ 493(b)(2)); may not deny for an arrest that did not lead to conviction, including infractions, citations and juvenile adjudications (§ 480(d)); may not require applicants to disclose criminal history except for the boards listed in § 480(f)(1), though it may ask for voluntary mitigating information (§ 480(f)(2)); may deny for a knowingly false statement required in the application, but not solely for failing to disclose a fact that would not have justified denial (§ 480(e)). A board must consider a showing of rehabilitation when the applicant completed the sentence without a parole or probation violation, or when its criteria find rehabilitation (§ 482(b)). The record of conviction is conclusive evidence only that the conviction occurred (§ 493(a)); the power to inquire into the circumstances of the crime appears only in § 480.2(h), for the Bureau for Private Postsecondary Education, the State Athletic Commission and the California Horse Racing Board. Completing licensing requirements while incarcerated cannot alone delay or defeat an application (§ 480.5). A dismissed conviction must be proven with proof of dismissal if it is not on the DOJ report (§ 480(c)). Penal Code § 1203.4(a)(1) still tells dismissal recipients they must disclose the conviction when an application for state licensure asks directly, but § 480(f)(2) separately limits which boards may ask, and § 480(c) bars denial on a dismissed conviction. Certificates of rehabilitation are generally available to persons convicted of felonies (Penal Code § 4852.01(a)), with exceptions. The applicant can get a copy of their DOJ record (Penal Code § 11122) and challenge its accuracy, with an APA hearing if the DOJ disagrees (§ 11126). At the hearing the applicant may attend, be represented by counsel at their own expense (no appointed counsel), present evidence, cross-examine and subpoena witnesses (Gov. Code § 11509)."
+}

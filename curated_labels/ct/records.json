@@ -1,0 +1,343 @@
+{
+ "state": "ct",
+ "question": "records",
+ "sections": [
+  "1-210",
+  "1-206",
+  "1-212",
+  "1-211",
+  "1-205"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "1-210",
+   "quote": "If the commissioner believes the requested record is exempt from disclosure pursuant to subdivision (18) of subsection (b) of this section, the commissioner may withhold such record from such person when the record is delivered to the person's correctional institution or facility or Whiting Forensic Hospital facility.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "corrections commissioner withholds record from inmate requester"
+  },
+  {
+   "section": "1-210",
+   "quote": "Whenever a public agency, except the Judicial Department or Legislative Department, receives a request from any person for disclosure of any records described in subdivision (19) of subsection (b) of this section under the Freedom of Information Act, the public agency shall promptly notify the Commissioner of Administrative Services or the Commissioner of Emergency Services and Public Protection, as applicable, of such request, in the manner prescribed by such commissioner, before complying with the request as required by the Freedom of Information Act.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency notifies commissioner before complying"
+  },
+  {
+   "section": "1-210",
+   "quote": "If the commissioner, after consultation with the chief executive officer of the applicable agency, believes the requested record is exempt from disclosure pursuant to subdivision (19) of subsection (b) of this section, the commissioner may direct the agency to withhold such record from such person.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commissioner directs agency to withhold"
+  },
+  {
+   "section": "1-210",
+   "quote": "In any appeal brought under the provisions of section 1-206 of the Freedom of Information Act for denial of access to records for any of the reasons described in subdivision (19) of subsection (b) of this section, such appeal shall be against the chief executive officer of the executive branch state agency or the municipal, district or regional agency that issued the directive to withhold such record pursuant to subdivision (19) of subsection (b) of this section, exclusively, or, in the case of records concerning Judicial Department facilities, the Chief Court Administrator or, in the case of records concerning the Legislative Department, the executive director of the Joint Committee on Legislative Management.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "names the respondent of an appeal; party rule"
+  },
+  {
+   "section": "1-210",
+   "quote": "700. Cited. 181 C. 324. Sales tax delinquent lists are public records not exempt from disclosure under statute. 184 C.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-210",
+   "quote": "544. Cited. 201 C. 448. Disclosure requirements do not apply to information that may be released under Sec. 29-170. 204 C.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-210",
+   "quote": "377. A public record may be precluded from disclosure if such preclusion is provided for by another statute. 298 C.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-210",
+   "quote": "One public agency may not be held responsible for disclosing the public records in the custody of another public agency. 116 CA 171.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-210",
+   "quote": "769. In determining whether a communication in which an attorney gives business or other nonlegal professional advice is exempt from disclosure under subdivision (10) as privileged by the attorney-client relationship, it must be determined whether the primary purpose of the communication was seeking or providing legal advice and whether incidentally privileged matters could be redacted to allow for disclosure of nonprivileged matters. 323 C. 1.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-210",
+   "quote": "179. The safety risk assessment must be performed by the department in the first instance, after consulting with the head of the relevant state agency, and both the commission and the trial court should defer to the department's assessment unless the party seeking disclosure establishes that the determination was frivolous, patently unfounded or in bad faith. 321 C. 805.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-206",
+   "quote": "Any person denied the right to inspect or copy records under section 1-210 or wrongfully denied the right to attend any meeting of a public agency or denied any other right conferred by the Freedom of Information Act may appeal therefrom to the Freedom of Information Commission, by filing a notice of appeal with said commission.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "denied person appeals to FOI Commission"
+  },
+  {
+   "section": "1-206",
+   "quote": "A notice of appeal shall be filed not later than thirty days after such denial, except in the case of an unnoticed or secret meeting, in which case the appeal shall be filed not later than thirty days after the person filing the appeal receives actual or constructive notice that such meeting was held.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 30,
+    "unit": "days"
+   },
+   "why": "file notice of appeal within 30 days"
+  },
+  {
+   "section": "1-206",
+   "quote": "Upon receipt of such notice, the commission shall serve upon all parties, by certified or registered mail or by electronic transmission, a copy of such notice together with any other notice or order of such commission.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission serves notice of appeal on parties"
+  },
+  {
+   "section": "1-206",
+   "quote": "If a notice of appeal concerns an announced agency decision to meet in executive session or an ongoing agency practice of meeting in executive sessions, for a stated purpose, the commission or a member or members of the commission designated by its chairperson shall serve notice upon the parties in accordance with this section and hold a preliminary hearing on the appeal not later than seventy-two hours after receipt of the notice, provided such notice shall be given to the parties at least forty-eight hours prior to such hearing.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "executive-session meetings appeal, not records"
+  },
+  {
+   "section": "1-206",
+   "quote": "In any appeal to the Freedom of Information Commission under subdivision (1) of this subsection or subsection (c) of this section, the commission may confirm the action of the agency or order the agency to provide relief that the commission, in its discretion, believes appropriate to rectify the denial of any right conferred by the Freedom of Information Act.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission decides: confirm or order relief"
+  },
+  {
+   "section": "1-206",
+   "quote": "The commission may declare null and void any action taken at any meeting which a person was denied the right to attend and may require the production or copying of any public record.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission orders production of record"
+  },
+  {
+   "section": "1-206",
+   "quote": "The commission shall notify a person of a penalty levied against such person pursuant to this subsection by written notice sent by certified or registered mail or electronic transmission.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission sends penalty notice"
+  },
+  {
+   "section": "1-206",
+   "quote": "The commission shall provide due notice to the parties and review affidavits and written argument that the parties may submit and grant or deny such leave summarily at its next regular meeting.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission grants or denies leave to hear"
+  },
+  {
+   "section": "1-206",
+   "quote": "The commission shall grant such leave unless it finds that the appeal:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "decision standard; decision is prior sentence"
+  },
+  {
+   "section": "1-206",
+   "quote": "Any party aggrieved by the commission's denial of such leave may apply to the superior court for the judicial district in which the public agency is located, not later than fifteen days of the commission meeting at which such leave was denied, for an order requiring the commission to hear such appeal.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 15,
+    "unit": "days"
+   },
+   "why": "aggrieved party applies to superior court"
+  },
+  {
+   "section": "1-206",
+   "quote": "Notwithstanding any provision of this subsection, in the case of an appeal to the commission of a denial by a public agency, the commission may, upon motion of such agency, confirm the action of the agency and dismiss the appeal without a hearing if it finds, after examining the notice of appeal and construing all allegations most favorably to the appellant, that (A) the agency has not violated the Freedom of Information Act, or (B) the agency has committed a technical violation of the Freedom of Information Act that constitutes a harmless error that does not infringe the appellant's rights under said act.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission dismisses appeal without hearing on motion"
+  },
+  {
+   "section": "1-206",
+   "quote": "In case of any failure or refusal to comply with any order issued under this subdivision, the commission may apply to the superior court for the judicial district in which the public agency is located for an order requiring such public agency to comply with such order.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission seeks court enforcement of order"
+  },
+  {
+   "section": "1-206",
+   "quote": "(B) the scope of the requests;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list item of petition contents"
+  },
+  {
+   "section": "1-206",
+   "quote": "If the executive director determines that a hearing is not warranted, the executive director shall recommend that the commission deny the petition without a hearing.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "vexatious-requester petition, separate proceeding"
+  },
+  {
+   "section": "1-206",
+   "quote": "The commission shall vote at its next regular meeting after such recommendation to accept or reject such recommendation and, after such meeting, shall issue a written explanation of the reasons for such acceptance or rejection.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "vexatious-requester petition, separate proceeding"
+  },
+  {
+   "section": "1-206",
+   "quote": "If the executive director determines that a hearing is warranted, the commission shall serve upon all parties, by certified or registered mail or electronic transmission, a copy of such petition together with any other notice or order of the commission.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "vexatious-requester petition, separate proceeding"
+  },
+  {
+   "section": "1-206",
+   "quote": "Any party aggrieved by the commission's granting of such petition may apply to the superior court for the judicial district in which the public agency is located, not later than fifteen days after the commission meeting at which such petition was granted, for an order reversing the commission's decision.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "vexatious-requester petition, separate proceeding"
+  },
+  {
+   "section": "1-206",
+   "quote": "Notwithstanding the provisions of section 4-183 , in any such appeal of a decision of the commission, the court may conduct an in camera review of the original or a certified copy of the records which are at issue in the appeal but were not included in the record of the commission's proceedings, admit the records into evidence and order the records to be sealed or inspected on such terms as the court deems fair and appropriate, during the appeal.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court reviews records in camera on appeal"
+  },
+  {
+   "section": "1-206",
+   "quote": "Notwithstanding the provisions of section 3-125 , legal counsel employed or retained by said commission shall represent said commission in all such appeals and in any other litigation affecting said commission.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "who represents commission; not a case step"
+  },
+  {
+   "section": "1-206",
+   "quote": "If the court finds that any appeal taken pursuant to this section or section 4-183 is frivolous or taken solely for the purpose of delay, it shall order the party responsible therefor to pay to the party injured by such frivolous or dilatory appeal costs or attorney's fees of not more than one thousand dollars.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court orders costs for frivolous appeal"
+  },
+  {
+   "section": "1-206",
+   "quote": "Within sixty days after the filing of a notice of appeal alleging violation of any right conferred by the Freedom of Information Act concerning records of the Department of Energy and Environmental Protection relating to the state's hazardous waste program under sections 22a-448 to 22a-454 , inclusive, the Freedom of Information Commission shall, after notice to the parties, hear and decide the appeal.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": {
+    "amount": 60,
+    "unit": "days"
+   },
+   "why": "commission hears and decides DEEP appeal in 60 days"
+  },
+  {
+   "section": "1-206",
+   "quote": "On appeal, the court may, in addition to any other powers conferred by law, order the disclosure of any such records withheld in violation of the Freedom of Information Act and may assess against the state reasonable attorney's fees and other litigation costs reasonably incurred in an appeal in which the complainant has prevailed against the Department of Energy and Environmental Protection.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court orders disclosure and assesses fees"
+  },
+  {
+   "section": "1-206",
+   "quote": "767. Where successive requests made for records are denied, appeals may be made within 30 days of any denial. 208 C.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-206",
+   "quote": "Commission must ensure that employee whose records are the subject of an appeal has received notice of proceedings where the employer has failed to give required notice; order of disclosure may not be issued until employee whose records are the subject of an appeal has been given proper notice and opportunity for a hearing to assert the personal privacy exemption. 60 CA 584.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "case annotation"
+  },
+  {
+   "section": "1-212",
+   "quote": "The public agency shall waive any fee provided for in this section when:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency waives fee"
+  },
+  {
+   "section": "1-212",
+   "quote": "The Secretary of the State shall submit such proposed fee structure to the joint standing committee of the General Assembly having cognizance of matters relating to government administration, not later than January 15, 2000.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "one-time fee-structure report to legislature"
+  },
+  {
+   "section": "1-212",
+   "quote": "Any individual may copy a public record through the use of a hand-held scanner.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester copies record with own scanner"
+  },
+  {
+   "section": "1-212",
+   "quote": "A public agency may establish a fee structure not to exceed twenty dollars for an individual to pay each time the individual copies records at the agency with a hand-held scanner.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee schedule policy with cap"
+  },
+  {
+   "section": "1-211",
+   "quote": "In meeting its obligations under this subsection, each state public agency shall consult with the Department of Administrative Services as part of the agency's design analysis prior to acquiring any such computer system, equipment or software.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "procurement duty unrelated to a case"
+  },
+  {
+   "section": "1-205",
+   "quote": "The commission shall, subject to the provisions of the Freedom of Information Act promptly review the alleged violation of said Freedom of Information Act and issue an order pertaining to the same.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "commission reviews violation and issues order"
+  }
+ ]
+}

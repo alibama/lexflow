@@ -250,3 +250,19 @@ These build on the existing records question, which models only the requester's 
 Runner-up: **B3 (records appeals)**. It is cheap because it extends the existing records BPMN and sections already ingested, and it is the first piece a FOIA services business would need.
 
 Every citation above that is not marked verified (repo) is unverified and needs checking before ingestion. The repo files checked against are `curated/{va,dc,md}/{records,business}.json`.
+---
+
+## D. Prisons, court debt and the economics of the criminal-legal system
+
+These questions look at the microeconomics of prisons, courts and records: discretion, non-price costs such as waiting, incentives and local variation. Each one is in **AskBench**: Claude wrote a checked reference answer for VA, DC, MD, TX and CA in `curated_ask/<id>/<state>.json`, and the ask pipeline is scored against them (`lexflow ask-bench`).
+
+| Id | Question | The micro mechanism | Where the answer lives |
+|---|---|---|---|
+| `court_debt` | I can't afford my fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments? | User fees and fines as a regressive tax; the expected cost of default (contempt jail, probation revocation) | Statute sets the menu, the caps and the hearing rules; clerks and judges decide case by case (VA §§ 19.2-354, 19.2-358; MD Crim. Proc. § 6-226; TX Gov't Code § 508.182) |
+| `prison_wages` | If I work while incarcerated, how is my pay set, what can be deducted and in what order, and what do I get back on release? | The ordered deductions are an effective marginal tax rate on prison labor; forced savings | Statute sets the order and caps (VA § 53.1-60(C), DC § 24-241.06, CA Penal Code § 2085.5); pay scales are in regulations |
+| `pretrial_clock` | If I'm held awaiting trial, how long can I be held before indictment and trial, and what happens if the deadline passes? | Rationing by time, not price: the cost of waiting falls on detained people | Statute sets the clocks and remedies (VA § 19.2-243, DC § 23-1322(h), MD Crim. Proc. § 6-103); court rules and constitutional doctrine sit on top |
+| `record_sealing` | How do I get my record sealed or expunged, how long must I wait, and what does it cost? | A record is a labor-market signal; sealing removes it, at a filing cost and a waiting time | Statute (VA §§ 19.2-392.2, 19.2-392.12; DC §§ 16-801 to 16-807; MD Crim. Proc. § 10-105; TX expunction and nondisclosure) |
+| `license_conviction` | Can a licensing board deny me an occupational license because of a conviction, and how can I challenge it? | Licensing bans as an entry barrier | Statute sets "directly relates" tests and hearing rights (VA § 54.1-204; CA Bus. & Prof. Code § 480; TX Occ. Code ch. 53) |
+| `phone_commissary` | Who sets the prices of phone calls, video visits and commissary items in prisons and jails, and can the facility keep a commission? | A two-sided monopoly: an exclusive franchise and commissions that families pay | Statute sets commission rules (DC §§ 24-263.01, 24-263.02; MD Corr. Serv. §§ 10-503, 11-903; VA § 53.1-35.1). **Actual prices** are in contracts, PSC/FCC orders and jail policies, so this is mainly a test of whether a model declines to invent a rate |
+
+The research behind these, with every section the agents found and their search terms, is in the AskBench references themselves (`gold_sections`, `profile`).

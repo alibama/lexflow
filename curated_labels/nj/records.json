@@ -1,0 +1,342 @@
+{
+ "state": "nj",
+ "question": "records",
+ "sections": [
+  "N.J. Stat. § 47:1A-5"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "1A-5",
+   "quote": "The custodian of a government record shall permit the record to be inspected, examined, and copied by any person during regular business hours; or in the case of a municipality having a population of 5,000 or fewer according to the most recent federal decennial census, a board of education having a total district enrollment of 500 or fewer, or a public authority having less than $10 million in assets, during not less than six regular business hours over not less than three business days per week or the entity's regularly-scheduled business hours, whichever is less; unless a government record is exempt from public access by:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general access rule: hours and exemption list"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Except as otherwise provided by law or regulation and except as provided in paragraph (2) of this subsection, the fee assessed for the duplication of a government record embodied in the form of printed matter shall be $0.05 per letter size page or smaller, and $0.07 per legal size page or larger.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "per-page fee rate on its own"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian shall provide the requestor with an explanation for and an itemized list of the fees or charges.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian itemizes and explains fees"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A custodian shall permit access to a government record and provide a copy thereof in the medium or format requested if the public agency maintains the record in that medium or format.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian provides copy in requested medium"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the public agency does not maintain the record in the medium or format requested, the custodian shall convert the record to the medium or format requested, if the medium or format is available to the public agency and does not require a substantial amount of manipulation or programming of information technology or the services of a third-party vendor.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian converts record to requested format"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the public agency does not maintain the record in the electronic medium or format requested, and the medium or format is not available to the public agency without a substantial amount of manipulation or programming of information technology, the custodian shall be under no obligation to convert the record to the electronic medium or format requested but shall, at a minimum, provide a copy in the electronic format maintained by the public agency. e.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian provides copy in maintained electronic format"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A public agency may enter into shared services agreements for providing certain government records electronically.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general policy: shared services agreements"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the government record in a complete and unabridged form is readily available on a public agency's website, the custodian may require the requestor to obtain the record from the website, which shall contain a search bar feature on its home page.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian refers requester to website copy"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian shall provide the requestor with directions to assist in finding the record on the website, including providing the website URL address and the location on the website of the search bar, menu button, tab, link, landing page, or equivalent, which contains the requested record.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian gives directions to record online"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the requestor does not respond to the custodian within seven business days of the custodian providing information about a record on the public agency's website, the request shall be deemed fulfilled unless the version of the government record on the public agency's website fails to contain non-protected information contained in the original record, in which case the custodian shall produce the original version of the record subject to any redactions required by law.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 7,
+    "unit": "business_days"
+   },
+   "why": "requester responds or request deemed fulfilled"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the requestor is still unable to locate the record and requests a physical copy, the custodian shall provide the requestor with a physical copy of the record for a fee not exceeding two times the cost of the production of the document.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian provides physical copy for fee"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian of a public agency shall adopt the form established by the Government Records Council pursuant to subsection b. of section 8 of P.L.2001, c.404 (C.47:1A-7),for the use of any person who requests access to a government record held or controlled by the public agency.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general duty to adopt GRC form"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The form shall provide space for the name, address, email address and telephone number of the requestor and a brief description of the government record sought.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "form contents"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A request shall be submitted by a requestor in the form adopted by the custodian and the custodian may deny a request that is incomplete, except that a requestor indicating the request is being submitted anonymously shall not be grounds for denial.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester submits request on adopted form"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A completed form adopted by the custodian, a letter, or an email from a requestor including all of the information required on the adopted form shall suffice in place of a completed form as a valid government record request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "what counts as a valid request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the letter or email from a requestor includes substantially more information than required on the adopted form and requires more than reasonable effort to clarify the information, the custodian may deny the request.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian denies over-long letter/email request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If a letter or an email from a requestor does not include all of the information required on the adopted form, the custodian may deny the record request.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian denies incomplete letter/email request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The form shall include space for the custodian to indicate which record will be made available, when the record will be available, and the fees to be charged.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "form contents"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian may require a deposit against costs for reproducing documents sought through a request whenever the custodian anticipates that the information thus requested will cost in excess of $5 to reproduce.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian requires deposit over $5"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Custodians who have adopted electronic government record request forms shall provide directions on how to submit requests for government records, including any required forms, on the public agency's website.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general website directions duty"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Custodians shall be permitted to provide an electronic response to any electronic records request if government records are available electronically. g.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "permission on response medium, general"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A public agency may make available to the public on its website an online form, portal, or software for transmitting requests electronically.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general: agency may offer online portal"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The form established by the Government Records Council, pursuant to subsection b. of section 8 of P.L.2001, c.404 (C.47:1A-7), may be submitted electronically or by fax.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "allowed submission methods"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Submission of repeated requests to multiple custodians in the same public agency for the same record, while an identical or substantially similar request is pending in the agency, shall permit the custodian to deny the request.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian denies duplicate multi-custodian request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A custodian shall promptly comply with a request to inspect, examine, copy, or provide a copy of a government record.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian promptly complies with request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian shall sign and date the form and provide the requestor with a copy thereof.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian signs, dates, returns form copy"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the custodian of a government record asserts that part of a particular record is exempt from public access pursuant to P.L.1963, c.73 (C.47:1A-1 et seq.) as amended and supplemented, the custodian shall delete or excise from a copy of the record that portion which the custodian asserts is exempt from access and shall promptly permit access to the remainder of the record.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian redacts exempt part, releases rest"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If a request for access to a government record would substantially disrupt agency operations, the custodian may deny access to the record after informing the requestor of the potential disruption to agency operations and attempting to reach a reasonable solution with the requestor that accommodates the interests of the requestor and the agency.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian informs, negotiates, denies for disruption"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Nothing in this paragraph shall bar a request for a government record filed by a labor organization or by a contractor signatory to a collective bargaining agreement seeking information material to the enforcement of State or federal statutes or regulations regarding, but not limited to, wage and hour protections, workplace safety, or public procurement and public bidding, including, but not limited to, requests for certified payrolls or information about all bids submitted in response to a public procurement process subsequent to the deadline for the submission of all bids for that solicitation, when the request by the labor organization or contractor signatory is not sought in connection with or in furtherance of discovery requests in a court proceeding.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "savings clause for labor/contractor requests"
+  },
+  {
+   "section": "1A-5",
+   "quote": "It shall be sufficient for a requestor to identify specific individuals by the individual's job title and position. h.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "sufficiency rule for identifying individuals"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Any officer or employee of a public agency who receives a request for access to a government record shall forward the request to the custodian of the record or direct the requestor to the custodian of the record.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "employee forwards request to custodian"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The response time periods of seven or 14 business days, as established in this subsection, shall be an additional seven business days longer if the public agency is a fire district which employs one or fewer full-time employees who serve as custodians.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "deadline extension rule for small fire districts"
+  },
+  {
+   "section": "1A-5",
+   "quote": "In the event a custodian fails to respond within seven business days or 14 business days, as appropriate, after receiving a request, the failure to respond shall be deemed a denial of the request, unless the requestor has elected not to accurately identify themselves or to provide an accurate address, email address, or telephone number.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": {
+    "amount": 7,
+    "unit": "business_days"
+   },
+   "why": "no response in time deemed denial"
+  },
+  {
+   "section": "1A-5",
+   "quote": "If the government record is in storage or archived, the requestor shall be so advised within seven or 14 business days, as appropriate, after the custodian receives the request.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": {
+    "amount": 7,
+    "unit": "business_days"
+   },
+   "why": "custodian advises record in storage/archived"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A records custodian of a public agency that receives a request for a record created, maintained, or received by another public agency shall not be obligated to provide the record to the requestor.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "no obligation for other agency's records"
+  },
+  {
+   "section": "1A-5",
+   "quote": "The custodian shall not be required to complete an identical request for access to a government record from the same requestor if the information has not changed.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "no duty to repeat identical request"
+  },
+  {
+   "section": "1A-5",
+   "quote": "Nothing in this section shall prevent a requestor from filing periodic requests regarding regularly updated public records, including, but not limited to, certified payrolls, permits, and licensing applications.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "savings clause for periodic requests"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A requestor shall have 14 business days to retrieve the government records following notice from the custodian that the request has been completed and the records are available.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 14,
+    "unit": "business_days"
+   },
+   "why": "requester retrieves records after notice"
+  },
+  {
+   "section": "1A-5",
+   "quote": "(2) During a period declared pursuant to the laws of this State as a state of emergency, public health emergency, or state of local disaster emergency, the deadlines by which to respond to a request for, or grant or deny access to, a government record under paragraph (1) of this subsection or subsection e. of this section shall not apply, provided, however, that the custodian of a government record shall make a reasonable effort, as the circumstances permit, to respond to a request for access to a government record within seven business days or 14 business days, as appropriate, or as soon as possible thereafter. j.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "emergency suspension of response deadlines"
+  },
+  {
+   "section": "1A-5",
+   "quote": "A custodian shall include information on the public agency's website and public records request form regarding a requestor's right to appeal a denial of, or failure to provide, access to a government record and the procedure by which an appeal may be filed, which shall include the website address and toll-free information line phone number of the Government Records Council. k.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general duty to post appeal information"
+  }
+ ]
+}

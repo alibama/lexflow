@@ -1,25 +1,34 @@
 """Background jobs: each step runs as its own ``python -m lexflow run`` process.
 
 The API enqueues a row in ``jobs``; a runner thread starts queued jobs (up to
-``LEXFLOW_MAX_JOBS`` at once, and only one model build at a time because builds share
-Ollama), streams output to ``data/jobs/<id>.log`` and records the exit status.  A job
-reports progress by updating its own row, which the dashboard polls.
+``LEXFLOW_MAX_JOBS`` at once, and never two jobs of one of the ``GROUPS`` together, e.g.
+one model build at a time because builds share Ollama), streams output to
+``data/jobs/<id>.log`` and records the exit status.  A job reports progress by updating
+its own row, which the dashboard polls.
 """
 from __future__ import annotations
 
 import json
 import os
 import signal
+import socket
 import subprocess
 import sys
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from .. import config
 from ..store import db
 
-EXCLUSIVE = {"build", "quickstart", "models"}
+EXCLUSIVE = {"build", "quickstart", "models", "ask"}      # these share Ollama: one at a time
+INDEXING = {"index", "ask"}                               # these build the same per-state search index files
+GROUPS = (EXCLUSIVE, INDEXING)                            # two jobs in one group never run at once
+# which runner started a job: the container's hostname unless set (process ids are only meaningful inside one
+# container); LEXFLOW_RUNNER_ID keeps it across a container recreate and must be unique to each instance
+RUNNER_ID = os.environ.get("LEXFLOW_RUNNER_ID", "").strip() or socket.gethostname()
+BEAT = 30            # seconds between a runner's heartbeats (and its checks for orphaned jobs)
+STALE = 300          # seconds without a heartbeat before a runner counts as gone
 
 
 def enqueue(con, step: str, args: dict | None = None) -> int:
@@ -27,6 +36,29 @@ def enqueue(con, step: str, args: dict | None = None) -> int:
                       (step, json.dumps(args or {}), "queued", db.now(), "Waiting to start"))
     con.commit()
     return cur.lastrowid
+
+
+def _clash(a: str, b: str) -> bool:
+    return any(a in g and b in g for g in GROUPS)
+
+
+def claim(con, job_id: int) -> bool:
+    """Take a queued job for this runner.  One atomic statement, so two instances on one database never both
+    start it, never start it beside a running job of one of its ``GROUPS``, and never run over ``MAX_JOBS``."""
+    clash = " OR ".join("(jobs.step IN ({0}) AND r.step IN ({0}))".format(",".join("?" * len(g))) for g in GROUPS)
+    n = con.execute("UPDATE jobs SET status='running', runner=?, started_at=?, message='Starting' "
+                    "WHERE id=? AND status='queued' AND (SELECT count(*) FROM jobs WHERE status='running') < ? "
+                    f"AND NOT EXISTS (SELECT 1 FROM jobs r WHERE r.status='running' AND ({clash}))",
+                    (RUNNER_ID, db.now(), job_id, config.MAX_JOBS, *(s for g in GROUPS for s in (*g, *g)))).rowcount
+    con.commit()
+    return n == 1
+
+
+def beat(con) -> None:
+    """Record that this runner is alive, for ``Runner.recover`` on the other instances."""
+    con.execute("INSERT INTO meta(key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+                (f"runner:{RUNNER_ID}", db.now()))
+    con.commit()
 
 
 def log_path(job_id: int):
@@ -77,18 +109,37 @@ class Runner(threading.Thread):
         self.stop = threading.Event()
 
     def recover(self, con):
-        for r in db.rows(con, "SELECT id, pid FROM jobs WHERE status='running'"):
-            if not _alive(r["pid"]):
-                con.execute("UPDATE jobs SET status='failed', finished_at=?, message='Interrupted (server restarted)' "
-                            "WHERE id=?", (db.now(), r["id"]))
+        """Fail running jobs that died with their runner, so they stop holding a slot."""
+        # A job of this runner (or with none recorded) is dead when this process did not start it and its pid is
+        # not alive here (with no pid yet, when it was claimed over STALE seconds ago).  Another runner's pids mean
+        # nothing here, so its jobs are dead only when its heartbeat is missing or over STALE seconds old: a
+        # recreated container gets a new hostname and its old one never beats again.
+        cutoff = (datetime.now(timezone.utc) - timedelta(seconds=STALE)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        seen = {r["key"][7:]: r["value"] for r in db.rows(con, "SELECT key, value FROM meta WHERE key LIKE 'runner:%'")}
+        n = 0
+        for r in db.rows(con, "SELECT id, pid, runner, started_at FROM jobs WHERE status='running'"):
+            if r["runner"] in (None, RUNNER_ID):
+                if r["id"] in self.procs or _alive(r["pid"]) or (not r["pid"] and (r["started_at"] or "") > cutoff):
+                    continue
+            elif seen.get(r["runner"], "") > cutoff:
+                continue
+            n += con.execute("UPDATE jobs SET status='failed', finished_at=?, message='Interrupted (server restarted)' "
+                             "WHERE id=? AND status='running'", (db.now(), r["id"])).rowcount
+        con.execute("DELETE FROM meta WHERE key LIKE 'runner:%' AND value < ?", (cutoff,))
+        if n:
+            db.bump(con)
         con.commit()
 
     def run(self):
         config.ensure_dirs()
         con = db.connect()
-        self.recover(con)
+        checked = 0.0
         while not self.stop.is_set():
             try:
+                if time.time() - checked >= BEAT:
+                    beat(con)
+                    self.recover(con)
+                    checked = time.time()
                 self._reap(con)
                 self._start(con)
             except Exception as e:  # noqa: BLE001 - keep the runner alive
@@ -116,25 +167,30 @@ class Runner(threading.Thread):
         running = db.rows(con, "SELECT id, step FROM jobs WHERE status='running'")
         if len(running) >= config.MAX_JOBS:
             return
-        busy_exclusive = any(r["step"] in EXCLUSIVE for r in running)
         for job in db.rows(con, "SELECT id, step, args FROM jobs WHERE status='queued' ORDER BY id"):
             if len(running) >= config.MAX_JOBS:
                 break
-            if job["step"] in EXCLUSIVE and busy_exclusive:
+            # the snapshot saves a write; claim() checks again, as another runner may have started a job since
+            if any(_clash(job["step"], r["step"]) for r in running) or not claim(con, job["id"]):
                 continue
-            logf = open(log_path(job["id"]), "ab")
             cmd = [sys.executable, "-m", "lexflow", "run", job["step"], "--job", str(job["id"]),
                    "--args", job["args"] or "{}"]
             kw = {"start_new_session": True} if os.name == "posix" else {}
-            p = subprocess.Popen(cmd, stdout=logf, stderr=subprocess.STDOUT, cwd=str(config.ROOT),
-                                 env={**os.environ, "PYTHONUNBUFFERED": "1"}, **kw)
-            logf.close()
+            try:
+                with open(log_path(job["id"]), "ab") as logf:
+                    p = subprocess.Popen(cmd, stdout=logf, stderr=subprocess.STDOUT, cwd=str(config.ROOT),
+                                         env={**os.environ, "PYTHONUNBUFFERED": "1"}, **kw)
+            except Exception as e:  # noqa: BLE001 - e.g. an argument list too long: fail the job, not the runner
+                con.execute("UPDATE jobs SET status='failed', finished_at=?, message=? WHERE id=?",
+                            (db.now(), f"Could not start: {e}"[:500], job["id"]))
+                db.bump(con)
+                con.commit()
+                continue
             self.procs[job["id"]] = p
             con.execute("UPDATE jobs SET status='running', pid=?, started_at=?, message='Running' WHERE id=?",
                         (p.pid, db.now(), job["id"]))
             con.commit()
             running.append(job)
-            busy_exclusive = busy_exclusive or job["step"] in EXCLUSIVE
 
 
 class JobContext:

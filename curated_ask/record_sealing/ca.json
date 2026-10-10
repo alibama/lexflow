@@ -1,0 +1,1252 @@
+{
+ "qid": "record_sealing",
+ "question": "How do I get my criminal record sealed or expunged, how long do I have to wait, and what does it cost?",
+ "state": "ca",
+ "as_of": "2026-10-10",
+ "question_type": "process",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "dismiss the accusations",
+    "withdraw their plea",
+    "set aside the verdict",
+    "dismissal",
+    "expungement",
+    "expunge"
+   ],
+   [
+    "seal",
+    "sealed",
+    "sealing",
+    "arrest sealed",
+    "arrest and related records"
+   ],
+   [
+    "termination of the period of probation",
+    "fulfilled the conditions of probation",
+    "completion of the sentence",
+    "lapse of one year",
+    "pronouncement of judgment"
+   ],
+   [
+    "automatic conviction relief",
+    "arrest record relief",
+    "relief granted",
+    "without requiring a petition"
+   ],
+   [
+    "penalties and disabilities",
+    "interest of justice",
+    "in its discretion"
+   ],
+   [
+    "prosecuting attorney",
+    "15 days' notice",
+    "petition for relief"
+   ],
+   [
+    "factual innocence",
+    "factually innocent",
+    "destroy its records"
+   ],
+   [
+    "restitution fine",
+    "court-imposed costs",
+    "unenforceable and uncollectible",
+    "fee"
+   ],
+   [
+    "summary criminal history information",
+    "copy of the record",
+    "background check",
+    "relief has been granted"
+   ],
+   [
+    "applicant for employment",
+    "denied a license",
+    "disclose",
+    "direct question"
+   ],
+   [
+    "ward of the juvenile court",
+    "petition to seal records",
+    "records sealed"
+   ]
+  ],
+  "negative": [
+   "notice of pendency of action",
+   "lis pendens",
+   "notary seal",
+   "official seal",
+   "sealed bids",
+   "seal of the board"
+  ],
+  "slots": [
+   "deadline",
+   "fee",
+   "office"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "1203.4",
+   "role": "primary",
+   "why": "Dismissal ('expungement') after probation: as of right once probation is fulfilled or discharged early, otherwise in the court's discretion; effects and limits; 15 days' notice to the prosecutor; unpaid restitution no bar."
+  },
+  {
+   "ref": "1203.4a",
+   "role": "primary",
+   "why": "Dismissal of a misdemeanor without probation or an infraction one year after judgment once the sentence is performed; discretionary relief if the honest-and-upright-life test is not met; infraction petitions by written declaration."
+  },
+  {
+   "ref": "1203.41",
+   "role": "primary",
+   "why": "Discretionary dismissal of felonies sentenced to county jail under 1170(h) or to state prison: one year after a split sentence, two years after a straight jail or prison term; not for prison felonies requiring sex-offender registration."
+  },
+  {
+   "ref": "1203.425",
+   "role": "primary",
+   "why": "Automatic conviction relief by the Department of Justice without a petition, subject to Budget Act funding: completed probation, misdemeanors and infractions one calendar year after judgment, felonies four years after supervision; exclusions (registrants, active supervision, pending charges); the prosecutor's or probation department's petition to block relief 90 days before eligibility; courts may not disclose dismissed convictions (subject to the (a)(4) exceptions); DOJ furnishes a copy of the record under 11122-11123."
+  },
+  {
+   "ref": "851.91",
+   "role": "primary",
+   "why": "Petition to seal an arrest that did not result in a conviction: eligibility, verified petition, filing and service at least 15 days before the hearing, as of right or in the interests of justice."
+  },
+  {
+   "ref": "851.93",
+   "role": "primary",
+   "why": "Automatic arrest record relief by the Department of Justice: dismissed misdemeanors, one year (misdemeanor) or three or six years (felony) after an arrest with no proceedings, and completed diversion."
+  },
+  {
+   "ref": "1203.42",
+   "role": "supporting",
+   "why": "Discretionary dismissal for pre-Realignment sentences that would now be 1170(h) county-jail sentences, two years after completing the sentence."
+  },
+  {
+   "ref": "851.92",
+   "role": "supporting",
+   "why": "How an arrest sealing is carried out (orders to agencies and DOJ within 30 days, 'arrest sealed' notations, no disclosure outside the criminal justice sector, $500-$2,500 civil penalty for disseminating)."
+  },
+  {
+   "ref": "851.8",
+   "role": "supporting",
+   "why": "Factual-innocence petition to seal and destroy arrest records, to the arresting agency or the court; filed up to two years after the arrest or the filing of charges, whichever is later (waivable for good cause); not for infractions."
+  },
+  {
+   "ref": "1203.45",
+   "role": "supporting",
+   "why": "Sealing of the whole record for a misdemeanor committed under 18 that is eligible for or received 1203.4/1203.4a relief."
+  },
+  {
+   "ref": "1465.9",
+   "role": "supporting",
+   "why": "Subdivision (b): balances of court-imposed costs under the former 1203.4a (as it read on December 31, 2021) are unenforceable and uncollectible from January 1, 2022. It says nothing about current fees."
+  },
+  {
+   "ref": "Cal. PEN § 13151",
+   "role": "supporting",
+   "why": "The court must report later actions in a case (such as a dismissal) to the Department of Justice, which keeps the state criminal history record."
+  },
+  {
+   "ref": "781.1",
+   "role": "supporting",
+   "why": "No fee may be charged for a Welfare and Institutions Code 781 juvenile record-sealing petition."
+  },
+  {
+   "ref": "Cal. PEN § 11105",
+   "role": "supporting",
+   "why": "What the Department of Justice reports for background checks: under (p)(2)(A) most employment, licensing and certification checks omit convictions dismissed under 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425, but schools and the Commission on Teacher Credentialing receive every conviction, and peace-officer (k), criminal-justice (l) and care-facility (m) checks get every conviction."
+  },
+  {
+   "ref": "Cal. PEN § 11122",
+   "role": "supporting",
+   "why": "How to request a copy of your own state criminal record (the way 1203.425(a)(7) names to confirm relief): a DOJ application with fingerprints; the fingerprinting agency may charge a reasonable fee."
+  },
+  {
+   "ref": "Cal. PEN § 11123",
+   "role": "supporting",
+   "why": "The DOJ fee for a copy of your own record: not more than $25, with a waiver on a claim and proof of indigency."
+  },
+  {
+   "ref": "Cal. BPC § 480",
+   "role": "supporting",
+   "why": "Licensing boards under the Business and Professions Code may not deny a license for a conviction dismissed under 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425 (c), and most may not require applicants to disclose criminal history at all (f)(2)."
+  },
+  {
+   "ref": "Cal. LAB § 432.7",
+   "role": "supporting",
+   "why": "Employers may not ask about, seek or use arrests that did not lead to conviction, diversion, or convictions judicially dismissed or sealed (a)(1); exceptions for peace-officer and criminal-justice jobs (e) and where other law requires the check (m), (n)."
+  },
+  {
+   "ref": "Cal. WIC § 781",
+   "role": "supporting",
+   "why": "Juvenile record sealing by petition, five years after juvenile court jurisdiction ends or at any time after age 18 (the petition 781.1 makes free)."
+  },
+  {
+   "ref": "Cal. WIC § 786",
+   "role": "supporting",
+   "why": "Juvenile court must dismiss the petition and seal the records once supervision or probation is satisfactorily completed, without a petition."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "After probation ends, a person who fulfilled probation (or was discharged early) and is not serving a sentence, on probation or charged with an offense must be allowed by the court to withdraw the plea (or have the guilty verdict set aside).",
+   "importance": "vital",
+   "section": "1203.4",
+   "quote": "the defendant shall, at any time after the termination of the period of probation, if they are not then serving a sentence for an offense, on probation for an offense, or charged with the commission of an offense, be permitted by the court to withdraw their plea of guilty or plea of nolo contendere and enter a plea of not guilty",
+   "slot": "office"
+  },
+  {
+   "id": "N2",
+   "text": "The court then dismisses the case, and the person is released from all penalties and disabilities of the offense, subject to listed exceptions.",
+   "importance": "vital",
+   "section": "1203.4",
+   "quote": "the court shall thereupon dismiss the accusations or information against the defendant and except as noted below, the defendant shall thereafter be released from all penalties and disabilities resulting from the offense of which they have been convicted",
+   "slot": null
+  },
+  {
+   "id": "N3",
+   "text": "Even without a clean probation record, the court may grant Penal Code 1203.4 relief in its discretion and in the interest of justice.",
+   "importance": "okay",
+   "section": "1203.4",
+   "quote": "in any other case in which a court, in its discretion and the interest of justice, determines that a defendant should be granted the relief available under this section",
+   "slot": null
+  },
+  {
+   "id": "N4",
+   "text": "Relief cannot be granted until the prosecuting attorney has had 15 days' notice of the petition (a minimum notice period before the ruling, not a deadline for the prosecutor).",
+   "importance": "okay",
+   "section": "1203.4",
+   "quote": "Relief shall not be granted under this section unless the prosecuting attorney has been given 15 days' notice of the petition for relief.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N5",
+   "text": "For a misdemeanor without probation, or an infraction, the court must allow dismissal once one year has passed since judgment if the person fully performed the sentence, is not serving a sentence or under charge, and has lived an honest and upright life and obeyed the law since judgment.",
+   "importance": "vital",
+   "section": "1203.4a",
+   "quote": "Every defendant convicted of a misdemeanor and not granted probation, and every defendant convicted of an infraction shall, at any time after the lapse of one year from the date of pronouncement of judgment, if they have fully complied with and performed the sentence of the court, are not then serving a sentence for an offense and are not under charge of commission of a crime, and have, since the pronouncement of judgment, lived an honest and upright life and have conformed to and obeyed the laws of the land, be permitted by the court to withdraw their plea of guilty or nolo contendere",
+   "slot": "deadline"
+  },
+  {
+   "id": "N6",
+   "text": "For a felony sentenced to county jail or state prison, relief is available only one year after completing a split sentence (Penal Code 1170(h)(5)(B)), or two years after completing a straight county-jail sentence (1170(h)(5)(A)) or a state-prison sentence.",
+   "importance": "vital",
+   "section": "1203.41",
+   "quote": "The relief available under this section may be granted only after the lapse of one year following the defendant's completion of the sentence, if the sentence was imposed pursuant to subparagraph (B) of paragraph (5) of subdivision (h) of Section 1170, or after the lapse of two years following the defendant's completion of the sentence, if the sentence was imposed pursuant to subparagraph (A) of paragraph (5) of subdivision (h) of Section 1170 or if the defendant was sentenced to the state prison.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N7",
+   "text": "Dismissal of a felony sentenced to county jail or prison is discretionary: the court may order it in the interest of justice.",
+   "importance": "okay",
+   "section": "1203.41",
+   "quote": "If a defendant is convicted of a felony, the court, in its discretion and in the interest of justice, may order the following relief",
+   "slot": null
+  },
+  {
+   "id": "N8",
+   "text": "Unless relief is blocked by a petition under 1203.425(b), the Department of Justice grants automatic conviction relief, including dismissal, to eligible people without any petition or motion, if the information is in its electronic records.",
+   "importance": "vital",
+   "section": "1203.425",
+   "quote": "Except as specified in subdivision (b), the department shall grant relief, including dismissal of a conviction, to a person identified pursuant to paragraph (1) without requiring a petition or motion by a party for that relief if the relevant information is present in the department's electronic records.",
+   "slot": "office"
+  },
+  {
+   "id": "N9",
+   "text": "For automatic relief of a felony (other than one where probation was completed), four years must pass after completing probation or supervision with no new felony conviction; serious, violent and sex-registration felonies are excluded.",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "a period of four years has elapsed since the date on which the defendant completed probation or supervision for that conviction and during which the defendant was not convicted of a new felony offense. This subclause does not apply to a conviction of a serious felony defined in subdivision (c) of Section 1192.7, a violent felony as defined in Section 667.5, or a felony offense requiring registration",
+   "slot": "deadline"
+  },
+  {
+   "id": "N10",
+   "text": "In the records it keeps (Government Code 68152), the court may not disclose a conviction granted relief under 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425 except to the person or a criminal justice agency, subject to the exceptions in 1203.425(a)(4).",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "for any record retained by the court pursuant to Section 68152 of the Government Code, except as provided in paragraph (4), the court shall not disclose information concerning a conviction granted relief pursuant to this section or Section 1203.4, 1203.4a, 1203.41, or 1203.42, to any person or entity, in any format, except to the person whose conviction was granted relief or a criminal justice agency",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "A person arrested but not convicted may petition the court to seal the arrest and related records.",
+   "importance": "vital",
+   "section": "851.91",
+   "quote": "A person who has suffered an arrest that did not result in a conviction may petition the court to have his or her arrest and related records sealed",
+   "slot": "office"
+  },
+  {
+   "id": "N12",
+   "text": "The Department of Justice also gives automatic arrest relief; for a felony arrest (other than one punishable by eight years or more) with no proceedings started and no conviction, at least three calendar years must pass after the arrest.",
+   "importance": "okay",
+   "section": "851.93",
+   "quote": "The arrest was for a felony offense not described in clause (ii), there is no indication that criminal proceedings have been initiated, at least three calendar years have elapsed since the date of the arrest, and no conviction occurred",
+   "slot": "deadline"
+  },
+  {
+   "id": "N13",
+   "text": "An unpaid restitution order or restitution fine cannot be the reason a dismissal petition is denied.",
+   "importance": "okay",
+   "section": "1203.4",
+   "quote": "A petition for relief under this section shall not be denied due to an unfulfilled order of restitution or restitution fine.",
+   "slot": null
+  },
+  {
+   "id": "N14",
+   "text": "Unpaid court-imposed costs under the former Penal Code 1203.4a (as it read on December 31, 2021) have been unenforceable and uncollectible since January 1, 2022.",
+   "importance": "okay",
+   "section": "1465.9",
+   "quote": "On and after January 1, 2022, the balance of any court-imposed costs pursuant to Section 1001.15, 1001.16, 1001.90, 1202.4, 1203.1, 1203.1ab, 1203.1c, 1203.1m, 1203.4a, 1203.9, 1205, 1214.5, 2085.5, 2085.6, or 2085.7, as those sections read on December 31, 2021, shall be unenforceable and uncollectible",
+   "slot": "fee"
+  },
+  {
+   "id": "N15",
+   "text": "A dismissal does not relieve the person of disclosing the conviction when directly asked on an application for public office, a state or local license, or a State Lottery contract.",
+   "importance": "okay",
+   "section": "1203.4",
+   "quote": "the order does not relieve them of the obligation to disclose the conviction in response to any direct question contained in any questionnaire or application for public office, for licensure by any state or local agency, or for contracting with the California State Lottery Commission",
+   "slot": null
+  },
+  {
+   "id": "N16",
+   "text": "If the 1203.4a(a) conditions are not all met, the court may still grant the relief in its discretion and in the interest of justice one year after judgment (if the sentence was performed and the person is not serving a sentence or under charge).",
+   "importance": "okay",
+   "section": "1203.4a",
+   "quote": "If a defendant does not satisfy all the requirements of subdivision (a), after a lapse of one year from the date of pronouncement of judgment, a court, in its discretion and in the interest of justice, may grant the relief available pursuant to subdivision (a)",
+   "slot": null
+  },
+  {
+   "id": "N17",
+   "text": "For a sentence imposed before 2011 Realignment that would now be a county-jail sentence, the court may grant relief only two years after the sentence is completed.",
+   "importance": "okay",
+   "section": "1203.42",
+   "quote": "The relief available under this section may be granted only after the lapse of two years following the defendant's completion of the sentence.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N18",
+   "text": "Automatic conviction relief also covers anyone who completed probation without revocation, and an infraction or misdemeanor once the sentence is completed and one calendar year has passed since judgment.",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "The defendant was sentenced to probation and, based upon the disposition date and the term of probation specified in the department's records, appears to have completed their term of probation without revocation. (ib) The defendant was convicted of an infraction or misdemeanor other than one eligible under sub-subclause (ia), and, based upon the disposition date and the term specified in the department's records, the defendant appears to have completed their sentence, and at least one calendar year has elapsed since the date of judgment.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N19",
+   "text": "Automatic conviction relief is not available to a person required to register as a sex offender, on active supervision, serving a sentence, or facing pending charges.",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "The person is not required to register pursuant to the Sex Offender Registration Act. (ii) The person does not have an active record for local, state, or federal supervision in the Supervised Release File. (iii) Based upon the information available in the department's record, including disposition dates and sentencing terms, it does not appear that the person is currently serving a sentence for an offense and there is no indication of pending criminal charges.",
+   "slot": null
+  },
+  {
+   "id": "N20",
+   "text": "The prosecutor or probation department may petition, no later than 90 calendar days before eligibility, to block automatic relief by showing a substantial threat to public safety.",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "The prosecuting attorney or probation department may, no later than 90 calendar days before the date of a person's eligibility for relief pursuant to this section, file a petition to prohibit the department from granting automatic relief pursuant to this section, based on a showing that granting that relief would pose a substantial threat to the public safety.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N21",
+   "text": "The Department of Justice's monthly review for automatic conviction relief runs from October 1, 2024, and depends on an appropriation in the annual Budget Act.",
+   "importance": "okay",
+   "section": "1203.425",
+   "quote": "Commencing October 1, 2024, and subject to an appropriation in the annual Budget Act, on a monthly basis, the Department of Justice shall review the records in the statewide criminal justice databases",
+   "slot": null
+  },
+  {
+   "id": "N22",
+   "text": "In most employment, licensing and certification background checks, the Department of Justice reports every conviction except those granted relief under 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425; schools and the Commission on Teacher Credentialing still receive every conviction, as do peace-officer, criminal-justice and care-facility checks under other subdivisions of 11105.",
+   "importance": "okay",
+   "section": "Cal. PEN § 11105",
+   "quote": "Every conviction rendered against the applicant, except a conviction for which relief has been granted pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, 1203.425, 1203.44, or 1203.49. The Commission on Teacher Credentialing, school districts, county offices of education, charter schools, private schools, state special schools for the blind and deaf, or any other entity required to have a background check because of a contract with a school district, county office of education, charter school, private school, or state special school for the blind and deaf, shall receive every conviction rendered against an applicant, retroactive to January 1, 2020, regardless of relief granted",
+   "slot": null
+  },
+  {
+   "id": "N23",
+   "text": "A licensing board under the Business and Professions Code may not deny a license because of a conviction dismissed under 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425, or the acts underlying it.",
+   "importance": "okay",
+   "section": "Cal. BPC § 480",
+   "quote": "a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code",
+   "slot": null
+  },
+  {
+   "id": "N24",
+   "text": "Except for a few listed boards, a licensing board may not require an applicant to disclose criminal history at all.",
+   "importance": "okay",
+   "section": "Cal. BPC § 480",
+   "quote": "Except as provided in paragraph (1), a board shall not require an applicant for licensure to disclose any information or documentation regarding the applicant's criminal history.",
+   "slot": null
+  },
+  {
+   "id": "N25",
+   "text": "Employers, public or private, may not ask job applicants about arrests that did not lead to conviction, diversion, or convictions judicially dismissed or sealed (with exceptions such as peace-officer jobs and checks other law requires).",
+   "importance": "okay",
+   "section": "Cal. LAB § 432.7",
+   "quote": "An employer, whether a public agency or private individual or corporation, shall not ask an applicant for employment to disclose, through any written form or verbally, information concerning an arrest or detention that did not result in conviction, or information concerning a referral to, and participation in, any pretrial or posttrial diversion program, or concerning a conviction that has been judicially dismissed or ordered sealed pursuant to law",
+   "slot": null
+  },
+  {
+   "id": "N26",
+   "text": "A copy of your own state criminal record from the Department of Justice costs up to $25; a fee waiver request must come with the record request and include a claim and proof of indigency.",
+   "importance": "okay",
+   "section": "Cal. PEN § 11123",
+   "quote": "The application shall be accompanied by a fee not to exceed twenty-five dollars ($25) that the department determines equals the costs of processing the application and providing a copy of the record to the applicant. All fees received by the department under this section are hereby appropriated without regard to fiscal years for the support of the Department of Justice in addition to such other funds as may be appropriated therefor by the Legislature. Any request for waiver of fee shall accompany the original request for the record and shall include a claim and proof of indigency.",
+   "slot": "fee"
+  },
+  {
+   "id": "N27",
+   "text": "The agency that takes the fingerprints for the record request may charge a reasonable fee.",
+   "importance": "okay",
+   "section": "Cal. PEN § 11122",
+   "quote": "The fingerprinting agency may fix a reasonable fee for affixing the applicant's fingerprints to the form, and shall retain such fee.",
+   "slot": "fee"
+  },
+  {
+   "id": "N28",
+   "text": "A factual-innocence petition to seal and destroy arrest records may be filed up to two years after the arrest or the filing of charges, whichever is later; the limit may be waived for good cause.",
+   "importance": "okay",
+   "section": "851.8",
+   "quote": "petitions for relief under this section may be filed up to two years from the date of the arrest or filing of the accusatory pleading, whichever is later. Until January 1, 1983, petitioners can file for relief under this section for arrests which occurred or accusatory pleadings which were filed up to five years prior to the effective date of the statute. Any time restrictions on filing for relief under this section may be waived upon a showing of good cause by the petitioner and in the absence of prejudice.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N29",
+   "text": "A petition to seal an arrest must be filed, and served on the prosecutor and the arresting agency, at least 15 days before the hearing.",
+   "importance": "okay",
+   "section": "851.91",
+   "quote": "Be filed at least 15 days prior to the hearing on the petition. (D) Be served, by copy, upon the prosecuting attorney of the city or county in which the arrest occurred and upon the law enforcement agency that made the arrest at least 15 days prior to the hearing on the petition.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N30",
+   "text": "When a juvenile ward satisfactorily completes informal supervision or probation, the juvenile court must dismiss the petition and seal the records, without a petition from the person.",
+   "importance": "okay",
+   "section": "Cal. WIC § 786",
+   "quote": "If a person who has been alleged or found to be a ward of the juvenile court satisfactorily completes (1) an informal program of supervision pursuant to Section 654.2, (2) probation under Section 725, or (3) a term of probation for any offense, the court shall order the petition dismissed. The court shall order sealed all records pertaining to the dismissed petition",
+   "slot": null
+  },
+  {
+   "id": "N31",
+   "text": "No fee may be charged for a petition to seal juvenile records under Welfare and Institutions Code 781.",
+   "importance": "okay",
+   "section": "781.1",
+   "quote": "A superior court or probation department shall not charge an applicant a fee for filing a petition to seal records under Section 781.",
+   "slot": "fee"
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "No petition fee: none of the adult dismissal or arrest-sealing statutes sets a filing fee, and leftover court-imposed costs under the former 1203.4a are uncollectible",
+    "nuggets": [
+     "N14"
+    ]
+   },
+   {
+    "value": "Up to $25 for a Department of Justice copy of your own record (to confirm relief), waivable on a claim and proof of indigency",
+    "nuggets": [
+     "N26"
+    ]
+   },
+   {
+    "value": "A reasonable fee set by the agency that takes your fingerprints for the record request",
+    "nuggets": [
+     "N27"
+    ]
+   },
+   {
+    "value": "No fee for a juvenile record-sealing petition under Welfare and Institutions Code 781",
+    "nuggets": [
+     "N31"
+    ]
+   }
+  ],
+  "deadline": [
+   {
+    "amount": 1,
+    "unit": "years",
+    "anchor": "pronouncement of judgment, for a misdemeanor without probation or an infraction (Penal Code 1203.4a)",
+    "nuggets": [
+     "N5"
+    ]
+   },
+   {
+    "amount": 1,
+    "unit": "years",
+    "anchor": "completion of a felony split sentence under Penal Code 1170(h)(5)(B) (Penal Code 1203.41)",
+    "nuggets": [
+     "N6"
+    ]
+   },
+   {
+    "amount": 2,
+    "unit": "years",
+    "anchor": "completion of a straight county-jail sentence under 1170(h)(5)(A) or a state-prison sentence (Penal Code 1203.41)",
+    "nuggets": [
+     "N6"
+    ]
+   },
+   {
+    "amount": 2,
+    "unit": "years",
+    "anchor": "completion of a pre-Realignment sentence that would now be a county-jail sentence (Penal Code 1203.42)",
+    "nuggets": [
+     "N17"
+    ]
+   },
+   {
+    "amount": 4,
+    "unit": "years",
+    "anchor": "completion of probation or supervision for a felony, with no new felony conviction (automatic relief, Penal Code 1203.425)",
+    "nuggets": [
+     "N9"
+    ]
+   },
+   {
+    "amount": 3,
+    "unit": "years",
+    "anchor": "date of a felony arrest with no proceedings and no conviction (automatic arrest relief, Penal Code 851.93)",
+    "nuggets": [
+     "N12"
+    ]
+   },
+   {
+    "amount": 15,
+    "unit": "days",
+    "anchor": "notice of the petition to the prosecuting attorney (minimum before relief may be granted)",
+    "nuggets": [
+     "N4"
+    ]
+   },
+   {
+    "amount": 1,
+    "unit": "years",
+    "anchor": "date of judgment for an infraction or misdemeanor with the sentence completed (automatic relief, Penal Code 1203.425)",
+    "nuggets": [
+     "N18"
+    ]
+   },
+   {
+    "amount": 90,
+    "unit": "days",
+    "anchor": "before the date of eligibility for automatic relief: last day for the prosecutor or probation department to petition to block it (Penal Code 1203.425(b))",
+    "nuggets": [
+     "N20"
+    ]
+   },
+   {
+    "amount": 2,
+    "unit": "years",
+    "anchor": "date of the arrest or filing of the accusatory pleading, whichever is later: limit for a factual-innocence petition, waivable for good cause (Penal Code 851.8)",
+    "nuggets": [
+     "N28"
+    ]
+   },
+   {
+    "amount": 15,
+    "unit": "days",
+    "anchor": "before the hearing: filing and service of an arrest-sealing petition (Penal Code 851.91)",
+    "nuggets": [
+     "N29"
+    ]
+   }
+  ],
+  "office": [
+   {
+    "value": "The court (superior court) decides dismissal petitions and arrest-sealing petitions",
+    "nuggets": [
+     "N1",
+     "N11"
+    ]
+   },
+   {
+    "value": "California Department of Justice grants automatic conviction and arrest relief without a petition",
+    "nuggets": [
+     "N8"
+    ]
+   }
+  ]
+ },
+ "answer": "California calls this a dismissal ('expungement'). After probation ends, if you are not serving a sentence, on probation or charged, the court must grant it if you completed probation [N1], or may in the interest of justice [N3]. For a misdemeanor without probation or an infraction, wait one year after judgment; dismissal is required if you completed the sentence, face no charges and have lived an honest and upright life [N5], otherwise discretionary [N16]. Felony jail or prison terms: one year after a split sentence or two after a straight term, at the judge's discretion [N6][N7]. The prosecutor needs 15 days' notice first [N4]; unpaid restitution cannot cause denial [N13]. Dismissal lifts most penalties and disabilities [N2]. Most employment and licensing background checks then omit it, though school and some other checks do not [N22]; employers may not ask about it [N25]; licensing boards cannot deny licenses for it [N23]. You must disclose it if directly asked on applications for public office, licenses or Lottery contracts [N15]. Subject to funding [N21], the Department of Justice also grants relief automatically [N8]: one year after judgment for misdemeanors [N18], four years after supervision for most felonies [N9], unless a prosecutor petitions to block it [N20]. Arrests without conviction can be sealed by petition [N11] or automatically, e.g. three years after felony arrests [N12]. No statute sets a petition fee; old 1203.4a costs are void [N14]. A state record copy costs up to $25, waivable if indigent [N26], plus fingerprinting fees [N27].",
+ "steps": {
+  "process_name": "Dismiss ('expunge') a California conviction by petition (Penal Code 1203.4, 1203.4a, 1203.41, 1203.42)",
+  "trigger": "A person convicted in California is sentenced and later seeks dismissal of the conviction",
+  "trigger_source": {
+   "section": "1203.4",
+   "subsection": "a.1",
+   "quote": "When a defendant has fulfilled the conditions of probation for the entire period of probation, or has been discharged prior to the termination of the period of probation"
+  },
+  "actors": [
+   {
+    "id": "petitioner",
+    "name": "Person convicted (in person, by attorney, or by a probation officer authorized in writing)",
+    "kind": "private-party",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "The probationer may make the application and change of plea in person or by attorney, or by the probation officer authorized in writing."
+    }
+   },
+   {
+    "id": "court",
+    "name": "The court (superior court)",
+    "kind": "public-body",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "be permitted by the court to withdraw their plea of guilty or plea of nolo contendere and enter a plea of not guilty"
+    }
+   },
+   {
+    "id": "probation_officer",
+    "name": "Probation officer",
+    "kind": "official",
+    "source": {
+     "section": "1203.4",
+     "subsection": "d.1",
+     "quote": "The probation officer shall notify the prosecuting attorney when a petition is filed, pursuant to this section."
+    }
+   },
+   {
+    "id": "prosecutor",
+    "name": "Prosecuting attorney",
+    "kind": "official",
+    "source": {
+     "section": "1203.4",
+     "subsection": "d.1",
+     "quote": "the prosecuting attorney has been given 15 days' notice of the petition for relief"
+    }
+   },
+   {
+    "id": "doj",
+    "name": "California Department of Justice",
+    "kind": "other-government",
+    "source": {
+     "section": "13151",
+     "subsection": "a",
+     "quote": "is furnished to the Department of Justice within 30 days"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "advise_rights",
+    "actor": "court",
+    "action": "Inform probationer of dismissal right",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [],
+    "recipient": "petitioner",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "The probationer shall be informed, in their probation papers, of this right and privilege"
+    }
+   },
+   {
+    "id": "file_petition",
+    "actor": "petitioner",
+    "action": "Apply for dismissal and change of plea",
+    "kind": "filing",
+    "modality": "right",
+    "after": [
+     "advise_rights"
+    ],
+    "recipient": "court",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "The probationer may make the application and change of plea in person or by attorney, or by the probation officer authorized in writing."
+    }
+   },
+   {
+    "id": "serve_prosecutor",
+    "actor": "petitioner",
+    "action": "Serve prosecutor and file proof of service",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "file_petition"
+    ],
+    "recipient": "court",
+    "source": {
+     "section": "1203.4",
+     "subsection": "d.2",
+     "quote": "It shall be presumed that the prosecuting attorney has received notice if proof of service is filed with the court."
+    }
+   },
+   {
+    "id": "notify_prosecutor",
+    "actor": "probation_officer",
+    "action": "Notify prosecutor of the petition",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "serve_prosecutor"
+    ],
+    "recipient": "prosecutor",
+    "source": {
+     "section": "1203.4",
+     "subsection": "d.1",
+     "quote": "The probation officer shall notify the prosecuting attorney when a petition is filed, pursuant to this section."
+    }
+   },
+   {
+    "id": "prosecutor_objects",
+    "actor": "prosecutor",
+    "action": "Appear and object to the petition",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "notify_prosecutor"
+    ],
+    "recipient": "court",
+    "source": {
+     "section": "1203.4",
+     "subsection": "e",
+     "quote": "If, after receiving notice pursuant to subdivision (d), the prosecuting attorney fails to appear and object to a petition for dismissal"
+    },
+    "condition": "prosecutor_objects"
+   },
+   {
+    "id": "decide_petition",
+    "actor": "court",
+    "action": "Decide whether dismissal is granted",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "notify_prosecutor",
+     "prosecutor_objects"
+    ],
+    "decision": "dismissal_relief",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "be permitted by the court to withdraw their plea of guilty or plea of nolo contendere and enter a plea of not guilty"
+    },
+    "join": "any"
+   },
+   {
+    "id": "dismiss_case",
+    "actor": "court",
+    "action": "Set aside plea or verdict and dismiss",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "decide_petition"
+    ],
+    "condition": "relief_granted",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "the court shall thereupon dismiss the accusations or information against the defendant"
+    }
+   },
+   {
+    "id": "prosecutor_barred",
+    "actor": "prosecutor",
+    "action": "No motion to set aside or appeal",
+    "kind": "filing",
+    "modality": "prohibition",
+    "after": [
+     "dismiss_case"
+    ],
+    "condition": "prosecutor_did_not_object",
+    "recipient": "court",
+    "source": {
+     "section": "1203.4",
+     "subsection": "e",
+     "quote": "the prosecuting attorney may not move to set aside or otherwise appeal the grant of that petition"
+    }
+   },
+   {
+    "id": "report_disposition",
+    "actor": "court",
+    "action": "Report the dismissal to the Department of Justice",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "dismiss_case",
+     "prosecutor_barred"
+    ],
+    "recipient": "doj",
+    "source": {
+     "section": "13151",
+     "subsection": "a",
+     "quote": "When a court orders an action subsequent to the initial disposition of a case, the court shall similarly report the proceedings to the department"
+    },
+    "join": "any"
+   },
+   {
+    "id": "withhold_record",
+    "actor": "court",
+    "action": "Withhold the dismissed conviction from the public",
+    "kind": "record",
+    "modality": "prohibition",
+    "after": [
+     "report_disposition"
+    ],
+    "source": {
+     "section": "1203.425",
+     "subsection": "a.3.A",
+     "quote": "for any record retained by the court pursuant to Section 68152 of the Government Code, except as provided in paragraph (4), the court shall not disclose information concerning a conviction granted relief pursuant to this section or Section 1203.4, 1203.4a, 1203.41, or 1203.42, to any person or entity, in any format, except to the person whose conviction was granted relief or a criminal justice agency"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "dismissal_relief",
+    "question": "Must or may the court dismiss the conviction (Penal Code 1203.4, 1203.4a, 1203.41, 1203.42)?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "pending_case",
+      "label": "Now serving a sentence, on probation, on parole or under supervision, or charged with an offense",
+      "type": "boolean"
+     },
+     {
+      "name": "excluded_offense",
+      "label": "Offense excluded from the route used (1203.4(b): listed sex offenses, Vehicle Code 42002.1 misdemeanors; 1203.4a(d): misdemeanor 288(c), Vehicle Code 42002.1 misdemeanors, Vehicle Code 42001 infractions)",
+      "type": "boolean"
+     },
+     {
+      "name": "sentence_track",
+      "label": "Route: probation (1203.4); misdemeanor_no_probation or infraction (1203.4a); felony_county_jail or felony_state_prison (1203.41); pre_realignment (1203.42)",
+      "type": "string"
+     },
+     {
+      "name": "notice_15_days",
+      "label": "Prosecutor has had at least 15 days' notice of the petition (not required for a misdemeanor petition under 1203.4a)",
+      "type": "boolean"
+     },
+     {
+      "name": "sex_registration",
+      "label": "The state-prison felony required sex-offender registration",
+      "type": "boolean"
+     },
+     {
+      "name": "vc_12810",
+      "label": "Charged with a Vehicle Code 12810(a)-(e) offense",
+      "type": "boolean"
+     },
+     {
+      "name": "terms_completed",
+      "label": "Probation fulfilled or discharged early, or sentence fully performed",
+      "type": "boolean"
+     },
+     {
+      "name": "wait_over",
+      "label": "Waiting period passed (probation period ended; one year after judgment under 1203.4a; one year after a split sentence or two years after a straight jail or prison term under 1203.41; two years after the sentence under 1203.42)",
+      "type": "boolean"
+     },
+     {
+      "name": "honest_life",
+      "label": "Has lived an honest and upright life and obeyed the laws since judgment (1203.4a(a))",
+      "type": "boolean"
+     },
+     {
+      "name": "interest_of_justice",
+      "label": "Court finds dismissal is in the interest of justice",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "relief_granted",
+      "label": "Dismissal granted",
+      "type": "boolean"
+     },
+     {
+      "name": "basis",
+      "label": "Basis",
+      "type": "string"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not yet: the person must not be serving a sentence, on probation, on parole or supervision, or charged with an offense\""
+      ],
+      "source": {
+       "section": "1203.41",
+       "subsection": "a.3",
+       "quote": "may be granted only if the defendant is not on parole or under supervision pursuant to subparagraph (B) of paragraph (5) of subdivision (h) of Section 1170, and is not serving a sentence for, on probation for, or charged with the commission of, an offense"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not available for this offense\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "b",
+       "quote": "Subdivision (a) of this section does not apply to a misdemeanor that is within the provisions of Section 42002.1 of the Vehicle Code"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "not(\"misdemeanor_no_probation\")",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not yet: the prosecutor must first have 15 days' notice of the petition\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "d.1",
+       "quote": "Relief shall not be granted under this section unless the prosecuting attorney has been given 15 days' notice of the petition for relief."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"felony_state_prison\"",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not available: state-prison felony that required sex-offender registration (1203.41(a)(6))\""
+      ],
+      "source": {
+       "section": "1203.41",
+       "subsection": "a.6",
+       "quote": "the relief available under this section may only be granted if that felony did not result in a requirement to register as a sex offender"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"probation\"",
+       "-",
+       "-",
+       "true",
+       "-",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "true",
+       "\"Discretionary dismissal for a Vehicle Code 12810 offense (1203.4(c)(2))\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "c.2",
+       "quote": "the court in its discretion and in the interest of justice, may order the relief provided pursuant to subdivision (a) to that defendant"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"probation\"",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not as of right for a Vehicle Code 12810 offense (1203.4(c)(1))\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "c.1",
+       "quote": "subdivision (a) does not apply to a person who receives a notice to appear or is otherwise charged with a violation of an offense described in subdivisions (a) to (e), inclusive, of Section 12810 of the Vehicle Code"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"probation\"",
+       "-",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "true",
+       "\"Dismissal as of right after probation (Penal Code 1203.4)\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "a.1",
+       "quote": "When a defendant has fulfilled the conditions of probation for the entire period of probation, or has been discharged prior to the termination of the period of probation"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"probation\"",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "true",
+       "\"Discretionary dismissal in the interest of justice (Penal Code 1203.4)\""
+      ],
+      "source": {
+       "section": "1203.4",
+       "subsection": "a.1",
+       "quote": "in any other case in which a court, in its discretion and the interest of justice, determines that a defendant should be granted the relief available under this section"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"misdemeanor_no_probation\",\"infraction\"",
+       "-",
+       "-",
+       "-",
+       "true",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "true",
+       "\"Dismissal required one year after judgment (Penal Code 1203.4a(a))\""
+      ],
+      "source": {
+       "section": "1203.4a",
+       "subsection": "a",
+       "quote": "and have, since the pronouncement of judgment, lived an honest and upright life and have conformed to and obeyed the laws of the land, be permitted by the court to withdraw their plea"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"misdemeanor_no_probation\",\"infraction\"",
+       "-",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "true",
+       "\"Discretionary dismissal one year after judgment (Penal Code 1203.4a(b))\""
+      ],
+      "source": {
+       "section": "1203.4a",
+       "subsection": "b",
+       "quote": "If a defendant does not satisfy all the requirements of subdivision (a), after a lapse of one year from the date of pronouncement of judgment, a court, in its discretion and in the interest of justice, may grant the relief"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"felony_county_jail\",\"felony_state_prison\"",
+       "-",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "true",
+       "\"Discretionary felony dismissal (Penal Code 1203.41)\""
+      ],
+      "source": {
+       "section": "1203.41",
+       "subsection": "a",
+       "quote": "If a defendant is convicted of a felony, the court, in its discretion and in the interest of justice, may order the following relief"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "\"pre_realignment\"",
+       "-",
+       "-",
+       "-",
+       "true",
+       "true",
+       "-",
+       "true"
+      ],
+      "then": [
+       "true",
+       "\"Discretionary dismissal of a pre-Realignment sentence two years after completion (Penal Code 1203.42)\""
+      ],
+      "source": {
+       "section": "1203.42",
+       "subsection": "a",
+       "quote": "If a defendant was sentenced prior to the implementation of the 2011 Realignment Legislation for a crime for which the defendant would otherwise have been eligible for sentencing pursuant to subdivision (h) of Section 1170"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "false",
+       "\"Not eligible yet, or relief denied\""
+      ],
+      "source": {
+       "section": "1203.41",
+       "subsection": "a.2",
+       "quote": "The relief available under this section may be granted only after the lapse of one year following the defendant's completion of the sentence"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "dismissed",
+    "description": "Conviction dismissed; released from penalties and disabilities, with listed exceptions",
+    "after": [
+     "withhold_record"
+    ],
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "the defendant shall thereafter be released from all penalties and disabilities resulting from the offense of which they have been convicted"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Penal Code § 1203.425",
+    "role": "automatic conviction relief by the Department of Justice, without a petition",
+    "source": {
+     "section": "1203.425",
+     "subsection": "a.2.A",
+     "quote": "without requiring a petition or motion by a party for that relief"
+    }
+   },
+   {
+    "citation": "Penal Code § 851.91",
+    "role": "petition to seal an arrest that did not result in a conviction",
+    "source": {
+     "section": "851.91",
+     "subsection": "a",
+     "quote": "may petition the court to have his or her arrest and related records sealed"
+    }
+   },
+   {
+    "citation": "Penal Code § 4852.01 et seq.",
+    "role": "certificate of rehabilitation and pardon",
+    "source": {
+     "section": "1203.4",
+     "subsection": "a.1",
+     "quote": "the right, if any, to petition for a certificate of rehabilitation and pardon"
+    }
+   }
+  ],
+  "gaps": [
+   "The waiting periods (end of probation; one year after judgment without probation; one or two years after a felony county-jail or prison sentence; two years under 1203.42) are eligibility conditions, modeled as the wait_over input, not deadlines the model can time.",
+   "The 15 days' notice is a minimum period before the court may grant relief (an input to the decision), not a deadline for the prosecutor; the statutes set no time limit for objecting.",
+   "1203.4a requires 15 days' notice to the prosecutor only for infraction petitions (1203.4a(f)); the notice and objection steps are drawn from 1203.4(d)-(e), which 1203.41(e)-(f) and 1203.42(d)-(e) repeat.",
+   "The statutes do not say which court hears a 1203.4 petition or whether a hearing is held; in practice the sentencing court rules, often on the papers.",
+   "No current statute sets a filing fee for adult dismissal or arrest-sealing petitions; forms and filing practice come from the Judicial Council and local courts.",
+   "Automatic relief by the Department of Justice (1203.425 for convictions, 851.93 for arrests) runs separately and does not stop anyone from petitioning."
+  ]
+ },
+ "out_of_corpus": [
+  {
+   "kind": "court rule",
+   "what": "Petition and order forms and filing practice for dismissal and arrest-sealing petitions",
+   "where": "Judicial Council forms (e.g. CR-180 Petition for Dismissal and CR-181 Order for Dismissal; CR-409/CR-410 petition and order to seal an arrest); superior court local rules and self-help centers"
+  },
+  {
+   "kind": "agency policy",
+   "what": "How the Department of Justice runs automatic conviction and arrest relief in practice (it depends on complete electronic disposition records), and the current record-review application form and fee amount within the statutory cap",
+   "where": "California Department of Justice record review and Clean Slate guidance pages (the statutory fee cap and fingerprinting fee are in Penal Code §§ 11122-11123, in the gold set)"
+  },
+  {
+   "kind": "federal",
+   "what": "Effect of a California dismissal or sealing for immigration, federal firearms and FBI records",
+   "where": "Immigration and Nationality Act (a state rehabilitative dismissal generally still counts as a conviction, 8 U.S.C. § 1101(a)(48)); 18 U.S.C. § 921(a)(20), § 922(g); FBI Identity History Summary"
+  }
+ ],
+ "version_flags": [
+  "Penal Code § 1203.425 in its current form (convictions since January 1, 1973) became operative October 1, 2024 (§ 1203.425(d)); DOJ's monthly review is subject to an appropriation in the annual Budget Act.",
+  "Penal Code § 851.93 (automatic arrest relief) is operative commencing October 1, 2024, subject to an appropriation in the annual Budget Act (§ 851.93(g)).",
+  "Penal Code § 1465.9(b): costs imposed under the former § 1203.4a (as it read on December 31, 2021) are unenforceable and uncollectible on and after January 1, 2022; § 1465.9 says nothing about current fees.",
+  "Penal Code § 11105(p)(2)(A): schools and the Commission on Teacher Credentialing receive every conviction, retroactive to January 1, 2020, regardless of relief granted."
+ ],
+ "local_option": "Dismissal is discretionary in many cases (Penal Code §§ 1203.4 'in the interest of justice', 1203.4a(b), 1203.41, 1203.42), and the prosecutor or probation department may petition to block automatic relief on public-safety grounds no later than 90 days before eligibility (§ 1203.425(b)); filing practice is set by each superior court.",
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "California 'expungement' is a dismissal, not destruction: the conviction can still be pleaded and proved in a later prosecution, must be disclosed in response to a direct question on applications for public office, state or local licensure and Lottery contracts, and does not restore firearm rights (§ 1203.4(a)(1)-(2); § 1203.425(a)(4)). Since January 1, 2023 courts may not disclose, from records kept under Gov. Code § 68152, convictions dismissed under §§ 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425 except to the person or a criminal justice agency (§ 1203.425(a)(3), subject to (a)(4)). Background checks: DOJ omits dismissed convictions from general employment and licensing checks (§ 11105(p)(2)(A)) but sends every conviction for peace-officer (k), criminal-justice (l) and care-facility (m) checks and to schools and the Commission on Teacher Credentialing; controlled-substance convictions under H&S §§ 11350/11377 more than five years old with relief are not sent (§ 11105(p)(2)(B)). Employers may not ask about or use dismissed or sealed convictions or non-conviction arrests (Lab. Code § 432.7(a)(1)), except peace-officer and criminal-justice jobs (e), positions where other law requires the information (m) or mandated background checks (n). Licensing boards under the Business and Professions Code may not deny a license for a dismissed conviction (B&P § 480(c)) and, apart from the boards in (f)(1), may not require disclosure of criminal history (f)(2). Exclusions from § 1203.4: Vehicle Code § 42002.1 misdemeanors, infractions (use § 1203.4a), and listed sex offenses (§ 286(c), 287(c), 288, 288.5, 289(j), 311.1-311.3, 311.11, felony 261.5(d)) (§ 1203.4(b)); Vehicle Code § 12810(a)-(e) offenses only in the court's discretion (§ 1203.4(c)). § 1203.4a(a) requires an honest and upright life since judgment; if that or another requirement is not met the court may still grant relief after one year if the sentence was performed (§ 1203.4a(b)); infraction petitions are by written declaration with 15 days' notice (§ 1203.4a(f)). § 1203.41 excludes state-prison felonies requiring sex-offender registration and requires that the person not be on parole or 1170(h)(5)(B) supervision. § 1203.42: pre-Realignment sentences that would now be 1170(h), two years after completion. Notice: relief under §§ 1203.4, 1203.41 and 1203.42 needs 15 days' notice to the prosecutor; proof of service raises a presumption of notice; a prosecutor who had notice and did not appear and object may not move to set aside or appeal the grant (§§ 1203.4(d)-(e), 1203.41(e)-(f), 1203.42(d)-(e)). Automatic conviction relief (§ 1203.425), subject to Budget Act funding: completed probation without revocation; misdemeanor or infraction one calendar year after judgment with sentence completed; felonies four years after supervision with no new felony (not serious, violent or registerable); not for registrants or people on supervision or facing charges; the prosecutor or probation department may petition to block it at least 90 days before eligibility (§ 1203.425(b)). Arrests: § 851.91 petition (filed and served at least 15 days before the hearing; as of right, or interests of justice for patterns of domestic violence, child or elder abuse arrests; not for murder or other offenses without a statute of limitations unless acquitted or found factually innocent); § 851.92 sealing mechanics; § 851.93 automatic relief (dismissed misdemeanors; one year for misdemeanor arrests, three years for felony arrests, six years for offenses punishable by eight years or more, all with no proceedings; completed diversion); § 851.8 factual innocence (up to two years after the arrest or filing of charges, whichever is later, waivable for good cause; not for infractions, § 851.8(n)). § 1203.45: whole record sealed for misdemeanors committed under 18. Cost: §§ 1203.4, 1203.4a, 1203.41, 1203.42, 1203.425, 851.91, 851.8 and 1203.45 set no filing fee (an observation from reading them, not a statement any of them makes); § 1465.9(b) voids leftover costs imposed under the former § 1203.4a; a DOJ copy of one's own record costs up to $25, waivable for indigency (§ 11123), plus a reasonable fingerprinting fee (§ 11122). Juvenile records: sealed automatically on satisfactory completion of supervision or probation (Welf. & Inst. Code § 786), or by petition five years after jurisdiction ends or after age 18 (§ 781), with no fee (§ 781.1). Other routes not modeled: § 1203.4b (fire camp), § 1203.43 (DEJ pleas), § 1203.49 and § 236.14 (trafficking victims), Health & Safety Code § 11361.8 (cannabis), certificate of rehabilitation (§ 4852.01 et seq.). Unpaid restitution is no bar (§§ 1203.4(c)(3), 1203.4a(e), 1203.41(d), 1203.42(c), 1203.45(f))."
+}

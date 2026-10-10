@@ -223,7 +223,46 @@ function benchmarkChart(themeName, bench, ceiling, curve) {
 ${body}</g></svg>`;
 }
 
-// ------------------------------------------------ 6. the README's checklist block
+// ------------------------------------------------ 6. AskBench: new questions, local pipeline vs Claude's references
+function askBenchChart(themeName, ab) {
+  const t = THEMES[themeName];
+  const arms = [["local", "Local pipeline"], ["profile", "Claude's search concepts"], ["oracle", "Claude's sections"]]
+    .filter(([k]) => ab.summary?.[k]);
+  const metrics = [["composite", "Composite"], ["recall@10", "Gold sections in top 10"], ["vital_recall", "Vital points quoted"],
+    ["citation_precision", "Quotes from gold sections"], ["gate_correct", "Answer / not-found right"]];
+  const labelW = 190, barW = 300, rowH = 20, groupGap = 14, top = 70;
+  const height = top + metrics.length * (arms.length * rowH + groupGap) + 50, width = labelW + barW + 140;
+  const shades = [t.seq[4], t.seq[2], t.seq[0]];
+  let body = "", y = top;
+  // two independent Claude drafts of the same answer agree this far: the realistic target, not 1.0
+  const ceiling = ab.claude_vs_claude?.mean;
+  for (const [mk, ml] of metrics) {
+    body += `<text x="0" y="${y + 13}" font-size="12" font-weight="600" fill="${t.ink}">${esc(ml)}</text>`;
+    if (mk === "composite" && ceiling != null) {
+      const cx = labelW + ceiling * barW;
+      body += `<line x1="${cx}" x2="${cx}" y1="${y - 2}" y2="${y + arms.length * rowH + 2}" stroke="${t.ink2}" stroke-dasharray="4 3"><title>Claude vs Claude: ${ceiling}</title></line>`;
+      body += `<text x="${cx}" y="${y - 5}" font-size="10.5" fill="${t.ink2}" text-anchor="middle">Claude vs Claude ${ceiling.toFixed(2)}</text>`;
+    }
+    arms.forEach(([ak], i) => {
+      const v = ab.summary[ak][mk];
+      const yy = y + i * rowH;
+      body += `<rect x="${labelW}" y="${yy + 2}" width="${barW}" height="14" rx="3" fill="${t.grid}" opacity="0.6"/>`;
+      if (v != null) {
+        body += `<rect x="${labelW}" y="${yy + 2}" width="${Math.max(2, v * barW)}" height="14" rx="3" fill="${shades[i]}"><title>${esc(ak)} ${esc(mk)}: ${v}</title></rect>`;
+        body += `<text x="${labelW + barW + 8}" y="${yy + 13}" font-size="11.5" fill="${t.ink}" font-variant-numeric="tabular-nums">${v.toFixed(2)}</text>`;
+      }
+    });
+    y += arms.length * rowH + groupGap;
+  }
+  const legend = legendRow(t, arms.map(([k, l], i) => [`${l} (${ab.summary[k].cases})`, shades[i]]), 0, height - 14);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" ${FONT} role="img" aria-label="AskBench: the local pipeline scored against Claude's reference answers">
+<rect width="100%" height="100%" rx="10" fill="${t.surface}"/><g transform="translate(16,0)">
+<text x="0" y="24" font-size="15" font-weight="650" fill="${t.ink}">New questions: local answers vs Claude's references</text>
+<text x="0" y="42" font-size="12" fill="${t.ink2}">${ab.cases} cases: six questions on prisons and court debt × VA, DC, MD, TX, CA</text>
+${body}${legend}</g></svg>`;
+}
+
+// ------------------------------------------------ 7. the README's checklist block
 function updateReadme(readmePath) {
   if (!fs.existsSync(readmePath)) return null;
   const text = fs.readFileSync(readmePath, "utf8");
@@ -254,4 +293,6 @@ const readJson = (name) => (fs.existsSync(path.join(docs, name)) ? JSON.parse(fs
 const bench = readJson("benchmark.json");
 if (bench) for (const theme of ["light", "dark"])
   written.push(write("benchmark", theme, benchmarkChart(theme, bench, readJson("ceiling.json"), readJson("learning_curve.json"))));
+const askbench = readJson("askbench.json");
+if (askbench) for (const theme of ["light", "dark"]) written.push(write("askbench", theme, askBenchChart(theme, askbench)));
 console.log(written.join("\n"));

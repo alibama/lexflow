@@ -1,0 +1,331 @@
+{
+ "state": "de",
+ "question": "records",
+ "sections": [
+  "29 Del. C. § 10003",
+  "29 Del. C. § 10005"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "10003",
+   "quote": "All state agencies and public bodies shall implement and promulgate a policy for addressing requests made under the Freedom of Information Act.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general policy duty"
+  },
+  {
+   "section": "10003",
+   "quote": "All state agencies and public bodies shall develop a web portal for receiving FOIA requests through the internet.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "portal infrastructure, not per case"
+  },
+  {
+   "section": "10003",
+   "quote": "Such portals shall utilize the standard request form promulgated by the Attorney General.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "portal form rule"
+  },
+  {
+   "section": "10003",
+   "quote": "All public bodies in the executive branch of state government that are subject to the provisions of this chapter and are required by statute, regulation, or other established policy to publish an annual or biennial report, shall electronically post copies of these reports to a single designated State website approved by the Secretary of State.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "annual reports, unrelated"
+  },
+  {
+   "section": "10003",
+   "quote": "Electronic notification of the availability of these reports on the designated State website shall fulfill a public body’s duty to publish and provide these reports to the Governor, General Assembly, or other state agencies or state officials.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "annual reports, unrelated"
+  },
+  {
+   "section": "10003",
+   "quote": "All state agencies and public bodies shall provide a mailing address for receiving FOIA requests through the U.S. mail.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "mailing address infrastructure"
+  },
+  {
+   "section": "10003",
+   "quote": "Form of request. — (1) All FOIA requests shall be made in writing to the public body in person, by U.S. mail, by e-mail, by fax, or online in accordance with the provisions hereunder.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester submits written request"
+  },
+  {
+   "section": "10003",
+   "quote": "FOIA requests may be submitted using the FOIA Request Form promulgated by the Office of the Attorney General provided, however, that any FOIA request that otherwise conforms with the policy hereunder shall not be denied solely because the request is not on the promulgated form.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional form; no-denial rule"
+  },
+  {
+   "section": "10003",
+   "quote": "All requests shall adequately describe the records sought in sufficient detail to enable the public body to locate such records with reasonable effort.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester describes records sought"
+  },
+  {
+   "section": "10003",
+   "quote": "The requesting party shall be as specific as possible when requesting records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restates specificity duty"
+  },
+  {
+   "section": "10003",
+   "quote": "To assist the public body in locating the requested records, the public body may request that the requesting party provide additional information known to the requesting party, such as the types of records, dates, parties to correspondence, and subject matter of the requested records.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body asks for more information"
+  },
+  {
+   "section": "10003",
+   "quote": "FOIA coordinator. — (1) Each public body shall designate a FOIA coordinator who shall serve as the point of contact for FOIA requests and coordinate the public body’s responses thereto.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "designate coordinator, organizational"
+  },
+  {
+   "section": "10003",
+   "quote": "The FOIA coordinator shall be identified on the public body’s website and each public body shall provide the name and contact information for its FOIA coordinator to the Attorney General.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "coordinator listing, organizational"
+  },
+  {
+   "section": "10003",
+   "quote": "The FOIA coordinator and/or his or her designee, working in cooperation with other employees and representatives, shall make every reasonable effort to assist the requesting party in identifying the records being sought, and to assist the public body in locating and providing the requested records.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "coordinator assists locating records"
+  },
+  {
+   "section": "10003",
+   "quote": "For each FOIA request, the document shall include, at a minimum, the requesting party’s contact information, the date the public body received the request, the public body’s response deadline, the date of the public body’s response (including the reasons for any extension), the names, contact information and dates of correspondence with individuals contacted in connection with requests, the dates of review by the public body, the names of individuals who conducted such reviews, whether documents were made available, the amount of copying and/or administrative fees assessed, and the date of final disposition.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "tracking log contents, record-keeping"
+  },
+  {
+   "section": "10003",
+   "quote": "If the public body denies a request in whole or in part, the public body’s response shall indicate the reasons for the denial.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "denial states reasons"
+  },
+  {
+   "section": "10003",
+   "quote": "Requests for e-mail. — (1) Requests for e-mail records shall be fulfilled by the public body from its own records, if doing so can be accomplished by the public body with reasonable effort.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body fulfills e-mail request"
+  },
+  {
+   "section": "10003",
+   "quote": "Before requesting the information and technology personnel or custodians to provide e-mail records, the public body shall provide an itemized written cost estimate to the requesting party, listing all charges expected to be incurred in retrieving such records.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "itemized cost estimate before IT retrieval"
+  },
+  {
+   "section": "10003",
+   "quote": "Upon receipt of the estimate, the requesting party may decide whether to proceed with, cancel, or modify the request.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester proceeds, cancels or modifies"
+  },
+  {
+   "section": "10003",
+   "quote": "Requests for other noncustodial records. — (1) If all or any portion of a FOIA request seeks records controlled by the public body but are not within its possession or cannot otherwise be fulfilled by the public body with reasonable effort from the records it possesses, then the public body shall promptly request that the relevant custodian provide the noncustodial records to the public body.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body asks custodian for noncustodial records"
+  },
+  {
+   "section": "10003",
+   "quote": "Review by public body. — Prior to disclosure, records may be reviewed by the public body to ensure that those records or portions of records deemed nonpublic may be removed pursuant to § 10002 of this title or any other applicable provision of law.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body reviews and redacts before disclosure"
+  },
+  {
+   "section": "10003",
+   "quote": "The charge for copying standard sized, black and white public records for copies over and above 20 shall be $0.10 per sheet ($0.20 for a double-sided sheet).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee rate schedule"
+  },
+  {
+   "section": "10003",
+   "quote": "The charge for copying oversized public records shall be as follows: 18\" x 22\", $2.00 per sheet; 24\" x 36\", $3.00 per sheet; documents larger than 24\" x 36\", $1.00 per square foot.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee rate schedule"
+  },
+  {
+   "section": "10003",
+   "quote": "The public body shall make every effort to ensure that administrative fees are minimized, and may only assess such charges as shall be reasonable required to process FOIA requests.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general fee limit"
+  },
+  {
+   "section": "10003",
+   "quote": "In connection therewith, the public body shall minimize the use of nonadministrative personnel in processing FOIA requests, to the extent possible.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general staffing policy"
+  },
+  {
+   "section": "10003",
+   "quote": "Prior to fulfilling any request that would require a requesting party to incur administrative fees, the public body shall provide an itemized written cost estimate of such fees to the requesting party, listing all charges expected to be incurred in retrieving such records.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "itemized estimate of administrative fees"
+  },
+  {
+   "section": "10003",
+   "quote": "When multiple FOIA requests are submitted by or on behalf of the requesting party in an effort to avoid incurring administrative charges, the public body may in its discretion aggregate staff time for all such requests when computing fees hereunder.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee computation rule"
+  },
+  {
+   "section": "10003",
+   "quote": "Payment. — The public body may require all or any portion of the fees due hereunder to be paid prior to any service being performed pursuant to this section.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body requires prepayment of fees"
+  },
+  {
+   "section": "10005",
+   "quote": "Venue in such cases where access to public records is denied shall be placed in a court of competent jurisdiction for the county or city in which the public body ordinarily meets or in which the plaintiff resides.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "venue rule"
+  },
+  {
+   "section": "10005",
+   "quote": "In any action brought under this section, the burden of proof shall be on the custodian of records to justify the denial of access to records, and shall be on the public body to justify a decision to meet in executive session or any failure to comply with this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "burden of proof"
+  },
+  {
+   "section": "10005",
+   "quote": "The court may award attorney fees and costs to a successful plaintiff of any action brought under this section.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards fees to plaintiff"
+  },
+  {
+   "section": "10005",
+   "quote": "The court may award attorney fees and costs to a successful defendant, but only if the court finds that the action was frivolous or was brought solely for the purpose of harassment.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards fees to defendant if frivolous"
+  },
+  {
+   "section": "10005",
+   "quote": "Any citizen may petition the Attorney General to determine whether a violation of this chapter has occurred or is about to occur.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "citizen petitions Attorney General"
+  },
+  {
+   "section": "10005",
+   "quote": "Upon receiving a petition, the Attorney General shall promptly determine whether the petition is against an administrative office or officer, agency, department, board, commission or instrumentality of state government which the Attorney General is obliged to represent pursuant to § 2504 of this title.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG determines routing of petition"
+  },
+  {
+   "section": "10005",
+   "quote": "If the Chief Deputy finds that a violation of this chapter has occurred or is about to occur, the Attorney General shall not represent the public body in any appeal filed pursuant to this chapter for such violation if the public body the Attorney General is otherwise obligated to represent fails to comply with the Chief Deputy’s determination.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "representation consequence rule"
+  },
+  {
+   "section": "10005",
+   "quote": "Regardless of the finding of the Chief Deputy, the petitioner or the public body may appeal the matter on the record to Superior Court.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "appeal to Superior Court"
+  },
+  {
+   "section": "10005",
+   "quote": "If the Attorney General finds that a violation of this chapter has occurred or is about occur, the citizen may:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in; options in next clause"
+  },
+  {
+   "section": "10005",
+   "quote": "(1) File suit as set forth in this chapter; or (2) request in writing that the Attorney General file suit on the citizen’s behalf.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "citizen sues or asks AG to sue"
+  },
+  {
+   "section": "10005",
+   "quote": "The citizen shall have the absolute right to file suit regardless of the determination of the Attorney General, and may move to intervene as a party in any suit filed by the Attorney General.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "citizen files suit or intervenes"
+  },
+  {
+   "section": "10005",
+   "quote": "An administrative office or officer, agency, department, board, commission or instrumentality of state government which the Attorney General is obligated to represent pursuant to § 2504 of this title shall not require the approval of the Attorney General pursuant to § 2507 of this title to address claims of violation under this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "approval exemption, not a step"
+  }
+ ]
+}

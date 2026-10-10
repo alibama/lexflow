@@ -1,0 +1,196 @@
+{
+ "qid": "record_sealing",
+ "question": "How do I get my criminal record sealed or expunged, how long do I have to wait, and what does it cost?",
+ "state": "tx",
+ "as_of": "2026-10-10",
+ "question_type": "process",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   ["expunction", "expunge", "expunged", "expungement", "records and files relating to the arrest"],
+   ["order of nondisclosure", "nondisclosure", "seal", "sealed", "criminal history record information"],
+   ["ex parte petition", "petition", "petition the court"],
+   ["deferred adjudication community supervision", "discharge and dismissal", "community supervision", "completion of the person's sentence"],
+   ["elapsed from the date of arrest", "anniversary", "180 days", "limitations period", "only on or after"],
+   ["fee", "filing fee", "civil case", "civil action", "waived"]
+  ],
+  "negative": ["lis pendens", "chemical dependency", "report made in bad faith", "DNA records", "bail bond forfeiture"],
+  "slots": ["fee", "deadline", "office"]
+ },
+ "gold_sections": [
+  {"ref": "55A.002", "role": "primary", "why": "A person tried and acquitted by the trial court is entitled to expunction of the arrest records (subject to the criminal-episode exception)."},
+  {"ref": "55A.003", "role": "supporting", "why": "Expunction after conviction followed by a pardon or other relief on the basis of actual innocence."},
+  {"ref": "55A.004", "role": "supporting", "why": "Expunction after conviction followed by a pardon for another reason."},
+  {"ref": "55A.051", "role": "primary", "why": "Who can use the no-conviction grounds: released, charge did not end in a final conviction and is no longer pending, and no court-ordered community supervision except for a Class C misdemeanor."},
+  {"ref": "55A.052", "role": "primary", "why": "No charge presented: waiting periods of 180 days (Class C), one year (Class B or A) or three years (felony) from arrest, or sooner if the prosecutor certifies the records are not needed."},
+  {"ref": "55A.053", "role": "supporting", "why": "A filed charge dismissed or quashed because of a veterans, mental health or pretrial intervention program, absence of probable cause, or a void charge."},
+  {"ref": "55A.054", "role": "primary", "why": "Expunction once prosecution is barred because the limitations period has expired."},
+  {"ref": "55A.151", "role": "supporting", "why": "No expunction of an acquittal when the person was convicted of, or remains subject to prosecution for, another offense in the same criminal episode."},
+  {"ref": "55A.154", "role": "supporting", "why": "A person who absconded after release on bail cannot use the waiting-period or limitations grounds."},
+  {"ref": "55A.201", "role": "supporting", "why": "After an acquittal the trial court must advise of the right to expunction and enter the order within 30 days on request."},
+  {"ref": "55A.251", "role": "primary", "why": "Where to file: an ex parte petition in a district court for the county of arrest or of the alleged offense."},
+  {"ref": "55A.252", "role": "supporting", "why": "Fine-only offenses: the petition may be filed in a justice court or a municipal court of record."},
+  {"ref": "55A.253", "role": "supporting", "why": "The petition must be verified and list the person's identifying data, the arrest and every agency and entity holding records."},
+  {"ref": "55A.254", "role": "supporting", "why": "Hearing set no earlier than the 30th day after filing; notice to each listed entity; $25 for each entity that cannot receive electronic notice."},
+  {"ref": "55A.255", "role": "primary", "why": "The court decides and shall order expunction when the person is entitled."},
+  {"ref": "55A.303", "role": "supporting", "why": "The petitioner or a protesting agency may appeal as in other civil cases."},
+  {"ref": "55A.351", "role": "supporting", "why": "When the order is final the clerk sends it to DPS, the Office of Court Administration and each listed entity; $25 per entity that cannot take electronic delivery."},
+  {"ref": "55A.353", "role": "supporting", "why": "Listed agencies return or obliterate the records and delete index references."},
+  {"ref": "55A.401", "role": "supporting", "why": "Effect of a final expunction order: the records may not be used and the person may deny the arrest."},
+  {"ref": "102.0061", "role": "primary", "why": "Expunction fees: district court civil ex parte filing fee, $100 in a justice or municipal court of record, waivers for prompt acquittal petitions and veterans or mental health court graduates, possible refund."},
+  {"ref": "133.151", "role": "supporting", "why": "The state consolidated civil fee ($137) that district clerks collect on filing any civil case, one component of the civil filing fee."},
+  {"ref": "42A.111", "role": "supporting", "why": "Discharge and dismissal from deferred adjudication; the judge must grant or explain nondisclosure eligibility and the earliest date."},
+  {"ref": "411.072", "role": "primary", "why": "Deferred adjudication for a first, nonviolent misdemeanor: the court issues the nondisclosure order without a petition (at discharge or on the 180th day) after a $28 fee."},
+  {"ref": "411.0725", "role": "primary", "why": "Other deferred adjudication: petition after discharge for most misdemeanors, after two years for listed misdemeanors, after five years for felonies; best interest of justice."},
+  {"ref": "411.0726", "role": "supporting", "why": "Deferred adjudication for first DWI or BWI: petition two years after discharge, barred if the offense caused a collision with another person."},
+  {"ref": "411.073", "role": "supporting", "why": "Community supervision after a misdemeanor conviction: petition on completion or two years later for listed misdemeanors."},
+  {"ref": "411.0731", "role": "supporting", "why": "Community supervision after a first DWI conviction: two years (ignition interlock) or five years after completion."},
+  {"ref": "411.0735", "role": "primary", "why": "Misdemeanor convictions: petition on completion of the sentence if fine-only, otherwise two years after; violent or sexual offenses barred."},
+  {"ref": "411.0736", "role": "supporting", "why": "First DWI conviction: three years (ignition interlock) or five years after completing the sentence."},
+  {"ref": "411.074", "role": "primary", "why": "Conditions for every nondisclosure order: no new non-traffic offense during supervision and the waiting period; offenses that always bar nondisclosure."},
+  {"ref": "411.0745", "role": "primary", "why": "Petition filed in person, electronically or by mail with the civil case filing fee; notice to the state; hearing unless the state is silent for 45 days and the court finds entitlement."},
+  {"ref": "411.075", "role": "supporting", "why": "After the order: clerk to DPS within 15 business days, DPS seals within 10 business days and forwards, agencies seal within 30 business days."},
+  {"ref": "411.0755", "role": "supporting", "why": "Effect of nondisclosure: no need to disclose the proceeding on employment, information or licensing applications."},
+  {"ref": "Tex. Government Code § 552.142", "role": "supporting", "why": "Nondisclosed information is excepted from public information requests and the person may deny the proceeding."}
+ ],
+ "nuggets": [
+  {"id": "N1", "text": "A person who was tried and acquitted by the trial court is entitled to have all records and files of the arrest expunged (subject to the same-criminal-episode exception).", "importance": "vital", "section": "55A.002", "quote": "acquitted by the trial court, except as provided by Article 55A.151", "slot": null},
+  {"id": "N2", "text": "Expunction without an acquittal or pardon requires that the charge did not end in a final conviction, is no longer pending, and that there was no court-ordered community supervision (including deferred adjudication) except for a Class C misdemeanor.", "importance": "vital", "section": "55A.051", "quote": "the charge, if any, has not resulted in a final conviction and is no longer pending; and (3) there was no court-ordered community supervision under Chapter 42A for the offense, other than for a Class C misdemeanor", "slot": null},
+  {"id": "N3", "text": "If no charge was ever presented, a Class C misdemeanor arrest can be expunged once at least 180 days have passed since the arrest.", "importance": "vital", "section": "55A.052", "quote": "at least 180 days have elapsed from the date of arrest if the arrest for which the expunction was sought was for an offense punishable as a Class C misdemeanor", "slot": "deadline"},
+  {"id": "N4", "text": "If no charge was ever presented, a Class B or A misdemeanor arrest can be expunged once at least one year has passed since the arrest.", "importance": "vital", "section": "55A.052", "quote": "at least one year has elapsed from the date of arrest if the arrest for which the expunction was sought was for an offense punishable as a Class B or A misdemeanor", "slot": "deadline"},
+  {"id": "N5", "text": "If no charge was ever presented, a felony arrest can be expunged once at least three years have passed since the arrest.", "importance": "vital", "section": "55A.052", "quote": "at least three years have elapsed from the date of arrest if the arrest for which the expunction was sought was for an offense punishable as a felony", "slot": "deadline"},
+  {"id": "N6", "text": "An arrest can also be expunged once prosecution is no longer possible because the statute of limitations has expired.", "importance": "okay", "section": "55A.054", "quote": "prosecution of the person for the offense for which the person was arrested is no longer possible because the limitations period has expired", "slot": null},
+  {"id": "N7", "text": "The person files an ex parte petition for expunction in a district court for the county where the person was arrested or where the offense allegedly occurred.", "importance": "vital", "section": "55A.251", "quote": "file an ex parte petition for expunction in a district court for the county in which: (1) the petitioner was arrested; or (2) the offense was alleged to have occurred", "slot": "office"},
+  {"id": "N8", "text": "In district court the petitioner pays the fee charged for filing an ex parte petition in a civil action (in addition to other fees required by law).", "importance": "vital", "section": "102.0061", "quote": "a petitioner seeking expunction of a criminal record in a district court shall pay the fee charged for filing an ex parte petition in a civil action in district court", "slot": "fee"},
+  {"id": "N9", "text": "In a justice court or municipal court of record the expunction filing fee is $100.", "importance": "okay", "section": "102.0061", "quote": "a petitioner seeking expunction of a criminal record in a justice court or a municipal court of record under Chapter 55A shall pay a fee of $100 for filing an ex parte petition for expunction", "slot": "fee"},
+  {"id": "N10", "text": "After deferred adjudication for a first-time misdemeanor that is not DWI, BWI or one of the listed assaultive, sexual, family, public-order, weapons or organized-crime offenses, the court that placed the person on deferred adjudication must issue an order of nondisclosure without a petition once the person is discharged and meets Section 411.074.", "importance": "vital", "section": "411.072", "quote": "the court that placed the person on deferred adjudication community supervision shall issue an order of nondisclosure of criminal history record information under this subchapter", "slot": "office"},
+  {"id": "N11", "text": "For that automatic nondisclosure order the person must pay a $28 fee to the court clerk.", "importance": "vital", "section": "411.072", "quote": "The person must pay a $28 fee to the clerk of the court before the court issues the order.", "slot": "fee"},
+  {"id": "N12", "text": "After deferred adjudication for a felony, the person may petition for nondisclosure only on or after the fifth anniversary of the discharge and dismissal.", "importance": "vital", "section": "411.0725", "quote": "the fifth anniversary of the discharge and dismissal, if the offense for which the person was placed on deferred adjudication was a felony", "slot": "deadline"},
+  {"id": "N13", "text": "A first-time misdemeanor conviction that was not fine-only can be the subject of a nondisclosure petition two years after the sentence is completed (fine-only misdemeanors immediately on completion).", "importance": "okay", "section": "411.0735", "quote": "the second anniversary of the date of completion of the person's sentence, if the offense of which the person was convicted was a misdemeanor other than a misdemeanor described by Subdivision (1)", "slot": "deadline"},
+  {"id": "N14", "text": "Nondisclosure is never available if the offense, or any prior offense, requires sex-offender registration or is aggravated kidnapping, murder, capital murder, trafficking, injury to a child, elderly or disabled person, child abandonment, a protective-order violation, stalking, or another family-violence offense.", "importance": "vital", "section": "411.074", "quote": "the person requests the order of nondisclosure for, or the person has been previously convicted of or placed on deferred adjudication community supervision for: (A) an offense requiring registration as a sex offender under Chapter 62, Code of Criminal Procedure", "slot": null},
+  {"id": "N15", "text": "A nondisclosure petition must be accompanied by the fee that generally applies to filing a civil case.", "importance": "vital", "section": "411.0745", "quote": "The petition must be accompanied by payment of a fee that generally applies to the filing of a civil case.", "slot": "fee"}
+ ],
+ "slots": {
+  "fee": [
+   {"value": "district court fee for filing an ex parte petition in a civil action (expunction)", "nuggets": ["N8"]},
+   {"value": "$100", "what": "expunction petition in a justice court or municipal court of record", "nuggets": ["N9"]},
+   {"value": "$28", "what": "nondisclosure order issued without a petition after deferred adjudication for a nonviolent first misdemeanor", "nuggets": ["N11"]},
+   {"value": "civil case filing fee (nondisclosure petition)", "nuggets": ["N15"]}
+  ],
+  "deadline": [
+   {"amount": 180, "unit": "days", "anchor": "date of arrest; Class C misdemeanor; no charge presented", "nuggets": ["N3"]},
+   {"amount": 1, "unit": "years", "anchor": "date of arrest; Class B or A misdemeanor; no charge presented", "nuggets": ["N4"]},
+   {"amount": 3, "unit": "years", "anchor": "date of arrest; felony; no charge presented", "nuggets": ["N5"]}
+  ],
+  "office": [
+   {"value": "district court for the county of arrest or of the alleged offense (expunction petition)", "nuggets": ["N7"]},
+   {"value": "court that placed the person on deferred adjudication community supervision (nondisclosure)", "nuggets": ["N10"]}
+  ]
+ },
+ "answer": "Texas has two remedies, and a judge decides both [N7][N10]. Expunction erases arrest records [N1]. You qualify if you were acquitted at trial [N1], or if the charge did not end in a final conviction, is no longer pending, and you got no court-ordered probation or deferred adjudication except for a Class C misdemeanor [N2]. If no charge was ever filed, wait 180 days after the arrest for a Class C misdemeanor [N3], one year for a Class B or A misdemeanor [N4], or three years for a felony [N5]. A filed charge that was dismissed can be expunged once the statute of limitations runs out [N6]. File a sworn ex parte petition in the district court of the county where you were arrested or the offense allegedly happened [N7]; you pay the court's civil ex parte filing fee [N8], or $100 in a justice court or municipal court of record [N9]. Nondisclosure (Texas sealing) hides records from the public after deferred adjudication or some convictions [N10][N13]. For a first nonviolent misdemeanor on deferred adjudication, the court that supervised you issues the order without a petition [N10] once you pay a $28 fee [N11]. Otherwise you petition and pay the usual civil filing fee [N15]: five years after discharge for a felony deferred adjudication [N12], or two years after finishing the sentence for a first misdemeanor conviction that was not fine-only [N13]. Sex-offender-registration offenses, murder, family violence and other listed offenses, even past ones, bar sealing [N14].",
+ "steps": {
+  "process_name": "Clear a Texas criminal record: expunction petition or petition for nondisclosure",
+  "trigger": "A person arrested in Texas, or discharged from deferred adjudication, asks a court to expunge or seal the record",
+  "trigger_source": {"section": "55A.051", "quote": "This subchapter applies to a person who has been placed under a custodial or noncustodial arrest for commission of a felony or misdemeanor"},
+  "actors": [
+   {"id": "court", "name": "Court (district court for expunction, or a justice or municipal court of record for fine-only offenses; for nondisclosure, the court that placed the person on deferred adjudication or imposed the sentence)", "kind": "public-body", "source": {"section": "55A.255", "quote": "the court shall enter an order directing expunction"}},
+   {"id": "clerk", "name": "Clerk of the court", "kind": "official", "source": {"section": "55A.351", "subsection": "a", "quote": "the clerk of the court shall send a copy of the order to the Crime Records Service of the Department of Public Safety"}},
+   {"id": "prosecutor", "name": "Attorney representing the state", "kind": "other-government", "source": {"section": "411.0745", "subsection": "e", "quote": "the court shall provide notice to the state and an opportunity for a hearing"}},
+   {"id": "dps", "name": "Department of Public Safety, Crime Records Service", "kind": "other-government", "source": {"section": "411.075", "subsection": "a", "quote": "the Crime Records Service of the department"}},
+   {"id": "agencies", "name": "Listed officials, agencies and other governmental entities holding the records", "kind": "other-government", "source": {"section": "55A.353", "quote": "each official or agency or other governmental entity listed in the order shall"}},
+   {"id": "petitioner", "name": "Person seeking expunction or nondisclosure (petitioner)", "kind": "private-party", "source": {"section": "55A.251", "quote": "A person who is entitled to expunction of records and files under Article 55A.002, 55A.004, or 55A.005 or Subchapter B"}}
+  ],
+  "steps": [
+   {"id": "ex_petition", "actor": "petitioner", "action": "File verified ex parte expunction petition", "kind": "filing", "modality": "permission", "after": [], "condition": "entitled_to_expunction", "recipient": "court", "source": {"section": "55A.251", "quote": "may, subject to Article 55A.252, file an ex parte petition for expunction in a district court for the county in which"}},
+   {"id": "ex_pay_fee", "actor": "petitioner", "action": "Pay civil ex parte filing fee", "kind": "payment", "modality": "obligation", "after": ["ex_petition"], "recipient": "court", "source": {"section": "102.0061", "subsection": "a", "quote": "a petitioner seeking expunction of a criminal record in a district court shall pay the fee charged for filing an ex parte petition in a civil action in district court"}},
+   {"id": "ex_notice", "actor": "court", "action": "Set hearing; notify listed agencies", "kind": "notice", "modality": "obligation", "after": ["ex_pay_fee"], "recipient": "agencies", "source": {"section": "55A.254", "subsection": "a", "quote": "The court shall set a hearing on an ex parte petition for expunction not earlier than the 30th day following the date the petition is filed and shall give a copy of the petition and notice of hearing to each official, agency, or other entity listed in the petition"}},
+   {"id": "ex_decide", "actor": "court", "action": "Decide whether petitioner is entitled", "kind": "decision", "modality": "obligation", "after": ["ex_notice"], "decision": "expunction_finding", "source": {"section": "55A.255", "quote": "If the court finds that the person who is the subject of an ex parte petition filed under Article 55A.251, 55A.252, or 55A.257 is entitled to expunction of any records and files that are the subject of the petition"}},
+   {"id": "ex_order", "actor": "court", "action": "Enter order directing expunction", "kind": "record", "modality": "obligation", "after": ["ex_decide"], "condition": "entitled", "source": {"section": "55A.255", "quote": "the court shall enter an order directing expunction"}},
+   {"id": "ex_send", "actor": "clerk", "action": "Send final order to DPS and agencies", "kind": "notice", "modality": "obligation", "after": ["ex_order"], "recipient": "agencies", "source": {"section": "55A.351", "subsection": "a", "quote": "When an expunction order issued under Subchapter E or F is final, the clerk of the court shall send a copy of the order to the Crime Records Service of the Department of Public Safety"}},
+   {"id": "ex_return", "actor": "agencies", "action": "Return or obliterate records; delete index", "kind": "record", "modality": "obligation", "after": ["ex_send"], "recipient": "court", "source": {"section": "55A.353", "quote": "return all records and files that are subject to the expunction order to the court"}},
+   {"id": "nd_petition", "actor": "petitioner", "action": "Petition supervising court for nondisclosure", "kind": "filing", "modality": "permission", "after": [], "condition": "eligible_for_nondisclosure", "recipient": "court", "source": {"section": "411.0725", "subsection": "b", "quote": "the person may petition the court that placed the person on deferred adjudication community supervision for an order of nondisclosure of criminal history record information under this section"}},
+   {"id": "nd_notify_state", "actor": "court", "action": "Notify the state; offer hearing", "kind": "notice", "modality": "obligation", "after": ["nd_petition"], "recipient": "prosecutor", "source": {"section": "411.0745", "subsection": "e", "quote": "On receipt of a petition under this section, the court shall provide notice to the state and an opportunity for a hearing on whether the person is entitled to file the petition and issuance of the order is in the best interest of justice"}},
+   {"id": "nd_state_response", "actor": "prosecutor", "action": "Request a hearing within 45 days", "kind": "filing", "modality": "permission", "after": ["nd_notify_state"], "recipient": "court", "deadline": {"amount": 45, "unit": "days", "anchor": "the date on which the state receives notice of the petition", "consequence": "right-lapses", "on_miss": "nd_decide", "source": {"section": "411.0745", "subsection": "e.1", "quote": "the state does not request a hearing on the issue before the 45th day after the date on which the state receives notice under this subsection"}}, "source": {"section": "411.0745", "subsection": "e.1", "quote": "the state does not request a hearing on the issue before the 45th day after the date on which the state receives notice under this subsection"}},
+   {"id": "nd_decide", "actor": "court", "action": "Hear and decide nondisclosure petition", "kind": "decision", "modality": "obligation", "after": ["nd_state_response"], "decision": "nondisclosure_finding", "source": {"section": "411.0745", "subsection": "e", "quote": "The court shall hold a hearing before determining whether to issue an order of nondisclosure of criminal history record information, except that a hearing is not required if"}},
+   {"id": "nd_issue", "actor": "court", "action": "Issue order of nondisclosure", "kind": "record", "modality": "obligation", "after": ["nd_decide"], "condition": "order_granted", "source": {"section": "411.0725", "subsection": "d", "quote": "the court shall issue an order prohibiting criminal justice agencies from disclosing to the public criminal history record information related to the offense giving rise to the deferred adjudication community supervision"}},
+   {"id": "nd_send", "actor": "clerk", "action": "Send order to DPS Crime Records Service", "kind": "notice", "modality": "obligation", "after": ["nd_issue"], "recipient": "dps", "deadline": {"amount": 15, "unit": "business_days", "anchor": "the date the order of nondisclosure is issued", "consequence": "unstated", "source": {"section": "411.075", "subsection": "a", "quote": "Not later than the 15th business day after the date an order of nondisclosure of criminal history record information is issued under this subchapter"}}, "source": {"section": "411.075", "subsection": "a", "quote": "the clerk of the court shall send all relevant criminal history record information contained in the order or a copy of the order"}},
+   {"id": "nd_dps_seal", "actor": "dps", "action": "Seal DPS records; forward order", "kind": "record", "modality": "obligation", "after": ["nd_send"], "recipient": "agencies", "deadline": {"amount": 10, "unit": "business_days", "anchor": "receipt of the order or its criminal history record information from the clerk", "consequence": "unstated", "source": {"section": "411.075", "subsection": "b", "quote": "Not later than 10 business days after receipt of relevant criminal history record information contained in an order or a copy of an order under Subsection (a)"}}, "source": {"section": "411.075", "subsection": "b", "quote": "the department shall seal any criminal history record information maintained by the department that is the subject of the order"}},
+   {"id": "nd_agencies_seal", "actor": "agencies", "action": "Seal their criminal history records", "kind": "record", "modality": "obligation", "after": ["nd_dps_seal"], "deadline": {"amount": 30, "unit": "business_days", "anchor": "receipt of the order or its criminal history record information from DPS", "consequence": "unstated", "source": {"section": "411.075", "subsection": "d", "quote": "Not later than 30 business days after receipt of relevant criminal history record information contained in an order or a copy of an order from the department under Subsection (b)"}}, "source": {"section": "411.075", "subsection": "d", "quote": "shall seal any criminal history record information maintained by the individual or entity that is the subject of the order"}}
+  ],
+  "decisions": [
+   {
+    "id": "expunction_finding",
+    "question": "Is the petitioner entitled to expunction of the records named in the petition?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {"name": "ground_met", "label": "A ground is met (acquittal, pardon, no charge and waiting period run or prosecutor certification, qualifying dismissal, or limitations expired)", "type": "boolean"},
+     {"name": "same_episode", "label": "Acquitted, but convicted of or still prosecutable for another offense in the same criminal episode", "type": "boolean"}
+    ],
+    "outputs": [
+     {"name": "finding", "label": "Finding", "type": "string"},
+     {"name": "entitled", "label": "Entitled to expunction", "type": "boolean"},
+     {"name": "not_entitled", "label": "Not entitled", "type": "boolean"}
+    ],
+    "rules": [
+     {"when": ["-", "true"], "then": ["\"Not entitled: another offense in the same criminal episode\"", "false", "true"], "source": {"section": "55A.151", "quote": "the person was convicted of or remains subject to prosecution for at least one other offense occurring during the criminal episode"}},
+     {"when": ["false", "-"], "then": ["\"Not entitled: no statutory ground is met\"", "false", "true"], "source": {"section": "55A.051", "quote": "the charge, if any, has not resulted in a final conviction and is no longer pending"}},
+     {"when": ["true", "false"], "then": ["\"Entitled: order directing expunction\"", "true", "false"], "source": {"section": "55A.255", "quote": "the court shall enter an order directing expunction"}}
+    ]
+   },
+   {
+    "id": "nondisclosure_finding",
+    "question": "Does the court issue the order of nondisclosure?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {"name": "barred_offense", "label": "The offense, or a prior offense, requires sex-offender registration, is a listed violent offense, or involves family violence", "type": "boolean"},
+     {"name": "new_offense", "label": "Convicted or placed on deferred adjudication for another offense (other than fine-only traffic) during supervision or the waiting period", "type": "boolean"},
+     {"name": "waiting_period_met", "label": "The waiting period for the offense has run", "type": "boolean"},
+     {"name": "best_interest", "label": "Issuing the order is in the best interest of justice", "type": "boolean"}
+    ],
+    "outputs": [
+     {"name": "finding", "label": "Finding", "type": "string"},
+     {"name": "order_granted", "label": "Order issued", "type": "boolean"},
+     {"name": "order_denied", "label": "Order refused", "type": "boolean"}
+    ],
+    "rules": [
+     {"when": ["true", "-", "-", "-"], "then": ["\"Refused: offense bars nondisclosure\"", "false", "true"], "source": {"section": "411.074", "subsection": "b", "quote": "A person may not be granted an order of nondisclosure of criminal history record information under this subchapter and is not entitled to petition the court for an order of nondisclosure under this subchapter if"}},
+     {"when": ["false", "true", "-", "-"], "then": ["\"Refused: new offense during supervision or waiting period\"", "false", "true"], "source": {"section": "411.074", "subsection": "a", "quote": "the person is not convicted of or placed on deferred adjudication community supervision for any offense other than a traffic offense that is punishable by fine only"}},
+     {"when": ["false", "false", "false", "-"], "then": ["\"Refused: petition filed before the waiting period ran\"", "false", "true"], "source": {"section": "411.0725", "subsection": "e", "quote": "A person may petition the court that placed the person on deferred adjudication community supervision for an order of nondisclosure of criminal history record information under this section only on or after"}},
+     {"when": ["false", "false", "true", "false"], "then": ["\"Refused: not in the best interest of justice\"", "false", "true"], "source": {"section": "411.0725", "subsection": "d", "quote": "a determination that the person is entitled to file the petition and issuance of the order is in the best interest of justice"}},
+     {"when": ["false", "false", "true", "true"], "then": ["\"Order of nondisclosure issued\"", "true", "false"], "source": {"section": "411.0725", "subsection": "d", "quote": "the court shall issue an order prohibiting criminal justice agencies from disclosing to the public criminal history record information related to the offense giving rise to the deferred adjudication community supervision"}}
+    ]
+   }
+  ],
+  "outcomes": [
+   {"id": "ex_expunged", "description": "Records expunged; their release or use is prohibited", "after": ["ex_return"], "source": {"section": "55A.401", "quote": "the release, maintenance, dissemination, or use of the expunged records and files for any purpose is prohibited"}},
+   {"id": "ex_denied", "description": "Expunction denied; appeal as in other civil cases", "after": ["ex_decide"], "when": "not_entitled", "source": {"section": "55A.303", "quote": "may appeal the court's decision in the same manner as in other civil cases"}},
+   {"id": "nd_sealed", "description": "Records sealed from the public; no need to disclose on applications", "after": ["nd_agencies_seal"], "source": {"section": "411.0755", "quote": "is not required in any application for employment, information, or licensing to state that the person has been the subject of any criminal proceeding related to the information that is the subject of the order"}},
+   {"id": "nd_denied", "description": "No order of nondisclosure", "after": ["nd_decide"], "when": "order_denied", "source": {"section": "411.074", "subsection": "b", "quote": "A person may not be granted an order of nondisclosure of criminal history record information under this subchapter"}}
+  ],
+  "cross_references": [
+   {"citation": "Tex. Gov't Code § 411.074", "role": "conditions every nondisclosure order must meet", "source": {"section": "411.0725", "subsection": "b", "quote": "satisfies the requirements of Section 411.074"}},
+   {"citation": "Tex. Code Crim. Proc. art. 55A.253", "role": "required contents of the expunction petition", "source": {"section": "55A.201", "subsection": "c", "quote": "all of the information required in a petition for expunction under Article 55A.253"}}
+  ],
+  "gaps": [
+   "The expunction path is drawn for the general ex parte petition (Articles 55A.251-55A.255). An acquitted person can instead ask the trial court for an order within 30 days of the acquittal (Article 55A.201), and a mistaken-identity applicant goes through the felony prosecutor and gets an order without a hearing (Article 55A.256); neither is drawn.",
+   "Article 55A.254(a) sets the hearing no earlier than the 30th day after filing. That is a minimum wait, not a deadline, so it is not drawn as a timer.",
+   "The nondisclosure path follows Section 411.0725 (deferred adjudication other than first nonviolent misdemeanors). Sections 411.073, 411.0726, 411.0731, 411.0735 and 411.0736 use the same petition, notice and best-interest steps with different waiting periods; Section 411.072 needs no petition (the court acts at discharge or on the 180th day after the person was placed on deferred adjudication, after a $28 fee).",
+   "Section 411.0745(e) lets the court skip the hearing only if the state does not ask for one before the 45th day and the court finds entitlement and best interest. The model routes the 45-day timer to the court's decision; whether a hearing is actually held then sits inside the decision.",
+   "The clerk, DPS and agency sealing deadlines in Section 411.075 state no consequence for missing them (consequence 'unstated').",
+   "After the order is sent (Article 55A.351), DPS must also notify federal depositories and private entities (Article 55A.352); not drawn."
+  ]
+ },
+ "out_of_corpus": [
+  {"kind": "local", "what": "The dollar total of the district clerk's civil filing fee for an ex parte petition (the state consolidated civil fee plus the district clerk's filing fee and county-set fees)", "where": "The county district clerk's fee schedule; Tex. Gov't Code § 51.317 (district clerk filing fee), which is not in the downloaded corpus"},
+  {"kind": "court rule", "what": "Filing without paying court costs when the petitioner cannot afford them", "where": "Texas Rule of Civil Procedure 145 (Statement of Inability to Afford Payment of Court Costs)"},
+  {"kind": "agency policy", "what": "Nondisclosure petition forms and the agency list to use in an expunction petition", "where": "Office of Court Administration forms (Gov't Code § 411.0745(c)-(d)); each district clerk's website list of agencies (CCP art. 55A.253(c)); DPS Crime Records Service"}
+ ],
+ "version_flags": [
+  "No section relied on carries an '(Effective ...)' or '(Effective until ...)' heading as of 2026-10-10.",
+  "CCP art. 55A.356(d) and (e) were repealed by Acts 2025, 89th Leg., ch. 850 (S.B. 1667), eff. September 1, 2025; the answer does not depend on them.",
+  "Chapter 55A recodified the former expunction chapter (Chapter 55, Articles 55.01-55.06); older guides cite the Article 55 numbers."
+ ],
+ "local_option": "The dollar cost of a district court petition depends on the county's civil fee schedule. A Class C or other fine-only arrest can be filed in a justice court or a municipal court of record, but only cities that have a municipal court of record offer that venue.",
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Texas has no general automatic sealing for adult records: expunction (CCP ch. 55A) destroys arrest records for people not finally convicted (or acquitted or pardoned); nondisclosure (Gov't Code ch. 411, subch. E-1) seals deferred adjudication and some misdemeanor and first-DWI records from the public, with the narrow exception of Section 411.072, where the court issues the order without a petition. Left out of the 15 nuggets: the prosecutor certification that lets a no-charge arrest skip the wait (55A.052(a)(4)); dismissals that qualify immediately (55A.053: veterans, mental health or pretrial intervention programs, absence of probable cause, void charge); absconding bars the waiting-period and limitations grounds (55A.154); fee waivers for acquittal petitions filed within 30 days (102.0061(c)) and for veterans or mental health court graduates (102.0061(d), 55A.203(c)); possible refund of the district court fee (102.0061(e)); $25 per listed entity that cannot receive electronic notice (55A.254(f), 55A.351(b-3)); the state consolidated civil fee of $137 (Local Gov't Code 133.151) as one part of the civil filing fee; 411.0725(e) misdemeanor timing (on discharge, or two years for Penal Code ch. 20, 21, 22, 25, 42, 43, 46); first DWI or BWI rules (411.0726: two years; 411.0731: two or five years; 411.0736: three or five years, depending on an ignition interlock); 411.0735(c-1) bars violent or sexual misdemeanors other than simple assault; effects (55A.401: deny the arrest; 411.0755 and Gov't Code 552.142: no need to disclose, may deny the proceeding). The felony five-year and misdemeanor two-year nondisclosure waits are stated as ordinals ('fifth anniversary', 'second anniversary'), which the slot checker cannot match to a number, so they appear as deadline nuggets (N12, N13) but not in slots.deadline. Juvenile sealing (Family Code ch. 58, subch. C-1) and the minor's fine-only expunction (CCP 45A.463) are separate regimes, not covered here."
+}

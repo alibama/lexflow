@@ -1,0 +1,58 @@
+{
+ "state": "nj",
+ "question": "business",
+ "sections": [
+  "N.J. Stat. § 42:2C-18"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "2C-18",
+   "quote": "One or more persons may act as organizers to form a limited liability company by signing and delivering to the filing office for filing a certificate of formation. b.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizers sign and deliver certificate for filing"
+  },
+  {
+   "section": "2C-18",
+   "quote": "A certificate of formation shall state:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content requirement intro"
+  },
+  {
+   "section": "2C-18",
+   "quote": "(1) the name of the limited liability company, which complies with section 8 of this act; and (2) the street and mailing addresses of the initial registered office and the name of the initial agent at that office for service of process of the company. c.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list of required contents"
+  },
+  {
+   "section": "2C-18",
+   "quote": "Subject to subsection c. of section 12 of this act, a certificate of formation may also contain statements as to matters other than those required by subsection b. of this section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional contents permission"
+  },
+  {
+   "section": "2C-18",
+   "quote": "A limited liability company is formed when the filing office has filed the certificate of formation and the company has at least one member, unless the certificate states a delayed effective date pursuant to subsection c. of section 22 of this act. e.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "filing by filing office takes effect, LLC formed"
+  },
+  {
+   "section": "2C-18",
+   "quote": "If the certificate states a delayed effective date, a limited liability company is not formed if, before the certificate takes effect, a certificate of dissolution is signed and delivered to the filing office for filing and the filing office files the certificate. f.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exception: abandonment before delayed effective date"
+  }
+ ]
+}

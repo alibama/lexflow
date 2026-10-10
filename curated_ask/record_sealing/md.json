@@ -1,0 +1,1318 @@
+{
+ "qid": "record_sealing",
+ "question": "How do I get my criminal record sealed or expunged, how long do I have to wait, and what does it cost?",
+ "state": "md",
+ "as_of": "2026-10-10",
+ "question_type": "process",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "expungement",
+    "expunge",
+    "expunged",
+    "expunged record",
+    "expunged by obliteration"
+   ],
+   [
+    "shield",
+    "shielding",
+    "shieldable conviction",
+    "shielded record",
+    "petition for shielding"
+   ],
+   [
+    "police record",
+    "court record",
+    "Central Repository",
+    "Maryland Judiciary Case Search"
+   ],
+   [
+    "acquittal",
+    "dismissal",
+    "not guilty",
+    "nolle prosequi",
+    "stet",
+    "probation before judgment"
+   ],
+   [
+    "released without being charged",
+    "arrested or confined",
+    "without being charged with the commission of a crime"
+   ],
+   [
+    "State's Attorney",
+    "objection",
+    "hearing",
+    "listed victims"
+   ],
+   [
+    "fee",
+    "costs",
+    "waive any court fees and costs",
+    "unpaid court fees",
+    "may not assess any costs"
+   ],
+   [
+    "satisfies the sentence",
+    "no earlier than",
+    "after a disposition of the charge",
+    "within 60 days"
+   ],
+   [
+    "possession of cannabis",
+    "civil offense",
+    "only charge in the case",
+    "stet on the docket"
+   ]
+  ],
+  "negative": [
+   "public driving record",
+   "protective order",
+   "peace order",
+   "correctional officer",
+   "Alcoholic Beverages and Cannabis",
+   "licensure compact"
+  ],
+  "slots": [
+   "deadline",
+   "fee",
+   "office"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "Criminal Procedure § 10-103.1",
+   "role": "primary",
+   "why": "A person arrested or confined on or after October 1, 2007 and released without being charged is entitled to expungement of all police records; the law enforcement unit must expunge within 60 days of release and notify the Central Repository, which has 60 days; no fee or costs; a remedy if they fail."
+  },
+  {
+   "ref": "Criminal Procedure § 10-105.1",
+   "role": "primary",
+   "why": "Automatic expungement, 3 years after disposition, of records of a charge (a crime or a civil cannabis offense, other than a non-appearance Transportation violation) where no charge in the case ended other than in acquittal, dismissal, not guilty or a non-treatment nolle prosequi; the court sends notice of the date."
+  },
+  {
+   "ref": "Criminal Procedure § 10-105.2",
+   "role": "primary",
+   "why": "After an acquittal, dismissal, not guilty or non-treatment nolle prosequi the court must notify the defendant (by mail if absent) of the right to petition for expungement under § 10-105 (missing from the downloaded text), with a written form for a general waiver and release of tort claims."
+  },
+  {
+   "ref": "Criminal Procedure § 10-105.4",
+   "role": "primary",
+   "why": "Cost rules for expungement under Title 10, Subtitle 1: unpaid court fees or costs are not a bar, and the court waives court fees and costs tied to the expunged charge (shielding, Subtitle 3, is not covered)."
+  },
+  {
+   "ref": "Criminal Procedure § 10-303",
+   "role": "primary",
+   "why": "Petition to shield shieldable convictions: no earlier than 3 years after the whole sentence is satisfied, new-conviction and pending-case bars, unit rule, service on the State's Attorney with 30 days to object, discretionary grant if unopposed, hearing on objection, good cause, victim notice, one grant per lifetime."
+  },
+  {
+   "ref": "Criminal Procedure § 10-301",
+   "role": "definition",
+   "why": "Defines 'shield' (records made inaccessible to the public) and the twelve shieldable convictions (disorderly conduct, disturbing the peace, CDS possession, trespass, driving without a license, and others)."
+  },
+  {
+   "ref": "Criminal Procedure § 10-401",
+   "role": "supporting",
+   "why": "In the version in force since January 31, 2026, Maryland Judiciary Case Search may not show charges ending in acquittal, dismissal or any nolle prosequi, stets marked at least 3 years earlier, or pardoned cannabis-possession convictions; automatic, no petition."
+  },
+  {
+   "ref": "Criminal Procedure § 10-112",
+   "role": "supporting",
+   "why": "DPSCS had to remove from the Central Repository, by July 1, 2024 and without a petition, every case whose only charge was cannabis possession issued before July 1, 2023."
+  },
+  {
+   "ref": "Criminal Procedure § 10-111",
+   "role": "supporting",
+   "why": "Case Search may not show a case whose only charge was cannabis possession disposed of before July 1, 2023."
+  },
+  {
+   "ref": "Criminal Procedure § 10-104",
+   "role": "supporting",
+   "why": "After a nolle prosequi of all charges against a defendant never served, the District Court may order expungement without a petition unless the State objects and shows cause, and may not assess costs."
+  },
+  {
+   "ref": "Criminal Procedure § 10-302",
+   "role": "supporting",
+   "why": "Shielding never applies to a domestically related crime, and shielded records stay fully accessible to criminal justice units, employers and licensing agencies with a statutory duty or authorization to check, and others listed."
+  },
+  {
+   "ref": "Criminal Procedure § 10-304",
+   "role": "supporting",
+   "why": "Case Search may not refer to the existence of shielded records."
+  },
+  {
+   "ref": "Criminal Procedure § 10-306",
+   "role": "supporting",
+   "why": "Effect of shielding: those with access may not pass shielded information on, and employers, schools and State or local units may not require disclosure of shielded charges or refuse a person solely for not disclosing them."
+  },
+  {
+   "ref": "Criminal Procedure § 10-107",
+   "role": "supporting",
+   "why": "Unit rule: charges from the same incident are a unit, and if one charge or conviction in the unit cannot be expunged, none of them can (minor traffic and cannabis possession charges excepted)."
+  },
+  {
+   "ref": "Criminal Procedure § 6-232",
+   "role": "supporting",
+   "why": "When all charges end in acquittal, dismissal, probation before judgment, nolle prosequi or stet, the court must advise the defendant that the records and DNA may be expunged under Title 10, Subtitle 1 and Public Safety Title 2, Subtitle 5."
+  },
+  {
+   "ref": "Criminal Procedure § 10-109",
+   "role": "supporting",
+   "why": "Effect of expungement: employers, schools and licensing units may not require disclosure of expunged charges or refuse a person solely for not disclosing them."
+  },
+  {
+   "ref": "Criminal Procedure § 10-103",
+   "role": "supporting",
+   "why": "Older route for arrests before October 1, 2007 without charge: written request to the law enforcement unit within 8 years of the incident, 60-day handling, District Court application within 30 days of a denial, no fee."
+  },
+  {
+   "ref": "Criminal Procedure § 10-102",
+   "role": "supporting",
+   "why": "Scope: police and court records are subject to expungement, including records from before July 1, 1975 (whose § 10-105 limitation periods run from entitlement); minor traffic violations, investigatory files and court opinions are excluded."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A person arrested or confined on or after October 1, 2007 and released without being charged with a crime is entitled to expungement of all police records about it, including photographs and fingerprints.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-103.1",
+   "quote": "is entitled to expungement of all police records, including photographs and fingerprints, relating to the matter",
+   "slot": null
+  },
+  {
+   "id": "N2",
+   "text": "Within 60 days after the person's release, the law enforcement unit must, without any request, search diligently for and expunge each police record of the arrest or confinement.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-103.1",
+   "quote": "Within 60 days after release of a person entitled to expungement of a police record under subsection (a) of this section, the law enforcement unit shall: (1) search diligently for and expunge each police record about the arrest or confinement of the person",
+   "slot": "deadline"
+  },
+  {
+   "id": "N3",
+   "text": "A person entitled to this expungement cannot be required to pay any fee or costs for it.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-103.1",
+   "quote": "A person who is entitled to expungement under this section may not be required to pay any fee or costs in connection with the expungement.",
+   "slot": "fee"
+  },
+  {
+   "id": "N4",
+   "text": "Since October 1, 2021, records of a charge (a crime, or a civil cannabis offense under Criminal Law § 5-601(c)(2)(ii), but not a Transportation Article violation for which the defendant need not appear) are expunged automatically 3 years after the disposition if no charge in the case ended other than in acquittal, dismissal, not guilty, or a nolle prosequi that did not require drug or alcohol treatment.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-105.1",
+   "quote": "relating to the charging of a civil offense under § 5–601(c)(2)(ii) of the Criminal Law Article or a crime other than a violation of the Transportation Article for which the defendant is not required to appear shall be expunged 3 years after a disposition of the charge if no charge in the case resulted in a disposition other than",
+   "slot": "deadline"
+  },
+  {
+   "id": "N5",
+   "text": "When every charge in a case ends in acquittal, dismissal, not guilty or a nolle prosequi not requiring treatment, the court must notify the defendant (by mail if absent) of the right to expungement under § 10-105, and the notice must include a written form for a general waiver and release of all tort claims about the charges.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-105.2",
+   "quote": "the court shall notify the defendant of the defendant’s right to expungement under § 10–105 of this subtitle",
+   "slot": null
+  },
+  {
+   "id": "N6",
+   "text": "When all charges end in acquittal, dismissal, probation before judgment, nolle prosequi or stet, the court must advise the defendant that the defendant may be entitled to expunge the records, and any DNA sample and record, under the expungement and DNA laws.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 6-232",
+   "quote": "the court shall advise the defendant that the defendant may be entitled to expunge the records and any DNA sample and DNA record relating to the charge or charges against the defendant",
+   "slot": null
+  },
+  {
+   "id": "N7",
+   "text": "Unpaid court fees or costs do not bar an expungement.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-105.4",
+   "quote": "Any unpaid court fees or costs are not a bar to expungement under this subtitle.",
+   "slot": "fee"
+  },
+  {
+   "id": "N8",
+   "text": "When ordering or carrying out an expungement under the expungement subtitle (Criminal Procedure Title 10, Subtitle 1), the court must waive the court fees and costs associated with the charge being expunged.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-105.4",
+   "quote": "When ordering or effecting an expungement under this subtitle, the court shall waive any court fees and costs associated with the charge being expunged.",
+   "slot": "fee"
+  },
+  {
+   "id": "N9",
+   "text": "If the State enters a nolle prosequi of all charges in a District Court case against a defendant who was never served, the District Court may order the records expunged unless the State objects and shows cause, and it may not charge the defendant any costs for that proceeding.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-104",
+   "quote": "The District Court may not assess any costs against a defendant for a proceeding under subsection (a) of this section.",
+   "slot": "fee"
+  },
+  {
+   "id": "N10",
+   "text": "Charges arising from the same incident form a unit: if one charge or conviction in the unit cannot be expunged, none of the others can be (minor traffic and cannabis possession charges are not part of the unit).",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-107",
+   "quote": "If a person is not entitled to expungement of one charge or conviction in a unit, the person is not entitled to expungement of any other charge or conviction in the unit.",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "Under the version in force since January 31, 2026, Maryland Judiciary Case Search may not refer to a charge in a case with electronic records that ended in acquittal, dismissal, any nolle prosequi, or a stet marked at least 3 years earlier; this happens without a petition and hides the charge from public view but is not expungement.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-401",
+   "quote": "(3) nolle prosequi; or (4) the court marking the charge stet on the docket at least 3 years previously.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N12",
+   "text": "By July 1, 2024, the Department of Public Safety and Correctional Services had to remove from the Central Repository, without any petition, every case in which cannabis possession was the only charge and the charge was issued before July 1, 2023.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-112",
+   "quote": "On or before July 1, 2024, the Department of Public Safety and Correctional Services shall expunge all cases in which: (1) possession of cannabis under § 5–601 of the Criminal Law Article is the only charge in the case; and (2) the charge was issued before July 1, 2023.",
+   "slot": "office"
+  },
+  {
+   "id": "N13",
+   "text": "Shielding makes the court and police records of a conviction inaccessible to the public, and it is available only for twelve listed minor convictions, such as disorderly conduct, disturbing the peace, failure to obey a lawful order, lesser malicious destruction of property, trespass on posted property, CDS or noncontrolled substance possession, paraphernalia, driving without a license or while suspended or uninsured, and prostitution.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-301",
+   "quote": "“Shield” means to render a court record and police record relating to a conviction of a crime inaccessible by members of the public. (f) “Shieldable conviction” means a conviction of one of the following crimes",
+   "slot": null
+  },
+  {
+   "id": "N14",
+   "text": "Shielding is not available for a conviction of a domestically related crime.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-302",
+   "quote": "This subtitle does not apply to a conviction of a domestically related crime under § 6–233 of this article.",
+   "slot": null
+  },
+  {
+   "id": "N15",
+   "text": "A person may petition the court (circuit or District Court, in one county) to shield records of shieldable convictions, but no earlier than 3 years after satisfying every sentence for them, including parole, probation or mandatory supervision.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-303",
+   "quote": "no earlier than 3 years after the person satisfies the sentence or sentences imposed for all convictions for which shielding is requested, including parole, probation, or mandatory supervision",
+   "slot": "deadline"
+  },
+  {
+   "id": "N16",
+   "text": "A new conviction during that waiting period makes the original convictions ineligible for shielding unless the new conviction itself becomes eligible for shielding; a person who is a defendant in a pending criminal proceeding is not eligible.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-303",
+   "quote": "the original conviction or convictions are not eligible for shielding unless the new conviction becomes eligible for shielding. (2) A person is not eligible for shielding if the person is a defendant in a pending criminal proceeding.",
+   "slot": null
+  },
+  {
+   "id": "N17",
+   "text": "The petition is served on the State's Attorney; unless the State's Attorney objects within 30 days after service, the court may (it is not required to) order shielding after considering any objections or information from the State's Attorney or the victim; a timely objection leads to a hearing.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 10-303",
+   "quote": "Unless the State’s Attorney files an objection to the petition for shielding within 30 days after the petition is served, the court may order the shielding",
+   "slot": "deadline"
+  },
+  {
+   "id": "N18",
+   "text": "A person can be granted only one shielding petition in a lifetime.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-303",
+   "quote": "A person may be granted only one shielding petition over the lifetime of the person.",
+   "slot": null
+  },
+  {
+   "id": "N19",
+   "text": "Shielded records stay fully accessible to criminal justice units and to employers and licensing agencies that are required or authorized by law to check criminal backgrounds, among others listed.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-302",
+   "quote": "A shielded record shall remain fully accessible by: (1) criminal justice units for legitimate criminal justice purposes; (2) prospective or current employers or government licensing agencies that are subject to a statutory or regulatory requirement or authorization to inquire into the criminal background of an applicant or employee",
+   "slot": null
+  },
+  {
+   "id": "N20",
+   "text": "After expungement, employers, schools and State or local licensing units may not require a person to disclose the expunged charges.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-109",
+   "quote": "Disclosure of expunged information about criminal charges in an application, interview, or other means may not be required",
+   "slot": null
+  },
+  {
+   "id": "N21",
+   "text": "Except for those given access by § 10-302(b), an employer may not require a job applicant to disclose shielded charges or refuse to hire or fire a person solely for not disclosing them; schools and State and local units face the same limits.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-306",
+   "quote": "require a person who applies for employment to disclose shielded information about criminal charges in an application, an interview, or otherwise",
+   "slot": null
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "none: no fee or costs to expunge police records of an arrest released without charge",
+    "nuggets": [
+     "N3"
+    ]
+   },
+   {
+    "value": "unpaid court fees or costs do not block expungement, and the court waives the court fees and costs tied to the expunged charge (expungement only, not shielding)",
+    "nuggets": [
+     "N7",
+     "N8"
+    ]
+   },
+   {
+    "value": "no costs: District Court expungement after a nolle prosequi of all charges against a defendant never served",
+    "nuggets": [
+     "N9"
+    ]
+   }
+  ],
+  "deadline": [
+   {
+    "value": "60 days",
+    "amount": 60,
+    "unit": "days",
+    "anchor": "release without charge (law enforcement unit must expunge its police records and notify the Central Repository)",
+    "nuggets": [
+     "N2"
+    ]
+   },
+   {
+    "value": "3 years",
+    "amount": 3,
+    "unit": "years",
+    "anchor": "disposition of the charge (automatic expungement when every charge ended in acquittal, dismissal, not guilty or a non-treatment nolle prosequi)",
+    "nuggets": [
+     "N4"
+    ]
+   },
+   {
+    "value": "3 years",
+    "amount": 3,
+    "unit": "years",
+    "anchor": "the court marking the charge stet (Case Search may no longer refer to it)",
+    "nuggets": [
+     "N11"
+    ]
+   },
+   {
+    "value": "3 years (earliest filing)",
+    "amount": 3,
+    "unit": "years",
+    "anchor": "satisfying every sentence for the convictions, including parole, probation or mandatory supervision (earliest shielding petition)",
+    "nuggets": [
+     "N15"
+    ]
+   },
+   {
+    "value": "30 days",
+    "amount": 30,
+    "unit": "days",
+    "anchor": "service of the shielding petition on the State's Attorney (time to object)",
+    "nuggets": [
+     "N17"
+    ]
+   }
+  ],
+  "office": [
+   {
+    "value": "Law enforcement unit that made the arrest (expunges records of an arrest without charge, then the Central Repository)",
+    "nuggets": [
+     "N2"
+    ]
+   },
+   {
+    "value": "Department of Public Safety and Correctional Services (Central Repository; cannabis-only possession cases)",
+    "nuggets": [
+     "N12"
+    ]
+   },
+   {
+    "value": "Circuit court or District Court where the convictions were entered (decides shielding petitions)",
+    "nuggets": [
+     "N15",
+     "N17"
+    ]
+   },
+   {
+    "value": "State's Attorney (served with the shielding petition; may object)",
+    "nuggets": [
+     "N17"
+    ]
+   }
+  ]
+ },
+ "answer": "Arrested on or after October 1, 2007 and released without charge? You are entitled to expungement of police records [N1]; police must do it within 60 days without a request [N2], free [N3]. If every charge ended in acquittal, dismissal, not guilty or a nolle prosequi not requiring treatment, the records are expunged automatically 3 years after disposition [N4]. The court must also notify you of your right to petition under section 10-105, with a tort-claims waiver form [N5]; its timing rules are not in this text. Probation before judgment or stet may also be expungeable [N6]. Case Search automatically hides acquittals, dismissals, nolle prosequi, and stets after 3 years [N11]; cannabis-only possession cases charged before July 1, 2023 were to be expunged without a petition [N12]. Unpaid court fees cannot block expungement, and the court waives the expunged charge's fees and costs [N7][N8], but not for shielding; no statute here sets a petition fee. Twelve minor convictions, such as disorderly conduct, trespass or drug possession, can be shielded from public view [N13], but not domestically related crimes [N14]. Petition no earlier than 3 years after finishing your whole sentence, including probation or parole [N15]; a new conviction blocks it unless that conviction itself becomes eligible; so does a pending case [N16]. The State's Attorney has 30 days to object; otherwise the court may grant it [N17]. One grant per lifetime [N18]; police and some employers still see shielded records [N19]. Employers cannot demand expunged or shielded charges [N20][N21].",
+ "steps": {
+  "process_name": "Expunge or shield a Maryland criminal record",
+  "trigger": "A person wants Maryland police and court records of an arrest, charge or conviction expunged or shielded",
+  "trigger_source": {
+   "section": "10-102",
+   "subsection": "a",
+   "quote": "A police record or a court record is subject to expungement under this subtitle."
+  },
+  "actors": [
+   {
+    "id": "person",
+    "name": "Person whose record it is (arrestee, defendant or person convicted)",
+    "kind": "private-party",
+    "source": {
+     "section": "10-303",
+     "subsection": "a",
+     "quote": "A person may petition the court to shield the person’s court and police records"
+    }
+   },
+   {
+    "id": "custodians",
+    "name": "Record custodians (Central Repository, booking facilities, law enforcement and other State and local units)",
+    "kind": "public-body",
+    "source": {
+     "section": "10-105.1",
+     "subsection": "b.2",
+     "quote": "each booking facility, law enforcement unit, and other unit of the State and political subdivision of the State that the court believes may have a record subject to expungement under this section"
+    }
+   },
+   {
+    "id": "law_enforcement",
+    "name": "Law enforcement unit that made the arrest",
+    "kind": "public-body",
+    "source": {
+     "section": "10-103.1",
+     "subsection": "b",
+     "quote": "Within 60 days after release of a person entitled to expungement of a police record under subsection (a) of this section, the law enforcement unit shall"
+    }
+   },
+   {
+    "id": "court",
+    "name": "Court that decided the case (circuit court or District Court)",
+    "kind": "court",
+    "source": {
+     "section": "10-303",
+     "subsection": "a",
+     "quote": "entered in the circuit court or the District Court in one county"
+    }
+   },
+   {
+    "id": "states_attorney",
+    "name": "State’s Attorney",
+    "kind": "official",
+    "source": {
+     "section": "10-303",
+     "subsection": "d.1",
+     "quote": "The court shall have a copy of a petition for shielding served on the State’s Attorney."
+    }
+   },
+   {
+    "id": "victims",
+    "name": "Listed victims in the case",
+    "kind": "private-party",
+    "source": {
+     "section": "10-303",
+     "subsection": "f",
+     "quote": "all listed victims in the case in which the petitioner is seeking shielding"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "police_expunge",
+    "actor": "law_enforcement",
+    "action": "Search for and expunge police records",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [],
+    "condition": "released_without_charge",
+    "deadline": {
+     "amount": 60,
+     "unit": "days",
+     "anchor": "release of a person entitled to expungement",
+     "consequence": "unstated",
+     "on_miss": "seek_redress",
+     "source": {
+      "section": "10-103.1",
+      "subsection": "b",
+      "quote": "Within 60 days after release of a person entitled to expungement of a police record under subsection (a) of this section"
+     }
+    },
+    "source": {
+     "section": "10-103.1",
+     "subsection": "b.1",
+     "quote": "search diligently for and expunge each police record about the arrest or confinement of the person"
+    }
+   },
+   {
+    "id": "notify_expungement",
+    "actor": "law_enforcement",
+    "action": "Send notice of expungement",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "police_expunge"
+    ],
+    "recipient": "custodians",
+    "source": {
+     "section": "10-103.1",
+     "subsection": "b.2",
+     "quote": "send a notice of expungement containing all relevant facts about the expungement and underlying arrest or confinement to"
+    }
+   },
+   {
+    "id": "repository_expunge",
+    "actor": "custodians",
+    "action": "Expunge records and confirm in writing",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "notify_expungement"
+    ],
+    "deadline": {
+     "amount": 60,
+     "unit": "days",
+     "anchor": "receipt of the notice",
+     "consequence": "unstated",
+     "on_miss": "seek_redress",
+     "source": {
+      "section": "10-103.1",
+      "subsection": "c",
+      "quote": "Within 60 days after receipt of the notice, the Central Repository, a booking facility, and any other law enforcement unit shall"
+     }
+    },
+    "source": {
+     "section": "10-103.1",
+     "subsection": "c.2",
+     "quote": "advise in writing the person entitled to expungement of compliance with the order"
+    }
+   },
+   {
+    "id": "seek_redress",
+    "actor": "person",
+    "action": "Seek legal remedy and court costs",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "court",
+    "source": {
+     "section": "10-103.1",
+     "subsection": "e.1",
+     "quote": "seek redress by means of any appropriate legal remedy"
+    }
+   },
+   {
+    "id": "dispose_case",
+    "actor": "court",
+    "action": "Dispose of all charges in the case",
+    "kind": "act",
+    "modality": "none",
+    "after": [],
+    "condition": "favorable_disposition_of_all_charges",
+    "source": {
+     "section": "10-105.2",
+     "subsection": "a",
+     "quote": "after disposition of all charges in a case"
+    }
+   },
+   {
+    "id": "advise_right",
+    "actor": "court",
+    "action": "Notify defendant of expungement right",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "dispose_case"
+    ],
+    "recipient": "person",
+    "source": {
+     "section": "10-105.2",
+     "subsection": "a",
+     "quote": "the court shall notify the defendant of the defendant’s right to expungement under § 10–105 of this subtitle"
+    }
+   },
+   {
+    "id": "send_disposition_notice",
+    "actor": "court",
+    "action": "Send disposition and expungement date notice",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "dispose_case"
+    ],
+    "recipient": "custodians",
+    "source": {
+     "section": "10-105.1",
+     "subsection": "b",
+     "quote": "the court shall send notice of the disposition of each charge in the case and the date on which expungement is required to"
+    }
+   },
+   {
+    "id": "auto_expunge",
+    "actor": "custodians",
+    "action": "Expunge records three years after disposition",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "advise_right",
+     "send_disposition_notice"
+    ],
+    "deadline": {
+     "amount": 3,
+     "unit": "years",
+     "anchor": "a disposition of the charge",
+     "consequence": "unstated",
+     "source": {
+      "section": "10-105.1",
+      "subsection": "a",
+      "quote": "shall be expunged 3 years after a disposition of the charge"
+     }
+    },
+    "source": {
+     "section": "10-105.1",
+     "subsection": "a",
+     "quote": "any police record, court record, or other record maintained by the State or a political subdivision of the State"
+    },
+    "join": "all"
+   },
+   {
+    "id": "petition_shield",
+    "actor": "person",
+    "action": "Petition court to shield conviction records",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "condition": "shieldable_conviction_and_3_years_since_sentence",
+    "recipient": "court",
+    "source": {
+     "section": "10-303",
+     "subsection": "a",
+     "quote": "A person may petition the court to shield the person’s court and police records relating to one or more shieldable convictions"
+    }
+   },
+   {
+    "id": "notify_victims",
+    "actor": "court",
+    "action": "Send written notice to listed victims",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "petition_shield"
+    ],
+    "recipient": "victims",
+    "source": {
+     "section": "10-303",
+     "subsection": "f",
+     "quote": "The court shall send written notice of the proposed action to all listed victims in the case in which the petitioner is seeking shielding"
+    }
+   },
+   {
+    "id": "serve_states_attorney",
+    "actor": "court",
+    "action": "Serve petition on State's Attorney",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "notify_victims"
+    ],
+    "recipient": "states_attorney",
+    "source": {
+     "section": "10-303",
+     "subsection": "d.1",
+     "quote": "The court shall have a copy of a petition for shielding served on the State’s Attorney."
+    }
+   },
+   {
+    "id": "file_objection",
+    "actor": "states_attorney",
+    "action": "File objection to shielding petition",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "serve_states_attorney"
+    ],
+    "recipient": "court",
+    "deadline": {
+     "amount": 30,
+     "unit": "days",
+     "anchor": "the petition is served",
+     "consequence": "right-lapses",
+     "on_miss": "rule_unopposed",
+     "source": {
+      "section": "10-303",
+      "subsection": "d.2",
+      "quote": "files an objection to the petition for shielding within 30 days after the petition is served"
+     }
+    },
+    "source": {
+     "section": "10-303",
+     "subsection": "e.1",
+     "quote": "If the State’s Attorney files a timely objection to the petition"
+    }
+   },
+   {
+    "id": "rule_unopposed",
+    "actor": "court",
+    "action": "Decide unopposed petition",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [],
+    "decision": "shield_unopposed",
+    "source": {
+     "section": "10-303",
+     "subsection": "d.2",
+     "quote": "the court may order the shielding of all police records and court records relating to the conviction or convictions after taking into consideration any objections or additional information provided by the State’s Attorney or the victim"
+    }
+   },
+   {
+    "id": "hold_hearing",
+    "actor": "court",
+    "action": "Hold hearing on objection",
+    "kind": "hearing",
+    "modality": "obligation",
+    "after": [
+     "file_objection"
+    ],
+    "source": {
+     "section": "10-303",
+     "subsection": "e.1",
+     "quote": "the court shall hold a hearing"
+    }
+   },
+   {
+    "id": "rule_after_hearing",
+    "actor": "court",
+    "action": "Decide petition after hearing",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "hold_hearing"
+    ],
+    "decision": "shield_after_hearing",
+    "source": {
+     "section": "10-303",
+     "subsection": "e.2",
+     "quote": "If the court, at the hearing, finds that the person is entitled to shielding, the court shall order the shielding of all police records and court records relating to the conviction or convictions."
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "shield_unopposed",
+    "question": "With no timely objection, does the court order shielding?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "new_conviction_during_wait",
+      "label": "Convicted of a new crime during the 3-year wait, and the new conviction has not itself become eligible for shielding",
+      "type": "boolean"
+     },
+     {
+      "name": "pending_case",
+      "label": "Defendant in a pending criminal proceeding",
+      "type": "boolean"
+     },
+     {
+      "name": "unit_conviction_ineligible",
+      "label": "Another conviction in the same unit is not eligible",
+      "type": "boolean"
+     },
+     {
+      "name": "prior_shielding_granted",
+      "label": "Already granted a shielding petition",
+      "type": "boolean"
+     },
+     {
+      "name": "domestically_related",
+      "label": "Conviction is a domestically related crime",
+      "type": "boolean"
+     },
+     {
+      "name": "court_orders_shielding",
+      "label": "Court chooses to order shielding after considering any information from the State's Attorney or the victim",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "result",
+      "label": "Result",
+      "type": "string"
+     },
+     {
+      "name": "shielding_ordered",
+      "label": "Shielding ordered",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: new conviction during the waiting period\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "b.1",
+       "quote": "the original conviction or convictions are not eligible for shielding unless the new conviction becomes eligible for shielding"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: pending criminal proceeding\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "b.2",
+       "quote": "A person is not eligible for shielding if the person is a defendant in a pending criminal proceeding."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: another conviction in the unit is not eligible\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "c",
+       "quote": "If a person is not eligible for shielding of one conviction in a unit, the person is not eligible for shielding of any other conviction in the unit."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: only one shielding petition per lifetime\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "e.4",
+       "quote": "A person may be granted only one shielding petition over the lifetime of the person."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: domestically related crime\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-302",
+       "subsection": "a",
+       "quote": "This subtitle does not apply to a conviction of a domestically related crime under § 6–233 of this article."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Shield all police records and court records of the conviction or convictions\"",
+       "true"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "d.2",
+       "quote": "the court may order the shielding of all police records and court records relating to the conviction or convictions after taking into consideration any objections or additional information provided by the State’s Attorney or the victim"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Shielding not ordered (the court's discretion)\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "d.2",
+       "quote": "Unless the State’s Attorney files an objection to the petition for shielding within 30 days after the petition is served, the court may order the shielding"
+      }
+     }
+    ]
+   },
+   {
+    "id": "shield_after_hearing",
+    "question": "After a hearing on the State's Attorney's objection, does the court order shielding?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "new_conviction_during_wait",
+      "label": "Convicted of a new crime during the 3-year wait, and the new conviction has not itself become eligible for shielding",
+      "type": "boolean"
+     },
+     {
+      "name": "pending_case",
+      "label": "Defendant in a pending criminal proceeding",
+      "type": "boolean"
+     },
+     {
+      "name": "unit_conviction_ineligible",
+      "label": "Another conviction in the same unit is not eligible",
+      "type": "boolean"
+     },
+     {
+      "name": "prior_shielding_granted",
+      "label": "Already granted a shielding petition",
+      "type": "boolean"
+     },
+     {
+      "name": "domestically_related",
+      "label": "Conviction is a domestically related crime",
+      "type": "boolean"
+     },
+     {
+      "name": "found_entitled",
+      "label": "Court finds at the hearing that the person is entitled to shielding",
+      "type": "boolean"
+     },
+     {
+      "name": "good_cause",
+      "label": "Court finds good cause to grant the petition",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "result",
+      "label": "Result",
+      "type": "string"
+     },
+     {
+      "name": "shielding_ordered",
+      "label": "Shielding ordered",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: new conviction during the waiting period\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "b.1",
+       "quote": "the original conviction or convictions are not eligible for shielding unless the new conviction becomes eligible for shielding"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: pending criminal proceeding\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "b.2",
+       "quote": "A person is not eligible for shielding if the person is a defendant in a pending criminal proceeding."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: another conviction in the unit is not eligible\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "c",
+       "quote": "If a person is not eligible for shielding of one conviction in a unit, the person is not eligible for shielding of any other conviction in the unit."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: only one shielding petition per lifetime\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "e.4",
+       "quote": "A person may be granted only one shielding petition over the lifetime of the person."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not eligible: domestically related crime\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-302",
+       "subsection": "a",
+       "quote": "This subtitle does not apply to a conviction of a domestically related crime under § 6–233 of this article."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Shield all police records and court records of the conviction or convictions\"",
+       "true"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "e.2",
+       "quote": "If the court, at the hearing, finds that the person is entitled to shielding, the court shall order the shielding of all police records and court records relating to the conviction or convictions."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Shield the records for good cause\"",
+       "true"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "e.3",
+       "quote": "The court may grant a petition under this subsection for good cause."
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Shielding not ordered\"",
+       "false"
+      ],
+      "source": {
+       "section": "10-303",
+       "subsection": "e.2",
+       "quote": "If the court, at the hearing, finds that the person is entitled to shielding"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "police_records_expunged",
+    "description": "Police records of the arrest expunged, including photographs and fingerprints",
+    "after": [
+     "repository_expunge"
+    ],
+    "source": {
+     "section": "10-103.1",
+     "subsection": "a",
+     "quote": "is entitled to expungement of all police records, including photographs and fingerprints, relating to the matter"
+    }
+   },
+   {
+    "id": "remedy_pursued",
+    "description": "Records not expunged in time; person pursues a legal remedy",
+    "after": [
+     "seek_redress"
+    ],
+    "source": {
+     "section": "10-103.1",
+     "subsection": "e",
+     "quote": "If a law enforcement unit, a booking facility, or the Central Repository fails to expunge a police record as required under subsection (b) or (c) of this section"
+    }
+   },
+   {
+    "id": "records_expunged_automatically",
+    "description": "Police, court and other records of the charges expunged automatically",
+    "after": [
+     "auto_expunge"
+    ],
+    "source": {
+     "section": "10-105.1",
+     "subsection": "a",
+     "quote": "shall be expunged 3 years after a disposition of the charge if no charge in the case resulted in a disposition other than"
+    }
+   },
+   {
+    "id": "records_shielded",
+    "description": "Court and police records of the convictions shielded from the public",
+    "after": [
+     "rule_unopposed",
+     "rule_after_hearing"
+    ],
+    "when": "shielding_ordered",
+    "source": {
+     "section": "10-301",
+     "subsection": "e",
+     "quote": "means to render a court record and police record relating to a conviction of a crime inaccessible by members of the public"
+    }
+   },
+   {
+    "id": "shielding_not_ordered",
+    "description": "Shielding not ordered (not eligible, or the court declines)",
+    "after": [
+     "rule_unopposed",
+     "rule_after_hearing"
+    ],
+    "source": {
+     "section": "10-303",
+     "subsection": "d.2",
+     "quote": "the court may order the shielding of all police records and court records relating to the conviction or convictions"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Md. Code, Criminal Procedure § 10-105",
+    "role": "general petition for expungement after acquittal, dismissal, not guilty, nolle prosequi, stet, probation before judgment and listed convictions; missing from the downloaded text",
+    "source": {
+     "section": "10-105.2",
+     "subsection": "a",
+     "quote": "right to expungement under § 10–105 of this subtitle"
+    }
+   },
+   {
+    "citation": "Md. Code, Criminal Procedure Title 10, Subtitle 1; Public Safety Title 2, Subtitle 5",
+    "role": "expungement of court and police records and of DNA samples and records",
+    "source": {
+     "section": "6-232",
+     "subsection": "a",
+     "quote": "in accordance with Title 10, Subtitle 1 of this article and Title 2, Subtitle 5 of the Public Safety Article"
+    }
+   }
+  ],
+  "gaps": [
+   "The general petition for expungement (Criminal Procedure § 10-105, to which § 10-105.2 points after acquittal, dismissal, not guilty or nolle prosequi and § 6-232 after probation before judgment or stet, with the limitation periods § 10-102(b)(3) mentions and the general waiver and release of tort claims sent with the § 10-105.2 notice), pardoned convictions (§ 10-106), convictions (§ 10-110) and the definitions (§ 10-101) are missing from the downloaded text, so the main petition path is not modeled.",
+   "Arrests or confinements before October 1, 2007 without a charge (§ 10-103) required a written request to the law enforcement unit within 8 years of the incident, a window that has closed for every such incident; that route is not modeled.",
+   "The shielding petition's form, any filing fee and where to file within the county come from the Maryland Rules and court cost schedules, not the statutes; the § 10-105.4 fee waiver covers expungement under Subtitle 1, not shielding.",
+   "The 3-year automatic expungement under § 10-105.1 is a scheduled event, modeled as a 3-year clock on the custodians' step; the two court notices (§ 10-105.1(b) to the custodians and § 10-105.2 to the defendant) have no statutory order and are modeled as parallel; no remedy for a missed date is stated.",
+   "§ 10-303(f) sets no time for the victim notice; it is placed right after filing, before service on the State's Attorney, only so the shielding path stays one sequence; the 30-day objection clock runs from service (§ 10-303(d)(2)).",
+   "Whether the § 10-303(e)(3) good-cause power can overcome the eligibility bars is not stated; the tables apply the bars first.",
+   "Automatic relief without any step by the person is not modeled as steps: Case Search removal of acquittals, dismissals, nolle prosequi and stets at least 3 years old (§ 10-401) and of cannabis-only possession cases (§ 10-111), and DPSCS expungement of cannabis-only possession cases charged before July 1, 2023 (§ 10-112); nor are the District Court's no-petition, no-cost expungement after a nolle prosequi against an unserved defendant (§ 10-104), juvenile records (Courts § 3-8A-27.1), DNA records (Public Safety § 2-511) and vacatur for trafficking victims (§ 8-302)."
+  ]
+ },
+ "out_of_corpus": [
+  {
+   "kind": "statute (missing from the downloaded text)",
+   "what": "The main petition-based expungement law: who may petition after acquittal, dismissal, not guilty, nolle prosequi, stet, probation before judgment, a pardon or a listed conviction; the waiting periods (including the years after a conviction and sentence for each eligible offense); the general waiver and release of tort claims for filing early; who decides and the custodians' compliance; and the definitions of expungement, court record and police record",
+   "where": "Md. Code, Criminal Procedure §§ 10-101, 10-105, 10-106 and 10-110 (Maryland General Assembly, mgaleg.maryland.gov); cited by §§ 10-105.2, 10-305 and 6-232 but absent from the open-us-law download"
+  },
+  {
+   "kind": "court rule",
+   "what": "Petition forms, where and how to file, service, objections, hearings and orders for expungement and shielding petitions, and the custodians' certificates of compliance",
+   "where": "Maryland Rules, Title 4, Chapter 500 (Expungement of Records) and the Maryland Judiciary's expungement and shielding forms (mdcourts.gov)"
+  },
+  {
+   "kind": "court rule",
+   "what": "Any filing fee for an expungement or shielding petition (the downloaded statutes set none; they bar fees for expunging records of an arrest without charge, bar costs for the District Court's § 10-104 expungement, and waive court fees and costs tied to a charge expunged under Subtitle 1, which does not reach shielding)",
+   "where": "Maryland Judiciary court cost schedules: circuit court costs are set by the State Court Administrator with Board of Public Works approval (Courts and Judicial Proceedings § 7-202(a)(1)); District Court costs and fees under Courts and Judicial Proceedings § 7-301 and the Chief Judge's schedule (mdcourts.gov)"
+  },
+  {
+   "kind": "federal",
+   "what": "Copies of Maryland records already sent to the FBI or held by private background-check companies, and how consumer reports may use them",
+   "where": "FBI Criminal Justice Information Services rules (28 C.F.R. part 20); Fair Credit Reporting Act, 15 U.S.C. § 1681 et seq."
+  }
+ ],
+ "version_flags": [
+  "Criminal Procedure § 10-401: the version that took effect January 31, 2026 (Chapter 95 of 2025) is in force on 2026-10-10. Compared with the superseded 'IN EFFECT' text printed with it, it drops the exception for a nolle prosequi with a requirement of drug or alcohol treatment (so every nolle prosequi is now kept off Case Search), and adds stets marked at least 3 years earlier and pardoned cannabis-possession convictions. Automatic expungement under § 10-105.1 and the § 10-105.2 notice still exclude treatment nolle prosequi, so the two rules now differ.",
+  "Criminal Procedure § 10-112: the DPSCS deadline (on or before July 1, 2024) has passed; the section still describes which cannabis-only cases were to be removed from the Central Repository."
+ ],
+ "local_option": null,
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Maryland statutes only, as downloaded (open-us-law). Criminal Procedure §§ 10-101, 10-105, 10-106 and 10-110, the core petition sections for non-conviction dispositions, PBJ, stet, pardons and convictions (with their waiting periods), are missing from the download although other sections cite §§ 10-101 and 10-105 (§§ 10-105.2, 10-102(b)(3), 10-301, 10-305) and § 6-232 points to Title 10, Subtitle 1; hence coverage is partial and the answer relies on the sections present. No filing fee amount appears in any downloaded section. § 10-103 (pre-October 1, 2007 arrests without charge) is a supporting section only: its 8-year request window has run for every such incident. Related routes not in the nuggets: § 10-108 (expunged records may be opened only by court order; violation is a misdemeanor); General Provisions § 4-327 (custodians must deny inspection of shielded records except to those listed in § 10-302(b));§ 10-105.3 (cannabis possession resentencing); Courts § 3-8A-27.1 (juvenile records: petition at age 18 and 2 years after the last official action, with conditions); Public Safety § 2-511 (DNA samples and records destroyed and expunged automatically within 60 days of a non-conviction, but not when the case is put on the stet docket or the person receives probation before judgment, so the § 6-232 advice is only that DNA records may be expungeable); § 8-302 (vacating listed convictions of trafficking victims); Commercial Law § 14-1324 (once a record has been expunged, shielded or the judgment vacated, a mugshot website must remove the photo free of charge within 30 days after receiving a request by certified mail or e-mail); Transportation § 16-117.1 (MVA expunges public driving records, not criminal records). Protective-order and peace-order shielding (Family Law § 4-512, Courts § 3-1510) concern civil records and are excluded."
+}

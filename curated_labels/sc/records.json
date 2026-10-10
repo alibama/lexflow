@@ -1,0 +1,335 @@
+{
+ "state": "sc",
+ "question": "records",
+ "sections": [
+  "30-4-30",
+  "30-4-40",
+  "30-4-100"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "30-4-30",
+   "quote": "The public body shall develop a fee schedule to be posted online.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee schedule posting, general policy"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "The fee for the search, retrieval, or redaction of records shall not exceed the prorated hourly salary of the lowest paid employee who, in the reasonable discretion of the custodian of the records, has the necessary skill and training to perform the request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee cap on its own"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "Fees charged by a public body must be uniform for copies of the same record or document and may not exceed the prevailing commercial rate for the producing of copies.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee uniformity and cap"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "If records are not in electronic format and the public body agrees to produce them in electronic format, the public body may charge for the staff time required to transfer the documents to electronic format.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body charges staff time for electronic conversion"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "However, members of the General Assembly may receive copies of records or documents at no charge from public bodies when their request relates to their legislative duties.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legislator no-charge exception"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "The records must be furnished at the lowest possible cost to the person requesting the records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cost principle; furnishing is in (C)"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "Records must be provided in a form that is both convenient and practical for use by the person requesting copies of the records concerned, if it is equally convenient for the public body to provide the records in this form.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "format rule, not an act"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "Documents may be furnished when appropriate without charge or at a reduced charge where the agency determines that waiver or reduction of the fee is in the public interest because furnishing the information can be considered as primarily benefiting the general public.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency waives or reduces fee"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "A deposit not to exceed twenty-five percent of the total reasonably anticipated cost for reproduction of the records may be required prior to the public body searching for or making copies of records.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body requires deposit before search"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "This determination must constitute the final opinion of the public body as to the public availability of the requested public record, however, the determination is not required to include a final decision or express an opinion as to whether specific portions of the documents or information may be subject to redaction according to exemptions provided for by Section 30-4-40 or other state or federal laws.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal character of determination"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "The full amount of the total cost must be paid at the time of the production of the request.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester pays full cost at production"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "If written notification of the determination of the public body as to the availability of the requested public record is neither mailed, electronically transmitted, nor personally delivered to the person requesting the document within the time set forth by this section, the request must be considered approved as to nonexempt records or information.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "no timely notice: request deemed approved"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "The various response, determination, and production deadlines provided by this subsection are subject to extension by written mutual agreement of the public body and the requesting party at issue, and this agreement shall not be unreasonably withheld.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "deadlines extended by mutual written agreement"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "(D) The following records of a public body must be made available for public inspection and copying during the hours of operations of the public body, unless the record is exempt pursuant to Section 30-4-40 or other state or federal laws, without the requestor being required to make a written request to inspect or copy the records when the requestor appears in person:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "standing in-person availability duty; list lead-in"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "(1) minutes of the meetings of the public body for the preceding six months;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list item of available records"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "(2) all reports identified in Section 30-4-50(A)(8) for at least the fourteen-day period before the current day;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list item of available records"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "(3) documents identifying persons confined in a jail, detention center, or prison for the preceding three months; and (4) all documents produced by the public body or its agent that were distributed to or reviewed by a member of the public body during a public meeting for the preceding six-month period.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list items of available records"
+  },
+  {
+   "section": "30-4-30",
+   "quote": "(E) A public body that places the records in a form that is both convenient and practical for use on a publicly available Internet website is deemed to be in compliance with the provisions of subsection (D), provided that the public body also shall produce documents pursuant to this section upon request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "website compliance rule"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "A public body may but is not required to exempt from disclosure the following information:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to exemptions list"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "Information of a personal nature shall include, but not be limited to, information as to gross receipts contained in applications for business licenses, information relating to public records which include the name, address, and telephone number or other such information of an individual or individuals who are handicapped or disabled when the information is requested for person-to-person commercial solicitation of handicapped persons solely by virtue of their handicap, and any audio recording of the final statements of a dying victim in a call to 911 emergency services.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "definition within exemption"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "Any audio of the victim's statements must be redacted prior to the release of the recording unless the privacy interest is waived by the victim's next of kin.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption-specific redaction rule"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "This provision must not be interpreted to restrict access by the public and press to information contained in public records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "construction clause"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(b) a contract for the sale or purchase of real estate shall remain exempt from disclosure until the deed is executed, but this exemption applies only to those contracts of sale or purchase where the execution of the deed occurs within twelve months from the date of sale or purchase;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption item"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(11) Information relative to the identity of the maker of a gift to a public body if the maker specifies that his making of the gift must be anonymous and that his identity must not be revealed as a condition of making the gift.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption item"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "With respect to the gifts, only information which identifies the maker may be exempt from disclosure.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption scope limit"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(13) All materials, regardless of form, gathered by a public body during a search to fill an employment position, except that materials relating to not fewer than the final three applicants under consideration for a position must be made available for public inspection and copying.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption item"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "For the purpose of this item \"materials relating to not fewer than the final three applicants\" do not include an applicant's income tax returns, medical records, social security number, or information otherwise exempt from disclosure by this section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "definition within exemption"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(B) Any data, records, or information developed, collected, or received by or on behalf of faculty, staff, employees, or students of a state institution of higher education or any public or private entity supporting or participating in the activities of a state institution of higher education in the conduct of or as a result of study or research on medical, scientific, technical, scholarly, or artistic issues, whether sponsored by the institution alone or in conjunction with a governmental body or private entity until the information is published, patented, otherwise publicly disseminated, or released to an agency whereupon the request must be made to the agency.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption item"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(18) Photographs, videos, and other visual images, and audio recordings of and related to the performance of an autopsy, except that the photographs, videos, images, or recordings may be viewed and used by the persons identified in Section 17-5-535 for the purposes contemplated or provided for in that section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption item"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(b) If any public record contains material which is not exempt under subsection (a) of this section, the public body shall separate the exempt and nonexempt material and make the nonexempt material available in accordance with the requirements of this chapter.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body separates exempt material, releases rest"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "Sections 30-4-30, 30-4-50, and 30-4-100 notwithstanding, no custodian of information subject to the provisions of Section 30-4-45 shall release the information except as provided therein and pursuant to regulations promulgated in accordance with this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cross-referenced release prohibition"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(d) A public body may not disclose a \"privileged communication\", \" protected information\", or a \"protected identity\", as defined in Section 23-50-15 pursuant to a request under the South Carolina Freedom of Information Act.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "disclosure prohibition, exemption"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "These matters may only be disclosed pursuant to the procedures set forth in Section 23-50-45.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cross-reference to other procedure"
+  },
+  {
+   "section": "30-4-40",
+   "quote": "(e) A public body only may disclose information concerning lottery prize claims as provided in Section 59-150-145.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lottery disclosure cross-reference"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "A citizen of the State may apply to the circuit court for a declaratory judgment, injunctive relief, or both, to enforce the provisions of this chapter in appropriate cases if the application is made no later than one year after the date of the alleged violation or one year after a public vote in public session, whichever comes later.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 1,
+    "unit": "years"
+   },
+   "why": "citizen sues in circuit court within one year"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "The court may extend this time period upon a showing of good cause.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court extends scheduling period for good cause"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "The court may order equitable relief as it considers appropriate, and a violation of this chapter must be considered to be an irreparable injury for which no adequate remedy at law exists.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court orders equitable relief"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "(B) If a person or entity seeking relief under this section prevails, he may be awarded reasonable attorney's fees and other costs of litigation specific to the request.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards fees to prevailing party"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "If the person or entity prevails in part, the court may in its discretion award him reasonable attorney's fees or an appropriate portion of those attorney's fees.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards fees on partial win"
+  },
+  {
+   "section": "30-4-100",
+   "quote": "Effect of Amendment 2017 Act No. 67, SECTION 4, amended the section, providing time constraints within which determinative hearings on the requests for relief must be made.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment note"
+  }
+ ]
+}

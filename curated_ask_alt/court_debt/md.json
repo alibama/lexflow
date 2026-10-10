@@ -1,0 +1,862 @@
+{
+ "qid": "court_debt",
+ "question": "I can't afford to pay my court fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments?",
+ "state": "md",
+ "as_of": "2026-10-10",
+ "question_type": "mixed",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "installment",
+    "installments",
+    "installment plan agreement",
+    "payment plan",
+    "designated intervals"
+   ],
+   [
+    "fine",
+    "fines",
+    "court costs",
+    "costs",
+    "restitution",
+    "judgment of restitution"
+   ],
+   [
+    "unable to pay",
+    "ability to pay",
+    "indigency",
+    "indigence",
+    "contumacious",
+    "impoverished"
+   ],
+   [
+    "reduce",
+    "reduction",
+    "waive",
+    "exempt",
+    "remit"
+   ],
+   [
+    "community service",
+    "work project",
+    "instead of payment"
+   ],
+   [
+    "fails to pay",
+    "failure to pay",
+    "overdue",
+    "unpaid",
+    "nonpayment",
+    "default in payment"
+   ],
+   [
+    "imprisoned",
+    "committed",
+    "contempt",
+    "revoke probation",
+    "violation of probation"
+   ],
+   [
+    "Central Collection Unit",
+    "earnings withholding",
+    "civil cases"
+   ]
+  ],
+  "negative": [
+   "child support",
+   "probate",
+   "civil infraction",
+   "municipal infraction",
+   "student account"
+  ],
+  "slots": [
+   "amount",
+   "office",
+   "fee",
+   "yes_no"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "Md. Code, Courts and Judicial Proceedings § 7-503",
+   "role": "primary",
+   "why": "A court may order a fine paid at sentencing or in installments, payable through a probation agency that must report missed payments; payment can be a probation condition."
+  },
+  {
+   "ref": "7-504.1",
+   "role": "primary",
+   "why": "Traffic fines totaling at least $150: a defendant who certifies inability to pay may get a clerk-approved installment plan; on default the clerk may refer the debt to the Central Collection Unit."
+  },
+  {
+   "ref": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "role": "primary",
+   "why": "Application to reduce a fine; investigation of nonpayment (contumacious vs indigence); the court's options of commitment, reduction or imprisonment until paid; caps on default imprisonment."
+  },
+  {
+   "ref": "Md. Code, Courts and Judicial Proceedings § 7-505",
+   "role": "primary",
+   "why": "Unpaid fines and costs are collected like civil judgments; costs are not a penalty and nobody may be jailed for failing to pay them."
+  },
+  {
+   "ref": "Md. Code, Courts and Judicial Proceedings § 7-405",
+   "role": "primary",
+   "why": "Court costs under 7-409 may be waived only if the defendant establishes indigency under the Maryland Rules."
+  },
+  {
+   "ref": "Md. Code, Correctional Services § 8-703",
+   "role": "primary",
+   "why": "A court may order community service instead of fines and court costs for a defendant not convicted of a crime of violence."
+  },
+  {
+   "ref": "Md. Code, Correctional Services § 8-704",
+   "role": "supporting",
+   "why": "Community service assignment requires the defendant's consent, is unpaid, and excludes crime-of-violence convictions."
+  },
+  {
+   "ref": "Md. Code, Correctional Services § 8-702",
+   "role": "supporting",
+   "why": "Community service programs exist only where a county establishes one (local option)."
+  },
+  {
+   "ref": "Md. Code, Correctional Services § 8-710",
+   "role": "supporting",
+   "why": "Courts may also direct services for the victim as an alternative means of restitution, or instead of fines and court costs."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 11-605",
+   "role": "primary",
+   "why": "A court need not order restitution if the obligor lacks the ability to pay, and must state its reasons on the record if it refuses."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 11-607",
+   "role": "primary",
+   "why": "Restitution is paid to the Department; overdue payments trigger notice to the court and an earnings withholding request; contempt or probation-violation hearing; intentional impoverishment."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 11-616",
+   "role": "supporting",
+   "why": "When restitution is overdue (30 days after judgment if no date set); referral to the Central Collection Unit; tax refund and lottery interception; no compromise without victim consent."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 11-617",
+   "role": "supporting",
+   "why": "Earnings withholding orders for restitution, normally 20% of earnings, capped by federal law."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 6-226",
+   "role": "supporting",
+   "why": "$50 monthly probation supervision fee, hardship exemptions, and a hearing that weighs good-faith efforts before revocation for nonpayment."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 6-222",
+   "role": "supporting",
+   "why": "Probation may be extended (additional 5 years circuit court, 3 years District Court, or longer with consent) only to allow restitution to be paid."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 6-223",
+   "role": "supporting",
+   "why": "Probation violation procedure and the limits on jail for technical violations, which apply when payment is a probation condition."
+  },
+  {
+   "ref": "Md. Code, Transportation § 26-204",
+   "role": "supporting",
+   "why": "For traffic citations, a payment plan under 7-504.1 counts as compliance; otherwise the MVA may suspend driving privileges after notice."
+  },
+  {
+   "ref": "Md. Code, Transportation § 27-103",
+   "role": "supporting",
+   "why": "Unpaid Maryland Vehicle Law fines not on a payment plan may be referred to the Central Collection Unit with notice."
+  },
+  {
+   "ref": "Md. Code, Courts and Judicial Proceedings § 7-501",
+   "role": "definition",
+   "why": "Defines fine and costs; a fine does not include costs."
+  },
+  {
+   "ref": "Md. Code, Criminal Procedure § 1-207",
+   "role": "supporting",
+   "why": "The Governor may remit all or part of a fine (remission)."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "When a court imposes a fine it may order it paid at sentencing or in specified installments at designated intervals.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-503",
+   "quote": "the court may order the defendant to pay the fine: (1) When the court imposes sentence; or (2) In specified installments at designated intervals.",
+   "slot": "yes_no"
+  },
+  {
+   "id": "N2",
+   "text": "A defendant sentenced to traffic fines totaling at least $150 who certifies inability to pay may apply to the clerk of the court for an installment plan.",
+   "importance": "vital",
+   "section": "7-504.1",
+   "quote": "A defendant who is sentenced to pay one or more fines that total at least $150 and certifies that the defendant is unable to pay the fine or fines may apply to the clerk of the court to make installment payments in accordance with this section.",
+   "slot": "amount"
+  },
+  {
+   "id": "N3",
+   "text": "If a defendant misses payments under a clerk installment plan, the clerk may refer the unpaid fine to the Central Collection Unit or process it like other outstanding fines.",
+   "importance": "okay",
+   "section": "7-504.1",
+   "quote": "If a defendant fails to pay a fine in accordance with an installment plan agreement under this section, the clerk of the court may: 1. Refer the amount of the unpaid outstanding fine to the Central Collection Unit of the Department of Budget and Management; or 2. Process the unpaid outstanding fine as it would other outstanding fines owed the court.",
+   "slot": "office"
+  },
+  {
+   "id": "N4",
+   "text": "A defendant who cannot pay a fine may apply to the court to reduce it.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "quote": "A defendant who is unable to pay a fine ordered by a court may apply to the court for a reduction of the fine.",
+   "slot": "yes_no"
+  },
+  {
+   "id": "N5",
+   "text": "When a fine is not paid, the court may investigate why, including the defendant's finances and family situation and whether nonpayment is contumacious (willful) or due to indigence.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "quote": "If a defendant fails or is unable to pay a fine as ordered by a court, the court may investigate the reasons for the failure or inability to pay the fine, including the defendant's financial and family situation and whether nonpayment of the fine is contumacious or is due to indigence.",
+   "slot": null
+  },
+  {
+   "id": "N6",
+   "text": "After investigating, the court may reduce the fine to an amount the defendant is able to pay.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "quote": "May reduce the fine to an amount that the court determines the defendant is able to pay",
+   "slot": null
+  },
+  {
+   "id": "N7",
+   "text": "After investigating, the court may instead order the person imprisoned until the fine, or the part left after pro rata credit for time served, is paid.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "quote": "Subject to subsection (d) of this section, may direct that the individual be imprisoned until payment of: (i) The fine; or (ii) Part of the fine that is undischarged after a pro rata credit for time served instead of payment.",
+   "slot": null
+  },
+  {
+   "id": "N8",
+   "text": "Jail for nonpayment of a fine may not exceed 1 day for each $10 of the fine and, for a jailable crime, the lesser of one-third of the maximum term or 90 days; for a non-jailable crime, 15 days.",
+   "importance": "okay",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-504",
+   "quote": "1 day for each $10 of the fine; and (ii) If the fine was imposed for a crime subject to punishment by imprisonment, one-third of the maximum term authorized by the statute or ordinance under which the individual was convicted, or 90 days, whichever is less; or (iii) If the fine was imposed for a crime that is not subject to punishment by imprisonment, absent default in payment of a fine, 15 days.",
+   "slot": "amount"
+  },
+  {
+   "id": "N9",
+   "text": "Costs are not a penalty, and a defendant may not be imprisoned for failing to pay costs.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-505",
+   "quote": "Costs are not part of the penalty, and a defendant may not be imprisoned under this subtitle for failure to pay costs.",
+   "slot": "yes_no"
+  },
+  {
+   "id": "N10",
+   "text": "Unpaid fines and unpaid costs may be collected in the same way as civil judgments.",
+   "importance": "okay",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-505",
+   "quote": "Unpaid and undischarged fines and unpaid costs may be levied, executed on, and collected in the same manner as judgments in civil cases.",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "A criminal court may not waive the court costs imposed under CJP 7-409 unless the defendant establishes indigency as provided in the Maryland Rules.",
+   "importance": "vital",
+   "section": "Md. Code, Courts and Judicial Proceedings § 7-405",
+   "quote": "may not waive any court costs imposed under § 7-409 of this subtitle unless the defendant establishes indigency as provided in the Maryland Rules",
+   "slot": null
+  },
+  {
+   "id": "N12",
+   "text": "A court may order a defendant not convicted of a crime of violence to perform community service instead of paying fines and court costs.",
+   "importance": "vital",
+   "section": "Md. Code, Correctional Services § 8-703",
+   "quote": "a criminal defendant who has not been convicted of a crime of violence to perform community service and assign the juvenile or defendant to a particular work project: (1) instead of payment of any fines and court costs imposed",
+   "slot": "yes_no"
+  },
+  {
+   "id": "N13",
+   "text": "A court need not order restitution if it finds the defendant does not have the ability to pay it.",
+   "importance": "vital",
+   "section": "Md. Code, Criminal Procedure § 11-605",
+   "quote": "A court need not issue a judgment of restitution under Part I of this subtitle if the court finds: (1) that the restitution obligor does not have the ability to pay the judgment of restitution",
+   "slot": null
+  },
+  {
+   "id": "N14",
+   "text": "When restitution is overdue, the court may hold a hearing on contempt or probation violation, and if it finds the person intentionally became impoverished to avoid paying it may find contempt or a probation violation.",
+   "importance": "vital",
+   "section": "Md. Code, Criminal Procedure § 11-607",
+   "quote": "The court may hold a hearing to determine whether the restitution obligor is in contempt of court or has violated the terms of the probation. (3) If the court finds that the restitution obligor intentionally became impoverished to avoid payment of the restitution, the court may find the restitution obligor in contempt of court or in violation of probation.",
+   "slot": null
+  },
+  {
+   "id": "N15",
+   "text": "A person under Division of Parole and Probation supervision must be charged a $50 monthly fee unless the court exempts the person.",
+   "importance": "okay",
+   "section": "Md. Code, Criminal Procedure § 6-226",
+   "quote": "Unless the supervisee is exempt under subsection (d) of this section, the court shall impose a monthly fee of $50 on a supervisee.",
+   "slot": "fee"
+  }
+ ],
+ "slots": {
+  "yes_no": {
+   "value": "yes",
+   "nuggets": [
+    "N1",
+    "N4",
+    "N12"
+   ]
+  },
+  "amount": [
+   {
+    "value": "$150 minimum total of traffic fines for a clerk-approved installment plan",
+    "nuggets": [
+     "N2"
+    ]
+   },
+   {
+    "value": "jail for an unpaid fine: at most 1 day per $10; for a jailable crime the lesser of one-third of the maximum term or 90 days; 15 days for a non-jailable crime",
+    "nuggets": [
+     "N8"
+    ]
+   }
+  ],
+  "fee": [
+   {
+    "value": "$50 per month probation supervision fee unless exempted",
+    "nuggets": [
+     "N15"
+    ]
+   }
+  ],
+  "office": [
+   {
+    "value": "clerk of the court (approves traffic-fine installment plans)",
+    "nuggets": [
+     "N2"
+    ]
+   },
+   {
+    "value": "Central Collection Unit of the Department of Budget and Management (unpaid plan balances)",
+    "nuggets": [
+     "N3"
+    ]
+   }
+  ]
+ },
+ "answer": "Yes, mostly at the judge's discretion. A court that imposes a fine can let you pay in set installments [N1]. If your traffic fines total at least $150, you can certify you cannot pay and ask the court clerk for an installment plan [N2]. You may ask the court to reduce an unaffordable fine [N4]. Certain criminal court costs can be waived only if you prove indigency under the Maryland Rules [N11]. Unless you were convicted of a crime of violence, the court may order community service instead of fines and court costs [N12]. A court need not order restitution you cannot pay [N13]. Supervised probation adds a $50 monthly fee unless the court exempts you [N15].\n\nIf you miss payments, the court may look into why, including your finances and family situation and whether you are refusing to pay or are too poor [N5]. It may then cut the fine to what you can afford [N6] or jail you until it is paid [N7], for at most 1 day per $10 of the fine and, for a jailable crime, the lesser of 90 days or one-third of the maximum term [N8]. You cannot be jailed for unpaid costs [N9], but unpaid fines and costs can be collected like civil judgments [N10]. Missed clerk-plan payments can go to the State's Central Collection Unit [N3]. For overdue restitution, the court may hold a contempt or probation-violation hearing and may find contempt if you deliberately made yourself unable to pay [N14].",
+ "steps": {
+  "process_name": "Pay, reduce or work off a Maryland court fine or restitution, and what happens on nonpayment",
+  "trigger": "A Maryland court imposes a fine or enters a judgment of restitution against a defendant",
+  "trigger_source": {
+   "section": "7-503",
+   "subsection": "a",
+   "quote": "When a court imposes a fine, the court may order the defendant to pay the fine"
+  },
+  "actors": [
+   {
+    "id": "clerk",
+    "name": "Clerk of the court",
+    "kind": "official",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "b.1",
+     "quote": "may authorize the clerk of the court to approve an individual installment plan agreement in accordance with this section"
+    }
+   },
+   {
+    "id": "probation",
+    "name": "Probation agency (Division of Parole and Probation, Department of Public Safety and Correctional Services)",
+    "kind": "public-body",
+    "source": {
+     "section": "7-503",
+     "subsection": "b.1",
+     "quote": "the court may order that the payments be made to a probation agency or officer"
+    }
+   },
+   {
+    "id": "defendant",
+    "name": "Defendant (person ordered to pay a fine, costs or restitution)",
+    "kind": "private-party",
+    "source": {
+     "section": "7-504",
+     "subsection": "a",
+     "quote": "A defendant who is unable to pay a fine ordered by a court"
+    }
+   },
+   {
+    "id": "court",
+    "name": "District Court or circuit court",
+    "kind": "court",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "b.1",
+     "quote": "The District Court or a circuit court may authorize the clerk of the court"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "impose_fine",
+    "actor": "court",
+    "action": "Impose fine and set payment terms",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [],
+    "source": {
+     "section": "7-503",
+     "subsection": "a",
+     "quote": "When a court imposes a fine, the court may order the defendant to pay the fine"
+    }
+   },
+   {
+    "id": "order_community_service",
+    "actor": "court",
+    "action": "Order community service instead of fines",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [
+     "impose_fine"
+    ],
+    "condition": "community_service_instead",
+    "source": {
+     "section": "8-703",
+     "quote": "a criminal defendant who has not been convicted of a crime of violence to perform community service and assign the juvenile or defendant to a particular work project"
+    }
+   },
+   {
+    "id": "apply_installment_plan",
+    "actor": "defendant",
+    "action": "Apply to clerk for installment plan",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "impose_fine"
+    ],
+    "condition": "traffic_fines_150_unable_to_pay",
+    "recipient": "clerk",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "c.1",
+     "quote": "certifies that the defendant is unable to pay the fine or fines may apply to the clerk of the court to make installment payments in accordance with this section"
+    }
+   },
+   {
+    "id": "approve_installment_plan",
+    "actor": "clerk",
+    "action": "Approve installment plan agreement",
+    "kind": "act",
+    "modality": "permission",
+    "after": [
+     "apply_installment_plan"
+    ],
+    "recipient": "defendant",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "b.1",
+     "quote": "may authorize the clerk of the court to approve an individual installment plan agreement in accordance with this section"
+    }
+   },
+   {
+    "id": "dispose_unpaid_plan",
+    "actor": "clerk",
+    "action": "Refer unpaid fine to collection or process it",
+    "kind": "act",
+    "modality": "permission",
+    "after": [
+     "approve_installment_plan"
+    ],
+    "condition": "plan_payment_missed",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "c.4.i",
+     "quote": "If a defendant fails to pay a fine in accordance with an installment plan agreement under this section, the clerk of the court may"
+    }
+   },
+   {
+    "id": "notify_plan_disposition",
+    "actor": "clerk",
+    "action": "Notify defendant of unpaid fine disposition",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "dispose_unpaid_plan"
+    ],
+    "recipient": "defendant",
+    "source": {
+     "section": "7-504.1",
+     "subsection": "c.4.ii",
+     "quote": "The clerk of the court shall provide notice to the defendant of the disposition of the unpaid outstanding fine"
+    }
+   },
+   {
+    "id": "pay_fine",
+    "actor": "defendant",
+    "action": "Pay fine at sentencing or in installments",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "impose_fine"
+    ],
+    "recipient": "probation",
+    "source": {
+     "section": "7-503",
+     "subsection": "a",
+     "quote": "(1) When the court imposes sentence; or (2) In specified installments at designated intervals"
+    }
+   },
+   {
+    "id": "report_missed_payment",
+    "actor": "probation",
+    "action": "Report missed fine payment to court",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "pay_fine"
+    ],
+    "condition": "payment_missed",
+    "recipient": "court",
+    "source": {
+     "section": "7-503",
+     "subsection": "b.2",
+     "quote": "The probation agency or officer shall report to the court a failure to comply with the order."
+    }
+   },
+   {
+    "id": "apply_reduction",
+    "actor": "defendant",
+    "action": "Apply to court to reduce the fine",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "pay_fine"
+    ],
+    "condition": "unable_to_pay",
+    "recipient": "court",
+    "source": {
+     "section": "7-504",
+     "subsection": "a",
+     "quote": "A defendant who is unable to pay a fine ordered by a court may apply to the court for a reduction of the fine."
+    }
+   },
+   {
+    "id": "investigate_nonpayment",
+    "actor": "court",
+    "action": "Investigate reasons for nonpayment",
+    "kind": "hearing",
+    "modality": "permission",
+    "after": [
+     "report_missed_payment",
+     "apply_reduction"
+    ],
+    "join": "any",
+    "source": {
+     "section": "7-504",
+     "subsection": "b",
+     "quote": "the court may investigate the reasons for the failure or inability to pay the fine, including the defendant's financial and family situation and whether nonpayment of the fine is contumacious or is due to indigence"
+    }
+   },
+   {
+    "id": "decide_nonpayment",
+    "actor": "court",
+    "action": "Reduce fine, commit, or jail until paid",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [
+     "investigate_nonpayment"
+    ],
+    "source": {
+     "section": "7-504",
+     "subsection": "c",
+     "quote": "After an investigation that a court considers necessary as to the reasons for the failure or inability to pay a fine, the court"
+    }
+   },
+   {
+    "id": "pay_restitution",
+    "actor": "defendant",
+    "action": "Pay restitution to the Department",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [],
+    "condition": "restitution_ordered",
+    "recipient": "probation",
+    "deadline": {
+     "amount": 30,
+     "unit": "days",
+     "anchor": "the court enters a judgment of restitution (when the court sets no payment date; or a later date the Division directs)",
+     "consequence": "unstated",
+     "on_miss": "notify_overdue_restitution",
+     "source": {
+      "section": "11-616",
+      "subsection": "e.1.ii.2",
+      "quote": "30 days after the court enters a judgment of restitution"
+     }
+    },
+    "source": {
+     "section": "11-607",
+     "subsection": "b.1",
+     "quote": "The restitution obligor shall make restitution to the Department or the Department of Juvenile Services under the terms and conditions of the judgment of restitution."
+    }
+   },
+   {
+    "id": "notify_overdue_restitution",
+    "actor": "probation",
+    "action": "Notify court; seek earnings withholding",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [],
+    "recipient": "court",
+    "source": {
+     "section": "11-607",
+     "subsection": "c.1",
+     "quote": "Whenever an obligor's restitution payment, as ordered by the court or established by the Department, is overdue, the Department or the Department of Juvenile Services shall"
+    }
+   },
+   {
+    "id": "restitution_hearing",
+    "actor": "court",
+    "action": "Hold contempt or probation violation hearing",
+    "kind": "hearing",
+    "modality": "permission",
+    "after": [
+     "notify_overdue_restitution"
+    ],
+    "source": {
+     "section": "11-607",
+     "subsection": "c.2",
+     "quote": "The court may hold a hearing to determine whether the restitution obligor is in contempt of court or has violated the terms of the probation."
+    }
+   }
+  ],
+  "decisions": [],
+  "outcomes": [
+   {
+    "id": "community_service_done",
+    "description": "Community service performed instead of fines and court costs",
+    "after": [
+     "order_community_service"
+    ],
+    "source": {
+     "section": "8-703",
+     "subsection": "1",
+     "quote": "instead of payment of any fines and court costs imposed"
+    }
+   },
+   {
+    "id": "plan_paid",
+    "description": "Fines paid under the installment plan agreement",
+    "after": [
+     "approve_installment_plan"
+    ],
+    "source": {
+     "section": "7-504.1",
+     "subsection": "c.2.i",
+     "quote": "Require that the defendant make installment payments on the total amount of the fine or fines covered by the agreement"
+    }
+   },
+   {
+    "id": "plan_debt_referred",
+    "description": "Unpaid plan balance sent to the Central Collection Unit or processed like other unpaid fines",
+    "after": [
+     "notify_plan_disposition"
+    ],
+    "source": {
+     "section": "7-504.1",
+     "subsection": "c.4.i.1",
+     "quote": "Refer the amount of the unpaid outstanding fine to the Central Collection Unit of the Department of Budget and Management"
+    }
+   },
+   {
+    "id": "fine_paid",
+    "description": "Fine paid as ordered",
+    "after": [
+     "pay_fine"
+    ],
+    "source": {
+     "section": "7-503",
+     "subsection": "a",
+     "quote": "the court may order the defendant to pay the fine"
+    }
+   },
+   {
+    "id": "fine_reduced",
+    "description": "Fine reduced to an amount the defendant can pay",
+    "after": [
+     "decide_nonpayment"
+    ],
+    "when": "fine_reduced",
+    "source": {
+     "section": "7-504",
+     "subsection": "c.2",
+     "quote": "May reduce the fine to an amount that the court determines the defendant is able to pay"
+    }
+   },
+   {
+    "id": "jailed_until_paid",
+    "description": "Committed or imprisoned until payment, within the statutory caps",
+    "after": [
+     "decide_nonpayment"
+    ],
+    "when": "imprisonment_ordered",
+    "source": {
+     "section": "7-504",
+     "subsection": "c.3",
+     "quote": "may direct that the individual be imprisoned until payment of"
+    }
+   },
+   {
+    "id": "collected_as_civil_judgment",
+    "description": "Unpaid fine and costs collected like a civil judgment",
+    "after": [
+     "decide_nonpayment"
+    ],
+    "source": {
+     "section": "7-505",
+     "subsection": "a",
+     "quote": "Unpaid and undischarged fines and unpaid costs may be levied, executed on, and collected in the same manner as judgments in civil cases."
+    }
+   },
+   {
+    "id": "restitution_paid",
+    "description": "Restitution paid in full",
+    "after": [
+     "pay_restitution"
+    ],
+    "source": {
+     "section": "11-616",
+     "subsection": "d",
+     "quote": "If complete restitution and interest have been paid"
+    }
+   },
+   {
+    "id": "contempt_or_violation",
+    "description": "Found in contempt or in violation of probation",
+    "after": [
+     "restitution_hearing"
+    ],
+    "when": "intentionally_impoverished",
+    "source": {
+     "section": "11-607",
+     "subsection": "c.3",
+     "quote": "the court may find the restitution obligor in contempt of court or in violation of probation"
+    }
+   },
+   {
+    "id": "restitution_collected",
+    "description": "Overdue restitution referred to the Central Collection Unit",
+    "after": [
+     "restitution_hearing"
+    ],
+    "source": {
+     "section": "11-616",
+     "subsection": "a.1",
+     "quote": "may refer an overdue restitution account for collection to the Central Collection Unit"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Md. Code, Courts and Judicial Proceedings § 7-505",
+    "role": "no imprisonment for unpaid costs; unpaid fines and costs are collected like civil judgments",
+    "source": {
+     "section": "7-505",
+     "subsection": "b",
+     "quote": "a defendant may not be imprisoned under this subtitle for failure to pay costs"
+    }
+   },
+   {
+    "citation": "Md. Code, Criminal Procedure § 11-617",
+    "role": "earnings withholding order for overdue restitution",
+    "source": {
+     "section": "11-607",
+     "subsection": "c.1.ii",
+     "quote": "request an earnings withholding order"
+    }
+   },
+   {
+    "citation": "Maryland Rules (indigency)",
+    "role": "standard for waiving court costs",
+    "source": {
+     "section": "7-405",
+     "quote": "unless the defendant establishes indigency as provided in the Maryland Rules"
+    }
+   },
+   {
+    "citation": "Md. Code, Correctional Services § 8-704",
+    "role": "community service requires consent, is unpaid, and is barred after a crime-of-violence conviction",
+    "source": {
+     "section": "8-704",
+     "subsection": "1",
+     "quote": "the juvenile or defendant consents to the assignment"
+    }
+   },
+   {
+    "citation": "Md. Code, Criminal Procedure § 6-226",
+    "role": "probation supervision fee: exemptions and a hearing before revocation for nonpayment",
+    "source": {
+     "section": "6-226",
+     "subsection": "f.3",
+     "quote": "The court shall hold a hearing to determine if there are sufficient grounds to find the supervisee in violation."
+    }
+   },
+   {
+    "citation": "Md. Code, Transportation § 26-204",
+    "role": "driving privileges may be suspended if a traffic citation is not paid, put on a payment plan, or set for trial",
+    "source": {
+     "section": "26-204",
+     "subsection": "e.1",
+     "quote": "the Administration may suspend the driving privileges of the person"
+    }
+   }
+  ],
+  "gaps": [
+   "The fine path assumes the court ordered installment payments through a probation agency (7-503(b)), because only then does the statute name who reports a missed payment; when a lump-sum fine goes unpaid, 7-504(b) lets the court investigate but does not say how the court learns of the default.",
+   "7-504(c) lets the court choose among commitment to a correctional facility, reduction, or imprisonment until payment, but sets no rule tying the choice to its finding of contumacious nonpayment or indigence. No decision table is modelled: the outcomes fine_reduced and jailed_until_paid carry conditions, and collection as a civil judgment (7-505(a)) is the default when neither is ordered. Commitment under (c)(1) is folded into jailed_until_paid.",
+   "Default imprisonment is capped by 7-504(d): 1 day for each $10 of the fine and, for a jailable crime, the lesser of one-third of the maximum term or 90 days (15 days for a non-jailable crime); it may not push the total past the statutory maximum, and terms for several fines run concurrently unless the court says otherwise. Costs can never lead to imprisonment (7-505(b)).",
+   "Community service (CS 8-703) needs the defendant's consent, is unpaid, and is unavailable after a crime-of-violence conviction (CS 8-704); it is possible only where the county has a community service program (CS 8-702, 8-706). The statute does not say how hours are credited against a fine.",
+   "The clerk installment plan (7-504.1) covers only traffic offenses (including parking citations) with fines totaling at least $150; the defendant must report any change of address during the plan. For traffic citations, entering such a plan also satisfies the notice to appear and avoids or lifts a license suspension (Transportation 26-204); unpaid Vehicle Law fines may go to the Central Collection Unit (Transportation 27-103).",
+   "Restitution: the 30-day timer models the default overdue date in 11-616(e) (30 days after judgment or a later date the Division directs) when the court sets no date; a court-set date or installment schedule controls otherwise, and each missed installment makes the account overdue. On overdue notice the Department must also request an earnings withholding order if the obligor is employed (11-607(c)(1)(ii); 20% of earnings under 11-617(e)). The Division may refer the account to the Central Collection Unit, and must do so if supervision ends with restitution owed; the Unit may intercept State tax refunds and lottery prizes once arrears exceed $30 (11-616(b)), and may not compromise and settle restitution without the victim's consent unless the court orders otherwise because the victim cannot be located (11-616(c)). Probation may be extended to collect restitution (CP 6-222(b)-(c)).",
+   "The restitution hearing is discretionary ('may'); 11-607(c)(3) authorizes contempt or a probation violation on a finding of intentional impoverishment, and the default outcome restitution_collected stands for continued collection (Central Collection Unit, earnings withholding, or enforcement as a money judgment under 11-608). The actor 'probation' stands for both the probation agency of 7-503(b) and 'the Department' (Public Safety and Correctional Services, through the Division of Parole and Probation) of 11-607.",
+   "Where payment of a fine, fee or restitution is a probation condition (7-503(c), 11-607(a)), nonpayment can lead to a violation hearing under CP 6-223; a nonpayment that involves no new arrest, crime, no-contact violation or absconding is a technical violation with presumptive jail caps of 15, 30 and 45 days. The $50 monthly supervision fee (CP 6-226) may be waived for unemployment despite diligent effort, schooling, disability, dependents with undue hardship, or other extenuating circumstances, and before revocation the court must hold a hearing that may weigh changes in finances and good-faith efforts to pay."
+  ]
+ },
+ "out_of_corpus": [
+  {
+   "kind": "court rule",
+   "what": "The standard and procedure for proving indigency so that court costs can be waived, which CJP 7-405 leaves to the Maryland Rules",
+   "where": "Maryland Rules, Title 1 (waiver of costs for indigency, Rule 1-325)"
+  },
+  {
+   "kind": "court rule",
+   "what": "Procedure for show-cause and constructive contempt proceedings for nonpayment and for probation revocation hearings",
+   "where": "Maryland Rules, Title 15 Chapter 200 (contempt) and Rule 4-347 (revocation of probation)"
+  },
+  {
+   "kind": "federal",
+   "what": "Constitutional limits on jailing a person who cannot pay a fine or restitution through no fault of their own (ability-to-pay inquiry, alternatives to jail)",
+   "where": "U.S. Constitution, Fourteenth Amendment, as applied in Bearden v. Georgia, 461 U.S. 660 (1983), Tate v. Short and Williams v. Illinois, and Maryland appellate case law"
+  },
+  {
+   "kind": "agency policy",
+   "what": "How the Division of Parole and Probation collects supervision fees, investigates fee-exemption requests and schedules restitution payments; District Court payment-plan forms and clerk practice",
+   "where": "Division of Parole and Probation guidelines adopted under CP 6-226(h); District Court of Maryland administrative policies and forms"
+  },
+  {
+   "kind": "local",
+   "what": "Whether a community service program exists and how hours are credited against fines and costs",
+   "where": "County community service programs established under CS 8-702 and administered under CS 8-706"
+  },
+  {
+   "kind": "regulation",
+   "what": "Central Collection Unit collection procedures and any added collection fees",
+   "where": "State Finance and Procurement Title 3, Subtitle 3 and Department of Budget and Management regulations (COMAR)"
+  }
+ ],
+ "version_flags": [],
+ "local_option": "Community service in place of fines and costs depends on the county: a county may establish a community service program (CS 8-702), run by the county or by the Division of Parole and Probation within the county (CS 8-706), and the court decides whether to order it.",
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Independent second draft. Maryland spreads this across Courts and Judicial Proceedings Title 7 Subtitle 5 (fines and costs), Correctional Services Title 8 Subtitle 7 (community service), and Criminal Procedure Title 11 Subtitle 6 (restitution) plus 6-226 (supervision fee). Excluded: Local Government 6-114 (contempt for unpaid fines or costs in municipal infraction cases, which are not crimes under CJP 7-501(c)) and 11-209 (civil infractions). CP 1-207 lets the Governor remit a fine (remission), CS 8-710 and CP 11-619(b) allow services for the victim as an alternative means of restitution, and CP 6-229(e) waives a $150 drug-treatment nolle/stet fee on an indigency finding; none is needed for the main answer. No gold section has a pending or expired version as of 2026-10-10. 'May' throughout: payment plans (except the clerk plan, which the defendant may apply for), reductions, community service and the nonpayment response are discretionary; the only mandatory rules are the probation agency's duty to report missed installments, the clerk's notice duty, the Department's duty to notify the court of overdue restitution, the bar on jail for costs, the bar on waiving 7-409 costs without proof of indigency, and the $50 supervision fee absent an exemption."
+}

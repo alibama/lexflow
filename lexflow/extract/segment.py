@@ -27,8 +27,12 @@ WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seve
            "sixtieth": 60, "ninetieth": 90}
 DEADLINE = re.compile(
     r"\b(?:within|not more than|no more than|not later than|no later than|at least|before the end of|"
-    r"an additional|additional|by|before|has|have|shall have)\s+(?:the\s+)?"
-    r"(?P<amount>\d+(?=st\b|nd\b|rd\b|th\b|\s|-|\()|[a-z]+(?:-[a-z]+)?)(?:st|nd|rd|th)?\s*(?:\(\d+(?:st|nd|rd|th)?\)\s*)?"
+    r"at the end of|not to exceed|shall not exceed|not exceed|exceed|an additional|additional|by|before|has|have|"
+    r"shall have)\s+(?:the\s+)?"
+    # a number: digits, a word ("ten", "tenth"), or a compound ("one hundred twenty", "forty-five")
+    r"(?P<amount>\d+(?=st\b|nd\b|rd\b|th\b|\s|-|\()|[a-z]+(?:-[a-z]+)?(?:\s+hundred(?:\s+(?:and\s+)?[a-z]+(?:-[a-z]+)?)?)?)"
+    r"(?:st|nd|rd|th)?\s*(?:\(\d+(?:st|nd|rd|th)?\)\s*)?"
+    r"(?:or\s+(?:\d+|[a-z]+(?:-[a-z]+)?)\s+)?"          # "within seven or 14 business days": the first limit
     r"(?P<adj>working|business|calendar|work)?[\s-]*"
     r"(?P<unit>days?|weeks?|months?|years?|hours?)\b(?P<rest>[^.;,]{0,90})", re.I)
 
@@ -144,8 +148,27 @@ def segment(text: str) -> list[Clause]:
 
 
 def _amount(tok: str) -> int | None:
-    tok = tok.lower()
-    return int(tok) if tok.isdigit() else WORDNUM.get(tok)
+    """'10' -> 10, 'ten' -> 10, 'tenth' -> 10, 'one hundred twenty' -> 120, 'two hundred and forty-five' -> 245."""
+    tok = re.sub(r"\s+", " ", tok.lower().strip())
+    if tok.isdigit():
+        return int(tok)
+    m = re.fullmatch(r"([a-z]+) hundred(?: (?:and )?([a-z]+(?:-[a-z]+)?))?", tok)
+    if m:
+        h = WORDNUM.get(m.group(1))
+        rest = _compound(m.group(2)) if m.group(2) else 0
+        return h * 100 + rest if h and rest is not None else None
+    return _compound(tok)
+
+
+def _compound(tok: str) -> int | None:
+    """'forty-five' -> 45 (tens and units); a single number word as WORDNUM has it."""
+    if tok in WORDNUM:
+        return WORDNUM[tok]
+    if "-" in tok:
+        a, b = tok.split("-", 1)
+        if a in WORDNUM and b in WORDNUM and WORDNUM[a] % 10 == 0 and WORDNUM[b] < 10:
+            return WORDNUM[a] + WORDNUM[b]
+    return None
 
 
 def annotate(c: Clause) -> None:

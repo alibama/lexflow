@@ -29,6 +29,68 @@ Each reference model was written by Claude from the statute text and went throug
 
 Further questions worth adding (building permits, questions for people in prison and reentry, FOIA and redaction work, and questions from city staff) are scoped in [docs/questions.md](docs/questions.md).
 
+## Ask any question
+
+The **Ask** page takes a question in plain words and any number of states, counties, cities or towns. An autocomplete covers every state and all 38,640 governments, and one checkbox adds every place in the chosen states. Each state's answer is worked out once, in a background job, and shared by every place in that state. A place adds its own layer: LOCUS ordinance headings that mention the question, and its contacts.
+
+1. **Plan the question.** Two to ten concepts, each a list of words a state code would use for it ("expungement", "sealing" and "expunction" for clearing a record). They come from a small legal thesaurus, and a local model can add the code's own vocabulary. Each concept is weighed by how many sections of that state's code use it.
+2. **Search the statutes.** Every downloaded section is in a full-text index (SQLite FTS5, one file per state, built in seconds: **Make the statutes searchable** on the Setup page). Several searches are fused: all core concepts in the heading, all anywhere, the two rarest, a procedure search ("petition", "application", "file") for how-do-I questions, one search per facet of a many-part question, and any concept. Then the code's own structure adds what the words miss: the sections the best hits cite, and the other sections of the chapters that hold them, since a procedure's deadlines and duties often never use the question's words. The results are reranked by meaning and by a small model trained on Claude's gold sections. Expired versions of a section are dropped, and versions not yet in force move down.
+3. **Quote, then answer.** The clauses that answer the question become numbered quotes, word for word. At least one quote comes from every chosen section, and clauses carrying what the question asks for (deadlines, fees and caps, offices, orders of priority) are preferred. For a how-do-I question, the learned selector picks the procedure's steps, weighted by their relevance to the question, and they are compiled to a draft BPMN map.
+4. **A plain-language summary (optional).** A local model (`LEXFLOW_ASK_MODEL`, default qwen3:1.7b) writes two to six claims, and each claim must cite the quotes it rests on. A claim that cites nothing, or states a number its quotes do not contain, is dropped, never repaired. The quotes are always shown, and they are the answer when no model is running.
+5. **Say when the law is not there.** If no section clearly governs the question, the answer is "not found", with a pointer to where the law may live instead: regulations, court rules, contracts, agency policy or local ordinances.
+
+Answers are machine-made and marked unreviewed. On the question's page, tick **For the wiki** to publish an answer as its own Lexipedia sub-page under its state or place.
+
+**AskBench: Claude vs the open models on new questions.** Six questions on prisons, court debt and the microeconomics of the criminal-legal system ([docs/questions.md](docs/questions.md#d-prisons-court-debt-and-the-economics-of-the-criminal-legal-system)). For each, Claude wrote a reference answer for VA, DC, MD, TX and CA, 30 in all (`curated_ask/<question>/<state>.json`). Each reference has:
+- the gold sections, with their roles;
+- nuggets: atomic facts, each with a word-for-word quote;
+- typed slots (fees, deadlines, offices, orders of priority);
+- a coverage call (in the code, partly, or not at all, with where the rest lives);
+- for process questions, the steps in the same schema as the state models.
+
+Every reference passes `lexflow check-ask`. Then an adversarial reviewer re-read the statutes and a fixer applied the findings. `lexflow ask-bench` scores the local pipeline against them in four arms:
+- **local**, the whole pipeline;
+- **heuristic**, the same without the learned reranker;
+- **profile**, searching with Claude's own concept groups, which shows what planning loses;
+- **oracle**, Claude's gold sections handed to the same answering stages, which separates retrieval loss from answering loss.
+
+The score covers gold sections in the top 10, vital nuggets quoted, citation precision, slots, steps, and whether "answered / not found" matches Claude's coverage call.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/askbench-dark.svg">
+  <img alt="AskBench bar chart: composite 0.38 for the local pipeline, 0.52 with Claude's search concepts and 0.75 with Claude's sections, against 0.69 Claude-vs-Claude agreement; the same three arms for gold sections in the top 10, vital points quoted, quotes from gold sections and the answer/not-found call." src="docs/img/askbench.svg">
+</picture>
+
+**Results** (30 cases, scorer version 2, [docs/askbench.json](docs/askbench.json)):
+
+| Arm | Composite | Gold sections in top 10 | Vital points quoted | Quotes from gold sections | Fees and deadlines | Answer / not found right |
+|---|---|---|---|---|---|---|
+| Local pipeline | **0.376** | 0.23 | 0.17 | 0.51 | 0.25 | 1.00 |
+| Local, hand-set reranker only | 0.343 | 0.19 | 0.14 | 0.50 | 0.22 | 0.93 |
+| Local answering, Claude's search concepts | 0.520 | 0.38 | 0.33 | 0.78 | 0.46 | 0.93 |
+| Same answering, Claude's sections given | 0.746 | 1.00 | 0.47 | 1.00 | 0.72 | 1.00 |
+
+**Claude vs Claude: 0.69.** Six of the references have an independent second draft, made from the list of sections only. The two drafts agree on 0.56 to 0.83 of the sections and 0.84 to 1.00 of the vital points. In 3 of the 6 they make a different coverage call, each time "in the code" against "partly in the code".
+
+What the arms show:
+- **Retrieval is the main loss.** Given Claude's sections, the same answering stages score 0.75. With their own search they score 0.38. Claude's concept groups alone lift the local search to 0.52, so the planner's vocabulary is about 40% of that gap.
+- **Answering from the right sections still misses half the vital points** (0.47 with Claude's sections). A quote is one clause chosen by meaning, and a vital point often spans clauses or sits deep in a list.
+
+**What moved retrieval**, each measured on the same 30 references:
+
+| Change | Gold sections found |
+|---|---|
+| Fused searches, reciprocal-rank fusion ([Cormack et al. 2009](https://doi.org/10.1145/1571941.1572114)) | top 20: 0.202 · top 80: 0.416 |
+| \+ the code's structure: every section of the chapters that hold the best hits (the cluster hypothesis), and the sections those hits cite | top 20: **0.264** · top 80: **0.463** |
+| Reranked by meaning and structure | top 10: 0.191 |
+| \+ a small model trained on Claude's gold sections, scored leaving the whole question out | top 10: **0.231** |
+
+Tried and dropped: pseudo-relevance feedback from the best headings (RM3, [Lavrenko & Croft 2001](https://doi.org/10.1145/383952.383972); top 80 0.452 → 0.444), splitting a phrase such as "building permit" from its bare words (no change), and telling the reranker which search found each section (0.235 → 0.231).
+
+**The scorer was checked too.** An adversarial review found version 1 too generous: numbers matched as substrings (the 5 of 1995), one short clause counted as a whole nugget, and the same section number in another code counted as a gold citation. Version 2 fixes these. Every stored row carries a hash of the code and models behind it, and `docs/askbench.json` keeps only current rows. Nuggets with "vital" labels follow the TREC question-answering evaluations ([Voorhees 2003](https://trec.nist.gov/pubs/trec12/papers/QA.OVERVIEW.pdf)).
+
+**Lexipedia layout.** Each place has a short main page (`lexflow:va:charlottesville`), and every process sits on its own sub-page beneath it (`lexflow:va:charlottesville:records`). Each state has a main page (`lexflow:va`) that lists its process models, places and answered questions.
+
 ## Local models vs Claude
 
 <picture>
@@ -63,6 +125,19 @@ On the final code, the variants score: words + embeddings 0.604 (records 0.55, b
 - **Relative-position features** overfit (0.585 → 0.569).
 - **A candidate for the request implied by "upon request", and for a second duty in one sentence.** These raise perfect selection to 0.78, but they add more noise than the selector can sort (0.559 → 0.534 with words only). They are switched off.
 
+**Round 2: what was tried next, and what held up.** Four literature reviews planned these experiments, and each was kept only if its paired 90% bootstrap interval cleared zero on the 22 held-out cases ([scripts/selector_experiments.py](scripts/selector_experiments.py), [scripts/selector_ablation.py](scripts/selector_ablation.py)):
+
+| Experiment | Change in equivalence | Kept? |
+|---|---|---|
+| A step budget per statute, from expected F1 (instead of one threshold per question) | −0.013 (−0.030 to −0.000) | no: the scores are not calibrated well enough |
+| The same, skipping near-duplicate clauses | −0.012 | no |
+| A second-stage model over the clause sequence (neighbours' scores, list siblings, section best) | −0.044 (−0.083 to −0.012) | no |
+| Deadlines: compound numbers ("one hundred twenty days"), "not exceed", "at the end of the second business day", "seven or 14 business days"; borrowing a time limit from a list lead-in, the first item, or the next clause | deadlines matched under perfect selection 58% → 74%; equivalence ±0 | yes: the parses are right |
+| Active learning: Claude labelled the 758 sentences the selector was least sure of, in 12 states without references (295 steps) | −0.0002 (−0.021 to +0.025) | data kept, off by default |
+| List items compared together with their lead-in ("A custodian who denies the application shall: within 10 working days ...") | +0.006 (−0.013 to +0.029) | yes |
+
+The selector sits at about 0.60 on these 22 cases: none of these moves it beyond the noise of 22 cases. The losses left are candidate recall (perfect selection 0.76) and the selector's precision on long business statutes.
+
 **What scales.** The selector improves with each reference: 0.48 with 2 training states, 0.55 with 4, 0.58 with 6 and 8, and 0.60 with 10 (two random draws each). The gain flattens, so the next 10 states should add a few hundredths, not tenths. A reference costs Claude time once and helps every state after it. Everything else is a one-off cost per clause: the embeddings are cached on disk, and a state takes seconds to a few minutes on a CPU.
 
 Reproduce with `lexflow run benchmark --strategies stack_combo,stack_tfidf,rules`, `lexflow ceiling` and `python scripts/learning_curve.py`. The **Benchmark** page shows every case.
@@ -96,12 +171,13 @@ _Snapshot 2026-10-10. Regenerate with `lexflow export-status` and `node tools/we
 
 - [x] **Load every county, city and town** (required, done): 38,640 governments in 51 states
 - [x] **Download state statutes** (required, done): 47 states downloaded, 5 not in the release
+- [x] **Make the statutes searchable** (recommended, done): 47 of 47 states searchable
 - [x] **Find the state law for each question** (required, done): Public records: 44 states; Start a business: 46 states
 - [ ] **Find contacts on Wikidata** (recommended, partly done): 3 of 51 states checked; 4 governments with an email or phone
-- [x] **Pull two local models** (recommended, done): Ready: qwen3:1.7b, gemma3:1b
+- [x] **Pull the local models** (recommended, done): Ready: nomic-embed-text, qwen3:1.7b, gemma3:1b
 - [ ] **Build the state process models** (required, partly done): Checked by Claude or a person: 22; One extraction: 65; Law found, no steps yet: 3; No state law found: 14
 - [x] **Load checked local answers** (optional, done): 3 places loaded of 3 researched places
-- [x] **Score every government and refresh the maps** (required, done): 77,280 answers scored
+- [ ] **Score every government and refresh the maps** (required, partly done): 77,280 answers scored; re-score CA, DC, FL, IL, MD, NC, NY, OH and 3 more (inputs changed since)
 - [ ] **Look for records and licence pages on official websites** (optional, partly done): 1 of 51 states scanned; 3 governments with a records or licence page
 - [ ] **Scan local ordinances (LOCUS-v1)** (optional, partly done): 1 of 51 states scanned; local law found for 110 governments
 - [ ] **Find court decisions that cite the law** (optional, partly done): 150 court decisions found for 4 states with models
@@ -196,6 +272,7 @@ flowchart LR
 |---|---|
 | **Map** | US counties coloured by answer confidence, state model tier, completion, quality, contacts or local law. One question at a time. Click a county to see each government in it, zoom to a state, or switch to a sortable table. |
 | **Setup** | The checklist: service status (Ollama, Turso, wiki), quick start, and every step with its checkbox, cost, options and progress. |
+| **Ask** | Ask a new question for any states, counties, cities or towns (autocomplete; one checkbox for every place in a state). Each answer shows the governing sections, the key provisions word for word, the steps and a draft map, the local layer, and how it was found; tick an answer for the wiki to publish it as a sub-page. |
 | **Processes** | How many states reach each stage, and a card for every state model. Each model page has the BPMN map, the steps with the exact words they come from, the decision tables, the statute text with quotes highlighted, the local-model runs, and other sections the locator considered. Downloads: `.bpmn`, `.dmn`, `.svg`, facts `.json`. |
 | **Data & sync** | Turso status, push and pull (all data or chosen states), pull-as-needed, row counts local vs shared, who built what, and the sync history. |
 | **Jobs** | Every background job, with progress and its log. |
@@ -254,11 +331,13 @@ Each state model also records **completion** (eight stages: law located, text lo
 
 As of 10 October 2026, on a Windows laptop with no GPU (Docker with 8 CPUs and 8 GB):
 
-- **Tests:** 86 pass inside the Docker image. One more, a live DokuWiki round trip, is skipped unless a test wiki is configured.
+- **Tests:** 150 pass inside the Docker image. One more, a live DokuWiki round trip, is skipped unless a test wiki is configured.
 - **Claude reference models:** 22, for VA, DC, MD, CA, TX, NY, FL, IL, OH, WA and NC. Every quote matches the statute text word for word, there are no schema or bpmnlint errors, every Petri net is sound, and quality is 0.99 to 1.00 (`lexflow check-curated <state> <question>`).
+- **AskBench references:** 30, by Claude: six questions × VA, DC, MD, TX and CA. Each was drafted, then re-read against the statute text by an adversarial reviewer, then fixed (90 agents). All pass `lexflow check-ask`: every nugget quote is word for word, every slot number appears as a whole number in its nugget, and the steps compile. Six more are independent second drafts, made from the list of sections only.
+- **Ask:** 47 states have a statute index (about 4 GB in all, a few seconds to build per state). A batch over Virginia and all 322 of its governments took 165 seconds, with the state answer worked out once.
 - **Statute seeds:** 44 states were checked by an agent reading the downloaded text, and 83 sections were kept. A section is kept only if its reference resolves and a quote from it appears word for word ([curated/seeds.json](curated/seeds.json); North Dakota records is marked not found because its file has the wrong text). The locator finds a verified or known section for 44 states for records and 46 for business. Keyword guesses score at most 0.6 and are never used for a model.
 - **Local extraction:** scored against the 22 references with each state held out ([above](#local-models-vs-claude)). The learned selector built 65 more models across 35 states; they count as one extraction and are not published as reviewed.
-- **Lexipedia:** 26 pages are live at [lexipedia.xyz/lexflow:start](https://lexipedia.xyz/doku.php?id=lexflow:start): the 22 reference models with their BPMN maps and decision tables, the three places, and the index. Only `lexflow:` pages are ever written.
+- **Lexipedia:** 43 pages are live at [lexipedia.xyz/lexflow:start](https://lexipedia.xyz/doku.php?id=lexflow:start): the index, a main page for each of the 11 states, the 22 reference models with their BPMN maps and decision tables, and the three places, each a short overview with one sub-page per process (`lexflow:va:charlottesville:records`). Only `lexflow:` pages are ever written.
 - **Wikibase:** [lexipedia.wikibase.cloud](https://lexipedia.wikibase.cloud) holds 55 jurisdictions (the states plus the three places), 496 statute sections, the 22 reviewed processes with their 88 roles and 275 steps, and 117 court decisions, each linked to the sections it cites. Each item carries its lexflow key, so a re-run updates items instead of adding new ones. Models from one extraction are not loaded. An earlier run had loaded 26 of them; their items are now marked "Unreviewed draft", and none were deleted.
 - **Case law:** CourtListener decisions that cite the sections: 150 so far, for CA, DC, MD and VA. The rest of the run stopped at CourtListener's anonymous rate limit. With a free `COURTLISTENER_TOKEN` in `.env`, run **Find court decisions** again; a rate limit now stops the run, so it is never recorded as "no opinions".
 - **Wikidata:** matched 319 of Virginia's 322 governments. **LOCUS:** read 106,155 Virginia rows in about 12 seconds and found local law on the two questions for 110 governments.
@@ -294,6 +373,8 @@ No licence has been chosen for lexflow itself yet. None of this is legal advice:
 ```
 lexflow/            the package
   ir.py, bpmn_xml.py, dmn_xml.py, layout.py, validate.py, petri.py, ...   the core (see docs/core.md)
+  ask/              new questions: index.py (statute search), plan.py, retrieve.py, relevance.py, answer.py, local.py,
+                    pipeline.py, reference.py (Claude's reference answers), bench.py (AskBench)
   extract/          facts schema, Ollama client, compiler, scorer; segment.py (clauses), selector.py (the learned
                     selector), strategies.py (every extraction strategy), benchmark.py (scoring against Claude)
   municipal/        governments, statutes, locator, contacts, crawl, LOCUS scan, build, quality, scoring, stats
@@ -304,11 +385,13 @@ lexflow/            the package
 dashboard/          the web dashboard (no build step)
 curated/            Claude's reference models per state and question, verified statute seeds, local answers
 curated_alt/        independent second drafts of six references (the Claude-vs-Claude ceiling)
-scripts/            make_seeds.py, bench_summary.py, learning_curve.py
+curated_ask/        Claude's reference answers to new questions (AskBench); curated_ask_alt/ holds second drafts
+curated_labels/     Claude's labels for the sentences the selector was least sure of (active learning)
+scripts/            make_seeds.py, bench_summary.py, learning_curve.py, selector_experiments.py, train_relevance.py
 tools/web/          front-end libraries and the README chart renderer
 tools/node*         bpmnlint (+ legal rules), dmnlint, bpmn-auto-layout
 docs/               core documentation, status snapshot, README images
-tests/              86 tests
+tests/              96 tests
 fixtures/           LOCUS rows, gold facts, Legistar sample, and every statute section the references cite (11 states)
 ```
 

@@ -1,0 +1,216 @@
+{
+  "qid": "license_conviction",
+  "question": "Can a state licensing board deny me an occupational license because of a criminal conviction, and how can I challenge the denial?",
+  "state": "dc",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      ["license", "licensure", "registration", "certification", "certificate"],
+      ["conviction", "convicted", "criminal record", "criminal history", "offense"],
+      ["directly related", "related to the occupation", "duties and responsibilities of the occupation"],
+      ["deny", "denial", "denies", "notice of intent to deny"],
+      ["rehabilitation", "fitness", "recidivated", "letters of reference", "work history"],
+      ["otherwise qualified", "sealed, expunged, vacated, or pardoned", "non-conviction information", "juvenile adjudication", "deferred sentencing agreement"],
+      ["petition a board", "disqualified", "preliminary determination"],
+      ["hearing", "45 business days", "final decision", "certified mail"],
+      ["Office of Administrative Hearings", "administrative law judge", "delegate"],
+      ["protest", "eligibility standards", "binding on the Mayor"],
+      ["rehearing", "full board", "panel"],
+      ["findings of fact", "conclusions of law", "contested case", "burden of proof"],
+      ["appeal", "Court of Appeals", "aggrieved", "judicial review", "petition for review"],
+      ["board", "health occupation", "Mayor", "Department of Licensing and Consumer Protection"]
+    ],
+    "negative": ["business license", "alcoholic beverage", "liquor", "sports wagering", "cannabis", "medical marijuana", "firearm", "operator's permit", "marriage license", "vending"],
+    "slots": ["yes_no", "deadline", "office", "order"]
+  },
+  "gold_sections": [
+    {"ref": "47-2853.17", "role": "primary", "why": "Non-health occupations: a board may act against (and direct the Mayor to deny) an applicant convicted of an offense directly related to the occupation; it may not consider unrelated convictions, may not ask until the applicant is otherwise qualified, may not consider sealed, expunged, vacated or pardoned convictions, juvenile adjudications or non-conviction information; the totality-of-factors test (clear and convincing evidence, rehabilitation and fitness, the District's interest in employing people with records)."},
+    {"ref": "47-2853.12", "role": "primary", "why": "Licensing criteria (no directly related conviction, as determined under 47-2853.17(c-1)(2)); application to the Mayor; the right to petition a board at any time for an early determination of disqualification, decided within 90 days."},
+    {"ref": "47-2853.22", "role": "primary", "why": "Challenge procedure: opportunity for a hearing before denial (with exceptions), the written notice required before a conviction-based hearing, 45 business days to respond and 45 business days for the board's final decision, certified-mail hearing notice 15 days ahead with information on legal resources, counsel, subpoenas the board must issue at the person's reasonable request, 90-day written decision after a hearing, panel decisions and rehearing before the full board (no appeal until the full board rules)."},
+    {"ref": "47-2853.23", "role": "primary", "why": "Any person aggrieved by a board's final decision may appeal to the D.C. Court of Appeals under 2-510."},
+    {"ref": "3-1205.14", "role": "primary", "why": "Health occupations (separate law): a board may deny a license for a conviction of an offense related to the occupation, and must consider the listed factors (relation to duties, nature and seriousness, time elapsed, age, rehabilitation, work history, references)."},
+    {"ref": "3-1205.19", "role": "supporting", "why": "Health occupation boards must offer a hearing before denying a license (same exceptions pattern), with certified-mail notice, counsel and a 90-day written decision; a board may delegate hearings and final decisions to a panel of 3 or more members or an administrative law judge under the Mayor's rules (i)."},
+    {"ref": "3-1205.20", "role": "supporting", "why": "Appeal of a health board's final decision to the D.C. Court of Appeals under 2-510."},
+    {"ref": "3-1205.03", "role": "supporting", "why": "Health occupation applicants must establish they have not been convicted of an offense related to the occupation."},
+    {"ref": "2-510", "role": "supporting", "why": "Judicial review: written petition for review in the D.C. Court of Appeals, filed within the time the court sets by rule; the court may affirm, modify or set aside; grounds such as arbitrary or capricious action or lack of substantial evidence; filing does not automatically stay the decision."},
+    {"ref": "47-2853.04", "role": "supporting", "why": "Which non-health occupations the subchapter covers and which are regulated elsewhere (c), among others: attorneys by the Court of Appeals; taxicab and limousine operators by the Department of For-Hire Vehicles; commercial drivers and commercial bicycle operators by the Department of Public Works; special police, security alarm agents and private correctional officers by the Metropolitan Police Department; insurance and securities; boxers and wrestlers."},
+    {"ref": "47-2853.08", "role": "supporting", "why": "Board powers: decide qualification questions the Mayor refers, binding on the Mayor (3); hear and decide protests from a person denied a license by a Mayor's licensing official for not meeting the board's eligibility standards, binding on the Mayor (5)."},
+    {"ref": "47-2853.10", "role": "supporting", "why": "The Mayor issues licenses to those who meet board standards, refers any question about an applicant's qualification to the board, and then takes the action the board determines (a)(1); the Mayor arranges hearings when a board asks (a)(4)."},
+    {"ref": "2-509", "role": "supporting", "why": "Contested-case rules the board hearing follows (47-2853.22 c, 3-1205.19 c): notice of the issues, burden of proof on the proponent of an order, the right to present evidence, rebut and cross-examine, an exclusive record, and a written adverse decision with findings of fact and conclusions of law."},
+    {"ref": "2-1831.03", "role": "supporting", "why": "Office of Administrative Hearings: its chapter covers Department of Health (a)(1) and Department of Licensing and Consumer Protection (b)(2A) adjudications, but a board keeps its own authority to hear cases (h); a licensing board may delegate a denial hearing and order to OAH, and the OAH order is appealable to the board (i)(1)."},
+    {"ref": "2-1831.16", "role": "supporting", "why": "OAH orders take effect when issued; a motion for reconsideration or a new trial is due within 10 calendar days of service (a); the delegating board hears any appeal from the ALJ's order (b); contested-case orders are reviewed in the D.C. Court of Appeals under the 2-510 standards (e), (g)."}
+  ],
+  "nuggets": [
+    {"id": "N1", "text": "Yes, within limits: a board under D.C.'s non-health occupations law may take action, including denying a license, against an applicant convicted of an offense that is directly related to the occupation.", "importance": "vital", "section": "47-2853.17", "quote": "Has been convicted of an offense that is directly related to the occupation for which the license, registration, or certification is sought or held", "slot": "yes_no"},
+    {"id": "N2", "text": "A board may not consider a conviction that is not directly related to the occupation.", "importance": "vital", "section": "47-2853.17", "quote": "that is not directly related to the occupation for which the license, registration, or certification is sought or held", "slot": null},
+    {"id": "N3", "text": "A board may not ask about or consider an applicant's conviction until it has found the applicant otherwise qualified.", "importance": "vital", "section": "47-2853.17", "quote": "An applicant's criminal conviction until after the applicant is found by the board to be otherwise qualified", "slot": null},
+    {"id": "N4", "text": "A board may not consider a conviction that has been sealed, expunged, vacated or pardoned, including one set aside under the Youth Rehabilitation Act.", "importance": "vital", "section": "47-2853.17", "quote": "A conviction that has been sealed, expunged, vacated, or pardoned, including a conviction that has been set aside pursuant to", "slot": null},
+    {"id": "N5", "text": "Whether an offense is directly related is decided on the totality of the factors, including whether its elements are directly related, by clear and convincing evidence, to the occupation's specific duties and responsibilities.", "importance": "vital", "section": "47-2853.17", "quote": "Whether the elements of the offense are directly related, by clear and convincing evidence, to the specific duties and responsibilities of the occupation", "slot": null},
+    {"id": "N6", "text": "The board must also weigh the applicant's evidence of rehabilitation and fitness: whether they reoffended, compliance with probation, supervised release or parole, time since the offense, age at the time, the circumstances (including mitigating ones), work history and letters of reference.", "importance": "vital", "section": "47-2853.17", "quote": "Any evidence produced by the applicant, licensee, registrant, person certified, or person permitted by [this subchapter] to practice in the District concerning their rehabilitation and fitness", "slot": null},
+    {"id": "N7", "text": "A person may petition a board at any time, even before getting the required education or training, to find out whether the board would disqualify them because of a conviction.", "importance": "vital", "section": "47-2853.12", "quote": "A person may petition a board at any time, including before obtaining education or training required for the occupation", "slot": null},
+    {"id": "N8", "text": "The board must decide such a petition within 90 days after receiving it.", "importance": "okay", "section": "47-2853.12", "quote": "The board shall render its decision on a person's petition within 90 days after receipt of the petition.", "slot": "deadline"},
+    {"id": "N9", "text": "Before denying a license, the board must give the applicant an opportunity for a hearing before the board, except where the denial rests solely on age, education, experience, examination or fee requirements, or no material facts are at issue.", "importance": "vital", "section": "47-2853.22", "quote": "it shall give the person against whom the action is contemplated an opportunity for a hearing before the board", "slot": "office"},
+    {"id": "N10", "text": "Before a hearing on a conviction-based action, the board must notify the applicant in writing of the conviction relied on and its reasoning that the offense is directly related, give a copy of the criminal history records it relies on, say the applicant may show inaccuracies, and describe what rehabilitation and fitness evidence the applicant may provide.", "importance": "vital", "section": "47-2853.22", "quote": "The conviction that forms the basis for the action, and the board's reasoning for determining the offense is directly related to the occupation", "slot": null},
+    {"id": "N11", "text": "After receiving that notice, the applicant has 45 business days to respond.", "importance": "vital", "section": "47-2853.22", "quote": "shall have 45 business days to respond", "slot": "deadline"},
+    {"id": "N12", "text": "Anyone aggrieved by a board's final decision may appeal it to the District of Columbia Court of Appeals (the health-occupations law, 3-1205.20, says the same).", "importance": "vital", "section": "47-2853.23", "quote": "Any person aggrieved by a final decision of a board may appeal the decision to the District of Columbia Court of Appeals", "slot": "office"},
+    {"id": "N13", "text": "Health occupation boards, under a separate law, may deny a license to an applicant convicted of an offense related to the occupation.", "importance": "vital", "section": "3-1205.14", "quote": "Has been convicted of an offense that is related to the occupation for which the license, registration, or certification is sought or held", "slot": "yes_no"},
+    {"id": "N14", "text": "When deciding whether to deny for a conviction, a health board must consider whether the offense relates to the occupation's duties, the nature and seriousness of the offense, time elapsed, age at the offense, rehabilitation evidence, work history and letters of reference.", "importance": "okay", "section": "3-1205.14", "quote": "The nature and seriousness of the offense", "slot": null},
+    {"id": "N15", "text": "Health occupation boards must also give an opportunity for a hearing before denying a license (with similar exceptions).", "importance": "okay", "section": "3-1205.19", "quote": "it shall give the individual against whom the action is contemplated an opportunity for a hearing before the board", "slot": null},
+    {"id": "N16", "text": "A non-health board also may not ask about or consider a juvenile adjudication or non-conviction information, such as a deferred sentencing agreement, a diversion program or an arrest that did not lead to a conviction.", "importance": "vital", "section": "47-2853.17", "quote": "A juvenile adjudication; or (III) Non-conviction information, including information related to a deferred sentencing agreement, participation in a diversion program, or an arrest that did not result in a conviction", "slot": null},
+    {"id": "N17", "text": "The totality test also includes the District's interest in promoting employment opportunities for people with criminal records.", "importance": "okay", "section": "47-2853.17", "quote": "The District's interest in promoting employment opportunities for individuals with criminal records.", "slot": null},
+    {"id": "N18", "text": "After receiving the applicant's response, the board has 45 business days to issue its final decision.", "importance": "okay", "section": "47-2853.22", "quote": "The board shall have 45 business days after the response is received to issue its final decision.", "slot": "deadline"},
+    {"id": "N19", "text": "If a panel of the board decided and the applicant asks for a rehearing before the full board, no appeal to the Court of Appeals is allowed until the full board rules.", "importance": "okay", "section": "47-2853.22", "quote": "If a rehearing before the full board is requested, no appeal to the District of Columbia Court of Appeals shall be permitted until the full board has issued a ruling.", "slot": null},
+    {"id": "N20", "text": "A licensing board may delegate the hearing and order on a proposed denial to the Office of Administrative Hearings; the OAH order can then be appealed to the board.", "importance": "okay", "section": "2-1831.03", "quote": "issue an order on the proposed denial, suspension, or revocation of a license or on any proposed disciplinary action against a licensee or applicant for a license. The Office's order shall be appealable to the board or commission", "slot": "office"},
+    {"id": "N21", "text": "A person denied a license by a Mayor's licensing official for not meeting the board's eligibility standards may protest to the board, whose decision binds the Mayor.", "importance": "okay", "section": "47-2853.08", "quote": "Hear and decide protests from any person denied a license or certificate, or the renewal of the same, by an official authorized by the Mayor to issue such licenses or renewals on the ground that the person does not meet the eligibility standards set by the board", "slot": null},
+    {"id": "N22", "text": "A decision against the applicant after the contested-case hearing must be in writing with findings of fact and conclusions of law.", "importance": "okay", "section": "2-509", "quote": "Every decision and order adverse to a party to the case, rendered by the Mayor or an agency in a contested case, shall be in writing and shall be accompanied by findings of fact and conclusions of law.", "slot": null},
+    {"id": "N23", "text": "The petition for review must be filed in the Court of Appeals within the time the court sets by rule, not by statute.", "importance": "okay", "section": "2-510", "quote": "A petition for review shall be filed in such Court within such time as such Court may by rule prescribe", "slot": "deadline"}
+  ],
+  "slots": {
+    "yes_no": {"value": "yes, but only for a conviction directly related to the occupation (non-health boards) or related to it (health boards)", "nuggets": ["N1", "N13"]},
+    "deadline": [
+      {"amount": 90, "unit": "days", "anchor": "the board's receipt of a petition asking whether a conviction would disqualify the person (board's decision)", "nuggets": ["N8"]},
+      {"amount": 45, "unit": "business days", "anchor": "receiving the board's written notice of the conviction-based action (applicant's response)", "nuggets": ["N11"]},
+      {"amount": 45, "unit": "business days", "anchor": "the board's receipt of the applicant's response (board's final decision)", "nuggets": ["N18"]}
+    ],
+    "office": [
+      {"value": "the occupational licensing board for the occupation (decides after offering a hearing; also hears protests of a licensing official's denial)", "nuggets": ["N9", "N21"]},
+      {"value": "Office of Administrative Hearings (if the board delegates the hearing; its order is appealable to the board)", "nuggets": ["N20"]},
+      {"value": "District of Columbia Court of Appeals (appeal of a board's final decision)", "nuggets": ["N12"]}
+    ],
+    "ordered_list": [
+      {"item": "Optionally petition the board early for a determination of whether the conviction disqualifies you", "nuggets": ["N7", "N8"]},
+      {"item": "The board finds you otherwise qualified before looking at the conviction", "nuggets": ["N3"]},
+      {"item": "The board decides on the totality of the factors whether the conviction is directly related", "nuggets": ["N5", "N6", "N17"]},
+      {"item": "The board sends written notice of the conviction and its reasoning", "nuggets": ["N10"]},
+      {"item": "You respond within 45 business days with evidence of inaccuracies or rehabilitation", "nuggets": ["N11"]},
+      {"item": "Hearing before the board (or an OAH administrative law judge if the board delegates it)", "nuggets": ["N9", "N20"]},
+      {"item": "Written final decision with findings of fact and conclusions of law", "nuggets": ["N18", "N22"]},
+      {"item": "Optional rehearing before the full board if a panel decided", "nuggets": ["N19"]},
+      {"item": "Petition the D.C. Court of Appeals for review within the time its rules set", "nuggets": ["N12", "N23"]}
+    ]
+  },
+  "answer": "Yes, within limits. Under D.C.'s general licensing law, a board may deny a license only for a conviction directly related to the occupation [N1], never for an unrelated one [N2]. It cannot ask about your record until you are otherwise qualified [N3], or consider sealed, expunged, vacated or pardoned convictions [N4], juvenile adjudications, arrests, diversion or deferred sentencing [N16]. It weighs whether the offense's elements are directly related, by clear and convincing evidence, to the job's duties [N5], rehabilitation evidence (no reoffending, time passed, work history, references) [N6], and D.C.'s interest in employing people with records [N17].\n\nTo challenge: petition anytime, even pre-training, for an early ruling [N7], due within 90 days [N8]. Before a hearing, the board must explain in writing which conviction it relies on and why, with records [N10]; you have 45 business days to respond [N11], then it has 45 business days to decide [N18]. You must be offered a hearing unless no material facts are disputed or the denial rests only on age, education, experience, exams or fees [N9]; an administrative law judge may hear it, appealable to the board [N20]. Denials need written findings [N22]. Protest a licensing official's denial to the board [N21]. Appeal final decisions to the D.C. Court of Appeals [N12] within the time its rules set [N23], after any requested full-board rehearing [N19].\n\nHealth-profession boards follow a separate law: denial for a related conviction [N13], weighing seriousness and other factors [N14], after offering a hearing [N15], appealable likewise [N12].",
+  "steps": {
+    "process_name": "Challenge a conviction-based license denial before a D.C. occupational board",
+    "trigger": "A person with a criminal conviction seeks a license, registration or certification from a D.C. non-health occupational board",
+    "trigger_source": {"section": "47-2853.12", "subsection": "a", "quote": "A person applying for licensure, certification, or registration under this subchapter shall establish to the satisfaction of the Mayor that the person"},
+    "actors": [
+      {"id": "applicant", "name": "Applicant (person with a conviction)", "kind": "private-party", "source": {"section": "47-2853.12", "subsection": "n.1", "quote": "A person may petition a board at any time"}},
+      {"id": "board", "name": "Occupational licensing board", "kind": "public-body", "source": {"section": "47-2853.17", "subsection": "a", "quote": "Each board, subject to the right of a hearing as provided by this subchapter"}},
+      {"id": "mayor", "name": "Mayor (licensing agency acting at the board's direction)", "kind": "official", "source": {"section": "47-2853.17", "subsection": "c", "quote": "the board may direct the Mayor to"}},
+      {"id": "court", "name": "District of Columbia Court of Appeals", "kind": "court", "source": {"section": "47-2853.23", "quote": "may appeal the decision to the District of Columbia Court of Appeals"}}
+    ],
+    "steps": [
+      {"id": "file_petition", "actor": "applicant", "action": "Petition board on whether conviction disqualifies", "kind": "filing", "modality": "permission", "after": [], "condition": "early_determination_sought", "recipient": "board",
+       "source": {"section": "47-2853.12", "subsection": "n.1", "quote": "A person may petition a board at any time, including before obtaining education or training required for the occupation"}},
+      {"id": "rule_on_petition", "actor": "board", "action": "Decide petition on disqualification", "kind": "decision", "modality": "obligation", "after": ["file_petition"], "recipient": "applicant",
+       "deadline": {"amount": 90, "unit": "days", "anchor": "receipt of the petition", "consequence": "unstated",
+                    "source": {"section": "47-2853.12", "subsection": "n.2", "quote": "The board shall render its decision on a person's petition within 90 days after receipt of the petition."}},
+       "source": {"section": "47-2853.12", "subsection": "n.2", "quote": "The board shall render its decision on a person's petition"}},
+      {"id": "file_application", "actor": "applicant", "action": "Submit application to the Mayor", "kind": "filing", "modality": "obligation", "after": [], "recipient": "mayor",
+       "source": {"section": "47-2853.12", "subsection": "h.1", "quote": "Submit an application to the Mayor on the form required by the Mayor"}},
+      {"id": "confirm_qualified", "actor": "board", "action": "Defer conviction inquiry until applicant found qualified", "kind": "review", "modality": "prohibition", "after": ["file_application"],
+       "source": {"section": "47-2853.17", "subsection": "c-1.1.A.i", "quote": "An applicant's criminal conviction until after the applicant is found by the board to be otherwise qualified"}},
+      {"id": "determine_related", "actor": "board", "action": "Determine whether conviction is directly related", "kind": "decision", "modality": "obligation", "after": ["confirm_qualified"], "condition": "otherwise_qualified", "decision": "directly_related",
+       "source": {"section": "47-2853.17", "subsection": "c-1.2", "quote": "a board shall determine whether a conviction of an offense of an applicant"}},
+      {"id": "send_notice", "actor": "board", "action": "Send written notice of conviction and reasoning", "kind": "notice", "modality": "obligation", "after": ["determine_related"], "condition": "directly_related", "recipient": "applicant",
+       "source": {"section": "47-2853.22", "subsection": "a-1.1", "quote": "the board shall notify the applicant"}},
+      {"id": "respond", "actor": "applicant", "action": "Respond with corrections or rehabilitation evidence", "kind": "filing", "modality": "right", "after": ["send_notice"], "recipient": "board",
+       "deadline": {"amount": 45, "unit": "business_days", "anchor": "receiving the board's written notice", "consequence": "unstated", "on_miss": "final_decision",
+                    "source": {"section": "47-2853.22", "subsection": "a-1.2.A", "quote": "shall have 45 business days to respond"}},
+       "source": {"section": "47-2853.22", "subsection": "a-1.2.A", "quote": "After receiving notice pursuant to paragraph (1) of this subsection"}},
+      {"id": "send_hearing_notice", "actor": "board", "action": "Send hearing notice by certified mail", "kind": "notice", "modality": "obligation", "after": ["respond"], "condition": "material_facts_at_issue", "recipient": "applicant",
+       "source": {"section": "47-2853.22", "subsection": "d", "quote": "shall be sent by certified mail to the last known address of the person at least 15 days before the hearing"}},
+      {"id": "hold_hearing", "actor": "board", "action": "Hold hearing before the board", "kind": "hearing", "modality": "obligation", "after": ["send_hearing_notice"],
+       "source": {"section": "47-2853.22", "subsection": "a", "quote": "it shall give the person against whom the action is contemplated an opportunity for a hearing before the board"}},
+      {"id": "final_decision", "actor": "board", "action": "Issue final decision", "kind": "decision", "modality": "obligation", "after": ["respond", "hold_hearing"], "join": "any", "decision": "final_ruling",
+       "deadline": {"amount": 45, "unit": "business_days", "anchor": "the response is received", "consequence": "unstated",
+                    "source": {"section": "47-2853.22", "subsection": "a-1.2.B", "quote": "The board shall have 45 business days after the response is received to issue its final decision."}},
+       "source": {"section": "47-2853.22", "subsection": "a-1.2.B", "quote": "to issue its final decision"}},
+      {"id": "deny_license", "actor": "mayor", "action": "Deny the license at board's direction", "kind": "act", "modality": "obligation", "after": ["final_decision"], "condition": "denied", "recipient": "applicant",
+       "source": {"section": "47-2853.10", "subsection": "a.1", "quote": "Upon resolution of the question, the Mayor shall promptly take such action as the board determines is appropriate"}},
+      {"id": "file_appeal", "actor": "applicant", "action": "Petition Court of Appeals for review", "kind": "filing", "modality": "right", "after": ["deny_license"], "condition": "applicant_appeals", "recipient": "court",
+       "source": {"section": "47-2853.23", "quote": "Any person aggrieved by a final decision of a board may appeal the decision to the District of Columbia Court of Appeals"}},
+      {"id": "court_review", "actor": "court", "action": "Affirm, modify, or set aside decision", "kind": "decision", "modality": "none", "after": ["file_appeal"],
+       "source": {"section": "2-510", "subsection": "a", "quote": "shall have power to affirm, modify, or set aside the order or decision complained of"}}
+    ],
+    "decisions": [
+      {"id": "directly_related", "question": "May the board rely on the conviction, i.e. is it directly related to the occupation?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "excluded_record", "label": "The conviction was sealed, expunged, vacated, pardoned or set aside (or the record is a juvenile adjudication or non-conviction information)", "type": "boolean"},
+         {"name": "related_on_totality", "label": "On the totality of the factors (elements directly related by clear and convincing evidence; rehabilitation and fitness evidence; the District's interest in employing people with records) the offense is directly related", "type": "boolean"}
+       ],
+       "outputs": [
+         {"name": "directly_related", "label": "Conviction directly related: the board may proceed toward denial", "type": "boolean"},
+         {"name": "conviction_disregarded", "label": "The board may not consider the conviction", "type": "boolean"},
+         {"name": "basis", "label": "Basis", "type": "string"}
+       ],
+       "rules": [
+         {"when": ["true", "-"], "then": ["false", "true", "\"Sealed, expunged, vacated, pardoned or set-aside conviction: may not be inquired into or considered\""],
+          "source": {"section": "47-2853.17", "subsection": "c-1.1.A.ii.I", "quote": "A conviction that has been sealed, expunged, vacated, or pardoned"}},
+         {"when": ["false", "true"], "then": ["true", "false", "\"Directly related on the totality of the factors\""],
+          "source": {"section": "47-2853.17", "subsection": "c-1.2", "quote": "is directly related to the occupation for which a license, registration, or certification is sought or held by considering the totality of the following factors"}},
+         {"when": ["false", "false"], "then": ["false", "true", "\"Not directly related: the board may not consider it\""],
+          "source": {"section": "47-2853.17", "subsection": "c-1.1.B", "quote": "that is not directly related to the occupation for which the license, registration, or certification is sought or held"}}
+       ]},
+      {"id": "final_ruling", "question": "Does the board deny the license because of the conviction?", "hit_policy": "FIRST",
+       "inputs": [
+         {"name": "still_directly_related", "label": "After the response and any hearing, the board (by majority vote) still finds the conviction directly related and chooses denial", "type": "boolean"}
+       ],
+       "outputs": [
+         {"name": "denied", "label": "Board directs the Mayor to deny the license", "type": "boolean"},
+         {"name": "not_denied", "label": "Conviction is not a ground for denial", "type": "boolean"}
+       ],
+       "rules": [
+         {"when": ["true"], "then": ["true", "false"],
+          "source": {"section": "47-2853.17", "subsection": "c.1", "quote": "Deny a license or certificate to an applicant"}},
+         {"when": ["false"], "then": ["false", "true"],
+          "source": {"section": "47-2853.17", "subsection": "c-1.1.B", "quote": "that is not directly related to the occupation for which the license, registration, or certification is sought or held"}}
+       ]}
+    ],
+    "outcomes": [
+      {"id": "petition_decided", "description": "Early determination issued; the person can then decide whether to train and apply", "after": ["rule_on_petition"],
+       "source": {"section": "47-2853.12", "subsection": "n.1", "quote": "to determine whether the person would be disqualified by the board pursuant to"}},
+      {"id": "conviction_not_considered", "description": "Conviction may not be considered; application decided on the other criteria", "after": ["determine_related"], "when": "conviction_disregarded",
+       "source": {"section": "47-2853.17", "subsection": "c-1.1.B", "quote": "that is not directly related to the occupation for which the license, registration, or certification is sought or held"}},
+      {"id": "license_not_denied", "description": "Board does not deny the license for the conviction", "after": ["final_decision"], "when": "not_denied",
+       "source": {"section": "47-2853.17", "subsection": "c-1.1.B", "quote": "Consider a conviction of an offense of an applicant"}},
+      {"id": "appeal_decided", "description": "Court of Appeals affirms, modifies or sets aside the decision, or remands", "after": ["court_review"],
+       "source": {"section": "2-510", "subsection": "a", "quote": "to remand the case for further proceedings, as justice may require"}}
+    ],
+    "cross_references": [
+      {"citation": "D.C. Code § 2-510", "role": "governs judicial review of the board's final decision in the D.C. Court of Appeals", "source": {"section": "47-2853.23", "quote": "appeal the decision to the District of Columbia Court of Appeals pursuant to § 2-510"}},
+      {"citation": "D.C. Code subchapter I of Chapter 5 of Title 2 (§ 2-501 et seq.)", "role": "contested-case notice and hearing procedure for the board hearing", "source": {"section": "47-2853.22", "subsection": "c", "quote": "a board shall give notice and hold the hearing in accordance with subchapter I of Chapter 5 of Title 2"}},
+      {"citation": "D.C. Code § 3-1205.14", "role": "parallel rule for health occupation boards: a conviction related to the occupation, weighed with listed factors", "source": {"section": "3-1205.14", "subsection": "a.4", "quote": "Has been convicted of an offense that is related to the occupation"}},
+      {"citation": "D.C. Code § 2-1831.03(i) and § 2-1831.16(b)", "role": "lets the board delegate the denial hearing to the Office of Administrative Hearings, with appeal of the OAH order to the board", "source": {"section": "2-1831.03", "subsection": "i.1", "quote": "may delegate to the Office its authority to conduct a hearing"}},
+      {"citation": "D.C. Code § 47-2853.08(5)", "role": "protest to the board of a denial by a Mayor's licensing official, binding on the Mayor", "source": {"section": "47-2853.08", "subsection": "5", "quote": "Hear and decide protests from any person denied a license or certificate"}}
+    ],
+    "gaps": [
+      "The early petition (47-2853.12 n) is optional and can be filed at any time; it is modeled as an alternative path from the start that ends with the board's determination, after which the person may apply.",
+      "47-2853.22 gives two decision clocks: for conviction-based actions the board has 45 business days after the applicant's response to issue its final decision (a-1.2.B), and after any hearing a written final decision within 90 days (h). The model puts the 45-business-day clock on the final decision; how the two interact when a hearing is held is not stated.",
+      "A hearing is not required where the denial rests solely on minimum age, education, experience, examination or fee requirements, or where no material facts are at issue (47-2853.22 a); the hearing path is modeled as conditional on material facts being at issue. The statute speaks of an 'opportunity' for a hearing and does not say how or when it must be requested.",
+      "If the applicant does not respond within 45 business days the model goes straight to the final decision; the statute does not state a consequence, and a board may hear and determine the matter if the person fails to appear (47-2853.22 g).",
+      "Off the main path: an optional settlement conference and consent decree (47-2853.22 b); hearings and final decisions by a panel of 3 or more members, with a right to rehearing before the full board, and no appeal to the Court of Appeals until the full board rules if rehearing is requested (47-2853.22 i); the board acts by majority of members present and voting and directs the Mayor to deny (47-2853.17 a, c).",
+      "The deadline for filing the petition for review is set by D.C. Court of Appeals rule, not by statute (2-510 a), and filing does not by itself stay the denial.",
+      "confirm_qualified models 47-2853.17(c-1)(1)(A)(i), which bars inquiry into the conviction until the board finds the applicant otherwise qualified; it is a timing prohibition, not a duty to make that finding. The qualification finding itself is presupposed (the Mayor refers qualification questions to the board under 47-2853.08(3) and 47-2853.10(a)(1)) and is modeled as the gate otherwise_qualified.",
+      "Who hears it: 47-2853.22 provides a hearing before the board or a panel of 3 or more members (i). 2-1831.03 brings Department of Health (a)(1) and DLCP (b)(2A) adjudications under the Office of Administrative Hearings, but (h) keeps a board's authority to hear cases itself, and (i)(1) lets a licensing board delegate the hearing and order on a proposed denial to OAH. The OAH order is then appealable to the board (2-1831.16 b), and a motion for reconsideration or new trial is due within 10 calendar days of service (2-1831.16 a). Health boards may delegate to a panel or an administrative law judge under the Mayor's rules (3-1205.19 i). The OAH path is not modeled.",
+      "Alternative route not modeled: a person denied by a Mayor's licensing official because they do not meet the board's eligibility standards may protest to the board, and the board's determination binds the Mayor (47-2853.08(5)).",
+      "The hearing follows 2-509 (47-2853.22 c): the proponent of an order has the burden of proof (2-509 b), but the statutes do not say whether the board or the applicant is the proponent when a license application is denied; 47-2853.17(c-1)(2)(A) separately requires the offense's elements to be directly related by clear and convincing evidence. An adverse decision must be written with findings of fact and conclusions of law (2-509 e).",
+      "The statutes do not say whether a ruling on an early petition (47-2853.12 n) is a 'final decision' that can be appealed under 47-2853.23, or whether a denial made without a hearing is a 'contested case' reviewable under 2-510(a).",
+      "Health occupations (Chapter 12 of Title 3) follow a parallel but different process: denial for a conviction 'related to' the occupation with the 3-1205.14(f) factors, hearing under 3-1205.19 and appeal under 3-1205.20, but without the 'otherwise qualified' timing rule, the sealed-record and non-conviction bars, the written conviction notice with 45 business days to respond, or the early petition. 3-1205.14(a)(3) defines 'convicted', for that paragraph, to include a nolo contendere or Alford plea and a deferred sentence or deferred judgment; (a)(4), the related-offense ground, does not define the term."
+    ]
+  },
+  "out_of_corpus": [
+    {"kind": "court rule", "what": "The time limit, form and filing fee for a petition for review of a board's final decision (2-510 leaves the filing time to the court's rules)", "where": "D.C. Court of Appeals Rules (Rule 15, review of agency orders and decisions)"},
+    {"kind": "regulation", "what": "Each board's application, preliminary-determination petition, notice and hearing procedures, and the occupation-specific qualification rules", "where": "D.C. Municipal Regulations, Title 17 (Business, Occupations and Professions), including the DLCP occupational boards' and DC Health boards' chapters"},
+    {"kind": "agency policy", "what": "Forms and practice for criminal-history petitions, notices of intent to deny and hearing requests", "where": "Department of Licensing and Consumer Protection (Occupational and Professional Licensing Administration) and DC Health (Health Regulation and Licensing Administration) guidance"},
+    {"kind": "court rule", "what": "Admission of attorneys, including character-and-fitness review of criminal history, is regulated by the D.C. Court of Appeals, not by these boards (47-2853.04 c.1)", "where": "D.C. Court of Appeals Rule 46 and the Committee on Admissions"},
+    {"kind": "regulation", "what": "Procedure in a licensing hearing delegated to the Office of Administrative Hearings (filings, motions, the appeal of an ALJ order to the board), and the Mayor's rules for health boards delegating hearings to an administrative law judge (3-1205.19 i)", "where": "OAH Rules of Practice and Procedure (Title 1 DCMR, Chapter 28) and the DC Health board rules in Title 17 DCMR"}
+  ],
+  "version_flags": [],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "D.C. has a general statute for the non-health occupations licensed through the Department of Licensing and Consumer Protection boards (Chapter 28 subchapter of Title 47, 47-2853.01 et seq.): 47-2853.12(a)(1) makes 'no directly related conviction' a licensing criterion; 47-2853.17(a)(5), (c)(1) lets a board direct the Mayor to deny on that ground; 47-2853.17(c-1) bars inquiry until the applicant is otherwise qualified, bars considering sealed, expunged, vacated, pardoned or Youth Rehabilitation Act set-aside convictions, juvenile adjudications and non-conviction information (deferred sentencing agreements, diversion, arrests without conviction), bars considering convictions not directly related, and sets the totality-of-factors test, which also includes the District's interest in promoting employment opportunities for individuals with criminal records (c-1.2.C); 47-2853.12(n) allows an early petition decided within 90 days; 47-2853.22 gives the notice, 45-business-day response, hearing, counsel, subpoena and decision rules; 47-2853.23 and 2-510 give review in the D.C. Court of Appeals. If a suspension or revocation based on a directly related conviction rests on a conviction later overturned, it ends automatically (47-2853.24 b). Health occupations under Chapter 12 of Title 3 use a looser 'related to the occupation' standard (3-1205.03 a.1, 3-1205.14 a.4) with the 3-1205.14(f) factors, a mandatory criminal background check (3-1205.22), hearing (3-1205.19) and appeal (3-1205.20); the sealed-record and timing protections of 47-2853.17(c-1) do not appear there, and the sealing law lets a licensing agency see sealed records for offenses that may disqualify a person, to the extent it could before, except records sealed under 16-806(a)(2) (citations, arrests and charges only for being a fugitive from justice) (16-801 a.5.D, 16-807 d.1.C); a person whose record is sealed commits no perjury or false statement by not disclosing it in response to any inquiry (16-807 b). Many occupations are regulated outside these two subchapters by their own statutes and agencies (47-2853.04 c: attorneys; notaries; public-school and UDC teachers and principals; insurance agents and brokers, securities agents and brokers, and investment advisers; hackers and taxicab and limousine operators; commercial drivers and commercial bicycle operators; special police, security alarm agents and private correctional officers; boxers, wrestlers and contest officials; clinical laboratory directors and technicians; veterinarians; funeral directors), and those may have different conviction rules. Security officers ((a)(40)) are not on the (c) exception list. 47-2853.17(a)(5) as downloaded ends with a stray quotation mark (codification artifact); the substance is unaffected."
+}

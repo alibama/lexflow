@@ -91,6 +91,37 @@ def test_labels_pair_steps_and_candidates_by_actor_kind():
     assert SEL.labels_for([trigger, primary], facts)[0] == [True, True]
 
 
+def test_list_items_carry_their_lead_in_and_deadlines_are_borrowed():
+    text = ("(a) A custodian who denies the application shall:\n"
+            "(1) within 10 working days, give the applicant a written statement of the reasons;\n"
+            "(2) allow inspection of any part of the record.\n"
+            "(b) The custodian shall notify the applicant of the delay.\n"
+            "(c) Within 30 days after receiving the application, the custodian shall:\n"
+            "(1) grant or deny the application.")
+    cands = SEL.wide_drafts(segment(text), "records")
+    item = next(d for d in cands if d["clause"].text.startswith("allow inspection"))
+    assert item["lead_in"].startswith("A custodian who denies") and SEL.view(item).startswith("A custodian")
+    assert item["deadline"] is None              # the 10 days belong to item (1), not to its sibling
+    grant = next(d for d in cands if d["clause"].text.startswith("grant or deny"))
+    assert grant["deadline"]["amount"] == 30 and grant.get("deadline_src") == "parent"
+    lead = next(d for d in cands if d["clause"].text.startswith("A custodian who denies"))
+    assert lead["deadline"]["amount"] == 10 and lead.get("deadline_src") == "first item"
+    plain = next(d for d in cands if d["clause"].text.startswith("The custodian shall notify"))
+    assert SEL.view(plain) == plain["clause"].text
+
+
+def test_deadline_words_and_compounds():
+    for t, want in [("The notice shall be published within one hundred twenty days after filing.", (120, "days")),
+                    ("Such extension shall not exceed 10 days (except Saturdays, Sundays, and legal holidays).",
+                     (10, "business_days")),
+                    ("Review is complete at the end of the second business day after the denial.", (2, "business_days")),
+                    ("The requestor shall be advised within seven or 14 business days after receipt.",
+                     (7, "business_days")),
+                    ("The board shall decide within forty-five days of the hearing.", (45, "days"))]:
+        c = segment(t)[0]
+        assert c.deadline and (c.deadline["amount"], c.deadline["unit"]) == want, t
+
+
 def test_knn_votes_with_the_nearest_labels():
     import numpy as np
     train = np.eye(4, dtype="float32")

@@ -1,0 +1,337 @@
+{
+ "state": "wi",
+ "question": "business",
+ "sections": [
+  "183.0201",
+  "183.0122",
+  "183.0202",
+  "183.0207",
+  "183.0112"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "183.0201",
+   "quote": "The articles of organization shall contain all of the following information:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "articles contents header"
+  },
+  {
+   "section": "183.0201",
+   "quote": "The name of the limited liability company, which must comply with s. 183.0112.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item: name"
+  },
+  {
+   "section": "183.0201",
+   "quote": "The street and mailing addresses of the company’s principal office.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item: principal office"
+  },
+  {
+   "section": "183.0201",
+   "quote": "The name and street and mailing and e-mail addresses of the initial registered agent of the limited liability company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item: registered agent"
+  },
+  {
+   "section": "183.0201",
+   "quote": "The articles of organization may set forth other information, including any of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional contents"
+  },
+  {
+   "section": "183.0201",
+   "quote": "If management of the limited liability company is vested in one or more managers, a statement to that effect.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional content: manager statement"
+  },
+  {
+   "section": "183.0201",
+   "quote": "Provisions not inconsistent with law regarding any of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional provisions header"
+  },
+  {
+   "section": "183.0201",
+   "quote": "A limited liability company is formed when the articles of organization become effective under s. 183.0207.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "LLC formed when articles take effect"
+  },
+  {
+   "section": "183.0201",
+   "quote": "If a limited liability company or a foreign limited liability company that is registered to transact business in this state dissolves, but its business continues without winding up and without liquidating the company, the status of the limited liability company or foreign limited liability company before dissolution shall continue to be applicable to the company as it continues its business, and the company shall not be required to make any new filings under this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-dissolution status, not formation"
+  },
+  {
+   "section": "183.0201",
+   "quote": "Any filings made by such a limited liability company or foreign limited liability company before dissolution shall be considered to have been filed by the company while it continues its business.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-dissolution filings, not formation"
+  },
+  {
+   "section": "183.0122",
+   "quote": "Subject to sub. (2) (a), the department may collect a fee for filing, or providing a certified copy of, a record under this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general fee authority; amounts in (2)(a)"
+  },
+  {
+   "section": "183.0122",
+   "quote": "The department may charge a fee for providing a certified copy of any record, or for filing any record not identified in sub.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "copy/unlisted-record fees by rule"
+  },
+  {
+   "section": "183.0122",
+   "quote": "(c) and (d), the department shall collect the following fees when the records described in this paragraph are delivered to the department for filing:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "collects filing fee ($130 articles)"
+  },
+  {
+   "section": "183.0122",
+   "quote": "(1), the department shall collect the expedited service fee established under s. 182.01 (4) (d) for processing in an expeditious manner a record required or permitted to be filed with the department under this chapter or for preparing in an expeditious manner a certificate of status or certificate of registration under s. 183.0211.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "collects expedited service fee"
+  },
+  {
+   "section": "183.0122",
+   "quote": "The department may, by rule, specify a larger fee for filing records described in par.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "rulemaking power for paper fee"
+  },
+  {
+   "section": "183.0122",
+   "quote": "The department may not collect a fee for filing articles of organization if all of the following apply:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "waives fee for student entrepreneurs"
+  },
+  {
+   "section": "183.0122",
+   "quote": "All members of the limited liability company, upon its formation, are student entrepreneurs.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "waiver condition item"
+  },
+  {
+   "section": "183.0122",
+   "quote": "If the limited liability company is formed by any organizer who will not become a member of the limited liability company upon its formation, all such organizers of the limited liability company are student entrepreneurs.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "waiver condition item"
+  },
+  {
+   "section": "183.0122",
+   "quote": "A person may not sign a document with intent that it be delivered to the department for filing, or deliver a document or cause a document to be delivered to the department for filing, if the person knows that the document is false in any material respect at the time of its delivery.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "false-filing prohibition/penalty"
+  },
+  {
+   "section": "183.0202",
+   "quote": "Articles of organization may be amended or restated at any time.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment permission, post-formation"
+  },
+  {
+   "section": "183.0202",
+   "quote": "To amend its articles of organization, a limited liability company must deliver to the department for filing an amendment stating all of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment filing, outside formation case"
+  },
+  {
+   "section": "183.0202",
+   "quote": "To restate its articles of organization, a limited liability company must deliver to the department for filing a restatement, designated as such in its heading.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement filing, outside formation case"
+  },
+  {
+   "section": "183.0202",
+   "quote": "If a member of a member-managed limited liability company, or a manager of a manager-managed limited liability company, knows or has notice that any information in the filed articles of organization was inaccurate when the articles were filed or has become inaccurate due to changed circumstances, the member or manager shall promptly do one of the following to correct the inaccuracy:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "ongoing duty to correct, post-formation"
+  },
+  {
+   "section": "183.0202",
+   "quote": "Cause the articles to be amended.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "correction option, post-formation"
+  },
+  {
+   "section": "183.0202",
+   "quote": "If appropriate, deliver to the department for filing a statement of change under s. 183.0116 or a statement of correction under s. 183.0209.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "correction filing, post-formation"
+  },
+  {
+   "section": "183.0207",
+   "quote": "Except as otherwise provided in s. 183.0208 and subject to s. 183.0209 (4), a record filed under this chapter is effective as follows:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to effective-date rules"
+  },
+  {
+   "section": "183.0207",
+   "quote": "A document may specify a delayed effective date and time, except the effective date may not be more than 90 days after the date that it is received for filing.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 90,
+    "unit": "days"
+   },
+   "why": "filer may delay effect, max 90 days"
+  },
+  {
+   "section": "183.0207",
+   "quote": "If a document specifies a delayed effective date and time in accordance with this subsection, the document is effective at the time and date specified.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "takes effect on delayed date"
+  },
+  {
+   "section": "183.0207",
+   "quote": "If a delayed effective date, but no time, is specified, the document is effective at the close of business on that date.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "default-time detail"
+  },
+  {
+   "section": "183.0112",
+   "quote": "The name of a limited liability company must contain the phrase “limited liability company” or “limited company” or the abbreviation “LLC” or “LC” or a variation of these abbreviations that differs only with respect to capitalization of letters or punctuation.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name rule: LLC designator"
+  },
+  {
+   "section": "183.0112",
+   "quote": "“Limited” may be abbreviated as “Ltd.,” and “company” may be abbreviated as “Co.”",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name rule: abbreviations"
+  },
+  {
+   "section": "183.0112",
+   "quote": "The name of a limited liability company, and the name under which a foreign limited liability company may register to do business in this state, must be distinguishable on the records of the department from all of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name rule: distinguishable"
+  },
+  {
+   "section": "183.0112",
+   "quote": "Any name of an existing person whose formation required the filing of a record by the department and which is not at the time administratively dissolved.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name rule list item"
+  },
+  {
+   "section": "183.0112",
+   "quote": "Any name under which a person is registered to do business in this state by the filing of a record by the department.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name rule list item"
+  },
+  {
+   "section": "183.0112",
+   "quote": "A limited liability company or foreign limited liability company may apply to the department for authorization to use in this state a name that is not distinguishable upon the records of the department from one or more of the names described in sub.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "applies for indistinguishable-name use"
+  },
+  {
+   "section": "183.0112",
+   "quote": "(2). The department shall authorize use of the name applied for if any of the following occurs:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "department authorizes name use"
+  },
+  {
+   "section": "183.0112",
+   "quote": "The applicant delivers to the department a certified copy of a final judgment of a court of competent jurisdiction establishing the applicant’s right to use the name applied for in this state.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "condition for name authorization"
+  },
+  {
+   "section": "183.0112",
+   "quote": "In determining whether a name is the same as or not distinguishable on the records of the department from the name of another person, words, phrases, or abbreviations indicating the type of person, such as “corporation,” “Corp.,” “incorporated,” “Inc.,” “service corporation,” “SC,” “Limited,” “Ltd.,” “limited partnership,” “LP,” “limited liability partnership,” “LLP,” “registered limited liability partnership,” “RLLP,” “limited liability limited partnership,” “LLLP,” “registered limited liability limited partnership,” “RLLLP,” “limited liability company,” “LLC,” “cooperative association,” or “cooperative,” or a variation of these abbreviations that differs only with respect to capitalization of letters or punctuation, may not be taken into account.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name comparison rule"
+  },
+  {
+   "section": "183.0112",
+   "quote": "The name of a limited liability company or foreign limited liability company may not contain language stating or implying that the limited liability company is organized for a purpose subject to regulation under another statute of this state, unless its purpose is not prohibited by, and the entity is subject to all the limitations of, the other statute.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "name content restriction"
+  },
+  {
+   "section": "183.0112",
+   "quote": "A limited liability company or foreign limited liability company may use in this state the name, including the fictitious name, that is used in this state by a corporation, limited liability company, nonstock corporation, limited partnership, limited liability partnership, foreign limited liability company, general cooperative association, or limited cooperative association if the limited liability company or foreign limited liability company proposing to use the name has done any of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "successor-name permission rule"
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "state": "or",
+ "question": "business",
+ "sections": [
+  "63.044",
+  "63.047",
+  "63.051",
+  "63.434",
+  "63.437"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "63.044",
+   "quote": "63.044 Formation. One or more individuals 18 years of age or older or other entities may form a limited liability company by executing and delivering articles of organization to the office for filing.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizers execute and deliver articles to office"
+  },
+  {
+   "section": "63.047",
+   "quote": "(1) Articles of organization must set forth:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "articles contents header"
+  },
+  {
+   "section": "63.047",
+   "quote": "The name of the limited liability company, which must satisfy the requirements of ORS 63.094;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "articles contents item: name"
+  },
+  {
+   "section": "63.047",
+   "quote": "A mailing address to which notices, as required by this chapter, may be mailed until the limited liability company designates an address in an annual report;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "articles contents item: mailing address"
+  },
+  {
+   "section": "63.047",
+   "quote": "The articles of organization may set forth any other provisions, not inconsistent with law, for regulating the internal affairs of the limited liability company, including any provision that is required or permitted to be included in any operating agreement of the limited liability company under this chapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional articles provisions"
+  },
+  {
+   "section": "63.434",
+   "quote": "(1) Consistent with the provisions of this chapter, a limited liability company may amend its articles of organization at any time to add, change or delete any provision, provided that the articles of organization as amended contain only such provisions as are required or permitted in initial articles of organization under this chapter as of the effective date of the amendment.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "permissive amendment, post-formation"
+  },
+  {
+   "section": "63.434",
+   "quote": "A limited liability company amending its articles of organization shall deliver articles of amendment to the office for filing.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment filing, outside formation case"
+  },
+  {
+   "section": "63.434",
+   "quote": "Articles of amendment shall contain:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents header"
+  },
+  {
+   "section": "63.434",
+   "quote": "The name of the limited liability company;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "63.434",
+   "quote": "The text of each amendment adopted;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "63.434",
+   "quote": "The date of each amendment’s adoption;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "63.434",
+   "quote": "If an amendment was adopted by the managers without member action, a statement to that effect and a statement that member action was not required; and",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "63.434",
+   "quote": "If an amendment was approved by the members, a statement that the member approval required under ORS 63.444, the articles of organization or any operating agreement has been obtained and a statement of the percentage of such members’ approval. [1993 c.173 §71]",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents item"
+  },
+  {
+   "section": "63.437",
+   "quote": "(1) The managers of a manager-managed limited liability company may restate its articles of organization at any time with or without member action.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "permissive restatement, post-formation"
+  },
+  {
+   "section": "63.437",
+   "quote": "The restatement may include one or more amendments to the articles of organization.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement scope rule"
+  },
+  {
+   "section": "63.437",
+   "quote": "If the restatement includes an amendment requiring member approval, it must be adopted as provided in ORS 63.444.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement approval rule"
+  },
+  {
+   "section": "63.437",
+   "quote": "A limited liability company restating its articles of organization shall deliver to the office for filing articles of restatement setting forth the name of the limited liability company and the text of the restated articles of organization together with a certificate setting forth:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement filing, outside formation case"
+  },
+  {
+   "section": "63.437",
+   "quote": "Whether the restatement contains an amendment to the articles of organization requiring member approval and, if it does not, that the managers adopted the restatement; or",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement certificate contents item"
+  },
+  {
+   "section": "63.437",
+   "quote": "If the restatement contains an amendment to the articles of organization requiring member approval, the information required by ORS 63.434.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement certificate contents item"
+  },
+  {
+   "section": "63.437",
+   "quote": "Restated articles of organization shall contain all statements required to be included in the initial articles of organization except that no statement is required to be made with respect to:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restated articles contents rule"
+  },
+  {
+   "section": "63.437",
+   "quote": "The names and addresses of the organizers or the initial or present registered office or agent; or",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement contents exception"
+  },
+  {
+   "section": "63.437",
+   "quote": "The mailing address of the limited liability company if an annual report has been filed with the office of the Secretary of State.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement contents exception"
+  }
+ ]
+}

@@ -1,0 +1,1063 @@
+{
+ "qid": "court_debt",
+ "question": "I can't afford to pay my court fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments?",
+ "state": "ca",
+ "as_of": "2026-10-10",
+ "question_type": "mixed",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "installment",
+    "installments",
+    "installment plan",
+    "time for payment",
+    "within a limited time"
+   ],
+   [
+    "ability to pay",
+    "ability-to-pay",
+    "inability to pay",
+    "hardship",
+    "public benefits",
+    "poverty guidelines",
+    "125 percent",
+    "burden of establishing"
+   ],
+   [
+    "waive",
+    "reduce",
+    "reduction",
+    "suspend",
+    "total amount due"
+   ],
+   [
+    "community service",
+    "in lieu of",
+    "in place of the payment"
+   ],
+   [
+    "fine",
+    "fines",
+    "base fine",
+    "restitution",
+    "restitution fine",
+    "court-imposed costs",
+    "assessments"
+   ],
+   [
+    "default",
+    "fails to pay",
+    "failure to pay",
+    "willfully failed to pay",
+    "civil assessment",
+    "show cause",
+    "imprisoned until the fine is satisfied",
+    "lawful excuse",
+    "delinquent",
+    "not punishable by imprisonment",
+    "Franchise Tax Board"
+   ],
+   [
+    "probation",
+    "supervision",
+    "revoked",
+    "condition of probation"
+   ]
+  ],
+  "negative": [
+   "parking penalty",
+   "speed safety system",
+   "Franchise Tax Board installment"
+  ],
+  "slots": [
+   "fee",
+   "deadline",
+   "amount",
+   "yes_no"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "Cal. PEN § 1205",
+   "role": "primary",
+   "why": "Misdemeanor fines payable within a limited time or in installments; on default after time was given the court orders arrest and an order to show cause, and a fine payable forthwith and unpaid means immediate custody; custody for nonpayment capped at one day per $125 of base fine, with credit; does not apply to restitution."
+  },
+  {
+   "ref": "68645.2",
+   "role": "primary",
+   "why": "Infraction ability-to-pay determinations: burden and criteria, waive/reduce, extend time or installment plan, community service, suspension; 50 percent and $25-a-month recommendations; no administrative fee."
+  },
+  {
+   "ref": "Cal. PEN § 1209.5",
+   "role": "primary",
+   "why": "Court must allow community service in lieu of the total infraction fine on a showing of hardship; credited at double the minimum wage."
+  },
+  {
+   "ref": "Cal. PEN § 1214.1",
+   "role": "primary",
+   "why": "Civil assessment of up to $100 for failing to pay without good cause; 20-day warning notice; vacated on good cause; no warrant once imposed."
+  },
+  {
+   "ref": "1203.2",
+   "role": "primary",
+   "why": "Probation or other supervision may not be revoked solely for failure to pay restitution, fines, fees or assessments unless the failure is willful and the person can pay."
+  },
+  {
+   "ref": "Cal. PEN § 1202.4",
+   "role": "primary",
+   "why": "Victim restitution amount is not reduced for inability to pay; restitution fine must be imposed despite inability to pay, which counts only above the minimum."
+  },
+  {
+   "ref": "1465.9",
+   "role": "primary",
+   "why": "Balances of court-imposed costs under the listed sections (as they read on June 30 or December 31, 2021) are unenforceable, uncollectible and vacated; pre-July 2022 civil assessments too; restitution fine balances lapse 10 years after imposition."
+  },
+  {
+   "ref": "Cal. PEN § 19.6",
+   "role": "supporting",
+   "why": "An infraction is not punishable by imprisonment, so jail is not a consequence of an unpaid infraction fine."
+  },
+  {
+   "ref": "1205.3",
+   "role": "supporting",
+   "why": "On probation, community service ordered as an alternative replaces fines and restitution fines on a proportional basis."
+  },
+  {
+   "ref": "42003",
+   "role": "supporting",
+   "why": "Vehicle Code infraction fines may be paid within a specified time or installments; missed installment means appearing in court; willful violation is contempt; court considers ability to pay on request and may modify on changed circumstances."
+  },
+  {
+   "ref": "68645.1",
+   "role": "supporting",
+   "why": "Courts may let infraction defendants request an ability-to-pay determination through technology; the request counts as an appearance."
+  },
+  {
+   "ref": "68645.3",
+   "role": "supporting",
+   "why": "Clerk may make ability-to-pay determinations under local rule, with review by a judicial officer; benefits verification."
+  },
+  {
+   "ref": "1214.2",
+   "role": "supporting",
+   "why": "A fine imposed as a probation condition: willful failure to pay is enforced as a probation violation; balance at the end of probation enforced as a civil judgment."
+  },
+  {
+   "ref": "1203.1d",
+   "role": "supporting",
+   "why": "Restitution and other reimbursable costs may be ordered in installments if compatible with financial ability; order of priority of disbursement."
+  },
+  {
+   "ref": "Cal. VEH § 40508",
+   "role": "supporting",
+   "why": "Willfully failing to pay a Vehicle Code fine or bail installment on time, without a lawful excuse presented to the court by the due date, is a misdemeanor even if paid later."
+  },
+  {
+   "ref": "Cal. VEH § 40510.5",
+   "role": "supporting",
+   "why": "Installment agreements to pay and forfeit infraction bail; a missed installment may lead to a failure-to-pay charge, civil assessment or warrant."
+  },
+  {
+   "ref": "1463.007",
+   "role": "supporting",
+   "why": "A missed installment makes the debt delinquent and open to a comprehensive collection program, which must use at least five listed tools (FTB intercepts, private collectors, garnishment, liens and others); it also runs nondelinquent plans for up to $35 each."
+  },
+  {
+   "ref": "Cal. PEN § 1214",
+   "role": "supporting",
+   "why": "Fines and restitution fines enforceable like money judgments; restitution orders enforceable by the victim as civil judgments after supervision ends."
+  },
+  {
+   "ref": "2900.5",
+   "role": "supporting",
+   "why": "Days in custody are credited to the base fine at not less than $125 per day; penalties reduced proportionally."
+  },
+  {
+   "ref": "Cal. RTC § 19280",
+   "role": "supporting",
+   "why": "Court-ordered debt of $100 or more may be referred to the Franchise Tax Board no sooner than 90 days after it becomes delinquent and collected like delinquent personal income tax (including earnings withholding orders)."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "For a misdemeanor, the judgment may let the defendant pay the fine within a limited time or in installments on specified dates.",
+   "importance": "vital",
+   "section": "Cal. PEN § 1205",
+   "quote": "When the defendant has been convicted of a misdemeanor, a judgment that the defendant pay a fine may also direct that the defendant pay the fine within a limited time or in installments on specified dates",
+   "slot": null
+  },
+  {
+   "id": "N2",
+   "text": "After an infraction ability-to-pay determination, the court may waive or reduce the total amount due.",
+   "importance": "vital",
+   "section": "68645.2",
+   "quote": "Waive or reduce the sum of the total amount due for an infraction violation.",
+   "slot": null
+  },
+  {
+   "id": "N3",
+   "text": "After an infraction ability-to-pay determination, the court may extend the time to pay or set an installment plan, including on a reduced amount.",
+   "importance": "vital",
+   "section": "68645.2",
+   "quote": "Extend the time for payment or provide for payment on an installment plan, including those amounts due after any reduction under subparagraph (A).",
+   "slot": null
+  },
+  {
+   "id": "N4",
+   "text": "The court must let a person convicted of an infraction do community service instead of paying the total fine if paying would be a hardship on the person or family.",
+   "importance": "vital",
+   "section": "Cal. PEN § 1209.5",
+   "quote": "the court shall permit a person convicted of an infraction, upon a showing that payment of the total fine would pose a hardship on the defendant or the defendant's family, to elect to perform community service in lieu of the total fine that would otherwise be imposed",
+   "slot": null
+  },
+  {
+   "id": "N5",
+   "text": "The unpaid balance of court-imposed costs under the sections listed in § 1465.9(a), as they read on June 30, 2021 (and under subdivision (b), others as they read on December 31, 2021), is unenforceable and uncollectible, and those parts of judgments are vacated; this reaches costs, not fines or restitution.",
+   "importance": "vital",
+   "section": "1465.9",
+   "quote": "as those sections read on June 30, 2021, shall be unenforceable and uncollectible and any portion of a judgment imposing those costs shall be vacated",
+   "slot": null
+  },
+  {
+   "id": "N6",
+   "text": "Inability to pay does not reduce the amount of victim restitution.",
+   "importance": "vital",
+   "section": "Cal. PEN § 1202.4",
+   "quote": "A defendant's inability to pay shall not be a consideration in determining the amount of a restitution order.",
+   "slot": null
+  },
+  {
+   "id": "N7",
+   "text": "If time or installments were given and a payment is missed, the court shall immediately order the defendant's arrest and an order to show cause why the defendant should not be jailed until the fine or installment is paid (a jail consequence that cannot apply to an infraction, see N10).",
+   "importance": "vital",
+   "section": "Cal. PEN § 1205",
+   "quote": "If time has been given for payment of a fine or it has been made payable in installments, the court shall, upon any default in payment, immediately order the arrest of the defendant and order the defendant to show cause why they should not be imprisoned until the fine or installment is satisfied in full.",
+   "slot": "order"
+  },
+  {
+   "id": "N8",
+   "text": "The court may impose a civil assessment of up to $100 on a defendant who, after notice and without good cause, fails to pay all or part of a court-ordered fine.",
+   "importance": "vital",
+   "section": "Cal. PEN § 1214.1",
+   "quote": "the court may impose a civil assessment of up to one hundred dollars ($100) against a defendant who fails, after notice and without good cause, to appear in court for a proceeding authorized by law or who fails to pay all or any portion of a fine ordered by the court",
+   "slot": "fee"
+  },
+  {
+   "id": "N9",
+   "text": "Probation or other supervision cannot be revoked solely for not paying restitution, fines, fees or assessments unless the court finds the failure willful and that the person can pay.",
+   "importance": "vital",
+   "section": "1203.2",
+   "quote": "Supervision shall not be revoked solely for failure of a person to make restitution, or to pay fines, fees, or assessments, imposed as a condition of supervision unless the court determines that the defendant has willfully failed to pay and has the ability to pay.",
+   "slot": null
+  },
+  {
+   "id": "N10",
+   "text": "An infraction is not punishable by imprisonment, so an unpaid infraction fine cannot itself be enforced with jail time.",
+   "importance": "vital",
+   "section": "Cal. PEN § 19.6",
+   "quote": "An infraction is not punishable by imprisonment.",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "Willfully failing to pay a Vehicle Code fine or an agreed bail installment within the time the court allowed, without presenting a lawful excuse to the court on or before the due date, is a misdemeanor even if the person pays in full later.",
+   "importance": "vital",
+   "section": "Cal. VEH § 40508",
+   "quote": "within the time authorized by the court and without lawful excuse having been presented to the court on or before the date the bail or fine is due is guilty of a misdemeanor regardless of the full payment of the bail or fine after that time",
+   "slot": null
+  },
+  {
+   "id": "N12",
+   "text": "Restitution and other reimbursable costs may be ordered paid in installments if reasonable and compatible with the defendant's financial ability.",
+   "importance": "vital",
+   "section": "1203.1d",
+   "quote": "If reasonable and compatible with the defendant's financial ability, the court may order payments to be made in installments.",
+   "slot": null
+  },
+  {
+   "id": "N13",
+   "text": "The ability-to-pay tool recommends a reduction of 50 percent or more for defendants receiving the listed public benefits, and a court that orders more than the recommendation must make express findings.",
+   "importance": "okay",
+   "section": "68645.2",
+   "quote": "The online tool shall recommend a reduction of 50 percent or more of the total amount due for all defendants who are in receipt of benefits described in subparagraph (A) of paragraph (1). The court shall make express findings if it deviates from the online tool recommendation by ordering a defendant to pay an amount greater than the recommendation pursuant to this paragraph.",
+   "slot": "amount"
+  },
+  {
+   "id": "N14",
+   "text": "A civil assessment cannot take effect until at least 20 calendar days after a mailed warning notice, and the court must vacate it if the defendant appears in time and shows good cause.",
+   "importance": "okay",
+   "section": "Cal. PEN § 1214.1",
+   "quote": "shall not become effective until at least 20 calendar days after the court mails a warning notice to the defendant by first-class mail to the address shown on the notice to appear or to the defendant's last known address. If the defendant appears within the time specified in the notice and shows good cause for the failure to appear or for the failure to pay a fine or installment of bail, the court shall vacate the assessment.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N15",
+   "text": "Among the minimum factors every court's inability-to-pay criteria must consider is a monthly income of 125 percent or less of the federal poverty guidelines (the other is receipt of the listed public benefits).",
+   "importance": "vital",
+   "section": "68645.2",
+   "quote": "A monthly income of 125 percent or less of the current poverty guidelines",
+   "slot": "amount"
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "civil assessment of up to $100 for failing to pay without good cause",
+    "nuggets": [
+     "N8"
+    ]
+   }
+  ],
+  "deadline": [
+   {
+    "amount": 20,
+    "unit": "days",
+    "anchor": "the court mails the warning notice (earliest a civil assessment can take effect; the defendant must appear and show good cause within the time the notice gives)",
+    "nuggets": [
+     "N14"
+    ]
+   }
+  ],
+  "amount": [
+   {
+    "value": "reduction of 50 percent or more recommended for public-benefit recipients; more only with express findings",
+    "nuggets": [
+     "N13"
+    ]
+   },
+   {
+    "value": "monthly income of 125 percent or less of the poverty guidelines is a minimum inability-to-pay factor",
+    "nuggets": [
+     "N15"
+    ]
+   }
+  ],
+  "yes_no": {
+   "value": "yes",
+   "nuggets": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N12"
+   ]
+  }
+ },
+ "answer": "Usually yes. For a misdemeanor, the judge can let you pay within a set time or in installments on set dates [N1]. For an infraction (most traffic tickets), ask for an ability-to-pay determination: the court can waive or reduce the amount [N2] or give more time or an installment plan [N3]. Income at or below 125 percent of the poverty guidelines counts toward eligibility [N15]; public-benefit recipients get a recommended cut of 50 percent or more, and making them pay more requires express findings [N13]. If paying an infraction fine would cause you or your family hardship, the court must let you do community service instead [N4]. Many older court-imposed costs are now uncollectible and vacated [N5]. Restitution is different: inability to pay cannot lower what you owe a victim [N6], but the court may set installments you can afford [N12]. If you miss a payment, the court may add a civil assessment of up to $100 [N8], effective no sooner than 20 days after a mailed warning and cancelled if you show good cause in time [N14]. An infraction cannot be punished with jail [N10], but willfully missing a traffic fine or installment without giving the court a lawful excuse by the due date is a separate misdemeanor [N11]. For other fines a missed installment brings an arrest order and a hearing on why you should not be jailed until paid [N7]. Probation cannot be revoked just for nonpayment unless you willfully failed to pay while able to [N9].",
+ "steps": {
+  "process_name": "Ability-to-pay relief and missed payments on a California court fine",
+  "trigger": "A California court orders a defendant to pay a fine the defendant says they cannot afford",
+  "trigger_source": {
+   "section": "1205",
+   "subsection": "a",
+   "quote": "A judgment that the defendant pay a fine, with or without other punishment"
+  },
+  "actors": [
+   {
+    "id": "court",
+    "name": "Superior court (judge or traffic referee; the clerk where a local rule allows)",
+    "kind": "public-body",
+    "source": {
+     "section": "68645.2",
+     "subsection": "a.3",
+     "quote": "Based on any ability-to-pay determination, a court may do any of the following"
+    }
+   },
+   {
+    "id": "clerk",
+    "name": "Clerk of the court",
+    "kind": "official",
+    "source": {
+     "section": "1205",
+     "subsection": "b",
+     "quote": "The clerk shall report to the court every default in payment of a fine or any part of that fine"
+    }
+   },
+   {
+    "id": "defendant",
+    "name": "Defendant ordered to pay",
+    "kind": "private-party",
+    "source": {
+     "section": "1205",
+     "subsection": "b",
+     "quote": "the defendant shall pay the fine to the clerk of the court"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "request_atp",
+    "actor": "defendant",
+    "action": "Request ability-to-pay consideration",
+    "kind": "filing",
+    "modality": "right",
+    "after": [],
+    "recipient": "court",
+    "source": {
+     "section": "42003",
+     "subsection": "c",
+     "quote": "upon request of the defendant, shall consider the defendant's ability to pay"
+    }
+   },
+   {
+    "id": "determine_atp",
+    "actor": "court",
+    "action": "Determine ability to pay and choose relief",
+    "kind": "decision",
+    "modality": "permission",
+    "after": [
+     "request_atp"
+    ],
+    "decision": "atp_relief",
+    "source": {
+     "section": "68645.2",
+     "subsection": "a.3",
+     "quote": "Based on any ability-to-pay determination, a court may do any of the following"
+    }
+   },
+   {
+    "id": "perform_service",
+    "actor": "defendant",
+    "action": "Perform community service instead of paying",
+    "kind": "act",
+    "modality": "right",
+    "after": [
+     "determine_atp"
+    ],
+    "condition": "community_service",
+    "recipient": "court",
+    "source": {
+     "section": "1209.5",
+     "subsection": "a",
+     "quote": "to elect to perform community service in lieu of the total fine that would otherwise be imposed"
+    }
+   },
+   {
+    "id": "pay_due",
+    "actor": "defendant",
+    "action": "Pay by set date or installments",
+    "kind": "payment",
+    "modality": "obligation",
+    "after": [
+     "determine_atp"
+    ],
+    "recipient": "clerk",
+    "source": {
+     "section": "1205",
+     "subsection": "a",
+     "quote": "pay the fine within a limited time or in installments on specified dates"
+    }
+   },
+   {
+    "id": "report_default",
+    "actor": "clerk",
+    "action": "Report payment default to the court",
+    "kind": "record",
+    "modality": "obligation",
+    "after": [
+     "pay_due"
+    ],
+    "condition": "payment_default",
+    "recipient": "court",
+    "source": {
+     "section": "1205",
+     "subsection": "b",
+     "quote": "The clerk shall report to the court every default in payment of a fine or any part of that fine"
+    }
+   },
+   {
+    "id": "mail_warning",
+    "actor": "court",
+    "action": "Mail civil assessment warning notice",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "report_default"
+    ],
+    "condition": "civil_assessment_sought",
+    "recipient": "defendant",
+    "source": {
+     "section": "1214.1",
+     "subsection": "b.1",
+     "quote": "the court mails a warning notice to the defendant by first-class mail"
+    }
+   },
+   {
+    "id": "show_good_cause",
+    "actor": "defendant",
+    "action": "Appear and show good cause",
+    "kind": "filing",
+    "modality": "right",
+    "after": [
+     "mail_warning"
+    ],
+    "recipient": "court",
+    "deadline": {
+     "amount": 20,
+     "unit": "days",
+     "anchor": "the court mails the warning notice (the defendant's window is the time stated in the notice; the assessment cannot take effect sooner than 20 calendar days after mailing)",
+     "consequence": "unstated",
+     "on_miss": "assessment_effective",
+     "source": {
+      "section": "1214.1",
+      "subsection": "b.1",
+      "quote": "shall not become effective until at least 20 calendar days after the court mails a warning notice to the defendant"
+     }
+    },
+    "source": {
+     "section": "1214.1",
+     "subsection": "b.1",
+     "quote": "If the defendant appears within the time specified in the notice and shows good cause for the failure to appear or for the failure to pay a fine or installment of bail"
+    }
+   },
+   {
+    "id": "vacate_assessment",
+    "actor": "court",
+    "action": "Vacate the civil assessment",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "show_good_cause"
+    ],
+    "condition": "good_cause_shown",
+    "source": {
+     "section": "1214.1",
+     "subsection": "b.1",
+     "quote": "the court shall vacate the assessment"
+    }
+   },
+   {
+    "id": "order_show_cause",
+    "actor": "court",
+    "action": "Order arrest and order to show cause",
+    "kind": "act",
+    "modality": "obligation",
+    "after": [
+     "report_default"
+    ],
+    "source": {
+     "section": "1205",
+     "subsection": "b",
+     "quote": "the court shall, upon any default in payment, immediately order the arrest of the defendant and order the defendant to show cause why they should not be imprisoned until the fine or installment is satisfied in full"
+    }
+   },
+   {
+    "id": "show_cause_hearing",
+    "actor": "court",
+    "action": "Decide consequence of the nonpayment",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "order_show_cause"
+    ],
+    "decision": "nonpayment_result",
+    "source": {
+     "section": "1205",
+     "subsection": "b",
+     "quote": "order the defendant to show cause why they should not be imprisoned until the fine or installment is satisfied in full"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "atp_relief",
+    "question": "What relief does the ability-to-pay determination give?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "inability_shown",
+      "label": "Defendant established inability to pay",
+      "type": "boolean"
+     },
+     {
+      "name": "waives_all",
+      "label": "Court waives or suspends the whole amount due",
+      "type": "boolean"
+     },
+     {
+      "name": "elects_service",
+      "label": "Defendant elects community service",
+      "type": "boolean"
+     },
+     {
+      "name": "receives_benefits",
+      "label": "Defendant receives listed public benefits",
+      "type": "boolean"
+     },
+     {
+      "name": "requests_installments",
+      "label": "Defendant asks for an installment plan",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "relief",
+      "label": "Relief ordered",
+      "type": "string"
+     },
+     {
+      "name": "community_service",
+      "label": "Community service in lieu of payment",
+      "type": "boolean"
+     },
+     {
+      "name": "fully_waived",
+      "label": "Nothing left to pay",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"No relief: the amount due stays payable as ordered\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.1",
+       "quote": "The defendant has the burden of establishing the inability to pay."
+      }
+     },
+     {
+      "when": [
+       "true",
+       "true",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Amount due waived or suspended in full\"",
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.3.A",
+       "quote": "Waive or reduce the sum of the total amount due for an infraction violation."
+      }
+     },
+     {
+      "when": [
+       "true",
+       "false",
+       "true",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Community service in lieu of the total or reduced amount due\"",
+       "true",
+       "false"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.3.C",
+       "quote": "Allow the defendant to complete community service in lieu of the total amount due."
+      }
+     },
+     {
+      "when": [
+       "true",
+       "false",
+       "false",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Reduction of 50 percent or more recommended (more only with express findings); installments of no more than 25 dollars a month on request\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.4",
+       "quote": "The online tool shall recommend a reduction of 50 percent or more of the total amount due for all defendants who are in receipt of benefits"
+      }
+     },
+     {
+      "when": [
+       "true",
+       "false",
+       "false",
+       "false",
+       "true"
+      ],
+      "then": [
+       "\"Reduce or partly suspend, extend time, or set an installment plan of no more than 25 dollars a month (recommended)\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.5",
+       "quote": "The online tool shall recommend a payment of no more than twenty-five dollars ($25) per month for a defendant who is eligible for a reduction pursuant to paragraph (3) and requests an installment plan."
+      }
+     },
+     {
+      "when": [
+       "true",
+       "false",
+       "false",
+       "false",
+       "false"
+      ],
+      "then": [
+       "\"Reduce or partly suspend, or extend the time for payment\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "68645.2",
+       "subsection": "a.3.B",
+       "quote": "Extend the time for payment or provide for payment on an installment plan"
+      }
+     }
+    ]
+   },
+   {
+    "id": "nonpayment_result",
+    "question": "What follows from the missed payment?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "offense_is_infraction",
+      "label": "The unpaid fine is for an infraction",
+      "type": "boolean"
+     },
+     {
+      "name": "on_probation",
+      "label": "Payment is a condition of probation or other supervision",
+      "type": "boolean"
+     },
+     {
+      "name": "willful",
+      "label": "Failure to pay was willful",
+      "type": "boolean"
+     },
+     {
+      "name": "able_to_pay",
+      "label": "Defendant has the ability to pay",
+      "type": "boolean"
+     },
+     {
+      "name": "cause_shown",
+      "label": "Defendant showed cause why they should not be imprisoned",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "result",
+      "label": "Consequence",
+      "type": "string"
+     },
+     {
+      "name": "custody",
+      "label": "Court may hold the defendant in custody until paid (discretionary)",
+      "type": "boolean"
+     },
+     {
+      "name": "probation_violation",
+      "label": "Treated as a probation violation",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"No jail for an infraction fine: the court may instead impose a civil assessment, charge a willful failure to pay under Vehicle Code section 40508, or send the delinquent debt to collection\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "19.6",
+       "subsection": null,
+       "quote": "An infraction is not punishable by imprisonment."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "true",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"Willful nonpayment with ability to pay: may be treated as a probation violation\"",
+       "false",
+       "true"
+      ],
+      "source": {
+       "section": "1214.2",
+       "subsection": "b.1",
+       "quote": "With respect to a willful failure to pay during the term of probation, in the same manner as a violation of the terms and conditions of probation."
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Supervision not revoked solely for nonpayment\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "1203.2",
+       "subsection": "a",
+       "quote": "Supervision shall not be revoked solely for failure of a person to make restitution, or to pay fines, fees, or assessments, imposed as a condition of supervision"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "false",
+       "-",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"Cause shown: not imprisoned; the fine stays owed and collectible\"",
+       "false",
+       "false"
+      ],
+      "source": {
+       "section": "1205",
+       "subsection": "b",
+       "quote": "order the defendant to show cause why they should not be imprisoned"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "false",
+       "-",
+       "-",
+       "false"
+      ],
+      "then": [
+       "\"Court may, in its discretion, hold the defendant until the defaulted installment or the fine is satisfied, with credit at the rate in the judgment\"",
+       "true",
+       "false"
+      ],
+      "source": {
+       "section": "1205",
+       "subsection": "a",
+       "quote": "in default of payment as stipulated be imprisoned in the discretion of the court either until the defaulted installment is satisfied or until the fine is satisfied in full"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "satisfied_by_service",
+    "description": "Fine satisfied by verified community service",
+    "after": [
+     "perform_service"
+    ],
+    "source": {
+     "section": "1209.5",
+     "subsection": "d.2",
+     "quote": "the court shall retain jurisdiction until the community service has been verified as complete"
+    }
+   },
+   {
+    "id": "fully_waived",
+    "description": "Amount due waived or suspended",
+    "after": [
+     "determine_atp"
+    ],
+    "when": "fully_waived",
+    "source": {
+     "section": "68645.2",
+     "subsection": "a.3.D",
+     "quote": "Suspend the total amount due in whole or in part."
+    }
+   },
+   {
+    "id": "paid_in_full",
+    "description": "Paid in full and disbursed as ordered",
+    "after": [
+     "pay_due"
+    ],
+    "source": {
+     "section": "1203.1d",
+     "subsection": "a",
+     "quote": "If payment is made in full, the payment shall be apportioned and disbursed in the amounts ordered by the court."
+    }
+   },
+   {
+    "id": "assessment_vacated",
+    "description": "Civil assessment vacated; no payment required first",
+    "after": [
+     "vacate_assessment"
+    ],
+    "source": {
+     "section": "1214.1",
+     "subsection": "b.2",
+     "quote": "Payment of bail, fines, penalties, fees, or a civil assessment shall not be required in order for the court to vacate the assessment"
+    }
+   },
+   {
+    "id": "assessment_effective",
+    "description": "Civil assessment (up to $100) takes effect; no warrant for the same failure",
+    "after": [
+     "show_good_cause"
+    ],
+    "source": {
+     "section": "1214.1",
+     "subsection": "c",
+     "quote": "no bench warrant or warrant of arrest shall be issued with respect to the failure to appear at the proceeding for which the assessment is imposed or the failure to pay the fine or installment of bail"
+    }
+   },
+   {
+    "id": "custody_until_paid",
+    "description": "Held in custody until paid, with credit for each day",
+    "after": [
+     "show_cause_hearing"
+    ],
+    "when": "custody",
+    "source": {
+     "section": "1205",
+     "subsection": "a",
+     "quote": "A defendant held in custody for nonpayment of a fine shall be entitled to credit on the fine for each day the defendant is held in custody, at the rate specified in the judgment."
+    }
+   },
+   {
+    "id": "probation_violation",
+    "description": "Willful nonpayment handled as a probation violation",
+    "after": [
+     "show_cause_hearing"
+    ],
+    "when": "probation_violation",
+    "source": {
+     "section": "1214.2",
+     "subsection": "b.1",
+     "quote": "in the same manner as a violation of the terms and conditions of probation"
+    }
+   },
+   {
+    "id": "balance_collected",
+    "description": "No custody or revocation; the delinquent balance stays owed and may go to the comprehensive collection program (including referral to the Franchise Tax Board)",
+    "after": [
+     "show_cause_hearing"
+    ],
+    "source": {
+     "section": "1463.007",
+     "subsection": "b",
+     "quote": "Once debt becomes delinquent, it continues to be delinquent and may be subject to collection by a comprehensive collection program."
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Cal. Veh. Code § 40510.5",
+    "role": "installment agreements to pay and forfeit Vehicle Code infraction bail; a missed installment may bring a failure-to-pay charge, a civil assessment or a warrant",
+    "source": {
+     "section": "1214.1",
+     "subsection": "a",
+     "quote": "to pay an installment of bail as agreed to under Section 40510.5 of the Vehicle Code"
+    }
+   },
+   {
+    "citation": "Cal. Penal Code § 1463.007",
+    "role": "comprehensive collection programs administer installment plans and collect delinquent court debt",
+    "source": {
+     "section": "68645.2",
+     "subsection": "a.10",
+     "quote": "through a comprehensive collection program pursuant to subdivision (d) of Section 1463.007 of the Penal Code"
+    }
+   },
+   {
+    "citation": "Cal. Gov. Code § 68632",
+    "role": "list of public benefits used as an ability-to-pay criterion",
+    "source": {
+     "section": "68645.2",
+     "subsection": "a.1.A",
+     "quote": "Receipt of any of the public benefits listed in subdivision (a) of Section 68632."
+    }
+   },
+   {
+    "citation": "Cal. Rev. & Tax. Code § 19280",
+    "role": "referral of delinquent court-ordered debt of $100 or more to the Franchise Tax Board, no sooner than 90 days after delinquency, for collection like delinquent income tax",
+    "source": {
+     "section": "1203.1d",
+     "subsection": "b",
+     "quote": "amounts collected by the Franchise Tax Board pursuant to Section 19280 of the Revenue and Taxation Code"
+    }
+   }
+  ],
+  "gaps": [
+   "The ability-to-pay relief menu (waive, reduce, extend time, installment plan, community service, suspension, alternative disposition) in Gov. Code § 68645.2 covers infraction violations only; for misdemeanors the statutes give the court the installment option in Penal Code § 1205(a) and, on probation, the community-service alternative in § 1205.3, but no general waiver or reduction power for criminal fines. Vehicle Code § 42003(c) requires the court to consider ability to pay on request for Vehicle Code adjudications.",
+   "The superior court is modelled as the administering public body (its pool holds the clerk's lane) because it, not an executive agency, runs the fine; the defendant is the outside party.",
+   "The request step quotes Vehicle Code § 42003(c); for other infractions the request is made under Gov. Code §§ 68645.1-68645.2 (online tool, paper or in person), and no bail or payment is required first (§ 68645.2(a)(8)). Results are to be sent within 30 days 'as feasible' (§ 68645.2(a)(7)), which is not modelled as a strict timer.",
+   "The atp_relief table compresses the court's discretion: the rules for reductions record the statutory recommendations (50 percent or more for benefit recipients; no more than $25 a month for any eligible defendant who asks for installments, § 68645.2(a)(5)). A court must make express findings to order more than the 50 percent recommendation (§ 68645.2(a)(4)), and when the determination is made on paper or in person it 'shall follow' both recommendations, deviating only from the 50 percent one as (a)(4) allows (§ 68645.2(b)). Eligibility criteria must consider at least receipt of the listed public benefits and income of 125 percent or less of the poverty guidelines (§ 68645.2(a)(1)). A partial reduction, extension or installment plan all continue on the pay_due path.",
+   "payment_default, civil_assessment_sought and good_cause_shown are case facts, not statutory decisions. Whether to pursue a civil assessment (Penal Code § 1214.1) or the arrest and order to show cause (§ 1205(b)) is not ordered by statute; § 1214.1(c) bars a warrant once an assessment is imposed and requires an outstanding warrant to be recalled first, so the two branches are modelled as exclusive.",
+   "The 20-day timer is only the earliest date a civil assessment can take effect; the defendant's actual window to appear is the time specified in the notice (§ 1214.1(b)(1)). No payment is required to have the assessment vacated at that appearance (§ 1214.1(b)(2)), and once an assessment is imposed no warrant may issue for the same failure (§ 1214.1(c)). After it takes effect it is subject to civil-judgment due process (§ 1214.1(d)); later motions to vacate are governed by court rules, not modelled.",
+   "nonpayment_result separates infractions: Penal Code § 19.6 bars imprisonment for an infraction, so the § 1205 custody branch is limited to misdemeanor and felony fines, and custody there is discretionary ('in the discretion of the court', § 1205(a)) and follows only an order to show cause (§ 1205(b)); the constitutional bar on jailing a person who cannot pay (Bearden v. Georgia; In re Antazo) lives in case law. For Vehicle Code infractions a judgment giving time to pay requires the defendant to appear in court on the missed due date, and willful violation is contempt (Veh. Code § 42003(a)); willful failure to pay a Vehicle Code fine or installment without a lawful excuse presented by the due date is a misdemeanor (§ 40508(b)), an offense Penal Code § 19.8(a)(1)(E) makes subject to § 17(d) so it may be charged as an infraction; a missed bail installment under Veh. Code § 40510.5 may instead bring a civil assessment or a warrant for failure to appear (§ 40510.5(e)). Where a fine is payable forthwith and not paid, § 1205(b) directs immediate commitment without further proceedings, again only for non-infraction fines; asking for time or installments at sentencing avoids that branch.",
+   "Victim restitution is excluded from § 1205 (§ 1205(e)); it is enforceable as a civil judgment (§§ 1202.4(i), 1214(b)) and may be paid in installments if compatible with financial ability (§ 1203.1d(a)); § 1203.2(a) adds that restitution 'shall be consistent with a person's ability to pay'. A missed installment makes the debt delinquent (§ 1463.007(b)(3)) and open to a comprehensive collection program, which must use at least five of the § 1463.007(c)(4) tools, so FTB intercepts, garnishment and liens are possible, not certain; amounts of $100 or more may be referred to the Franchise Tax Board no sooner than 90 days after delinquency and collected like delinquent income tax, including earnings withholding (Rev. & Tax. Code § 19280(a)(1)(A), (c)). Jail-custody days are credited to the base fine at not less than $125 a day (§ 2900.5(a)); Vehicle Code § 42003(b) sets a different cap of one day per $30 for non-infraction Vehicle Code fines, which the $125 Penal Code rule in § 1205(a) does not reconcile.",
+   "A probation fine left unpaid at the end of probation is enforced as a civil judgment (§ 1214.2(b)(2)); the default outcome balance_collected stands for that and for the collection-program path."
+  ]
+ },
+ "out_of_corpus": [
+  {
+   "kind": "court rule",
+   "what": "Procedure and forms for infraction ability-to-pay determinations, and for failure-to-appear/failure-to-pay handling and civil assessments (including later motions to vacate)",
+   "where": "California Rules of Court, rules 4.335 and 4.106; Judicial Council forms TR-320/CR-320 (Can't Afford to Pay Fine) for ability-to-pay requests and TR-300/TR-310 for installment agreements; the court's online ability-to-pay tool (MyCitations)"
+  },
+  {
+   "kind": "local",
+   "what": "Each court's ability-to-pay criteria, whether the clerk may decide, community-service credit above the statutory rate, and the county/court comprehensive collection program's practices",
+   "where": "Superior court local rules and posted criteria (Gov. Code § 68645.3(e)); county collection program and probation department policies"
+  },
+  {
+   "kind": "federal",
+   "what": "Due-process and equal-protection limits on jailing or revoking probation for nonwillful inability to pay",
+   "where": "Bearden v. Georgia, 461 U.S. 660 (1983); Williams v. Illinois, 399 U.S. 235 (1970); Tate v. Short, 401 U.S. 395 (1971)"
+  },
+  {
+   "kind": "case law",
+   "what": "California decisions on ability-to-pay hearings for fines, fees and assessments and on jailing indigent defendants for unpaid fines",
+   "where": "People v. Duenas (2019) 30 Cal.App.5th 1157 and later appellate decisions; In re Antazo (1970) 3 Cal.3d 100"
+  },
+  {
+   "kind": "agency policy",
+   "what": "The Franchise Tax Board's own referral criteria, minimum amounts and program operations for court-ordered debt (the referral and collection authority itself, Rev. & Tax. Code § 19280, is in the code and a gold section)",
+   "where": "Franchise Tax Board Court-Ordered Debt and Interagency Intercept Collections program guidelines (Rev. & Tax. Code § 19280(a)(1)(A), (a)(2)(C))"
+  }
+ ],
+ "version_flags": [
+  "Penal Code § 1205 in its current form became operative January 1, 2022 (§ 1205(f)); costs imposed under the pre-2022 version are vacated by § 1465.9(b).",
+  "Penal Code § 1214.1's $100 cap applies to civil assessments imposed on or after July 1, 2022; earlier civil assessments are unenforceable and vacated (§ 1465.9(c)).",
+  "Vehicle Code § 40510.5 in its current form became operative January 1, 2022 (§ 40510.5(g)).",
+  "Gov. Code § 68645.2 required every court to offer online ability-to-pay determinations by June 30, 2024; that date has passed, so the online tool and its recommendations apply in every court."
+ ],
+ "local_option": "Each superior court sets its own ability-to-pay criteria and may, by local rule, let the clerk make the determinations with review by a judicial officer (Gov. Code § 68645.3(e)); a court may by local rule credit community service above double the minimum wage (Penal Code § 1209.5(c)(2)); whether to impose a civil assessment is discretionary (§ 1214.1(a)); collection is run by each court's and county's comprehensive collection program (§ 1463.007).",
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Scope split matters in California: Gov. Code § 68645.2 and Penal Code § 1209.5 are infraction-only; § 1205 installments and the default/show-cause rule cover fines generally (installments by judgment for misdemeanors), but Penal Code § 19.6 bars imprisonment for infractions, so the § 1205 jail consequences (including the one-day-per-$125 cap) reach only misdemeanor and felony fines; § 1205 does not apply to restitution (§ 1205(e)). Vehicle Code § 42003(c) requires the court, on request, to consider ability to pay in any Vehicle Code adjudication (misdemeanors included), and § 42003(e) lets a defendant petition at any time to modify or vacate the judgment on changed ability to pay, a right the court must explain. Restitution: victim restitution is not reduced for inability to pay (§ 1202.4(g)); the restitution fine minimum ($300 felony, $150 misdemeanor, § 1202.4(b)(1)) must be imposed regardless and inability to pay counts only above the minimum (§ 1202.4(c)-(d)); if the court excuses the restitution fine for compelling and extraordinary reasons it must order community service as a probation condition (§ 1202.4(m)); on probation, community service ordered as an alternative replaces fines and restitution fines on a proportional basis (§ 1205.3); § 1203.2(a) adds that restitution 'shall be consistent with a person's ability to pay', in tension with § 1202.4(g). Restitution fine balances become unenforceable and are vacated 10 years after imposition (§ 1465.9(d)). An unpaid restitution order or fine cannot by itself defeat a § 1203.4 dismissal petition (§ 1203.4(a)(3)). No bail or payment is required before an ability-to-pay determination (§ 68645.2(a)(8)); no administrative fee may be charged for requesting one or joining an installment plan (§ 68645.2(a)(9)), though a collection program may recover up to $35 per nondelinquent plan (§ 68645.2(a)(10), § 1463.007(d)). Community service under § 1209.5 is credited at double the minimum wage for small employers, a local rule may raise that, and the court may let educational programs count toward the hours (§ 1209.5(c), (e)). A clerk's denial of a reduction can be reviewed by a judicial officer (§ 68645.3(e)(2)). Probation fines may be enforced as money judgments and, if willfully unpaid, as probation violations (§ 1214.2; Veh. Code § 23601 for DUI probation). The 15-nugget cap leaves these points, the $25 monthly installment recommendation (§ 68645.2(a)(5)), the jail-day cap (§ 1205(a)) and the FTB referral (Rev. & Tax. Code § 19280) to the gaps and notes rather than nuggets."
+}

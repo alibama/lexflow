@@ -116,7 +116,7 @@ async function poll() {
 function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400); }
 
 // ---------------------------------------------------------------- routing
-const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
+const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
   jobs: viewJobs, job: viewJob, method: viewMethod };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
@@ -124,7 +124,7 @@ async function route() {
   hideTip();
   for (const a of document.querySelectorAll("nav.tabs a")) {
     const target = a.getAttribute("href").split("/")[1];
-    const active = target === name || (name === "model" && target === "processes") || (name === "job" && target === "jobs") || (name === "place" && target === "places");
+    const active = target === name || (name === "model" && target === "processes") || (name === "job" && target === "jobs") || (name === "place" && target === "places") || ((name === "asked" || name === "answer") && target === "ask");
     if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
   }
   rc(view, h("p", { class: "muted" }, "Loading…"));
@@ -683,6 +683,188 @@ function decisionTable(d) {
         `§ ${r.source?.section || ""}${r.source?.subsection ? `(${r.source.subsection.split(".").join(")(")})` : ""}`))))));
 }
 
+// ==================================================================== ASK
+const ASK_STATUS = { answered: ["done", "Answered"], partial: ["partial", "Partly answered"], not_found: ["blocked", "Law not found"],
+  "no-statutes": ["optional", "No statute file"] };
+function askStatus(s) { const [ic, word] = ASK_STATUS[s] || ["todo", s || "–"]; return statusEl(ic, word); }
+
+async function viewAsk() {
+  const sugg = await api("/api/ask/suggestions");
+  const question = h("textarea", { rows: 3, "aria-label": "Your question", placeholder: "Ask about any state's law, e.g. How do I get my record sealed?",
+    style: "width:100%;box-sizing:border-box;padding:10px" });
+  question.value = store("lexflow-ask-q") || "";
+  question.addEventListener("input", () => store("lexflow-ask-q", question.value));
+  const examples = h("select", { "aria-label": "Example questions", style: "max-width:min(420px, 60vw)", onchange: (e) => { if (e.target.value) { question.value = e.target.value; store("lexflow-ask-q", question.value); } e.target.value = ""; } },
+    h("option", { value: "" }, "Examples…"),
+    sugg.map((g) => h("optgroup", { label: g.group }, g.questions.map((q) => h("option", { value: q.text }, q.text.length > 110 ? q.text.slice(0, 107) + "…" : q.text)))));
+  // targets: states or governments, chosen from an autocomplete list
+  let chosen = JSON.parse(store("lexflow-ask-targets") || "[]");
+  const chips = h("div", { class: "row-flex", style: "flex-wrap:wrap;gap:6px" });
+  const saveTargets = () => { store("lexflow-ask-targets", JSON.stringify(chosen)); drawChips(); };
+  function drawChips() {
+    rc(chips, chosen.length ? chosen.map((t, i) => h("span", { class: "tag", style: "display:inline-flex;gap:6px;align-items:center" }, t.label,
+      h("button", { class: "icon-btn", "aria-label": `Remove ${t.label}`, onclick: () => { chosen.splice(i, 1); saveTargets(); } }, "×")))
+      : h("span", { class: "muted" }, "No states or places chosen yet."));
+  }
+  const find = h("input", { type: "search", placeholder: "Add a state, county, city or town", "aria-label": "Add a state or place", style: "width:min(360px, 100%)", autocomplete: "off" });
+  const results = h("div", { class: "card", style: "position:absolute;z-index:5;min-width:320px;display:none;max-height:300px;overflow:auto" });
+  let timer = null;
+  find.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      const q = find.value.trim();
+      if (q.length < 2) { results.style.display = "none"; return; }
+      const rows = await api(`/api/targets?q=${encodeURIComponent(q)}`);
+      rc(results, rows.length ? rows.map((r) => h("button", { class: "btn", style: "display:block;width:100%;text-align:left;border:0;border-radius:0",
+        onclick: () => { if (!chosen.some((c) => c.target === r.target)) chosen.push({ target: r.target, label: r.label }); saveTargets(); find.value = ""; results.style.display = "none"; } },
+        r.label, h("span", { class: "muted" }, r.kind === "state" ? "" : ` · ${r.kind}${r.population ? ` · ${fmtInt(r.population)}` : ""}`)))
+        : h("p", { class: "card-pad muted" }, "No match."));
+      results.style.display = "block";
+    }, 200);
+  });
+  const bench = h("button", { class: "btn small", onclick: () => {
+    for (const [t, label] of [["va", "Virginia (state law)"], ["dc", "District of Columbia (state law)"], ["md", "Maryland (state law)"], ["tx", "Texas (state law)"], ["ca", "California (state law)"]])
+      if (!chosen.some((c) => c.target === t)) chosen.push({ target: t, label });
+    saveTargets(); } }, "Add the five benchmark states");
+  const everyPlace = h("input", { type: "checkbox", id: "ask-all" });
+  const useLlm = h("input", { type: "checkbox", id: "ask-llm" });
+  useLlm.checked = store("lexflow-ask-llm") === "1";
+  useLlm.addEventListener("change", () => store("lexflow-ask-llm", useLlm.checked ? "1" : "0"));
+  const msg = h("div");
+  const askBtn = h("button", { class: "btn primary", onclick: async () => {
+    const targets = chosen.map((c) => c.target);
+    if (everyPlace.checked) for (const c of chosen) if (/^[a-z]{2}$/.test(c.target)) targets.push(`${c.target}:*`);
+    try {
+      const r = await post("/api/ask", { question: question.value, targets, use_llm: useLlm.checked });
+      pollSoon();
+      rc(msg, h("div", { class: "notice" }, icon("running"), h("div", {}, "Answering in the background (job ", h("a", { href: `#/job/${r.job}` }, `#${r.job}`), "). Answers appear ",
+        h("a", { href: `#/asked/${encodeURIComponent(r.question_id)}` }, "here"), " as each state finishes.")));
+    } catch (e) { rc(msg, h("div", { class: "notice" }, icon("info"), String(e.message || e))); }
+  } }, "Ask");
+  const list = h("div");
+  async function load() {
+    const rows = await api("/api/ask");
+    rc(list, rows.length ? sortableTable([
+      { key: "question", label: "Question", render: (r) => h("a", { href: `#/asked/${encodeURIComponent(r.question_id)}` }, r.question) },
+      { key: "answers", label: "Answers", num: true }, { key: "answered", label: "Answered", num: true },
+      { key: "partial", label: "Partly", num: true }, { key: "not_found", label: "Not found", num: true },
+      { key: "published", label: "For the wiki", num: true }, { key: "updated_at", label: "Updated", render: (r) => ago(r.updated_at) }], rows, { initial: "updated_at" })
+      : h("p", { class: "card-pad muted" }, "No questions asked yet."));
+  }
+  drawChips();
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Ask a question"),
+      h("p", {}, "lexflow searches each chosen state's statutes, quotes the sections that answer the question word for word, extracts the steps of any procedure, and adds each place's local layer. Answers are machine-made and unreviewed; every claim links to the law's own words."))),
+    h("section", { class: "card" }, h("div", { class: "card-pad" },
+      h("div", { class: "row-flex", style: "margin-bottom:8px" }, h("strong", {}, "Question"), h("span", { class: "right" }, examples)), question,
+      h("div", { class: "row-flex", style: "margin:14px 0 8px" }, h("strong", {}, "Where"), h("span", { class: "right" }, bench)),
+      h("div", { style: "position:relative" }, find, results), h("div", { style: "margin-top:8px" }, chips),
+      h("div", { class: "row-flex", style: "margin-top:14px;gap:18px;flex-wrap:wrap" },
+        h("label", { class: "check", for: "ask-all" }, everyPlace, "Also answer for every county, city and town in the chosen states"),
+        h("label", { class: "check", for: "ask-llm" }, useLlm, `Add a plain-language summary by ${S.meta.ask_model || "a local model"} (slower; every claim is checked against the quotes)`)),
+      h("div", { class: "row-flex", style: "margin-top:14px" }, askBtn), msg)),
+    h("div", { class: "spacer" }),
+    h("section", { class: "card" }, h("div", { class: "card-head" }, h("h2", {}, "Questions asked")), h("div", { class: "card-pad" }, list)));
+  onRefresh(load);
+  await load();
+}
+
+async function viewAsked(qid) {
+  const body = h("div");
+  async function load() {
+    const d = await api(`/api/ask/${encodeURIComponent(qid)}`);
+    const publish = (r) => h("input", { type: "checkbox", "aria-label": `Publish the answer for ${r.name}`, checked: !!r.published,
+      onchange: async (e) => { await post(`/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(r.target)}/publish`, { published: e.target.checked }); } });
+    rc(body,
+      h("div", { class: "page-head" }, h("div", {}, h("div", { class: "muted" }, h("a", { href: "#/ask" }, "Ask"), " / question"),
+        h("h1", {}, d.question), h("p", {}, `${d.answers.length} answers · tick “For the wiki” to publish an answer as its own Lexipedia sub-page at the next publish.`))),
+      h("section", { class: "card" }, h("div", { class: "card-pad" }, sortableTable([
+        { key: "name", label: "Place", render: (r) => h("a", { href: `#/answer/${encodeURIComponent(qid)}/${encodeURIComponent(r.target)}` }, r.name) },
+        { key: "status", label: "Status", render: (r) => askStatus(r.status) },
+        { key: "sections", label: "Sections", render: (r) => (r.sections || []).join(", ") || "–" },
+        { key: "steps", label: "Steps", num: true }, { key: "quotes", label: "Quotes", num: true }, { key: "local", label: "Local", num: true },
+        { key: "first_claim", label: "In short", render: (r) => r.first_claim || "–" },
+        { key: "seconds", label: "Seconds", num: true }, { key: "published", label: "For the wiki", render: publish }], d.answers))));
+  }
+  rc(view, body);
+  onRefresh(load);
+  await load();
+}
+
+async function viewAnswer(qid, target) {
+  const r = await api(`/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(target)}`);
+  const a = r.answer || {};
+  const sec = r.sections || {};
+  const local = r.local || {};
+  const metrics = r.metrics || {};
+  const place = local.name || (S.meta.states.find((s) => s.state === r.state) || {}).name || r.state;
+  const quotes = a.quotes || [];
+  const qById = Object.fromEntries(quotes.map((q) => [q.id, q]));
+  const claims = (a.summary || {}).claims || [];
+  const bpmnHost = h("div", { class: "bpmn-host" });
+  const card = (title, sub, ...kids) => [h("div", { class: "spacer" }), h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, title), sub ? h("p", {}, sub) : null)), ...kids)];
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {},
+      h("div", { class: "muted" }, h("a", { href: "#/ask" }, "Ask"), " / ", h("a", { href: `#/asked/${encodeURIComponent(qid)}` }, "question"), ` / ${place}`),
+      h("h1", {}, r.question_text), h("p", {}, `${place} · ${r.model ? `summary by ${r.model} · ` : ""}${fx(r.seconds, 0)} s · ${ago(r.updated_at)}`)),
+      h("div", { class: "row-flex" }, askStatus(r.status))),
+    r.status === "not_found" ? h("div", { class: "notice" }, icon("info"), h("div", {}, "No statute section clearly governs this here. The answer may live in regulations, court rules, agency policy, contracts or local ordinances, which lexflow does not search yet. The closest sections are listed below.")) : null,
+    ...(claims.length ? card("In short", "Written by a local model from the quotes below. Claims that cited no quote, or stated a number the quotes do not contain, were dropped.",
+      h("ul", { class: "card-pad", style: "margin:0;padding-left:36px" }, claims.map((c) => h("li", {}, c.text, " ",
+        ...c.quotes.map((id) => h("a", { href: `#q-${id}`, class: "badge", title: qById[id]?.text || "", style: "margin-left:4px" }, id)))))) : []),
+    ...((sec.chosen || []).length ? card("Governing law", `Chosen from ${(sec.candidates || []).length} candidates by full-text search and meaning.`,
+      h("ul", { class: "card-pad", style: "margin:0;padding-left:36px" }, sec.chosen.map((s) => h("li", {}, s.url ? h("a", { href: s.url, target: "_blank", rel: "noopener" }, s.citation) : s.citation,
+        ` — ${s.title}`, s.version ? h("span", { class: "tag", style: "margin-left:6px" }, s.version) : null)))) : []),
+    ...((a.steps || []).length ? card("Steps", "Picked by the learned selector; each step is the law's own words.",
+      h("ol", { class: "steps-list" }, a.steps.map((s) => h("li", {}, h("div", { class: "row-flex" }, h("strong", {}, s.action), h("span", { class: "muted" }, `· ${s.actor}`),
+        s.deadline ? h("span", { class: "badge" }, `within ${s.deadline}`) : null, h("span", { class: "right muted mono" }, `§ ${s.section}${s.label ? `(${s.label.split(".").join(")(")})` : ""}`)),
+        h("p", { class: "quote" }, `“${s.quote}”`))))) : []),
+    ...(r.bpmn ? card("Process map", "Drafted from the steps above; not reviewed.", bpmnHost) : []),
+    ...(quotes.length ? card("Key provisions", "The clauses that best answer the question, word for word.",
+      h("ol", { class: "steps-list" }, quotes.map((q) => h("li", { id: `q-${q.id}` }, h("div", { class: "row-flex" }, h("strong", {}, q.id),
+        h("span", { class: "muted mono" }, `§ ${q.section || ""}${q.label ? `(${q.label.split(".").join(")(")})` : ""}`),
+        ...(q.slots || []).map((s) => h("span", { class: "tag" }, s))), h("p", { class: "quote" }, `“${q.text}”`))))) : []),
+    ...((local.locus || []).length || (local.contacts || []).length ? card(`What ${local.name || "the place"} adds`, "Local ordinance headings from LOCUS (Local Laws Observatory) that mention the question, and contacts. LOCUS points at local law; read the ordinance itself before relying on it.",
+      h("div", { class: "card-pad" },
+        (local.locus || []).length ? h("ul", { style: "margin:0 0 10px;padding-left:20px" }, local.locus.map((x) => h("li", {}, x.header, h("span", { class: "muted" }, ` · ${x.function || ""} ${x.topic ? `· ${x.topic}` : ""}`)))) : null,
+        (local.contacts || []).length ? h("ul", { style: "margin:0;padding-left:20px" }, local.contacts.map((c) => h("li", {}, `${c.kind}: `,
+          /^https?:/.test(c.value) ? h("a", { href: c.value, target: "_blank", rel: "noopener" }, c.value) : c.value))) : null,
+        (local.web || []).length ? h("ul", { style: "margin:10px 0 0;padding-left:20px" }, local.web.map((w) => h("li", {},
+          h("a", { href: w.url, target: "_blank", rel: "noopener" }, w.title || w.url), w.snippet ? h("span", { class: "muted" }, ` — ${w.snippet}`) : null))) : null)) : []),
+    ...((a.cases || []).length ? card("Court decisions citing these sections", "From CourtListener (Free Law Project); listed for research, not every citing case construes the section.",
+      h("ul", { class: "card-pad", style: "margin:0;padding-left:36px" }, a.cases.map((c) => h("li", {},
+        h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.case_name || "Opinion"), ` (${c.court || ""}, ${(c.date_filed || "").slice(0, 4)}) — § ${c.section}`)))) : []),
+    ...card("How it was found", `Concepts searched: ${(metrics.plan || []).map((g) => g.slice(0, 4).join(" / ")).join("  +  ")}`,
+      h("div", { class: "card-pad" }, sortableTable([
+        { key: "citation", label: "Section", render: (s) => s.url ? h("a", { href: s.url, target: "_blank", rel: "noopener" }, s.citation) : s.citation },
+        { key: "title", label: "Heading" }, { key: "rank_score", label: "Score", num: true }, { key: "similarity", label: "Meaning", num: true },
+        { key: "words", label: "Words", num: true }], sec.candidates || [], { initial: "rank_score" }),
+        h("p", { class: "muted", style: "margin-top:8px" }, Object.entries(metrics.timings || {}).map(([k, v]) => `${k} ${v} s`).join(" · ")))));
+  if (r.bpmn && window.BpmnJS) {
+    const viewer = new BpmnJS({ container: bpmnHost });
+    try { await viewer.importXML(r.bpmn); viewer.get("canvas").zoom("fit-viewport", "auto"); }
+    catch (e) { rc(bpmnHost, h("p", { class: "card-pad muted" }, `Could not draw the diagram: ${e.message}`)); }
+  }
+}
+
+// AskBench: new questions answered by the local pipeline, scored against Claude's references
+function askBenchCard(ab) {
+  const arms = Object.entries(ab.summary || {});
+  const label = { local: "Local pipeline (search + quotes + steps)", heuristic: "Local, hand-set reranker only",
+    profile: "Local answering, Claude's search concepts", oracle: "Same answering, Claude's sections given",
+    "local+llmplan": "Local pipeline, local model plans the search", "local+llm": "Local pipeline + local model summary",
+    "oracle+llm": "Claude's sections + local model summary" };
+  const cols = [["cases", "Cases"], ["composite", "Composite"], ["recall@10", "Gold sections in top 10"], ["vital_recall", "Vital points quoted"],
+    ["claim_vital_recall", "Vital points in the summary"], ["citation_precision", "Quotes from gold sections"],
+    ["slot_match", "Fees and deadlines"], ["steps_equivalence", "Steps (process questions)"], ["gate_correct", "Answer / not found right"]];
+  return [h("div", { class: "spacer" }), h("section", { class: "card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "New questions (AskBench)"),
+      h("p", {}, `${ab.cases} reference answers by Claude for six questions on prisons and court debt (VA, DC, MD, TX, CA); every number below compares the local answer with Claude's. lexflow ask-bench to rerun.`))),
+    h("div", { class: "card-pad table-wrap" }, h("table", { class: "data" },
+      h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Arm"), cols.map(([, l]) => h("th", { scope: "col", class: "num" }, l)))),
+      h("tbody", {}, arms.map(([arm, s]) => h("tr", {}, h("td", {}, label[arm] || arm), cols.map(([k]) => h("td", { class: "num" }, s[k] == null ? "–" : k === "cases" ? String(s[k]) : fx(s[k])))))))))];
+}
+
 // ============================================================== BENCHMARK
 async function viewBenchmark() {
   const body = h("div");
@@ -736,6 +918,7 @@ async function viewBenchmark() {
         h("div", { class: "card-pad table-wrap" }, heat),
         h("div", { class: "legend" }, h("span", { class: "title" }, "Equivalence"),
           ...["under 0.35", "0.35–0.50", "0.50–0.65", "0.65–0.75", "0.75 and up"].map((l, i) => h("span", {}, h("span", { class: "sw", style: `background:var(--seq-${i + 1})` }), l)))),
+      d.askbench ? askBenchCard(d.askbench) : null,
       h("div", { class: "row-flex", style: "margin-top:16px" },
         h("button", { class: "btn", onclick: async () => { await startRunJob("benchmark", {}); location.hash = "#/jobs"; } }, "Run the full benchmark")));
   }

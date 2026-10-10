@@ -182,6 +182,47 @@ CREATE TABLE IF NOT EXISTS case_law (
   PRIMARY KEY (state, section, cluster_id)
 );
 
+CREATE TABLE IF NOT EXISTS asked_questions (
+  id TEXT PRIMARY KEY,
+  text TEXT NOT NULL,
+  kind TEXT,
+  terms TEXT,
+  created_at TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT
+);
+
+CREATE TABLE IF NOT EXISTS asked_answers (
+  question_id TEXT NOT NULL,
+  target TEXT NOT NULL,
+  state TEXT NOT NULL,
+  gov_id TEXT,
+  question_text TEXT,
+  status TEXT,
+  sections TEXT,
+  facts TEXT,
+  bpmn TEXT,
+  answer TEXT,
+  local TEXT,
+  metrics TEXT,
+  model TEXT,
+  seconds REAL,
+  published INTEGER DEFAULT 0,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (question_id, target)
+);
+CREATE INDEX IF NOT EXISTS asked_answers_state ON asked_answers(state);
+
+CREATE TABLE IF NOT EXISTS ask_bench (
+  case_id TEXT NOT NULL,
+  arm TEXT NOT NULL,
+  metrics TEXT,
+  ref_hash TEXT,
+  created_at TEXT,
+  PRIMARY KEY (case_id, arm)
+);
+
 CREATE TABLE IF NOT EXISTS wikibase_items (
   key TEXT PRIMARY KEY,
   qid TEXT,
@@ -305,10 +346,11 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "answers": ("gov_id", "question"),
     "local_answers": ("gov_id", "question"),
     "case_law": ("state", "section", "cluster_id"),
+    "asked_answers": ("question_id", "target"),     # carries its question's text, so asked_questions stays local
 }
 
 # columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists)
-MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL"]
+MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE jobs ADD COLUMN runner TEXT"]
 
 _ready: set[str] = set()
 _lock = threading.Lock()

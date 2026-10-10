@@ -125,14 +125,14 @@ def ollama_state() -> dict:
 
 def st_models(con):
     o = ollama_state()
-    want = [config.MODEL_A, config.MODEL_B]
+    want = list(dict.fromkeys((config.EMBED_MODEL, config.MODEL_A, config.MODEL_B)))
     have = [m for m in want if B._has(o["models"], m)]
     if not o["reachable"]:
-        return {"status": "todo", "done": 0, "total": 2,
+        return {"status": "todo", "done": 0, "total": len(want),
                 "detail": f"Ollama not reachable at {config.OLLAMA_URL} (start it with the 'llm' profile)"}
     missing = [m for m in want if m not in have]
     parts = ([f"Ready: {', '.join(have)}"] if have else []) + ([f"Not pulled yet: {', '.join(missing)}"] if missing else [])
-    return {"status": "done" if not missing else "partial" if have else "todo", "done": len(have), "total": 2,
+    return {"status": "done" if not missing else "partial" if have else "todo", "done": len(have), "total": len(want),
             "detail": "; ".join(parts)}
 
 
@@ -185,6 +185,38 @@ def st_local(con):
         return {"status": "optional", "done": 0, "total": 0, "detail": "No researched places yet"}
     return {"status": "done" if n >= files else "partial" if n else "todo", "done": n, "total": files,
             "detail": f"{plural(n, 'place')} loaded of {plural(files, 'researched place')}"}
+
+
+def st_index(con):
+    from ..ask import index as I
+    have = [r["state"] for r in db.rows(con, "SELECT state FROM statute_files WHERE status='downloaded'")]
+    if not have:
+        return {"status": "blocked", "done": 0, "total": 0, "detail": "Download statutes first"}
+    n = sum(1 for st in have if I.ready(st))
+    return {"status": "done" if n >= len(have) else "partial" if n else "todo", "done": n, "total": len(have),
+            "detail": f"{n} of {plural(len(have), 'state')} searchable"}
+
+
+def run_index(con, args, log, progress):
+    from ..ask import index as I
+    have = [r["state"] for r in db.rows(con, "SELECT state FROM statute_files WHERE status='downloaded'")]
+    sts = [s for s in _states(args, con) if s in have] if args.get("states") else have
+    out = {}
+    for i, st in enumerate(sts):
+        if args.get("force") or not I.ready(st):
+            out[st] = I.build(st, log=log)
+        progress((i + 1) / max(1, len(sts)))
+    return {"built": len(out), "states": len(sts)}
+
+
+def run_ask(con, args, log, progress):
+    """Answer a new question for the chosen states and places (lexflow/ask)."""
+    from ..ask import pipeline as AP
+    targets = args.get("targets") or []
+    if isinstance(targets, str):
+        targets = [t for t in targets.split(",") if t.strip()]
+    return AP.run(con, args["question"], targets, model=args.get("model"), use_llm=not args.get("no_llm"),
+                  log=log, progress=progress, question_id=args.get("question_id"))
 
 
 def st_cases(con):
@@ -294,7 +326,8 @@ def run_locus(con, args, log, progress):
 
 def run_models(con, args, log, progress):
     out = {}
-    for i, name in enumerate((config.MODEL_A, config.MODEL_B)):
+    want = list(dict.fromkeys((config.EMBED_MODEL, config.MODEL_A, config.MODEL_B)))
+    for i, name in enumerate(want):
         log(f"pulling {name} into Ollama at {config.OLLAMA_URL}")
         with requests.post(f"{config.OLLAMA_URL.rstrip('/')}/api/pull", json={"model": name, "stream": True},
                            stream=True, timeout=3600) as r:
@@ -308,7 +341,7 @@ def run_models(con, args, log, progress):
                     raise RuntimeError(f"{name}: {msg['error']}")
                 status = msg.get("status", "")
                 if msg.get("total") and msg.get("completed"):
-                    progress((i + msg["completed"] / msg["total"]) / 2)
+                    progress((i + msg["completed"] / msg["total"]) / len(want))
                 if status != last:
                     log(f"{name}: {status}")
                     last = status
@@ -459,6 +492,11 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "publisher. Arkansas, Colorado, Georgia, Mississippi and Tennessee are not in the current release.",
          "required", st_statutes, run_statutes, params=["states", "regulations"],
          cost="867 MB for all states (VA 17 MB); regulations add 2.1 GB"),
+    Step("index", "Make the statutes searchable",
+         "A full-text index (SQLite FTS5) over every downloaded section, one file per state, so new questions can be "
+         "answered for any state: search by heading, chapter and text, and read any section without loading the "
+         "whole statute file.", "recommended", st_index, run_index, needs=["statutes"], params=["states", "force"],
+         cost="about 4 GB on disk for all states; seconds per state"),
     Step("locate", "Find the state law for each question",
          "Ranks every section by title, chapter and text; a known section number is used only if it is found, in "
          "force and on topic. The method and a confidence score are stored with each result.",
@@ -467,13 +505,16 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "Official websites, emails and phone numbers from Wikidata (the data behind govdirectory.org), matched by "
          "FIPS code.", "recommended", st_contacts, run_contacts, needs=["governments"], params=["states"],
          cost="two queries per state"),
-    Step("models", "Pull two local models",
-         f"Two model families ({config.MODEL_A} and {config.MODEL_B}) extract the steps independently; a model "
-         "only reaches 'two models agree' when they match. Needs the Ollama service ('llm' profile).",
-         "recommended", st_models, run_models, cost="about 2.2 GB for the default pair; a GPU helps a lot"),
+    Step("models", "Pull the local models",
+         f"{config.EMBED_MODEL} gives the learned selector its clause embeddings; {config.MODEL_A} writes plain-"
+         f"language answers to new questions and makes the independent second extraction ({config.MODEL_B} is the "
+         "other family). Needs the Ollama service ('llm' profile).",
+         "recommended", st_models, run_models, cost="about 2.5 GB; a GPU helps a lot"),
     Step("build", "Build the state process models",
-         "Curated (checked) facts first; otherwise both local models extract quote-anchored facts, compiled to "
-         "BPMN and DMN and checked (schemas, bpmnlint, quotes, Petri-net soundness).",
+         "Claude's reference facts first; otherwise the learned selector (trained on the references for the other "
+         "states) picks quote-anchored steps from the located and related sections, compiled to BPMN and DMN and "
+         "checked (schemas, bpmnlint, quotes, Petri-net soundness). With a chat model, an independent second "
+         "extraction cross-checks it.",
          "required", st_build, run_build, needs=["locate"], params=["states", "places", "questions", "force", "no_llm"],
          cost="minutes per state on CPU"),
     Step("local", "Load checked local answers",
@@ -528,6 +569,9 @@ COMPOSITE = {
     "quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
                        "models and scores in one job.", "required", lambda con: {}, run_quickstart,
                        params=["states", "places", "no_llm"]),
+    "ask": Step("ask", "Answer a new question", "Searches each state's statutes for the question, quotes the "
+                "sections that answer it, extracts the steps, and adds each place's local layer.", "optional",
+                lambda con: {}, run_ask, params=["question", "targets", "model", "no_llm"]),
     "benchmark": Step("benchmark", "Benchmark local models against Claude",
                       "Runs each extraction strategy with each local model on every curated case and scores it "
                       "against Claude's reference model.", "optional", lambda con: {}, run_benchmark,

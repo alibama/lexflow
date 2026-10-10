@@ -1,0 +1,635 @@
+{
+  "qid": "record_sealing",
+  "question": "How do I get my criminal record sealed or expunged, how long do I have to wait, and what does it cost?",
+  "state": "dc",
+  "as_of": "2026-10-10",
+  "question_type": "process",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      ["seal", "sealing", "sealed", "motion to seal", "automatic sealing"],
+      ["expunge", "expungement", "expunged", "automatic expungement", "actual innocence"],
+      ["criminal records", "court proceedings", "citations, arrests", "arrest record"],
+      ["conviction", "convictions", "misdemeanor", "felony", "Offense Severity Group"],
+      ["waiting period", "completion of the sentence", "has elapsed since"],
+      ["interests of justice", "preponderance of the evidence", "written motion"],
+      ["fee", "nominal fee", "fees and costs"],
+      ["Superior Court", "prosecutor", "Clerk"]
+    ],
+    "negative": ["eviction", "sealed bids", "sealed proposals", "official seal", "seal of the court", "adoption", "corporate seal", "intercepted wire"],
+    "slots": ["deadline", "fee", "office", "order"]
+  },
+  "gold_sections": [
+    {"ref": "16-806", "role": "primary", "why": "Sealing by motion: non-conviction records (no waiting period; motion before October 1, 2027 unless the offense is on the 16-805(b) list), the 5-year (misdemeanor) and 8-year (felony) waiting periods, the excluded most-serious felonies, the interests-of-justice standard, motion contents, service on the prosecutor, waiver of waiting periods, the rule that other records' waiting periods need not be met, the 180-day ruling and 90-day sealing deadlines, and refiling after denial."},
+    {"ref": "16-805", "role": "primary", "why": "Automatic sealing of non-conviction cases and of misdemeanor convictions 10 years after the sentence, the offenses excluded from automatic sealing, and the October 1, 2027 / 90-day implementation deadlines."},
+    {"ref": "16-803", "role": "primary", "why": "Expungement by motion for non-conviction cases on the ground of actual innocence: standard of proof, filing at any time, procedure and deadlines."},
+    {"ref": "16-802", "role": "primary", "why": "Automatic expungement, convictions included, of records for decriminalized, legalized or unconstitutional offenses and pre-February 15, 2015 simple marijuana possession, by October 1, 2027 or 90 days after the case ends."},
+    {"ref": "16-801", "role": "definition", "why": "Defines 'completion of the sentence' (unconditional discharge from incarceration, probation, parole or supervised release, whichever is latest; the start of every waiting period; unpaid fines or restitution do not prevent it), 'Court' and 'Clerk'."},
+    {"ref": "15-709", "role": "supporting", "why": "Court fees are not set by statute: the Superior Court may prescribe its own fees and costs."},
+    {"ref": "2-1402.66", "role": "supporting", "why": "A person may obtain his or her own arrest record to check eligibility or file a sealing or expungement motion; the District may charge a nominal fee (the only cost the statutes mention)."},
+    {"ref": "16-807", "role": "supporting", "why": "Effect of sealing: records removed from public view, no perjury for nondisclosure, agencies' 90-day certification, the Clerk's copies of the order and certifications, and who keeps access."},
+    {"ref": "16-804", "role": "supporting", "why": "Effect of expungement: status restored as before the arrest, records limited to a nonpublic file, agencies certify within 90 days."}
+  ],
+  "nuggets": [
+    {"id": "N1", "text": "A misdemeanor conviction can be sealed by motion once at least 5 years have passed since the sentence was completed.", "importance": "vital", "section": "16-806",
+     "quote": "For a misdemeanor offense, a waiting period of at least 5 years has elapsed since completion of the sentence", "slot": "deadline"},
+    {"id": "N2", "text": "A felony conviction can be sealed by motion once at least 8 years have passed since the sentence was completed.", "importance": "vital", "section": "16-806",
+     "quote": "For a felony offense, a waiting period of at least 8 years has elapsed since completion of the sentence", "slot": "deadline"},
+    {"id": "N3", "text": "Felonies in Offense Severity Groups 1, 2 or 3 of the Sentencing Commission's Master Grid can never be sealed.", "importance": "vital", "section": "16-806",
+     "quote": "except, that an offense in Offense Severity Group 1, 2, or 3 of the Master Grid , developed by the District of Columbia Sentencing Commission, at the time of the effective date of the Second Chance Amendment Act of 2022, passed on 2nd reading on December 20, 2022 (Enrolled version of Bill 24-63) [March 10, 2023], shall not be eligible for sealing", "slot": null},
+    {"id": "N4", "text": "To seal by motion, the person files a written motion and must show by a preponderance of the evidence that sealing is in the interests of justice.", "importance": "vital", "section": "16-806",
+     "quote": "files a written motion demonstrating, by a preponderance of the evidence, that it is in the interests of justice to seal the records", "slot": null},
+    {"id": "N5", "text": "The Superior Court must grant the motion if sealing is in the interests of justice.", "importance": "vital", "section": "16-806",
+     "quote": "The Court shall grant a motion to seal pursuant to subsection (a) of this section if it is in the interests of justice to do so.", "slot": "office"},
+    {"id": "N6", "text": "The motion must state the grounds on which eligibility for sealing is based and the facts supporting the claim.", "importance": "okay", "section": "16-806",
+     "quote": "The grounds upon which eligibility for sealing is based; and (iii) Facts in support of the movant's claim", "slot": null},
+    {"id": "N7", "text": "The prosecutor may waive the waiting periods in writing.", "importance": "okay", "section": "16-806",
+     "quote": "The waiting periods in subsection (a)(3)(A) of this section may be waived by the prosecutor in writing.", "slot": null},
+    {"id": "N8", "text": "The court's written order on the motion must issue within 180 days after filing unless there is good cause for delay.", "importance": "okay", "section": "16-806",
+     "quote": "Issued no later than 180 days after the motion is filed, unless there exists good cause for delay.", "slot": "deadline"},
+    {"id": "N9", "text": "Records of a case that ended without a conviction or an insanity acquittal are sealed automatically, unless the offense is on the 16-805(b) exclusion list.", "importance": "vital", "section": "16-805",
+     "quote": "Citations, arrests, or charges for the commission of a criminal offense; provided, that the case was terminated by the prosecutor or otherwise reached a final disposition and did not result in a conviction or acquittal pursuant to § 24-501", "slot": null},
+    {"id": "N10", "text": "A misdemeanor conviction is sealed automatically once at least 10 years have passed since the sentence was completed, unless the offense is on the 16-805(b) exclusion list.", "importance": "vital", "section": "16-805",
+     "quote": "Citations, arrests, charges, and convictions for the commission of a misdemeanor offense that resulted in a conviction; provided, that a waiting period of at least 10 years has elapsed since completion of the sentence", "slot": "deadline"},
+    {"id": "N11", "text": "Automatic sealing (of both non-conviction records and misdemeanor convictions) does not apply to offenses on a statutory exclusion list, such as intrafamily offenses.", "importance": "okay", "section": "16-805",
+     "quote": "The Court shall not order automatic sealing pursuant to this section if the citation, arrest, charge, or conviction is for: (1) An intrafamily offense, as defined in § 16-1001(8)", "slot": null},
+    {"id": "N12", "text": "Automatically sealed misdemeanor convictions must be sealed by October 1, 2027, or within 90 days after the waiting period ends, whichever is later.", "importance": "okay", "section": "16-805",
+     "quote": "shall be sealed by October 1, 2027, or within 90 days after the expiration of the waiting period, whichever is later", "slot": "deadline"},
+    {"id": "N13", "text": "Expungement by motion is available for non-conviction cases on the ground of actual innocence (the offense did not occur or the person did not commit it).", "importance": "vital", "section": "16-803",
+     "quote": "The Court shall order expungement of all criminal records and court proceedings related only to citations, arrests, or charges for the commission of a criminal offense on the grounds of actual innocence", "slot": null},
+    {"id": "N14", "text": "Every waiting period runs from completion of the sentence: unconditional discharge from incarceration, commitment, probation, parole or supervised release, whichever is latest; unpaid fines, restitution or other court-imposed money do not prevent completion.", "importance": "vital", "section": "16-801",
+     "quote": "unconditionally discharged from incarceration, commitment, probation, parole, or supervised release, whichever is latest; provided, that nonpayment of fines, restitution, or any other monetary assessments imposed by the Court shall not prevent completion of a sentence", "slot": "deadline"},
+    {"id": "N15", "text": "The only cost the statutes mention: the District may charge a nominal fee for producing the person's arrest record for a sealing or expungement motion.", "importance": "vital", "section": "2-1402.66",
+     "quote": "The District may charge the individual a nominal fee for processing this request.", "slot": "fee"},
+    {"id": "N16", "text": "A case that ended without a conviction can be sealed by motion with no waiting period; for an offense not on the 16-805(b) list the motion must be filed before October 1, 2027, while for a listed offense there is no filing cutoff.", "importance": "vital", "section": "16-806",
+     "quote": "The offense is not an offense listed in § 16-805(b) and the person cited, arrested, or charged files a written motion prior to October 1, 2027; or (ii) The offense is an offense listed in § 16-805(b)", "slot": "deadline"},
+    {"id": "N17", "text": "Records of offenses later decriminalized, legalized or held unconstitutional, and of simple marijuana possession before February 15, 2015, are expunged automatically, convictions included.", "importance": "vital", "section": "16-802",
+     "quote": "automatic expungement of all criminal records and court proceedings related only to citations, arrests, charges, or convictions for the commission of a criminal offense that has subsequently been decriminalized, legalized, or held to be unconstitutional by the Court of Appeals for the District of Columbia or the Supreme Court of the United States, or records related only to simple possession for any quantity of marijuana in violation of § 48-904.01(d)(1) before February 15, 2015", "slot": null},
+    {"id": "N18", "text": "Automatic expungement must be completed by October 1, 2027, or within 90 days after the case ends, whichever is later.", "importance": "okay", "section": "16-802",
+     "quote": "shall be expunged pursuant to subsection (a) of this section by October 1, 2027, or within 90 days after termination of the case by the prosecutor or final disposition, whichever is later", "slot": "deadline"},
+    {"id": "N19", "text": "An actual-innocence expungement motion can be filed at any time; there is no waiting period.", "importance": "okay", "section": "16-803",
+     "quote": "Filed at any time.", "slot": "deadline"},
+    {"id": "N20", "text": "No statute sets a fee for a sealing or expungement motion; the Superior Court may prescribe its own fees and costs.", "importance": "vital", "section": "15-709",
+     "quote": "The Superior Court of the District of Columbia may prescribe fees and costs", "slot": "fee"},
+    {"id": "N21", "text": "Automatically sealed non-conviction records must be sealed by October 1, 2027, or within 90 days after the case ends, whichever is later.", "importance": "okay", "section": "16-805",
+     "quote": "shall be sealed by October 1, 2027, or within 90 days after termination of the case by the prosecutor or final disposition, whichever is later", "slot": "deadline"},
+    {"id": "N22", "text": "A movant need not meet the waiting periods for all of his or her records; another record that is not yet eligible does not block sealing an eligible one.", "importance": "okay", "section": "16-806",
+     "quote": "A movant shall not be required to: (1) Satisfy the waiting periods in subsection (a)(3)(A) of this section with respect to all of the movant's citations, arrests, charges, and convictions", "slot": null},
+    {"id": "N23", "text": "A copy of the motion must be served on the prosecutor, who need not respond unless the court orders it.", "importance": "okay", "section": "16-806",
+     "quote": "A copy of the motion and any amended motion shall be served upon the prosecutor; provided, that the prosecutor shall not be required to respond to the motion unless ordered to do so by the Court", "slot": "office"}
+  ],
+  "slots": {
+    "deadline": [
+      {"amount": 5, "unit": "years", "anchor": "completion of the sentence (misdemeanor conviction, sealing by motion)", "nuggets": ["N1", "N14"]},
+      {"amount": 8, "unit": "years", "anchor": "completion of the sentence (felony conviction, sealing by motion)", "nuggets": ["N2", "N14"]},
+      {"amount": 10, "unit": "years", "anchor": "completion of the sentence (automatic sealing of a misdemeanor conviction)", "nuggets": ["N10", "N14"]},
+      {"value": "before October 1, 2027 for an offense not on the 16-805(b) list; no cutoff for a listed offense", "anchor": "filing a motion to seal a non-conviction record (no waiting period)", "nuggets": ["N16"]},
+      {"value": "at any time", "anchor": "filing an actual-innocence expungement motion (no waiting period)", "nuggets": ["N19"]},
+      {"amount": 180, "unit": "days", "anchor": "the motion is filed (court's written order, unless good cause for delay)", "nuggets": ["N8"]},
+      {"value": "by October 1, 2027, or within 90 days after the case ends, whichever is later", "amount": 90, "unit": "days", "anchor": "termination of the case by the prosecutor or final disposition (automatic sealing of a non-conviction record)", "nuggets": ["N21"]},
+      {"value": "by October 1, 2027, or within 90 days after the waiting period expires, whichever is later", "amount": 90, "unit": "days", "anchor": "expiration of the waiting period (automatic sealing of a misdemeanor conviction)", "nuggets": ["N12"]},
+      {"value": "by October 1, 2027, or within 90 days after the case ends, whichever is later", "amount": 90, "unit": "days", "anchor": "termination of the case or final disposition (automatic expungement of decriminalized, legalized or unconstitutional offenses and of pre-February 15, 2015 marijuana possession)", "nuggets": ["N18"]}
+    ],
+    "fee": [
+      {"value": "no filing fee is set by statute; the Superior Court may prescribe its own fees and costs", "nuggets": ["N20"]},
+      {"value": "nominal fee (amount not stated) the District may charge to produce the arrest record used for the motion", "nuggets": ["N15"]}
+    ],
+    "office": [
+      {"value": "Superior Court of the District of Columbia (rules on sealing and expungement motions and sets its own fees)", "nuggets": ["N5", "N13", "N20"]},
+      {"value": "prosecutor (served with the motion; may waive the conviction waiting periods in writing)", "nuggets": ["N23", "N7"]}
+    ],
+    "ordered_list": [
+      {"item": "Check eligibility: no wait for a non-conviction record; for a conviction, wait out the waiting period after completing the sentence (or get the prosecutor's written waiver)", "nuggets": ["N16", "N1", "N2", "N14", "N7"]},
+      {"item": "File a written motion stating the grounds and supporting facts", "nuggets": ["N4", "N6"]},
+      {"item": "Serve a copy of the motion on the prosecutor", "nuggets": ["N23"]},
+      {"item": "Show by a preponderance of the evidence that sealing is in the interests of justice", "nuggets": ["N4", "N5"]},
+      {"item": "Court issues a written order, normally within 180 days of filing", "nuggets": ["N8"]}
+    ]
+  },
+  "answer": "D.C. Superior Court decides these cases [N5]. Records of offenses later decriminalized or legalized, and of marijuana possession before February 15, 2015, are expunged automatically, convictions included [N17], by October 1, 2027 (or 90 days after the case ends, if later) [N18]. Non-conviction cases [N9][N21] and misdemeanor convictions 10 years after the sentence [N10][N12] are sealed automatically on a similar schedule, except listed offenses such as intrafamily offenses [N11].\n\nYou need not wait. A non-conviction case can be sealed by motion now, without waiting: file before October 1, 2027, or anytime for a listed offense [N16]. For a conviction, wait 5 years after completing a misdemeanor sentence or 8 for a felony [N1][N2], counted from unconditional discharge from prison, probation, parole or supervised release, whichever is last, even with fines unpaid [N14]. The prosecutor can waive the wait in writing [N7], and another record's unfinished wait does not block an eligible one [N22]. Felonies in Offense Severity Groups 1-3 can never be sealed [N3].\n\nFile a written motion stating your grounds and facts [N6], serve the prosecutor [N23], and show by a preponderance of the evidence that sealing serves the interests of justice [N4]; the judge must then grant it [N5], in writing within 180 days absent good cause [N8]. Expungement for actual innocence of a non-conviction charge can be sought at any time [N13][N19].\n\nCost: no statute sets a filing fee; the court sets its own [N20], and the District may charge a nominal arrest-record fee [N15].",
+  "steps": {
+    "process_name": "Seal a criminal record by motion in D.C. Superior Court",
+    "trigger": "A person with a D.C. citation, arrest, charge or conviction asks the Superior Court to seal the records",
+    "trigger_source": {
+      "section": "16-806",
+      "subsection": "a",
+      "quote": "The Court shall order the sealing of all criminal records and court proceedings related to"
+    },
+    "actors": [
+      {
+        "id": "movant",
+        "name": "Movant (person cited, arrested, charged or convicted)",
+        "kind": "private-party",
+        "source": {
+          "section": "16-806",
+          "subsection": "a.3.B",
+          "quote": "The person cited, arrested, charged, or convicted files a written motion demonstrating, by a preponderance of the evidence, that it is in the interests of justice to seal the records"
+        }
+      },
+      {
+        "id": "district",
+        "name": "District of Columbia (custodian of arrest records)",
+        "kind": "public-body",
+        "source": {
+          "section": "2-1402.66",
+          "subsection": "a.1.B",
+          "quote": "The District may charge the individual a nominal fee for processing this request."
+        }
+      },
+      {
+        "id": "prosecutor",
+        "name": "Prosecutor (United States Attorney's Office or Office of the Attorney General)",
+        "kind": "official",
+        "source": {
+          "section": "16-806",
+          "subsection": "d",
+          "quote": "A copy of the motion and any amended motion shall be served upon the prosecutor"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Superior Court of the District of Columbia",
+        "kind": "court",
+        "source": {
+          "section": "16-801",
+          "subsection": "a.4",
+          "quote": "means the Superior Court of the District of Columbia"
+        }
+      },
+      {
+        "id": "clerk",
+        "name": "Clerk of the Superior Court",
+        "kind": "official",
+        "source": {
+          "section": "16-801",
+          "subsection": "a.1",
+          "quote": "means the Clerk of the Superior Court of the District of Columbia"
+        }
+      },
+      {
+        "id": "agencies",
+        "name": "Prosecutors and law enforcement, corrections, pretrial and community supervision agencies",
+        "kind": "public-body",
+        "source": {
+          "section": "16-807",
+          "subsection": "c.1",
+          "quote": "The Clerk and each prosecutor and law enforcement, corrections, pretrial, and community supervision agency shall"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "request_arrest_record",
+        "actor": "movant",
+        "action": "Request own arrest record (optional)",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "recipient": "district",
+        "source": {
+          "section": "2-1402.66",
+          "subsection": "a.1.A",
+          "quote": "may request production of his or her arrest record for filing a sealing or expungement motion"
+        }
+      },
+      {
+        "id": "charge_fee",
+        "actor": "district",
+        "action": "Charge nominal processing fee",
+        "kind": "payment",
+        "modality": "permission",
+        "after": ["request_arrest_record"],
+        "condition": "fee_charged",
+        "recipient": "movant",
+        "source": {
+          "section": "2-1402.66",
+          "subsection": "a.1.B",
+          "quote": "The District may charge the individual a nominal fee for processing this request."
+        }
+      },
+      {
+        "id": "file_motion",
+        "actor": "movant",
+        "action": "File written motion to seal",
+        "kind": "filing",
+        "modality": "permission",
+        "after": ["request_arrest_record", "charge_fee"],
+        "join": "any",
+        "recipient": "court",
+        "source": {
+          "section": "16-806",
+          "subsection": "c.1",
+          "quote": "A motion to seal filed pursuant to this section"
+        }
+      },
+      {
+        "id": "serve_prosecutor",
+        "actor": "movant",
+        "action": "Serve copy of motion on prosecutor",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["file_motion"],
+        "recipient": "prosecutor",
+        "source": {
+          "section": "16-806",
+          "subsection": "d",
+          "quote": "A copy of the motion and any amended motion shall be served upon the prosecutor"
+        }
+      },
+      {
+        "id": "initial_review",
+        "actor": "court",
+        "action": "Review motion for eligibility on its face",
+        "kind": "decision",
+        "modality": "permission",
+        "after": ["serve_prosecutor"],
+        "decision": "eligibility",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.1",
+          "quote": "If it plainly appears from the face of the motion, any accompanying exhibits, affidavits, and documents, and the record of any prior proceedings in the case, that the movant is not eligible for relief or not entitled to relief, the Court may dismiss or deny the motion."
+        }
+      },
+      {
+        "id": "determine_hearing",
+        "actor": "court",
+        "action": "Determine whether a hearing is required",
+        "kind": "review",
+        "modality": "obligation",
+        "after": ["initial_review"],
+        "condition": "eligible",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.2.A",
+          "quote": "Shall determine whether a hearing on the motion is required"
+        }
+      },
+      {
+        "id": "order_response",
+        "actor": "court",
+        "action": "Order prosecutor to respond by deadline",
+        "kind": "act",
+        "modality": "permission",
+        "after": ["determine_hearing"],
+        "condition": "response_ordered",
+        "recipient": "prosecutor",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.2.B.i",
+          "quote": "Order the prosecutor to file a response to the motion"
+        }
+      },
+      {
+        "id": "file_response",
+        "actor": "prosecutor",
+        "action": "File response to the motion",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": ["order_response"],
+        "recipient": "court",
+        "source": {
+          "section": "16-806",
+          "subsection": "d",
+          "quote": "the prosecutor shall not be required to respond to the motion unless ordered to do so by the Court"
+        }
+      },
+      {
+        "id": "hold_hearing",
+        "actor": "court",
+        "action": "Hold hearing on the motion",
+        "kind": "hearing",
+        "modality": "permission",
+        "after": ["determine_hearing", "file_response"],
+        "join": "any",
+        "condition": "hearing_required",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.3",
+          "quote": "At any hearing on the motion, the movant and the prosecutor may present witnesses and information by proffer or otherwise."
+        }
+      },
+      {
+        "id": "weigh_interests",
+        "actor": "court",
+        "action": "Weigh movant's and community's interests",
+        "kind": "review",
+        "modality": "obligation",
+        "after": ["determine_hearing", "file_response", "hold_hearing"],
+        "join": "any",
+        "source": {
+          "section": "16-806",
+          "subsection": "b.2",
+          "quote": "In making a determination to grant a motion to seal, the Court"
+        }
+      },
+      {
+        "id": "rule_on_motion",
+        "actor": "court",
+        "action": "Issue written order granting or denying",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": ["weigh_interests"],
+        "decision": "ruling",
+        "deadline": {
+          "amount": 180,
+          "unit": "days",
+          "anchor": "the motion is filed",
+          "consequence": "unstated",
+          "source": {
+            "section": "16-806",
+            "subsection": "i.4.C",
+            "quote": "Issued no later than 180 days after the motion is filed, unless there exists good cause for delay."
+          }
+        },
+        "source": {
+          "section": "16-806",
+          "subsection": "i.4",
+          "quote": "An order dismissing, granting, or denying the motion shall be"
+        }
+      },
+      {
+        "id": "send_order",
+        "actor": "clerk",
+        "action": "Send movant copy of sealing order",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["rule_on_motion"],
+        "condition": "granted",
+        "recipient": "movant",
+        "source": {
+          "section": "16-807",
+          "subsection": "c.3.B.i",
+          "quote": "When the Court issues the order"
+        }
+      },
+      {
+        "id": "seal_records",
+        "actor": "agencies",
+        "action": "Remove identifying references from public records",
+        "kind": "record",
+        "modality": "obligation",
+        "after": ["send_order"],
+        "deadline": {
+          "amount": 90,
+          "unit": "days",
+          "anchor": "a motion to seal is granted",
+          "consequence": "unstated",
+          "source": {
+            "section": "16-806",
+            "subsection": "j",
+            "quote": "shall be sealed within 90 days after a motion to seal is granted"
+          }
+        },
+        "source": {
+          "section": "16-807",
+          "subsection": "c.1.A",
+          "quote": "Eliminate from all publicly available physical and computerized records any references that identify the person as having been cited, arrested, prosecuted, or convicted"
+        }
+      },
+      {
+        "id": "certify_sealing",
+        "actor": "agencies",
+        "action": "Certify sealing to the Court",
+        "kind": "filing",
+        "modality": "obligation",
+        "after": ["seal_records"],
+        "recipient": "court",
+        "deadline": {
+          "amount": 90,
+          "unit": "days",
+          "anchor": "an order to seal is issued",
+          "consequence": "unstated",
+          "source": {
+            "section": "16-807",
+            "subsection": "c.2",
+            "quote": "shall file a certification with the Court within 90 days after an order to seal is issued"
+          }
+        },
+        "source": {
+          "section": "16-807",
+          "subsection": "c.2",
+          "quote": "all references that identify the person as having been cited, arrested, prosecuted, or convicted have been sealed"
+        }
+      },
+      {
+        "id": "send_certifications",
+        "actor": "clerk",
+        "action": "Send movant copies of the certifications",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": ["certify_sealing"],
+        "recipient": "movant",
+        "source": {
+          "section": "16-807",
+          "subsection": "c.3.B",
+          "quote": "Make reasonable efforts to provide a copy of the order to seal and the certifications filed pursuant to paragraph (2) of this subsection to the person who was cited, arrested, charged, or convicted, or their counsel"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "eligibility",
+        "question": "Is the movant eligible to seal these records by motion?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {"name": "convicted", "label": "The case resulted in a conviction", "type": "boolean"},
+          {"name": "offense_listed_16_805b", "label": "The offense is listed in 16-805(b) (excluded from automatic sealing)", "type": "boolean"},
+          {"name": "filed_before_2027_10_01", "label": "The motion is filed before October 1, 2027", "type": "boolean"},
+          {"name": "felony", "label": "The conviction is for a felony", "type": "boolean"},
+          {"name": "severity_group_1_3", "label": "Felony in Offense Severity Group 1, 2 or 3 of the Master Grid", "type": "boolean"},
+          {"name": "years_since_sentence", "label": "Years since completion of the sentence", "type": "number"},
+          {"name": "waiting_waived", "label": "Prosecutor waived the waiting period in writing", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "eligible", "label": "Eligible for sealing by motion", "type": "boolean"},
+          {"name": "ineligible", "label": "Motion dismissed or denied on its face", "type": "boolean"},
+          {"name": "basis", "label": "Basis", "type": "string"}
+        ],
+        "rules": [
+          {
+            "when": ["false", "true", "-", "-", "-", "-", "-"],
+            "then": ["true", "false", "\"Non-conviction case, offense listed in 16-805(b): motion may be filed at any time, no waiting period\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "a.1.B.ii",
+              "quote": "The offense is an offense listed in § 16-805(b)"
+            }
+          },
+          {
+            "when": ["false", "false", "true", "-", "-", "-", "-"],
+            "then": ["true", "false", "\"Non-conviction case, unlisted offense, motion filed before October 1, 2027: no waiting period\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "a.1.B.i",
+              "quote": "files a written motion prior to October 1, 2027"
+            }
+          },
+          {
+            "when": ["false", "false", "false", "-", "-", "-", "-"],
+            "then": ["false", "true", "\"Non-conviction case, unlisted offense, motion filed on or after October 1, 2027: left to automatic sealing\""],
+            "source": {
+              "section": "16-805",
+              "subsection": "a",
+              "quote": "the Court shall order automatic sealing of all criminal records and court proceedings related to"
+            }
+          },
+          {
+            "when": ["true", "-", "-", "true", "true", "-", "-"],
+            "then": ["false", "true", "\"Offense Severity Group 1-3 felony: not eligible for sealing\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "a.3.A.ii",
+              "quote": "shall not be eligible for sealing"
+            }
+          },
+          {
+            "when": ["true", "-", "-", "-", "-", "-", "true"],
+            "then": ["true", "false", "\"Waiting period waived by the prosecutor in writing\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "e",
+              "quote": "The waiting periods in subsection (a)(3)(A) of this section may be waived by the prosecutor in writing."
+            }
+          },
+          {
+            "when": ["true", "-", "-", "false", "-", ">= 5", "-"],
+            "then": ["true", "false", "\"Misdemeanor: 5-year waiting period has run\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "a.3.A.i",
+              "quote": "For a misdemeanor offense, a waiting period of at least 5 years has elapsed since completion of the sentence"
+            }
+          },
+          {
+            "when": ["true", "-", "-", "true", "false", ">= 8", "-"],
+            "then": ["true", "false", "\"Felony: 8-year waiting period has run\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "a.3.A.ii",
+              "quote": "For a felony offense, a waiting period of at least 8 years has elapsed since completion of the sentence"
+            }
+          },
+          {
+            "when": ["-", "-", "-", "-", "-", "-", "-"],
+            "then": ["false", "true", "\"Waiting period has not run: dismissed, may be renewed later\""],
+            "source": {
+              "section": "16-806",
+              "subsection": "i.5",
+              "quote": "A motion made pursuant to this section may be dismissed without prejudice to permit the movant to renew the motion after further passage of time."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ruling",
+        "question": "Does the court grant the motion to seal?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {"name": "interests_of_justice", "label": "Sealing is in the interests of justice (shown by a preponderance of the evidence)", "type": "boolean"}
+        ],
+        "outputs": [
+          {"name": "granted", "label": "Motion granted", "type": "boolean"},
+          {"name": "denied", "label": "Motion denied", "type": "boolean"}
+        ],
+        "rules": [
+          {
+            "when": ["true"],
+            "then": ["true", "false"],
+            "source": {
+              "section": "16-806",
+              "subsection": "b.1",
+              "quote": "The Court shall grant a motion to seal pursuant to subsection (a) of this section if it is in the interests of justice to do so."
+            }
+          },
+          {
+            "when": ["false"],
+            "then": ["false", "true"],
+            "source": {
+              "section": "16-806",
+              "subsection": "i.6",
+              "quote": "If the Court denies the motion, the Court shall entertain a second motion no sooner than one year after the date on which the order on the initial motion was resolved."
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "dismissed_on_face",
+        "description": "Motion dismissed or denied on initial review (not eligible or not entitled to relief)",
+        "after": ["initial_review"],
+        "when": "ineligible",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.1",
+          "quote": "that the movant is not eligible for relief or not entitled to relief, the Court may dismiss or deny the motion"
+        }
+      },
+      {
+        "id": "motion_denied",
+        "description": "Motion denied; a second motion may be filed no sooner than one year later, and a third and final one a year after that",
+        "after": ["rule_on_motion"],
+        "when": "denied",
+        "source": {
+          "section": "16-806",
+          "subsection": "i.6",
+          "quote": "If the Court denies the movant's second motion, the Court shall entertain a third and final motion no sooner than one year after the date on which the order on the second motion was resolved."
+        }
+      },
+      {
+        "id": "records_sealed",
+        "description": "Records removed from public view; restricted nonpublic access only",
+        "after": ["send_certifications"],
+        "source": {
+          "section": "16-807",
+          "subsection": "a",
+          "quote": "The effect of criminal record sealing shall be to remove all records related to a citation, arrest, charge, prosecution, disposition, or conviction from public view and to permit restricted, nonpublic access by specific parties for specific purposes."
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "D.C. Code § 16-805(b)",
+        "role": "offenses excluded from automatic sealing; non-conviction records for these offenses may be sealed by motion at any time",
+        "source": {
+          "section": "16-806",
+          "subsection": "a.1.B.ii",
+          "quote": "The offense is an offense listed in"
+        }
+      },
+      {
+        "citation": "D.C. Code § 2-1402.66",
+        "role": "obtaining one's own arrest record to determine eligibility and file the motion",
+        "source": {
+          "section": "2-1402.66",
+          "subsection": "a.1.A",
+          "quote": "An individual may request production of his or her arrest record for the purposes of determining eligibility for sealing or expunging that record"
+        }
+      }
+    ],
+    "gaps": [
+      "No statute sets a filing fee for a motion to seal or expunge; 15-709 leaves fees and costs to the Superior Court, and the fee-waiver statute 15-712 covers only noncriminal proceedings. The arrest-record fee in 2-1402.66 is 'nominal' with no amount stated.",
+      "Requesting one's own arrest record (2-1402.66) is optional, not a statutory prerequisite for filing; it is modeled before the motion because the statute frames it as a request 'for filing a sealing or expungement motion' (a separate parallel branch does not compile to a sound net). The District's fee is a 'may', so the fee step is conditional and filing follows either way.",
+      "The statute says only that the motion 'shall be served upon the prosecutor' (passive voice); the model infers that the movant serves it.",
+      "The waiting period is modeled as an eligibility check on initial review, not as a deadline: it is the earliest time a conviction motion succeeds, and a premature motion may be dismissed without prejudice and renewed (16-806 i.5). A movant need not meet the waiting periods for every record or seek relief for every eligible record (16-806 h). The prosecutor's written waiver (16-806 e) is an eligibility input; the statute sets no procedure for requesting it.",
+      "Non-conviction records for offenses not listed in 16-805(b) can be sealed by motion only if the motion is filed before October 1, 2027 (16-806 a.1.B.i); after that they are covered by automatic sealing (16-805 a.1, c.1). Non-conviction records for listed offenses can be sealed by motion with no filing cutoff (16-806 a.1.B.ii).",
+      "The court is a black-box pool (actor kind 'court'); its review, hearing and ruling appear as messages in the movant's and agencies' processes, as in the other curated models. After initial review the court must decide whether a hearing is required (16-806 i.2.A); ordering a prosecutor response is discretionary (i.2.B), so the response and hearing steps are conditional and the path rejoins at the weighing of interests.",
+      "The Clerk must make reasonable efforts to send the order when it issues and the certifications when filed (16-807 c.3.B); the model places agency sealing after the first copy for simplicity, but the 90-day sealing and certification clocks run from the grant or order regardless of the Clerk's copy.",
+      "16-806 as downloaded includes amendments by temporary legislation that expired on September 11, 2026; the corpus does not show which words are temporary. This model avoids the likely temporary text: (i)(7) on motions dismissed between March 1, 2025 and July 14, 2025, probably the 30-day chance to amend an incomplete motion in (c)(2), and the 'unsealed and unexpunged' and 'as reasonably known to the movant' qualifiers in (c)(1)(A)(i).",
+      "Off the main path: automatic sealing (16-805) and automatic expungement (16-802) need no motion; expungement by motion on actual innocence (16-803) can be filed at any time and follows the same review, hearing and 180-day order procedure, with expungement within 90 days of the grant; fugitive-from-justice arrests (16-806 a.2, which also requires proof of appearance in the demanding jurisdiction) and misidentified arrests (16-806 g) have their own routes."
+    ]
+  },
+  "out_of_corpus": [
+    {"kind": "court rule", "what": "Any filing fee or fee waiver for a motion to seal or expunge, the forms to use, and the filing and service mechanics (15-709 leaves fees and costs to the court)", "where": "D.C. Superior Court fee schedule, Superior Court Rules of Criminal Procedure and the Criminal Division's record-sealing motion forms and instructions"},
+    {"kind": "agency policy", "what": "The amount of the 'nominal fee' and the procedure for obtaining one's own arrest record under 2-1402.66", "where": "Metropolitan Police Department arrest-record (police clearance) procedures and fee schedule"},
+    {"kind": "federal", "what": "Records of federal prosecutions in the U.S. District Court for the District of Columbia and FBI criminal-history files are not governed by D.C. Code chapter 8", "where": "Federal law and U.S. District Court / FBI practice"}
+  ],
+  "version_flags": [
+    "16-806 as downloaded 'includes amendments by temporary legislation that will expire on September 11, 2026'; those temporary amendments have expired as of 2026-10-10 and the permanent version may differ. The likely temporary text, (i)(7) (motions dismissed between March 1, 2025 and July 14, 2025), probably the 30-day amendment window in (c)(2), and possibly both the 'unsealed and unexpunged' and the 'as reasonably known to the movant' qualifiers in (c)(1)(A)(i), is not relied on here; N6 rests only on (c)(1)(A)(ii)-(iii). The permanent text may require the motion to list all of the movant's citations, arrests, charges and convictions without those qualifiers.",
+    "Automatic sealing (16-805 c) and automatic expungement (16-802 b) need only be completed by October 1, 2027 (or within 90 days after the case ends or the waiting period expires, if later), so on 2026-10-10 eligible records may not yet have been sealed or expunged automatically.",
+    "16-806(a)(1)(B)(i): a motion to seal a non-conviction record for an offense not listed in 16-805(b) must be filed before October 1, 2027; after that date such records are left to automatic sealing."
+  ],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "D.C.'s Second Chance Amendment Act of 2022 rewrote chapter 8 of Title 16 (16-801 to 16-809): automatic expungement (16-802), expungement by motion for actual innocence (16-803), automatic sealing (16-805) and sealing by motion (16-806), all decided by the Superior Court and applied retroactively (16-808). The 16-805(b) exclusion list also covers parental kidnapping, abuse or financial exploitation of vulnerable adults, incest, misdemeanor sexual abuse and other sex offenses, registrable offenses whose registration period has not expired, dangerous crimes and crimes of violence (23-1331), and DUI, commercial-vehicle DUI and impaired driving. The prosecutor can block automatic expungement only by a written motion and clear and convincing evidence (16-802 a.2). For actual-innocence expungement the movant must prove by a preponderance that the offense did not occur or was not committed by the movant, and an acquittal or dismissal creates no presumption of innocence (16-803 a.2, e). Sealing is not erasure: sealed records stay available to courts, prosecutors, police and corrections agencies for listed purposes, and, except for fugitive arrests, to certain licensing agencies, schools and child-care facilities and some government employers to the extent they could see them before (16-807 d, 16-801 a.5), and a person need not disclose a sealed record (16-807 b). Expungement restores the person to the status before arrest (16-804 a). Victims may attend record-sealing hearings (23-1901 b.4) and the court may consider a victim's statement (16-806 b.2.B.v). Other routes kept by the savings clause (16-809): vacatur and expungement for trafficking victims (22-1844), expungement after first-offense drug-possession probation and dismissal (48-904.01 e.2), Youth Rehabilitation Act set-aside (24-906), juvenile sealing two years after discharge (16-2335) or on actual innocence (16-2335.02), and expungement for a first parental-kidnapping conviction (16-1026). Background-check providers may not report expunged, sealed or set-aside records (2-1652). The statutes state no filing fee; in practice the court's fee schedule governs, which is out of the corpus."
+}

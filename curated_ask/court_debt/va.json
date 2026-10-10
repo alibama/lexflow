@@ -1,0 +1,929 @@
+{
+  "qid": "court_debt",
+  "question": "I can't afford to pay my court fines, costs or restitution. Can I get a payment plan, a reduction or waiver, or do community service instead, and what happens if I miss payments?",
+  "state": "va",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      [
+        "deferred payment",
+        "installment payment",
+        "installments",
+        "payment agreement",
+        "modified deferred payment agreement",
+        "subsequent payment agreement",
+        "down payment"
+      ],
+      [
+        "fine",
+        "fines",
+        "costs",
+        "fines and costs",
+        "restitution",
+        "forfeiture",
+        "penalty"
+      ],
+      [
+        "community service",
+        "earning credits",
+        "credits",
+        "work performed while incarcerated"
+      ],
+      [
+        "default",
+        "defaults in the payment",
+        "failure to pay",
+        "nonpayment",
+        "delinquent",
+        "timely made"
+      ],
+      [
+        "show cause",
+        "intentional refusal",
+        "good faith effort",
+        "willfully refused",
+        "contempt",
+        "unreasonable failure"
+      ],
+      [
+        "remitting",
+        "remit",
+        "remission",
+        "reducing the amount",
+        "additional time for payment",
+        "modification",
+        "waive"
+      ],
+      [
+        "financial resources and obligations",
+        "ability to pay",
+        "indigent",
+        "sole financial resource",
+        "Social Security",
+        "Supplemental Security Income"
+      ],
+      [
+        "probation",
+        "breach of such probation",
+        "revocation",
+        "suspended sentence",
+        "restitution plan"
+      ],
+      [
+        "collection",
+        "collections",
+        "Tax Commissioner",
+        "Department of Taxation",
+        "attorney for the Commonwealth",
+        "judgment"
+      ]
+    ],
+    "negative": [
+      "deferred fuel costs",
+      "installment loans",
+      "child support",
+      "utility",
+      "cost allocation",
+      "court-martial"
+    ],
+    "slots": [
+      "yes_no",
+      "amount",
+      "deadline",
+      "office"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "19.2-354",
+      "role": "primary",
+      "why": "Right to pay fines, restitution and costs in deferred payments or installments through clerk-approved agreements (money goes to restitution first; a one-time fee of up to $10 if payment cannot be made within 90 days of sentencing; if not paid by the date ordered the court shall proceed under 19.2-358); mandatory community service credit program; clerk's warning of 19.2-358 sanctions; Tax Commissioner collection on failure to pay."
+    },
+    {
+      "ref": "19.2-354.1",
+      "role": "primary",
+      "why": "Terms of payment agreements: 'fines and costs' includes restitution unless separately scheduled; the court must offer them and cannot deny one solely for the offense category, the total owed, a prior default, a collections referral or no payment history; amounts set by ability to pay (under $25 a month if indigent); no down payment on a first agreement; 10-day grace; modification; subsequent agreement after default with a capped down payment; Social Security/SSI as sole resource exempts payment and bars a collections referral."
+    },
+    {
+      "ref": "19.2-358",
+      "role": "primary",
+      "why": "What happens on default: show cause, the two 'not attributable' defenses, jail as for contempt up to 60 days or $500 fine, and on excusable default more time, reduced payments or remission; restitution defaults: contempt up to 60 days, terms but not amount may be modified; collection as a money judgment preserved."
+    },
+    {
+      "ref": "19.2-362",
+      "role": "primary",
+      "why": "No court may remit a fine or penalty except for a contempt (in the same term) or as provided in 19.2-358, so judicial reduction or remission is available only on an excusable default; the section names fines and penalties, not costs."
+    },
+    {
+      "ref": "19.2-305",
+      "role": "supporting",
+      "why": "On probation, nonpayment of fines or costs is a breach only if the court finds willful refusal after notice and a hearing; indigent defendants are presumed unable to pay and the breach must be dismissed absent a specific contrary finding, though the debt remains due; no supervised probation solely for unpaid fines, fees or costs if, after notice, no court or Commonwealth's attorney objects."
+    },
+    {
+      "ref": "19.2-305.1",
+      "role": "supporting",
+      "why": "Restitution or community service as a condition of probation or a suspended sentence; restitution plans; unreasonable failure to execute the plan shall result in revocation of probation or imposition of the suspended sentence after a hearing (G); periodic compliance hearings where the court may modify probation, revoke, or use the 19.2-358 E contempt procedure, and may stop hearings if the defendant is and will remain unable to pay (F)."
+    },
+    {
+      "ref": "19.2-349",
+      "role": "supporting",
+      "why": "Clerks report accounts delinquent more than 90 days to the judge, the Department of Taxation, the State Compensation Board and the attorney for the Commonwealth; the attorney for the Commonwealth must pursue collection directly or through private collectors, a locality, the treasurer or the Department of Taxation; people who fail to comply with installment agreements are subject to the delinquent tax collection provisions of Title 58.1."
+    },
+    {
+      "ref": "19.2-353.5",
+      "role": "supporting",
+      "why": "No interest for 180 days after judgment, during incarceration, or for 180 days after release when the sentence included active incarceration; interest accrued during incarceration is waived on the person's motion and certification of the period; no interest while paying under a court-ordered deferred or installment plan; otherwise interest runs at the judgment rate."
+    },
+    {
+      "ref": "19.2-340",
+      "role": "supporting",
+      "why": "Fines and costs are a judgment on which execution may issue like any other money judgment, subject to the 19.2-341 limitations period (the version effective until January 1, 2027)."
+    },
+    {
+      "ref": "19.2-341",
+      "role": "supporting",
+      "why": "Penalties and costs are judgments; no proceeding to recover them after 60 years (circuit court) or 30 years (general district court) (the version effective until January 1, 2027)."
+    },
+    {
+      "ref": "19.2-305.2",
+      "role": "supporting",
+      "why": "A restitution order docketed in the victim's name is enforced by the victim as a civil judgment, and victim enforcement of a docketed order is not subject to any statute of limitations."
+    },
+    {
+      "ref": "19.2-355",
+      "role": "supporting",
+      "why": "The court may require a sworn financial-condition petition from a defendant entering a payment agreement."
+    },
+    {
+      "ref": "19.2-363",
+      "role": "supporting",
+      "why": "The Governor may remit fines and penalties in whole or in part after conviction (outside the courts), except judgments for contempt of court and certain other cases."
+    },
+    {
+      "ref": "19.2-159",
+      "role": "definition",
+      "why": "How a court determines indigency, which unlocks payments under $25 a month and the presumption of inability to pay on probation."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "A defendant sentenced to pay a fine, restitution, forfeiture or penalty may pay it and the costs in deferred payments or installments, and the court authorizes the clerk to set up and approve the agreement.",
+      "importance": "vital",
+      "section": "19.2-354",
+      "quote": "may pay such fine, restitution, forfeiture, or penalty and any costs that the defendant may be required to pay in deferred payments or installments. The court assessing the fine, restitution, forfeiture, or penalty and costs shall authorize the clerk to establish and approve individual deferred or installment payment agreements.",
+      "slot": "office"
+    },
+    {
+      "id": "N2",
+      "text": "The court must offer every defendant a deferred, modified deferred or installment payment agreement.",
+      "importance": "vital",
+      "section": "19.2-354.1",
+      "quote": "The court shall offer any defendant the opportunity to enter into a deferred payment agreement, modified deferred payment agreement, or installment payment agreement.",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N3",
+      "text": "A defendant the court finds indigent may be offered installments of less than $25 a month, and the length and payment amount must be reasonable for the defendant's financial resources and obligations, not based only on the amount owed.",
+      "importance": "vital",
+      "section": "19.2-354.1",
+      "quote": "less than $25 per month if the defendant is determined to be indigent by the court pursuant to § 19.2-159 . The length of a payment agreement and the amount of the payments shall be reasonable in light of the defendant's financial resources and obligations and shall not be based solely on the amount of fines and costs.",
+      "slot": "amount"
+    },
+    {
+      "id": "N4",
+      "text": "No court may require a down payment to enter a deferred, modified deferred or installment agreement, except a subsequent agreement after a default.",
+      "importance": "vital",
+      "section": "19.2-354.1",
+      "quote": "No court shall require a defendant to make a down payment upon entering a deferred, modified deferred, or installment payment agreement, other than a subsequent payment agreement",
+      "slot": null
+    },
+    {
+      "id": "N5",
+      "text": "A payment received within 10 days of its due date is timely; at any time during the agreement the defendant may ask in writing, on the Executive Secretary's form, to modify it, and the court may grant the modification on a good faith showing of need.",
+      "importance": "okay",
+      "section": "19.2-354.1",
+      "quote": "Any payment received within 10 days of its due date shall be considered to be timely made. H. At any time during the duration of a payment agreement, the defendant may request a modification of the agreement in writing on a form provided by the Executive Secretary of the Supreme Court, and the court may grant such modification based on a good faith showing of need.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N6",
+      "text": "A defendant who defaulted may petition for a subsequent payment agreement; the court must consider any change in circumstances, and any down payment is capped at 10 percent if $500 or less is owed, otherwise the greater of five percent or $50.",
+      "importance": "okay",
+      "section": "19.2-354.1",
+      "quote": "A defendant who has defaulted on a payment agreement may petition the court for a subsequent payment agreement. In determining whether to approve the request for a subsequent payment agreement, the court shall consider any change in the defendant's circumstances. A court may require a down payment to enter into a subsequent payment agreement, provided that the down payment required to enter into a subsequent payment agreement shall not exceed (i) if the fines and costs owed are $500 or less, 10 percent of such amount or (ii) if the fines and costs owed are more than $500, five percent of such amount or $50, whichever is greater.",
+      "slot": "amount"
+    },
+    {
+      "id": "N7",
+      "text": "A defendant whose sole financial resource is Social Security or SSI is exempt from making payments until there is another resource, and if the defendant tells the court so, the case may not be referred to collections.",
+      "importance": "okay",
+      "section": "19.2-354.1",
+      "quote": "where such defendant's sole financial resource is a Social Security benefit or Supplemental Security Income, then such defendant shall be exempt from making payments at least until such time that such defendant has a resource other than a Social Security benefit or Supplemental Security Income. If such defendant informs the court that his sole financial resource is a Social Security benefit or Supplemental Security Income, the case shall not be referred to collections",
+      "slot": null
+    },
+    {
+      "id": "N8",
+      "text": "Each court must run a program letting a person discharge all or part of fines and costs by earning credits for community service work (or certain work while incarcerated).",
+      "importance": "vital",
+      "section": "19.2-354",
+      "quote": "The court shall establish a program and shall allow any person upon whom a fine and costs have been imposed to discharge all or part of the fine or costs by earning credits for the performance of (i) community service work before or after imprisonment",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N9",
+      "text": "Failing to make payments under the agreement allows the Tax Commissioner to collect the fines, costs, forfeitures and penalties under 19.2-349.",
+      "importance": "okay",
+      "section": "19.2-354",
+      "quote": "the failure of the defendant to make payments as ordered by the agreement shall allow the Tax Commissioner to act in accordance with § 19.2-349 to collect all fines, costs, forfeitures, and penalties",
+      "slot": "office"
+    },
+    {
+      "id": "N10",
+      "text": "No court may remit a fine or penalty, except a contempt fine during the same term and except as provided in 19.2-358 (the excusable-default procedure).",
+      "importance": "vital",
+      "section": "19.2-362",
+      "quote": "No court shall remit any fine or penalty, except for a contempt, which the court during the same term may remit either wholly or in part, and except as provided in § 19.2-358",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N11",
+      "text": "After an order to show cause for nonpayment, the court may confine the defendant as for contempt for up to 60 days or impose a fine of up to $500, unless the defendant shows the default was not attributable to an intentional refusal to obey the sentence, or not attributable to a failure to make a good faith effort to obtain the funds.",
+      "importance": "vital",
+      "section": "19.2-358",
+      "quote": "Following the order to show cause or following a capias issued for a defendant's failure to comply with a court order to appear issued pursuant to subsection A of § 19.2-354 , unless the defendant shows that his default for the payment of fines, costs, forfeitures, or penalties was not attributable to an intentional refusal to obey the sentence of the court, or not attributable to a failure on his part to make a good faith effort to obtain the necessary funds for payment, or unless the defendant shows that any failure to appear was not attributable to an intentional refusal to obey the order of the court, the court may order the defendant confined as for a contempt for a term not to exceed sixty days or impose a fine not to exceed $500",
+      "slot": "amount"
+    },
+    {
+      "id": "N12",
+      "text": "If the default in fines, costs, forfeitures or penalties is excusable, the court may allow more time, reduce the amount due or each installment, or remit the unpaid portion in whole or in part.",
+      "importance": "vital",
+      "section": "19.2-358",
+      "quote": "the court may enter an order allowing the defendant additional time for payment, reducing the amount due or of each installment, or remitting the unpaid portion in whole or in part",
+      "slot": null
+    },
+    {
+      "id": "N13",
+      "text": "For an excusable restitution default the court may change the payment terms but may not change the amount of restitution owed.",
+      "importance": "vital",
+      "section": "19.2-358",
+      "quote": "the court may modify the terms for payment of restitution, except that the court may not modify the amount of restitution owed by the defendant",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "For a probationer, failing to pay fines or costs is not by itself a breach unless the court finds after notice and a hearing that the defendant willfully refused; a defendant found indigent under 19.2-159 is presumed unable to pay, the alleged breach must be dismissed absent a specific contrary finding, and the fines and costs remain due.",
+      "importance": "vital",
+      "section": "19.2-305",
+      "quote": "such failure to pay shall not, by itself, be deemed a breach of such probation unless the court finds, after notice to the defendant and his counsel and a hearing, that the defendant has willfully refused to pay. In assessing such failure to pay under this section, the court shall presume that a defendant who is indigent pursuant to § 19.2-159 , or who has been deemed indigent pursuant to § 19.2-159 during the pendency of a criminal or traffic case, is unable to pay such fines and costs. Absent any specific finding to the contrary, the court shall dismiss any such alleged breach of probation. However, such fines and costs shall remain due until paid",
+      "slot": null
+    },
+    {
+      "id": "N15",
+      "text": "An unreasonable failure to carry out a court-ordered restitution plan results in revocation of probation or imposition of the suspended sentence, after a revocation hearing.",
+      "importance": "vital",
+      "section": "19.2-305.1",
+      "quote": "Unreasonable failure to execute the plan by the defendant shall result in revocation of the probation or imposition of the suspended sentence. A hearing shall be held in accordance with the provisions of this Code relating to revocation of probation or imposition of a suspended sentence before either such action is taken.",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "yes_no": {
+      "value": "yes for a payment plan and for community service credit; a court may reduce or remit fines and costs only after finding a default excusable (it may not otherwise remit a fine), and it may never reduce the amount of restitution",
+      "nuggets": [
+        "N1",
+        "N2",
+        "N8",
+        "N10",
+        "N12",
+        "N13"
+      ]
+    },
+    "amount": [
+      {
+        "value": "installments of less than $25 per month for a defendant found indigent",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "value": "down payment on a subsequent agreement after default capped at 10 percent if $500 or less is owed; otherwise the greater of five percent or $50",
+        "nuggets": [
+          "N6"
+        ]
+      },
+      {
+        "value": "on unexcused default: confinement as for contempt up to 60 days or a fine up to $500",
+        "nuggets": [
+          "N11"
+        ]
+      }
+    ],
+    "deadline": [
+      {
+        "amount": 10,
+        "unit": "days",
+        "anchor": "a payment's due date (a payment received within this period is timely)",
+        "nuggets": [
+          "N5"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "clerk of the court that imposed the fines and costs (sets up and approves the payment agreement)",
+        "nuggets": [
+          "N1"
+        ]
+      },
+      {
+        "value": "Tax Commissioner (collection after failure to pay)",
+        "nuggets": [
+          "N9"
+        ]
+      }
+    ]
+  },
+  "answer": "Payment plan: yes. You may pay fines, costs and restitution in installments under a clerk-approved agreement [N1] that the court must offer [N2]. Payments must fit your finances and may be under $25 a month if found indigent [N3]; a first agreement needs no down payment [N4]. Payments up to 10 days late are timely, and the court may grant a written request to modify the plan for good-faith need [N5]. If Social Security or SSI is your sole financial resource, you are exempt from paying until that changes and, once you tell the court, from collections [N7]. Courts must offer community service credit toward fines and costs [N8].\n\nWaiver is narrow: a court may not remit a fine except for contempt or under 19.2-358 [N10]. After a missed payment and show-cause order, the court may jail you up to 60 days or fine you up to $500 unless you show the default was not attributable to intentional refusal, or not to a lack of good-faith effort to get the money [N11]. If excusable, it may give more time, lower payments or remit the rest [N12]; restitution terms may change, never the amount [N13]. After default you may seek a new agreement with a capped down payment [N6]; the Tax Commissioner may collect [N9]. On probation, unpaid fines or costs are a breach only if willful, indigent people are presumed unable to pay, and the debt remains [N14]; unreasonably failing a restitution plan brings revocation after a hearing [N15].",
+  "steps": {
+    "process_name": "Pay Virginia court fines, costs and restitution over time, and what follows a default",
+    "trigger": "A defendant is sentenced to pay a fine, restitution, forfeiture or penalty and costs",
+    "trigger_source": {
+      "section": "19.2-354",
+      "subsection": "A",
+      "quote": "who is sentenced to pay a fine, restitution, forfeiture, or penalty"
+    },
+    "actors": [
+      {
+        "id": "clerk",
+        "name": "Clerk of the sentencing court",
+        "kind": "official",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "A",
+          "quote": "shall authorize the clerk to establish and approve individual deferred or installment payment agreements"
+        }
+      },
+      {
+        "id": "commonwealth_attorney",
+        "name": "Attorney for the Commonwealth",
+        "kind": "official",
+        "source": {
+          "section": "19.2-349",
+          "subsection": "C",
+          "quote": "It shall be the duty of the attorney for the Commonwealth to cause proper proceedings to be instituted for the collection and satisfaction of all fines, costs, forfeitures, penalties and restitution."
+        }
+      },
+      {
+        "id": "defendant",
+        "name": "Defendant ordered to pay fines, costs or restitution",
+        "kind": "private-party",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "A",
+          "quote": "Any defendant convicted of a traffic infraction or a violation of any criminal law of the Commonwealth or of any political subdivision thereof"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Sentencing court",
+        "kind": "court",
+        "source": {
+          "section": "19.2-354.1",
+          "subsection": "B",
+          "quote": "The court shall offer any defendant the opportunity to enter into a deferred payment agreement"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "notify_options",
+        "actor": "court",
+        "action": "Give written notice of payment agreement options",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [],
+        "recipient": "defendant",
+        "source": {
+          "section": "19.2-354.1",
+          "subsection": "B",
+          "quote": "The court shall give a defendant ordered to pay fines and costs written notice of the availability of deferred, modified deferred, and installment payment agreements"
+        }
+      },
+      {
+        "id": "inform_credits",
+        "actor": "court",
+        "action": "Inform of community service credit program",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "notify_options"
+        ],
+        "recipient": "defendant",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "C",
+          "quote": "The court assessing the fine or costs against a person shall inform such person of the availability of earning credit toward discharge of the fine or costs through the performance of community service work"
+        }
+      },
+      {
+        "id": "set_terms",
+        "actor": "court",
+        "action": "Set length and amount by ability to pay",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "inform_credits"
+        ],
+        "source": {
+          "section": "19.2-354.1",
+          "subsection": "D",
+          "quote": "In determining the length of time to pay under a deferred, modified deferred, or installment payment agreement and the amount of the payments, the court shall take into account the defendant's financial resources and obligations"
+        }
+      },
+      {
+        "id": "establish_agreement",
+        "actor": "clerk",
+        "action": "Establish and approve payment agreement",
+        "kind": "record",
+        "modality": "permission",
+        "after": [
+          "set_terms"
+        ],
+        "source": {
+          "section": "19.2-354",
+          "subsection": "A",
+          "quote": "The court assessing the fine, restitution, forfeiture, or penalty and costs shall authorize the clerk to establish and approve individual deferred or installment payment agreements."
+        }
+      },
+      {
+        "id": "warn_default",
+        "actor": "clerk",
+        "action": "Warn that nonpayment may bring fine or jail",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "establish_agreement"
+        ],
+        "recipient": "defendant",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "D",
+          "quote": "the clerk shall give notice to the defendant that upon his failure to pay as ordered he may be fined or imprisoned pursuant to § 19.2-358"
+        }
+      },
+      {
+        "id": "earn_credits",
+        "actor": "defendant",
+        "action": "Earn community service credits toward fines and costs",
+        "kind": "act",
+        "modality": "right",
+        "after": [
+          "warn_default"
+        ],
+        "condition": "elects_community_service",
+        "recipient": "clerk",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "C",
+          "quote": "shall allow any person upon whom a fine and costs have been imposed to discharge all or part of the fine or costs by earning credits for the performance of (i) community service work before or after imprisonment"
+        }
+      },
+      {
+        "id": "pay_installments",
+        "actor": "defendant",
+        "action": "Pay as agreed until paid in full",
+        "kind": "payment",
+        "modality": "permission",
+        "after": [
+          "warn_default",
+          "cure_default"
+        ],
+        "join": "any",
+        "recipient": "clerk",
+        "deadline": {
+          "amount": 10,
+          "unit": "days",
+          "anchor": "each payment's due date",
+          "consequence": "unstated",
+          "on_miss": "cure_default",
+          "source": {
+            "section": "19.2-354.1",
+            "subsection": "G",
+            "quote": "Any payment received within 10 days of its due date shall be considered to be timely made."
+          }
+        },
+        "source": {
+          "section": "19.2-354",
+          "subsection": "A",
+          "quote": "may pay such fine, restitution, forfeiture, or penalty and any costs that the defendant may be required to pay in deferred payments or installments"
+        }
+      },
+      {
+        "id": "cure_default",
+        "actor": "defendant",
+        "action": "Pay the amount in default",
+        "kind": "payment",
+        "modality": "none",
+        "after": [],
+        "recipient": "clerk",
+        "deadline": {
+          "amount": 90,
+          "unit": "days",
+          "anchor": "the date the payment became delinquent",
+          "consequence": "unstated",
+          "on_miss": "report_delinquency",
+          "source": {
+            "section": "19.2-349",
+            "subsection": "A",
+            "quote": "a monthly report of all fines, costs, forfeitures and penalties which are delinquent more than 90 days"
+          }
+        },
+        "source": {
+          "section": "19.2-358",
+          "subsection": "A",
+          "quote": "defaults in the payment or any installment payment"
+        }
+      },
+      {
+        "id": "report_delinquency",
+        "actor": "clerk",
+        "action": "Report delinquencies to judge, prosecutor, Taxation, Compensation Board",
+        "kind": "record",
+        "modality": "obligation",
+        "after": [],
+        "source": {
+          "section": "19.2-349",
+          "subsection": "A",
+          "quote": "shall submit to the judge of his court, the Department of Taxation, the State Compensation Board and the attorney for the Commonwealth of his county or city a monthly report of all fines, costs, forfeitures and penalties which are delinquent more than 90 days"
+        }
+      },
+      {
+        "id": "order_show_cause",
+        "actor": "court",
+        "action": "Order defendant to show cause for nonpayment",
+        "kind": "hearing",
+        "modality": "permission",
+        "after": [
+          "report_delinquency"
+        ],
+        "condition": "show_cause_ordered",
+        "recipient": "defendant",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "A",
+          "quote": "or upon its own motion, may require him to show cause why he should not be confined in jail or fined for nonpayment"
+        }
+      },
+      {
+        "id": "collect",
+        "actor": "commonwealth_attorney",
+        "action": "Institute collection proceedings",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "report_delinquency"
+        ],
+        "source": {
+          "section": "19.2-349",
+          "subsection": "C",
+          "quote": "to cause proper proceedings to be instituted for the collection and satisfaction of all fines, costs, forfeitures, penalties and restitution"
+        }
+      },
+      {
+        "id": "show_cause",
+        "actor": "defendant",
+        "action": "Show default was not willful",
+        "kind": "hearing",
+        "modality": "right",
+        "after": [
+          "order_show_cause"
+        ],
+        "recipient": "court",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "B",
+          "quote": "unless the defendant shows that his default for the payment of fines, costs, forfeitures, or penalties was not attributable to an intentional refusal to obey the sentence of the court, or not attributable to a failure on his part to make a good faith effort to obtain the necessary funds for payment"
+        }
+      },
+      {
+        "id": "rule_on_default",
+        "actor": "court",
+        "action": "Decide whether the default is excusable",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "show_cause"
+        ],
+        "decision": "default_ruling",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "C",
+          "quote": "If it appears that the default for the payment of fines, costs, forfeitures, or penalties is excusable under the standards set forth in subsection B"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "default_ruling",
+        "question": "What may the court order after a default in payment?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "excusable",
+            "label": "Defendant shows the default was not attributable to an intentional refusal, or not attributable to a failure to make a good faith effort",
+            "type": "boolean"
+          },
+          {
+            "name": "restitution",
+            "label": "The default is in restitution",
+            "type": "boolean"
+          },
+          {
+            "name": "restitution_plan_condition",
+            "label": "Restitution plan ordered as a condition of probation or a suspended sentence",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ruling",
+            "label": "What the court may order",
+            "type": "string"
+          },
+          {
+            "name": "sanction_possible",
+            "label": "Jail (or fine) as for contempt may be ordered",
+            "type": "boolean"
+          },
+          {
+            "name": "revocation",
+            "label": "Probation revoked or suspended sentence imposed",
+            "type": "boolean"
+          },
+          {
+            "name": "relief_possible",
+            "label": "More time, smaller payments, remission or new restitution terms may be ordered",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Revocation of probation or imposition of the suspended sentence, after a revocation hearing\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "19.2-305.1",
+              "subsection": "G",
+              "quote": "Unreasonable failure to execute the plan by the defendant shall result in revocation of the probation or imposition of the suspended sentence."
+            }
+          },
+          {
+            "when": [
+              "false",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"The court may order confinement as for contempt up to 60 days or a fine up to $500\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "19.2-358",
+              "subsection": "B",
+              "quote": "the court may order the defendant confined as for a contempt for a term not to exceed sixty days or impose a fine not to exceed $500"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"The court may order confinement as for contempt up to 60 days\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "19.2-358",
+              "subsection": "E",
+              "quote": "the court may order the defendant confined as for a contempt for a term not to exceed 60 days unless the defendant shows that his default was not attributable to an intentional refusal to obey the sentence of the court"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"The court may allow additional time, reduce the amount or installments, or remit the unpaid portion\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "19.2-358",
+              "subsection": "C",
+              "quote": "the court may enter an order allowing the defendant additional time for payment, reducing the amount due or of each installment, or remitting the unpaid portion in whole or in part"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"The court may modify restitution payment terms; the amount owed cannot be changed\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "19.2-358",
+              "subsection": "E",
+              "quote": "the court may modify the terms for payment of restitution, except that the court may not modify the amount of restitution owed by the defendant"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "discharged",
+        "description": "Fines and costs paid in full or discharged by credits",
+        "after": [
+          "earn_credits",
+          "pay_installments"
+        ],
+        "join": "any",
+        "source": {
+          "section": "19.2-354.1",
+          "subsection": "A",
+          "quote": "until the fines and costs are paid in full"
+        }
+      },
+      {
+        "id": "confined_or_fined",
+        "description": "Jail as for contempt up to 60 days, or fine up to $500 (fines and costs)",
+        "after": [
+          "rule_on_default"
+        ],
+        "when": "sanction_possible",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "B",
+          "quote": "the court may order the defendant confined as for a contempt for a term not to exceed sixty days or impose a fine not to exceed $500"
+        }
+      },
+      {
+        "id": "probation_revoked",
+        "description": "Restitution plan not carried out: probation revoked or suspended sentence imposed",
+        "after": [
+          "rule_on_default"
+        ],
+        "when": "revocation",
+        "source": {
+          "section": "19.2-305.1",
+          "subsection": "G",
+          "quote": "shall result in revocation of the probation or imposition of the suspended sentence"
+        }
+      },
+      {
+        "id": "relief_ordered",
+        "description": "Excusable default: more time, smaller payments or remission",
+        "after": [
+          "rule_on_default"
+        ],
+        "when": "relief_possible",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "C",
+          "quote": "reducing the amount due or of each installment, or remitting the unpaid portion in whole or in part"
+        }
+      },
+      {
+        "id": "collections",
+        "description": "Debt pursued in collections, including by the Tax Commissioner",
+        "after": [
+          "collect"
+        ],
+        "source": {
+          "section": "19.2-354",
+          "subsection": "E",
+          "quote": "shall allow the Tax Commissioner to act in accordance with § 19.2-349 to collect all fines, costs, forfeitures, and penalties"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Va. Code § 19.2-349",
+        "role": "collection of unpaid fines and costs by the attorney for the Commonwealth, private collectors, a locality, the treasurer or the Department of Taxation",
+        "source": {
+          "section": "19.2-354",
+          "subsection": "E",
+          "quote": "shall allow the Tax Commissioner to act in accordance with § 19.2-349"
+        }
+      },
+      {
+        "citation": "Va. Code § 19.2-159",
+        "role": "indigency finding that allows installments under $25 a month",
+        "source": {
+          "section": "19.2-354.1",
+          "subsection": "D",
+          "quote": "less than $25 per month if the defendant is determined to be indigent by the court pursuant to § 19.2-159"
+        }
+      },
+      {
+        "citation": "Va. Code § 19.2-305.1",
+        "role": "restitution compliance review hearings that can lead to the 19.2-358 E contempt procedure",
+        "source": {
+          "section": "19.2-358",
+          "subsection": "E",
+          "quote": "at a hearing conducted pursuant to subsection F of § 19.2-305.1"
+        }
+      },
+      {
+        "citation": "Va. Code § 19.2-306",
+        "role": "revocation of a suspended sentence or probation after a restitution compliance hearing",
+        "source": {
+          "section": "19.2-305.1",
+          "subsection": "F.2",
+          "quote": "revoke some or all of the suspended sentence or probation pursuant to § 19.2-306"
+        }
+      },
+      {
+        "citation": "Va. Code § 58.1-520 et seq.",
+        "role": "Setoff Debt Collection Act (state tax refund setoff) used to collect court debt",
+        "source": {
+          "section": "19.2-349",
+          "subsection": "C",
+          "quote": "Setoff Debt Collection Act (§ 58.1-520 et seq.)"
+        }
+      }
+    ],
+    "gaps": [
+      "The court is a black-box pool (actor kind 'court'), so its notices, show-cause order and ruling appear as messages in the clerk's process; the default_ruling table records what 19.2-358 B, C and E and 19.2-305.1 G allow after the hearing.",
+      "pay_installments covers both installment agreements (periodic payments) and deferred agreements (no installments; the full amount is due at the end of the stated term, 19.2-354.1 A); for a deferred agreement the 10-day timer runs from that single due date.",
+      "Community service credits (19.2-354 C) and payment are drawn as alternative paths for simplicity; the statute lets credits discharge 'all or part' of the fine or costs, so a person may combine credits with payments. Each court's program sets the rate at which credits are earned, and work performed while incarcerated is credited at the community service rate less wages received. Whether credits reach restitution is not settled by the text: 19.2-354 C speaks of 'the fine or costs', but 19.2-354.1 defines 'fines and costs' to include restitution unless the court orders a separate restitution schedule and ties its community-service notice to 'fines and costs'; treating restitution as excluded is an inference. At sentencing, 19.2-305.1 A and B and 19.2-305 B also allow community service as an alternative or addition to restitution as a condition of probation or a suspended sentence.",
+      "The 10-day timer is the grace period of 19.2-354.1 G (payments received within 10 days of the due date are timely); a payment not received by then is drawn as a default (cure_default). The 90-day timer on cure_default reflects the clerk's monthly report under 19.2-349 A of amounts 'delinquent more than 90 days'; curing the default returns the defendant to the payment schedule. The statute does not say exactly when a missed installment becomes a 'default'; 19.2-354 A says the court 'shall proceed in accordance with § 19.2-358' if sums are not paid by the date ordered, and the court may require a show cause under 19.2-358 A on the prosecutor's motion or its own at any point after a default, not only after the report.",
+      "Show cause (19.2-358 A-C) and collection (19.2-349, 19.2-354 E) are drawn as alternatives after a delinquency; in practice both can proceed, and 19.2-358 F preserves collection by any means used to enforce money judgments (fines and costs are a judgment on which execution may issue, 19.2-340, within the 19.2-341 limitations period). Persons failing to comply with installment agreements are subject to the delinquent tax collection provisions of Title 58.1 (19.2-349 D).",
+      "19.2-358 B: 'unless the defendant shows that his default ... was not attributable to an intentional refusal to obey the sentence of the court, or not attributable to a failure on his part to make a good faith effort to obtain the necessary funds' - the excusable input summarizes this showing in the statute's disjunctive wording; the statute does not say whether showing one limb is enough. The court may also provide that paying the amount in default entitles the defendant to release, and may reduce the sentence at any time for good cause.",
+      "Restitution defaults follow 19.2-358 D-E (the court may proceed on motion or its own motion; confinement up to 60 days, no $500 fine; terms but not the amount may be modified) and the periodic restitution compliance hearings of 19.2-305.1 F, where the court may modify probation (19.2-304), revoke some or all of the suspended sentence or probation (19.2-306), or use the 19.2-358 E procedure. Where a restitution plan is a condition of probation or a suspended sentence, 19.2-305.1 G makes revocation mandatory on an 'unreasonable failure to execute the plan', after a revocation hearing; the default_ruling table approximates 'unreasonable failure' with the 19.2-358 excusable input. The show-cause step is quoted from the fines-and-costs procedure. A restitution order docketed in the victim's name is enforced by the victim as a civil judgment with no limitations period (19.2-305.2 B).",
+      "Off the main path: requesting a written modification at any time, which the court may grant on a good faith showing of need (19.2-354.1 H); no denial of an agreement solely because of the offense category, the total owed, a prior default, a collections referral or no payment history (19.2-354.1 C); petitioning for a subsequent agreement after default, where the court considers changed circumstances and any down payment is capped (19.2-354.1 I); exemption while the sole financial resource is Social Security or SSI, with no collections referral and no payment taken from those benefits (19.2-354.1 J); a sworn financial statement the court may require (19.2-355); a one-time account fee of up to $10 if payment cannot be made within 90 days of sentencing (19.2-354 A); money paid under an agreement goes to restitution first (19.2-354 A); no interest while paying under a court-ordered plan, otherwise interest at the judgment rate (19.2-353.5 D).",
+      "Probation: nonpayment of fines or costs is a breach only on a finding of willful refusal after notice and a hearing, an indigent defendant is presumed unable to pay and the alleged breach must be dismissed absent a specific contrary finding, while the fines and costs remain due (19.2-305 A); payment may be made a condition of probation or suspension (19.2-356) and the court may require good behavior until payment (19.2-357); no one may be kept on supervised probation solely for unpaid fines, fees or costs if, after notice, no court or Commonwealth's attorney objects (19.2-305 C); revocation then follows 19.2-306 and 19.2-306.1, which are not modelled.",
+      "19.2-358 A and B refer to 'an order to appear on a date certain in the event of nonpayment ... issued pursuant to subsection A of § 19.2-354', but the version of 19.2-354 A in force on 2026-10-10 contains no such order provision; the capias path is not modelled."
+    ]
+  },
+  "out_of_corpus": [
+    {
+      "kind": "court rule",
+      "what": "Supreme Court of Virginia rules on court payment plans (each court's written payment plan policy)",
+      "where": "Rules of the Supreme Court of Virginia, Part One (Rule 1:24, Court Payment Plans)"
+    },
+    {
+      "kind": "local",
+      "what": "Each court's community service credit program (credit rate, eligible work, how credits are applied) and its posted payment plan requirements",
+      "where": "The clerk's office and the court's website, as required by 19.2-354 A and C"
+    },
+    {
+      "kind": "agency policy",
+      "what": "Financial statement, payment-agreement modification and interest-waiver certification forms",
+      "where": "Office of the Executive Secretary of the Supreme Court of Virginia (court forms on vacourts.gov)"
+    },
+    {
+      "kind": "agency policy",
+      "what": "Collection procedures and guidelines for clerks, Commonwealth's attorneys, private collectors and the Department of Taxation",
+      "where": "Department of Taxation and State Compensation Board procedures; Office of the Attorney General guidelines (19.2-349 C, D)"
+    },
+    {
+      "kind": "federal",
+      "what": "Constitutional limit on jailing a person for nonpayment without an inquiry into willfulness and alternatives",
+      "where": "Bearden v. Georgia, 461 U.S. 660 (1983), and related Fourteenth Amendment case law"
+    }
+  ],
+  "version_flags": [
+    "19.2-354 is the version effective until January 1, 2027 (amended 2026, c. 544); the version taking effect January 1, 2027 is not in the downloaded corpus.",
+    "19.2-349 is the version effective until January 1, 2027; the version taking effect January 1, 2027 is not in the downloaded corpus.",
+    "19.2-340 and 19.2-341 (fines and costs as judgments; 60-year circuit / 30-year district limitation) are gold sections in the versions effective until January 1, 2027; their replacements are not in the corpus.",
+    "19.2-305 includes 2026 c. 953 (19.2-305 C: no supervised probation solely for unpaid fines, fees or costs, provided that after the probation officer's notice no court or attorney for the Commonwealth objects)."
+  ],
+  "local_option": "Each court sets its own community service credit program, including the rate at which credits are earned (19.2-354 C), and its payment plan policies posted in the clerk's office and on its website (19.2-354 A); the attorney for the Commonwealth chooses whether to collect directly or through private attorneys or collection agencies, a local governing body, the treasurer, or the Department of Taxation (19.2-349 C).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Payment plans are a right the court must offer for fines, costs and restitution (19.2-354, 19.2-354.1); 'fines and costs' in 19.2-354.1 includes restitution unless the court orders a separate restitution schedule, and money paid goes to restitution first (19.2-354 A). A first agreement cannot require a down payment (19.2-354.1 E) and cannot be denied solely because of the offense category, the total owed, a prior default, a collections referral or no payment history (19.2-354.1 C); 19.2-354.1 C is left out of the nuggets only to keep them at 15, and N6 carries the after-default point. Reduction or waiver: no court may remit a fine or penalty except for contempt or under 19.2-358 (19.2-362, which names fines and penalties but not costs), so judicial reduction or remission comes only on an excusable default (19.2-358 C); the Governor may remit fines and penalties after conviction, except contempt judgments and certain other cases (19.2-363); restitution terms may change but a court may not reduce the amount (19.2-358 E). Restitution on probation: an unreasonable failure to execute a restitution plan shall result in revocation after a hearing (19.2-305.1 G), unlike the willfulness and indigence-presumption rules of 19.2-305 A, which cover fines and costs. Collection: the Tax Commissioner and attorney for the Commonwealth (19.2-354 E, 19.2-349); persons failing to comply with installment agreements are subject to the delinquent tax collection provisions of Title 58.1 (19.2-349 D); fines and costs are judgments enforceable by execution (19.2-340) within 60 years (circuit) or 30 years (district) (19.2-341); a victim-docketed restitution order has no limitations period (19.2-305.2 B). Interest (19.2-353.5): none for 180 days after judgment, during incarceration, or for 180 days after release when the sentence included active incarceration; interest accrued during incarceration is waived when the person moves the court and the facility certifies the period; none while paying under a court-ordered deferred or installment plan; otherwise it runs at the judgment rate (6.2-302). Driver's license suspension for unpaid fines and costs (former 46.2-395) is not in the current code; 19.2-354.1 I still mentions license restoration on a subsequent agreement. Defendants in DOC work programs or local work release must pay under their agreements and can be removed from the program for nonpayment (19.2-354 B, 53.1-41 B). 19.2-356 and 19.2-357 (payment as a probation condition; good behavior until paid) are noted but not gold."
+}

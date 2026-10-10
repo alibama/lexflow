@@ -1,0 +1,336 @@
+{
+ "state": "de",
+ "question": "business",
+ "sections": [
+  "18-201",
+  "18-206",
+  "18-1105",
+  "18-202"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "18-201",
+   "quote": "The certificate of formation shall be filed in the office of the Secretary of State and set forth:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizer files certificate of formation with SoS"
+  },
+  {
+   "section": "18-201",
+   "quote": "The filing of the certificate of formation in the office of the Secretary of State shall make it unnecessary to file any other documents under Chapter 31 of this title.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal effect: no Ch. 31 trade-name filing needed"
+  },
+  {
+   "section": "18-206",
+   "quote": "The signed copy of any certificate authorized to be filed under this chapter shall be delivered to the Secretary of State.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer delivers signed certificate to SoS"
+  },
+  {
+   "section": "18-206",
+   "quote": "Any signature on any certificate authorized to be filed with the Secretary of State under any provision of this chapter may be a facsimile, a conformed signature or an electronically transmitted signature.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "signature form rule"
+  },
+  {
+   "section": "18-206",
+   "quote": "Certify that any certificate authorized to be filed under this chapter has been filed in the Secretary of State's office by endorsing upon the signed certificate the word “Filed,” and the date and time of the filing.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS endorses 'Filed' with date and time"
+  },
+  {
+   "section": "18-206",
+   "quote": "This endorsement is conclusive of the date and time of its filing in the absence of actual fraud.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "evidentiary rule on endorsement"
+  },
+  {
+   "section": "18-206",
+   "quote": "Except as provided in paragraph (a)(5) or (a)(6) of this section, such date and time of filing of a certificate shall be the date and time of delivery of the certificate;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "rule: filing time equals delivery time"
+  },
+  {
+   "section": "18-206",
+   "quote": "File and index the endorsed certificate;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS files and indexes certificate"
+  },
+  {
+   "section": "18-206",
+   "quote": "Prepare and return to the person who filed it or that person's representative a copy of the signed certificate, similarly endorsed, and shall certify such copy as a true copy of the signed certificate; and",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS returns certified endorsed copy to filer"
+  },
+  {
+   "section": "18-206",
+   "quote": "Cause to be entered such information from the certificate as the Secretary of State deems appropriate into the Delaware Corporation Information System or any system which is a successor thereto in the office of the Secretary of State, and such information and a copy of such certificate shall be permanently maintained as a public record on a suitable medium.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS enters certificate into public record system"
+  },
+  {
+   "section": "18-206",
+   "quote": "The Secretary of State is authorized to grant direct access to such system to registered agents subject to the execution of an operating agreement between the Secretary of State and such registered agent.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "registered-agent system access, not case handling"
+  },
+  {
+   "section": "18-206",
+   "quote": "Any registered agent granted such access shall demonstrate the existence of policies to ensure that information entered into the system accurately reflects the content of certificates in the possession of the registered agent at the time of entry.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "registered-agent data policies, not case handling"
+  },
+  {
+   "section": "18-206",
+   "quote": "Upon request made upon or prior to delivery, the Secretary of State may, to the extent deemed practicable, establish as the date and time of filing of a certificate a date and time after its delivery.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS may set later filing time on request"
+  },
+  {
+   "section": "18-206",
+   "quote": "The Secretary of State shall not issue a certificate of good standing with respect to any limited liability company or registered series with a certificate held in suspension pursuant to this subsection.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "prohibition on good standing certificate"
+  },
+  {
+   "section": "18-206",
+   "quote": "If:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list header fragment"
+  },
+  {
+   "section": "18-206",
+   "quote": "Together with the actual delivery of a certificate and tender of the required fees, there is delivered to the Secretary of State a separate affidavit (which in its heading shall be designated as an affidavit of extraordinary condition) attesting, on the basis of personal knowledge of the affiant or a reliable source of knowledge identified in the affidavit, that an earlier effort to deliver such certificate and tender such fees was made in good faith, specifying the nature, date and time of such good faith effort and requesting that the Secretary of State establish such date and time as the date and time of filing of such certificate; or",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer delivers affidavit of extraordinary condition"
+  },
+  {
+   "section": "18-206",
+   "quote": "No fee shall be paid to the Secretary of State for receiving an affidavit of extraordinary condition.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee exemption, no action"
+  },
+  {
+   "section": "18-206",
+   "quote": "The Secretary of State may require such proof as it deems necessary to make the determination required under this paragraph (a)(6)c., and any such determination shall be conclusive in the absence of actual fraud.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS may require proof and determines condition"
+  },
+  {
+   "section": "18-206",
+   "quote": "Such filed certificate shall be effective as of the date and time established as the date and time of filing by the Secretary of State pursuant to this subsection, except as to those persons who are substantially and adversely affected by such establishment and, as to those persons, the certificate shall be effective from the date and time endorsed on the affidavit of extraordinary condition or written waiver attached thereto.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "certificate takes effect at established time"
+  },
+  {
+   "section": "18-206",
+   "quote": "If any certificate filed in accordance with this chapter provides for a future effective date or time and if, prior to such future effective date or time set forth in such certificate, the transaction is terminated or its terms are amended to change the future effective date or time or any other matter described in such certificate so as to make such certificate false or inaccurate in any respect, such certificate shall, prior to the future effective date or time set forth in such certificate, be terminated or amended by the filing of a certificate of termination or certificate of amendment of such certificate, executed in accordance with § 18-204 of this title, which shall identify the certificate which has been terminated or amended and shall state that the certificate has been terminated or the manner in which it has been amended.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer files termination/amendment before future effective date"
+  },
+  {
+   "section": "18-206",
+   "quote": "A fee as set forth in § 18-1105(a)(3) of this title shall be paid at the time of the filing of a certificate of formation, a certificate of registered series, a certificate of amendment, a certificate of correction, a certificate of amendment of a certificate with a future effective date or time, a certificate of termination of a certificate with a future effective date or time, a certificate of cancellation, a certificate of merger or consolidation, a certificate of ownership and merger, a restated certificate, a corrected certificate, a certificate of conversion to limited liability company, a certificate of conversion to a non-Delaware entity, a certificate of conversion of protected series to registered series, a certificate of conversion of registered series to protected series, a certificate of transfer, a certificate of transfer and domestic continuance, a certificate of limited liability company domestication, a certificate of division or a certificate of revival.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filing fee paid at time of filing"
+  },
+  {
+   "section": "18-206",
+   "quote": "The Secretary of State, acting as agent, shall collect and deposit in a separate account established exclusively for that purpose, a courthouse municipality fee with respect to each filed instrument and shall thereafter monthly remit funds from such account to the treasuries of the municipalities designated in § 301 of Title 10.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS collects courthouse municipality fee per filing"
+  },
+  {
+   "section": "18-206",
+   "quote": "The fee to such municipalities shall be $40 for each instrument filed with the Secretary of State in accordance with this section.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "$40 courthouse fee per filed instrument"
+  },
+  {
+   "section": "18-206",
+   "quote": "A fee as set forth in § 18-1105(a)(4) of this title shall be paid for a certified copy of any paper on file as provided for by this chapter, and a fee as set forth in § 18-1105(a)(5) of this title shall be paid for each page copied.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for separate certified copy service"
+  },
+  {
+   "section": "18-1105",
+   "quote": "No document required to be filed under this chapter shall be effective until the applicable fee required by this section is paid.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general precondition: no effect until fee paid"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The following fees shall be paid to and collected by the Secretary of State for the use of the State of Delaware:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS collects filing fees"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For certifying copies of any paper on file as provided for by this chapter, a fee in the amount of $50 for each copy certified.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for separate certified copy service"
+  },
+  {
+   "section": "18-1105",
+   "quote": "In addition, a fee of $2.00 per page shall be paid in each instance where the Secretary of State provides the copies of the document to be certified.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "per-page fee for separate copy service"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The Secretary of State may issue photocopies or electronic image copies of instruments on file, as well as instruments, documents and other papers not on file, and for all such photocopies or electronic image copies which are not certified by the Secretary of State, a fee of $10 shall be paid for the first page and $2.00 for each additional page.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for separate photocopy service"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For preclearance of any document for filing, a fee in the amount of $250.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS charges $250 preclearance fee before filing"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For issuing any certificate of the Secretary of State, including but not limited to a certificate of good standing with respect to a limited liability company or a registered series thereof, other than a certification of a copy under paragraph (a)(4) of this section, a fee in the amount of $50, except that for issuing any certificate of the Secretary of State that recites all of the filings with the Secretary of State of a limited liability company or all of the filings of any registered series or that lists all of the registered series formed by a limited liability company, a fee of $175 shall be paid for each such certificate.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for separate good standing certificate"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For receiving and filing and/or indexing any certificate, affidavit, agreement or any other paper provided for by this chapter, for which no different fee is specifically prescribed, a fee in the amount of $200.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "catch-all fee for other papers, not formation"
+  },
+  {
+   "section": "18-1105",
+   "quote": "In addition to those fees charged under subsection (a) of this section, there shall be collected by and paid to the Secretary of State the following:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "SoS collects additional expedite fees"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For all services described in subsection (a) of this section that are requested to be completed within 30 minutes on the same day as the day of the request, an additional sum of up to $7,500 and for all services described in subsection (a) of this section that are requested to be completed within 1 hour on the same day as the day of the request, an additional sum of up to $1,000 and for all services described in subsection (a) of this section that are requested to be completed within 2 hours on the same day of the request, an additional sum of up to $500;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "expedite fees for same-day service tiers"
+  },
+  {
+   "section": "18-1105",
+   "quote": "For all services described in subsection (a) of this section that are requested to be completed within a 24-hour period from the time of the request, an additional sum of up to $150.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 24,
+    "unit": "hours"
+   },
+   "why": "expedite fee for 24-hour service"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The Secretary of State shall establish (and may from time to time amend) a schedule of specific fees payable pursuant to this subsection.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee schedule rule-making, general"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The Secretary of State may in the Secretary’s discretion permit the extension of credit for the fees required by this section upon such terms as the secretary shall deem to be appropriate.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general credit policy"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The Secretary of State shall retain from the revenue collected from the fees required by this section a sum sufficient to provide at all times a fund of at least $500, but not more than $1,500, from which the secretary may refund any payment made pursuant to this section to the extent that it exceeds the fees required by this section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "refund fund administration"
+  },
+  {
+   "section": "18-1105",
+   "quote": "The funds shall be deposited in a financial institution which is a legal depository of State of Delaware moneys to the credit of the Secretary of State and shall be disbursable on order of the Secretary of State.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "deposit of funds, administration"
+  },
+  {
+   "section": "18-1105",
+   "quote": "Except as provided in this section, the fees of the Secretary of State shall be as provided in § 2315 of Title 29.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cross-reference to other fee law"
+  }
+ ]
+}

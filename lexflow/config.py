@@ -31,11 +31,19 @@ SEARXNG_URL = _env("SEARXNG_URL", "")
 MODEL_A = _env("LEXFLOW_MODEL_A", "qwen3:1.7b")
 MODEL_B = _env("LEXFLOW_MODEL_B", "gemma3:1b")
 NUM_CTX = int(_env("LEXFLOW_NUM_CTX", "16384"))
+# run background jobs in this instance (off for a second, read-only server on the same database)
+JOB_RUNNER = _env("LEXFLOW_JOB_RUNNER", "1") not in ("0", "false", "no")
 # how local models extract facts: see lexflow/extract/strategies.py and the Benchmark page
 STRATEGY = _env("LEXFLOW_STRATEGY", "stack")
 # the independent second extraction when STRATEGY needs no chat model ("" = none: such models stay single)
 CHECK_STRATEGY = _env("LEXFLOW_CHECK_STRATEGY", "pick_review")
 EMBED_MODEL = _env("LEXFLOW_EMBED_MODEL", "nomic-embed-text")
+# answering new questions: the chat model for the plain-language summary, and the weakest retrieval that still
+# counts as having found the law (cosine of the question and the best section's heading and opening words)
+ASK_MODEL = _env("LEXFLOW_ASK_MODEL", "qwen3:1.7b")
+ASK_MIN_SIMILARITY = float(_env("LEXFLOW_ASK_MIN_SIMILARITY", "0.55"))
+# with a trained section-relevance model (scripts/train_relevance.py): the least probability that still answers
+ASK_MIN_RELEVANCE = float(_env("LEXFLOW_ASK_MIN_RELEVANCE", "0.25"))
 VECTORS = _env("LEXFLOW_VECTORS", "combo")     # clause vectors for the learned selector: combo | tfidf | embed | none
 
 TURSO_URL = _env("TURSO_DATABASE_URL")

@@ -1,0 +1,83 @@
+{
+  "qid": "phone_commissary",
+  "question": "Who sets the prices of phone calls, video visits and commissary items in prisons and jails, and can the facility or sheriff keep a commission?",
+  "state": "va",
+  "as_of": "2026-10-10",
+  "question_type": "facts",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      ["telephone", "telephonic communication system", "debit", "prepaid", "collect calling", "approved call list"],
+      ["electronic visitation", "electronic messaging", "Voice-over-Internet Protocol", "web-based communication", "video visitation"],
+      ["store", "commissary", "commissaries", "articles"],
+      ["commission", "net profits", "profits", "fee", "lowest available rates", "public funds", "inmate telephone services account"],
+      ["prisoner", "inmate", "state correctional facility", "local correctional facility", "regional jail", "sheriff", "jail superintendent", "Director", "Department"]
+    ],
+    "negative": ["cellular telephone", "judicial proceedings", "pay telephone", "prisoners' keep"],
+    "slots": ["office", "yes_no"]
+  },
+  "gold_sections": [
+    {"ref": "53.1-1.1", "role": "primary", "why": "State prisons (Department of Corrections) telephone systems: debit/prepaid calling, lowest available rates, no commission to the Department."},
+    {"ref": "53.1-35.1", "role": "primary", "why": "State prisons: the DOC Director sets rules and fees for electronic visitation and messaging; lowest available rates; no commission; in-person visits may not be prohibited."},
+    {"ref": "53.1-127.2", "role": "primary", "why": "Local and regional jails: the sheriff or jail superintendent may set and collect fees for phone, video visitation and messaging systems; no fee for communication within the facility; net profits restricted to inmate-benefit uses."},
+    {"ref": "53.1-127.1", "role": "primary", "why": "Local jail commissary: the sheriff decides what the store sells, net profits go to inmate-benefit uses, and commissary and inmate telephone account money is public funds."},
+    {"ref": "53.1-27", "role": "primary", "why": "State prison commissary: the DOC Director decides what the stores sell; profits go to inmate-benefit purposes."},
+    {"ref": "53.1-115.2", "role": "supporting", "why": "Regional jail commissary: the superintendent may open stores with the regional jail board's approval; net profits restricted to inmate-benefit uses."},
+    {"ref": "66-22.1", "role": "supporting", "why": "Juvenile correctional centers: the Director of the Department of Juvenile Justice runs the stores; profits used for the juveniles' benefit."},
+    {"ref": "53.1-1", "role": "definition", "why": "Defines Department, Director, local correctional facility and state correctional facility, which sort which rule applies to prisons versus jails."}
+  ],
+  "nuggets": [
+    {"id": "N1", "text": "The Department of Corrections must offer debit or prepaid phone systems in addition to collect calling.", "importance": "okay", "section": "53.1-1.1",
+     "quote": "The Department shall offer debit or prepaid telephone systems, in addition to any existing collect calling systems", "slot": null},
+    {"id": "N2", "text": "State prison phone systems must be set up with the lowest available rates.", "importance": "vital", "section": "53.1-1.1",
+     "quote": "Such telephone systems shall be established with the lowest available rates.", "slot": null},
+    {"id": "N3", "text": "The Department of Corrections may not receive any commission from prison phone systems.", "importance": "vital", "section": "53.1-1.1",
+     "quote": "The Department shall not receive any commission from such telephone systems.", "slot": "yes_no"},
+    {"id": "N4", "text": "The DOC Director prescribes the rules for electronic (video) visitation and messaging systems in state prisons, including collecting a fee for them.", "importance": "vital", "section": "53.1-35.1",
+     "quote": "The Director is authorized to prescribe reasonable rules regarding electronic visitation systems or electronic messaging systems, including Voice-over-Internet Protocol technology and web-based communication systems, for communication between prisoners and third parties and collection of a fee for the system utilized.", "slot": "office"},
+    {"id": "N5", "text": "State prisons that use video visitation or messaging must use the lowest available rates.", "importance": "vital", "section": "53.1-35.1",
+     "quote": "Any state correctional facility that utilizes such systems shall establish such systems using the lowest available rates.", "slot": null},
+    {"id": "N6", "text": "A state prison using these systems may not ban in-person visits and may not receive any commission for installing or operating the system.", "importance": "vital", "section": "53.1-35.1",
+     "quote": "(i) shall not prohibit in-person visitation and (ii) shall not receive any commission for installation or operation of the system", "slot": "yes_no"},
+    {"id": "N7", "text": "In local and regional jails, the sheriff or jail superintendent may establish and collect a fee for phone, video visitation and electronic messaging systems.", "importance": "vital", "section": "53.1-127.2",
+     "quote": "Each sheriff or jail superintendent who operates a local correctional facility that utilizes a telephonic communication system, an electronic visitation system, or electronic messaging system, including Voice-over-Internet Protocol technology and web-based communication systems, for communication between prisoners and third parties is authorized to provide for the establishment and collection of a fee for the system utilized.", "slot": "office"},
+    {"id": "N8", "text": "No fee may be charged for communication between inmates and outside people that takes place within the jail or its appurtenances.", "importance": "okay", "section": "53.1-127.2",
+     "quote": "However, no fee shall be charged for communication between prisoners and third parties within any local correctional facility or appurtenance thereto operated or controlled by the sheriff or jail superintendent.", "slot": null},
+    {"id": "N9", "text": "Net profits from jail phone, video and messaging systems must be used in the facility for inmates' educational, recreational or medical benefit, including behavioral health, substance abuse, reentry and rehabilitative services (and may pay the staff who provide those programs).", "importance": "vital", "section": "53.1-127.2",
+     "quote": "The net profits from the operation of such systems shall be used within each facility respectively for educational, recreational, or medical purposes for the benefit of the inmates", "slot": null},
+    {"id": "N10", "text": "The sheriff decides what articles and services the local jail commissary sells.", "importance": "vital", "section": "53.1-127.1",
+     "quote": "Each sheriff who operates a correctional facility is authorized to provide for the establishment and operation of a store or commissary to deal in such articles and services as he deems proper.", "slot": "office"},
+    {"id": "N11", "text": "Net commissary profits generated from inmates' accounts must be used within the jail for inmates' educational, recreational or medical benefit.", "importance": "vital", "section": "53.1-127.1",
+     "quote": "The net profits from the operation of such store that are generated from the inmates' accounts shall be used within the facility for educational, recreational or medical purposes for the benefit of the inmates", "slot": null},
+    {"id": "N12", "text": "Money from the jail commissary and from the inmate telephone services account is public funds.", "importance": "okay", "section": "53.1-127.1",
+     "quote": "The funds from such operation of a store or commissary and from the inmate telephone services account shall be considered public funds.", "slot": null},
+    {"id": "N13", "text": "The DOC Director decides what articles the state prison stores (commissaries) sell.", "importance": "vital", "section": "53.1-27",
+     "quote": "The Director is hereby authorized to provide for the establishment and operation of stores or commissaries in state correctional facilities to deal in such articles as he deems proper.", "slot": "office"},
+    {"id": "N14", "text": "State prison store profits go to educational, recreational, reentry and transition services or other purposes benefiting inmates, as the Director prescribes.", "importance": "okay", "section": "53.1-27",
+     "quote": "The profits from the operation of such stores shall be used for educational, recreational, pre-release and post-release reentry and transition services, or other purposes beneficial to the inmate population", "slot": null},
+    {"id": "N15", "text": "A regional jail superintendent may open commissaries only with the approval of the regional jail board or authority.", "importance": "okay", "section": "53.1-115.2",
+     "quote": "The superintendent of a regional jail or regional jail farm may, with the approval of the governing regional jail or jail farm board or jail authority, provide for the establishment and operation of stores or commissaries", "slot": "office"}
+  ],
+  "slots": {
+    "office": [
+      {"value": "Director of the Department of Corrections (state prisons: rules and fees for video visitation and messaging; what prison stores sell)", "nuggets": ["N4", "N13"]},
+      {"value": "Sheriff or jail superintendent (local and regional jails: fees for phone, video visitation and messaging systems)", "nuggets": ["N7"]},
+      {"value": "Sheriff (local jail commissary: what it sells; purchasing)", "nuggets": ["N10"]},
+      {"value": "Regional jail superintendent, with approval of the regional jail board or authority (regional jail commissary)", "nuggets": ["N15"]}
+    ],
+    "yes_no": {"value": "no for state prisons (the Department may not receive commissions on phone or video/messaging systems); for local jails the Code has no commission ban, but net profits must be spent on inmate-benefit programs", "nuggets": ["N3", "N6", "N9", "N11"]}
+  },
+  "answer": "Virginia's statutes say who sets these charges, but they set no dollar prices; actual rates come from vendor contracts, agency policies and federal FCC rules. State prisons: the Department of Corrections must offer debit or prepaid phone calling alongside collect calls [N1], set up with the lowest available rates [N2], and it may not receive any commission from those phone systems [N3]. The DOC Director makes the rules for video visitation and electronic messaging and may collect a fee for them [N4]; those systems must also use the lowest available rates [N5], cannot replace in-person visits, and the prison may not take a commission on them [N6]. The Director decides what prison stores sell [N13], and store profits go to education, recreation, reentry or other purposes that benefit inmates [N14]. Local and regional jails: the sheriff or jail superintendent may set and collect fees for phone, video-visit and messaging systems [N7], but no fee may be charged for communication between inmates and outside people within the jail itself [N8]. The Code does not ban commissions for jails; instead, net profits from these systems must be used in the facility for inmates' educational, recreational or medical needs [N9]. The sheriff decides what the jail commissary sells [N10], its net profits from inmate accounts must go to the same kinds of inmate-benefit uses [N11], and commissary and inmate telephone account money counts as public funds [N12]. A regional jail superintendent needs the jail board's approval to open a store [N15].",
+  "steps": null,
+  "out_of_corpus": [
+    {"kind": "federal", "what": "Rate caps, fee limits and site-commission rules for phone and video calls from prisons and jails (incarcerated people's communications services), which reach intrastate calls after the Martha Wright-Reed Just and Reasonable Communications Act of 2022; the FCC's 2024 order and its later compliance-date changes should be checked for current status.", "where": "FCC orders and 47 CFR Part 64, Subpart FF"},
+    {"kind": "contract", "what": "The actual per-minute call rates, video-visit and message prices, commissary price lists and any vendor revenue-sharing terms.", "where": "Contracts between the Department of Corrections, each sheriff or regional jail authority and their phone, video and commissary vendors (procured under the Virginia Public Procurement Act)"},
+    {"kind": "agency policy", "what": "How DOC runs offender telephone service, video visitation, messaging and commissary, including fees and approved call lists.", "where": "Virginia Department of Corrections operating procedures"},
+    {"kind": "regulation", "what": "Operating standards for local and regional jails, including handling of inmate funds and accounts.", "where": "State Board of Local and Regional Jails standards (Virginia Administrative Code, Title 6, Agency 15)"},
+    {"kind": "local", "what": "Each jail's specific phone, video and messaging fees and commissary prices, and how net profits are budgeted.", "where": "Sheriff's office or regional jail board/authority policies and budgets"}
+  ],
+  "version_flags": [],
+  "local_option": "Each sheriff or jail superintendent decides whether and what to charge for phone, video visitation and messaging systems (53.1-127.2) and what the jail commissary sells (53.1-127.1); a regional jail superintendent needs the regional jail board's or authority's approval to open a store (53.1-115.2).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "The commission bans in 53.1-1.1 and 53.1-35.1 apply only to the Department of Corrections / state correctional facilities; 53.1-35.1 expressly does not apply to telephonic systems, which 53.1-1.1 covers. For local and regional jails 53.1-127.2 authorizes fees and restricts the use of net profits but contains no commission ban and no lowest-available-rate requirement. The phrase in 53.1-127.2 barring fees for communication 'within any local correctional facility or appurtenance thereto' most naturally covers communication taking place on site (for example, visitors using video terminals at the jail); it is not read here as making all jail calls free. 66-22.1 gives the Director of the Department of Juvenile Justice the same store authority for juvenile correctional centers. 56-508.15 (SCC registration for intrastate pay telephone service) is general and not specific to inmate calling, so it is not treated as a rate-setting authority. The Appropriation Act (budget) may contain additional items on correctional communications costs that are not in the Code."
+}

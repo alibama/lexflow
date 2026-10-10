@@ -1,0 +1,213 @@
+{
+ "state": "ct",
+ "question": "business",
+ "sections": [
+  "34-247",
+  "34-247e",
+  "34-247a",
+  "34-247b"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "34-247",
+   "quote": "A certificate of organization shall state:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to contents list"
+  },
+  {
+   "section": "34-247",
+   "quote": "(1) The name of the limited liability company, which shall comply with section 34-243k ;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content: name rule"
+  },
+  {
+   "section": "34-247",
+   "quote": "(4) the name, business address and residence address of at least one manager or member of the limited liability company, except that if good cause is shown, the Secretary of the State may accept a business address in lieu of the business and residence addresses of such manager or member, provided, for purposes of this subsection, a showing of good cause shall include, but not be limited to, a showing that public disclosure of the residence address of the manager or member of the limited liability company may expose the personal security of such manager or member to significant risk;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content requirement with good-cause exception"
+  },
+  {
+   "section": "34-247",
+   "quote": "A certificate of organization may contain statements as to matters other than those required by subsection (b) of this section, but may not vary or otherwise affect the provisions specified in subsection (c) of section 34-243d in a manner inconsistent with said section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional contents"
+  },
+  {
+   "section": "34-247",
+   "quote": "A limited liability company is formed on the date and at the time of its filing by the Secretary of the State, as provided in section 34-247e .",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "formation effective on filing by Secretary"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The filing of the record shall be required or permitted by sections 34-243 to 34-283d , inclusive.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general filing condition"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The record shall be physically delivered in written form unless and to the extent the Secretary of the State permits electronic delivery of records.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "deliver record to Secretary for filing"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The words in the record shall be in English and numbers shall be in Arabic or Roman numerals, but the name of an entity need not be in English if written in English letters or Arabic or Roman numerals.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "language/format rule"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The record shall be signed by a person authorized or required under sections 34-243 to 34-283d , inclusive, to sign the record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing formality; organizer signing in 34-247b"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The record shall state the name and capacity, if any, of each individual who signed it, either on behalf of the individual or the person authorized or required to sign the record, but need not contain a seal, attestation, acknowledgment or verification.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content: signer name and capacity"
+  },
+  {
+   "section": "34-247e",
+   "quote": "When a record is delivered to the Secretary of the State for filing, any fee required under sections 34-243 to 34-283d , inclusive, and any fee, tax, interest or penalty required to be paid under sections 34-243 to 34-283d , inclusive, or law other than sections 34-243 to 34-283d , inclusive, shall be paid in a manner permitted by the Secretary of the State or by such law.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "pay filing fee on delivery"
+  },
+  {
+   "section": "34-247e",
+   "quote": "The Secretary of the State may require that a record delivered in written form be accompanied by an identical or conformed copy.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "discretionary form requirement (copy)"
+  },
+  {
+   "section": "34-247a",
+   "quote": "To amend its certificate of organization, a limited liability company shall deliver to the Secretary of the State for filing an amendment stating:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment, outside formation case"
+  },
+  {
+   "section": "34-247a",
+   "quote": "(1) The name of the company; and (2) the amendment.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "amendment contents"
+  },
+  {
+   "section": "34-247a",
+   "quote": "To restate its certificate of organization, a limited liability company shall deliver to the Secretary of the State for filing a restatement, designated as such in its heading.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "restatement, outside formation case"
+  },
+  {
+   "section": "34-247a",
+   "quote": "If a member of a member-managed limited liability company, or a manager of a manager-managed limited liability company, knows that any information in a filed certificate of organization was inaccurate when the certificate of organization was filed or has become inaccurate due to changed circumstances, the member or manager shall promptly:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation duty to correct, lead-in"
+  },
+  {
+   "section": "34-247a",
+   "quote": "(1) Cause the certificate of organization to be amended; or (2) if appropriate, deliver to the Secretary of the State for filing a statement of change under section 34-243o or a statement of correction under section 34-247h .",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "post-formation amendment/correction"
+  },
+  {
+   "section": "34-247b",
+   "quote": "Except as provided in subdivisions (2) and (3) of this subsection, a record signed on behalf of a limited liability company shall be signed by a person authorized by the company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing authority rule"
+  },
+  {
+   "section": "34-247b",
+   "quote": "A company's initial certificate of organization shall be signed by at least one person acting as an organizer.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "organizer signs initial certificate"
+  },
+  {
+   "section": "34-247b",
+   "quote": "A record delivered on behalf of a dissolved company that has no member shall be signed by the person winding up the company's activities and affairs under subsection (c) of section 34-267a or a person appointed under subsection (d) of section 34-267a to wind up the activities and affairs.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "dissolved company signing, not formation"
+  },
+  {
+   "section": "34-247b",
+   "quote": "Any other record delivered on behalf of a person to the Secretary of the State for filing shall be signed by that person.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "generic signing rule"
+  },
+  {
+   "section": "34-247b",
+   "quote": "Any record filed under sections 34-243 to 34-283d , inclusive, may be signed by an agent.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general permission: agent may sign"
+  },
+  {
+   "section": "34-247b",
+   "quote": "Whenever any provision of sections 34-243 to 34-283d , inclusive, requires a particular individual to sign a record and the individual is deceased or incompetent, the record may be signed by a legal representative of the individual.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal representative may sign, general"
+  },
+  {
+   "section": "34-247b",
+   "quote": "A person that signs a record as an agent or legal representative thereby affirms as a fact that the person is authorized to sign the record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "legal effect of signing"
+  },
+  {
+   "section": "34-247b",
+   "quote": "The Secretary of the State is not required to verify either a signature's authenticity or the authority of the person signing to so commit the limited liability company, and the acceptance of a document by the Secretary of the State shall not therefore serve to validate the veracity of the signature or the signatory.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "limit on Secretary's verification, not an action"
+  }
+ ]
+}

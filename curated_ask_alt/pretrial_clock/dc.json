@@ -1,0 +1,354 @@
+{
+  "qid": "pretrial_clock",
+  "question": "If I'm held in jail awaiting trial, how long can I be held before I must be indicted and tried, and what happens if that deadline passes?",
+  "state": "dc",
+  "as_of": "2026-10-10",
+  "question_type": "facts",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      [
+        "detention prior to trial",
+        "pretrial detention",
+        "detained",
+        "detention order",
+        "held in custody"
+      ],
+      [
+        "indicted",
+        "indictment",
+        "grand jury",
+        "returning an indictment"
+      ],
+      [
+        "trial of the case commence",
+        "expedited calendar",
+        "expedited trial",
+        "expedited indictment"
+      ],
+      [
+        "90 days",
+        "100 days",
+        "nine months",
+        "maximum period of detention"
+      ],
+      [
+        "extended",
+        "additional periods",
+        "45 days each",
+        "good cause",
+        "petition submitted by the attorney for the government",
+        "enlarge the time"
+      ],
+      [
+        "excluded",
+        "tolled",
+        "tolling",
+        "computing the 100 days",
+        "unavailable for trial",
+        "mental competency"
+      ],
+      [
+        "shall begin on the latest of",
+        "mistrial",
+        "waiver of that right",
+        "competent to stand trial",
+        "new trial",
+        "mandate"
+      ],
+      [
+        "treated in accordance with § 23-1321(a)",
+        "release",
+        "personal recognizance",
+        "set free",
+        "bail discharged",
+        "deemed to have been abandoned"
+      ],
+      [
+        "trial is in progress",
+        "timely filing of motions",
+        "request of the defendant"
+      ],
+      [
+        "murder in the first degree",
+        "assault with intent to kill while armed",
+        "revocation of release",
+        "addict"
+      ]
+    ],
+    "negative": [
+      "child",
+      "juvenile",
+      "respondent",
+      "shelter care",
+      "mentally ill",
+      "communicable diseases",
+      "insanity acquittee",
+      "eviction"
+    ],
+    "slots": [
+      "deadline",
+      "office"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "23-1322",
+      "role": "primary",
+      "why": "Subsection (h): a person detained under (b) goes on an expedited calendar and, consistent with the sound administration of justice, must be indicted within 90 days and have trial commence within 100 days; extensions of up to 45 days each on the government's petition for good cause; indictment at least 10 days before a new trial date; when the clock starts (latest of listed events); excluded periods; after 100 days (plus extensions) the person must be treated under 23-1321(a) unless trial is in progress or delay came from timely motions (not continuances) or the defendant's request. Also (d)(1): the detention hearing is held at first appearance, continuances of up to 5 days (defense) or 3 days (government) absent good cause."
+    },
+    {
+      "ref": "23-102",
+      "role": "primary",
+      "why": "Separate outer limit: if a person committed or held to bail to await the grand jury is not indicted (or the charge ignored) within nine months, the prosecution is deemed abandoned and the person is set free or bail discharged, unless the court enlarges the time for good cause shown in writing with notice."
+    },
+    {
+      "ref": "23-1321",
+      "role": "supporting",
+      "why": "What being 'treated in accordance with § 23-1321(a)' means: the general pretrial-release order (personal recognizance/unsecured bond, release on conditions, temporary detention, or detention under 23-1322(b)); it also routes first- and second-degree murder and assault with intent to kill while armed to 23-1325."
+    },
+    {
+      "ref": "23-1325",
+      "role": "supporting",
+      "why": "Detention of persons charged with first- or second-degree murder or assault with intent to kill while armed is ordered under this section, which contains no indictment or trial deadline and does not incorporate 23-1322(h)."
+    },
+    {
+      "ref": "23-1329",
+      "role": "supporting",
+      "why": "(b)(3): 23-1322(d) and (h) apply to revocation-of-release detention for violating release conditions, so the same 90/100-day clock applies."
+    },
+    {
+      "ref": "23-1323",
+      "role": "supporting",
+      "why": "(d): 23-1322(h) applies to pretrial detention of an addict charged with a crime of violence."
+    },
+    {
+      "ref": "23-301",
+      "role": "supporting",
+      "why": "Which cases need an indictment: offenses punishable by more than one year must be prosecuted by indictment unless the defendant waives it; other offenses may proceed by information, so the indictment deadline matters mainly in felony cases."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "A person detained before trial under 23-1322(b) must, consistent with the sound administration of justice, be indicted within 90 days.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "the person shall be indicted before the expiration of 90 days",
+      "slot": "deadline"
+    },
+    {
+      "id": "N2",
+      "text": "The detained person's trial must commence within 100 days.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "shall have trial of the case commence before the expiration of 100 days",
+      "slot": "deadline"
+    },
+    {
+      "id": "N3",
+      "text": "The deadlines apply to a person held under a pretrial detention order under 23-1322(b), whose case must be placed on an expedited calendar.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "The case of the person detained pursuant to subsection (b) of this section shall be placed on an expedited calendar",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "The indictment and trial deadlines may be extended for one or more extra periods of up to 45 days each, on a petition by the prosecutor (attorney for the government) approved by the judicial officer.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "may be extended for one or more additional periods not to exceed 45 days each on the basis of a petition submitted by the attorney for the government and approved by the judicial officer",
+      "slot": "deadline"
+    },
+    {
+      "id": "N5",
+      "text": "Extensions may be granted only for good cause shown, including due diligence and materiality, and only for the additional time needed to prepare for the expedited indictment and trial (examples of good cause include an unavailable essential witness, forensic analysis, joint trials, complex investigations or legal issues, or delay caused by the defendant).",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "may be granted only on the basis of good cause shown, including due diligence and materiality, and shall be granted only for the additional time required to prepare for the expedited indictment and trial of the person",
+      "slot": null
+    },
+    {
+      "id": "N6",
+      "text": "If the deadlines are tolled or extended, the indictment must be returned at least 10 days before the new trial date.",
+      "importance": "okay",
+      "section": "23-1322",
+      "quote": "an indictment must be returned at least 10 days before the new trial date",
+      "slot": "deadline"
+    },
+    {
+      "id": "N7",
+      "text": "The detention clock starts on the latest of several listed dates, ordinarily the date a D.C. judicial officer first orders the person detained under 23-1322(b) after arrest; later events (re-detention after release or escape, a mistrial, withdrawal of a guilty plea, reasserting the right after a waiver, a competency finding, a new-trial order, or a reversal on appeal) start it again.",
+      "importance": "okay",
+      "section": "23-1322",
+      "quote": "the period shall begin on the latest of: (A) The date the defendant is first detained under subsection (b) of this section by order of a judicial officer of the District of Columbia after arrest",
+      "slot": "deadline"
+    },
+    {
+      "id": "N8",
+      "text": "Some time does not count toward the 100 days: interlocutory appeals, examinations of sanity, competency or physical capacity, periods of mental incompetency or physical incapacity, and any time the defendant is otherwise unavailable for trial.",
+      "importance": "okay",
+      "section": "23-1322",
+      "quote": "In computing the 100 days, the following periods shall be excluded",
+      "slot": null
+    },
+    {
+      "id": "N9",
+      "text": "When the 100 days (as computed, plus any approved extensions) run out, the defendant must be treated under the general pretrial-release provision, 23-1321(a), rather than held under the detention order.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "or such period or periods of detention as extended under paragraph (1) of this section, the defendant shall be treated in accordance with § 23-1321(a)",
+      "slot": null
+    },
+    {
+      "id": "N10",
+      "text": "That consequence does not apply if the trial is in progress, or the delay came from timely filed motions (not motions for continuance) or from the defendant's own request.",
+      "importance": "vital",
+      "section": "23-1322",
+      "quote": "unless the trial is in progress, has been delayed by the timely filing of motions, excluding motions for continuance, or has been delayed at the request of the defendant",
+      "slot": null
+    },
+    {
+      "id": "N11",
+      "text": "Section 23-1321(a) is the ordinary release order; its options include release on personal recognizance or an unsecured appearance bond, or release on conditions.",
+      "importance": "okay",
+      "section": "23-1321",
+      "quote": "Released on personal recognizance or upon execution of an unsecured appearance bond",
+      "slot": null
+    },
+    {
+      "id": "N12",
+      "text": "Separately, if a person who has been committed or held to bail to await the grand jury is not indicted (and the charge is not ignored) within nine months, the prosecution is deemed abandoned and the person must be set free or the bail discharged.",
+      "importance": "vital",
+      "section": "23-102",
+      "quote": "within nine months thereafter the grand jury shall not have taken action on the case, either by ignoring the charge or by returning an indictment, the prosecution of such charge shall be deemed to have been abandoned and the accused shall be set free or his bail discharged",
+      "slot": "deadline"
+    },
+    {
+      "id": "N13",
+      "text": "The court may extend that nine-month grand jury period, from time to time, on good cause shown in writing and with due notice to the accused.",
+      "importance": "okay",
+      "section": "23-102",
+      "quote": "upon good cause shown in writing and upon due notice to the accused, may from time to time enlarge the time for the taking action in such case by the grand jury",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "People charged with first- or second-degree murder or assault with intent to kill while armed are handled under a different section, 23-1325, not the 23-1322(b) detention to which the 100-day clock is tied.",
+      "importance": "okay",
+      "section": "23-1321",
+      "quote": "other than murder in the first degree, murder in the second degree, or assault with intent to kill while armed, which shall be treated in accordance with the provisions of § 23-1325",
+      "slot": null
+    },
+    {
+      "id": "N15",
+      "text": "The same hearing rules and indictment/trial clock apply to a person detained after release is revoked for violating release conditions.",
+      "importance": "okay",
+      "section": "23-1329",
+      "quote": "The provisions of § 23-1322(d) and (h) shall apply to this subsection.",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "deadline": [
+      {
+        "amount": 90,
+        "unit": "days",
+        "anchor": "start of detention under 23-1322(b) (latest of the 23-1322(h)(2) dates) - indictment",
+        "nuggets": [
+          "N1",
+          "N7"
+        ]
+      },
+      {
+        "amount": 100,
+        "unit": "days",
+        "anchor": "start of detention under 23-1322(b), excluding the 23-1322(h)(4) periods - trial must commence",
+        "nuggets": [
+          "N2",
+          "N8"
+        ]
+      },
+      {
+        "amount": 45,
+        "unit": "days",
+        "anchor": "each extension of the indictment or trial deadline, on the government's petition approved by the judicial officer for good cause",
+        "nuggets": [
+          "N4"
+        ]
+      },
+      {
+        "amount": 10,
+        "unit": "days",
+        "anchor": "before the new trial date when the deadline is tolled or extended - indictment must be returned",
+        "nuggets": [
+          "N6"
+        ]
+      },
+      {
+        "amount": 9,
+        "unit": "months",
+        "anchor": "commitment or being held to bail to await grand jury action - prosecution deemed abandoned if no action (court may enlarge)",
+        "nuggets": [
+          "N12",
+          "N13"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "attorney for the government (petitions for extensions)",
+        "nuggets": [
+          "N4"
+        ]
+      },
+      {
+        "value": "judicial officer (approves extensions; orders treatment under 23-1321(a) after the deadline)",
+        "nuggets": [
+          "N4",
+          "N9"
+        ]
+      },
+      {
+        "value": "grand jury (must act within nine months unless the court enlarges the time)",
+        "nuggets": [
+          "N12",
+          "N13"
+        ]
+      }
+    ]
+  },
+  "answer": "If a judge orders you detained before trial under 23-1322(b), your case goes on an expedited calendar [N3]. Consistent with the sound administration of justice, you must be indicted within 90 days [N1] and your trial must begin within 100 days [N2]. The clock usually starts when you are first ordered detained after arrest, and restarts after events like a mistrial [N7]. Interlocutory appeals, competency exams or incompetency, and time you are unavailable do not count [N8].\n\nThe prosecutor may seek extensions of up to 45 days each, with the judge's approval [N4], only for good cause such as due diligence and materiality, and only for the time needed [N5]. The indictment must then come at least 10 days before the new trial date [N6].\n\nWhen the 100 days plus extensions run out, you must be handled under the ordinary release law, 23-1321(a) [N9], whose options include release on personal recognizance or conditions [N11], unless trial has started or the delay came from timely motions (not continuance requests) or your own request [N10]. It does not say the charges are dismissed [N9].\n\nSeparately, if you are jailed or bailed awaiting a grand jury that takes no action within nine months, the prosecution is treated as abandoned and you must be freed or your bail discharged [N12], unless the court extends it for good cause shown in writing, with notice to you [N13]. The same clock covers detention for violating release conditions [N15]; murder and assault-with-intent-to-kill-while-armed detentions fall under a different section [N14].",
+  "steps": null,
+  "out_of_corpus": [
+    {
+      "kind": "federal",
+      "what": "The constitutional speedy-trial right (Sixth Amendment, Barker v. Wingo balancing test), whose remedy for a violation is dismissal of the charges; it applies to every defendant, detained or not, and is not in the D.C. Code.",
+      "where": "U.S. Constitution, Sixth Amendment, and U.S. Supreme Court and D.C. Court of Appeals case law"
+    },
+    {
+      "kind": "court rule",
+      "what": "Dismissal for unnecessary delay in presenting a charge to a grand jury, filing an information, or bringing a defendant to trial; time computation and preliminary-hearing timing.",
+      "where": "D.C. Superior Court Rules of Criminal Procedure (Rule 48(b), Rule 45, Rule 5.1)"
+    },
+    {
+      "kind": "federal",
+      "what": "Cases prosecuted in the U.S. District Court for the District of Columbia (federal charges) follow the federal Speedy Trial Act, not D.C. Code 23-1322(h).",
+      "where": "18 U.S.C. 3161-3164"
+    },
+    {
+      "kind": "court rule",
+      "what": "How courts read 23-1322(h)(3) (whether release must follow, and whether the 100-day rule reaches 23-1325 murder detentions) is settled by D.C. Court of Appeals decisions, not the statute text.",
+      "where": "D.C. Court of Appeals case law"
+    }
+  ],
+  "version_flags": [
+    "23-1322(h)(1)'s extension limit 'not to exceed 45 days each' was inserted by D.C. Law 25-175 (Secure DC Omnibus Amendment Act of 2024) section 30(f)(3), which struck 'not to exceed 20 days each'. Under section 8(b)(2) of D.C. Law 26-52 (Oct. 28, 2025) the section 30(f) amendments expire December 31, 2026, after which the extension limit reverts to 20 days each (verified against the D.C. Council's code site and the enacted text of D.C. Law 25-175). In force on 2026-10-10: 45 days.",
+    "The corpus copy of 23-1322 notes that it includes temporary legislation expiring September 11, 2026 (D.C. Law 26-81, Peace DC Omnibus Temporary Amendment Act of 2025, Jan. 29, 2026). That temporary act has expired, but its relevant effect (the December 31, 2026 sunset of the Secure DC amendments) is also provided by the permanent D.C. Law 26-52, and the D.C. Council's current text of (h) is unchanged; the quoted clock provisions are in force as of 2026-10-10.",
+    "The corpus note says 'section 30(k) of D.C. Law 25-175' amendments expire December 31, 2026, while the code's Expiration of Law note refers to section 30(f); either way the Secure DC amendments to 23-1322 (the 45-day extension, the (c)(9) crime-of-violence presumption, the (f)(3) written-reasons requirement) sunset on December 31, 2026."
+  ],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Independent second draft. The D.C. Code has no general speedy-trial statute for people on release; the statutory clocks are tied to pretrial detention (23-1322(h), applied to 23-1323 and 23-1329 detentions) plus the nine-month grand jury rule (23-102). The 23-1322(h)(3) remedy is treatment under the ordinary release statute, not dismissal; dismissal for delay comes from the Constitution or Superior Court Rule 48(b). 23-1325 (murder 1 and 2, AWIKWA) detentions are not tied to the statutory 100-day clock by the text. Excluded from gold: 24-801 Interstate Agreement on Detainers (180 days after a prisoner's request / 120 days after arrival, dismissal with prejudice) because it covers people already serving a sentence in another jurisdiction, not pretrial jail detainees; juvenile detention time limits in Title 16 chapter 23; 23-1322(a) 5-day temporary hold of people on release/probation/parole and 23-1322(d)(1) hearing continuances (up to 5 days on the defendant's motion, 3 days on the government's, absent good cause), which concern the initial hold rather than the indictment/trial deadline."
+}

@@ -1,0 +1,945 @@
+{
+ "qid": "license_conviction",
+ "question": "Can a state licensing board deny me an occupational license because of a criminal conviction, and how can I challenge the denial?",
+ "state": "md",
+ "as_of": "2026-10-10",
+ "question_type": "mixed",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "occupational license",
+    "license or certificate",
+    "certificate",
+    "licensure",
+    "licensing board"
+   ],
+   [
+    "previously been convicted",
+    "conviction",
+    "convicted of a crime",
+    "criminal history",
+    "ex-offenders"
+   ],
+   [
+    "may not deny",
+    "deny a license",
+    "denial",
+    "solely on the basis"
+   ],
+   [
+    "direct relationship",
+    "directly related",
+    "unreasonable risk"
+   ],
+   [
+    "rehabilitation and good conduct",
+    "certificate of rehabilitation",
+    "amount of time that has elapsed",
+    "seriousness of the offense"
+   ],
+   [
+    "crime of violence",
+    "sex offender registry"
+   ],
+   [
+    "7 years",
+    "completed serving the sentence",
+    "minor traffic violation"
+   ],
+   [
+    "opportunity for a hearing",
+    "hearing provisions",
+    "contested case",
+    "reasonable notice",
+    "Title 10, Subtitle 2 of the State Government Article"
+   ],
+   [
+    "judicial review",
+    "aggrieved",
+    "final decision",
+    "circuit court",
+    "appeal rights"
+   ],
+   [
+    "expunged",
+    "shielded"
+   ]
+  ],
+  "negative": [
+   "Alcoholic Beverages and Cannabis",
+   "driver's license",
+   "commercial driver",
+   "bingo",
+   "gaming",
+   "video lottery"
+  ],
+  "slots": [
+   "yes_no",
+   "deadline",
+   "office"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "Criminal Procedure § 1-209",
+   "role": "primary",
+   "why": "The general rule: a licensing unit of the Departments of Agriculture, Environment, Health, Human Services, Labor or Public Safety and Correctional Services may not deny a license solely for a conviction unless it finds a direct relationship or unreasonable risk, after weighing seven factors; a flat bar after 7 crime-free years since the sentence ended; crimes of violence excluded, sex-offender-registry crimes excluded from the 7-year rule."
+  },
+  {
+   "ref": "Correctional Services § 7-104",
+   "role": "supporting",
+   "why": "Certificate of rehabilitation for people who completed parole, probation or mandatory supervision for a nonviolent, non-registrable offense; any licensing board may not deny solely for the covered conviction unless direct relationship or unreasonable risk; one per lifetime."
+  },
+  {
+   "ref": "Business Occupations and Professions § 4-314",
+   "role": "supporting",
+   "why": "Example of a board's own grounds and factors: the State Board of Barbers (a Maryland Department of Labor board) may deny a license for a felony or a directly related misdemeanor, subject to the hearing provisions, and must weigh five conviction factors."
+  },
+  {
+   "ref": "Business Occupations and Professions § 4-315",
+   "role": "primary",
+   "why": "Example of the board-level hearing right: before final action the Board must offer a hearing before the Board, with notice and hearing under the Administrative Procedure Act; notice by certified mail at least 10 days before."
+  },
+  {
+   "ref": "Business Occupations and Professions § 4-208",
+   "role": "supporting",
+   "why": "Example of the board-level appeal clause: a person aggrieved by a final decision in a contested case may appeal under State Government §§ 10-222 and 10-223."
+  },
+  {
+   "ref": "State Government § 10-202",
+   "role": "definition",
+   "why": "A contested case includes the grant or denial of a license that a statute requires be decided only after an opportunity for an agency hearing; 'license' includes a certificate, permit or registration."
+  },
+  {
+   "ref": "State Government § 10-207",
+   "role": "supporting",
+   "why": "The agency must give reasonable notice of its action, stating the facts, the legal basis, and what the person must do, and by when, to get a hearing."
+  },
+  {
+   "ref": "State Government § 10-213",
+   "role": "supporting",
+   "why": "Hearing rights in a contested case: call witnesses, offer evidence including rebuttal, cross-examine, and argue."
+  },
+  {
+   "ref": "State Government § 10-221",
+   "role": "supporting",
+   "why": "An adverse final decision must be in writing or on the record, with findings of fact, conclusions of law and a written statement of appeal rights."
+  },
+  {
+   "ref": "State Government § 10-222",
+   "role": "primary",
+   "why": "Judicial review of a final decision in a contested case in the circuit court for the county where any party resides or has a principal place of business, and the grounds on which the court may reverse or modify."
+  },
+  {
+   "ref": "Criminal Procedure § 10-109",
+   "role": "supporting",
+   "why": "A State or local unit may not require a license applicant to disclose expunged charges, and refusing to disclose them may not be the sole reason to deny the application."
+  },
+  {
+   "ref": "Criminal Law § 14-101",
+   "role": "definition",
+   "why": "Defines 'crime of violence', the convictions excluded from Criminal Procedure § 1-209 and from the certificate of rehabilitation."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A covered state department, including its licensing boards and other units, may not deny an occupational license or certificate solely because the applicant was previously convicted of a crime, unless it makes one of two determinations.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "a department may not deny an occupational license or certificate to an applicant solely on the basis that the applicant has previously been convicted of a crime, unless the department determines that",
+   "slot": "yes_no"
+  },
+  {
+   "id": "N2",
+   "text": "One permitted ground is a direct relationship between the conviction and the specific license or certificate sought.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "there is a direct relationship between the applicant's previous conviction and the specific occupational license or certificate sought",
+   "slot": null
+  },
+  {
+   "id": "N3",
+   "text": "The other permitted ground is that issuing the license would involve an unreasonable risk to property or to the safety or welfare of specific individuals or the general public.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "the issuance of the license or certificate would involve an unreasonable risk to property or to the safety or welfare of specific individuals or the general public",
+   "slot": null
+  },
+  {
+   "id": "N4",
+   "text": "In deciding, the department must consider, among other factors, the specific duties of the license, whether the conviction affects the applicant's fitness or ability to perform them, the applicant's age at the time of the conviction, how much time has passed since it, and how serious the offense was.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "the specific duties and responsibilities required of a licensee or certificate holder; (3) whether the applicant's previous conviction has any impact on the applicant's fitness or ability to perform the duties and responsibilities authorized by the license or certificate; (4) the age of the applicant at the time of the conviction and the amount of time that has elapsed since the conviction; (5) the seriousness of the offense for which the applicant was convicted",
+   "slot": null
+  },
+  {
+   "id": "N5",
+   "text": "The department must also consider information the applicant (or someone on the applicant's behalf) provides about rehabilitation and good conduct.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "other information provided by the applicant or on the applicant's behalf with regard to the applicant's rehabilitation and good conduct",
+   "slot": null
+  },
+  {
+   "id": "N6",
+   "text": "If 7 or more years have passed since the applicant finished serving the whole sentence (imprisonment, mandatory supervision, probation and parole) with no new charge other than a minor traffic violation, the department may not deny the license solely because of that conviction.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "If a period of 7 years or more has passed since an applicant completed serving the sentence for a crime, including all imprisonment, mandatory supervision, probation, and parole, and the applicant has not been charged with another crime other than a minor traffic violation, as defined in § 10-101 of this article, during that time, a department may not deny an occupational license or certificate to the applicant solely on the basis that the applicant was previously convicted of the crime.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N7",
+   "text": "Section 1-209 does not protect anyone who was ever convicted of a crime of violence as defined in Criminal Law § 14-101, even when the board relies on a different, nonviolent conviction.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "This section does not apply to a person who was previously convicted of a crime of violence, as defined in § 14-101 of the Criminal Law Article.",
+   "slot": null
+  },
+  {
+   "id": "N8",
+   "text": "The 7-year rule does not apply to a conviction for a crime that requires sex offender registration.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "This subsection does not apply to a conviction of a crime for which registration on the sex offender registry is required",
+   "slot": null
+  },
+  {
+   "id": "N9",
+   "text": "The rule covers the Departments of Agriculture, the Environment, Health, Human Services, Labor, and Public Safety and Correctional Services, including any unit of those departments (such as their licensing boards).",
+   "importance": "okay",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "the Department of Agriculture; (ii) the Department of the Environment; (iii) the Maryland Department of Health; (iv) the Department of Human Services; (v) the Maryland Department of Labor; or (vi) the Department of Public Safety and Correctional Services. (2) \"Department\" includes any unit of a department specified in paragraph (1) of this subsection.",
+   "slot": "office"
+  },
+  {
+   "id": "N10",
+   "text": "Separately, any licensing board (not only those in the six departments) may not deny a license to an applicant who holds a certificate of rehabilitation solely because of the conviction the certificate covers, unless it makes the same direct-relationship or unreasonable-risk determination.",
+   "importance": "okay",
+   "section": "Correctional Services § 7-104",
+   "quote": "A licensing board may not deny an occupational license or certificate to an applicant who has been issued a certificate of rehabilitation solely on the basis that the applicant has previously been convicted of the crime that is the subject of the certificate of rehabilitation, unless the licensing board determines that",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "A board's own licensing law typically requires a hearing before a denial; for example, before the State Board of Barbers takes final action to deny a license it must give the person an opportunity for a hearing before the Board.",
+   "importance": "vital",
+   "section": "Business Occupations and Professions § 4-315",
+   "quote": "before the Board takes any final action under § 4-314 of this subtitle, it shall give the individual against whom the action is contemplated an opportunity for a hearing before the Board",
+   "slot": "office"
+  },
+  {
+   "id": "N12",
+   "text": "At the hearing each party may call witnesses, offer evidence including rebuttal evidence, and cross-examine the other side's witnesses.",
+   "importance": "okay",
+   "section": "State Government § 10-213",
+   "quote": "call witnesses; (2) offer evidence, including rebuttal evidence; (3) cross-examine any witness that another party or the agency calls",
+   "slot": null
+  },
+  {
+   "id": "N13",
+   "text": "The final decision must include a written statement of appeal rights.",
+   "importance": "okay",
+   "section": "State Government § 10-221",
+   "quote": "A written statement of appeal rights shall be included with the decision.",
+   "slot": null
+  },
+  {
+   "id": "N14",
+   "text": "Unless another statute says otherwise, the petition for judicial review is filed in the circuit court for the county where any party resides or has a principal place of business.",
+   "importance": "vital",
+   "section": "State Government § 10-222",
+   "quote": "Unless otherwise required by statute, a petition for judicial review shall be filed with the circuit court for the county where any party resides or has a principal place of business.",
+   "slot": "office"
+  },
+  {
+   "id": "N15",
+   "text": "A State or local licensing unit may not require a license applicant to disclose expunged criminal charges.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-109",
+   "quote": "Disclosure of expunged information about criminal charges in an application, interview, or other means may not be required: (i) by an employer or educational institution of a person who applies for employment or admission; or (ii) by a unit, official, or employee of the State or a political subdivision of the State of a person who applies for a license, permit, registration, or governmental service.",
+   "slot": null
+  },
+  {
+   "id": "N16",
+   "text": "The 7-year rule is an exception to the general test: once it applies, the department may not deny solely because of that conviction even if it finds a direct relationship to the license or an unreasonable risk.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 1-209",
+   "quote": "Except as provided in subsection (f) of this section, a department may not deny an occupational license or certificate to an applicant solely on the basis",
+   "slot": null
+  },
+  {
+   "id": "N17",
+   "text": "Crimes of violence include, among others listed in Criminal Law § 14-101, abduction, first-degree arson, kidnapping, manslaughter (except involuntary manslaughter), mayhem, maiming, murder, rape, robbery and carjacking.",
+   "importance": "okay",
+   "section": "Criminal Law § 14-101",
+   "quote": "abduction; (2) arson in the first degree; (3) kidnapping; (4) manslaughter, except involuntary manslaughter; (5) mayhem; (6) maiming, as previously proscribed under former Article 27, §§ 385 and 386 of the Code; (7) murder; (8) rape; (9) robbery under § 3-402 or § 3-403 of this article; (10) carjacking",
+   "slot": null
+  },
+  {
+   "id": "N18",
+   "text": "The Department of Public Safety and Correctional Services must issue a certificate of rehabilitation to a person convicted of a misdemeanor or felony that is not a crime of violence or a registrable sexual offense, who was supervised by the Division of Parole and Probation on parole, probation or mandatory release supervision, completed all conditions of supervision including restitution, fines and fees, and is no longer under the Division's jurisdiction.",
+   "importance": "okay",
+   "section": "Correctional Services § 7-104",
+   "quote": "The Department shall issue a certificate of rehabilitation to an individual who: (1) was convicted of a misdemeanor or felony that is not: (i) a crime of violence, as defined in § 14-101 of the Criminal Law Article; or (ii) a sexual offense for which registration is required under Title 11, Subtitle 7 of the Criminal Procedure Article; (2) was supervised by the Division of Parole and Probation under conditions of: (i) parole; (ii) probation; or (iii) mandatory release supervision; (3) has completed all special and general conditions of supervision, including paying all required restitution, fines, fees, and other payment obligations; and (4) is no longer under the jurisdiction of the Division of Parole and Probation.",
+   "slot": "office"
+  },
+  {
+   "id": "N19",
+   "text": "A person may receive only one certificate of rehabilitation in a lifetime, and the Supreme Court of Maryland (bar admission) is not a licensing board for this purpose.",
+   "importance": "okay",
+   "section": "Correctional Services § 7-104",
+   "quote": "An individual may receive only one certificate of rehabilitation per lifetime. (f) The Supreme Court of Maryland is not a licensing board for purposes of this section.",
+   "slot": null
+  },
+  {
+   "id": "N20",
+   "text": "Unless a hearing is automatically scheduled, the agency's notice of its action must tell the person that a hearing may be requested, what the person must do to get one, all relevant time requirements, and the consequences of not requesting or attending it in time.",
+   "importance": "vital",
+   "section": "State Government § 10-207",
+   "quote": "state that the recipient of notice of an agency's action may have an opportunity to request a hearing, including: (i) what, if anything, a person must do to receive a hearing; and (ii) all relevant time requirements; and (5) state the direct consequences, sanction, potential penalty, if any, or remedy of the recipient's failure to exercise in a timely manner the opportunity for a hearing or to appear for a scheduled hearing.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N21",
+   "text": "Each party must offer at the hearing all the evidence it wants made part of the record (judicial review of the facts is based on that record).",
+   "importance": "okay",
+   "section": "State Government § 10-213",
+   "quote": "Each party in a contested case shall offer all of the evidence that the party wishes to have made part of the record.",
+   "slot": null
+  },
+  {
+   "id": "N22",
+   "text": "A party aggrieved by the final decision in a contested case is entitled to judicial review of the decision.",
+   "importance": "vital",
+   "section": "State Government § 10-222",
+   "quote": "a party who is aggrieved by the final decision in a contested case is entitled to judicial review of the decision",
+   "slot": null
+  },
+  {
+   "id": "N23",
+   "text": "The court may reverse or modify a decision that prejudices a substantial right because it is unconstitutional, exceeds the decision maker's authority, results from an unlawful procedure, rests on another error of law, or is unsupported by competent, material and substantial evidence in the entire record.",
+   "importance": "okay",
+   "section": "State Government § 10-222",
+   "quote": "reverse or modify the decision if any substantial right of the petitioner may have been prejudiced because a finding, conclusion, or decision: (i) is unconstitutional; (ii) exceeds the statutory authority or jurisdiction of the final decision maker; (iii) results from an unlawful procedure; (iv) is affected by any other error of law; (v) is unsupported by competent, material, and substantial evidence in light of the entire record as submitted",
+   "slot": null
+  },
+  {
+   "id": "N24",
+   "text": "A license denial is a 'contested case' under the Administrative Procedure Act when a statute or the constitution requires it to be decided only after an opportunity for an agency hearing.",
+   "importance": "okay",
+   "section": "State Government § 10-202",
+   "quote": "the grant, denial, renewal, revocation, suspension, or amendment of a license that is required by statute or constitution to be determined only after an opportunity for an agency hearing",
+   "slot": null
+  },
+  {
+   "id": "N25",
+   "text": "Each board's own law sets its conviction ground; for example, the State Board of Barbers may deny a license for a felony or for a misdemeanor directly related to fitness to practice barbering.",
+   "importance": "okay",
+   "section": "Business Occupations and Professions § 4-314",
+   "quote": "is convicted of: 1. a felony; or 2. a misdemeanor that is directly related to the fitness and qualification of the applicant or licensee to practice barbering",
+   "slot": null
+  },
+  {
+   "id": "N26",
+   "text": "Because the limits bar denial solely for a conviction, a board may still deny on its other statutory grounds; for example, the State Board of Barbers may deny an applicant who fraudulently or deceptively obtains or tries to obtain a license.",
+   "importance": "okay",
+   "section": "Business Occupations and Professions § 4-314",
+   "quote": "fraudulently or deceptively obtains or attempts to obtain a license for the applicant or licensee or for another",
+   "slot": null
+  },
+  {
+   "id": "N27",
+   "text": "Refusing to disclose expunged charges may not be the sole reason for a State or local unit to deny the person's application.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 10-109",
+   "quote": "Refusal by a person to disclose information about criminal charges that have been expunged may not be the sole reason for: (i) an employer to discharge or refuse to hire the person; or (ii) a unit, official, or employee of the State or a political subdivision of the State to deny the person's application.",
+   "slot": null
+  }
+ ],
+ "slots": {
+  "yes_no": {
+   "value": "yes, but not solely for the conviction: only on a finding of a direct relationship to the license or an unreasonable risk to property or safety",
+   "nuggets": [
+    "N1",
+    "N2",
+    "N3"
+   ]
+  },
+  "deadline": [
+   {
+    "value": "7 years",
+    "amount": 7,
+    "unit": "years",
+    "anchor": "completing the entire sentence (imprisonment, mandatory supervision, probation and parole) with no new charge other than a minor traffic violation; after that a covered department may not deny the license solely because of the conviction",
+    "nuggets": [
+     "N6",
+     "N16"
+    ]
+   },
+   {
+    "value": "time to request a hearing: whatever the board's notice states (no number in the statutes)",
+    "anchor": "the agency's notice of its action, which must state what the person must do to get a hearing and all relevant time requirements",
+    "nuggets": [
+     "N20"
+    ]
+   }
+  ],
+  "office": [
+   {
+    "value": "Licensing board or other unit of the Department of Agriculture, the Environment, Health, Human Services, Labor, or Public Safety and Correctional Services (decides, weighing the statutory factors)",
+    "nuggets": [
+     "N1",
+     "N9"
+    ]
+   },
+   {
+    "value": "Department of Public Safety and Correctional Services (issues certificates of rehabilitation; Division of Parole and Probation supervision is a prerequisite)",
+    "nuggets": [
+     "N18"
+    ]
+   },
+   {
+    "value": "The licensing board itself, which must offer a hearing before final action (e.g., the State Board of Barbers)",
+    "nuggets": [
+     "N11"
+    ]
+   },
+   {
+    "value": "Circuit court for the county where any party resides or has a principal place of business (judicial review)",
+    "nuggets": [
+     "N22",
+     "N14"
+    ]
+   }
+  ]
+ },
+ "answer": "Yes, within limits. Boards in six departments, including Health and Labor [N9], may not deny you solely for a conviction unless they find [N1] a direct relationship to the license [N2] or an unreasonable risk to property or safety [N3]. They must weigh the license's duties, the conviction's effect on your fitness, your age then, time elapsed and seriousness [N4], plus rehabilitation evidence [N5]. Once 7 years pass after your whole sentence, including parole, without new charges beyond minor traffic violations, they cannot deny you solely for it [N6], even if it relates to the license [N16], unless it requires sex-offender registration [N8]. Anyone ever convicted of a crime of violence, such as robbery or carjacking, loses these protections [N7][N17]. Other grounds, like a deceptive application, remain [N26]. After completing parole or probation for a nonviolent offense, including restitution and fines, you are entitled to one certificate of rehabilitation [N18][N19]; any licensing board must then apply the same test to that conviction [N10]. You need not disclose expunged charges, and refusing cannot alone justify denial [N15][N27].\n\nTo challenge: the notice must explain how to request a hearing and every deadline [N20]; boards typically must offer a hearing [N11][N24]. Put all evidence in the record [N21], calling witnesses and cross-examining [N12]. The decision must state appeal rights [N13]. Then seek judicial review [N22] in a circuit court where any party resides or does business [N14]; it can reverse decisions unsupported by substantial evidence [N23]. Deadlines come from regulations and court rules.",
+ "steps": {
+  "process_name": "Challenge a Maryland occupational license denial based on a criminal conviction",
+  "trigger": "A person with a criminal conviction applies to a Maryland State licensing board or unit for an occupational license or certificate",
+  "trigger_source": {
+   "section": "1-209",
+   "subsection": "c",
+   "quote": "remove barriers to their ability to demonstrate fitness for occupational licenses or certifications required by the State"
+  },
+  "actors": [
+   {
+    "id": "applicant",
+    "name": "Applicant with a prior conviction",
+    "kind": "private-party",
+    "source": {
+     "section": "1-209",
+     "subsection": "e.6",
+     "quote": "other information provided by the applicant or on the applicant's behalf"
+    }
+   },
+   {
+    "id": "board",
+    "name": "Licensing board or other unit of a covered department (e.g., State Board of Barbers)",
+    "kind": "public-body",
+    "source": {
+     "section": "1-209",
+     "subsection": "a.2",
+     "quote": "“Department” includes any unit of a department specified in paragraph (1) of this subsection."
+    }
+   },
+   {
+    "id": "court",
+    "name": "Circuit court for the county where any party resides or has a principal place of business",
+    "kind": "court",
+    "source": {
+     "section": "10-222",
+     "subsection": "c",
+     "quote": "a petition for judicial review shall be filed with the circuit court for the county where any party resides or has a principal place of business"
+    }
+   }
+  ],
+  "steps": [
+   {
+    "id": "submit_evidence",
+    "actor": "applicant",
+    "action": "Submit rehabilitation and good-conduct information",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [],
+    "recipient": "board",
+    "source": {
+     "section": "1-209",
+     "subsection": "e.6",
+     "quote": "other information provided by the applicant or on the applicant's behalf with regard to the applicant's rehabilitation and good conduct"
+    }
+   },
+   {
+    "id": "weigh_factors",
+    "actor": "board",
+    "action": "Weigh the required statutory factors",
+    "kind": "review",
+    "modality": "obligation",
+    "after": [
+     "submit_evidence"
+    ],
+    "source": {
+     "section": "1-209",
+     "subsection": "e",
+     "quote": "In making the determination under subsection (d) of this section, the department shall consider"
+    }
+   },
+   {
+    "id": "determine_bar",
+    "actor": "board",
+    "action": "Decide whether conviction can justify denial",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "weigh_factors"
+    ],
+    "decision": "conviction_bar",
+    "source": {
+     "section": "1-209",
+     "subsection": "d",
+     "quote": "a department may not deny an occupational license or certificate to an applicant solely on the basis that the applicant has previously been convicted of a crime, unless the department determines that"
+    }
+   },
+   {
+    "id": "notice_action",
+    "actor": "board",
+    "action": "Give notice of proposed denial and hearing rights",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "determine_bar"
+    ],
+    "condition": "denial_permitted",
+    "recipient": "applicant",
+    "source": {
+     "section": "10-207",
+     "subsection": "a",
+     "quote": "An agency shall give reasonable notice of the agency's action."
+    }
+   },
+   {
+    "id": "request_hearing",
+    "actor": "applicant",
+    "action": "Request a hearing as the notice directs",
+    "kind": "filing",
+    "modality": "permission",
+    "after": [
+     "notice_action"
+    ],
+    "recipient": "board",
+    "source": {
+     "section": "10-207",
+     "subsection": "b.4",
+     "quote": "state that the recipient of notice of an agency's action may have an opportunity to request a hearing"
+    }
+   },
+   {
+    "id": "notice_hearing",
+    "actor": "board",
+    "action": "Send hearing notice by certified mail",
+    "kind": "notice",
+    "modality": "obligation",
+    "after": [
+     "request_hearing"
+    ],
+    "recipient": "applicant",
+    "source": {
+     "section": "4-315",
+     "subsection": "d",
+     "quote": "The hearing notice to be given to the individual shall be sent by certified mail to the last known address of the individual at least 10 days before the hearing."
+    }
+   },
+   {
+    "id": "hold_hearing",
+    "actor": "board",
+    "action": "Hold hearing before the Board",
+    "kind": "hearing",
+    "modality": "obligation",
+    "after": [
+     "notice_hearing"
+    ],
+    "source": {
+     "section": "4-315",
+     "subsection": "a",
+     "quote": "it shall give the individual against whom the action is contemplated an opportunity for a hearing before the Board"
+    }
+   },
+   {
+    "id": "present_case",
+    "actor": "applicant",
+    "action": "Call witnesses, offer evidence, cross-examine",
+    "kind": "act",
+    "modality": "right",
+    "after": [
+     "hold_hearing"
+    ],
+    "source": {
+     "section": "10-213",
+     "subsection": "f",
+     "quote": "On a genuine issue in a contested case, each party is entitled to"
+    }
+   },
+   {
+    "id": "final_decision",
+    "actor": "board",
+    "action": "Issue written final decision",
+    "kind": "decision",
+    "modality": "obligation",
+    "after": [
+     "present_case"
+    ],
+    "decision": "conviction_bar",
+    "source": {
+     "section": "10-221",
+     "subsection": "a",
+     "quote": "A final decision or order in a contested case that is adverse to a party shall be in writing or stated on the record."
+    }
+   },
+   {
+    "id": "petition_review",
+    "actor": "applicant",
+    "action": "Petition circuit court to review the denial",
+    "kind": "filing",
+    "modality": "right",
+    "after": [
+     "final_decision"
+    ],
+    "condition": "denial_permitted",
+    "recipient": "court",
+    "source": {
+     "section": "10-222",
+     "subsection": "a.1",
+     "quote": "a party who is aggrieved by the final decision in a contested case is entitled to judicial review of the decision as provided in this section"
+    }
+   },
+   {
+    "id": "court_review",
+    "actor": "court",
+    "action": "Affirm, remand, reverse or modify decision",
+    "kind": "review",
+    "modality": "permission",
+    "after": [
+     "petition_review"
+    ],
+    "source": {
+     "section": "10-222",
+     "subsection": "h",
+     "quote": "In a proceeding under this section, the court may"
+    }
+   }
+  ],
+  "decisions": [
+   {
+    "id": "conviction_bar",
+    "question": "May the board deny the license because of the applicant's conviction?",
+    "hit_policy": "FIRST",
+    "inputs": [
+     {
+      "name": "crime_of_violence",
+      "label": "Previously convicted of a crime of violence (Criminal Law § 14-101)",
+      "type": "boolean"
+     },
+     {
+      "name": "covered_department",
+      "label": "Board or unit belongs to one of the six departments listed in § 1-209",
+      "type": "boolean"
+     },
+     {
+      "name": "certificate_of_rehabilitation",
+      "label": "Applicant holds a certificate of rehabilitation for the conviction",
+      "type": "boolean"
+     },
+     {
+      "name": "seven_years_clean",
+      "label": "7 or more years since the whole sentence was completed, with no new charge other than a minor traffic violation",
+      "type": "boolean"
+     },
+     {
+      "name": "sex_offender_registry_crime",
+      "label": "Conviction requires sex offender registration",
+      "type": "boolean"
+     },
+     {
+      "name": "direct_relationship",
+      "label": "Direct relationship between the conviction and the license sought",
+      "type": "boolean"
+     },
+     {
+      "name": "unreasonable_risk",
+      "label": "Issuing the license would involve an unreasonable risk to property or safety or welfare",
+      "type": "boolean"
+     }
+    ],
+    "outputs": [
+     {
+      "name": "result",
+      "label": "Result",
+      "type": "string"
+     },
+     {
+      "name": "denial_permitted",
+      "label": "Conviction may support a denial",
+      "type": "boolean"
+     }
+    ],
+    "rules": [
+     {
+      "when": [
+       "true",
+       "-",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not protected: § 1-209 does not apply to a crime of violence; the board's own licensing law governs\"",
+       "true"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "b",
+       "quote": "This section does not apply to a person who was previously convicted of a crime of violence"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "false",
+       "false",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"Not protected: the board is outside the listed departments and there is no certificate of rehabilitation; the board's own licensing law governs\"",
+       "true"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "a.1",
+       "quote": "In this section, “department” means"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "true",
+       "false",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"May not deny solely because of the conviction: 7 or more crime-free years since the sentence ended\"",
+       "false"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "f.2",
+       "quote": "a department may not deny an occupational license or certificate to the applicant solely on the basis that the applicant was previously convicted of the crime"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true",
+       "-"
+      ],
+      "then": [
+       "\"May deny: direct relationship between the conviction and the license\"",
+       "true"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "d.1",
+       "quote": "there is a direct relationship between the applicant's previous conviction and the specific occupational license or certificate sought"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-",
+       "true"
+      ],
+      "then": [
+       "\"May deny: issuing the license would involve an unreasonable risk\"",
+       "true"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "d.2",
+       "quote": "the issuance of the license or certificate would involve an unreasonable risk to property or to the safety or welfare of specific individuals or the general public"
+      }
+     },
+     {
+      "when": [
+       "false",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"May not deny solely because of the conviction (covered department)\"",
+       "false"
+      ],
+      "source": {
+       "section": "1-209",
+       "subsection": "d",
+       "quote": "a department may not deny an occupational license or certificate to an applicant solely on the basis that the applicant has previously been convicted of a crime"
+      }
+     },
+     {
+      "when": [
+       "-",
+       "-",
+       "true",
+       "-",
+       "-",
+       "-",
+       "-"
+      ],
+      "then": [
+       "\"May not deny solely because of the conviction the certificate of rehabilitation covers\"",
+       "false"
+      ],
+      "source": {
+       "section": "7-104",
+       "subsection": "c",
+       "quote": "A licensing board may not deny an occupational license or certificate to an applicant who has been issued a certificate of rehabilitation solely on the basis that the applicant has previously been convicted of the crime that is the subject of the certificate of rehabilitation"
+      }
+     }
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "not_denied_for_conviction",
+    "description": "The conviction alone may not be used to deny the license",
+    "after": [
+     "determine_bar"
+    ],
+    "source": {
+     "section": "1-209",
+     "subsection": "d",
+     "quote": "may not deny an occupational license or certificate to an applicant solely on the basis that the applicant has previously been convicted of a crime"
+    }
+   },
+   {
+    "id": "decision_final",
+    "description": "Final decision issued with a written statement of appeal rights (license granted, or denial not appealed)",
+    "after": [
+     "final_decision"
+    ],
+    "source": {
+     "section": "10-221",
+     "subsection": "b.2",
+     "quote": "A written statement of appeal rights shall be included with the decision."
+    }
+   },
+   {
+    "id": "court_ruling",
+    "description": "Court remands, affirms, or reverses or modifies the board's decision",
+    "after": [
+     "court_review"
+    ],
+    "source": {
+     "section": "10-222",
+     "subsection": "h",
+     "quote": "remand the case for further proceedings"
+    }
+   }
+  ],
+  "cross_references": [
+   {
+    "citation": "Md. Code, State Government Title 10, Subtitle 2 (Administrative Procedure Act, contested cases)",
+    "role": "governs the notice and hearing the board must give",
+    "source": {
+     "section": "4-315",
+     "subsection": "b",
+     "quote": "The Board shall give notice and hold the hearing in accordance with Title 10, Subtitle 2 of the State Government Article."
+    }
+   },
+   {
+    "citation": "Md. Code, State Government §§ 10-222 and 10-223",
+    "role": "judicial review in the circuit court and further appeal to the Appellate Court of Maryland",
+    "source": {
+     "section": "4-208",
+     "subsection": "a",
+     "quote": "may take an appeal as allowed in §§ 10-222 and 10-223 of the State Government Article"
+    }
+   },
+   {
+    "citation": "Md. Code, Criminal Law § 14-101",
+    "role": "defines the crimes of violence excluded from § 1-209",
+    "source": {
+     "section": "1-209",
+     "subsection": "b",
+     "quote": "as defined in § 14–101 of the Criminal Law Article"
+    }
+   }
+  ],
+  "gaps": [
+   "The hearing right comes from each board's own statute, not from Criminal Procedure § 1-209; the State Board of Barbers (Business Occupations and Professions §§ 4-314, 4-315, 4-208) is modeled as a typical example. Other boards' sections follow the same pattern but may differ (for instance on who presides or how notice is sent). The barber statute frames § 4-314 proceedings as starting on a complaint by a Board member or any person (§ 4-314(c)), which does not map neatly onto an ordinary application denial. Some Health Occupations boards bar any stay of their decision while judicial review is pending (Health Occupations §§ 8-318(c), 9-316(c), 17-512(c)), unlike the APA default that lets the decision maker or court grant a stay (State Government § 10-222(e)(2)), and some distinguish appeals to the Secretary from direct judicial appeals (§§ 8-318(b), 9-316(b)).",
+   "The time to request a hearing after a notice of proposed denial is set by agency regulations and stated in the notice (State Government § 10-207(b)(4)), not by these statutes.",
+   "The time limit and filing fee for a petition for judicial review come from the Maryland Rules (Title 7, Chapter 200), not the statutes.",
+   "The board may hear the case itself or delegate it to the Office of Administrative Hearings, which then issues a proposed or final decision (State Government §§ 10-205, 10-216); that branch is not modeled.",
+   "How to obtain a certificate of rehabilitation (application, review, State's Attorney and victim objections) is left to Department of Public Safety and Correctional Services regulations under Correctional Services § 7-104(g).",
+   "The decision table treats the certificate of rehabilitation as protecting only the conviction it covers (Correctional Services § 7-104(c)); unlike § 1-209(b), § 7-104(c) has no whole-person crime-of-violence exclusion, so a certificate for a nonviolent conviction still protects that conviction for a person with a separate crime-of-violence conviction. Rules 4 and 5 cite § 1-209(d), but the same direct-relationship and risk exceptions apply to certificate holders under § 7-104(c)(1)-(2)."
+  ]
+ },
+ "out_of_corpus": [
+  {
+   "kind": "regulation",
+   "what": "Each board's procedures for reviewing criminal history, the application forms and the time to request a hearing after a notice of proposed denial; Office of Administrative Hearings rules of procedure for contested cases",
+   "where": "Code of Maryland Regulations (COMAR) for the particular board (e.g., the Maryland Department of Labor's occupational boards, Maryland Department of Health boards) and COMAR 28.02.01 (Office of Administrative Hearings)"
+  },
+  {
+   "kind": "regulation",
+   "what": "The application and review process for a certificate of rehabilitation, including State's Attorney and victim objections",
+   "where": "Department of Public Safety and Correctional Services regulations adopted under Correctional Services § 7-104(g) (COMAR Title 12)"
+  },
+  {
+   "kind": "court rule",
+   "what": "How and when to file a petition for judicial review of an agency decision, the record, memoranda and filing fees",
+   "where": "Maryland Rules, Title 7, Chapter 200 (Judicial Review of Administrative Agency Decisions), including Rule 7-203 (time for filing)"
+  },
+  {
+   "kind": "agency policy",
+   "what": "Licensing bodies outside the six departments named in Criminal Procedure § 1-209 (for example teacher certification by the State Department of Education, Department of State Police licenses, the Insurance Administration) apply their own statutes and policies; only the certificate-of-rehabilitation protection in Correctional Services § 7-104 reaches every licensing board, and the Supreme Court of Maryland (bar admission) is excluded",
+   "where": "Each licensing body's own article of the Maryland Code and its regulations"
+  },
+  {
+   "kind": "federal",
+   "what": "Federal disqualifications for federally regulated occupations (for example certain banking, securities, transportation and health care roles) that state law cannot waive",
+   "where": "The relevant federal statutes and regulations (e.g., 12 U.S.C. § 1829, 49 C.F.R. Part 1572, 42 U.S.C. § 1320a-7)"
+  },
+  {
+   "kind": "local",
+   "what": "County and municipal licenses (for example local alcoholic beverage licenses and local business licenses), which § 1-209 does not cover",
+   "where": "County codes and local licensing boards"
+  }
+ ],
+ "version_flags": [],
+ "local_option": null,
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Maryland statutes only, as downloaded (open-us-law). Maryland has a general fair-chance licensing statute, Criminal Procedure § 1-209, but it binds only the six listed departments and their units (which include the Maryland Department of Labor's occupational boards, see Business Occupations and Professions §§ 1-101(e), 4-201, and the Maryland Department of Health's boards); it bars denial 'solely' because of a conviction, so a board may still deny on other grounds, and its seven factors are: the State policy favoring employment of nonviolent ex-offenders, the license's duties, the conviction's impact on fitness, age and time elapsed, seriousness, rehabilitation evidence, and the department's protective interest. The 7-year bar (§ 1-209(f)) overrides the direct-relationship and risk exceptions (subsection (d) is 'except as provided in subsection (f)'), but not for sex-offender-registry crimes, and the whole section excludes crimes of violence (Criminal Law § 14-101). 'Minor traffic violation' is defined in Criminal Procedure § 10-101, which is missing from the download. Correctional Services § 7-104 certificates of rehabilitation: available to people convicted of a misdemeanor or felony that is not a crime of violence or registrable sexual offense who were supervised by the Division of Parole and Probation, completed all conditions including restitution, fines and fees, and left its jurisdiction; one per lifetime; applies to any 'licensing board' except the Supreme Court of Maryland. Maryland has no statutory pre-application (predetermination) procedure in the downloaded code; searches for predetermination, preliminary determination and advisory-opinion language found none. Board-level hearing rights come from each board's statute (here the State Board of Barbers, Business Occupations and Professions §§ 4-314 (felony or directly related misdemeanor; five factors: nature of the crime, relationship to the licensed activities, relevance of a felony to fitness, time since conviction, behavior before and after), 4-315 (hearing before the Board, APA notice, certified mail at least 10 days before; the Board may decide if the person fails to appear) and 4-208 (appeal under State Government §§ 10-222 and 10-223)); most Business Occupations and Professions and Health Occupations boards use the same 'Subject to the hearing provisions of § ...' pattern. A license denial that a statute requires to be decided after a hearing is a 'contested case' (State Government § 10-202(d)(1)(ii)). APA details not in nuggets: the board may delegate the hearing to the Office of Administrative Hearings (§ 10-205), the standard of proof is a preponderance of the evidence (§ 10-217), exceptions to a proposed decision (§ 10-216), findings of fact and conclusions of law in the final decision (§ 10-221(b)), the court may also reverse a decision that is arbitrary or capricious (§ 10-222(h)(3)(vii)), judicial review of disputed facts is confined to the record (§ 10-222(f)(1)), filing for review does not automatically stay the decision (§ 10-222(e)), and further appeal to the Appellate Court of Maryland (§ 10-223). Shielded convictions (Criminal Procedure § 10-302(b)(2), (5)) stay fully accessible to government licensing agencies with statutory authority to check criminal background and to health occupations boards, and § 10-306(b)(3) protects permit and registration applicants but not license applicants; expunged charges need not be disclosed (§ 10-109). No section in the download sets a filing fee, a time to request a hearing, or a time to petition for judicial review."
+}

@@ -1,0 +1,1284 @@
+{
+  "qid": "license_conviction",
+  "question": "Can a state licensing board deny me an occupational license because of a criminal conviction, and how can I challenge the denial?",
+  "state": "tx",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      [
+        "occupational license",
+        "license",
+        "licensing",
+        "certificate",
+        "registration",
+        "permit",
+        "licensing examination",
+        "initial license"
+      ],
+      [
+        "licensing authority",
+        "licensing board",
+        "board",
+        "commission",
+        "state agency"
+      ],
+      [
+        "convicted",
+        "conviction",
+        "prior conviction",
+        "criminal conviction",
+        "offense",
+        "criminal history"
+      ],
+      [
+        "directly relates",
+        "duties and responsibilities of the licensed occupation",
+        "nature and seriousness of the crime"
+      ],
+      [
+        "deny",
+        "denial",
+        "disqualify",
+        "intended denial",
+        "suspend",
+        "revoke"
+      ],
+      [
+        "rehabilitation",
+        "rehabilitative effort",
+        "letters of recommendation",
+        "fitness",
+        "time that has elapsed"
+      ],
+      [
+        "provisional license",
+        "otherwise qualified applicant",
+        "provisional license term",
+        "Article 42A.054",
+        "sexually violent offense",
+        "Class C misdemeanor"
+      ],
+      [
+        "deferred adjudication",
+        "dismissed the proceedings and discharged the person",
+        "dismissal and discharge",
+        "continued threat to public safety",
+        "arrest that did not result"
+      ],
+      [
+        "written notice",
+        "not less than 30 days",
+        "submit any relevant information",
+        "earliest date the person may appeal",
+        "responsibility to obtain and provide"
+      ],
+      [
+        "judicial review",
+        "district court",
+        "exhausted the person's administrative appeals",
+        "final and appealable",
+        "motion for rehearing",
+        "contested case",
+        "prerequisite to an appeal",
+        "with particularity",
+        "overruled by operation of law"
+      ],
+      [
+        "criminal history evaluation letter",
+        "eligibility",
+        "90th day"
+      ],
+      [
+        "educational program",
+        "refund",
+        "tuition",
+        "examination fees"
+      ]
+    ],
+    "negative": [
+      "driver's license",
+      "commercial driver license",
+      "alcoholic beverage",
+      "mechanic's lien",
+      "marriage license",
+      "hunting license",
+      "fishing license"
+    ],
+    "slots": [
+      "yes_no",
+      "deadline",
+      "office",
+      "order",
+      "fee"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "Tex. Occupations Code § 53.021",
+      "role": "primary",
+      "why": "The grounds: a licensing authority may deny a license or exam for a conviction of a directly related offense, an Article 42A.054 offense, or a sexually violent offense; Class C misdemeanors excluded (except firearm licenses and domestic violence); a deferred adjudication that ended in dismissal and discharge is not a conviction (c) except for the occupations in (e) or when both (d)(1) and (d)(2) are met."
+    },
+    {
+      "ref": "53.0211",
+      "role": "primary",
+      "why": "Unless the conviction is a Section 53.021(a) offense, the authority must issue the license or a 12-month provisional license to an otherwise qualified applicant (not for law enforcement, public health, education, safety or state-regulated financial services licenses); the provisional license is revoked for new offenses or violations and otherwise becomes the full license when the term ends (d)-(f)."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.022",
+      "role": "primary",
+      "why": "The five factors the authority must consider to decide whether a conviction directly relates to the occupation."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.023",
+      "role": "primary",
+      "why": "Once a conviction directly relates, the fitness and rehabilitation factors the authority must weigh; the applicant must supply recommendation letters."
+    },
+    {
+      "ref": "53.0231",
+      "role": "primary",
+      "why": "Before denying because of a conviction: written notice of the reason for the intended denial and at least 30 days to submit information; the notice states either the disqualifying offense or that the decision rests on the 53.023(a) factors, which the person must document."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.051",
+      "role": "primary",
+      "why": "A denial notice must give the reasons (including the factors relied on), the review procedure and the earliest date to appeal."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.052",
+      "role": "primary",
+      "why": "Judicial review: after exhausting administrative appeals, sue in the district court of the county where the licensing authority is located within 30 days after the decision is final and appealable."
+    },
+    {
+      "ref": "53.0232",
+      "role": "supporting",
+      "why": "An arrest that led to neither a conviction nor deferred adjudication may not be considered."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.002",
+      "role": "supporting",
+      "why": "Chapter 53 does not apply to Supreme Court licensees (lawyers), anyone licensed or applying under Occupations Code Chapter 1701 (law enforcement licenses), EMS personnel applicants, or Medical, Pharmacy, Dental or Veterinary Board licensees convicted of certain drug felonies."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.024",
+      "role": "supporting",
+      "why": "A proceeding to establish the factors is governed by the Administrative Procedure Act (Government Code Chapter 2001)."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.025",
+      "role": "supporting",
+      "why": "Each licensing authority must issue and publish guidelines stating why a crime relates to a license."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.102",
+      "role": "supporting",
+      "why": "Preliminary determination: a person enrolled or planning to enroll in a program, or planning to take the exam, for an initial license may request a criminal history evaluation letter, stating the basis for the possible ineligibility."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.104",
+      "role": "supporting",
+      "why": "The authority must answer the evaluation request within 90 days; the letter binds it on the stated grounds absent new evidence."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.105",
+      "role": "supporting",
+      "why": "The authority may charge a cost-based fee for an evaluation letter (no amount set by statute)."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.051",
+      "role": "supporting",
+      "why": "In a contested case each party is entitled to a hearing on at least 10 days' notice and to present evidence and argument."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.054",
+      "role": "supporting",
+      "why": "Contested-case rules apply to the grant or denial of a license that must be preceded by notice and opportunity for hearing."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.141",
+      "role": "supporting",
+      "why": "An adverse contested-case decision must be written and signed, with findings of fact and conclusions of law."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.144",
+      "role": "supporting",
+      "why": "When a contested-case decision becomes final (which starts the 30-day period for judicial review)."
+    },
+    {
+      "ref": "2001.145",
+      "role": "supporting",
+      "why": "A timely motion for rehearing is a prerequisite to appeal in a contested case."
+    },
+    {
+      "ref": "2001.146",
+      "role": "supporting",
+      "why": "Motion for rehearing due within 25 days after the decision is signed (extendable), must identify the challenged findings, conclusions and rulings with particularity; the agency must act within 55 days or it is overruled by operation of law."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.174",
+      "role": "supporting",
+      "why": "Scope of review where the law authorizes substantial-evidence review or does not define the scope: the court may affirm, or must reverse or remand if substantial rights were prejudiced. Applying it to a 53.052 action (review 'of the evidence presented to the licensing authority') is an inference."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.176",
+      "role": "supporting",
+      "why": "Judicial review petition filed within 30 days after the decision is final and appealable (a premature petition still counts); a copy must be served on the agency and each party; Travis County unless a statute (here Section 53.052) provides otherwise."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.001",
+      "role": "definition",
+      "why": "The Administrative Procedure Act's definitions (license, licensing, state agency) apply to Chapter 53."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.003",
+      "role": "definition",
+      "why": "Defines contested case, license and licensing (including the denial of a license)."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 42A.054",
+      "role": "definition",
+      "why": "The list of serious offenses (murder, aggravated kidnapping, sexual assault, aggravated robbery and others) that are always a ground under Section 53.021(a)(2)."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 42A.111",
+      "role": "supporting",
+      "why": "A separate protection: an offense ending in dismissal and discharge after deferred adjudication may not be used to deny an occupational license, except for the offenses, child-contact professions and Chapter 1701 licenses listed in (d)(4)."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.003",
+      "role": "supporting",
+      "why": "Legislative intent to enhance job opportunities after a conviction; Chapter 53 is liberally construed."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.152",
+      "role": "supporting",
+      "why": "A program preparing people for an initial license must warn every applicant and enrollee that a conviction may bar licensing and of the right to request an evaluation letter."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.153",
+      "role": "supporting",
+      "why": "If the program failed to warn and the license was denied because of a conviction, the licensing authority must order a tuition refund and repayment of application and exam fees."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.172",
+      "role": "supporting",
+      "why": "The scope of judicial review is as provided by the law under which review is sought (here Section 53.052)."
+    },
+    {
+      "ref": "Tex. Government Code § 2001.142",
+      "role": "supporting",
+      "why": "If a party does not learn of a signed decision within 15 days, the rehearing and review periods start later (not before day 15 or after day 45), on sworn motion."
+    },
+    {
+      "ref": "Tex. Occupations Code § 53.101",
+      "role": "definition",
+      "why": "For evaluation letters, 'licensing authority' means a state agency only."
+    },
+    {
+      "ref": "Tex. Code of Criminal Procedure § 62.001",
+      "role": "definition",
+      "why": "Defines 'sexually violent offense' (53.021(a)(3)) and the reportable offenses of 62.001(5) used in 53.021(d)(1)(A) and 42A.111(d)(4)."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "A Texas licensing authority may (not must) deny a license or the chance to take the licensing exam because of a conviction for an offense that directly relates to the duties of the occupation, an offense listed in Code of Criminal Procedure Article 42A.054, or a sexually violent offense.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.021",
+      "quote": "a licensing authority may suspend or revoke a license, disqualify a person from receiving a license, or deny to a person the opportunity to take a licensing examination on the grounds that the person has been convicted of: (1) an offense that directly relates to the duties and responsibilities of the licensed occupation; (2) an offense listed in Article 42A.054, Code of Criminal Procedure; or (3) a sexually violent offense, as defined by Article 62.001, Code of Criminal Procedure",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N2",
+      "text": "A conviction only for a Class C misdemeanor is not a ground, unless the license authorizes possessing a firearm and the offense is a misdemeanor crime of domestic violence.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.021",
+      "quote": "Subsection (a) does not apply to a person who has been convicted only of an offense punishable as a Class C misdemeanor unless: (1) the person is an applicant for or the holder of a license that authorizes the person to possess a firearm; and (2) the offense for which the person was convicted is a misdemeanor crime of domestic violence",
+      "slot": null
+    },
+    {
+      "id": "N3",
+      "text": "A deferred adjudication that ended with the judge dismissing the case and discharging the person (after a guilty or no-contest plea) is generally not a conviction for Section 53.021; the protection does not apply to licenses to provide law enforcement, public health, education or safety services, or state-regulated financial services (53.021(e)), and Subsection (d) allows a narrow exception.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.021",
+      "quote": "Except as provided by Subsections (d) and (e), notwithstanding any other law, a licensing authority may not consider a person to have been convicted of an offense for purposes of this section if, regardless of the statutory authorization: (1) the person entered a plea of guilty or nolo contendere; (2) the judge deferred further proceedings without entering an adjudication of guilt and placed the person under the supervision of the court or an officer under the supervision of the court; and (3) at the end of the period of supervision, the judge dismissed the proceedings and discharged the person",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "The licensing authority may not consider an arrest that did not lead to a conviction or deferred adjudication.",
+      "importance": "okay",
+      "section": "53.0232",
+      "quote": "a licensing authority may not consider an arrest that did not result in the person's conviction or placement on deferred adjudication community supervision",
+      "slot": null
+    },
+    {
+      "id": "N5",
+      "text": "To decide whether a conviction directly relates to the occupation, the authority must consider the nature and seriousness of the crime, its relationship to the purposes of the license, the opportunity the license offers to repeat it, its relationship to the ability to do the job, and any correlation between its elements and the job's duties.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.022",
+      "quote": "the licensing authority shall consider each of the following factors: (1) the nature and seriousness of the crime; (2) the relationship of the crime to the purposes for requiring a license to engage in the occupation; (3) the extent to which a license might offer an opportunity to engage in further criminal activity of the same type as that in which the person previously had been involved; (4) the relationship of the crime to the ability or capacity required to perform the duties and discharge the responsibilities of the licensed occupation; and (5) any correlation between the elements of the crime and the duties and responsibilities of the licensed occupation",
+      "slot": "order"
+    },
+    {
+      "id": "N6",
+      "text": "If the conviction directly relates, before acting the authority must also weigh the person's criminal history, age at the time, time since the last offense, conduct and work before and after, rehabilitation, compliance with probation or parole, and other fitness evidence such as letters of recommendation (which the applicant should supply).",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.023",
+      "quote": "the extent and nature of the person's past criminal activity; (2) the age of the person when the crime was committed; (3) the amount of time that has elapsed since the person's last criminal activity; (4) the conduct and work activity of the person before and after the criminal activity; (5) evidence of the person's rehabilitation or rehabilitative effort while incarcerated or after release; (6) evidence of the person's compliance with any conditions of community supervision, parole, or mandatory supervision; and (7) other evidence of the person's fitness, including letters of recommendation",
+      "slot": null
+    },
+    {
+      "id": "N7",
+      "text": "Unless the conviction is one of the Section 53.021(a) offenses, the authority must issue an otherwise qualified applicant the license or a 12-month provisional license (this rule does not cover licenses to provide law enforcement, public health, education or safety services, or financial services regulated by the securities, banking, savings and mortgage lending, consumer credit or credit union commissioner).",
+      "importance": "vital",
+      "section": "53.0211",
+      "quote": "unless the applicant has been convicted of an offense described by Section 53.021(a), a licensing authority shall issue to an otherwise qualified applicant who has been convicted of an offense: (1) the license for which the applicant applied; or (2) a provisional license under Subsection (b-1) valid for a term of 12 months",
+      "slot": null
+    },
+    {
+      "id": "N8",
+      "text": "Before denying a license or exam because of a conviction, the authority must give written notice of the reason for the intended denial and allow at least 30 days to submit relevant information.",
+      "importance": "vital",
+      "section": "53.0231",
+      "quote": "may not deny a person a license or the opportunity to be examined for a license because of the person's prior conviction of an offense unless the licensing authority: (1) provides written notice to the person of the reason for the intended denial; and (2) allows the person not less than 30 days to submit any relevant information to the licensing authority",
+      "slot": "deadline"
+    },
+    {
+      "id": "N9",
+      "text": "A denial based on a conviction must be explained in writing: the reasons (including the factors relied on), the judicial review procedure, and the earliest date the person may appeal.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.051",
+      "quote": "shall notify the person in writing of: (1) the reason for the suspension, revocation, denial, or disqualification, including any factor considered under Section 53.022 or 53.023 that served as the basis for the suspension, revocation, denial, or disqualification; (2) the review procedure provided by Section 53.052; and (3) the earliest date the person may appeal the action of the licensing authority",
+      "slot": null
+    },
+    {
+      "id": "N10",
+      "text": "In a contested case, a motion for rehearing must be filed no later than 25 days after the decision or order is signed, unless that time is extended (late notice under Section 2001.142, agreement, or written agency order).",
+      "importance": "okay",
+      "section": "2001.146",
+      "quote": "A motion for rehearing in a contested case must be filed by a party not later than the 25th day after the date the decision or order that is the subject of the motion is signed, unless the time for filing the motion for rehearing has been extended under Section 2001.142, by an agreement under Section 2001.147, or by a written state agency order issued under Subsection (e)",
+      "slot": "deadline"
+    },
+    {
+      "id": "N11",
+      "text": "After exhausting administrative appeals, the person may sue for review in the district court of the county where the licensing authority is located.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.052",
+      "quote": "who has exhausted the person's administrative appeals may file an action in the district court in the county in which the licensing authority is located",
+      "slot": "office"
+    },
+    {
+      "id": "N12",
+      "text": "The district court petition must be filed no later than 30 days after the licensing authority's decision is final and appealable.",
+      "importance": "vital",
+      "section": "Tex. Occupations Code § 53.052",
+      "quote": "The petition for an action under Subsection (a) must be filed not later than the 30th day after the date the licensing authority's decision is final and appealable",
+      "slot": "deadline"
+    },
+    {
+      "id": "N13",
+      "text": "A person who is enrolled or planning to enroll in a program for an initial license, or planning to take the exam for an initial license, and who has reason to believe a conviction or deferred adjudication makes them ineligible, may request a criminal history evaluation letter from the state licensing authority; the request must state the basis for the possible ineligibility.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.102",
+      "quote": "(1) is enrolled or planning to enroll in an educational program that prepares a person for an initial license or is planning to take an examination for an initial license; and (2) has reason to believe that the person is ineligible for the license due to a conviction or deferred adjudication for a felony or misdemeanor offense. (b) The request must state the basis for the person's potential ineligibility",
+      "slot": null
+    },
+    {
+      "id": "N14",
+      "text": "The authority must answer an evaluation-letter request within 90 days after receiving it.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.104",
+      "quote": "A licensing authority must provide notice under Subsection (a) or issue a letter under Subsection (b) not later than the 90th day after the date the authority receives the request",
+      "slot": "deadline"
+    },
+    {
+      "id": "N15",
+      "text": "Chapter 53 does not apply to lawyers and others licensed by the Texas Supreme Court, anyone licensed or applying under Occupations Code Chapter 1701 (law enforcement licenses), applicants for emergency medical services certification, or Texas Medical, Pharmacy, Dental or Veterinary Board licensees convicted of certain drug felonies.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.002",
+      "quote": "This chapter does not apply to: (1) the Supreme Court of Texas, a person licensed under the court's authority on behalf of the judicial department of government, or an applicant for a license issued under the court's authority on behalf of the judicial department of government; (2) a person licensed or an applicant for a license under Chapter 1701; (3) an applicant for certification as emergency medical services personnel under Chapter 773, Health and Safety Code",
+      "slot": null
+    },
+    {
+      "id": "N16",
+      "text": "Even after dismissal and discharge, the authority may treat a deferred adjudication as a conviction only if BOTH (1) the charge was an Article 62.001(5) reportable offense (sexual offenses, kidnapping or unlawful restraint of a child, trafficking, online solicitation of a minor and similar), or supervision is unfinished or ended less than five years before the application, or a conviction would make the person ineligible by operation of law; AND (2) after weighing the 53.022 and 53.023(a) factors it finds the person may pose a continued threat to public safety or would have an opportunity to repeat the conduct.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.021",
+      "quote": "a conviction for the offense would make the person ineligible for the license by operation of law; and (2) after consideration of the factors described by Sections 53.022 and 53.023(a), the licensing authority determines that: (A) the person may pose a continued threat to public safety; or (B) employment of the person in the licensed occupation would create a situation in which the person has an opportunity to repeat the prohibited conduct",
+      "slot": null
+    },
+    {
+      "id": "N17",
+      "text": "Separately, Code of Criminal Procedure Article 42A.111 bars using an offense that ended in dismissal and discharge after deferred adjudication to deny a professional or occupational license to an otherwise qualified person, except for Article 42A.054(a) offenses, Article 62.001(5) or (6) offenses, Penal Code chapter 21 or 43 offenses, offenses related to the licensed activity, professions with direct contact with children, and Chapter 1701 law enforcement licenses.",
+      "importance": "okay",
+      "section": "Tex. Code of Criminal Procedure § 42A.111",
+      "quote": "an offense for which the defendant received a dismissal and discharge under this article may not be used as grounds for denying issuance of a professional or occupational license or certificate to, or suspending or revoking the professional or occupational license or certificate of, an individual otherwise entitled to or qualified for the license or certificate",
+      "slot": null
+    },
+    {
+      "id": "N18",
+      "text": "A provisional license must be revoked if the holder commits a new offense, has supervision or parole revoked, or breaks the occupation's rules (and the holder is then disqualified from the license); otherwise, when the 12-month term ends the authority must issue the license originally applied for.",
+      "importance": "okay",
+      "section": "53.0211",
+      "quote": "The licensing authority shall issue the license for which the applicant originally applied to a provisional license holder on the expiration of the provisional license term if the provisional license holder does not engage in conduct described by Subsection (d)",
+      "slot": null
+    },
+    {
+      "id": "N19",
+      "text": "The pre-denial notice must either state that the person is disqualified because of a specified prior conviction, or state that the final decision will rest on the Section 53.023(a) factors and that it is the person's responsibility to obtain and provide evidence about those factors.",
+      "importance": "okay",
+      "section": "53.0231",
+      "quote": "the final decision of the licensing authority to deny the person a license or the opportunity to be examined for the license will be based on the factors listed in Section 53.023(a); and (B) it is the person's responsibility to obtain and provide to the licensing authority evidence regarding the factors listed in Section 53.023(a)",
+      "slot": null
+    },
+    {
+      "id": "N20",
+      "text": "A timely motion for rehearing is required before appealing a contested-case decision to court (except for orders made final at once for imminent peril or on an agreed date).",
+      "importance": "okay",
+      "section": "2001.145",
+      "quote": "A timely motion for rehearing is a prerequisite to an appeal in a contested case",
+      "slot": null
+    },
+    {
+      "id": "N21",
+      "text": "The motion for rehearing must identify with particularity the findings of fact, conclusions of law and evidentiary or legal rulings claimed to be wrong, and state the legal and factual basis for each claimed error.",
+      "importance": "okay",
+      "section": "2001.146",
+      "quote": "A motion for rehearing must identify with particularity findings of fact or conclusions of law that are the subject of the complaint and any evidentiary or legal ruling claimed to be erroneous",
+      "slot": null
+    },
+    {
+      "id": "N22",
+      "text": "The agency must act on the motion for rehearing within 55 days after the decision is signed, or the motion is overruled by operation of law (an extension can push this to as late as the 100th day).",
+      "importance": "okay",
+      "section": "2001.146",
+      "quote": "A state agency shall act on a motion for rehearing not later than the 55th day after the date the decision or order that is the subject of the motion is signed or the motion for rehearing is overruled by operation of law",
+      "slot": "deadline"
+    },
+    {
+      "id": "N23",
+      "text": "Unless there is new evidence the requester knew but did not disclose, or that the authority could not reasonably obtain, the evaluation letter settles the person's eligibility on the grounds it addresses.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.104",
+      "quote": "In the absence of new evidence known to but not disclosed by the requestor or not reasonably available to the licensing authority at the time the letter is issued, the authority's ruling on the request determines the requestor's eligibility with respect to the grounds for potential ineligibility set out in the letter",
+      "slot": null
+    },
+    {
+      "id": "N24",
+      "text": "The authority may charge a fee it adopts for the evaluation, in an amount sufficient to cover the cost of the evaluation program; the statute sets no dollar amount.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.105",
+      "quote": "Fees adopted by a licensing authority under this subchapter must be in an amount sufficient to cover the cost of administering this subchapter",
+      "slot": "fee"
+    },
+    {
+      "id": "N25",
+      "text": "If a regulated training program failed to give the required notice (that a conviction may bar licensing, and of the right to an evaluation letter) and the person's license application was then denied because of a conviction, the licensing authority must order the program to refund tuition and repay the application and exam fees.",
+      "importance": "okay",
+      "section": "Tex. Occupations Code § 53.153",
+      "quote": "shall order the entity to: (1) refund the amount of any tuition paid by the individual to the entity; and (2) pay to the individual an amount equal to the total of the following, as applicable: (A) the amount of any application fees paid by the individual to the licensing authority; and (B) the amount of any examination fees paid by the individual to the licensing authority or an examination provider approved by the licensing authority",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "yes_no": {
+      "value": "yes, but only for a directly related offense, an Article 42A.054 offense, or a sexually violent offense",
+      "nuggets": [
+        "N1"
+      ]
+    },
+    "deadline": [
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "written notice of the intended denial (minimum time to submit information before the authority decides)",
+        "nuggets": [
+          "N8"
+        ]
+      },
+      {
+        "amount": 25,
+        "unit": "days",
+        "anchor": "the date the contested-case decision or order is signed (motion for rehearing; extendable)",
+        "nuggets": [
+          "N10"
+        ]
+      },
+      {
+        "amount": 55,
+        "unit": "days",
+        "anchor": "the date the contested-case decision or order is signed (agency must act on the rehearing motion or it is overruled by operation of law)",
+        "nuggets": [
+          "N22"
+        ]
+      },
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "the date the licensing authority's decision is final and appealable (district court petition)",
+        "nuggets": [
+          "N12"
+        ]
+      },
+      {
+        "amount": 90,
+        "unit": "days",
+        "anchor": "the date the licensing authority receives a request for a criminal history evaluation letter",
+        "nuggets": [
+          "N14"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "District court in the county where the licensing authority is located (judicial review)",
+        "nuggets": [
+          "N11"
+        ]
+      }
+    ],
+    "ordered_list": [
+      {
+        "item": "the nature and seriousness of the crime",
+        "nuggets": [
+          "N5"
+        ]
+      },
+      {
+        "item": "the relationship of the crime to the purposes for requiring a license",
+        "nuggets": [
+          "N5"
+        ]
+      },
+      {
+        "item": "the extent to which the license might offer an opportunity to commit the same type of crime again",
+        "nuggets": [
+          "N5"
+        ]
+      },
+      {
+        "item": "the relationship of the crime to the ability or capacity to perform the duties of the occupation",
+        "nuggets": [
+          "N5"
+        ]
+      },
+      {
+        "item": "any correlation between the elements of the crime and the duties of the occupation",
+        "nuggets": [
+          "N5"
+        ]
+      }
+    ],
+    "fee": [
+      {
+        "value": "evaluation-letter fee set by each state licensing authority to cover its cost; no statutory amount",
+        "nuggets": [
+          "N24"
+        ]
+      }
+    ]
+  },
+  "answer": "Yes, on limited grounds. A Texas licensing authority may deny a license or exam for a conviction of an offense directly related to the job, an Article 42A.054 offense, or a sexually violent offense [N1]. A Class C misdemeanor alone does not count, except domestic violence for a firearm license [N2]. A dismissed deferred adjudication usually is not a conviction [N3][N16][N17], and bare arrests cannot count [N4]. The board judges relatedness [N5], then weighs your age, time since the offense, work history, rehabilitation, supervision compliance and recommendation letters [N6]. Without such a conviction, otherwise qualified applicants must get the license or a 12-month provisional license, except for law enforcement, public health, education, safety or state-regulated financial-services licenses [N7]. Lawyers, Chapter 1701 law enforcement licensees and EMS applicants follow other rules [N15].\n\nTo challenge: before denying, the board must state its reason in writing and allow at least 30 days to respond [N8]; you must supply evidence [N19]. The denial must give reasons, the review procedure and the earliest appeal date [N9]. Request a hearing under the agency's rules; a specific rehearing motion within 25 days of the signed decision is required before suing [N10][N20][N21]. Then sue in district court in the board's county [N11] within 30 days after the decision is final [N12]. If you are in or planning a program or exam for an initial license, request an evaluation letter [N13], due within 90 days [N14]. A program that failed to warn you may owe refunds [N25].",
+  "steps": {
+    "process_name": "Texas licensing decision based on a prior conviction, and how to challenge a denial",
+    "trigger": "A person with a prior conviction applies for, or plans to apply for, a Texas occupational license",
+    "trigger_source": {
+      "section": "53.0231",
+      "subsection": "a",
+      "quote": "deny a person a license or the opportunity to be examined for a license because of the person's prior conviction of an offense"
+    },
+    "actors": [
+      {
+        "id": "licensing_authority",
+        "name": "Licensing authority (state board, commission or agency that issues the license)",
+        "kind": "public-body",
+        "source": {
+          "section": "53.025",
+          "subsection": "a",
+          "quote": "Each licensing authority shall issue guidelines relating to the practice of the licensing authority under this chapter"
+        }
+      },
+      {
+        "id": "applicant",
+        "name": "Applicant with a prior conviction",
+        "kind": "private-party",
+        "source": {
+          "section": "53.023",
+          "subsection": "b",
+          "quote": "The applicant has the responsibility, to the extent possible, to obtain and provide to the licensing authority the recommendations described by Subsection (a)(7)"
+        }
+      },
+      {
+        "id": "district_court",
+        "name": "District court in the county where the licensing authority is located",
+        "kind": "court",
+        "source": {
+          "section": "53.052",
+          "subsection": "a",
+          "quote": "the district court in the county in which the licensing authority is located"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "request_letter",
+        "actor": "applicant",
+        "action": "Request criminal history evaluation letter",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "condition": "preparing_for_initial_license",
+        "recipient": "licensing_authority",
+        "source": {
+          "section": "53.102",
+          "subsection": "a",
+          "quote": "A person may request a licensing authority to issue a criminal history evaluation letter regarding the person's eligibility for a license issued by that authority"
+        }
+      },
+      {
+        "id": "issue_letter",
+        "actor": "licensing_authority",
+        "action": "Issue eligibility notice or letter",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "request_letter"
+        ],
+        "recipient": "applicant",
+        "deadline": {
+          "amount": 90,
+          "unit": "days",
+          "anchor": "the date the authority receives the request",
+          "consequence": "unstated",
+          "source": {
+            "section": "53.104",
+            "subsection": "c",
+            "quote": "not later than the 90th day after the date the authority receives the request"
+          }
+        },
+        "source": {
+          "section": "53.104",
+          "subsection": "b",
+          "quote": "the licensing authority shall issue a letter setting out each basis for potential ineligibility"
+        }
+      },
+      {
+        "id": "assess_conviction",
+        "actor": "licensing_authority",
+        "action": "Decide whether the conviction is a ground",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [],
+        "decision": "conviction_ground",
+        "source": {
+          "section": "53.022",
+          "subsection": null,
+          "quote": "the licensing authority shall consider each of the following factors"
+        }
+      },
+      {
+        "id": "notice_intended_denial",
+        "actor": "licensing_authority",
+        "action": "Send written notice of intended denial and basis",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "assess_conviction"
+        ],
+        "condition": "may_deny",
+        "recipient": "applicant",
+        "source": {
+          "section": "53.0231",
+          "subsection": "a.1",
+          "quote": "provides written notice to the person of the reason for the intended denial"
+        }
+      },
+      {
+        "id": "submit_information",
+        "actor": "applicant",
+        "action": "Submit relevant information and evidence",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "notice_intended_denial"
+        ],
+        "recipient": "licensing_authority",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the written notice of the intended denial (a minimum period)",
+          "consequence": "right-lapses",
+          "on_miss": "decide_application",
+          "source": {
+            "section": "53.0231",
+            "subsection": "a.2",
+            "quote": "allows the person not less than 30 days to submit any relevant information to the licensing authority"
+          }
+        },
+        "source": {
+          "section": "53.0231",
+          "subsection": "a.2",
+          "quote": "submit any relevant information to the licensing authority"
+        }
+      },
+      {
+        "id": "decide_application",
+        "actor": "licensing_authority",
+        "action": "Decide; weigh 53.023 factors if directly related",
+        "kind": "decision",
+        "modality": "permission",
+        "after": [
+          "submit_information"
+        ],
+        "source": {
+          "section": "53.021",
+          "subsection": "a",
+          "quote": "a licensing authority may suspend or revoke a license, disqualify a person from receiving a license, or deny to a person the opportunity to take a licensing examination"
+        }
+      },
+      {
+        "id": "notify_denial",
+        "actor": "licensing_authority",
+        "action": "Send written denial with review rights",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide_application"
+        ],
+        "condition": "denied",
+        "recipient": "applicant",
+        "source": {
+          "section": "53.051",
+          "subsection": null,
+          "quote": "shall notify the person in writing of"
+        }
+      },
+      {
+        "id": "contested_hearing",
+        "actor": "applicant",
+        "action": "Present evidence at contested-case hearing",
+        "kind": "hearing",
+        "modality": "right",
+        "after": [
+          "notify_denial"
+        ],
+        "recipient": "licensing_authority",
+        "source": {
+          "section": "2001.051",
+          "subsection": "2",
+          "quote": "to respond and to present evidence and argument on each issue involved in the case"
+        }
+      },
+      {
+        "id": "final_order",
+        "actor": "licensing_authority",
+        "action": "Sign written decision with findings",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "contested_hearing"
+        ],
+        "source": {
+          "section": "2001.141",
+          "subsection": "a",
+          "quote": "must be in writing and signed by a person authorized by the agency to sign the agency decision or order"
+        }
+      },
+      {
+        "id": "issue_license",
+        "actor": "licensing_authority",
+        "action": "Issue license or 12-month provisional license",
+        "kind": "act",
+        "modality": "obligation",
+        "after": [
+          "assess_conviction"
+        ],
+        "condition": "must_issue",
+        "source": {
+          "section": "53.0211",
+          "subsection": "b",
+          "quote": "a licensing authority shall issue to an otherwise qualified applicant who has been convicted of an offense"
+        }
+      },
+      {
+        "id": "grant_license",
+        "actor": "licensing_authority",
+        "action": "Grant license despite the conviction",
+        "kind": "act",
+        "modality": "permission",
+        "after": [
+          "decide_application",
+          "final_order"
+        ],
+        "join": "any",
+        "condition": "granted",
+        "source": {
+          "section": "53.021",
+          "subsection": "a",
+          "quote": "Subject to Section 53.0231, a licensing authority may suspend or revoke a license, disqualify a person from receiving a license"
+        }
+      },
+      {
+        "id": "motion_rehearing",
+        "actor": "applicant",
+        "action": "File motion for rehearing",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "final_order"
+        ],
+        "condition": "denied",
+        "recipient": "licensing_authority",
+        "deadline": {
+          "amount": 25,
+          "unit": "days",
+          "anchor": "the date the decision or order that is the subject of the motion is signed",
+          "consequence": "right-lapses",
+          "on_miss": "denial_final",
+          "source": {
+            "section": "2001.146",
+            "subsection": "a",
+            "quote": "not later than the 25th day after the date the decision or order that is the subject of the motion is signed"
+          }
+        },
+        "source": {
+          "section": "2001.145",
+          "subsection": "a",
+          "quote": "A timely motion for rehearing is a prerequisite to an appeal in a contested case"
+        }
+      },
+      {
+        "id": "rule_on_rehearing",
+        "actor": "licensing_authority",
+        "action": "Act on motion for rehearing",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "motion_rehearing"
+        ],
+        "deadline": {
+          "amount": 55,
+          "unit": "days",
+          "anchor": "the date the decision or order that is the subject of the motion is signed",
+          "consequence": "deemed-denial",
+          "on_miss": "decision_final",
+          "source": {
+            "section": "2001.146",
+            "subsection": "c",
+            "quote": "not later than the 55th day after the date the decision or order that is the subject of the motion is signed or the motion for rehearing is overruled by operation of law"
+          }
+        },
+        "source": {
+          "section": "2001.146",
+          "subsection": "c",
+          "quote": "A state agency shall act on a motion for rehearing"
+        }
+      },
+      {
+        "id": "decision_final",
+        "actor": "licensing_authority",
+        "action": "Decision becomes final and appealable",
+        "kind": "record",
+        "modality": "none",
+        "after": [
+          "rule_on_rehearing"
+        ],
+        "source": {
+          "section": "2001.144",
+          "subsection": "a.2",
+          "quote": "if a motion for rehearing is timely filed, on the date: (A) the order overruling the latest filed motion for rehearing is signed; or (B) the latest filed motion for rehearing is overruled by operation of law"
+        }
+      },
+      {
+        "id": "petition_review",
+        "actor": "applicant",
+        "action": "File and serve district court petition",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [
+          "decision_final"
+        ],
+        "recipient": "district_court",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "the date the licensing authority's decision is final and appealable",
+          "consequence": "right-lapses",
+          "on_miss": "denial_final",
+          "source": {
+            "section": "53.052",
+            "subsection": "b",
+            "quote": "must be filed not later than the 30th day after the date the licensing authority's decision is final and appealable"
+          }
+        },
+        "source": {
+          "section": "53.052",
+          "subsection": "a",
+          "quote": "may file an action in the district court in the county in which the licensing authority is located"
+        }
+      },
+      {
+        "id": "court_review",
+        "actor": "district_court",
+        "action": "Review the evidence and agency decision",
+        "kind": "review",
+        "modality": "obligation",
+        "after": [
+          "petition_review"
+        ],
+        "source": {
+          "section": "53.052",
+          "subsection": "a",
+          "quote": "for review of the evidence presented to the licensing authority and the decision of the licensing authority"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "conviction_ground",
+        "question": "Does Chapter 53 let the licensing authority deny the license because of this conviction?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "class_c_only",
+            "label": "Convicted only of a Class C misdemeanor (not a misdemeanor crime of domestic violence for a firearm license)",
+            "type": "boolean"
+          },
+          {
+            "name": "excluded_occupation",
+            "label": "License to provide law enforcement, public health, education or safety, or state-regulated financial services (Section 53.0211(a))",
+            "type": "boolean"
+          },
+          {
+            "name": "disqualifying_offense",
+            "label": "Offense listed in Article 42A.054 or a sexually violent offense",
+            "type": "boolean"
+          },
+          {
+            "name": "directly_related",
+            "label": "Offense directly relates to the occupation (Section 53.022 factors)",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "result",
+            "label": "What Chapter 53 allows",
+            "type": "string"
+          },
+          {
+            "name": "must_issue",
+            "label": "Must issue the license or a provisional license if otherwise qualified",
+            "type": "boolean"
+          },
+          {
+            "name": "may_deny",
+            "label": "May deny after the Section 53.0231 notice",
+            "type": "boolean"
+          },
+          {
+            "name": "no_ground",
+            "label": "Conviction is not a Section 53.021(a) ground",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "-",
+              "false",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"Must issue the license or a 12-month provisional license to an otherwise qualified applicant\"",
+              "true",
+              "false",
+              "false"
+            ],
+            "source": {
+              "section": "53.0211",
+              "subsection": "b",
+              "quote": "unless the applicant has been convicted of an offense described by Section 53.021(a), a licensing authority shall issue to an otherwise qualified applicant"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "-",
+              "-",
+              "-"
+            ],
+            "then": [
+              "\"No ground under Section 53.021(a): Class C misdemeanor only\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "53.021",
+              "subsection": "a-1",
+              "quote": "Subsection (a) does not apply to a person who has been convicted only of an offense punishable as a Class C misdemeanor unless"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              "true",
+              "-"
+            ],
+            "then": [
+              "\"May deny for an Article 42A.054 or sexually violent offense after a notice naming the disqualifying offense\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "53.021",
+              "subsection": "a",
+              "quote": "(2) an offense listed in Article 42A.054, Code of Criminal Procedure; or (3) a sexually violent offense, as defined by Article 62.001, Code of Criminal Procedure"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "-",
+              "false",
+              "true"
+            ],
+            "then": [
+              "\"May deny after notice and weighing the Section 53.023(a) factors, which the applicant must document\"",
+              "false",
+              "true",
+              "false"
+            ],
+            "source": {
+              "section": "53.023",
+              "subsection": "a",
+              "quote": "If a licensing authority determines under Section 53.022 that a criminal conviction directly relates to the duties and responsibilities of a licensed occupation, the licensing authority shall consider the following"
+            }
+          },
+          {
+            "when": [
+              "false",
+              "true",
+              "false",
+              "false"
+            ],
+            "then": [
+              "\"No Section 53.021(a) ground, but the mandatory-issue rule of Section 53.0211 does not apply to this occupation\"",
+              "false",
+              "false",
+              "true"
+            ],
+            "source": {
+              "section": "53.0211",
+              "subsection": "a",
+              "quote": "This section does not apply to an applicant for a license that would allow the applicant to provide"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "eligibility_ruled",
+        "description": "Letter settles eligibility on the grounds it addresses",
+        "after": [
+          "issue_letter"
+        ],
+        "source": {
+          "section": "53.104",
+          "subsection": "b",
+          "quote": "the authority's ruling on the request determines the requestor's eligibility with respect to the grounds for potential ineligibility set out in the letter"
+        }
+      },
+      {
+        "id": "licensed",
+        "description": "License or 12-month provisional license issued",
+        "after": [
+          "issue_license",
+          "grant_license"
+        ],
+        "source": {
+          "section": "53.0211",
+          "subsection": "b",
+          "quote": "the license for which the applicant applied; or (2) a provisional license under Subsection (b-1) valid for a term of 12 months"
+        },
+        "join": "any"
+      },
+      {
+        "id": "licensed_after_provisional",
+        "description": "Full license issued at the end of a clean provisional term",
+        "after": [
+          "issue_license",
+          "grant_license"
+        ],
+        "join": "any",
+        "when": "provisional_completed",
+        "source": {
+          "section": "53.0211",
+          "subsection": "e",
+          "quote": "The licensing authority shall issue the license for which the applicant originally applied to a provisional license holder on the expiration of the provisional license term"
+        }
+      },
+      {
+        "id": "provisional_revoked",
+        "description": "Provisional license revoked; disqualified from the license",
+        "after": [
+          "issue_license",
+          "grant_license"
+        ],
+        "join": "any",
+        "when": "provisional_revoked",
+        "source": {
+          "section": "53.0211",
+          "subsection": "f",
+          "quote": "If the licensing authority revokes a provisional license under Subsection (d), the provisional license holder is disqualified from receiving the license for which the applicant originally applied"
+        }
+      },
+      {
+        "id": "no_chapter53_ground",
+        "description": "Conviction is no Chapter 53 ground; other requirements decide",
+        "after": [
+          "assess_conviction"
+        ],
+        "when": "no_ground",
+        "source": {
+          "section": "53.021",
+          "subsection": "a",
+          "quote": "on the grounds that the person has been convicted of"
+        }
+      },
+      {
+        "id": "denial_final",
+        "description": "Denial stands; the time to seek review has passed",
+        "after": [],
+        "source": {
+          "section": "53.052",
+          "subsection": "b",
+          "quote": "The petition for an action under Subsection (a) must be filed not later than the 30th day"
+        }
+      },
+      {
+        "id": "affirmed",
+        "description": "Court affirms the denial",
+        "after": [
+          "court_review"
+        ],
+        "when": "affirmed",
+        "source": {
+          "section": "2001.174",
+          "subsection": "1",
+          "quote": "may affirm the agency decision in whole or in part"
+        }
+      },
+      {
+        "id": "reversed_or_remanded",
+        "description": "Court reverses or remands to the licensing authority",
+        "after": [
+          "court_review"
+        ],
+        "when": "reversed",
+        "source": {
+          "section": "2001.174",
+          "subsection": "2",
+          "quote": "shall reverse or remand the case for further proceedings if substantial rights of the appellant have been prejudiced"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Code of Criminal Procedure Article 42A.054",
+        "role": "lists the serious offenses that are always a ground for denial",
+        "source": {
+          "section": "53.021",
+          "subsection": "a.2",
+          "quote": "an offense listed in Article 42A.054, Code of Criminal Procedure"
+        }
+      },
+      {
+        "citation": "Government Code Chapter 2001 (Administrative Procedure Act)",
+        "role": "governs the proceeding to establish the factors and the contested case",
+        "source": {
+          "section": "53.024",
+          "subsection": null,
+          "quote": "is governed by Chapter 2001, Government Code"
+        }
+      },
+      {
+        "citation": "Code of Criminal Procedure Article 62.001",
+        "role": "defines sexually violent offense and the reportable offenses used for deferred adjudication",
+        "source": {
+          "section": "53.021",
+          "subsection": "a.3",
+          "quote": "a sexually violent offense, as defined by Article 62.001, Code of Criminal Procedure"
+        }
+      },
+      {
+        "citation": "Government Code 2001.176(b)(2)",
+        "role": "the petition must be served on the agency and every party",
+        "source": {
+          "section": "2001.176",
+          "subsection": "b.2",
+          "quote": "a copy of the petition must be served on the state agency and each party of record in the proceedings before the agency"
+        }
+      },
+      {
+        "citation": "Code of Criminal Procedure Article 42A.111(c-1), (d)(4)",
+        "role": "separate bar on using a dismissed deferred adjudication to deny a license, with its own exceptions",
+        "source": {
+          "section": "42A.111",
+          "subsection": "c-1",
+          "quote": "may not be used as grounds for denying issuance of a professional or occupational license"
+        }
+      }
+    ],
+    "gaps": [
+      "Whether and how an applicant asks for a contested-case hearing after a denial (deadline, form, and whether the State Office of Administrative Hearings hears it) is set by each licensing agency's own statute and rules; Chapter 53 only requires the person to exhaust administrative appeals before suing.",
+      "Occupation-specific statutes and each authority's guidelines (53.025) shape which crimes it treats as directly related, and some laws make a conviction a bar 'by operation of law' (53.021(d)(1)(B)(ii)); but for the occupations it covers, Section 53.0211(b) applies 'notwithstanding any law other than Subsection (a)', and the Section 53.0231 notice applies 'notwithstanding any other law'.",
+      "A deferred adjudication that ended in dismissal and discharge can count as a conviction only under Section 53.021(e) (the excluded occupations) or Section 53.021(d) (a qualifying charge or timing AND a finding of continued threat or opportunity to repeat); Code of Criminal Procedure Article 42A.111(c-1) and (d)(4) adds a separate protection with different exceptions, and neither statute says how the two interact. The decision table covers convictions only.",
+      "Section 53.0231(b) says the notice contains 'as applicable' either a disqualification statement or a statement that the decision rests on the 53.023(a) factors; pairing the first with Article 42A.054 and sexually violent offenses and the second with directly related offenses is an inference.",
+      "The statute states no consequence if the authority misses the 90-day evaluation-letter deadline; extensions of the rehearing periods (2001.146(e)-(f)), the late-notice restart of the periods (2001.142(c)), and the path where a motion for rehearing is granted (a new decision) are not modeled."
+    ]
+  },
+  "out_of_corpus": [
+    {
+      "kind": "regulation",
+      "what": "Each licensing authority's criminal-history guidelines (why particular crimes relate to its license) and its rules for requesting a hearing after a denial",
+      "where": "Texas Register and Texas Administrative Code, by agency (Occupations Code 53.025)"
+    },
+    {
+      "kind": "regulation",
+      "what": "Procedure for contested-case hearings before an administrative law judge",
+      "where": "State Office of Administrative Hearings rules, 1 Texas Administrative Code chapter 155"
+    },
+    {
+      "kind": "agency policy",
+      "what": "The applicant best-practices guide for people with a prior conviction, and each agency's evaluation-letter fee and forms",
+      "where": "State Auditor's website (Occupations Code 53.026) and each licensing agency's website"
+    },
+    {
+      "kind": "court rule",
+      "what": "Character and fitness review of bar applicants with criminal records (lawyers are outside Chapter 53)",
+      "where": "Texas Supreme Court Rules Governing Admission to the Bar of Texas (Board of Law Examiners)"
+    },
+    {
+      "kind": "federal",
+      "what": "Definition of a misdemeanor crime of domestic violence used for firearm licenses, and federal bars for some federally regulated occupations",
+      "where": "18 U.S.C. 921 and other federal law"
+    }
+  ],
+  "version_flags": [
+    "Section 53.023(c) was repealed by Acts 2019, 86th Leg., R.S., Ch. 765 (H.B. 1342), eff. September 1, 2019, as noted in the downloaded text; guides written before then may describe superseded Chapter 53 rules.",
+    "Code of Criminal Procedure Article 62.001(5) as downloaded has two paragraphs lettered (M) (civil commitment as a sexually violent predator, and child grooming), a duplicate designation from separate bills, not a pending version.",
+    "None of the sections relied on carries an '(Effective until ...)' or '(Effective ...)' heading as of 2026-10-10."
+  ],
+  "local_option": "Chapter 53 also binds local and county licensing authorities, which must post their guidelines at the county courthouse or publish them in a countywide newspaper (53.025(c)); each authority writes its own guidelines. Criminal history evaluation letters (53.101-53.105) come only from state agencies (53.101(2)), each setting its own cost-based fee (53.105).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Texas has a general statute, Occupations Code Chapter 53, that governs every licensing authority except those excluded by 53.002 (Supreme Court licensees, anyone licensed or applying under Chapter 1701, EMS applicants, and Medical, Pharmacy, Dental or Veterinary Board licensees with certain drug felonies). Its intent is to enhance employment after a conviction and it is liberally construed (53.003). Denial is discretionary ('may') and limited to three grounds (53.021(a)); Class C misdemeanors, most dismissed deferred adjudications and bare arrests are excluded (53.021(a-1), (c)-(e); 53.0232), and CCP 42A.111(c-1) separately protects dismissed deferred adjudications, subject to (d)(4). A person with an order of nondisclosure need not mention the proceeding on a licensing application (Gov't Code 411.0755), although criminal justice agencies may still disclose it for regulatory licensing purposes (411.0765(a)(2)); these sections are not gold. Otherwise qualified applicants without a 53.021(a) conviction must get the license or a 12-month provisional license (53.0211(b)), except in the occupations listed in 53.0211(a); a clean provisional term ends in the full license (53.0211(e)). Process: 53.022 relatedness factors, 53.023 fitness factors (only after a directly-related finding), 53.0231 pre-denial notice with at least 30 days to respond and the applicant's evidence burden, 53.051 denial notice, then administrative appeal under the APA (53.024; Gov't Code 2001.051 hearing, 2001.141 written decision, 2001.145-.146 particularized motion for rehearing within 25 days, agency action within 55 days or overruled by operation of law), then judicial review in the district court of the county where the authority is located within 30 days after the decision is final and appealable (53.052; this overrides the APA's default Travis County venue in 2001.176(b)(1), while service on the agency and each party under 2001.176(b)(2) still applies, and a premature petition counts under 2001.176(a)). 53.052 provides review 'of the evidence presented to the licensing authority'; treating this as substantial-evidence review under 2001.174 (via 2001.172) is an inference, not stated in the text. The criminal history evaluation letter (53.101-53.105) is the preliminary determination for initial licenses, answered within 90 days and binding absent undisclosed new evidence. Programs preparing people for an initial license must warn of conviction-based ineligibility and the right to an evaluation letter; failing that, the authority orders refunds after a conviction-based denial (53.152-53.153). Agency-specific statutes (for example Occupations Code 51.356 for TDLR programs and many 'rules on consequences of criminal conviction' sections) apply Chapter 53's factors and may add rules."
+}

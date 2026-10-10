@@ -1,0 +1,401 @@
+{
+  "qid": "prison_wages",
+  "question": "If I work while I'm incarcerated, in a prison job or on work release, how is my pay set, what can the state deduct from my earnings and in what order, and what do I get back when I'm released?",
+  "state": "va",
+  "as_of": "2026-10-10",
+  "question_type": "list",
+  "coverage": "partial",
+  "profile": {
+    "groups": [
+      [
+        "work release",
+        "work program",
+        "jail industry",
+        "labor",
+        "employment"
+      ],
+      [
+        "wages",
+        "earnings",
+        "compensation",
+        "allowance",
+        "pay incentives"
+      ],
+      [
+        "deduct",
+        "withhold",
+        "order of priority",
+        "distribution",
+        "disposition"
+      ],
+      [
+        "keep",
+        "room and board",
+        "cost of incarceration",
+        "costs associated with the prisoners' keep"
+      ],
+      [
+        "support",
+        "restitution",
+        "fines",
+        "costs"
+      ],
+      [
+        "personal trust account",
+        "inmate trust account",
+        "prisoner's account",
+        "inmate's account"
+      ],
+      [
+        "release",
+        "discharge",
+        "parole",
+        "balance",
+        "accumulated"
+      ],
+      [
+        "prisoner",
+        "inmate",
+        "offender",
+        "confined"
+      ]
+    ],
+    "negative": [
+      "wrongful incarceration",
+      "state wards",
+      "workers' compensation",
+      "unemployment benefits"
+    ],
+    "slots": [
+      "order",
+      "fee",
+      "amount",
+      "office"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "53.1-42",
+      "role": "primary",
+      "why": "Prison-job pay: a daily allowance set by the DOC Director for satisfactory labor, accumulated and paid at discharge, with Director-limited draws."
+    },
+    {
+      "ref": "53.1-60",
+      "role": "primary",
+      "why": "State work release: pay equal to regular employees, wages paid to the Director, four-step order of priority for deductions, balance to account or family."
+    },
+    {
+      "ref": "19.2-354",
+      "role": "primary",
+      "why": "Court debt in work release, home/electronic incarceration and nonconsecutive-days programs: five-step order of priority putting restitution ahead of fines and costs; credits for incarcerated work paid below minimum wage."
+    },
+    {
+      "ref": "53.1-43.1",
+      "role": "primary",
+      "why": "Mandatory 10 percent set-aside of all funds into a personal trust account until $1,000, paid out at parole or final discharge."
+    },
+    {
+      "ref": "53.1-190",
+      "role": "primary",
+      "why": "What a released state prisoner receives: accumulated unwithdrawn pay, a discretionary $25 floor, transportation and clothing."
+    },
+    {
+      "ref": "53.1-131",
+      "role": "primary",
+      "why": "Local (jail) work release: wages may be paid to the program after payroll deductions, distributed for keep, travel, dependents' support and court debts; balance paid at release."
+    },
+    {
+      "ref": "53.1-150",
+      "role": "supporting",
+      "why": "The fifty-dollar fee required as a condition of work release (one of the sums deducted under 53.1-60(C)(3))."
+    },
+    {
+      "ref": "53.1-41",
+      "role": "supporting",
+      "why": "Paying court fines, costs and restitution is a condition of any DOC work program and the Director withholds those payments; placement preference for assigning 50 percent of earnings to child support."
+    },
+    {
+      "ref": "53.1-131.3",
+      "role": "supporting",
+      "why": "Local option for a sheriff or jail superintendent to charge a keep fee of up to $3 per day."
+    },
+    {
+      "ref": "40.1-28.9",
+      "role": "supporting",
+      "why": "Virginia Minimum Wage Act definition of employee excludes persons confined in penal or corrective institutions."
+    },
+    {
+      "ref": "53.1-43",
+      "role": "supporting",
+      "why": "Director may pay bonuses as pay incentives for responsible positions or exemplary work."
+    },
+    {
+      "ref": "53.1-32.1",
+      "role": "supporting",
+      "why": "Program assignments and pay incentives; inmates working in DOC programs are not state employees and get no state employee benefits."
+    },
+    {
+      "ref": "53.1-45.1",
+      "role": "supporting",
+      "why": "Private or public entity work programs inside a state prison: Director arranges pay; order support, court debts, portion of keep; balance credited under 53.1-42."
+    },
+    {
+      "ref": "53.1-131.2",
+      "role": "supporting",
+      "why": "Work release from home/electronic incarceration: same four-step order of priority as 53.1-60; balance to account or family."
+    },
+    {
+      "ref": "53.1-133.4",
+      "role": "supporting",
+      "why": "Jail industry program pay: sheriff sets a daily allowance, distributed like 53.1-131 wages, extra deductions capped at 80 percent of gross; balance paid at release."
+    },
+    {
+      "ref": "53.1-155.1",
+      "role": "supporting",
+      "why": "Pre-release residential community program or work release wages: distributed for keep, travel, support and court debts; balance paid at release."
+    },
+    {
+      "ref": "53.1-61",
+      "role": "supporting",
+      "why": "Social services may require the Director to withhold part of a work releasee's earnings for dependents on public assistance."
+    },
+    {
+      "ref": "53.1-60.1",
+      "role": "supporting",
+      "why": "Valid court orders or judgments against a state prisoner are satisfied from the inmate's trust account."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "In a regular state prison job, pay is a daily allowance set by the Director of the Department of Corrections for each day of labor satisfactory to the superintendent or sheriff.",
+      "importance": "vital",
+      "section": "53.1-42",
+      "quote": "shall be allowed an amount to be established by the Director for each day of labor satisfactory to the superintendent or sheriff in whose charge he is",
+      "slot": null
+    },
+    {
+      "id": "N2",
+      "text": "Virginia's minimum wage law does not apply to people confined in a penal or corrective institution, so prison pay is not tied to the minimum wage.",
+      "importance": "okay",
+      "section": "40.1-28.9",
+      "quote": "Any person confined in any penal or corrective institution of the Commonwealth or any of its political subdivisions",
+      "slot": null
+    },
+    {
+      "id": "N3",
+      "text": "On state work release, the Director arranges pay, which must be the same as regular employees in similar occupations, and the wages are paid to the Director.",
+      "importance": "vital",
+      "section": "53.1-60",
+      "quote": "The compensation for such employment shall be arranged by the Director and shall be the same as that of regular employees in similar occupations. Any wages earned shall be paid to the Director.",
+      "slot": null
+    },
+    {
+      "id": "N4",
+      "text": "The Director deducts from work release wages in a set order of priority, starting with any judicial or administrative support order.",
+      "importance": "vital",
+      "section": "53.1-60",
+      "quote": "deduct from such wages, in the following order of priority, an amount to: 1. Meet the obligation of any judicial or administrative order to provide support",
+      "slot": "order"
+    },
+    {
+      "id": "N5",
+      "text": "Second in priority are court-ordered fines, restitution or costs.",
+      "importance": "vital",
+      "section": "53.1-60",
+      "quote": "2. Pay any fines, restitution or costs as ordered by the court",
+      "slot": "order"
+    },
+    {
+      "id": "N6",
+      "text": "Third are travel and other expenses made necessary by the work release job or program, including the 53.1-150 fee.",
+      "importance": "vital",
+      "section": "53.1-60",
+      "quote": "3. Pay travel and other such expenses made necessary by his work release employment or participation in an educational or rehabilitative program, including the sums specified in § 53.1-150",
+      "slot": "order"
+    },
+    {
+      "id": "N7",
+      "text": "Last comes the prisoner's keep (room and board); the remaining balance is credited to the prisoner's account or sent to family in whatever amount the prisoner chooses.",
+      "importance": "vital",
+      "section": "53.1-60",
+      "quote": "4. Defray the prisoner's keep. The balance shall be credited to the prisoner's account or sent to his family in an amount the prisoner so chooses.",
+      "slot": "order"
+    },
+    {
+      "id": "N8",
+      "text": "For court debt collected from work release, home/electronic incarceration and nonconsecutive-days programs, restitution is paid before fines or costs (after support, and before travel expenses and keep).",
+      "importance": "okay",
+      "section": "19.2-354",
+      "quote": "2. Pay any restitution as ordered by the court; 3. Pay any fines or costs as ordered by the court",
+      "slot": "order"
+    },
+    {
+      "id": "N9",
+      "text": "A person on work release must pay a fifty-dollar fee as a condition of work release, unless the sentencing/supervision fee was already assessed.",
+      "importance": "okay",
+      "section": "53.1-150",
+      "quote": "who participates in a work release program pursuant to the provisions of §§ 53.1-60 and 53.1-131 shall be required to pay a fee of fifty dollars as a condition of parole or work release",
+      "slot": "fee"
+    },
+    {
+      "id": "N10",
+      "text": "If a prisoner in any DOC work program owes court fines, costs, forfeitures, restitution or penalties, the Director withholds the required payments from amounts due to the prisoner.",
+      "importance": "okay",
+      "section": "53.1-41",
+      "quote": "The Director shall withhold such payments from any amounts due to such person.",
+      "slot": null
+    },
+    {
+      "id": "N11",
+      "text": "Unless sentenced to death, life without parole, or a term with no release before age 75, 10 percent of all money an inmate receives from any source goes into a personal trust account until it reaches $1,000.",
+      "importance": "vital",
+      "section": "53.1-43.1",
+      "quote": "10 percent of any funds received by an inmate from any source shall be deposited by the Department in the inmate's personal trust account until the account has a balance of $1,000",
+      "slot": "amount"
+    },
+    {
+      "id": "N12",
+      "text": "The personal trust account is paid to the inmate upon parole or final discharge.",
+      "importance": "vital",
+      "section": "53.1-43.1",
+      "quote": "Funds in an inmate's personal trust account shall be paid to the inmate upon parole or final discharge.",
+      "slot": null
+    },
+    {
+      "id": "N13",
+      "text": "On release after serving at least eight months, the Director must give the prisoner all accumulated, unwithdrawn work allowance and bonus pay, and may top it up so the prisoner has at least twenty-five dollars.",
+      "importance": "vital",
+      "section": "53.1-190",
+      "quote": "The Director, upon the release of a prisoner who has served at least eight months, shall give the prisoner all funds accumulated to his credit pursuant to §§ 53.1-42 and 53.1-43 and not withdrawn by him. In the event such funds do not total twenty-five dollars, the Director may add sufficient money from the appropriation to the Department to enable the prisoner to have a minimum of twenty-five dollars available for withdrawal by him at the time of his release.",
+      "slot": "amount"
+    },
+    {
+      "id": "N14",
+      "text": "In a local jail work release program, any balance of the offender's wages left at the end of the sentence is paid to the offender upon release.",
+      "importance": "vital",
+      "section": "53.1-131",
+      "quote": "Any balance at the end of his sentence shall be paid to the offender upon his release.",
+      "slot": null
+    },
+    {
+      "id": "N15",
+      "text": "A sheriff or jail superintendent may charge jail inmates a reasonable keep fee of no more than $3 per day (refunded if the person is later acquitted).",
+      "importance": "okay",
+      "section": "53.1-131.3",
+      "quote": "Any sheriff or jail superintendent may establish a program to charge inmates a reasonable fee, not to exceed $3 per day, to defray the costs associated with the prisoners' keep.",
+      "slot": "fee"
+    }
+  ],
+  "slots": {
+    "ordered_list": [
+      {
+        "item": "Judicial or administrative support orders (child or spousal support)",
+        "nuggets": [
+          "N4"
+        ]
+      },
+      {
+        "item": "Court-ordered fines, restitution and costs (restitution before fines and costs under 19.2-354(B))",
+        "nuggets": [
+          "N5",
+          "N8"
+        ]
+      },
+      {
+        "item": "Travel and other work release expenses, including the 53.1-150 fee",
+        "nuggets": [
+          "N6",
+          "N9"
+        ]
+      },
+      {
+        "item": "The prisoner's keep (room and board)",
+        "nuggets": [
+          "N7"
+        ]
+      },
+      {
+        "item": "Balance credited to the prisoner's account or sent to family as the prisoner chooses",
+        "nuggets": [
+          "N7"
+        ]
+      }
+    ],
+    "fee": [
+      {
+        "value": "fifty dollars work release fee",
+        "nuggets": [
+          "N9"
+        ]
+      },
+      {
+        "value": "up to $3 per day jail keep fee (local option)",
+        "nuggets": [
+          "N15"
+        ]
+      }
+    ],
+    "amount": [
+      {
+        "value": "10 percent of all funds received, until the personal trust account reaches $1,000",
+        "nuggets": [
+          "N11"
+        ]
+      },
+      {
+        "value": "minimum of twenty-five dollars at release (discretionary top-up, after at least eight months served)",
+        "nuggets": [
+          "N13"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "Director of the Department of Corrections (sets prison pay, receives work release wages, makes deductions)",
+        "nuggets": [
+          "N1",
+          "N3",
+          "N4"
+        ]
+      },
+      {
+        "value": "Sheriff or jail superintendent (local jail keep fee)",
+        "nuggets": [
+          "N15"
+        ]
+      }
+    ]
+  },
+  "answer": "In an ordinary prison job, the Department of Corrections (DOC) Director sets a daily allowance for satisfactory work [N1], and Virginia's minimum-wage law does not cover people confined in prisons or jails [N2]. On state work release, your pay must match regular employees in similar jobs, and your wages go to the Director [N3], who deducts in this order: (1) any court or administrative support order [N4]; (2) court-ordered fines, restitution and costs [N5], with restitution paid before fines and costs [N8]; (3) travel and other work-related expenses [N6], including a $50 work release fee unless a supervision fee was already charged [N9]; and (4) your keep, or room and board [N7]. The balance goes into your account or to your family, as you choose [N7]. In any DOC work program, court-ordered payments are withheld from what you are owed [N10]. A sheriff or jail superintendent may charge jail inmates a keep fee of up to $3 a day [N15]. Unless you are serving a death, life-without-parole or no-release sentence, 10% of all money you receive goes into a personal trust account until it holds $1,000 [N11], paid to you at parole or final discharge [N12]. When released from prison after at least eight months, you get all your unwithdrawn accumulated pay, which the Director may top up to $25 [N13]. On local jail work release, any balance left at the end of your sentence is paid to you at release [N14].",
+  "steps": null,
+  "out_of_corpus": [
+    {
+      "kind": "agency policy",
+      "what": "The actual prison pay rates (the daily allowance schedule under 53.1-42 and pay incentives under 53.1-43 and 53.1-32.1(E)), how much of the allowance may be drawn while confined, and the amounts of work release keep and travel deductions, which 53.1-60(C) leaves to regulations promulgated by the Director.",
+      "where": "Virginia Department of Corrections operating procedures on inmate pay, work programs and inmate finances (published by the DOC)."
+    },
+    {
+      "kind": "regulation",
+      "what": "Rules for local jail work release and home/electronic incarceration wage receipt, withholding and disbursement, and the model plan for the jail keep fee.",
+      "where": "State Board of Local and Regional Jails regulations in the Virginia Administrative Code (required by 53.1-131, 53.1-131.2(J), 53.1-131.3 and 19.2-354(B))."
+    },
+    {
+      "kind": "local",
+      "what": "Whether a jail charges a keep fee, the amount of keep deducted on local work release, and jail industry pay and deductions.",
+      "where": "Each sheriff's or regional jail authority's policies."
+    },
+    {
+      "kind": "federal",
+      "what": "Standard payroll deductions required by law on work release paychecks (federal income tax withholding, Social Security and Medicare), and federal conditions on private-sector prison industry work programs (prevailing wage and limits on deductions).",
+      "where": "Internal Revenue Code and the federal Prison Industry Enhancement Certification Program (18 U.S.C. 1761(c))."
+    }
+  ],
+  "version_flags": [
+    "19.2-354 is labelled (Effective until January 1, 2027); that version, with the five-step order of priority in subsection B, is in force on 2026-10-10. The version effective January 1, 2027 is not in the downloaded corpus and may change it.",
+    "40.1-28.9 is labelled (Effective until July 1, 2027); that version, excluding confined persons from the minimum wage definition of employee, is in force on 2026-10-10. The later version is not in the downloaded corpus."
+  ],
+  "local_option": "For jail inmates the sheriff (or regional jail superintendent) decides whether to assign work release (53.1-131) and whether to charge a keep fee of up to $3 per day (53.1-131.3), and sets jail industry pay and extra deductions up to 80 percent of gross wages (53.1-133.4); the sentencing court may order local work release wages paid to the program director (53.1-131).",
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Order of priority differs slightly by statute: 53.1-60(C) (state work release) and 53.1-131.2(J) (home/electronic incarceration work release) list support, then fines/restitution/costs together, then travel and work expenses including the 53.1-150 fee, then keep; 19.2-354(B), which governs court debt for all work release, home/electronic and nonconsecutive-days programs (53.1-60, 53.1-131, 53.1-131.1, 53.1-131.2), splits court debt into restitution then fines or costs (five steps). 53.1-131 (local work release) and 53.1-155.1 (pre-release residential programs) list keep first, then travel, dependents' support, then court debts as 'purposes' without the words 'order of priority'; 19.2-354(B) supplies the priority for court-ordered payments in 53.1-131 programs. 53.1-45.1 (outside-entity work programs inside a prison) deducts support, then fines/restitution/costs, then a portion of keep, and credits the balance under 53.1-42. 53.1-133.4 (jail industry) distributes pay like 53.1-131 and allows extra deductions for victim restitution and program operating costs capped at 80 percent of gross wages, with the balance paid at release. Other withholding: 53.1-61 (social services may require withholding for dependents on public assistance), 53.1-60.1 (court orders or judgments satisfied from the trust account), 8.01-691 (in forma pauperis filing fee installments, not included). 53.1-42 independently says the allowance accumulates and is paid over at discharge (no minimum time served); 53.1-190 frames the release payout, the discretionary $25 floor, and optional transportation and clothing for a prisoner who has served at least eight months. 53.1-41(A) gives work placement preference to prisoners who assign at least 50 percent of earnings to child support. 19.2-354(C) lets incarcerated work paid below minimum wage earn credit against fines and costs at the community service rate less wages received. 53.1-32.1(F): DOC inmate workers are not state employees and get no state employee, unemployment or workers' compensation benefits under the cited chapters. 53.1-150's fee applies 'except when the fee referenced in subsection A has been previously assessed'."
+}

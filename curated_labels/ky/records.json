@@ -1,0 +1,337 @@
+{
+ "state": "ky",
+ "question": "records",
+ "sections": [
+  "61.872",
+  "61.880"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "61.872",
+   "quote": "All public records shall be open for inspection by any resident of the",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general right of inspection"
+  },
+  {
+   "section": "61.872",
+   "quote": "suitable facilities shall be made available by each public agency for the exercise of",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "facilities duty, not per case"
+  },
+  {
+   "section": "61.872",
+   "quote": "this right. No resident of the Commonwealth shall remove original copies of public",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "removal prohibition"
+  },
+  {
+   "section": "61.872",
+   "quote": "Any resident of the Commonwealth shall have the right to inspect public",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general right statement"
+  },
+  {
+   "section": "61.872",
+   "quote": "The written application shall be:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester delivers written application"
+  },
+  {
+   "section": "61.872",
+   "quote": "Sent via e-mail to the public agency's official custodian of public records",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "one delivery option, detail"
+  },
+  {
+   "section": "61.872",
+   "quote": "or his or her designee at the e-mail address designated in the public",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "continuation of e-mail option"
+  },
+  {
+   "section": "61.872",
+   "quote": "agency's rules and regulations adopted pursuant to KRS 61.876.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "continuation, rules reference"
+  },
+  {
+   "section": "61.872",
+   "quote": "A public agency shall not require the use of any particular form for the",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "no required form rule"
+  },
+  {
+   "section": "61.872",
+   "quote": "submission of an open records request, but shall accept for any request the",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "form acceptance rule, policy"
+  },
+  {
+   "section": "61.872",
+   "quote": "A resident of the Commonwealth may inspect the public records:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester inspects records"
+  },
+  {
+   "section": "61.872",
+   "quote": "During the regular office hours of the public agency; or",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "inspection option detail"
+  },
+  {
+   "section": "61.872",
+   "quote": "By receiving copies of the public records from the public agency through the",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "copies-by-mail option lead-in"
+  },
+  {
+   "section": "61.872",
+   "quote": "mail. The public agency shall mail copies of the public records to a person",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency mails copies to out-of-county requester"
+  },
+  {
+   "section": "61.872",
+   "quote": "records be mailed, the official custodian shall mail the copies upon receipt of",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "custodian mails copies on payment"
+  },
+  {
+   "section": "61.872",
+   "quote": "the public record requested, that person shall notify the applicant and shall furnish",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "non-custodian notifies applicant, names custodian"
+  },
+  {
+   "section": "61.872",
+   "quote": "the name and location of the official custodian of the agency's public records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "continuation, object of furnish"
+  },
+  {
+   "section": "61.872",
+   "quote": "under this section shall be sustained by clear and convincing evidence.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "burden of proof standard"
+  },
+  {
+   "section": "61.880",
+   "quote": "If a person enforces KRS 61.870 to 61.884 pursuant to this section, he or she shall",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exhaustion order rule"
+  },
+  {
+   "section": "61.880",
+   "quote": "made under KRS 61.870 to 61.884, shall determine within five (5) days, excepting",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 5,
+    "unit": "business_days"
+   },
+   "why": "agency decides whether to comply"
+  },
+  {
+   "section": "61.880",
+   "quote": "to comply with the request and shall notify in writing the person making the request,",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency notifies requester of decision in writing"
+  },
+  {
+   "section": "61.880",
+   "quote": "or in part, inspection of any record shall include a statement of the specific",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "denial states exception and explanation"
+  },
+  {
+   "section": "61.880",
+   "quote": "The response shall be issued by the",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "who issues response; restates notice"
+  },
+  {
+   "section": "61.880",
+   "quote": "official custodian or under his or her authority, and it shall constitute final agency",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "final agency action characterization"
+  },
+  {
+   "section": "61.880",
+   "quote": "If the public agency refuses to",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "condition lead-in"
+  },
+  {
+   "section": "61.880",
+   "quote": "provide a written response, a complaining party shall provide a copy of the",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "complainant sends request copy to AG"
+  },
+  {
+   "section": "61.880",
+   "quote": "written request. The Attorney General shall review the request and denial and",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG reviews and issues decision"
+  },
+  {
+   "section": "61.880",
+   "quote": "In unusual circumstances, the Attorney General may extend the twenty (20)",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG extends decision time limit"
+  },
+  {
+   "section": "61.880",
+   "quote": "shall mail a copy to the agency and a copy to the person who requested the",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG mails decision to both parties"
+  },
+  {
+   "section": "61.880",
+   "quote": "record in question. The burden of proof in sustaining the action shall rest with",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "burden of proof"
+  },
+  {
+   "section": "61.880",
+   "quote": "the agency, and the Attorney General may request additional documentation",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG requests additional documentation"
+  },
+  {
+   "section": "61.880",
+   "quote": "The Attorney General may also request a",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG requests copy of records"
+  },
+  {
+   "section": "61.880",
+   "quote": "copy of the records involved, but they shall not be disclosed.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "confidentiality of records"
+  },
+  {
+   "section": "61.880",
+   "quote": "Each agency shall notify the Attorney General of any actions filed against that",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency notifies AG of court action"
+  },
+  {
+   "section": "61.880",
+   "quote": "Attorney General shall not, however, be named as a party in any Circuit Court",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "AG not a party rule"
+  },
+  {
+   "section": "61.880",
+   "quote": "actions regarding the enforcement of KRS 61.870 to 61.884, nor shall he or she",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "AG no duty to defend"
+  },
+  {
+   "section": "61.880",
+   "quote": "person may complain in writing to the Attorney General, and the complaint shall be",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "person complains to AG of subversion"
+  },
+  {
+   "section": "61.880",
+   "quote": "A party shall have thirty (30) days from the day that the Attorney General",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 30,
+    "unit": "days"
+   },
+   "why": "party appeals AG decision"
+  },
+  {
+   "section": "61.880",
+   "quote": "day time limit shall be treated as if it were an action brought under KRS",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "appeal treatment rule"
+  },
+  {
+   "section": "61.880",
+   "quote": "General's decision shall have the force and effect of law and shall be",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG decision takes effect if unappealed"
+  }
+ ]
+}

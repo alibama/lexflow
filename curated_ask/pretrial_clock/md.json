@@ -1,0 +1,352 @@
+{
+ "qid": "pretrial_clock",
+ "question": "If I'm held in jail awaiting trial, how long can I be held before I must be indicted and tried, and what happens if that deadline passes?",
+ "state": "md",
+ "as_of": "2026-10-10",
+ "question_type": "facts",
+ "coverage": "partial",
+ "profile": {
+  "groups": [
+   [
+    "date for trial",
+    "trial date",
+    "brought to trial",
+    "trial shall be commenced",
+    "speedy trial"
+   ],
+   [
+    "appearance of counsel",
+    "first appearance of the defendant before the circuit court",
+    "initial appearance"
+   ],
+   [
+    "good cause shown",
+    "change of the trial date",
+    "continuance",
+    "county administrative judge"
+   ],
+   [
+    "detainer",
+    "untried indictment",
+    "request for final disposition",
+    "incarcerated individual",
+    "prisoner"
+   ],
+   [
+    "dismiss",
+    "dismissing",
+    "no further force or effect",
+    "with prejudice",
+    "without prejudice"
+   ],
+   [
+    "preliminary hearing",
+    "grand jury indictment",
+    "criminal information",
+    "charge by information",
+    "held for action of the grand jury"
+   ],
+   [
+    "pretrial release",
+    "denied pretrial release",
+    "District Court commissioner",
+    "remains in custody"
+   ],
+   [
+    "incompetent to stand trial",
+    "dismiss the charge",
+    "extraordinary cause",
+    "whether or not the defendant is confined"
+   ]
+  ],
+  "negative": [
+   "civil infraction",
+   "municipal infraction",
+   "court-martial",
+   "wrongful detainer",
+   "juvenile",
+   "landlord"
+  ],
+  "slots": [
+   "deadline",
+   "office"
+  ]
+ },
+ "gold_sections": [
+  {
+   "ref": "Criminal Procedure § 6-103",
+   "role": "primary",
+   "why": "The general trial clock for circuit court cases: trial date set within 30 days and no later than 180 days after the earlier of counsel's appearance or the defendant's first circuit court appearance; changes (and any later changes) only for good cause by the county administrative judge or designee; the statute names no remedy and lets the Supreme Court of Maryland adopt rules."
+  },
+  {
+   "ref": "Criminal Procedure § 4-103",
+   "role": "supporting",
+   "why": "The pre-indictment checkpoint: a defendant charged with a felony outside District Court jurisdiction may request a preliminary hearing within 10 days of the initial appearance or the right is waived; the right is absolute when charged by information and requested on time, not absolute after a grand jury indictment."
+  },
+  {
+   "ref": "Criminal Procedure § 4-102",
+   "role": "supporting",
+   "why": "A felony need not be indicted: the State's Attorney may charge by information when a preliminary hearing is not requested within 10 days, or after a preliminary hearing finds probable cause."
+  },
+  {
+   "ref": "Criminal Procedure § 5-215",
+   "role": "supporting",
+   "why": "A defendant denied release by a commissioner, or still in custody for any reason after conditions are set, must be presented to a District Court judge immediately or at the next session."
+  },
+  {
+   "ref": "Criminal Procedure § 3-107",
+   "role": "supporting",
+   "why": "Whether or not the defendant is confined, a charge against a defendant found incompetent to stand trial must be dismissed after the lesser of 5 years (felony or crime of violence) or 3 years (other offenses) or the maximum sentence, unless the State petitions for extraordinary cause."
+  },
+  {
+   "ref": "Correctional Services § 8-502",
+   "role": "primary",
+   "why": "Intrastate detainers: an incarcerated individual serving a sentence (or confined at Patuxent) must be tried within 120 days after delivering a written request for final disposition, subject to good-cause continuances in open court."
+  },
+  {
+   "ref": "Correctional Services § 8-503",
+   "role": "primary",
+   "why": "Remedy for the intrastate detainer clock: a charge not tried in time has no further force or effect and is dismissed without prejudice on request; also dismissal without prejudice if the individual is not told of the detainer within 1 year."
+  },
+  {
+   "ref": "Correctional Services § 8-405",
+   "role": "supporting",
+   "why": "Interstate Agreement on Detainers Article III: a prisoner serving a term in a party state must be tried within 180 days after delivering a request for final disposition of charges pending in another party state, subject to good-cause continuances."
+  },
+  {
+   "ref": "Correctional Services § 8-406",
+   "role": "supporting",
+   "why": "Interstate Agreement on Detainers Article IV: when the prosecutor obtains temporary custody, trial must begin within 120 days of the prisoner's arrival, subject to good-cause continuances; dismissal with prejudice if the prisoner is returned before trial."
+  },
+  {
+   "ref": "Correctional Services § 8-407",
+   "role": "supporting",
+   "why": "Interstate Agreement on Detainers Article V(c): a charge not tried within the Article III or IV period is dismissed with prejudice and the detainer ceases to have effect."
+  }
+ ],
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "In circuit court, the trial date must be set within 30 days after the earlier of the appearance of defense counsel or the defendant's first appearance before the circuit court.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 6-103",
+   "quote": "The date for trial of a criminal matter in the circuit court shall be set within 30 days after the earlier of: (i) the appearance of counsel; or (ii) the first appearance of the defendant before the circuit court, as provided in the Maryland Rules.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N2",
+   "text": "The circuit court trial date may not be later than 180 days after the earlier of those two events; the statute does not distinguish jailed from released defendants.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 6-103",
+   "quote": "The trial date may not be later than 180 days after the earlier of those events.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N3",
+   "text": "For good cause shown, the county administrative judge or a designee may change the circuit court trial date, on a party's motion or on the court's own initiative.",
+   "importance": "vital",
+   "section": "Criminal Procedure § 6-103",
+   "quote": "For good cause shown, the county administrative judge or a designee of the judge may grant a change of the trial date in a circuit court",
+   "slot": "office"
+  },
+  {
+   "id": "N4",
+   "text": "The statute does not itself state a consequence for missing the 180-day limit; it authorizes the Supreme Court of Maryland to adopt rules to carry it out.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 6-103",
+   "quote": "The Supreme Court of Maryland may adopt additional rules to carry out this section.",
+   "slot": null
+  },
+  {
+   "id": "N5",
+   "text": "A defendant charged with a felony outside the District Court's jurisdiction who does not request a preliminary hearing within 10 days after the initial appearance waives the right to one.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 4-103",
+   "quote": "If the defendant does not request a preliminary hearing within 10 days after the initial appearance, the right to a preliminary hearing is waived.",
+   "slot": "deadline"
+  },
+  {
+   "id": "N6",
+   "text": "The State's Attorney may charge such a felony by criminal information, without a grand jury indictment, if the defendant entitled to a preliminary hearing does not request one within 10 days after being told of it.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 4-102",
+   "quote": "A State's Attorney may charge by information: (1) in a case involving a felony that does not involve a felony within the jurisdiction of the District Court, if the defendant is entitled to a preliminary hearing but does not request a hearing within 10 days",
+   "slot": "office"
+  },
+  {
+   "id": "N7",
+   "text": "If the defendant is indicted by a grand jury, the right to a preliminary hearing is not absolute, though the court may allow one.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 4-103",
+   "quote": "If the defendant is charged by grand jury indictment, the right of a defendant to a preliminary hearing is not absolute but the court may allow the defendant to have a preliminary hearing.",
+   "slot": null
+  },
+  {
+   "id": "N8",
+   "text": "A defendant denied pretrial release by a District Court commissioner, or who for any reason remains in custody after the commissioner sets release conditions, must be presented to a District Court judge immediately if court is in session, or at the next session.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 5-215",
+   "quote": "shall be presented to a District Court judge immediately if the Court is in session, or if the Court is not in session, at the next session of the Court",
+   "slot": "office"
+  },
+  {
+   "id": "N9",
+   "text": "Whether or not the defendant is confined, and unless the State petitions for extraordinary cause to extend the time, the court must dismiss the charge against a defendant found incompetent to stand trial; for a felony or crime of violence the limit is the lesser of 5 years or the maximum sentence for the most serious offense charged.",
+   "importance": "okay",
+   "section": "Criminal Procedure § 3-107",
+   "quote": "Whether or not the defendant is confined and unless the State petitions the court for extraordinary cause to extend the time, the court shall dismiss the charge against a defendant found incompetent to stand trial under this subtitle: (1) when charged with a felony or a crime of violence as defined under § 14-101 of the Criminal Law Article, after the lesser of the expiration of 5 years or the maximum sentence for the most serious offense charged",
+   "slot": "deadline"
+  },
+  {
+   "id": "N10",
+   "text": "The intrastate detainer clock applies to a person serving a sentence in a Division of Correction facility or a local correctional facility, or confined at Patuxent Institution, not to someone held only on the pending charge.",
+   "importance": "okay",
+   "section": "Correctional Services § 8-502",
+   "quote": "is serving a sentence in a correctional facility in the Division of Correction; (2) in the case of the Patuxent Institution, is confined at the Patuxent Institution; or (3) in the case of a local correctional facility, is serving a sentence in the local correctional facility",
+   "slot": null
+  },
+  {
+   "id": "N11",
+   "text": "Under the intrastate detainer law, an incarcerated individual with an untried charge must be brought to trial within 120 days after delivering a written request for final disposition to the State's Attorney and the court.",
+   "importance": "okay",
+   "section": "Correctional Services § 8-502",
+   "quote": "An incarcerated individual shall be brought to trial within 120 days after the incarcerated individual has delivered a written request for a final disposition of the indictment, information, warrant, or complaint",
+   "slot": "deadline"
+  },
+  {
+   "id": "N12",
+   "text": "If a charge covered by a request for final disposition is not tried within the 120-day limit, it has no further force or effect and the court, on request of the individual or counsel, must dismiss it without prejudice.",
+   "importance": "vital",
+   "section": "Correctional Services § 8-503",
+   "quote": "the court, on request of the incarcerated individual or the incarcerated individual's counsel, shall enter an order dismissing the untried indictment, information, warrant, or complaint without prejudice",
+   "slot": null
+  },
+  {
+   "id": "N13",
+   "text": "Under the Interstate Agreement on Detainers, a prisoner serving a term in one party state with charges pending in another must be tried within 180 days after delivering written notice and a request for final disposition, though the court may grant a necessary or reasonable continuance for good cause shown in open court.",
+   "importance": "okay",
+   "section": "Correctional Services § 8-405",
+   "quote": "the prisoner shall be brought to trial within 180 days after the prisoner shall have caused to be delivered to the prosecuting officer and the appropriate court of the prosecuting officer's jurisdiction written notice of the place of the prisoner's imprisonment and the prisoner's request for a final disposition to be made of the indictment, information, or complaint; provided that for good cause shown in open court, the prisoner or the prisoner's counsel being present, the court having jurisdiction of the matter may grant any necessary or reasonable continuance",
+   "slot": "deadline"
+  },
+  {
+   "id": "N14",
+   "text": "When the prosecuting state obtains temporary custody under the Interstate Agreement on Detainers, trial must begin within 120 days of the prisoner's arrival in the receiving state, though the court may grant a necessary or reasonable continuance for good cause shown in open court.",
+   "importance": "okay",
+   "section": "Correctional Services § 8-406",
+   "quote": "trial shall be commenced within 120 days of the arrival of the prisoner in the receiving state, but for good cause shown in open court, the prisoner or the prisoner's counsel being present, the court having jurisdiction of the matter may grant any necessary or reasonable continuance",
+   "slot": "deadline"
+  },
+  {
+   "id": "N15",
+   "text": "If an interstate detainer charge is not tried within the Article III or IV period, the court must dismiss it with prejudice and the detainer ceases to have effect.",
+   "importance": "okay",
+   "section": "Correctional Services § 8-407",
+   "quote": "the appropriate court of the jurisdiction where the indictment, information, or complaint has been pending shall enter an order dismissing the same with prejudice",
+   "slot": null
+  }
+ ],
+ "slots": {
+  "deadline": [
+   {
+    "amount": 30,
+    "unit": "days",
+    "anchor": "after the earlier of defense counsel's appearance or the defendant's first circuit court appearance (trial date must be set)",
+    "nuggets": [
+     "N1"
+    ]
+   },
+   {
+    "amount": 180,
+    "unit": "days",
+    "anchor": "after the earlier of defense counsel's appearance or the defendant's first circuit court appearance (latest trial date, absent a good-cause change)",
+    "nuggets": [
+     "N2"
+    ]
+   },
+   {
+    "amount": 10,
+    "unit": "days",
+    "anchor": "after the initial appearance, to request a preliminary hearing on a felony outside District Court jurisdiction (otherwise waived)",
+    "nuggets": [
+     "N5"
+    ]
+   },
+   {
+    "amount": 5,
+    "unit": "years",
+    "anchor": "pending felony or crime-of-violence charge against a defendant found incompetent to stand trial, or the maximum sentence if less (dismissal unless the State shows extraordinary cause)",
+    "nuggets": [
+     "N9"
+    ]
+   },
+   {
+    "amount": 120,
+    "unit": "days",
+    "anchor": "after a sentenced incarcerated individual delivers a written request for final disposition of an in-state detainer charge",
+    "nuggets": [
+     "N11"
+    ]
+   },
+   {
+    "amount": 180,
+    "unit": "days",
+    "anchor": "after a prisoner delivers a request for final disposition under the Interstate Agreement on Detainers (good-cause continuances allowed)",
+    "nuggets": [
+     "N13"
+    ]
+   },
+   {
+    "amount": 120,
+    "unit": "days",
+    "anchor": "after the prisoner arrives in the receiving state on the prosecutor's custody request under the Interstate Agreement on Detainers (good-cause continuances allowed)",
+    "nuggets": [
+     "N14"
+    ]
+   }
+  ],
+  "office": [
+   {
+    "value": "County administrative judge or designee (changes a circuit court trial date for good cause)",
+    "nuggets": [
+     "N3"
+    ]
+   },
+   {
+    "value": "State's Attorney (may charge a felony by criminal information instead of grand jury indictment)",
+    "nuggets": [
+     "N6"
+    ]
+   },
+   {
+    "value": "District Court judge (reviews custody after a commissioner denies release or sets conditions the defendant does not meet)",
+    "nuggets": [
+     "N8"
+    ]
+   }
+  ]
+ },
+ "answer": "No statute sets an indictment deadline, and the trial clock is the same whether or not you are jailed [N1][N2]. In circuit court, trial must be set within 30 days after your lawyer's or your own first appearance there, whichever is earlier [N1], for no later than 180 days after it [N2]. The county administrative judge or designee may postpone it for good cause [N3]. The statute names no consequence for missing the deadline; the Supreme Court of Maryland may adopt rules [N4]. District Court cases have no statutory trial deadline [N1]. For felonies the District Court cannot try, request a preliminary hearing within 10 days of your initial appearance or lose it [N5]; the prosecutor may then charge by information, without indictment [N6]. After indictment, a hearing is not guaranteed [N7]. If a commissioner denies release, or you stay jailed after conditions are set (such as unaffordable bail), a District Court judge must see you immediately or at the next session [N8]. A felony charge against someone found incompetent to stand trial must be dismissed after 5 years (less if the maximum sentence is shorter), absent extraordinary cause [N9]. If you are already serving a sentence [N10], trial must come within 120 days of your written request [N11]; otherwise, if you ask, the charge is dismissed without prejudice [N12]. Between states, the limits are 180 days after your request [N13] or 120 days after arrival if the prosecutor sought custody [N14], barring good-cause continuances, then dismissal with prejudice [N15].",
+ "steps": null,
+ "out_of_corpus": [
+  {
+   "kind": "court rule",
+   "what": "The remedy for missing the 180-day circuit court trial deadline and its limits: dismissal is the usual sanction for a delay past 180 days that the administrative judge did not approve for good cause, but not when the administrative judge found good cause (later delay is then judged mainly under the constitutional speedy trial test) or when the defendant sought or consented to a date past the deadline; also postponement procedure and the District Court trial and postponement rules",
+   "where": "Maryland Rule 4-271; State v. Hicks, 285 Md. 310 (1979), decided under the predecessor 120-day rule (former Art. 27 § 591 and Rule 746) before the 1980 change to 180 days, and later cases such as State v. Frazier, 298 Md. 422 (1984). Case descriptions are from memory, not from the corpus, and should be verified."
+  },
+  {
+   "kind": "court rule",
+   "what": "Timing of presentment after arrest, the initial appearance, pretrial release and bail review, and scheduling of a requested preliminary hearing",
+   "where": "Maryland Rules 4-212, 4-213, 4-216, 4-216.1 and 4-221 (mdcourts.gov)"
+  },
+  {
+   "kind": "federal",
+   "what": "The constitutional right to a speedy trial (including for District Court cases, which have no statutory trial deadline), judged by the length of delay, the reason, the defendant's assertion of the right, and prejudice; the remedy for a violation is dismissal of the charges",
+   "where": "Sixth and Fourteenth Amendments, Barker v. Wingo, 407 U.S. 514 (1972), Strunk v. United States, 412 U.S. 434 (1973); Maryland Declaration of Rights Article 21"
+  }
+ ],
+ "version_flags": [],
+ "local_option": null,
+ "reviewed_by": "claude-askbench-2026-10-10",
+ "notes": "Maryland statutes only, as downloaded. No effective-date variants were found for the gold sections. Criminal Procedure § 6-103 (the codified 'Hicks' rule) is the only general trial deadline in the code; it applies to circuit court cases, does not distinguish detained from released defendants, and states no remedy; § 6-103(b)(2) adds that once a trial date is changed, later changes also need the administrative judge or designee and good cause. District Court cases have no statutory trial deadline; a defendant entitled to a jury trial who demands one moves the case to circuit court (Courts and Judicial Proceedings § 4-302(e)), where § 6-103 applies. No statute sets a deadline for indicting a detained person, and a felony may proceed by criminal information (Criminal Procedure § 4-102); the preliminary hearing (Criminal Procedure § 4-103; Courts and Judicial Proceedings § 4-304, which says the hearing decides whether the defendant is held for the grand jury or for trial on an information) is the statutory pre-indictment check, and under § 4-103(c)(1) the right is absolute when charged by information and requested on time. The detainer statutes (Correctional Services §§ 8-401 to 8-412 interstate, §§ 8-501 to 8-503 intrastate) apply only to people already serving a sentence (or confined at Patuxent); the intrastate remedy is dismissal without prejudice, the interstate remedy dismissal with prejudice. Detainer details left out of the nuggets for space: § 8-502(d) good-cause continuances of the intrastate 120 days; § 8-503(b)-(d) (custodian must tell the individual of a detainer within 15 days and file a request within 30 days; if the individual is not told within 1 year, the charge is dismissed without prejudice); §§ 8-405(d) and 8-406(e) (dismissal with prejudice if trial is not held before the prisoner is returned to the original place of imprisonment); § 8-408 (interstate periods tolled while the prisoner is unable to stand trial; no IAD remedy for a person adjudged mentally ill). Criminal Procedure § 3-107 also lets the court dismiss without prejudice when resuming the case would be unjust because of the time since the incompetency finding; the limit for offenses other than felonies and crimes of violence is the lesser of 3 years or the maximum sentence. Related provisions considered but not treated as part of the answer: Criminal Procedure § 6-218 (credit against any sentence for pretrial custody, and transfer of that credit when a charge ends in dismissal or acquittal); Courts and Judicial Proceedings § 3-702 (habeas corpus for a person detained for any alleged offense; the judge must act immediately); Criminal Procedure §§ 9-115 and 9-117 (a person held as a fugitive awaiting a Governor's extradition warrant may be committed for up to 30 days, then a judge or commissioner may discharge or recommit for up to 60 more days)."
+}

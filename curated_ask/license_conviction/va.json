@@ -1,0 +1,1174 @@
+{
+  "qid": "license_conviction",
+  "question": "Can a state licensing board deny me an occupational license because of a criminal conviction, and how can I challenge the denial?",
+  "state": "va",
+  "as_of": "2026-10-10",
+  "question_type": "mixed",
+  "coverage": "in_code",
+  "profile": {
+    "groups": [
+      [
+        "prior criminal conviction",
+        "criminal conviction",
+        "prior convictions",
+        "conviction",
+        "convicted",
+        "criminal record",
+        "criminal history record"
+      ],
+      [
+        "license",
+        "certificate",
+        "registration",
+        "licensure",
+        "certification",
+        "regulated occupation or profession"
+      ],
+      [
+        "directly relates",
+        "directly relate",
+        "relationship of the crime",
+        "rehabilitation",
+        "rehabilitative effort"
+      ],
+      [
+        "refused",
+        "refuse",
+        "denied",
+        "denial",
+        "disqualify",
+        "disqualifying criminal record"
+      ],
+      [
+        "regulatory board",
+        "Department of Professional and Occupational Regulation",
+        "Department of Health Professions",
+        "health regulatory board"
+      ],
+      [
+        "predetermination",
+        "written determination",
+        "licensing eligibility"
+      ],
+      [
+        "informal fact-finding",
+        "informal conference",
+        "formal hearing",
+        "case decision",
+        "special conference committee",
+        "summary case decision"
+      ],
+      [
+        "judicial review",
+        "reviews and appeals",
+        "Administrative Process Act",
+        "direct review",
+        "court action",
+        "issues on review",
+        "error of law",
+        "court judgments",
+        "venue",
+        "attorney fees"
+      ],
+      [
+        "sealed",
+        "expunged",
+        "disclose"
+      ]
+    ],
+    "negative": [
+      "driver's license",
+      "concealed handgun",
+      "hunting license",
+      "marriage license",
+      "employment of persons convicted of barrier crimes"
+    ],
+    "slots": [
+      "yes_no",
+      "deadline",
+      "office",
+      "order",
+      "fee",
+      "amount"
+    ]
+  },
+  "gold_sections": [
+    {
+      "ref": "54.1-204",
+      "role": "primary",
+      "why": "The rule: no refusal solely for a prior conviction unless it directly relates to the occupation; no 'good moral character' or 'moral turpitude' terms; nine criteria the board must weigh; fingerprint check at the applicant's cost; written notice of the offenses, the direct relationship and how rehabilitation was weighed when a denial rests on the criminal history record."
+    },
+    {
+      "ref": "54.1-204.1",
+      "role": "primary",
+      "why": "Predetermination: a person with a record may ask a DPOR board or the Department in advance whether the record disqualifies him; the written determination is binding; no education or training may be required first."
+    },
+    {
+      "ref": "54.1-2408.01",
+      "role": "supporting",
+      "why": "Applies 54.1-204 to all persons licensed, certified, registered or permitted by the health regulatory boards (Department of Health Professions); the text speaks of licensees, not expressly of applicants."
+    },
+    {
+      "ref": "54.1-3007",
+      "role": "supporting",
+      "why": "Example of a board-specific statute that still lists conviction grounds in terms 54.1-204 A disfavors (Board of Nursing: conviction of any felony or any misdemeanor involving moral turpitude)."
+    },
+    {
+      "ref": "54.1-109",
+      "role": "primary",
+      "why": "Anyone aggrieved by an action of DPOR, DHP or their regulatory boards is entitled to review, with appeals under the Administrative Process Act."
+    },
+    {
+      "ref": "54.1-110",
+      "role": "supporting",
+      "why": "Every hearing in a contested case follows the Administrative Process Act; a board member who cannot be impartial must withdraw, and any party may request a member's disqualification by stating the grounds with particularity."
+    },
+    {
+      "ref": "2.2-4001",
+      "role": "definition",
+      "why": "A 'case decision' includes a determination whether a named party complies with requirements for obtaining a license, so a license denial is reviewable under the APA."
+    },
+    {
+      "ref": "2.2-4019",
+      "role": "primary",
+      "why": "Informal fact-finding conference: notice, right to appear in person or with counsel and present facts, argument and proof, notice of contrary information the agency may rely on, prompt decision on a license application, brief written basis for an adverse decision."
+    },
+    {
+      "ref": "2.2-4020",
+      "role": "supporting",
+      "why": "Formal hearing (evidence, counsel, rebuttal, cross-examination) where the basic law requires one or the informal conference has not been had or has failed; applicants approach the agency and carry the burden of proof; decisions served with findings and reasons."
+    },
+    {
+      "ref": "2.2-4020.1",
+      "role": "supporting",
+      "why": "Summary case decision: a license applicant may ask for one in writing when no material facts are in dispute, stipulating the facts and waiving other administrative proceedings on those questions of law; the agency must determine within 21 days whether the matter may be decided that way."
+    },
+    {
+      "ref": "2.2-4021",
+      "role": "supporting",
+      "why": "Where no hearing officer recommends a finding, the board must decide within 90 days of the informal fact-finding or formal proceeding (or a later agreed date); after written notice that a decision is due, no decision within 30 days is deemed in favor of the named party; the agency must notify the party of its decision within five days."
+    },
+    {
+      "ref": "2.2-4023",
+      "role": "supporting",
+      "why": "The final agency case decision is served on the named parties by mail."
+    },
+    {
+      "ref": "54.1-2400",
+      "role": "supporting",
+      "why": "Health boards: a special conference committee may deny or grant an application or issue a restricted license; its order becomes final 30 days after service (three more days if mailed) unless a written request for a hearing is received, in which case the board must hold a 2.2-4020 formal hearing and the committee's action is vacated."
+    },
+    {
+      "ref": "2.2-4026",
+      "role": "primary",
+      "why": "A party aggrieved by a case decision has a right to direct court review in the manner provided by the Rules of the Supreme Court of Virginia."
+    },
+    {
+      "ref": "2.2-4003",
+      "role": "supporting",
+      "why": "Venue for a 2.2-4026 court action is as specified in subdivision 1 of 8.01-261."
+    },
+    {
+      "ref": "8.01-261",
+      "role": "supporting",
+      "why": "Preferred venue for review of a state administrative decision: the county or city where the aggrieved party resides, regularly conducts affairs or business, or has property affected by the action."
+    },
+    {
+      "ref": "2.2-4027",
+      "role": "supporting",
+      "why": "Scope of court review: the challenger must designate and demonstrate an error of law. Facts get substantial-evidence review on the agency record only where a formal record was required (a 2.2-4020 hearing); after an informal-only proceeding the court decides facts from the agency file and asks only whether the result was within the agency's legal authority. Law is reviewed de novo, with due account of official regularity and agency expertise."
+    },
+    {
+      "ref": "2.2-4029",
+      "role": "supporting",
+      "why": "Court judgments: dismiss or affirm unless an error of law appears; otherwise set the decision aside and remand; the court may not itself supply action the basic law commits to the board (it does not issue the license)."
+    },
+    {
+      "ref": "2.2-4030",
+      "role": "supporting",
+      "why": "A person who substantially prevails in the court action may recover reasonable costs and attorney fees (attorney fees capped at $25,000) if the agency's position was not substantially justified, was in violation of law, or was for an improper purpose."
+    },
+    {
+      "ref": "19.2-392.15",
+      "role": "supporting",
+      "why": "State and local agencies may not require a license applicant to disclose sealed arrests, charges or convictions, and may not deny an application solely for refusing to disclose them."
+    },
+    {
+      "ref": "19.2-392.4",
+      "role": "supporting",
+      "why": "State and local agencies may not require a license applicant to disclose expunged arrests, charges or convictions, and may not deny an application solely for refusing to disclose them."
+    }
+  ],
+  "nuggets": [
+    {
+      "id": "N1",
+      "text": "A person may not be refused a license, certificate or registration for a regulated occupation solely because of a prior criminal conviction unless the conviction directly relates to the occupation or profession sought.",
+      "importance": "vital",
+      "section": "54.1-204",
+      "quote": "A person shall not be refused a license, certificate, or registration to practice, pursue, or engage in any regulated occupation or profession solely because of a prior criminal conviction, unless the criminal conviction directly relates to the occupation or profession for which the license, certificate, or registration is sought.",
+      "slot": "yes_no"
+    },
+    {
+      "id": "N2",
+      "text": "A regulatory board may not refuse a license using vague or arbitrary terms such as \"good moral character\" or \"moral turpitude\".",
+      "importance": "vital",
+      "section": "54.1-204",
+      "quote": "A regulatory board shall not use vague or arbitrary terms, including \"good moral character\" or \"moral turpitude\" to refuse a license, certificate, or registration.",
+      "slot": null
+    },
+    {
+      "id": "N3",
+      "text": "To decide whether a conviction directly relates, the board must consider nine criteria: the nature and seriousness of the crime; its relationship to the purpose of licensing; the opportunity the occupation offers for similar crime; its relationship to the ability, capacity or fitness needed for the job; the extent and nature of past criminal activity; the person's age at the time; the time since the last involvement in crime; conduct and work before and after; and evidence of rehabilitation.",
+      "importance": "vital",
+      "section": "54.1-204",
+      "quote": "In determining whether a criminal conviction directly relates to an occupation or profession, the regulatory board shall consider the following criteria",
+      "slot": "order"
+    },
+    {
+      "id": "N4",
+      "text": "One required criterion is evidence of the person's rehabilitation or rehabilitative effort while incarcerated or after release.",
+      "importance": "okay",
+      "section": "54.1-204",
+      "quote": "Evidence of the person's rehabilitation or rehabilitative effort while incarcerated or following release",
+      "slot": null
+    },
+    {
+      "id": "N5",
+      "text": "If an applicant is denied because of information in the criminal history record, the board must notify the applicant in writing of the specific offenses that contributed, how the criminal history directly relates to the occupation, and how it weighed the rehabilitation factors.",
+      "importance": "vital",
+      "section": "54.1-204",
+      "quote": "the regulatory board shall notify the applicant in writing of the specific offense or offenses that contributed to such denial, how the criminal history directly relates to the occupation pursuant to subsection B, and how the regulatory board weighed the rehabilitation factors in subsection B when making its decision",
+      "slot": null
+    },
+    {
+      "id": "N6",
+      "text": "A person with a criminal record may ask a DPOR regulatory board, or the Department itself, for a predetermination of whether the record would disqualify him from a particular license, certificate or registration.",
+      "importance": "vital",
+      "section": "54.1-204.1",
+      "quote": "An individual with a criminal record may request a predetermination from a regulatory board within the Department of Professional and Occupational Regulation or from the Department concerning whether his criminal record would disqualify him",
+      "slot": "office"
+    },
+    {
+      "id": "N7",
+      "text": "The written predetermination is binding unless the person's criminal record changes afterward or the person gave false information.",
+      "importance": "okay",
+      "section": "54.1-204.1",
+      "quote": "Such determination shall be binding unless the individual's criminal record changes after the determination or the individual provides false information.",
+      "slot": null
+    },
+    {
+      "id": "N8",
+      "text": "Section 54.1-204 also applies to all persons licensed, certified, registered or permitted by the boards in the Department of Health Professions (the text speaks of licensees, not expressly of applicants).",
+      "importance": "okay",
+      "section": "54.1-2408.01",
+      "quote": "The provisions of § 54.1-204 shall apply to all persons who are licensed, certified, registered, or permitted by any of the boards within the Department of Health Professions.",
+      "slot": "office"
+    },
+    {
+      "id": "N9",
+      "text": "Anyone aggrieved by an action of DPOR, DHP or one of their regulatory boards is entitled to review, and appeals follow the Administrative Process Act.",
+      "importance": "vital",
+      "section": "54.1-109",
+      "quote": "shall be entitled to a review of such action. Appeals from such actions shall be in accordance with the provisions of the Administrative Process Act",
+      "slot": null
+    },
+    {
+      "id": "N10",
+      "text": "At the informal fact-finding conference the applicant may appear in person or by counsel or another qualified representative and present facts, argument or proof.",
+      "importance": "vital",
+      "section": "2.2-4019",
+      "quote": "appear in person or by counsel or other qualified representative before the agency or its subordinates, or before a hearing officer for the informal presentation of factual data, argument, or proof in connection with any case",
+      "slot": null
+    },
+    {
+      "id": "N11",
+      "text": "Where no hearing officer recommends a finding, the board must decide within 90 days of the informal fact-finding or formal proceeding, or from a later date the applicant and the agency agree to.",
+      "importance": "okay",
+      "section": "2.2-4021",
+      "quote": "shall render that decision within 90 days from the date of the informal fact-finding, formal proceeding, or completion of a summary case decision proceeding, or from a later date agreed to by the named party and the agency",
+      "slot": "deadline"
+    },
+    {
+      "id": "N12",
+      "text": "If the 90 days pass, the applicant may give written notice that a decision is due; if no decision is made within 30 days of the agency's receipt of that notice, the decision is deemed in the applicant's favor.",
+      "importance": "okay",
+      "section": "2.2-4021",
+      "quote": "If no decision is made within 30 days from agency receipt of the notice, the decision shall be deemed to be in favor of the named party.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N13",
+      "text": "For a health regulatory board, a special conference committee's order becomes final 30 days after service unless the board receives the applicant's written request for a hearing within that time (three days are added if served by mail); a timely request requires a formal hearing and vacates the committee's action.",
+      "importance": "okay",
+      "section": "54.1-2400",
+      "quote": "The order of the special conference committee shall become final 30 days after service of the order unless a written request to the board for a hearing is received within such time.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N14",
+      "text": "A party aggrieved by the final case decision has a right to direct court review against the agency, brought in the manner the Rules of the Supreme Court of Virginia provide.",
+      "importance": "vital",
+      "section": "2.2-4026",
+      "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia",
+      "slot": "office"
+    },
+    {
+      "id": "N15",
+      "text": "State and local agencies may not require a license applicant to disclose an arrest, charge or conviction that has been sealed.",
+      "importance": "okay",
+      "section": "19.2-392.15",
+      "quote": "Agencies, officials, and employees of state and local governments shall not, in any application, interview, or otherwise, require an applicant for a license, permit, registration, or governmental service to disclose information concerning any arrest, charge, or conviction against him that has been sealed.",
+      "slot": null
+    },
+    {
+      "id": "N16",
+      "text": "In court, the person challenging the board's decision bears the burden of identifying and proving an error of law (constitutional, statutory authority, required procedure, or the evidentiary support for the findings).",
+      "importance": "vital",
+      "section": "2.2-4027",
+      "quote": "The burden shall be upon the party complaining of agency action to designate and demonstrate an error of law subject to review by the court.",
+      "slot": null
+    },
+    {
+      "id": "N17",
+      "text": "Facts are reviewed for substantial evidence on the agency record only where a formal hearing record was required; after an informal-only proceeding the court decides the facts from the agency file and asks only whether the result was within the board's legal authority.",
+      "importance": "okay",
+      "section": "2.2-4027",
+      "quote": "the function of the court shall be to determine only whether the result reached by the agency could reasonably be said, on all such proofs, to be within the scope of the legal authority of the agency",
+      "slot": null
+    },
+    {
+      "id": "N18",
+      "text": "If the court finds the denial was not in accordance with law, it sets it aside and sends the matter back to the board; it does not itself supply action the law commits to the board, such as issuing the license. Otherwise it dismisses or affirms.",
+      "importance": "okay",
+      "section": "2.2-4029",
+      "quote": "the court shall suspend or set it aside and remand the matter to the agency for further proceedings, if any, as the court may permit or direct in accordance with law",
+      "slot": null
+    },
+    {
+      "id": "N19",
+      "text": "A person who substantially prevails may recover reasonable costs and attorney fees from the agency if its position was not substantially justified, its action violated the law, or it acted for an improper purpose; attorney fees are capped at $25,000.",
+      "importance": "okay",
+      "section": "2.2-4030",
+      "quote": "The award of attorney fees shall not exceed $25,000.",
+      "slot": "amount"
+    },
+    {
+      "id": "N20",
+      "text": "The court action is brought in the county or city where the applicant resides or regularly conducts business (venue for 2.2-4026 actions follows 8.01-261(1) under 2.2-4003).",
+      "importance": "okay",
+      "section": "8.01-261",
+      "quote": "If the moving or aggrieved party is other than the Commonwealth or an agency thereof, then the county or city wherein such party: (1) Resides; (2) Regularly or systematically conducts affairs or business activity",
+      "slot": "office"
+    },
+    {
+      "id": "N21",
+      "text": "At a formal hearing the applicant may be represented by counsel, submit evidence and rebuttal, and cross-examine, and the applicant bears the burden of proof.",
+      "importance": "okay",
+      "section": "2.2-4020",
+      "quote": "to submit oral and documentary evidence and rebuttal proofs, to conduct such cross-examination as may elicit a full and fair disclosure of the facts, and to have the proceedings completed and a decision made with dispatch. The burden of proof shall be upon the proponent or applicant.",
+      "slot": null
+    },
+    {
+      "id": "N22",
+      "text": "In the informal conference the applicant is entitled to notice of any contrary information the agency may rely on, a prompt decision on the application, and a brief written statement of the factual or procedural basis for an adverse decision.",
+      "importance": "okay",
+      "section": "2.2-4019",
+      "quote": "(iii) have notice of any contrary fact basis or information in the possession of the agency that can be relied upon in making an adverse decision; (iv) receive a prompt decision of any application for a license, benefit, or renewal thereof; and (v) be informed, briefly and generally in writing, of the factual or procedural basis for an adverse decision in any case",
+      "slot": null
+    },
+    {
+      "id": "N23",
+      "text": "The agency must notify the applicant of its decision within five days of the decision.",
+      "importance": "okay",
+      "section": "2.2-4021",
+      "quote": "An agency shall provide notification to the named party of its decision within five days of the decision.",
+      "slot": "deadline"
+    },
+    {
+      "id": "N24",
+      "text": "Where the board requires fingerprinting and a criminal records check, the applicant pays the cost (the Code sets no amount).",
+      "importance": "okay",
+      "section": "54.1-204",
+      "quote": "Such applicant shall pay the cost of the fingerprinting or a criminal records check or both.",
+      "slot": "fee"
+    },
+    {
+      "id": "N25",
+      "text": "State and local agencies may not require a license applicant to disclose an arrest, charge or conviction that has been expunged.",
+      "importance": "okay",
+      "section": "19.2-392.4",
+      "quote": "Agencies, officials, and employees of the state and local governments shall not, in any application, interview, or otherwise, require an applicant for a license, permit, registration, or governmental service to disclose information concerning any arrest, criminal charge against him, conviction, or civil offense that has been expunged.",
+      "slot": null
+    },
+    {
+      "id": "N26",
+      "text": "A license application may not be denied solely because the applicant refuses to disclose a sealed arrest, charge or conviction (19.2-392.4 B says the same for expunged records).",
+      "importance": "okay",
+      "section": "19.2-392.15",
+      "quote": "Such an application may not be denied solely because of the applicant's refusal to disclose information concerning any arrest, charge, or conviction against him that has been sealed.",
+      "slot": null
+    },
+    {
+      "id": "N27",
+      "text": "A license applicant may ask the agency in writing for a summary case decision, an alternative route when no material facts are in dispute (the request waives other administrative proceedings on those questions of law).",
+      "importance": "okay",
+      "section": "2.2-4020.1",
+      "quote": "Any person who has (i) applied for a permit, certificate, or license from an agency or (ii) received written notice of a potential violation from an agency may request a summary case decision from the agency.",
+      "slot": null
+    },
+    {
+      "id": "N28",
+      "text": "Any party may ask that a board member be disqualified by stating with particularity why the member cannot give fair and impartial consideration.",
+      "importance": "okay",
+      "section": "54.1-110",
+      "quote": "Any party may request the disqualification of any board member by stating with particularity the grounds upon which it is claimed that fair and impartial consideration cannot be accorded.",
+      "slot": null
+    },
+    {
+      "id": "N29",
+      "text": "Some board-specific statutes still list conviction grounds in older terms: the Board of Nursing may refuse a license for conviction of any felony or any misdemeanor involving moral turpitude. The Code does not say how such provisions fit with 54.1-204 A.",
+      "importance": "okay",
+      "section": "54.1-3007",
+      "quote": "Conviction of any felony or any misdemeanor involving moral turpitude",
+      "slot": null
+    }
+  ],
+  "slots": {
+    "yes_no": {
+      "value": "yes",
+      "qualifier": "only if the conviction directly relates to the occupation, judged by the nine 54.1-204 B criteria",
+      "nuggets": [
+        "N1",
+        "N3"
+      ]
+    },
+    "deadline": [
+      {
+        "amount": 90,
+        "unit": "days",
+        "anchor": "the date of the informal fact-finding or formal proceeding, or a later date agreed by the applicant and the agency (board must decide; where no hearing officer recommends a finding)",
+        "nuggets": [
+          "N11"
+        ]
+      },
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "the agency's receipt of the applicant's written notice that a decision is due (otherwise deemed in the applicant's favor)",
+        "nuggets": [
+          "N12"
+        ]
+      },
+      {
+        "amount": 30,
+        "unit": "days",
+        "anchor": "service of a health board special conference committee order (written request for a formal hearing, or the order becomes final; three more days if served by mail)",
+        "nuggets": [
+          "N13"
+        ]
+      },
+      {
+        "amount": 5,
+        "unit": "days",
+        "anchor": "the decision (agency must notify the applicant of it)",
+        "nuggets": [
+          "N23"
+        ]
+      }
+    ],
+    "office": [
+      {
+        "value": "the regulatory board that licenses the occupation (DPOR boards; health boards in the Department of Health Professions)",
+        "nuggets": [
+          "N1",
+          "N8"
+        ]
+      },
+      {
+        "value": "a DPOR regulatory board or the Department of Professional and Occupational Regulation (predetermination)",
+        "nuggets": [
+          "N6"
+        ]
+      },
+      {
+        "value": "a court of competent jurisdiction in the county or city where the applicant resides or regularly conducts business, in the manner set by the Rules of the Supreme Court of Virginia (judicial review)",
+        "nuggets": [
+          "N14",
+          "N20"
+        ]
+      }
+    ],
+    "fee": [
+      {
+        "value": "the applicant pays the cost of fingerprinting and/or the criminal records check (amount not set in the Code)",
+        "nuggets": [
+          "N24"
+        ]
+      }
+    ],
+    "amount": [
+      {
+        "value": "$25,000 cap on attorney fees recoverable from the agency by a person who substantially prevails",
+        "nuggets": [
+          "N19"
+        ]
+      }
+    ],
+    "ordered_list": [
+      {
+        "item": "The nature and seriousness of the crime",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The relationship of the crime to the purpose for requiring a license",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The extent to which the occupation might offer an opportunity for further criminal activity of the same type",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The relationship of the crime to the ability, capacity, or fitness required for the occupation",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The extent and nature of the person's past criminal activity",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The age of the person when the crime was committed",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The time elapsed since the person's last involvement in a crime",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "The person's conduct and work activity before and after the criminal activity",
+        "nuggets": [
+          "N3"
+        ]
+      },
+      {
+        "item": "Evidence of rehabilitation or rehabilitative effort while incarcerated or after release",
+        "nuggets": [
+          "N3",
+          "N4"
+        ]
+      }
+    ]
+  },
+  "answer": "Only in limited cases. A Virginia regulatory board may not refuse you a license solely because of a prior conviction unless it directly relates to the occupation [N1], nor use vague terms like \"good moral character\" or \"moral turpitude\" [N2], though some boards' own statutes still do [N29]. It must weigh nine factors, including seriousness, relation to the job, time elapsed and rehabilitation [N3][N4]. Health-board licensees are covered too [N8]. DPOR or its boards give binding predeterminations of whether your record disqualifies you [N6][N7]. You need not disclose sealed or expunged records [N15][N25], and refusing cannot alone justify denial [N26].\n\nA denial over your record must be explained in writing: the offenses, how they relate, and how rehabilitation was weighed [N5]. Under the Administrative Process Act [N9], you or a lawyer may present facts and argument at an informal conference [N10]. The board must decide within 90 days after it unless you agree to a later date [N11]; then send written notice, and no decision within 30 days counts in your favor [N12]. On a health board, request a formal hearing in writing within 30 days of service of the committee's order or it becomes final [N13]; you carry the burden of proof [N21]. Then bring a court action by the deadline in the Supreme Court Rules [N14], where you live or do business [N20]. You must show an error of law [N16]; a win means remand, not a license [N18], plus possible attorney fees up to $25,000 [N19].",
+  "steps": {
+    "process_name": "Apply for a Virginia occupational license with a criminal record, and challenge a denial",
+    "trigger": "A person with a criminal conviction seeks a license, certificate or registration from a Virginia regulatory board",
+    "trigger_source": {
+      "section": "54.1-204",
+      "subsection": "A",
+      "quote": "to practice, pursue, or engage in any regulated occupation or profession"
+    },
+    "actors": [
+      {
+        "id": "board",
+        "name": "Regulatory board (DPOR board, or health regulatory board in DHP)",
+        "kind": "public-body",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "B",
+          "quote": "the regulatory board shall consider the following criteria"
+        }
+      },
+      {
+        "id": "dpor_authority",
+        "name": "DPOR regulatory board or the Department (predetermination only)",
+        "kind": "public-body",
+        "source": {
+          "section": "54.1-204.1",
+          "subsection": "A",
+          "quote": "a regulatory board within the Department of Professional and Occupational Regulation or from the Department"
+        }
+      },
+      {
+        "id": "applicant",
+        "name": "Applicant with a criminal record",
+        "kind": "private-party",
+        "source": {
+          "section": "54.1-204.1",
+          "subsection": "A",
+          "quote": "An individual with a criminal record may request a predetermination"
+        }
+      },
+      {
+        "id": "court",
+        "name": "Court in the county or city where the applicant resides or does business",
+        "kind": "court",
+        "source": {
+          "section": "2.2-4026",
+          "subsection": "A",
+          "quote": "a right to the direct review thereof by an appropriate and timely court action against the agency"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "request_predetermination",
+        "actor": "applicant",
+        "action": "Request predetermination of record eligibility",
+        "kind": "filing",
+        "modality": "permission",
+        "after": [],
+        "condition": "seeks_predetermination",
+        "recipient": "dpor_authority",
+        "source": {
+          "section": "54.1-204.1",
+          "subsection": "A",
+          "quote": "An individual with a criminal record may request a predetermination from a regulatory board within the Department of Professional and Occupational Regulation or from the Department concerning whether his criminal record would disqualify him"
+        }
+      },
+      {
+        "id": "issue_predetermination",
+        "actor": "dpor_authority",
+        "action": "Issue written predetermination",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "request_predetermination"
+        ],
+        "recipient": "applicant",
+        "source": {
+          "section": "54.1-204.1",
+          "subsection": "B",
+          "quote": "The licensing authority shall provide a written determination, indicating whether the individual's criminal record would disqualify him from obtaining the license, certificate, registration, or other authority."
+        }
+      },
+      {
+        "id": "apply",
+        "actor": "applicant",
+        "action": "Apply to the board for the license",
+        "kind": "filing",
+        "modality": "none",
+        "after": [],
+        "recipient": "board",
+        "source": {
+          "section": "2.2-4020",
+          "subsection": "B",
+          "quote": "Applicants for licenses, rights, benefits, or renewals thereof have the burden of approaching the agency concerned without such prior notice"
+        }
+      },
+      {
+        "id": "require_check",
+        "actor": "board",
+        "action": "Require fingerprint criminal records check",
+        "kind": "act",
+        "modality": "permission",
+        "after": [
+          "apply"
+        ],
+        "condition": "records_check_required",
+        "recipient": "applicant",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "C",
+          "quote": "A regulatory board may require any applicant for registration, licensure, or certification to submit to fingerprinting and to provide personal descriptive information"
+        }
+      },
+      {
+        "id": "weigh_factors",
+        "actor": "board",
+        "action": "Weigh whether conviction directly relates",
+        "kind": "review",
+        "modality": "obligation",
+        "after": [
+          "apply",
+          "require_check"
+        ],
+        "join": "any",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "B",
+          "quote": "In determining whether a criminal conviction directly relates to an occupation or profession, the regulatory board shall consider the following criteria"
+        }
+      },
+      {
+        "id": "informal_conference",
+        "actor": "board",
+        "action": "Hold informal fact-finding conference",
+        "kind": "hearing",
+        "modality": "obligation",
+        "after": [
+          "weigh_factors"
+        ],
+        "recipient": "applicant",
+        "source": {
+          "section": "2.2-4019",
+          "subsection": "A",
+          "quote": "Agencies shall ascertain the fact basis for their decisions of cases through informal conference or consultation proceedings unless the named party and the agency consent to waive such a conference or proceeding to go directly to a formal hearing"
+        }
+      },
+      {
+        "id": "present_case",
+        "actor": "applicant",
+        "action": "Present facts, argument and rehabilitation proof",
+        "kind": "hearing",
+        "modality": "right",
+        "after": [
+          "informal_conference"
+        ],
+        "recipient": "board",
+        "source": {
+          "section": "2.2-4019",
+          "subsection": "A",
+          "quote": "appear in person or by counsel or other qualified representative before the agency or its subordinates, or before a hearing officer for the informal presentation of factual data, argument, or proof in connection with any case"
+        }
+      },
+      {
+        "id": "decide",
+        "actor": "board",
+        "action": "Decide the application",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "present_case"
+        ],
+        "decision": "conviction_test",
+        "deadline": {
+          "amount": 90,
+          "unit": "days",
+          "anchor": "the date of the informal fact-finding (or a later date agreed to by the named party and the agency)",
+          "consequence": "unstated",
+          "on_miss": "decision_due_notice",
+          "source": {
+            "section": "2.2-4021",
+            "subsection": "B",
+            "quote": "shall render that decision within 90 days from the date of the informal fact-finding"
+          }
+        },
+        "source": {
+          "section": "2.2-4019",
+          "subsection": "A",
+          "quote": "receive a prompt decision of any application for a license, benefit, or renewal thereof"
+        }
+      },
+      {
+        "id": "decision_due_notice",
+        "actor": "applicant",
+        "action": "Notify agency that a decision is due",
+        "kind": "notice",
+        "modality": "permission",
+        "after": [],
+        "recipient": "board",
+        "source": {
+          "section": "2.2-4021",
+          "subsection": "B",
+          "quote": "If the agency does not render a decision within 90 days, the named party to the case decision may provide written notice to the agency that a decision is due."
+        }
+      },
+      {
+        "id": "decide_late",
+        "actor": "board",
+        "action": "Decide after notice that decision is due",
+        "kind": "decision",
+        "modality": "obligation",
+        "after": [
+          "decision_due_notice"
+        ],
+        "decision": "conviction_test",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "agency receipt of the notice",
+          "consequence": "unstated",
+          "on_miss": "deemed_favorable",
+          "source": {
+            "section": "2.2-4021",
+            "subsection": "B",
+            "quote": "If no decision is made within 30 days from agency receipt of the notice, the decision shall be deemed to be in favor of the named party."
+          }
+        },
+        "source": {
+          "section": "2.2-4021",
+          "subsection": "B",
+          "quote": "the board, commission, or agency personnel responsible for rendering a decision shall render that decision"
+        }
+      },
+      {
+        "id": "notify_denial",
+        "actor": "board",
+        "action": "Explain denial in writing",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "decide",
+          "decide_late"
+        ],
+        "join": "any",
+        "condition": "refused",
+        "recipient": "applicant",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "C",
+          "quote": "the regulatory board shall notify the applicant in writing of the specific offense or offenses that contributed to such denial, how the criminal history directly relates to the occupation pursuant to subsection B, and how the regulatory board weighed the rehabilitation factors in subsection B when making its decision"
+        }
+      },
+      {
+        "id": "formal_hearing",
+        "actor": "board",
+        "action": "Hold formal hearing at board's option",
+        "kind": "hearing",
+        "modality": "permission",
+        "after": [
+          "notify_denial"
+        ],
+        "condition": "dpor_formal_hearing",
+        "recipient": "applicant",
+        "source": {
+          "section": "2.2-4020",
+          "subsection": "A",
+          "quote": "may do so in any case to the extent that informal procedures under § 2.2-4019 have not been had or have failed to dispose of a case by consent"
+        }
+      },
+      {
+        "id": "request_hearing",
+        "actor": "applicant",
+        "action": "Request formal hearing in writing",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "notify_denial"
+        ],
+        "condition": "health_board",
+        "recipient": "board",
+        "deadline": {
+          "amount": 30,
+          "unit": "days",
+          "anchor": "service of the special conference committee order (three more days if served by mail)",
+          "consequence": "right-lapses",
+          "on_miss": "denial_final",
+          "source": {
+            "section": "54.1-2400",
+            "subsection": "10",
+            "quote": "The order of the special conference committee shall become final 30 days after service of the order unless a written request to the board for a hearing is received within such time."
+          }
+        },
+        "source": {
+          "section": "54.1-2400",
+          "subsection": "10",
+          "quote": "unless a written request to the board for a hearing is received within such time"
+        }
+      },
+      {
+        "id": "hold_formal_hearing",
+        "actor": "board",
+        "action": "Hold formal hearing on timely request",
+        "kind": "hearing",
+        "modality": "obligation",
+        "after": [
+          "request_hearing"
+        ],
+        "recipient": "applicant",
+        "source": {
+          "section": "54.1-2400",
+          "subsection": "10",
+          "quote": "Upon receiving a timely written request for a hearing, the board or a panel of the board shall then proceed with a hearing"
+        }
+      },
+      {
+        "id": "serve_final_order",
+        "actor": "board",
+        "action": "Serve final case decision by mail",
+        "kind": "notice",
+        "modality": "obligation",
+        "after": [
+          "notify_denial",
+          "formal_hearing",
+          "hold_formal_hearing"
+        ],
+        "join": "any",
+        "recipient": "applicant",
+        "source": {
+          "section": "2.2-4023",
+          "quote": "The terms of any final agency case decision, as signed by it, shall be served upon the named parties by mail unless service otherwise made is duly acknowledged by them in writing."
+        }
+      },
+      {
+        "id": "seek_review",
+        "actor": "applicant",
+        "action": "Bring court action for review",
+        "kind": "filing",
+        "modality": "right",
+        "after": [
+          "serve_final_order"
+        ],
+        "condition": "review_sought",
+        "recipient": "court",
+        "source": {
+          "section": "2.2-4026",
+          "subsection": "A",
+          "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia"
+        }
+      },
+      {
+        "id": "court_review",
+        "actor": "court",
+        "action": "Review denial for error of law",
+        "kind": "review",
+        "modality": "obligation",
+        "after": [
+          "seek_review"
+        ],
+        "recipient": "board",
+        "source": {
+          "section": "2.2-4027",
+          "quote": "The burden shall be upon the party complaining of agency action to designate and demonstrate an error of law subject to review by the court"
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "conviction_test",
+        "question": "May the board refuse the license because of the conviction?",
+        "hit_policy": "FIRST",
+        "inputs": [
+          {
+            "name": "directly_relates",
+            "label": "The conviction directly relates to the occupation, weighing the nine 54.1-204 B criteria",
+            "type": "boolean"
+          },
+          {
+            "name": "board_denies",
+            "label": "The board decides to deny on that ground",
+            "type": "boolean"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "result",
+            "label": "Decision",
+            "type": "string"
+          },
+          {
+            "name": "refused",
+            "label": "Application refused",
+            "type": "boolean"
+          }
+        ],
+        "rules": [
+          {
+            "when": [
+              "false",
+              "-"
+            ],
+            "then": [
+              "\"Not refused solely because of the conviction\"",
+              "false"
+            ],
+            "source": {
+              "section": "54.1-204",
+              "subsection": "A",
+              "quote": "shall not be refused a license, certificate, or registration to practice, pursue, or engage in any regulated occupation or profession solely because of a prior criminal conviction, unless the criminal conviction directly relates"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "true"
+            ],
+            "then": [
+              "\"Refused: conviction directly relates; written explanation required\"",
+              "true"
+            ],
+            "source": {
+              "section": "54.1-204",
+              "subsection": "C",
+              "quote": "If an applicant is denied a registration, license, or certificate because of the information appearing in his criminal history record"
+            }
+          },
+          {
+            "when": [
+              "true",
+              "false"
+            ],
+            "then": [
+              "\"Granted despite the conviction\"",
+              "false"
+            ],
+            "source": {
+              "section": "54.1-204",
+              "subsection": "A",
+              "quote": "unless the criminal conviction directly relates to the occupation or profession for which the license, certificate, or registration is sought"
+            }
+          }
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "id": "predetermination_binding",
+        "description": "Binding written predetermination of eligibility",
+        "after": [
+          "issue_predetermination"
+        ],
+        "source": {
+          "section": "54.1-204.1",
+          "subsection": "B",
+          "quote": "Such determination shall be binding unless the individual's criminal record changes after the determination or the individual provides false information."
+        }
+      },
+      {
+        "id": "license_granted",
+        "description": "License not refused because of the conviction",
+        "after": [
+          "decide",
+          "decide_late"
+        ],
+        "join": "any",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "A",
+          "quote": "A person shall not be refused a license, certificate, or registration to practice, pursue, or engage in any regulated occupation or profession solely because of a prior criminal conviction"
+        }
+      },
+      {
+        "id": "deemed_favorable",
+        "description": "No decision within 30 days of notice: deemed in applicant's favor",
+        "after": [],
+        "source": {
+          "section": "2.2-4021",
+          "subsection": "B",
+          "quote": "the decision shall be deemed to be in favor of the named party"
+        }
+      },
+      {
+        "id": "denial_final",
+        "description": "Denial stands as the final case decision",
+        "after": [
+          "serve_final_order"
+        ],
+        "source": {
+          "section": "2.2-4020",
+          "subsection": "E",
+          "quote": "together with the appropriate order, license, grant of benefits, sanction, relief, or denial thereof"
+        }
+      },
+      {
+        "id": "court_affirms",
+        "description": "Court dismisses the review or affirms the denial",
+        "after": [
+          "court_review"
+        ],
+        "source": {
+          "section": "2.2-4029",
+          "quote": "the court shall dismiss the review action or affirm the agency regulation or decision"
+        }
+      },
+      {
+        "id": "court_remands",
+        "description": "Court sets the denial aside and remands to the board (it does not issue the license)",
+        "after": [
+          "court_review"
+        ],
+        "when": "error_of_law_found",
+        "source": {
+          "section": "2.2-4029",
+          "quote": "the court shall suspend or set it aside and remand the matter to the agency for further proceedings"
+        }
+      }
+    ],
+    "cross_references": [
+      {
+        "citation": "Va. Code § 2.2-4000 et seq. (Administrative Process Act)",
+        "role": "governs review and appeal of regulatory board actions, including license denials",
+        "source": {
+          "section": "54.1-109",
+          "quote": "Appeals from such actions shall be in accordance with the provisions of the Administrative Process Act"
+        }
+      },
+      {
+        "citation": "Rules of the Supreme Court of Virginia, Part 2A",
+        "role": "form and timing of the court action for review of a case decision",
+        "source": {
+          "section": "2.2-4026",
+          "subsection": "A",
+          "quote": "in the manner provided by the Rules of Supreme Court of Virginia"
+        }
+      },
+      {
+        "citation": "Va. Code §§ 2.2-4003, 8.01-261(1)",
+        "role": "venue for the court action: the county or city where the applicant resides, regularly conducts business, or has affected property",
+        "source": {
+          "section": "2.2-4003",
+          "quote": "venue shall be as specified in subdivision 1 of § 8.01-261"
+        }
+      },
+      {
+        "citation": "Central Criminal Records Exchange / Federal Bureau of Investigation",
+        "role": "fingerprint-based state and national criminal history check reported to the board",
+        "source": {
+          "section": "54.1-204",
+          "subsection": "C",
+          "quote": "forwarded along with the applicant's fingerprints through the Central Criminal Records Exchange to the Federal Bureau of Investigation"
+        }
+      },
+      {
+        "citation": "Va. Code § 54.1-2400",
+        "role": "health boards: special conference committee decides applications; a written request for a formal hearing within 30 days of service (plus three if mailed) makes the hearing mandatory and vacates the committee's action",
+        "source": {
+          "section": "54.1-2400",
+          "subsection": "10",
+          "quote": "The order of the special conference committee shall become final 30 days after service of the order unless a written request to the board for a hearing is received within such time."
+        }
+      }
+    ],
+    "gaps": [
+      "Predetermination (54.1-204.1) is drawn as an alternative first path ending in a binding determination. A person who gets one then applies through the main path, but the schema cannot rejoin a branch to a step that follows the start without inventing an unsourced step, so that hand-off is not drawn. 54.1-204.1 covers DPOR boards and the Department only (hence its own actor); no comparable predetermination statute was found for the health boards. No licensing authority may require education or training before a predetermination request (54.1-204.1 C).",
+      "The fingerprint check is optional for the board ('may require'); the applicant pays the cost of fingerprinting or the records check (no amount in the Code; payment is not drawn as a step), and the Central Criminal Records Exchange reports the state and FBI results to the board or its governmental designee (54.1-204 C). The board must use the state or national criminal history rather than requiring certified court records, but may ask the applicant for more information (54.1-204 D).",
+      "The order of review and conference is simplified: the APA requires case decisions to rest on an informal conference unless the party and agency agree to waive it for a formal hearing (2.2-4019 A); the conference includes notice of any contrary information the agency may rely on and a brief written statement of the basis for an adverse decision. For health boards the conference is held by a special conference committee or agency subordinate (54.1-2400 10). Not drawn: the summary case decision route (2.2-4020.1), open to a license applicant when no material facts are disputed; the written request stipulates the facts and waives other administrative proceedings on those questions of law, the agency must determine within 21 days whether the matter may be decided that way, and a denial of the request is not judicially reviewable.",
+      "The 90-day and 30-day clocks (2.2-4021 B) apply where no hearing officer is empowered to recommend a finding; where a hearing officer recommends, the agency must decide within 30 days of receiving the recommendation (2.2-4021 C). 'Deemed to be in favor of the named party' is stated by the statute, but the schema's consequence enum has 'deemed-denial' and no deemed-approval value, so the 30-day timer is marked 'unstated' and routes to its own outcome, which carries the explicit quote. The agency must notify the party of its decision within five days (2.2-4021 B); that clock is not drawn as a timer because the Code attaches no consequence and the schema's only non-interrupting option ('directory-only') would assert that the text says missing it has no effect.",
+      "The decision table only captures the conviction test of 54.1-204; a board may also deny for non-conviction reasons under its own statutes and regulations. Rule 3 (granted despite a directly related conviction) is implied: the 'unless' clause of 54.1-204 A permits refusal but does not require it. Board-specific statutes still use the terms 54.1-204 A bars: 'good moral character' is a qualification in 54.1-2930 (medicine), 54.1-2709 (dentistry), 54.1-2722 (dental hygiene), 54.1-3312 (pharmacy), 54.1-2205 (soil scientists) and 54.1-2206.1 (wetland delineators), and 54.1-3007 (nursing) lists 'Conviction of any felony or any misdemeanor involving moral turpitude'. The Code does not say how these are reconciled with 54.1-204 A.",
+      "A formal hearing (2.2-4020) is drawn as the board's option after an informal decision for DPOR boards (2.2-4020 A 'may'; a board's regulations may give applicants a right to request one). For health boards the applicant's written request within 30 days of service of the committee's order (plus three days if served by mail) makes the hearing mandatory and vacates the committee's action; without a timely request the order becomes final (54.1-2400 10). Whether court review remains open after an applicant lets the order become final without requesting a hearing (exhaustion of remedies) is not stated in the Code. At a formal hearing the applicant may have counsel, present evidence and rebuttal and cross-examine, bears the burden of proof, and receives a decision stating findings and reasons (2.2-4020 C, E). Any party may seek disqualification of a board member who cannot be impartial (54.1-110 B). The formal hearing is drawn as leading to the served final order; a favorable result after the hearing is not drawn separately.",
+      "Court review: the challenger must designate and demonstrate an error of law (2.2-4027). If a formal record was required (a 2.2-4020 hearing), facts are reviewed for substantial evidence on the agency record and law de novo; if the board decided after an informal conference only (2.2-4019), the court decides the facts from the agency file, as augmented, and asks only whether the result was within the agency's legal authority. Either way the court takes due account of the presumption of official regularity and the agency's expertise. The court dismisses or affirms, or sets the decision aside and remands; it may not itself supply action the basic law commits to the board (2.2-4029). A person who substantially prevails may recover costs and attorney fees (attorney fees up to $25,000) if the agency's position was not substantially justified, was unlawful or was for an improper purpose (2.2-4030). The agency or the court may postpone the decision's effect pending review (2.2-4028, intermediate relief; not a gold section). Venue follows 2.2-4003 and 8.01-261(1)(a): the county or city where the aggrieved party resides, regularly conducts business, or has affected property. The deadline and form of the notice of appeal and petition are in Rules of Supreme Court Part 2A, not the Code.",
+      "54.1-2408.01 literally applies 54.1-204 to persons 'who are licensed, certified, registered, or permitted' by the health boards; the Code does not say expressly that it reaches first-time applicants, though health-board special conference committees do decide applications (54.1-2400 10). Related provisions not drawn: a health licensee convicted of a felony is suspended by the Director without a hearing, and reinstatement requires a hearing and the affirmative vote of three-fourths of the board members at the hearing (54.1-2409); DPOR universal license recognition for out-of-state licensees requires that the individual not have a disqualifying criminal record as determined under 54.1-204 (54.1-205 B 5).",
+      "An application that asks about arrests, charges or convictions must tell the applicant that sealed information need not be disclosed (19.2-392.15 F)."
+    ]
+  },
+  "out_of_corpus": [
+    {
+      "kind": "court rule",
+      "what": "Deadline and form for the notice of appeal and petition for appeal from an agency case decision (judicial review under 2.2-4026)",
+      "where": "Rules of the Supreme Court of Virginia, Part Two A (Rules 2A:1-2A:5)"
+    },
+    {
+      "kind": "regulation",
+      "what": "Each board's own entry requirements, criminal-history questions and procedures for informal fact-finding conferences on applications",
+      "where": "Virginia Administrative Code, Title 18 (Professional and Occupational Licensing), the chapter for the relevant DPOR or health board"
+    },
+    {
+      "kind": "agency policy",
+      "what": "How to request a predetermination (forms, fees if any, processing) and board guidance on weighing criminal history",
+      "where": "Department of Professional and Occupational Regulation and Department of Health Professions guidance documents and websites"
+    },
+    {
+      "kind": "federal",
+      "what": "Federal disqualifications for some federally regulated occupations and federal background-check standards that a state board must apply",
+      "where": "Federal statutes and regulations for the specific occupation (for example federal health-program exclusions)"
+    }
+  ],
+  "version_flags": [],
+  "local_option": null,
+  "reviewed_by": "claude-askbench-2026-10-10",
+  "notes": "Core rule is 54.1-204 (DPOR regulatory boards; extended by 54.1-2408.01 to persons licensed by Department of Health Professions boards - the text speaks of licensees). 'Shall not be refused ... solely because of a prior criminal conviction, unless' it 'directly relates' - so a board may refuse when the conviction directly relates, after weighing the nine B criteria; it may not use 'good moral character' or 'moral turpitude', though several board-specific statutes still do (54.1-2930, 54.1-2709, 54.1-2722, 54.1-3312, 54.1-2205, 54.1-2206.1, 54.1-3007). The written-explanation duty in 54.1-204 C is triggered by a denial 'because of the information appearing in his criminal history record'. Predetermination (54.1-204.1) is binding and limited to DPOR boards and the Department. Challenge: review under the APA (54.1-109; 2.2-4019 informal conference, 2.2-4020 formal hearing, 2.2-4020.1 summary case decision, 2.2-4021 decision clocks and five-day notice, 54.1-2400(10) health-board hearing request, 2.2-4026 court action with venue under 2.2-4003 and 8.01-261(1), 2.2-4027 scope of review on two tracks, 2.2-4029 affirm or set aside and remand, 2.2-4030 costs and attorney fees up to $25,000). Licensing outside Title 54.1 (e.g. private security services under DCJS, 9.1-139; teacher licenses, 22.1-298.1; alcoholic beverage licenses, 4.1-222; motor vehicle dealers, 46.2-1575 'Having been convicted of a felony') is governed by those programs' own statutes, which 54.1-204 does not by its terms reach; 'motor vehicle dealer' was removed from the profile negatives for that reason. Sealed (19.2-392.15 C) and expunged (19.2-392.4 B) records need not be disclosed on a license application, and an application may not be denied solely for refusing to disclose them."
+}

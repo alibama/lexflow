@@ -1,0 +1,343 @@
+{
+ "state": "mi",
+ "question": "business",
+ "sections": [
+  "450.4202",
+  "450.4203",
+  "450.4104",
+  "450.5101",
+  "450.4201"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "450.4202",
+   "quote": "Filing is conclusive evidence that all conditions precedent required to be performed under this act are fulfilled and that the company is formed under this act, except in an action or special proceeding by the attorney general.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "evidentiary effect of filing"
+  },
+  {
+   "section": "450.4203",
+   "quote": "The articles of organization shall contain all of the following:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "list of required contents"
+  },
+  {
+   "section": "450.4203",
+   "quote": "The name of the limited liability company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item"
+  },
+  {
+   "section": "450.4203",
+   "quote": "The purposes for which the limited liability company is formed.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content item"
+  },
+  {
+   "section": "450.4203",
+   "quote": "It is sufficient to state substantially, alone or with specifically enumerated purposes, that the limited liability company may engage in any activity for which limited liability companies may be formed under this act.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "drafting guidance for purposes"
+  },
+  {
+   "section": "450.4203",
+   "quote": "The articles of organization may contain any provision not inconsistent with this act or another statute of this state, including any provision that is required or permitted to be in an operating agreement under this act.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "optional contents"
+  },
+  {
+   "section": "450.4104",
+   "quote": "A document required or permitted to be filed under this act shall be submitted by delivering the document to the administrator together with the fees and accompanying documents required by law.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer delivers document with fees"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator may establish a procedure for accepting delivery of a document submitted under this subsection by facsimile or other electronic transmission.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "delivery-channel policy"
+  },
+  {
+   "section": "450.4104",
+   "quote": "However, by December 31, 2006, the administrator shall establish a procedure for accepting delivery of a document submitted under this subsection by electronic mail or over the Internet.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "dated duty to set up e-filing"
+  },
+  {
+   "section": "450.4104",
+   "quote": "Beginning January 1, 2007, the administrator shall accept delivery of documents submitted by electronic mail or over the Internet.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "delivery-channel policy"
+  },
+  {
+   "section": "450.4104",
+   "quote": "If requested at the time of the delivery of the document to his or her office, the administrator shall include the hour of filing in the endorsement on the document.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "endorses filing hour on request"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator shall mark the filing date on the copy or original before returning it or, if the document was submitted by electronic mail or over the Internet, may provide proof of the filing date to the person who submitted the document for filing in another manner determined by the administrator.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "returns copy marked with filing date"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The records and files of the administrator relating to domestic and foreign limited liability companies shall be open to reasonable inspection by the public.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "public records access"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator may maintain the records or files either in their original form or in a photostatic, micrographic, photographic, optical disc media, or other reproduced form.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "record-keeping form"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator may make copies of any documents filed under this act or any predecessor act by a photostatic, micrographic, photographic, optical disc media, or other process, and may destroy the originals of the copied documents.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "copying/destroying originals"
+  },
+  {
+   "section": "450.4104",
+   "quote": "A document filed under subsection (2) is effective at the time it is endorsed unless a subsequent effective time is set forth in the document that is not later than 90 days after the date of delivery.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 90,
+    "unit": "days"
+   },
+   "why": "takes effect on endorsement, delay <=90 days"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator may require that a person submit a document described in subsection (1) on a form prescribed by the administrator.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "forms policy"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The administrator shall charge 1 of the following nonrefundable fees if expedited filing of a document by the administrator is requested and the administrator shall retain the revenue collected under this subsection and the department shall use it to carry out its duties required by law:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "charges expedited filing fee"
+  },
+  {
+   "section": "450.4104",
+   "quote": "For any filing that a person requests the administrator to complete within 1 hour on the same day as the day of the request, $1,000.00.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 1,
+    "unit": "hours"
+   },
+   "why": "1-hour expedited fee $1,000"
+  },
+  {
+   "section": "450.4104",
+   "quote": "The department may establish a deadline by which a person must submit a request for filing under this subdivision.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "department sets cutoff policy"
+  },
+  {
+   "section": "450.4104",
+   "quote": "Except for a filing request under subdivision (a) or (b), for the filing of any formation or qualification document that a person requests the administrator to complete on the same day as the day of the request, $100.00.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "same-day formation filing fee $100"
+  },
+  {
+   "section": "450.4104",
+   "quote": "Except for a filing request under subdivision (a) or (b), for the filing of any other document concerning an existing domestic limited liability company or a qualified foreign limited liability company that a person requests the administrator to complete on the same day as the day of the request, $200.00.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for existing-company filings"
+  },
+  {
+   "section": "450.4104",
+   "quote": "For the filing of any formation or qualification document that a person requests the administrator to complete within 24 hours of the time the administrator receives the request, $50.00.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 24,
+    "unit": "hours"
+   },
+   "why": "24-hour formation filing fee $50"
+  },
+  {
+   "section": "450.4104",
+   "quote": "For the filing of any other document concerning an existing domestic limited liability company or a qualified foreign limited liability company that a person requests the administrator to complete within 24 hours of the time the administrator receives the request, $100.00.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee for existing-company filings"
+  },
+  {
+   "section": "450.5101",
+   "quote": "Through September 30, 2027, the fee is $25.00.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "annual statement fee, not formation"
+  },
+  {
+   "section": "450.5101",
+   "quote": "In addition to a fee required to file a document, the administrator may charge a fee of $50.00 if the document is filed by facsimile or other electronic transmission or the administrator is requested to transmit a document by facsimile or other electronic transmission.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "charges electronic transmission fee"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall not refund all or any part of a fee described in this section.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "no-refund policy"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall deposit all fees received and collected under this section in the state treasury to the credit of the administrator, who may only use the money credited in accordance with legislative appropriation and only in carrying out those duties of the department required by law.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fund accounting"
+  },
+  {
+   "section": "450.5101",
+   "quote": "A minimum charge of $1.00 for each certificate and 50 cents per folio must be paid to the administrator for certifying a part of a file or record pertaining to a domestic or foreign limited liability company if a fee is not set forth in subsection (1).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "certification fee, not formation"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator may furnish copies of documents, reports, and papers required or permitted by law to be filed with the administrator, and shall charge for those copies the fee established in a schedule of fees adopted by the administrator with the approval of the state administrative board.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "copy service fee"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall retain the revenue collected under this subsection and use it to defray the costs of the department's copying and certifying services.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "revenue use"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator may accept payment by credit card, instead of cash or check, as payment of a fee under this act.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "payment-method policy"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall determine which credit cards the administrator accepts for payment of a fee.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "payment-method policy"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall waive the fee otherwise required under subsection (1) for filing initial articles of organization if a majority of the initial membership interests in the domestic limited liability company will be held by veterans.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "waives fee for veteran-owned LLC"
+  },
+  {
+   "section": "450.5101",
+   "quote": "To request a fee waiver under subsection (7), the person that is submitting the initial articles of organization for filing shall submit both of the following to the administrator with that document:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "filer submits waiver request"
+  },
+  {
+   "section": "450.5101",
+   "quote": "A signed affidavit requesting the fee waiver and certifying that a majority of the initial membership interests in the domestic limited liability company will be held by veterans.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "waiver submission contents"
+  },
+  {
+   "section": "450.5101",
+   "quote": "Copies of form DD214 or form DD215, or any other form that is satisfactory to the department, for each veteran who will be an initial member of the limited liability company.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "waiver submission contents"
+  },
+  {
+   "section": "450.5101",
+   "quote": "The administrator shall waive any fee otherwise required under this section if a majority of the membership interests in the domestic or foreign limited liability company responsible for paying the fee are, and the domestic or foreign limited liability company provides proof satisfactory to the administrator that those interests are, held by veterans.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "waiver for non-formation fees"
+  },
+  {
+   "section": "450.4201",
+   "quote": "A limited liability company may be formed under this act for any lawful purpose for which a domestic corporation or a domestic partnership could be formed, except as otherwise provided by law.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general purpose rule"
+  },
+  {
+   "section": "450.4201",
+   "quote": "A limited liability company formed to provide services in a learned profession, or more than 1 learned profession, shall comply with article 9.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cross-reference to article 9"
+  }
+ ]
+}

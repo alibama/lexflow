@@ -180,23 +180,59 @@ def code_of(state: str, row) -> str:
     return str(row["citation"]).rsplit("§", 1)[0].strip().rstrip(",") or f"{S.NAME[state]} statutes"
 
 
+def _index_find(state: str):
+    """find() served by the state's search index (the same rows and rules, without loading the whole file into
+    memory), or None when the index is not built."""
+    from ..ask import index as I
+    if not I.ready(state):
+        return None
+    import pandas as pd
+
+    def find_(ref):
+        rows = I.lookup(state, ref, with_text=True)
+        for r in rows:
+            r["section_title"], r["source_url"] = r["original_title"], r["url"]
+        return pd.DataFrame(rows)
+    return find_
+
+
 def section_texts(state: str, numbers: list[str], code: str | None = None, df=None) -> list[SectionText]:
-    df = load(state) if df is None else df
+    finder = (lambda n: find(df, n)) if df is not None else _index_find(state)
+    if finder is None:
+        frame = load(state)
+        finder = lambda n: find(frame, n)  # noqa: E731
     out = []
     for n in numbers:
-        hit = find(df, n)
+        hit = finder(n)
         if hit.empty:
             raise KeyError(f"{state}: section {n} not found in the downloaded statutes")
         if len(hit) > 1 and "§" not in n:
             raise KeyError(f"{state}: section {n} is ambiguous; name the article, e.g. "
                            + "; ".join(hit["citation"].head(4)))
-        r = hit.iloc[0]
-        out.append(SectionText(section=r["section_number"], title=r["section_title"], code=code or code_of(state, r),
-                               jurisdiction=state, text=strip_history(r["text"]), url=r["source_url"],
-                               retrieved_from=f"open-us-law {r['act_id']}",
-                               license_note="open-us-law (Vaquill AI), CC BY-NC 4.0; text from the government "
-                                            "publisher at the URL shown"))
+        out.append(_section_text(state, hit.iloc[0], code))
     return out
+
+
+def section_texts_by_id(state: str, ids: list[int], code: str | None = None) -> list[SectionText]:
+    """section_texts() for rows of the state's search index, by id: the version and section retrieval chose,
+    where a reference can name several (an expired version, or two sections that share a citation)."""
+    from ..ask import index as I
+    out = []
+    for i in ids:
+        r = I.by_id(state, i, with_text=True)
+        if r is None:
+            raise KeyError(f"{state}: no section with id {i} in the search index")
+        r["section_title"], r["source_url"] = r["original_title"], r["url"]
+        out.append(_section_text(state, r, code))
+    return out
+
+
+def _section_text(state: str, r, code: str | None) -> SectionText:
+    return SectionText(section=r["section_number"], title=r["section_title"], code=code or code_of(state, r),
+                       jurisdiction=state, text=strip_history(r["text"]), url=r["source_url"],
+                       retrieved_from=f"open-us-law {r['act_id']}",
+                       license_note="open-us-law (Vaquill AI), CC BY-NC 4.0; text from the government "
+                                    "publisher at the URL shown")
 
 
 def code_name(state: str) -> str:

@@ -1,0 +1,339 @@
+{
+ "state": "mi",
+ "question": "records",
+ "sections": [
+  "15.235",
+  "15.233",
+  "15.240",
+  "15.244"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "15.235",
+   "quote": "Granting the request in part and issuing a written notice to the requesting person denying the request in part.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "response option: grant in part, deny in part"
+  },
+  {
+   "section": "15.235",
+   "quote": "A public body shall not issue more than 1 notice of extension for a particular request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "cap on number of extensions"
+  },
+  {
+   "section": "15.235",
+   "quote": "In a civil action to compel a public body's disclosure of a public record under section 10, the court shall assess damages against the public body under section 10(7) if the court has done both of the following:",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court assesses damages in civil action"
+  },
+  {
+   "section": "15.235",
+   "quote": "Determined that the public body has not complied with subsection (2).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "condition for damages, not an act"
+  },
+  {
+   "section": "15.235",
+   "quote": "Ordered the public body to disclose or provide copies of all or a portion of the public record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "condition for damages; order is in 15.240(4)"
+  },
+  {
+   "section": "15.235",
+   "quote": "An explanation of the basis under this act or other statute for the determination that the public record, or portion of that public record, is exempt from disclosure, if that is the reason for denying all or a portion of the request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "required content of denial notice"
+  },
+  {
+   "section": "15.235",
+   "quote": "A certificate that the public record does not exist under the name given by the requester or by another name reasonably known to the public body, if that is the reason for denying the request or a portion of the request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "required content of denial notice"
+  },
+  {
+   "section": "15.235",
+   "quote": "A description of a public record or information on a public record that is separated or deleted under section 14, if a separation or deletion is made.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "required content of denial notice"
+  },
+  {
+   "section": "15.235",
+   "quote": "( i ) Submit to the head of the public body a written appeal that specifically states the word \"appeal\" and identifies the reason or reasons for reversal of the disclosure denial.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "notice content explaining appeal right"
+  },
+  {
+   "section": "15.235",
+   "quote": "( ii ) Seek judicial review of the denial under section 10.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "notice content explaining review right"
+  },
+  {
+   "section": "15.235",
+   "quote": "Notice of the right to receive attorneys' fees and damages as provided in section 10 if, after judicial review, the court determines that the public body has not complied with this section and orders disclosure of all or a portion of a public record.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "notice content about fees and damages"
+  },
+  {
+   "section": "15.235",
+   "quote": "The individual designated in section 6 as responsible for the denial of the request shall sign the written notice of denial.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "designated individual signs denial notice"
+  },
+  {
+   "section": "15.235",
+   "quote": "Grant the request.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "extended response: grant"
+  },
+  {
+   "section": "15.235",
+   "quote": "Issue a written notice to the requesting person denying the request.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "extended response: deny in writing"
+  },
+  {
+   "section": "15.235",
+   "quote": "If a public body makes a final determination to deny in whole or in part a request to inspect or receive a copy of a public record or portion of that public record, the requesting person may do either of the following:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester chooses appeal or suit after denial"
+  },
+  {
+   "section": "15.235",
+   "quote": "Appeal the denial to the head of the public body under section 10.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester appeals to head of body"
+  },
+  {
+   "section": "15.235",
+   "quote": "Commence a civil action, under section 10.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester commences civil action"
+  },
+  {
+   "section": "15.235",
+   "quote": "As used in this subsection, \"law enforcement records management system\" means a data storage system that may be used voluntarily by subscribers, including any subscribing public bodies, to share information and facilitate intergovernmental collaboration in the provision of law enforcement services.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "definition"
+  },
+  {
+   "section": "15.235",
+   "quote": "A person making a request under subsection (1) may stipulate that the public body's response under subsection (2) be electronically mailed, delivered by facsimile, or delivered by first-class mail.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester stipulates response delivery method"
+  },
+  {
+   "section": "15.233",
+   "quote": "A request from a person, other than an individual who qualifies as indigent under section 4(2)(a), must include the requesting person's complete name, address, and contact information, and, if the request is made by a person other than an individual, the complete name, address, and contact information of the person's agent who is an individual.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "request content requirement, not an act"
+  },
+  {
+   "section": "15.233",
+   "quote": "An address must be written in compliance with United States Postal Service addressing standards.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "address format requirement"
+  },
+  {
+   "section": "15.233",
+   "quote": "Contact information must include a valid telephone number or electronic mail address.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "contact info requirement"
+  },
+  {
+   "section": "15.233",
+   "quote": "A freedom of information act coordinator shall keep a copy of all written requests for public records on file for no less than 1 year.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general record retention"
+  },
+  {
+   "section": "15.233",
+   "quote": "A public body may make reasonable rules necessary to protect its public records and to prevent excessive and unreasonable interference with the discharge of its functions.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general rulemaking power"
+  },
+  {
+   "section": "15.233",
+   "quote": "A public body shall protect public records from loss, unauthorized alteration, mutilation, or destruction.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general duty to protect records"
+  },
+  {
+   "section": "15.240",
+   "quote": "If a public body makes a final determination to deny all or a portion of a request, the requesting person may do 1 of the following at his or her option:",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester chooses appeal or suit after denial"
+  },
+  {
+   "section": "15.240",
+   "quote": "Commence a civil action in the circuit court, or if the decision of a state public body is at issue, the court of claims, to compel the public body's disclosure of the public records within 180 days after a public body's final determination to deny a request.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": {
+    "amount": 180,
+    "unit": "days"
+   },
+   "why": "requester sues within 180 days"
+  },
+  {
+   "section": "15.240",
+   "quote": "Reverse the disclosure denial.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "head reverses denial on appeal"
+  },
+  {
+   "section": "15.240",
+   "quote": "Issue a written notice to the requesting person upholding the disclosure denial.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": null,
+   "why": "head upholds denial in writing"
+  },
+  {
+   "section": "15.240",
+   "quote": "Under unusual circumstances, issue a notice extending for not more than 10 business days the period during which the head of the public body shall respond to the written appeal.",
+   "is_step": true,
+   "actor_kind": "official",
+   "deadline": {
+    "amount": 10,
+    "unit": "business_days"
+   },
+   "why": "head extends appeal response up to 10 business days"
+  },
+  {
+   "section": "15.240",
+   "quote": "If the head of the public body fails to respond to a written appeal pursuant to subsection (2), or if the head of the public body upholds all or a portion of the disclosure denial that is the subject of the written appeal, the requesting person may seek judicial review of the nondisclosure by commencing a civil action under subsection (1)(b).",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester seeks judicial review after appeal"
+  },
+  {
+   "section": "15.240",
+   "quote": "The court shall determine the matter de novo and the burden is on the public body to sustain its denial.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "standard of review and burden"
+  },
+  {
+   "section": "15.240",
+   "quote": "The court, on its own motion, may view the public record in controversy in private before reaching a decision.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court reviews record in camera"
+  },
+  {
+   "section": "15.240",
+   "quote": "Failure to comply with an order of the court may be punished as contempt of court.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "contempt sanction rule"
+  },
+  {
+   "section": "15.240",
+   "quote": "An action commenced under this section and an appeal from an action commenced under this section shall be assigned for hearing and trial or for argument at the earliest practicable date and expedited in every way.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "docket priority rule"
+  },
+  {
+   "section": "15.240",
+   "quote": "If the person or public body prevails in part, the court may, in its discretion, award all or an appropriate portion of reasonable attorneys' fees, costs, and disbursements.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards fees on partial win"
+  },
+  {
+   "section": "15.240",
+   "quote": "If the court determines in an action commenced under this section that the public body has arbitrarily and capriciously violated this act by refusal or delay in disclosing or providing copies of a public record, the court shall order the public body to pay a civil fine of $1,000.00, which shall be deposited into the general fund of the state treasury.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court orders civil fine"
+  },
+  {
+   "section": "15.240",
+   "quote": "The court shall award, in addition to any actual or compensatory damages, punitive damages in the amount of $1,000.00 to the person seeking the right to inspect or receive a copy of a public record.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards punitive damages"
+  },
+  {
+   "section": "15.244",
+   "quote": "If a public record contains material which is not exempt under section 13, as well as material which is exempt from disclosure under section 13, the public body shall separate the exempt and nonexempt material and make the nonexempt material available for examination and copying.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body separates exempt material, releases rest"
+  },
+  {
+   "section": "15.244",
+   "quote": "When designing a public record, a public body shall, to the extent practicable, facilitate a separation of exempt from nonexempt information.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "record design duty, not case handling"
+  }
+ ]
+}

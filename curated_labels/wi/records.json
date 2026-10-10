@@ -1,0 +1,334 @@
+{
+ "state": "wi",
+ "question": "records",
+ "sections": [
+  "19.35",
+  "19.33",
+  "19.36",
+  "19.37",
+  "19.31"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "19.35",
+   "quote": "The exemptions to the requirement of a governmental body to meet in open session under s. 19.85 are indicative of public policy, but may be used as grounds for denying public access to a record only if the authority or legal custodian under s. 19.33 makes a specific demonstration that there is a need to restrict public access at the time that the request to inspect or copy the record is made.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "standard limiting denial grounds"
+  },
+  {
+   "section": "19.35",
+   "quote": "Any record containing personally identifiable information that is collected or maintained in connection with a complaint, investigation or other circumstances that may lead to an enforcement action, administrative proceeding, arbitration proceeding or court proceeding, or any such record that is collected or maintained in connection with such an action or proceeding.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption list item"
+  },
+  {
+   "section": "19.35",
+   "quote": "If a requester appears personally to request a copy of a record that permits copying, the authority having custody of the record may, at its option, permit the requester to copy the record or provide the requester with a copy substantially as readable as the original.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body lets requester copy or gives copy"
+  },
+  {
+   "section": "19.35",
+   "quote": "If an authority receives a request to inspect or copy a record that is in handwritten form or a record that is in the form of a voice recording which the authority is required to withhold or from which the authority is required to delete information under s. 19.36 (8) (b) because the handwriting or the recorded voice would identify an informant, the authority shall provide to the requester, upon his or her request, a transcript of the record or the information contained in the record if the record or information is otherwise subject to public inspection and copying under this subsection.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body provides transcript of informant record"
+  },
+  {
+   "section": "19.35",
+   "quote": "If a requester requests permission to photograph the record, the authority having custody of the record may permit the requester to photograph the record.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body permits requester to photograph"
+  },
+  {
+   "section": "19.35",
+   "quote": "If a requester requests that a photograph of the record be provided, the authority shall provide a good quality photograph of the record.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body provides photograph of record"
+  },
+  {
+   "section": "19.35",
+   "quote": "(a) and (b) to (f) may be refused because the person making the request is unwilling to be identified or to state the purpose of the request.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "bar on refusal for anonymity"
+  },
+  {
+   "section": "19.35",
+   "quote": "Facilities. The authority shall provide any person who is authorized to inspect or copy a record under sub.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general facilities duty"
+  },
+  {
+   "section": "19.35",
+   "quote": "An authority may impose a fee upon the requester of a copy of a record which may not exceed the actual, necessary and direct cost of reproduction and transcription of the record, unless a fee is otherwise specifically established or authorized to be established by law.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body imposes copy fee"
+  },
+  {
+   "section": "19.35",
+   "quote": "Except as otherwise provided by law or as authorized to be prescribed by law an authority may impose a fee upon the requester of a copy of a record that does not exceed the actual, necessary and direct cost of photographing and photographic processing if the authority provides a photograph of a record, the form of which does not permit copying.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body imposes photograph fee"
+  },
+  {
+   "section": "19.35",
+   "quote": "An authority may impose a fee upon a requester for the actual, necessary and direct cost of mailing or shipping of any copy or photograph of a record which is mailed or shipped to the requester.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body imposes mailing fee"
+  },
+  {
+   "section": "19.35",
+   "quote": "Subject to subds. 3. to 7. , an authority that is a law enforcement agency may impose a fee upon a requester for the actual, necessary, and direct cost of redacting, whether by pixelization or other means, recorded audio or video content to the extent redaction is necessary to comply with applicable constitutional, statutory, or common law.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "law enforcement body imposes redaction fee"
+  },
+  {
+   "section": "19.35",
+   "quote": "Every written denial of a request by an authority shall inform the requester that if the request for the record was made in writing, then the determination is subject to review by mandamus under s. 19.37 (1) or upon application to the attorney general or a district attorney.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "required content of written denial"
+  },
+  {
+   "section": "19.35",
+   "quote": "(1) (a) or (am) from an individual or person authorized by the individual who identifies himself or herself and states that the purpose of the request is to inspect or copy a record containing personally identifiable information pertaining to the individual that is maintained by the authority, the authority shall deny or grant the request in accordance with the following procedure:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to grant/deny procedure"
+  },
+  {
+   "section": "19.35",
+   "quote": "The authority shall first determine if the requester has a right to inspect or copy the record under sub.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body determines right under (1)(a)"
+  },
+  {
+   "section": "19.35",
+   "quote": "(1) (a), the authority shall grant the request.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body grants request"
+  },
+  {
+   "section": "19.35",
+   "quote": "Record destruction. No authority may destroy any record at any time after the receipt of a request for inspection or copying of the record under sub.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "record retention prohibition"
+  },
+  {
+   "section": "19.35",
+   "quote": "If the court orders the production of any record and the order is not appealed, the record may not be destroyed until after the request for inspection or copying is granted.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "record retention prohibition"
+  },
+  {
+   "section": "19.33",
+   "quote": "An elective official is the legal custodian of his or her records and the records of his or her office, but the official may designate an employee of his or her staff to act as the legal custodian.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "custodian designation, organizational"
+  },
+  {
+   "section": "19.33",
+   "quote": "(1) to (3) shall designate in writing one or more positions occupied by an officer or employee of the authority or the unit of government of which it is a part as a legal custodian to fulfill its duties under this subchapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "custodian designation, organizational"
+  },
+  {
+   "section": "19.33",
+   "quote": "The legal custodian shall be vested by the authority with full legal power to render decisions and carry out the duties of the authority under this subchapter.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "custodian powers, organizational"
+  },
+  {
+   "section": "19.33",
+   "quote": "Each authority shall provide the name of the legal custodian and a description of the nature of his or her duties under this subchapter to all employees of the authority entrusted with records subject to the legal custodian’s supervision.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "internal notice to employees"
+  },
+  {
+   "section": "19.33",
+   "quote": "The legal custodian of records maintained in a publicly owned or leased building or the authority appointing the legal custodian shall designate one or more deputies to act as legal custodian of such records in his or her absence or as otherwise required to respond to requests as provided in s. 19.35 (4).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "deputy designation, organizational"
+  },
+  {
+   "section": "19.36",
+   "quote": "Contractors’ records. Each authority shall make available for inspection and copying under s. 19.35 (1) any record produced or collected under a contract entered into by the authority with a person other than an authority to the same extent as if the record were maintained by the authority.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "scope rule for contractor records"
+  },
+  {
+   "section": "19.36",
+   "quote": "Trade secrets. An authority may withhold access to any record or portion of a record containing information qualifying as a trade secret as defined in s. 134.90 (1) (c).",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "trade secret exemption"
+  },
+  {
+   "section": "19.36",
+   "quote": "If a record contains information that is subject to disclosure under s. 19.35 (1) (a) or (am) and information that is not subject to such disclosure, the authority having custody of the record shall provide the information that is subject to disclosure and delete the information that is not subject to disclosure from the record before release.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body redacts exempt info, releases rest"
+  },
+  {
+   "section": "19.36",
+   "quote": "Every applicant for a position with any authority may indicate in writing to the authority that the applicant does not wish the authority to reveal his or her identity.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "job applicant confidentiality, unrelated"
+  },
+  {
+   "section": "19.36",
+   "quote": "Past, present or future activities that the individual or law enforcement agency believes may violate a federal law, a law of any state or an ordinance of any local government.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "definition list item"
+  },
+  {
+   "section": "19.36",
+   "quote": "If an authority receives a request to inspect or copy a record or portion of a record under s. 19.35 (1) (a) that contains specific information including but not limited to a name, address, telephone number, voice recording, or handwriting sample that, if disclosed, would identify an informant, the authority shall delete the portion of the record in which the information is contained or, if no portion of the record can be inspected or copied without identifying the informant, shall withhold the record unless the legal custodian of the record, designated under s. 19.33, makes a determination, at the time that the request is made, that the public interest in allowing a person to inspect, copy or receive a copy of such identifying information outweighs the harm done to the public interest by providing such access.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body deletes/withholds informant info"
+  },
+  {
+   "section": "19.37",
+   "quote": "Mandamus. If an authority withholds a record or a part of a record or delays granting access to a record or part of a record after a written request for disclosure is made, the requester may pursue either, or both, of the alternatives under pars.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in; options in (a) and (b)"
+  },
+  {
+   "section": "19.37",
+   "quote": "The requester may bring an action for mandamus asking a court to order release of the record.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester sues for mandamus"
+  },
+  {
+   "section": "19.37",
+   "quote": "The court may permit the parties or their attorneys to have access to the requested record under restrictions or protective orders as the court deems appropriate.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court grants access under protective order"
+  },
+  {
+   "section": "19.37",
+   "quote": "The requester may, in writing, request the district attorney of the county where the record is found, or request the attorney general, to bring an action for mandamus asking a court to order release of the record to the requester.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester asks DA or AG to sue"
+  },
+  {
+   "section": "19.37",
+   "quote": "The district attorney or attorney general may bring such an action.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "DA or AG brings mandamus action"
+  },
+  {
+   "section": "19.37",
+   "quote": "Costs and fees shall be paid by the authority affected or the unit of government of which it is a part, or by the unit of government by which the legal custodian under s. 19.33 is employed and may not become a personal liability of any public official.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "who bears costs, liability rule"
+  },
+  {
+   "section": "19.37",
+   "quote": "(1) relating to access to a record or part of a record under s. 19.35 (1) (am), if the court finds that the authority acted in a willful or intentional manner, the court shall award the individual actual damages sustained by the individual as a consequence of the failure.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards actual damages"
+  },
+  {
+   "section": "19.37",
+   "quote": "Punitive damages. If a court finds that an authority or legal custodian under s. 19.33 has arbitrarily and capriciously denied or delayed response to a request or charged excessive fees, the court may award punitive damages to the requester.",
+   "is_step": true,
+   "actor_kind": "court",
+   "deadline": null,
+   "why": "court awards punitive damages"
+  },
+  {
+   "section": "19.37",
+   "quote": "Penalty. Any authority which or legal custodian under s. 19.33 who arbitrarily and capriciously denies or delays response to a request or charges excessive fees may be required to forfeit not more than $1,000.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "penalty amount"
+  },
+  {
+   "section": "19.37",
+   "quote": "Forfeitures under this section shall be enforced by action on behalf of the state by the attorney general or by the district attorney of any county where a violation occurs.",
+   "is_step": true,
+   "actor_kind": "other-government",
+   "deadline": null,
+   "why": "AG or DA sues to enforce forfeiture"
+  },
+  {
+   "section": "19.37",
+   "quote": "In actions brought by the attorney general, the court shall award any forfeiture recovered together with reasonable costs to the state; and in actions brought by the district attorney, the court shall award any forfeiture recovered together with reasonable costs to the county.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "where forfeiture proceeds go"
+  }
+ ]
+}

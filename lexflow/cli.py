@@ -138,6 +138,108 @@ def cmd_statute_search(args) -> int:
     return 0
 
 
+def cmd_ask_search(args) -> int:
+    """Full-text search of one state's statutes: each argument is a concept, synonyms separated by '|'."""
+    from .ask import index as I
+    from .municipal import states as S
+    st = S.normalise(args.state)
+    if not I.ensure(st, log=lambda *_: None):
+        print(f"{st}: statutes not downloaded")
+        return 1
+    groups = [[t.strip() for t in c.split("|") if t.strip()] for c in args.concepts]
+    expr = args.fts or I.match(groups, "or" if args.any else "and", columns="title" if args.title else None)
+    hits = I.search(st, expr, limit=args.limit) if expr else []
+    for h in hits:
+        print(f"{h['ref']:<34} {int(h['words'] or 0):>6}w  {h['title'][:100]}")
+    print(f"({len(hits)} shown; query {expr})")
+    return 0
+
+
+def cmd_check_ask(args) -> int:
+    """Check a reference answer in curated_ask/<question>/<state>.json."""
+    from .ask import reference as R
+    from .municipal import states as S
+    st = S.normalise(args.state)
+    alt = getattr(args, "alt", False)
+    try:
+        spec = R.load(args.question, st, alt)
+    except (OSError, ValueError) as e:
+        print(json.dumps({"ok": False, "problems": [f"cannot read {R.path(args.question, st, alt)}: {e}"]}, indent=1))
+        return 1
+    out = R.check(spec, args.question, st)
+    print(json.dumps(out, indent=1, default=str))
+    return 0 if out["ok"] else 1
+
+
+def cmd_ask_bench(args) -> int:
+    """Score the ask pipeline against Claude's references; writes docs/askbench.json."""
+    from .ask import bench as AB
+    from .ask import reference as R
+    from .store import db
+    cases = R.cases()
+    if args.cases:
+        want = {w.strip() for w in args.cases.split(",") if w.strip()}
+        unknown = sorted(w for w in want if not any(w in (f"{q}.{s}", q) for q, s in cases))
+        cases = [c for c in cases if f"{c[0]}.{c[1]}" in want or c[0] in want]
+        if unknown or not cases:                 # never fall back to running every case
+            print(f"no reference matches {', '.join(unknown) or repr(args.cases)} "
+                  f"(curated_ask/<question>/<state>.json; --cases qid.state,... or question ids)")
+            return 1
+    con = db.connect()
+    rows = AB.run(con, tuple(args.arms.split(",")), cases, use_llm=args.llm, llm_plan=args.llm_plan)
+    print(json.dumps(AB.summary(rows), indent=1))
+    # docs/askbench.json: the arms stored so far from the current code and metrics, each scored against the current
+    # version of its reference; "cases" counts the references, each arm in the summary its own cases
+    stored, excluded = AB.stored(con)
+    if any(excluded.values()):
+        print(f"docs/askbench.json leaves out {excluded['stale_reference']} rows scored against an older reference "
+              f"and {excluded['stale_code']} from older code or metrics")
+    ceil = AB.ceiling()
+    ok = [c for c in ceil if c.get("mean") is not None]
+    out = {"cases": len(R.cases()), "version": AB.version(), "excluded": excluded,
+           "summary": AB.summary(stored), "rows": stored,
+           "claude_vs_claude": {"cases": ceil, "mean": round(sum(c["mean"] for c in ok) / len(ok), 3) if ok else None}}
+    (config.ROOT / "docs" / "askbench.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    return 0
+
+
+def cmd_al_queue(args) -> int:
+    """Write the sentences the selector is least sure of (per state and question) for Claude to label."""
+    from .extract import active as AL
+    from .municipal import states as S
+    from .store import db
+    out = AL.write_queue(db.connect(), config.ROOT / "curated_labels" / "queue", S.parse_states(args.states),
+                         args.questions.split(","), n=args.n)
+    print("\n".join(out))
+    return 0
+
+
+def cmd_check_labels(args) -> int:
+    from .extract import active as AL
+    from .municipal import states as S
+    st = S.normalise(args.state)
+    path = config.ROOT / "curated_labels" / st / f"{args.question}.json"
+    try:
+        spec = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        print(json.dumps({"ok": False, "problems": [f"cannot read {path}: {e}"]}))
+        return 1
+    problems = AL.check(spec)
+    print(json.dumps({"ok": not problems, "labels": len(spec.get("labels") or []), "problems": problems}, indent=1))
+    return 0 if not problems else 1
+
+
+def cmd_index(args) -> int:
+    from .ask import index as I
+    from .municipal import states as S
+    from .municipal import statutes
+    sts = S.parse_states(args.states) if args.states else [s for s, _, _ in S.STATES if statutes.have(s)]
+    for st in sts:
+        if args.force or not I.ready(st):
+            I.build(st)
+    return 0
+
+
 def cmd_ceiling(args) -> int:
     """How far two independent Claude drafts agree (curated/ vs curated_alt/), and what perfect selection over
     each candidate generator would score: the bounds the local strategies are measured against."""
@@ -317,6 +419,39 @@ def main(argv: list[str] | None = None) -> int:
     an.set_defaults(fn=cmd_answer)
     sub.add_parser("export-fixtures", help="write fixtures/statutes/<state>_sections.json for the tests").set_defaults(
         fn=cmd_export_fixtures)
+    asr = sub.add_parser("ask-search", help="full-text search a state's statutes: lexflow ask-search va 'expunge|seal' "
+                                            "'record|conviction'")
+    asr.add_argument("state")
+    asr.add_argument("concepts", nargs="*", help="one argument per concept; synonyms separated by |")
+    asr.add_argument("--any", action="store_true", help="any concept instead of all of them")
+    asr.add_argument("--title", action="store_true", help="search headings only")
+    asr.add_argument("--fts", help="a raw SQLite FTS5 MATCH expression instead of concepts")
+    asr.add_argument("--limit", type=int, default=25)
+    asr.set_defaults(fn=cmd_ask_search)
+    ca = sub.add_parser("check-ask", help="check a reference answer in curated_ask/<question>/<state>.json")
+    ca.add_argument("question")
+    ca.add_argument("state")
+    ca.add_argument("--alt", action="store_true", help="check the independent second draft in curated_ask_alt/")
+    ca.set_defaults(fn=cmd_check_ask)
+    ab = sub.add_parser("ask-bench", help="score the ask pipeline against curated_ask/ (Claude's references)")
+    ab.add_argument("--arms", default="local,oracle", help="local (full pipeline), oracle (gold sections)")
+    ab.add_argument("--cases", help="qid.state,... or question ids")
+    ab.add_argument("--llm", action="store_true", help="the local model plans the search and writes the summary")
+    ab.add_argument("--llm-plan", action="store_true", help="the local model plans the search only")
+    ab.set_defaults(fn=cmd_ask_bench)
+    alq = sub.add_parser("al-queue", help="sentences for Claude to label (active learning) -> curated_labels/queue/")
+    alq.add_argument("--states", required=True)
+    alq.add_argument("--questions", default="records,business")
+    alq.add_argument("--n", type=int, default=40)
+    alq.set_defaults(fn=cmd_al_queue)
+    cl = sub.add_parser("check-labels", help="check curated_labels/<state>/<question>.json")
+    cl.add_argument("state")
+    cl.add_argument("question")
+    cl.set_defaults(fn=cmd_check_labels)
+    ix = sub.add_parser("index", help="build the statute search index (all downloaded states, or --states)")
+    ix.add_argument("--states")
+    ix.add_argument("--force", action="store_true")
+    ix.set_defaults(fn=cmd_index)
     sub.add_parser("ceiling", help="Claude-vs-Claude agreement and perfect-selection bounds -> docs/ceiling.json"
                    ).set_defaults(fn=cmd_ceiling)
     ka = sub.add_parser("check-curated-alt", help="check an independent second draft in curated_alt/")

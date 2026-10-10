@@ -1,0 +1,341 @@
+{
+ "state": "or",
+ "question": "records",
+ "sections": [
+  "192.324",
+  "192.329",
+  "192.314",
+  "192.345",
+  "192.355",
+  "192.411"
+ ],
+ "labeller": "claude-al-2026-10-10",
+ "labels": [
+  {
+   "section": "192.324",
+   "quote": "(1) A public body that is the custodian of any public record that a person has a right to inspect shall give the person, upon receipt of a written request:",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body gives copy or inspection on written request"
+  },
+  {
+   "section": "192.324",
+   "quote": "A copy of the public record if the public record is of a nature permitting copying; or",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "option/object of the give duty, no act"
+  },
+  {
+   "section": "192.324",
+   "quote": "An acknowledgment under this subsection must:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "lead-in to acknowledgment contents"
+  },
+  {
+   "section": "192.324",
+   "quote": "The public body may include in a fee established under paragraph (a) of this subsection the cost of time spent by an attorney for the public body in reviewing the public records, redacting material from the public records or segregating the public records into exempt and nonexempt records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee composition rule"
+  },
+  {
+   "section": "192.324",
+   "quote": "The public body may not include in a fee established under paragraph (a) of this subsection the cost of time spent by an attorney for the public body in determining the application of the provisions of ORS 192.311 to 192.478.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "fee exclusion rule"
+  },
+  {
+   "section": "192.324",
+   "quote": "The public body may not establish a fee greater than $25 under this section unless the public body first provides the requester with a written notification of the estimated amount of the fee and the requester confirms that the requester wants the public body to proceed with making the public record available.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body sends fee estimate; requester confirms"
+  },
+  {
+   "section": "192.324",
+   "quote": "The custodian of a public record may furnish copies without charge or at a substantially reduced fee if the custodian determines that the waiver or reduction of fees is in the public interest because making the record available primarily benefits the general public.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "custodian waives or reduces fee"
+  },
+  {
+   "section": "192.324",
+   "quote": "A requester who believes that there has been an unreasonable denial of a fee waiver or fee reduction may petition the Attorney General or the district attorney in the same manner as a requester who petitions when inspection of a public record is denied under ORS 192.311 to 192.478.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester petitions AG/DA on fee waiver denial"
+  },
+  {
+   "section": "192.324",
+   "quote": "A public body shall make available to the public a written procedure for making public records requests that includes:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "general duty to publish procedure"
+  },
+  {
+   "section": "192.324",
+   "quote": "The name of one or more individuals within the public body to whom public records requests may be sent, with addresses; and",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content of published procedure"
+  },
+  {
+   "section": "192.324",
+   "quote": "The amounts of and the manner of calculating fees that the public body charges for responding to requests for public records.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "content of published procedure"
+  },
+  {
+   "section": "192.329",
+   "quote": "(1) A public body shall complete its response to a written public records request that is received by an individual identified in the public body’s procedure described in ORS 192.324 as soon as practicable and without unreasonable delay.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body completes response without delay"
+  },
+  {
+   "section": "192.329",
+   "quote": "To the extent that the public body is not the custodian of records that have been requested, provides a written statement to that effect;",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body states it is not custodian"
+  },
+  {
+   "section": "192.329",
+   "quote": "If the public body asserts that one or more requested records are exempt from public disclosure, includes a statement that the requester may seek review of the public body’s determination pursuant to ORS 192.401, 192.411, 192.415, 192.418, 192.422, 192.427 and 192.431.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "exemption response states review rights"
+  },
+  {
+   "section": "192.329",
+   "quote": "If the public body has requested additional information or clarification in good faith, the public body’s obligation to further complete its response to the request is suspended until the requester provides the requested information or clarification or affirmatively declines to provide that information or clarification.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "tolling rule; request is prior sentence"
+  },
+  {
+   "section": "192.329",
+   "quote": "Complete its response to the public records request; or",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body completes response (10-day option)"
+  },
+  {
+   "section": "192.329",
+   "quote": "Provide a written statement that the public body is still processing the request and a reasonable estimated date by which the public body expects to complete its response based on the information currently available.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "body sends still-processing statement with date"
+  },
+  {
+   "section": "192.329",
+   "quote": "A public body that cannot comply with the time periods established by ORS 192.324 and subsection (5) of this section for a reason listed in subsection (6) of this section shall, as soon as practicable and without unreasonable delay, acknowledge a public records request and complete the response to the request. [2017 c.456 §4]",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "delayed body acknowledges and completes"
+  },
+  {
+   "section": "192.314",
+   "quote": "If a person who is a party to a civil judicial proceeding to which a public body is a party, or who has filed a notice under ORS 30.275 (5)(a), asks to inspect or to receive a copy of a public record that the person knows relates to the proceeding or notice, the person must submit the request in writing to the custodian and, at the same time, to the attorney for the public body.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "litigant submits request to custodian and attorney"
+  },
+  {
+   "section": "192.345",
+   "quote": "Records of the name and address of a person who files a report with or pays an assessment to a commodity commission established under ORS 576.051 to 576.455, the Oregon Beef Council created under ORS 577.210 or the Oregon Wheat Commission created under ORS 578.030.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption list item"
+  },
+  {
+   "section": "192.345",
+   "quote": "Applies only to records that may be made immediately available to the public upon request in person, by telephone or using the Internet;",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption scope condition"
+  },
+  {
+   "section": "192.345",
+   "quote": "The individual claiming the exemption from disclosure must be a district attorney, a deputy district attorney, the Attorney General or an assistant attorney general, the United States Attorney for the District of Oregon or an assistant United States attorney for the District of Oregon, a city attorney who engages in the prosecution of criminal matters or a deputy city attorney who engages in the prosecution of criminal matters.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "eligibility for address exemption"
+  },
+  {
+   "section": "192.345",
+   "quote": "The individual claiming the exemption from disclosure must do so by filing the claim in writing with the public body for which the exemption from disclosure is being claimed on a form prescribed by the public body.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "separate exemption-claim filing procedure"
+  },
+  {
+   "section": "192.345",
+   "quote": "Unless the claim is filed with the county clerk, the claim form shall list the public records in the possession of the public body to which the exemption applies.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "claim form content, separate procedure"
+  },
+  {
+   "section": "192.345",
+   "quote": "Apply to group insurance contracts or to documents relating to the formation of such contracts, except that employer account records shall remain exempt from disclosure as provided in ORS 192.355 (35); or",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption scope item"
+  },
+  {
+   "section": "192.345",
+   "quote": "Records of the Department of Public Safety Standards and Training relating to investigations conducted under ORS 181A.640 or 181A.870 (6), until the department issues the report described in ORS 181A.640 or 181A.870.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption list item"
+  },
+  {
+   "section": "192.345",
+   "quote": "A request for disclosure under this subsection must identify the approximate date and time of an incident for which the recordings are requested and be reasonably tailored to include only that material for which a public interest requires disclosure.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "body-cam request must identify incident"
+  },
+  {
+   "section": "192.355",
+   "quote": "The party seeking disclosure shall have the burden of showing that public disclosure would not constitute an unreasonable invasion of privacy.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "burden of proof"
+  },
+  {
+   "section": "192.355",
+   "quote": "Does not apply to a substitute teacher as defined in ORS 342.815 when requested by a professional education association of which the substitute teacher may be a member; and",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption scope item"
+  },
+  {
+   "section": "192.355",
+   "quote": "The public body shall notify the taxpayer of the delinquency immediately by certified mail.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "tax delinquency notice, unrelated to requests"
+  },
+  {
+   "section": "192.355",
+   "quote": "However, in the event that the payment or delivery of transient lodging taxes otherwise due to a public body is delinquent by over 60 days, the public body shall disclose, upon the request of any person, the following information:",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "exemption carve-out; 60 days is not a deadline"
+  },
+  {
+   "section": "192.355",
+   "quote": "The utility or district may release personally identifiable information about a customer, and a public body providing water, sewer or storm drain services may release the name, date of birth, driver license number, telephone number, electronic mail address or Social Security number of a customer, if the customer consents in writing or electronically, if the disclosure is necessary for the utility, district or other public body to render services to the customer, if the disclosure is required pursuant to a court order or if the disclosure is otherwise required by federal or state law.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "utility disclosure permission rule"
+  },
+  {
+   "section": "192.355",
+   "quote": "The utility, district or other public body may charge as appropriate for the costs of providing such information.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "utility info charge, outside request process"
+  },
+  {
+   "section": "192.355",
+   "quote": "The utility, district or other public body may make customer records available to third party credit agencies on a regular basis in connection with the establishment and management of customer accounts or in the event such accounts are delinquent.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "credit-agency sharing, unrelated"
+  },
+  {
+   "section": "192.411",
+   "quote": "If the Attorney General grants the petition and orders the state agency to disclose the public record, or if the Attorney General grants the petition in part and orders the state agency to disclose a portion of the public record, the state agency shall comply with the order in full within seven days after issuance of the order, unless within the seven-day period it issues a notice of its intention to institute proceedings for injunctive or declaratory relief in the Circuit Court for Marion County or, as provided in ORS 192.401 (3), in the circuit court of the county where the public record is held.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 7,
+    "unit": "days"
+   },
+   "why": "agency complies with AG order within 7 days"
+  },
+  {
+   "section": "192.411",
+   "quote": "Copies of the notice shall be sent to the Attorney General and by certified mail to the petitioner at the address shown on the petition.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": null,
+   "why": "agency sends notice to AG and petitioner"
+  },
+  {
+   "section": "192.411",
+   "quote": "The state agency shall institute the proceedings within seven days after it issues its notice of intention to do so.",
+   "is_step": true,
+   "actor_kind": "public-body",
+   "deadline": {
+    "amount": 7,
+    "unit": "days"
+   },
+   "why": "agency files suit within 7 days of notice"
+  },
+  {
+   "section": "192.411",
+   "quote": "If the Attorney General denies the petition in whole or in part, or if the state agency continues to withhold the public record or a part of it notwithstanding an order to disclose by the Attorney General, the person seeking disclosure may institute such proceedings.",
+   "is_step": true,
+   "actor_kind": "private-party",
+   "deadline": null,
+   "why": "requester files suit after AG denial"
+  },
+  {
+   "section": "192.411",
+   "quote": "The Attorney General shall serve as counsel for the state agency in a suit filed under subsection (2) of this section if the suit arises out of a determination by the Attorney General that the public record should not be disclosed, or that a part of the public record should not be disclosed if the state agency has fully complied with the order of the Attorney General requiring disclosure of another part or parts of the public record, and in no other case.",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "who serves as counsel, not a case step"
+  },
+  {
+   "section": "192.411",
+   "quote": "In any case in which the Attorney General is prohibited from serving as counsel for the state agency, the agency may retain special counsel. [Formerly subsections (1) to (3) of 192.450]",
+   "is_step": false,
+   "actor_kind": null,
+   "deadline": null,
+   "why": "retaining counsel, not a case step"
+  }
+ ]
+}

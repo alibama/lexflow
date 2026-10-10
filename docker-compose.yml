@@ -36,6 +36,8 @@ services:
   app:
     <<: *app
     ports: ["${LEXFLOW_PORT:-8000}:8000"]
+    # the job runner's id: a fixed hostname lets a recreated container recover the jobs it left running
+    hostname: lexflow-app
     restart: unless-stopped
 
   ollama:
@@ -45,6 +47,10 @@ services:
     environment:
       OLLAMA_KEEP_ALIVE: "10m"
       OLLAMA_CONTEXT_LENGTH: "16384"
+      # an 8 GB machine swaps (and generates ~10x slower) with several models resident: one chat model plus
+      # the embedding model, one request at a time
+      OLLAMA_MAX_LOADED_MODELS: "2"
+      OLLAMA_NUM_PARALLEL: "1"
     restart: unless-stopped
 
   libsql:

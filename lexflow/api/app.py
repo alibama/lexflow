@@ -8,12 +8,13 @@ from __future__ import annotations
 import json
 import re
 from contextlib import asynccontextmanager
+from typing import Annotated
 from urllib.parse import urlparse
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .. import config
 from ..municipal import method as M
@@ -33,7 +34,8 @@ async def lifespan(_app):
     config.ensure_dirs()
     with db.session():
         pass
-    runner.start()
+    if config.JOB_RUNNER:          # a second, read-only instance on the same database can run without one
+        runner.start()
     yield
     runner.stop.set()
 
@@ -71,7 +73,7 @@ def health():
 def meta():
     return {"questions": {k: {"title": q.title, "short": q.short} for k, q in QUESTIONS.items()},
             "states": [{"state": s, "fips": f, "name": n} for s, f, n in S.STATES], **M.describe(),
-            "models": [config.MODEL_A, config.MODEL_B], "origin": config.ORIGIN}
+            "models": [config.MODEL_A, config.MODEL_B], "ask_model": config.ASK_MODEL, "origin": config.ORIGIN}
 
 
 @app.get("/api/overview")
@@ -317,7 +319,7 @@ def benchmark():
     try:
         rows = BM.best(c)
         extra = {}
-        for name in ("ceiling", "learning_curve"):          # written by `lexflow ceiling` / scripts/learning_curve.py
+        for name in ("ceiling", "learning_curve", "askbench"):   # lexflow ceiling, learning_curve.py, ask-bench
             p = config.ROOT / "docs" / f"{name}.json"
             if p.exists():
                 extra[name] = json.loads(p.read_text(encoding="utf-8"))
@@ -353,6 +355,137 @@ def search(q: str, limit: int = 20):
     try:
         return db.rows(c, "SELECT gov_id, name, kind, state, county_fips, population FROM governments "
                           "WHERE name LIKE ? ORDER BY population DESC LIMIT ?", f"%{q}%", limit)
+    finally:
+        c.close()
+
+
+# --------------------------------------------------------------------- ask
+class AskIn(BaseModel):
+    question: str = Field(min_length=3, max_length=500)
+    # a state, "va:*" or a place spec each; the job carries them on its command line, so both are bounded
+    targets: list[Annotated[str, Field(max_length=120)]] = Field(min_length=1, max_length=200)
+    model: str | None = None
+    use_llm: bool = True
+
+
+@app.get("/api/targets")
+def targets(q: str = "", limit: int = 15):
+    """Autocomplete for the ask page: states first, then counties, cities and towns (largest first)."""
+    q = q.strip()
+    out = []
+    ql = q.lower()
+    for st, _, name in S.STATES:
+        if ql and (ql == st or name.lower().startswith(ql) or (len(ql) > 2 and ql in name.lower())):
+            out.append({"target": st, "label": f"{name} (state law)", "kind": "state", "state": st})
+    if len(q) >= 2:
+        c = con()
+        try:
+            for g in db.rows(c, "SELECT gov_id, name, kind, state, population FROM governments WHERE name LIKE ? "
+                                "ORDER BY population DESC LIMIT ?", f"%{q}%", limit):
+                out.append({"target": g["gov_id"], "label": f"{g['name']}, {S.NAME.get(g['state'], g['state'])}",
+                            "kind": g["kind"], "state": g["state"], "population": g["population"]})
+        finally:
+            c.close()
+    return out[:limit]
+
+
+@app.get("/api/ask/suggestions")
+def ask_suggestions():
+    from ..ask.suggestions import SUGGESTIONS
+    return SUGGESTIONS
+
+
+@app.post("/api/ask")
+def ask(req: AskIn):
+    from ..ask.pipeline import qid_for
+    text = req.question.strip()
+    if not 8 <= len(text) <= 600:
+        raise HTTPException(400, "ask a question of 8 to 600 characters")
+    if not req.targets or len(req.targets) > 200:
+        raise HTTPException(400, "choose 1 to 200 states or places")
+    c = con()
+    try:
+        qid = qid_for(c, text)
+        # hold the id for this text now, so a different question queued before the job runs gets its own
+        db.upsert(c, "asked_questions", [{"id": qid, "text": text}], keys=("id",))
+        jid = jobs.enqueue(c, "ask", {"question": text, "question_id": qid, "targets": req.targets,
+                                      "model": req.model, "no_llm": not req.use_llm})
+        return {"job": jid, "question_id": qid}
+    finally:
+        c.close()
+
+
+@app.get("/api/ask")
+def ask_list():
+    c = con()
+    try:
+        return db.rows(c, """SELECT question_id, max(question_text) AS question, count(*) AS answers,
+                                    sum(status='answered') AS answered, sum(status='partial') AS partial,
+                                    sum(status='not_found') AS not_found, sum(published) AS published,
+                                    max(updated_at) AS updated_at
+                             FROM asked_answers GROUP BY question_id ORDER BY max(updated_at) DESC""")
+    finally:
+        c.close()
+
+
+def _ask_row(r: dict) -> dict:
+    for k in ("sections", "facts", "answer", "local", "metrics"):
+        r[k] = db.loads(r.get(k), None)
+    return r
+
+
+@app.get("/api/ask/{qid}")
+def ask_question(qid: str):
+    c = con()
+    try:
+        rows = [_ask_row(r) for r in db.rows(c, "SELECT * FROM asked_answers WHERE question_id=? "
+                                                "ORDER BY gov_id IS NOT NULL, state, target", qid)]
+        if not rows:
+            raise HTTPException(404, "no answers for that question yet")
+        brief = []
+        for r in rows:
+            a = r["answer"] or {}
+            claims = ((a.get("summary") or {}).get("claims") or [])
+            brief.append({"target": r["target"], "state": r["state"], "gov_id": r["gov_id"], "status": r["status"],
+                          "name": (r["local"] or {}).get("name") or S.NAME.get(r["state"], r["state"]),
+                          "sections": [s["ref"] for s in ((r["sections"] or {}).get("chosen") or [])],
+                          "first_claim": claims[0]["text"] if claims else None,
+                          "steps": len(a.get("steps") or []), "quotes": len(a.get("quotes") or []),
+                          "local": len(((r["local"] or {}).get("locus")) or []), "model": r["model"],
+                          "seconds": r["seconds"], "published": r["published"], "updated_at": r["updated_at"]})
+        return {"question_id": qid, "question": rows[0]["question_text"], "answers": brief}
+    finally:
+        c.close()
+
+
+@app.get("/api/ask/{qid}/{target}")
+def ask_answer(qid: str, target: str):
+    c = con()
+    try:
+        r = db.one(c, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, target)
+        if not r:
+            raise HTTPException(404, "no such answer")
+        return _ask_row(r)
+    finally:
+        c.close()
+
+
+class PublishIn(BaseModel):
+    published: bool
+
+
+@app.post("/api/ask/{qid}/{target}/publish")
+def ask_publish(qid: str, target: str, body: PublishIn):
+    """Mark an answer for (or withdraw it from) the next Lexipedia publish, as its own sub-page."""
+    c = con()
+    try:
+        n = c.execute("UPDATE asked_answers SET published=?, updated_at=? WHERE question_id=? AND target=?",
+                      (int(body.published), db.now(), qid, target)).rowcount
+        db.bump(c)
+        c.commit()
+        if not n:
+            raise HTTPException(404, "no such answer")
+        return {"published": body.published}
     finally:
         c.close()
 
