@@ -1,8 +1,12 @@
 """The local store: one SQLite file (WAL mode) that every step reads and writes.
 
-Tables listed in ``SYNCED`` carry ``state``, ``updated_at`` and ``origin`` columns so
-they can be shared through Turso (see :mod:`lexflow.store.turso`): rows are
-upserted last-writer-wins on ``updated_at`` and can be pulled one state at a time.
+Tables listed in ``SYNCED`` carry ``updated_at``, ``origin`` and ``state`` columns, so they can
+be shared through Turso (see :mod:`lexflow.store.turso`): rows are upserted last-writer-wins on
+``updated_at`` and can be pulled one state at a time.  Push and pull take only these tables and
+refuse any other (``turso.check_tables``).  The reviewer list (``reviewers``) and the review log
+(``review_log``) are this copy's own and are never synced: a page names only reviewers the
+operator of this copy put on its list, and only for a review this copy recorded in its own
+``review_log`` or a sign-off in this copy's own curated file (lexflow/reviewers.py).
 """
 from __future__ import annotations
 
@@ -145,6 +149,24 @@ CREATE TABLE IF NOT EXISTS answers (
 CREATE INDEX IF NOT EXISTS answers_state ON answers(state, question);
 CREATE INDEX IF NOT EXISTS answers_county ON answers(county_fips, question);
 
+-- one researched process of one place (curated/places/<state>/<place>/<process>.json): the whole checked file in
+-- spec, with the fields that pages and searches need beside it
+CREATE TABLE IF NOT EXISTS place_processes (
+  gov_id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  process TEXT NOT NULL,
+  title TEXT,
+  question TEXT,
+  category TEXT,
+  kind TEXT,
+  office TEXT,
+  verified INTEGER,
+  spec TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (gov_id, process)
+);
+
 CREATE TABLE IF NOT EXISTS local_answers (
   gov_id TEXT NOT NULL,
   state TEXT NOT NULL,
@@ -161,7 +183,38 @@ CREATE TABLE IF NOT EXISTS local_answers (
   researched TEXT,
   updated_at TEXT NOT NULL,
   origin TEXT,
+  reviewed_by TEXT,
   PRIMARY KEY (gov_id, question)
+);
+
+-- the people the operator of this copy vouches for as reviewers (lexflow reviewer add / list / remove / token,
+-- lexflow/reviewers.py, lexflow/signoff.py): a page names a reviewer only from this list, by the id a review
+-- records.  It is this copy's own and is never synced.  A removed reviewer keeps the row, with removed_at.
+-- token_hash is the scrypt hash of the reviewer's own token (the token itself is printed once and not stored).
+CREATE TABLE IF NOT EXISTS reviewers (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  role TEXT NOT NULL,
+  licensed_in TEXT,
+  added_by TEXT NOT NULL,
+  added_at TEXT NOT NULL,
+  removed_at TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  token_hash TEXT
+);
+
+-- who recorded or removed a review through the API, by the reviewer whose token was used (never synced).  A page
+-- names the reviewer of an asked answer only while the last entry here for that answer is the review its
+-- reviewed_by holds (same reviewer, text_hash and date): a review pulled from another copy has no entry here.
+CREATE TABLE IF NOT EXISTS review_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  at TEXT NOT NULL,
+  action TEXT NOT NULL,
+  question_id TEXT NOT NULL,
+  target TEXT NOT NULL,
+  reviewer TEXT NOT NULL,
+  text_hash TEXT
 );
 
 CREATE TABLE IF NOT EXISTS case_law (
@@ -210,6 +263,7 @@ CREATE TABLE IF NOT EXISTS asked_answers (
   published INTEGER DEFAULT 0,
   updated_at TEXT NOT NULL,
   origin TEXT,
+  reviewed_by TEXT,
   PRIMARY KEY (question_id, target)
 );
 CREATE INDEX IF NOT EXISTS asked_answers_state ON asked_answers(state);
@@ -335,7 +389,9 @@ CREATE TABLE IF NOT EXISTS meta (
 INSERT OR IGNORE INTO meta(key, value) VALUES ('version', '0');
 """
 
-# Shared tables: primary key columns.  Every one has state, updated_at and origin.
+# Shared tables: primary key columns.  Every one has updated_at, origin and a state.  Push and pull take only these
+# (turso.check_tables refuses any other table).  The reviewer list is not one of them: it is the operator's own
+# (LOCAL_KEYS), so a pull never adds, renames or removes a reviewer here.
 SYNCED: dict[str, tuple[str, ...]] = {
     "governments": ("gov_id",),
     "contacts": ("gov_id", "question", "kind", "value"),
@@ -345,12 +401,24 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "local_law": ("gov_id", "question", "source", "ref"),
     "answers": ("gov_id", "question"),
     "local_answers": ("gov_id", "question"),
+    "place_processes": ("gov_id", "process"),
     "case_law": ("state", "section", "cluster_id"),
     "asked_answers": ("question_id", "target"),     # carries its question's text, so asked_questions stays local
 }
+# this copy's own tables that upsert() writes: primary key columns (never synced)
+LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",)}
 
-# columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists)
-MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE jobs ADD COLUMN runner TEXT"]
+# columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists).  Those on shared
+# tables are also applied to the shared database (turso.ensure_schema).  reviewed_by is a person's sign-off, JSON
+# {reviewer, date, attested, text_hash} (lexflow/signoff.py: the reviewer is an id on the reviewers list), the hash
+# being that of the row's text when it was signed: an asked answer goes on the wiki only with one that still fits
+# its text.  quote_check is lexflow's software match of a researched process's quotes from the state code
+# (lexflow/municipal/places.py), with the hash of the file it was made for.
+MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE jobs ADD COLUMN runner TEXT",
+              "ALTER TABLE asked_answers ADD COLUMN reviewed_by TEXT",
+              "ALTER TABLE local_answers ADD COLUMN reviewed_by TEXT",
+              "ALTER TABLE place_processes ADD COLUMN quote_check TEXT",
+              "ALTER TABLE reviewers ADD COLUMN token_hash TEXT"]
 
 _ready: set[str] = set()
 _lock = threading.Lock()
@@ -401,7 +469,7 @@ def upsert(con: sqlite3.Connection, table: str, rows: Iterable[dict], keys: tupl
     rows = list(rows)
     if not rows:
         return 0
-    keys = keys or SYNCED[table]
+    keys = keys or SYNCED.get(table) or LOCAL_KEYS[table]
     cols = columns(con, table)
     ts, origin = now(), config.ORIGIN
     prepared = []

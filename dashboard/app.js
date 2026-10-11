@@ -116,7 +116,7 @@ async function poll() {
 function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400); }
 
 // ---------------------------------------------------------------- routing
-const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
+const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
   jobs: viewJobs, job: viewJob, method: viewMethod };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
@@ -450,6 +450,7 @@ async function viewMap() {
 async function viewSetup() {
   const services = h("div", { class: "services" });
   const list = h("ol", { class: "steps" });
+  const credits = h("div", { class: "credits-all" });
   const quickStates = h("input", { type: "text", value: store("lexflow-qs-states") || "va", "aria-label": "States", placeholder: "va,dc or all" });
   const quickNoLlm = h("input", { type: "checkbox" });
   rc(view, 
@@ -468,8 +469,26 @@ async function viewSetup() {
             await startRunJob("quickstart", { states: quickStates.value, no_llm: quickNoLlm.checked });
             location.hash = "#/jobs";
           } }, "Run required steps")))),
-    h("section", { class: "card" }, list));
+    h("section", { class: "card" }, list),
+    credits);
 
+  // one line per credit: name (maker) · licence (linked to its terms when given) · link · what lexflow uses it
+  // for, then the citation (labelled the maker's own wording or lexflow's format) and any notice
+  function creditList(cs) {
+    const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return u; } };
+    const https = (u) => /^https:\/\//.test(u || "");
+    const out = (u, text, label) => h("a", { href: u, target: "_blank", rel: "noopener", "aria-label": `${label} (opens in a new tab)` }, text);
+    return h("ul", { class: "credits" }, cs.map((c) => h("li", {},
+      h("span", { class: "name" }, c.name),
+      c.by && c.by.toLowerCase() !== String(c.name).toLowerCase() ? ` (${c.by})` : null, " · ",
+      https(c.licence_url) ? out(c.licence_url, c.licence, `${c.name} licence or terms: ${c.licence}`) : c.licence, " · ",
+      https(c.url) ? out(c.url, `${host(c.url)} ↗`, `${c.name} on ${host(c.url)}`) : c.url,
+      c.use ? h("span", { class: "use" }, ` · ${c.use}`) : null,
+      c.cite ? h("details", {}, h("summary", { "aria-label": `Cite ${c.name}` }, "Cite"), h("code", {}, c.cite),
+        h("div", { class: "note" }, c.cite_by === "maker" ? "The maker's own citation, word for word."
+          : "Written in lexflow's format; the maker's page may give its own.")) : null,
+      c.note ? h("div", { class: "note" }, c.note) : null)));
+  }
   function serviceCard(name, ok, sub, word) {
     return h("div", { class: "card service" }, h("div", { class: "name" }, statusEl(ok === true ? "done" : ok === false ? "blocked" : "optional", ""), name),
       h("div", { class: "sub" }, word), h("div", { class: "sub muted" }, sub));
@@ -491,6 +510,11 @@ async function viewSetup() {
       if (j.step === "quickstart") for (const s of ["governments", "statutes", "locate", "contacts", "build", "score"]) if (!active.has(s)) active.set(s, j);
     }
     rc(list, ...setup.steps.map((s, i) => stepRow(s, i + 1, active.get(s.id))));
+    rc(credits, setup.credits && setup.credits.length ? h("section", { class: "card card-pad" },
+      h("h2", {}, "Sources and credits"),
+      h("p", { class: "ink-2" }, "Each step above lists the data, services and models it uses. These libraries, tools and services are used across the steps, or by Answer a new question."),
+      creditList(setup.credits),
+      h("p", { class: "muted" }, "Credit is not endorsement: the people and projects listed here have not reviewed lexflow.")) : null);
   }
   function stepRow(s, n, job) {
     const box = h("span", { class: "box", "aria-hidden": "true" },
@@ -535,6 +559,8 @@ async function viewSetup() {
       h("div", {},
         h("div", { class: "title" }, `${n}. ${s.title}`, h("span", { class: `tag ${s.level}` }, s.level), statusEl(job ? job.status : s.status)),
         h("p", { class: "why" }, s.why),
+        s.credits && s.credits.length ? h("div", { class: "step-credits" }, h("span", { class: "lab" }, "Credits"), creditList(s.credits))
+          : s.credits_note ? h("div", { class: "step-credits" }, h("span", { class: "lab" }, "Credits"), h("span", { class: "muted" }, ` ${s.credits_note}`)) : null,
         h("div", { class: "detail" }, s.detail, frac),
         s.needs.length ? h("div", { class: "meta" }, `Needs: ${s.needs.join(", ")}`) : null,
         s.cost ? h("div", { class: "meta" }, `Cost: ${s.cost}`) : null),
@@ -548,14 +574,24 @@ async function viewSetup() {
 async function viewProcesses() {
   const tierSel = h("select", { "aria-label": "Tier", onchange: draw }, h("option", { value: "" }, "All tiers"),
     [...S.meta.tiers].reverse().map((t) => h("option", { value: t }, S.meta.tier_label[t])));
+  const statusSel = h("select", { "aria-label": "Status", onchange: draw }, h("option", { value: "" }, "All answers"),
+    Object.entries(ASK_STATUS).map(([k, [, word]]) => h("option", { value: k }, word)));
+  // every question asked on the Ask page, beside the two built questions; a question asked twice (its id changed
+  // with the planner) is listed once, under the id with the most answers
+  const askedSel = h("select", { "aria-label": "Asked question", style: "width:46ch;max-width:100%;min-width:0", onchange: () => pick(askedSel.value) });
+  const tierField = h("label", { class: "field" }, "Tier", tierSel);
+  const statusField = h("label", { class: "field" }, "Answers", statusSel);
+  const seg = questionSeg(() => pick(""));
   const funnels = h("div", { class: "grid two" });
   const grid = h("div", { class: "model-grid" });
-  rc(view, 
-    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Process models"),
-      h("p", {}, "One model per state and question. Each bar shows how far the model has come, from locating the law to publishing it; quality combines exact quotes, schema and lint checks, Petri-net soundness, explicit grounding and agreement between two models."))),
-    h("div", { class: "filters" }, questionSeg(draw), h("label", { class: "field" }, "Tier", tierSel)),
+  const intro = h("p", {});
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Process models"), intro)),
+    h("div", { class: "filters" }, seg, h("label", { class: "field", style: "min-width:0;max-width:100%" }, "Asked question", askedSel), tierField, statusField),
     funnels, h("div", { class: "spacer" }), grid);
-  let models = [], overview = null;
+  let models = [], overview = null, asked = [];
+  const detail = {};
+  let current = store("lexflow-pq") || "";
   function funnel(qid) {
     const st = overview.stages[qid];
     const max = overview.stages.possible;
@@ -566,8 +602,24 @@ async function viewProcesses() {
         h("span", { class: "track" }, h("span", { class: "fill", style: `width:${(st[s] / max) * 100}%` })),
         h("span", { class: "num", style: "text-align:right" }, st[s])))));
   }
-  function draw() {
-    if (!overview) return;
+  function distinct(rows) {
+    const by = new Map();
+    for (const r of rows) {
+      const k = (r.question || "").toLowerCase().replace(/\s+/g, " ").trim();
+      const prev = by.get(k);
+      if (!prev || r.answers > prev.answers || (r.answers === prev.answers && r.updated_at > prev.updated_at)) by.set(k, r);
+    }
+    return [...by.values()].sort((a, b) => (b.updated_at || "").localeCompare(a.updated_at || ""));
+  }
+  async function pick(qid) {
+    current = qid && asked.some((q) => q.question_id === qid) ? qid : "";
+    store("lexflow-pq", current);
+    askedSel.value = current;
+    if (current && !detail[current]) detail[current] = await api(`/api/ask/${encodeURIComponent(current)}`);
+    draw();
+  }
+  function drawBuilt() {
+    intro.textContent = "One model per state and question. Each bar shows how far the model has come, from locating the law to publishing it; quality combines exact quotes, schema and lint checks, Petri-net soundness, explicit grounding and agreement between two models.";
     rc(funnels, ...Object.keys(S.meta.questions).map(funnel));
     const shown = models.filter((m) => m.question === S.question && (!tierSel.value || m.tier === tierSel.value))
       .sort((a, b) => S.meta.tiers.indexOf(b.tier) - S.meta.tiers.indexOf(a.tier) || (b.quality || 0) - (a.quality || 0));
@@ -581,9 +633,50 @@ async function viewProcesses() {
         h("span", { class: "right muted" }, m.built_by || "–"))))
       : [h("p", { class: "muted" }, "No models for this question yet. Run “Build the state process models” on the Setup page.")]));
   }
+  function drawAsked() {
+    const q = asked.find((x) => x.question_id === current);
+    const d = detail[current];
+    intro.textContent = "A question asked on the Ask page: one answer per state, each with the sections it rests on and, for a how-do-I question, steps from the law's own words and a draft process map. These are machine-made and not reviewed.";
+    const states = d.answers.filter((r) => !r.gov_id);
+    const places = {};
+    for (const r of d.answers) if (r.gov_id) places[r.state] = (places[r.state] || 0) + 1;
+    const count = (s) => states.filter((r) => r.status === s).length;
+    rc(funnels, h("section", { class: "card" },
+      h("div", { class: "card-head" }, h("div", {}, h("h2", {}, d.question),
+        h("p", {}, `${states.length} state ${states.length === 1 ? "answer" : "answers"} · ${d.answers.length - states.length} places · ${{ process: "a how-do-I question", facts: "a question of fact" }[q.kind] || "a question of fact or process"}`))),
+      h("div", { class: "funnel" }, Object.entries(ASK_STATUS).map(([k, [, word]]) => h("div", { class: "funnel-row", title: `${word}: ${count(k)} of ${states.length}` },
+        h("span", { class: "lab" }, word),
+        h("span", { class: "track" }, h("span", { class: "fill", style: `width:${states.length ? (count(k) / states.length) * 100 : 0}%` })),
+        h("span", { class: "num", style: "text-align:right" }, count(k))))),
+      h("div", { class: "card-pad" }, h("a", { href: `#/asked/${encodeURIComponent(current)}` }, "Every place's answer"))));
+    const shown = states.filter((r) => !statusSel.value || r.status === statusSel.value)
+      .sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    rc(grid, ...(shown.length ? shown.map((r) => h("a", { class: "card model-card", href: `#/answer/${encodeURIComponent(current)}/${encodeURIComponent(r.target)}` },
+      h("div", { class: "top" }, h("strong", {}, r.name), askStatus(r.status)),
+      h("div", { class: "cite" }, (r.sections || []).slice(0, 3).join(", ") || "No section found"),
+      h("div", { class: "row-flex", style: "font-size:12.5px" },
+        h("span", { class: "ink-2" }, r.steps ? `${r.steps} ${r.steps === 1 ? "step" : "steps"}${r.map ? " · draft process map" : ""}` : `${r.quotes} quotes`),
+        h("span", { class: "right muted" }, places[r.state] ? `${places[r.state]} places` : "")),
+      h("div", { class: "row-flex", style: "font-size:12px" }, h("span", { class: "muted" }, r.model || "no summary model"))))
+      : [h("p", { class: "muted" }, "No state answers with this status.")]));
+  }
+  function draw() {
+    if (!overview) return;
+    const mode = current && detail[current] ? "asked" : "built";
+    for (const b of seg.children) b.setAttribute("aria-pressed", String(mode === "built" && b.dataset.q === S.question));
+    tierField.style.display = mode === "built" ? "" : "none";      // .field sets display, which beats [hidden]
+    statusField.style.display = mode === "asked" ? "" : "none";
+    if (mode === "asked") drawAsked(); else drawBuilt();
+  }
   async function load() {
-    [models, overview] = await Promise.all([api("/api/models"), api("/api/overview")]);
-    draw();
+    let rows;
+    [models, overview, rows] = await Promise.all([api("/api/models"), api("/api/overview"), api("/api/ask").catch(() => [])]);
+    asked = distinct(rows || []);
+    rc(askedSel, h("option", { value: "" }, asked.length ? "Choose one…" : "None asked yet"),
+      asked.map((q) => h("option", { value: q.question_id }, (q.question || q.question_id).length > 90 ? `${(q.question || q.question_id).slice(0, 88)}…` : (q.question || q.question_id))));
+    askedSel.disabled = !asked.length;
+    for (const k of Object.keys(detail)) delete detail[k];
+    await pick(current);
   }
   onRefresh(load);
   await load();
@@ -748,13 +841,16 @@ async function viewAsk() {
       { key: "question", label: "Question", render: (r) => h("a", { href: `#/asked/${encodeURIComponent(r.question_id)}` }, r.question) },
       { key: "answers", label: "Answers", num: true }, { key: "answered", label: "Answered", num: true },
       { key: "partial", label: "Partly", num: true }, { key: "not_found", label: "Not found", num: true },
+      // a review counts only while it is for the text stored now (the API checks its hash); "For the wiki" is
+      // what the next publish writes: reviewed answers that are also ticked
+      { key: "reviewed", label: "Reviewed", num: true, render: (r) => r.review_stale ? `${r.reviewed} (${r.review_stale} for older text)` : String(r.reviewed || 0) },
       { key: "published", label: "For the wiki", num: true }, { key: "updated_at", label: "Updated", render: (r) => ago(r.updated_at) }], rows, { initial: "updated_at" })
       : h("p", { class: "card-pad muted" }, "No questions asked yet."));
   }
   drawChips();
   rc(view,
     h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Ask a question"),
-      h("p", {}, "lexflow searches each chosen state's statutes, quotes the sections that answer the question word for word, extracts the steps of any procedure, and adds each place's local layer. Answers are machine-made and unreviewed; every claim links to the law's own words."))),
+      h("p", {}, "lexflow searches each chosen state's statutes, quotes the sections that answer the question word for word, extracts the steps of any procedure, and adds each place's local layer. Answers are machine-made; every claim links to the law's own words, and an answer goes on the wiki only after a named person has reviewed it."))),
     h("section", { class: "card" }, h("div", { class: "card-pad" },
       h("div", { class: "row-flex", style: "margin-bottom:8px" }, h("strong", {}, "Question"), h("span", { class: "right" }, examples)), question,
       h("div", { class: "row-flex", style: "margin:14px 0 8px" }, h("strong", {}, "Where"), h("span", { class: "right" }, bench)),
@@ -773,18 +869,29 @@ async function viewAsked(qid) {
   const body = h("div");
   async function load() {
     const d = await api(`/api/ask/${encodeURIComponent(qid)}`);
-    const publish = (r) => h("input", { type: "checkbox", "aria-label": `Publish the answer for ${r.name}`, checked: !!r.published,
-      onchange: async (e) => { await post(`/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(r.target)}/publish`, { published: e.target.checked }); } });
+    // an answer goes on the wiki only after a named person has reviewed it: until then the box is off and says why
+    const publish = (r) => {
+      const ok = !!r.reviewed_by;
+      return h("label", { class: "check", title: ok ? r.review_line : "Record a named reviewer on the answer's page first" },
+        h("input", { type: "checkbox", "aria-label": `Publish the answer for ${r.name}`, checked: ok && !!r.published, disabled: !ok,
+          onchange: async (e) => {
+            try { await post(`/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(r.target)}/publish`, { published: e.target.checked }); }
+            catch (err) { e.target.checked = false; e.target.closest("label").title = String(err.message || err); }
+          } }),
+        ok ? null : h("span", { class: "muted" }, "needs a named reviewer"));
+    };
     rc(body,
       h("div", { class: "page-head" }, h("div", {}, h("div", { class: "muted" }, h("a", { href: "#/ask" }, "Ask"), " / question"),
-        h("h1", {}, d.question), h("p", {}, `${d.answers.length} answers · tick “For the wiki” to publish an answer as its own Lexipedia sub-page at the next publish.`))),
+        h("h1", {}, d.question), h("p", {}, `${d.answers.length} answers · an answer can go on the wiki only after a named person has read it against the law: record the reviewer on the answer's page, then tick “For the wiki” to publish it as its own Lexipedia sub-page at the next publish.`))),
       h("section", { class: "card" }, h("div", { class: "card-pad" }, sortableTable([
         { key: "name", label: "Place", render: (r) => h("a", { href: `#/answer/${encodeURIComponent(qid)}/${encodeURIComponent(r.target)}` }, r.name) },
         { key: "status", label: "Status", render: (r) => askStatus(r.status) },
         { key: "sections", label: "Sections", render: (r) => (r.sections || []).join(", ") || "–" },
         { key: "steps", label: "Steps", num: true }, { key: "quotes", label: "Quotes", num: true }, { key: "local", label: "Local", num: true },
         { key: "first_claim", label: "In short", render: (r) => r.first_claim || "–" },
-        { key: "seconds", label: "Seconds", num: true }, { key: "published", label: "For the wiki", render: publish }], d.answers))));
+        { key: "seconds", label: "Seconds", num: true },
+        { key: "reviewed_by", label: "Reviewed by", sort: (r) => (r.reviewed_by || {}).name, render: (r) => r.reviewed_by ? `${r.reviewed_by.name}, ${r.reviewed_by.role}` : "–" },
+        { key: "published", label: "For the wiki", render: publish }], d.answers))));
   }
   rc(view, body);
   onRefresh(load);
@@ -793,6 +900,8 @@ async function viewAsked(qid) {
 
 async function viewAnswer(qid, target) {
   const r = await api(`/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(target)}`);
+  // the people the operator has put on the reviewer list (lexflow reviewer add): the only reviewers a page can name
+  const people = await api("/api/reviewers").catch(() => []);
   const a = r.answer || {};
   const sec = r.sections || {};
   const local = r.local || {};
@@ -808,6 +917,7 @@ async function viewAnswer(qid, target) {
       h("div", { class: "muted" }, h("a", { href: "#/ask" }, "Ask"), " / ", h("a", { href: `#/asked/${encodeURIComponent(qid)}` }, "question"), ` / ${place}`),
       h("h1", {}, r.question_text), h("p", {}, `${place} · ${r.model ? `summary by ${r.model} · ` : ""}${fx(r.seconds, 0)} s · ${ago(r.updated_at)}`)),
       h("div", { class: "row-flex" }, askStatus(r.status))),
+    ...reviewCard(qid, target, r, card, people),
     r.status === "not_found" ? h("div", { class: "notice" }, icon("info"), h("div", {}, "No statute section clearly governs this here. The answer may live in regulations, court rules, agency policy, contracts or local ordinances, which lexflow does not search yet. The closest sections are listed below.")) : null,
     ...(claims.length ? card("In short", "Written by a local model from the quotes below. Claims that cited no quote, or stated a number the quotes do not contain, were dropped.",
       h("ul", { class: "card-pad", style: "margin:0;padding-left:36px" }, claims.map((c) => h("li", {}, c.text, " ",
@@ -824,7 +934,7 @@ async function viewAnswer(qid, target) {
       h("ol", { class: "steps-list" }, quotes.map((q) => h("li", { id: `q-${q.id}` }, h("div", { class: "row-flex" }, h("strong", {}, q.id),
         h("span", { class: "muted mono" }, `§ ${q.section || ""}${q.label ? `(${q.label.split(".").join(")(")})` : ""}`),
         ...(q.slots || []).map((s) => h("span", { class: "tag" }, s))), h("p", { class: "quote" }, `“${q.text}”`))))) : []),
-    ...((local.locus || []).length || (local.contacts || []).length ? card(`What ${local.name || "the place"} adds`, "Local ordinance headings from LOCUS (Local Laws Observatory) that mention the question, and contacts. LOCUS points at local law; read the ordinance itself before relying on it.",
+    ...((local.locus || []).length || (local.contacts || []).length ? card(`What ${local.name || "the place"} adds`, "Local ordinance headings from LOCUS-v1 (LocalLaws' Local Ordinance Corpus for the United States) that mention the question, and contacts. LOCUS points at local law; read the ordinance itself before relying on it.",
       h("div", { class: "card-pad" },
         (local.locus || []).length ? h("ul", { style: "margin:0 0 10px;padding-left:20px" }, local.locus.map((x) => h("li", {}, x.header, h("span", { class: "muted" }, ` · ${x.function || ""} ${x.topic ? `· ${x.topic}` : ""}`)))) : null,
         (local.contacts || []).length ? h("ul", { style: "margin:0;padding-left:20px" }, local.contacts.map((c) => h("li", {}, `${c.kind}: `,
@@ -845,6 +955,47 @@ async function viewAnswer(qid, target) {
     try { await viewer.importXML(r.bpmn); viewer.get("canvas").zoom("fit-viewport", "auto"); }
     catch (e) { rc(bpmnHost, h("p", { class: "card-pad muted" }, `Could not draw the diagram: ${e.message}`)); }
   }
+}
+
+// The person who read an answer against the law.  Reviewers come from the list the operator keeps (lexflow reviewer
+// add): the operator vouches that each one is a person, and lexflow cannot check it.  Here one is picked from that
+// list, never typed in; the page prints the name, role and licence the list gives.  The reviewer ticks that they
+// read this exact text, and the review is for the text on screen (its text_hash).
+function reviewCard(qid, target, r, card, people) {
+  const url = `/api/ask/${encodeURIComponent(qid)}/${encodeURIComponent(target)}/review`;
+  const rv = r.reviewed_by || {};
+  const msg = h("div", { style: "margin-top:8px" });
+  const pick = h("select", { "aria-label": "Reviewer from the operator's list" }, h("option", { value: "" }, "Choose a reviewer from the list"),
+    ...(people || []).map((p) => h("option", { value: p.id, selected: rv.reviewer === p.id }, p.label)));
+  const attest = h("input", { type: "checkbox", "aria-label": "I am a person and I read this exact text against the law" });
+  // the reviewer's own token (lexflow reviewer add printed it): the API records or removes a review only with it,
+  // and keeps whose token was used.  It is sent with the request and never stored in the browser.
+  const token = h("input", { type: "password", autocomplete: "off", spellcheck: "false", "aria-label": "Your reviewer token" });
+  const withToken = (method, body) => api(url, { method, body: body ? JSON.stringify(body) : undefined,
+    headers: { "Content-Type": "application/json", "X-Lexflow-Reviewer-Token": token.value.trim() } });
+  const save = h("button", { class: "btn primary", disabled: !(people || []).length, onclick: async () => {
+    try {
+      // only the reviewer's id, their statement and the hash of the text on this page: the API refuses a typed
+      // name, role or date, and an answer that changed since it was loaded
+      await withToken("PUT", { reviewer: pick.value || null, attested: attest.checked, text_hash: r.text_hash || null });
+      viewAnswer(qid, target);
+    } catch (e) { rc(msg, h("div", { class: "notice" }, icon("info"), h("div", {}, String(e.message || e)))); }
+  } }, r.reviewed_by ? "Update reviewer" : "Record reviewer");
+  const remove = r.reviewed_by ? h("button", { class: "btn", onclick: async () => {
+    try { await withToken("DELETE"); viewAnswer(qid, target); }
+    catch (e) { rc(msg, h("div", { class: "notice" }, icon("info"), h("div", {}, String(e.message || e)))); }
+  } }, "Remove reviewer") : null;
+  const empty = (people || []).length ? null : h("p", { class: "muted" }, "No one is on the reviewer list yet. The operator adds reviewers with “lexflow reviewer add”, and vouches for each one: lexflow cannot check that a reviewer is a person.");
+  return card("Human review", r.reviewed_by ? `${r.review_line}. The wiki page will say so.`
+    : (r.review_stale ? "The review on record was for another version of this answer, or by someone no longer on the reviewer list, so it no longer counts. " : "")
+      + "Not yet reviewed by a person. Pick the person on the operator's reviewer list who read this answer against the law; until then it cannot go on the wiki.",
+  h("div", { class: "card-pad" },
+    empty,
+    h("div", { class: "row-flex", style: "gap:12px;flex-wrap:wrap" }, h("label", { class: "field" }, "Reviewer", pick),
+      h("label", { class: "field" }, "Your reviewer token", token)),
+    h("p", { class: "muted" }, "Only the reviewer's own token records a review: the operator's “lexflow reviewer add” printed it, and “lexflow reviewer token” makes a new one."),
+    h("label", { class: "check", style: "margin-top:10px" }, attest, "I am a person, and I read this exact text against the law"),
+    h("div", { class: "row-flex", style: "margin-top:10px;gap:8px" }, save, remove), msg));
 }
 
 // AskBench: new questions answered by the local pipeline, scored against Claude's references
@@ -935,7 +1086,9 @@ async function viewPlaces() {
   const card = (g) => h("a", { class: "card model-card", href: `#/place/${g.gov_id}` },
     h("div", { class: "top" }, h("strong", {}, g.name), h("span", { class: "muted" }, (g.state || "").toUpperCase())),
     h("div", { class: "cite" }, `${g.kind}${g.population ? ` · pop. ${fmtInt(g.population)}` : ""}`),
-    g.researched ? h("div", { class: "row-flex" }, statusEl(g.verified ? "done" : "partial", g.verified ? "Local answers checked" : "Local answers, not yet checked")) : null);
+    g.researched ? h("div", { class: "row-flex" }, statusEl(g.verified ? "done" : "partial", g.verified ? "Local answers checked" : "Local answers, not yet checked")) : null,
+    g.processes ? h("div", { class: "row-flex" }, statusEl(g.processes_verified === g.processes ? "done" : "partial",
+      `${g.processes} local ${g.processes === 1 ? "process" : "processes"}, ${g.processes_verified} checked`)) : null);
   let timer = null;
   q.addEventListener("input", () => {
     clearTimeout(timer);
@@ -1012,7 +1165,7 @@ async function viewPlace(govId) {
         (loc.caveats || []).length || (a.gaps || []).length ? h("details", { style: "margin-top:8px" }, h("summary", { style: "cursor:pointer" }, "Caveats and gaps"),
           h("ul", { style: "padding-left:18px" }, [...(loc.caveats || []), ...(a.gaps || [])].map((x) => h("li", { class: "ink-2" }, x)))) : null,
         loc.researched ? h("p", { class: "muted", style: "font-size:12px;margin-top:10px" },
-          `Local answer researched ${loc.researched} by ${loc.built_by || "Claude"}${loc.verified ? "; sources re-checked by a second reviewer" : ""}.`) : null));
+          `Local answer researched ${loc.researched} by ${loc.built_by || "Claude"}${loc.verified ? "; sources re-checked by an AI verifier (not a person)" : ""}.`) : null));
   });
   rc(view,
     h("div", { class: "page-head" }, h("div", {},
@@ -1020,7 +1173,67 @@ async function viewPlace(govId) {
       h("h1", {}, g.name),
       h("p", {}, `${g.kind}${g.population ? ` · population ${fmtInt(g.population)}` : ""}${g.county_name ? ` · ${g.county_name}` : ""}`)),
       g.website ? h("a", { class: "btn", href: g.website, target: "_blank", rel: "noopener" }, "Official website ↗") : null),
-    h("div", { class: "grid", style: "gap:16px" }, cards));
+    h("div", { class: "grid", style: "gap:16px" }, cards),
+    localProcessesCard(govId, await api(`/api/places/${encodeURIComponent(govId)}/processes`).catch(() => [])));
+}
+
+// the place's researched processes (curated/places/<state>/<place>/<process>.json), grouped by category
+const CATEGORY_TITLE = { records: "Public records", business: "Business", permits_construction: "Building and construction permits",
+  zoning_land_use: "Zoning and land use", taxes_assessments: "Taxes and assessments", tax_relief: "Tax relief",
+  utilities_services: "Utilities and services", public_safety: "Public safety", courts_legal: "Courts and legal", elections: "Elections",
+  health_social_services: "Health and social services", transportation_parking: "Transportation and parking", parks_events: "Parks and events",
+  animals: "Animals", housing: "Housing", other: "Other" };
+function localProcessesCard(govId, procs) {
+  if (!procs || !procs.length) return null;
+  const cats = [...new Set(procs.map((p) => p.category || "other"))];
+  return [h("div", { class: "spacer" }), h("section", { class: "card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Local processes"),
+      h("p", {}, `${procs.length} researched from the official pages and the law they rest on; ${procs.filter((p) => p.verified).length} checked quote by quote by an AI verifier (not a person; lexflow's software matches only their quotes from the state code).`))),
+    h("div", { class: "card-pad" }, cats.map((cat) => h("div", { style: "margin-bottom:12px" },
+      h("h3", {}, CATEGORY_TITLE[cat] || cat),
+      h("ul", { style: "padding-left:18px;margin:4px 0" }, procs.filter((p) => (p.category || "other") === cat).map((p) => h("li", {},
+        h("a", { href: `#/local/${encodeURIComponent(govId)}/${encodeURIComponent(p.process)}` }, p.title || p.process),
+        p.office ? h("span", { class: "muted" }, ` · ${p.office}`) : null,
+        p.verified ? null : h("span", { class: "badge", style: "margin-left:6px" }, "not yet checked"))))))))];
+}
+
+async function viewLocalProcess(govId, pid) {
+  const r = await api(`/api/places/${encodeURIComponent(govId)}/processes/${encodeURIComponent(pid)}`);
+  const s = r.spec || {};
+  const g = r.government || {};
+  const link = (url, text) => url && /^https?:/.test(url) ? h("a", { href: url, target: "_blank", rel: "noopener" }, text) : text;
+  const quote = (q) => q ? h("p", { class: "quote" }, `“${q}”`) : null;
+  const forms = Object.fromEntries((s.forms || []).map((f) => [f.id, f]));
+  const card = (title, ...kids) => [h("div", { class: "spacer" }), h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, title))), h("div", { class: "card-pad" }, ...kids))];
+  const c = s.checks || {};
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {},
+      h("div", { class: "muted" }, h("a", { href: "#/places" }, "Places"), " / ", h("a", { href: `#/place/${encodeURIComponent(govId)}` }, g.name || govId)),
+      h("h1", {}, s.title || pid),
+      s.question ? h("p", {}, s.question) : null,
+      h("p", { class: "muted" }, [s.office, CATEGORY_TITLE[s.category] || s.category, r.verified ? "checked quote by quote by an AI verifier, not a person" : "not yet checked"].filter(Boolean).join(" · ")))),
+    h("div", { class: "notice" }, icon("info"), h("div", {}, "Researched by lexflow from the official pages and the law they rest on. Procedures, fees and forms change: follow the links to the office before you act. Information, not legal advice.")),
+    s.summary ? card("In short", h("p", {}, s.summary)) : null,
+    (s.steps || []).length ? card("Steps", h("ol", { class: "steps-list", style: "padding-left:20px" }, s.steps.map((st) => h("li", {},
+      h("div", { class: "row-flex" }, h("strong", {}, st.step), st.who ? h("span", { class: "muted" }, `· ${st.who}`) : null,
+        st.deadline ? h("span", { class: "badge" }, st.deadline) : null, st.fee ? h("span", { class: "badge" }, st.fee) : null),
+      st.how ? h("div", { class: "ink-2" }, st.how) : null,
+      st.form && forms[st.form] ? h("div", { style: "font-size:12.5px" }, "Form: ", link(forms[st.form].url, forms[st.form].title || st.form)) : null,
+      st.quote ? h("details", {}, h("summary", { class: "muted", style: "font-size:12px;cursor:pointer" }, st.source ? `The words of ${st.source.startsWith("http") ? "the source" : st.source}` : "The words of the source"), quote(st.quote)) : null,
+      st.url ? h("div", { style: "font-size:12px" }, link(st.url, "Official page")) : null)))) : null,
+    (s.legal_basis || []).length ? card("The law", h("ul", { style: "padding-left:18px" }, s.legal_basis.map((x) => h("li", {},
+      link(x.url, x.citation || "source"), x.role ? h("span", { class: "muted" }, ` · ${x.role}`) : null, quote(x.quote))))) : null,
+    (s.forms || []).length ? card("Forms", h("ul", { style: "padding-left:18px" }, s.forms.map((f) => h("li", {}, link(f.url, f.title || f.id), f.number ? h("span", { class: "muted" }, ` (${f.number})`) : null)))) : null,
+    (s.fees || []).length ? card("Fees", h("ul", { style: "padding-left:18px" }, s.fees.map((f) => h("li", {}, `${f.item}: ${f.amount}`, f.basis ? h("span", { class: "muted" }, " · ", link(f.basis, /^https?:/.test(f.basis) ? "basis" : f.basis)) : null)))) : null,
+    (s.contacts || []).length ? card("Who to contact", h("ul", { style: "padding-left:18px" }, s.contacts.map((x) => h("li", {},
+      x.kind === "email" ? h("a", { href: `mailto:${x.value}` }, x.value) : /^https?:/.test(x.value || "") ? link(x.value, x.label || x.value) : `${x.label ? x.label + ": " : ""}${x.value}`)))) : null,
+    (s.escalation || []).length ? card("If it goes wrong", h("ul", { style: "padding-left:18px" }, s.escalation.map((e) => h("li", {},
+      h("strong", {}, e.trigger), `: ${e.next}`, e.type ? h("span", { class: "muted" }, ` (${e.type})`) : null, e.deadline ? `, within ${e.deadline}` : "",
+      e.basis ? h("span", { class: "muted" }, ` · ${e.basis}`) : null, quote(e.quote))))) : null,
+    (s.caveats || []).length ? card("Caveats", h("ul", { style: "padding-left:18px" }, s.caveats.map((x) => h("li", { class: "ink-2" }, x)))) : null,
+    (s.sources || []).length ? card("Sources", h("ul", { style: "padding-left:18px" }, s.sources.map((x) => h("li", {}, link(x.url, x.title || x.url), x.retrieved ? h("span", { class: "muted" }, ` · retrieved ${x.retrieved}`) : null)))) : null,
+    c.verified_by ? h("p", { class: "muted", style: "font-size:12px;margin-top:10px" },
+      `Checked by ${c.verified_by}${c.date ? " on " + c.date : ""}: ${c.quotes_confirmed ?? "?"} of ${c.quotes_checked ?? "?"} quotes confirmed${(c.open_issues || []).length ? `; open issues: ${c.open_issues.join("; ")}` : ""}.`) : null);
 }
 
 // ================================================================== DATA

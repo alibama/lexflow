@@ -1,0 +1,1357 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "building_permit_residential",
+ "title": "Get a residential building permit (including trade permits) and schedule inspections",
+ "question": "I am building, renovating or replacing equipment. How do I get a permit and inspections?",
+ "category": "permits_construction",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "lessees",
+  "contractors"
+ ],
+ "office": "Neighborhood Development Services, Building Inspections Division (City of Charlottesville building official)",
+ "summary": "Charlottesville enforces Virginia's Uniform Statewide Building Code. Most construction, demolition and plumbing, electrical, mechanical or gas work needs a permit before it starts. Apply online in the City Public Permit Portal, with a separate linked permit for each trade. Give a contractor license number or the owner's exemption statement, upload plans, pay fees in the portal (a $75 minimum, a maintenance fee and a 2% state levy), and post the permit. Request each inspection in the portal before covering work. After the final inspection the city issues a certificate of occupancy. Denials and other code decisions can be appealed to the local board within 30 days, then to the State Review Board within 21 days.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-98",
+   "url": "https://law.lis.virginia.gov/vacode/36-98/",
+   "quote": "Such building code shall supersede the building codes and regulations of the counties, municipalities and other political subdivisions and state agencies.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "quote": "shall also prescribe procedures for the administration and enforcement of such regulations, including procedures to be used by the local building department in the evaluation and granting of modifications for any provision of the Building Code",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "quote": "Notwithstanding the provisions of this section, farm buildings and structures shall be exempt from the provisions of the Building Code",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-97",
+   "url": "https://law.lis.virginia.gov/vacode/36-97/",
+   "quote": "\"Equipment\" means plumbing, heating, electrical, ventilating, air-conditioning and refrigeration equipment, elevators, dumbwaiters, escalators, and other mechanical additions or installations.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Any person aggrieved by the local building department's application of the Building Code or refusal to grant a modification to the provisions of the Building Code may appeal to the local board of Building Code appeals.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "No appeal to the State Building Code Technical Review Board shall lie prior to a final determination by the local board of Building Code appeals.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Where the construction cost is less than $2,500, however, the inspection may, in the discretion of the inspecting authority, be waived.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(D)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "the locality may require full payment of any and all financial obligations of the property owner to the locality to satisfy such lien prior to issuance of such permit",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(D)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-106(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-106/",
+   "quote": "Any such violation shall be deemed a misdemeanor and any owner or any other person, firm, or corporation convicted of such a violation shall be punished by a fine of not more than $2,500.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-114",
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "quote": "The Review Board shall have the power and duty to hear all appeals from decisions arising under application of the Building Code",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-114",
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "quote": "Proceedings of the Review Board shall be governed by the provisions of the Administrative Process Act (§ 2.2-4000 et seq.), except that an informal conference pursuant to § 2.2-4019 shall not be required.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-118",
+   "url": "https://law.lis.virginia.gov/vacode/36-118/",
+   "quote": "The Review Board shall interpret the provisions of the Building Code, and the Fire Prevention Code",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-137(7)",
+   "url": "https://law.lis.virginia.gov/vacode/36-137/",
+   "quote": "Local building departments shall collect such levy and transmit it quarterly to the Department of Housing and Community Development.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-98.01",
+   "url": "https://law.lis.virginia.gov/vacode/36-98.01/",
+   "quote": "If the designation of a mechanics' lien agent is not so requested by the applicant, the building permit shall at the time of issuance state that none has been designated with the words \"None Designated.\"",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 43-4.01(A)",
+   "url": "https://law.lis.virginia.gov/vacode/43-4.01/",
+   "quote": "The permit shall be posted on the property before any labor is performed or any material furnished on the property for which the building permit is issued.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1111(A)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1101(A)(7)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "quote": "Any person who performs or supervises the construction, removal, repair, or improvement of no more than one primary residence owned by him and for his own use during any 24-month period",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1101(A)(10)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "quote": "Any person who performs or supervises the repair or improvement of residential dwelling units owned by him that are subject to the Virginia Residential Landlord and Tenant Act (§ 55.1-1200 et seq.)",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1101(C)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "quote": "Any person who is exempt from the provisions of this chapter as a result of subdivision 7, 8, 9, 10, 11, 12, or 14 of subsection A shall comply with the provisions of the Uniform Statewide Building Code (§ 36-97 et seq.).",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99.7(C)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99.7/",
+   "quote": "The provisions of this section shall not apply to single-family dwellings or residential housing with four or fewer units, unless the renovation or demolition of such buildings is for commercial or public development purposes.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3852(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3852/",
+   "quote": "The incentives or regulatory flexibility may include, but shall not be limited, to (i) a reduction in permit fees when green roofs are used",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4026(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Application for a permit shall be made to the building official and a permit shall be obtained prior to the commencement of any of the following activities",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "applications for emergency construction, alterations, or equipment replacement shall be submitted by the end of the first working day that follows the day such work commences",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Notwithstanding the requirements of Section 108.1, application for a permit and any related inspections shall not be required for the following; however, this section shall not be construed to exempt such activities from other applicable requirements of this code.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, item 14.4)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Replacement of mechanical appliances provided such equipment is not fueled by gas or oil in Group R-2 where serving a single-family dwelling and in Groups R-3, R-4, and R-5.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, Exception 1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Application for a permit may be required by the building official for the installation of replacement siding, roofing, and windows in buildings within a historic district designated by a locality pursuant to § 15.2-2306 of the Code of Virginia.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "In addition, when an owner or an owner's agent requests that a permit be issued for any of the following, then a permit shall be issued and any related inspections shall be required.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.3)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "A permit application may be submitted by mail and such permit applications shall be processed by mail, unless the jurisdiction offers an online permit option for permit application and processing or the permit applicant voluntarily chooses otherwise.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.3)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "In no case shall an applicant be required to appear in person.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.8)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "An application for a permit for any proposed work shall be deemed to have been abandoned six months after the date of filing unless such application has been pursued in good faith or a permit has been issued",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "The local governing body shall establish a fee schedule incorporating unit rates, which may be based on square footage, cubic footage, estimated cost of construction, or other appropriate criteria.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "A permit or any amendments to an existing permit shall not be issued until the designated fees have been paid, except that the building official may authorize the delayed payment of fees.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "When requested in writing by a permit holder, the locality shall provide a fee refund in the case of the revocation of a permit or the abandonment or cancellation of a building project.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "the local building department shall collect a 2.0% levy of fees charged for permits issued under this code and transmit it quarterly to DHCD to support training programs of the Virginia Building Code Academy",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-90 (USBC § 109.4)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section90/",
+   "quote": "The building official shall examine or cause to be examined all construction documents or site plans, or both, within a reasonable time after filing.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "If the application complies with the applicable requirements of this code, a permit shall be issued as soon as practicable.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "A building official shall be permitted to revoke a permit if work on the site authorized by the permit is not commenced within six months after issuance of the permit or if the authorized work on the site is suspended or abandoned for a period of six months after the permit is issued",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "Upon written request, the building official may grant one or more extensions of time, not to exceed one year per extension.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.7)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "The building official shall be permitted to require a three-year time limit to complete construction of new detached single-family dwellings, additions to detached single-family dwellings, and residential accessory structures.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.9)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "The building official shall cancel a permit at the request of the permit holder or the owner.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.1.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "When construction reaches a stage of completion that requires an inspection, the permit holder shall notify the building official.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.3.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "Upon the replacement or new installation of any fuel-burning appliances or equipment in existing Group R-5 occupancies, an inspection shall be conducted to ensure that the connected vent or chimney systems comply with the following:",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "The building official shall either approve the work in writing or give written notice of defective work to the permit holder.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.7)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "Under circumstances where the building official is unable to make the inspection or test required by Section 113.3 or 113.4 within two working days of a request or an agreed upon date or if authorized for other circumstances in the building official's written policy, the building official shall accept reports for review.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-140 (USBC § 114.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section140/",
+   "quote": "Following the issuance of such an order, the affected work shall cease immediately.",
+   "role": "penalty"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-160 (USBC § 116.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "quote": "The building official shall issue the certificate of occupancy within five working days after approval of the final inspection and when the building or structure or portion thereof is determined to be in compliance with this code and any pertinent laws or ordinances, or when otherwise entitled.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.5)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The applicant shall submit a written request for appeal to the LBBCA within 30 calendar days of the receipt of the decision being appealed.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The LBBCA shall meet within 30 calendar days after the date of receipt of the application for appeal, except that a period of up to 45 calendar days shall be permitted where the LBBCA has regularly scheduled monthly meetings.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.8)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The application for appeal shall be made to the State Review Board within 21 calendar days of the receipt of the decision to be appealed.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.9)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "you have thirty (30) days from the date of service (the date you actually received this decision or the date it was mailed to you, whichever occurred first) within which to appeal this decision by filing a Notice of Appeal with the Secretary of the Review Board",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville, NDS Building Inspection Fee Schedule (\"BUILDING REGS (CHAPTER 5}\"), NDS Fee Schedule update March 23, 2026",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "In addition to the permit fees below, a surcharge of 2.00% of the total fee shall be imposed as required under state law",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "City Council ordinance amending the NDS Fee Schedule (green or solar roof building permit fee reduction), April 2009",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1626/GreenSolar-Roof---Reduced-Permit-Fee-PDF",
+   "quote": "provide a permanent 50% reduction for that portion of the building permit fee applicable to construction of a \"green roof\", as defined in Va. Code Section 58.1-3852, as amended",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "City Code ch. 34 (Development Code) § 34-5.2.7(A)(1) (Major Historic Review, ADC districts and IPPs)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "In an ADC District and for an IPP, Major Historic Review for a Certificate of Appropriateness is required for the following exterior activities:",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City Code ch. 34 (Development Code) § 34-5.2.7(A)(2) (Major Historic Review, Historic Conservation districts)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "In a HC District, Major Historic Review for a Certificate of Appropriateness is required for the following exterior activities:",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City Code ch. 34 (Development Code) § 34-5.2.7 (Major Historic Review)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Where a building permit is required, no activity authorized by a Certificate of Appropriateness is lawful unless conducted in accordance with the required building permit and all applicable building code requirements.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville Building Inspections, 3rd Party Inspection Written Policy (revised June 4, 2026), issued under USBC § 113.7.1",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "quote": "All 3rd party inspectors must be pre-approved by the building official prior to performing 3rd party inspection.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville NDS, Asbestos Inspection & Abatement Certification (form)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/392/Asbestos-Inspection-and-Abatement-Certification-PDF",
+   "quote": "This form shall be completed by all applications for building permits to renovate or demolish a building or structure or portions thereof.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville NDS, HVAC System Compliance Certification (form, revised 8/19/2025)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14540/HVAC-System-Compliance-Certification-PDF",
+   "quote": "This form must be turned in prior to the C.O. or Final Inspection being issued",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville NDS, Building Envelope Leakage (Blower Door) Testing Form",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14539/Building-Envelope-Leakage-Test-form-PDF",
+   "quote": "This form must be turned in before the C.O. being issued.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville NDS, notice to builders of 1 & 2 family dwellings: As-Built Survey Requirement (revision 3/28/2017)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/394/As-Built-Survey-for-New-Construction-PDF",
+   "quote": "Effective January 1, 2010, the City of Charlottesville will require an as-built survey before issuing a certificate of occupancy on new one and two family dwellings and townhouses.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether the work needs a permit",
+   "who": "Property owner, lessee, or their contractor or designer",
+   "how": "A permit is needed before starting construction, demolition, additions or removal of walls, structural work, and installing or altering plumbing, electrical wiring, mechanical, gas or fuel systems, or any equipment the building code regulates. The USBC lists exempt work (for example one-story sheds up to 256 square feet, most fences, ordinary repairs such as like-for-like window, fixture and roof-covering replacement, and replacing mechanical appliances that are not gas or oil fueled in one- and two-family homes). Exempt work must still meet the code, and an owner may ask for a permit and inspections anyway. In a historic district the building official may require a permit for replacement siding, roofing and windows, and in a special flood hazard area for any of the exempt items.",
+   "deadline": "Before work starts; for emergency construction, alterations or equipment replacement, the application is due by the end of the first working day after the work begins (USBC § 108.1)",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Application for a permit shall be made to the building official and a permit shall be obtained prior to the commencement of any of the following activities",
+   "source": "13VAC5-63-80 (USBC § 108.1)"
+  },
+  {
+   "id": "s2",
+   "step": "Get any zoning, historic or floodplain approval the project needs first",
+   "who": "Property owner; NDS Historic Preservation staff and the Board of Architectural Review (BAR); NDS Zoning",
+   "how": "Look up the parcel's zoning district in the City GIS Viewer, and check whether the property is in a historic district or on the Individually Protected Property list. In an Architectural Design Control (ADC) district or for an Individually Protected Property (IPP), exterior construction, alteration or restoration, demolition of a contributing structure, and any window or door replacement or not-in-kind roof or siding replacement need a Certificate of Appropriateness through Major Historic Review; smaller items, such as repainting in a different color, go through Minor Historic Review. In a Historic Conservation (HC) district only the activities the Development Code lists need one, such as street-visible new construction that needs a building permit, street-side or large additions and alterations, demolition of contributing structures, and new street-facing fences and walls (§§ 34-5.2.6, 34-5.2.7). Certificate of Appropriateness applications, including pre-application conferences, are started online in the City Permit Portal. A Certificate of Appropriateness does not replace the building permit. Floodplain and erosion-and-sediment approvals are separate (the fee schedule lists E&S plan fees for land disturbance of 6,000 square feet or more).",
+   "deadline": null,
+   "fee": "Historic review, zoning and E&S fees are set in the NDS Fee Schedule (separate rows; not modeled here)",
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/1897/Historic-Districts-Design-Review",
+   "quote": "All Certificate of Appropriateness Applications (including Pre-Application Conferences) for the Board of Architectural Review (BAR) are started online using the City Permit Portal.",
+   "source": "https://www.charlottesville.gov/1897/Historic-Districts-Design-Review"
+  },
+  {
+   "id": "s3",
+   "step": "Decide who applies: a licensed contractor, or the owner acting as their own contractor",
+   "who": "Applicant (owner, lessee, contractor or design professional)",
+   "how": "Before a permit is issued the applicant must give a Virginia (DPOR) contractor license number, or file a written statement of exemption. Owners doing work on their own property use the Owner Affirmation on page 3 of the Building Permit Application (also posted separately as the Owner's Acknowledgement). The owner exemptions in Va. Code § 54.1-1101(A) include work on no more than one primary residence the owner owns and uses in any 24-month period, and repair or improvement of rental dwelling units the owner owns. An owner-builder still has to meet the building code, and the city notes that an owner's permit does not let unlicensed contractors do the work. Contractors also need a current City business license, from the Commissioner of the Revenue.",
+   "deadline": "Before the permit is issued",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF",
+   "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+   "source": "Va. Code § 54.1-1111(A)"
+  },
+  {
+   "id": "s4",
+   "step": "Prepare plans and supporting documents",
+   "who": "Applicant or the designer",
+   "how": "For new houses, additions and accessory structures, follow the Residential Plan Checklist: scaled, numbered drawings, foundation and floor plans, framing, truss and beam details, wall bracing, cross sections and elevations, with the front page signed by the individual responsible for the design. Construction documents may not be needed when the building official decides the work is minor. Every application to renovate or demolish a building also needs the city's Asbestos Inspection & Abatement Certification, on which the owner or agent checks the box that applies: buildings first permitted after January 1, 1985, and single-family homes and buildings with four or fewer units not used for commercial or public development, are exempt from the asbestos inspection itself (Va. Code § 36-99.7). For a demolition, the same form has the owner certify that the utilities have released their service connections and that affected neighboring owners were notified in writing. For a deck, the city's Typical Deck Details packet asks for two copies of the recorded plat with the deck drawn in and two sets of deck drawings.",
+   "deadline": null,
+   "fee": null,
+   "form": "f4",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10267/Residential-Plan-Checklist-PDF",
+   "quote": "2 sets of complete plans OR upload to website portal with permit",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/10267/Residential-Plan-Checklist-PDF"
+  },
+  {
+   "id": "s5",
+   "step": "Apply online in the City Public Permit Portal",
+   "who": "Applicant",
+   "how": "Create a portal account and sign in. Choose Create New Application, pick the application type and subtype, add the property address, contacts and any contractor, describe the project (including estimated cost), upload files of 5 MB or less, accept the terms and submit; larger files go in the Upload Documents window afterwards. Note the permit number shown on the Application Created screen. For a one- or two-family dwelling, name a mechanics' lien agent if you want one; otherwise the permit will say \"None Designated\". A paper Building Permit Application (PDF) is still posted, but the city's Inspection Results Cheat Sheet says it has switched to a fully digital permit submission and inspection system. The state rule that applications be processed by mail does not apply where a locality offers an online option, as Charlottesville does; no applicant can be required to appear in person.",
+   "deadline": "An application not pursued in good faith is treated as abandoned six months after filing (USBC § 108.8)",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "quote": "The City Public Permit Portal is available for submitting building and trade permits, as well as all payment of all permit fees and requesting inspections.",
+   "source": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "id": "s6",
+   "step": "Apply for each trade permit (electrical, mechanical, gas, plumbing) linked to the building permit",
+   "who": "Each licensed trade contractor (or the owner-builder)",
+   "how": "In the portal, choose Create New Application, then Linked Application, find the building permit and add the trade application with the contractor's details. On paper, use the Electrical, Mechanical, Gas, or Plumbing Permit Application (page 4 of the Building Permit Application), one per trade or contractor, giving the reference building permit number and the contractor's DPOR license number. Replacing equipment on its own (for example a gas furnace) is applied for on the matching trade application; replacing a mechanical appliance that is not gas or oil fueled in a home is exempt (see s1).",
+   "deadline": "Before the trade work starts",
+   "fee": "Trade permits: $75 minimum, then by project value (see fees)",
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "quote": "Fill out separate applications for each trade or contractor.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF"
+  },
+  {
+   "id": "s7",
+   "step": "Plan review; correct and resubmit if the application is not approved",
+   "who": "NDS Building Inspections (building official and plan reviewers)",
+   "how": "The building official reviews the application and plans. If they do not comply, the applicant is told the reasons in writing. A denied applicant may submit a revised application that addresses those reasons. Additional files are uploaded in the portal (Open Plan Review); if the upload option is closed, email Permits@charlottesville.gov to reopen the permit. An application may be amended at any time before the work is finished.",
+   "deadline": "Within a reasonable time after filing (USBC §§ 109.4, 110.1); no fixed local turnaround was found",
+   "fee": "Amendment fee: $75 minimum, then by additional project value (see fees)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+   "source": "Va. Code § 36-105(D)(2)"
+  },
+  {
+   "id": "s8",
+   "step": "Pay the permit fees in the portal",
+   "who": "Applicant (the portal account linked to the permit)",
+   "how": "Sign in, open My Fees under My Dashboard, click the credit card icon next to the fee and follow the prompts. If the account's email address is not linked to the permit, contact NDS Support to fix the connected accounts. The city warns that it does not email invoices for permit fees unless asked; do not pay emailed invoices. The permit is not issued until fees are paid, unless the building official allows delayed payment.",
+   "deadline": "Before the permit is issued (USBC § 107.1.1)",
+   "fee": "Building and trade permits: $75 minimum; over $1,500 of project value, $75 plus project value multiplied by the base rate (BR); plus a permit system maintenance fee ($10 to $50) and a 2.00% state levy",
+   "form": null,
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "quote": "Click on the credit card icon next to the fee you want to pay",
+   "source": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance"
+  },
+  {
+   "id": "s9",
+   "step": "Receive the permit, download the stamped plans and post the permit",
+   "who": "Permit holder",
+   "how": "Download the approved (stamped) plans in the portal: My Applications, eye icon, Open Plan Review, Approved Plan Documents. Post the permit card where it can be read from the road (a front window or door) before construction starts, and keep a hard copy of the city's RED stamped plans on site for every inspection.",
+   "deadline": "Posted before any labor is performed or material furnished (Va. Code § 43-4.01(A)), and kept posted until the work is completed",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "quote": "Post the permit card in a clearly visible location from the road prior to starting construction and calling in the first inspection.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF"
+  },
+  {
+   "id": "s10",
+   "step": "Start work and keep the permit active",
+   "who": "Permit holder",
+   "how": "Begin work within six months of issuance and do not suspend it for six months, or the building official may revoke the permit. The permit holder shows progress by at least one approved inspection within six months, or other evidence of substantial work. On written request the building official may grant extensions of up to one year each. Plumbing, electrical and mechanical permits are not revoked while the building permit is in effect.",
+   "deadline": "Work must start within six months of issuance and not be suspended for six months (USBC § 110.6)",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "A building official shall be permitted to revoke a permit if work on the site authorized by the permit is not commenced within six months after issuance of the permit or if the authorized work on the site is suspended or abandoned for a period of six months after the permit is issued",
+   "source": "13VAC5-63-100 (USBC § 110.6)"
+  },
+  {
+   "id": "s11",
+   "step": "Request each required inspection",
+   "who": "Permit holder (or the trade contractor on a trade permit)",
+   "how": "In the portal, open the My Inspections tab, click the calendar icon in the Actions column, choose the inspection type, complete the details and submit. The city also lists Inspections@charlottesville.gov and 434-970-3008 for Building Inspections. The permit holder provides any ladders, scaffolds and test equipment the inspector needs. Guest access in the portal lets others track permits and inspections.",
+   "deadline": "When construction reaches a stage that requires an inspection, before that work is covered (USBC § 113.1.2)",
+   "fee": "Not Ready fee $100 if the work is not ready when inspected",
+   "form": null,
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "quote": "Section 113.1.2, of the USBC specifies that it is the responsibility of the permit holder to assure that all required inspections are performed.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF"
+  },
+  {
+   "id": "s12",
+   "step": "Pass the inspections in order and fix any defects",
+   "who": "NDS Building Inspections inspectors; permit holder",
+   "how": "The city's minimum list, in typical order: footing, projection, dampproofing or waterproofing, foundation, slab, veneer, sub-trade rough-ins (mechanical, electrical, plumbing, gas), framing, insulation, water and sewer lines, trenches, gas unlock and finals, plus temporary or early electrical service where used. The project decides which apply. Exterior natural gas trenches to the meter are inspected by City Gas, and power service from the pole to the meter by Dominion Energy. The inspector approves the work in writing or gives written notice of defects, which must be corrected and reinspected before they are covered. Results appear under Tasks on the permit's record in the portal.",
+   "deadline": null,
+   "fee": "Reinspection fee $100 (starts after the 2nd inspection of the same violation)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "quote": "NO WORK IS TO BE CONCEALED UNTIL ALL REQUIRED PRIOR INSPECTIONS HAVE BEEN PERFORMED AND PASSED.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF"
+  },
+  {
+   "id": "s13",
+   "step": "Use a pre-approved third-party inspector (optional)",
+   "who": "Owner or permit holder, using an inspector pre-approved by the building official",
+   "how": "Charlottesville's written policy is a voluntary program: owners, homeowners and licensed contractors may have certain inspections done and certified by private inspectors the building official has pre-approved, in the listed categories (foundations, framing, decks, water and sewer laterals, insulation, gas, mechanical, electrical, plumbing and plan review). When the city cannot make a requested inspection within two working days, the building official must accept such reports for review and approve them unless there is cause to reject them. The report goes on the city's 3rd Party Inspection Form with photos, emailed to the address in the policy or dropped off at the Building Inspections front desk. The policy does not cover Chapter 17 special inspections, fire detection, protection or suppression systems, other City departments' inspections, or elevators. Inspections done before the permit is issued, or after a pour, are not accepted, and a third-party inspector cannot clear a violation the city has already cited. The permit holder must check that every inspection is posted to the permit.",
+   "deadline": "Report due within 24 hours of the day of inspection, although the policy also says results not submitted the same day count as a failed inspection (city policy); the city must give written reasons within two working days if it rejects a report (USBC § 113.7)",
+   "fee": "Paid by the owner or permit holder to the third-party inspector; the policy lets the building official add a flat city fee per third-party inspection if the program strains staff (none is set in the fee schedule)",
+   "form": "f9",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "quote": "The 3rd party inspection program offers property owners, homeowners, and licensed contractors the option for certain construction inspections to be performed and certified by pre-approved private sector 3rd party inspectors, to the extent specified below when they are approved in advance.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF"
+  },
+  {
+   "id": "s14",
+   "step": "For equipment replacement or new systems, file the required certifications",
+   "who": "Mechanical contractor or installer",
+   "how": "When a fuel-burning appliance is replaced or newly installed in an existing one- or two-family home (Group R-5), the connected vent or chimney must be checked; where the city does not inspect it, the installer certifies it (Chimney/Vent Inspection Certification). Every new HVAC system needs the HVAC System Compliance Certification (Manual S/J sizing and duct leakage testing), signed by the mechanical contractor. Where the energy code's blower-door test applies, the Building Envelope Leakage (Blower Door) Testing Form is also filed.",
+   "deadline": "HVAC certification before the final inspection or certificate of occupancy; blower-door form before the certificate of occupancy (city forms)",
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections",
+   "quote": "Upon the replacement or new installation of any fuel-burning appliances or equipment in existing Group R-5 occupancies, an inspection shall be conducted to ensure that the connected vent or chimney systems comply with the following:",
+   "source": "13VAC5-63-130 (USBC § 113.3.1)"
+  },
+  {
+   "id": "s15",
+   "step": "Pass the final inspection and get the certificate of occupancy",
+   "who": "Permit holder requests; building official issues",
+   "how": "The building final follows approved finals on every trade permit, with all fees paid, utilities connected and final grading done. For a new one- or two-family dwelling or townhouse, the city also requires an as-built survey (all structures, including decks, stairs and accessory structures, with dimensions to the property lines, plus parking areas, driveways and easements) before it issues the certificate of occupancy. No part of a new structure may be used until the certificate of occupancy is issued. A certificate is not required for an accessory structure, and a new one is not required for an addition to an existing one- or two-family home that already has one. A temporary certificate of occupancy can be requested when part of a building is safe to occupy. Check in the portal that every inspection is posted to the permit.",
+   "deadline": "Certificate of occupancy within five working days after the final inspection is approved (USBC § 116.1)",
+   "fee": "Temporary certificate of occupancy (residential): $75 per month, based on each bedroom, for each month or partial month",
+   "form": "f12",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "quote": "FINAL INSPECTIONS MUST BE REQUESTED, PERFORMED, APPROVED, AND A CERTIFICATE OF OCCUPANCY ISSUED BEFORE ANY PART OF A STRUCTURE CAN BE USED FOR ANY PURPOSE.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF"
+  },
+  {
+   "id": "s16",
+   "step": "Cancel a permit or ask for a refund if the project stops",
+   "who": "Permit holder or owner; NDS Building Inspections",
+   "how": "Ask the building official to cancel the permit; the official must cancel it at the request of the permit holder or the owner. Ask in writing for a refund when a permit is revoked or a project is abandoned or cancelled. The refund need not exceed the amount for work not done, and the city's fee schedule keeps a non-refundable portion.",
+   "deadline": null,
+   "fee": "Non-refundable portion: $25 (project value up to $2,000) or $75 (over $2,000)",
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "When requested in writing by a permit holder, the locality shall provide a fee refund in the case of the revocation of a permit or the abandonment or cancellation of a building project.",
+   "source": "13VAC5-63-70 (USBC § 107.1.2)"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Online application in the City Public Permit Portal (building, trade, linked and Certificate of Appropriateness applications; account required)",
+   "number": null,
+   "url": "https://permits.charlottesville.gov/portal",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Building Permit Application (PDF; with Project Description, Owner Affirmation and the Electrical, Mechanical, Gas, or Plumbing Permit Application), revision date August 10, 2023",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f3",
+   "title": "Owner's Acknowledgement (Building Permit Application: Owner Affirmation under Va. Code § 54.1-1111)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/13714/Owners-Acknowledgement-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "Residential Plan Checklist (single family dwellings, additions and accessory structures), revised 8/23/2023",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10267/Residential-Plan-Checklist-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f5",
+   "title": "Asbestos Inspection & Abatement Certification",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/392/Asbestos-Inspection-and-Abatement-Certification-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Chimney/Vent Inspection Certification (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/397/ChimneyVent-Inspection-Certification-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f7",
+   "title": "HVAC System Compliance Certification (required for all new systems)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14540/HVAC-System-Compliance-Certification-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f8",
+   "title": "Building Envelope Leakage (Blower Door) Testing Form",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14539/Building-Envelope-Leakage-Test-form-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f9",
+   "title": "3rd Party Inspection Policy (revised June 4, 2026), with the Application Form to be 3rd Party Inspector",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f10",
+   "title": "Board of Building Code Appeals Application (City of Charlottesville, NDS; the posted version is printed for Property Maintenance Code appeals)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/406",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f11",
+   "title": "Application for Administrative Appeal (State Building Code Technical Review Board, DHCD)",
+   "number": null,
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f12",
+   "title": "As-Built Survey Requirement notice (new one- and two-family dwellings and townhouses; survey required before the certificate of occupancy)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/394/As-Built-Survey-for-New-Construction-PDF",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f13",
+   "title": "Typical Deck Details (deck permit packet, based on the 2018 Virginia Residential Code)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9152/Typical-Deck-Details-PDF",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "Building permit; electrical, mechanical, plumbing and gas permits (each)",
+   "amount": "$75 Min; $75 for project value up to $1,500; over $1,500, $75 plus project value multiplied by BR",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Fee - $75 minimum. $75 Fee Based on project value up to $1,500. Over $1,500 of project value, Fee is $75 plus project value multiplied by BR"
+  },
+  {
+   "item": "Demolition permit",
+   "amount": "$75 Min; $75 for project value up to $1,500; over $1,500, $75 plus project value multiplied by BR",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Over $1,500 of project value, Fee is $75 plus project value multiplied by BR"
+  },
+  {
+   "item": "Building Inspections Base Rate (BR)",
+   "amount": "Not legible: the published PDF prints the rate as \".7¾orBR\"",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Rate that permit fees are based on"
+  },
+  {
+   "item": "Permit System Maintenance Fee",
+   "amount": "$10 (permits under $200); $20 ($200-$499.99); $35 ($500-$1000); $50 (over $1000)",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Fee Applies to All Permits"
+  },
+  {
+   "item": "State levy on all permits (Virginia Building Code Academy levy)",
+   "amount": "2.00% of the total fee",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "In addition to the permit fees below, a surcharge of 2.00% of the total fee shall be imposed as required under state law"
+  },
+  {
+   "item": "Amendment fee (residential and commercial permits)",
+   "amount": "$75 Min; over $1,500 of additional project value, $75 plus project value multiplied by BR",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Fee - $75 minimum. $75 Fee Based on additional project value up to $1,500. Over $1,500 of additional project value is $75 plus project value multiplied by BR"
+  },
+  {
+   "item": "Residential electrical repairs less than $1000",
+   "amount": "$75",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Repair work on Existing residential electrical system - NOT for adding new work, only repairing or replacing existing outlets & switches."
+  },
+  {
+   "item": "Non-refundable portion of all permit fees",
+   "amount": "$25 (project value up to $2000); $75 (project value over $2000)",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Flat Fee. Where reviews underway. No inspections scheduled or completed"
+  },
+  {
+   "item": "Not Ready fee",
+   "amount": "$100",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "inspection cannot be done because they are still working on it or work is not fully done vet"
+  },
+  {
+   "item": "Reinspection fee",
+   "amount": "$100",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Fee starts after 2nd inspection of same violation"
+  },
+  {
+   "item": "Working without a permit (commercial and residential)",
+   "amount": "Permit Fee X 2",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Work being performed where no valid building permit has been issued"
+  },
+  {
+   "item": "Stop work order fee",
+   "amount": "$150",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Fee applies each day until work has stopped"
+  },
+  {
+   "item": "Code modification application",
+   "amount": "$75 (residential) / $150 (commercial and others)",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Code Modification Application Fees: Residential/ Commercial & Others"
+  },
+  {
+   "item": "Voided/waived permit",
+   "amount": "$0",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Administrative procedure in writing"
+  },
+  {
+   "item": "Building Code Board of Appeals application",
+   "amount": "$250",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Per each Appeals Application"
+  },
+  {
+   "item": "Temporary certificate of occupancy (residential R uses)",
+   "amount": "$75/month",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "For all R-USES with fee based on each bedroom for each month or partial month"
+  },
+  {
+   "item": "Green or solar roof reduction",
+   "amount": "50% reduction of the building permit fee for the green roof portion",
+   "basis": "https://www.charlottesville.gov/740/Green-Roof-Building-Permit-Fee-Reduction",
+   "quote": "A 50% reduction to the building permit fee applicable to the construction of a \"green roof\" as defined by Virginia Code Section 58.1-3852."
+  },
+  {
+   "item": "Third-party inspections and plan reviews",
+   "amount": "Paid by the owner or permit holder to the third party; no city fee is set (the policy allows a future flat fee per inspection)",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "quote": "All fees/payments for 3rd party inspections and 3rd party plan reviews shall be the responsibility of the owner/permit holder."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Building Inspections Division, Neighborhood Development Services (first floor of City Hall since January 26, 2026; enter by the Main Entrance; appointments encouraged)",
+   "label": "NDS Building Inspections",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "address",
+   "value": "City Hall, 605 E Main Street, Charlottesville, VA 22902",
+   "label": "NDS Building Inspections",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3008",
+   "label": "NDS Building Inspections",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "email",
+   "value": "Inspections@charlottesville.gov",
+   "label": "NDS Building Inspections (inspections)",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "email",
+   "value": "Permits@charlottesville.gov",
+   "label": "NDS Building Inspections (permits)",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "portal",
+   "value": "https://permits.charlottesville.gov/portal",
+   "label": "City Public Permit Portal (applications, fees, inspections; guest access for tracking)",
+   "url": "https://www.charlottesville.gov/262/Building-Inspections"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "label": "Permit Portal Assistance (NDS)",
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance"
+  },
+  {
+   "kind": "email",
+   "value": "ndssupport@charlottesville.gov",
+   "label": "NDS Support (permit portal accounts and payment access)",
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3182",
+   "label": "Neighborhood Development Services front desk / Permit Portal Assistance",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3181",
+   "label": "Neighborhood Development Services (main line; Monday thru Friday, 8:30 AM to 5:00 PM)",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "address",
+   "value": "Neighborhood Development Services, P.O. Box 911, Charlottesville, VA 22902 (mailing address)",
+   "label": "Neighborhood Development Services",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "address",
+   "value": "Neighborhood Development Services, 610 East Main Street, Charlottesville, VA 22902 (physical address listed on the NDS page)",
+   "label": "Neighborhood Development Services",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "email",
+   "value": "preservation@charlottesville.gov",
+   "label": "NDS Historic Preservation (Board of Architectural Review questions)",
+   "url": "https://www.charlottesville.gov/1897/Historic-Districts-Design-Review"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3160",
+   "label": "Commissioner of the Revenue (City business license for contractors)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF"
+  },
+  {
+   "kind": "address",
+   "value": "State Building Codes Office and Office of the State Technical Review Board, Department of Housing and Community Development, Main Street Centre, 600 E. Main Street, Suite 300, Richmond, Virginia 23219",
+   "label": "State Building Code Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 371-7150",
+   "label": "State Building Codes Office and Office of the State Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf"
+  },
+  {
+   "kind": "email",
+   "value": "sbco@dhcd.virginia.gov",
+   "label": "DHCD State Building Codes Office",
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb",
+   "label": "State Building Code Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "The city cannot make a requested inspection within two working days of the request or an agreed date",
+   "next": "A third-party inspector pre-approved under Charlottesville's written policy; the building official must review the report and approve it unless there is cause to reject it",
+   "type": "referral",
+   "deadline": "Report within 24 hours of the day of inspection (city policy); written reasons within two working days if the city rejects the report",
+   "basis": "13VAC5-63-130 (USBC §§ 113.7, 113.7.1); Charlottesville 3rd Party Inspection Policy (revised June 4, 2026)",
+   "quote": "Failure to approve a report shall be in writing within two working days of receiving it stating the reason for the rejection."
+  },
+  {
+   "trigger": "Permit denied; or any other decision applying the building code (refused modification, failed inspection or notice of defective work, stop work order, permit revocation, certificate of occupancy refused)",
+   "next": "Charlottesville Board of Building Code Appeals (local board of Building Code appeals, LBBCA), by written request with a copy of the building official's decision; the city's posted appeal form is returned to Neighborhood Development Services",
+   "type": "internal appeal",
+   "deadline": "Written appeal within 30 calendar days of receiving the decision; the board meets within 30 calendar days (up to 45 with monthly meetings)",
+   "basis": "Va. Code § 36-105(A); 13VAC5-63-190 (USBC §§ 119.5, 119.6); fee: NDS Building Inspection Fee Schedule ($250 per appeals application)",
+   "quote": "Any person aggrieved by the local building department's application of the Building Code or refusal to grant a modification to the provisions of the Building Code may appeal to the local board of Building Code appeals."
+  },
+  {
+   "trigger": "A building fee not described in the fee schedule is charged",
+   "next": "Charlottesville Board of Building Code Appeals (LBBCA)",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "NDS Building Inspection Fee Schedule, row \"Other Fee not described above\"",
+   "quote": "This fee may be challenged by the LBBCA only."
+  },
+  {
+   "trigger": "Disagree with the local board's decision",
+   "next": "State Building Code Technical Review Board (Department of Housing and Community Development), on DHCD's Application for Administrative Appeal with copies of the building official's and the local board's decisions, served on all opposing parties",
+   "type": "external administrative review",
+   "deadline": "21 calendar days after receipt of the local board's decision; the certificate-of-service date counts as the filing date only if the Review Board office receives the application within five working days",
+   "basis": "Va. Code §§ 36-105(A), 36-114; 13VAC5-63-190 (USBC § 119.8); DHCD Application for Administrative Appeal (11-2024)",
+   "quote": "The application for appeal shall be made to the State Review Board within 21 calendar days of the receipt of the decision to be appealed."
+  },
+  {
+   "trigger": "Disagree with the State Review Board's decision",
+   "next": "Circuit court, under the Administrative Process Act (notice of appeal filed with the Secretary of the Review Board)",
+   "type": "judicial review",
+   "deadline": "30 days from service of the decision (Rule 2A:2), plus 3 days if served by mail",
+   "basis": "Va. Code §§ 36-114, 2.2-4026; 13VAC5-63-190 (USBC § 119.9)",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia"
+  },
+  {
+   "trigger": "A question about what the building code means (no appeal pending)",
+   "next": "Interpretation by the State Building Code Technical Review Board, requested through the building official; DHCD's State Building Codes Office also gives informal staff opinions",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 36-118; DHCD, State Building Code Technical Review Board page (Interpretations)",
+   "quote": "Interpretation requests may be submitted by any code enforcement personnel with approval from the corresponding building, maintenance or fire official."
+  }
+ ],
+ "caveats": [
+  "Base rate (BR): the only official statement of the rate is the NDS fee schedule PDF, whose text layer prints it as \".7¾orBR\" (also illegible on the printed page). The city's online Permit Fee Calculator is an embedded widget whose script did not load (the server closed the connection), so fees for project values over $1,500 cannot be computed from the sources cited here. Use the calculator on the Permit Fee Calculations page or ask Building Inspections.",
+  "The fee schedule's approval-date column reads \"Mar-23\" on every building row; the page footer says \"NDS Fee Schedule - Update March 23, 2026\". Whether \"Mar-23\" means March 2023 or March 23, 2026 is unclear.",
+  "The fee schedule PDF's text scrambles the table columns, so each fee quote is the row's comment text, not the amount itself; the amounts are read from the printed table.",
+  "Local appeal form: the only Board of Building Code Appeals application found is linked from the Property Maintenance page and is written for Property Maintenance Code appeals (14 calendar days, six copies and $100). Appeals under the construction code (USBC Part I) follow 13VAC5-63-190 (30 calendar days) and the fee schedule's $250 appeals fee. Confirm with NDS how to file a construction appeal. The board's own page on the city's boards site refuses automated readers, so it is not described here.",
+  "Charlottesville City Code ch. 5 (building regulations, as labeled on the fee schedule) is published on library.municode.com, whose terms are not confirmed to allow reuse, so no local building ordinance section is quoted. Local legal basis here is limited to the fee schedule, the 2009 green-roof fee ordinance, the Development Code PDF on the city's site, and the building official's written third-party policy.",
+  "No published local turnaround time for plan review or inspections was found. State rules require review \"within a reasonable time\" and issuance \"as soon as practicable\". The only fixed remedy for delay is the third-party inspection route after two working days. Whether a long delay in plan review can be appealed to the local board as an application of the USBC is not settled by any source read.",
+  "The sources do not say whether Charlottesville waives inspections for work under $2,500 (Va. Code § 36-105(B)) or applies the optional three-year completion limit for single-family dwellings (USBC § 110.7).",
+  "Contact details differ between documents. Web pages list 434-970-3008 for Building Inspections, while the Mandatory Inspections handout (revised 2/1/2023) says to call 434-970-3182 to schedule. Building Inspections moved to the first floor of City Hall (605 E Main Street) on January 26, 2026; the NDS page lists 610 East Main Street as the NDS physical address; the asbestos form prints an older address. The portal is the channel the city prefers.",
+  "The Contractor Prohibited Acts PDF and the Chimney/Vent Inspection Certification are scanned images with no text layer; their text was not read or quoted.",
+  "The policy's \"3rd Party Inspection Form\" (for reporting results) was not found linked on the Building Inspections page; the policy itself only includes the form for becoming an approved inspector. The policy names a dedicated program mailbox, which is not repeated here (only general office channels are listed).",
+  "Whether the city's PDFs are fillable was not confirmed; fillable is left null.",
+  "The Mandatory Inspections list is the city's general guideline; the project determines which inspections apply, and the inspector may add others (USBC § 113.4).",
+  "The permit portal sign-in page was read but not used (no account was created and no sign-in was made); portal steps come from the city's Permit Portal Assistance page and the Inspection Results Cheat Sheet.",
+  "Zoning, historic (Certificate of Appropriateness), floodplain and erosion and sediment control approvals are separate processes and are only pointed to here.",
+  "The paper application asks for a mechanic's lien agent \"(if none, write N/A)\"; state law requires the issued permit to read \"None Designated\" when none is named.",
+  "The farm-building exemption (Va. Code § 36-99(B)) is listed because it was among the legal hints; under Va. Code § 36-97 a farm building is one \"not used for residential purposes\", so it rarely applies to residential work in the city.",
+  "The State Review Board's address appears as \"600 East Main Street, Richmond\" in the notice wording the regulation requires (USBC § 119.7); DHCD's current appeal application adds \"Suite 300\" and is the form to use.",
+  "Paper filing: the Building Permit Application PDF and the deck packet still describe paper submission, but the Inspection Results Cheat Sheet says the city has switched to a fully digital permit submission and inspection system. Whether NDS still accepts a paper or mailed application was not confirmed; the portal is the documented route.",
+  "The Historic Districts & Design Review page says design review is required for exterior alterations, new construction, additions, site modification and demolitions \"within each district\". The Development Code (§§ 34-5.2.6, 34-5.2.7) is narrower for Historic Conservation districts, and the steps follow the code.",
+  "Third-party inspection reports: the policy says reports are due within 24 hours of the day of inspection, and in another paragraph that results not submitted the same day count as a failed inspection. Submit on the day of the inspection to be safe.",
+  "The As-Built Survey notice dates from 2010 (revised 3/28/2017) and gives a survey mailbox on the city's older charlottesville.org domain; that mailbox is not repeated here and was not checked. Upload the survey through the portal or ask NDS.",
+  "The Typical Deck Details packet is based on the 2018 Virginia Residential Code and calls its details \"County\" details; the Building Inspections page says new permits since January 18, 2025 fall under the 2021 code cycle. Use the packet as a guide only.",
+  "Va. Code § 36-105(D)(1) lets a locality require a property owner to pay delinquent obligations that are a lien on the property before a permit is issued. No Charlottesville source read says whether the city does this.",
+  "Which projects need the Building Envelope Leakage (Blower Door) form is not stated on the city form; it certifies compliance with VRC N1102.4.1."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/262/Building-Inspections",
+   "title": "Building Inspections (City of Charlottesville, NDS)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "title": "Permit Portal Assistance (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1651/Permit-Fee-Calculations",
+   "title": "Permit Fee Calculations (City of Charlottesville; embedded calculator)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://permits.charlottesville.gov/portal/",
+   "title": "Charlottesville, VA Application Portal - Sign In",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "title": "Neighborhood Development Services (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "title": "Building Permit Fee Schedule (NDS Fee Schedule - Update March 23, 2026) (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF",
+   "title": "Building Permit Application (PDF, revision August 10, 2023)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/13714/Owners-Acknowledgement-PDF",
+   "title": "Owner's Acknowledgement (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10267/Residential-Plan-Checklist-PDF",
+   "title": "Residential Plan Checklist (PDF, revised 8/23/2023)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "title": "Mandatory Inspections (PDF, revised 2/1/2023)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9652",
+   "title": "Inspection Results Cheat Sheet (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "title": "3rd Party Inspection Policy 6-4-2026 (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/392/Asbestos-Inspection-and-Abatement-Certification-PDF",
+   "title": "Asbestos Inspection and Abatement Certification (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/397/ChimneyVent-Inspection-Certification-PDF",
+   "title": "Chimney/Vent Inspection Certification (PDF; scanned image)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14540/HVAC-System-Compliance-Certification-PDF",
+   "title": "HVAC System Compliance Certification (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14539/Building-Envelope-Leakage-Test-form-PDF",
+   "title": "Building Envelope Leakage Test form (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/740/Green-Roof-Building-Permit-Fee-Reduction",
+   "title": "Green Roof Building Permit Fee Reduction (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1626/GreenSolar-Roof---Reduced-Permit-Fee-PDF",
+   "title": "Green/Solar Roof - Reduced Permit Fee (ordinance, City Council agenda packet April 6, 2009) (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1897/Historic-Districts-Design-Review",
+   "title": "Historic Districts & Design Review (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/268/Zoning",
+   "title": "Zoning (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "title": "Charlottesville Development Code (City Code ch. 34), PDF updated March 23, 2026",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/265/Property-Maintenance",
+   "title": "Property Maintenance (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/406",
+   "title": "Board of Building Code Appeals Application (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "title": "13VAC5-63-70. Section 107 Fees (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "title": "13VAC5-63-80. Section 108 Application for permit (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section90/",
+   "title": "13VAC5-63-90. Section 109 Construction documents (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "title": "13VAC5-63-100. Section 110 Permits (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "title": "13VAC5-63-130. Section 113 Inspections (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section140/",
+   "title": "13VAC5-63-140. Section 114 Stop work orders (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "title": "13VAC5-63-160. Section 116 Certificates of occupancy (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "title": "13VAC5-63-190. Section 119 Appeals (Virginia Administrative Code)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb",
+   "title": "State Building Code Technical Review Board (SBCTRB) (DHCD)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf",
+   "title": "Application for Administrative Appeal (DHCD, State Technical Review Board) (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.dhcd.virginia.gov/virginia-uniform-statewide-building-code-usbc",
+   "title": "Virginia Uniform Statewide Building Code (USBC) (DHCD)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-97/",
+   "title": "Va. Code § 36-97",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-98/",
+   "title": "Va. Code § 36-98",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-98.01/",
+   "title": "Va. Code § 36-98.01",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "title": "Va. Code § 36-99",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-99.7/",
+   "title": "Va. Code § 36-99.7",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "title": "Va. Code § 36-105",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-106/",
+   "title": "Va. Code § 36-106",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "title": "Va. Code § 36-114",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-118/",
+   "title": "Va. Code § 36-118",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-137/",
+   "title": "Va. Code § 36-137",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/43-4.01/",
+   "title": "Va. Code § 43-4.01",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "title": "Va. Code § 54.1-1101",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "title": "Va. Code § 54.1-1111",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3852/",
+   "title": "Va. Code § 58.1-3852",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "title": "Va. Code § 2.2-4026",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/394/As-Built-Survey-for-New-Construction-PDF",
+   "title": "As-Built Survey for New Construction (NDS notice, revision 3/28/2017) (PDF)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9152/Typical-Deck-Details-PDF",
+   "title": "Typical Deck Details (PDF)",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 107,
+  "quotes_confirmed": 107,
+  "removed": [],
+  "corrections": [
+   "Method: all 29 state-law quotes were matched against I.text_of for the cited section (whitespace normalised only), and the subsection labels were checked against the section text. The 33 Administrative Code quotes were matched against the eight 13VAC5-63 pages on law.lis.virginia.gov, fetched again. The 31 city and DHCD quotes were matched against the cited pages and PDFs, fetched again with robots.txt checked and 2 seconds between requests. Fee amounts were checked against the fee schedule rendered page by page, because its text layer scrambles the columns. All 93 original quotes were confirmed. Three of them were replaced by better-fitting quotes (see below), and the 14 new or replacement quotes were checked the same way, giving 107 checked, 107 confirmed and 104 in the file.",
+   "s1: the draft said the building official may require a permit for otherwise exempt work in a historic district. USBC § 108.2 Exception 1 covers only replacement siding, roofing and windows in a historic district; Exception 2 covers any exempt item in a special flood hazard area. Corrected, and 'fences' is now 'most fences' (pool barriers and fences needed for pedestrian safety are not exempt).",
+   "s2: the draft said exterior work in a Historic Conservation district needs a Certificate of Appropriateness. Development Code §§ 34-5.2.6 and 34-5.2.7(A)(2) list only certain activities for HC districts; ADC districts and IPPs are broader (§ 34-5.2.7(A)(1)). Rewritten, and two Development Code quotes are added to legal_basis. The step quote, from the historic page, was verbatim but stated design review for all districts. It is replaced with that page's sentence that Certificate of Appropriateness applications start in the City Permit Portal.",
+   "s3: added the scope of the owner exemptions: one primary residence the owner owns and uses in any 24-month period (§ 54.1-1101(A)(7)), and repair or improvement of rental units the owner owns (§ 54.1-1101(A)(10), new legal_basis quote).",
+   "s4: the draft implied the asbestos certification is needed only for buildings first permitted before 1985. The city form says it must be completed by all applications to renovate or demolish; exempt applicants check the box that applies (new local quote). Added the form's demolition items (utility release, written notice to affected neighboring owners) and the deck packet's submittal list (plat and two sets of drawings).",
+   "s5: the draft said 'state rules allow filing by mail'. USBC § 108.3 requires mail processing only where the locality does not offer an online option; Charlottesville does, and the Inspection Results Cheat Sheet says the city has gone fully digital. Rewritten, with the § 108.3 sentence added to legal_basis. The mechanics' lien agent sentence is now limited to one- and two-family dwellings (§ 36-98.01).",
+   "s6: 'Equipment replacement on its own (for example a new furnace or water heater) is a trade permit' had no source and conflicted with the USBC § 108.2 item 14.4 exemption. Now: equipment replacement (for example a gas furnace) goes on the matching trade application, and replacing a mechanical appliance not fueled by gas or oil is exempt.",
+   "s10: 'Extensions are granted on written request' changed to 'the building official may grant' (USBC § 110.6, now quoted in legal_basis). Progress may be shown by an approved inspection or other evidence of substantial work.",
+   "s13: the city's third-party program is voluntary and generally available; the two-working-day rule only sets when the official must accept reports. The title, 'how' and fee are rewritten. The step quote, a USBC § 113.7 sentence that repeated a legal_basis entry, is replaced with the policy's own description of the program. Added the excluded fire detection systems and other departments' inspections, the bar on clearing violations the city has already cited, and the policy's 24-hour versus same-day conflict.",
+   "s14: the deadline said it was 'not stated in the sources'. The city forms state it: HVAC certification before the final inspection or certificate of occupancy, and the blower-door form before the certificate of occupancy. Both form sentences are added as local legal_basis quotes. Removed the unsourced 'New homes also file' for the blower-door form.",
+   "s15: added the missing as-built survey requirement for new one- and two-family dwellings and townhouses before the certificate of occupancy (NDS notice, new form f12 and local quote). The TCO fee now includes 'or partial month'.",
+   "s16: cancelling a permit needs only a request: USBC § 110.9 says the official 'shall cancel' at the holder's or owner's request (now quoted). Only the refund request must be in writing.",
+   "s12: added from the Mandatory Inspections handout that City Gas inspects gas trenches to the meter and Dominion Energy inspects power service from the pole to the meter.",
+   "fees: added the missing Demolition permit fee ($75 minimum, then project value times BR), checked on rendered page 1. The third-party fee row notes that the policy allows a future flat city fee.",
+   "forms: added f12 (As-Built Survey Requirement notice) and f13 (Typical Deck Details). The f10 title now says the posted Board of Building Code Appeals application is printed for Property Maintenance Code appeals.",
+   "escalation: the local appeal now includes the copy of the building official's decision (USBC § 119.5). The State Review Board rung adds DHCD's application, service on opposing parties and the five-working-day receipt rule from the 11-2024 form. The interpretation rung's quote is replaced with DHCD's statement that interpretation requests come from code enforcement personnel with the official's approval, which supports 'requested through the building official'. The § 36-118 quote stays in legal_basis.",
+   "caveats: 7 added (paper filing after the move to digital, historic page vs code scope, third-party 24-hour vs same-day, the old as-built notice and its retired-domain mailbox, the deck packet's 2018 code basis, the unknown local use of § 36-105(D)(1), and blower-door applicability).",
+   "Privacy re-checked: contacts are office channels only (the role mailboxes Inspections@, Permits@, ndssupport@, preservation@ and sbco@, plus main office lines and addresses). Staff named in the 3rd party policy, the ceiling insulation letter, the asbestos form and the DHCD board page were not recorded. Neither was the as-built notice's survey mailbox or the program mailbox for third-party reports."
+  ],
+  "open_issues": [
+   "Building Inspections Base Rate (BR): the only official statement, the fee schedule PDF, prints it as '.7¾orBR' in both the text layer and the rendered page (checked at 400 dpi). Fees for project values over $1,500 cannot be computed from the sources read. The steps state the formula correctly and point to the caveat.",
+   "No construction-code (USBC Part I) appeal form for the local board was found; the only posted form is for Property Maintenance Code appeals. The deadline and fee in the escalation come from 13VAC5-63-190 and the fee schedule.",
+   "Whether NDS still accepts paper or mailed applications after its move to digital was not confirmed (see caveat).",
+   "The fee schedule's 'Mar-23' approval dates may mean March 2023 or March 23, 2026.",
+   "The Chimney/Vent Inspection Certification and Contractor Prohibited Acts PDFs are scanned images; their text was not read.",
+   "None of these affects the correctness of a step as written."
+  ]
+ }
+}

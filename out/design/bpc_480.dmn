@@ -1,0 +1,2802 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:lex="https://lexipedia.xyz/ns/lex/1.0" id="dmn_ca_bpc_480" name="Cal. BPC § 480: denial of a license for a conviction or prior discipline" namespace="https://lexipedia.xyz/ns/decision/ca_bpc_480" exporter="lexflow (design prototype)" exporterVersion="0.1">
+  <description>Decision requirements for Cal. Bus. &amp; Prof. Code § 480(a)-(d) and (h), text of open-us-law v2026.09.1. Precedence is carried by the DRD, not by rule order: grounds (a)(1)/(a)(2) &lt;- 'However' exceptions (a)(1)(A)/(B) &lt;- 'Notwithstanding' bars (b)/(c), every table UNIQUE.  Draft for review, not legal advice.</description>
+  <extensionElements>
+    <lex:model id="ca.bpc_480" jurisdiction="ca" jurisdictionName="California" reviewStatus="draft" method="assistant-edited" consumer="lexflow:process:ca.license_conviction" section="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+  </extensionElements>
+  <inputData id="in_application_date" name="application_date" label="Date of application">
+    <description>The date the application was made: every seven-year window in (a) runs back from it.</description>
+    <variable id="in_application_date_var" name="application_date" typeRef="date"/>
+  </inputData>
+  <inputData id="in_offense" name="offense" label="Offense of conviction (code and section, with the record of conviction)">
+    <description>Read by the classification findings serious_felony and fiduciary_financial_felony, with the record of conviction: some § 1192.7(c) items turn on how the offense was committed. The registration tier is the separate input sex_offender_tier, because PEN § 290(d) does not assign the tier from the offense alone.</description>
+    <variable id="in_offense_var" name="offense" typeRef="string"/>
+  </inputData>
+  <inputData id="in_sex_offender_tier" name="sex_offender_tier" label="Sex offender registration tier under PEN § 290(d), as ascertained">
+    <description>The tier the person registers in under Penal Code § 290(d). It is an input, not a finding on the offense, because § 290(d) does not assign the tier from the offense alone. The factors: (d)(1) tier one: a registrable misdemeanor, or a registrable felony that is not a serious or violent felony under § 667.5(c) or § 1192.7(c); (d)(2) tier two: a registrable offense also described in § 667.5(c) or § 1192.7(c), § 285, § 286(g) or (h), § 287(g) or (h), § 289(b), or a second or subsequent § 647.6 conviction brought and tried separately; (d)(3) tier three: a later conviction, in a separate proceeding, of a violent felony after a registrable conviction ((A)); commitment as a sexually violent predator under Welf. &amp; Inst. Code §§ 6600 et seq. ((B)); conviction of an offense listed in (C) or (I)-(R); a SARATSO risk level of well above average at release ((D)); habitual sex offender status under § 667.71 ((E)); two separately tried § 288(a) convictions ((F)); a sentence of 15 to 25 years to life under § 667.61 ((G)); registration under § 290.004 ((H)); (d)(4): registration under § 290.005 (another jurisdiction's offense or registration duty); (d)(5): the Department of Justice may place a person in a tier-to-be-determined category and must ascertain the tier within 24 months. The model takes the tier as ascertained: a tier-to-be-determined placement must be resolved first. Allowed values: "none", "tier_one", "tier_two", "tier_three".</description>
+    <variable id="in_sex_offender_tier_var" name="sex_offender_tier" typeRef="string"/>
+  </inputData>
+  <inputData id="in_disposition" name="disposition" label="Disposition of the arrest">
+    <description>"conviction" in the sense of BPC § 7.5(a), first sentence: a judgment following a plea or verdict of guilty, a plea of nolo contendere, or a finding of guilt (480(h)); "other" for an arrest that ended in anything else, including an infraction, citation or juvenile adjudication (480(d)). Whether a conviction is final for board action is the separate input conviction_final. Allowed values: "conviction", "other".</description>
+    <extensionElements>
+      <lex:term term="conviction" key="lexflow:term:ca:Cal. BPC § 7.5:conviction" wikidata="Q2916183" match="exact" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <variable id="in_disposition_var" name="disposition" typeRef="string"/>
+  </inputData>
+  <inputData id="in_conviction_date" name="conviction_date" label="Date of conviction">
+    <description>Date of the judgment (BPC § 7.5(a)).</description>
+    <variable id="in_conviction_date_var" name="conviction_date" typeRef="date"/>
+  </inputData>
+  <inputData id="in_conviction_final" name="conviction_final" label="Conviction final for board action (BPC § 7.5(a))">
+    <description>true when the time for appeal has elapsed, the judgment of conviction has been affirmed on appeal, or an order granting probation has been made suspending the imposition of sentence. BPC § 7.5(a), second sentence, lets a board take an action that follows a conviction only then; 480(h) brings § 7.5 in. Read only when disposition is "conviction" (conviction_ground r7).</description>
+    <variable id="in_conviction_final_var" name="conviction_final" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_presently_incarcerated" name="presently_incarcerated" label="Presently incarcerated for that crime">
+    <description>(a)(1), second limb. Taken as given: the text does not say whether "presently" means on the date of application or when the board decides (see incarceration_recent).</description>
+    <variable id="in_presently_incarcerated_var" name="presently_incarcerated" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_release_date" name="release_date" label="Date released from incarceration for that crime">
+    <description>null when never incarcerated or still incarcerated.</description>
+    <variable id="in_release_date_var" name="release_date" typeRef="date"/>
+  </inputData>
+  <inputData id="in_profession" name="profession" label="License applied for (licensing unit of the BPC)">
+    <description>The units listed in (a)(1)(B)(i)-(v); every other license is "other" (including other Chapter 12 licenses, which (iv) does not list). Allowed values: "bpc_d3_ch6_professional_fiduciary", "bpc_d3_ch9_contractor", "bpc_d3_ch11_3_private_investigator", "bpc_d3_ch12_funeral_director", "bpc_d3_ch12_cemetery_manager", "bpc_d4_real_estate", "other".</description>
+    <variable id="in_profession_var" name="profession" typeRef="string"/>
+  </inputData>
+  <inputData id="in_substantially_related" name="substantially_related" label="Crime substantially related to the qualifications, functions, or duties of the profession">
+    <description>A finding of the board, made with the criteria each board must adopt under BPC § 481 (§ 480 does not cite § 481; § 481(a) points back at denials).</description>
+    <extensionElements>
+      <lex:requires status="lexflow:status:ca:crime-substantially-related" providedBy="lexflow:process:ca.license_conviction" element="decide_ground" evidence="finding" via="Cal. BPC § 481"/>
+    </extensionElements>
+    <variable id="in_substantially_related_var" name="substantially_related" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_certificate_of_rehabilitation" name="certificate_of_rehabilitation" label="Holds a certificate of rehabilitation (Penal Code §§ 4852.01 et seq.)">
+    <description>Produced by a superior-court proceeding under Penal Code Chapter 3.5 of Title 6 of Part 3; no lexflow model yet.</description>
+    <extensionElements>
+      <lex:requires status="lexflow:status:ca:certificate-of-rehabilitation" providedBy="lexflow:process:ca.certificate_of_rehabilitation" evidence="document" via="Cal. PEN § 4852.01"/>
+      <lex:term term="certificate of rehabilitation" match="none" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <variable id="in_certificate_of_rehabilitation_var" name="certificate_of_rehabilitation" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_pardon_or_clemency" name="pardon_or_clemency" label="Granted clemency or a pardon by a state or federal executive">
+    <description>No section is cited; the executive acts outside this code.</description>
+    <extensionElements>
+      <lex:requires status="lexflow:status:ca:pardon-or-clemency" evidence="document"/>
+      <lex:term term="pardon" key="lexflow:concept:pardon" wikidata="Q537151" match="exact" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <variable id="in_pardon_or_clemency_var" name="pardon_or_clemency" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_showing_of_rehabilitation" name="showing_of_rehabilitation" label="Has made a showing of rehabilitation under BPC § 482">
+    <description>Decided by the board itself under § 482(b), from the evidence the applicant submits (step submit_rehab_evidence of the same process).</description>
+    <extensionElements>
+      <lex:requires status="lexflow:status:ca:showing-of-rehabilitation-482" providedBy="lexflow:process:ca.license_conviction" element="submit_rehab_evidence" evidence="finding" via="Cal. BPC § 482"/>
+      <lex:term term="rehabilitation" key="lexflow:concept:rehabilitation" wikidata="Q2142602" match="exact" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <variable id="in_showing_of_rehabilitation_var" name="showing_of_rehabilitation" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_conviction_dismissed" name="conviction_dismissed" label="Conviction dismissed under Penal Code § 1203.4, 1203.4a, 1203.41, 1203.42 or 1203.425 (or a comparable dismissal or expungement)">
+    <description>Produced by the dismissal process (lexflow model ca.record_sealing, decision dismissal_relief, outcome dismissed) or by automatic relief under § 1203.425; proof is required when the DOJ report does not show it (480(c)).</description>
+    <extensionElements>
+      <lex:requires status="lexflow:status:ca:conviction-dismissed" providedBy="lexflow:process:ca.record_sealing" element="dismissed" evidence="register" via="Cal. PEN § 1203.4; Cal. PEN § 1203.4a; Cal. PEN § 1203.41; Cal. PEN § 1203.42; Cal. PEN § 1203.425"/>
+      <lex:term term="expungement" key="lexflow:concept:expungement" wikidata="Q2352928" match="exact" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <variable id="in_conviction_dismissed_var" name="conviction_dismissed" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_formal_discipline" name="formal_discipline" label="Subjected to formal discipline by a licensing board in or outside California">
+    <description>(a)(2).</description>
+    <variable id="in_formal_discipline_var" name="formal_discipline" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_discipline_date" name="discipline_date" label="Date of the formal discipline">
+    <description>null when there was none or the date is not known. A null date, or one after the date of application, is neither within the preceding seven years (discipline_recent) nor earlier than seven years preceding the date of application (discipline_older), so neither sentence of (a)(2) makes it a ground (discipline_ground r9).</description>
+    <variable id="in_discipline_date_var" name="discipline_date" typeRef="date"/>
+  </inputData>
+  <inputData id="in_misconduct_cause" name="misconduct_cause_for_discipline" label="Based on professional misconduct that would have been cause for discipline before this board">
+    <description>(a)(2).</description>
+    <variable id="in_misconduct_cause_var" name="misconduct_cause_for_discipline" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_discipline_related" name="discipline_substantially_related" label="Discipline substantially related to the qualifications, functions, or duties of the profession">
+    <description>(a)(2).</description>
+    <variable id="in_discipline_related_var" name="discipline_substantially_related" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_discipline_rests_on_conviction" name="discipline_rests_on_conviction" label="The discipline was based on the conviction (the acts underlying it)">
+    <description>Links the discipline to the conviction this evaluation is about (one conviction and one discipline record per evaluation).</description>
+    <variable id="in_discipline_rests_on_conviction_var" name="discipline_rests_on_conviction" typeRef="boolean"/>
+  </inputData>
+  <inputData id="in_sexual_misconduct" name="sexual_misconduct_726_729" label="Discipline was for conduct that would be sexual abuse, misconduct or relations with a patient (BPC § 726) or sexual exploitation (BPC § 729(a)) by a physician and surgeon">
+    <description>Only matters for discipline older than seven years ((a)(2), last sentence).</description>
+    <variable id="in_sexual_misconduct_var" name="sexual_misconduct_726_729" typeRef="boolean"/>
+  </inputData>
+  <knowledgeSource id="ks_480_a" name="Cal. BPC § 480(a)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>The two permitted grounds; 'Notwithstanding any other provision of this code'.</description>
+    <extensionElements>
+      <lex:reference role="governs" citation="Cal. BPC § 480" pinpoint="(a)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480" from="Cal. BPC § 480" span="any other provision of this code" start="20" end="52" goldRole="override"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_a1" name="Cal. BPC § 480(a)(1)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Conviction ground: substantially related, seven-year windows, 'However' exceptions.</description>
+    <extensionElements>
+      <lex:reference role="governs" citation="Cal. BPC § 480" pinpoint="(a)(1)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_a1A" name="Cal. BPC § 480(a)(1)(A)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Serious felony or tier two/three registrable crime.</description>
+    <extensionElements>
+      <lex:reference role="governs (exception)" citation="Cal. BPC § 480" pinpoint="(a)(1)(A)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_a1B" name="Cal. BPC § 480(a)(1)(B)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Fiduciary financial felony for a listed license.</description>
+    <extensionElements>
+      <lex:reference role="governs (exception)" citation="Cal. BPC § 480" pinpoint="(a)(1)(B)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_a2" name="Cal. BPC § 480(a)(2)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Prior-discipline ground, its 'However' exception and the older-discipline rule.</description>
+    <extensionElements>
+      <lex:reference role="governs" citation="Cal. BPC § 480" pinpoint="(a)(2)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_b" name="Cal. BPC § 480(b)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Rehabilitation bar; 'Notwithstanding any other provision of this code'.</description>
+    <extensionElements>
+      <lex:reference role="governs (override)" citation="Cal. BPC § 480" pinpoint="(b)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480" from="Cal. BPC § 480" span="any other provision of this code" start="3313" end="3345" goldRole="override"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_c" name="Cal. BPC § 480(c)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>Dismissal bar; 'Notwithstanding any other provision of this code'.</description>
+    <extensionElements>
+      <lex:reference role="governs (override)" citation="Cal. BPC § 480" pinpoint="(c)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480" from="Cal. BPC § 480" span="any other provision of this code" start="3816" end="3848" goldRole="override"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_d" name="Cal. BPC § 480(d)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>No denial on an arrest without a conviction.</description>
+    <extensionElements>
+      <lex:reference role="governs (override)" citation="Cal. BPC § 480" pinpoint="(d)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480" from="Cal. BPC § 480" span="any other provision of this code" start="4396" end="4428" goldRole="override"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_480_h" name="Cal. BPC § 480(h)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+    <description>'Conviction' has the meaning of § 7.5.</description>
+    <extensionElements>
+      <lex:reference role="governs (definition by reference)" citation="Cal. BPC § 480" pinpoint="(h)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 480" actId="STATE_CA_Cbpc_D1.5_C2_S480"/>
+    </extensionElements>
+    <type>statute (subdivision)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1192_7" name="Cal. PEN § 1192.7" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1192.7.">
+    <description>Defines 'serious felony' (subdivision (c)).</description>
+    <extensionElements>
+      <lex:reference role="definition" citation="Cal. PEN § 1192.7" pinpoint="(c)" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1192.7" actId="STATE_CA_Cpen_P2_T8_C1_S1192.7" from="Cal. BPC § 480" span="Section 1192.7 of the Penal Code" start="1109" end="1141" goldRole="definition"/>
+      <lex:term term="serious felony" key="lexflow:term:ca:Cal. PEN § 1192.7:serious-felony" wikidata="Q178844" match="broader" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_290" name="Cal. PEN § 290" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=290.">
+    <description>Registration tiers: (d)(2) tier two, (d)(3) tier three.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. PEN § 290" pinpoint="(d)(2), (d)(3)" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 290" actId="STATE_CA_Cpen_P1_T9_C5.5_S290" from="Cal. BPC § 480" span="paragraph (2)" start="1200" end="1213" goldRole="scope"/>
+      <lex:term term="sex offender registration" wikidata="Q3404298" match="related" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_board_regulations" name="Regulations adopted by the board">
+    <description>Unresolved: Cal. Code Regs., the licensing board's own regulations; not in the statute index.</description>
+    <extensionElements>
+      <lex:reference role="authority" direction="outgoing" from="Cal. BPC § 480" span="regulations adopted by the board" start="1531" end="1563" goldRole="authority"/>
+    </extensionElements>
+    <type>regulation (external)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_6500" name="Cal. BPC §§ 6500 et seq. (Professional Fiduciaries Act)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=6500.">
+    <description>(a)(1)(B)(i): Chapter 6 of Division 3.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. BPC § 6500" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 6500" actId="STATE_CA_Cbpc_D3_C6_A1_S6500" from="Cal. BPC § 480" span="Chapter 6 (commencing with Section 6500) of Division 3" start="1647" end="1701" goldRole="scope"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_7000" name="Cal. BPC §§ 7000 et seq. (Contractors State License Law)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7000.">
+    <description>(a)(1)(B)(ii): Chapter 9 of Division 3.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. BPC § 7000" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 7000" actId="STATE_CA_Cbpc_D3_C9_A1_S7000" from="Cal. BPC § 480" span="Chapter 9 (commencing with Section 7000) of Division 3" start="1709" end="1763" goldRole="scope"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_7512" name="Cal. BPC §§ 7512 et seq. (Private Investigator Act)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7512.">
+    <description>(a)(1)(B)(iii): Chapter 11.3 of Division 3.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. BPC § 7512" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 7512" actId="STATE_CA_Cbpc_D3_C11.3_A1_S7512" from="Cal. BPC § 480" span="Chapter 11.3 (commencing with Section 7512) of Division 3" start="1772" end="1829" goldRole="scope"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_7600" name="Cal. BPC §§ 7600 et seq. (Cemetery and Funeral Act)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7600.">
+    <description>(a)(1)(B)(iv): funeral director or cemetery manager under Chapter 12 of Division 3.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. BPC § 7600" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 7600" actId="STATE_CA_Cbpc_D3_C12_A1_S7600" from="Cal. BPC § 480" span="Chapter 12 (commencing with Section 7600) of Division 3" start="1895" end="1950" goldRole="scope"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_10000" name="Cal. BPC §§ 10000 et seq. (Real Estate Law)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=10000.">
+    <description>(a)(1)(B)(v): Division 4.</description>
+    <extensionElements>
+      <lex:reference role="scope" citation="Cal. BPC § 10000" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 10000" actId="STATE_CA_Cbpc_D4_P1_C1_S10000" from="Cal. BPC § 480" span="Division 4 (commencing with Section 10000)" start="1957" end="1999" goldRole="scope"/>
+    </extensionElements>
+    <type>statute (division)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1203_4" name="Cal. PEN § 1203.4" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1203.4.">
+    <description>Dismissal after probation.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 1203.4" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1203.4" actId="STATE_CA_Cpen_P2_T8_C1_S1203.4" from="Cal. BPC § 480" span="Section 1203.4" start="4012" end="4026" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1203_4a" name="Cal. PEN § 1203.4a" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1203.4a.">
+    <description>Dismissal of a misdemeanor or infraction without probation.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 1203.4a" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1203.4a" actId="STATE_CA_Cpen_P2_T8_C1_S1203.4a" from="Cal. BPC § 480" span="1203.4a" start="4028" end="4035" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1203_41" name="Cal. PEN § 1203.41" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1203.41.">
+    <description>Discretionary dismissal of a jail or prison felony.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 1203.41" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1203.41" actId="STATE_CA_Cpen_P2_T8_C1_S1203.41" from="Cal. BPC § 480" span="1203.41" start="4037" end="4044" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1203_42" name="Cal. PEN § 1203.42" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1203.42.">
+    <description>Dismissal of a pre-realignment sentence.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 1203.42" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1203.42" actId="STATE_CA_Cpen_P2_T8_C1_S1203.42" from="Cal. BPC § 480" span="1203.42" start="4046" end="4053" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_1203_425" name="Cal. PEN § 1203.425" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=1203.425.">
+    <description>Automatic conviction record relief by the Department of Justice.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 1203.425" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 1203.425" actId="STATE_CA_Cpen_P2_T8_C1_S1203.425" from="Cal. BPC § 480" span="1203.425" start="4058" end="4066" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_pen_4852_01" name="Cal. PEN §§ 4852.01 et seq. (certificate of rehabilitation)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&amp;sectionNum=4852.01.">
+    <description>Chapter 3.5 of Title 6 of Part 3 of the Penal Code.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. PEN § 4852.01" direction="outgoing" key="lexflow:statute:ca:Cal. PEN § 4852.01" actId="STATE_CA_Cpen_P3_T6_C3.5_S4852.01" from="Cal. BPC § 480" span="Chapter 3.5 (commencing with Section 4852.01) of Title 6 of Part 3 of the Penal Code" start="3573" end="3657" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_482" name="Cal. BPC § 482" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=482.">
+    <description>Board criteria for rehabilitation; when a showing is made.</description>
+    <extensionElements>
+      <lex:reference role="prerequisite_process" citation="Cal. BPC § 482" pinpoint="(b)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 482" actId="STATE_CA_Cbpc_D1.5_C2_S482" from="Cal. BPC § 480" span="Section 482" start="3782" end="3793" goldRole="prerequisite_process"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_481" name="Cal. BPC § 481" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=481.">
+    <description>Board criteria for 'substantially related'.  Not cited by § 480: § 481(a) refers to denials.</description>
+    <extensionElements>
+      <lex:reference role="criteria (incoming reference)" citation="Cal. BPC § 481" pinpoint="(a), (b)" direction="incoming" key="lexflow:statute:ca:Cal. BPC § 481" actId="STATE_CA_Cbpc_D1.5_C2_S481"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_7_5" name="Cal. BPC § 7.5" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7.5.">
+    <description>Meaning of 'conviction' (480(h)).</description>
+    <extensionElements>
+      <lex:reference role="definition" citation="Cal. BPC § 7.5" pinpoint="(a)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 7.5" actId="STATE_CA_Cbpc_S7.5" from="Cal. BPC § 480" span="Section 7.5" start="8523" end="8534" goldRole="definition"/>
+      <lex:term term="conviction" key="lexflow:term:ca:Cal. BPC § 7.5:conviction" wikidata="Q2916183" match="exact" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_726" name="Cal. BPC § 726" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=726.">
+    <description>Sexual abuse, misconduct, or relations with a patient.</description>
+    <extensionElements>
+      <lex:reference role="definition" citation="Cal. BPC § 726" pinpoint="(a)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 726" actId="STATE_CA_Cbpc_D2_C1_A10.5_S726" from="Cal. BPC § 480" span="Section 726" start="3211" end="3222" goldRole="definition"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_729" name="Cal. BPC § 729" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=729.">
+    <description>Sexual exploitation (subdivision (a)).</description>
+    <extensionElements>
+      <lex:reference role="definition" citation="Cal. BPC § 729" pinpoint="(a)" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 729" actId="STATE_CA_Cbpc_D2_C1_A10.5_S729" from="Cal. BPC § 480" span="subdivision (a) of Section 729" start="3260" end="3290" goldRole="definition"/>
+      <lex:term term="sexual exploitation" key="lexflow:term:ca:Cal. BPC § 729:sexual-exploitation" match="none" matchSource="fixtures/xref/wikidata_terms.json"/>
+    </extensionElements>
+    <type>statute</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_bpc_2000" name="Cal. BPC §§ 2000 et seq. (Medical Practice Act)" locationURI="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=2000.">
+    <description>The physician-and-surgeon yardstick for older discipline: Chapter 5 of Division 2.</description>
+    <extensionElements>
+      <lex:reference role="condition" citation="Cal. BPC § 2000" direction="outgoing" key="lexflow:statute:ca:Cal. BPC § 2000" actId="STATE_CA_Cbpc_D2_C5_A1_S2000" from="Cal. BPC § 480" span="Chapter 5 (commencing with Section 2000) of Division 2" start="3056" end="3110" goldRole="condition"/>
+    </extensionElements>
+    <type>statute (chapter)</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_executive_clemency" name="Clemency or pardon by a state or federal executive">
+    <description>The text names no section; the power lies outside the Business and Professions Code.</description>
+    <extensionElements>
+      <lex:reference role="authority (uncited)"/>
+    </extensionElements>
+    <type>external authority</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_proc_record_sealing" name="lexflow model ca.record_sealing (dismissal of a conviction)" locationURI="lexflow:process:ca.record_sealing">
+    <description>curated_ask/record_sealing/ca.json: decision dismissal_relief, outcome dismissed.</description>
+    <extensionElements>
+      <lex:reference role="provides conviction_dismissed" model="lexflow:process:ca.record_sealing"/>
+    </extensionElements>
+    <authorityRequirement id="ar_ks_proc_record_sealing__ks_pen_1203_4">
+      <requiredAuthority href="#ks_pen_1203_4"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_ks_proc_record_sealing__ks_pen_1203_4a">
+      <requiredAuthority href="#ks_pen_1203_4a"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_ks_proc_record_sealing__ks_pen_1203_41">
+      <requiredAuthority href="#ks_pen_1203_41"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_ks_proc_record_sealing__ks_pen_1203_42">
+      <requiredAuthority href="#ks_pen_1203_42"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_ks_proc_record_sealing__ks_pen_1203_425">
+      <requiredAuthority href="#ks_pen_1203_425"/>
+    </authorityRequirement>
+    <type>lexflow process model</type>
+  </knowledgeSource>
+  <knowledgeSource id="ks_proc_certificate" name="lexflow model ca.certificate_of_rehabilitation (proposed)" locationURI="lexflow:process:ca.certificate_of_rehabilitation">
+    <description>Not modelled yet: petition, hearing and order under Penal Code Chapter 3.5 (§§ 4852.01-4852.22).</description>
+    <extensionElements>
+      <lex:reference role="provides certificate_of_rehabilitation" model="lexflow:process:ca.certificate_of_rehabilitation"/>
+    </extensionElements>
+    <authorityRequirement id="ar_ks_proc_certificate__ks_pen_4852_01">
+      <requiredAuthority href="#ks_pen_4852_01"/>
+    </authorityRequirement>
+    <type>lexflow process model (proposed)</type>
+  </knowledgeSource>
+  <decision id="d_serious_felony" name="serious_felony" label="(a)(1)(A) Serious felony as defined in PEN § 1192.7(c)?">
+    <description>(a)(1)(A) Serious felony as defined in PEN § 1192.7(c)? [finding: no executable logic] A closed list in Penal Code § 1192.7(c). Most items name an offense, but some turn on how it was committed ((c)(8): personally inflicting great bodily injury, or personally using a firearm; (c)(23): personally using a dangerous or deadly weapon), so the finding reads the record of conviction, not only the code section. A lookup the model does not encode (a BKM candidate).</description>
+    <extensionElements>
+      <lex:finding basis="A closed list in Penal Code § 1192.7(c). Most items name an offense, but some turn on how it was committed ((c)(8): personally inflicting great bodily injury, or personally using a firearm; (c)(23): personally using a dangerous or deadly weapon), so the finding reads the record of conviction, not only the code section. A lookup the model does not encode (a BKM candidate)."/>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)(A)"/>
+    </extensionElements>
+    <variable id="d_serious_felony_var" name="serious_felony" typeRef="boolean"/>
+    <informationRequirement id="ir_d_serious_felony__in_offense">
+      <requiredInput href="#in_offense"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_serious_felony__ks_480_a1A">
+      <requiredAuthority href="#ks_480_a1A"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_serious_felony__ks_pen_1192_7">
+      <requiredAuthority href="#ks_pen_1192_7"/>
+    </authorityRequirement>
+  </decision>
+  <decision id="d_fiduciary_felony" name="fiduciary_financial_felony" label="(a)(1)(B) Financial felony directly and adversely related to fiduciary duties (board regulations)?">
+    <description>(a)(1)(B) Financial felony directly and adversely related to fiduciary duties (board regulations)? [finding: no executable logic] Classified by the board's own regulations, which are outside the statute index.</description>
+    <extensionElements>
+      <lex:finding basis="Classified by the board's own regulations, which are outside the statute index."/>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)(B)"/>
+    </extensionElements>
+    <variable id="d_fiduciary_felony_var" name="fiduciary_financial_felony" typeRef="boolean"/>
+    <informationRequirement id="ir_d_fiduciary_felony__in_offense">
+      <requiredInput href="#in_offense"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_fiduciary_felony__in_profession">
+      <requiredInput href="#in_profession"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_fiduciary_felony__ks_480_a1B">
+      <requiredAuthority href="#ks_480_a1B"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_fiduciary_felony__ks_board_regulations">
+      <requiredAuthority href="#ks_board_regulations"/>
+    </authorityRequirement>
+  </decision>
+  <decision id="d_exception_a" name="exception_a" label="(a)(1)(A) applies?">
+    <description>(a)(1)(A) applies?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)(A)"/>
+    </extensionElements>
+    <variable id="d_exception_a_var" name="exception_a" typeRef="boolean"/>
+    <informationRequirement id="ir_d_exception_a__d_serious_felony">
+      <requiredDecision href="#d_serious_felony"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_exception_a__in_sex_offender_tier">
+      <requiredInput href="#in_sex_offender_tier"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_exception_a__ks_480_a1A">
+      <requiredAuthority href="#ks_480_a1A"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_a__ks_pen_1192_7">
+      <requiredAuthority href="#ks_pen_1192_7"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_a__ks_pen_290">
+      <requiredAuthority href="#ks_pen_290"/>
+    </authorityRequirement>
+    <decisionTable id="d_exception_a_table" hitPolicy="UNIQUE">
+      <input id="d_exception_a_in0" label="Serious felony (PEN § 1192.7(c))">
+        <inputExpression id="d_exception_a_in0_expr" typeRef="boolean">
+          <text>serious_felony</text>
+        </inputExpression>
+      </input>
+      <input id="d_exception_a_in1" label="Registration tier (PEN § 290(d))">
+        <inputExpression id="d_exception_a_in1_expr" typeRef="string">
+          <text>sex_offender_tier</text>
+        </inputExpression>
+        <inputValues id="d_exception_a_in1_values">
+          <text>"none","tier_one","tier_two","tier_three"</text>
+        </inputValues>
+      </input>
+      <output id="d_exception_a_out0" label="(a)(1)(A) applies" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_exception_a_r1">
+        <description>Serious felony (Cal. BPC § 480(a)(1)(A))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(A)" section="480" subsection="a.1.A" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant was convicted of a serious felony, as defined in Section 1192.7 of the Penal Code</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_a_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_exception_a_r1_in1">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_exception_a_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(A): “The applicant was convicted of a serious felony, as defined in Section 1192.7 of the Penal Code”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_exception_a_r2">
+        <description>Tier two or three registrable crime (Cal. BPC § 480(a)(1)(A))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(A)" section="480" subsection="a.1.A" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a crime for which registration is required pursuant to paragraph (2) or (3) of subdivision (d) of Section 290 of the Penal Code</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_a_r2_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_exception_a_r2_in1">
+          <text>"tier_two","tier_three"</text>
+        </inputEntry>
+        <outputEntry id="d_exception_a_r2_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(A): “a crime for which registration is required pursuant to paragraph (2) or (3) of subdivision (d) of Section 290 of the Penal Code”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_exception_a_r3">
+        <description>Neither: tier one or no registration leaves the limitation in place (Cal. BPC § 480(a)(1)(A))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(A)" section="480" subsection="a.1.A" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a crime for which registration is required pursuant to paragraph (2) or (3) of subdivision (d) of Section 290 of the Penal Code</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_a_r3_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_exception_a_r3_in1">
+          <text>not("tier_two","tier_three")</text>
+        </inputEntry>
+        <outputEntry id="d_exception_a_r3_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(A): “a crime for which registration is required pursuant to paragraph (2) or (3) of subdivision (d) of Section 290 of the Penal Code”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_exception_b" name="exception_b" label="(a)(1)(B) applies?">
+    <description>(a)(1)(B) applies?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)(B)"/>
+    </extensionElements>
+    <variable id="d_exception_b_var" name="exception_b" typeRef="boolean"/>
+    <informationRequirement id="ir_d_exception_b__d_fiduciary_felony">
+      <requiredDecision href="#d_fiduciary_felony"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_exception_b__in_profession">
+      <requiredInput href="#in_profession"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_480_a1B">
+      <requiredAuthority href="#ks_480_a1B"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_bpc_6500">
+      <requiredAuthority href="#ks_bpc_6500"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_bpc_7000">
+      <requiredAuthority href="#ks_bpc_7000"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_bpc_7512">
+      <requiredAuthority href="#ks_bpc_7512"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_bpc_7600">
+      <requiredAuthority href="#ks_bpc_7600"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_exception_b__ks_bpc_10000">
+      <requiredAuthority href="#ks_bpc_10000"/>
+    </authorityRequirement>
+    <decisionTable id="d_exception_b_table" hitPolicy="UNIQUE">
+      <input id="d_exception_b_in0" label="Fiduciary financial felony (board regulations)">
+        <inputExpression id="d_exception_b_in0_expr" typeRef="boolean">
+          <text>fiduciary_financial_felony</text>
+        </inputExpression>
+      </input>
+      <input id="d_exception_b_in1" label="License applied for">
+        <inputExpression id="d_exception_b_in1_expr" typeRef="string">
+          <text>profession</text>
+        </inputExpression>
+        <inputValues id="d_exception_b_in1_values">
+          <text>"bpc_d3_ch6_professional_fiduciary","bpc_d3_ch9_contractor","bpc_d3_ch11_3_private_investigator","bpc_d3_ch12_funeral_director","bpc_d3_ch12_cemetery_manager","bpc_d4_real_estate","other"</text>
+        </inputValues>
+      </input>
+      <output id="d_exception_b_out0" label="(a)(1)(B) applies" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_exception_b_r1">
+        <description>Fiduciary financial felony, license listed in (i)-(v) (Cal. BPC § 480(a)(1)(B); Cal. BPC § 480(a)(1)(B))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(B)" section="480" subsection="a.1.B" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant was convicted of a financial crime currently classified as a felony that is directly and adversely related to the fiduciary qualifications, functions, or duties of the business or profession for which the application is made, pursuant to regulations adopted by the board</lex:quote>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(a)(1)(B)" section="480" subsection="a.1.B" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>for which the applicant is seeking licensure under any of the following:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_b_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_exception_b_r1_in1">
+          <text>"bpc_d3_ch6_professional_fiduciary","bpc_d3_ch9_contractor","bpc_d3_ch11_3_private_investigator","bpc_d3_ch12_funeral_director","bpc_d3_ch12_cemetery_manager","bpc_d4_real_estate"</text>
+        </inputEntry>
+        <outputEntry id="d_exception_b_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(B): “The applicant was convicted of a financial crime currently classified as a felony that is directly and adversely related to the fiduciary qualifications, functions, or duties of the business or profession for which the application is made, pursuant to regulations adopted by the board”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_exception_b_r2">
+        <description>License not listed in (i)-(v) (Cal. BPC § 480(a)(1)(B))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(B)" section="480" subsection="a.1.B" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>for which the applicant is seeking licensure under any of the following:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_b_r2_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_exception_b_r2_in1">
+          <text>not("bpc_d3_ch6_professional_fiduciary","bpc_d3_ch9_contractor","bpc_d3_ch11_3_private_investigator","bpc_d3_ch12_funeral_director","bpc_d3_ch12_cemetery_manager","bpc_d4_real_estate")</text>
+        </inputEntry>
+        <outputEntry id="d_exception_b_r2_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(B): “for which the applicant is seeking licensure under any of the following:”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_exception_b_r3">
+        <description>Not a fiduciary financial felony (Cal. BPC § 480(a)(1)(B))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)(B)" section="480" subsection="a.1.B" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant was convicted of a financial crime currently classified as a felony that is directly and adversely related to the fiduciary qualifications, functions, or duties of the business or profession for which the application is made, pursuant to regulations adopted by the board</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_exception_b_r3_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_exception_b_r3_in1">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_exception_b_r3_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1)(B): “The applicant was convicted of a financial crime currently classified as a felony that is directly and adversely related to the fiduciary qualifications, functions, or duties of the business or profession for which the application is made, pursuant to regulations adopted by the board”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_lookback_lifted" name="lookback_lifted" label="(a)(1) 'However': is the seven-year limitation lifted?">
+    <description>(a)(1) 'However': is the seven-year limitation lifted?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)"/>
+    </extensionElements>
+    <variable id="d_lookback_lifted_var" name="lookback_lifted" typeRef="boolean"/>
+    <informationRequirement id="ir_d_lookback_lifted__d_exception_a">
+      <requiredDecision href="#d_exception_a"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_lookback_lifted__d_exception_b">
+      <requiredDecision href="#d_exception_b"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_lookback_lifted__ks_480_a1">
+      <requiredAuthority href="#ks_480_a1"/>
+    </authorityRequirement>
+    <decisionTable id="d_lookback_lifted_table" hitPolicy="UNIQUE">
+      <input id="d_lookback_lifted_in0" label="(a)(1)(A) applies">
+        <inputExpression id="d_lookback_lifted_in0_expr" typeRef="boolean">
+          <text>exception_a</text>
+        </inputExpression>
+      </input>
+      <input id="d_lookback_lifted_in1" label="(a)(1)(B) applies">
+        <inputExpression id="d_lookback_lifted_in1_expr" typeRef="boolean">
+          <text>exception_b</text>
+        </inputExpression>
+      </input>
+      <output id="d_lookback_lifted_out0" label="Seven-year limitation lifted" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_lookback_lifted_r1">
+        <description>(A) and (B): same effect, so no conflict (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, the preceding seven-year limitation shall not apply in either of the following situations:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_lookback_lifted_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_lookback_lifted_r1_in1">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_lookback_lifted_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “However, the preceding seven-year limitation shall not apply in either of the following situations:”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_lookback_lifted_r2">
+        <description>(A) (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, the preceding seven-year limitation shall not apply in either of the following situations:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_lookback_lifted_r2_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_lookback_lifted_r2_in1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_lookback_lifted_r2_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “However, the preceding seven-year limitation shall not apply in either of the following situations:”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_lookback_lifted_r3">
+        <description>(B) (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, the preceding seven-year limitation shall not apply in either of the following situations:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_lookback_lifted_r3_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_lookback_lifted_r3_in1">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_lookback_lifted_r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “However, the preceding seven-year limitation shall not apply in either of the following situations:”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_lookback_lifted_r4">
+        <description>Neither situation: the limitation applies (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, the preceding seven-year limitation shall not apply in either of the following situations:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_lookback_lifted_r4_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_lookback_lifted_r4_in1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_lookback_lifted_r4_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “However, the preceding seven-year limitation shall not apply in either of the following situations:”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_conviction_recent" name="conviction_recent" label="(a)(1) Convicted within the preceding seven years from the date of application?">
+    <description>(a)(1) Convicted within the preceding seven years from the date of application?</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+          <lex:quote>within the preceding seven years from the date of application</lex:quote>
+          <lex:note>Boundary: the anniversary itself counts as within (&gt;=), and a conviction after the date of application does not precede it (&lt;=).  The text settles neither; flag per Monat et al. 2024.</lex:note>
+        </lex:source>
+      </lex:grounding>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)"/>
+    </extensionElements>
+    <variable id="d_conviction_recent_var" name="conviction_recent" typeRef="boolean"/>
+    <informationRequirement id="ir_d_conviction_recent__in_application_date">
+      <requiredInput href="#in_application_date"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_recent__in_conviction_date">
+      <requiredInput href="#in_conviction_date"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_conviction_recent__ks_480_a1">
+      <requiredAuthority href="#ks_480_a1"/>
+    </authorityRequirement>
+    <literalExpression id="d_conviction_recent_expr" typeRef="boolean">
+      <text>conviction_date != null and conviction_date &gt;= application_date - duration("P7Y") and conviction_date &lt;= application_date</text>
+    </literalExpression>
+  </decision>
+  <decision id="d_incarceration_recent" name="incarceration_recent" label="(a)(1) Presently incarcerated, or released within the preceding seven years?">
+    <description>(a)(1) Presently incarcerated, or released within the preceding seven years?</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+          <lex:quote>for which the applicant is presently incarcerated or for which the applicant was released from incarceration within the preceding seven years from the date of application</lex:quote>
+          <lex:note>Boundary as in conviction_recent: a release on the seventh anniversary counts as within (&gt;=), and a release after the date of application does not precede it (&lt;=).  'Presently incarcerated' is taken as the input states it: the text does not say whether it means on the date of application or when the board decides, and the two differ for an applicant who was incarcerated on the date of application and released before the decision, and for one first incarcerated after the date of application and still incarcerated when the board decides.</lex:note>
+        </lex:source>
+      </lex:grounding>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(1)"/>
+    </extensionElements>
+    <variable id="d_incarceration_recent_var" name="incarceration_recent" typeRef="boolean"/>
+    <informationRequirement id="ir_d_incarceration_recent__in_application_date">
+      <requiredInput href="#in_application_date"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_incarceration_recent__in_presently_incarcerated">
+      <requiredInput href="#in_presently_incarcerated"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_incarceration_recent__in_release_date">
+      <requiredInput href="#in_release_date"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_incarceration_recent__ks_480_a1">
+      <requiredAuthority href="#ks_480_a1"/>
+    </authorityRequirement>
+    <literalExpression id="d_incarceration_recent_expr" typeRef="boolean">
+      <text>presently_incarcerated = true or (release_date != null and release_date &gt;= application_date - duration("P7Y") and release_date &lt;= application_date)</text>
+    </literalExpression>
+  </decision>
+  <decision id="d_conviction_ground" name="conviction_ground" label="(a)(1) Conviction ground met?">
+    <description>(a)(1) Conviction ground met?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a) (a)(1) (d) (h)"/>
+    </extensionElements>
+    <variable id="d_conviction_ground_var" name="conviction_ground" typeRef="boolean"/>
+    <informationRequirement id="ir_d_conviction_ground__in_disposition">
+      <requiredInput href="#in_disposition"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_ground__in_conviction_final">
+      <requiredInput href="#in_conviction_final"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_ground__in_substantially_related">
+      <requiredInput href="#in_substantially_related"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_ground__d_conviction_recent">
+      <requiredDecision href="#d_conviction_recent"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_ground__d_incarceration_recent">
+      <requiredDecision href="#d_incarceration_recent"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_ground__d_lookback_lifted">
+      <requiredDecision href="#d_lookback_lifted"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_480_a">
+      <requiredAuthority href="#ks_480_a"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_480_a1">
+      <requiredAuthority href="#ks_480_a1"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_480_d">
+      <requiredAuthority href="#ks_480_d"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_480_h">
+      <requiredAuthority href="#ks_480_h"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_bpc_7_5">
+      <requiredAuthority href="#ks_bpc_7_5"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_ground__ks_bpc_481">
+      <requiredAuthority href="#ks_bpc_481"/>
+    </authorityRequirement>
+    <decisionTable id="d_conviction_ground_table" hitPolicy="UNIQUE">
+      <input id="d_conviction_ground_in0" label="Disposition">
+        <inputExpression id="d_conviction_ground_in0_expr" typeRef="string">
+          <text>disposition</text>
+        </inputExpression>
+        <inputValues id="d_conviction_ground_in0_values">
+          <text>"conviction","other"</text>
+        </inputValues>
+      </input>
+      <input id="d_conviction_ground_in1" label="Final for board action (§ 7.5(a))">
+        <inputExpression id="d_conviction_ground_in1_expr" typeRef="boolean">
+          <text>conviction_final</text>
+        </inputExpression>
+      </input>
+      <input id="d_conviction_ground_in2" label="Substantially related">
+        <inputExpression id="d_conviction_ground_in2_expr" typeRef="boolean">
+          <text>substantially_related</text>
+        </inputExpression>
+      </input>
+      <input id="d_conviction_ground_in3" label="Convicted within 7 years">
+        <inputExpression id="d_conviction_ground_in3_expr" typeRef="boolean">
+          <text>conviction_recent</text>
+        </inputExpression>
+      </input>
+      <input id="d_conviction_ground_in4" label="Incarcerated, or released within 7 years">
+        <inputExpression id="d_conviction_ground_in4_expr" typeRef="boolean">
+          <text>incarceration_recent</text>
+        </inputExpression>
+      </input>
+      <input id="d_conviction_ground_in5" label="Limitation lifted ((A) or (B))">
+        <inputExpression id="d_conviction_ground_in5_expr" typeRef="boolean">
+          <text>lookback_lifted</text>
+        </inputExpression>
+      </input>
+      <output id="d_conviction_ground_out0" label="Conviction ground met" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_conviction_ground_r1">
+        <description>No conviction in the sense of § 7.5: an arrest alone is never a ground (Cal. BPC § 480(d); Cal. BPC § 480(h))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(d)" section="480" subsection="d" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board shall not deny a license on the basis of an arrest that resulted in a disposition other than a conviction</lex:quote>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(h)" section="480" subsection="h" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>as used in this section shall have the same meaning as defined in Section 7.5</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r1_in0">
+          <text>not("conviction")</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r1_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r1_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r1_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r1_in5">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r1_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(d); Cal. BPC § 480(h): “a board shall not deny a license on the basis of an arrest that resulted in a disposition other than a conviction”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r2">
+        <description>Not substantially related (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r2_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r2_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r2_in2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r2_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r2_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r2_in5">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r2_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r3">
+        <description>Substantially related conviction within seven years (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant has been convicted of a crime within the preceding seven years from the date of application that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made, regardless of whether the applicant was incarcerated for that crime</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r3_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r3_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r3_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r3_in3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r3_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r3_in5">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “The applicant has been convicted of a crime within the preceding seven years from the date of application that is substantially related to the qualifications, functions, or duties of the business or profession for which the application is made, regardless of whether the applicant was incarcerated for that crime”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r4">
+        <description>Substantially related; incarcerated, or released within seven years (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>for which the applicant is presently incarcerated or for which the applicant was released from incarceration within the preceding seven years from the date of application</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r4_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r4_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r4_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r4_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r4_in4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r4_in5">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r4_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “for which the applicant is presently incarcerated or for which the applicant was released from incarceration within the preceding seven years from the date of application”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r5">
+        <description>Older, but the limitation does not apply ((A) or (B)) (Cal. BPC § 480(a)(1))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(1)" section="480" subsection="a.1" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, the preceding seven-year limitation shall not apply in either of the following situations:</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r5_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r5_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r5_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r5_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r5_in4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r5_in5">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r5_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(1): “However, the preceding seven-year limitation shall not apply in either of the following situations:”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r6">
+        <description>Older than seven years and no exception (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r6_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r6_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r6_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r6_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r6_in4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r6_in5">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r6_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_ground_r7">
+        <description>Conviction not yet final for board action (Cal. BPC § 7.5(a); Cal. BPC § 480(h))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 7.5(a)" section="7.5" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=7.5.">
+              <lex:quote>Any action which a board is permitted to take following the establishment of a conviction may be taken when the time for appeal has elapsed, or the judgment of conviction has been affirmed on appeal or when an order granting probation is made suspending the imposition of sentence.</lex:quote>
+              <lex:note>Reading: 'may be taken when' fixes when a board may act on a conviction, so until the conviction is final in this sense the (a)(1) ground is not yet available.</lex:note>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(h)" section="480" subsection="h" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>as used in this section shall have the same meaning as defined in Section 7.5</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_ground_r7_in0">
+          <text>"conviction"</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r7_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r7_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r7_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r7_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_ground_r7_in5">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_ground_r7_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 7.5(a) (reading); Cal. BPC § 480(h): “Any action which a board is permitted to take following the establishment of a conviction may be taken when the time for appeal has elapsed, or the judgment of conviction has been affirmed on appeal or when an order granting probation is made suspending the imposition of sentence.”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_discipline_recent" name="discipline_recent" label="(a)(2) Formal discipline within the preceding seven years?">
+    <description>(a)(2) Formal discipline within the preceding seven years?</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+          <lex:quote>The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application</lex:quote>
+          <lex:note>Boundary as in conviction_recent: the anniversary counts as within (&gt;=), and a date after the application does not precede it (&lt;=). A null date is false here and in discipline_older.</lex:note>
+        </lex:source>
+      </lex:grounding>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(2)"/>
+    </extensionElements>
+    <variable id="d_discipline_recent_var" name="discipline_recent" typeRef="boolean"/>
+    <informationRequirement id="ir_d_discipline_recent__in_application_date">
+      <requiredInput href="#in_application_date"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_recent__in_discipline_date">
+      <requiredInput href="#in_discipline_date"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_discipline_recent__ks_480_a2">
+      <requiredAuthority href="#ks_480_a2"/>
+    </authorityRequirement>
+    <literalExpression id="d_discipline_recent_expr" typeRef="boolean">
+      <text>discipline_date != null and discipline_date &gt;= application_date - duration("P7Y") and discipline_date &lt;= application_date</text>
+    </literalExpression>
+  </decision>
+  <decision id="d_discipline_older" name="discipline_older" label="(a)(2) Formal discipline earlier than seven years preceding the date of application?">
+    <description>(a)(2) Formal discipline earlier than seven years preceding the date of application?</description>
+    <extensionElements>
+      <lex:grounding>
+        <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+          <lex:quote>Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if</lex:quote>
+          <lex:note>Strictly earlier (&lt;) than the date seven years before the application, so the anniversary falls in discipline_recent, not here. A null date, or a date after the application, is neither recent nor older.</lex:note>
+        </lex:source>
+      </lex:grounding>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a)(2)"/>
+    </extensionElements>
+    <variable id="d_discipline_older_var" name="discipline_older" typeRef="boolean"/>
+    <informationRequirement id="ir_d_discipline_older__in_application_date">
+      <requiredInput href="#in_application_date"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_older__in_discipline_date">
+      <requiredInput href="#in_discipline_date"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_discipline_older__ks_480_a2">
+      <requiredAuthority href="#ks_480_a2"/>
+    </authorityRequirement>
+    <literalExpression id="d_discipline_older_expr" typeRef="boolean">
+      <text>discipline_date != null and discipline_date &lt; application_date - duration("P7Y")</text>
+    </literalExpression>
+  </decision>
+  <decision id="d_discipline_ground" name="discipline_ground" label="(a)(2) Prior-discipline ground met?">
+    <description>(a)(2) Prior-discipline ground met?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a) (a)(2)"/>
+    </extensionElements>
+    <variable id="d_discipline_ground_var" name="discipline_ground" typeRef="boolean"/>
+    <informationRequirement id="ir_d_discipline_ground__in_formal_discipline">
+      <requiredInput href="#in_formal_discipline"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__in_misconduct_cause">
+      <requiredInput href="#in_misconduct_cause"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__in_discipline_related">
+      <requiredInput href="#in_discipline_related"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__d_discipline_recent">
+      <requiredDecision href="#d_discipline_recent"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__d_discipline_older">
+      <requiredDecision href="#d_discipline_older"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__in_discipline_rests_on_conviction">
+      <requiredInput href="#in_discipline_rests_on_conviction"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__in_conviction_dismissed">
+      <requiredInput href="#in_conviction_dismissed"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_discipline_ground__in_sexual_misconduct">
+      <requiredInput href="#in_sexual_misconduct"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_480_a">
+      <requiredAuthority href="#ks_480_a"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_480_a2">
+      <requiredAuthority href="#ks_480_a2"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_bpc_726">
+      <requiredAuthority href="#ks_bpc_726"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_bpc_729">
+      <requiredAuthority href="#ks_bpc_729"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_bpc_2000">
+      <requiredAuthority href="#ks_bpc_2000"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_discipline_ground__ks_proc_record_sealing">
+      <requiredAuthority href="#ks_proc_record_sealing"/>
+    </authorityRequirement>
+    <decisionTable id="d_discipline_ground_table" hitPolicy="UNIQUE">
+      <input id="d_discipline_ground_in0" label="Formal discipline">
+        <inputExpression id="d_discipline_ground_in0_expr" typeRef="boolean">
+          <text>formal_discipline</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in1" label="Cause for discipline before this board">
+        <inputExpression id="d_discipline_ground_in1_expr" typeRef="boolean">
+          <text>misconduct_cause_for_discipline</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in2" label="Substantially related">
+        <inputExpression id="d_discipline_ground_in2_expr" typeRef="boolean">
+          <text>discipline_substantially_related</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in3" label="Within 7 years">
+        <inputExpression id="d_discipline_ground_in3_expr" typeRef="boolean">
+          <text>discipline_recent</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in4" label="Earlier than 7 years">
+        <inputExpression id="d_discipline_ground_in4_expr" typeRef="boolean">
+          <text>discipline_older</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in5" label="Based on the conviction">
+        <inputExpression id="d_discipline_ground_in5_expr" typeRef="boolean">
+          <text>discipline_rests_on_conviction</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in6" label="Conviction dismissed (PEN § 1203.4 et al.)">
+        <inputExpression id="d_discipline_ground_in6_expr" typeRef="boolean">
+          <text>conviction_dismissed</text>
+        </inputExpression>
+      </input>
+      <input id="d_discipline_ground_in7" label="BPC § 726 / § 729(a) conduct">
+        <inputExpression id="d_discipline_ground_in7_expr" typeRef="boolean">
+          <text>sexual_misconduct_726_729</text>
+        </inputExpression>
+      </input>
+      <output id="d_discipline_ground_out0" label="Discipline ground met" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_discipline_ground_r1">
+        <description>No formal discipline (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r1_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r1_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r1_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r2">
+        <description>Not misconduct that would be cause for discipline here (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>based on professional misconduct that would have been cause for discipline before the board for which the present application is made</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r2_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r2_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r2_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “based on professional misconduct that would have been cause for discipline before the board for which the present application is made”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r3">
+        <description>Not substantially related (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>and that is substantially related to the qualifications, functions, or duties of the business or profession for which the present application is made</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r3_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in3">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r3_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r3_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “and that is substantially related to the qualifications, functions, or duties of the business or profession for which the present application is made”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r4">
+        <description>'However': the discipline rests on a dismissed conviction (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>However, prior disciplinary action by a licensing board within the preceding seven years shall not be the basis for denial of a license if the basis for that disciplinary action was a conviction that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code or a comparable dismissal or expungement.</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r4_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in5">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in6">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r4_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r4_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “However, prior disciplinary action by a licensing board within the preceding seven years shall not be the basis for denial of a license if the basis for that disciplinary action was a conviction that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code or a comparable dismissal or expungement.”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r5">
+        <description>Discipline within seven years (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r5_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in5">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r5_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r5_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r6">
+        <description>Discipline within seven years; its conviction is not dismissed (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r6_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in5">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in6">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r6_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r6_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r7">
+        <description>Discipline earlier than seven years preceding the application, for § 726 / § 729(a) conduct (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if the formal discipline was for conduct that, if committed in this state by a physician and surgeon licensed pursuant to Chapter 5 (commencing with Section 2000) of Division 2, would have constituted an act of sexual abuse, misconduct, or relations with a patient pursuant to Section 726 or sexual exploitation as defined in subdivision (a) of Section 729.</lex:quote>
+              <lex:note>Reading: 'only if' adds a necessary condition; the misconduct and substantial-relation requirements of (a)(2) still apply to older discipline.</lex:note>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r7_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r7_in7">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r7_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2) (reading): “Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if the formal discipline was for conduct that, if committed in this state by a physician and surgeon licensed pursuant to Chapter 5 (commencing with Section 2000) of Division 2, would have constituted an act of sexual abuse, misconduct, or relations with a patient pursuant to Section 726 or sexual exploitation as defined in subdivision (a) of Section 729.”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r8">
+        <description>Discipline earlier than seven years preceding the application, not for § 726 / § 729(a) conduct (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r8_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in4">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r8_in7">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r8_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2): “Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_discipline_ground_r9">
+        <description>Reading, not stated in the text: discipline with no date, or dated after the application, is neither within nor earlier than seven years preceding it, so no ground (Cal. BPC § 480(a)(2))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application</lex:quote>
+              <lex:note>Reading: discipline with no known date, or dated after the date of application, is neither 'within the preceding seven years' nor 'earlier than seven years preceding the date of application', so neither sentence makes it a ground. The board needs the date.</lex:note>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(a)(2)" section="480" subsection="a.2" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Formal discipline that occurred earlier than seven years preceding the date of application may be grounds for denial of a license only if</lex:quote>
+              <lex:note>Reading: discipline with no known date, or dated after the date of application, is neither 'within the preceding seven years' nor 'earlier than seven years preceding the date of application', so neither sentence makes it a ground. The board needs the date.</lex:note>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_discipline_ground_r9_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in5">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in6">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_discipline_ground_r9_in7">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_discipline_ground_r9_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a)(2) (reading): “The applicant has been subjected to formal discipline by a licensing board in or outside California within the preceding seven years from the date of application”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_rehabilitation_bar" name="rehabilitation_bar" label="(b) Rehabilitation bar applies?">
+    <description>(b) Rehabilitation bar applies?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(b)"/>
+    </extensionElements>
+    <variable id="d_rehabilitation_bar_var" name="rehabilitation_bar" typeRef="boolean"/>
+    <informationRequirement id="ir_d_rehabilitation_bar__in_certificate_of_rehabilitation">
+      <requiredInput href="#in_certificate_of_rehabilitation"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_rehabilitation_bar__in_pardon_or_clemency">
+      <requiredInput href="#in_pardon_or_clemency"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_rehabilitation_bar__in_showing_of_rehabilitation">
+      <requiredInput href="#in_showing_of_rehabilitation"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_rehabilitation_bar__ks_480_b">
+      <requiredAuthority href="#ks_480_b"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_rehabilitation_bar__ks_proc_certificate">
+      <requiredAuthority href="#ks_proc_certificate"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_rehabilitation_bar__ks_bpc_482">
+      <requiredAuthority href="#ks_bpc_482"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_rehabilitation_bar__ks_executive_clemency">
+      <requiredAuthority href="#ks_executive_clemency"/>
+    </authorityRequirement>
+    <decisionTable id="d_rehabilitation_bar_table" hitPolicy="UNIQUE">
+      <input id="d_rehabilitation_bar_in0" label="Certificate of rehabilitation">
+        <inputExpression id="d_rehabilitation_bar_in0_expr" typeRef="boolean">
+          <text>certificate_of_rehabilitation</text>
+        </inputExpression>
+      </input>
+      <input id="d_rehabilitation_bar_in1" label="Clemency or pardon">
+        <inputExpression id="d_rehabilitation_bar_in1_expr" typeRef="boolean">
+          <text>pardon_or_clemency</text>
+        </inputExpression>
+      </input>
+      <input id="d_rehabilitation_bar_in2" label="Showing of rehabilitation (§ 482)">
+        <inputExpression id="d_rehabilitation_bar_in2_expr" typeRef="boolean">
+          <text>showing_of_rehabilitation</text>
+        </inputExpression>
+      </input>
+      <output id="d_rehabilitation_bar_out0" label="Rehabilitation bar applies" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_rehabilitation_bar_r1">
+        <description>Certificate of rehabilitation (Cal. BPC § 480(b))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>if that person has obtained a certificate of rehabilitation under Chapter 3.5 (commencing with Section 4852.01) of Title 6 of Part 3 of the Penal Code</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_rehabilitation_bar_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r1_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_rehabilitation_bar_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b): “if that person has obtained a certificate of rehabilitation under Chapter 3.5 (commencing with Section 4852.01) of Title 6 of Part 3 of the Penal Code”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_rehabilitation_bar_r2">
+        <description>Clemency or pardon (Cal. BPC § 480(b))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>has been granted clemency or a pardon by a state or federal executive</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_rehabilitation_bar_r2_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r2_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r2_in2">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_rehabilitation_bar_r2_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b): “has been granted clemency or a pardon by a state or federal executive”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_rehabilitation_bar_r3">
+        <description>Showing of rehabilitation under § 482 (Cal. BPC § 480(b))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>or has made a showing of rehabilitation pursuant to Section 482</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_rehabilitation_bar_r3_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r3_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r3_in2">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_rehabilitation_bar_r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b): “or has made a showing of rehabilitation pursuant to Section 482”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_rehabilitation_bar_r4">
+        <description>None of the three (Cal. BPC § 480(b))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_rehabilitation_bar_r4_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r4_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_rehabilitation_bar_r4_in2">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_rehabilitation_bar_r4_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_dismissal_bar" name="dismissal_bar" label="(c) Dismissal bar applies?">
+    <description>(c) Dismissal bar applies?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(c)"/>
+    </extensionElements>
+    <variable id="d_dismissal_bar_var" name="dismissal_bar" typeRef="boolean"/>
+    <informationRequirement id="ir_d_dismissal_bar__in_conviction_dismissed">
+      <requiredInput href="#in_conviction_dismissed"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_dismissal_bar__ks_480_c">
+      <requiredAuthority href="#ks_480_c"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_dismissal_bar__ks_proc_record_sealing">
+      <requiredAuthority href="#ks_proc_record_sealing"/>
+    </authorityRequirement>
+    <decisionTable id="d_dismissal_bar_table" hitPolicy="UNIQUE">
+      <input id="d_dismissal_bar_in0" label="Conviction dismissed (PEN § 1203.4 et al.)">
+        <inputExpression id="d_dismissal_bar_in0_expr" typeRef="boolean">
+          <text>conviction_dismissed</text>
+        </inputExpression>
+      </input>
+      <output id="d_dismissal_bar_out0" label="Dismissal bar applies" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_dismissal_bar_r1">
+        <description>Dismissed (Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_dismissal_bar_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_dismissal_bar_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_dismissal_bar_r2">
+        <description>Not dismissed (Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_dismissal_bar_r2_in0">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_dismissal_bar_r2_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_conviction_barred" name="conviction_barred" label="(b), (c) 'Notwithstanding': is a denial on the conviction barred?">
+    <description>(b), (c) 'Notwithstanding': is a denial on the conviction barred?</description>
+    <extensionElements>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(b) (c)"/>
+    </extensionElements>
+    <variable id="d_conviction_barred_var" name="conviction_barred" typeRef="boolean"/>
+    <informationRequirement id="ir_d_conviction_barred__d_rehabilitation_bar">
+      <requiredDecision href="#d_rehabilitation_bar"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_conviction_barred__d_dismissal_bar">
+      <requiredDecision href="#d_dismissal_bar"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_conviction_barred__ks_480_b">
+      <requiredAuthority href="#ks_480_b"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_conviction_barred__ks_480_c">
+      <requiredAuthority href="#ks_480_c"/>
+    </authorityRequirement>
+    <decisionTable id="d_conviction_barred_table" hitPolicy="UNIQUE">
+      <input id="d_conviction_barred_in0" label="(b) applies">
+        <inputExpression id="d_conviction_barred_in0_expr" typeRef="boolean">
+          <text>rehabilitation_bar</text>
+        </inputExpression>
+      </input>
+      <input id="d_conviction_barred_in1" label="(c) applies">
+        <inputExpression id="d_conviction_barred_in1_expr" typeRef="boolean">
+          <text>dismissal_bar</text>
+        </inputExpression>
+      </input>
+      <output id="d_conviction_barred_out0" label="Denial on the conviction barred" typeRef="boolean"/>
+      <annotation name="Source"/>
+      <rule id="d_conviction_barred_r1">
+        <description>(b) and (c): same effect, so no conflict (Cal. BPC § 480(b); Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime</lex:quote>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_barred_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_barred_r1_in1">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_barred_r1_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b); Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_barred_r2">
+        <description>(b) (Cal. BPC § 480(b))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_barred_r2_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_barred_r2_in1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_barred_r2_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_barred_r3">
+        <description>(c) (Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_barred_r3_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_barred_r3_in1">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_barred_r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_conviction_barred_r4">
+        <description>Neither bar (Cal. BPC § 480(b); Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime</lex:quote>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_conviction_barred_r4_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_conviction_barred_r4_in1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_conviction_barred_r4_out0">
+          <text>false</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b); Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="d_may_deny" name="may_deny" label="May the board deny the license on the basis of a conviction or prior discipline?">
+    <description>May the board deny the license on the basis of a conviction or prior discipline?</description>
+    <extensionElements>
+      <lex:decisionMaker actor="board" role="lexflow:role:ca:license_conviction:board" name="Licensing board (BPC § 477(a): includes bureau, commission, committee, department, division, examining committee, program, and agency)"/>
+      <lex:governedBy key="lexflow:statute:ca:Cal. BPC § 480" pinpoint="(a) (b) (c)"/>
+    </extensionElements>
+    <question>May the board deny a license regulated by the Business and Professions Code on the grounds that the applicant was convicted of a crime or was subject to formal discipline (Cal. BPC § 480(a)-(c))?</question>
+    <allowedAnswers>may_deny true: a permitted ground exists and no bar reaches it (the board may still grant); false: § 480 forbids denial on these grounds.</allowedAnswers>
+    <variable id="d_may_deny_var" name="may_deny"/>
+    <informationRequirement id="ir_d_may_deny__d_conviction_barred">
+      <requiredDecision href="#d_conviction_barred"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_may_deny__d_conviction_ground">
+      <requiredDecision href="#d_conviction_ground"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_may_deny__d_discipline_ground">
+      <requiredDecision href="#d_discipline_ground"/>
+    </informationRequirement>
+    <informationRequirement id="ir_d_may_deny__in_discipline_rests_on_conviction">
+      <requiredInput href="#in_discipline_rests_on_conviction"/>
+    </informationRequirement>
+    <authorityRequirement id="ar_d_may_deny__ks_480_a">
+      <requiredAuthority href="#ks_480_a"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_may_deny__ks_480_b">
+      <requiredAuthority href="#ks_480_b"/>
+    </authorityRequirement>
+    <authorityRequirement id="ar_d_may_deny__ks_480_c">
+      <requiredAuthority href="#ks_480_c"/>
+    </authorityRequirement>
+    <usingProcess href="https://lexipedia.xyz/ns/process/ca_license_conviction#proc_ca_license_conviction"/>
+    <usingTask href="https://lexipedia.xyz/ns/process/ca_license_conviction#decide_ground"/>
+    <decisionTable id="d_may_deny_table" hitPolicy="UNIQUE">
+      <input id="d_may_deny_in0" label="(b)/(c) bar">
+        <inputExpression id="d_may_deny_in0_expr" typeRef="boolean">
+          <text>conviction_barred</text>
+        </inputExpression>
+      </input>
+      <input id="d_may_deny_in1" label="(a)(1) ground">
+        <inputExpression id="d_may_deny_in1_expr" typeRef="boolean">
+          <text>conviction_ground</text>
+        </inputExpression>
+      </input>
+      <input id="d_may_deny_in2" label="(a)(2) ground">
+        <inputExpression id="d_may_deny_in2_expr" typeRef="boolean">
+          <text>discipline_ground</text>
+        </inputExpression>
+      </input>
+      <input id="d_may_deny_in3" label="Discipline based on the conviction">
+        <inputExpression id="d_may_deny_in3_expr" typeRef="boolean">
+          <text>discipline_rests_on_conviction</text>
+        </inputExpression>
+      </input>
+      <output id="d_may_deny_out0" label="May deny" name="may_deny" typeRef="boolean"/>
+      <output id="d_may_deny_out1" label="Basis" name="basis" typeRef="string"/>
+      <annotation name="Source"/>
+      <rule id="d_may_deny_r1">
+        <description>Override: the conviction ground is ignored (Cal. BPC § 480(b); Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime</lex:quote>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>Notwithstanding any other provision of this code, a person shall not be denied a license on the basis of any conviction, or on the basis of the acts underlying the conviction, that has been dismissed pursuant to Section 1203.4, 1203.4a, 1203.41, 1203.42, or 1203.425 of the Penal Code, or a comparable dismissal or expungement</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r1_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r1_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r1_in2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r1_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r1_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r1_out1">
+          <text>"Barred by 480(b) or (c); no discipline ground"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b); Cal. BPC § 480(c): “Notwithstanding any other provision of this code, a person shall not be denied a license on the basis that the person has been convicted of a crime, or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r2">
+        <description>Override reaches the discipline (Cal. BPC § 480(b); Cal. BPC § 480(c))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(b)" section="480" subsection="b" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>or on the basis of acts underlying a conviction for a crime</lex:quote>
+              <lex:note>Reading: a discipline that rests on the acts underlying a conviction is a denial 'on the basis of acts underlying' that conviction, so the (b)/(c) bar reaches it.  The text does not say so in terms.</lex:note>
+            </lex:source>
+            <lex:source citation="Cal. BPC § 480(c)" section="480" subsection="c" code="Cal. BPC" jurisdiction="ca" grounding="implied" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>or on the basis of the acts underlying the conviction</lex:quote>
+              <lex:note>Reading: a discipline that rests on the acts underlying a conviction is a denial 'on the basis of acts underlying' that conviction, so the (b)/(c) bar reaches it.  The text does not say so in terms.</lex:note>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r2_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r2_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r2_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r2_in3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r2_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r2_out1">
+          <text>"Barred: the discipline rests on the acts underlying the barred conviction"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(b) (reading); Cal. BPC § 480(c) (reading): “or on the basis of acts underlying a conviction for a crime”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r3">
+        <description>Independent discipline ground (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r3_in0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r3_in1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r3_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r3_in3">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r3_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r3_out1">
+          <text>"May deny on prior discipline (480(a)(2)) only; the conviction is barred"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r4">
+        <description>(a)(1) (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r4_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r4_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r4_in2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r4_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r4_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r4_out1">
+          <text>"May deny: conviction ground (480(a)(1))"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r5">
+        <description>(a)(1) and (a)(2) (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r5_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r5_in1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r5_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r5_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r5_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r5_out1">
+          <text>"May deny: conviction (480(a)(1)) and discipline (480(a)(2)) grounds"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r6">
+        <description>(a)(2) (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r6_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r6_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r6_in2">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r6_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r6_out0">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r6_out1">
+          <text>"May deny: prior discipline (480(a)(2))"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “a board may deny a license regulated by this code on the grounds that the applicant has been convicted of a crime or has been subject to formal discipline only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+      <rule id="d_may_deny_r7">
+        <description>Neither condition is met (Cal. BPC § 480(a))</description>
+        <extensionElements>
+          <lex:grounding>
+            <lex:source citation="Cal. BPC § 480(a)" section="480" subsection="a" code="Cal. BPC" jurisdiction="ca" grounding="explicit" url="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&amp;sectionNum=480.">
+              <lex:quote>only if either of the following conditions are met</lex:quote>
+            </lex:source>
+          </lex:grounding>
+        </extensionElements>
+        <inputEntry id="d_may_deny_r7_in0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r7_in1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r7_in2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="d_may_deny_r7_in3">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="d_may_deny_r7_out0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="d_may_deny_r7_out1">
+          <text>"No ground under 480(a)"</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>Cal. BPC § 480(a): “only if either of the following conditions are met”</text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="dmndi_ca_bpc_480" name="DRD">
+      <dmndi:DMNShape id="d_serious_felony_shape" dmnElementRef="d_serious_felony">
+        <dc:Bounds x="1142" y="1500" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_fiduciary_felony_shape" dmnElementRef="d_fiduciary_felony">
+        <dc:Bounds x="1572" y="1500" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_exception_a_shape" dmnElementRef="d_exception_a">
+        <dc:Bounds x="1142" y="1170" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_exception_b_shape" dmnElementRef="d_exception_b">
+        <dc:Bounds x="1572" y="1170" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_lookback_lifted_shape" dmnElementRef="d_lookback_lifted">
+        <dc:Bounds x="498" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_conviction_recent_shape" dmnElementRef="d_conviction_recent">
+        <dc:Bounds x="68" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_incarceration_recent_shape" dmnElementRef="d_incarceration_recent">
+        <dc:Bounds x="282" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_conviction_ground_shape" dmnElementRef="d_conviction_ground">
+        <dc:Bounds x="1142" y="510" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_discipline_recent_shape" dmnElementRef="d_discipline_recent">
+        <dc:Bounds x="1142" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_discipline_older_shape" dmnElementRef="d_discipline_older">
+        <dc:Bounds x="1358" y="1170" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_discipline_ground_shape" dmnElementRef="d_discipline_ground">
+        <dc:Bounds x="1358" y="510" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_rehabilitation_bar_shape" dmnElementRef="d_rehabilitation_bar">
+        <dc:Bounds x="2432" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_dismissal_bar_shape" dmnElementRef="d_dismissal_bar">
+        <dc:Bounds x="2648" y="840" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_conviction_barred_shape" dmnElementRef="d_conviction_barred">
+        <dc:Bounds x="1572" y="510" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="d_may_deny_shape" dmnElementRef="d_may_deny">
+        <dc:Bounds x="1358" y="180" width="190" height="80"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_application_date_shape" dmnElementRef="in_application_date">
+        <dc:Bounds x="928" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_offense_shape" dmnElementRef="in_offense">
+        <dc:Bounds x="1250" y="1840" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_sex_offender_tier_shape" dmnElementRef="in_sex_offender_tier">
+        <dc:Bounds x="1358" y="1515" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_disposition_shape" dmnElementRef="in_disposition">
+        <dc:Bounds x="712" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_conviction_date_shape" dmnElementRef="in_conviction_date">
+        <dc:Bounds x="282" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_conviction_final_shape" dmnElementRef="in_conviction_final">
+        <dc:Bounds x="880" y="700" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_presently_incarcerated_shape" dmnElementRef="in_presently_incarcerated">
+        <dc:Bounds x="498" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_release_date_shape" dmnElementRef="in_release_date">
+        <dc:Bounds x="712" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_profession_shape" dmnElementRef="in_profession">
+        <dc:Bounds x="1465" y="1840" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_substantially_related_shape" dmnElementRef="in_substantially_related">
+        <dc:Bounds x="928" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_certificate_of_rehabilitation_shape" dmnElementRef="in_certificate_of_rehabilitation">
+        <dc:Bounds x="2002" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_pardon_or_clemency_shape" dmnElementRef="in_pardon_or_clemency">
+        <dc:Bounds x="2218" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_showing_of_rehabilitation_shape" dmnElementRef="in_showing_of_rehabilitation">
+        <dc:Bounds x="2432" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_conviction_dismissed_shape" dmnElementRef="in_conviction_dismissed">
+        <dc:Bounds x="1788" y="1180" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_formal_discipline_shape" dmnElementRef="in_formal_discipline">
+        <dc:Bounds x="1358" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_discipline_date_shape" dmnElementRef="in_discipline_date">
+        <dc:Bounds x="1358" y="1300" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_misconduct_cause_shape" dmnElementRef="in_misconduct_cause">
+        <dc:Bounds x="1572" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_discipline_related_shape" dmnElementRef="in_discipline_related">
+        <dc:Bounds x="1788" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_discipline_rests_on_conviction_shape" dmnElementRef="in_discipline_rests_on_conviction">
+        <dc:Bounds x="2002" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="in_sexual_misconduct_shape" dmnElementRef="in_sexual_misconduct">
+        <dc:Bounds x="2218" y="850" width="190" height="50"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_a_shape" dmnElementRef="ks_480_a">
+        <dc:Bounds x="1180" y="60" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_a1_shape" dmnElementRef="ks_480_a1">
+        <dc:Bounds x="40" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_a1A_shape" dmnElementRef="ks_480_a1A">
+        <dc:Bounds x="800" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_a1B_shape" dmnElementRef="ks_480_a1B">
+        <dc:Bounds x="1180" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_a2_shape" dmnElementRef="ks_480_a2">
+        <dc:Bounds x="990" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_b_shape" dmnElementRef="ks_480_b">
+        <dc:Bounds x="1560" y="60" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_c_shape" dmnElementRef="ks_480_c">
+        <dc:Bounds x="1370" y="60" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_d_shape" dmnElementRef="ks_480_d">
+        <dc:Bounds x="230" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_480_h_shape" dmnElementRef="ks_480_h">
+        <dc:Bounds x="420" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1192_7_shape" dmnElementRef="ks_pen_1192_7">
+        <dc:Bounds x="610" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_290_shape" dmnElementRef="ks_pen_290">
+        <dc:Bounds x="990" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_board_regulations_shape" dmnElementRef="ks_board_regulations">
+        <dc:Bounds x="1370" y="1380" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_6500_shape" dmnElementRef="ks_bpc_6500">
+        <dc:Bounds x="1370" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_7000_shape" dmnElementRef="ks_bpc_7000">
+        <dc:Bounds x="1560" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_7512_shape" dmnElementRef="ks_bpc_7512">
+        <dc:Bounds x="1750" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_7600_shape" dmnElementRef="ks_bpc_7600">
+        <dc:Bounds x="1940" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_10000_shape" dmnElementRef="ks_bpc_10000">
+        <dc:Bounds x="2130" y="1050" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1203_4_shape" dmnElementRef="ks_pen_1203_4">
+        <dc:Bounds x="1750" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1203_4a_shape" dmnElementRef="ks_pen_1203_4a">
+        <dc:Bounds x="1940" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1203_41_shape" dmnElementRef="ks_pen_1203_41">
+        <dc:Bounds x="2130" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1203_42_shape" dmnElementRef="ks_pen_1203_42">
+        <dc:Bounds x="2320" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_1203_425_shape" dmnElementRef="ks_pen_1203_425">
+        <dc:Bounds x="2510" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_pen_4852_01_shape" dmnElementRef="ks_pen_4852_01">
+        <dc:Bounds x="1085" y="720" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_482_shape" dmnElementRef="ks_bpc_482">
+        <dc:Bounds x="1465" y="720" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_481_shape" dmnElementRef="ks_bpc_481">
+        <dc:Bounds x="610" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_7_5_shape" dmnElementRef="ks_bpc_7_5">
+        <dc:Bounds x="800" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_726_shape" dmnElementRef="ks_bpc_726">
+        <dc:Bounds x="1180" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_729_shape" dmnElementRef="ks_bpc_729">
+        <dc:Bounds x="1370" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_bpc_2000_shape" dmnElementRef="ks_bpc_2000">
+        <dc:Bounds x="1560" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_executive_clemency_shape" dmnElementRef="ks_executive_clemency">
+        <dc:Bounds x="1655" y="720" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_proc_record_sealing_shape" dmnElementRef="ks_proc_record_sealing">
+        <dc:Bounds x="2700" y="390" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="ks_proc_certificate_shape" dmnElementRef="ks_proc_certificate">
+        <dc:Bounds x="1275" y="720" width="170" height="64"/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="ir_d_serious_felony__in_offense_edge" dmnElementRef="ir_d_serious_felony__in_offense">
+        <di:waypoint x="1337" y="1840"/>
+        <di:waypoint x="1251" y="1580"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_serious_felony__ks_480_a1A_edge" dmnElementRef="ar_d_serious_felony__ks_480_a1A">
+        <di:waypoint x="910" y="1114"/>
+        <di:waypoint x="1207" y="1500"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_serious_felony__ks_pen_1192_7_edge" dmnElementRef="ar_d_serious_felony__ks_pen_1192_7">
+        <di:waypoint x="733" y="1114"/>
+        <di:waypoint x="1190" y="1500"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_fiduciary_felony__in_offense_edge" dmnElementRef="ir_d_fiduciary_felony__in_offense">
+        <di:waypoint x="1370" y="1840"/>
+        <di:waypoint x="1628" y="1580"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_fiduciary_felony__in_profession_edge" dmnElementRef="ir_d_fiduciary_felony__in_profession">
+        <di:waypoint x="1568" y="1840"/>
+        <di:waypoint x="1654" y="1580"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_fiduciary_felony__ks_480_a1B_edge" dmnElementRef="ar_d_fiduciary_felony__ks_480_a1B">
+        <di:waypoint x="1293" y="1114"/>
+        <di:waypoint x="1632" y="1500"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_fiduciary_felony__ks_board_regulations_edge" dmnElementRef="ar_d_fiduciary_felony__ks_board_regulations">
+        <di:waypoint x="1508" y="1444"/>
+        <di:waypoint x="1601" y="1500"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_exception_a__d_serious_felony_edge" dmnElementRef="ir_d_exception_a__d_serious_felony">
+        <di:waypoint x="1238" y="1500"/>
+        <di:waypoint x="1238" y="1250"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_exception_a__in_sex_offender_tier_edge" dmnElementRef="ir_d_exception_a__in_sex_offender_tier">
+        <di:waypoint x="1403" y="1515"/>
+        <di:waypoint x="1297" y="1250"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_a__ks_480_a1A_edge" dmnElementRef="ar_d_exception_a__ks_480_a1A">
+        <di:waypoint x="970" y="1113"/>
+        <di:waypoint x="1142" y="1176"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_a__ks_pen_1192_7_edge" dmnElementRef="ar_d_exception_a__ks_pen_1192_7">
+        <di:waypoint x="780" y="1102"/>
+        <di:waypoint x="1142" y="1188"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_a__ks_pen_290_edge" dmnElementRef="ar_d_exception_a__ks_pen_290">
+        <di:waypoint x="1116" y="1114"/>
+        <di:waypoint x="1187" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_exception_b__d_fiduciary_felony_edge" dmnElementRef="ir_d_exception_b__d_fiduciary_felony">
+        <di:waypoint x="1668" y="1500"/>
+        <di:waypoint x="1668" y="1250"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_exception_b__in_profession_edge" dmnElementRef="ir_d_exception_b__in_profession">
+        <di:waypoint x="1564" y="1840"/>
+        <di:waypoint x="1661" y="1250"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_480_a1B_edge" dmnElementRef="ar_d_exception_b__ks_480_a1B">
+        <di:waypoint x="1350" y="1109"/>
+        <di:waypoint x="1572" y="1180"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_bpc_6500_edge" dmnElementRef="ar_d_exception_b__ks_bpc_6500">
+        <di:waypoint x="1508" y="1114"/>
+        <di:waypoint x="1601" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_bpc_7000_edge" dmnElementRef="ar_d_exception_b__ks_bpc_7000">
+        <di:waypoint x="1651" y="1114"/>
+        <di:waypoint x="1660" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_bpc_7512_edge" dmnElementRef="ar_d_exception_b__ks_bpc_7512">
+        <di:waypoint x="1793" y="1114"/>
+        <di:waypoint x="1720" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_bpc_7600_edge" dmnElementRef="ar_d_exception_b__ks_bpc_7600">
+        <di:waypoint x="1940" y="1112"/>
+        <di:waypoint x="1762" y="1176"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_exception_b__ks_bpc_10000_edge" dmnElementRef="ar_d_exception_b__ks_bpc_10000">
+        <di:waypoint x="2130" y="1102"/>
+        <di:waypoint x="1762" y="1188"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_lookback_lifted__d_exception_a_edge" dmnElementRef="ir_d_lookback_lifted__d_exception_a">
+        <di:waypoint x="1159" y="1170"/>
+        <di:waypoint x="671" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_lookback_lifted__d_exception_b_edge" dmnElementRef="ir_d_lookback_lifted__d_exception_b">
+        <di:waypoint x="1572" y="1181"/>
+        <di:waypoint x="688" y="909"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_lookback_lifted__ks_480_a1_edge" dmnElementRef="ar_d_lookback_lifted__ks_480_a1">
+        <di:waypoint x="158" y="454"/>
+        <di:waypoint x="552" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_recent__in_application_date_edge" dmnElementRef="ir_d_conviction_recent__in_application_date">
+        <di:waypoint x="956" y="1180"/>
+        <di:waypoint x="258" y="916"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_recent__in_conviction_date_edge" dmnElementRef="ir_d_conviction_recent__in_conviction_date">
+        <di:waypoint x="361" y="1180"/>
+        <di:waypoint x="189" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_recent__ks_480_a1_edge" dmnElementRef="ar_d_conviction_recent__ks_480_a1">
+        <di:waypoint x="128" y="454"/>
+        <di:waypoint x="159" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_incarceration_recent__in_application_date_edge" dmnElementRef="ir_d_incarceration_recent__in_application_date">
+        <di:waypoint x="973" y="1180"/>
+        <di:waypoint x="457" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_incarceration_recent__in_presently_incarcerated_edge" dmnElementRef="ir_d_incarceration_recent__in_presently_incarcerated">
+        <di:waypoint x="576" y="1180"/>
+        <di:waypoint x="404" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_incarceration_recent__in_release_date_edge" dmnElementRef="ir_d_incarceration_recent__in_release_date">
+        <di:waypoint x="774" y="1180"/>
+        <di:waypoint x="430" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_incarceration_recent__ks_480_a1_edge" dmnElementRef="ar_d_incarceration_recent__ks_480_a1">
+        <di:waypoint x="143" y="454"/>
+        <di:waypoint x="355" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__in_disposition_edge" dmnElementRef="ir_d_conviction_ground__in_disposition">
+        <di:waypoint x="841" y="850"/>
+        <di:waypoint x="1185" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__in_conviction_final_edge" dmnElementRef="ir_d_conviction_ground__in_conviction_final">
+        <di:waypoint x="975" y="700"/>
+        <di:waypoint x="1197" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__in_substantially_related_edge" dmnElementRef="ir_d_conviction_ground__in_substantially_related">
+        <di:waypoint x="1039" y="850"/>
+        <di:waypoint x="1211" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__d_conviction_recent_edge" dmnElementRef="ir_d_conviction_ground__d_conviction_recent">
+        <di:waypoint x="258" y="851"/>
+        <di:waypoint x="1142" y="579"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__d_incarceration_recent_edge" dmnElementRef="ir_d_conviction_ground__d_incarceration_recent">
+        <di:waypoint x="472" y="844"/>
+        <di:waypoint x="1142" y="586"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_ground__d_lookback_lifted_edge" dmnElementRef="ir_d_conviction_ground__d_lookback_lifted">
+        <di:waypoint x="671" y="840"/>
+        <di:waypoint x="1159" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_480_a_edge" dmnElementRef="ar_d_conviction_ground__ks_480_a">
+        <di:waypoint x="1263" y="124"/>
+        <di:waypoint x="1240" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_480_a1_edge" dmnElementRef="ar_d_conviction_ground__ks_480_a1">
+        <di:waypoint x="210" y="432"/>
+        <di:waypoint x="1142" y="539"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_480_d_edge" dmnElementRef="ar_d_conviction_ground__ks_480_d">
+        <di:waypoint x="400" y="434"/>
+        <di:waypoint x="1142" y="537"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_480_h_edge" dmnElementRef="ar_d_conviction_ground__ks_480_h">
+        <di:waypoint x="590" y="437"/>
+        <di:waypoint x="1142" y="533"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_bpc_7_5_edge" dmnElementRef="ar_d_conviction_ground__ks_bpc_7_5">
+        <di:waypoint x="970" y="453"/>
+        <di:waypoint x="1142" y="516"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_ground__ks_bpc_481_edge" dmnElementRef="ar_d_conviction_ground__ks_bpc_481">
+        <di:waypoint x="780" y="442"/>
+        <di:waypoint x="1142" y="528"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_recent__in_application_date_edge" dmnElementRef="ir_d_discipline_recent__in_application_date">
+        <di:waypoint x="1039" y="1180"/>
+        <di:waypoint x="1211" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_recent__in_discipline_date_edge" dmnElementRef="ir_d_discipline_recent__in_discipline_date">
+        <di:waypoint x="1383" y="1300"/>
+        <di:waypoint x="1277" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_recent__ks_480_a2_edge" dmnElementRef="ar_d_discipline_recent__ks_480_a2">
+        <di:waypoint x="1086" y="454"/>
+        <di:waypoint x="1223" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_older__in_application_date_edge" dmnElementRef="ir_d_discipline_older__in_application_date">
+        <di:waypoint x="1063" y="1180"/>
+        <di:waypoint x="1063" y="1140"/>
+        <di:waypoint x="1398" y="1140"/>
+        <di:waypoint x="1398" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_older__in_discipline_date_edge" dmnElementRef="ir_d_discipline_older__in_discipline_date">
+        <di:waypoint x="1453" y="1300"/>
+        <di:waypoint x="1453" y="1250"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_older__ks_480_a2_edge" dmnElementRef="ar_d_discipline_older__ks_480_a2">
+        <di:waypoint x="1105" y="454"/>
+        <di:waypoint x="1423" y="1170"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_formal_discipline_edge" dmnElementRef="ir_d_discipline_ground__in_formal_discipline">
+        <di:waypoint x="1452" y="850"/>
+        <di:waypoint x="1452" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_misconduct_cause_edge" dmnElementRef="ir_d_discipline_ground__in_misconduct_cause">
+        <di:waypoint x="1651" y="850"/>
+        <di:waypoint x="1479" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_discipline_related_edge" dmnElementRef="ir_d_discipline_ground__in_discipline_related">
+        <di:waypoint x="1849" y="850"/>
+        <di:waypoint x="1505" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__d_discipline_recent_edge" dmnElementRef="ir_d_discipline_ground__d_discipline_recent">
+        <di:waypoint x="1264" y="840"/>
+        <di:waypoint x="1426" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__d_discipline_older_edge" dmnElementRef="ir_d_discipline_ground__d_discipline_older">
+        <di:waypoint x="1503" y="1170"/>
+        <di:waypoint x="1503" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_discipline_rests_on_conviction_edge" dmnElementRef="ir_d_discipline_ground__in_discipline_rests_on_conviction">
+        <di:waypoint x="2048" y="850"/>
+        <di:waypoint x="1532" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_conviction_dismissed_edge" dmnElementRef="ir_d_discipline_ground__in_conviction_dismissed">
+        <di:waypoint x="1866" y="1180"/>
+        <di:waypoint x="1479" y="590"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_discipline_ground__in_sexual_misconduct_edge" dmnElementRef="ir_d_discipline_ground__in_sexual_misconduct">
+        <di:waypoint x="2246" y="850"/>
+        <di:waypoint x="1548" y="586"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_480_a_edge" dmnElementRef="ar_d_discipline_ground__ks_480_a">
+        <di:waypoint x="1278" y="124"/>
+        <di:waypoint x="1436" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_480_a2_edge" dmnElementRef="ar_d_discipline_ground__ks_480_a2">
+        <di:waypoint x="1160" y="451"/>
+        <di:waypoint x="1358" y="518"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_bpc_726_edge" dmnElementRef="ar_d_discipline_ground__ks_bpc_726">
+        <di:waypoint x="1312" y="454"/>
+        <di:waypoint x="1394" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_bpc_729_edge" dmnElementRef="ar_d_discipline_ground__ks_bpc_729">
+        <di:waypoint x="1454" y="454"/>
+        <di:waypoint x="1453" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_bpc_2000_edge" dmnElementRef="ar_d_discipline_ground__ks_bpc_2000">
+        <di:waypoint x="1597" y="454"/>
+        <di:waypoint x="1513" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_discipline_ground__ks_proc_record_sealing_edge" dmnElementRef="ar_d_discipline_ground__ks_proc_record_sealing">
+        <di:waypoint x="2700" y="430"/>
+        <di:waypoint x="1548" y="541"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_rehabilitation_bar__in_certificate_of_rehabilitation_edge" dmnElementRef="ir_d_rehabilitation_bar__in_certificate_of_rehabilitation">
+        <di:waypoint x="2131" y="1180"/>
+        <di:waypoint x="2475" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_rehabilitation_bar__in_pardon_or_clemency_edge" dmnElementRef="ir_d_rehabilitation_bar__in_pardon_or_clemency">
+        <di:waypoint x="2329" y="1180"/>
+        <di:waypoint x="2501" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_rehabilitation_bar__in_showing_of_rehabilitation_edge" dmnElementRef="ir_d_rehabilitation_bar__in_showing_of_rehabilitation">
+        <di:waypoint x="2528" y="1180"/>
+        <di:waypoint x="2528" y="920"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_rehabilitation_bar__ks_480_b_edge" dmnElementRef="ar_d_rehabilitation_bar__ks_480_b">
+        <di:waypoint x="1681" y="124"/>
+        <di:waypoint x="2483" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_rehabilitation_bar__ks_proc_certificate_edge" dmnElementRef="ar_d_rehabilitation_bar__ks_proc_certificate">
+        <di:waypoint x="1445" y="761"/>
+        <di:waypoint x="2432" y="870"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_rehabilitation_bar__ks_bpc_482_edge" dmnElementRef="ar_d_rehabilitation_bar__ks_bpc_482">
+        <di:waypoint x="1635" y="763"/>
+        <di:waypoint x="2432" y="868"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_rehabilitation_bar__ks_executive_clemency_edge" dmnElementRef="ar_d_rehabilitation_bar__ks_executive_clemency">
+        <di:waypoint x="1825" y="766"/>
+        <di:waypoint x="2432" y="865"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_dismissal_bar__in_conviction_dismissed_edge" dmnElementRef="ir_d_dismissal_bar__in_conviction_dismissed">
+        <di:waypoint x="1949" y="1180"/>
+        <di:waypoint x="2648" y="916"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_dismissal_bar__ks_480_c_edge" dmnElementRef="ar_d_dismissal_bar__ks_480_c">
+        <di:waypoint x="1507" y="124"/>
+        <di:waypoint x="2677" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_dismissal_bar__ks_proc_record_sealing_edge" dmnElementRef="ar_d_dismissal_bar__ks_proc_record_sealing">
+        <di:waypoint x="2782" y="454"/>
+        <di:waypoint x="2746" y="840"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_barred__d_rehabilitation_bar_edge" dmnElementRef="ir_d_conviction_barred__d_rehabilitation_bar">
+        <di:waypoint x="2432" y="844"/>
+        <di:waypoint x="1762" y="586"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_conviction_barred__d_dismissal_bar_edge" dmnElementRef="ir_d_conviction_barred__d_dismissal_bar">
+        <di:waypoint x="2648" y="851"/>
+        <di:waypoint x="1762" y="579"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_barred__ks_480_b_edge" dmnElementRef="ar_d_conviction_barred__ks_480_b">
+        <di:waypoint x="1647" y="124"/>
+        <di:waypoint x="1666" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_conviction_barred__ks_480_c_edge" dmnElementRef="ar_d_conviction_barred__ks_480_c">
+        <di:waypoint x="1470" y="124"/>
+        <di:waypoint x="1649" y="510"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_may_deny__d_conviction_barred_edge" dmnElementRef="ir_d_may_deny__d_conviction_barred">
+        <di:waypoint x="1641" y="510"/>
+        <di:waypoint x="1479" y="260"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_may_deny__d_conviction_ground_edge" dmnElementRef="ir_d_may_deny__d_conviction_ground">
+        <di:waypoint x="1264" y="510"/>
+        <di:waypoint x="1426" y="260"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_may_deny__d_discipline_ground_edge" dmnElementRef="ir_d_may_deny__d_discipline_ground">
+        <di:waypoint x="1452" y="510"/>
+        <di:waypoint x="1452" y="260"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ir_d_may_deny__in_discipline_rests_on_conviction_edge" dmnElementRef="ir_d_may_deny__in_discipline_rests_on_conviction">
+        <di:waypoint x="2073" y="850"/>
+        <di:waypoint x="1492" y="260"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_may_deny__ks_480_a_edge" dmnElementRef="ar_d_may_deny__ks_480_a">
+        <di:waypoint x="1312" y="124"/>
+        <di:waypoint x="1394" y="180"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_may_deny__ks_480_b_edge" dmnElementRef="ar_d_may_deny__ks_480_b">
+        <di:waypoint x="1597" y="124"/>
+        <di:waypoint x="1513" y="180"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_d_may_deny__ks_480_c_edge" dmnElementRef="ar_d_may_deny__ks_480_c">
+        <di:waypoint x="1454" y="124"/>
+        <di:waypoint x="1453" y="180"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_record_sealing__ks_pen_1203_4_edge" dmnElementRef="ar_ks_proc_record_sealing__ks_pen_1203_4">
+        <di:waypoint x="1920" y="422"/>
+        <di:waypoint x="2700" y="422"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_record_sealing__ks_pen_1203_4a_edge" dmnElementRef="ar_ks_proc_record_sealing__ks_pen_1203_4a">
+        <di:waypoint x="2110" y="422"/>
+        <di:waypoint x="2700" y="422"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_record_sealing__ks_pen_1203_41_edge" dmnElementRef="ar_ks_proc_record_sealing__ks_pen_1203_41">
+        <di:waypoint x="2300" y="422"/>
+        <di:waypoint x="2700" y="422"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_record_sealing__ks_pen_1203_42_edge" dmnElementRef="ar_ks_proc_record_sealing__ks_pen_1203_42">
+        <di:waypoint x="2490" y="422"/>
+        <di:waypoint x="2700" y="422"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_record_sealing__ks_pen_1203_425_edge" dmnElementRef="ar_ks_proc_record_sealing__ks_pen_1203_425">
+        <di:waypoint x="2680" y="422"/>
+        <di:waypoint x="2700" y="422"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="ar_ks_proc_certificate__ks_pen_4852_01_edge" dmnElementRef="ar_ks_proc_certificate__ks_pen_4852_01">
+        <di:waypoint x="1255" y="752"/>
+        <di:waypoint x="1275" y="752"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

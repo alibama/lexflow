@@ -1,0 +1,1298 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "deed_recording",
+ "title": "Record a deed or search land records",
+ "question": "How is a deed recorded after a sale, and how can I search land records?",
+ "category": "courts_legal",
+ "kind": "process",
+ "audience": [
+  "property owners",
+  "residents",
+  "businesses",
+  "settlement agents and attorneys"
+ ],
+ "office": "Clerk of the Charlottesville Circuit Court (elected constitutional officer); the City Assessor and City Treasurer update records after recording",
+ "summary": "Deeds for land in the City of Charlottesville are recorded by the Clerk of the Charlottesville Circuit Court, 315 East High Street, not the separate Albemarle County court. After settlement, the signed, notarized deed is presented with fees and taxes paid. It must meet state format rules; no cover sheet is required. Recording costs $18 to $52 by page count, plus an $8 technology fee, other fees, a state recordation tax of 25 cents per $100 and a grantor tax of 50 cents per $500; the state's Deed Calculation tool estimates it. The clerk passes the sale to the City Assessor, who updates ownership. Land records can be inspected in the Clerk's Records Room or searched online through paid remote access.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-600",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-600/",
+   "quote": "shall record any such writing as to any person whose name is signed thereto with an original signature, when it shall have been acknowledged by him, or proved by two witnesses as to him in such court, or before such clerk",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227/",
+   "quote": "and all other writings relating to or affecting real estate which are authorized to be recorded, shall, unless otherwise provided, be recorded in a book to be known as the deed book.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-407(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-407/",
+   "quote": "shall be void as to all purchasers for valuable consideration without notice not parties thereto and lien creditors, until and except from the time it is recorded in the county or city in which the property subject to such contract, deed, or bill of sale is located.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-407(A)(3)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-407/",
+   "quote": "In any circuit court in which any such instrument required to be recorded is not recorded on the same day as delivered, the clerk shall install a time stamp machine.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-407(A)(3)(c)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-407/",
+   "quote": "shall be presumed to be the date and time affixed upon the instrument by the time stamp machine or affixed by the clerk in accordance with subdivision b unless the clerk determines that the applicable requirements for recordation of the instrument have not been satisfied.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "the clerk has the authority to reject any writing for recordation unless (i) as to any individual who is a party to such writing, the surname only of such individual is underscored or written entirely in capital letters in the first clause of the writing that identifies the names of the parties; (ii) each page of the writing is numbered consecutively;",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "in the case of a writing described in § 58.1-801 or 58.1-807 , the amount of the consideration and the actual value of the property conveyed is stated on the first page of the writing;",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "a deed conveying residential property containing not more than four residential dwelling units states on the first page of the document the name of the title insurance underwriter insuring such instrument or a statement that the existence of title insurance is unknown to the preparer",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "a deed conveying residential property containing not more than four residential dwelling units states on the first page of the document that it was prepared by the owner of the real property or by an attorney licensed to practice law in the Commonwealth",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(D)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "A writing that appears on its face to have been properly notarized in accordance with the Virginia Notary Act (§ 47.1-1 et seq.) shall be presumed to have been notarized properly and shall be recorded by the clerk, if such document otherwise meets the requirements of this section for recordation.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227/",
+   "quote": "The clerk may refuse to accept any instrument submitted for recordation that includes a social security number.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-604",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-604/",
+   "quote": "A clerk may refuse any document for recording in which the name of the person under which the document is to be indexed does not legibly appear or is not otherwise furnished.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-252",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-252/",
+   "quote": "Circuit court clerks in those localities with a unique parcel identification system shall require that any deed or other instrument conveying or relating to an interest in real property bear, on the first page of the deed or other instrument, or state in the cover sheet submitted with the deed or other instrument, the tax map reference number or numbers, or the parcel identification number (PIN) or numbers, of the affected parcel or parcels.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227.1/",
+   "quote": "Circuit court clerks may require that any deed or other instrument conveying or relating to an interest in real property be submitted for recordation with a cover sheet detailing the information contained in the deed or other instrument necessary for the clerk to properly index such instrument.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227.1/",
+   "quote": "In any clerk's office that does not require a cover sheet, the attorney or other party presenting a deed or other instrument conveying or relating to an interest in real property may submit a cover sheet with such deed or other instrument containing all of the information required under subsection A",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227.1/",
+   "quote": "except that each page thereof shall be numbered consecutively as provided in subsection A of § 17.1-223",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-227.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227.1/",
+   "quote": "The cover sheet may be recorded with the deed or other instrument with which it is submitted, but it shall not be included as a page for determining the amount of any applicable filing fees pursuant to subdivision A 2 of § 17.1-275 except in the case of a cover sheet submitted pursuant to subsection B.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-258.3:1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-258.3:1/",
+   "quote": "Further, nothing herein shall be construed to require the electronic filing of any land record, and such records may continue to be filed in paper form.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(E)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "Upon admitting any such writing or other paper to record, the clerk shall endorse thereon the day and time of day of such recordation.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-223(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "Such writing, once recorded, may be returned to any party to such writing who is identified therein as a grantee unless otherwise indicated clearly on the face of the writing, or any cover sheet, including an appropriate current address to which such writing shall be returned.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-249(H)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-249/",
+   "quote": "within 90 days after its admission to record the clerk shall index all such writings indexed in the daily index in the appropriate general index as hereinbefore provided.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-812(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "quote": "no deed, deed of trust, contract or other instrument shall be admitted to record without the payment of the tax imposed thereon by law",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-812(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "quote": "when an instrument is first offered for recordation, such instrument may thereafter be recorded in the office of any other clerk without the payment of any tax except any local recordation tax",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-812(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "quote": "The clerk may ascertain the consideration of the deed or of the instrument, the actual value of the property conveyed, and the qualification of the deed or instrument for any exemption claimed by inquiry, affidavit, declaration or other extrinsic evidence acceptable to the clerk.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-812(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "quote": "Any person who knowingly misrepresents the consideration for the interest in property conveyed by a deed or other instrument or any of the other information requested by the clerk of court pursuant to this section shall be guilty of a Class 1 misdemeanor.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-801(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-801/",
+   "quote": "The rate of the tax shall be 25 cents on every $100 or fraction thereof of (i) the consideration of the deed or (ii) the actual value of the property conveyed, whichever is greater.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-801(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-801/",
+   "quote": "For the purposes of this chapter, \"value of the property conveyed\" or \"value of the interest\" means the most recent property tax assessment for such property at the time the property is conveyed.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-802(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-802/",
+   "quote": "shall be 50 cents for each $500 or fraction thereof, exclusive of the value of any lien or encumbrance remaining thereon at the time of the sale",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-802(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-802/",
+   "quote": "however, the grantor and grantee may arrange for the grantee to pay all or a portion of the tax.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-802(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-802/",
+   "quote": "No such deed, instrument, or other writing shall be admitted to record unless (i) the amount of the consideration is stated on the first page of the document to be admitted to record and (ii) certification of the clerk of the court wherein first recorded has been affixed thereto that the tax imposed by this section has been paid.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-802(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-802/",
+   "quote": "the clerk shall return taxes collected hereunder one-half into the state treasury and one-half into the treasury of the locality.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3800",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3800/",
+   "quote": "the governing body of any city or county is hereby authorized to impose a recordation tax, in an amount equal to one-third of the amount of the state recordation tax collectible for the Commonwealth, upon the first recordation of each taxable instrument in such city or county.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-811(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-811/",
+   "quote": "No recordation tax shall be required for the recordation of any deed of gift, quitclaim deed, or deed to correct a fraudulently recorded deed, including a deed of trust, between a grantor or grantors and a grantee or grantees when no consideration has passed between the parties.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-811(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-811/",
+   "quote": "Such deed shall state therein that it is a deed of gift, quitclaim deed without consideration, or deed to correct a fraudulently recorded deed.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-817",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-817/",
+   "quote": "there is hereby imposed a $3 fee on every deed, deed of trust, contract, or other instrument admitted to record in those jurisdictions in which open-space easements are held by the Virginia Outdoors Foundation.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3314(3)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3314/",
+   "quote": "For making an entry transferring to one person lands before charged to another, one dollar, which shall be paid by the person to whom the transfer is made",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3315",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3315/",
+   "quote": "shall be collected by the clerks of the courts of record of the counties and cities at the time of recording the deed or will",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "$18 for an instrument or document consisting of 10 or fewer pages or sheets; $32 for an instrument or document consisting of 11 to 30 pages or sheets; and $52 for an instrument or document consisting of 31 or more pages or sheets.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "A fee of $17 per page or sheet shall be charged with respect to plat or map sheets larger than eight and one-half inches by 14 inches.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "Three dollars and fifty cents of the fee collected for recording and indexing shall be designated for use in preserving the permanent records of the circuit courts.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-279(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-279/",
+   "quote": "the clerk of each circuit court shall assess a fee of $8, known as the \"Technology Trust Fund Fee,\" in each civil action, upon each instrument to be recorded in the deed books",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-258.3:1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-258.3:1/",
+   "quote": "Any clerk of a circuit court with an electronic filing system established in accordance with this section may charge a fee not to exceed $5 per instrument for every land record filed by paper.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(27)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "Such convenience fee shall not exceed four percent of the amount paid for the transaction or a flat fee of $2 per transaction.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3303(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3303/",
+   "quote": "The clerk of every circuit court shall, before the fifteenth of each month, forward to the commissioner of revenue for his county or city and to the Department a copy of the recordation receipt for all deeds for the partition and conveyance of land",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3303(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3303/",
+   "quote": "the commissioner shall ensure that the land book is updated to reflect the grantee and property address or any such other address as may be specified in writing by the grantee for the delivery of future tax bills.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-208(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-208/",
+   "quote": "any records that are maintained by the clerks of the circuit courts shall be open to inspection in the office of the clerk by any person and the clerk shall, when requested, furnish copies thereof subject to any reasonable fee charged by the clerk",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-208(E)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-208/",
+   "quote": "Any clerk or the Executive Secretary, as applicable, may require that the request be in writing and that the requester provide his name and legal address.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-208(F)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-208/",
+   "quote": "but in no event longer than 30 days from the date of a complete request made by a requester that is fully compliant with the requirements of this section and other applicable law.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3703(A)(6)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3703/",
+   "quote": "The records maintained by the clerks of the courts of record, as defined in § 1-212 , for which clerks are custodians under § 17.1-242",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(8)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "a fee of $0.50 for each page or, if an electronic record, each image.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(9)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "For annexing the seal of the court to any paper, writing the certificate of the clerk accompanying it, the clerk shall charge $2",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-276(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-276/",
+   "quote": "in an amount not to exceed $50 per month and a separate fee per image downloaded in an amount not to exceed the fee provided in subdivision A 8 of § 17.1-275 .",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-276(C)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-276/",
+   "quote": "The clerk may establish a program under which the clerk assesses a reasonable convenience fee that shall not exceed $2 per transaction for remote access to land records",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-279(D)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-279/",
+   "quote": "Secure remote access to land records shall be by paid subscription service through individual circuit court clerk's offices pursuant to § 17.1-276 , or through designated application service providers.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-276(D)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-276/",
+   "quote": "Nothing herein shall be construed to require the use by the general public of the secure remote access to land records made available by the clerk, and such records may continue to be accessed in person in the clerk's office.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-294(D)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-294/",
+   "quote": "Nothing in this section shall be construed to permit any data accessed by secure remote access to be sold or posted on any other website or in any way redistributed to any third party, and the clerk, in his discretion, may deny secure remote access to ensure compliance with these provisions.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-513",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-513/",
+   "quote": "in other cases in which it may be necessary to prevent the failure of justice and in which mandamus may issue according to the principles of common law",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-644",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-644/",
+   "quote": "application for a writ of mandamus or a writ of prohibition shall be on petition verified by oath, after the party against whom the writ is prayed has been served with a copy of the petition and notice of the intended application a reasonable time before such application is made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-261(5)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-261/",
+   "quote": "In actions for writs of mandamus, prohibition, or certiorari, except such as may be issued by the Supreme Court, the county or city wherein is the record or proceeding to which the writ relates.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-1812(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1812/",
+   "quote": "A return of recordation tax shall be considered as having been filed on the date of recordation.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-1821",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1821/",
+   "quote": "Any person assessed with any tax administered by the Department of Taxation may, within ninety days from the date of such assessment, apply for relief to the Tax Commissioner.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-1825(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1825/",
+   "quote": "within (i) three years from the date such assessment is made or (ii) one year from the date of the Tax Commissioner's determination under § 58.1-1822 , whichever is later, apply to a circuit court for relief.",
+   "role": "deadline"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Close the sale at settlement; the settlement attorney checks for unpaid taxes and liens",
+   "who": "Buyer and seller; the settlement attorney or settlement agent",
+   "how": "A sale is closed at a settlement meeting between buyer and seller. Before it, the settlement attorney researches the taxes, fees and liens on the property. At settlement the buyer must make sure any taxes, fees or liens the seller owes are paid from the sale proceeds. Anything overlooked stays on the property and becomes the new owner's responsibility. After settlement the deed naming the new owner is recorded with the Charlottesville Circuit Court.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "quote": "At settlement, the purchaser is responsible for ensuring that any taxes, fees or liens for which the seller is responsible are paid from the proceeds of the sale.",
+   "source": "https://www.charlottesville.gov/570/Property-Transfers-Sales"
+  },
+  {
+   "id": "s2",
+   "step": "Make sure the land is in the City of Charlottesville, so the deed goes to the Charlottesville Circuit Court Clerk",
+   "who": "Whoever presents the deed (settlement agent, attorney or owner)",
+   "how": "Record the deed in the clerk's office of the city or county where the land lies. City land is recorded with the Clerk of the Charlottesville Circuit Court, 315 East High Street. Land in Albemarle County goes to the separate Albemarle County Circuit Court. Recording matters: an unrecorded deed does not protect the buyer against later buyers for value without notice or against lien creditors, and protection runs only from the time of recording.",
+   "deadline": "No fixed deadline to record, but protection against later buyers and lien creditors starts only when the deed is recorded",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/55.1-407/",
+   "quote": "shall be void as to all purchasers for valuable consideration without notice not parties thereto and lien creditors, until and except from the time it is recorded in the county or city in which the property subject to such contract, deed, or bill of sale is located.",
+   "source": "Va. Code § 55.1-407(A)(1)"
+  },
+  {
+   "id": "s3",
+   "step": "Prepare the deed to meet Virginia's recording standards",
+   "who": "The attorney or party who prepares the deed (an owner may prepare their own deed)",
+   "how": "In the first clause, name each party and label them grantor or grantee, with individuals' surnames underlined or in capital letters. Number every page. On the first page, state the consideration (price) and the actual value. Clerks in localities with a unique parcel identification system must require the tax map or parcel identification number on the first page or on a cover sheet; the City Assessor identifies parcels by a nine-digit parcel ID. Cite the law for any tax exemption claimed. Remove any Social Security number. For a home with up to four units, the first page must also name the title insurance underwriter (or say the preparer does not know of title insurance) and state that the owner, or a Virginia attorney named with a Virginia State Bar number, prepared it. A deed of gift, a quitclaim deed without consideration or a deed correcting a fraudulently recorded deed must say which it is to claim the exemption from recordation tax. The clerk may reject a deed that lacks the names, consideration and value, or exemption details unless a cover sheet supplies them (step 5). A cover sheet does not excuse the page numbering, and a sale deed subject to the grantor tax cannot be recorded unless its consideration is stated on the first page.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "the clerk has the authority to reject any writing for recordation unless (i) as to any individual who is a party to such writing, the surname only of such individual is underscored or written entirely in capital letters in the first clause of the writing that identifies the names of the parties; (ii) each page of the writing is numbered consecutively;",
+   "source": "Va. Code § 17.1-223(A)"
+  },
+  {
+   "id": "s4",
+   "step": "Sign the deed and have each signature acknowledged before a notary",
+   "who": "Each grantor (seller) who signs; a notary public",
+   "how": "The clerk records a writing for each person who signed it with an original signature, once that person has acknowledged it or two witnesses have proved it. A deed that appears on its face to have been properly notarized under the Virginia Notary Act is presumed properly notarized and must be recorded if it otherwise meets the requirements.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/55.1-600/",
+   "quote": "shall record any such writing as to any person whose name is signed thereto with an original signature, when it shall have been acknowledged by him, or proved by two witnesses as to him in such court, or before such clerk",
+   "source": "Va. Code § 55.1-600"
+  },
+  {
+   "id": "s5",
+   "step": "Calculate the fees and taxes with the state Deed Calculation tool, and decide whether to add a cover sheet",
+   "who": "Whoever presents the deed",
+   "how": "The Circuit Court Deed Calculation tool from the Office of the Executive Secretary of the Supreme Court of Virginia estimates the recording fees and taxes. Choose CHARLOTTESVILLE CIRCUIT COURT, the instrument type (for example DBS, deed of bargain and sale), the consideration and value, and the number of pages. For Charlottesville the tool says the court does not require a cover sheet. You may still attach a Virginia Land Record Cover Sheet (Form CC-1570); the tool can generate one. A cover sheet you attach to a court that does not require one counts as pages for the recording fee, so add its pages to the page count. For help with a calculation, the tool says to call the circuit court's record room or deed section (Charlottesville: 434-970-3766).",
+   "deadline": null,
+   "fee": "See Fees: recording $18 to $52 by page count, $8 Technology Trust Fund fee, $20 deed processing fee, state recordation tax, grantor tax and other fees",
+   "form": "f2",
+   "url": "https://ccdeedcalc.courts.state.va.us/",
+   "quote": "Court does not require a cover sheet.",
+   "source": "https://ccdeedcalc.courts.state.va.us/"
+  },
+  {
+   "id": "s6",
+   "step": "Present the original deed to the Clerk's Office and pay the fees and taxes",
+   "who": "Settlement agent, attorney or owner; Clerk of the Charlottesville Circuit Court",
+   "how": "Bring the original deed to the Clerk's Office on the lower level of the Circuit Courthouse, 315 East High Street (public hours Monday to Friday, 8:30 am to 4:30 pm). No deed is recorded until the taxes and fees are paid. The grantor tax is the seller's unless the parties agree otherwise; the clerk certifies on the deed that it was paid. The clerk may ask for an affidavit or other evidence of the price, the value or a claimed exemption. Knowingly misstating the price is a Class 1 misdemeanor. A card payment carries a convenience fee of up to 4 percent or $2. State law lets a clerk accept electronic recordings, but paper deeds may always be filed.",
+   "deadline": null,
+   "fee": "Recording $18 (10 or fewer pages), $32 (11 to 30), $52 (31 or more), plus the taxes and fees listed under Fees",
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "quote": "no deed, deed of trust, contract or other instrument shall be admitted to record without the payment of the tax imposed thereon by law",
+   "source": "Va. Code § 58.1-812(A)"
+  },
+  {
+   "id": "s7",
+   "step": "The Clerk records the deed and indexes it under each grantor and grantee",
+   "who": "Clerk of the Charlottesville Circuit Court",
+   "how": "The clerk endorses the day and time of recording on the deed, records it in the deed book, and indexes it under the names of the grantors and grantees (the clerk may also index it by parcel number). If a deed is not recorded on the day it is delivered, the clerk time-stamps the delivery, and that time is presumed to be the recording time unless the clerk finds that the requirements for recording were not met. Entries made in the daily index must be moved to the general index within 90 days.",
+   "deadline": "Indexed on receipt (daily or general index); moved to the general index within 90 days after recording",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "Upon admitting any such writing or other paper to record, the clerk shall endorse thereon the day and time of day of such recordation.",
+   "source": "Va. Code § 17.1-223(E)"
+  },
+  {
+   "id": "s8",
+   "step": "Receive the recorded original",
+   "who": "Clerk of the Charlottesville Circuit Court; the grantee (buyer) or the person named for return",
+   "how": "Once recorded, the original may be returned to the grantee, unless the deed or cover sheet clearly names someone else and a current address for its return. The state fee schedule notes that some clerks' offices ask for a copy of the document, or charge 50 cents a page, when the recorded original is wanted back immediately. Ask the Clerk's Office how Charlottesville returns originals.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "quote": "Such writing, once recorded, may be returned to any party to such writing who is identified therein as a grantee unless otherwise indicated clearly on the face of the writing, or any cover sheet, including an appropriate current address to which such writing shall be returned.",
+   "source": "Va. Code § 17.1-223(A)"
+  },
+  {
+   "id": "s9",
+   "step": "The court passes the sale to the City Assessor, who updates the owner on the land book and tells the Treasurer",
+   "who": "Clerk of the Charlottesville Circuit Court; City Assessor's Office; City Treasurer",
+   "how": "Each month the clerk sends the recordation receipts for the previous month's deeds, with the grantee's address, to the local assessing office and the Virginia Department of Taxation. In Charlottesville the court relays the new owner's information to the City (Real Estate) Assessor, who then gives it to the Treasurer's Office. The land book must then show the new owner and the property address, or another address the new owner gives in writing for future tax bills. The city pages read do not say which office takes a different billing address; the City Assessor keeps the ownership records and the Treasurer mails the tax bills, so ask either office.",
+   "deadline": "The clerk forwards receipts before the 15th of each month for deeds recorded in the previous month (Va. Code § 58.1-3303(A))",
+   "fee": "$1 transfer fee, collected by the clerk at recording",
+   "form": null,
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "quote": "When the deed has been recorded, the court relays the new owner’s information to the Real Estate Assessor",
+   "source": "https://www.charlottesville.gov/570/Property-Transfers-Sales"
+  },
+  {
+   "id": "s10",
+   "step": "Answer the City Assessor's sale questionnaire if one arrives",
+   "who": "Buyer; City Assessor's Office",
+   "how": "After each sale the Assessor's Office mails the buyer a questionnaire about the sale. The answers help the Assessor decide whether it was a valid (arms-length) sale to use when setting values.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=20",
+   "quote": "Each time a property sells the Assessor’s Office mails a questionnaire to the buyer asking questions about the sale to help determine if the sale was valid or invalid.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?TID=20"
+  },
+  {
+   "id": "s11",
+   "step": "Expect this year's real estate tax bills to stay in the name of the January 1 owner",
+   "who": "City Treasurer; buyer and seller",
+   "how": "Real estate is assessed for the whole year in the name of the owner on January 1, so the bills for the year of sale keep the previous owner's name. The new owner's name appears from the next year's bills. The city says this does not mean the ownership record is wrong. Taxes the seller owed that were missed at settlement stay with the property (step 1).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "quote": "As a result, the name of the owner as of January 1st appears on the tax bills for the property for the entire year, regardless of when the property is sold or transferred during the year.",
+   "source": "https://www.charlottesville.gov/570/Property-Transfers-Sales"
+  },
+  {
+   "id": "s12",
+   "step": "Search land records in person in the Clerk's Records Room",
+   "who": "Anyone; Clerk of the Charlottesville Circuit Court",
+   "how": "Records kept by the circuit court clerk, including the deed books and their indexes, are open to inspection by any person in the clerk's office. The Clerk's Office and Records Room are on the lower level of the Circuit Courthouse, 315 East High Street, Monday to Friday 8:30 am to 4:30 pm. Copies are 50 cents a page, and the clerk's certificate with the court seal is $2 more. The city's Request Copies page says to call the Clerk's Office at 434-970-3766 to find out how to obtain copies of Circuit Court records. The clerk may require a written request giving your name and legal address. Requested records must be provided within a reasonable time, and no later than 30 days after a complete request. These clerk's records are outside the Virginia Freedom of Information Act and are requested under Va. Code § 17.1-208.",
+   "deadline": "Requested records within a reasonable time, and no later than 30 days after a complete request (Va. Code § 17.1-208(F))",
+   "fee": "Copies $0.50 per page; certificate and seal $2",
+   "form": null,
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court",
+   "quote": "Clerk's Office and Records Room are located on the lower level of the Circuit Courthouse.",
+   "source": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"
+  },
+  {
+   "id": "s13",
+   "step": "Search land records online through paid remote access (SRA subscription or the clerk's vendor; confirm with the Clerk)",
+   "who": "Subscriber; Clerk of the Charlottesville Circuit Court; Office of the Executive Secretary, Supreme Court of Virginia (runs SRA); any vendor the clerk designates",
+   "how": "State law provides secure remote access to land records by paid subscription through each clerk's office, or through application service providers the clerk designates. Virginia's Secure Remote Access (SRA) system gives online access to land records in circuit court clerks' offices that use the state's records system. Viewing images is limited to subscribers the local clerk authorizes, after a signed agreement and payment of fees; state law caps the clerk's subscriber fee at $50 a month plus a per-image fee no higher than the copy fee, or lets the clerk charge instead a convenience fee of up to $2 per transaction plus the per-image fee. Clerks that enable free index-only access show as 'Available' on SRA's Available Courts tab; their indexes can be searched without logging in. The city's Online Resources page says remote access to Charlottesville's public court records is a pay-per-view service through a third-party vendor, but links to the state's SRA page. Ask the Clerk's Office (434-970-3766) which route applies and how to sign up. Remote data may not be resold or reposted, and in-person access stays available.",
+   "deadline": null,
+   "fee": "Subscription up to $50 per month, or a convenience fee up to $2 per transaction, plus a per-image fee up to $0.50 (statutory caps; Charlottesville's actual fees not found)",
+   "form": null,
+   "url": "https://www.vacourts.gov/online/sra/home",
+   "quote": "Access to view images is limited to subscribers authorized by individual Clerks of Court.",
+   "source": "https://www.vacourts.gov/online/sra/home"
+  },
+  {
+   "id": "s14",
+   "step": "Look up ownership, deed references and land books from the City Assessor",
+   "who": "Anyone; City Assessor's Office",
+   "how": "The City Assessor keeps parcel records with ownership, deed and plat references and ownership history. You can see the city's real estate records in the online GIS Viewer or on a public computer in the Assessor's Office at 102 5th Street NE (open by appointment only; call 434-970-3136). Unofficial PDF land books back to 2015 are on the Land Books page; the official copies are kept in the Circuit Court Clerk's office. These are assessment records. They point to the recorded deed but are not the deed itself.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/210/City-Assessor",
+   "quote": "This information includes ownership information, deed and plat references, ownership history, and specific improvement or building information.",
+   "source": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "id": "s15",
+   "step": "Optionally, sign up for VA Deed Alert to be told when a document in your name is recorded",
+   "who": "Property owner; Office of the Executive Secretary, Supreme Court of Virginia",
+   "how": "VA Deed Alert is a free state service that sends a notice when a document containing names you choose is recorded in the Land Records Division of a clerk's office. It may help an owner notice an unexpected filing in their name; the state page does not say this, and it does not list which clerks' offices are covered, so check that Charlottesville is included. You sign up by creating an account on the service's own site.",
+   "deadline": null,
+   "fee": "Free",
+   "form": null,
+   "url": "https://www.vacourts.gov/online/home",
+   "quote": "VA Deed Alert is a free service developed and maintained by OES.",
+   "source": "https://www.vacourts.gov/online/home"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Virginia Land Record Cover Sheet (Form CC-1570, Office of the Executive Secretary). Optional in Charlottesville. Lists grantors, grantees, consideration, value, exemptions, parcel number and return address",
+   "number": "CC-1570",
+   "url": "https://www.vacourts.gov/static/forms/circuit/cc1570.pdf",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f2",
+   "title": "Circuit Court Deed Calculation, with the Virginia Land Record Cover Sheet Generator (online tool, Office of the Executive Secretary)",
+   "number": null,
+   "url": "https://ccdeedcalc.courts.state.va.us/",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Circuit Court Fee Schedule, Deeds and Contracts (Appendix C of the circuit court clerks' manual, rev. 07/26), linked from the Deed Calculation page as the Circuit Deed Fee Schedule",
+   "number": null,
+   "url": "https://www.vacourts.gov/static/courts/circuit/resources/manuals/appendixc.pdf",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f4",
+   "title": "Virginia Land Records Cover Sheet Guide (instructions for CC-1570 and the generator, 2025 edition), linked as Instructions from the Deed Book forms page",
+   "number": "CC-1570 INST",
+   "url": "https://www.vacourts.gov/static/forms/circuit/cc1570inst.pdf",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f5",
+   "title": "Assessment Appeal Application (City Assessor; online form or fillable PDF), for disputing the assessed value that sets future taxes and the value used for recordation tax",
+   "number": null,
+   "url": "https://www.charlottesville.gov/1411/Assessment-Appeal-Application-Form",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Recording and indexing a deed (plats no larger than 8.5 x 14 inches count as pages)",
+   "amount": "$18 for 10 or fewer pages; $32 for 11 to 30 pages; $52 for 31 or more pages. $3.50 of each fee is set aside for preserving the circuit courts' permanent records, a fund The Library of Virginia administers. The state fee schedule shows it as $14.50, $28.50 or $48.50 plus $3.50.",
+   "basis": "Va. Code § 17.1-275(A)(2)",
+   "quote": "$18 for an instrument or document consisting of 10 or fewer pages or sheets; $32 for an instrument or document consisting of 11 to 30 pages or sheets; and $52 for an instrument or document consisting of 31 or more pages or sheets."
+  },
+  {
+   "item": "Oversize plat or map sheets (larger than 8.5 x 14 inches)",
+   "amount": "$17 per sheet",
+   "basis": "Va. Code § 17.1-275(A)(2)",
+   "quote": "A fee of $17 per page or sheet shall be charged with respect to plat or map sheets larger than eight and one-half inches by 14 inches."
+  },
+  {
+   "item": "Technology Trust Fund fee",
+   "amount": "$8 per instrument recorded in the deed books (raised from $5 on July 1, 2026). The state fee schedule says $16 for a deed of exchange, a deed of dedication with release and a deed with vendor's lien. Not charged to government filers.",
+   "basis": "Va. Code § 17.1-279(A)",
+   "quote": "the clerk of each circuit court shall assess a fee of $8, known as the \"Technology Trust Fund Fee,\" in each civil action, upon each instrument to be recorded in the deed books"
+  },
+  {
+   "item": "Deed processing fee (Appropriation Act § 3-6.01, as listed in the state fee schedule)",
+   "amount": "$20 on a deed or deed of trust when state recordation tax is assessed",
+   "basis": "https://www.vacourts.gov/static/courts/circuit/resources/manuals/appendixc.pdf",
+   "quote": "Deed Processing Fee (Charged on Deeds and DOTs when tax under §§ 58.1-801 or 58.1-803 is assessed)."
+  },
+  {
+   "item": "State recordation tax (often called the grantee tax)",
+   "amount": "25 cents per $100 (or part of $100) of the price or the property's value, whichever is greater. Value means the most recent tax assessment.",
+   "basis": "Va. Code § 58.1-801(A)",
+   "quote": "The rate of the tax shall be 25 cents on every $100 or fraction thereof of (i) the consideration of the deed or (ii) the actual value of the property conveyed, whichever is greater."
+  },
+  {
+   "item": "City recordation tax (local option)",
+   "amount": "One-third of the state recordation tax, if the city levies it. Charlottesville's levy was not confirmed from a city source.",
+   "basis": "Va. Code § 58.1-3800",
+   "quote": "the governing body of any city or county is hereby authorized to impose a recordation tax, in an amount equal to one-third of the amount of the state recordation tax collectible for the Commonwealth, upon the first recordation of each taxable instrument in such city or county."
+  },
+  {
+   "item": "Grantor tax on a sale",
+   "amount": "50 cents per $500 (or part of $500) of the price or value, whichever is greater, not counting liens that stay on the property, when that amount is over $100. Paid by the seller unless the parties agree otherwise. Half goes to the state and half to the city.",
+   "basis": "Va. Code § 58.1-802(A)",
+   "quote": "shall be 50 cents for each $500 or fraction thereof, exclusive of the value of any lien or encumbrance remaining thereon at the time of the sale"
+  },
+  {
+   "item": "Land book transfer fee",
+   "amount": "$1, paid by the new owner and collected by the clerk at recording",
+   "basis": "Va. Code § 58.1-3314(3)",
+   "quote": "For making an entry transferring to one person lands before charged to another, one dollar, which shall be paid by the person to whom the transfer is made"
+  },
+  {
+   "item": "Open-space preservation fee",
+   "amount": "$3 per instrument, only where the Virginia Outdoors Foundation holds open-space easements. Whether it applies in Charlottesville was not confirmed.",
+   "basis": "Va. Code § 58.1-817",
+   "quote": "there is hereby imposed a $3 fee on every deed, deed of trust, contract, or other instrument admitted to record in those jurisdictions in which open-space easements are held by the Virginia Outdoors Foundation."
+  },
+  {
+   "item": "Paper-filing fee where the clerk has electronic filing",
+   "amount": "Up to $5 per paper instrument. The state Deed Calculation tool notes this fee for some courts (for example Staunton) but shows no such note for the Charlottesville Circuit Court.",
+   "basis": "Va. Code § 17.1-258.3:1(B)",
+   "quote": "Any clerk of a circuit court with an electronic filing system established in accordance with this section may charge a fee not to exceed $5 per instrument for every land record filed by paper."
+  },
+  {
+   "item": "Credit or debit card convenience fee",
+   "amount": "Up to 4 percent of the payment, or a flat $2 per transaction (the clerk's actual fee was not found)",
+   "basis": "Va. Code § 17.1-275(A)(27)",
+   "quote": "Such convenience fee shall not exceed four percent of the amount paid for the transaction or a flat fee of $2 per transaction."
+  },
+  {
+   "item": "Copies of land records",
+   "amount": "$0.50 per page (or per image for an electronic record)",
+   "basis": "Va. Code § 17.1-275(A)(8)",
+   "quote": "a fee of $0.50 for each page or, if an electronic record, each image."
+  },
+  {
+   "item": "Clerk's certificate and court seal on a copy (certified copy)",
+   "amount": "$2",
+   "basis": "Va. Code § 17.1-275(A)(9)",
+   "quote": "For annexing the seal of the court to any paper, writing the certificate of the clerk accompanying it, the clerk shall charge $2"
+  },
+  {
+   "item": "Secure Remote Access (online land records) subscription",
+   "amount": "Up to $50 per month per subscriber, plus a per-image fee no higher than the $0.50 copy fee (statutory caps; Charlottesville's fees not found)",
+   "basis": "Va. Code § 17.1-276(A)",
+   "quote": "in an amount not to exceed $50 per month and a separate fee per image downloaded in an amount not to exceed the fee provided in subdivision A 8 of § 17.1-275 ."
+  },
+  {
+   "item": "Remote access to land records by transaction (where the clerk runs a pay-per-use program instead of, or beside, subscriptions)",
+   "amount": "Convenience fee up to $2 per transaction, plus a per-image fee no higher than the $0.50 copy fee (statutory caps; Charlottesville's pay-per-view charges not found)",
+   "basis": "Va. Code § 17.1-276(C)",
+   "quote": "The clerk may establish a program under which the clerk assesses a reasonable convenience fee that shall not exceed $2 per transaction for remote access to land records"
+  },
+  {
+   "item": "Deed of gift, quitclaim without consideration, or deed correcting a fraudulently recorded deed",
+   "amount": "No recordation tax when no consideration passed (the deed must say so). Recording fees still apply.",
+   "basis": "Va. Code § 58.1-811(D)",
+   "quote": "No recordation tax shall be required for the recordation of any deed of gift, quitclaim deed, or deed to correct a fraudulently recorded deed, including a deed of trust, between a grantor or grantors and a grantee or grantees when no consideration has passed between the parties."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Charlottesville Circuit Court, Clerk's Office (Clerk of the Circuit Court, an elected constitutional officer; 16th Judicial Circuit of Virginia). Clerk's Office and Records Room on the lower level of the Circuit Courthouse; public hours Monday through Friday, 8:30 am to 4:30 pm.",
+   "label": "Charlottesville Circuit Court Clerk's Office",
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"
+  },
+  {
+   "kind": "address",
+   "value": "315 East High Street, Charlottesville, VA 22902 (handicap entrance and parking; free one-hour public parking behind the courthouse)",
+   "label": "Charlottesville Circuit Court Clerk's Office",
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3766 (General Line for the Clerk's Office; the city's Online Resources and Request Copies pages also give this number for questions about filing, deed fee calculation and copies)",
+   "label": "Charlottesville Circuit Court Clerk's Office",
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.vacourts.gov/courts/circuit/charlottesville/home",
+   "label": "Charlottesville Circuit Court (Virginia's Judicial System court page)",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/178/Online-Resources",
+   "label": "Online Resources (City of Charlottesville courts pages: deed fee calculation, forms, remote access to court records)",
+   "url": "https://www.charlottesville.gov/178/Online-Resources"
+  },
+  {
+   "kind": "portal",
+   "value": "https://ccdeedcalc.courts.state.va.us/",
+   "label": "Circuit Court Deed Calculation and Virginia Land Record Cover Sheet Generator (Office of the Executive Secretary, Supreme Court of Virginia)",
+   "url": "https://www.charlottesville.gov/178/Online-Resources"
+  },
+  {
+   "kind": "portal",
+   "value": "https://risweb.vacourts.gov/jsra/sra/#/home",
+   "label": "Secure Remote Access (SRA) to Virginia land records (Office of the Executive Secretary); subscriptions are arranged with the local clerk",
+   "url": "https://www.vacourts.gov/online/sra/home"
+  },
+  {
+   "kind": "portal",
+   "value": "https://risweb.vacourts.gov/VADeedAlert/#/login",
+   "label": "VA Deed Alert, free recording notifications (Office of the Executive Secretary)",
+   "url": "https://www.vacourts.gov/online/home"
+  },
+  {
+   "kind": "address",
+   "value": "Office of the Executive Secretary, Supreme Court of Virginia, 100 North Ninth Street, Richmond, VA 23219 (runs the Deed Calculation, SRA and VA Deed Alert systems)",
+   "label": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "url": "https://www.vacourts.gov/online/sra/home"
+  },
+  {
+   "kind": "office",
+   "value": "City Assessor's Office, 102 5th Street NE, Charlottesville, VA 22902 (open by appointment only; Monday through Friday, 8 am to 5 pm; public computer for real estate records)",
+   "label": "City Assessor",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "kind": "address",
+   "value": "City Assessor's Office, P.O. Box 911, Charlottesville, VA 22902",
+   "label": "City Assessor (mailing address)",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3136",
+   "label": "City Assessor (assessment information and appointments)",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "kind": "portal",
+   "value": "http://gisweb.charlottesville.org/GisViewer/",
+   "label": "City of Charlottesville GIS Viewer (real estate records: ownership, deed and plat references)",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/1368/Land-Books",
+   "label": "Land Books (City Assessor; unofficial PDF land books from 2015)",
+   "url": "https://www.charlottesville.gov/1368/Land-Books"
+  },
+  {
+   "kind": "office",
+   "value": "City Treasurer's Office, City Hall, 605 E Main Street, Room A120, Charlottesville, VA 22902 (in person Monday to Friday 8:30 am to 4:30 pm; by phone 8:00 am to 5:00 pm)",
+   "label": "City Treasurer",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3146",
+   "label": "City Treasurer (main line)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "email",
+   "value": "citytreas@charlottesville.gov",
+   "label": "City Treasurer (office mailbox)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "label": "Property Transfers & Sales (City Treasurer)",
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "The clerk rejects the deed because the names, page numbers, consideration and value, or exemption are not shown as required",
+   "next": "Clerk of the Charlottesville Circuit Court: correct the deed and present it again, or present it with a Virginia Land Record Cover Sheet (Form CC-1570) that supplies the indexing information. A cover sheet does not cure missing page numbers, and a sale deed must still state its consideration on its first page (Va. Code § 58.1-802(A)).",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 17.1-227.1(B)",
+   "quote": "In any clerk's office that does not require a cover sheet, the attorney or other party presenting a deed or other instrument conveying or relating to an interest in real property may submit a cover sheet with such deed or other instrument containing all of the information required under subsection A"
+  },
+  {
+   "trigger": "The clerk refuses to record a deed that meets the legal requirements (for example, a deed that appears properly notarized and has the taxes and fees paid)",
+   "next": "Charlottesville Circuit Court (venue for mandamus is the city where the record or proceeding is, Va. Code § 8.01-261(5)): petition for a writ of mandamus against the clerk (a petition verified by oath, served with notice on the clerk a reasonable time before the application, Va. Code § 8.01-644)",
+   "type": "judicial review",
+   "deadline": "None stated",
+   "basis": "Va. Code § 17.1-513",
+   "quote": "in other cases in which it may be necessary to prevent the failure of justice and in which mandamus may issue according to the principles of common law"
+  },
+  {
+   "trigger": "A request for land records or copies gets no answer within 30 days of a complete request",
+   "next": "A written follow-up to the Clerk of the Charlottesville Circuit Court; if the records are still withheld, a mandamus petition in the Charlottesville Circuit Court (Va. Code §§ 17.1-513, 8.01-261(5), 8.01-644). These clerk's records are outside the Virginia FOIA, so the FOIA Council and FOIA petition do not apply (Va. Code § 2.2-3703(A)(6)).",
+   "type": "judicial review",
+   "deadline": "The clerk has no more than 30 days from a complete request",
+   "basis": "Va. Code § 17.1-208(F)",
+   "quote": "but in no event longer than 30 days from the date of a complete request made by a requester that is fully compliant with the requirements of this section and other applicable law."
+  },
+  {
+   "trigger": "The clerk denies or ends a Secure Remote Access subscription",
+   "next": "Inspect the records in person in the Clerk's Records Room, which stays open to the public whatever happens to online access",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 17.1-276(D)",
+   "quote": "Nothing herein shall be construed to require the use by the general public of the secure remote access to land records made available by the clerk, and such records may continue to be accessed in person in the clerk's office."
+  },
+  {
+   "trigger": "You believe the state recordation or grantor tax collected at recording was wrong (for example, an exemption was refused or the wrong value was used)",
+   "next": "Tax Commissioner, Virginia Department of Taxation: application for correction (applicability to recordation taxes collected by a clerk not confirmed; see caveats)",
+   "type": "external administrative review",
+   "deadline": "Within 90 days from the date of the assessment (Va. Code § 58.1-1821). The sections read do not say when a tax collected by the clerk counts as assessed; § 58.1-1812(A) treats a recordation tax return as filed on the date of recordation, so count from the recording date.",
+   "basis": "Va. Code § 58.1-1821",
+   "quote": "Any person assessed with any tax administered by the Department of Taxation may, within ninety days from the date of such assessment, apply for relief to the Tax Commissioner."
+  },
+  {
+   "trigger": "The Tax Commissioner denies relief, or you go straight to court over the state tax",
+   "next": "Circuit court application to correct an erroneous state tax assessment",
+   "type": "judicial review",
+   "deadline": "Within three years from the assessment, or one year from the Tax Commissioner's determination, whichever is later",
+   "basis": "Va. Code § 58.1-1825(A)",
+   "quote": "within (i) three years from the date such assessment is made or (ii) one year from the date of the Tax Commissioner's determination under § 58.1-1822 , whichever is later, apply to a circuit court for relief."
+  },
+  {
+   "trigger": "You disagree with the city's assessed value (it sets future real estate taxes and is the value used for recordation tax)",
+   "next": "City Assessor's Office (talk to the appraiser, then file an Assessment Appeal Application); then the Board of Equalization (within 30 days of the Assessor's decision letter); then the Circuit Court. See the separate real estate assessment appeal process.",
+   "type": "internal appeal",
+   "deadline": "Board of Equalization appeal within 30 days of the date of the formal appeal decision letter",
+   "basis": "https://www.charlottesville.gov/210/City-Assessor",
+   "quote": "Each year, all property owners, or their duly authorized agent, may appeal our valuation of their property by requesting a review of their assessment."
+  },
+  {
+   "trigger": "After recording, the land book or tax mailing address still shows the old owner or the wrong address",
+   "next": "City Assessor's Office (the official who must update the land book from the clerk's monthly recordation receipts); give any different billing address in writing",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3303(B)",
+   "quote": "the commissioner shall ensure that the land book is updated to reflect the grantee and property address or any such other address as may be specified in writing by the grantee for the delivery of future tax bills."
+  },
+  {
+   "trigger": "A deed was recorded fraudulently against your property",
+   "next": "Clerk of the Charlottesville Circuit Court: record a deed to correct the fraudulently recorded deed (no recordation tax when no consideration passes); get legal advice on further court action, and use VA Deed Alert to watch for new filings",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-811(D)",
+   "quote": "No recordation tax shall be required for the recordation of any deed of gift, quitclaim deed, or deed to correct a fraudulently recorded deed, including a deed of trust, between a grantor or grantors and a grantee or grantees when no consideration has passed between the parties."
+  }
+ ],
+ "caveats": [
+  "No Charlottesville or vacourts.gov page describes how the Charlottesville clerk handles recordings. The city's court pages and the vacourts.gov court page give only the address, phone and hours. The steps come from state law and the statewide Office of the Executive Secretary (OES) tools. Local practice was not found and should be confirmed by phone (434-970-3766): the daily recording cut-off time, accepted payment methods, recording by mail, whether eRecording is accepted and through which providers, how and when originals are returned, and the actual card and SRA fees.",
+  "Local ordinance not checked. Charlottesville's City Code is published on Municode, whose terms are not confirmed to allow reuse, so no City Code text is quoted and lexflow has not checked it. So whether the city levies the one-third local recordation tax (Va. Code §§ 58.1-3800, 58.1-814) is not confirmed. The FY 2027 Budget-in-Brief does not mention recordation tax. The city's quarterly financial reports (for example the 1st Quarter FY26 report, ArchiveCenter item 279) carry a revenue line 'Tax on Wills & Deeds', which shows deed-related tax revenue but does not separate an optional local recordation tax from the city's half of the grantor tax (§ 58.1-802(B)), so it does not settle the question. The OES Deed Calculation tool applies whatever local taxes apply to the chosen court, so its result is the practical check. No local legal_basis entry is given.",
+  "The statement that Charlottesville does not require a cover sheet is OES data in the Deed Calculation page. It is the text stored for CHARLOTTESVILLE CIRCUIT COURT in the court list's option data, which the page shows when that court is selected; it is not in the static body text. The same data says Albemarle and Staunton require a cover sheet, and that Staunton adds the $5 paper-filing fee. The court list is not served during the tool's 4:00 to 5:00 AM (Eastern) maintenance window.",
+  "Fee figures differ between OES sources. The Deed Calculation help text gives $14.50, $28.50 and $48.50 by page count and $20 per oversize plat. Va. Code § 17.1-275(A)(2) gives $18, $32 and $52 and $17 per oversize sheet. The rev. 07/26 fee schedule (Appendix C) reconciles the page fees as $14.50, $28.50 or $48.50 plus the $3.50 Library of Virginia share, and oversize plats as $13.50 plus $3.50 ($17). So the help text's $20 plat figure looks out of date.",
+  "The Technology Trust Fund fee is $8 in the index text of Va. Code § 17.1-279 (2026, c. 966), and the fee schedule says it rose from $5 on July 1, 2026. The fee schedule's $16 for deeds of exchange, deeds of dedication with release and deeds with vendor's lien does not appear in the § 17.1-279 text that was read.",
+  "The $20 deed processing fee comes from the Appropriation Act (§ 3-6.01) as listed in the OES fee schedule. The Act itself was not read.",
+  "Recordation tax rate above $10 million: the OES fee schedule's quick reference applies a sliding state grantee-tax schedule (25 cents per $100 on the first $10 million, falling to 13 cents over $40 million) to 'all instruments except RFDT' and cites § 58.1-803(D). In the index text that schedule is § 58.1-803(F), which sets the maximum tax on a deed of trust or mortgage, while § 58.1-801(A) gives a flat 25 cents per $100 for deeds. This matters only for very large transfers; ask the clerk. The regional transportation fees in the fee schedule (Northern Virginia, Hampton Roads, WMATA) apply only in those regions and not in Charlottesville.",
+  "Whether the $3 open-space preservation fee (§ 58.1-817) applies in Charlottesville, which depends on whether the Virginia Outdoors Foundation holds open-space easements there, was not confirmed. The Deed Calculation tool decides this for each court.",
+  "The Deed Calculation help text says a court 'may charge an additional fee of up to $5 per document for each instrument recorded electronically'. The statute read (§ 17.1-258.3:1(B)) instead allows up to $5 for each land record filed on paper where the clerk has e-filing. The OES tool shows no paper-filing fee note for Charlottesville.",
+  "Online search: the city's Online Resources page says remote access to Charlottesville's court records is through 'the US Land Records website', a third-party vendor, on a pay-per-view basis, but its link goes to the state's SRA page. It was not determined whether Charlottesville land records are on SRA or with a vendor, what the subscription costs, or whether free index-only searching is enabled. SRA's Available Courts list sits inside a web application that needs an access token, which was not used.",
+  "Some guidance for the cover sheet (Form CC-1570 instructions, 2025 edition) carries a footer saying 'CONFIDENTIAL - CLERK'S OFFICE USE ONLY'. Even so, OES links it publicly as the form's instructions on the Deed Book forms page. It is listed as a form, but nothing here is quoted from it. The CC-1570 PDF has no form fields (no AcroForm or widget annotations), so it is marked not fillable, although the Deed Book forms page says its forms 'can be completed online and printed'; the online generator (f2) is the fillable route.",
+  "FOIA: land records held by the circuit court clerk are outside the Virginia FOIA. The index text of Va. Code § 2.2-3703 puts this exclusion in subsection (A)(6); the OES pamphlet 'Requesting Public Records from Clerks of Court' (10/2024) cites (A)(7). Requests go under Va. Code § 17.1-208, so the Virginia public-records ladder (FOIA Council opinion, FOIA mandamus heard within 7 days) does not apply. No statute giving a specific appeal from a clerk's refusal to record was found. The mandamus route under Va. Code § 17.1-513 is the general common-law remedy, and whether it fits a given refusal is a legal question.",
+  "Recordation tax disputes: whether the Tax Commissioner route (§ 58.1-1821) and the circuit court route (§ 58.1-1825) cover recordation taxes collected by a clerk was not confirmed in the sections read. § 58.1-1812(A) treats a recordation tax return as filed on the date of recordation, which suggests the Department of Taxation administers the tax. No Virginia Tax web page on recordation tax refunds was found (https://www.tax.virginia.gov/recordation-tax returned 404). A dispute over the local share, if the city levies one, may fall under § 58.1-3984 instead (not quoted here).",
+  "Venue: the City of Charlottesville and Albemarle County have separate circuit courts and clerks, though both courthouses are in Charlottesville. Many addresses with a Charlottesville mailing address are in Albemarle County, so check the parcel's jurisdiction (for example in the city's GIS Viewer or on the tax bill) before recording. Land lying partly in the city and partly in Albemarle County is recorded in both clerks' offices: the state taxes are paid where the deed is first recorded, and the second office collects only any local recordation tax (Va. Code § 58.1-812(A)); the city's or county's half of the grantor tax is split by the value in each locality (Va. Code § 58.1-802(B)). The Deed Calculation tool's 'Subsequent Recordation' and 'Locality Percent' options handle this.",
+  "Va. Code § 58.1-3303 says the clerk sends recordation receipts to the commissioner of the revenue. In Charlottesville real estate is assessed by the City Assessor, and the city's Property Transfers page says the court relays new-owner information to the Real Estate Assessor. The exact hand-off and how long the update takes were not found.",
+  "Privacy: the vacourts.gov court page and the city's Circuit Court page name the elected Clerk, and offer an obfuscated email or an email form addressed to that person. The City Assessor pages name the Assessor and give a personal mailbox. None of these is recorded here. No general office mailbox for the Clerk's Office was found.",
+  "Not covered: deeds of trust and refinancing, transfer on death deeds, plats and subdivision approval (an unapproved subdivision plat cannot be recorded, Va. Code § 15.2-2254), mechanic's liens, releases of deeds of trust, and the title examination itself. Whether a non-attorney may lawfully prepare a deed for someone else is a question of unauthorized practice of law and is not covered here.",
+  "Va. Code § 17.1-258.3:1 (paper-filing fee and paper filing) is in the index only in its version effective until July 1, 2027. A later version was not read.",
+  "Parcel number: § 17.1-252 makes the tax map or parcel number mandatory only in localities with a unique parcel identification system. The City Assessor's page refers to a 'nine digit parcel ID number', which suggests Charlottesville has one, but no source read says so in the statute's terms."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "title": "Property Transfers & Sales (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/178/Online-Resources",
+   "title": "Online Resources (City of Charlottesville courts pages)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court",
+   "title": "Charlottesville Circuit Court (City of Charlottesville courts page)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/173/Courts",
+   "title": "Courts (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/181/Request-Copies",
+   "title": "Request Copies (City of Charlottesville courts pages)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/179/Payments",
+   "title": "Payments (City of Charlottesville courts pages)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/210/City-Assessor",
+   "title": "City Assessor",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=20",
+   "title": "City Assessor FAQs (served as /m/faq?cat=20)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1368/Land-Books",
+   "title": "Land Books (City Assessor)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1411/Assessment-Appeal-Application-Form",
+   "title": "Assessment Appeal Application Form (City Assessor)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "http://gisweb.charlottesville.org/GisViewer/",
+   "title": "City of Charlottesville GIS Viewer (landing page only)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.charlottesville.gov/551/City-Treasurer",
+   "title": "City Treasurer",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16503",
+   "title": "FY 2027 Budget-in-Brief (PDF; searched for recordation tax, none found)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home",
+   "title": "Charlottesville Circuit Court (Virginia's Judicial System court page)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://ccdeedcalc.courts.state.va.us/",
+   "title": "Circuit Court Deed Calculation (Office of the Executive Secretary)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/static/courts/circuit/resources/manuals/appendixc.pdf",
+   "title": "Circuit Court Fee Schedule, Appendix C (Office of the Executive Secretary, rev. 07/26)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/online/sra/home",
+   "title": "Secure Remote Access (SRA) (Virginia's Judicial System)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/online/home",
+   "title": "Online Services (Virginia's Judicial System): SRA and VA Deed Alert",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/forms/circuit/deed",
+   "title": "Circuit Court Forms: Deed Book (Forms 1501-1570)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/static/forms/circuit/cc1570.pdf",
+   "title": "Virginia Land Record Cover Sheet (Form CC-1570)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/static/forms/circuit/cc1570inst.pdf",
+   "title": "Virginia Land Records Cover Sheet Guide (CC-1570 instructions, 2025 edition)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/courtadmin/aoc/lpr/reqpubrec/home",
+   "title": "Requesting Public Records (Virginia's Judicial System)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/static/courtadmin/aoc/lpr/reqpubrec/requesting_public_records_from_clerks_of_court.pdf",
+   "title": "Requesting Public Records from Clerks of Court (OES, 10/2024)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/static/courts/circuit/circuitinfo.pdf",
+   "title": "Circuit Courts Informational Pamphlet (Supreme Court of Virginia)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.municode.com/code/page/terms-use",
+   "title": "Municode Terms of Use (would not load)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/55.1-600/",
+   "title": "Va. Code § 55.1-600, When and where writings recorded",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/55.1-407/",
+   "title": "Va. Code § 55.1-407, Contracts, etc., void as to creditors and purchasers until recorded",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/55.1-604/",
+   "title": "Va. Code § 55.1-604, When clerk may refuse document to be recorded",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-223/",
+   "title": "Va. Code § 17.1-223, Duty of clerk to record writings, etc., and make index",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227/",
+   "title": "Va. Code § 17.1-227, Documents to be recorded in deed books; social security numbers",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-227.1/",
+   "title": "Va. Code § 17.1-227.1, Use of cover sheets on deeds or other instruments by circuit court clerks",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-249/",
+   "title": "Va. Code § 17.1-249, General indexes for clerks' offices; daily index",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-252/",
+   "title": "Va. Code § 17.1-252, Indexing by tax map reference number",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-258.3:1/",
+   "title": "Va. Code § 17.1-258.3:1, Electronic filing of land records; paper form",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "title": "Va. Code § 17.1-275, Fees collected by clerks of circuit courts; generally",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-276/",
+   "title": "Va. Code § 17.1-276, Fee allowed for providing secure remote access to land records",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-279/",
+   "title": "Va. Code § 17.1-279, Additional fee to be assessed by circuit court clerks for information technology",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-208/",
+   "title": "Va. Code § 17.1-208, Records, etc., open to inspection; copies; exception",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-294/",
+   "title": "Va. Code § 17.1-294, Secure remote access to land records",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-513/",
+   "title": "Va. Code § 17.1-513, Jurisdiction of circuit courts",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/8.01-644/",
+   "title": "Va. Code § 8.01-644, Application for mandamus or prohibition",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3703/",
+   "title": "Va. Code § 2.2-3703, Public bodies and records to which chapter inapplicable",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-801/",
+   "title": "Va. Code § 58.1-801, Deeds generally; charter amendments",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-802/",
+   "title": "Va. Code § 58.1-802, Additional tax paid by grantor; collection",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-811/",
+   "title": "Va. Code § 58.1-811, Exemptions",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-812/",
+   "title": "Va. Code § 58.1-812, Payment prerequisite to recordation; exceptions; assessment and collection of tax; penalty for misrepresentation",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-817/",
+   "title": "Va. Code § 58.1-817, Fee for open-space preservation",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3800/",
+   "title": "Va. Code § 58.1-3800, Levy (local recordation tax)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3303/",
+   "title": "Va. Code § 58.1-3303, Clerks to forward copies of certain receipts and make certain reports regarding deeds and property transfers",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3314/",
+   "title": "Va. Code § 58.1-3314, Transfer and entry fees",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3315/",
+   "title": "Va. Code § 58.1-3315, Collection of fees",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1812/",
+   "title": "Va. Code § 58.1-1812, Assessment of omitted taxes by the Department of Taxation",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1821/",
+   "title": "Va. Code § 58.1-1821, Application to Tax Commissioner for correction",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1825/",
+   "title": "Va. Code § 58.1-1825, Application to court for correction of erroneous or improper assessments of state taxes generally",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/ArchiveCenter/ViewFile/Item/279",
+   "title": "1st Quarter FY26 Financial Report (City of Charlottesville; searched for recordation tax)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/8.01-261/",
+   "title": "Va. Code § 8.01-261, Category A or preferred venue",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 102,
+  "quotes_confirmed": 102,
+  "removed": [],
+  "corrections": [
+   "Quotes: all 102 quote instances confirmed (91 state-law, 11 local or procedure). The state-law quotes, the 84 original ones and 7 added, are substrings of I.text_of for the cited section (whitespace normalised only), and their subsection labels match the index text. The 11 local and procedure quotes were matched against pages re-fetched read-only on 2026-10-11 (robots.txt respected, lexflow User-Agent, at least 1.6 s between requests per host): charlottesville.gov /570/, /m/faq?cat=20, /174/ and /210/; vacourts.gov /online/sra/home and /online/home; the OES fee schedule (Appendix C, rev. 07/26); and the Deed Calculation page, whose 'Court does not require a cover sheet.' text is in the CHARLOTTESVILLE CIRCUIT COURT option data (re-read after the 4:00 to 5:00 AM maintenance window, when the court list is not served). Short phrases quoted inside caveats were also found on their pages.",
+   "Step s3: said 'A deed of gift or other deed without consideration must say so'. § 58.1-811(D) covers only a deed of gift, a quitclaim deed without consideration and a deed to correct a fraudulently recorded deed; now says so. Citations of § 58.1-811 now give subsection (D) (legal_basis, fee row, escalation).",
+   "Step s3 and the rejected-deed rung: implied a cover sheet cures every missing item. § 17.1-227.1(B) still requires consecutive page numbers, and § 58.1-802(A) bars recording a grantor-taxed deed unless the consideration is on its first page; both now stated, with a new § 17.1-227.1(B) legal_basis entry.",
+   "Step s3: the parcel number was stated as always required; § 17.1-252 requires it only in localities with a unique parcel identification system. Now conditional, with a caveat.",
+   "Step s7: the time-stamp presumption omitted the § 55.1-407(A)(3)(c) exception 'unless the clerk determines that the applicable requirements for recordation of the instrument have not been satisfied'; added, with a legal_basis entry.",
+   "Step s9: 'Write to the City Assessor' for a different billing address was not on any page read (§ 58.1-3303(B) says only 'specified in writing'); reworded to ask the Assessor or the Treasurer.",
+   "Step s12: the city's Request Copies page says to call 434-970-3766 'to request information about how to obtain copies', not that copies are made by phone; reworded.",
+   "Step s13: the title said SRA, but the city's Online Resources page describes a third-party pay-per-view vendor. Retitled; added § 17.1-279(D)(1) (subscription through the clerk or designated application service providers) and § 17.1-276(C) (convenience fee up to $2 per transaction), with a new fee row.",
+   "Step s15: 'It can give early warning of a fraudulent deed' is not on the OES page; softened and marked as not stated there, with a note that the page does not list covered offices.",
+   "Form f1 (CC-1570): fillable was null. The PDF has no AcroForm, fields or widget annotations (object streams decompressed); now false.",
+   "Recording fee row: '$3.50 of each fee goes to The Library of Virginia' changed to the § 17.1-275(A)(2) wording: designated for preserving the circuit courts' permanent records, administered by The Library of Virginia.",
+   "Mandamus rungs: added the venue rule of § 8.01-261(5) (the city where the record or proceeding is), with a legal_basis entry.",
+   "Tax Commissioner rung: the deadline presented § 58.1-1812(A) as fixing the assessment date; reworded to say the sections read do not say when a clerk-collected tax counts as assessed.",
+   "Caveat on rates above $10 million: the sliding schedule is § 58.1-803(F) in the index text, the maximum tax on deeds of trust or mortgages (OES cites (D)); corrected.",
+   "Added: the § 58.1-812(A) multi-jurisdiction rule (state taxes paid where first recorded, only local tax in the second office) to legal_basis and the venue caveat; the city's quarterly financial report line 'Tax on Wills & Deeds' to the local-tax caveat; a caveat that § 17.1-258.3:1 is indexed only in its version effective until July 1, 2027. The summary now says 'paid remote access' rather than 'by subscription'.",
+   "Privacy: no staff names, personal mailboxes or direct lines. citytreas@charlottesville.gov is the Treasurer's office mailbox published on its own page. Schema: valid JSON, step ids unique, the only form reference (f2) exists, escalation types are in the ladders vocabulary."
+  ],
+  "open_issues": [
+   "Whether Charlottesville levies the one-third local recordation tax (§§ 58.1-3800, 58.1-814) is unconfirmed: the City Code on Municode was not read, and the 'Tax on Wills & Deeds' revenue line does not separate it from the city's half of the grantor tax. Affects the fee total, not the steps; the Deed Calculation tool applies local taxes.",
+   "The Charlottesville clerk's own practice (cut-off time, payment methods, eRecording providers, mail-in recording, return of originals, actual card and remote-access fees) is not published on any page read.",
+   "Whether Charlottesville land records are searched online through SRA or a vendor, and whether free index-only search is enabled, is unresolved; the SRA Available Courts list needs an access token and was not used.",
+   "Whether the Tax Commissioner (§ 58.1-1821) and circuit court (§ 58.1-1825) routes cover recordation tax collected by a clerk is unconfirmed; the local share may fall under § 58.1-3984.",
+   "Whether the $3 open-space fee (§ 58.1-817) applies in Charlottesville is unconfirmed. Running a calculation would submit the tool's form, so it was not done.",
+   "The $20 deed processing fee rests on the Appropriation Act as listed in the OES fee schedule (Act not read); the schedule's $16 Technology Trust Fund fee for deeds of exchange, deeds of dedication with release and deeds with vendor's lien is not in the § 17.1-279 text; the calculator help's $20 oversize-plat figure conflicts with the $17 in § 17.1-275(A)(2).",
+   "Whether VA Deed Alert covers the Charlottesville clerk's office is not stated on the OES page."
+  ]
+ }
+}

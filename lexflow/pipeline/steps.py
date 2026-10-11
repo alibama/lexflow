@@ -14,6 +14,7 @@ from typing import Callable
 import requests
 
 from .. import config
+from . import credits as C
 from ..municipal import build as B
 from ..municipal import contacts, crawl, governments, locator, locus_scan, scoring, statutes
 from ..municipal import method as M
@@ -36,15 +37,20 @@ class Step:
     needs: list[str] = field(default_factory=list)
     params: list[str] = field(default_factory=list)   # states, questions, force, no_llm, regulations, full
     cost: str = ""
+    # outside data, services, models and libraries the step uses: dicts with name, by, licence, url, use and
+    # optionally licence_url, cite with cite_by ("maker" only for the maker's own wording, else "lexflow") and
+    # note (see credits.py).  None means not filled in yet; an empty list needs credits_note to say why.
+    credits: list[dict] | None = None
+    credits_note: str = ""
 
 
 def _scan_count(con, source: str) -> int:
     return db.scalar(con, "SELECT count(*) FROM scans WHERE source=? AND status='done'", source, default=0)
 
 
-def _mark_scan(con, source: str, state: str, rows: int = 0, matched: int = 0):
-    db.upsert(con, "scans", [{"source": source, "state": state, "rows": rows, "matched": matched, "status": "done",
-                              "scanned_at": db.now()}], keys=("source", "state"), stamp=False)
+def _mark_scan(con, source: str, state: str, rows: int = 0, matched: int = 0, status: str = "done"):
+    db.upsert(con, "scans", [{"source": source, "state": state, "rows": rows, "matched": matched,
+                              "status": status[:300], "scanned_at": db.now()}], keys=("source", "state"), stamp=False)
     con.commit()
 
 
@@ -209,6 +215,32 @@ def run_index(con, args, log, progress):
     return {"built": len(out), "states": len(sts)}
 
 
+def st_regulations(con):
+    """Done when every regulations file on disk (us_<st>_regulations.parquet) has a current index."""
+    from ..corpus import regulations as R
+    have = R.states()
+    if not have:
+        return {"status": "optional", "done": 0, "total": 0,
+                "detail": "No regulations file on disk: run Download state statutes with + regulations first"}
+    n = sum(1 for st in have if R.ready(st))
+    return {"status": "done" if n >= len(have) else "partial" if n else "todo", "done": n, "total": len(have),
+            "detail": f"{n} of {plural(len(have), 'state')} with a regulations file searchable"}
+
+
+def run_regulations(con, args, log, progress):
+    """Index the regulations files already on disk: every one, or those of the states named.  Never downloads."""
+    from ..corpus import regulations as R
+    have = R.states()
+    named = _states(args, con) if args.get("states") or args.get("places") else have
+    sts = [s for s in named if s in have]
+    if len(sts) < len(named):
+        log(f"no regulations file on disk for {_upper_list([s for s in named if s not in have])}")
+    out = R.build_all(sts, force=bool(args.get("force")), log=log, progress=progress)
+    built = [v for v in out.values() if isinstance(v, dict)]
+    return {"built": len(built), "states": len(sts), "sections": sum(v["sections"] for v in built),
+            "mb": round(sum(v["mb"] for v in built), 1)}
+
+
 def run_ask(con, args, log, progress):
     """Answer a new question for the chosen states and places (lexflow/ask)."""
     from ..ask import pipeline as AP
@@ -219,22 +251,48 @@ def run_ask(con, args, log, progress):
                   log=log, progress=progress, question_id=args.get("question_id"))
 
 
+def _upper_list(states: list[str], limit: int = 8, why=None) -> str:
+    shown = [f"{s.upper()} ({why(s)})" if why else s.upper() for s in states[:limit]]
+    return ", ".join(shown) + (f" and {len(states) - limit} more" if len(states) > limit else "")
+
+
 def st_cases(con):
     models = db.rows(con, "SELECT DISTINCT state FROM process_models WHERE tier IN ('reviewed','agreed','single')")
     if not models:
         return {"status": "blocked", "done": 0, "total": 0, "detail": "Build state models first"}
-    done = {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM case_law")}
+    # the same states and the same definition of done as run_cases: a state is done when its scans row says its
+    # latest search ran to the end, even when no opinion cites its sections
+    sts = sorted(_cases_targets(con))
+    where = _cases_progress(con, sts)
     n = db.scalar(con, "SELECT count(*) FROM case_law", default=0)
-    k = len(models)
-    have = sum(1 for r in models if r["state"] in done)
-    return {"status": "done" if have >= k else "partial" if have else "todo", "done": have, "total": k,
-            "detail": f"{plural(n, 'court decision')} found for {plural(have, 'state')} with models"}
+    by = {k: [s for s in sts if where[s]["status"] == k] for k in ("done", "failed", "stopped", "stored", "skipped")}
+    parts = [f"{plural(n, 'court decision')} found; {len(by['done'])} of {plural(len(sts), 'state')} searched to the "
+             "end"]
+    if by["stopped"]:
+        parts.append(f"stopped by a rate limit, searched first next time: {_upper_list(by['stopped'])}")
+    if by["failed"]:
+        parts.append("search failed, tried again on the next run: "
+                     + _upper_list(by["failed"], 4, lambda s: where[s]["reason"][:80]))
+    if by["skipped"]:
+        parts.append("not searched, looked at again on the next run: "
+                     + _upper_list(by["skipped"], 4, lambda s: where[s]["reason"][:80]))
+    if by["stored"]:
+        parts.append(f"opinions stored but no finished search recorded: {_upper_list(by['stored'])} (searched "
+                     "again after the states never searched)")
+    have = len(by["done"])
+    return {"status": "done" if have >= len(sts) else "partial" if have or n else "todo", "done": have,
+            "total": len(sts), "detail": "; ".join(parts)}
 
 
 def st_publish(con):
+    from ..publish import lexipedia as LX
     if not (config.DOKUWIKI_URL and config.DOKUWIKI_TOKEN):
         return {"status": "optional", "done": 0, "total": 0,
                 "detail": "Set DOKUWIKI_URL and DOKUWIKI_TOKEN (a bot account) to enable"}
+    if not LX.corrections_set():
+        return {"status": "optional", "done": 0, "total": 0,
+                "detail": "Set LEXFLOW_CORRECTIONS (the e-mail address or URL readers write to, on a real domain) to "
+                          f"enable: every page links lexflow:method, which gives it (now {LX.corrections_problem()})"}
     n = sum(1 for r in db.rows(con, "SELECT stages FROM process_models") if db.loads(r["stages"], {}).get("published"))
     k = db.scalar(con, "SELECT count(*) FROM process_models WHERE tier IN ('reviewed','agreed')", default=0)
     return {"status": "done" if k and n >= k else "partial" if n else "todo", "done": n, "total": k,
@@ -370,17 +428,109 @@ def run_score(con, args, log, progress):
     return {"states": len(out)}
 
 
-def run_cases(con, args, log, progress):
-    from ..municipal import caselaw
-    have = {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM process_models")} |         {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM located_law WHERE status='found' "
+CASES = "courtlistener"      # the cases step's source in the scans table
+# where a state stands with the cases step, in the order a run searches them: its latest search stopped (a rate
+# limit) or failed; never searched; opinions stored but no finished search recorded here; done
+# a state stopped by a rate limit goes on first; one that failed goes after the states never searched, so a section
+# that fails the same way on every run cannot hold back every other state
+CASES_RANK = {"stopped": 0, "new": 1, "failed": 2, "stored": 3, "skipped": 4, "done": 4}
+
+
+def _cases_targets(con) -> set[str]:
+    """The states the cases step searches: those with a process model or a seed or verified located section."""
+    return {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM process_models")} | \
+        {r["state"] for r in db.rows(con, "SELECT DISTINCT state FROM located_law WHERE status='found' "
                                           "AND method IN ('seed','verified')")}
-    sts = [s for s in _states(args, con) if s in have] if (args.get("states") or args.get("places")) else sorted(have)
+
+
+def _cases_progress(con, states) -> dict[str, dict]:
+    """Where each state stands with the cases step, for both st_cases and run_cases: ``status``, ``reason``,
+    ``when`` and ``rank`` (CASES_RANK).  The scans row is the record: 'done' when a search of every section answered,
+    'stopped: <why>' when a rate limit or the day's allowance stopped it, 'failed: <why>' when a search failed
+    (caselaw.SearchFailed).  Opinions stored with no scans row at all (searched before lexflow recorded searches, as
+    CA, DC and MD were, or pulled through Turso) are 'stored': not done, since nothing says every section was
+    searched, but searched again only after the states never searched; ``when`` is then the newest opinion row."""
+    from ..municipal import caselaw
+    rec = {r["state"]: r for r in db.rows(con, "SELECT state, status, rows, scanned_at FROM scans WHERE source=?",
+                                          CASES)}
+    stored = {r["state"]: r["at"] for r in db.rows(
+        con, "SELECT state, max(updated_at) AS at FROM case_law WHERE source=? GROUP BY state", CASES)}
     out = {}
-    for i, st in enumerate(sts):
+    for st in states:
+        r = rec.get(st)
+        if r:
+            status, _, reason = (r["status"] or "").partition(":")
+            status = status.strip() if status.strip() in ("done", "stopped", "skipped") else "failed"
+            if status == "done" and not r["rows"] and not caselaw.COURTS.get(st):
+                status = "skipped"          # recorded as done before skips had their own status: never searched
+            out[st] = {"status": status, "reason": reason.strip(), "when": r["scanned_at"] or ""}
+        elif st in stored:
+            out[st] = {"status": "stored", "reason": "", "when": stored[st] or ""}
+        else:
+            out[st] = {"status": "new", "reason": "", "when": ""}
+        out[st]["rank"] = CASES_RANK[out[st]["status"]]
+    return out
+
+
+def run_cases(con, args, log, progress):
+    """Search CourtListener state by state, paced to its limits (5 requests a minute, 50 an hour, 125 a day; see
+    municipal/caselaw.py).  The day's allowance covers only part of the states, so a run searches the states that
+    are not done yet, of those named or of all (an empty states box, or 'all'): first those a rate limit
+    stopped, then those never searched, then those whose last search failed, then those with opinions stored but no
+    finished search recorded (see _cases_progress).  ``force`` (Redo) also searches the done states again, after those and oldest search
+    first, so a Redo stopped by the day's limit goes on the next day from the states not redone yet.
+
+    A state is recorded as done only when the search of every section answered.  A failed search records it as
+    failed, with the reason, so later runs search it again; a rate limit records it as stopped.  A state already
+    done keeps its record (and its date) when a Redo of it stops or fails.  The run stops at a rate limit, the day's
+    allowance, or a failure every other state would most likely share (401, 403, 5xx, a timeout), unless that
+    state failed last time too (then the fault is its own, and the run goes on); after another error answer it goes
+    on with the next state."""
+    from ..municipal import caselaw
+    targets = _cases_targets(con)
+    named = bool(args.get("states") or args.get("places"))
+    sts = [s for s in _states(args, con) if s in targets] if named else sorted(targets)
+    where = _cases_progress(con, sts)
+    redo = bool(args.get("force"))
+    done = [s for s in sts if where[s]["status"] == "done"]
+    if done and not redo:
+        log(f"skipping {plural(len(done), 'state')} already searched to the end (tick Redo to search them again)")
+    queue = sorted((s for s in dict.fromkeys(sts) if redo or where[s]["status"] != "done"),
+                   key=lambda s: (where[s]["rank"], where[s]["when"], s))
+    if queue:
+        log(f"searching {plural(len(queue), 'state')} in this order: {', '.join(s.upper() for s in queue)}")
+    out = {}
+    for i, st in enumerate(queue):
+        name, was_done = S.NAME.get(st, st), where[st]["status"] == "done"
         try:
-            out[st] = caselaw.run(con, st, log=log, progress=lambda p, i=i: progress((i + p) / len(sts)))
+            out[st] = caselaw.run(con, st, log=log, progress=lambda p, i=i: progress((i + p) / len(queue)))
+            _mark_scan(con, CASES, st, rows=out[st]["sections"], matched=out[st]["opinions"])
+        except caselaw.Skipped as e:
+            out[st] = {"skipped": e.reason, "sections": e.sections_done, "opinions": e.opinions}
+            if not was_done:
+                _mark_scan(con, CASES, st, rows=e.sections_done, matched=e.opinions, status=e.reason)
+            log(f"{name}: not searched ({e.reason.removeprefix('skipped: ')}); recorded as skipped, not as done")
+        except caselaw.SearchFailed as e:
+            out[st] = {"failed": e.reason, "sections": e.sections_done, "opinions": e.opinions}
+            if was_done:
+                log(f"{name}: search failed ({e.reason}); its earlier complete search stays on record")
+            else:
+                _mark_scan(con, CASES, st, rows=e.sections_done, matched=e.opinions, status=f"failed: {e.reason}")
+                log(f"{name}: search failed ({e.reason}); recorded as failed, so the next run searches it again")
+            if e.stops_run and where[st]["status"] == "failed":
+                # it failed last time too: a fault in this state's searches, not CourtListener as a whole
+                log(f"{name}: failed again; going on with the next state")
+                continue
+            if e.stops_run:
+                out["stopped"] = f"{name}: {e.reason}"
+                log("stopped: the other states would most likely fail the same way. Run this step again once "
+                    "CourtListener answers (or the token is fixed).")
+                break
         except caselaw.RateLimited as e:
-            log(f"stopped: {e}. Run this step again later; sections already searched keep their results.")
+            if not was_done:
+                _mark_scan(con, CASES, st, rows=e.sections_done, matched=e.opinions, status=f"stopped: {e}")
+            log(f"stopped: {e}. Run this step again later: it goes on from {name}, and sections already searched "
+                "keep their results.")
             out["stopped"] = str(e)
             break
     return out
@@ -405,27 +555,45 @@ def run_wikibase(con, args, log, progress):
 
 def run_publish(con, args, log, progress):
     """Post the lexflow: pages to the wiki (lexipedia.xyz) over JSON-RPC.  Only the lexflow: namespace is ever
-    written; a dry run renders and checks every page and reports what would change, without saving."""
-    from ..publish.dokuwiki import DokuWiki
-    from ..publish.lexipedia import NS, all_pages
+    written (dokuwiki.require_namespace, the same rule the DokuWiki client enforces); a dry run renders and checks
+    every page and reports what would change, without saving.  Nothing at all is written (a dry run included) while
+    lexflow:method's corrections line is still the operator's placeholder: every page links lexflow:method for its
+    sources, licences and corrections, so the operator sets LEXFLOW_CORRECTIONS (an e-mail address or a URL)
+    first."""
+    from ..publish import lexipedia as LX
+    from ..publish.dokuwiki import DokuWiki, require_namespace
     dry = bool(args.get("dry_run"))
+    pages = LX.all_pages(con)
+    for pid in pages:                       # every id before the first write, so nothing is half-published
+        require_namespace(pid, LX.NS)
+    if not LX.corrections_set():
+        what = LX.corrections_problem()
+        log(f"publish refused: no page {'would be' if dry else 'was'} written, because LEXFLOW_CORRECTIONS is {what} "
+            f"and every page links {LX.METHOD}, whose corrections line would read "
+            f"'{LX.CORRECTIONS_PLACEHOLDER}'; set it to the address readers should write to (an e-mail address or "
+            f"an http(s) URL on a real domain), then publish again.")
+        progress(1.0)
+        return {"written": [], "unchanged": [], "refused": sorted(pages), "dry_run": dry,
+                "reason": f"LEXFLOW_CORRECTIONS is {what}", "index": None}
+    # the operator sees the address every page sends readers to before anything is written
+    log(f"{LX.METHOD} {'would print' if dry else 'prints'} '{LX.corrections()}': readers will write to "
+        f"{LX.corrections_address()}")
     wiki = DokuWiki(config.DOKUWIKI_URL, token=config.DOKUWIKI_TOKEN, dry_run=dry)
     if not dry:
         who = wiki.whoami()
         log(f"signed in to {config.DOKUWIKI_URL} as {who.get('login') if isinstance(who, dict) else who}")
-    pages = all_pages(con)
+    todo = sorted(pages.items())
     done, unchanged = [], []
-    for i, (pid, text) in enumerate(sorted(pages.items())):
-        if not pid.startswith(f"{NS}:"):
-            raise RuntimeError(f"refusing to write {pid}: outside the {NS}: namespace")
+    for i, (pid, text) in enumerate(todo):
         current = None if dry else wiki.get_page(pid)
         if current is not None and current.strip() == text.strip():
             unchanged.append(pid)
         else:
-            wiki.save_page(pid, text, summary="lexflow: Claude-checked process model and local answers")
+            wiki.save_page(pid, text, summary="lexflow: drafted with an AI system; quotes matched to Open US Law's "
+                                              "copy of the statute text")
             done.append(pid)
         log(f"{'would write' if dry else 'wrote' if pid in done else 'unchanged'} {pid} ({len(text):,} chars)")
-        progress((i + 1) / len(pages))
+        progress((i + 1) / len(todo))
     if not dry:
         ts = db.now()
         for r in db.rows(con, "SELECT model_id, stages FROM process_models WHERE tier IN ('reviewed','agreed')"):
@@ -436,17 +604,21 @@ def run_publish(con, args, log, progress):
                         (json.dumps(stages), round(done_n / len(M.STAGES), 3), ts, r["model_id"]))
         db.bump(con)
         con.commit()
-    return {"written": done, "unchanged": unchanged, "dry_run": dry,
-            "index": f"{config.DOKUWIKI_URL.rstrip('/')}/doku.php?id={NS}:start" if config.DOKUWIKI_URL else None}
+    return {"written": done, "unchanged": unchanged, "refused": [], "dry_run": dry,
+            "index": f"{config.DOKUWIKI_URL.rstrip('/')}/doku.php?id={LX.NS}:start" if config.DOKUWIKI_URL else None}
 
 
 def run_sync(con, args, log, progress):
+    """Push or pull the shared tables.  Only the tables in db.SYNCED are taken: any other (the reviewer list, the
+    review log, jobs ...) is refused before the shared database is reached (turso.check_tables)."""
+    direction = args.get("direction", "push")
+    if direction not in ("push", "pull"):
+        raise ValueError(f"direction is push or pull, not {direction!r}")
+    tables = T.check_tables(args.get("tables"))
     client = T.Turso.from_env()
     if client is None:
         raise RuntimeError("TURSO_DATABASE_URL is not set")
-    direction = args.get("direction", "push")
     sts = S.parse_states(args["states"]) if args.get("states") else None
-    tables = args["tables"].split(",") if args.get("tables") else None
     started = db.now()
     try:
         fn = T.push if direction == "push" else T.pull
@@ -486,70 +658,113 @@ STEPS: dict[str, Step] = {s.id: s for s in [
     Step("governments", "Load every county, city and town",
          "The Census of Governments 2022 list: 38,736 general-purpose governments with an official's title, "
          "address, website and FIPS codes. Everything else is keyed to it.",
-         "required", st_governments, run_governments, cost="11.5 MB download, under a minute"),
+         "required", st_governments, run_governments, cost="11.5 MB download, under a minute",
+         credits=[C.CENSUS_GUS, C.OPENPYXL]),
     Step("statutes", "Download state statutes",
          "open-us-law (Vaquill AI): one verified parquet file per state, each section with the URL of its government "
          "publisher. Arkansas, Colorado, Georgia, Mississippi and Tennessee are not in the current release.",
          "required", st_statutes, run_statutes, params=["states", "regulations"],
-         cost="867 MB for all states (VA 17 MB); regulations add 2.1 GB"),
+         cost="867 MB for all states (VA 17 MB); regulations add 2.1 GB",
+         credits=[C.OPEN_US_LAW]),
     Step("index", "Make the statutes searchable",
          "A full-text index (SQLite FTS5) over every downloaded section, one file per state, so new questions can be "
          "answered for any state: search by heading, chapter and text, and read any section without loading the "
          "whole statute file.", "recommended", st_index, run_index, needs=["statutes"], params=["states", "force"],
-         cost="about 4 GB on disk for all states; seconds per state"),
+         cost="about 4 GB on disk for all states; seconds per state",
+         credits=[C.SQLITE_FTS5]),
+    Step("regulations", "Make the state regulations searchable",
+         "The same full-text index as the statutes', over each state's regulations in force from open-us-law's "
+         "regulations add-on: building codes, tax and licensing rules, each section with the URL of its official "
+         "publisher, so a question such as whether a shed needs a building permit can find the rule. Superseded "
+         "versions and repealed stubs are left out, and no model-code text is stored. Reads only the files already "
+         "on disk.", "optional", st_regulations, run_regulations, needs=["statutes"], params=["states", "force"],
+         cost="no download where the regulations add-on is already on disk; seconds per state (under a minute for "
+              "the largest, Puerto Rico), about 4.4 GB on disk for the 39 states with a file. On a fresh install, run "
+              "Download state statutes with + regulations first: about 640 MB of regulations files for those 39 "
+              "states",
+         credits=[C.OPEN_US_LAW_REGS,
+                  C.used_for(C.SQLITE_FTS5, "The regulations index, one file per state beside the statutes', ranked "
+                                            "with BM25")]),
     Step("locate", "Find the state law for each question",
          "Ranks every section by title, chapter and text; a known section number is used only if it is found, in "
          "force and on topic. The method and a confidence score are stored with each result.",
-         "required", st_locate, run_locate, needs=["statutes"], params=["states", "questions"], cost="seconds per state"),
+         "required", st_locate, run_locate, needs=["statutes"], params=["states", "questions"], cost="seconds per state",
+         credits=[C.used_for(C.OPEN_US_LAW, "The sections it ranks; each result cites the section's official "
+                                            "publisher")]),
     Step("contacts", "Find contacts on Wikidata",
          "Official websites, emails and phone numbers from Wikidata (the data behind govdirectory.org), matched by "
          "FIPS code.", "recommended", st_contacts, run_contacts, needs=["governments"], params=["states"],
-         cost="two queries per state"),
+         cost="two queries per state",
+         credits=[C.WIKIDATA, C.GOV_DIRECTORY]),
     Step("models", "Pull the local models",
          f"{config.EMBED_MODEL} gives the learned selector its clause embeddings; {config.MODEL_A} writes plain-"
          f"language answers to new questions and makes the independent second extraction ({config.MODEL_B} is the "
          "other family). Needs the Ollama service ('llm' profile).",
-         "recommended", st_models, run_models, cost="about 2.5 GB; a GPU helps a lot"),
+         "recommended", st_models, run_models, cost="about 2.5 GB; a GPU helps a lot",
+         # the models config names (LEXFLOW_EMBED_MODEL, LEXFLOW_MODEL_A, LEXFLOW_MODEL_B), not fixed ones
+         credits=[C.OLLAMA, *C.model_credits([
+             (config.EMBED_MODEL, "Clause embeddings for the learned selector; similarity in Ask"),
+             (config.MODEL_A, "Plain-language answers and the independent second extraction"),
+             (config.MODEL_B, "The other model family for the second extraction and the benchmark")])]),
     Step("build", "Build the state process models",
          "Claude's reference facts first; otherwise the learned selector (trained on the references for the other "
          "states) picks quote-anchored steps from the located and related sections, compiled to BPMN and DMN and "
          "checked (schemas, bpmnlint, quotes, Petri-net soundness). With a chat model, an independent second "
          "extraction cross-checks it.",
          "required", st_build, run_build, needs=["locate"], params=["states", "places", "questions", "force", "no_llm"],
-         cost="minutes per state on CPU"),
+         cost="minutes per state on CPU",
+         credits=[C.CLAUDE, C.OMG_SCHEMAS, C.BPMNLINT, C.CAMUNDA_COMPAT, C.DMNLINT, C.BPMN_AUTO_LAYOUT, C.MODDLE,
+                  C.PM4PY, C.PULP, C.CBC, C.POWL, C.SPIFFWORKFLOW]),
     Step("local", "Load checked local answers",
          "Local procedures researched for particular places (curated/places/<state>/<place>.json): portals, "
          "offices, local ordinances and fees, each with its source. Scored as local law and contacts.",
          "optional", lambda con: st_local(con), run_local, needs=["governments"], params=["places"],
-         cost="seconds"),
+         cost="seconds",
+         credits=[], credits_note="No outside dataset: each answer was researched from the place's own official "
+                                  "pages and carries the URL it came from."),
     Step("score", "Score every government and refresh the maps",
          "Confidence = state law + local law + contacts, with the weights on the Method page.",
-         "required", st_score, run_score, needs=["governments"], params=["states", "places"], cost="seconds"),
+         "required", st_score, run_score, needs=["governments"], params=["states", "places"], cost="seconds",
+         credits=[C.US_ATLAS]),
     Step("crawl", "Look for records and licence pages on official websites",
          "Reads each government's home page (robots.txt respected) for a public-records page, a business-licence "
          "page, and email or phone links.", "optional", st_crawl, run_crawl, needs=["governments"],
-         params=["states", "places", "force"], cost="about 1 request per government; a few minutes per state"),
+         params=["states", "places", "force"], cost="about 1 request per government; a few minutes per state",
+         credits=[], credits_note="No outside dataset: it reads each government's own official website, with "
+                                  "robots.txt respected."),
     Step("locus", "Scan local ordinances (LOCUS-v1)",
          "Finds local ordinances on public records and business licences for each city and county. LOCUS is "
-         "CC BY-NC and machine-labelled, so it is used to find law, never to cite it.",
+         "CC BY-NC and machine-labelled, so this step uses it to find law, never to cite it.",
          "optional", st_locus, run_locus, needs=["governments"], params=["states"],
-         cost="ranged reads of a 1.8 GB dataset"),
+         cost="ranged reads of a 1.8 GB dataset",
+         credits=[C.LOCUS, C.HF_HUB, C.HF_HUB_LIB]),
     Step("cases", "Find court decisions that cite the law",
          "Searches CourtListener (Free Law Project) for opinions in each state's appellate courts that cite the "
          "sections behind its models. Shown on model pages, the wiki and the Wikibase.",
-         "optional", st_cases, run_cases, needs=["build"], params=["states", "places"],
-         cost="one request a second; about a minute per state"),
+         "optional", st_cases, run_cases, needs=["build"], params=["states", "places", "force"],
+         cost="paced to CourtListener's limits for an account (5 requests a minute, 50 an hour, 125 a day): one or "
+              "two requests per section, about 12 for a typical state, so about four states an hour and ten a day; "
+              "a run stops when the day's 125 are used, and the next run (states box empty, or 'all') goes on from "
+              "the states not done yet. A state whose search failed is searched again; Redo also searches the done "
+              "states again, oldest search first",
+         credits=[C.COURTLISTENER]),
     Step("wikibase", "Load the Lexipedia Wikibase",
          "Statutes, process models and their steps, jurisdictions and the court decisions that cite them, as linked "
          "items in the wiki's own ontology (part of, follows, deontic modality, bearer, references).",
          "optional", st_wikibase, run_wikibase, needs=["build"], params=["states", "dry_run"],
-         cost="one edit per item; a few minutes"),
+         cost="one edit per item; a few minutes",
+         credits=[C.WIKIBASE_CLOUD, C.used_for(C.WIKIDATA, "Items link to their Wikidata entities", note="")]),
     Step("publish", "Publish to Lexipedia",
-         "Writes law and process pages to DokuWiki over JSON-RPC (bot account, API limited to @bots).",
-         "optional", st_publish, run_publish, needs=["build"], params=["dry_run"]),
+         "Writes the lexflow: pages (process maps, places, start and method) to DokuWiki over JSON-RPC (bot account, "
+         "API limited to @bots), and no page outside that namespace. Nothing is written until the operator sets "
+         "the corrections address (LEXFLOW_CORRECTIONS, an e-mail address or a URL), which lexflow:method gives "
+         "and every page links.",
+         "optional", st_publish, run_publish, needs=["build"], params=["dry_run"],
+         credits=[C.DOKUWIKI, C.BPMNIO_PLUGIN]),
     Step("sync", "Share through Turso",
          "Push your results to a shared Turso (libSQL) database, or pull states other people have built.",
-         "optional", st_sync, run_sync, params=["direction", "states", "tables", "full"]),
+         "optional", st_sync, run_sync, params=["direction", "states", "tables", "full"],
+         credits=[C.LIBSQL, C.TURSO_CLOUD]),
 ]}
 
 def run_benchmark(con, args, log, progress):
@@ -568,14 +783,24 @@ def run_benchmark(con, args, log, progress):
 COMPOSITE = {
     "quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
                        "models and scores in one job.", "required", lambda con: {}, run_quickstart,
-                       params=["states", "places", "no_llm"]),
+                       params=["states", "places", "no_llm"],
+                       credits=[], credits_note="Runs the steps above; their credits apply."),
     "ask": Step("ask", "Answer a new question", "Searches each state's statutes for the question, quotes the "
                 "sections that answer it, extracts the steps, and adds each place's local layer.", "optional",
-                lambda con: {}, run_ask, params=["question", "targets", "model", "no_llm"]),
+                lambda con: {}, run_ask, params=["question", "targets", "model", "no_llm"],
+                credits=[C.used_for(C.OPEN_US_LAW, "The statutes it searches and quotes"),
+                         C.used_for(C.SQLITE_FTS5, "Searches each state's statutes"), C.SEARXNG,
+                         *C.model_credits([(config.ASK_MODEL, "Writes the plain-language answers"),
+                                           (config.EMBED_MODEL, "Similarity between the question and each clause")]),
+                         C.used_for(C.CLAUDE, "Wrote the reference answers AskBench scores against")]),
     "benchmark": Step("benchmark", "Benchmark local models against Claude",
                       "Runs each extraction strategy with each local model on every curated case and scores it "
                       "against Claude's reference model.", "optional", lambda con: {}, run_benchmark,
-                      params=["cases", "strategies", "models"]),
+                      params=["cases", "strategies", "models"],
+                      credits=[C.used_for(C.CLAUDE, "Wrote the reference models every run is scored against"),
+                               *C.model_credits([(config.MODEL_A, "One of the local models scored"),
+                                                 (config.MODEL_B, "One of the local models scored")]),
+                               C.OLLAMA]),
 }
 
 

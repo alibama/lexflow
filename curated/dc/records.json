@@ -7,6 +7,12 @@
     "2-534"
   ],
   "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; timed answer, extension notice and extended limit, Mayor timeout and no-suit ends; every quote checked against open-us-law v2026.09.1",
+  "reader_notes": {
+    "'respond' stands for the whole answer": "The time limit in § 2-532(c)(1) is for the whole answer: either making the record accessible, or telling the requester that it will not be made accessible, in whole or in part, and why. Missing it is a deemed denial (§ 2-532(e)). These sections set no separate time for providing the segregable part of a withheld record (§ 2-534(b)) or for collecting a fee.",
+    "An extension under § 2-532(d)(1)": "An extension under § 2-532(d)(1) takes effect by written notice giving the reasons and the expected date for determination; that date may be earlier than the longest extension allowed. The longest time is lexflow's count of 15 + up to 10 days (except Saturdays, Sundays, and legal public holidays) from receipt. The statute does not say when the extension notice must be sent; because it extends 'the time limits', it presumably has to go out before the first 15 days end.",
+    "A deemed denial is also deemed exhaustion": "A deemed denial is also deemed exhaustion of administrative remedies (§ 2-532(e)): that is what lets the requester sue directly (§ 2-537(a)(1)) instead of petitioning the Mayor.",
+    "§ 2-537(a)(1) gives a missed Mayor deadline": "§ 2-537(a)(1) gives a missed Mayor deadline the same remedy as a denial but does not call it a deemed denial. The text does not say that the Mayor loses the power to decide late."
+  },
   "facts": {
     "process_name": "Request public records from a District of Columbia public body",
     "trigger": "A person asks a D.C. public body for a public record",
@@ -385,7 +391,7 @@
               "-"
             ],
             "then": [
-              "\"No extension: determine within 15 working days of receipt\"",
+              "\"No extension: answer within 15 days (except Saturdays, Sundays, and legal public holidays) of receipt\"",
               "false"
             ],
             "source": {
@@ -401,7 +407,7 @@
               "-"
             ],
             "then": [
-              "\"Written notice with reasons and expected date; at most 10 more working days\"",
+              "\"Written notice with reasons and expected date; the extension shall not exceed 10 days (except Saturdays, Sundays, and legal public holidays)\"",
               "true"
             ],
             "source": {
@@ -417,7 +423,7 @@
               "true"
             ],
             "then": [
-              "\"Written notice with reasons and expected date; at most 10 more working days\"",
+              "\"Written notice with reasons and expected date; the extension shall not exceed 10 days (except Saturdays, Sundays, and legal public holidays)\"",
               "true"
             ],
             "source": {
@@ -773,15 +779,15 @@
       }
     ],
     "gaps": [
-      "'respond' stands for the whole answer under § 2-532(c)(1): the determination together with making the record accessible or notifying the requester of the denial and its reasons. It carries the 15-working-day timer, and a miss routes to deemed_denied (consequence 'deemed-denial', § 2-532(e)). The compiler draws a decision step as a business-rule task without a message flow, so the answer reaches the requester through release_segregable (written explanation, segregable part) or make_accessible (the record). Those follow-up acts, and the fee step before release, carry no timer of their own: the model treats the timed answer as the act the time limit governs. The drawn timer starts when 'respond' starts, just after the extension choice, rather than at receipt itself.",
-      "An extension under § 2-532(d)(1) takes effect by written notice (notify_extension, when extension_taken). The extended answer is a separate step, respond_extended, timed at 25 working days from receipt (15 plus at most 10); the expected date in the notice may be earlier, and the model does not draw that date. The drawn timer of respond_extended starts after the notice, so it can run somewhat past 25 working days from receipt. The statute does not say when the extension notice must be sent; because it extends 'the time limits', it presumably has to go out before the 15 working days end.",
+      "'respond' stands for the whole answer under § 2-532(c)(1): the determination together with making the record accessible or notifying the requester of the denial and its reasons. It carries the timer for the 15 days (except Saturdays, Sundays, and legal public holidays), and a miss routes to deemed_denied (consequence 'deemed-denial', § 2-532(e)). The compiler draws a decision step as a business-rule task without a message flow, so the answer reaches the requester through release_segregable (written explanation, segregable part) or make_accessible (the record). Those follow-up acts, and the fee step before release, carry no timer of their own: the model treats the timed answer as the act the time limit governs. The drawn timer starts when 'respond' starts, just after the extension choice, rather than at receipt itself.",
+      "An extension under § 2-532(d)(1) takes effect by written notice (notify_extension, when extension_taken). The extended answer is a separate step, respond_extended, timed at 25 days (except Saturdays, Sundays, and legal public holidays) from receipt (lexflow's count: 15 + up to 10); the expected date in the notice may be earlier, and the model does not draw that date. The drawn timer of respond_extended starts after the notice, so it can run somewhat past 25 such days from receipt. The statute does not say when the extension notice must be sent; because it extends 'the time limits', it presumably has to go out before the first 15 days end.",
       "A deemed denial is also deemed exhaustion of administrative remedies (§ 2-532(e)): that status is what lets the requester sue directly (§ 2-537(a)(1)) instead of petitioning the Mayor. deemed_denial_not_challenged is the end for a requester who does neither.",
       "A written withholding (after release_segregable), a deemed denial, a Mayor denial and a Mayor who does not decide in time all lead to the one sue_superior_court step (join 'any'). requester_sues is the requester's choice and is supplied with the case. The statute gives the right to sue after a deemed denial, after the Mayor denies or does not decide in time (§ 2-537(a)(1)), and after a written withholding only for records of the Council or the Attorney General (§ 2-537(a-1), (a-2)), which skip the Mayor; the model does not enforce these limits. A suit to enforce the Mayor's disclosure order (§ 2-537(a)(2)) is a separate step, sue_to_compel.",
       "§ 2-537(a)(1) gives a missed Mayor deadline the same remedy as a denial but does not call it a deemed denial, so the deadline's consequence is 'unstated' and the timer leads to mayor_no_decision. The drawn timer is interrupting, which ends the Mayor's review; the text does not say that the Mayor loses the power to decide late, and a late decision is not modelled.",
       "release_segregable follows every written withholding: § 2-534(b) applies to any withheld record, and when the whole record is exempt there is no segregable portion to provide. Fees for a partial release (§ 2-532(b)) are not drawn on that branch.",
       "Advance payment may be required only if the requester previously failed to pay on time or the fee will exceed $250 (§ 2-532(b-3)); otherwise release does not wait for payment. Review costs exclude legal or policy analysis (b-2); 'reasonable efforts' caps reprogramming or reformatting at 8 hours of personnel time (f)(1). These limits are not separate steps.",
       "Petitioning the Mayor is not available for records of the Council (§ 2-537(a-1)) or the Attorney General (a-2) ('Except as provided in subsections (a-1) and (a-2)'); the model leaves requester_petitions_mayor to the case and does not enforce this.",
-      "Body-worn camera recordings of the Metropolitan Police Department have 25 working days plus up to 15 more in unusual circumstances, including the inability to procure a redaction vendor, and may only be requested from MPD (§ 2-532(c)(2), (d)(1), (d)(2)(C)). Not modelled separately.",
+      "Body-worn camera recordings of the Metropolitan Police Department have 25 days (except Saturdays, Sundays, and legal public holidays), and an extension of up to 15 days (except Saturdays, Sundays, and legal public holidays) in unusual circumstances, including the inability to procure a redaction vendor, and may only be requested from MPD (§ 2-532(c)(2), (d)(1), (d)(2)(C)). Not modelled separately.",
       "Where and how to file (which office, which form) is set by each public body's rules issued after notice and comment under § 2-532(a); the statute text does not say.",
       "No deadline for petitioning the Mayor or for suing is stated in these sections.",
       "In court the burden is on the agency, review is de novo and records may be examined in camera (§ 2-537(b)); a prevailing requester may recover fees (c); an arbitrary or capricious violation is a misdemeanor with a fine of up to $100 (§ 2-537(d)). Not modelled as steps."

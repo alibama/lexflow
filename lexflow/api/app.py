@@ -11,12 +11,12 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 from urllib.parse import urlparse
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Body, FastAPI, Header, HTTPException, Query
 from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from .. import config
+from .. import config, reviewers, signoff
 from ..municipal import method as M
 from ..municipal import states as S
 from ..municipal import stats
@@ -87,9 +87,15 @@ def overview():
 
 @app.get("/api/setup")
 def setup():
+    """The checklist with each step's credits, plus the credits for libraries used across the steps."""
+    from ..pipeline.credits import GENERAL
     c = con()
     try:
-        return {"steps": checklist(c), "services": services(c)}
+        steps = checklist(c)
+        for s in steps:
+            step = STEPS[s["id"]]
+            s["credits"], s["credits_note"] = step.credits or [], step.credits_note
+        return {"steps": steps, "services": services(c), "credits": GENERAL}
     finally:
         c.close()
 
@@ -118,8 +124,17 @@ class JobIn(BaseModel):
 
 @app.post("/api/jobs")
 def create_job(job: JobIn):
+    """Queue a step.  A sync job takes only the shared tables (db.SYNCED): one that names any other table (the
+    reviewer list, the review log ...) is a 400 and is not queued."""
     if job.step not in STEPS and job.step not in COMPOSITE:
         raise HTTPException(400, f"unknown step {job.step}")
+    if job.step == "sync":
+        try:
+            T.check_tables(job.args.get("tables"))
+        except T.SyncTableError as e:
+            raise HTTPException(400, str(e)) from e
+        if job.args.get("direction", "push") not in ("push", "pull"):
+            raise HTTPException(400, "direction is push or pull")
     c = con()
     try:
         return {"id": jobs.enqueue(c, job.step, job.args)}
@@ -341,10 +356,39 @@ def places_list(spec: str | None = None):
             except ValueError as e:
                 raise HTTPException(404, str(e)) from e
         return db.rows(c, """
-            SELECT g.gov_id, g.name, g.kind, g.state, g.population, count(l.question) AS researched,
-                   max(l.verified) AS verified, max(l.researched) AS researched_on
-            FROM local_answers l JOIN governments g ON g.gov_id = l.gov_id
-            GROUP BY g.gov_id ORDER BY g.population DESC""")
+            SELECT g.gov_id, g.name, g.kind, g.state, g.population,
+                   (SELECT count(*) FROM local_answers l WHERE l.gov_id = g.gov_id) AS researched,
+                   (SELECT max(verified) FROM local_answers l WHERE l.gov_id = g.gov_id) AS verified,
+                   (SELECT max(researched) FROM local_answers l WHERE l.gov_id = g.gov_id) AS researched_on,
+                   (SELECT count(*) FROM place_processes p WHERE p.gov_id = g.gov_id) AS processes,
+                   (SELECT coalesce(sum(verified), 0) FROM place_processes p WHERE p.gov_id = g.gov_id) AS processes_verified
+            FROM governments g
+            WHERE g.gov_id IN (SELECT gov_id FROM local_answers UNION SELECT gov_id FROM place_processes)
+            ORDER BY g.population DESC""")
+    finally:
+        c.close()
+
+
+@app.get("/api/places/{gov_id}/processes")
+def place_processes_list(gov_id: str):
+    """A place's researched processes (verified or not), by category and title."""
+    c = con()
+    try:
+        return [{k: r[k] for k in ("process", "title", "question", "category", "kind", "office", "verified", "updated_at")}
+                for r in db.rows(c, "SELECT * FROM place_processes WHERE gov_id=? ORDER BY category, title", gov_id)]
+    finally:
+        c.close()
+
+
+@app.get("/api/places/{gov_id}/processes/{process}")
+def place_process(gov_id: str, process: str):
+    c = con()
+    try:
+        r = db.one(c, "SELECT * FROM place_processes WHERE gov_id=? AND process=?", gov_id, process)
+        if not r:
+            raise HTTPException(404, "no such process for that place")
+        g = db.one(c, "SELECT gov_id, name, kind, state FROM governments WHERE gov_id=?", gov_id)
+        return {"government": g, "verified": bool(r["verified"]), "updated_at": r["updated_at"], "spec": db.loads(r["spec"], {})}
     finally:
         c.close()
 
@@ -417,20 +461,64 @@ def ask(req: AskIn):
 
 @app.get("/api/ask")
 def ask_list():
+    """Each question asked, with its answers counted.  ``reviewed`` counts the answers whose review is for the text
+    stored now (its text_hash fits, lexflow/signoff.py) and was recorded by this copy's review API (its review_log
+    holds it), and ``published`` those of them also marked for the wiki: the answers the next publish writes.  Any
+    other review (of another version of an answer, or one this copy did not record) counts in ``review_stale``."""
     c = con()
     try:
-        return db.rows(c, """SELECT question_id, max(question_text) AS question, count(*) AS answers,
-                                    sum(status='answered') AS answered, sum(status='partial') AS partial,
-                                    sum(status='not_found') AS not_found, sum(published) AS published,
-                                    max(updated_at) AS updated_at
-                             FROM asked_answers GROUP BY question_id ORDER BY max(updated_at) DESC""")
+        rows = db.rows(c, """SELECT a.question_id, max(a.question_text) AS question, max(q.kind) AS kind,
+                                    count(*) AS answers, sum(a.gov_id IS NULL) AS states,
+                                    sum(a.status='answered') AS answered, sum(a.status='partial') AS partial,
+                                    sum(a.status='not_found') AS not_found,
+                                    sum(a.bpmn IS NOT NULL AND a.bpmn != '') AS maps, max(a.updated_at) AS updated_at
+                             FROM asked_answers a LEFT JOIN asked_questions q ON q.id = a.question_id
+                             GROUP BY a.question_id ORDER BY max(a.updated_at) DESC""")
+        counts: dict[str, dict[str, int]] = {}
+        roster = reviewers.roster(c)
+        for r in db.rows(c, "SELECT * FROM asked_answers WHERE reviewed_by IS NOT NULL AND reviewed_by != ''"):
+            n = counts.setdefault(r["question_id"], {"reviewed": 0, "published": 0, "review_stale": 0})
+            if _reviewer(c, r, roster):
+                n["reviewed"] += 1
+                n["published"] += int(bool(r.get("published")))
+            else:
+                n["review_stale"] += 1
+        for r in rows:
+            r.update(counts.get(r["question_id"], {"reviewed": 0, "published": 0, "review_stale": 0}))
+        return rows
     finally:
         c.close()
 
 
-def _ask_row(r: dict) -> dict:
+def _answer_text(r: dict):
+    """The stored text of an asked answer that a review covers (signoff.ASKED_TEXT)."""
+    return signoff.row_text(r, signoff.ASKED_TEXT)
+
+
+def _answered_at(r: dict) -> str | None:
+    return (db.loads(r.get("metrics"), {}) if isinstance(r.get("metrics"), str) else r.get("metrics") or {}).get(
+        "answered_at")
+
+
+def _reviewer(c, r: dict, roster: dict) -> dict | None:
+    """The person on the reviewer list who reviewed this text of the answer (the hash and date must fit it), with
+    the name, role and licence the list gives, and only for a review this copy's API recorded with that reviewer's
+    token (its review_log holds it: reviewers.asked_reviewer); or None.  A review pulled from another copy, or
+    written into the database by hand, is not a review here, for the page, the dashboard or the wiki tick."""
+    return reviewers.asked_reviewer(c, r, roster)
+
+
+def _ask_row(c, r: dict, roster: dict) -> dict:
+    stored = r.get("reviewed_by")
+    who = _reviewer(c, r, roster)
     for k in ("sections", "facts", "answer", "local", "metrics"):
         r[k] = db.loads(r.get(k), None)
+    # a review of another version of the text (re-asked here, or a newer copy pulled through sync), by someone no
+    # longer on the reviewer list, or one this copy did not record (pulled, or written by hand), is not shown
+    r["reviewed_by"] = who
+    r["review_stale"] = bool(stored) and who is None
+    r["review_line"] = signoff.line(who)
+    r["text_hash"] = signoff.text_hash(_answer_text(r))
     return r
 
 
@@ -438,8 +526,9 @@ def _ask_row(r: dict) -> dict:
 def ask_question(qid: str):
     c = con()
     try:
-        rows = [_ask_row(r) for r in db.rows(c, "SELECT * FROM asked_answers WHERE question_id=? "
-                                                "ORDER BY gov_id IS NOT NULL, state, target", qid)]
+        roster = reviewers.roster(c)
+        rows = [_ask_row(c, r, roster) for r in db.rows(c, "SELECT * FROM asked_answers WHERE question_id=? "
+                                                        "ORDER BY gov_id IS NOT NULL, state, target", qid)]
         if not rows:
             raise HTTPException(404, "no answers for that question yet")
         brief = []
@@ -451,8 +540,11 @@ def ask_question(qid: str):
                           "sections": [s["ref"] for s in ((r["sections"] or {}).get("chosen") or [])],
                           "first_claim": claims[0]["text"] if claims else None,
                           "steps": len(a.get("steps") or []), "quotes": len(a.get("quotes") or []),
+                          "map": bool(r.get("bpmn")),
                           "local": len(((r["local"] or {}).get("locus")) or []), "model": r["model"],
-                          "seconds": r["seconds"], "published": r["published"], "updated_at": r["updated_at"]})
+                          "seconds": r["seconds"], "published": r["published"], "updated_at": r["updated_at"],
+                          "reviewed_by": r["reviewed_by"], "review_line": signoff.line(r["reviewed_by"]),
+                          "review_stale": r["review_stale"]})
         return {"question_id": qid, "question": rows[0]["question_text"], "answers": brief}
     finally:
         c.close()
@@ -465,7 +557,7 @@ def ask_answer(qid: str, target: str):
         r = db.one(c, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, target)
         if not r:
             raise HTTPException(404, "no such answer")
-        return _ask_row(r)
+        return _ask_row(c, r, reviewers.roster(c))
     finally:
         c.close()
 
@@ -474,18 +566,143 @@ class PublishIn(BaseModel):
     published: bool
 
 
+NEEDS_REVIEWER = ("Record a named reviewer first: an answer goes on the wiki only after a person has read it "
+                  "against the law.")
+
+
+def _asked(c, qid: str, target: str) -> dict:
+    r = db.one(c, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, target)
+    if not r:
+        raise HTTPException(404, "no such answer")
+    return r
+
+
+def _keep_answer_date(r: dict) -> str:
+    """The answer's metrics with the date its quotes were taken (answered_at), so ticking or signing it later,
+    which moves updated_at, does not move the date the wiki page gives for the quote check."""
+    m = db.loads(r.get("metrics"), {}) or {}
+    m.setdefault("answered_at", r.get("updated_at"))
+    return json.dumps(m, ensure_ascii=False)
+
+
 @app.post("/api/ask/{qid}/{target}/publish")
 def ask_publish(qid: str, target: str, body: PublishIn):
-    """Mark an answer for (or withdraw it from) the next Lexipedia publish, as its own sub-page."""
+    """Mark an answer for (or withdraw it from) the next Lexipedia publish, as its own sub-page.  Marking needs a
+    named reviewer whose review this copy recorded (PUT .../review, with their token): a review that arrived through
+    sync, or was written into the database by hand, does not count.  Withdrawing never needs one."""
     c = con()
     try:
-        n = c.execute("UPDATE asked_answers SET published=?, updated_at=? WHERE question_id=? AND target=?",
-                      (int(body.published), db.now(), qid, target)).rowcount
+        r = _asked(c, qid, target)
+        if body.published and not _reviewer(c, r, reviewers.roster(c)):
+            raise HTTPException(409, NEEDS_REVIEWER)
+        c.execute("UPDATE asked_answers SET published=?, metrics=?, updated_at=? WHERE question_id=? AND target=?",
+                  (int(body.published), _keep_answer_date(r), db.now(), qid, target))
         db.bump(c)
         c.commit()
-        if not n:
-            raise HTTPException(404, "no such answer")
         return {"published": body.published}
+    finally:
+        c.close()
+
+
+REVIEW_FIELDS = ("reviewer", "attested", "text_hash")
+STALE_TEXT = ("The answer has changed since this page was loaded (it was asked again, or a newer copy arrived "
+              "through sync). Reload it, read it again, and record the review then.")
+NEEDS_HASH = ("send the text_hash of the answer as the reviewer read it (the text_hash that GET "
+              "/api/ask/{qid}/{target} gives): a review is for one text")
+ONLY_FIELDS = ("a review takes only reviewer (an id from the operator's reviewer list: `lexflow reviewer list`), "
+               "attested and text_hash; the name, role and licence come from the list, and the date is today")
+NEEDS_TOKEN = (f"send the reviewer's own token in the {reviewers.TOKEN_HEADER} header (`lexflow reviewer add` "
+               "printed it; `lexflow reviewer token <id>` makes a new one)")
+BAD_TOKEN = "that token is not the token of a reviewer on the operator's list (`lexflow reviewer token <id>`)"
+NOT_THEIR_TOKEN = "that token is another reviewer's: a review is recorded only with the named reviewer's own token"
+
+
+def _token_holder(c, token: str | None) -> dict:
+    """The reviewer on the list whose token was sent (401 without one, 403 for one that is no reviewer's)."""
+    if not token:
+        raise HTTPException(401, NEEDS_TOKEN)
+    who = reviewers.holder(c, token)
+    if not who:
+        raise HTTPException(403, BAD_TOKEN)
+    return who
+
+
+@app.get("/api/reviewers")
+def reviewer_list():
+    """The reviewer list the operator of this copy keeps (lexflow reviewer add; not synced): what the dashboard
+    offers to pick from.  Read only: nothing here adds a reviewer, no token or hash is shown, and lexflow cannot check
+    that a reviewer is a person."""
+    c = con()
+    try:
+        return reviewers.shown(c)
+    finally:
+        c.close()
+
+
+@app.put("/api/ask/{qid}/{target}/review")
+def ask_review(qid: str, target: str, body: Annotated[dict, Body()],
+               token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None):
+    """Record that a person on the operator's reviewer list read this answer against the law (lexflow/signoff.py).
+    The body is exactly ``{"reviewer": "<id from the list>", "attested": true, "text_hash": "<the answer's
+    text_hash as the reviewer read it>"}``: no name, role, licence or date can be typed in (400), since a page
+    prints those from the list, and the review is dated today.  ``attested`` is the reviewer's own statement that
+    they, a person, read this exact text.  The ``X-Lexflow-Reviewer-Token`` header carries that reviewer's own token
+    (``lexflow reviewer add`` printed it): none is a 401, and a token that is no reviewer's, or another reviewer's,
+    a 403; ``review_log`` keeps whose token recorded the review.  A missing or malformed text_hash is a 400; a
+    well-formed one that is not the stored answer's is a 409, so a re-asked or newer synced answer is not shown as
+    reviewed.  The answer still goes on the wiki only when it is also marked for it."""
+    extra = sorted(str(k) for k in body if k not in REVIEW_FIELDS)
+    bad = [f"{ONLY_FIELDS} (not {', '.join(extra)})"] if extra else []
+    h = body.get("text_hash")
+    if not isinstance(h, str) or not h:
+        bad.append(NEEDS_HASH)
+    elif not signoff.HASH.fullmatch(h):
+        bad.append("text_hash is the 64-character SHA-256 (lower-case hex) that GET /api/ask/{qid}/{target} gives")
+    c = con()
+    try:
+        r = _asked(c, qid, target)
+        roster = reviewers.roster(c)
+        ts = db.now()           # the review's date and its review_log entry come from the same moment
+        rev = {"reviewer": body.get("reviewer"), "date": ts[:10], "attested": body.get("attested")}
+        # not before the answer was made (its answered_at, which _keep_answer_date fixes from updated_at if missing)
+        bad += signoff.problems(rev, roster, not_before=_answered_at(r) or r.get("updated_at"))
+        if bad:
+            raise HTTPException(400, "; ".join(bad))
+        holder = _token_holder(c, token)
+        if holder["id"] != rev["reviewer"]:
+            raise HTTPException(403, NOT_THEIR_TOKEN)
+        text = _answer_text(r)
+        if h != signoff.text_hash(text):
+            raise HTTPException(409, STALE_TEXT)
+        rev = signoff.bind(rev, text)
+        c.execute("UPDATE asked_answers SET reviewed_by=?, metrics=?, updated_at=? WHERE question_id=? AND target=?",
+                  (json.dumps(rev, ensure_ascii=False), _keep_answer_date(r), db.now(), qid, target))
+        # what makes it a review here: a page names the reviewer only while this is the answer's last entry
+        reviewers.log_review(c, "review", qid, target, holder["id"], rev["text_hash"], at=ts)
+        db.bump(c)
+        c.commit()
+        who = signoff.person(rev, roster)
+        return {"reviewed_by": who, "review_line": signoff.line(who), "text_hash": rev["text_hash"],
+                "recorded_by": holder["id"]}
+    finally:
+        c.close()
+
+
+@app.delete("/api/ask/{qid}/{target}/review")
+def ask_unreview(qid: str, target: str, token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None):
+    """Remove the reviewer; the answer leaves the wiki at the next publish, so its tick goes too.  It takes the
+    token of a reviewer on the list (401 without one, 403 for one that is no reviewer's), and ``review_log`` keeps
+    whose token removed the review."""
+    c = con()
+    try:
+        r = _asked(c, qid, target)
+        holder = _token_holder(c, token)
+        c.execute("UPDATE asked_answers SET reviewed_by=NULL, published=0, metrics=?, updated_at=? "
+                  "WHERE question_id=? AND target=?", (_keep_answer_date(r), db.now(), qid, target))
+        reviewers.log_review(c, "unreview", qid, target, holder["id"], signoff.text_hash(_answer_text(r)))
+        db.bump(c)
+        c.commit()
+        return {"reviewed_by": None, "published": False, "removed_by": holder["id"]}
     finally:
         c.close()
 

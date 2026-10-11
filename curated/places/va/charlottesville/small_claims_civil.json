@@ -1,0 +1,1327 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "small_claims_civil",
+ "title": "File a small claims or other civil case in General District Court",
+ "question": "How do I sue someone for a small amount, or file a landlord-tenant case?",
+ "category": "courts_legal",
+ "kind": "process",
+ "audience": ["residents", "businesses", "landlords", "tenants", "property owners"],
+ "office": "Charlottesville General District Court, Clerk's Office (civil and small claims)",
+ "summary": "Sue in the Charlottesville General District Court if the defendant lives, works or is based in the city, the claim arose there, or the rental home in an eviction or repair case is there. Claims up to $5,000 can go to the informal small claims division (Form DC-402), where each side speaks for itself; claims up to $50,000 use a warrant in debt (DC-412). Landlords file a Summons for Unlawful Detainer (DC-421) after a proper termination notice; tenants can file a Tenant's Assertion (DC-429) or a lockout petition (DC-431). File at 606 E Market Street and pay the $36 state court fee, a $10 legal aid fee where it applies, any local assessments and $12 per defendant for sheriff service, or ask for a waiver. Appeal within 10 days.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.1",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.1/",
+   "quote": "each general district court shall establish, using existing facilities, a small claims division to be designated a small claims court.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.1",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.1/",
+   "quote": "Such courts shall not have jurisdiction over suits against the Commonwealth under the Virginia Tort Claims Act (§ 8.01-195.1 et seq.) or suits against any officer or employee of the Commonwealth for claims arising out of the performance of their official duties or responsibilities.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.2",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.2/",
+   "quote": "the small claims court shall have jurisdiction, concurrent with that of the general district court, over the civil action specified in § 16.1-77 (1) when the amount claimed does not exceed $5,000, exclusive of interest.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-77(1)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-77/",
+   "quote": "when the amount of such claim does not exceed $4,500, exclusive of interest and any attorney fees, and concurrent jurisdiction with the circuit courts having jurisdiction in such territory of any such claim when the amount thereof exceeds $4,500 but does not exceed $50,000, exclusive of interest and any attorney fees.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-77(3)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-77/",
+   "quote": "the maximum jurisdictional limits prescribed in subdivision (1) shall not apply to any claim, counter-claim, or cross-claim in an unlawful detainer action that includes a claim for damages sustained or rent against any person obligated on the lease or guarantee of such lease.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "Actions in the small claims court shall be commenced by the filing of a small claims civil warrant by a plaintiff.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "At the time of filing a small claims civil warrant, the plaintiff shall pay to the clerk a required fee, which will be taxed as costs in the case.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "The plaintiff shall select a time for the hearing which shall be held at least five days after service of the warrant.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "The chief judge may limit the number of cases any one person may set for trial on any one date.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(E)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "The trial shall be conducted on the first return date.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(E)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "A continuance shall be granted to either the plaintiff or defendant only upon good cause shown.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.3(F)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.3/",
+   "quote": "There shall be no pleadings in small claims court actions other than the warrant and answer, grounds of defense and counterclaims not to exceed $5,000.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.4(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.4/",
+   "quote": "All parties shall be represented by themselves in actions before the small claims court except as follows:",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.4(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.4/",
+   "quote": "A corporation, partnership, limited liability company, or other legal or commercial entity may be represented by an owner, a general partner, an officer, a member, or an employee of that corporation, partnership, limited liability company, or other legal or commercial entity",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.4(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.4/",
+   "quote": "A defendant shall have the right to remove the case to the general district court at any point preceding the handing down of the decision by the judge and may be represented by an attorney for that purpose.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.5",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.5/",
+   "quote": "The general district court judge shall conduct the trial in an informal manner so as to do substantial justice between the parties.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.6",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.6/",
+   "quote": "The small claims court shall follow the procedures of the general district court in judgment and collection.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-122.7",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-122.7/",
+   "quote": "Appeals from the small claims court shall be as in other cases from the general district court.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-76",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-76/",
+   "quote": "venue shall be determined in accordance with the provisions of Chapter 5 (§ 8.01-257 et seq.) of Title 8.01.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-262(1)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-262/",
+   "quote": "Wherein the defendant resides or has his principal place of employment or, if the defendant is not an individual, wherein its principal office or principal place of business is located;",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-262(4)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-262/",
+   "quote": "Wherein the cause of action, or any part thereof, arose;",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-261(3)(g)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-261/",
+   "quote": "The county or city wherein the subject land, or a part thereof, is situated in the following actions:",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-264(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-264/",
+   "quote": "As to actions in general district courts, a motion objecting to venue, which may be in the form of a letter or other written communication, shall be filed with or received by the court on or before the day of trial.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-264(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-264/",
+   "quote": "If such motion is sustained, the court shall order the venue transferred to a proper forum",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-79",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-79/",
+   "quote": "requiring the person against whom the claim is asserted to appear before the court on a certain day, not exceeding 90 days from the date of service thereof, to answer the complaint of the plaintiff set out in the warrant.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-80",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-80/",
+   "quote": "Service of the warrant shall be made as provided in Chapter 8 (§ 8.01-285 et seq.) of Title 8.01, but the warrant must be served not less than five days before the return day.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-293(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-293/",
+   "quote": "Any person 18 years of age or older and who is not a party or otherwise interested in the subject matter in controversy.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-296(2)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-296/",
+   "quote": "provided that not less than 10 days before judgment by default may be entered, the party causing service or his attorney or agent mails to the party served a copy of such process and thereafter files in the office of the clerk of the court a certificate of such mailing.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-15.2(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-15.2/",
+   "quote": "the court shall not enter a judgment by default until the plaintiff files with the court an affidavit (i) stating whether or not the defendant is in military service and showing necessary facts to support the affidavit;",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-69.48:2",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.48:2/",
+   "quote": "For all court and magistrate services in each distress, detinue, interrogatory summons, unlawful detainer, civil warrant, notice of motion, garnishment, attachment issued, or other civil proceeding, the fee shall be $36.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-69.48:2",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.48:2/",
+   "quote": "When no service of process is had on a defendant named in any civil process other than a notice of motion for judgment, such process may be reissued once by the court or clerk at the court's direction by changing the return day of such process, for which service by the court or clerk there shall be no charge;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-278",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-278/",
+   "quote": "(ii) upon commencement of a civil action in such general district court, an additional fee of $10.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-281(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-281/",
+   "quote": "may assess a sum not in excess of two dollars as part of the costs in (i) each civil action filed in the district or circuit courts located within its boundaries",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-281(C)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-281/",
+   "quote": "Such additional fee assessed under this subsection shall not be assessed in any civil action if the amount in controversy is $500 or less.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 42.1-70",
+   "url": "https://law.lis.virginia.gov/vacode/42.1-70/",
+   "quote": "Any county, city, or town may, through its governing body, assess as part of the costs incident to each civil action filed in the courts located within its boundaries a sum not in excess of $4.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-272(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-272/",
+   "quote": "The fee for process and service in the following instances shall be $12:",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-272(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-272/",
+   "quote": "Service of a writ of possession or writ of eviction, except that there shall be an additional fee of $12 for each additional defendant.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-606(A)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-606/",
+   "quote": "and who is on account of his poverty unable to pay fees or costs, may be allowed by a court to sue or defend a suit therein, without paying fees or costs;",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-606(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-606/",
+   "quote": "the court shall consider whether such person is a current recipient of a state or federally funded public assistance program for the indigent or is represented by a legal aid society",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-606(B)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-606/",
+   "quote": "such presumption shall be rebuttable where the court finds that a more thorough examination of the person's financial resources is necessary.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-606(C)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-606/",
+   "quote": "If the available funds are equal to or less than 125 percent of the federal poverty income guidelines prescribed for the size of the household of such person by the federal Department of Health and Human Services, he shall be presumed unable to pay.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-88.01",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-88.01/",
+   "quote": "a defendant may, at his option, at any time before trial, plead in writing as a counterclaim, any cause of action at law for a money judgment in personam",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-88.01",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-88.01/",
+   "quote": "Upon the request of either party, bills of particulars and grounds of defense may be ordered to ensure a fair trial on the merits of the issue presented.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-88.03(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-88.03/",
+   "quote": "may prepare, execute, file, and have served on other parties in any proceeding in a general district court a warrant in debt, motion for judgment, warrant in detinue, distress warrant, summons for unlawful detainer",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-88.03(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-88.03/",
+   "quote": "Nothing in this section shall allow a nonlawyer to file a bill of particulars or grounds of defense or to argue motions, issue a subpoena, rule to show cause, or capias; file or interrogate at debtor interrogatories;",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-88.03(D)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-88.03/",
+   "quote": "Parties not represented by counsel, and who have made an appearance in the case, shall promptly notify in writing the clerk of court wherein the litigation is pending, and any adverse party, of any change in the party's address necessary for accurate mailing or service of any pleadings or notices.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-97.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-97.1/",
+   "quote": "No new trial may be granted from any judgment in a district court unless a motion by one of the parties is made within thirty days after the date of judgment, not including the date of entry of such judgment.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-428(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-428/",
+   "quote": "the court may set aside a judgment by default or a decree pro confesso upon the following grounds: (i) fraud on the court, (ii) a void judgment, (iii) on proof of an accord and satisfaction, or (iv) on proof that the defendant was, at the time of service of process or entry of judgment, a servicemember as defined in 50 U.S.C. § 3911.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-106(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-106/",
+   "quote": "there shall be an appeal of right, if taken within 10 days after such order or judgment, to a court of record.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-106(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-106/",
+   "quote": "Such appeal shall be to a court of record having jurisdiction within the territory of the court from which the appeal is taken and shall be heard de novo.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-106(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-106/",
+   "quote": "the party noting or noting and perfecting such appeal shall notify the sheriff of such appeal.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-107(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-107/",
+   "quote": "Such bond shall be posted within 30 days from the date of judgment, except for an appeal from the judgment of a general district court on an unlawful detainer pursuant to § 8.01-129 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-107(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-107/",
+   "quote": "However, no appeal bond shall be required of a plaintiff in a civil case where the defendant has not asserted a counterclaim",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-107(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-107/",
+   "quote": "In any civil case, no indigent defendant shall be required to post an appeal bond.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-107(C)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-107/",
+   "quote": "an appeal bond shall be posted by the defendant with payment into the general district court in the amount of outstanding rent, late charges, attorney fees, and any other charges or damages due, as contracted for in the rental agreement, and as amended on the unlawful detainer by the court.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-107(E)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-107/",
+   "quote": "any party applying for appeal shall, within 30 days from the date of the judgment, pay to the clerk of the court from which the appeal is taken the amount of the writ tax of the court to which the appeal is taken and costs as required by subdivision A 13 of § 17.1-275 , including all fees for service of process of the notice of appeal in the circuit court pursuant to § 16.1-112 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-1727",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1727/",
+   "quote": "A tax of $5 is hereby imposed upon (i) the commencement of every civil action in a court of record, whether commenced by petition or notice, ejectment or attachment, other than a summons to answer a suggestion; (ii) the removal or appeal of a cause of action from a district court to a court of record;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-1727",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-1727/",
+   "quote": "However, when the debt or demand for damages exceeds $49,999 but does not exceed $100,000, the tax shall be $15; and when the debt or demand for damages exceeds $100,000, the tax shall be $25.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(13)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "In all civil actions that include one or more claims for the award of monetary damages the clerk's fee chargeable to the plaintiff shall be $100 in cases seeking recovery not exceeding $49,999;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-275(A)(13)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-275/",
+   "quote": "$200 in cases seeking recovery exceeding $49,999, but not exceeding $100,000;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-113",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-113/",
+   "quote": "Every such appeal shall be tried by the court in a summary way, or, if the amount in controversy exceeds fifty dollars, by a jury if either party requires it.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-129(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-129/",
+   "quote": "Notwithstanding the provisions of § 16.1-106 et seq., the bond shall be posted and the writ tax paid within 10 days of the date of the judgment.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-129(B)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-129/",
+   "quote": "In no case, however, shall the sheriff evict the defendant from the dwelling unit prior to the expiration of the defendant's 10-day appeal period.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-129(B)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-129/",
+   "quote": "upon request of the plaintiff, the judge shall further order that the writ of eviction issue immediately upon entry of judgment for possession.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-129(B)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-129/",
+   "quote": "Trial by jury shall be had upon application of any party.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-126(B)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-126/",
+   "quote": "If the summons for unlawful detainer is filed to terminate a tenancy pursuant to the Virginia Residential Landlord and Tenant Act (§ 55.1-1200 et seq.), the initial hearing on such summons shall occur as soon as practicable, but not more than 21 days from the date of filing.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-126(B)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-126/",
+   "quote": "Such summons shall be served at least 10 days before the return day thereof.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-126(D)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-126/",
+   "quote": "The court shall not enter an order of possession unless the plaintiff, plaintiff's attorney, or agent has presented a copy of a proper termination notice issued to the defendant and the court has entered such notice into evidence.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1245(F)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1245/",
+   "quote": "If rent is unpaid when due, and the tenant fails to pay rent within 14 days after written notice is served on him notifying the tenant of his nonpayment, and of the landlord's intention to terminate the rental agreement if the rent is not paid within the 14-day period, the landlord may terminate the rental agreement and proceed to obtain possession of the premises as provided in § 55.1-1251 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1245(A)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1245/",
+   "quote": "stating that the rental agreement will terminate upon a date not less than 30 days after receipt of the notice if the breach is not remedied in 21 days",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1245(C)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1245/",
+   "quote": "If the tenant commits a breach that is not remediable, the landlord may serve a written notice on the tenant specifying the acts and omissions constituting the breach and stating that the rental agreement will terminate upon a date not less than 30 days after receipt of the notice.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1245(C)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1245/",
+   "quote": "the landlord may terminate the rental agreement immediately and proceed to obtain possession of the premises.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-470",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-470/",
+   "quote": "the officer to whom a writ of eviction has been delivered to be executed shall, at least 72 hours before execution, serve notice of intent to execute, including the date and time of execution",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-471",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-471/",
+   "quote": "Writs of eviction, in case of unlawful entry and detainer, shall be issued within 180 days from the date of judgment for possession and shall be made returnable within 30 days from the date of issuing the writ",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1250(C)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1250/",
+   "quote": "at which time the unlawful detainer proceeding shall be dismissed, unless there are bases for the entry of an order of possession other than nonpayment of rent stated in the unlawful detainer action filed by the landlord.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1250(D)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1250/",
+   "quote": "no less than 48 hours before the date and time scheduled by the officer to whom the writ of eviction has been delivered to be executed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1250(E)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1250/",
+   "quote": "Any payments made by the tenant shall be by cashier's check, certified check, or money order.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1250(A)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1250/",
+   "quote": "a landlord with four or fewer rental dwelling units, or up to a 10 percent interest in four or fewer rental dwelling units, may limit a tenant's use of the right of redemption to once per lease period, provided that the landlord provides written notice of such limitation to the tenant.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1244(A)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1244/",
+   "quote": "The tenant may file such an assertion in a general district court in which the premises is located by a declaration setting forth such assertion and asking for one or more forms of relief as provided for in subsection D.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1244(B)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1244/",
+   "quote": "there shall be a rebuttable presumption that a period in excess of 30 days from receipt of the notification by the landlord is unreasonable",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1244(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1244/",
+   "quote": "The tenant has paid into court the amount of rent called for under the rental agreement, within five days of the date due under the rental agreement, unless or until such amount is modified by subsequent order of the court under this chapter.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1244(F)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1244/",
+   "quote": "The initial hearing on the tenant's assertion filed pursuant to subsection A shall be held within 15 calendar days from the date of service of process on the landlord",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1243.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1243.1/",
+   "quote": "A general district court shall enter an order pursuant to this section upon petition by a tenant who presents evidence establishing that his landlord has willfully and without authority from the court (i) removed or excluded the tenant from the dwelling unit unlawfully, (ii) interrupted or caused the interruption of an essential service to the tenant, or (iii) taken action to make the premises unsafe for habitation.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1243.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1243.1/",
+   "quote": "The initial hearing on the tenant's petition shall be held within five calendar days from the date of the filing of the petition.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1243.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1243.1/",
+   "quote": "Any preliminary ex parte order issued pursuant to this section shall further include a date of no more than 10 days after the initial hearing for a full hearing to consider the merits of the petition and the damages described in subsection D.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 55.1-1243.1(D)",
+   "url": "https://law.lis.virginia.gov/vacode/55.1-1243.1/",
+   "quote": "the tenant shall recover (i) the actual damages sustained by him; (ii) statutory damages of $5,000 or four months' rent, whichever is greater; and (iii) reasonable attorney fees.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-466",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-466/",
+   "quote": "to issue a writ of fieri facias at the expiration of twenty-one days from the date of the entry of the judgment",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-466",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-466/",
+   "quote": "For good cause the court may order an execution to issue on judgments and decrees at an earlier period.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-506(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-506/",
+   "quote": "upon the application of the execution creditor, the clerk of the court from which such fieri facias issued shall issue a summons against (i) the execution debtor;",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-511/",
+   "quote": "a summons in the form prescribed by § 8.01-512.3 may be sued out of the clerk's office (i) of the court from which an execution on the judgment is issued so long as the judgment shall remain enforceable as provided in § 8.01-251",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-94.01(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-94.01/",
+   "quote": "When satisfaction of any judgment rendered in a court not of record is made, the judgment creditor shall by himself, or his agent or attorney, give written notice of such satisfaction, within 30 days of receipt, to the clerk of the court in which the judgment was rendered.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-94.01(B)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-94.01/",
+   "quote": "the judgment debtor, his heirs or personal representatives, may, on motion, after 10 days' notice thereof to the judgment creditor, or his assignee, his personal representative, or his agent or attorney, apply to the court in which the judgment was rendered to have the judgment marked satisfied.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-405(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-405/",
+   "quote": "Except as provided in subsection B of § 17.1-406 , any final judgment, order, or decree of a circuit court in a civil matter;",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-675.3",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-675.3/",
+   "quote": "a notice of appeal to the Court of Appeals in any case within the jurisdiction of the court shall be filed within 30 days from the date of any final judgment order, decree, or conviction.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 17.1-902",
+   "url": "https://law.lis.virginia.gov/vacode/17.1-902/",
+   "quote": "to investigate charges arising out of the present or any prior term of office which would be the basis for retirement, censure, or removal of a judge",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville General District Court continuance policy, civil court (court policy posted on the city's court page; not City Code)",
+   "url": "https://www.charlottesville.gov/176/General-District-Court",
+   "quote": "First continuance granted by Clerk upon request of Plaintiff or Plaintiff Attorney if all parties agree.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville General District Court continuance policy, civil (court policy posted on the court's vacourts.gov page; not City Code)",
+   "url": "https://www.vacourts.gov/courts/gd/charlottesville/home",
+   "quote": "First continuance granted by judge on agreement by all parties.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Decide whether the case belongs in General District Court, and on which docket",
+   "who": "Plaintiff (the person or business that wants to sue)",
+   "how": "Small claims division: a claim for money, or for return of personal property, worth up to $5,000 (interest not counted). The hearing is informal and each side speaks for itself, except that a business may send an owner, general partner, officer, member or employee. The regular civil docket of the General District Court: claims up to $4,500 can be filed only in a general district court, and claims over $4,500 up to $50,000 can be filed here or in the Circuit Court; lawyers may appear and the formal rules apply. A claim up to $5,000 may go on either docket. Eviction (unlawful detainer) cases have no dollar cap on the rent and damages claimed against a person on the lease. The small claims court cannot hear Virginia Tort Claims Act suits against the Commonwealth or claims against state officers or employees for their official duties.",
+   "deadline": "Within the statute of limitations for the kind of claim; the court's pamphlet warns that some claims have much shorter periods than others",
+   "fee": null,
+   "form": null,
+   "url": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf",
+   "quote": "the small claims court shall have jurisdiction, concurrent with that of the general district court, over the civil action specified in § 16.1-77 (1) when the amount claimed does not exceed $5,000, exclusive of interest.",
+   "source": "Va. Code § 16.1-122.2"
+  },
+  {
+   "id": "s2",
+   "step": "Check that Charlottesville is the right place to file",
+   "who": "Plaintiff",
+   "how": "File in the Charlottesville General District Court if the defendant lives in the city or has their principal place of employment there, if a business defendant has its principal office or principal place of business (or its registered office or registered agent) in the city, or if the claim, or part of it, arose in the city. An eviction or a tenant's repair case belongs where the rental property is. Charlottesville and Albemarle County have separate general district courts in the same city: a case that belongs in the county goes to the Albemarle General District Court at 350 Park Street. A case filed in the wrong place is not dismissed for that reason alone if a proper court exists in Virginia: the defendant can object in writing on or before the trial date (the back of the warrant explains how), and if the court sustains the objection it must transfer the case to a proper court.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.vacourts.gov/static/courts/gd/gdinfo.pdf",
+   "quote": "Wherein the defendant resides or has his principal place of employment or, if the defendant is not an individual, wherein its principal office or principal place of business is located;",
+   "source": "Va. Code § 8.01-262"
+  },
+  {
+   "id": "s3",
+   "step": "Find the defendant's exact legal name and a street address for service",
+   "who": "Plaintiff",
+   "how": "For a person, use a home street address if you can (a work address works only for service in person). Give the city or county, ZIP code and apartment number. For a business trading under an assumed name, check the fictitious name certificate filed with the Circuit Court Clerk and sue the owner 'trading as' the business name. For a corporation or LLC, look up its registered agent with the State Corporation Commission (https://scc.virginia.gov/). A post office box alone will not do.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf",
+   "quote": "A post office box number alone is insufficient for service.",
+   "source": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf"
+  },
+  {
+   "id": "s4",
+   "step": "Fill in the claim form for a money or property claim",
+   "who": "Plaintiff (for a business: an officer, manager, general partner or an employee it authorizes in writing)",
+   "how": "Small claims: Warrant in Debt - Small Claims Division (DC-402) for money, or Warrant in Detinue - Small Claims Division (DC-404) to get specific personal property back. Regular docket: Warrant in Debt (DC-412) or Warrant in Detinue (DC-414). Give the defendant's name and address, the amount (and interest rate and start date, if any) or the property and its value, and the basis of the claim (open account, contract, note or other), then sign. The forms can be completed online at vacourts.gov and printed. Bring the original, one copy for each defendant and a copy for yourself; the court recommends one more copy to mail to the defendant (step s12). A business may prepare, sign and file these papers without a lawyer. On the regular docket, though, a non-lawyer acting for a business may not file a bill of particulars or grounds of defense, argue motions, issue a subpoena, or file or conduct debtor interrogatories; in small claims an owner, general partner, officer, member or employee may try the case.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.vacourts.gov/forms/district/civil",
+   "quote": "If the plaintiff is seeking only a money judgment, he or she should prepare and file a warrant in debt (Form DC-402 Warrant in Debt - Small Claims Division)",
+   "source": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf"
+  },
+  {
+   "id": "s5",
+   "step": "Landlord: give a proper termination notice, then file a Summons for Unlawful Detainer",
+   "who": "Landlord, or the landlord's agent, property manager or attorney",
+   "how": "Under the Virginia Residential Landlord and Tenant Act, for unpaid rent serve a written notice giving the tenant 14 days to pay before the lease ends; for another material breach that can be fixed, serve a notice ending the lease at least 30 days after receipt unless the breach is fixed in 21 days; for a breach that cannot be fixed, serve a notice ending the lease at least 30 days after receipt; and for a criminal or willful act that cannot be fixed and threatens health or safety, the landlord may end the lease immediately. When the notice period runs out, file the Summons for Unlawful Detainer (Civil Claim for Eviction, DC-421) with the clerk, stating under penalty of perjury why the tenant should be removed and what is owed. You may ask for all amounts due as of the hearing date. Bring a copy of the termination notice to court: without it the judge cannot give you possession. If the only ground is unpaid rent, the tenant (or someone for the tenant) can end the case by paying everything owed (rent, fees, late charges, attorney fees and costs), as the summons explains; a landlord with four or fewer rental units may limit this right of redemption to once per lease period by written notice.",
+   "deadline": "For a tenancy under the Virginia Residential Landlord and Tenant Act, initial hearing as soon as practicable and within 21 days of filing (no later than 30 days if it cannot be heard in 21, or a later date the landlord asks for); the summons must be served at least 10 days before the return day",
+   "fee": "$36 court fee plus the other filing fees (see s8), and $12 for each defendant served by the sheriff",
+   "form": "f5",
+   "url": "https://www.vacourts.gov/static/forms/district/dc421.pdf",
+   "quote": "The court shall not enter an order of possession unless the plaintiff, plaintiff's attorney, or agent has presented a copy of a proper termination notice issued to the defendant and the court has entered such notice into evidence.",
+   "source": "Va. Code § 8.01-126(D)"
+  },
+  {
+   "id": "s6",
+   "step": "Tenant: ask the court to order repairs (Tenant's Assertion and Complaint)",
+   "who": "Tenant",
+   "how": "First give the landlord written notice of the condition (or have a state or local agency issue a violation or condemnation notice). Conditions covered include serious lease or code violations, fire hazards and threats to health or safety, such as no heat or running water, no light, electricity or adequate sewage disposal, rodent infestation, or lead paint the landlord knows of. If the landlord does not fix it in a reasonable time (more than 30 days after the landlord got notice is presumed unreasonable), file the Tenant's Assertion and Complaint (DC-429) in the general district court where the home is. Pay each month's rent into the court, not to the landlord. The landlord can answer that the condition does not exist, has been fixed, was caused by the tenant or the tenant's household or guests, or that the tenant unreasonably refused entry to fix it. The court can keep the rent in escrow until the condition is fixed, reduce (abate) the rent, release escrowed rent to the landlord, to you or to a contractor to pay for repairs, refer the matter to a state or local agency for inspection and report, or end the lease at your request; if you win, it may make the landlord pay your reasonable costs, including court costs, and attorney fees.",
+   "deadline": "Rent paid into court within five days of each due date; initial hearing within 15 calendar days of service on the landlord (earlier if emergency conditions are alleged)",
+   "fee": "Filing fees as in s8",
+   "form": "f6",
+   "url": "https://www.vacourts.gov/static/forms/district/dc429.pdf",
+   "quote": "The tenant has paid into court the amount of rent called for under the rental agreement, within five days of the date due under the rental agreement, unless or until such amount is modified by subsequent order of the court under this chapter.",
+   "source": "Va. Code § 55.1-1244(B)(2)"
+  },
+  {
+   "id": "s7",
+   "step": "Tenant: get a fast order after a lockout, utility shutoff or unsafe act by the landlord",
+   "who": "Tenant",
+   "how": "If the landlord, without a court order, locked you out, cut off or caused the cut-off of an essential service, or made the home unsafe, file the Tenant's Petition for Relief from Unlawful Exclusion (DC-431). The court can order the landlord to let you back in, restore the service or undo the unsafe act, and can issue a preliminary order without the landlord present if there is good cause and you tried to tell the landlord about the hearing. A preliminary order must set the full hearing no more than 10 days after the first hearing. At the full hearing, if you prove the landlord's act, you recover your actual damages plus statutory damages of $5,000 or four months' rent, whichever is greater, and reasonable attorney fees; the court can also end the lease at your request and order the whole security deposit returned.",
+   "deadline": "Initial hearing within five calendar days of filing",
+   "fee": "Filing fees as in s8",
+   "form": "f7",
+   "url": "https://www.vacourts.gov/static/forms/district/dc431.pdf",
+   "quote": "The initial hearing on the tenant's petition shall be held within five calendar days from the date of the filing of the petition.",
+   "source": "Va. Code § 55.1-1243.1(C)"
+  },
+  {
+   "id": "s8",
+   "step": "File the papers with the Clerk's Office and pay the fees",
+   "who": "Plaintiff, at the Charlottesville General District Court Clerk's Office",
+   "how": "Bring the completed form and copies to the Clerk's Office, 606 E Market Street (Monday to Friday, 8:30 am to 4:30 pm; a drop box next to the door takes after-hours filings; mail goes to P. O. Box 2677). Pay the filing fee and the sheriff's fee for each defendant. There is no single statewide total: state law sets a $36 court fee and, where a Virginia State Bar legal aid program serves the locality, a $10 legal aid fee; the city may add local courthouse and law library assessments; and the sheriff charges $12 per defendant served. Get the exact total from the court's online Civil Filing Fee Calculation (choose Charlottesville General District) or by calling the clerk. The state self-help site says filing fees are paid in cash, by certified check or by money order, and the city's Payments page says the Clerk's Office cannot process payments after 4:15 pm. Clerks can explain procedure but cannot give legal advice.",
+   "deadline": null,
+   "fee": "$36 court fee, a $10 legal aid fee where it applies (not confirmed here for Charlottesville), possible local assessments of up to $9, and $12 for each defendant served by the sheriff (see fees)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/176/General-District-Court",
+   "quote": "These fees must be paid in cash, by certified check, or by money order.",
+   "source": "https://selfhelp.vacourts.gov/page/11/small-claims"
+  },
+  {
+   "id": "s9",
+   "step": "If you cannot afford the fees, ask the judge to waive them",
+   "who": "Plaintiff who lives in Virginia, or any defendant; a judge decides",
+   "how": "File the Petition for Proceeding in Civil Case Without Payment of Fees or Costs (DC-409) with your papers; the state self-help site points to the same petition on the circuit court form, CC-1414. You are presumed unable to pay if you receive public assistance (for example TANF, Medicaid, SSI or SNAP) or have a legal aid lawyer, though the court can rebut that presumption if it finds a closer look at your finances is needed. Otherwise the court adds your net income and liquid assets, subtracts exceptional expenses such as medical costs, support payments and child care, and presumes you unable to pay if the result is at or below 125 percent of the federal poverty guidelines for your household. If the waiver is granted, the officers serve your papers without fees.",
+   "deadline": "When you file (or when you must answer, for a defendant)",
+   "fee": "None if the waiver is granted",
+   "form": "f8",
+   "url": "https://selfhelp.vacourts.gov/page/14/filing-fees-waivers",
+   "quote": "and who is on account of his poverty unable to pay fees or costs, may be allowed by a court to sue or defend a suit therein, without paying fees or costs;",
+   "source": "Va. Code § 17.1-606(A)"
+  },
+  {
+   "id": "s10",
+   "step": "Set the return (court) date with the clerk",
+   "who": "Plaintiff, with the clerk's agreement",
+   "how": "In small claims the plaintiff chooses the hearing time, subject to the clerk's agreement, and it must be at least five days after the defendant is served. The court's state page lists the Charlottesville small claims docket on Tuesdays at 1:30 pm (the city page says Tuesday, 3 pm) and the civil docket call on Tuesdays at 1 pm. Under state law the return date can be no more than 90 days after service. The chief judge may limit how many cases one person sets on a single day.",
+   "deadline": "At least five days, and no more than 90 days, after service",
+   "fee": null,
+   "form": null,
+   "url": "https://www.vacourts.gov/courts/gd/charlottesville/home",
+   "quote": "The plaintiff shall select a time for the hearing which shall be held at least five days after service of the warrant.",
+   "source": "Va. Code § 16.1-122.3(B)"
+  },
+  {
+   "id": "s11",
+   "step": "Have each defendant served",
+   "who": "Charlottesville Sheriff's Office (for an address in the city), or a private process server",
+   "how": "The clerk sends the papers to the sheriff of the city or county where the defendant is; the Charlottesville Sheriff's Office handles civil process in the city. Instead, any adult who is not a party and has no interest in the case (for example a private process server) can serve the papers and file proof of service on DC-411. Service is made by handing the papers to the defendant, by leaving them with a family member aged 16 or older at the defendant's home, or by posting them on the front door. If the server cannot find the defendant, the papers come back 'not found' and the case cannot be tried; the clerk can reissue the papers once, within three months, at no charge.",
+   "deadline": "At least five days before the return day (at least 10 days for a Summons for Unlawful Detainer)",
+   "fee": "$12 for each defendant served by a Virginia sheriff",
+   "form": "f10",
+   "url": "https://www.charlottesville.gov/303/Sheriff",
+   "quote": "Service of the warrant shall be made as provided in Chapter 8 (§ 8.01-285 et seq.) of Title 8.01, but the warrant must be served not less than five days before the return day.",
+   "source": "Va. Code § 16.1-80"
+  },
+  {
+   "id": "s12",
+   "step": "Mail a copy to the defendant and file a certificate of mailing",
+   "who": "Plaintiff (or the plaintiff's employee)",
+   "how": "Send a copy of the warrant to the defendant by first-class mail and fill in the certificate of mailing (on the back of DC-402, or Form DC-413). Give it to the judge at trial or file it with the clerk before the trial date. If the papers were posted on the defendant's door, the court will not enter a default judgment until you show you mailed a copy at least 10 days earlier; otherwise the case is continued.",
+   "deadline": "At least 10 days before the first court date",
+   "fee": null,
+   "form": "f11",
+   "url": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf",
+   "quote": "The plaintiff should send a copy of the civil warrant to the defendant by first-class mail at least ten (10) days before the date when the plaintiff and defendant are to come to court for their first appearance in the dispute.",
+   "source": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf"
+  },
+  {
+   "id": "s13",
+   "step": "Subpoena witnesses",
+   "who": "Either party, through the Clerk's Office",
+   "how": "File a Request for Witness Subpoena (DC-325) with the clerk, giving each witness's name and current home address, and pay the sheriff's fee for each one. The witness should get the subpoena at least five days before trial; if a properly subpoenaed witness does not come, the judge will usually continue the case if you ask. Tell your witnesses before they are served.",
+   "deadline": "At least ten days before the trial date",
+   "fee": "$12 sheriff's fee for each witness served",
+   "form": "f12",
+   "url": "https://www.vacourts.gov/static/courts/gd/gdinfo.pdf",
+   "quote": "In order to ensure the presence of your witnesses, you should ask the clerk of the court for a subpoena at least ten days in advance of the hearing day.",
+   "source": "https://www.vacourts.gov/static/courts/gd/gdinfo.pdf"
+  },
+  {
+   "id": "s14",
+   "step": "Defendant: decide how to respond",
+   "who": "Defendant",
+   "how": "You do not have to come to court, but if you do not, judgment may be entered against you. To dispute the claim, come on the return date. You may file a written counterclaim before trial (in small claims, up to $5,000). On the regular docket the judge may order the plaintiff to file a bill of particulars and you to file grounds of defense (DC-441, DC-442) by set dates. If the case was filed in the wrong city or county, send the court a written venue objection on or before the trial date, with a copy to the plaintiff. In small claims you may move the case to the regular General District Court docket, where lawyers can appear, at any time before the judge decides, using the removal form on the back of the warrant; a lawyer may appear for you just to do that. If your address changes, tell the clerk and the other side in writing (DC-437).",
+   "deadline": "Counterclaim before trial; venue objection on or before the day of trial; removal before the judge decides",
+   "fee": "Filing a counterclaim may carry a fee; ask the clerk",
+   "form": "f14",
+   "url": "https://www.vacourts.gov/static/forms/district/dc402.pdf",
+   "quote": "A defendant shall have the right to remove the case to the general district court at any point preceding the handing down of the decision by the judge and may be represented by an attorney for that purpose.",
+   "source": "Va. Code § 16.1-122.4(B)"
+  },
+  {
+   "id": "s15",
+   "step": "Go to court on the return date",
+   "who": "Both parties; a Charlottesville General District Court judge decides",
+   "how": "Small claims: the case is tried on the first return date unless all parties agree or the court orders a different date, and other continuances need good cause. Witnesses are sworn, the hearing is informal, and the judge may admit any useful evidence except privileged communications. Bring the contract or lease, notices, receipts, photos and copies for the judge and the other side. Regular docket: if the defendant comes and disputes the claim, the judge sets a trial date; contested civil trials are on Mondays and Fridays (1, 2 and 3 pm slots on the court's state page; 'by appointment' on the city page). If a properly served defendant does not come, the plaintiff may get a default judgment by proving the claim, but first must file an affidavit stating whether the defendant is in military service, or that the plaintiff cannot tell (Form DC-418); if the plaintiff does not come, the defendant may ask the judge to rule for the defendant. The plaintiff must prove both the right to win and the amount owed.",
+   "deadline": "The return date and time on the warrant or summons",
+   "fee": null,
+   "form": null,
+   "url": "https://www.vacourts.gov/courts/gd/charlottesville/home",
+   "quote": "The trial shall be conducted on the first return date.",
+   "source": "Va. Code § 16.1-122.3(E)"
+  },
+  {
+   "id": "s16",
+   "step": "After judgment: ask for a new trial or to set aside a default judgment",
+   "who": "Either party; the judge who decided the case",
+   "how": "A motion for a new trial (DC-368, Motion for New Trial (Civil)) must be made within 30 days after the judgment, and the court must rule within 45 days of the judgment. Separately, a default judgment can be set aside on motion (DC-434), after reasonable notice to the other side, for fraud on the court (within two years), because the judgment is void, because the claim was already settled (accord and satisfaction), or because the defendant was a servicemember. Neither motion extends the 10-day appeal deadline in s17.",
+   "deadline": "Within 30 days after the date of judgment, not counting that day",
+   "fee": null,
+   "form": "f15",
+   "url": "https://www.vacourts.gov/forms/district/civil_criminal",
+   "quote": "No new trial may be granted from any judgment in a district court unless a motion by one of the parties is made within thirty days after the date of judgment, not including the date of entry of such judgment.",
+   "source": "Va. Code § 16.1-97.1(A)"
+  },
+  {
+   "id": "s17",
+   "step": "Appeal to the Charlottesville Circuit Court",
+   "who": "The losing party, by notice to the General District Court clerk; the Charlottesville Circuit Court hears the appeal",
+   "how": "If more than $20 is in controversy, file a notice of appeal (Civil Appeal Notice, DC-475, from the General District Court clerk's office) within 10 days of the judgment. Then, within 30 days of the judgment (10 days in an eviction case), post the appeal bond the court sets (Civil Appeal Bond, DC-460) and pay the General District Court clerk the Circuit Court writ tax and costs, including the fee for serving the notice of appeal. A plaintiff who faced no counterclaim, and a defendant found indigent, need not post a bond. A tenant appealing a residential eviction must pay the rent and charges owed into the court as the bond (unless indigent) and keep paying rent to the landlord by the fifth of each month. If an appeal is noted after the sheriff has served the 72-hour notice of an eviction, the appealing party must tell the sheriff. The Circuit Court (315 East High Street) tries the case again from the start under the formal rules; either side may ask for a jury if more than $50 is in controversy (in an eviction appeal, a jury on any party's application). Civil cases are set at 2 pm at the start of a court term.",
+   "deadline": "Notice within 10 days of judgment; bond, writ tax and costs within 30 days (within 10 days for an unlawful detainer)",
+   "fee": "$5 writ tax and the $100 circuit court clerk's fee for claims up to $49,999 ($15 and $200 above $49,999 up to $100,000), the fee for serving the notice of appeal, and any bond (see fees)",
+   "form": "f17",
+   "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court",
+   "quote": "Notice of the appeal must be filed in the general district court where the case was heard within ten days after the judgment is entered.",
+   "source": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf"
+  },
+  {
+   "id": "s18",
+   "step": "Landlord: request and carry out the writ of eviction",
+   "who": "Landlord (or agent or attorney) requests it; only the sheriff executes it",
+   "how": "After a judgment for possession, ask the clerk for a writ of eviction (DC-469); at the hearing the landlord may ask the judge to order that the writ issue immediately, and on that request the judge must so order. The Charlottesville Sheriff's Office serves a notice at least 72 hours before the eviction, giving the date and time, and cannot evict before the tenant's 10-day appeal period ends. The writ must be carried out within 30 days of issue. In a residential case based only on unpaid rent, the tenant can still stop the eviction by paying everything claimed, including sheriff's fees, at least 48 hours before the scheduled time, by cashier's check, certified check or money order, as the writ form explains; a landlord with four or fewer rental units may limit this right of redemption to once per lease period by written notice. If the tenant perfects an appeal, the sheriff returns the writ to the clerk.",
+   "deadline": "Request the writ within 180 days of the judgment for possession; it is returnable within 30 days of issue",
+   "fee": "$25 sheriff's fee for the writ of eviction, plus $12 for each additional defendant",
+   "form": "f20",
+   "url": "https://www.vacourts.gov/static/forms/district/dc469.pdf",
+   "quote": "In no case, however, shall the sheriff evict the defendant from the dwelling unit prior to the expiration of the defendant's 10-day appeal period.",
+   "source": "Va. Code § 8.01-129(B)"
+  },
+  {
+   "id": "s19",
+   "step": "Collect a money judgment that is not paid",
+   "who": "Judgment creditor (the winner), through the General District Court clerk",
+   "how": "A judgment does not collect itself. From 21 days after the judgment (earlier if the court orders it for good cause) the clerk will issue, on request, a writ of fieri facias (a lien on the debtor's personal property, which the sheriff can levy and sell; the court's pamphlet says the creditor must post a bond with the sheriff for a seizure and sale). With it you can (a) have the debtor summoned to answer questions about assets (Summons to Answer Interrogatories, DC-440; on the regular docket a business needs a lawyer to file or conduct these, see s4); (b) garnish wages or a bank account (Suggestion for Summons in Garnishment, DC-450; the Charlottesville garnishment docket is Friday at 2 pm and no appearance is needed); or (c) get an abstract of judgment to record in the Circuit Court as a lien on real estate. Each process has a court fee and sheriff's fees.",
+   "deadline": "Writ of fieri facias available 21 days after the judgment (earlier only by court order for good cause)",
+   "fee": "$36 court fee for an interrogatory summons or garnishment, plus sheriff's fees",
+   "form": "f18",
+   "url": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf",
+   "quote": "to issue a writ of fieri facias at the expiration of twenty-one days from the date of the entry of the judgment",
+   "source": "Va. Code § 8.01-466"
+  },
+  {
+   "id": "s20",
+   "step": "When the judgment is paid, have it marked satisfied",
+   "who": "Judgment creditor; if the creditor does not act, the debtor by motion",
+   "how": "The creditor must file a written notice of satisfaction (DC-458) with the clerk, giving the case number, the parties and the date of judgment, within 30 days of receiving payment. If the creditor does not, the debtor can give the creditor 10 days' notice and move the court (DC-459) to mark the judgment satisfied; the court may order the creditor to pay the costs, including reasonable attorney fees.",
+   "deadline": "Within 30 days of receiving payment",
+   "fee": null,
+   "form": "f21",
+   "url": "https://www.vacourts.gov/forms/district/civil?page=1",
+   "quote": "When satisfaction of any judgment rendered in a court not of record is made, the judgment creditor shall by himself, or his agent or attorney, give written notice of such satisfaction, within 30 days of receipt, to the clerk of the court in which the judgment was rendered.",
+   "source": "Va. Code § 16.1-94.01(A)"
+  }
+ ],
+ "forms": [
+  {"id": "f1", "title": "Warrant in Debt - Small Claims Division", "number": "DC-402", "url": "https://www.vacourts.gov/static/forms/district/dc402.pdf", "official": true, "fillable": true},
+  {"id": "f2", "title": "Warrant in Detinue - Small Claims Division", "number": "DC-404", "url": "https://www.vacourts.gov/static/forms/district/dc404.pdf", "official": true, "fillable": true},
+  {"id": "f3", "title": "Warrant in Debt (Civil Claim for Money)", "number": "DC-412", "url": "https://www.vacourts.gov/static/forms/district/dc412.pdf", "official": true, "fillable": true},
+  {"id": "f4", "title": "Warrant in Detinue (Civil Claim for Specific Personal Property)", "number": "DC-414", "url": "https://www.vacourts.gov/static/forms/district/dc414.pdf", "official": true, "fillable": true},
+  {"id": "f5", "title": "Summons for Unlawful Detainer (Civil Claim for Eviction)", "number": "DC-421", "url": "https://www.vacourts.gov/static/forms/district/dc421.pdf", "official": true, "fillable": true},
+  {"id": "f6", "title": "Tenant's Assertion and Complaint", "number": "DC-429", "url": "https://www.vacourts.gov/static/forms/district/dc429.pdf", "official": true, "fillable": true},
+  {"id": "f7", "title": "Tenant's Petition for Relief from Unlawful Exclusion", "number": "DC-431", "url": "https://www.vacourts.gov/static/forms/district/dc431.pdf", "official": true, "fillable": true},
+  {"id": "f8", "title": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs (district court form)", "number": "DC-409", "url": "https://www.vacourts.gov/static/forms/district/dc409.pdf", "official": true, "fillable": true},
+  {"id": "f9", "title": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs (circuit court form, linked from the district forms page and the state self-help site)", "number": "CC-1414", "url": "https://www.vacourts.gov/static/forms/circuit/cc1414.pdf", "official": true, "fillable": true},
+  {"id": "f10", "title": "Service Other Than by Virginia Sheriff (proof of service by a private server)", "number": "DC-411", "url": "https://www.vacourts.gov/static/forms/district/dc411.pdf", "official": true, "fillable": true},
+  {"id": "f11", "title": "Certificate of Mailing Posted Service", "number": "DC-413", "url": "https://www.vacourts.gov/static/forms/district/dc413.pdf", "official": true, "fillable": true},
+  {"id": "f12", "title": "Request for Witness Subpoena", "number": "DC-325", "url": "https://www.vacourts.gov/static/forms/district/dc325.pdf", "official": true, "fillable": true},
+  {"id": "f13", "title": "Bill of Particulars", "number": "DC-441", "url": "https://www.vacourts.gov/static/forms/district/dc441.pdf", "official": true, "fillable": true},
+  {"id": "f14", "title": "Grounds of Defense", "number": "DC-442", "url": "https://www.vacourts.gov/static/forms/district/dc442.pdf", "official": true, "fillable": true},
+  {"id": "f15", "title": "Motion to Reopen (Criminal)/Motion to Rehear (Civil)/Motion for New Trial (Civil)", "number": "DC-368", "url": "https://www.vacourts.gov/static/forms/district/dc368.pdf", "official": true, "fillable": true},
+  {"id": "f16", "title": "Motion to Set Aside Default Judgment", "number": "DC-434", "url": "https://www.vacourts.gov/static/forms/district/dc434.pdf", "official": true, "fillable": true},
+  {"id": "f17", "title": "Civil Appeal Bond", "number": "DC-460", "url": "https://www.vacourts.gov/static/forms/district/dc460.pdf", "official": true, "fillable": true},
+  {"id": "f18", "title": "Summons to Answer Interrogatories", "number": "DC-440", "url": "https://www.vacourts.gov/static/forms/district/dc440.pdf", "official": true, "fillable": true},
+  {"id": "f19", "title": "Suggestion for Summons in Garnishment", "number": "DC-450", "url": "https://www.vacourts.gov/static/forms/district/dc450.pdf", "official": true, "fillable": true},
+  {"id": "f20", "title": "Request for Writ of Eviction in Unlawful Detainer Proceedings", "number": "DC-469", "url": "https://www.vacourts.gov/static/forms/district/dc469.pdf", "official": true, "fillable": true},
+  {"id": "f21", "title": "Notice of Satisfaction", "number": "DC-458", "url": "https://www.vacourts.gov/static/forms/district/dc458.pdf", "official": true, "fillable": true},
+  {"id": "f22", "title": "Motion for Judgment to be Marked Satisfied", "number": "DC-459", "url": "https://www.vacourts.gov/static/forms/district/dc459.pdf", "official": true, "fillable": true},
+  {"id": "f23", "title": "Notice of Change of Address", "number": "DC-437", "url": "https://www.vacourts.gov/static/forms/district/dc437.pdf", "official": true, "fillable": true},
+  {"id": "f24", "title": "Instructions for Form DC-402, Warrant in Debt - Small Claims Division", "number": "DC-402 instructions", "url": "https://www.vacourts.gov/forms/district/dc402inst.pdf", "official": true, "fillable": false},
+  {"id": "f25", "title": "Affidavit-Default Judgment Servicemembers Civil Relief Act", "number": "DC-418", "url": "https://www.vacourts.gov/static/forms/district/dc418.pdf", "official": true, "fillable": true}
+ ],
+ "fees": [
+  {
+   "item": "Court fee for a civil warrant, warrant in detinue, unlawful detainer, interrogatory summons, garnishment or other civil filing",
+   "amount": "$36",
+   "basis": "Va. Code § 16.1-69.48:2",
+   "quote": "For all court and magistrate services in each distress, detinue, interrogatory summons, unlawful detainer, civil warrant, notice of motion, garnishment, attachment issued, or other civil proceeding, the fee shall be $36."
+  },
+  {
+   "item": "Legal aid fee on starting a civil action in general district court (where a Virginia State Bar nonprofit legal aid program serves the locality; not charged on actions by a local government or the Commonwealth)",
+   "amount": "$10",
+   "basis": "Va. Code § 17.1-278",
+   "quote": "(ii) upon commencement of a civil action in such general district court, an additional fee of $10."
+  },
+  {
+   "item": "Courthouse construction, renovation or maintenance assessment (only if adopted by city ordinance; not confirmed for Charlottesville)",
+   "amount": "Up to $2 per civil action",
+   "basis": "Va. Code § 17.1-281(A)",
+   "quote": "may assess a sum not in excess of two dollars as part of the costs in (i) each civil action filed in the district or circuit courts located within its boundaries"
+  },
+  {
+   "item": "Additional courthouse construction assessment (local option for a certified non-compliant courthouse; not charged on claims of $500 or less; the state fee help page says a court-specific Courthouse Construction Fee is charged on claims of $500.01 to $50,000)",
+   "amount": "Up to $3 per civil action over $500",
+   "basis": "Va. Code § 17.1-281(C)",
+   "quote": "Such additional fee assessed under this subsection shall not be assessed in any civil action if the amount in controversy is $500 or less."
+  },
+  {
+   "item": "Law library assessment (only if adopted by city ordinance; not confirmed for Charlottesville)",
+   "amount": "Up to $4 per civil action",
+   "basis": "Va. Code § 42.1-70",
+   "quote": "Any county, city, or town may, through its governing body, assess as part of the costs incident to each civil action filed in the courts located within its boundaries a sum not in excess of $4."
+  },
+  {
+   "item": "Sheriff's fee to serve a warrant, summons or other civil process, or to summon a witness",
+   "amount": "$12 per person served",
+   "basis": "Va. Code § 17.1-272(A)",
+   "quote": "The fee for process and service in the following instances shall be $12:"
+  },
+  {
+   "item": "Sheriff's fee to serve a writ of eviction or writ of possession",
+   "amount": "$25, plus $12 for each additional defendant",
+   "basis": "Va. Code § 17.1-272(B)(2)",
+   "quote": "Service of a writ of possession or writ of eviction, except that there shall be an additional fee of $12 for each additional defendant."
+  },
+  {
+   "item": "Reissuing a warrant once when the defendant was not served (within three months of the original return day)",
+   "amount": "No court or clerk charge (the section does not waive the sheriff's fee for serving the reissued papers)",
+   "basis": "Va. Code § 16.1-69.48:2",
+   "quote": "When no service of process is had on a defendant named in any civil process other than a notice of motion for judgment, such process may be reissued once by the court or clerk at the court's direction by changing the return day of such process, for which service by the court or clerk there shall be no charge;"
+  },
+  {
+   "item": "Copies of papers in the court file",
+   "amount": "Set by the clerk, up to $1 for the first two pages and $.50 for each page after",
+   "basis": "Va. Code § 16.1-69.48:2",
+   "quote": "The amount of this fee shall be set in the discretion of the clerk but shall not exceed $1 for the first two pages and $.50 for each page thereafter."
+  },
+  {
+   "item": "How filing fees are paid",
+   "amount": "Cash, certified check or money order (as the state self-help site states it; confirm with the clerk)",
+   "basis": "https://selfhelp.vacourts.gov/page/11/small-claims",
+   "quote": "These fees must be paid in cash, by certified check, or by money order."
+  },
+  {
+   "item": "Fee waiver for a person unable to pay",
+   "amount": "No fees or costs, if the court grants the petition",
+   "basis": "Va. Code § 17.1-606(A)",
+   "quote": "and who is on account of his poverty unable to pay fees or costs, may be allowed by a court to sue or defend a suit therein, without paying fees or costs;"
+  },
+  {
+   "item": "Writ tax on an appeal to the Circuit Court",
+   "amount": "$5 when the debt or damages claimed are $49,999 or less; $15 above $49,999 up to $100,000; $25 above $100,000",
+   "basis": "Va. Code § 58.1-1727",
+   "quote": "A tax of $5 is hereby imposed upon (i) the commencement of every civil action in a court of record, whether commenced by petition or notice, ejectment or attachment, other than a summons to answer a suggestion; (ii) the removal or appeal of a cause of action from a district court to a court of record;"
+  },
+  {
+   "item": "Circuit Court clerk's fee paid on appeal (Va. Code § 16.1-107(E)) in a case with a money claim",
+   "amount": "$100 for a claim up to $49,999; $200 above $49,999 up to $100,000",
+   "basis": "Va. Code § 17.1-275(A)(13)",
+   "quote": "In all civil actions that include one or more claims for the award of monetary damages the clerk's fee chargeable to the plaintiff shall be $100 in cases seeking recovery not exceeding $49,999;"
+  },
+  {
+   "item": "Appeal bond",
+   "amount": "An amount, with surety, approved by the judge or clerk, or enough to satisfy the judgment (including any attorney fees awarded); none for a plaintiff who faced no counterclaim or for an indigent defendant",
+   "basis": "Va. Code § 16.1-107(A)",
+   "quote": "No appeal shall be allowed unless and until the party applying for the same or someone for him shall give bond, in an amount and with sufficient surety approved by the judge or by his clerk if there is one, or in an amount sufficient to satisfy the judgment of the court in which it was rendered."
+  },
+  {
+   "item": "Appeal bond for a tenant appealing a residential eviction",
+   "amount": "The rent, late charges, attorney fees and other charges owed, paid into the General District Court (none for an indigent tenant)",
+   "basis": "Va. Code § 16.1-107(C)",
+   "quote": "an appeal bond shall be posted by the defendant with payment into the general district court in the amount of outstanding rent, late charges, attorney fees, and any other charges or damages due, as contracted for in the rental agreement, and as amended on the unlawful detainer by the court."
+  }
+ ],
+ "contacts": [
+  {"kind": "office", "value": "Charlottesville General District Court, Clerk's Office (16th Judicial District of Virginia): civil, small claims and landlord-tenant filings", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "address", "value": "606 E Market Street, Charlottesville, VA 22902 (Clerk's Office Monday through Friday, 8:30 am to 4:30 pm; drop box next to the Clerk's Office door for after-hours use)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "address", "value": "P. O. Box 2677, Charlottesville, VA 22902 (mailing address)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "phone", "value": "434-970-3365 (general line for the Clerk's Office)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "phone", "value": "434-970-3387 (fax)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "page", "value": "https://www.charlottesville.gov/176/General-District-Court", "label": "General District Court (City of Charlottesville page)", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "page", "value": "https://www.vacourts.gov/courts/gd/charlottesville/home", "label": "Charlottesville General District Court (Virginia's Judicial System)", "url": "https://www.vacourts.gov/courts/gd/charlottesville/home"},
+  {"kind": "portal", "value": "https://eapps.courts.state.va.us/gdcourts", "label": "General District Court Case Information (look up civil cases by name, case number or hearing date)", "url": "https://www.vacourts.gov/courts/gd/home"},
+  {"kind": "page", "value": "https://www.vacourts.gov/gdfees_calc_app", "label": "General District Court Civil Filing Fee Calculation (Virginia's Judicial System)", "url": "https://www.vacourts.gov/courts/gd/home"},
+  {"kind": "page", "value": "https://www.vacourts.gov/forms/district/civil", "label": "General District Court Civil Forms (Virginia's Judicial System)", "url": "https://www.vacourts.gov/forms/district/home"},
+  {"kind": "page", "value": "https://selfhelp.vacourts.gov/page/11/small-claims", "label": "Small Claims (Virginia Judicial System Court Self-Help)", "url": "https://selfhelp.vacourts.gov/"},
+  {"kind": "page", "value": "https://selfhelp.vacourts.gov/page/10/landlord-tenant", "label": "Landlord - Tenant (Virginia Judicial System Court Self-Help)", "url": "https://selfhelp.vacourts.gov/"},
+  {"kind": "office", "value": "Charlottesville Sheriff's Office (serves civil process in the city and executes writs of eviction)", "label": "Charlottesville Sheriff's Office", "url": "https://www.charlottesville.gov/303/Sheriff"},
+  {"kind": "address", "value": "315-A East High Street, Charlottesville, VA 22902 (Monday through Friday, 8:30 am to 4:30 pm)", "label": "Charlottesville Sheriff's Office", "url": "https://www.charlottesville.gov/303/Sheriff"},
+  {"kind": "phone", "value": "434-970-3777 (office line listed with the Sheriff's Office address)", "label": "Charlottesville Sheriff's Office", "url": "https://www.charlottesville.gov/303/Sheriff"},
+  {"kind": "address", "value": "315 East High St, Charlottesville, VA 22902 (Clerk's Office Monday through Friday, 8:30 am to 4:30 pm)", "label": "Charlottesville Circuit Court (appeals)", "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"},
+  {"kind": "phone", "value": "434-970-3766 (general line for the Clerk's Office)", "label": "Charlottesville Circuit Court (appeals)", "url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court"},
+  {"kind": "page", "value": "https://www.vacourts.gov/courts/gd/albemarle/home", "label": "Albemarle General District Court, 350 Park Street, Charlottesville (for cases that belong in Albemarle County)", "url": "https://www.vacourts.gov/courts/gd/albemarle/home"}
+ ],
+ "escalation": [
+  {
+   "trigger": "Small claims: you need a new court date and the other side will not agree",
+   "next": "A Charlottesville General District Court judge, on a request showing good cause (on the regular docket the judge decides; the court's posted policy covers only an agreed first continuance)",
+   "type": "internal appeal",
+   "deadline": "Before the return date",
+   "basis": "Va. Code § 16.1-122.3(E)",
+   "quote": "A continuance shall be granted to either the plaintiff or defendant only upon good cause shown."
+  },
+  {
+   "trigger": "You cannot pay the filing and service fees",
+   "next": "A Charlottesville General District Court judge, on a Petition for Proceeding in Civil Case Without Payment of Fees or Costs (DC-409)",
+   "type": "internal appeal",
+   "deadline": "When filing or defending",
+   "basis": "Va. Code § 17.1-606(A)",
+   "quote": "and who is on account of his poverty unable to pay fees or costs, may be allowed by a court to sue or defend a suit therein, without paying fees or costs;"
+  },
+  {
+   "trigger": "Defendant in small claims wants a lawyer or the formal rules of the regular court",
+   "next": "The regular civil docket of the Charlottesville General District Court (removal)",
+   "type": "referral",
+   "deadline": "Before the judge hands down a decision",
+   "basis": "Va. Code § 16.1-122.4(B)",
+   "quote": "A defendant shall have the right to remove the case to the general district court at any point preceding the handing down of the decision by the judge and may be represented by an attorney for that purpose."
+  },
+  {
+   "trigger": "The case was filed in the wrong city or county",
+   "next": "The court rules on the defendant's written venue objection and transfers the case to a proper court (for example the Albemarle General District Court)",
+   "type": "referral",
+   "deadline": "On or before the day of trial",
+   "basis": "Va. Code § 8.01-264(A)",
+   "quote": "As to actions in general district courts, a motion objecting to venue, which may be in the form of a letter or other written communication, shall be filed with or received by the court on or before the day of trial."
+  },
+  {
+   "trigger": "Judgment entered against you (for example after you missed court) and you have grounds for a new trial",
+   "next": "The judge who entered the judgment, on a motion for new trial (DC-368)",
+   "type": "internal appeal",
+   "deadline": "Within 30 days after the date of judgment",
+   "basis": "Va. Code § 16.1-97.1(A)",
+   "quote": "No new trial may be granted from any judgment in a district court unless a motion by one of the parties is made within thirty days after the date of judgment, not including the date of entry of such judgment."
+  },
+  {
+   "trigger": "A default judgment was obtained by fraud on the court, is void, covers a claim already settled, or was entered against a servicemember",
+   "next": "Charlottesville General District Court, on a Motion to Set Aside Default Judgment (DC-434)",
+   "type": "internal appeal",
+   "deadline": "Within two years of the judgment for fraud on the court",
+   "basis": "Va. Code § 8.01-428(A)",
+   "quote": "Such motion on the ground of fraud on the court shall be made within two years from the date of the judgment or decree."
+  },
+  {
+   "trigger": "You lost at trial and more than $20 is in controversy",
+   "next": "Charlottesville Circuit Court: a new trial from the start (de novo), with a jury on request if more than $50 is in controversy",
+   "type": "judicial review",
+   "deadline": "Notice within 10 days of judgment; bond, writ tax and costs within 30 days",
+   "basis": "Va. Code § 16.1-106(A)",
+   "quote": "there shall be an appeal of right, if taken within 10 days after such order or judgment, to a court of record."
+  },
+  {
+   "trigger": "You lost an unlawful detainer (eviction) case",
+   "next": "Charlottesville Circuit Court (a tenant's appeal stops the eviction once perfected)",
+   "type": "judicial review",
+   "deadline": "Appeal, bond and writ tax within 10 days of the judgment",
+   "basis": "Va. Code § 8.01-129(A)",
+   "quote": "Notwithstanding the provisions of § 16.1-106 et seq., the bond shall be posted and the writ tax paid within 10 days of the date of the judgment."
+  },
+  {
+   "trigger": "You lost the appeal in the Circuit Court",
+   "next": "Court of Appeals of Virginia (appeal of right from a final civil judgment of a circuit court, Va. Code § 17.1-405(A)(3))",
+   "type": "judicial review",
+   "deadline": "Notice of appeal within 30 days of the final judgment",
+   "basis": "Va. Code § 8.01-675.3",
+   "quote": "a notice of appeal to the Court of Appeals in any case within the jurisdiction of the court shall be filed within 30 days from the date of any final judgment order, decree, or conviction."
+  },
+  {
+   "trigger": "The landlord does not fix a serious condition after written notice",
+   "next": "Charlottesville General District Court, on a Tenant's Assertion and Complaint (DC-429), with rent paid into court",
+   "type": "judicial review",
+   "deadline": "A delay of more than 30 days after the landlord received notice is presumed unreasonable",
+   "basis": "Va. Code § 55.1-1244(B)(1)",
+   "quote": "there shall be a rebuttable presumption that a period in excess of 30 days from receipt of the notification by the landlord is unreasonable"
+  },
+  {
+   "trigger": "The landlord locks you out, shuts off an essential service, or makes the home unsafe without a court order",
+   "next": "Charlottesville General District Court, on a Tenant's Petition for Relief from Unlawful Exclusion (DC-431)",
+   "type": "judicial review",
+   "deadline": "Hearing within five calendar days of filing",
+   "basis": "Va. Code § 55.1-1243.1(C)",
+   "quote": "The initial hearing on the tenant's petition shall be held within five calendar days from the date of the filing of the petition."
+  },
+  {
+   "trigger": "The other side ignores a money judgment",
+   "next": "Charlottesville General District Court Clerk: writ of fieri facias, summons to answer interrogatories and garnishment summons; the sheriff levies",
+   "type": "judicial review",
+   "deadline": "From 21 days after the judgment, while the judgment remains enforceable",
+   "basis": "Va. Code § 8.01-511(A)",
+   "quote": "a summons in the form prescribed by § 8.01-512.3 may be sued out of the clerk's office (i) of the court from which an execution on the judgment is issued so long as the judgment shall remain enforceable as provided in § 8.01-251"
+  },
+  {
+   "trigger": "The judgment was paid but the creditor did not file a notice of satisfaction within 30 days",
+   "next": "Charlottesville General District Court, on the debtor's Motion for Judgment to be Marked Satisfied (DC-459)",
+   "type": "internal appeal",
+   "deadline": "After giving the creditor 10 days' notice",
+   "basis": "Va. Code § 16.1-94.01(B)",
+   "quote": "the judgment debtor, his heirs or personal representatives, may, on motion, after 10 days' notice thereof to the judgment creditor, or his assignee, his personal representative, or his agent or attorney, apply to the court in which the judgment was rendered to have the judgment marked satisfied."
+  },
+  {
+   "trigger": "A disability accommodation is refused, or you have an accessibility complaint about the court",
+   "next": "An accommodation request about a pending case goes to the General District Court clerk; an accessibility complaint about the General District Court is handled under the grievance procedures of the Office of the Executive Secretary of the Supreme Court of Virginia, available through its ADA Coordinator (the notice sends only complaints about a circuit court clerk's office to that clerk)",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "Notice Regarding the Americans with Disabilities Act, Virginia's Judicial System (https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf)",
+   "quote": "Other complaints will be handled pursuant to grievance procedures adopted by the Office of the Executive Secretary."
+  },
+  {
+   "trigger": "Misconduct by a judge (not disagreement with a ruling, which is appealed)",
+   "next": "Judicial Inquiry and Review Commission",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "Va. Code § 17.1-902",
+   "quote": "to investigate charges arising out of the present or any prior term of office which would be the basis for retirement, censure, or removal of a judge"
+  }
+ ],
+ "caveats": [
+  "Filing fee total not confirmed. The court's Civil Filing Fee Calculation (https://www.vacourts.gov/gdfees_calc_app) computes the Charlottesville total, but it works only by submitting a form, so its result is not given here. The components here come from state law: the $36 court fee (Va. Code § 16.1-69.48:2), the $10 legal aid fee (§ 17.1-278) and $12 per defendant for sheriff service (§ 17.1-272(A)). Whether the city has adopted the local courthouse assessment (up to $2, § 17.1-281(A)), the additional courthouse construction assessment (up to $3 on claims over $500, § 17.1-281(C)) or the law library assessment (up to $4, § 42.1-70) was not confirmed. The state fee help page says a court-specific Courthouse Construction Fee is charged per case on claims of $500.01 to $50,000. Call the clerk or use the calculator.",
+  "The $10 legal aid fee applies only where a nonprofit legal aid program under the Virginia State Bar provides free civil representation in the locality (§ 17.1-278). No official page read here confirms that for Charlottesville.",
+  "The City Code has not been checked. The city publishes it on Municode, whose terms are not confirmed to allow reuse, so any local fee ordinance is unknown. The two local legal_basis entries are court continuance policies posted on court pages, not City Code.",
+  "Dollar limits differ between sources. The index text of Va. Code § 16.1-77 (history through 2025, c. 338) gives exclusive jurisdiction up to $4,500 and concurrent jurisdiction up to $50,000 for all claims in subdivision (1). The vacourts.gov General District Court page says $4,500 and $25,000, with up to $50,000 only for personal injury and wrongful death. The city's General District Court page says $5,000 and $25,000 ('$50,000 in certain civil matters'). The General District Courts pamphlet says $25,000, and the city's Circuit Court page says $3,000 to $25,000. The fee calculator's claim boxes run to $50,000.00. The small claims limit of $5,000 (§ 16.1-122.2) is consistent everywhere. Confirm a claim over $25,000 with the clerk.",
+  "Docket times differ between the court's two pages. The vacourts.gov page lists Small Claims on Tuesday at 1:30 pm, Docket Call on Tuesday at 1 pm, contested civil trials on Monday and Friday in 1, 2 and 3 pm slots, and garnishments on Friday at 2 pm with no appearance needed. The city page lists Small Claims on Tuesday at 3 pm, Docket Call on Tuesday at 1 pm, and contested civil trials on Monday and Friday by appointment. Neither page lists a separate unlawful detainer docket (the Albemarle court lists one at 2 pm Thursday). The return date on the warrant controls.",
+  "Continuance policies differ. The city page says the Clerk grants a first civil continuance at the plaintiff's request if all parties agree. The vacourts.gov page says the judge grants it on agreement by all parties, by letter from the plaintiff or the plaintiff's counsel. In small claims, state law allows a change from the first return date only by consent of all parties or court order, and any other continuance only for good cause (§ 16.1-122.3(E)).",
+  "Return date limit: the DC-402 instructions (September 2008) say the return date cannot exceed sixty days from service, but Va. Code § 16.1-79 (amended 2025, c. 349) says 90 days. This page follows the statute; the clerk sets the date in practice.",
+  "Jury threshold on appeal: Va. Code § 16.1-113 allows a jury if more than fifty dollars is in controversy. The Small Claims Court Procedures PDF says a jury may be requested if the claim exceeds $20, and the state self-help page says $100. This page follows the statute.",
+  "Eviction law versions: the index marks Va. Code §§ 8.01-126 and 55.1-1245 effective until July 1, 2027, and § 55.1-1244 effective until January 1, 2027, and holds no successor text. The 14-day nonpayment notice in § 55.1-1245(F) (history through 2026) is longer than the 5-day notice in older guides. Re-check these sections on or after January 1, 2027. The Virginia Residential Landlord and Tenant Act handbook (DHCD) linked from the self-help page was not read.",
+  "The Civil Appeal Notice (DC-475) is not posted online (https://www.vacourts.gov/static/forms/district/dc475.pdf returned HTTP 404 on 2026-10-10); the Small Claims Court Procedures PDF says it is available from the General District Court clerk's office. It is named in step s17 but not listed under forms.",
+  "Two fee-waiver forms exist: DC-409 on the district civil forms list, and CC-1414, which the district forms page and the state self-help page point to. Both cite Va. Code §§ 16.1-69.48:4 and 17.1-606. Ask the clerk which one this court uses.",
+  "Payment methods for filing fees: only the state self-help site states them (cash, certified check or money order). No Charlottesville page says which methods the civil division accepts. The city's Payments page mentions online card payments (4% fee) for court payments in general, which the traffic process uses.",
+  "Eviction Diversion Program: Va. Code § 55.1-1260 lets any general district court run one, and vacourts.gov posts its forms (DC-4101, DC-4103, DC-4104), but no official Charlottesville page says this court has one. It is not covered further here.",
+  "Not covered here: statutes of limitation for particular claims (the pamphlet mentions three years for a contract claim as an example); detinue seizure before trial; garnishment exemptions and the exemption hearing (DC-407, DC-454); interest on judgments; the fee for filing a counterclaim in General District Court; circuit court local add-on fees on appeal; court mediation programs; tenant expungement of dismissed unlawful detainers (DC-425, Va. Code § 8.01-130.01) beyond the self-help page's mention.",
+  "The step on default judgment after posted service, and the 10-day mailing rule, come from the Small Claims Court Procedures PDF and the state self-help page; the underlying rule is Va. Code § 8.01-296(2)(b), quoted under The law.",
+  "Privacy: the Clerk's name and the phone number shown under the Clerk's name on both court pages are left out, as is any judge's name. The Sheriff's name and the Sheriff's personal email form, the Circuit Court Clerk's name and email form, the Albemarle court's email addresses, and the ADA Coordinator's name in the PDF are also left out. The Sheriff's Office phone (434-970-3777) is recorded because the city page lists it with the office's address and hours, not under the Sheriff's name. No office email for the Charlottesville General District Court civil division was found.",
+  "The State Corporation Commission phone numbers for finding a registered agent differ between the Small Claims Court Procedures PDF and the self-help page, so none is recorded; step s3 points to the SCC website.",
+  "The General District Court Case Information system (eapps.courts.state.va.us) was not opened; it is listed as published on the vacourts.gov General District Court page.",
+  "Albemarle County and the City of Charlottesville have separate general district courts in the same city. The Albemarle General District Court (350 Park Street) holds small claims on the third Wednesday ('Small Claims 3rd Wed., 10:30 a.m. & 1:00 p.m.' on its vacourts.gov page).",
+  "Non-lawyer business representatives: Va. Code § 16.1-88.03(B) bars a non-lawyer from filing or conducting debtor interrogatories, filing a bill of particulars or grounds of defense, arguing motions or issuing subpoenas, while § 16.1-122.4(A)(1) lets a business's owner, partner, officer, member or employee try a small claims case. Whether the § 16.1-88.03(B) limits reach collection of a small claims judgment (§ 16.1-122.6) was not settled here; ask the clerk."
+ ],
+ "sources": [
+  {"url": "https://www.charlottesville.gov/176/General-District-Court", "title": "General District Court (City of Charlottesville page)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/courts/gd/charlottesville/home", "title": "Charlottesville General District Court (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/courts/gd/home", "title": "General District Court (Virginia's Judicial System): court information, case information, fee calculation", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/resources/small_claims_court_procedures.pdf", "title": "Small Claims Court Procedures (Virginia's Judicial System, web site revision 10/2024; also linked by the city as http://www.courts.state.va.us/resources/small_claims_court_procedures.pdf, same file)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/courts/gd/gdinfo.pdf", "title": "General District Courts Informational Pamphlet (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/gdfees_calc_app", "title": "General District Court Civil Filing Fee Calculation (landing page)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/caseinfo/gdcivilfeeshelp.html", "title": "How to Calculate Civil Filing Fees for General District Courts", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/forms/district/home", "title": "General District Court Forms (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/forms/district/civil", "title": "General District Court Civil Forms, pages 1 to 3 (?page=1, ?page=2)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/forms/district/civil_criminal", "title": "General District Criminal Court Forms also used in the Civil Court", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/forms/district/eviction", "title": "General District Court Eviction Diversion Program Forms", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc_forms_list.pdf", "title": "District Court Forms Listing (revised 07/2026)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/forms/district/dc402inst.pdf", "title": "Instructions for Form DC-402 (PDF instructions, September 2008)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc402.pdf", "title": "Form DC-402, Warrant in Debt - Small Claims Division", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc412.pdf", "title": "Form DC-412, Warrant in Debt (Civil Claim for Money)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc421.pdf", "title": "Form DC-421, Summons for Unlawful Detainer (Civil Claim for Eviction)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc469.pdf", "title": "Form DC-469, Request for Writ of Eviction in Unlawful Detainer Proceedings", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc409.pdf", "title": "Form DC-409, Petition for Proceeding in Civil Case Without Payment of Fees or Costs", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/static/forms/district/dc460.pdf", "title": "Form DC-460, Civil Appeal Bond", "retrieved": "2026-10-10"},
+  {"url": "https://selfhelp.vacourts.gov/page/11/small-claims", "title": "Small Claims (Virginia Judicial System Court Self-Help, Virginia Access to Justice Commission; last updated February 07, 2026)", "retrieved": "2026-10-10"},
+  {"url": "https://selfhelp.vacourts.gov/page/10/landlord-tenant", "title": "Landlord - Tenant (Virginia Judicial System Court Self-Help; last updated July 08, 2026)", "retrieved": "2026-10-10"},
+  {"url": "https://selfhelp.vacourts.gov/page/14/filing-fees-waivers", "title": "Filing Fees & Waivers (Virginia Judicial System Court Self-Help; last updated April 10, 2026)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/303/Sheriff", "title": "Sheriff (City of Charlottesville page)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/174/Charlottesville-Circuit-Court", "title": "Charlottesville Circuit Court (City of Charlottesville page)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/179/Payments", "title": "Payments (City of Charlottesville courts pages)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/courts/circuit/charlottesville/home", "title": "Charlottesville Circuit Court (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/courts/gd/albemarle/home", "title": "Albemarle General District Court (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-77/", "title": "Va. Code § 16.1-77", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-122.1/", "title": "Va. Code §§ 16.1-122.1 to 16.1-122.7", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-76/", "title": "Va. Code § 16.1-76", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-79/", "title": "Va. Code § 16.1-79", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-80/", "title": "Va. Code § 16.1-80", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-88.01/", "title": "Va. Code § 16.1-88.01", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-88.03/", "title": "Va. Code § 16.1-88.03", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-94.01/", "title": "Va. Code § 16.1-94.01", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-97.1/", "title": "Va. Code § 16.1-97.1", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-106/", "title": "Va. Code § 16.1-106", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-107/", "title": "Va. Code § 16.1-107", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-113/", "title": "Va. Code § 16.1-113", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-69.48:2/", "title": "Va. Code § 16.1-69.48:2", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-272/", "title": "Va. Code § 17.1-272", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-275/", "title": "Va. Code § 17.1-275", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-278/", "title": "Va. Code § 17.1-278", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-281/", "title": "Va. Code § 17.1-281", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-405/", "title": "Va. Code § 17.1-405", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-606/", "title": "Va. Code § 17.1-606", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/17.1-902/", "title": "Va. Code § 17.1-902", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/42.1-70/", "title": "Va. Code § 42.1-70", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-1727/", "title": "Va. Code § 58.1-1727", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-126/", "title": "Va. Code § 8.01-126, effective until July 1, 2027", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-129/", "title": "Va. Code § 8.01-129", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-261/", "title": "Va. Code § 8.01-261", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-262/", "title": "Va. Code § 8.01-262", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-264/", "title": "Va. Code § 8.01-264", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-293/", "title": "Va. Code § 8.01-293", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-428/", "title": "Va. Code § 8.01-428", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-466/", "title": "Va. Code § 8.01-466", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-470/", "title": "Va. Code § 8.01-470", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-471/", "title": "Va. Code § 8.01-471", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-506/", "title": "Va. Code § 8.01-506", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-511/", "title": "Va. Code § 8.01-511", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-675.3/", "title": "Va. Code § 8.01-675.3", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/55.1-1243.1/", "title": "Va. Code § 55.1-1243.1", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/55.1-1244/", "title": "Va. Code § 55.1-1244, effective until January 1, 2027", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/55.1-1245/", "title": "Va. Code § 55.1-1245, effective until July 1, 2027", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/55.1-1260/", "title": "Va. Code § 55.1-1260, cited in caveats only", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-15.2/", "title": "Va. Code § 8.01-15.2", "retrieved": "2026-10-11"},
+  {"url": "https://law.lis.virginia.gov/vacode/8.01-296/", "title": "Va. Code § 8.01-296", "retrieved": "2026-10-11"},
+  {"url": "https://law.lis.virginia.gov/vacode/55.1-1250/", "title": "Va. Code § 55.1-1250", "retrieved": "2026-10-11"}
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 147,
+  "quotes_confirmed": 147,
+  "removed": [],
+  "corrections": [
+   "Quotes: all 130 original quotes confirmed. The 120 state-law quote uses (78 legal_basis, 14 step, 14 fee and 14 escalation quotes; the modeller's breakdown of 80, 10, 12 and 13 was off, the total of 120 was right) are substrings of I.text_of for the cited section with whitespace normalised only, and every subsection label matches the text (8.01-261(3)(g) quotes the chapeau of subdivision 3, whose item g is unlawful detainer). The 10 local and procedure quotes were matched word for word against charlottesville.gov /176/, vacourts.gov /courts/gd/charlottesville/home, the Small Claims Court Procedures PDF, the General District Courts pamphlet (gdinfo.pdf) and selfhelp.vacourts.gov /page/11/, re-fetched read-only on 2026-10-11 (robots.txt allows these paths; one request every 2 seconds; lexflow User-Agent). 17 state-law quotes were added and checked the same way, for 147 in all.",
+   "Escalation, disability access: said complaints go to 'the clerk of the court for a pending case'. The ADA notice in the PDF sends accommodation requests about a pending case to the clerk, and sends only complaints about a circuit court clerk's office to that clerk; other complaints, including about the General District Court, go under the Office of the Executive Secretary's grievance procedures. The rung now says so.",
+   "Step s2: 'lives or regularly works' and 'principal office or place of business (or registered agent)' now follow the quoted § 8.01-262 (principal place of employment; principal office or principal place of business; registered office or agent). The venue transfer was 'the court can transfer it'; § 8.01-264(A) says that if the objection is sustained the court 'shall' transfer, and that no action is dismissed solely for venue where a proper forum exists. Added that quote.",
+   "Step s5: added the other § 55.1-1245 notices (30-day notice for a breach that cannot be fixed; immediate termination for a criminal or willful act that threatens health or safety, subsection C) with quotes; the 21-day hearing deadline now says it applies to tenancies under the Residential Landlord and Tenant Act, as § 8.01-126(B) says; added the § 55.1-1250(A) limit that a landlord with four or fewer units may allow redemption only once per lease period, and quoted § 55.1-1250(C) for the pay-and-dismiss rule.",
+   "Step s6: said the court 'can order repairs'. § 55.1-1244(D) lists escrow, abatement, release of escrow to the landlord, the tenant or a contractor for repairs, referral to an agency, and termination, not a repair order as such; the text now follows the list, adds the landlord's defences in subsection C, says costs and fees are discretionary on a judgment for the tenant (subsection G), and the deadline adds the earlier hearing for emergency conditions (subsection F).",
+   "Step s7: 'full hearing (within 10 days after the first one)' generalised a rule that § 55.1-1243.1(C) ties to a preliminary ex parte order; now says a preliminary order must set the full hearing within 10 days, quoted, and that damages follow proof of the landlord's act (subsection D).",
+   "Steps s8 and summary: 'At least $46 in state fees' and 'state fees start at $46' assumed the $10 legal aid fee, which § 17.1-278 applies only where a Virginia State Bar legal aid program serves the locality and which the file's own caveat says is unconfirmed; now '$36 court fee, a $10 legal aid fee where it applies'. Added the city Payments page statement that the General District Court Clerk's Office cannot process payments after 4:15 pm.",
+   "Step s9: the public-assistance presumption is rebuttable (§ 17.1-606(B)); added with a quote.",
+   "Step s4 and s19: added the § 16.1-88.03(B) limits on non-lawyers acting for a business (no bill of particulars or grounds of defense, motions, subpoenas, or debtor interrogatories), quoted, with a caveat on how far they reach in small claims.",
+   "Step s15: a default judgment requires the plaintiff's Servicemembers Civil Relief Act affidavit (§ 8.01-15.2(A), 'shall not enter a judgment by default until'); the caveats listed it as not researched. Added the requirement, the quote and Form DC-418 (f25, from the vacourts.gov civil forms page).",
+   "Step s12: quoted the underlying rule, § 8.01-296(2)(b) (mail a copy and file a certificate at least 10 days before a default judgment on posted service), and updated the caveat that said it was not quoted.",
+   "Step s16: § 8.01-428(A) requires reasonable notice to the other side for a motion to set aside a default judgment; added.",
+   "Step s17: § 16.1-107(E) has the writ tax and costs paid to the clerk of the court the appeal is taken from (the General District Court); added. Added the § 16.1-106(B) duty to tell the sheriff when an appeal is noted after the 72-hour eviction notice, and the § 8.01-129(B) jury on any party's application in an eviction appeal, both quoted. The fee line now gives the $15 writ tax and $200 clerk's fee brackets above $49,999 (§ 58.1-1727, § 17.1-275(A)(13), both quoted), which can apply because the civil limit is $50,000 and eviction claims are uncapped.",
+   "Step s18: § 8.01-129(B) says the judge 'shall' order the writ to issue immediately on the plaintiff's request (the step said only that the landlord may ask); added the four-or-fewer-units redemption limit, quoted § 55.1-1250(D) and (E) for the 48-hour and payment-method rules the step drew from the writ form, and added that a perfected appeal sends the writ back to the clerk.",
+   "Step s19: § 8.01-466 also lets the court order execution earlier for good cause (quoted); added the pamphlet's statement that the creditor must post a bond with the sheriff for a seizure and sale.",
+   "Fees: the reissue row said 'No charge'; § 16.1-69.48:2 waives only the court's or clerk's charge, so it now says the sheriff's fee is not waived by that section. The writ tax and circuit clerk's fee rows now give the brackets above $49,999.",
+   "Escalation, continuance: the § 16.1-122.3(E) good-cause rule applies to small claims; the trigger now says small claims and the rung notes the regular docket and the posted agreed-continuance policy.",
+   "Forms: f22's title now matches the vacourts.gov civil forms page ('Motion for Judgment to be Marked Satisfied'). Every other form number, title and URL was found on the vacourts.gov civil, civil?page=1, civil?page=2 and civil_criminal pages (CC-1414 is linked from the self-help Filing Fees page). DC-402's reverse carries the removal form, the venue-objection instructions and the plaintiff's certificate of mailing, as the steps say; DC-421 has the 'under penalty of perjury' statement and the redemption notice; DC-469 has the 48-hour redemption and payment-method notice; DC-409 lists TANF, Medicaid, SSI and SNAP.",
+   "Confirmed on the official pages: addresses, P. O. Box, general line and fax, hours and drop box (charlottesville.gov /176/ and /179/); docket times on both court pages; continuance policies; the Sheriff's Office handles civil process (/303/); Circuit Court address, general line and 'Civil cases set at 2 pm at term' (/174/); Albemarle General District Court at 350 Park Street with its schedule; the $4,500 and $25,000 figures on vacourts.gov /courts/gd/home; the fee help page's courthouse construction fee note; the DC-402 instructions' sixty-day return date (September 2008).",
+   "Schema: valid JSON in the same shape and formatting; step ids s1 to s20 and form ids f1 to f25 unique; every step form id exists. Privacy: no staff names, personal mailboxes or direct lines (the Clerk's line shown under the Clerk's name, 434-970-3388, is left out; the Sheriff's Office line is listed with the office's address and hours)."
+  ],
+  "open_issues": [
+   "Filing fee total for Charlottesville not confirmed: the Civil Filing Fee Calculation works by submitting a form, which this research does not do, and whether the city has adopted the courthouse and law library assessments, and whether the $10 legal aid fee applies, is not stated on any official page read. The steps give the components and point to the calculator and the clerk, so no step is wrong; the exact total is open.",
+   "Dollar limits: the file follows the index text of Va. Code § 16.1-77 ($4,500 exclusive, $50,000 concurrent, history through 2025, c. 338), but vacourts.gov /courts/gd/home and the pamphlet say $25,000 (with $50,000 only for personal injury and wrongful death), and the city page says $5,000 and $25,000. Flagged in caveats; a claim over $25,000 should be confirmed with the clerk.",
+   "Version dates: the index marks § 55.1-1244 effective until January 1, 2027 and §§ 8.01-126 and 55.1-1245 until July 1, 2027, with no successor text; steps s5 and s6 must be re-checked then.",
+   "Whether the § 16.1-88.03(B) limits on non-lawyers reach collection of a small claims judgment was not settled (caveat added).",
+   "Civil Appeal Notice DC-475 is not posted online (caveat); the forms listing PDF's columns did not let its title be confirmed there, though the PDF and self-help page name it."
+  ]
+ }
+}

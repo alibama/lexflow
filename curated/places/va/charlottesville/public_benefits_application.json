@@ -1,0 +1,900 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "public_benefits_application",
+ "title": "Apply for public benefits (SNAP, Medicaid, TANF, energy assistance)",
+ "question": "How do I apply for food, medical, cash, energy or child care assistance?",
+ "category": "health_social_services",
+ "kind": "process",
+ "audience": ["residents", "families", "older adults", "people with disabilities"],
+ "office": "Charlottesville Department of Social Services (Benefits Division)",
+ "summary": "City residents apply to the Charlottesville Department of Social Services for SNAP (food), TANF (cash), Medicaid or FAMIS (health coverage), energy assistance and child care help. One online CommonHelp application covers them all. You can also apply by phone, in person at the City Hall Annex, or by mail or fax. No application fee is listed. Energy assistance is taken only in seasonal windows; fuel assistance opens the second Tuesday in October. Expect an interview for some programs, including SNAP, a request for documents, and a written decision, generally within 30 days for SNAP and TANF and 45 days for Medicaid. If you are denied, you can appeal to the state: VDSS for most programs, DMAS for Medicaid.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-100",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-100/",
+   "quote": "\"Public assistance\" means Temporary Assistance for Needy Families (TANF); auxiliary grants to the aged, blind, and disabled; medical assistance; energy assistance; Supplemental Nutrition Assistance Program (SNAP); employment services; child care; and general relief.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "application for public assistance shall be made to the local department and filed with the local director of the county or city in which the applicant resides",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "Such application may be made either electronically or in writing on forms prescribed by the Commissioner and shall be signed by the applicant or otherwise attested to in a manner prescribed by the Commissioner under penalty of perjury",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "the application may be made by any competent adult person having sufficient knowledge of the applicant's circumstances to provide the necessary information",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "Local departments or the Commissioner shall provide each applicant for public assistance with information regarding his rights and responsibilities related to eligibility for and continued receipt of public assistance.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(D)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "The Commissioner and local departments shall administer the Child Care Subsidy Program as provided for in the State Child Care Plan prepared by the Department of Education.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501.1/",
+   "quote": "recipients of public assistance shall notify the local department of any change in address or telephone number within 30 days of such change",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-502",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-502/",
+   "quote": "Any person who knowingly makes any false application for public assistance or who knowingly swears or affirms falsely to any matter or thing required by the provisions of this title or as to any information required by the Commissioner, incidental to the administration of the provisions of this title, to be sworn to or affirmed, shall be guilty of perjury",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "Upon receipt of the application for public assistance, the local director or Commissioner shall make or cause to be made promptly an investigation to determine the completeness and correctness of the statements contained in the application",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "If the applicant fails to respond within 10 days of the date of such notice, the local director shall deny the application for public assistance.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(G)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "The Board may by regulation authorize the local directors to provide immediate and temporary assistance to persons pending action of the local departments.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-504",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-504/",
+   "quote": "Upon completion of the investigation, the local department shall determine whether the applicant is eligible for public assistance under this subtitle, and, if eligible, the amount of such public assistance and the date upon which such public assistance shall begin.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-508",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-508/",
+   "quote": "No person shall make any charge or receive any fees for representing an applicant for or recipient of public assistance with respect to his application or request for increased assistance prior to a determination thereon by the local board",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-513",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-513/",
+   "quote": "it shall be the duty of such recipient to notify as defined by regulation the local department of such change",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-514(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-514/",
+   "quote": "Eligibility for public assistance shall be reconsidered in accordance with federal law or regulations by the local department at least annually",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-515",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-515/",
+   "quote": "As soon as the local board makes any decision granting, denying, changing or discontinuing any grant of public assistance, it shall give written notice thereof to the applicant or recipient.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board in granting, denying, changing or discontinuing public assistance, may, within thirty days after receiving written notice of such decision, appeal therefrom to the Commissioner.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by the failure of the local board to make a decision within a reasonable time may ask for a review of the same by the Commissioner.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board concerning food stamps may appeal to the Commissioner in accordance with federal law and regulation.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-518",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-518/",
+   "quote": "The Commissioner shall provide an opportunity for a hearing, reasonable notice of which shall be given in writing to the applicant or recipient and to the proper local board",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-519",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-519/",
+   "quote": "The decision of the Commissioner shall be binding and considered a final agency action for purposes of judicial review of such action pursuant to the provisions of the Administrative Process Act (§ 2.2-4000 et seq.).",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-405(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-405/",
+   "quote": "The Commissioner shall, in compliance with the state plan for medical assistance services, applicable regulations of the Board and other state and federal law, provide for the determination of eligibility for medical care and medical assistance",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-600(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-600/",
+   "quote": "There is hereby created the Temporary Assistance for Needy Families Program, hereinafter referred to as TANF or the \"Program.\"",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "The Board is authorized, in accordance with the federal Food Stamp Act, to implement a SNAP benefits program in which each political subdivision in the Commonwealth shall participate.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "set the gross income eligibility standard for SNAP benefits at 200 percent of the federal poverty guidelines, and (iii) not impose an asset limit for eligibility for SNAP benefits",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "the Department may not require persons who are applying to participate or renewing their participation in the SNAP benefits program to appear in person as a condition of participation.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-805(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-805/",
+   "quote": "The Department shall establish and operate the Home Energy Assistance Program.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-805(F)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-805/",
+   "quote": "Actions of the Department relating to the review, allocation and awarding of benefits and grants shall be exempt from the provisions of Article 3 (§ 2.2-4018 et seq.) and Article 4 (§ 2.2-4024 et seq.) of Chapter 40 of the Administrative Process Act (§ 2.2-4000 et seq.).",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "The Board, subject to the approval of the Governor, is authorized to prepare, amend from time to time, and submit to the U.S. Secretary of Health and Human Services a state plan for medical assistance services pursuant to Title XIX of the United States Social Security Act and any amendments thereto.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)(9)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "A provision identifying entities approved by the Board to receive applications and to determine eligibility for medical assistance",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)(23)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "A single application form shall be used to determine eligibility for both programs",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 22.1-289.08:2",
+   "url": "https://law.lis.virginia.gov/vacode/22.1-289.08:2/",
+   "quote": "Any family that receives public assistance through Medicaid or the Special Supplemental Nutrition Program for Women, Infants, and Children shall be deemed to categorically satisfy income eligibility requirements to receive assistance through the Child Care Subsidy Program.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4026(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-305(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-305/",
+   "quote": "To monitor the formulation and implementation of public assistance and social services programs by the local department",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "A Request for Appeal shall be filed within 30 days of the appellant's receipt of the notice of an action or adverse determination described in 12VAC30-110-70.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "It is presumed that appellants will receive the notice five days after the agency mails the notice unless the appellant shows that he did not receive the notice within the five-day period.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "A Request for Appeal on the grounds that an agency has not acted with reasonable promptness may be filed at any time until the agency has acted.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-40",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section40/",
+   "quote": "An appellant who believes a final decision as defined herein is incorrect may seek judicial review pursuant to The Administrative Process Act (§ 2.2-4000 et seq. of the Code of Virginia) and Part 2A, Rules of the Virginia Supreme Court.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4025(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4025/",
+   "quote": "The provisions of this article, however, shall apply to case decisions regarding the grant or denial of Temporary Assistance for Needy Families, Medicaid, food stamps, general relief, auxiliary grants, or state-local hospitalization.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4025(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4025/",
+   "quote": "the review shall be based solely upon the agency record, and the court shall be limited to ascertaining whether there was evidence in the agency record to support the case decision of the agency acting as the trier of fact",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4003",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4003/",
+   "quote": "venue shall be as specified in subdivision 1 of § 8.01-261",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-261(1)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-261/",
+   "quote": "If the moving or aggrieved party is other than the Commonwealth or an agency thereof, then the county or city wherein such party",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether you might qualify",
+   "who": "Applicant, or an authorized representative the applicant names (Section I of the Application for Benefits; Appendix C of the Cardinal Care application). If the applicant's condition prevents signing, a guardian or conservator may apply, or, if none has been appointed, a competent adult who knows the applicant's circumstances (Va. Code § 63.2-501(A)).",
+   "how": "You must live in Virginia, be a U.S. citizen or meet the rules for immigrants, and meet each program's own rules. Eligibility and the benefit amount depend on income, resources and household size, and for some programs certain household expenses. The online screening tool on CommonHelp gives an estimate only. An eligibility worker at the Charlottesville Department of Social Services makes the final decision. If you apply for financial (cash) or medical assistance, you must also apply for other benefits you may be entitled to, such as Social Security, workers' compensation, unemployment compensation, veterans benefits or retirement pensions.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "quote": "Please note, however, that the final decision regarding eligibility must be made by an eligibility worker at your local department of social services.",
+   "source": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "id": "s2",
+   "step": "Gather information for everyone in your household",
+   "who": "Applicant",
+   "how": "Collect full legal names, dates of birth and Social Security numbers (people not applying for coverage do not have to give an SSN on the health application). Also collect immigration document numbers, pay stubs or other income records, and details of any other health insurance. For SNAP, bring proof of identity, income, rent or mortgage, utility bills, and bank accounts if you have them. For SNAP, dependent care, shelter and medical expenses now need a document as proof. If you do not have every document, you can still attend the SNAP interview, and the office will explain next steps; you can also turn in a partial application first (see s6).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/",
+   "quote": "Gather the following information for yourself and everyone in your household.",
+   "source": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "id": "s3",
+   "step": "Choose the programs and the application",
+   "who": "Applicant",
+   "how": "One online application on CommonHelp covers SNAP, TANF, Medicaid, energy assistance (heating, cooling or crisis) and child care. On paper there are separate forms. The Application for Benefits (032-03-1100-39) covers SNAP and TANF, plus Auxiliary Grants, General Relief and Refugee Cash Assistance. An application for TANF is also treated as an application for SNAP unless you mark TANF-No SNAP. Medicaid and FAMIS use the Cardinal Care application. Fuel, crisis and cooling assistance each have their own application.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "quote": "You can apply online through CommonHelp or in person at our office for the following programs:",
+   "source": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "id": "s4",
+   "step": "Submit the application to the Charlottesville Department of Social Services",
+   "who": "Applicant; Charlottesville Department of Social Services (Benefits Division)",
+   "how": "Choose one way. (1) Online at commonhelp.virginia.gov. (2) By phone through the VDSS Enterprise Customer Service Center, 855-635-4370, Monday to Friday 7 a.m. to 6 p.m.; the VDSS SNAP page also lists 833-522-5582. (3) In person at the City Hall Annex, 120 Seventh Street NE, 2nd floor; applications are taken daily from 8 am to 5 pm. (4) By mail to P.O. Box 911, Charlottesville, VA 22902-0911. (5) By fax to 434-970-3444. You can pick up a paper application at the office, or call 434-970-3400 to have one mailed. Public computers in the Annex lobby, and at any public library, can be used for CommonHelp. The application must be signed or attested under penalty of perjury.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "quote": "You may apply for assistance online through CommonHelp, in person at our office, or by mailing a paper application to:",
+   "source": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "id": "s5",
+   "step": "For Medicaid or FAMIS (Cardinal Care), use any state or local route",
+   "who": "Applicant; Charlottesville Department of Social Services or Cover Virginia (Department of Medical Assistance Services)",
+   "how": "Apply online at commonhelp.virginia.gov or by phone with Cover Virginia at 1-855-242-8282 (TTY 1-888-221-1590), Monday to Friday 8 a.m. to 7 p.m. You can also mail the Cardinal Care application to the Cardinal Care Correspondence Center, P.O. Box 1820, Richmond, VA 23218, or drop it off at the Charlottesville Department of Social Services. Add any needed appendix with the application; appendices cannot be filed on their own. Appendix D is for someone 65 or older, eligible for Medicare or disabled, or who needs long-term services and supports. If someone is helping you fill out the paper application, or you are applying for someone other than a spouse or family member under 21, Appendix C (authorized representative) must be completed. A health care application through the Virginia Insurance Marketplace (marketplace.virginia.gov) can also lead to Medicaid enrollment.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/",
+   "quote": "Drop off a paper application to your local Department of Social Services.",
+   "source": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "id": "s6",
+   "step": "Protect your filing date: turn in at least a partial application the same day",
+   "who": "Applicant; Charlottesville Department of Social Services",
+   "how": "Your benefit amount for the first month can depend on the date you turn in the application. You may leave a completed application, or a partial one with at least your name, address and signature. For SNAP only, you may leave the torn-off half-sheet on page iii with those details. You may turn it in any time during office hours on the same day you contact the office. You must finish the rest before eligibility can be decided. You have the right to turn in an application even if it looks like you may not be eligible.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf",
+   "quote": "You may turn in your application any time during office hours the same day as you contact your local agency.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf"
+  },
+  {
+   "id": "s7",
+   "step": "Apply for energy assistance in its seasonal window",
+   "who": "Applicant (household with a heating or cooling expense); Charlottesville Department of Social Services",
+   "how": "Apply online through CommonHelp, by phone at 855-635-4370, or on the paper Fuel, Crisis or Cooling Assistance application at the office. Gross monthly income must be at or below 150% of the federal poverty level, and you must live in the locality where you apply. Fuel assistance helps with heating costs, and benefits are sent to vendors in December. Crisis assistance is for a heating emergency, such as no heat, a cut-off notice or unsafe equipment, when no other resource is available. Cooling assistance needs a household member who is 60 or older, living with a disability, or under 6. Crisis and cooling help depend on available funds. For 2026, the fuel rule works out to Tuesday, October 13 through Friday, November 13 (computed, not published).",
+   "deadline": "Fuel: second Tuesday in October through the second Friday in November. Crisis: November 1 through March 15 for a heat security deposit or heating equipment repair or purchase; first workday in January through March 15 for heating fuel and heat utility bills. Cooling: June 15 through August 15 (the VDSS EAP web page says June 15 – Aug 17).",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.dss.virginia.gov/relief/ea/",
+   "quote": "Applications are accepted online, through the Enterprise Customer Service Center, and at local departments of social services from the second Tuesday in October through the second Friday in November.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/eap/032-03-00661-26_EAP_Information_Sheet_eng.pdf"
+  },
+  {
+   "id": "s8",
+   "step": "Ask for expedited SNAP if you have little or no money",
+   "who": "Applicant; Charlottesville Department of Social Services",
+   "how": "Fill in the expedited-service questions on the application. You qualify if (1) gross monthly income is under $150 and liquid resources are $100 or less; (2) monthly rent or mortgage and utilities are more than your gross monthly income plus liquid resources; or (3) someone in the household is a migrant or seasonal farm worker with little or no income and resources.",
+   "deadline": "7 days to process",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/377/Available-Food-Resources-in-the-Communit",
+   "quote": "Households with little or no income and resources are eligible for expedited SNAP benefits (7 days to process).",
+   "source": "https://www.charlottesville.gov/377/Available-Food-Resources-in-the-Communit"
+  },
+  {
+   "id": "s9",
+   "step": "Complete the intake interview",
+   "who": "Applicant; eligibility worker (benefit programs specialist), Charlottesville Department of Social Services",
+   "how": "Some programs, including SNAP, need an interview (VDSS says SNAP applicants usually need one), but you can turn in the application first. Call 434-970-3400 to schedule. On request, appointments can be set outside regular hours. The office sends a letter with the date and time. A SNAP interview may be by phone or in person; state law bars requiring SNAP applicants to appear in person unless federal rules require it. Energy assistance applicants do not get the oral explanation of rights required for other programs (Va. Code § 63.2-501(B)).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/366/Social-Services",
+   "quote": "Intake interviews are by appointment only.",
+   "source": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "id": "s10",
+   "step": "Send the documents the office asks for",
+   "who": "Applicant; benefits case worker",
+   "how": "Use the outside dropbox on the first level of the City Hall Annex (120 7th St NE). You can also mail them to CDSS, P.O. Box 911, Charlottesville VA 22902, upload them in your CommonHelp account, email cdssmycase@charlottesville.gov or fax (434) 970-3444. Include your first and last name, case number and best phone number. The office aims to tell your case worker within 2 business days of receiving an email. Missing or unsigned items can delay your case. For Medicaid, Cover Virginia also takes documents at verify_docs@coverva.org, by fax to 1-888-221-9402, or by mail to the Cardinal Care Correspondence Center. Cover Virginia says a Medicaid application may be denied if you do not reply to its request. If the office finds information that conflicts with your application, it must write to you and give you a chance to explain; if you do not respond within 10 days of the date of that notice, state law says the application shall be denied.",
+   "deadline": "At least 10 days from the request (SNAP); 10 days from a written discrepancy notice (Va. Code § 63.2-503(C))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/366/Social-Services",
+   "quote": "You will have at least 10 days to submit documents.",
+   "source": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-requirements-faqs/"
+  },
+  {
+   "id": "s11",
+   "step": "Receive the written decision",
+   "who": "Charlottesville Department of Social Services (Medicaid: the local department or Cover Virginia)",
+   "how": "The office verifies your information, decides whether you are eligible, and sets the amount and start date. The written notice tells you whether you are eligible, what your benefits will be, and how to appeal. SNAP comes on an EBT card. If a decision is late, see the escalation steps.",
+   "deadline": "Generally: within 30 days of application for SNAP (7 days if you qualify for emergency service) and for TANF; within 45 days for Medical Assistance (up to 90 days if a disability determination is needed); within 7 calendar days for Medical Assistance for a pregnant woman; Energy Assistance as soon as possible but no later than the last day designated for processing (VDSS Benefit Programs brochure B032-01-0002-23, 03/2022). The Cardinal Care application (7/22/25) also says a paper application 'should be processed within 45 days from the date it was received.'",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "quote": "You will be notified in writing as soon as a decision about your application has been made.",
+   "source": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "id": "s12",
+   "step": "Keep your benefits: report changes",
+   "who": "Recipient; Charlottesville Department of Social Services",
+   "how": "Report changes through CommonHelp, on the VDSS Change Report form, or to your case worker at the local department, with proof of the change. For SNAP and TANF, report within 10 days of the change and no later than the 10th day of the next month; what you must report depends on the program and, for SNAP, on the length of your certification period (the form and your notice list the changes). SNAP Simplified Reporting households may also be required to submit an Interim Report in the sixth or twelfth month, by the fifth of the month. Medicaid members should keep their contact details current through CommonHelp, Cover Virginia at 1-855-242-8282, or the local department.",
+   "deadline": "SNAP and TANF: within 10 days of the change, no later than the 10th day of the next month (Change Report 032-03-0051-45). Address or phone changes: within 30 days, to the extent federal law and regulations require it (Va. Code § 63.2-501.1(B)); where a program sets a shorter deadline (TANF: 10 days for an address change), follow it.",
+   "fee": null,
+   "form": "f9",
+   "url": "https://commonhelp.virginia.gov/",
+   "quote": "Report changes within 10 days from when they occur but, no later than the 10th day of the next month.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf"
+  },
+  {
+   "id": "s13",
+   "step": "Renew your benefits",
+   "who": "Recipient; Charlottesville Department of Social Services (Medicaid: the local department or Cover Virginia)",
+   "how": "Eligibility is reviewed at least once a year. Renew SNAP or TANF online through CommonHelp, or bring or mail the paper Renewal Application for AG, SNAP and TANF to the Charlottesville Department of Social Services. If Medicaid coverage ended because a renewal or renewal verifications were not returned, you have 90 days after coverage ended to return the paperwork (see escalation).",
+   "deadline": "At least annually, as your renewal notice states (Va. Code § 63.2-514(A))",
+   "fee": null,
+   "form": "f8",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf",
+   "quote": "You may bring this application to the local Department of Social Services office or mail it to the local Department of Social Services office.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf"
+  },
+  {
+   "id": "s14",
+   "step": "If you disagree with the decision, appeal to the state",
+   "who": "Applicant or recipient (or a legal representative); VDSS Appeals and Fair Hearings Unit; DMAS Appeals Division for Medicaid",
+   "how": "Read the notice for the deadline. If your situation has changed since the decision, contact your case worker first, because appeals are decided on the facts known at the time. For SNAP, TANF, energy assistance, child care and the other VDSS programs, use the Appeal to the State Department of Social Services form or your own letter, and file it by email, mail, fax, CommonHelp or phone. For energy assistance, the form allows appeals only on its asterisked grounds. SNAP and TANF appeals may be made orally. For Medicaid or FAMIS, appeal to DMAS. See escalation.",
+   "deadline": "SNAP: the appeal must be received within 90 days of the written notice (at any time if you already get SNAP and want more); all other VDSS programs: received within 30 days of the written notice (appeal form 032-03-0024-11; Va. Code § 63.2-517 says within thirty days after receiving the notice); Medicaid: within 30 days of receiving the notice, presumed received 5 days after mailing (12VAC30-110-160)",
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/",
+   "quote": "If you asked for public assistance—or are already receiving it—and you disagree with a decision made by the local office, you can appeal.",
+   "source": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Application for Benefits (Auxiliary Grants, General Relief, Refugee Cash Assistance, SNAP, TANF, TANF Diversionary and Emergency Assistance), English",
+   "number": "032-03-1100-39-eng (12/22)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f2",
+   "title": "Virginia Cardinal Care (Medicaid and FAMIS) Application: Application for Health Coverage & Help Paying Costs, English",
+   "number": null,
+   "url": "https://coverva.dmas.virginia.gov/media/ncuecbw2/magi-standard-application-final-07-22-25-new-address-rev-9-26-25.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Fuel Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0650-13-eng (9/24)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/FUEL-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "Crisis Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0651-13-eng (09/24)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/CRISIS-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f5",
+   "title": "Cooling Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0657-18 eng (05/23)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/COOLING-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Appeal to State Department of Social Services (benefits and services appeal form)",
+   "number": "032-03-0024-11-eng (12/2023)",
+   "url": "https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f7",
+   "title": "Virginia Medicaid / FAMIS Client Appeal Request Form",
+   "number": null,
+   "url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f8",
+   "title": "Renewal Application for Auxiliary Grant (AG), SNAP, and TANF, English",
+   "number": "032-03-729A-19-eng (05/2021)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f9",
+   "title": "Change Report (SNAP and TANF), English",
+   "number": "032-03-0051-45-eng (09/2026)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Charge for representing an applicant or recipient before the local department decides the application",
+   "amount": "None allowed: no person may charge or receive a fee",
+   "basis": "Va. Code § 63.2-508",
+   "quote": "No person shall make any charge or receive any fees for representing an applicant for or recipient of public assistance with respect to his application or request for increased assistance prior to a determination thereon by the local board"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Charlottesville Department of Social Services (Benefits Division). Office hours Monday through Friday, 8:30 am to 5 pm. Benefit applications are taken daily from 8 am to 5 pm. Intake interviews are by appointment.",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "address",
+   "value": "120 Seventh Street NE, City Hall Annex, 2nd Floor, Charlottesville, VA 22902 (in person; outside document dropbox on the first level)",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "address",
+   "value": "Charlottesville Department of Social Services, P.O. Box 911, Charlottesville, VA 22902-0911 (mail applications and documents)",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3400",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3444 (fax; paper applications and documents)",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "kind": "email",
+   "value": "dssfeedback@charlottesville.gov (general inquiries)",
+   "label": "Charlottesville Department of Social Services",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "email",
+   "value": "cdssmycase@charlottesville.gov (documents for your benefits case; include name, case number and phone number)",
+   "label": "Charlottesville Department of Social Services (benefits case documents)",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "label": "Charlottesville Department of Social Services: How to Apply for Financial Assistance",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "kind": "portal",
+   "value": "https://commonhelp.virginia.gov/",
+   "label": "Virginia Department of Social Services: CommonHelp (apply, check, renew, report changes)",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---"
+  },
+  {
+   "kind": "phone",
+   "value": "855-635-4370 (apply by phone for SNAP, TANF and energy assistance; Monday–Friday, 7 a.m.–6 p.m.)",
+   "label": "Virginia Department of Social Services, Enterprise Customer Service Center",
+   "url": "https://www.dss.virginia.gov/relief/ea/"
+  },
+  {
+   "kind": "phone",
+   "value": "833-522-5582 (SNAP applications by phone, as listed on the VDSS SNAP page)",
+   "label": "Virginia Department of Social Services",
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/"
+  },
+  {
+   "kind": "phone",
+   "value": "1-855-242-8282 (TTY 1-888-221-1590; Medicaid and FAMIS applications and help; Monday through Friday, 8 a.m. to 7 p.m.)",
+   "label": "Cover Virginia Call Center (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "address",
+   "value": "Cardinal Care Correspondence Center, P.O. Box 1820, Richmond, VA 23218 (Medicaid applications and documents by mail)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "email",
+   "value": "verify_docs@coverva.org (Medicaid verification documents)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "phone",
+   "value": "1-888-221-9402 (fax; Medicaid verification documents)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "phone",
+   "value": "1 866-281-2448 (replace an EBT card)",
+   "label": "EBT card replacement line (listed by the Charlottesville Department of Social Services)",
+   "url": "https://www.charlottesville.gov/366/Social-Services"
+  },
+  {
+   "kind": "email",
+   "value": "appeals@dss.virginia.gov",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 664-0612",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 726-7656 (fax)",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "address",
+   "value": "Manager, Appeals and Fair Hearings Unit, Virginia Department of Social Services, 5600 Cox Road, Glen Allen, Virginia 23060",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "email",
+   "value": "appeals@dmas.virginia.gov",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 371-8488 (TTY 1-800-828-1120)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 452-5454 (fax)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "address",
+   "value": "Appeals Division, Department of Medical Assistance Services, 600 E. Broad Street, Richmond, VA 23219 (mail or in person)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "portal",
+   "value": "https://dmas.virginia.gov/appeals/appeals-portal/",
+   "label": "Department of Medical Assistance Services, Appeals Division (AIMS appeals portal)",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "SNAP, TANF, energy assistance, child care subsidy or another VDSS-program application is denied, or benefits are reduced, suspended or stopped",
+   "next": "Virginia Department of Social Services, Appeals and Fair Hearings Unit (an independent hearing officer, acting for the Commissioner)",
+   "type": "external administrative review",
+   "deadline": "Within 30 days after receiving the written notice (Va. Code § 63.2-517). The VDSS appeal form says appeals other than SNAP 'must be received within 30 days of written notice of the local agency decision', so file early enough to meet both.",
+   "basis": "Va. Code § 63.2-517",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board in granting, denying, changing or discontinuing public assistance, may, within thirty days after receiving written notice of such decision, appeal therefrom to the Commissioner."
+  },
+  {
+   "trigger": "A SNAP decision you disagree with (including denial, a lower benefit, or no expedited service)",
+   "next": "Virginia Department of Social Services, Appeals and Fair Hearings Unit; a SNAP appeal may be made orally",
+   "type": "external administrative review",
+   "deadline": "The appeal must be received within 90 days of the written notice (VDSS appeal form and How to Appeal page); at any time if you currently get SNAP and want more benefits",
+   "basis": "Va. Code § 63.2-517; VDSS How to Appeal page and appeal form 032-03-0024-11 (90-day rule)",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board concerning food stamps may appeal to the Commissioner in accordance with federal law and regulation."
+  },
+  {
+   "trigger": "Benefits you already get are about to be cut or stopped and you want them to continue during the appeal",
+   "next": "Ask the Appeals and Fair Hearings Unit for Continuation of Benefits when you appeal. This is not available for actions taken at renewal, and you may have to repay if you lose.",
+   "type": "external administrative review",
+   "deadline": "Before the local agency takes the negative action; if it acted immediately, ten days after the decision was mailed",
+   "basis": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/",
+   "quote": "The deadline is before the local agency takes the negative action on your case."
+  },
+  {
+   "trigger": "No decision on your application within a reasonable time",
+   "next": "Virginia Department of Social Services (Commissioner, through the Appeals and Fair Hearings Unit): review of the local department's failure to decide",
+   "type": "external administrative review",
+   "deadline": null,
+   "basis": "Va. Code § 63.2-517",
+   "quote": "Any applicant or recipient aggrieved by the failure of the local board to make a decision within a reasonable time may ask for a review of the same by the Commissioner."
+  },
+  {
+   "trigger": "Medicaid or FAMIS application denied, or coverage or services reduced or ended",
+   "next": "Department of Medical Assistance Services, Appeals Division. File through the AIMS portal, by email, fax, phone or mail, or in person. Managed care (MCO) service denials go to the MCO first.",
+   "type": "external administrative review",
+   "deadline": "Within 30 days of receiving the notice; the notice is presumed received 5 days after mailing; late appeals only for good cause; MCO appeals within 120 days of receiving the MCO's final decision, which cannot be extended",
+   "basis": "12VAC30-110-160",
+   "quote": "A Request for Appeal shall be filed within 30 days of the appellant's receipt of the notice of an action or adverse determination described in 12VAC30-110-70."
+  },
+  {
+   "trigger": "Medicaid application not acted on with reasonable promptness",
+   "next": "Department of Medical Assistance Services, Appeals Division",
+   "type": "external administrative review",
+   "deadline": "At any time until the agency has acted",
+   "basis": "12VAC30-110-160",
+   "quote": "A Request for Appeal on the grounds that an agency has not acted with reasonable promptness may be filed at any time until the agency has acted."
+  },
+  {
+   "trigger": "Medicaid coverage ended because a renewal or renewal verifications were not returned",
+   "next": "Return the renewal paperwork, following Cover Virginia's renewal instructions (coverva.dmas.virginia.gov), to have coverage reconsidered, rather than filing an appeal",
+   "type": "internal appeal",
+   "deadline": "Within 90 days after coverage ended",
+   "basis": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/",
+   "quote": "If you lost coverage for not completing a renewal or submitting renewal verifications, you have 90 days after you lost coverage to return the renewal paperwork."
+  },
+  {
+   "trigger": "VDSS hearing decision goes against you",
+   "next": "Court review under the Administrative Process Act, on the agency record only. Venue is the city or county where you live (for a Charlottesville resident, Charlottesville), under Va. Code §§ 2.2-4003 and 8.01-261(1)(a). The statute names TANF, food stamps (SNAP), general relief and auxiliary grants among the decisions courts review (§ 2.2-4025(B)); whether energy assistance and child care decisions can be reviewed was not determined. That the petition goes to the circuit court comes from Part Two A of the Rules, which was not read.",
+   "type": "judicial review",
+   "deadline": "As set by Part Two A of the Rules of the Supreme Court of Virginia (not quoted here)",
+   "basis": "Va. Code § 63.2-519; Va. Code §§ 2.2-4025(B), 2.2-4026(A), 2.2-4003, 8.01-261(1)(a)",
+   "quote": "The decision of the Commissioner shall be binding and considered a final agency action for purposes of judicial review of such action pursuant to the provisions of the Administrative Process Act (§ 2.2-4000 et seq.)."
+  },
+  {
+   "trigger": "DMAS appeal decision on Medicaid or FAMIS goes against you",
+   "next": "Court review under the Administrative Process Act and Part Two A of the Rules of the Supreme Court of Virginia, on the agency record only (Va. Code § 2.2-4025(B) names Medicaid). Venue is the city or county where you live (Va. Code §§ 2.2-4003 and 8.01-261(1)(a)).",
+   "type": "judicial review",
+   "deadline": "As set by Part Two A of the Rules of the Supreme Court of Virginia (not quoted here)",
+   "basis": "12VAC30-110-40; Va. Code §§ 2.2-4025(B), 2.2-4003, 8.01-261(1)(a)",
+   "quote": "An appellant who believes a final decision as defined herein is incorrect may seek judicial review pursuant to The Administrative Process Act (§ 2.2-4000 et seq. of the Code of Virginia) and Part 2A, Rules of the Virginia Supreme Court."
+  },
+  {
+   "trigger": "You believe you were discriminated against in SNAP or another USDA-funded program",
+   "next": "USDA, Office of Civil Rights (write to the Director, 1400 Independence Avenue SW, Washington, D.C. 20250-9410, or call 800-795-3272 voice or 202-720-6382 TTY). The application form also lists the HHS Office for Civil Rights for TANF and LIHEAP.",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "https://www.charlottesville.gov/366/Social-Services",
+   "quote": "In accordance with Federal law and the U.S. Department of Agriculture policy, this institution is prohibited from discriminating on the basis of race, color, national origin, sex, age, religion, political beliefs, or disability."
+  },
+  {
+   "trigger": "Concerns about how the department runs its benefit programs in general (not a single case decision)",
+   "next": "Charlottesville Social Services Advisory Board: nine citizens appointed by City Council who advise the Director on community needs and public concerns and report each year to Council. Hearing individual appeals is not among an advisory board's duties under Va. Code § 63.2-305(B); appeals go to the Commissioner (§ 63.2-517).",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "Va. Code § 63.2-305(B)(2)",
+   "quote": "To monitor the formulation and implementation of public assistance and social services programs by the local department"
+  },
+  {
+   "trigger": "Not eligible, or need food while waiting for a decision",
+   "next": "City Food Security Text Program, and the Blue Ridge Area Food Bank Food Finder (foodfinder.brafb.org) for free groceries and meals",
+   "type": "referral",
+   "deadline": null,
+   "basis": "https://www.charlottesville.gov/366/Social-Services",
+   "quote": "To enroll in the Food Security Text Program, text FOOD or COMIDA to 844-947-6518 to access information about City and surrounding county food resources."
+  }
+ ],
+ "caveats": [
+  "No application fee for any program is stated on any official page or form read. The only fee rule found is Va. Code § 63.2-508, which bars charging for representing an applicant before the local decision. Child care subsidy copayments, if any, were not checked.",
+  "Processing times come from the VDSS Benefit Programs brochure B032-01-0002-23 (dated 03/2022); for Medicaid, the Cardinal Care application (7/22/25) also gives 45 days. The federal rules behind them (SNAP 7 CFR 273.2, Medicaid 42 CFR 435.912, TANF) were not read or quoted. The Code of Virginia says only that the local director investigates 'promptly' (§ 63.2-503(A)).",
+  "Hours differ on the city page: office hours are 'Monday through Friday 8:30 am to 5 pm', but 'Benefit applications are taken daily from 8 am to 5 pm.' Both are recorded as published.",
+  "Energy assistance dates conflict. The VDSS EAP page gives cooling as 'June 15 – Aug 17'. The EAP Information Sheet (032-03-0661-26, 05/25) and the Cooling Assistance Application say June 15 through August 15. The EAP page gives crisis fuel and bill help as 'Jan – Mar 15'; the information sheet says from the first workday in January. The 2026 fuel window (October 13 to November 13, 2026) was computed from the published rule ('second Tuesday in October through the second Friday in November'); no page read gives those dates. On the retrieval date (2026-10-10), the fuel window had not opened.",
+  "Income limits are not recorded. The SNAP table on the VDSS SNAP page covers October 1, 2025 to September 30, 2026, so it had expired by the retrieval date, and no newer table was found on that page. The VDSS Change Report (032-03-0051-45, 09/2026) prints 130% and 200% gross income charts but gives no effective period, so they are not recorded either. The EAP income table is on the 05/25 information sheet and may be out of date. Va. Code § 63.2-801(B) sets SNAP gross income at 200 percent of the federal poverty guidelines with no asset limit, to the extent federal law allows. Federal changes from 2025 (SNAP work requirements up to age 64, document proof of expenses) are described on the VDSS FAQ and may keep changing.",
+  "Child care: www.childcare.virginia.gov, the Virginia Department of Education site for the Child Care Subsidy Program, refuses automated readers, so it is not described here. The child care parts of this page rest on the city page (Child Care Services through CommonHelp), Va. Code §§ 63.2-501(D) and 22.1-289.08:2, and the VDSS appeal form, which lists the Child Care Subsidy Program. Child care eligibility, waitlists and copayments are not recorded.",
+  "Paper forms: the city page says blank applications 'can also be printed directly from the Virginia Department of Social Services' but links none. The forms here are the VDSS and DMAS copies. The main TANF page links its application through a CMS back-end host (dssvirginiagov-cms01-production.terminalfour.net); the TANF How to Apply page and the SNAP page link dss.virginia.gov copies of the same form number (032-03-1100-39), and f1 uses the SNAP page's copy. 'fillable' is true only where an AcroForm with fields was found in the PDF (f2, f6, f9); null means not determined.",
+  "The VDSS Enterprise call centre is listed under two numbers: 855-635-4370 (EAP, TANF and CommonHelp pages) and 833-5CALLVA / 833-522-5582 (CommonHelp and the SNAP page). The VDSS How to Appeal page also gives '(800) 552-7096' as an appeals hotline. That is the same number the city page gives for the Virginia Child Protective Services Hotline, so it was not recorded as an appeals contact.",
+  "Appeal deadlines: Va. Code § 63.2-517 gives 30 days after written notice. The VDSS page and appeal form give 90 days for SNAP (federal law, 7 CFR 273.15, not read) and 30 days for the other programs. For energy assistance, the VDSS appeal form allows appeals only on its asterisked grounds (refusal to take an application, ineligibility, cancellation, or no timely decision). Va. Code § 63.2-805(F) exempts EAP award actions from APA Articles 3 and 4, and whether court review is available for EAP decisions was not determined. The VDSS page says AFH 'must finish your appeal within 60 days of receiving it, unless you request a delay'; the federal timelines behind that were not checked.",
+  "Judicial review: the deadline to petition the court (Rules of the Supreme Court of Virginia, Part Two A) was not read from an official source and is not quoted. Venue was resolved from the index: Va. Code § 2.2-4003 points to § 8.01-261(1), whose preferred venue for a private party is the county or city where that party resides. Va. Code § 2.2-4025(B) applies court review to TANF, Medicaid, food stamps, general relief and auxiliary grants decisions, limits it to the agency record, and bars intermediate relief; it does not name energy assistance or child care.",
+  "Local law: no Charlottesville City Code provision on benefit applications was found. The Municode-hosted City Code has not been checked, because its terms of use are not confirmed to allow it. The ordinance creating the Social Services Advisory Board was not read: its city page (/383/Social-Services-Advisory-Board) returned HTTP 404. The Divisions page describes the board. The Divisions page describes an advisory board of nine citizens appointed by City Council that advises the Director, which fits Va. Code § 63.2-305(A) (an advisory board where a local government official is the local board, as § 63.2-304 allows a city); the council's own designation was not read.",
+  "Privacy: the city page names the department's director and links a staff directory entry; neither is recorded. Only office mailboxes and lines published as the office's channels are recorded. 'Manager, Appeals and Fair Hearings Unit' is a title on the VDSS mailing address, not a person."
+ ],
+ "sources": [
+  {"url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---", "title": "How to Apply for Financial Assistance - CommonHelp (City of Charlottesville, Department of Social Services)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/366/Social-Services", "title": "Social Services (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/377/Available-Food-Resources-in-the-Communit", "title": "Available Food Resources in the Community (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/388/Divisions", "title": "Divisions (Charlottesville Department of Social Services)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/1125/Forms-Additional-Information", "title": "Forms & Additional Information (Children's Services Act forms only; no benefits forms)", "retrieved": "2026-10-10"},
+  {"url": "https://commonhelp.virginia.gov/", "title": "Virginia CommonHelp (VDSS)", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/food-assistance/snap/", "title": "Supplemental Nutrition Assistance Program (SNAP), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-requirements-faqs/", "title": "SNAP Requirements FAQs, VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-interview-resources/", "title": "SNAP Interview Resources, VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/tanf/", "title": "Temporary Assistance for Needy Families (TANF), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/tanf/apply/", "title": "TANF: How to Apply (forms list), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/relief/ea/", "title": "Energy Assistance Program (EAP), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/eap/032-03-00661-26_EAP_Information_Sheet_eng.pdf", "title": "Energy Assistance Program Information Sheet 032-03-0661-26 (05/25), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/b032-01-0002-23-eng.pdf", "title": "Benefit Programs brochure B032-01-0002-23 (03/2022), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf", "title": "Application for Benefits 032-03-1100-39-eng (12/22), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/FUEL-ASSISTANCE-APPLICATION.pdf", "title": "Fuel Assistance Application 032-03-0650-13-eng (9/24), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/CRISIS-ASSISTANCE-APPLICATION.pdf", "title": "Crisis Assistance Application 032-03-0651-13-eng (09/24), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/COOLING-ASSISTANCE-APPLICATION.pdf", "title": "Cooling Assistance Application 032-03-0657-18, VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf", "title": "Renewal Application for AG, SNAP and TANF 032-03-729A-19-eng (05/2021), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf", "title": "Change Report 032-03-0051-45-eng (09/2026), VDSS", "retrieved": "2026-10-11"},
+  {"url": "https://www.dss.virginia.gov/general-info/your-rights-and-support-options/", "title": "Your Rights and Support Options, VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/", "title": "Benefits and Service Appeals, VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/", "title": "How to Appeal (benefits and services), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf", "title": "Appeal to State Department of Social Services 032-03-0024-11-eng (12/2023), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dss.virginia.gov/general-info/web-policy/", "title": "Web Policy (fair use of content), VDSS", "retrieved": "2026-10-10"},
+  {"url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/", "title": "How to Apply, Cover Virginia (DMAS)", "retrieved": "2026-10-10"},
+  {"url": "https://coverva.dmas.virginia.gov/apply/applications/", "title": "Applications, Cover Virginia (DMAS)", "retrieved": "2026-10-10"},
+  {"url": "https://coverva.dmas.virginia.gov/media/ncuecbw2/magi-standard-application-final-07-22-25-new-address-rev-9-26-25.pdf", "title": "Application for Health Coverage & Help Paying Costs (Virginia Cardinal Care), 7/22/25, DMAS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dmas.virginia.gov/appeals/", "title": "Appeals, DMAS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/", "title": "Applicant / Member Appeals Resources, DMAS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dmas.virginia.gov/media/5980/virginia-medicaid-client-appeals-process-at-a-glance-english.pdf", "title": "Virginia Medicaid Client Appeals Process: At-A-Glance, DMAS", "retrieved": "2026-10-10"},
+  {"url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf", "title": "Virginia Medicaid / FAMIS Client Appeal Request Form (May 2021), DMAS", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/", "title": "12VAC30-110-160. Time limit for filing", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section40/", "title": "12VAC30-110-40. Judicial review", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/63.2-501/", "title": "Va. Code §§ 63.2-100, 63.2-305, 63.2-405, 63.2-501 to 63.2-519, 63.2-600, 63.2-801, 63.2-805, 32.1-325, 22.1-289.08:2, 2.2-4003, 2.2-4025, 2.2-4026, 8.01-261", "retrieved": "2026-10-10"}
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 69,
+  "quotes_confirmed": 69,
+  "removed": [
+   "s12 (old): the step quote from Va. Code § 63.2-501.1(B) was moved out of the step when the step was split; the same quote stays in legal_basis. Nothing was removed for being unverifiable."
+  ],
+  "corrections": [
+   "s1 'who': 'any household member' had no source and is removed. Who may apply is now as the sources say: the applicant or an authorized representative (Application for Benefits Section I; Cardinal Care Appendix C), and, under Va. Code § 63.2-501(A), a guardian or conservator, or a competent adult only when the applicant cannot sign and no guardian or conservator has been appointed.",
+   "s1 'how': the city page's duty to apply for other benefits covers 'financial or medical assistance' and lists workers' compensation and retirement pensions as well; the wording now follows it.",
+   "s2: 'apply anyway: the office will explain next steps' was attributed to the wrong thing. The VDSS SNAP interview page says you can still attend the interview without every document. The proof-of-expenses rule is now marked as SNAP only, as the VDSS FAQ says.",
+   "s5: added that Cardinal Care appendices cannot be filed alone, that Appendix D also covers long-term services and supports (Cover Virginia Applications page), and that Appendix C must be completed when someone helps fill out the application or applies for someone other than a spouse or family member under 21 (Cardinal Care application, page 1).",
+   "s6: the 'deadline' ('The same day you contact the office') was removed. The Application for Benefits gives a right ('You may turn in your application ... the same day'), not a time limit, and the step now says so in 'how'.",
+   "s9 and summary: 'Most programs ... need an interview' is now 'Some programs, including SNAP'. The Application for Benefits says 'For some programs, including SNAP, you must also be interviewed', and the VDSS SNAP interview page says SNAP applicants 'usually' need one.",
+   "s10: added the consequence in Va. Code § 63.2-503(C) (the application shall be denied if the applicant does not respond within 10 days of the discrepancy notice) and Cover Virginia's warning that an application may be denied without a reply.",
+   "s11: added the Cardinal Care application's own statement that a paper application 'should be processed within 45 days from the date it was received', so the Medicaid time no longer rests only on the 2022 brochure.",
+   "Old s12 split into s12 (report changes) and s13 (renew); the appeal step is now s14. s12 cites the VDSS Change Report 032-03-0051-45-eng (09/2026), added as form f9 (fillable: an AcroForm with fields was found), and quotes its 10-day rule. 'SNAP households return an Interim Report' now says Simplified Reporting households 'may be required' to, by the fifth of the month, as the Application for Benefits says. The 30-day address rule of Va. Code § 63.2-501.1(B) now carries its qualifier ('To the extent required by federal law and regulations'), and the shorter program deadlines are said to govern. 'By phone' was dropped as a way to report changes: no page read says it. s13 quotes the Renewal Application (f8).",
+   "s14 and escalation rungs 1 and 2: the VDSS appeal form says appeals 'must be received' within 90 days (SNAP) or 30 days (others) of the written notice. The deadlines now say 'received', and rung 1 notes that this is stricter than Va. Code § 63.2-517 ('within thirty days after receiving written notice'). Rung 2's basis now names the VDSS page and form for the 90-day rule, which the statute does not state. s14 now lists all five filing channels on the VDSS How to Appeal page and the energy-assistance limit on appeal grounds.",
+   "Escalation rungs 8 and 9 (court review): 'venue not verified' is resolved from the index. Va. Code § 2.2-4003 sends venue to § 8.01-261(1), whose preferred venue for a private party is the city or county where the party resides. Va. Code § 2.2-4025(B) (court review covers TANF, Medicaid, food stamps, general relief and auxiliary grants decisions; review is on the agency record only) is added. Four verbatim legal_basis entries are added: § 2.2-4025(B) twice, § 2.2-4003 and § 8.01-261(1)(a). The rungs now say that energy assistance and child care are not named in § 2.2-4025(B).",
+   "Escalation rung 5: the MCO appeal window now runs from receiving the MCO's final decision and cannot be extended, as the DMAS At-A-Glance sheet says.",
+   "Escalation rung 7: the channels for returning Medicaid renewal paperwork (CommonHelp, phone, mail) were not on the cited DMAS page. The rung now points to Cover Virginia's renewal instructions, which is what the page says.",
+   "Escalation rung 11: 'nine residents' is now 'nine citizens ... advise the Director', as the Divisions page says. 'It does not hear individual appeals' now reads as a statement about the duties listed in Va. Code § 63.2-305(B), and the citation is narrowed to (B)(2), the subdivision quoted.",
+   "Form f5: the number is now '032-03-0657-18 eng (05/23)', as printed on the form.",
+   "Contacts: the DMAS Appeals phone entry now cites the Client Appeal Request Form, which is where the TTY number 1-800-828-1120 appears; the resources page gives only (804) 371-8488.",
+   "Caveats: the caveats on the TANF form link, fillable forms, income charts, judicial review, local board and processing times are updated to match what was found. The TANF How to Apply and SNAP pages link dss.virginia.gov copies of 032-03-1100-39; only the main TANF page uses the CMS host. A Change Report form was added to the sources."
+  ],
+  "open_issues": [
+   "The deadline to petition for court review (Part Two A of the Rules of the Supreme Court of Virginia) was not read from an official source. That the court is the circuit court also rests on Part Two A. Escalation rungs 8 and 9 state no deadline.",
+   "Whether courts can review energy assistance and child care subsidy hearing decisions was not determined (Va. Code §§ 63.2-805(F) and 2.2-4025(B)).",
+   "The processing times for SNAP, TANF and energy assistance rest on the VDSS brochure dated 03/2022. The federal rules (7 CFR 273.2, 273.15; 42 CFR 435.912) were not read.",
+   "Child care subsidy: www.childcare.virginia.gov refused the research client (HTTP 403), so eligibility, waitlists and copayments are not recorded.",
+   "Several published facts conflict and both versions are recorded: the cooling end date (August 15 on the info sheet and form, August 17 on the VDSS EAP page); the city's office hours (8:30 am) and its application hours (8 am); and the two VDSS call-centre numbers. The VDSS appeals hotline (800) 552-7096 is the number the city lists for CPS and was left out.",
+   "No Charlottesville City Code provision was read, because the Municode terms were not confirmed. The Social Services Advisory Board page returns 404.",
+   "Fillable status is not determined for f1, f3, f4, f5, f7 and f8 (no AcroForm was found in the streams that could be decoded, but not every stream decoded)."
+  ]
+ }
+}

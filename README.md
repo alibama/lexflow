@@ -15,7 +15,7 @@ Everything is rebuilt from public data inside Docker. A dashboard walks a new us
 
 ## Answers for three places
 
-The pipeline can run for a few governments instead of whole states (`--places va:charlottesville,dc,md:baltimore`, or the **Places** page). The first three are fully answered: a Claude-checked state model, a local procedure researched from official sources and re-checked by a second reviewer, and a direct contact.
+The pipeline can run for a few governments instead of whole states (`--places va:charlottesville,dc,md:baltimore`, or the **Places** page). The first three are fully answered: a Claude-checked state model, a local procedure researched from official sources and re-checked by a second AI pass, and a direct contact.
 
 | Place | Public records | Start a business | On Lexipedia |
 |---|---|---|---|
@@ -39,7 +39,15 @@ The **Ask** page takes a question in plain words and any number of states, count
 4. **A plain-language summary (optional).** A local model (`LEXFLOW_ASK_MODEL`, default qwen3:1.7b) writes two to six claims, and each claim must cite the quotes it rests on. A claim that cites nothing, or states a number its quotes do not contain, is dropped, never repaired. The quotes are always shown, and they are the answer when no model is running.
 5. **Say when the law is not there.** If no section clearly governs the question, the answer is "not found", with a pointer to where the law may live instead: regulations, court rules, contracts, agency policy or local ordinances.
 
-Answers are machine-made and marked unreviewed. On the question's page, tick **For the wiki** to publish an answer as its own Lexipedia sub-page under its state or place.
+Answers are machine-made and marked unreviewed. An answer can go on the wiki only after a person on the operator's reviewer list has recorded on this copy, with their own token, that they read it against the law. A review that arrives through sync, or that someone writes into the database by hand, never counts.
+
+**Reviewers come from a list the operator keeps, and the operator vouches for each one. lexflow cannot check that a reviewer is a person.** The operator adds each reviewer with `lexflow reviewer add "<name>" --role <role> [--licensed-in <state>] --added-by <operator>`, lists them with `lexflow reviewer list` and takes one off with `lexflow reviewer remove <id>`. The role is one of attorney, paralegal, law student, clerk, records officer, planner, municipal attorney, researcher, student, volunteer or other person, and `--licensed-in` is only for the two attorney roles. The list is this copy's own: it is not synced, since push and pull take only the shared tables and refuse any other (`reviewers` among them), from the command line and from the job API alike, and of lexflow's commands only `lexflow reviewer` writes it. A page names only reviewers on this copy's list, and only for a review recorded on this copy: through its review API (the `review_log` table, which is not synced either) or in its own curated files. A review that arrives through sync, or that someone writes into the database by hand, counts as not reviewed, even when it names someone on the list, and a log line says so.
+
+A name is cleaned when it is added. It is put in NFKC form, and it must be 2 to 80 characters of letters (any script), spaces, hyphens, apostrophes and full stops. It may hold no invisible character (Unicode's default-ignorable code points, the Hangul fillers and zero-width and bidirectional controls among them), and each word must be in one script (Unicode's single-script rule, UTS #39), so a Cyrillic а cannot hide in a Latin word. It must hold none of the role and credential words and placeholders on lexflow's lists (attorney, Atty, Esq., J.D., Juris Doctor, Virginia Bar, Advocate, Abogada, Avocat, Rechtsanwältin, Editor, Moderator; N/A, Anonymous, Reviewer, test, Staff, Unknown), compared through a short table of look-alike letters, each letter read in its own case or folded (so Cyrillic capitals spelling ESQ are caught too). A role word that is also a surname (Lawyer, Clerk, Staff) passes only as the surname after one given name, as in Jane Lawyer. Those lists catch only what they hold: the operator answers for every name on the list. A name that contains the name of an AI system or product only brings a warning, which the operator overrides with `--confirm-person` for a person such as Wenxin Li or Marie Lechat. That check proves nothing either way.
+
+**Each reviewer has a token.** `lexflow reviewer add` prints it once; lexflow keeps only its scrypt hash. `lexflow reviewer token <id>` prints a new one, and the old one stops working. The operator gives each reviewer their own token and answers for who holds it: a token shows only that whoever sent it had it.
+
+To review an answer, the reviewer picks their name from the list on the answer's page and enters their token, or calls `PUT /api/ask/<question>/<target>/review` with the token in the `X-Lexflow-Reviewer-Token` header and a body of `reviewer` (their id on the list), `attested: true` (the statement that they, a person, read this exact text) and the answer's `text_hash`. The API records a review only with the named reviewer's own token (401 without one, 403 with another's), and removes one (`DELETE`) only with the token of a reviewer on the list; the `review_log` table keeps whose token was used. The body takes nothing else: a typed name, role, licence or date is refused, and a missing or malformed hash too. The page prints the name, role and licence from the list. Then tick **For the wiki** on the question's page to publish the answer as its own Lexipedia sub-page under its state or place. Until a reviewer is recorded the box is off. The review covers only the text it was given: if the answer is asked again, a newer copy arrives through sync, or the operator takes the reviewer off the list, the page says "Not yet reviewed by a person" until someone on the list signs, on this copy, the text it shows. Curated files are signed with `"reviewed_by": {"reviewer": "<id>", "date": ..., "attested": true, "text_hash": ...}` and the hash `lexflow review-hash <file>` prints. Such a sign-off is not bound to a token: whoever edits the file records it, so the operator answers for it. A page names that reviewer only while this copy's own file carries the sign-off. Keep the file's drafting note as `drafted_by`. A sign-off dated in the future, or before the model was first built, is refused. The first-built date is stored at the model's first build on this copy (the date the drafting note opens with, or that build's own date; for a model stored by older code without one, the earliest build its row records) and then kept, so a later build, an edited note or a pull never moves it back.
 
 **AskBench: Claude vs the open models on new questions.** Six questions on prisons, court debt and the microeconomics of the criminal-legal system ([docs/questions.md](docs/questions.md#d-prisons-court-debt-and-the-economics-of-the-criminal-legal-system)). For each, Claude wrote a reference answer for VA, DC, MD, TX and CA, 30 in all (`curated_ask/<question>/<state>.json`). Each reference has:
 - the gold sections, with their roles;
@@ -58,34 +66,40 @@ The score covers gold sections in the top 10, vital nuggets quoted, citation pre
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/askbench-dark.svg">
-  <img alt="AskBench bar chart: composite 0.38 for the local pipeline, 0.52 with Claude's search concepts and 0.75 with Claude's sections, against 0.69 Claude-vs-Claude agreement; the same three arms for gold sections in the top 10, vital points quoted, quotes from gold sections and the answer/not-found call." src="docs/img/askbench.svg">
+  <img alt="AskBench bar chart: composite 0.40 for the local pipeline, 0.51 with Claude's search concepts and 0.75 with Claude's sections, against 0.69 Claude-vs-Claude agreement; the same three arms for gold sections in the top 10, vital points quoted, quotes from gold sections and the answer/not-found call." src="docs/img/askbench.svg">
 </picture>
 
 **Results** (30 cases, scorer version 2, [docs/askbench.json](docs/askbench.json)):
 
 | Arm | Composite | Gold sections in top 10 | Vital points quoted | Quotes from gold sections | Fees and deadlines | Answer / not found right |
 |---|---|---|---|---|---|---|
-| Local pipeline | **0.376** | 0.23 | 0.17 | 0.51 | 0.25 | 1.00 |
-| Local, hand-set reranker only | 0.343 | 0.19 | 0.14 | 0.50 | 0.22 | 0.93 |
-| Local answering, Claude's search concepts | 0.520 | 0.38 | 0.33 | 0.78 | 0.46 | 0.93 |
-| Same answering, Claude's sections given | 0.746 | 1.00 | 0.47 | 1.00 | 0.72 | 1.00 |
+| Local pipeline | **0.403** | 0.24 | 0.19 | 0.55 | 0.33 | 1.00 |
+| Local, hand-set reranker only | 0.369 | 0.20 | 0.18 | 0.54 | 0.26 | 0.93 |
+| Local, with qwen3:1.7b planning the search | 0.387 | 0.22 | 0.20 | 0.52 | 0.33 | 0.93 |
+| Local answering, Claude's search concepts | 0.507 | 0.37 | 0.33 | 0.75 | 0.45 | 0.90 |
+| Same answering, Claude's sections given | 0.749 | 1.00 | 0.49 | 1.00 | 0.72 | 1.00 |
+
+These rows were measured on code version `2-1bbcb0aed8c9`. Later changes to `lexflow/ask/index.py` only add an optional regulations corpus (statute search is unchanged), but they change the stamp, so `lexflow ask-bench` reruns every arm before it reports again.
 
 **Claude vs Claude: 0.69.** Six of the references have an independent second draft, made from the list of sections only. The two drafts agree on 0.56 to 0.83 of the sections and 0.84 to 1.00 of the vital points. In 3 of the 6 they make a different coverage call, each time "in the code" against "partly in the code".
 
 What the arms show:
-- **Retrieval is the main loss.** Given Claude's sections, the same answering stages score 0.75. With their own search they score 0.38. Claude's concept groups alone lift the local search to 0.52, so the planner's vocabulary is about 40% of that gap.
-- **Answering from the right sections still misses half the vital points** (0.47 with Claude's sections). A quote is one clause chosen by meaning, and a vital point often spans clauses or sits deep in a list.
+- **Retrieval is the main loss.** Given Claude's sections, the same answering stages score 0.75. With their own search they score 0.40. Claude's concept groups alone lift the local search to 0.51, so the planner's vocabulary is about 30% of that gap. A small local model planning the search does worse than the rules (0.387).
+- **Answering from the right sections still misses half the vital points** (0.49 with Claude's sections). A quote is one clause chosen by meaning, and a vital point often spans clauses or sits deep in a list.
+- **A local model's summary does not help yet.** On Virginia's six cases, adding a qwen3:1.7b summary changed the composite from 0.388 to 0.383 on the local search (both with the model planning the search, which the summary arm also does) and from 0.785 to 0.766 with Claude's sections. The model gave no claims at all in 10 of 12 runs (the checker dropped none), and once it wrongly said the law was not found. The quotes are the answer; the summary stays optional.
+- **The planner fix of 10 October is not held out.** Synonyms for what a board does and what a person does about it ("deny", "challenge"), and "because" as a stop word, lifted the local composite from 0.376 to 0.403. They came from a user's licensing question with the same wording as an AskBench question: that question rose by 0.12, the other five by 0.007 on average.
 
 **What moved retrieval**, each measured on the same 30 references:
 
 | Change | Gold sections found |
 |---|---|
 | Fused searches, reciprocal-rank fusion ([Cormack et al. 2009](https://doi.org/10.1145/1571941.1572114)) | top 20: 0.202 · top 80: 0.416 |
-| \+ the code's structure: every section of the chapters that hold the best hits (the cluster hypothesis), and the sections those hits cite | top 20: **0.264** · top 80: **0.463** |
-| Reranked by meaning and structure | top 10: 0.191 |
-| \+ a small model trained on Claude's gold sections, scored leaving the whole question out | top 10: **0.231** |
+| \+ the code's structure: every section of the chapters that hold the best hits (the cluster hypothesis), and the sections those hits cite | top 20: 0.264 · top 80: 0.463 |
+| \+ planner synonyms for "deny" and "challenge" (not held out, see above) | top 20: **0.272** · top 80: **0.492** |
+| Reranked by meaning and structure | top 10: 0.199 |
+| \+ a small model trained on Claude's gold sections, scored leaving the whole question out | top 10: **0.238** |
 
-Tried and dropped: pseudo-relevance feedback from the best headings (RM3, [Lavrenko & Croft 2001](https://doi.org/10.1145/383952.383972); top 80 0.452 → 0.444), splitting a phrase such as "building permit" from its bare words (no change), and telling the reranker which search found each section (0.235 → 0.231).
+Tried and dropped: pseudo-relevance feedback from the best headings (RM3, [Lavrenko & Croft 2001](https://doi.org/10.1145/383952.383972); top 80 0.452 → 0.444), splitting a phrase such as "building permit" from its bare words (no change), telling the reranker which search found each section (0.235 → 0.231), and following cross-references with the new structure-aware resolver (it finds every reference where the old pattern found 35%, but the gold sections found stay the same: top 20 0.271 against 0.272).
 
 **The scorer was checked too.** An adversarial review found version 1 too generous: numbers matched as substrings (the 5 of 1995), one short clause counted as a whole nugget, and the same section number in another code counted as a gold citation. Version 2 fixes these. Every stored row carries a hash of the code and models behind it, and `docs/askbench.json` keeps only current rows. Nuggets with "vital" labels follow the TREC question-answering evaluations ([Voorhees 2003](https://trec.nist.gov/pubs/trec12/papers/QA.OVERVIEW.pdf)).
 
@@ -202,15 +216,16 @@ cd lexflow && cp .env.example .env
 docker compose up -d
 ```
 
-Open http://localhost:8000 and go to **Setup**. Each step shows a checkbox that ticks itself when its data is in place, what it needs first, and what it costs to run. **Quick start** runs every required step for the states you name (`va`, `va,dc` or `all`).
+Open http://localhost:8000 and go to **Setup**. The dashboard and its API have no sign-in, so `docker-compose.yml` publishes the port on this machine only (`127.0.0.1`). To reach it from other machines, put it behind your own sign-in (a reverse proxy with authentication) and use the commented `ports` line instead. The bundled libSQL server and the `test-ui` dashboard are published on `127.0.0.1` only as well ([Sharing through Turso](#sharing-through-turso)). Each step shows a checkbox that ticks itself when its data is in place, what it needs first, and what it costs to run. **Quick start** runs every required step for the states you name (`va`, `va,dc` or `all`).
 
 | Profile | Adds | Command |
 |---|---|---|
 | (none) | dashboard, API, pipeline | `docker compose up -d` |
 | `llm` | Ollama, for local model builds | `docker compose --profile llm up -d` |
-| `shared` | a local libSQL server, a stand-in for Turso | `docker compose --profile shared up -d` |
+| `shared` | a local libSQL server, a stand-in for Turso, on `127.0.0.1:8081` | `docker compose --profile shared up -d` |
 | `search` | SearXNG | `docker compose --profile search up -d` |
 | `test` | the test suite | `docker compose --profile test run --rm test` |
+| `test-ui` | a second dashboard on `127.0.0.1:8001`, on a throwaway store with no credentials | `docker compose --profile test-ui up -d test-ui` |
 
 Local models run much faster on a GPU. With an NVIDIA card, add `-f docker-compose.gpu.yml`. On a Mac, Docker cannot reach the GPU, so run Ollama natively and set `OLLAMA_URL=http://host.docker.internal:11434` in `.env`. The default pair (`qwen3:1.7b` and `gemma3:1b`) is small enough for a laptop CPU; for real quality, set `LEXFLOW_MODEL_A` and `LEXFLOW_MODEL_B` to larger models from two different families.
 
@@ -271,9 +286,10 @@ flowchart LR
 | Page | What it does |
 |---|---|
 | **Map** | US counties coloured by answer confidence, state model tier, completion, quality, contacts or local law. One question at a time. Click a county to see each government in it, zoom to a state, or switch to a sortable table. |
-| **Setup** | The checklist: service status (Ollama, Turso, wiki), quick start, and every step with its checkbox, cost, options and progress. |
-| **Ask** | Ask a new question for any states, counties, cities or towns (autocomplete; one checkbox for every place in a state). Each answer shows the governing sections, the key provisions word for word, the steps and a draft map, the local layer, and how it was found; tick an answer for the wiki to publish it as a sub-page. |
-| **Processes** | How many states reach each stage, and a card for every state model. Each model page has the BPMN map, the steps with the exact words they come from, the decision tables, the statute text with quotes highlighted, the local-model runs, and other sections the locator considered. Downloads: `.bpmn`, `.dmn`, `.svg`, facts `.json`. |
+| **Setup** | The checklist: service status (Ollama, Turso, wiki), quick start, and every step with its checkbox, cost, options and progress. Each step credits the sources, models and libraries it uses, with their licences and the citation their makers ask for; credit is not endorsement. |
+| **Ask** | Ask a new question for any states, counties, cities or towns (autocomplete; one checkbox for every place in a state). Each answer shows the governing sections, the key provisions word for word, the steps and a draft map, the local layer, and how it was found; once a named person has reviewed an answer (recorded on its page), tick it for the wiki to publish it as a sub-page. |
+| **Processes** | The two built questions (records, business) and every question asked on the Ask page. For a built question: how many states reach each stage, and a card for every state model. For an asked question: answered, partly answered and not found per state, and a card per state with its sections, steps and draft map. Each model page has the BPMN map, the steps with the exact words they come from, the decision tables, the statute text with quotes highlighted, the local-model runs, and other sections the locator considered. Downloads: `.bpmn`, `.dmn`, `.svg`, facts `.json`. |
+| **Places** | Every researched place, with its checked local answers and its local processes (one per file in `curated/places/<state>/<place>/<process>.json`), grouped by category, each with its law, steps, forms, fees, office contacts, what to do if it goes wrong, and how it was checked. |
 | **Data & sync** | Turso status, push and pull (all data or chosen states), pull-as-needed, row counts local vs shared, who built what, and the sync history. |
 | **Jobs** | Every background job, with progress and its log. |
 | **Method** | The scoring weights and ladders, editable, with a one-click re-score. |
@@ -300,8 +316,11 @@ turso db tokens create lexflow
 
 Or use the bundled libSQL server: `docker compose --profile shared up -d`, with `TURSO_DATABASE_URL=http://libsql:8080`.
 
+**The shared server must not be reachable from networks you do not trust.** A pull is trusted data only as far as the server is: whoever can write the shared database can change what every pulled row says, its steps and quotes included. The bundled server has no sign-in unless you give it a key, so `docker-compose.yml` publishes it on this machine only (`127.0.0.1:8081`); the app reaches it inside the compose network either way. To share it with other machines, do it only on a network you control: set `LIBSQL_BIND` in `.env` to that network's interface address, and give the server a key (sqld's `SQLD_AUTH_JWT_KEY` or `SQLD_AUTH_JWT_KEY_FILE`, the Ed25519 public key that checks the JWT each copy sends as `TURSO_AUTH_TOKEN`). lexflow limits what a pulled row can claim on a page: a review that arrives through sync never names a reviewer here, and a state model's quote count is made again against this copy's statute text when the page is made. It cannot tell whether the text itself is the text that was built.
+
 - **Push** sends rows changed since your last push, optionally for chosen states only.
 - **Pull** fetches chosen states. With **pull as needed** on (the default), opening a state that has nothing locally pulls it in the background.
+- Both take only the shared tables. `--tables` (or a sync job's `tables`) that names any other table, the reviewer list (`reviewers`) or the review log (`review_log`) among them, is refused before the server is reached, from the command line and from `POST /api/jobs` alike.
 - When the same row is edited in two places, the newer `updated_at` wins. Every row records the machine that wrote it (`LEXFLOW_ORIGIN`), and the dashboard shows who built which models.
 - lexflow talks to Turso over its HTTP API (`/v2/pipeline`), so no native driver is needed, and the same code works with Turso cloud and self-hosted `libsql-server`.
 - Rows are never deleted on the shared side. A re-scan retires stale local-law matches by setting their score to zero, which syncs like any other change.
@@ -338,7 +357,7 @@ As of 10 October 2026, on a Windows laptop with no GPU (Docker with 8 CPUs and 8
 - **Statute seeds:** 44 states were checked by an agent reading the downloaded text, and 83 sections were kept. A section is kept only if its reference resolves and a quote from it appears word for word ([curated/seeds.json](curated/seeds.json); North Dakota records is marked not found because its file has the wrong text). The locator finds a verified or known section for 44 states for records and 46 for business. Keyword guesses score at most 0.6 and are never used for a model.
 - **Local extraction:** scored against the 22 references with each state held out ([above](#local-models-vs-claude)). The learned selector built 65 more models across 35 states; they count as one extraction and are not published as reviewed.
 - **Lexipedia:** 43 pages are live at [lexipedia.xyz/lexflow:start](https://lexipedia.xyz/doku.php?id=lexflow:start): the index, a main page for each of the 11 states, the 22 reference models with their BPMN maps and decision tables, and the three places, each a short overview with one sub-page per process (`lexflow:va:charlottesville:records`). Only `lexflow:` pages are ever written.
-- **Wikibase:** [lexipedia.wikibase.cloud](https://lexipedia.wikibase.cloud) holds 55 jurisdictions (the states plus the three places), 496 statute sections, the 22 reviewed processes with their 88 roles and 275 steps, and 117 court decisions, each linked to the sections it cites. Each item carries its lexflow key, so a re-run updates items instead of adding new ones. Models from one extraction are not loaded. An earlier run had loaded 26 of them; their items are now marked "Unreviewed draft", and none were deleted.
+- **Wikibase:** [lexipedia.wikibase.cloud](https://lexipedia.wikibase.cloud) holds 55 jurisdictions (the states plus the three places), 496 statute sections, the 22 reviewed processes with their 88 roles and 275 steps, and 117 court decisions, each linked to the sections it cites. Each item carries its lexflow key, so a re-run updates items instead of adding new ones. Models from one extraction are not loaded. An earlier run had loaded 26 of them; their items are now marked "Unreviewed draft", and none were deleted. Hiding those 26 items, or keeping them out of search, is the Wikibase administrator's step ([docs/core.md](docs/core.md#publishing-to-dokuwiki)); so is setting `LEXFLOW_CORRECTIONS` (an e-mail address or a URL), without which the publish step writes no page, since every page links `lexflow:method` for corrections. The check refuses the example value, names reserved for examples and tests, local, private and special-use names, IP addresses and a few placeholder addresses; whether readers' messages reach anyone is for the operator to make sure of.
 - **Case law:** CourtListener decisions that cite the sections: 150 so far, for CA, DC, MD and VA. The rest of the run stopped at CourtListener's anonymous rate limit. With a free `COURTLISTENER_TOKEN` in `.env`, run **Find court decisions** again; a rate limit now stops the run, so it is never recorded as "no opinions".
 - **Wikidata:** matched 319 of Virginia's 322 governments. **LOCUS:** read 106,155 Virginia rows in about 12 seconds and found local law on the two questions for 110 governments.
 - **Sync:** a full push to libSQL matched every table row for row. A second, empty lexflow instance pulled Virginia automatically when it was opened, and showed the same scores.
@@ -353,20 +372,27 @@ As of 10 October 2026, on a Windows laptop with no GPU (Docker with 8 CPUs and 8
 - **Old map boundaries.** The map uses 2017 county boundaries. Connecticut now reports by planning region, so its old counties show statewide figures, and Valdez-Cordova, AK shows its two successor areas.
 - **Local business law.** "Start a business" covers state entity formation; local business licences count only through LOCUS matches. No local process models are built yet.
 - **Licences.** LOCUS labels are machine-made and CC BY-NC; LOCUS is used to find law, never to cite it. open-us-law is CC BY-NC 4.0, and commercial use needs a licence from Vaquill AI.
+- **No person has reviewed the models yet.** "Checked" means machine-checked: every quote matched to Open US Law's copy of the official text, the schemas, lint and Petri-net checks passed, and Claude drafted or cross-checked the steps. A named human reviewer, and for anything offered to legal aid an attorney licensed in that state, is still needed ([docs/strategy/adoption-strategy.md](docs/strategy/adoption-strategy.md) §1.9).
+- **Regulations are searchable but not yet in Ask.** The regulations index covers the 39 states with a regulations file in open-us-law (851,889 sections; `lexflow index --regulations`, `lexflow ask-search va --regulations ...`). Local process models cite it, and the Ask pipeline does not search it yet. AZ, CA, HI, IN, LA, MA, MO, NJ, NY, RI, TN, TX and VT have no regulations file.
+- **Local model summaries.** qwen3:1.7b, constrained by the answer schema, gave no claims in 10 of 12 Virginia AskBench runs. The quoted provisions are the answer; the summary stays optional.
+- **Design-only work.** Escalation and deferral by authority, canonical workflow packages with provenance, agencies and contact freshness, CommonForms field maps, payroll aggregates, the process lab, and the SBA, tax and building-code data plan are designs and prototypes in [docs/design/](docs/design/), each adversarially reviewed. They are not yet wired into the app or the wiki.
 
 ## Data sources and licences
 
-| Source | Used for | Terms |
-|---|---|---|
-| [Census of Governments 2022](https://www.census.gov/programs-surveys/gus.html) | the list of governments | US government work |
-| [open-us-law](https://github.com/Vaquill-AI/open-us-law) (Vaquill AI) | state statutes | data CC BY-NC 4.0; statute text itself is a government edict |
-| [LOCUS-v1](https://huggingface.co/datasets/LocalLaws/LOCUS-v1) | finding local ordinances | CC BY-NC 4.0 |
-| [Wikidata](https://www.wikidata.org) | websites, emails, phones | CC0 |
-| [us-atlas](https://github.com/topojson/us-atlas) | map shapes | ISC, from Census cartographic boundaries |
-| pm4py, powl | Petri nets | AGPL-3.0 |
-| SpiffWorkflow | simulation | LGPL-3.0 |
+The full list of sources, models, libraries and services, with each one's licence and the citation its maker asks for, is on the **Setup** page, beside the step that uses it (kept in [`lexflow/pipeline/credits.py`](lexflow/pipeline/credits.py)). The data behind the answers:
 
-No licence has been chosen for lexflow itself yet. None of this is legal advice: take the licensing questions to counsel before loading derived data anywhere public.
+| Source | Maker | Used for | Licence or terms |
+|---|---|---|---|
+| [2022 Census of Governments: Government Units Listing](https://www.census.gov/data/datasets/2022/econ/gus/public-use-files.html) | U.S. Census Bureau | the list of governments | US government work. The survey was discontinued in 2025, so the 2022 file is the last |
+| [Open US Law](https://github.com/Vaquill-AI/open-us-law) v2026.09.1 | Vaquill AI | state statutes and regulations | data CC BY-NC 4.0 (commercial use needs a licence from Vaquill AI), scripts Apache-2.0; the statute text itself is a government edict |
+| [LOCUS-v1](https://huggingface.co/datasets/LocalLaws/LOCUS-v1) | LocalLaws | finding local ordinances | CC BY-NC 4.0, machine-labelled. Cite: Peskoff, Barrow, Vu and Davenport (2026), *Freeing the Law with LOCUS*, arXiv:2606.19334 |
+| [Wikidata](https://www.wikidata.org/wiki/Wikidata:Licensing) | the Wikidata community | websites, office emails and phones; item ids | CC0 |
+| [CourtListener](https://free.law/projects/courtlistener/) API v4 | Free Law Project | court decisions that cite the law | the [allowed API usage](https://free.law/membership/allowed-api-usage/) policy and its rate limits (5 a minute, 50 an hour, 125 a day) |
+| [us-atlas](https://github.com/topojson/us-atlas) | the TopoJSON project | map shapes | ISC, from Census cartographic boundaries (2017) |
+
+Two copyleft libraries matter for any redistribution: pm4py and powl (AGPL-3.0-or-later) and SpiffWorkflow (LGPL-3.0-or-later, patched under `patches/`).
+
+Credit is not endorsement: the people and projects listed have not reviewed lexflow. No licence has been chosen for lexflow itself yet. None of this is legal advice: take the licensing questions to counsel before loading derived data anywhere public.
 
 ## Layout
 

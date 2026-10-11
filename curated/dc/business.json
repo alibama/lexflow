@@ -18,6 +18,12 @@
     "29-610.01"
   ],
   "reviewed_by": "Claude (claude-opus-5-5), 2026-10-10; every quote checked against open-us-law v2026.09.1",
+  "reader_notes": {
+    "The filing path is modelled with the LLC": "The steps shown are an LLC's, with its certificate of organization (§ 29-802.01); the other filed structures (nonprofit, stock and professional corporations, limited partnership, LLP) use their own documents but the same Chapter 1 filing duty in § 29-102.06.",
+    "The refusal deadline (15 business days)": "The refusal deadline (15 business days) has no stated consequence: a late return or notice is still an effective refusal, and the 15 business days run from delivery of the filing. Who may appeal the Superior Court's final decision is not stated beyond 'as in other civil proceedings'.",
+    "The fixed business_structure inputs": "The business-structure table does not ask whether owners prefer a partnership to an LLC, so the limited liability partnership is offered in the general partnership row rather than in a row of its own. The LLP liability shield itself is in a section not printed here.",
+    "After a refusal the model offers court review": "After a refusal, court review (§ 29-102.06(d)) and fee-free correction (§ 29-102.06(c)) are shown as alternatives, although the statute does not make them exclusive: a founder may correct within 60 days while a petition is pending."
+  },
   "facts": {
     "process_name": "Start a business in the District of Columbia",
     "trigger": "Someone wants to form a business entity in the District",
@@ -921,7 +927,7 @@
     ],
     "gaps": [
       "The Code assigns entity filings to 'the Mayor' and licences and trade names to 'the Department'; which office (in practice the Department of Licensing and Consumer Protection, Corporations Division) acts is a delegation not stated in the printed sections.",
-      "No filing fee amount appears in the Code: § 29-102.12 leaves entity filing fees to the Mayor's rules (DCMR), so every fee cell reads 'See § 29-102.12'. Basic business license and trade name fees are likewise set under §§ 47-2851.04 and 47-2855.04, which were not printed.",
+      "No filing fee amount appears in the Code: § 29-102.12 leaves entity filing fees to the Mayor's rules (DCMR), so for every fee the table points to § 29-102.12. Basic business license and trade name fees are likewise set under §§ 47-2851.04 and 47-2855.04, which were not printed.",
       "The filing path is modelled with the LLC certificate of organization (§ 29-802.01); the other filed structures in business_structure (nonprofit, stock and professional corporations, limited partnership, LLP) use their own documents but the same Chapter 1 filing duty in § 29-102.06. Each chapter's own content requirements are collapsed into the single contents_ok input.",
       "DC law does not call the result a 'certificate'; the Mayor delivers a copy of the filing with an acknowledgment of the date and time of filing (§ 29-102.06(b)). Corporations exist when the articles are filed unless a delayed effective date is given (§§ 29-302.03, 29-402.03, not used as quotes).",
       "Sole proprietorships and general partnerships make no formation filing, so they skip the Mayor's path and go straight to the basic business license and, if they trade under another name, trade name registration; no act in the printed sections precedes both paths, so that shorter path is not drawn separately.",

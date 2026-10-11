@@ -106,7 +106,7 @@ main { max-width: 1320px; margin: 0 auto; padding: 20px 24px 64px; }
   border: 0; background: transparent; padding: 5px 12px; border-radius: 7px; cursor: pointer; color: var(--ink-2); font-weight: 500;
 }
 .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--border), 0 1px 2px rgba(0,0,0,.05); }
-select, textarea, input[type="text"], input[type="number"], input[type="search"] {
+select, textarea, input[type="text"], input[type="number"], input[type="search"], input[type="date"] {
   background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; min-height: 32px;
   color: var(--ink); font: inherit;
 }
@@ -202,6 +202,20 @@ label.field { display: inline-flex; align-items: center; gap: 8px; color: var(--
 .progress .meter { margin-top: 4px; }
 .progress .msg { font-size: 12px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 210px; }
 @media (max-width: 720px) { .step { grid-template-columns: 28px 1fr; } .step .actions { grid-column: 2; align-items: flex-start; } .step .opts { justify-content: flex-start; } }
+.step-credits { margin-top: 6px; max-width: 760px; font-size: 12px; }
+.step-credits .lab { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+ul.credits { list-style: none; margin: 2px 0 0; padding: 0; font-size: 12px; line-height: 1.5; color: var(--ink-2); overflow-wrap: anywhere; }
+ul.credits li { margin: 2px 0; }
+ul.credits .name { color: var(--ink); font-weight: 500; }
+ul.credits .use, ul.credits .note { color: var(--muted); }
+ul.credits details { display: inline; margin-left: 8px; }
+ul.credits details[open] { display: block; margin-left: 0; }
+ul.credits summary { display: inline; cursor: pointer; color: var(--accent-ink); list-style: none; }
+ul.credits summary::-webkit-details-marker { display: none; }
+ul.credits details code { display: block; white-space: pre-wrap; background: var(--surface-2); color: var(--ink); border-radius: 6px; padding: 6px 8px; margin: 4px 0 2px; font-size: 11.5px; }
+.credits-all:not(:empty) { margin-top: 16px; }
+.credits-all p { margin: 4px 0 8px; font-size: 13px; max-width: 760px; }
+.credits-all p.muted { margin: 10px 0 0; }
 
 .services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
 @media (max-width: 900px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

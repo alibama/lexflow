@@ -43,6 +43,7 @@ COVER = 0.7              # the share of a nugget's words the answer's quotes mus
 # the code the answers and their scores come from (with the held-out reranker models): a change makes old rows stale
 CODE = ("ask/*.py", "extract/segment.py", "extract/strategies.py", "extract/selector.py", "extract/benchmark.py",
         "municipal/statutes.py")
+UI_ONLY = {"suggestions.py"}   # example questions for the dashboard: not part of any answer, so not in the version
 
 
 def version() -> str:
@@ -50,7 +51,8 @@ def version() -> str:
     import hashlib
     from . import relevance as RV
     root = Path(__file__).resolve().parents[1]
-    files = sorted({p for pat in CODE for p in root.glob(pat)}) + sorted(RV.loqo_path("_").parent.glob("*.json"))
+    files = sorted({p for pat in CODE for p in root.glob(pat) if p.name not in UI_ONLY}) + \
+        sorted(RV.loqo_path("_").parent.glob("*.json"))
     h = hashlib.sha256()
     for p in files:
         h.update(p.name.encode() + b"\0" + p.read_bytes())

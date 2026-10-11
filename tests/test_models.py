@@ -7,7 +7,7 @@ import pytest
 from lxml import etree
 
 from lexflow.petri import analyse
-from lexflow.publish.dokuwiki import DokuWiki, linked_bpmn, publish
+from lexflow.publish.dokuwiki import DokuWiki, NamespaceError, linked_bpmn, publish, render_process_page
 from lexflow.publish.wikibase import PROPOSED, build_bundle, quickstatements, resolve
 from lexflow.validate import bpmnlint, dmnlint, lex_checks, xsd_errors
 
@@ -81,17 +81,21 @@ def test_dokuwiki_links_and_dry_run(built, models):
     linked, links = linked_bpmn(xml, "va/albemarle_county")
     assert links["c_decide"] == "law:va:albemarle_county:17-211"
     assert etree.fromstring(linked.encode()) is not None
+    # the legacy pages still render, but their process: and law: ids are outside lexflow:, so publishing them is
+    # refused before any call, even in a dry run (tests/test_gate0.py pins the guard)
+    page = render_process_page(models["albemarle_17_211"], xml, built["albemarle_17_211"]["dmn"].read_text(),
+                               "process:va:albemarle_county:17-211")
+    assert "<bpmnio" in page and "[[law:va:albemarle_county:17-211|" in page
     wiki = DokuWiki("http://example.invalid", dry_run=True)
-    res = publish(models["albemarle_17_211"], wiki, xml, built["albemarle_17_211"]["dmn"].read_text())
-    methods = [c[0] for c in wiki.calls]
-    assert methods.count("core.savePage") == 3 and methods.count("core.saveMedia") == 2
-    assert res["process_page"] == "process:va:albemarle_county:17-211"
+    with pytest.raises(NamespaceError, match="outside the lexflow: namespace"):
+        publish(models["albemarle_17_211"], wiki, xml, built["albemarle_17_211"]["dmn"].read_text())
+    assert wiki.calls == []
 
 
 @pytest.mark.skipif(not os.environ.get("DOKUWIKI_TEST_URL"), reason="set DOKUWIKI_TEST_URL/TOKEN for a live wiki")
 def test_dokuwiki_live_round_trip(built, models):
     wiki = DokuWiki(os.environ["DOKUWIKI_TEST_URL"], token=os.environ["DOKUWIKI_TEST_TOKEN"])
     assert wiki.whoami()["login"]
-    res = publish(models["charlottesville_noise"], wiki, built["charlottesville_noise"]["bpmn"].read_text(),
-                  built["charlottesville_noise"]["dmn"].read_text())
-    assert "<bpmnio" in wiki.get_page(res["process_page"])
+    with pytest.raises(NamespaceError):                  # nothing outside lexflow: is written, live or not
+        publish(models["charlottesville_noise"], wiki, built["charlottesville_noise"]["bpmn"].read_text(),
+                built["charlottesville_noise"]["dmn"].read_text())

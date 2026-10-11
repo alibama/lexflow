@@ -1,0 +1,3933 @@
+{
+ "schema": "lexflow-forms/1",
+ "as_of": "2026-10-10",
+ "about": "Official forms, portals and sample letters that people use in lexflow's processes, for VA, DC, MD, TX, CA, FL, NY, IL, WA and NC. Each entry names its publisher, URL, the curated process step it serves, whether it is a fillable PDF, and its fee when one is stated. Organisations and official channels only; no person-level data. See docs/design/forms-research.md.",
+ "processes": {
+  "records": {
+   "label": "Public-records request",
+   "step_files": "curated/<state>/records.json"
+  },
+  "business": {
+   "label": "Business formation",
+   "step_files": "curated/<state>/business.json"
+  },
+  "record_sealing": {
+   "label": "Record sealing or expungement",
+   "step_files": "curated_ask/record_sealing/<state>.json"
+  },
+  "license_conviction": {
+   "label": "Licence denial based on a conviction",
+   "step_files": "curated_ask/license_conviction/<state>.json"
+  },
+  "court_debt": {
+   "label": "Court-debt payment plan or fee waiver",
+   "step_files": "curated_ask/court_debt/<state>.json"
+  }
+ },
+ "fields": {
+  "steps[].match": "exact: the form is how the step is done; partial: the form does part of it; related: the form supports the step but is not the step itself",
+  "fillable": "true: PDF with AcroForm fields; false: flat PDF or Word file; 'online': web portal; null: not a form (sample letter, guide, web page), or the file could not be fetched",
+  "revision": "revision or version printed on the form, when it has one",
+  "revision_note": "set when the revision is not printed in the file's extracted text (or the text could not be read): where the revision comes from instead, and how sure it is",
+  "file.permission_encrypted": "PDF opens without a password but carries permission encryption (read here with the standard empty user password)",
+  "verification.status": "ok, blocked (HTTP 403 bot protection), robots_disallowed or not_fetched (robots.txt), timeout, http_<code>, no_official_url",
+  "verification.final_url": "where the publisher's URL redirected to on the last check; pages keep linking the publisher's own url"
+ },
+ "setup": {
+  "id": "forms",
+  "title": "Link official forms to process steps",
+  "why": "Official forms, portals and sample letters for each state's processes (fixtures/forms/forms.json), each tied to the curated step it serves, with its publisher, fee and whether it is fillable. Links are re-checked read-only; nothing is filled in or submitted.",
+  "level": "optional",
+  "needs": [
+   "build"
+  ],
+  "params": [
+   "states",
+   "force"
+  ],
+  "cost": "one polite request per form URL (about 100 URLs, 2 minutes); no downloads kept",
+  "status_rule": "done when every form for the chosen states has verification.status ok, blocked or not_fetched (robots.txt) checked within 90 days; partial when some are older or failed; todo when never checked",
+  "detail_template": "{forms} forms for {steps} steps in {states} states; {fillable} fillable PDFs; {stale} links to recheck"
+ },
+ "checker": {
+  "user_agent": "lexflow-research/0.1 (https://github.com/alibama/lexflow)",
+  "rate": "at most 1 request per second per host (1.2 s spacing); robots.txt read once per host",
+  "timeout_s": 15,
+  "pdf": "bytes parsed in memory for /AcroForm, /XFA and field dictionaries (after decrypting permission-only encryption with the empty user password); text read with pdftotext from a temporary file that is deleted at once"
+ },
+ "forms": [
+  {
+   "id": "va-foia-request-letter",
+   "state": "va",
+   "process": "records",
+   "title": "Sample request letter (Virginia Freedom of Information Act)",
+   "form_number": null,
+   "publisher": "Virginia Freedom of Information Advisory Council",
+   "kind": "sample_letter",
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/request%20letter%202021.doc",
+   "index_url": "https://foiacouncil.dls.virginia.gov/sample%20letters/welcome.htm",
+   "steps": [
+    {
+     "file": "curated/va/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request records with reasonable specificity"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 2.2-3704(A)-(B)"
+   ],
+   "fillable": null,
+   "file": {
+    "format": "doc",
+    "note": "editable Word document, not a PDF form"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/msword"
+   },
+   "notes": "Optional template (Word .doc). The statute sets no form: a request must identify the records with reasonable specificity and need not cite the Act; the custodian may ask for the requester's name and legal address."
+  },
+  {
+   "id": "va-dc-495",
+   "state": "va",
+   "process": "records",
+   "title": "Petition for Injunction or Mandamus - Freedom of Information Act (and Affidavit for Good Cause)",
+   "form_number": "DC-495",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/forms/district/dc495.pdf",
+   "steps": [],
+   "statutes": [
+    "Va. Code § 2.2-3713"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 33,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "PETITION FOR INJUNCTION OR MANDAMUS – FREEDOM OF INFORMATION ACT (AND AFFIDAVIT FOR GOOD CAUSE)/ GOVERNMENT DATA COLLECTION"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://www.vacourts.gov/static/forms/district/dc495.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "The requester's enforcement petition. curated/va/records.json models only the public body's own petition for more time (petition_court), so no step matches yet."
+  },
+  {
+   "id": "va-llc-1011",
+   "state": "va",
+   "process": "business",
+   "title": "Articles of Organization (Virginia limited liability company): form and instructions",
+   "form_number": "LLC-1011",
+   "publisher": "State Corporation Commission, Clerk's Office",
+   "kind": "pdf_form",
+   "url": "https://scc.virginia.gov/getdoc/83cdc393-e6cf-455c-807f-7be9a54c5876/llc1011-(1).pdf",
+   "steps": [
+    {
+     "file": "curated/va/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Sign and deliver articles of organization"
+    },
+    {
+     "file": "curated/va/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $100 filing fee"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 13.1-1010",
+    "Va. Code § 13.1-1005"
+   ],
+   "fillable": null,
+   "fee": "$100",
+   "fee_source": "statute (Va. Code § 13.1-1005, as modelled in curated/va/business.json)",
+   "verification": {
+    "status": "not_fetched",
+    "reason": "robots.txt on scc.virginia.gov and cis.scc.virginia.gov disallows automated clients; URL taken from a search index",
+    "checked": "2026-10-10"
+   },
+   "notes": "The search index describes this file as the SCC's LLC-1011 instructions (fee $100; file online in the Clerk's Information System at cis.scc.virginia.gov, by mail or by hand). Not opened here."
+  },
+  {
+   "id": "va-cc-1201",
+   "state": "va",
+   "process": "record_sealing",
+   "title": "Petition for Sealing Pursuant to Va. Code § 19.2-392.12",
+   "form_number": "CC-1201",
+   "revision": "07/26",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/static/forms/circuit/crim_sealing/cc1201.pdf",
+   "index_url": "https://www.vacourts.gov/forms/circuit/crim_sealing",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/va.json",
+     "step": "file_petition",
+     "match": "exact",
+     "step_action": "File sealing petition in circuit court"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 19.2-392.12(B)"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 104,
+    "xfa": false,
+    "pages": 8,
+    "pdf_title": "CC-1201, Petition for Sealing Pursuant to Va Code 19.2-392.12"
+   },
+   "fee": "No court fees or costs",
+   "fee_source": "statute and instructions (CC-1201 INST: 'There is no cost to file the petition')",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Addendum CC-1201(A) lists further charges from the same incident. The instructions also say the petitioner asks the Central Criminal Records Exchange, through a Virginia State Police online portal, to send the record to the court (step request_record); no paper form for that."
+  },
+  {
+   "id": "va-cc-1201a",
+   "state": "va",
+   "process": "record_sealing",
+   "title": "Addendum to Petition for Sealing Pursuant to Va. Code § 19.2-392.12",
+   "form_number": "CC-1201(A)",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/static/forms/circuit/crim_sealing/cc1201a.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/va.json",
+     "step": "file_petition",
+     "match": "partial",
+     "step_action": "File sealing petition in circuit court"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 19.2-392.12"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 97,
+    "xfa": false,
+    "pages": 3,
+    "pdf_title": "CC-1201A, Addendum to Petition for Sealing Pursuant to 19.2-392.12"
+   },
+   "fee": "No court fees or costs",
+   "fee_source": "statute (Va. Code § 19.2-392.12(B))",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "va-cc-1203",
+   "state": "va",
+   "process": "record_sealing",
+   "title": "Petition for Sealing Pursuant to Va. Code § 19.2-392.12:1(A) and/or (B)",
+   "form_number": "CC-1203",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/static/forms/circuit/crim_sealing/cc1203.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/va.json",
+     "step": "file_petition",
+     "match": "related",
+     "step_action": "File sealing petition in circuit court"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 19.2-392.12:1"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 192,
+    "xfa": false,
+    "pages": 18
+   },
+   "fee": "No cost",
+   "fee_source": "instructions (CC-1203 INST)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "A second sealing petition for the listed misdemeanors; the modelled process follows § 19.2-392.12."
+  },
+  {
+   "id": "va-cc-1473",
+   "state": "va",
+   "process": "record_sealing",
+   "title": "Petition for Expungement Filed in a Circuit Court - Acquittal/Dismissal",
+   "form_number": "CC-1473",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/forms/circuit/cc1473.pdf",
+   "steps": [],
+   "statutes": [
+    "Va. Code § 19.2-392.2(A)"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 40,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "CC-1473 Petition for Expungement Filed In a Circuit Court - Acquittal/Dismissal"
+   },
+   "fee": "No court fees",
+   "fee_source": "statute and instructions (CC-1473 INST)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://www.vacourts.gov/static/forms/circuit/cc1473.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Expungement of acquitted or dismissed charges, a separate path from the modelled sealing petition. The corpus marks § 19.2-392.2 'effective until December 1, 2026'."
+  },
+  {
+   "id": "va-dpor-a406-01predet",
+   "state": "va",
+   "process": "license_conviction",
+   "title": "Request for Predetermination of Criminal History",
+   "form_number": "A406-01PREDET",
+   "revision": "V2, 08/20/2026",
+   "publisher": "Department of Professional and Occupational Regulation",
+   "kind": "pdf_form",
+   "url": "https://www.dpor.virginia.gov/sites/default/files/FormsAndApplications/A406-01PREDET.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/va.json",
+     "step": "request_predetermination",
+     "match": "exact",
+     "step_action": "Request predetermination of record eligibility"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 54.1-204.1"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 171,
+    "xfa": true,
+    "pages": 5,
+    "pdf_title": "REQUEST FOR PREDETERMINATION OF CRIMINAL HISTORY"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "DPOR boards only; Department of Health Professions boards are not covered by § 54.1-204.1."
+  },
+  {
+   "id": "va-dpor-a406-01ccr",
+   "state": "va",
+   "process": "license_conviction",
+   "title": "Criminal Conviction Reporting Form",
+   "form_number": "A406-01CCR",
+   "publisher": "Department of Professional and Occupational Regulation",
+   "kind": "pdf_form",
+   "url": "https://www.dpor.virginia.gov/sites/default/files/FormsAndApplications/A406-01CCR_pdf.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/va.json",
+     "step": "apply",
+     "match": "partial",
+     "step_action": "Apply to the board for the license"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 54.1-204"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "A406-01CCR - DPOR - Criminal Conviction Reporting Form"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Filed with a licence application that reports a conviction."
+  },
+  {
+   "id": "va-dpor-a713-01iff",
+   "state": "va",
+   "process": "license_conviction",
+   "title": "Criminal Conviction - Supplemental Form: Requesting an Informal Fact Finding (IFF) Conference",
+   "form_number": "A713-01IFF",
+   "publisher": "Department of Professional and Occupational Regulation",
+   "kind": "pdf_form",
+   "url": "https://www.dpor.virginia.gov/sites/default/files/FormsAndApplications/A713-01IFF_pdf.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/va.json",
+     "step": "present_case",
+     "match": "partial",
+     "step_action": "Present facts, argument and rehabilitation proof"
+    },
+    {
+     "file": "curated_ask/license_conviction/va.json",
+     "step": "informal_conference",
+     "match": "related",
+     "step_action": "Hold informal fact-finding conference"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 2.2-4019"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "DPOR Application Standard"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "va-dc-211",
+   "state": "va",
+   "process": "court_debt",
+   "title": "Petition for Payment Agreement for Fines and Costs or Request to Modify Existing Agreement",
+   "form_number": "DC-211",
+   "publisher": "Office of the Executive Secretary, Supreme Court of Virginia",
+   "kind": "pdf_form",
+   "url": "https://www.vacourts.gov/forms/district/dc211.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/va.json",
+     "step": "set_terms",
+     "match": "exact",
+     "step_action": "Set length and amount by ability to pay"
+    },
+    {
+     "file": "curated_ask/court_debt/va.json",
+     "step": "establish_agreement",
+     "match": "related",
+     "step_action": "Establish and approve payment agreement"
+    }
+   ],
+   "statutes": [
+    "Va. Code § 19.2-354.1",
+    "Va. Code § 19.2-355"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 100,
+    "xfa": false,
+    "pages": 2
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://www.vacourts.gov/static/forms/district/dc211.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Carries the written financial statement that § 19.2-354.1 says the court uses to set installments ('on a form developed by the Executive Secretary')."
+  },
+  {
+   "id": "dc-foia-portal",
+   "state": "dc",
+   "process": "records",
+   "title": "DC Government Public FOIA Portal",
+   "form_number": null,
+   "publisher": "District of Columbia Government",
+   "kind": "online_portal",
+   "url": "https://myfoia.dc.gov/",
+   "index_url": "https://dc.gov/page/freedom-information-act-foia",
+   "steps": [
+    {
+     "file": "curated/dc/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request record, reasonably describing it"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 2-532"
+   ],
+   "fillable": "online",
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://myfoiadc.govqa.us/WEBAPP/_rs/supporthome.aspx",
+    "content_type": "text/html"
+   },
+   "notes": "Requests may also go by mail, fax or email to the agency FOIA officer. The Office of the Chief Financial Officer uses its own portal, linked from dc.gov/foia."
+  },
+  {
+   "id": "dc-foia-appeals",
+   "state": "dc",
+   "process": "records",
+   "title": "Freedom of Information Act (FOIA) - Appeals",
+   "form_number": null,
+   "publisher": "Mayor's Office of Legal Counsel (DC Government)",
+   "kind": "web_page",
+   "url": "https://dc.gov/page/freedom-information-act-foia-appeals",
+   "steps": [
+    {
+     "file": "curated/dc/records.json",
+     "step": "petition_mayor",
+     "match": "exact",
+     "step_action": "Petition the Mayor to review the denial"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 2-537"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "How to petition the Mayor to review a denial; no numbered form."
+  },
+  {
+   "id": "dc-dlc-1",
+   "state": "dc",
+   "process": "business",
+   "title": "Articles of Organization for Domestic Limited Liability Company",
+   "form_number": "DLC-1",
+   "revision": "Ver. 8, October 2022",
+   "publisher": "Department of Licensing and Consumer Protection, Corporations Division",
+   "kind": "pdf_form",
+   "url": "https://dlcp.dc.gov/sites/default/files/dc/sites/DLCP/publication/attachments/DLC-1%20Articles%20of%20Organization%20for%20Domestic%20Limited%20Liability%20Company.pdf",
+   "steps": [
+    {
+     "file": "curated/dc/business.json",
+     "step": "deliver_filing",
+     "match": "exact",
+     "step_action": "Sign and deliver formation filing to Mayor"
+    },
+    {
+     "file": "curated/dc/business.json",
+     "step": "pay_fee",
+     "match": "partial",
+     "step_action": "Pay filing fee in permitted manner"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 29-802.01",
+    "D.C. Code § 29-102.01"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 9,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "Application for Construction Permits on Private Property"
+   },
+   "fee": "$99",
+   "fee_source": "agency page (DLCP License & Corporate Filing Fees: domestic for-profit initial registration); walk-in filings add a $100 one-day expedite fee (DLCP service page)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "The form itself refers to the fee schedule posted online. Online filing is through BOSS (formerly CorpOnline), linked from the DLCP page. The PDF's metadata title ('Application for Construction Permits on Private Property') is stale; the printed number, title and 'Ver. 8, October 2022' match this entry."
+  },
+  {
+   "id": "dc-dlcp-fees",
+   "state": "dc",
+   "process": "business",
+   "title": "DLCP License & Corporate Filing Fees",
+   "form_number": null,
+   "publisher": "Department of Licensing and Consumer Protection",
+   "kind": "web_page",
+   "url": "https://dlcp.dc.gov/page/dlcp-license-corporate-filing-fees",
+   "steps": [
+    {
+     "file": "curated/dc/business.json",
+     "step": "pay_fee",
+     "match": "exact",
+     "step_action": "Pay filing fee in permitted manner"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 29-102.12"
+   ],
+   "fillable": null,
+   "fee": "$99 (domestic for-profit initial registration)",
+   "fee_source": "agency page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   }
+  },
+  {
+   "id": "dc-mpd-arrest-record",
+   "state": "dc",
+   "process": "record_sealing",
+   "title": "Police Clearances (Arrest and Criminal History Section)",
+   "form_number": null,
+   "publisher": "Metropolitan Police Department",
+   "kind": "web_page",
+   "url": "https://mpdc.dc.gov/service/police-clearances-arrest-and-criminal-history-section",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/dc.json",
+     "step": "request_arrest_record",
+     "match": "exact",
+     "step_action": "Request own arrest record (optional)"
+    },
+    {
+     "file": "curated_ask/record_sealing/dc.json",
+     "step": "charge_fee",
+     "match": "exact",
+     "step_action": "Charge nominal processing fee"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 2-1402.66"
+   ],
+   "fillable": null,
+   "fee": "$7",
+   "fee_source": "agency page ('cost: $7'); the statute allows a 'nominal fee'",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "The arrest-record request used to check sealing eligibility."
+  },
+  {
+   "id": "dc-howto-motion-to-seal",
+   "state": "dc",
+   "process": "record_sealing",
+   "title": "How to file a motion to seal",
+   "form_number": null,
+   "publisher": "Superior Court of the District of Columbia, Criminal Division",
+   "kind": "instructions",
+   "url": "https://www.dccourts.gov/sites/default/files/pdf-forms/How_to_file_a_motion_to_seal.pdf",
+   "index_url": "https://www.dccourts.gov/services/criminal-matters/sealing-criminal-records",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/dc.json",
+     "step": "file_motion",
+     "match": "exact",
+     "step_action": "File written motion to seal"
+    },
+    {
+     "file": "curated_ask/record_sealing/dc.json",
+     "step": "serve_prosecutor",
+     "match": "related",
+     "step_action": "Serve copy of motion on prosecutor"
+    }
+   ],
+   "statutes": [
+    "D.C. Code § 16-806"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   },
+   "notes": "A guide, not a fillable motion. No statewide fillable motion-to-seal form was found; § 16-806 requires a written motion and service on the prosecutor."
+  },
+  {
+   "id": "dc-superior-court-fee-waiver",
+   "state": "dc",
+   "process": "court_debt",
+   "title": "Application to Proceed Without Prepayment of Costs, Fees, or Security (Civil Division)",
+   "form_number": null,
+   "publisher": "Superior Court of the District of Columbia",
+   "kind": "pdf_form",
+   "url": "https://www.dccourts.gov/sites/default/files/pdf-forms/Civil_IFP_Application.pdf",
+   "index_url": "https://www.dccourts.gov/services/fee-waiver-application",
+   "steps": [],
+   "statutes": [
+    "D.C. Code § 15-712"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   },
+   "notes": "Waives filing costs in civil and family matters; it is not a payment plan for criminal fines, assessments or restitution, for which no form was found (see no_form)."
+  },
+  {
+   "id": "md-pia-sample-request",
+   "state": "md",
+   "process": "records",
+   "title": "Sample Request Letter (Public Information Act Manual, Appendix A)",
+   "form_number": "Appendix A",
+   "publisher": "Office of the Attorney General of Maryland",
+   "kind": "sample_letter",
+   "url": "https://oag.maryland.gov/resources-info/Documents/pdfs/PIA%20Manual/Appendix_A.pdf",
+   "index_url": "https://oag.maryland.gov/resources-info/Pages/pia-manual.aspx",
+   "steps": [
+    {
+     "file": "curated/md/records.json",
+     "step": "submit_application",
+     "match": "exact",
+     "step_action": "Submit written application to the custodian"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Gen. Prov. § 4-202"
+   ],
+   "fillable": null,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 2
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Template only. The statute requires a written application to the custodian unless the record is on the custodian's list of records available without one, or the custodian waives the requirement."
+  },
+  {
+   "id": "md-ombuds-request",
+   "state": "md",
+   "process": "records",
+   "title": "Request for Assistance - Maryland Public Information Act Disputes",
+   "form_number": null,
+   "publisher": "Office of the Public Access Ombudsman",
+   "kind": "pdf_form",
+   "url": "https://piaombuds.maryland.gov/Documents/Ombuds_Request_Form%20-%20fillable.pdf",
+   "index_url": "https://piaombuds.maryland.gov/Pages/requestmediation.aspx",
+   "steps": [],
+   "statutes": [
+    "Md. Code, Gen. Prov. § 4-1B-04"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 23,
+    "xfa": false,
+    "pages": 3
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Optional form for mediation of a dispute; mediation is not in curated/md/records.json."
+  },
+  {
+   "id": "md-piacb-complaint",
+   "state": "md",
+   "process": "records",
+   "title": "Public Information Act Compliance Board Complaint Form",
+   "form_number": null,
+   "publisher": "State Public Information Act Compliance Board (Office of the Attorney General)",
+   "kind": "pdf_form",
+   "url": "https://oag.maryland.gov/resources-info/Documents/pdfs/PIACB/PIACB_Intake_form.pdf",
+   "index_url": "https://oag.maryland.gov/resources-info/Pages/piacb-complaint.aspx",
+   "steps": [],
+   "statutes": [
+    "Md. Code, Gen. Prov. § 4-1A-04",
+    "Md. Code, Gen. Prov. § 4-1A-05"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 29,
+    "xfa": false,
+    "pages": 3
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Use is optional. The Board's page says a complaint must be signed and filed within 30 days after the Ombudsman's final determination."
+  },
+  {
+   "id": "md-sdat-llc-articles",
+   "state": "md",
+   "process": "business",
+   "title": "Articles of Organization (Maryland limited liability company)",
+   "form_number": null,
+   "revision": "rev. 05/2026",
+   "publisher": "State Department of Assessments and Taxation, Charter Division",
+   "kind": "pdf_form",
+   "url": "https://dat.maryland.gov/Documents/Accessible%20Documents/Charter%20-%20Create%20or%20Start%20a%20Business/Articles%20of%20Organization%20for%20a%20Limited%20Liability%20Company_0526-A.pdf",
+   "steps": [
+    {
+     "file": "curated/md/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "File articles of organization for record"
+    },
+    {
+     "file": "curated/md/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $100 processing fee"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Corps. & Ass'ns § 4A-202",
+    "Md. Code, Corps. & Ass'ns § 1-203"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 13,
+    "xfa": false,
+    "pages": 4,
+    "pdf_title": "Articles of Organization"
+   },
+   "fee": "$100 standard; $150 expedited; same-day $425 online or $525 on paper",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "md-business-express",
+   "state": "md",
+   "process": "business",
+   "title": "Maryland Business Express",
+   "form_number": null,
+   "publisher": "State of Maryland (SDAT)",
+   "kind": "online_portal",
+   "url": "https://businessexpress.maryland.gov/",
+   "steps": [
+    {
+     "file": "curated/md/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "File articles of organization for record"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Corps. & Ass'ns § 4A-202"
+   ],
+   "fillable": "online",
+   "fee": "$100 standard",
+   "fee_source": "SDAT articles form",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   }
+  },
+  {
+   "id": "md-cc-dc-cr-072a",
+   "state": "md",
+   "process": "record_sealing",
+   "title": "Petition for Expungement of Records (Acquittal, Dismissal, PBJ, Nolle Prosequi, Stet, NCR, No Finding, Transfer)",
+   "form_number": "CC-DC-CR-072A",
+   "revision": "rev. 10/01/2026",
+   "revision_note": "Not found in the PDF's extracted text on the 2026-10-10 re-check; the file's Last-Modified header was 2026-09-30. Unconfirmed.",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/courtforms/joint/ccdccr072A.pdf/ccdccr072A.pdf",
+   "index_url": "https://www.mdcourts.gov/legalhelp/expungement",
+   "steps": [],
+   "statutes": [
+    "Md. Code, Crim. Proc. § 10-105"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 48,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "CC-DC-CR-072A Petition for Expungement of Records- Acquittal, Dismissal, PBJ, NP, Stet, NCR, No Finding, Transfer"
+   },
+   "fee": "No fee",
+   "fee_source": "Judiciary help page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Petition-based expungement (§ 10-105) is missing from the downloaded statutes, so the MD model (curated_ask/record_sealing/md.json) has no petition step; see its out_of_corpus list."
+  },
+  {
+   "id": "md-cc-dc-cr-072b",
+   "state": "md",
+   "process": "record_sealing",
+   "title": "Petition for Expungement of Records (Non-Marijuana/Cannabis Related Offenses) - Guilty Disposition",
+   "form_number": "CC-DC-CR-072B",
+   "revision": "rev. 10/01/2025-2",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/courtforms/joint/ccdccr072B.pdf/ccdccr072B.pdf",
+   "steps": [],
+   "statutes": [
+    "Md. Code, Crim. Proc. § 10-110"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 48,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "CC-DC-CR-072B - Petition for Expungement of Records (Non-Marijuana/Cannabis Related Offenses) - Guilty Disposition"
+   },
+   "fee": "$30 per case, nonrefundable; a fee waiver may be requested",
+   "fee_source": "Judiciary help page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Same corpus gap as CC-DC-CR-072A."
+  },
+  {
+   "id": "md-cc-dc-cr-072c",
+   "state": "md",
+   "process": "record_sealing",
+   "title": "Petition for Expungement of Records (Less Than 3 Years Has Passed Since Disposition)",
+   "form_number": "CC-DC-CR-072C",
+   "revision": "rev. 01/2025",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/ccdccr072c.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/md.json",
+     "step": "auto_expunge",
+     "match": "related",
+     "step_action": "Expunge records three years after disposition"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Crim. Proc. § 10-105.1"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 52,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "CC-DC-CR-072C Petition for Expungement of Records (Less than 3 Years Has Passed)"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Asks for expungement before the automatic three-year expungement under § 10-105.1."
+  },
+  {
+   "id": "md-cc-dc-cr-078",
+   "state": "md",
+   "process": "record_sealing",
+   "title": "General Waiver and Release",
+   "form_number": "CC-DC-CR-078",
+   "revision": "rev. 01/2025",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/courtforms/joint/ccdccr078.pdf/ccdccr078.pdf",
+   "steps": [],
+   "statutes": [
+    "Md. Code, Crim. Proc. § 10-105"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 21,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "CC-DC-CR-078 General Waiver and Release"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Filed with CC-DC-CR-072A for some dispositions (release of tort claims to file early)."
+  },
+  {
+   "id": "md-cc-dc-cr-148",
+   "state": "md",
+   "process": "record_sealing",
+   "title": "Petition for Shielding Under MD Second Chance Act",
+   "form_number": "CC-DC-CR-148",
+   "revision": "rev. 07/2026",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/courtforms/joint/ccdccr148.pdf/ccdccr148.pdf",
+   "index_url": "https://www.mdcourts.gov/legalhelp/shieldingcriminalrecords",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/md.json",
+     "step": "petition_shield",
+     "match": "exact",
+     "step_action": "Petition court to shield conviction records"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Crim. Proc. §§ 10-301 to 10-306"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 56,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "CC-DC-CR-148 - Petition for Shielding Under MD Second Chance Act"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Must be filed with a Notice Regarding Restricted Information (MDJ-008) under Md. Rule 20-201.1."
+  },
+  {
+   "id": "md-dca-131",
+   "state": "md",
+   "process": "court_debt",
+   "title": "Request for Traffic Violation(s) Payment Plan (District Court)",
+   "form_number": "DCA-131",
+   "revision": "rev. 10/2022",
+   "publisher": "District Court of Maryland",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/dca131.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/md.json",
+     "step": "apply_clerk_plan",
+     "match": "exact",
+     "step_action": "Apply to clerk for installment plan"
+    },
+    {
+     "file": "curated_ask/court_debt/md.json",
+     "step": "approve_plan",
+     "match": "related",
+     "step_action": "Approve installment plan agreement"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Cts. & Jud. Proc. § 7-504.1"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 103,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "DCA-131 - Request for Traffic Violation(s) Payment Plan"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Eligible when the outstanding fines total at least $150 (form text and § 7-504.1(c)). Covers fines owed to the District Court only."
+  },
+  {
+   "id": "md-cc-088",
+   "state": "md",
+   "process": "court_debt",
+   "title": "Request for Traffic Violation(s) Payment Plan (Circuit Court)",
+   "form_number": "CC-088",
+   "revision": "rev. 10/2022",
+   "publisher": "Maryland Circuit Courts",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/cc088.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/md.json",
+     "step": "apply_clerk_plan",
+     "match": "exact",
+     "step_action": "Apply to clerk for installment plan"
+    }
+   ],
+   "statutes": [
+    "Md. Code, Cts. & Jud. Proc. § 7-504.1"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 93,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "Microsoft Word - 10.2022-cc088"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Fines owed to the circuit court where it is filed only."
+  },
+  {
+   "id": "md-cc-dc-089",
+   "state": "md",
+   "process": "court_debt",
+   "title": "Request for Waiver of Costs",
+   "form_number": "CC-DC-089",
+   "revision": "rev. 11/2025",
+   "publisher": "Maryland Judiciary",
+   "kind": "pdf_form",
+   "url": "https://www.mdcourts.gov/sites/default/files/court-forms/courtforms/joint/ccdc089.pdf/ccdc089.pdf",
+   "steps": [],
+   "statutes": [
+    "Md. Rule 1-325"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 100,
+    "xfa": false,
+    "pages": 3,
+    "pdf_title": "CC-DC-089 - Request for Waiver of Costs"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Waiver of prepaid court costs (for example the $30 fee on CC-DC-CR-072B); not a plan for fines."
+  },
+  {
+   "id": "tx-oag-pia-request-form",
+   "state": "tx",
+   "process": "records",
+   "title": "Texas Public Information Act Information Request Form",
+   "form_number": null,
+   "revision": "10-01-19",
+   "publisher": "Office of the Attorney General of Texas",
+   "kind": "pdf_form",
+   "url": "https://www.texasattorneygeneral.gov/sites/default/files/files/divisions/open-government/Public-Information-Request-Form-10-01-19.pdf",
+   "index_url": "https://www.texasattorneygeneral.gov/open-government/governmental-bodies/responding-pia-request/public-information-request-form",
+   "steps": [
+    {
+     "file": "curated/tx/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Apply to officer for public information"
+    }
+   ],
+   "statutes": [
+    "Tex. Gov't Code § 552.235",
+    "Tex. Gov't Code § 552.234"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 17,
+    "xfa": false,
+    "pages": 1
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "The Attorney General must create the form (§ 552.235); a request must be in writing and sent by mail, email, hand delivery or another method the body approves (§ 552.234)."
+  },
+  {
+   "id": "tx-oag-open-records-complaint",
+   "state": "tx",
+   "process": "records",
+   "title": "Open Records complaint portal",
+   "form_number": null,
+   "publisher": "Office of the Attorney General of Texas",
+   "kind": "online_portal",
+   "url": "https://oag.my.site.com/OpenRecords",
+   "index_url": "https://www.texasattorneygeneral.gov/open-government/members-public/how-request-public-information",
+   "steps": [],
+   "statutes": [
+    "Tex. Gov't Code § 552.269"
+   ],
+   "fillable": "online",
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://oag.my.site.com/OpenRecords/s/",
+    "content_type": "text/html"
+   },
+   "notes": "Where a requester complains of an overcharge (§ 552.269); not a step in curated/tx/records.json."
+  },
+  {
+   "id": "tx-sos-205",
+   "state": "tx",
+   "process": "business",
+   "title": "Certificate of Formation - Limited Liability Company",
+   "form_number": "Form 205",
+   "revision": "revised 09/26",
+   "revision_note": "Not checkable from the PDF text on the 2026-10-10 re-check (the body fonts are custom-encoded; the number and title are in the XMP metadata); Last-Modified 2026-09-28. Unconfirmed.",
+   "publisher": "Texas Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://www.sos.state.tx.us/corp/forms/205_boc.pdf",
+   "steps": [
+    {
+     "file": "curated/tx/business.json",
+     "step": "sign_certificate",
+     "match": "exact",
+     "step_action": "Each organizer signs certificate of formation"
+    },
+    {
+     "file": "curated/tx/business.json",
+     "step": "deliver_certificate",
+     "match": "exact",
+     "step_action": "Deliver certificate of formation"
+    },
+    {
+     "file": "curated/tx/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $300 filing fee"
+    }
+   ],
+   "statutes": [
+    "Tex. Bus. Orgs. Code § 3.005",
+    "Tex. Bus. Orgs. Code § 4.154"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 128,
+    "xfa": false,
+    "pages": 4,
+    "pdf_title": "Form 205 - Certificate of Formation - Limited Liability Company"
+   },
+   "fee": "$300",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "tx-sos-201",
+   "state": "tx",
+   "process": "business",
+   "title": "Certificate of Formation - For-Profit Corporation",
+   "form_number": "Form 201",
+   "revision": "revised 09/26",
+   "publisher": "Texas Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://www.sos.state.tx.us/corp/forms/201_boc.pdf",
+   "steps": [],
+   "statutes": [
+    "Tex. Bus. Orgs. Code § 3.005"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 185,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "Form 201 (Certificate of Formation - For-Profit Corporation)"
+   },
+   "fee": "$300",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Corporation path; curated/tx/business.json models the LLC path."
+  },
+  {
+   "id": "tx-sos-503",
+   "state": "tx",
+   "process": "business",
+   "title": "Assumed Name Certificate",
+   "form_number": "Form 503",
+   "revision": "revised 09/26",
+   "publisher": "Texas Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://www.sos.state.tx.us/corp/forms/503_boc.pdf",
+   "steps": [
+    {
+     "file": "curated/tx/business.json",
+     "step": "file_assumed_name",
+     "match": "exact",
+     "step_action": "Company files assumed name certificate"
+    },
+    {
+     "file": "curated/tx/business.json",
+     "step": "collect_assumed_name_fee",
+     "match": "exact",
+     "step_action": "Collect the $25 assumed name fee"
+    }
+   ],
+   "statutes": [
+    "Tex. Bus. & Com. Code § 71.103"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 68,
+    "xfa": false,
+    "pages": 3,
+    "pdf_title": "Form 503 - Assumed Name Certificate"
+   },
+   "fee": "$25",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "tx-oca-nd-411-0725",
+   "state": "tx",
+   "process": "record_sealing",
+   "title": "Petition for Order of Nondisclosure Under Section 411.0725 (model petition)",
+   "form_number": null,
+   "revision": "2022",
+   "publisher": "Office of Court Administration of the Texas Judicial System",
+   "kind": "pdf_form",
+   "url": "https://txcourts.gov/media/1454243/petition-for-nondisclosure-under-section-411-0725-2022.pdf",
+   "index_url": "https://txcourts.gov/forms/orders-of-nondisclosure/",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/tx.json",
+     "step": "file_nondisclosure",
+     "match": "exact",
+     "step_action": "Petition for order of nondisclosure"
+    }
+   ],
+   "statutes": [
+    "Tex. Gov't Code § 411.0725",
+    "Tex. Gov't Code § 411.0745"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 26,
+    "xfa": false,
+    "pages": 6
+   },
+   "fee": "The civil-case filing fee (§ 411.0745(b)); amount set by county; a Statement of Inability may be filed",
+   "fee_source": "statute and OCA instructions",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "One of several OCA model petitions (sections 411.0726 to 411.0736 each have their own petition, order and instructions on the index page). OCA must prescribe them (§ 411.0745(c)-(d))."
+  },
+  {
+   "id": "tx-oca-nd-overview",
+   "state": "tx",
+   "process": "record_sealing",
+   "title": "An Overview of Orders of Nondisclosure",
+   "form_number": null,
+   "publisher": "Office of Court Administration of the Texas Judicial System",
+   "kind": "instructions",
+   "url": "https://txcourts.gov/media/1438062/overview-of-orders-of-nondisclosure.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/tx.json",
+     "step": "file_nondisclosure",
+     "match": "related",
+     "step_action": "Petition for order of nondisclosure"
+    }
+   ],
+   "statutes": [
+    "Tex. Gov't Code § 411.072"
+   ],
+   "fillable": null,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 24,
+    "pdf_title": "An Overview of Orders of Nondisclosure"
+   },
+   "fee": "$28 for the section 411.072 letter (no petition needed)",
+   "fee_source": "OCA overview",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "tx-tdlr-chel",
+   "state": "tx",
+   "process": "license_conviction",
+   "title": "Request for Criminal History Evaluation Letter",
+   "form_number": "ENF001",
+   "publisher": "Texas Department of Licensing and Regulation",
+   "kind": "pdf_form",
+   "url": "https://www.tdlr.texas.gov/misc/evaluation/Criminal%20History%20Evaluation%20Letter.pdf",
+   "index_url": "https://www.tdlr.texas.gov/crimHistoryEval.htm",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/tx.json",
+     "step": "request_letter",
+     "match": "exact",
+     "step_action": "Request criminal history evaluation letter"
+    }
+   ],
+   "statutes": [
+    "Tex. Occ. Code § 53.102",
+    "Tex. Occ. Code § 53.105"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 33,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "ENF001 -  Criminal History Evaluation Letter"
+   },
+   "fee": "$10",
+   "fee_source": "form text and TDLR page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "TDLR programmes only. Each licensing authority adopts its own request process and cost-based fee (§ 53.105)."
+  },
+  {
+   "id": "tx-oca-reconsider-ability-to-pay",
+   "state": "tx",
+   "process": "court_debt",
+   "title": "Ability to Pay Reconsideration Request (standardized form and instructions)",
+   "form_number": null,
+   "publisher": "Office of Court Administration of the Texas Judicial System",
+   "kind": "pdf_form",
+   "url": "https://www.txcourts.gov/media/1453404/reconsideration-of-ability-to-pay-form.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/tx.json",
+     "step": "report_difficulty",
+     "match": "related",
+     "step_action": "Tell the court of difficulty paying"
+    }
+   ],
+   "statutes": [
+    "Tex. Code Crim. Proc. art. 42A.655"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 60,
+    "xfa": false,
+    "pages": 11,
+    "pdf_title": "Ability to Pay Reconsideration Request"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Art. 42A.655(h) requires OCA to adopt this standardized form. It is for people on community supervision and does not cover restitution. The modelled county and district court process (arts. 42.15, 43.035) has no form."
+  },
+  {
+   "id": "tx-statement-of-inability",
+   "state": "tx",
+   "process": "court_debt",
+   "title": "Statement of Inability to Afford Payment of Court Costs or an Appeal Bond",
+   "form_number": "Misc. Docket No. 22-9090",
+   "publisher": "Supreme Court of Texas",
+   "kind": "pdf_form",
+   "url": null,
+   "steps": [],
+   "statutes": [
+    "Tex. R. Civ. P. 145"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "status": "no_official_url",
+    "reason": "no copy found on txcourts.gov; county and district clerks host the approved bilingual form",
+    "checked": "2026-10-10"
+   },
+   "notes": "The OCA nondisclosure instructions point petitioners who cannot pay filing fees to this statement."
+  },
+  {
+   "id": "ca-sos-llc-1",
+   "state": "ca",
+   "process": "business",
+   "title": "Articles of Organization (Form LLC-1)",
+   "form_number": "LLC-1",
+   "publisher": "California Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://bpd.cdn.sos.ca.gov/llc/forms/llc-1.pdf",
+   "index_url": "https://www.sos.ca.gov/business-programs/business-entities/forms",
+   "steps": [
+    {
+     "file": "curated/ca/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Sign and deliver articles of organization"
+    },
+    {
+     "file": "curated/ca/business.json",
+     "step": "pay_fee",
+     "match": "exact",
+     "step_action": "Pay the $70 filing fee"
+    }
+   ],
+   "statutes": [
+    "Cal. Corp. Code § 17702.01",
+    "Cal. Gov. Code § 12190"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 32,
+    "xfa": false,
+    "pages": 2,
+    "pdf_title": "Articles of Organization (Form LLC-1)"
+   },
+   "fee": "$70",
+   "fee_source": "statute (Gov. Code § 12190, as modelled in curated/ca/business.json)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "ca-sos-llc-12",
+   "state": "ca",
+   "process": "business",
+   "title": "Statement of Information (Limited Liability Company)",
+   "form_number": "LLC-12",
+   "publisher": "California Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://bpd.cdn.sos.ca.gov/llc/forms/llc-12.pdf",
+   "steps": [
+    {
+     "file": "curated/ca/business.json",
+     "step": "file_soi",
+     "match": "exact",
+     "step_action": "File statement of information"
+    },
+    {
+     "file": "curated/ca/business.json",
+     "step": "pay_soi_fee",
+     "match": "exact",
+     "step_action": "Pay the $20 statement fee"
+    },
+    {
+     "file": "curated/ca/business.json",
+     "step": "refile_soi",
+     "match": "related",
+     "step_action": "Refile statement of information every two years"
+    }
+   ],
+   "statutes": [
+    "Cal. Corp. Code § 17702.09"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 54,
+    "xfa": false,
+    "pages": 8,
+    "pdf_title": "Statement of Information Limited Liability Company (Form LLC-12)"
+   },
+   "fee": "$20",
+   "fee_source": "statute (as modelled)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "ca-sos-arts-gs",
+   "state": "ca",
+   "process": "business",
+   "title": "Articles of Incorporation of a General Stock Corporation",
+   "form_number": "ARTS-GS",
+   "publisher": "California Secretary of State",
+   "kind": "pdf_form",
+   "url": "https://bpd.cdn.sos.ca.gov/corp/pdf/articles/arts-gs.pdf",
+   "steps": [],
+   "statutes": [
+    "Cal. Corp. Code § 200"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 92,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "Articles of Incorporation of a General Stock Corporation (ARTS-GS)"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Corporation path; the model follows the LLC path."
+  },
+  {
+   "id": "ca-sos-bizfile",
+   "state": "ca",
+   "process": "business",
+   "title": "bizfile Online",
+   "form_number": null,
+   "publisher": "California Secretary of State",
+   "kind": "online_portal",
+   "url": "https://bizfileonline.sos.ca.gov/",
+   "steps": [
+    {
+     "file": "curated/ca/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Sign and deliver articles of organization"
+    },
+    {
+     "file": "curated/ca/business.json",
+     "step": "file_soi",
+     "match": "exact",
+     "step_action": "File statement of information"
+    }
+   ],
+   "statutes": [
+    "Cal. Corp. Code § 17702.01"
+   ],
+   "fillable": "online",
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   }
+  },
+  {
+   "id": "ca-jc-cr-180",
+   "state": "ca",
+   "process": "record_sealing",
+   "title": "Petition for Dismissal",
+   "form_number": "CR-180",
+   "revision": "Rev. January 1, 2024",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/cr180.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/ca.json",
+     "step": "file_petition",
+     "match": "exact",
+     "step_action": "Apply for dismissal and change of plea"
+    },
+    {
+     "file": "curated_ask/record_sealing/ca.json",
+     "step": "serve_prosecutor",
+     "match": "related",
+     "step_action": "Serve prosecutor and file proof of service"
+    }
+   ],
+   "statutes": [
+    "Cal. Penal Code §§ 1203.4, 1203.4a, 1203.41, 1203.42"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 81,
+    "xfa": true,
+    "pages": 3,
+    "permission_encrypted": true,
+    "pdf_title": "CR-180 Petition for Dismissal"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/cr180.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Relief needs 15 days' notice to the prosecuting attorney (§ 1203.4(d)). No fee is stated on the form."
+  },
+  {
+   "id": "ca-jc-cr-181",
+   "state": "ca",
+   "process": "record_sealing",
+   "title": "Order for Dismissal",
+   "form_number": "CR-181",
+   "revision": "Rev. January 1, 2024",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/cr181.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/ca.json",
+     "step": "dismiss_case",
+     "match": "exact",
+     "step_action": "Set aside plea or verdict and dismiss"
+    },
+    {
+     "file": "curated_ask/record_sealing/ca.json",
+     "step": "decide_petition",
+     "match": "related",
+     "step_action": "Decide whether dismissal is granted"
+    }
+   ],
+   "statutes": [
+    "Cal. Penal Code § 1203.4"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 58,
+    "xfa": true,
+    "pages": 2,
+    "permission_encrypted": true,
+    "pdf_title": "CR-181 Order for Dismissal"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/cr181.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Proposed order submitted with CR-180."
+  },
+  {
+   "id": "ca-jc-cr-409",
+   "state": "ca",
+   "process": "record_sealing",
+   "title": "Petition to Seal Arrest and Related Records (Pen. Code, § 851.91)",
+   "form_number": "CR-409",
+   "revision": "Rev. January 1, 2024",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/cr409.pdf",
+   "steps": [],
+   "statutes": [
+    "Cal. Penal Code § 851.91"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 39,
+    "xfa": true,
+    "pages": 2,
+    "permission_encrypted": true,
+    "pdf_title": "CR-409 Petition to Seal Arrest and Related Records (Pen. Code, 851.91)"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/cr409.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Arrest sealing is in the CA gold sections but not in the step model, which follows § 1203.4."
+  },
+  {
+   "id": "ca-jc-cr-410",
+   "state": "ca",
+   "process": "record_sealing",
+   "title": "Order to Seal Arrest and Related Records (Pen. Code, §§ 851.91, 851.92)",
+   "form_number": "CR-410",
+   "revision": "New January 1, 2019",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/cr410.pdf",
+   "steps": [],
+   "statutes": [
+    "Cal. Penal Code §§ 851.91, 851.92"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 26,
+    "xfa": true,
+    "pages": 1,
+    "permission_encrypted": true,
+    "pdf_title": "CR-410 Order to Seal Arrest and Related Records (Pen. Code, §§ 851.91, 851.92)"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/cr410.pdf",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "ca-doj-bcia-8016rr",
+   "state": "ca",
+   "process": "record_sealing",
+   "title": "Request for Live Scan Service (Record Review)",
+   "form_number": "BCIA 8016RR",
+   "revision": "rev. 03/2024",
+   "publisher": "California Department of Justice",
+   "kind": "pdf_form",
+   "url": "https://oag.ca.gov/system/files/media/BCIA-8016RR.pdf",
+   "index_url": "https://oag.ca.gov/fingerprints/record-review",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/ca.json",
+     "step": "withhold_record",
+     "match": "related",
+     "step_action": "Withhold the dismissed conviction from the public"
+    },
+    {
+     "file": "curated_ask/license_conviction/ca.json",
+     "step": "submit_rehab_evidence",
+     "match": "related",
+     "step_action": "Submit rehabilitation and mitigation evidence"
+    }
+   ],
+   "statutes": [
+    "Cal. Penal Code §§ 11122, 11123",
+    "Cal. Bus. & Prof. Code § 480(f)(3)(D)"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 48,
+    "xfa": true,
+    "pages": 4,
+    "pdf_title": "BCIA 8016RR, Request for Live Scan Service (Record Review or Foreign Adoption)"
+   },
+   "fee": "$25 DOJ processing fee plus the Live Scan site's own fee; DOJ fee waiver available",
+   "fee_source": "agency page (oag.ca.gov record review and fee-waiver pages)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "A request to the California Department of Justice for a copy of one's own criminal record (record review by Live Scan). It is how a person gets their own state record to confirm relief, and the copy a licensing board's denial notice must tell the applicant how to request (Bus. & Prof. Code § 480(f)(3)(D)). It is not a form for sending evidence of rehabilitation, so its link to submit_rehab_evidence is 'related'. The printed title adds 'or Foreign Adoption'."
+  },
+  {
+   "id": "ca-jc-tr-320",
+   "state": "ca",
+   "process": "court_debt",
+   "title": "Can't Afford to Pay Fine: Traffic and Other Infractions",
+   "form_number": "TR-320/CR-320",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/tr320.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/ca.json",
+     "step": "request_atp",
+     "match": "exact",
+     "step_action": "Request ability-to-pay consideration"
+    }
+   ],
+   "statutes": [
+    "Cal. Veh. Code § 42003(c)"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 79,
+    "xfa": true,
+    "pages": 4,
+    "permission_encrypted": true,
+    "pdf_title": "TR-320 CR-320 Can't Afford to Pay Fine: Traffic and Other Infractions"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/tr320.pdf",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "ca-jc-tr-300",
+   "state": "ca",
+   "process": "court_debt",
+   "title": "Agreement to Pay and Forfeit Bail in Installments",
+   "form_number": "TR-300",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/tr300.pdf",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/ca.json",
+     "step": "pay_due",
+     "match": "related",
+     "step_action": "Pay by set date or installments"
+    }
+   ],
+   "statutes": [
+    "Cal. Veh. Code § 40510.5"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 37,
+    "xfa": true,
+    "pages": 2,
+    "permission_encrypted": true,
+    "pdf_title": "TR-300 AGREEMENT TO PAY AND FORFEIT BAIL IN INSTALLMENTS"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/tr300.pdf",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "ca-jc-fw-001",
+   "state": "ca",
+   "process": "court_debt",
+   "title": "Request to Waive Court Fees",
+   "form_number": "FW-001",
+   "publisher": "Judicial Council of California",
+   "kind": "pdf_form",
+   "url": "https://www.courts.ca.gov/documents/fw001.pdf",
+   "steps": [],
+   "statutes": [
+    "Cal. Gov. Code § 68630 et seq."
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 132,
+    "xfa": true,
+    "pages": 2,
+    "permission_encrypted": true,
+    "pdf_title": "FW-001 Request to Waive Court Fees"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "final_url": "https://courts.ca.gov/sites/default/files/courts/default/2024-11/fw001.pdf",
+    "content_type": "application/pdf"
+   },
+   "notes": "Waives civil filing fees; it does not reduce a criminal or infraction fine (use TR-320/CR-320)."
+  },
+  {
+   "id": "fl-sunbiz-cr2e047",
+   "state": "fl",
+   "process": "business",
+   "title": "Articles of Organization for Florida Limited Liability Company (with instructions)",
+   "form_number": "CR2E047",
+   "publisher": "Florida Department of State, Division of Corporations",
+   "kind": "pdf_form",
+   "url": "https://form.sunbiz.org/pdf/cr2e047.pdf",
+   "steps": [
+    {
+     "file": "curated/fl/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Sign and deliver articles of organization"
+    },
+    {
+     "file": "curated/fl/business.json",
+     "step": "pay_fee",
+     "match": "exact",
+     "step_action": "Pay the $100 filing fee with articles"
+    }
+   ],
+   "statutes": [
+    "Fla. Stat. § 605.0201",
+    "Fla. Stat. § 605.0213"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 46,
+    "xfa": false,
+    "pages": 13,
+    "pdf_title": "Attached are the forms and instructions to form a Florida Limited Liability Company pursuant to Chapter 608, Florida Statutes"
+   },
+   "fee": "$125 (articles of organization and designation of registered agent)",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "curated/fl/business.json models the $100 filing fee of § 605.0213(2); the form's $125 adds the registered-agent designation."
+  },
+  {
+   "id": "fl-sunbiz-cr2e010",
+   "state": "fl",
+   "process": "business",
+   "title": "Articles of Incorporation (Florida profit corporation, with instructions)",
+   "form_number": "CR2E010",
+   "publisher": "Florida Department of State, Division of Corporations",
+   "kind": "pdf_form",
+   "url": "https://form.sunbiz.org/pdf/cr2e010.pdf",
+   "index_url": "https://form.sunbiz.org/cor_form.html",
+   "steps": [],
+   "statutes": [
+    "Fla. Stat. §§ 607.0201, 607.0202"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 68,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "INSTRUCTIONS FOR A PROFIT CORPORATION"
+   },
+   "fee": "$70 ($35 filing + $35 registered-agent designation)",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "The Fla. Stat. §§ 607.0201-0202 path. The FL model lists § 607.0201 among its sections but has no corporation steps."
+  },
+  {
+   "id": "fl-sunbiz-cr4e001",
+   "state": "fl",
+   "process": "business",
+   "title": "Application for Registration of Fictitious Name",
+   "form_number": "CR4E001",
+   "publisher": "Florida Department of State, Division of Corporations",
+   "kind": "pdf_form",
+   "url": "https://form.sunbiz.org/pdf/cr4e001.pdf",
+   "index_url": "https://form.sunbiz.org/fic_form.html",
+   "steps": [
+    {
+     "file": "curated/fl/business.json",
+     "step": "register_name",
+     "match": "exact",
+     "step_action": "Register fictitious name with the division"
+    },
+    {
+     "file": "curated/fl/business.json",
+     "step": "collect_name_fee",
+     "match": "exact",
+     "step_action": "Collect the $50 registration fee"
+    }
+   ],
+   "statutes": [
+    "Fla. Stat. § 865.09"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 50,
+    "xfa": false,
+    "pages": 2
+   },
+   "fee": "$50 nonrefundable processing fee",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "fl-fdle-seal-expunge-application",
+   "state": "fl",
+   "process": "record_sealing",
+   "title": "Seal and Expunge Application (certificate of eligibility)",
+   "form_number": null,
+   "publisher": "Florida Department of Law Enforcement",
+   "kind": "online_portal",
+   "url": "https://web.fdle.state.fl.us/intakeweb/formrenderer.xhtml?pageId=se",
+   "index_url": "https://www.fdle.state.fl.us/Seal-and-Expunge-Process/Certificate-of-Eligibility-Instructions",
+   "steps": [],
+   "statutes": [
+    "Fla. Stat. § 943.0585(2)",
+    "Fla. Stat. § 943.059(2)"
+   ],
+   "fillable": "online",
+   "fee": "$75 nonrefundable processing fee, unless the executive director waives it",
+   "fee_source": "statute and FDLE page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "The certificate must be obtained before petitioning the court. Florida has no record-sealing step model yet (curated_ask covers ca, dc, md, tx, va)."
+  },
+  {
+   "id": "ny-coog-foil-sample-letters",
+   "state": "ny",
+   "process": "records",
+   "title": "Freedom of Information Law Sample Letters",
+   "form_number": null,
+   "publisher": "New York State Committee on Open Government",
+   "kind": "sample_letter",
+   "url": "https://opengovernment.ny.gov/system/files/documents/2020/09/freedom-information-law-sample-letters.pdf",
+   "index_url": "https://opengovernment.ny.gov/sample-letters",
+   "steps": [
+    {
+     "file": "curated/ny/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Submit written request reasonably describing the record"
+    },
+    {
+     "file": "curated/ny/records.json",
+     "step": "appeal",
+     "match": "related",
+     "step_action": "Appeal denial in writing to entity head"
+    }
+   ],
+   "statutes": [
+    "N.Y. Pub. Off. Law § 89(3)(a), (4)(a)"
+   ],
+   "fillable": null,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 6
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Templates for a request (post or email) and follow-ups; the statute requires a written request for a record reasonably described."
+  },
+  {
+   "id": "ny-coog-appeal-sample",
+   "state": "ny",
+   "process": "records",
+   "title": "Appeal a Written Denial (Sample Letter)",
+   "form_number": null,
+   "publisher": "New York State Committee on Open Government",
+   "kind": "sample_letter",
+   "url": "https://opengovernment.ny.gov/appeal-written-denial-sample-letter",
+   "steps": [
+    {
+     "file": "curated/ny/records.json",
+     "step": "appeal",
+     "match": "exact",
+     "step_action": "Appeal denial in writing to entity head"
+    }
+   ],
+   "statutes": [
+    "N.Y. Pub. Off. Law § 89(4)(a)"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "An appeal must be in writing within 30 days of the denial, to the head of the entity or its designee."
+  },
+  {
+   "id": "ny-foil-ny",
+   "state": "ny",
+   "process": "records",
+   "title": "FOIL NY (request portal for state agencies)",
+   "form_number": null,
+   "publisher": "State of New York",
+   "kind": "online_portal",
+   "url": "https://www.ny.gov/foil-ny",
+   "steps": [
+    {
+     "file": "curated/ny/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Submit written request reasonably describing the record"
+    }
+   ],
+   "statutes": [
+    "N.Y. Pub. Off. Law § 89(3)"
+   ],
+   "fillable": "online",
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "State agencies; local governments take requests directly."
+  },
+  {
+   "id": "ny-dos-1336-f",
+   "state": "ny",
+   "process": "business",
+   "title": "Articles of Organization (Section 203 of the Limited Liability Company Law)",
+   "form_number": "DOS-1336-f",
+   "revision": "rev. 12/22",
+   "publisher": "New York Department of State, Division of Corporations",
+   "kind": "pdf_form",
+   "url": "https://dos.ny.gov/system/files/documents/2023/01/1336-f.pdf",
+   "index_url": "https://dos.ny.gov/articles-organization-domestic-limited-liability-company",
+   "steps": [
+    {
+     "file": "curated/ny/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Sign and deliver articles of organization"
+    },
+    {
+     "file": "curated/ny/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $200 filing fee"
+    }
+   ],
+   "statutes": [
+    "N.Y. Ltd. Liab. Co. Law §§ 203, 1101"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 29,
+    "xfa": false,
+    "pages": 3,
+    "pdf_title": "Under Section 203 of the Limited Liability Company Law"
+   },
+   "fee": "$200",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Publication within 120 days (§ 206) is a separate filing with its own $50 fee (modelled)."
+  },
+  {
+   "id": "ny-dos-certificate-of-incorporation",
+   "state": "ny",
+   "process": "business",
+   "title": "Certificate of Incorporation for Domestic Business Corporation",
+   "form_number": "DOS-1239-f",
+   "publisher": "New York Department of State, Division of Corporations",
+   "kind": "web_page",
+   "url": "https://dos.ny.gov/certificate-incorporation-domestic-business-corporation",
+   "steps": [],
+   "statutes": [
+    "N.Y. Bus. Corp. Law § 402"
+   ],
+   "fillable": null,
+   "fee": "$125",
+   "fee_source": "agency page",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "Corporation path; the NY model follows the LLC path."
+  },
+  {
+   "id": "ny-cpl-160-59-application",
+   "state": "ny",
+   "process": "record_sealing",
+   "title": "Application to Seal a Conviction after 10 Years (CPL 160.59)",
+   "form_number": null,
+   "publisher": "New York State Unified Court System",
+   "kind": "pdf_form",
+   "url": "https://ww2.nycourts.gov/FORMS/cpl_160.59_sealing_application/pdfs/CPL_160.59_Sealing_Application.pdf",
+   "steps": [],
+   "statutes": [
+    "N.Y. Crim. Proc. Law § 160.59(1-a), (2)"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine",
+    "final_url": "https://www.nycourts.gov/FORMS/cpl_160.59_sealing_application/pdfs/CPL_160.59_Sealing_Application.pdf"
+   },
+   "notes": "The chief administrator must prescribe a form application (§ 160.59(1-a)); a copy must be served on the district attorney. Automatic sealing under CPL 160.57 needs no form."
+  },
+  {
+   "id": "ny-doccs-crd-cgc-application",
+   "state": "ny",
+   "process": "license_conviction",
+   "title": "Certificate of Relief from Disabilities - Certificate of Good Conduct Application and Instructions",
+   "form_number": null,
+   "revision": "revised 1-8-2026",
+   "revision_note": "Taken from the file's URL; the 2026-10-10 re-check found it only there and in the Last-Modified header (2026-01-08), not printed in the text.",
+   "publisher": "New York State Department of Corrections and Community Supervision",
+   "kind": "pdf_form",
+   "url": "https://doccs.ny.gov/system/files/documents/2026/01/certificate-application-revised-1-8-2026.pdf",
+   "steps": [],
+   "statutes": [
+    "N.Y. Correction Law §§ 702, 703"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 251,
+    "xfa": false,
+    "pages": 12,
+    "pdf_title": "Department of Corrections and Community Supervision Certificate of Relief from Disabilities - Certificate of Good Conduct Application and Instructions"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "DOCCS issues certificates to people it supervised or committed, and to people with federal or out-of-state convictions (Correction Law § 703); everyone else applies to the sentencing court, which after sentencing acts only 'upon verified application to the court' (§ 702(3)) on its own form."
+  },
+  {
+   "id": "il-pac-request-for-review",
+   "state": "il",
+   "process": "records",
+   "title": "FOIA - Request for Review by Public Access Counselor (PAC)",
+   "form_number": null,
+   "publisher": "Office of the Illinois Attorney General, Public Access Counselor",
+   "kind": "pdf_form",
+   "url": "https://www.illinoisattorneygeneral.gov/Page-Attachments/FOIAPAC/Request%20for%20Review%20Form%20FOIA.pdf",
+   "steps": [
+    {
+     "file": "curated/il/records.json",
+     "step": "request_review",
+     "match": "exact",
+     "step_action": "File signed written request for PAC review"
+    }
+   ],
+   "statutes": [
+    "5 ILCS 140/9.5"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 1,
+    "pdf_title": "FOIA – REQUEST FOR REVIEW FORM"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Sample form, not required; a Request for Review must be filed within 60 days of the denial."
+  },
+  {
+   "id": "il-sos-llc-5-5",
+   "state": "il",
+   "process": "business",
+   "title": "Articles of Organization (Limited Liability Company Act)",
+   "form_number": "LLC-5.5",
+   "publisher": "Illinois Secretary of State, Department of Business Services",
+   "kind": "pdf_form",
+   "url": "https://www.ilsos.gov/publications/pdf_publications/llc55.pdf",
+   "steps": [
+    {
+     "file": "curated/il/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Execute and deliver articles of organization"
+    },
+    {
+     "file": "curated/il/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $150 filing fee"
+    }
+   ],
+   "statutes": [
+    "805 ILCS 180/5-5",
+    "805 ILCS 180/50-10"
+   ],
+   "fillable": null,
+   "fee": "$150",
+   "fee_source": "statute (805 ILCS 180/50-10, as modelled in curated/il/business.json)",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": null,
+    "robots_txt": "ok",
+    "status": "timeout",
+    "error": "ReadTimeout"
+   }
+  },
+  {
+   "id": "il-exp-ad-request",
+   "state": "il",
+   "process": "record_sealing",
+   "title": "Request to Expunge and/or Seal Criminal Records",
+   "form_number": "EXP-AD",
+   "revision": "approved 09/2026",
+   "publisher": "Illinois Supreme Court Commission on Access to Justice (statewide standardized forms)",
+   "kind": "pdf_form",
+   "url": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/62dae17d-e95a-4185-9242-a8cce2bcffde/EXP-AD%20Request.pdf",
+   "index_url": "https://www.illinoiscourts.gov/expungement-sealing/",
+   "steps": [],
+   "statutes": [
+    "20 ILCS 2630/5.2"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 151,
+    "xfa": false,
+    "pages": 27,
+    "pdf_title": "Request to Expunge and or Seal Criminal Records"
+   },
+   "fee": "County filing fee in each county, unless waived",
+   "fee_source": "statute (20 ILCS 2630/5.2) and instructions",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Part of a suite (case list, additional cases, orders, certificate of service) that all Illinois circuit courts must accept. Illinois has no record-sealing step model yet."
+  },
+  {
+   "id": "il-certificate-good-conduct",
+   "state": "il",
+   "process": "license_conviction",
+   "title": "Request for Certificate of Good Conduct",
+   "form_number": null,
+   "publisher": "Illinois Supreme Court (statewide standardized form)",
+   "kind": "pdf_form",
+   "url": "https://osad.illinois.gov/content/dam/soi/en/web/osad/expungement/documents/certs-of-good-conduct-relief-from-disab/certif-good-conduct-request-approved.pdf",
+   "index_url": "https://www.illinoiscourts.gov/forms/approved-forms/good-conduct",
+   "steps": [],
+   "statutes": [
+    "730 ILCS 5/5-5.5-25"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 157,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "Illinois Standardized Forms - Approved - Request for Certificate of Good Conduct"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Required to be accepted in all Illinois circuit courts. Hosted on the State Appellate Defender's site."
+  },
+  {
+   "id": "il-fw-crm-application",
+   "state": "il",
+   "process": "court_debt",
+   "title": "Application for Waiver of Criminal Court Assessments",
+   "form_number": "FW-CRM",
+   "publisher": "Illinois Supreme Court Commission on Access to Justice (statewide standardized forms)",
+   "kind": "pdf_form",
+   "url": "https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/da298661-6e2a-4f5e-9a87-84f80072c1a8/FW-CRM%20Application.pdf",
+   "index_url": "https://www.illinoiscourts.gov/forms/approved-forms/forms-approved-forms-circuit-court/fee-assessments-waiver-criminal/",
+   "steps": [],
+   "statutes": [
+    "725 ILCS 5/124A-20"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 120,
+    "xfa": false,
+    "pages": 4,
+    "pdf_title": "APPLICATION FOR WAIVER OF CRIMINAL COURT ASSESSMENTS"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Filed no later than 30 days after sentencing (§ 124A-20(b)). Cook County has its own variant."
+  },
+  {
+   "id": "wa-ago-obtaining-records",
+   "state": "wa",
+   "process": "records",
+   "title": "Obtaining Records (how to request public records; Model Rules)",
+   "form_number": null,
+   "publisher": "Washington State Office of the Attorney General",
+   "kind": "web_page",
+   "url": "https://www.atg.wa.gov/obtaining-records",
+   "steps": [
+    {
+     "file": "curated/wa/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request identifiable records in person, mail or email"
+    }
+   ],
+   "statutes": [
+    "RCW 42.56.080",
+    "RCW 42.56.570"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "text/html"
+   },
+   "notes": "Guidance and the advisory Model Rules (chapter 44-14 WAC); no statewide request form. Each agency publishes its own records-request page."
+  },
+  {
+   "id": "wa-sos-llc-certificate-of-formation",
+   "state": "wa",
+   "process": "business",
+   "title": "Certificate of Formation - Limited Liability Company (fillable)",
+   "form_number": null,
+   "revision": "6.2025",
+   "publisher": "Washington Secretary of State, Corporations & Charities Division",
+   "kind": "pdf_form",
+   "url": "https://www.sos.wa.gov/sites/default/files/2025-12/6.2025%20-%20Certificate%20of%20Formation%20-%20LLC%20%28Fillable%20Form%29.pdf",
+   "index_url": "https://www.sos.wa.gov/corporations-charities/business-entities/filings-forms-information",
+   "steps": [
+    {
+     "file": "curated/wa/business.json",
+     "step": "execute_certificate",
+     "match": "exact",
+     "step_action": "Execute certificate of formation"
+    },
+    {
+     "file": "curated/wa/business.json",
+     "step": "deliver_certificate",
+     "match": "exact",
+     "step_action": "Deliver certificate to secretary of state"
+    },
+    {
+     "file": "curated/wa/business.json",
+     "step": "pay_filing_fee",
+     "match": "exact",
+     "step_action": "Pay filing fee set by rule"
+    }
+   ],
+   "statutes": [
+    "RCW 25.15.071",
+    "RCW 23.95.200"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 72,
+    "xfa": false,
+    "pages": 6
+   },
+   "fee": "$180; +$100 to expedite; $10 if the initial report is filed later",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Online filing in CCFS costs $180 plus an online processing fee (SOS online instructions)."
+  },
+  {
+   "id": "wa-crrlj-09-0100",
+   "state": "wa",
+   "process": "record_sealing",
+   "title": "Petition and Declaration for Order Vacating Conviction (misdemeanor)",
+   "form_number": "CrRLJ 09.0100",
+   "revision": "11/2024",
+   "publisher": "Washington Administrative Office of the Courts (pattern form)",
+   "kind": "pdf_form",
+   "url": "https://www.courts.wa.gov/FORMS/documents/CrRLJ%2009.0100%20Petition%20to%20Vacate%20Conviction_(f)(U).pdf",
+   "steps": [],
+   "statutes": [
+    "RCW 9.96.060"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 5
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Proposed order is CrRLJ 09.0200."
+  },
+  {
+   "id": "wa-cr-08-0900",
+   "state": "wa",
+   "process": "record_sealing",
+   "title": "Motion and Declaration for Order Vacating Record of Felony Conviction",
+   "form_number": "CR 08.0900",
+   "revision": "2025 07",
+   "publisher": "Washington Administrative Office of the Courts (pattern form)",
+   "kind": "word_form",
+   "url": "https://www.courts.wa.gov/forms/documents/CR08.0900_Mt%20and%20Decl%20for%20Or%20Vacating%20Record%20of%20Felony_2025%2007.docx",
+   "steps": [],
+   "statutes": [
+    "RCW 9.94A.640"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "docx",
+    "note": "editable Word document, not a PDF form"
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   }
+  },
+  {
+   "id": "wa-crop-instructions",
+   "state": "wa",
+   "process": "license_conviction",
+   "title": "Instructions for a Certificate of Restoration of Opportunity (petition form CRO 01.0100)",
+   "form_number": "CRO 01.0100",
+   "publisher": "Washington Administrative Office of the Courts",
+   "kind": "instructions",
+   "url": "https://www.courts.wa.gov/forms/documents/CROP%20instructions%20English%202020%2001.pdf",
+   "steps": [],
+   "statutes": [
+    "RCW 9.97.020"
+   ],
+   "fillable": null,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "Microsoft Word - CROP instructions English 2019 12"
+   },
+   "fee": "A superior court filing fee applies (amount not stated); GR 34 fee waiver available",
+   "fee_source": "instructions",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "The English petition file was not located on courts.wa.gov (translations are posted)."
+  },
+  {
+   "id": "wa-cr-08-0800-lfo-petition",
+   "state": "wa",
+   "process": "court_debt",
+   "title": "Petition re: Legal Financial Obligations",
+   "form_number": "CR 08.0800",
+   "revision": "GR 39 mandatory, 01/2022",
+   "publisher": "Washington Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.courts.wa.gov/forms/documents/CR%2008.0800%20Petition%20re%20LFO%202022%2001.pdf",
+   "steps": [],
+   "statutes": [
+    "RCW 10.01.160(4)",
+    "GR 39"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 3
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Waive, reduce or convert LFOs, or change a payment plan. Washington has no court-debt step model yet."
+  },
+  {
+   "id": "wa-cr-08-0810-lfo-order",
+   "state": "wa",
+   "process": "court_debt",
+   "title": "Order re: Legal Financial Obligations",
+   "form_number": "CR 08.0810",
+   "revision": "01/2022",
+   "publisher": "Washington Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.courts.wa.gov/forms/documents/CR%2008.0810%20Order%20re%20LFO%202022%2001.pdf",
+   "steps": [],
+   "statutes": [
+    "RCW 10.01.160(4)",
+    "GR 39"
+   ],
+   "fillable": false,
+   "file": {
+    "format": "pdf",
+    "acroform": false,
+    "fields": 0,
+    "xfa": false,
+    "pages": 3
+   },
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "nc-sos-l-01",
+   "state": "nc",
+   "process": "business",
+   "title": "Limited Liability Company Articles of Organization",
+   "form_number": "L-01",
+   "revision": "revised August 2017",
+   "publisher": "North Carolina Department of the Secretary of State, Business Registration Division",
+   "kind": "pdf_form",
+   "url": "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/limited_liability_companies/articles_of_organization.pdf",
+   "index_url": "https://www.sosnc.gov/forms/by_title/_Business_Registration",
+   "steps": [
+    {
+     "file": "curated/nc/business.json",
+     "step": "deliver_articles",
+     "match": "exact",
+     "step_action": "Deliver executed articles of organization"
+    },
+    {
+     "file": "curated/nc/business.json",
+     "step": "collect_fee",
+     "match": "exact",
+     "step_action": "Collect the $125 filing fee"
+    }
+   ],
+   "statutes": [
+    "N.C. Gen. Stat. § 57D-2-20",
+    "N.C. Gen. Stat. § 57D-1-22"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 59,
+    "xfa": false,
+    "pages": 5,
+    "pdf_title": "Microsoft Word - Articles of Organization.rtf"
+   },
+   "fee": "$125",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   }
+  },
+  {
+   "id": "nc-sos-b-01",
+   "state": "nc",
+   "process": "business",
+   "title": "Articles of Incorporation (business corporation)",
+   "form_number": "B-01",
+   "revision": "revised July 2017",
+   "publisher": "North Carolina Department of the Secretary of State, Business Registration Division",
+   "kind": "pdf_form",
+   "url": "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/business_Corporations/articles_of_incorporation_for_business.pdf",
+   "steps": [],
+   "statutes": [
+    "N.C. Gen. Stat. § 55-2-01"
+   ],
+   "fillable": true,
+   "file": {
+    "format": "pdf",
+    "acroform": true,
+    "fields": 47,
+    "xfa": false,
+    "pages": 6,
+    "pdf_title": "State of North Carolina"
+   },
+   "fee": "$125",
+   "fee_source": "form text",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 200,
+    "robots_txt": "ok",
+    "status": "ok",
+    "content_type": "application/pdf"
+   },
+   "notes": "Corporation path; the NC model follows the LLC path."
+  },
+  {
+   "id": "nc-aoc-cr-281",
+   "state": "nc",
+   "process": "record_sealing",
+   "title": "Petition and Order of Expunction Under G.S. 15A-145.5 (Nonviolent Felony or Nonviolent Misdemeanor)",
+   "form_number": "AOC-CR-281",
+   "publisher": "North Carolina Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.nccourts.gov/assets/documents/forms/cr281_1.pdf",
+   "steps": [],
+   "statutes": [
+    "N.C. Gen. Stat. § 15A-145.5(g)"
+   ],
+   "fillable": null,
+   "fee": "$175 unless the petitioner is indigent",
+   "fee_source": "statute (§ 15A-145.5(g))",
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   }
+  },
+  {
+   "id": "nc-aoc-cr-415",
+   "state": "nc",
+   "process": "court_debt",
+   "title": "Request for Relief from Fines, Fees and Other Monetary Obligations, and Order on Request",
+   "form_number": "AOC-CR-415",
+   "publisher": "North Carolina Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.nccourts.gov/assets/documents/forms/cr415_2.pdf",
+   "steps": [],
+   "statutes": [
+    "N.C. Gen. Stat. § 15A-1363",
+    "N.C. Gen. R. Prac. 28"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   }
+  },
+  {
+   "id": "nc-aoc-g-106",
+   "state": "nc",
+   "process": "court_debt",
+   "title": "Petition to Proceed as an Indigent",
+   "form_number": "AOC-G-106",
+   "publisher": "North Carolina Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.nccourts.gov/assets/documents/forms/g106.pdf",
+   "steps": [],
+   "statutes": [
+    "N.C. Gen. Stat. §§ 1-110, 7A-228"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   },
+   "notes": "Waives costs of filing claims, appeals and motions (used, for example, for expunction fees)."
+  },
+  {
+   "id": "nc-aoc-cr-273",
+   "state": "nc",
+   "process": "license_conviction",
+   "title": "Certificate of Relief Petition and Order",
+   "form_number": "AOC-CR-273",
+   "publisher": "North Carolina Administrative Office of the Courts",
+   "kind": "pdf_form",
+   "url": "https://www.nccourts.gov/assets/documents/forms/cr273_0.pdf",
+   "steps": [],
+   "statutes": [
+    "N.C. Gen. Stat. §§ 15A-173.1 to 15A-173.6",
+    "N.C. Gen. Stat. § 93B-8.1(b1)"
+   ],
+   "fillable": null,
+   "fee": null,
+   "verification": {
+    "checked": "2026-10-10",
+    "http_status": 403,
+    "robots_txt": "ok",
+    "status": "blocked",
+    "note": "HTTP 403 bot protection; URL taken from the publisher's site as indexed by a search engine"
+   },
+   "notes": "A board weighs a certificate of relief under § 93B-8.1."
+  }
+ ],
+ "no_form": [
+  {
+   "state": "va",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/va/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request records with reasonable specificity"
+    }
+   ],
+   "statute": "Va. Code § 2.2-3704(A)-(B)",
+   "must_contain": [
+    "Records identified with reasonable specificity",
+    "No need to cite the Act",
+    "Name and legal address, if the custodian asks"
+   ],
+   "quote": "A request for public records shall identify the requested records with reasonable specificity.",
+   "see": [
+    "va-foia-request-letter"
+   ]
+  },
+  {
+   "state": "dc",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/dc/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request record, reasonably describing it"
+    }
+   ],
+   "statute": "D.C. Code § 2-532",
+   "must_contain": [
+    "A request that reasonably describes the record (as modelled)",
+    "Format of the copy, if wanted (§ 2-532(a-1))"
+   ],
+   "quote": null,
+   "see": [
+    "dc-foia-portal"
+   ],
+   "note": "An online portal exists; no numbered form."
+  },
+  {
+   "state": "md",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/md/records.json",
+     "step": "submit_application",
+     "match": "exact",
+     "step_action": "Submit written application to the custodian"
+    }
+   ],
+   "statute": "Md. Code, Gen. Prov. § 4-202",
+   "must_contain": [
+    "A written application to the custodian",
+    "None needed for records on the custodian's list under § 4-201(c)(2), or when the custodian waives it"
+   ],
+   "quote": "a person or governmental unit that wishes to inspect a public record shall submit a written application to the custodian",
+   "see": [
+    "md-pia-sample-request"
+   ]
+  },
+  {
+   "state": "tx",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/tx/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Apply to officer for public information"
+    }
+   ],
+   "statute": "Tex. Gov't Code § 552.234",
+   "must_contain": [
+    "A written request",
+    "Delivered by U.S. mail, email, hand delivery, or another method the governmental body approves (fax, its website)"
+   ],
+   "quote": null,
+   "see": [
+    "tx-oag-pia-request-form"
+   ],
+   "note": "The OAG form exists but its use is optional."
+  },
+  {
+   "state": "ca",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/ca/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request copies, reasonably describing the records"
+    }
+   ],
+   "statute": "Cal. Gov. Code § 7922.530(a)",
+   "must_contain": [
+    "A request that reasonably describes an identifiable record or records"
+   ],
+   "quote": "a request for a copy of records that reasonably describes an identifiable record or records",
+   "see": [],
+   "note": "No statewide form; agencies may run their own portals."
+  },
+  {
+   "state": "fl",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/fl/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Ask custodian to inspect or copy record"
+    }
+   ],
+   "statute": "Fla. Stat. § 119.07(1)",
+   "must_contain": [
+    "Chapter 119 sets no form or writing requirement for the request",
+    "The custodian must acknowledge it promptly; the requester may ask for written reasons for any exemption"
+   ],
+   "quote": null,
+   "see": []
+  },
+  {
+   "state": "ny",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/ny/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Submit written request reasonably describing the record"
+    }
+   ],
+   "statute": "N.Y. Pub. Off. Law § 89(3)(a)",
+   "must_contain": [
+    "A written request for a record reasonably described"
+   ],
+   "quote": "a written request for a record reasonably described",
+   "see": [
+    "ny-coog-foil-sample-letters",
+    "ny-foil-ny"
+   ]
+  },
+  {
+   "state": "il",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/il/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Submit written request to the public body"
+    }
+   ],
+   "statute": "5 ILCS 140/3(c)",
+   "must_contain": [
+    "A written request to the public body (personal delivery, mail, fax or other means it accepts)",
+    "No standard form and no purpose may be required, except to check commercial purpose or a fee waiver"
+   ],
+   "quote": "A public body may not require that a request be submitted on a standard form",
+   "see": []
+  },
+  {
+   "state": "wa",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/wa/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request identifiable records in person, mail or email"
+    }
+   ],
+   "statute": "RCW 42.56.080",
+   "must_contain": [
+    "A request for identifiable records",
+    "No purpose required except to apply listed exemptions"
+   ],
+   "quote": "A public records request must be for identifiable records.",
+   "see": []
+  },
+  {
+   "state": "nc",
+   "process": "records",
+   "steps": [
+    {
+     "file": "curated/nc/records.json",
+     "step": "submit_request",
+     "match": "exact",
+     "step_action": "Request inspection or copies; no motive needed"
+    },
+    {
+     "file": "curated/nc/records.json",
+     "step": "write_database_request",
+     "match": "exact",
+     "step_action": "Submit database request in writing if required"
+    },
+    {
+     "file": "curated/nc/records.json",
+     "step": "request_fee_mediation",
+     "match": "exact",
+     "step_action": "Ask State CIO to mediate fee"
+    }
+   ],
+   "statute": "N.C. Gen. Stat. §§ 132-6(b), 132-6.2(b)-(c)",
+   "must_contain": [
+    "No purpose or motive need be given",
+    "Requests for copies of computer databases may be required in writing",
+    "A fee dispute may be taken to the State Chief Information Officer for mediation (no form found)"
+   ],
+   "quote": "No person requesting to inspect and examine public records, or to obtain copies thereof, shall be required to disclose the purpose or motive for the request.",
+   "see": []
+  },
+  {
+   "state": "ca",
+   "process": "license_conviction",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/ca.json",
+     "step": "request_hearing",
+     "match": "exact",
+     "step_action": "Request a hearing in writing"
+    },
+    {
+     "file": "curated_ask/license_conviction/ca.json",
+     "step": "notify_denial",
+     "match": "related",
+     "step_action": "Serve written denial with hearing rights"
+    }
+   ],
+   "statute": "Cal. Bus. & Prof. Code §§ 485(b), 480(f)(3)",
+   "must_contain": [
+    "A written request for hearing within 60 days after service of the notice of denial",
+    "The board's denial notice must state the challenge procedure, the right to appeal, and how to request a copy of one's conviction history (Pen. Code §§ 11122-11127)"
+   ],
+   "quote": "Unless written request for hearing is made within the 60-day period, the applicant's right to a hearing is deemed waived.",
+   "see": [
+    "ca-doj-bcia-8016rr"
+   ],
+   "note": "Each board has its own application and criteria; no statewide form."
+  },
+  {
+   "state": "dc",
+   "process": "license_conviction",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/dc.json",
+     "step": "file_petition",
+     "match": "exact",
+     "step_action": "Petition board on whether conviction disqualifies"
+    },
+    {
+     "file": "curated_ask/license_conviction/dc.json",
+     "step": "rule_on_petition",
+     "match": "exact",
+     "step_action": "Decide petition on disqualification"
+    }
+   ],
+   "statute": "D.C. Code § 47-2853.12(n)",
+   "must_contain": [
+    "A petition to the board, at any time (including before education or training)",
+    "The board decides within 90 days of receipt"
+   ],
+   "quote": null,
+   "see": [],
+   "note": "No DLCP or DC Health petition form was found."
+  },
+  {
+   "state": "md",
+   "process": "license_conviction",
+   "steps": [
+    {
+     "file": "curated_ask/license_conviction/md.json",
+     "step": "submit_evidence",
+     "match": "related",
+     "step_action": "Submit rehabilitation and good-conduct information"
+    }
+   ],
+   "statute": "Md. Code, Crim. Proc. § 1-209 (as amended by 2026 Md. Laws ch. 302, HB 557)",
+   "must_contain": [
+    "A predetermination request to the department (effective July 1, 2026, per the Office of Financial Regulation advisory); the downloaded § 1-209 predates it"
+   ],
+   "quote": null,
+   "see": [],
+   "note": "No department form found; check each board.",
+   "sources": [
+    "https://labor.maryland.gov/finance/advisories/advisory-ind-licensing-predetermination-reviews.shtml"
+   ]
+  },
+  {
+   "state": "fl",
+   "process": "license_conviction",
+   "steps": [],
+   "statute": "Fla. Stat. § 455.213(3)(b)",
+   "must_contain": [
+    "No pre-application request process found; a conviction more than 5 years before the application may not be grounds for denial of the licences listed in § 455.213(3)(a)"
+   ],
+   "quote": null,
+   "see": []
+  },
+  {
+   "state": "wa",
+   "process": "license_conviction",
+   "steps": [],
+   "statute": "RCW 18.400.020",
+   "must_contain": [
+    "A preliminary application to the licensing authority, at any time, including before education or paying a fee",
+    "Only Department of Licensing licences and boards it supports",
+    "Written determination within two months"
+   ],
+   "quote": null,
+   "see": [
+    "wa-crop-instructions"
+   ],
+   "note": "No statewide preliminary-application form found."
+  },
+  {
+   "state": "nc",
+   "process": "license_conviction",
+   "steps": [],
+   "statute": "N.C. Gen. Stat. § 93B-8.1(b6)",
+   "must_contain": [
+    "A petition to the board for a predetermination, at any time",
+    "A criminal history record report with the petition",
+    "Board decides within 45 days; fee capped at $45"
+   ],
+   "quote": null,
+   "see": [
+    "nc-aoc-cr-273"
+   ],
+   "note": "Each board publishes its own petition."
+  },
+  {
+   "state": "ny",
+   "process": "license_conviction",
+   "steps": [],
+   "statute": "N.Y. Correction Law § 702(3)",
+   "must_contain": [
+    "After sentencing, a court certificate of relief from disabilities is issued only on a verified application to the sentencing court"
+   ],
+   "quote": "it shall only be issued thereafter upon verified application to the court",
+   "see": [
+    "ny-doccs-crd-cgc-application"
+   ],
+   "note": "The court's application form is on nycourts.gov, which blocked the checker."
+  },
+  {
+   "state": "il",
+   "process": "license_conviction",
+   "steps": [],
+   "statute": "20 ILCS 2105",
+   "must_contain": [
+    "No IDFPR pre-application form found"
+   ],
+   "quote": null,
+   "see": [
+    "il-certificate-good-conduct"
+   ]
+  },
+  {
+   "state": "tx",
+   "process": "record_sealing",
+   "steps": [
+    {
+     "file": "curated_ask/record_sealing/tx.json",
+     "step": "file_expunction",
+     "match": "exact",
+     "step_action": "File ex parte expunction petition"
+    }
+   ],
+   "statute": "Tex. Code Crim. Proc. art. 55A.253",
+   "must_contain": [
+    "A verified ex parte petition with the person's full name, sex, race, date of birth, driver's licence and social security numbers and address at arrest (or why any is missing)",
+    "The offense charged, offense and arrest dates, county (and city) of arrest, arresting agency, case number and court",
+    "A list, with physical and email addresses, of every agency and private entity believed to hold the records, each state or local agency listed once"
+   ],
+   "quote": "must be verified and must include",
+   "see": [],
+   "note": "No OCA model expunction form was found; each district clerk posts the agency list (art. 55A.253(c))."
+  },
+  {
+   "state": "fl",
+   "process": "record_sealing",
+   "steps": [],
+   "statute": "Fla. R. Crim. P. 3.692, 3.989",
+   "must_contain": [
+    "Petition, sworn statement and certificate of eligibility, served on the prosecuting attorney and arresting authority (forms are printed in Rule 3.989)"
+   ],
+   "quote": null,
+   "see": [
+    "fl-fdle-seal-expunge-application"
+   ],
+   "note": "No statewide fillable PDF from an official host was verified."
+  },
+  {
+   "state": "fl",
+   "process": "court_debt",
+   "steps": [],
+   "statute": "Fla. Stat. §§ 28.246(4), 27.52(1)",
+   "must_contain": [
+    "Payment plans are developed by each clerk (no statewide form)",
+    "Application for Criminal Indigent Status: form developed by the Florida Clerks of Court Operations Corporation; $50 application fee"
+   ],
+   "quote": null,
+   "see": []
+  },
+  {
+   "state": "ny",
+   "process": "court_debt",
+   "steps": [],
+   "statute": "N.Y. Crim. Proc. Law § 420.10(5)",
+   "must_contain": [
+    "An application to the sentencing court for resentence, at any time, if unable to pay"
+   ],
+   "quote": "In any case where the defendant is unable to pay a fine, restitution or reparation imposed by the court, he may at any time apply to the court for resentence.",
+   "see": [],
+   "note": "No statewide form found."
+  },
+  {
+   "state": "dc",
+   "process": "court_debt",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/dc.json",
+     "step": "request_plan_hearing",
+     "match": "related",
+     "step_action": "Request hearing on restitution plan"
+    }
+   ],
+   "statute": "D.C. Code § 16-711",
+   "must_contain": [
+    "No payment-plan or fine-relief form found; requests go by motion in the criminal case"
+   ],
+   "quote": null,
+   "see": [
+    "dc-superior-court-fee-waiver"
+   ]
+  },
+  {
+   "state": "tx",
+   "process": "court_debt",
+   "steps": [
+    {
+     "file": "curated_ask/court_debt/tx.json",
+     "step": "report_difficulty",
+     "match": "exact",
+     "step_action": "Tell the court of difficulty paying"
+    }
+   ],
+   "statute": "Tex. Code Crim. Proc. art. 43.035",
+   "must_contain": [
+    "The defendant tells the court of difficulty paying; no form for the county and district court process"
+   ],
+   "quote": null,
+   "see": [
+    "tx-oca-reconsider-ability-to-pay",
+    "tx-statement-of-inability"
+   ]
+  }
+ ],
+ "gaps": [
+  "Virginia State Corporation Commission: robots.txt disallows automated clients, so LLC-1011 and the assumed-name certificate were not fetched.",
+  "nccourts.gov, nycourts.gov and dccourts.gov answered HTTP 403 (bot protection) to the research client; their forms are listed from the publishers' own URLs as indexed by a search engine, unverified.",
+  "ilsos.gov did not answer within the 15-second timeout (three tries), so LLC-5.5 is unverified.",
+  "myfloridalegal.com (Florida Attorney General) and ncdoj.gov answered HTTP 403.",
+  "Not found: a DC fillable motion to seal; a DC criminal-fine payment-plan form; DC, Florida, Illinois, North Carolina (statewide) and Washington pre-application licensing forms; a Texas OCA expunction form; a txcourts.gov copy of the Statement of Inability; the English CRO 01.0100 file; a North Carolina fee-mediation form."
+ ],
+ "coverage": {
+  "va": {
+   "records": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 1
+   },
+   "business": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 2
+   },
+   "record_sealing": {
+    "forms": 4,
+    "verified": 4,
+    "fillable_pdf": 4,
+    "no_official_form_note": false,
+    "step_matches": 3
+   },
+   "license_conviction": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 4
+   },
+   "court_debt": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 2
+   }
+  },
+  "dc": {
+   "records": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 2
+   },
+   "business": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 3
+   },
+   "record_sealing": {
+    "forms": 2,
+    "verified": 1,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 4
+   },
+   "license_conviction": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   }
+  },
+  "md": {
+   "records": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 2,
+    "no_official_form_note": true,
+    "step_matches": 1
+   },
+   "business": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 3
+   },
+   "record_sealing": {
+    "forms": 5,
+    "verified": 5,
+    "fillable_pdf": 5,
+    "no_official_form_note": false,
+    "step_matches": 2
+   },
+   "license_conviction": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 3,
+    "no_official_form_note": false,
+    "step_matches": 3
+   }
+  },
+  "tx": {
+   "records": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 1
+   },
+   "business": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 3,
+    "no_official_form_note": false,
+    "step_matches": 5
+   },
+   "record_sealing": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 2
+   },
+   "license_conviction": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 1
+   },
+   "court_debt": {
+    "forms": 2,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 1
+   }
+  },
+  "ca": {
+   "records": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "business": {
+    "forms": 4,
+    "verified": 4,
+    "fillable_pdf": 3,
+    "no_official_form_note": false,
+    "step_matches": 7
+   },
+   "record_sealing": {
+    "forms": 5,
+    "verified": 5,
+    "fillable_pdf": 5,
+    "no_official_form_note": false,
+    "step_matches": 6
+   },
+   "license_conviction": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 3,
+    "no_official_form_note": false,
+    "step_matches": 2
+   }
+  },
+  "fl": {
+   "records": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "business": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 3,
+    "no_official_form_note": false,
+    "step_matches": 4
+   },
+   "record_sealing": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "license_conviction": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   }
+  },
+  "ny": {
+   "records": {
+    "forms": 3,
+    "verified": 3,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 4
+   },
+   "business": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 2
+   },
+   "record_sealing": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 0
+   },
+   "license_conviction": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   }
+  },
+  "il": {
+   "records": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 1
+   },
+   "business": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 2
+   },
+   "record_sealing": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 0
+   },
+   "license_conviction": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 0
+   }
+  },
+  "wa": {
+   "records": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 1
+   },
+   "business": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 1,
+    "no_official_form_note": false,
+    "step_matches": 3
+   },
+   "record_sealing": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 0
+   },
+   "license_conviction": {
+    "forms": 1,
+    "verified": 1,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 0
+   }
+  },
+  "nc": {
+   "records": {
+    "forms": 0,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "business": {
+    "forms": 2,
+    "verified": 2,
+    "fillable_pdf": 2,
+    "no_official_form_note": false,
+    "step_matches": 2
+   },
+   "record_sealing": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 0
+   },
+   "license_conviction": {
+    "forms": 1,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": true,
+    "step_matches": 0
+   },
+   "court_debt": {
+    "forms": 2,
+    "verified": 0,
+    "fillable_pdf": 0,
+    "no_official_form_note": false,
+    "step_matches": 0
+   }
+  }
+ }
+}

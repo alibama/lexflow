@@ -1,0 +1,1166 @@
+{
+ "place": "va:staunton",
+ "gov_id": "47213000100000",
+ "process": "bpol_business_license",
+ "title": "Get or renew a local business license (BPOL)",
+ "question": "I am starting or running a business in Staunton. How do I get a business license, and when must I renew it?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "home-based businesses",
+  "contractors",
+  "independent contractors and part-time sellers",
+  "peddlers and itinerant merchants"
+ ],
+ "office": "Commissioner of the Revenue, City of Staunton (an elected constitutional officer, who assesses and issues business licenses; the City Treasurer collects payments)",
+ "summary": "Staunton requires a business license from the Commissioner of the Revenue for each business and each location in the city, including home-based, part-time and 1099 work. First get zoning approval (a Home Occupation Permit if you work from home) and any SCC, state license or health approvals; if you sell alcohol, tell the Commissioner once you have your ABC license. Then mail, fax or email the Business License Application with your estimated gross receipts. The city asks for it within 30 days of opening; state law says before you open. Up to $50,000 in gross receipts the license costs $30; above that a rate by class applies (retail $0.20 per $100). Licenses run by calendar year and are renewed by March 1. The city's renewal form charges 10% for late filing, plus 10% yearly interest.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "it shall be unlawful to engage in such business, employment or profession without first obtaining the required license.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code, Chapter 5.05, Article II (Business, Professional and Occupational Taxes), as cited on the City's Business License & Taxes page",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "As required by Article II. Business, Professional and Occupational Taxes of the Staunton City Code, businesses must adhere to the following regulations:",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "Every person or business subject to licensure under this chapter shall be assessed and required to pay annually:",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Every person shall apply for a license for each business or profession when engaging in a business in this jurisdiction if (i) the person has a definite place of business in this jurisdiction; (ii) there is no definite place of business anywhere and the person resides in this jurisdiction",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A separate license shall be required for each definite place of business and for each business.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A person engaged in two or more businesses or professions carried on at the same place of business may elect to obtain one license for all such businesses and professions if all of the following criteria are satisfied",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"definite place of business\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "\"Definite place of business\" means an office or a location at which occurs a regular and continuous course of dealing for thirty consecutive days or more.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"definite place of business\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "A person's residence shall be deemed to be a definite place of business if there is no definite place of business maintained elsewhere and the person is not subject to licensure as a peddler or itinerant merchant.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"gross receipts\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "\"Gross receipts\" means the whole, entire, total receipts, without deduction.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"license year\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "\"License year\" means the calendar year for which a license is issued for the privilege of engaging in business.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"business\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "\"Business\" means a course of dealing which requires the time, attention and labor of the person so engaged for the purpose of earning a livelihood or profit.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1 (definition of \"business\")",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "It implies a continuous and regular course of dealing, rather than an irregular or isolated transaction.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715/",
+   "quote": "when the amount of business done by any such contractor in any other county, city or town exceeds the sum of $25,000 in any year, such other county, city or town may require of such contractor a local license",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3714(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3714/",
+   "quote": "Each such governing body shall require every contractor to provide written certification at the time of any application for issuance or reissuance of a business license that such contractor is in compliance with the provisions of Chapter 8 of Title 65.2",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "may require that no business license under this chapter shall be issued until the applicant has produced satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance and admissions taxes owed by the business to the county, city or town have been paid",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 59.1-69(B)",
+   "url": "https://law.lis.virginia.gov/vacode/59.1-69/",
+   "quote": "No person shall conduct or transact business in the Commonwealth under any assumed or fictitious name unless such person files in the office of the clerk of the Commission a certificate of assumed or fictitious name.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 59.1-74(B)",
+   "url": "https://law.lis.virginia.gov/vacode/59.1-74/",
+   "quote": "No license shall be issued by a commissioner of the revenue until a certificate of assumed or fictitious name has been made and filed (i) in the office of the clerk of the Commission",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "The application shall be on forms prescribed by the assessing official, which forms and accompanying communications shall clearly set out the due date for the application and the amount of any penalty to be charged for late filing of the application, the underpayment of estimated tax, and late payment of tax.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "If the tax is measured by the gross receipts of the business, the tax shall be paid on or before the locality's fixed due date for filing license applications or a later date, including installment payment dates, or 30 or more days after beginning business, at the locality's option.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "The tax shall be paid with the application in the case of any license not based on gross receipts.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(c)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "The assessing official may grant an extension of time in which to file an application for a license, for reasonable cause.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "The governing body of any county, city or town may charge a fee for issuing a license in an amount not to exceed $100 for any locality with a population greater than 50,000, $50 for any locality with a population of 25,000 but no more than 50,000 and $30 for any locality with a population smaller than 25,000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "provided such tax shall not be assessed and collected on any amount of gross receipts of each business upon which a license fee is charged.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "Any business with gross receipts of more than $100,000, or $50,000, as applicable, may be subject to the tax at a rate not to exceed the rate set forth below for the class of enterprise listed:",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For contracting, and persons constructing for their own account for sale, sixteen cents per $100 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For retail sales, twenty cents per $100 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For financial, real estate and professional services, fifty-eight cents per $100 of gross receipts; and",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For repair, personal and business services, and all other businesses and occupations not specifically listed or excepted in this section, thirty-six cents per $100 of gross receipts.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3716",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3716/",
+   "quote": "No county, city or town shall impose a license tax on wholesale merchants at an aggregate rate in excess of 5 cent(s) per $100 of purchases except in those counties, cities or towns where the local rate in effect on January 1, 1964 was in excess of such rate",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3719.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3719.1/",
+   "quote": "no county, city or town shall levy any license tax on a direct seller, as defined herein, unless the total sales of such seller exceed $4,000 per year.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3717(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3717/",
+   "quote": "Any tax imposed pursuant to § 58.1-3703 on peddlers and itinerant merchants shall not exceed $500 per year.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "every such person or business shall be assessed and required to pay annually a license tax on all the gross receipts of such persons includable as provided in this chapter at a rate set forth below for the class of enterprise listed:",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "For contractors and persons constructing for their own account for sale, $0.16 per $100.00 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "For retailers, $0.20 per $100.00 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "For financial, real estate and professional services, $0.40 per $100.00 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "For repair, personal and business services and all other businesses and occupations not specifically listed or exempted in this chapter or otherwise by law, $0.36 per $100.00 of gross receipts;",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "Fifty thousand one dollars and up – $300.00 tax plus $0.12 per $100.00 of purchases at cost exceeding $50,000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(C)(18)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "On or measured by receipts of a nonprofit organization described in Internal Revenue Code § 501(c)(3) or 501(c)(19) except to the extent the organization has receipts from an unrelated trade or business the income of which is taxable under Internal Revenue Code § 511 et seq.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(C)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "For selling farm or domestic products or nursery products, ornamental or otherwise, or for the planting of nursery products, as an incident to the sale thereof, outside of the regular market houses and sheds of such county, city or town, provided such products are grown or produced by the person offering them for sale;",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3732(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3732/",
+   "quote": "Any amount representing returns and allowances granted by the business to its customers.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A penalty of 10 percent of the tax may be imposed upon the failure to file an application or the failure to pay the tax by the appropriate due date.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Only the late filing penalty shall be imposed by the assessing official if both the application and payment are late; however, both penalties may be assessed if the assessing official determines that the taxpayer has a history of noncompliance.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "If the failure to file or pay was not the fault of the taxpayer, the penalties shall not be imposed, or if imposed, shall be abated by the official who assessed them.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(e)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Interest shall be charged on the late payment of the tax from the due date until the date paid without regard to fault or other reason for the late payment.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(e)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "No interest shall be paid on a refund or charged on a late payment, provided the refund or the late payment is made not more than 30 days from the date of the payment that created the refund or the due date of the tax, whichever is later.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 1-210(E)",
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "quote": "the act may be performed or the action may be filed on the next business day that is not a Saturday, Sunday, legal holiday, or day on which the state or local government office is closed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "Any person who engages in a business without obtaining a required local license, or after being refused a license, shall not be relieved of the tax imposed by the ordinance.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(4)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "the assessing official shall assess the local license tax omitted because of fraud or failure to apply for a license for the current license year and the six preceding license years.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(9)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Every person who is assessable with a local license tax shall keep sufficient records to enable the assessor to verify the correctness of the tax paid for the license years assessable",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(5)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "may file an administrative appeal of the assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of the appealable event, whichever is later, with the commissioner of the revenue or other local assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(5)(c)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "each locality imposing a tax or fee under this chapter shall maintain on its website the specific procedures to be followed in the jurisdiction with regard to such appeal and the name and address to which the appeal should be directed.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(6)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(7)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "the taxpayer or commissioner of the revenue or other assessing official may apply to the appropriate circuit court for judicial review of the determination, or any part thereof, pursuant to § 58.1-3984 .",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(8)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Any taxpayer or authorized representative of a taxpayer may request a written ruling regarding the application of a local license tax to a specific situation from the commissioner of the revenue or other assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3701",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3701/",
+   "quote": "The Tax Commissioner shall have the authority to issue advisory written opinions in specific cases to interpret the provisions of this chapter and the guidelines issued pursuant to this section; however, the Tax Commissioner shall not be required to interpret any local ordinance.",
+   "role": "authority"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether your business needs a Staunton business license, and how many",
+   "who": "Business owner",
+   "how": "You need a City of Staunton business license if you have a definite place of business in the city (an office or location used for business for 30 consecutive days or more), or if you have no place of business anywhere and live in Staunton, so a home-based business is covered. Peddlers, itinerant merchants and state-licensed contractors working in the city also need one. The city says part-time and hobby businesses, and people paid on a 1099 as independent contractors, need a license too; state law defines a business as a continuous and regular course of dealing for a livelihood or profit, not an irregular or isolated transaction. State law requires a separate license for each business and each location. A person with two or more businesses at the same place may instead elect one license for all of them, if each is licensable there, all are taxed at the same rate or the licensee accepts the highest rate, and the licensee gives the Commissioner the information it asks for (the city's pages do not mention this). An out-of-town contractor needs a Staunton license only when its work in the city exceeds $25,000 in a calendar year. Some receipts are exempt under state law, for example those of 501(c)(3) charities (except unrelated business income) and farm products sold by the person who grew them.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000",
+   "quote": "Even if you conduct business on a part-time basis, or hobby related basis, you are required to obtain a license.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000"
+  },
+  {
+   "id": "s2",
+   "step": "Get zoning approval, and a Home Occupation Permit if you work from home",
+   "who": "Business owner, applying to the Community Development Department's Planning & Zoning Division",
+   "how": "The city requires zoning approval for any business. Check with Planning & Zoning that your location is zoned for the use. If you run the business from your home, apply for a Home Occupation Permit online in the city's permitting portal or on the paper form. Include a permission letter if you do not own and live in the home. Review takes about five business days, and the permit is emailed to you once it is approved. A new location, or a move, may need its own zoning approval, and some uses need an occupancy permit. The permit section links to the Planning & Zoning fee schedule, which lists a Zoning Permit Fee of $50.00 but no separate home occupation fee; ask Planning & Zoning which fee applies.",
+   "deadline": "Before applying for the business license",
+   "fee": "Not stated for the Home Occupation Permit; the linked Planning & Zoning fee schedule lists a Zoning Permit Fee of $50.00 (see fees)",
+   "form": "f6",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "quote": "Home based businesses are required to apply for a home occupancy permit prior to applying for a business license.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000"
+  },
+  {
+   "id": "s3",
+   "step": "Register your business name or entity, and get any state license or permit your trade needs",
+   "who": "Business owner; State Corporation Commission (SCC); Department of Professional and Occupational Regulation (DPOR) or the relevant state board; Virginia Department of Health; Virginia ABC; Virginia Department of Taxation",
+   "how": "If you use a trade name (a \"doing business as\" name) instead of your legal name, register it with the SCC as a fictitious name. The city's instructions say businesses that have incorporated (LLC, Inc., S-Corp, partnerships and the like) must be registered with the SCC and must include the certificate of good standing or registration certificate; sole proprietors need not register with the SCC. Contractors need a current state contractor's license. Realtors, brokers, barbers, hair stylists, nail technicians, estheticians, tattoo artists and other regulated trades need an active DPOR license, and doctors, nurses and massage therapists need their state board licensure. A food service business needs a health permit. Sellers of taxable goods must register for Virginia sales tax. Have an FEIN, or your Social Security number if you do not need an FEIN. Every contractor must also certify in writing, at each application and renewal, that it complies with Virginia's workers' compensation law (coverage is needed where that law requires it); the renewal form asks for Form 61A or insurance the office can verify. Copies of these registrations and licenses go with the application.",
+   "deadline": "Before the business license can be issued",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000",
+   "quote": "A copy of the registration must be provided to our office before a business license can be issued.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000"
+  },
+  {
+   "id": "s4",
+   "step": "Clear any delinquent city taxes",
+   "who": "Business owner; City Treasurer (collects)",
+   "how": "The Commissioner will not issue a license while the applicant owes delinquent business license or personal property taxes to the city. If you are not sure whether you owe anything, ask the Treasurer's office (540-332-3833) and pay any balance first.",
+   "deadline": "Before the business license can be issued",
+   "fee": null,
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000",
+   "quote": "No business license will be issued until all delinquent business license and personal property taxes owed by the applicant to the City of Staunton have been paid (VA Code 58.1-3700).",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000"
+  },
+  {
+   "id": "s5",
+   "step": "Find your license classification and estimate your gross receipts",
+   "who": "Business owner; the Commissioner of the Revenue can confirm the class and rate",
+   "how": "Pick your classification from the table on the back of the application (contractor, retail, professional, business service, direct seller, wholesale merchant). Then estimate your gross receipts from the day you start until the end of the calendar year. Gross receipts are all income before expenses; sales tax, local excise taxes, and returns and allowances are excluded. Up to $50,000 the license costs $30. Above $50,000, multiply the estimate by the rate for your class. If you are unsure of your class, call the Commissioner's office.",
+   "deadline": null,
+   "fee": "$30 for gross receipts of $0-$50,000; above $50,000, the classification rate per $100 of gross receipts (see fees)",
+   "form": "f1",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000",
+   "quote": "If you are unsure of the classification of your business, please call the Commissioner of the Revenue to determine both the business classification and rate.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000"
+  },
+  {
+   "id": "s6",
+   "step": "Submit the Business License Application to the Commissioner of the Revenue",
+   "who": "Business owner, filing with the Commissioner of the Revenue",
+   "how": "Fill in the Business License Application: trade and legal names, business location, business type, SSN or FEIN, sales tax number, any contractor or DPOR license number, a description of the business, its classification, your estimate of gross receipts and the tax due. Then sign it. The PDF has no fillable fields, so print it. Attach the documents from steps 2 and 3. Mail it to P.O. Box 4, Staunton, VA 24402, fax it to 540-851-4022, or email it to revenue@ci.staunton.va.us. No page offers an online application for a new business: the online service is for paying, with online renewal being added for existing accounts. The city's pages say to file within 30 days of starting business, while state law says to apply before you begin.",
+   "deadline": "Within 30 days of when you begin to conduct business (city); state law says prior to beginning business",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "To avoid penalties and interest, you are required to file an application within 30 days of when you begin to conduct business.",
+   "source": "https://www.ci.staunton.va.us/business/start-a-business"
+  },
+  {
+   "id": "s7",
+   "step": "Pay the license fee or tax",
+   "who": "Business owner; the City Treasurer collects payment",
+   "how": "The application asks you to calculate the total tax due, and its office-use box records payment, so expect to pay when you apply. Make checks payable to the City of Staunton. You can pay at the Treasurer's office (City Hall, 1st floor; cash, check or card, with a fee for card payments), mail a check or money order to the Treasurer at P.O. Box 474, put it in the green city drop box on Central Avenue under the clock tower, or pay online through the city's self-service portal. Online payment needs a web user account that the Commissioner's office links to your business license account: email revenue@ci.staunton.va.us with your account email and license account number.",
+   "deadline": null,
+   "fee": "As calculated on the application (see fees); card payments carry a fee",
+   "form": "f4",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "Payments by cash and/or credit card can be made in-person with the Treasurer's office; a fee is charged for credit card payments.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000"
+  },
+  {
+   "id": "s8",
+   "step": "If you sell alcohol, tell the Commissioner when you get your ABC license",
+   "who": "Business owner; Virginia ABC; Commissioner of the Revenue",
+   "how": "Apply to Virginia ABC for the state license. When it is issued, notify the Commissioner of the Revenue. A separate local ABC license tax is then added to your business license. It is prorated monthly; the charges the city lists run from $40 to $500 by license type, and the city says not every ABC charge is listed.",
+   "deadline": "When the ABC license is obtained",
+   "fee": "Local ABC license tax by license type, prorated monthly (see fees)",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000",
+   "quote": "Businesses must notify the Commissioner of the Revenue when an ABC license is obtained.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000"
+  },
+  {
+   "id": "s9",
+   "step": "Renew the license every year by March 1",
+   "who": "Licensee; the Commissioner of the Revenue mails a renewal notice",
+   "how": "The license runs for the calendar year and expires on December 31. The Commissioner mails each current licensee a renewal form. On it, report last year's gross receipts for each license class, apply the rate, and enter the tax due. Contractors attach copies of paid licenses from other localities so they can deduct those receipts, and confirm workers' compensation coverage (Form 61A, or insurance the office can verify). Sign and return the form; the renewal and the payment must both be submitted or postmarked by March 1. Online renewal is being added, but a business in its second or third year may only be able to pay online, not file.",
+   "deadline": "Filing and payment by March 1 of the license year (the 2026 form: submitted and/or postmarked by March 1, 2026); when March 1 falls on a weekend or holiday, state law allows the next business day (Va. Code § 1-210(E))",
+   "fee": "Per the classification and rates table (see fees)",
+   "form": "f3",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "The renewal and payment must be submitted and/or postmarked by March 1, 2026.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000"
+  },
+  {
+   "id": "s10",
+   "step": "At your first renewal, report actual gross receipts and settle the difference",
+   "who": "Licensee in its first renewal; Commissioner of the Revenue",
+   "how": "A new business was licensed on an estimate. On the first renewal, report the actual gross receipts for the first year, and an estimate for the new year. If the actual receipts were higher than the estimate, you may get a bill for more tax for the first year. If they were lower, you may get a credit on the new license. The office will help with the calculation.",
+   "deadline": "With the March 1 renewal",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "If you exceeded the estimated amount, you may receive a bill for an additional tax due for 2025.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000"
+  },
+  {
+   "id": "s11",
+   "step": "If you cannot file on time, ask for an extension; otherwise expect a 10% penalty and interest",
+   "who": "Licensee; Commissioner of the Revenue",
+   "how": "State law lets the Commissioner extend the filing time for reasonable cause, possibly on condition that you pay a reasonable estimate of the tax. Without an extension, the 2026 renewal form says a filing received or postmarked after March 1 is late, that a 10% penalty will be assessed as of March 2 and interest at 10% a year as of April 1. State law says a 10% penalty may be imposed, and that when both the filing and the payment are late only the late-filing penalty is charged, unless the Commissioner finds a history of noncompliance. When a due date falls on a weekend, a holiday or a day the office is closed, state law allows the filing on the next business day (March 1, 2026 was a Sunday; see caveats). If the lateness was not your fault, ask for the penalty to be waived or abated (see escalation).",
+   "deadline": null,
+   "fee": "10% penalty; 10% per year interest",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "The assessing official may grant an extension of time in which to file an application for a license, for reasonable cause.",
+   "source": "Va. Code § 58.1-3703.1(A)(2)(c)"
+  },
+  {
+   "id": "s12",
+   "step": "Keep records of your gross receipts",
+   "who": "Licensee",
+   "how": "Keep records that show your gross receipts for each license year. They must be open to the Commissioner's inspection. If you never applied, or in case of fraud, state law says the Commissioner shall assess the omitted tax for the current license year and the six preceding years.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Every person who is assessable with a local license tax shall keep sufficient records to enable the assessor to verify the correctness of the tax paid for the license years assessable",
+   "source": "Va. Code § 58.1-3703.1(A)(9)"
+  },
+  {
+   "id": "s13",
+   "step": "Close the license when you stop doing business in Staunton",
+   "who": "Licensee, writing to the Commissioner of the Revenue",
+   "how": "Tell the Commissioner's office in writing that the business has closed, with the closing date and your signature. You can also complete box (1) of the renewal form with the date you stopped, sign it and return it.",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000",
+   "quote": "In order to close your business license, you must notify our office in writing that you have ceased to operate your business and provide a closing date and a signature.",
+   "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Business License Application, City of Staunton (Commissioner of the Revenue; PDF created August 2024, with the Business License Classifications and Rates table on the back)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f2",
+   "title": "Business License Application Instructions (Commissioner of the Revenue, 2021)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f3",
+   "title": "2026 Business License Renewal (filing and payment due by March 1, 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f4",
+   "title": "Instructions for signing up for a business license account online (linked as \"(Instructions)\" beside Pay for Business License Online; PDF created February 2026, read from the Internet Archive copy of 2026-06-13)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13539/639057043904400000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f5",
+   "title": "New business brochure: Business License Information for the City of Staunton",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f6",
+   "title": "Home Occupation Permit application (paper submittal; Planning & Zoning Division; not read: the Internet Archive lists a copy of 2026-04-13, but it returns \"not found\")",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1442/637994445630470000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f7",
+   "title": "Homestay application (linked on the Business License & Taxes page; not read)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/5822/636734731020330000",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "License fee, contractor, retail, professional or business service, gross receipts of $0-$50,000",
+   "amount": "$30 (the application calls it a minimum of $30.00; the 2026 renewal calls it a $30 fee)",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000; https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000; Va. Code § 58.1-3703(A) caps the fee at $50 for a locality of 25,000 to 50,000 people ($30 below 25,000)",
+   "quote": "The City of Staunton requires a minimum license of $30."
+  },
+  {
+   "item": "License tax, contractors and persons constructing for their own account for sale (gross receipts over $50,000)",
+   "amount": "$0.16 per $100 of gross receipts",
+   "basis": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read, https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; state cap 16 cents (Va. Code § 58.1-3706(A)(1))",
+   "quote": "For contractors and persons constructing for their own account for sale, $0.16 per $100.00 of gross receipts;"
+  },
+  {
+   "item": "License tax, retailers (gross receipts over $50,000)",
+   "amount": "$0.20 per $100 of gross receipts",
+   "basis": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read, https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; state cap 20 cents (Va. Code § 58.1-3706(A)(2))",
+   "quote": "For retailers, $0.20 per $100.00 of gross receipts;"
+  },
+  {
+   "item": "License tax, financial, real estate and professional services (the forms' \"Professional\" class; gross receipts over $50,000)",
+   "amount": "$0.40 per $100 of gross receipts",
+   "basis": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read, https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; state cap 58 cents (Va. Code § 58.1-3706(A)(3))",
+   "quote": "For financial, real estate and professional services, $0.40 per $100.00 of gross receipts;"
+  },
+  {
+   "item": "License tax, repair, personal and business services and all other businesses (the forms' \"Business Service\" class; gross receipts over $50,000)",
+   "amount": "$0.36 per $100 of gross receipts",
+   "basis": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read, https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; state cap 36 cents (Va. Code § 58.1-3706(A)(4))",
+   "quote": "For repair, personal and business services and all other businesses and occupations not specifically listed or exempted in this chapter or otherwise by law, $0.36 per $100.00 of gross receipts;"
+  },
+  {
+   "item": "Direct sellers",
+   "amount": "No fee if total sales are under $4,000; over $4,000, $0.20 per $100 of gross receipts",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; Va. Code § 58.1-3719.1(A)",
+   "quote": "No fee under $4,000."
+  },
+  {
+   "item": "Wholesale merchants (based on purchases at cost)",
+   "amount": "$100 for $0-$10,000; $100 plus $0.50 per $100 of purchases over $10,000, up to $50,000; $300 plus $0.12 per $100 over $50,000",
+   "basis": "Staunton City Code § 5.05.170 (License fee and tax), as reproduced on the City's Business License & Taxes page; the eCode360 text was not read, https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes; https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "Zero dollars to $10,000 – $100.00 tax;"
+  },
+  {
+   "item": "Local ABC license tax, added to the business license (prorated monthly; not all ABC charges are listed)",
+   "amount": "$40.00 (bed & breakfast) to $500.00 (mixed beverage, 151 or more seats); for example, beer and wine off premises $150.00",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "Beer & Wine Off Premises $150.00"
+  },
+  {
+   "item": "Homestay yearly registration (listed in the license rate table)",
+   "amount": "$50.00",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "Homestay Yearly Registration $50.00"
+  },
+  {
+   "item": "Zoning permit fee (Planning & Zoning fee schedule, linked from the Home Occupation Permit section; the schedule has no separate home occupation line, so confirm which fee applies)",
+   "amount": "$50.00",
+   "basis": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees",
+   "quote": "Zoning Permit Fee"
+  },
+  {
+   "item": "Late filing penalty (renewal filed or postmarked after March 1)",
+   "amount": "10% (the 2026 form: assessed as of March 2, 2026; March 1, 2026 was a Sunday, and state law allows filing on the next business day, see caveats)",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; Va. Code § 58.1-3703.1(A)(2)(d)",
+   "quote": "A penalty of 10% will be assessed as of March 2, 2026."
+  },
+  {
+   "item": "Interest on late tax",
+   "amount": "10% per year, assessed as of April 1, 2026 for the 2026 license year",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000; Va. Code §§ 58.1-3703.1(A)(2)(e), 58.1-3916",
+   "quote": "The 10% interest per annum will be assessed as of April 1, 2026."
+  },
+  {
+   "item": "Card payment fee at the Treasurer's office",
+   "amount": "A fee is charged (amount for business licenses not stated)",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "quote": "a fee is charged for credit card payments"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Commissioner of the Revenue, City Hall, 1st floor, 116 W. Beverley St., P.O. Box 4, Staunton, VA 24402 (hours 8 a.m. to 5 p.m.)",
+   "label": "Commissioner of the Revenue, City of Staunton",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue"
+  },
+  {
+   "kind": "phone",
+   "value": "540-332-3829",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue"
+  },
+  {
+   "kind": "phone",
+   "value": "540-851-4022 (fax; the application may be faxed here)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000"
+  },
+  {
+   "kind": "email",
+   "value": "revenue@ci.staunton.va.us",
+   "label": "Commissioner of the Revenue (applications, and linking online accounts)",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000"
+  },
+  {
+   "kind": "address",
+   "value": "Commissioner of the Revenue, 116 West Beverley Street, P.O. Box 4, Staunton, VA 24402-0004",
+   "label": "Commissioner of the Revenue (mail applications, renewals and closure notices)",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "label": "Commissioner of the Revenue: Business License & Taxes page (forms; https://www.ci.staunton.va.us/i-want-to-/apply-for/business-license redirects here)",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes"
+  },
+  {
+   "kind": "portal",
+   "value": "https://services.ci.staunton.va.us/mss/citizens/BusinessLicenses/Default.aspx",
+   "label": "City of Staunton self-service portal: Pay for Business License Online (needs a web user account linked by the Commissioner)",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes"
+  },
+  {
+   "kind": "office",
+   "value": "Treasurer's Office, City Hall, 1st floor, 116 W. Beverley Street, Staunton (8:30 a.m. to 5 p.m., Monday to Friday)",
+   "label": "City Treasurer (payments)",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "540-332-3833",
+   "label": "City Treasurer (balances due, card payments)",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000"
+  },
+  {
+   "kind": "address",
+   "value": "City of Staunton, Treasurer, P.O. Box 474, Staunton, VA 24402-0474",
+   "label": "City Treasurer (payments by mail)",
+   "url": "https://www.ci.staunton.va.us/departments/city-treasurer/paying-taxes-fees"
+  },
+  {
+   "kind": "address",
+   "value": "Green city drop box on Central Avenue under the clock tower (check or money order; open 24 hours)",
+   "label": "City Treasurer (drop box for all city payments)",
+   "url": "https://www.ci.staunton.va.us/departments/city-treasurer/paying-taxes-fees"
+  },
+  {
+   "kind": "office",
+   "value": "Planning & Zoning Division, City Hall, 3rd Floor, 116 W. Beverley St., Staunton, VA 24401; 540-332-3862",
+   "label": "Community Development, Planning & Zoning Division (zoning approval, home occupation permits)",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division"
+  },
+  {
+   "kind": "portal",
+   "value": "https://cityofstauntonva-energovweb.tylerhost.net/apps/selfservice#/home",
+   "label": "City of Staunton online permitting portal (Home Occupation Permit online submittal)",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division"
+  },
+  {
+   "kind": "page",
+   "value": "https://scc.virginia.gov/pages/New-Business-Resources",
+   "label": "State Corporation Commission: New Business Resources (fictitious name and entity registration)",
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.tax.virginia.gov/administrative-appeals",
+   "label": "Virginia Department of Taxation (Tax Commissioner): administrative appeals, including appeals of local license tax determinations",
+   "url": "https://www.tax.virginia.gov/administrative-appeals"
+  },
+  {
+   "kind": "office",
+   "value": "Staunton Circuit Court (25th Judicial Circuit), 113 East Beverley Street, Staunton, VA 24401-4390; Clerk's Office on the third floor; 540-332-3874 (hours 8:30 a.m. to 5:00 p.m.)",
+   "label": "Staunton Circuit Court, Clerk's Office",
+   "url": "https://www.vacourts.gov/courts/circuit/staunton/home"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Unsure how the license tax or a classification applies to your business",
+   "next": "Commissioner of the Revenue (written ruling; give all the relevant facts)",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(8)",
+   "quote": "Any taxpayer or authorized representative of a taxpayer may request a written ruling regarding the application of a local license tax to a specific situation from the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "Cannot file the application or renewal by the due date, for reasonable cause",
+   "next": "Commissioner of the Revenue (ask for an extension; you may have to pay a reasonable estimate of the tax)",
+   "type": "deferral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(2)(c)",
+   "quote": "The assessing official may grant an extension of time in which to file an application for a license, for reasonable cause."
+  },
+  {
+   "trigger": "Late filing or payment penalty charged although the lateness was not your fault",
+   "next": "Commissioner of the Revenue (for a late filing penalty) or City Treasurer (for a late payment penalty it imposed): ask for abatement and show you acted responsibly and that events beyond your control caused the lateness",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "quote": "If the failure to file or pay was not the fault of the taxpayer, the penalties shall not be imposed, or if imposed, shall be abated by the official who assessed them."
+  },
+  {
+   "trigger": "License refused because delinquent city business license or personal property taxes are owed",
+   "next": "City Treasurer (pay or resolve the balance, then reapply); a dispute over the underlying tax follows that tax's own appeal route",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3700(A); Business License Application (https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000)",
+   "quote": "may require that no business license under this chapter shall be issued until the applicant has produced satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance and admissions taxes owed by the business to the county, city or town have been paid"
+  },
+  {
+   "trigger": "License held up because a trade name has not been registered",
+   "next": "State Corporation Commission (file the certificate of assumed or fictitious name, then give the Commissioner a copy)",
+   "type": "deferral",
+   "deadline": null,
+   "basis": "Va. Code § 59.1-74(B)",
+   "quote": "No license shall be issued by a commissioner of the revenue until a certificate of assumed or fictitious name has been made and filed (i) in the office of the clerk of the Commission"
+  },
+  {
+   "trigger": "Assessment increased, refund denied, tax assessed where none was before, tax estimated when no application was filed, or an amended application's correction denied (an appealable event)",
+   "next": "Commissioner of the Revenue, by written administrative appeal (identify the taxpayer, tax periods, amount in dispute, remedy sought, each alleged error and the grounds)",
+   "type": "internal appeal",
+   "deadline": "Within one year from the last day of the tax year assessed, or within one year from the appealable event, whichever is later",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(a)-(b)",
+   "quote": "may file an administrative appeal of the assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of the appealable event, whichever is later, with the commissioner of the revenue or other local assessing official."
+  },
+  {
+   "trigger": "You disagree with the classification of your business",
+   "next": "Commissioner of the Revenue (administrative appeal of the classification)",
+   "type": "internal appeal",
+   "deadline": "At any time (but this does not extend the limits for appealing an assessment)",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(b)",
+   "quote": "The taxpayer may at any time also file an administrative appeal of the classification applicable to the taxpayer's business"
+  },
+  {
+   "trigger": "A timely and complete administrative appeal is pending",
+   "next": "Collection of the disputed amount is suspended until the Commissioner's final determination (interest still accrues, no further penalty), unless the Treasurer finds that collection would be jeopardized by delay, or the Commissioner reports that you have not answered a request for relevant information after a reasonable time or that the appeal is frivolous",
+   "type": "deferral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(d)",
+   "quote": "collection activity with respect to the amount in dispute relating to any assessment by the commissioner of the revenue or other assessing official shall be suspended until a final determination is issued by the commissioner of the revenue or other assessing official"
+  },
+  {
+   "trigger": "No final determination after the appeal has been pending more than one year",
+   "next": "Tax Commissioner (Virginia Department of Taxation), after at least 30 days' written notice to the Commissioner of the Revenue",
+   "type": "external administrative review",
+   "deadline": "After more than one year without a decision, on at least 30 days' written notice",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(e)",
+   "quote": "elect to treat the appeal as denied and appeal the assessment or classification of the taxpayer's business to the Tax Commissioner in accordance with the provisions of subdivision 6"
+  },
+  {
+   "trigger": "The Commissioner of the Revenue's determination is adverse",
+   "next": "Tax Commissioner (Virginia Department of Taxation); serve a copy of the appeal on the Commissioner of the Revenue",
+   "type": "external administrative review",
+   "deadline": "Within 90 days of the date of the Commissioner of the Revenue's determination; the Tax Commissioner decides within 90 days of receipt unless both sides are told it will take longer",
+   "basis": "Va. Code § 58.1-3703.1(A)(6)(a); https://www.tax.virginia.gov/administrative-appeals",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "Notice of intent to appeal to the Tax Commissioner given",
+   "next": "Collection of the disputed amount is suspended until the Tax Commissioner's final determination, if the appeal is filed and served within 30 days of the notice (interest still accrues, no further penalty), unless collection would be jeopardized by delay, you have not answered a request for relevant information, or the appeal is frivolous",
+   "type": "deferral",
+   "deadline": "Appeal filed and served within 30 days of the notice of intent",
+   "basis": "Va. Code § 58.1-3703.1(A)(6)(b)",
+   "quote": "collection activity with respect to the amount in dispute relating to any assessment by the commissioner of the revenue or other assessing official shall be suspended until a final determination is issued by the Tax Commissioner"
+  },
+  {
+   "trigger": "Still aggrieved after the Tax Commissioner's determination, or choosing to go straight to court",
+   "next": "Staunton Circuit Court (the application names the \"City of Staunton\"; the city attorney defends)",
+   "type": "judicial review",
+   "deadline": "Whichever is latest: three years from the last day of the tax year, one year from the assessment, one year from the Tax Commissioner's final determination, or one year from a final determination under § 58.1-3981",
+   "basis": "Va. Code § 58.1-3984(A); Va. Code § 58.1-3703.1(A)(7)(a)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made."
+  },
+  {
+   "trigger": "Licensed in several localities whose methods would tax more than 100% of your gross receipts, and no apportionment agreement is reached",
+   "next": "Commissioner of the Revenue first: tell it that the localities' methods conflict, and it must make a good faith effort to reach an apportionment agreement with the other localities. If none is reached, either you or the Commissioner may ask the Department of Taxation for an advisory opinion, with notice to the other.",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(3)(c); Va. Code § 58.1-3701",
+   "quote": "either the assessor or taxpayer may seek an advisory opinion from the Department of Taxation pursuant to § 58.1-3701"
+  }
+ ],
+ "caveats": [
+  "The City of Staunton's website (www.ci.staunton.va.us) refuses automated readers, so the city pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The live pages may have changed since; confirm on them or by phone before you act. The 2027 renewal form will carry new dates.",
+  "Local law. The Staunton City Code is now published on eCode360 (General Code). Its terms forbid reproducing the text, and the City Code page still links the older codepublishing.com site. So no Code text was read there. The only local-law quotes are from § 5.05.170 as the city's own Business License & Taxes page reproduces it. That reproduction stops after \"required to pay annually:\" and goes straight to the tax rates. It leaves out the license-fee part of the section, so the $30 fee and the $50,000 floor come from the city's forms and brochure, not from ordinance text. Article II's sections on due dates, penalties, interest, extensions and appeals were not read, and their numbers are not known.",
+  "New business deadline. The Start a Business page and the new business brochure say to apply within 30 days of beginning business. State law (§ 58.1-3703.1(A)(2)(a)) says to apply before beginning business, and lets the locality set payment of a gross-receipts tax at 30 or more days after beginning business (§ 58.1-3703.1(A)(2)(b)). The safe course is to apply before opening.",
+  "When a new business pays. No page says outright when a new business pays. The application asks for the total tax due and has an office-use payment box, which suggests payment with the application. Ask the office. State law says the tax on a license not based on gross receipts is paid with the application (§ 58.1-3703.1(A)(2)(b)); whether the city treats its $30 fee that way is not stated.",
+  "Penalty notice on the application. State law requires the forms to state the due date and the late-filing penalty. The new business application (created August 2024) states neither, and the Start a Business page mentions \"penalties and interest\" without amounts. Only the 2026 renewal form states the 10% penalty and 10% interest.",
+  "Weekend due date. March 1, 2026 was a Sunday. The 2026 renewal form says filings received or postmarked after March 1 are late and the penalty is assessed as of March 2, 2026. State law says that when a date set by a local governing body falls on a Saturday, Sunday, legal holiday or a day the office is closed, the act may be performed on the next business day (§ 1-210(E)), and the Commissioner's Taxes page says payments are then accepted the next business day without penalty. So a 2026 renewal filed or paid on Monday, March 2 should not have been penalized; if it was, ask for abatement. March 1, 2027 is a Monday.",
+  "Fee and tax above $50,000. The forms show \"$0-50,000 $30 fee\" and, over $50,000, a rate per $100 of gross receipts. They do not say whether the rate then applies to all gross receipts, as § 5.05.170's \"all the gross receipts\" reads, or only to receipts above $50,000. Section 58.1-3703(A) says the tax is not collected on gross receipts on which a license fee is charged. Ask the Commissioner how the tax is computed just above $50,000.",
+  "Population band. The $50 fee cap and the $50,000 tax floor apply because Staunton has between 25,000 and 50,000 people by the 2020 Census, per §§ 58.1-3703(A) and 58.1-3706(A). Staunton is close to 25,000, and the statute allows the Weldon Cooper Center estimate. Below 25,000 the cap would be $30, and the statutory $50,000 floor would not apply by its terms. The city's $30 fee is within either cap.",
+  "Wholesale rates. Staunton's wholesale merchant tax ($100 minimum; $0.50 per $100 of purchases from $10,001 to $50,000, then $0.12) is above the 5 cents per $100 cap in § 58.1-3716. That section lets a locality keep a higher rate it had on January 1, 1964. Whether Staunton's rate is grandfathered, and how the $100 minimum fits the fee cap and the $50,000 floor, was not checked.",
+  "Classification names differ. The forms' \"Professional (State licensed, i.e. - Real Estate Agent, Doctor)\" class carries the ordinance rate for \"financial, real estate and professional services\". The forms' \"Business Service\" class carries the rate for \"repair, personal and business services and all other businesses\". The forms give no rate for peddlers or itinerant merchants; state law caps their tax at $500 a year (§ 58.1-3717(C)). For direct sellers the forms give $0.20 per $100 of gross receipts over $4,000; state law caps the rate at 20 cents per $100 of retail sales or 5 cents per $100 of wholesale sales (§ 58.1-3719.1(A)), so a direct seller with wholesale sales should ask which rate applies.",
+  "Hobby and part-time work. The brochure says a license is required even for part-time or hobby-related business. State law defines a business as a continuous and regular course of dealing for a livelihood or profit, not an irregular or isolated transaction (§ 58.1-3700.1). Whether an occasional activity is a business is a question of fact; ask the Commissioner, or request a written ruling (§ 58.1-3703.1(A)(8)).",
+  "One license for several businesses. State law lets a person with two or more businesses at the same place elect one license for all of them, on the conditions in § 58.1-3703.1(A)(1), and every BPOL ordinance must include a provision substantially similar. None of the city pages or forms read mentions this election.",
+  "Appeal procedures not published. Section 58.1-3703.1(A)(5)(c) requires each locality to post its classification-appeal procedures, and the name and address for appeals, on its website. None of the pages read (Business License & Taxes, Commissioner of Revenue, Taxes, Start a Business) has them. The escalation route here comes from state law. It assumes appeals go to the Commissioner of the Revenue at P.O. Box 4; confirm with the office.",
+  "No deadline for the local decision. State law sets no time limit for the Commissioner of the Revenue to decide a license tax appeal. The only remedy for delay is the one-year rule in § 58.1-3703.1(A)(5)(e).",
+  "Refusal of a license. No statute was found that gives a specific appeal from a refusal to issue a license, for example for delinquent taxes, a missing SCC or DPOR document, or missing zoning approval. The practical route is to cure the defect. Court remedies against a refusal are not covered here. Operating without a license does not relieve the tax (§ 58.1-3700(B)), and omitted tax can be assessed for six prior years (§ 58.1-3703.1(A)(4)(b)). The local criminal penalty, if any, has not been checked.",
+  "Online service. The Pay for Business License Online link leads to a Tyler identity sign-in page, so the portal is not described here. The February 2026 online instructions (document 13539; Internet Archive copy of 2026-06-13) give the same steps as the superseded December 2023 instructions (document 11919): sign up for a self-service account, then ask the Commissioner's office to link your business license account numbers. They cover signing up and linking only. The 2026 renewal form says online renewal is being integrated, and that a business in its second or third year may not be able to file online. No page offers online applications for new businesses.",
+  "Card fees. The Treasurer's fee schedule lists 2.35% for real estate and personal property taxes, $2.25 for utilities and $0.25 for eChecks, but does not list business licenses. The renewal form says only that a fee is charged for card payments at the Treasurer's office.",
+  "Interest timing. The 2026 renewal form assesses interest from April 1, 2026. This matches the state rule that no interest is charged on a late payment made within 30 days of the due date (§ 58.1-3703.1(A)(2)(e)), at the 10% annual cap in § 58.1-3916. The local ordinance text on interest was not read.",
+  "Zoning and occupancy. The application says a Home Occupation Permit must be approved before a license can be issued. The 2021 instructions say zoning approval is required for any business. The Start a Business page says an occupancy permit may be required from the Zoning Administrator. The Planning & Zoning fee schedule (Internet Archive copy of 2026-05-10) lists a Zoning Permit Fee of $50.00, a Zoning Official Determination Letter at $75.00 and other fees, but no line for a Home Occupation Permit, so the permit fee is not certain. The Home Occupation application PDF could not be read (the Internet Archive copy returns \"not found\"), so the zoning steps for a business in commercial space are not given here. The Home Occupation regulations are in the City Code (eCode360) and were not read.",
+  "Trade names. The Start a Business page says the Clerk of the Circuit Court can help amend or terminate a partnership or trade name. Since 2020, assumed-name certificates are filed with the SCC (§ 59.1-74(B)), so that advice may be out of date. The SCC phone number also differs between the Start a Business page and the forms, so no SCC phone number is recorded; use the SCC website.",
+  "Form dates. The application PDF was created in August 2024 and was still linked in July 2026. The instructions date from June 2021 and the brochure from October 2021. The application asks for an SSN when there is no FEIN. That is the form's requirement.",
+  "Tax Commissioner appeal form. Virginia Tax's page says a local license tax appeal must contain the information that § 58.1-1821 requires, and that a copy must go to the local assessing officer. It does not say whether its Appeals Form must be used, so that form is not listed. Ruling and local advisory opinion requests use Form Rulings-Fee and may carry a fee. The BPOL regulations it cites (23 VAC 10-500-640 through 790) were not read.",
+  "Separate processes not modelled here: Home Occupation Permit and other zoning approvals, SCC assumed-name and entity filings, DPOR and contractor licensing, health permits, Virginia ABC licenses, homestay registration, the business tangible personal property return (due May 1), and meals, transient occupancy and short-term rental taxes, and the Staunton Enterprise Zone, which the Start a Business page says offers local and state tax and fee incentives to new or expanding businesses (contact the Department of Economic Development).",
+  "Privacy. The city pages and forms name the Commissioner of the Revenue, the Treasurer and Planning & Zoning staff, and link personal staff mailboxes. Those are omitted, including the Treasurer's name from the mailing address. Only office addresses, main office lines, the office fax, the role-shaped revenue@ci.staunton.va.us mailbox (printed on the Commissioner's own application, instructions, renewal and brochure) and official portals are listed. Court judges and the clerk are not named."
+ ],
+ "sources": [
+  {
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "title": "Business License & Taxes | City of Staunton (Internet Archive copies of Internet Archive copy of 17 July 2026, and Internet Archive copy of 15 February 2026; the license text is the same in all three)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/i-want-to-/apply-for/business-license",
+   "title": "I Want To > Apply For > Business License | City of Staunton (redirects to the Business License & Taxes page; Internet Archive copy of 9 February 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/business/start-a-business",
+   "title": "Start a Business | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://services.ci.staunton.va.us/mss/citizens/BusinessLicenses/Default.aspx",
+   "title": "City of Staunton self-service: Business Licenses (leads to a Tyler identity sign-in page)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue",
+   "title": "Commissioner of Revenue | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/taxes",
+   "title": "Taxes (Commissioner of Revenue) | City of Staunton (Internet Archive copy of 22 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/city-treasurer/paying-taxes-fees",
+   "title": "Paying Taxes & Fees (City Treasurer) | City of Staunton (Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "title": "Planning & Zoning Division | City of Staunton (Internet Archive copy of 7 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees",
+   "title": "Planning & Zoning Fees | City of Staunton (Internet Archive copy of 10 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/government/city-code",
+   "title": "City Code | City of Staunton (Internet Archive copy of 10 February 2026; links codepublishing.com; the Code is now on eCode360, https://ecode360.com/ST4660, not confirmed under its terms)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000",
+   "title": "Business License Application, City of Staunton, with Business License Classifications and Rates (PDF created 2024-08-30; Internet Archive copy of 17 September 2025; same document URL still linked on 2026-07-17)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10189/637589349907730000",
+   "title": "Business License Application Instructions, Commissioner of the Revenue (PDF created 2021-06-10; Internet Archive copy of 17 September 2025)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13464/639032042975570000",
+   "title": "2026 Business License Renewal, Commissioner of the Revenue (PDF created 2026-01-05; Internet Archive copy of 7 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/10580/637770598538870000",
+   "title": "Business License Information for the City of Staunton (new business brochure; PDF created 2021-10-26; Internet Archive copy of 17 September 2025)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/11919/638375581950300000",
+   "title": "Signing up for Business License Account Online (superseded December 2023 Word instructions; Internet Archive copy of 17 September 2025)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/13539/639057043904400000",
+   "title": "Signing up for Business License Account Online (February 2026 PDF linked as \"(Instructions)\" on the Business License & Taxes page; Internet Archive copy of 13 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.tax.virginia.gov/administrative-appeals",
+   "title": "Administrative Appeals | Virginia Tax",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/staunton/home",
+   "title": "Staunton Circuit Court | Virginia's Judicial System",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "title": "Va. Code § 1-210",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "title": "Va. Code § 58.1-3700",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "title": "Va. Code § 58.1-3700.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3701/",
+   "title": "Va. Code § 58.1-3701",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "title": "Va. Code § 58.1-3703",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "title": "Va. Code § 58.1-3703.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "title": "Va. Code § 58.1-3706",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3714/",
+   "title": "Va. Code § 58.1-3714",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715/",
+   "title": "Va. Code § 58.1-3715",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3716/",
+   "title": "Va. Code § 58.1-3716",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3717/",
+   "title": "Va. Code § 58.1-3717",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3719.1/",
+   "title": "Va. Code § 58.1-3719.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3732/",
+   "title": "Va. Code § 58.1-3732",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "title": "Va. Code § 58.1-3916",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/59.1-69/",
+   "title": "Va. Code § 59.1-69",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/59.1-74/",
+   "title": "Va. Code § 59.1-74",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 97,
+  "quotes_confirmed": 97,
+  "removed": [
+   "legal_basis Va. Code § 58.1-3706(A): the quote was word for word, but it began mid-sentence, after the words \"no local license tax ...\", so it read as if a tax shall be imposed on businesses below $100,000 or $50,000, the opposite of the statute. Replaced with the statute's next sentence (a business over $100,000, or $50,000, as applicable, may be subject to the tax), which is confirmed in the index text."
+  ],
+  "corrections": [
+   "Quotes: all 59 original state-law quotes are in the indexed text of the sections they cite (lexflow check_quotes: 59 of 59), and all 31 original city quotes are in the Internet Archive copies of the cited city pages and PDFs, fetched again by the verifier. The 7 quotes added below are confirmed the same way (final file: 65 state-law quotes matched by check_quotes, 32 city quotes found in the cited pages).",
+   "Weekend due date: Va. Code § 1-210(E) lets an act due on a Saturday, Sunday, holiday or office-closed day be done the next business day. March 1, 2026 was a Sunday, so the 2026 form's penalty \"as of March 2, 2026\" conflicts with state law and with the Taxes page. Added a § 1-210(E) legal_basis quote; s9 deadline, s11, the late-penalty fee entry and the weekend caveat now say so (the caveat had treated it as an open question).",
+   "s11: state law says a 10% penalty \"may\" be imposed, and that only the late-filing penalty is charged when both filing and payment are late unless there is a history of noncompliance (§ 58.1-3703.1(A)(2)(d)); added, with a legal_basis quote.",
+   "s12: the step said the Commissioner \"can\" assess omitted tax; § 58.1-3703.1(A)(4)(b) says \"shall\", for fraud or failure to apply, for the current license year and the six preceding years. Reworded.",
+   "s3: § 58.1-3714(B)(2) requires every contractor to certify workers' compensation compliance in writing at each application and renewal, not only where coverage is required; reworded. The SCC registration rule for incorporated businesses and partnerships is now attributed to the city's instructions, which say it.",
+   "s1: added the state single-license election for several businesses at one place (§ 58.1-3703.1(A)(1)) and the state definition of a business (continuous and regular course of dealing, not an irregular or isolated transaction, § 58.1-3700.1), next to the city's statement that hobby and part-time businesses need a license; three legal_basis quotes and two caveats added.",
+   "s2 and fees: the Planning & Zoning fee schedule is in the Internet Archive (copy of 2026-05-10) and was read: it lists a Zoning Permit Fee of $50.00 and no home occupation line. Added a fee entry with that quote, a source, and updated s2's fee and the zoning caveat; the modeller had recorded it as not read.",
+   "Form f4 and the online caveat: the February 2026 online instructions (document 13539) are in the Internet Archive (copy of 2026-06-13) and were read; they give the same sign-up and account-linking steps as the 2023 version. Title, fillable (false) and caveat updated; source added.",
+   "Escalation: the two collection-suspension rungs now give the statutory exceptions (collection jeopardized by delay, no answer to a request for information, frivolous appeal) from § 58.1-3703.1(A)(5)(d) and (6)(b); the apportionment rung now says the Commissioner must first try in good faith to reach an apportionment agreement before either side seeks an advisory opinion (§ 58.1-3703.1(A)(3)(c)).",
+   "Summary: an ABC license is not a prerequisite to the business license (the instructions say to notify the Commissioner once it is obtained); the late charges are attributed to the city's renewal form.",
+   "s8: the $40 to $500 range is of the ABC charges the city lists; it says not all are listed.",
+   "s9: \"return it with payment\" replaced by the form's rule that the renewal and payment be submitted or postmarked by March 1.",
+   "Caveats: added that state law has a license not based on gross receipts paid with the application (§ 58.1-3703.1(A)(2)(b), with a legal_basis quote); that state law caps a direct seller's wholesale sales at 5 cents per $100 while the city's forms give 20 cents (§ 58.1-3719.1(A)); and the Staunton Enterprise Zone incentives on the Start a Business page as a separate process.",
+   "Sources: added the 2026-08-09 Internet Archive copy of the Business License & Taxes page (license text unchanged), the 2026 online instructions, the Planning & Zoning fees page and Va. Code § 1-210. Form f6: the Internet Archive lists a 2026-04-13 copy of the Home Occupation application, but it returns not found.",
+   "Checked and left as is: Commissioner and Treasurer addresses, phones, fax, hours and the drop box against the Commissioner, Taxes and Paying Taxes & Fees pages; the Circuit Court address, Clerk's Office phone and hours against the live vacourts.gov page; the Virginia Tax appeals rules against its live page; the application and renewal PDFs have no fillable fields; no staff names or personal mailboxes are recorded (revenue@ci.staunton.va.us is the office mailbox printed on the Commissioner's own forms and instructions); ids are unique and every form id a step cites exists."
+  ],
+  "open_issues": [
+   "The city site (www.ci.staunton.va.us) still refuses the research client (HTTP 403), so every city page and PDF was read from Internet Archive copies of September 2025 to August 2026, not live. The 2027 renewal form will carry new dates. This does not change any step, but the pages should be confirmed live.",
+   "Staunton City Code Chapter 5.05, Article II, beyond § 5.05.170 as the city page reproduces it, was not read (eCode360 terms forbid copying). The ordinance's own due date, penalty, interest, extension and appeal sections are not known; the $30 fee and the $50,000 floor come from the city's forms. The steps rest on the forms and on state law, which every BPOL ordinance must follow in substance (§ 58.1-3703.1(A)).",
+   "The city publishes no classification-appeal procedures, or name and address for appeals, on its website, although § 58.1-3703.1(A)(5)(c) requires them; the escalation route is built from state law and assumes appeals go to the Commissioner of the Revenue.",
+   "How the tax is computed just above $50,000 (on all gross receipts, as the ordinance text and the application's note say, or only above $50,000) is not settled by any source read; s5 follows the application's instruction.",
+   "Whether Staunton's wholesale merchant rates, above the 5 cents per $100 cap in § 58.1-3716, are grandfathered from January 1, 1964 was not checked.",
+   "Staunton's population is close to 25,000, the line that sets the fee cap and the $50,000 floor; the city's $30 fee is within either cap.",
+   "The Home Occupation Permit fee and application were not confirmed (the fee schedule has no home occupation line; the application PDF could not be read)."
+  ]
+ }
+}

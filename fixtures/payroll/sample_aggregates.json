@@ -1,0 +1,148 @@
+{
+ "about": "Sample aggregates of official public payroll data (lexflow.payroll): headcount and rounded pay quartiles by government, agency and title. No names, IDs, dates or demographics were requested, kept or written. Headcounts under min_count are blank; pay is shown only for groups of min_pay or more, rounded to the steps below, and is withheld where a figure could single out one person or where two published groups differ by fewer than min_pay people, and is shown for one period per fetch. See docs/design/payroll-plan.md, section 6.1.",
+ "generated_at": "2026-10-10T16:54:47Z",
+ "min_count": 5,
+ "min_pay": 11,
+ "min_shared": 5,
+ "rounding": {
+  "annual": 1000.0,
+  "paid_year": 1000.0,
+  "monthly": 100.0,
+  "daily": 10.0,
+  "hourly": 1.0
+ },
+ "sources": [
+  {
+   "id": "va-norfolk-salaries",
+   "state": "va",
+   "gov_id": "47212200100000",
+   "government": "City of Norfolk",
+   "publisher": "City of Norfolk, Department of Human Resources",
+   "title": "Employee Salaries",
+   "url": "https://data.norfolk.gov/d/4fsk-z8s8",
+   "endpoint": "https://data.norfolk.gov/resource/4fsk-z8s8.json",
+   "licence": "Public Domain",
+   "cadence": "daily",
+   "person_level": true,
+   "fields": {
+    "agency": "department",
+    "title": "job_title",
+    "pay": "annual_base_rate"
+   },
+   "never_read": [
+    "start_date",
+    "title_date"
+   ],
+   "query": {
+    "$select": "`department`, `job_title`, `annual_base_rate`, count(*) AS row_count",
+    "$group": "`department`, `job_title`, `annual_base_rate`",
+    "$order": "`department`, `job_title`, `annual_base_rate`"
+   },
+   "retrieved_at": "2026-10-10T16:54:47Z",
+   "requests": 2,
+   "rows_received": 2011,
+   "truncated": false,
+   "people": 4927,
+   "cells": 1082,
+   "agencies": 42,
+   "headcounts_withheld": 850,
+   "suppressed_cells": 1023,
+   "pay_groups_withheld": {
+    "small": 1015,
+    "basis": 0,
+    "match": 70,
+    "overlap": 1,
+    "period": 0
+   }
+  },
+  {
+   "id": "wa-seattle-wages",
+   "state": "wa",
+   "gov_id": "48201702100000",
+   "government": "City of Seattle",
+   "publisher": "City of Seattle, Seattle Department of Human Resources",
+   "title": "City of Seattle Wage Data",
+   "url": "https://data.seattle.gov/d/2khk-5ukd",
+   "endpoint": "https://data.seattle.gov/resource/2khk-5ukd.json",
+   "licence": "Public Domain",
+   "cadence": "monthly",
+   "person_level": true,
+   "fields": {
+    "agency": "department",
+    "title": "job_title",
+    "pay": "hourly_rate"
+   },
+   "never_read": [
+    "first_name",
+    "last_name"
+   ],
+   "query": {
+    "$select": "`department`, `job_title`, `hourly_rate`, count(*) AS row_count",
+    "$group": "`department`, `job_title`, `hourly_rate`",
+    "$order": "`department`, `job_title`, `hourly_rate`"
+   },
+   "retrieved_at": "2026-10-10T16:54:53Z",
+   "requests": 2,
+   "rows_received": 4446,
+   "truncated": false,
+   "people": 14820,
+   "cells": 2215,
+   "agencies": 41,
+   "headcounts_withheld": 1535,
+   "suppressed_cells": 2002,
+   "pay_groups_withheld": {
+    "small": 1901,
+    "basis": 0,
+    "match": 101,
+    "overlap": 0,
+    "period": 0
+   }
+  }
+ ],
+ "aggregates": [
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "*", "title": "*", "period": "as of 2026-10-10", "n": 4927, "pay_basis": "annual", "n_pay": 4010, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": 917, "p25": 21.0, "median": 28.0, "p75": 34.0, "suppressed": false}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Police", "title": "*", "period": "as of 2026-10-10", "n": 817, "pay_basis": "annual", "n_pay": 712, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": 105, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Fire-Rescue", "title": "*", "period": "as of 2026-10-10", "n": 581, "pay_basis": "annual", "n_pay": 579, "p25": 62000.0, "median": 72000.0, "p75": 92000.0, "suppressed": false, "other_pay": [{"pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Sheriff and Jail", "title": "*", "period": "as of 2026-10-10", "n": 413, "pay_basis": "hourly", "n_pay": 389, "p25": 29.0, "median": 33.0, "p75": 40.0, "suppressed": false, "other_pay": [{"pay_basis": "annual", "n_pay": 24, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Human Services", "title": "*", "period": "as of 2026-10-10", "n": 398, "pay_basis": "annual", "n_pay": 369, "p25": 52000.0, "median": 56000.0, "p75": 62000.0, "suppressed": false, "other_pay": [{"pay_basis": "hourly", "n_pay": 29, "p25": 23.0, "median": 24.0, "p75": 26.0, "suppressed": false}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Parks and Recreation", "title": "*", "period": "as of 2026-10-10", "n": 348, "pay_basis": "annual", "n_pay": 202, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": 146, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Public Works", "title": "*", "period": "as of 2026-10-10", "n": 344, "pay_basis": "annual", "n_pay": 335, "p25": 47000.0, "median": 52000.0, "p75": 62000.0, "suppressed": false, "other_pay": [{"pay_basis": "hourly", "n_pay": 9, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Utilities", "title": "*", "period": "as of 2026-10-10", "n": 324, "pay_basis": "annual", "n_pay": 322, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Norfolk Community Services Board", "title": "*", "period": "as of 2026-10-10", "n": 277, "pay_basis": "annual", "n_pay": 241, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": 36, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Clerk of the Circuit Court", "title": "*", "period": "as of 2026-10-10", "n": 31, "pay_basis": "hourly", "n_pay": 19, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "annual", "n_pay": 12, "p25": 79000.0, "median": 102000.0, "p75": 116000.0, "suppressed": false}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "*", "period": "as of 2026-10-10", "n": 14, "pay_basis": "annual", "n_pay": 13, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [{"pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true}], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Sheriff and Jail", "title": "Records Clerk", "period": "as of 2026-10-10", "n": 9, "pay_basis": "hourly", "n_pay": 9, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Clerk of the Circuit Court", "title": "Deputy Clerk I - CC", "period": "as of 2026-10-10", "n": 8, "pay_basis": "hourly", "n_pay": 8, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Clerk of the Circuit Court", "title": "In Court Clerk - CC", "period": "as of 2026-10-10", "n": 5, "pay_basis": "hourly", "n_pay": 5, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "Circuit Court Judges", "title": "Law Clerk", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "Chief Deputy City Clerk", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "City Clerk", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "DepCty Clerk/ExecAsst to Mayor", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "Deputy City Clerk / Assistant", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "Deputy City Clerk/AdminAlyst I", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "Records & Information Clerk", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Clerk", "title": "Records Administrator", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "va", "gov_id": "47212200100000", "government": "City of Norfolk", "agency": "City Real Estate Assessor", "title": "Land Records Specialist", "period": "as of 2026-10-10", "n": null, "pay_basis": "annual", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "va-norfolk-salaries"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "*", "title": "*", "period": "as of 2026-10-10", "n": 14820, "pay_basis": "hourly", "n_pay": 14820, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Parks and Recreation Department", "title": "*", "period": "as of 2026-10-10", "n": 2259, "pay_basis": "hourly", "n_pay": 2259, "p25": 27.0, "median": 33.0, "p75": 42.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle City Light", "title": "*", "period": "as of 2026-10-10", "n": 1817, "pay_basis": "hourly", "n_pay": 1817, "p25": 52.0, "median": 70.0, "p75": 87.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Police Department", "title": "*", "period": "as of 2026-10-10", "n": 1657, "pay_basis": "hourly", "n_pay": 1657, "p25": 56.0, "median": 76.0, "p75": 77.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Public Utilities", "title": "*", "period": "as of 2026-10-10", "n": 1607, "pay_basis": "hourly", "n_pay": 1607, "p25": 45.0, "median": 55.0, "p75": 71.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Department of Transportation", "title": "*", "period": "as of 2026-10-10", "n": 1222, "pay_basis": "hourly", "n_pay": 1222, "p25": 42.0, "median": 60.0, "p75": 73.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Fire Department", "title": "*", "period": "as of 2026-10-10", "n": 1146, "pay_basis": "hourly", "n_pay": 1146, "p25": 51.0, "median": 55.0, "p75": 60.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Human Services", "title": "*", "period": "as of 2026-10-10", "n": 716, "pay_basis": "hourly", "n_pay": 716, "p25": 22.0, "median": 48.0, "p75": 53.0, "suppressed": false, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Public Library", "title": "*", "period": "as of 2026-10-10", "n": 656, "pay_basis": "hourly", "n_pay": 656, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Municipal Courts", "title": "Court Clerk", "period": "as of 2026-10-10", "n": 31, "pay_basis": "hourly", "n_pay": 31, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Center", "title": "Manager 2, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": 7, "pay_basis": "hourly", "n_pay": 7, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Seattle Municipal Courts", "title": "Court Clerk Supervisor", "period": "as of 2026-10-10", "n": 5, "pay_basis": "hourly", "n_pay": 5, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Community Safety and Communication Center", "title": "Manager 2, Customer Service, Public Information, and Promotion-L17", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Community Safety and Communication Center", "title": "Strategic Advisor 1, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Construction and Inspections", "title": "Manager 2, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Construction and Inspections", "title": "Manager 3, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Finance and Administrative Service", "title": "Manager 1, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Finance and Administrative Service", "title": "Manager 2, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Finance and Administrative Service", "title": "Strategic Advisor 1, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Housing Office", "title": "Strategic Advisor 1, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"},
+  {"state": "wa", "gov_id": "48201702100000", "government": "City of Seattle", "agency": "Human Services", "title": "Strategic Advisor 2, Customer Service, Public Information & Promotion", "period": "as of 2026-10-10", "n": null, "pay_basis": "hourly", "n_pay": null, "p25": null, "median": null, "p75": null, "suppressed": true, "other_pay": [], "source": "wa-seattle-wages"}
+ ]
+}

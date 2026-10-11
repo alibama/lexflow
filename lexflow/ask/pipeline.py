@@ -99,8 +99,10 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
     ``oracle_refs`` answers from those sections instead of retrieving (the benchmark's oracle-sections arm)."""
     t0 = time.time()
     timings = {}
+    # no "published": re-asking keeps an answer's wiki tick; but a new answer is not the one a person reviewed, so
+    # the review goes, and the wiki shows it again only once someone signs the new text (lexflow/signoff.py)
     row = {"question_id": qid, "target": state, "state": state, "gov_id": None, "question_text": plan.text,
-           "model": None}                        # no "published": re-asking keeps an answer's wiki tick
+           "model": None, "reviewed_by": None}
     if not statutes.have(state):
         row.update(status="no-statutes", answer=db_json({"status": "no-statutes", "why":
                    f"{S.NAME[state]} has no statute file in open-us-law"}), seconds=0.0)
@@ -111,7 +113,7 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
     r = oracle(state, oracle_refs) if oracle_refs is not None else retrieve(state, plan, emb)
     timings["retrieve"] = round(time.time() - t0, 1)
     chosen = r["chosen"]
-    quotes, steps, facts, bpmn, summary, notes = [], [], None, None, None, []
+    quotes, steps, facts, bpmn, summary, notes, text = [], [], None, None, None, [], ""
     if chosen:
         texts = texts_of(state, chosen)
         text = statutes.combined_text(texts)
@@ -128,13 +130,15 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
             row["model"] = asker.client.model
             timings["summary"] = round(time.time() - t1, 1)
     status = gate(r, summary)
+    checked = quote_counts(quotes, steps, text)
     cases = L.court_decisions(state, [c["ref"] for c in chosen], log=log) if chosen and status != "not_found" else []
     md = A.markdown(plan.text, S.NAME[state], chosen, quotes, steps, summary, status)
     row.update(status=status, sections=db_json(r), facts=db_json(facts) if facts else None, bpmn=bpmn,
                answer=db_json({"status": status, "quotes": quotes, "steps": steps, "summary": summary,
                                "markdown": md, "notes": notes, "cases": cases}),
                metrics=db_json({"timings": timings, "concepts": r["concepts"], "plan": plan.groups,
-                                "plan_source": plan.source, "kind": plan.kind}),
+                                "plan_source": plan.source, "kind": plan.kind, **checked,
+                                "answered_at": db.now()}),     # when its quotes were taken from the text
                seconds=round(time.time() - t0, 1))
     if store:
         db.upsert(con, "asked_answers", [row])
@@ -142,6 +146,48 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
     log(f"{qid} · {state}: {status}; {len(chosen)} sections ({', '.join(c['ref'] for c in chosen)}); "
         f"{len(quotes)} quotes, {len(steps)} steps in {row['seconds']}s")
     return row
+
+
+def _norm(s: str) -> str:
+    return re.sub(r"\s+", " ", str(s or "").replace("’", "'")).strip()
+
+
+def quote_counts(quotes: list[dict], steps: list[dict], text: str) -> dict:
+    """How many of an answer's quotes (key provisions and steps) appear word for word in the statute text, as the
+    wiki label reports them ("21 of 23 quotes matched")."""
+    body = _norm(text)
+    said = [q.get("text") for q in quotes or []] + [s.get("quote") for s in steps or []]
+    said = [_norm(x) for x in said if x]
+    return {"quotes_checked": len(said), "quote_misses": sum(1 for x in said if x not in body)} if said else {}
+
+
+def recount(row: dict) -> dict | None:
+    """The quote count of a stored answer made again now, by ``quote_counts`` (the matcher the answer was made
+    with) against the text of the sections it chose: the search index's rows by id, else the downloaded statutes by
+    section number.  ``{"quotes_checked": n, "quote_misses": m}``; ``{}`` for an answer with no quotes; None when
+    the statute text is not at hand here, so a page never states a count it did not make."""
+    import sqlite3
+    from . import index as I
+    loads = lambda v: (db.loads(v, {}) if isinstance(v, str) else v) or {}     # noqa: E731
+    a, sec = loads(row.get("answer")), loads(row.get("sections"))
+    quotes, steps, chosen = a.get("quotes") or [], a.get("steps") or [], sec.get("chosen") or []
+    if not [q for q in quotes if q.get("text")] + [x for x in steps if x.get("quote")]:
+        return {}
+    state = row.get("state")
+    if not chosen or not state:
+        return None
+    texts = None
+    try:
+        if I.path(state).exists() and all(c.get("id") is not None for c in chosen):
+            texts = texts_of(state, chosen)
+    except (KeyError, ValueError, OSError, sqlite3.Error):
+        texts = None
+    if texts is None:
+        try:
+            texts = statutes.section_texts(state, [c["ref"] for c in chosen])
+        except (KeyError, ValueError, OSError, FileNotFoundError):
+            return None
+    return quote_counts(quotes, steps, statutes.combined_text(texts))
 
 
 def texts_of(state: str, chosen: list[dict]) -> list:
@@ -238,7 +284,7 @@ def answer_place(con, qid: str, plan: Plan, g: dict, state_row: dict, rows: list
     ctc = L.contacts(con, g["gov_id"])
     row = {k: state_row.get(k) for k in ("question_id", "state", "question_text", "status", "sections", "facts",
                                          "bpmn", "answer", "metrics", "model", "seconds")}
-    row.update(target=g["gov_id"], gov_id=g["gov_id"],
+    row.update(target=g["gov_id"], gov_id=g["gov_id"], reviewed_by=None,
                local=db_json({"name": g["name"], "kind": g["kind"], "locus": hits, "contacts": ctc,
                               "web": L.web_pages(g, plan)}))
     db.upsert(con, "asked_answers", [row])

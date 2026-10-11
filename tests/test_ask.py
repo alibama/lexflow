@@ -143,16 +143,28 @@ def test_place_processes_are_sub_pages(con, va_statutes, monkeypatch, tmp_path):
     from lexflow.municipal import scoring
     scoring.run(con, "va", log=lambda *_: None)
     g = db.one(con, "SELECT * FROM governments WHERE name='City of Charlottesville'")
-    db.upsert(con, "asked_answers", [{"question_id": "jail_phone_rates", "target": g["gov_id"], "state": "va",
-                                      "gov_id": g["gov_id"], "question_text": "Who sets jail phone rates?",
-                                      "status": "not_found", "answer": json.dumps({"quotes": []}), "published": 1}])
+    # on the wiki only because it is marked for it and a named person has reviewed it (tests/test_gate0.py)
+    from lexflow import signoff
+    row = {"question_id": "jail_phone_rates", "target": g["gov_id"], "state": "va", "gov_id": g["gov_id"],
+           "question_text": "Who sets jail phone rates?", "status": "not_found", "answer": json.dumps({"quotes": []}),
+           "published": 1}
+    from lexflow import reviewers
+    listed = reviewers.add(con, "Ana Villamar", "researcher", added_by="operator")     # on the operator's list
+    reviewer = {"reviewer": listed["id"], "date": "2026-10-01", "attested": True}
+    signed = signoff.bind(reviewer, signoff.row_text(row, signoff.ASKED_TEXT))     # a sign-off of this text
+    db.upsert(con, "asked_answers", [{**row, "reviewed_by": signed}])
+    # recorded as this copy's review API records it (a page names a reviewer only for a review this copy recorded)
+    reviewers.log_review(con, "review", row["question_id"], row["target"], listed["id"], signed["text_hash"],
+                         at="2026-10-01T12:00:00Z")
     con.commit()
     pages = LX.all_pages(con)
     assert all(p.startswith("lexflow:") for p in pages)
     main = pages["lexflow:va:charlottesville"]
     assert "[[lexflow:va:charlottesville:records|" in main and "Who sets jail phone rates?" in main
     assert "lexflow:va:charlottesville:records" in pages and "lexflow:va:charlottesville:jail_phone_rates" in pages
-    assert "Machine answer, not reviewed" in pages["lexflow:va:charlottesville:jail_phone_rates"]
+    asked = pages["lexflow:va:charlottesville:jail_phone_rates"]
+    assert "Drafted with an AI system from the statute text" in asked
+    assert "Reviewed by Ana Villamar, researcher, on 1 October 2026" in asked
     assert "[[lexflow:va:charlottesville|" in pages["lexflow:va"]
     assert "===== What state law requires =====" not in main                # the detail is on the sub-page
 
@@ -178,3 +190,16 @@ def test_ask_api_queues_and_lists(con, monkeypatch):
         assert job["step"] == "ask" and json.loads(job["args"])["question_id"] == r.json()["question_id"]
         assert c.post("/api/ask", json={"question": "short", "targets": ["va"]}).status_code == 400
         assert c.get("/api/ask/suggestions").json()[0]["questions"]
+        # the Processes page lists every asked question: its kind, state answers and draft maps
+        from lexflow.ask import pipeline as AP
+        qid = r.json()["question_id"]
+        text = "How do I appeal a property tax assessment?"
+        AP.save_question(con, text, PL.plan(text), qid)          # what the job does before it answers
+        db.upsert(con, "asked_answers", [{"question_id": qid, "target": "va", "state": "va", "gov_id": None,
+                                          "question_text": "How do I appeal a property tax assessment?",
+                                          "status": "partial", "bpmn": "<definitions/>", "answer": "{}",
+                                          "updated_at": db.now()}])
+        con.commit()
+        listed = {q["question_id"]: q for q in c.get("/api/ask").json()}[qid]
+        assert listed["kind"] == "process" and listed["states"] == 1 and listed["maps"] == 1
+        assert c.get(f"/api/ask/{qid}").json()["answers"][0]["map"] is True

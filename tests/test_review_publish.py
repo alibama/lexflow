@@ -5,6 +5,7 @@ import re
 
 import pytest
 
+from lexflow import signoff
 from lexflow.publish import lexipedia as LX
 from lexflow.publish import wikibase_lexipedia as WL
 from lexflow.store import db
@@ -14,11 +15,39 @@ def _gov(gov_id, state, name, kind="municipality", county=None, pop=None):
     return dict(gov_id=gov_id, state=state, name=name, kind=kind, county_name=county, population=pop)
 
 
+# a review naming a (made-up) person on the operator's reviewer list (lexflow/reviewers.py): the list row is put in
+# every test store below, since a page names a reviewer only from the list
+REVIEWER = {"reviewer": "rv-0000000b", "date": "2026-10-01", "attested": True}
+
+
+@pytest.fixture(autouse=True)
+def _reviewer_on_the_list(request):
+    if "con" in request.fixturenames:
+        con = request.getfixturevalue("con")
+        db.upsert(con, "reviewers", [{"id": "rv-0000000b", "name": "Ana Villamar", "role": "researcher",
+                                      "added_by": "operator", "added_at": "2026-09-30T00:00:00Z"}])
+        con.commit()
+
+
 def _asked(qid, g, text="Do I need a permit for a deck?", gov=True):
-    return {"question_id": qid, "target": g["gov_id"] if gov else g["state"], "state": g["state"],
-            "gov_id": g["gov_id"] if gov else None, "question_text": text, "status": "answered",
-            "answer": json.dumps({"quotes": []}), "local": json.dumps({"name": g["name"]} if gov else {}),
-            "published": 1}
+    """An asked answer marked for the wiki and signed by a (made-up) reviewer of this text: only those are
+    published (the sign-off carries the hash of the text it covers, lexflow/signoff.py)."""
+    row = {"question_id": qid, "target": g["gov_id"] if gov else g["state"], "state": g["state"],
+           "gov_id": g["gov_id"] if gov else None, "question_text": text, "status": "answered",
+           "answer": json.dumps({"quotes": []}), "local": json.dumps({"name": g["name"]} if gov else {}),
+           "published": 1}
+    return {**row, "reviewed_by": signoff.bind(REVIEWER, signoff.row_text(row, signoff.ASKED_TEXT))}
+
+
+def _recorded(con):
+    """The review_log entries the review API writes for each signed answer: a page names a reviewer only for a
+    review this copy recorded (lexflow/reviewers.py, ``recorded``)."""
+    from lexflow import reviewers
+    for r in db.rows(con, "SELECT question_id, target, reviewed_by FROM asked_answers WHERE reviewed_by IS NOT NULL"):
+        rev = json.loads(r["reviewed_by"])
+        reviewers.log_review(con, "review", r["question_id"], r["target"], rev["reviewer"], rev["text_hash"],
+                             at=f"{rev['date']}T12:00:00Z")
+    con.commit()
 
 
 def _links(pages):
@@ -55,8 +84,9 @@ def test_same_named_places_get_distinct_page_ids(con):
     rows = [_asked("deck", OAK_COOKE), _asked("deck", OAK_KAUFMAN)]
     for r, county in zip(rows, ("Cooke", "Kaufman")):
         r["local"] = json.dumps({"name": f"Oak Ridge, {county} County"})
+        r["reviewed_by"] = signoff.bind(REVIEWER, signoff.row_text(r, signoff.ASKED_TEXT))   # signed as changed
     db.upsert(con, "asked_answers", rows)
-    con.commit()
+    _recorded(con)
     pages = LX.all_pages(con)
     a, b = "lexflow:tx:oak_ridge_cooke:deck", "lexflow:tx:oak_ridge:deck"
     assert "Cooke County" in pages[a] and "Kaufman County" in pages[b]          # neither answer overwrites the other
@@ -81,7 +111,7 @@ def test_place_answers_without_a_place_page_are_linked_and_have_no_dead_links(co
     db.upsert(con, "local_answers", [{"gov_id": cville["gov_id"], "state": "va", "question": "records",
                                       "summary": "Ask the city's FOIA officer."}])
     db.upsert(con, "asked_answers", [_asked("deck", cville), _asked("deck", fairfax), _asked("deck", cville, gov=False)])
-    con.commit()
+    _recorded(con)
     pages = LX.all_pages(con)
     loose = pages["lexflow:va:fairfax_county:deck"]
     assert "lexflow:va:fairfax_county" not in pages
@@ -105,7 +135,7 @@ def test_headings_and_link_titles_are_not_nowiki_wrapped(con):
     db.upsert(con, "governments", [va])
     q = "Does § 4-202(c) apply to <records> held by a contractor?"
     db.upsert(con, "asked_answers", [_asked("contractor_records", va, text=q, gov=False)])
-    con.commit()
+    _recorded(con)
     pages = LX.all_pages(con)
     page = pages["lexflow:va:contractor_records"]
     assert page.splitlines()[0] == f"====== {q} ======"

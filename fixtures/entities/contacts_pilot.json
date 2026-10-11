@@ -1,0 +1,4334 @@
+{
+ "generated_at": "2026-10-10T14:04:46Z",
+ "tool": "scripts/contacts_check.py",
+ "read_only": true,
+ "params": {
+  "states": [
+   "va",
+   "md",
+   "dc",
+   "ca",
+   "tx",
+   "oh",
+   "me"
+  ],
+  "quota": "va=4,md=3,dc=9,*=2",
+  "workers": 6,
+  "timeout_s": 15.0,
+  "min_interval_per_domain_s": 1.0,
+  "user_agent": "lexflow-research/0.1 (https://github.com/alibama/lexflow)",
+  "fallback": true,
+  "wikidata": true,
+  "salt": "contacts-pilot-v1:"
+ },
+ "sample": {
+  "strata": {
+   "va/large": 4,
+   "va/mid": 7,
+   "va/small": 4,
+   "md/large": 4,
+   "md/mid": 4,
+   "md/small": 4,
+   "dc/large": 1,
+   "ca/large": 2,
+   "ca/mid": 2,
+   "ca/small": 2,
+   "tx/large": 2,
+   "tx/mid": 2,
+   "tx/small": 2,
+   "oh/large": 2,
+   "oh/mid": 2,
+   "oh/small": 2,
+   "me/large": 2,
+   "me/mid": 2,
+   "me/small": 2,
+   "emails": 9,
+   "anchor": 3,
+   "pages": 11,
+   "phones": 11
+  },
+  "skipped_personal_mailboxes": 2,
+  "governments": 49,
+  "items": 86
+ },
+ "requests": {
+  "http": 112,
+  "wikidata_batches": 3,
+  "wikidata_p856_probes": 0,
+  "dns_mx_queries": 9,
+  "max_per_domain": 10
+ },
+ "elapsed_s": 78.1,
+ "summary": {
+  "governments_by_website_state": {
+   "all_stored_websites_ok": 24,
+   "unverifiable": 6,
+   "only_a_redirect_works": 7,
+   "one_ok_one_stale_or_unverifiable": 4,
+   "nothing_works": 8
+  },
+  "broken_hard": 12,
+  "broken_soft": 1,
+  "fallbacks": {
+   "tried": 10,
+   "answered": 2,
+   "led_to_ok_or_moved": 1
+  },
+  "overall": {
+   "n": 86,
+   "ok": 46,
+   "moved": 8,
+   "broken": 13,
+   "unverifiable": 19,
+   "stale_rate": 0.244,
+   "stale_rate_of_verifiable": 0.313,
+   "broken_rate_of_verifiable": 0.194
+  },
+  "by_kind": {
+   "email": {
+    "n": 9,
+    "ok": 9,
+    "moved": 0,
+    "broken": 0,
+    "unverifiable": 0,
+    "stale_rate": 0.0,
+    "stale_rate_of_verifiable": 0.0,
+    "broken_rate_of_verifiable": 0.0
+   },
+   "page": {
+    "n": 11,
+    "ok": 6,
+    "moved": 0,
+    "broken": 0,
+    "unverifiable": 5,
+    "stale_rate": 0.0,
+    "stale_rate_of_verifiable": 0.0,
+    "broken_rate_of_verifiable": 0.0
+   },
+   "phone": {
+    "n": 11,
+    "ok": 3,
+    "moved": 0,
+    "broken": 0,
+    "unverifiable": 8,
+    "stale_rate": 0.0,
+    "stale_rate_of_verifiable": 0.0,
+    "broken_rate_of_verifiable": 0.0
+   },
+   "website": {
+    "n": 55,
+    "ok": 28,
+    "moved": 8,
+    "broken": 13,
+    "unverifiable": 6,
+    "stale_rate": 0.382,
+    "stale_rate_of_verifiable": 0.429,
+    "broken_rate_of_verifiable": 0.265
+   }
+  },
+  "by_state": {
+   "ca": {
+    "n": 6,
+    "ok": 2,
+    "moved": 0,
+    "broken": 2,
+    "unverifiable": 2,
+    "stale_rate": 0.333,
+    "stale_rate_of_verifiable": 0.5,
+    "broken_rate_of_verifiable": 0.5
+   },
+   "dc": {
+    "n": 12,
+    "ok": 6,
+    "moved": 0,
+    "broken": 0,
+    "unverifiable": 6,
+    "stale_rate": 0.0,
+    "stale_rate_of_verifiable": 0.0,
+    "broken_rate_of_verifiable": 0.0
+   },
+   "md": {
+    "n": 24,
+    "ok": 15,
+    "moved": 2,
+    "broken": 4,
+    "unverifiable": 3,
+    "stale_rate": 0.25,
+    "stale_rate_of_verifiable": 0.286,
+    "broken_rate_of_verifiable": 0.19
+   },
+   "me": {
+    "n": 6,
+    "ok": 4,
+    "moved": 0,
+    "broken": 2,
+    "unverifiable": 0,
+    "stale_rate": 0.333,
+    "stale_rate_of_verifiable": 0.333,
+    "broken_rate_of_verifiable": 0.333
+   },
+   "oh": {
+    "n": 6,
+    "ok": 2,
+    "moved": 2,
+    "broken": 1,
+    "unverifiable": 1,
+    "stale_rate": 0.5,
+    "stale_rate_of_verifiable": 0.6,
+    "broken_rate_of_verifiable": 0.2
+   },
+   "tx": {
+    "n": 6,
+    "ok": 4,
+    "moved": 0,
+    "broken": 2,
+    "unverifiable": 0,
+    "stale_rate": 0.333,
+    "stale_rate_of_verifiable": 0.333,
+    "broken_rate_of_verifiable": 0.333
+   },
+   "va": {
+    "n": 26,
+    "ok": 13,
+    "moved": 4,
+    "broken": 2,
+    "unverifiable": 7,
+    "stale_rate": 0.231,
+    "stale_rate_of_verifiable": 0.316,
+    "broken_rate_of_verifiable": 0.105
+   }
+  },
+  "by_tier_websites": {
+   "large": {
+    "n": 18,
+    "ok": 11,
+    "moved": 2,
+    "broken": 3,
+    "unverifiable": 2,
+    "stale_rate": 0.278,
+    "stale_rate_of_verifiable": 0.312,
+    "broken_rate_of_verifiable": 0.188
+   },
+   "mid": {
+    "n": 20,
+    "ok": 8,
+    "moved": 4,
+    "broken": 6,
+    "unverifiable": 2,
+    "stale_rate": 0.5,
+    "stale_rate_of_verifiable": 0.556,
+    "broken_rate_of_verifiable": 0.333
+   },
+   "small": {
+    "n": 17,
+    "ok": 9,
+    "moved": 2,
+    "broken": 4,
+    "unverifiable": 2,
+    "stale_rate": 0.353,
+    "stale_rate_of_verifiable": 0.4,
+    "broken_rate_of_verifiable": 0.267
+   }
+  },
+  "by_source_websites": {
+   "census-gus-2022+governments.website": {
+    "n": 34,
+    "ok": 16,
+    "moved": 4,
+    "broken": 11,
+    "unverifiable": 3,
+    "stale_rate": 0.441,
+    "stale_rate_of_verifiable": 0.484,
+    "broken_rate_of_verifiable": 0.355
+   },
+   "census-gus-2022+governments.website+wikidata": {
+    "n": 12,
+    "ok": 8,
+    "moved": 2,
+    "broken": 1,
+    "unverifiable": 1,
+    "stale_rate": 0.25,
+    "stale_rate_of_verifiable": 0.273,
+    "broken_rate_of_verifiable": 0.091
+   },
+   "governments.website+wikidata": {
+    "n": 3,
+    "ok": 1,
+    "moved": 1,
+    "broken": 0,
+    "unverifiable": 1,
+    "stale_rate": 0.333,
+    "stale_rate_of_verifiable": 0.5,
+    "broken_rate_of_verifiable": 0.0
+   },
+   "wikidata": {
+    "n": 6,
+    "ok": 3,
+    "moved": 1,
+    "broken": 1,
+    "unverifiable": 1,
+    "stale_rate": 0.333,
+    "stale_rate_of_verifiable": 0.4,
+    "broken_rate_of_verifiable": 0.2
+   }
+  },
+  "reasons": {
+   "website:ok:live": 28,
+   "email:ok:mx": 9,
+   "website:moved:domain_changed": 8,
+   "phone:unverifiable:not_on_home_page": 8,
+   "website:broken:dns_nxdomain": 7,
+   "page:ok:live": 6,
+   "website:unverifiable:blocked_http_403": 5,
+   "page:unverifiable:no_url_stored": 5,
+   "website:broken:hijacked_spam": 3,
+   "phone:ok:on_home_page": 2,
+   "website:broken:timeout": 1,
+   "website:broken:http_404": 1,
+   "website:broken:default_or_suspended_page": 1,
+   "website:unverifiable:blocked_http_503": 1,
+   "phone:ok:on_other_official_page": 1
+  },
+  "flags": {
+   "website:https_upgrade": 34,
+   "website:fallback_www": 9,
+   "email:domain_matches_gov_site": 7,
+   "page:name_absent": 2,
+   "website:fallback_https": 1,
+   "email:on_fetched_official_page": 1,
+   "email:domain_of_retired_site": 1
+  },
+  "web_timing": {
+   "fetched": 54,
+   "mean_requests": 2.07,
+   "mean_elapsed_s": 2.79,
+   "median_elapsed_s": 1.42,
+   "mean_net_s": 2.03,
+   "p90_elapsed_s": 3.81
+  }
+ },
+ "wikidata": {
+  "governments_with_qid": 24,
+  "has_p856": 23,
+  "p856_matches_a_stored_domain": 23,
+  "p856_matches_a_live_domain": 17,
+  "p856_matches_neither": 0,
+  "broken_govs": 6,
+  "census_and_wikidata_rows_differ": 6,
+  "moved_govs": 6,
+  "moved_and_p856_has_new_domain": 1,
+  "no_p856": 1
+ },
+ "sweep_estimate": {
+  "distinct_urls": 16204,
+  "distinct_domains": 15455,
+  "busiest_domains": [
+   [
+    "govoffice.com",
+    108
+   ],
+   [
+    "govoffice2.com",
+    75
+   ],
+   [
+    "in.gov",
+    52
+   ],
+   [
+    "wi.gov",
+    44
+   ],
+   [
+    "ky.gov",
+    38
+   ]
+  ],
+  "page_rows_without_url": 5,
+  "email_rows": 10,
+  "phone_rows": 11,
+  "wikidata_qids": 498,
+  "wikidata_batches": 10,
+  "assumed_mean_s_per_url": 2.79,
+  "assumed_requests_per_url": 2.07,
+  "http_requests": 33542,
+  "per_domain_floor_h": 0.06,
+  "hours_with_1_workers": 12.56,
+  "hours_with_4_workers": 3.14,
+  "hours_with_8_workers": 1.57,
+  "hours_with_16_workers": 0.78
+ },
+ "items": [
+  {
+   "stratum": "va/large",
+   "gov_id": "47108308300000",
+   "state": "va",
+   "gov": "Rockingham County",
+   "gov_kind": "county",
+   "population": 84394,
+   "tier": "large",
+   "wikidata": "Q513919",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q513919)",
+   "value": "http://www.rockinghamcountyva.gov/",
+   "id": "b47a0e3b9908",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.rockinghamcountyva.gov/",
+    "final_domain": "rockinghamcountyva.gov",
+    "start_domain": "rockinghamcountyva.gov",
+    "domain_changed": false,
+    "title": "Rockingham County, VA | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.rockinghamcountyva.gov/"
+     ],
+     [
+      200,
+      "https://www.rockinghamcountyva.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.86,
+    "net_s": 0.92,
+    "wait_s": 0.9,
+    "bytes": 133388,
+    "wikidata": {
+     "qid": "Q513919",
+     "label": "Rockingham County",
+     "p856": [
+      "http://www.rockinghamcountyva.gov"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/large",
+   "gov_id": "47103003000000",
+   "state": "va",
+   "gov": "Fairfax County",
+   "gov_kind": "county",
+   "population": 1139720,
+   "tier": "large",
+   "wikidata": "Q341915",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q341915)",
+   "value": "http://www.fairfaxcounty.gov",
+   "id": "a9c10c779282",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.fairfaxcounty.gov/",
+    "final_domain": "fairfaxcounty.gov",
+    "start_domain": "fairfaxcounty.gov",
+    "domain_changed": false,
+    "title": "Fairfax County Homepage | Fairfax County",
+    "hops": [
+     [
+      301,
+      "http://www.fairfaxcounty.gov"
+     ],
+     [
+      200,
+      "https://www.fairfaxcounty.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.44,
+    "net_s": 0.47,
+    "wait_s": 0.9,
+    "bytes": 137847,
+    "wikidata": {
+     "qid": "Q341915",
+     "label": "Fairfax County",
+     "p856": [
+      "https://www.fairfaxcounty.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/large",
+   "gov_id": "47100200200000",
+   "state": "va",
+   "gov": "Albemarle County",
+   "gov_kind": "county",
+   "population": 113535,
+   "tier": "large",
+   "wikidata": "Q488653",
+   "kind": "website",
+   "question": "general",
+   "source": "governments.website+wikidata",
+   "label": "Official website (Wikidata Q488653)",
+   "value": "http://www.albemarle.org",
+   "id": "a7b371ff43ba",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_403",
+    "flags": [],
+    "status": 403,
+    "final_url": "http://www.albemarle.org",
+    "final_domain": "albemarle.org",
+    "start_domain": "albemarle.org",
+    "domain_changed": false,
+    "title": "Access Denied",
+    "hops": [
+     [
+      403,
+      "http://www.albemarle.org"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.13,
+    "net_s": 0.07,
+    "wait_s": 0.0,
+    "bytes": 371,
+    "wikidata": {
+     "qid": "Q488653",
+     "label": "Albemarle County",
+     "p856": [
+      "http://www.albemarle.org"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/large",
+   "gov_id": "47101001000000",
+   "state": "va",
+   "gov": "Bedford County",
+   "gov_kind": "county",
+   "population": 80131,
+   "tier": "large",
+   "wikidata": "Q494216",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q494216)",
+   "value": "http://www.bedfordcountyva.gov",
+   "id": "2aa2ea22807a",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_403",
+    "flags": [],
+    "status": 403,
+    "final_url": "http://www.bedfordcountyva.gov",
+    "final_domain": "bedfordcountyva.gov",
+    "start_domain": "bedfordcountyva.gov",
+    "domain_changed": false,
+    "title": "Access Denied",
+    "hops": [
+     [
+      403,
+      "http://www.bedfordcountyva.gov"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.2,
+    "net_s": 0.13,
+    "wait_s": 0.0,
+    "bytes": 415,
+    "wikidata": {
+     "qid": "Q494216",
+     "label": "Bedford County",
+     "p856": [
+      "https://www.bedfordcountyva.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47211870100000",
+   "state": "va",
+   "gov": "City of Lexington",
+   "gov_kind": "municipality",
+   "population": 7456,
+   "tier": "mid",
+   "wikidata": "Q501761",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.ci.lexington.va.us/",
+   "id": "645819449be1",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "ci.lexington.va.us",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://ci.lexington.va.us/",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.85,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0,
+    "wikidata": {
+     "qid": "Q501761",
+     "label": "Lexington",
+     "p856": [
+      "https://www.lexingtonva.gov/"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47211870100000",
+   "state": "va",
+   "gov": "City of Lexington",
+   "gov_kind": "municipality",
+   "population": 7456,
+   "tier": "mid",
+   "wikidata": "Q501761",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q501761)",
+   "value": "https://www.lexingtonva.gov/",
+   "id": "090a0553d2a4",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_403",
+    "flags": [],
+    "status": 403,
+    "final_url": "https://www.lexingtonva.gov/",
+    "final_domain": "lexingtonva.gov",
+    "start_domain": "lexingtonva.gov",
+    "domain_changed": false,
+    "title": "Access Denied",
+    "hops": [
+     [
+      403,
+      "https://www.lexingtonva.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.31,
+    "net_s": 0.22,
+    "wait_s": 0.0,
+    "bytes": 373,
+    "wikidata": {
+     "qid": "Q501761",
+     "label": "Lexington",
+     "p856": [
+      "https://www.lexingtonva.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47210200100000",
+   "state": "va",
+   "gov": "City of Bristol",
+   "gov_kind": "municipality",
+   "population": 17054,
+   "tier": "mid",
+   "wikidata": "Q503366",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q503366)",
+   "value": "http://www.bristolva.org/",
+   "id": "77a3b8f88351",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.bristolva.gov/",
+    "final_domain": "bristolva.gov",
+    "start_domain": "bristolva.org",
+    "domain_changed": true,
+    "title": "Bristol, VA - Official Website | Official Website",
+    "hops": [
+     [
+      301,
+      "http://www.bristolva.org/"
+     ],
+     [
+      302,
+      "http://www.bristolva.gov/"
+     ],
+     [
+      200,
+      "https://www.bristolva.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 2.08,
+    "net_s": 1.12,
+    "wait_s": 0.91,
+    "bytes": 148836,
+    "wikidata": {
+     "qid": "Q503366",
+     "label": "Bristol",
+     "p856": [
+      "http://www.bristolva.org/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47210200100000",
+   "state": "va",
+   "gov": "City of Bristol",
+   "gov_kind": "municipality",
+   "population": 17054,
+   "tier": "mid",
+   "wikidata": "Q503366",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.bristolya.org",
+   "id": "1fa7bb1db605",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "bristolya.org",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://bristolya.org",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.04,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0,
+    "wikidata": {
+     "qid": "Q503366",
+     "label": "Bristol",
+     "p856": [
+      "http://www.bristolva.org/"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47100500500000",
+   "state": "va",
+   "gov": "Amherst County",
+   "gov_kind": "county",
+   "population": 31273,
+   "tier": "mid",
+   "wikidata": "Q470626",
+   "kind": "website",
+   "question": "general",
+   "source": "governments.website+wikidata",
+   "label": "Official website (Wikidata Q470626)",
+   "value": "http://www.countyofamherst.com",
+   "id": "a348931b66e9",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.countyofamherst.com:443/",
+    "final_domain": "countyofamherst.com",
+    "start_domain": "countyofamherst.com",
+    "domain_changed": false,
+    "title": "Home / Amherst County, Virginia",
+    "hops": [
+     [
+      301,
+      "http://www.countyofamherst.com"
+     ],
+     [
+      200,
+      "https://www.countyofamherst.com:443/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.7,
+    "net_s": 0.72,
+    "wait_s": 0.96,
+    "bytes": 17184,
+    "wikidata": {
+     "qid": "Q470626",
+     "label": "Amherst County",
+     "p856": [
+      "http://www.countyofamherst.com"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47101701700000",
+   "state": "va",
+   "gov": "Caroline County",
+   "gov_kind": "county",
+   "population": 31332,
+   "tier": "mid",
+   "wikidata": "Q341708",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q341708)",
+   "value": "http://www.co.caroline.va.us",
+   "id": "99303eac5e09",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://co.caroline.va.us/",
+    "final_domain": "co.caroline.va.us",
+    "start_domain": "co.caroline.va.us",
+    "domain_changed": false,
+    "title": "Caroline County VA | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.co.caroline.va.us"
+     ],
+     [
+      200,
+      "https://co.caroline.va.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 3.81,
+    "net_s": 3.3,
+    "wait_s": 0.2,
+    "bytes": 132507,
+    "wikidata": {
+     "qid": "Q341708",
+     "label": "Caroline County",
+     "p856": [
+      "http://www.co.caroline.va.us"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/mid",
+   "gov_id": "47101701700000",
+   "state": "va",
+   "gov": "Caroline County",
+   "gov_kind": "county",
+   "population": 31332,
+   "tier": "mid",
+   "wikidata": "Q341708",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.visitcaroline.com",
+   "id": "87113df76f8c",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://co.caroline.va.us/149/Tourism",
+    "final_domain": "co.caroline.va.us",
+    "start_domain": "visitcaroline.com",
+    "domain_changed": true,
+    "title": "Tourism | Caroline County VA",
+    "hops": [
+     [
+      301,
+      "http://www.visitcaroline.com"
+     ],
+     [
+      301,
+      "https://co.caroline.va.us/149/Visitors"
+     ],
+     [
+      200,
+      "https://co.caroline.va.us/149/Tourism"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 5.7,
+    "net_s": 4.2,
+    "wait_s": 0.0,
+    "bytes": 159856,
+    "wikidata": {
+     "qid": "Q341708",
+     "label": "Caroline County",
+     "p856": [
+      "http://www.co.caroline.va.us"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/small",
+   "gov_id": "47209800600000",
+   "state": "va",
+   "gov": "Town of Wise",
+   "gov_kind": "municipality",
+   "population": 2921,
+   "tier": "small",
+   "wikidata": "Q1375444",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q1375444)",
+   "value": "http://www.townofwise.net",
+   "id": "de18b00ba699",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.townofwise.net/",
+    "final_domain": "townofwise.net",
+    "start_domain": "townofwise.net",
+    "domain_changed": false,
+    "title": "Wise, VA | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.townofwise.net"
+     ],
+     [
+      200,
+      "https://www.townofwise.net/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.61,
+    "net_s": 0.59,
+    "wait_s": 0.93,
+    "bytes": 83384,
+    "wikidata": {
+     "qid": "Q1375444",
+     "label": "Wise",
+     "p856": [
+      "http://www.townofwise.net/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/small",
+   "gov_id": "47200200100000",
+   "state": "va",
+   "gov": "Town of Scottsville",
+   "gov_kind": "municipality",
+   "population": 530,
+   "tier": "small",
+   "wikidata": "Q1375176",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q1375176)",
+   "value": "http://WWW.SCOTTSVILLE.ORG",
+   "id": "cdf325371883",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.townofscottsville.org/",
+    "final_domain": "townofscottsville.org",
+    "start_domain": "scottsville.org",
+    "domain_changed": true,
+    "title": "Town of Scottsville - Home",
+    "hops": [
+     [
+      301,
+      "http://WWW.SCOTTSVILLE.ORG"
+     ],
+     [
+      200,
+      "https://www.townofscottsville.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 0.68,
+    "net_s": 0.52,
+    "wait_s": 0.0,
+    "bytes": 173265,
+    "wikidata": {
+     "qid": "Q1375176",
+     "label": "Scottsville",
+     "p856": [
+      "http://www.scottsville.org"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "va/small",
+   "gov_id": "47205900300000",
+   "state": "va",
+   "gov": "Town of Clarksville",
+   "gov_kind": "municipality",
+   "population": 1298,
+   "tier": "small",
+   "wikidata": "Q1095896",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q1095896)",
+   "value": "http://www.clarksvilleva.org",
+   "id": "335a6cbd777a",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://clarksvilleva.org/",
+    "final_domain": "clarksvilleva.org",
+    "start_domain": "clarksvilleva.org",
+    "domain_changed": false,
+    "title": "Home - Town of Clarksville, VA",
+    "hops": [
+     [
+      301,
+      "http://www.clarksvilleva.org"
+     ],
+     [
+      301,
+      "https://www.clarksvilleva.org/"
+     ],
+     [
+      200,
+      "https://clarksvilleva.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 2.31,
+    "net_s": 0.6,
+    "wait_s": 1.65,
+    "bytes": 255784,
+    "wikidata": {
+     "qid": "Q1095896",
+     "label": "Clarksville",
+     "p856": [
+      "http://www.clarksvilleva.org/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "va/small",
+   "gov_id": "47205900100000",
+   "state": "va",
+   "gov": "Town of Boydton",
+   "gov_kind": "municipality",
+   "population": 298,
+   "tier": "small",
+   "wikidata": "Q1376432",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://WWW.BOYDTON.ORG",
+   "id": "2a4659aac2e1",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.boydton.org/",
+    "final_domain": "boydton.org",
+    "start_domain": "boydton.org",
+    "domain_changed": false,
+    "title": "Town of Boydton, VA",
+    "hops": [
+     [
+      301,
+      "http://WWW.BOYDTON.ORG"
+     ],
+     [
+      200,
+      "https://www.boydton.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.25,
+    "net_s": 0.25,
+    "wait_s": 0.94,
+    "bytes": 295503,
+    "wikidata": {
+     "qid": "Q1376432",
+     "label": "Boydton",
+     "p856": [],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/large",
+   "gov_id": "21201100400000",
+   "state": "md",
+   "gov": "City of Frederick",
+   "gov_kind": "municipality",
+   "population": 79588,
+   "tier": "large",
+   "wikidata": "Q472675",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.cityoffrederick.com/",
+   "id": "591a67fcc45d",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.cityoffrederickmd.gov/",
+    "final_domain": "cityoffrederickmd.gov",
+    "start_domain": "cityoffrederick.com",
+    "domain_changed": true,
+    "title": "The City of Frederick, MD - Official Website | Official Website",
+    "hops": [
+     [
+      301,
+      "http://www.cityoffrederick.com/"
+     ],
+     [
+      200,
+      "https://www.cityoffrederickmd.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 0.91,
+    "net_s": 0.85,
+    "wait_s": 0.0,
+    "bytes": 174196,
+    "wikidata": {
+     "qid": "Q472675",
+     "label": "Frederick",
+     "p856": [
+      "http://www.cityoffrederick.com/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/large",
+   "gov_id": "21100700600000",
+   "state": "md",
+   "gov": "Carroll County",
+   "gov_kind": "county",
+   "population": 173873,
+   "tier": "large",
+   "wikidata": "Q501323",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q501323)",
+   "value": "https://www.carrollcountymd.gov/",
+   "id": "19fd135a32b6",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://www.carrollcountymd.gov/",
+    "final_domain": "carrollcountymd.gov",
+    "start_domain": "carrollcountymd.gov",
+    "domain_changed": false,
+    "title": "Carroll County Government | Carroll County, Maryland",
+    "hops": [
+     [
+      200,
+      "https://www.carrollcountymd.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.38,
+    "net_s": 0.29,
+    "wait_s": 0.0,
+    "bytes": 183311,
+    "wikidata": {
+     "qid": "Q501323",
+     "label": "Carroll County",
+     "p856": [
+      "https://www.carrollcountymd.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/large",
+   "gov_id": "21100700600000",
+   "state": "md",
+   "gov": "Carroll County",
+   "gov_kind": "county",
+   "population": 173873,
+   "tier": "large",
+   "wikidata": "Q501323",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.ccgovernment.carr.org",
+   "id": "28f620548370",
+   "result": {
+    "class": "broken",
+    "reason": "timeout",
+    "flags": [
+     "fallback_https"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "carr.org",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "https://www.ccgovernment.carr.org",
+    "first_error": "timeout",
+    "error": "timeout",
+    "requests": 2,
+    "elapsed_s": 60.12,
+    "net_s": 60.1,
+    "wait_s": 0.0,
+    "bytes": 0,
+    "wikidata": {
+     "qid": "Q501323",
+     "label": "Carroll County",
+     "p856": [
+      "https://www.carrollcountymd.gov/"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/large",
+   "gov_id": "21101401300000",
+   "state": "md",
+   "gov": "Howard County",
+   "gov_kind": "county",
+   "population": 334529,
+   "tier": "large",
+   "wikidata": "Q398939",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q398939)",
+   "value": "http://www.howardcountymd.gov",
+   "id": "3e3177b4a91d",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.howardcountymd.gov:443/",
+    "final_domain": "howardcountymd.gov",
+    "start_domain": "howardcountymd.gov",
+    "domain_changed": false,
+    "title": "Howard County | Howard County",
+    "hops": [
+     [
+      301,
+      "http://www.howardcountymd.gov"
+     ],
+     [
+      200,
+      "https://www.howardcountymd.gov:443/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.3,
+    "net_s": 0.27,
+    "wait_s": 0.95,
+    "bytes": 316598,
+    "wikidata": {
+     "qid": "Q398939",
+     "label": "Howard County",
+     "p856": [
+      "https://www.howardcountymd.gov/",
+      "http://www.howardcountymd.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/mid",
+   "gov_id": "21201750100000",
+   "state": "md",
+   "gov": "City of New Carrollton",
+   "gov_kind": "municipality",
+   "population": 13519,
+   "tier": "mid",
+   "wikidata": "Q754415",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q754415)",
+   "value": "http://www.new-carrollton.md.us/",
+   "id": "175603379a86",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "new-carrollton.md.us",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://new-carrollton.md.us/",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 8.0,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0,
+    "wikidata": {
+     "qid": "Q754415",
+     "label": "New Carrollton",
+     "p856": [
+      "http://www.new-carrollton.md.us/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/mid",
+   "gov_id": "21201750100000",
+   "state": "md",
+   "gov": "City of New Carrollton",
+   "gov_kind": "municipality",
+   "population": 13519,
+   "tier": "mid",
+   "wikidata": "Q754415",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.newcarrolltonmd.gov",
+   "id": "8b541a213617",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.newcarrolltonmd.gov/",
+    "final_domain": "newcarrolltonmd.gov",
+    "start_domain": "newcarrolltonmd.gov",
+    "domain_changed": false,
+    "title": "New Carrollton, MD | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.newcarrolltonmd.gov"
+     ],
+     [
+      200,
+      "https://www.newcarrolltonmd.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.72,
+    "net_s": 0.77,
+    "wait_s": 0.91,
+    "bytes": 148079,
+    "wikidata": {
+     "qid": "Q754415",
+     "label": "New Carrollton",
+     "p856": [
+      "http://www.new-carrollton.md.us/"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/mid",
+   "gov_id": "21201701600000",
+   "state": "md",
+   "gov": "City of Greenbelt",
+   "gov_kind": "municipality",
+   "population": 24555,
+   "tier": "mid",
+   "wikidata": "Q755877",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "https://www.greenbeltmd.gov/",
+   "id": "7e14b32099ea",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://www.greenbeltmd.gov/",
+    "final_domain": "greenbeltmd.gov",
+    "start_domain": "greenbeltmd.gov",
+    "domain_changed": false,
+    "title": "Greenbelt, MD | Official Website",
+    "hops": [
+     [
+      200,
+      "https://www.greenbeltmd.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.33,
+    "net_s": 0.23,
+    "wait_s": 0.0,
+    "bytes": 139911,
+    "wikidata": {
+     "qid": "Q755877",
+     "label": "Greenbelt",
+     "p856": [
+      "https://www.greenbeltmd.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/mid",
+   "gov_id": "21200500100000",
+   "state": "md",
+   "gov": "Town of Chesapeake Beach",
+   "gov_kind": "municipality",
+   "population": 6436,
+   "tier": "mid",
+   "wikidata": "Q755111",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q755111)",
+   "value": "http://CHESAPEAKE-BEACH.MD.US",
+   "id": "3709c5cad4fd",
+   "result": {
+    "class": "broken",
+    "reason": "http_404",
+    "flags": [],
+    "status": 404,
+    "final_url": "http://CHESAPEAKE-BEACH.MD.US",
+    "final_domain": "chesapeake-beach.md.us",
+    "start_domain": "chesapeake-beach.md.us",
+    "domain_changed": false,
+    "title": "Web Site Not Found",
+    "hops": [
+     [
+      404,
+      "http://CHESAPEAKE-BEACH.MD.US"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.05,
+    "net_s": 0.04,
+    "wait_s": 0.0,
+    "bytes": 970,
+    "wikidata": {
+     "qid": "Q755111",
+     "label": "Chesapeake Beach",
+     "p856": [
+      "http://www.chesapeake-beach.md.us"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/small",
+   "gov_id": "21202400300000",
+   "state": "md",
+   "gov": "City of Pocomoke City",
+   "gov_kind": "municipality",
+   "population": 4354,
+   "tier": "small",
+   "wikidata": "Q755569",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q755569)",
+   "value": "http://www.cityofpocomoke.com",
+   "id": "68012b1c0c79",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.cityofpocomoke.com/",
+    "final_domain": "cityofpocomoke.com",
+    "start_domain": "cityofpocomoke.com",
+    "domain_changed": false,
+    "title": "Pocomoke City, Maryland | \"The friendliest town on the Eastern Shore\"",
+    "hops": [
+     [
+      301,
+      "http://www.cityofpocomoke.com"
+     ],
+     [
+      200,
+      "https://www.cityofpocomoke.com/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.77,
+    "net_s": 0.79,
+    "wait_s": 0.94,
+    "bytes": 40170,
+    "wikidata": {
+     "qid": "Q755569",
+     "label": "Pocomoke City",
+     "p856": [
+      "http://www.cityofpocomoke.com/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/small",
+   "gov_id": "21200800300000",
+   "state": "md",
+   "gov": "Town of Chesapeake City",
+   "gov_kind": "municipality",
+   "population": 736,
+   "tier": "small",
+   "wikidata": "Q729440",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.chesapeake.city-md.gov",
+   "id": "56d4c2e7d672",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "city-md.gov",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://chesapeake.city-md.gov",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.11,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0,
+    "wikidata": {
+     "qid": "Q729440",
+     "label": "Chesapeake City",
+     "p856": [
+      "http://www.chesapeakecity-md.gov/"
+     ],
+     "error": null,
+     "matches_stored": false,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "md/small",
+   "gov_id": "21200800300000",
+   "state": "md",
+   "gov": "Town of Chesapeake City",
+   "gov_kind": "municipality",
+   "population": 736,
+   "tier": "small",
+   "wikidata": "Q729440",
+   "kind": "website",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Official website (Wikidata Q729440)",
+   "value": "http://www.chesapeakecity-md.gov/",
+   "id": "b9031d188aa4",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.chesapeakecity-md.gov/",
+    "final_domain": "chesapeakecity-md.gov",
+    "start_domain": "chesapeakecity-md.gov",
+    "domain_changed": false,
+    "title": "Chesapeake City, MD |",
+    "hops": [
+     [
+      301,
+      "http://www.chesapeakecity-md.gov/"
+     ],
+     [
+      200,
+      "https://www.chesapeakecity-md.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.32,
+    "net_s": 0.31,
+    "wait_s": 0.93,
+    "bytes": 272657,
+    "wikidata": {
+     "qid": "Q729440",
+     "label": "Chesapeake City",
+     "p856": [
+      "http://www.chesapeakecity-md.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "md/small",
+   "gov_id": "21201702200000",
+   "state": "md",
+   "gov": "Town of North Brentwood",
+   "gov_kind": "municipality",
+   "population": 580,
+   "tier": "small",
+   "wikidata": "Q754671",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q754671)",
+   "value": "http://www.northbrentwood.com",
+   "id": "0db1e8a180fa",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.northbrentwood.com/",
+    "final_domain": "northbrentwood.com",
+    "start_domain": "northbrentwood.com",
+    "domain_changed": false,
+    "title": "Home | Town of North Brentwood",
+    "hops": [
+     [
+      301,
+      "http://www.northbrentwood.com"
+     ],
+     [
+      200,
+      "https://www.northbrentwood.com/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.38,
+    "net_s": 0.32,
+    "wait_s": 0.93,
+    "bytes": 1020840,
+    "wikidata": {
+     "qid": "Q754671",
+     "label": "North Brentwood",
+     "p856": [
+      "https://northbrentwood.com/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "dc/large",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.dc.gov",
+   "id": "15189021d676",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://dc.gov/",
+    "final_domain": "dc.gov",
+    "start_domain": "dc.gov",
+    "domain_changed": false,
+    "title": "| DC",
+    "hops": [
+     [
+      301,
+      "http://www.dc.gov"
+     ],
+     [
+      302,
+      "https://www.dc.gov/"
+     ],
+     [
+      200,
+      "https://dc.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 4.03,
+    "net_s": 0.58,
+    "wait_s": 3.34,
+    "bytes": 93464
+   }
+  },
+  {
+   "stratum": "ca/large",
+   "gov_id": "05203300800000",
+   "state": "ca",
+   "gov": "City of Hemet",
+   "gov_kind": "municipality",
+   "population": 90436,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.cityofhemet.org/",
+   "id": "5fdd5b156061",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "cityofhemet.org",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://cityofhemet.org/",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.06,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0
+   }
+  },
+  {
+   "stratum": "ca/large",
+   "gov_id": "05201500100000",
+   "state": "ca",
+   "gov": "City of Bakersfield",
+   "gov_kind": "municipality",
+   "population": 407615,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.bakersfieldcity.us",
+   "id": "af1484544e8f",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.bakersfieldcity.us/",
+    "final_domain": "bakersfieldcity.us",
+    "start_domain": "bakersfieldcity.us",
+    "domain_changed": false,
+    "title": "Bakersfield, CA - Official Website | Official Website",
+    "hops": [
+     [
+      301,
+      "http://www.bakersfieldcity.us"
+     ],
+     [
+      200,
+      "https://www.bakersfieldcity.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.43,
+    "net_s": 0.41,
+    "wait_s": 0.88,
+    "bytes": 552625
+   }
+  },
+  {
+   "stratum": "ca/mid",
+   "gov_id": "05201900700000",
+   "state": "ca",
+   "gov": "City of Beverly Hills",
+   "gov_kind": "municipality",
+   "population": 31896,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.beverlyhills.org",
+   "id": "8f1ea6e3341b",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.beverlyhills.org/",
+    "final_domain": "beverlyhills.org",
+    "start_domain": "beverlyhills.org",
+    "domain_changed": false,
+    "title": "Beverly Hills, CA | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.beverlyhills.org"
+     ],
+     [
+      200,
+      "https://www.beverlyhills.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.97,
+    "net_s": 0.97,
+    "wait_s": 0.89,
+    "bytes": 156660
+   }
+  },
+  {
+   "stratum": "ca/mid",
+   "gov_id": "05203300500000",
+   "state": "ca",
+   "gov": "City of Coachella",
+   "gov_kind": "municipality",
+   "population": 42554,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.coachella.org/",
+   "id": "adfe432ea51b",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_403",
+    "flags": [],
+    "status": 403,
+    "final_url": "http://www.coachella.org/",
+    "final_domain": "coachella.org",
+    "start_domain": "coachella.org",
+    "domain_changed": false,
+    "title": "Access Denied",
+    "hops": [
+     [
+      403,
+      "http://www.coachella.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.13,
+    "net_s": 0.07,
+    "wait_s": 0.0,
+    "bytes": 371
+   }
+  },
+  {
+   "stratum": "ca/small",
+   "gov_id": "05204170100000",
+   "state": "ca",
+   "gov": "City of Brisbane",
+   "gov_kind": "municipality",
+   "population": 4668,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.ci.brisbane.ca.us",
+   "id": "07df28fc43ad",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_403",
+    "flags": [],
+    "status": 403,
+    "final_url": "https://www.ci.brisbane.ca.us/",
+    "final_domain": "ci.brisbane.ca.us",
+    "start_domain": "ci.brisbane.ca.us",
+    "domain_changed": false,
+    "title": "Just a moment...",
+    "hops": [
+     [
+      301,
+      "http://www.ci.brisbane.ca.us"
+     ],
+     [
+      403,
+      "https://www.ci.brisbane.ca.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.23,
+    "net_s": 0.3,
+    "wait_s": 0.9,
+    "bytes": 5582
+   }
+  },
+  {
+   "stratum": "ca/small",
+   "gov_id": "05203100200000",
+   "state": "ca",
+   "gov": "City of Colfax",
+   "gov_kind": "municipality",
+   "population": 2018,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.colfaxca.gov",
+   "id": "cbb950b312e9",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "colfaxca.gov",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://colfaxca.gov",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.12,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0
+   }
+  },
+  {
+   "stratum": "tx/large",
+   "gov_id": "44104304300000",
+   "state": "tx",
+   "gov": "Collin County",
+   "gov_kind": "county",
+   "population": 1109462,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.collincountytx.gov",
+   "id": "31aab5565d3c",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.collincountytx.gov/",
+    "final_domain": "collincountytx.gov",
+    "start_domain": "collincountytx.gov",
+    "domain_changed": false,
+    "title": "Collin County Government",
+    "hops": [
+     [
+      301,
+      "http://www.collincountytx.gov"
+     ],
+     [
+      200,
+      "https://www.collincountytx.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.37,
+    "net_s": 0.35,
+    "wait_s": 0.91,
+    "bytes": 812314
+   }
+  },
+  {
+   "stratum": "tx/large",
+   "gov_id": "44123723700000",
+   "state": "tx",
+   "gov": "Waller County",
+   "gov_kind": "county",
+   "population": 59781,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.co.waller.tx.us",
+   "id": "a12bf9a9e277",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.co.waller.tx.us/",
+    "final_domain": "co.waller.tx.us",
+    "start_domain": "co.waller.tx.us",
+    "domain_changed": false,
+    "title": "Homepage | Waller County TX",
+    "hops": [
+     [
+      301,
+      "http://www.co.waller.tx.us"
+     ],
+     [
+      200,
+      "https://www.co.waller.tx.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.42,
+    "net_s": 0.48,
+    "wait_s": 0.91,
+    "bytes": 50758
+   }
+  },
+  {
+   "stratum": "tx/mid",
+   "gov_id": "44210100200000",
+   "state": "tx",
+   "gov": "City of Bellaire",
+   "gov_kind": "municipality",
+   "population": 16983,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.ci.bellaire.tx.us",
+   "id": "73ff5647f8fa",
+   "result": {
+    "class": "broken",
+    "reason": "default_or_suspended_page",
+    "flags": [],
+    "status": 200,
+    "final_url": "http://www.ci.bellaire.tx.us",
+    "final_domain": "ci.bellaire.tx.us",
+    "start_domain": "ci.bellaire.tx.us",
+    "domain_changed": false,
+    "title": "IIS Windows Server",
+    "hops": [
+     [
+      200,
+      "http://www.ci.bellaire.tx.us"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.15,
+    "net_s": 0.09,
+    "wait_s": 0.0,
+    "bytes": 703
+   }
+  },
+  {
+   "stratum": "tx/mid",
+   "gov_id": "44114514500000",
+   "state": "tx",
+   "gov": "Leon County",
+   "gov_kind": "county",
+   "population": 15959,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.co.leon.tx.us",
+   "id": "275a75472218",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.co.leon.tx.us/",
+    "final_domain": "co.leon.tx.us",
+    "start_domain": "co.leon.tx.us",
+    "domain_changed": false,
+    "title": "Leon County, Texas",
+    "hops": [
+     [
+      301,
+      "http://www.co.leon.tx.us"
+     ],
+     [
+      200,
+      "https://www.co.leon.tx.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.4,
+    "net_s": 0.45,
+    "wait_s": 0.9,
+    "bytes": 57755
+   }
+  },
+  {
+   "stratum": "tx/small",
+   "gov_id": "44209310100000",
+   "state": "tx",
+   "gov": "City of Bedias",
+   "gov_kind": "municipality",
+   "population": 370,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.cityofbediastexas.org",
+   "id": "b04dabfe161e",
+   "result": {
+    "class": "broken",
+    "reason": "dns_nxdomain",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": "cityofbediastexas.org",
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": "http://cityofbediastexas.org",
+    "first_error": "dns",
+    "error": "dns",
+    "requests": 0,
+    "elapsed_s": 0.06,
+    "net_s": 0.0,
+    "wait_s": 0.0,
+    "bytes": 0
+   }
+  },
+  {
+   "stratum": "tx/small",
+   "gov_id": "44202500400000",
+   "state": "tx",
+   "gov": "City of Early",
+   "gov_kind": "municipality",
+   "population": 3145,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.earlytx.net",
+   "id": "547c436bb8a2",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.earlytx.net/",
+    "final_domain": "earlytx.net",
+    "start_domain": "earlytx.net",
+    "domain_changed": false,
+    "title": "Early, TX - Official Website | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.earlytx.net"
+     ],
+     [
+      200,
+      "https://www.earlytx.net/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.86,
+    "net_s": 0.94,
+    "wait_s": 0.88,
+    "bytes": 110593
+   }
+  },
+  {
+   "stratum": "oh/large",
+   "gov_id": "36105505500000",
+   "state": "oh",
+   "gov": "Miami County",
+   "gov_kind": "county",
+   "population": 109264,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.co.miami.oh.us/",
+   "id": "7675a296d383",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "fallback_www",
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.miamicountyohio.gov",
+    "final_domain": "miamicountyohio.gov",
+    "start_domain": "co.miami.oh.us",
+    "domain_changed": true,
+    "title": "Miami County Ohio | Home. Grown. Great.",
+    "hops": [
+     [
+      301,
+      "http://co.miami.oh.us/"
+     ],
+     [
+      200,
+      "https://www.miamicountyohio.gov"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": "http://co.miami.oh.us/",
+    "first_error": "dns",
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.19,
+    "net_s": 1.09,
+    "wait_s": 0.0,
+    "bytes": 400714
+   }
+  },
+  {
+   "stratum": "oh/large",
+   "gov_id": "36305701300000",
+   "state": "oh",
+   "gov": "Township of Washington",
+   "gov_kind": "township",
+   "population": 62008,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.washingtontwp.org/",
+   "id": "79a438e0d98a",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.washingtontwp.org/",
+    "final_domain": "washingtontwp.org",
+    "start_domain": "washingtontwp.org",
+    "domain_changed": false,
+    "title": "Home - Washington Township",
+    "hops": [
+     [
+      301,
+      "http://www.washingtontwp.org/"
+     ],
+     [
+      200,
+      "https://www.washingtontwp.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 2.73,
+    "net_s": 1.67,
+    "wait_s": 0.94,
+    "bytes": 216492
+   }
+  },
+  {
+   "stratum": "oh/mid",
+   "gov_id": "36105905900000",
+   "state": "oh",
+   "gov": "Morrow County",
+   "gov_kind": "county",
+   "population": 35151,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.morrowcounty.info",
+   "id": "0b9b3dffbf93",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://morrowcountyohio.gov/",
+    "final_domain": "morrowcountyohio.gov",
+    "start_domain": "morrowcounty.info",
+    "domain_changed": true,
+    "title": "Morrow County, OH",
+    "hops": [
+     [
+      301,
+      "http://www.morrowcounty.info"
+     ],
+     [
+      301,
+      "http://morrowcountyohio.gov/"
+     ],
+     [
+      200,
+      "https://morrowcountyohio.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 1.61,
+    "net_s": 0.58,
+    "wait_s": 0.95,
+    "bytes": 60040
+   }
+  },
+  {
+   "stratum": "oh/mid",
+   "gov_id": "36205501000000",
+   "state": "oh",
+   "gov": "City of Tipp City",
+   "gov_kind": "municipality",
+   "population": 10331,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.tippcityohio.gov",
+   "id": "2bb6ba23d357",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.tippcityohio.gov/",
+    "final_domain": "tippcityohio.gov",
+    "start_domain": "tippcityohio.gov",
+    "domain_changed": false,
+    "title": "Tipp City, OH | Official Website",
+    "hops": [
+     [
+      302,
+      "http://www.tippcityohio.gov"
+     ],
+     [
+      200,
+      "https://www.tippcityohio.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.61,
+    "net_s": 0.69,
+    "wait_s": 0.88,
+    "bytes": 120492
+   }
+  },
+  {
+   "stratum": "oh/small",
+   "gov_id": "36205000500000",
+   "state": "oh",
+   "gov": "Village of Lowellville",
+   "gov_kind": "municipality",
+   "population": 980,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.villageoflowellville.com",
+   "id": "e4a878b9d041",
+   "result": {
+    "class": "broken",
+    "reason": "hijacked_spam",
+    "flags": [
+     "fallback_www"
+    ],
+    "status": 200,
+    "final_url": "http://villageoflowellville.com",
+    "final_domain": "villageoflowellville.com",
+    "start_domain": "villageoflowellville.com",
+    "domain_changed": false,
+    "title": "villageoflowellville - Bisnis / Jasa Profesional",
+    "hops": [
+     [
+      200,
+      "http://villageoflowellville.com"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": "http://villageoflowellville.com",
+    "first_error": "dns",
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.59,
+    "net_s": 0.53,
+    "wait_s": 0.0,
+    "bytes": 72535
+   }
+  },
+  {
+   "stratum": "oh/small",
+   "gov_id": "36207600600000",
+   "state": "oh",
+   "gov": "Village of East Canton",
+   "gov_kind": "municipality",
+   "population": 1511,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.eastcantonvillage.com",
+   "id": "13c61b2d7ab6",
+   "result": {
+    "class": "unverifiable",
+    "reason": "blocked_http_503",
+    "flags": [],
+    "status": 503,
+    "final_url": "https://eastcantonvillage.com/",
+    "final_domain": "eastcantonvillage.com",
+    "start_domain": "eastcantonvillage.com",
+    "domain_changed": false,
+    "title": "eastcantonvillage.com",
+    "hops": [
+     [
+      301,
+      "http://www.eastcantonvillage.com"
+     ],
+     [
+      503,
+      "https://eastcantonvillage.com/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.63,
+    "net_s": 0.88,
+    "wait_s": 0.69,
+    "bytes": 26088
+   }
+  },
+  {
+   "stratum": "me/large",
+   "gov_id": "20100100100000",
+   "state": "me",
+   "gov": "Androscoggin County",
+   "gov_kind": "county",
+   "population": 111034,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.androscoggincountyme.com",
+   "id": "8700127d882c",
+   "result": {
+    "class": "broken",
+    "reason": "hijacked_spam",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://mahjongterbaru.com/",
+    "final_domain": "mahjongterbaru.com",
+    "start_domain": "androscoggincountyme.com",
+    "domain_changed": false,
+    "title": "BEMO88 : Daftar Link Situs Slot Mahjong Ways 2 Terbaru di Pg Soft Hari Ini",
+    "hops": [
+     [
+      301,
+      "http://www.androscoggincountyme.com"
+     ],
+     [
+      301,
+      "https://www.androscoggincountyme.com/"
+     ],
+     [
+      301,
+      "https://cabellotrendy.com/"
+     ],
+     [
+      301,
+      "https://smarttrackerbd.com/"
+     ],
+     [
+      301,
+      "https://askthehairdoc.com/"
+     ],
+     [
+      301,
+      "https://hunterprostatesupport.org/"
+     ],
+     [
+      301,
+      "https://netfolios.com/"
+     ],
+     [
+      200,
+      "https://mahjongterbaru.com/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 8,
+    "elapsed_s": 3.87,
+    "net_s": 2.62,
+    "wait_s": 0.93,
+    "bytes": 366161
+   }
+  },
+  {
+   "stratum": "me/large",
+   "gov_id": "20100200200000",
+   "state": "me",
+   "gov": "Aroostook County",
+   "gov_kind": "county",
+   "population": 66859,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.aroostook.me.us/",
+   "id": "d00f8c9f72e4",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://aroostook.me.us/",
+    "final_domain": "aroostook.me.us",
+    "start_domain": "aroostook.me.us",
+    "domain_changed": false,
+    "title": "Aroostook County Maine – Aroostook County Maine Government",
+    "hops": [
+     [
+      301,
+      "http://www.aroostook.me.us/"
+     ],
+     [
+      301,
+      "https://www.aroostook.me.us/"
+     ],
+     [
+      200,
+      "https://aroostook.me.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 4.28,
+    "net_s": 3.26,
+    "wait_s": 0.91,
+    "bytes": 266377
+   }
+  },
+  {
+   "stratum": "me/mid",
+   "gov_id": "20200100100000",
+   "state": "me",
+   "gov": "City of Auburn",
+   "gov_kind": "municipality",
+   "population": 24033,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.auburnmaine.org/",
+   "id": "59f6f9a397fe",
+   "result": {
+    "class": "broken",
+    "reason": "hijacked_spam",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://www.abcdreamusa.com/",
+    "final_domain": "abcdreamusa.com",
+    "start_domain": "auburnmaine.org",
+    "domain_changed": false,
+    "title": "美国留学签证_美国留学中介_ 美国F1签证_ABCDREAMUSA官网",
+    "hops": [
+     [
+      301,
+      "http://www.auburnmaine.org/"
+     ],
+     [
+      301,
+      "https://www.auburnmaine.org/"
+     ],
+     [
+      200,
+      "https://www.abcdreamusa.com/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 1.86,
+    "net_s": 0.79,
+    "wait_s": 0.96,
+    "bytes": 294170
+   }
+  },
+  {
+   "stratum": "me/mid",
+   "gov_id": "20300601600000",
+   "state": "me",
+   "gov": "Town of Oakland",
+   "gov_kind": "township",
+   "population": 6260,
+   "tier": "mid",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.oaklandmaine.us",
+   "id": "f521c8185814",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.oaklandmaine.us/",
+    "final_domain": "oaklandmaine.us",
+    "start_domain": "oaklandmaine.us",
+    "domain_changed": false,
+    "title": "Home",
+    "hops": [
+     [
+      301,
+      "http://www.oaklandmaine.us"
+     ],
+     [
+      200,
+      "https://www.oaklandmaine.us/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.93,
+    "net_s": 1.1,
+    "wait_s": 0.77,
+    "bytes": 145683
+   }
+  },
+  {
+   "stratum": "me/small",
+   "gov_id": "20300600500000",
+   "state": "me",
+   "gov": "Town of Chelsea",
+   "gov_kind": "township",
+   "population": 2799,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.chelseamaine.org",
+   "id": "c72ddf3303fa",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://chelseamaine.org/",
+    "final_domain": "chelseamaine.org",
+    "start_domain": "chelseamaine.org",
+    "domain_changed": false,
+    "title": "Town of Chelsea – Gateway to the Capital",
+    "hops": [
+     [
+      301,
+      "http://www.chelseamaine.org"
+     ],
+     [
+      301,
+      "https://www.chelseamaine.org/"
+     ],
+     [
+      200,
+      "https://chelseamaine.org/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 2.4,
+    "net_s": 0.62,
+    "wait_s": 1.69,
+    "bytes": 154349
+   }
+  },
+  {
+   "stratum": "me/small",
+   "gov_id": "20300602800000",
+   "state": "me",
+   "gov": "Town of Windsor",
+   "gov_kind": "township",
+   "population": 2652,
+   "tier": "small",
+   "wikidata": null,
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website",
+   "label": "Official website (Census)",
+   "value": "http://www.windsor.maine.gov",
+   "id": "38433b9312db",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://windsor.maine.gov/",
+    "final_domain": "maine.gov",
+    "start_domain": "maine.gov",
+    "domain_changed": false,
+    "title": "Windsor, Maine – Windsor, Maine – Established 1822",
+    "hops": [
+     [
+      301,
+      "http://www.windsor.maine.gov"
+     ],
+     [
+      301,
+      "https://www.windsor.maine.gov/"
+     ],
+     [
+      200,
+      "https://windsor.maine.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 2.45,
+    "net_s": 0.99,
+    "wait_s": 1.36,
+    "bytes": 119548
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "email",
+   "question": "business",
+   "source": "local-research",
+   "label": "Commissioner of the Revenue: business tax email",
+   "value": "citycorbiz@charlottesville.gov",
+   "id": "d38bf00ed9e6",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "charlottesville.gov",
+    "mx": [
+     "charlottesville-gov.mail.protection.outlook.com"
+    ],
+    "mail_provider": "microsoft365",
+    "elapsed_s": 0.007
+   }
+  },
+  {
+   "stratum": "anchor",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "website",
+   "question": "general",
+   "source": "governments.website+wikidata",
+   "label": "Official website (Wikidata Q123766)",
+   "value": "http://www.charlottesville.org/",
+   "id": "de3fe6db7bfc",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.charlottesville.gov/",
+    "final_domain": "charlottesville.gov",
+    "start_domain": "charlottesville.org",
+    "domain_changed": true,
+    "title": "Charlottesville, VA | Official Website",
+    "hops": [
+     [
+      301,
+      "http://www.charlottesville.org/"
+     ],
+     [
+      200,
+      "https://www.charlottesville.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 0.98,
+    "net_s": 0.95,
+    "wait_s": 0.0,
+    "bytes": 137083,
+    "wikidata": {
+     "qid": "Q123766",
+     "label": "Charlottesville",
+     "p856": [
+      "http://www.charlottesville.org/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "City FOIA email (the 'Email Us' link on the FOIA Officers staff directory)",
+   "value": "FOIA@charlottesville.gov",
+   "id": "2582ce5f3118",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "charlottesville.gov",
+    "mx": [
+     "charlottesville-gov.mail.protection.outlook.com"
+    ],
+    "mail_provider": "microsoft365",
+    "elapsed_s": 0.007
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "Virginia FOIA Council (nonbinding advisory opinions); 804-225-3056 or toll-free 866-448-4100",
+   "value": "foiacouncil@dls.virginia.gov",
+   "id": "8d879d1d0bcb",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [],
+    "domain": "dls.virginia.gov",
+    "mx": [
+     "aspmx.l.google.com",
+     "alt1.aspmx.l.google.com",
+     "alt2.aspmx.l.google.com",
+     "alt3.aspmx.l.google.com",
+     "alt4.aspmx.l.google.com"
+    ],
+    "mail_provider": "google",
+    "elapsed_s": 0.007
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "City of Charlottesville online Records Request (GovQA) portal",
+   "value": "https://charlottesvilleva.govqa.us/WEBAPP/_rs/",
+   "stored_as_url": true,
+   "id": "44d1e00f0c5f",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://charlottesvilleva.govqa.us/WEBAPP/_rs/(S(ttmvzudlitij0lnoz5s3ixcq))/supporthome.aspx",
+    "final_domain": "govqa.us",
+    "start_domain": "govqa.us",
+    "domain_changed": false,
+    "title": "Charlottesville, VA | FOIA & Public Records Request Center",
+    "hops": [
+     [
+      302,
+      "https://charlottesvilleva.govqa.us/WEBAPP/_rs/"
+     ],
+     [
+      200,
+      "https://charlottesvilleva.govqa.us/WEBAPP/_rs/(S(ttmvzudlitij0lnoz5s3ixcq))/supporthome.aspx"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 9.57,
+    "net_s": 9.52,
+    "wait_s": 0.0,
+    "bytes": 85579
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "City FOIA hub page (rights, costs, responsibilities, exemptions)",
+   "value": "https://www.charlottesville.gov/554/Freedom-of-Information-Act-FOIA",
+   "stored_as_url": true,
+   "id": "053a18cdcb64",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://www.charlottesville.gov/554/Freedom-of-Information-Act-FOIA",
+    "final_domain": "charlottesville.gov",
+    "start_domain": "charlottesville.gov",
+    "domain_changed": false,
+    "title": "Freedom of Information Act (FOIA) | Charlottesville, VA",
+    "hops": [
+     [
+      200,
+      "https://www.charlottesville.gov/554/Freedom-of-Information-Act-FOIA"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.59,
+    "net_s": 0.58,
+    "wait_s": 0.0,
+    "bytes": 100169
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "City Economic Development: business resources and programs",
+   "value": "434-825-0508",
+   "numbers": [
+    "4348250508"
+   ],
+   "id": "2e1290505847",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4348250508",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 5
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "Commissioner of the Revenue: business tax",
+   "value": "434-970-3170",
+   "numbers": [
+    "4349703170"
+   ],
+   "id": "4d3db0ca10de",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4349703170",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 5
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "Office of Neighborhood Development Services (zoning, home occupation, occupancy, mobile food unit permits)",
+   "value": "434-970-3182",
+   "numbers": [
+    "4349703182"
+   ],
+   "id": "5c54a4a9d085",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4349703182",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 5
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "Blue Ridge Health District (food health permits)",
+   "value": "434-972-6219",
+   "numbers": [
+    "4349726219"
+   ],
+   "id": "7243490dcd98",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4349726219",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 5
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "47210400100000",
+   "state": "va",
+   "gov": "City of Charlottesville",
+   "gov_kind": "municipality",
+   "population": 45672,
+   "tier": "mid",
+   "wikidata": "Q123766",
+   "kind": "phone",
+   "question": "records",
+   "source": "local-research",
+   "label": "FOIA & Records Officer (FOIA Officers directory main number)",
+   "value": "434-970-3827",
+   "numbers": [
+    "4349703827"
+   ],
+   "id": "477a53168857",
+   "result": {
+    "class": "ok",
+    "reason": "on_other_official_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4349703827",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": true
+     }
+    ],
+    "home_page_numbers_found": 5
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "email",
+   "question": "business",
+   "source": "local-research",
+   "label": "Baltimore City business license applications (DCPBL)",
+   "value": "COBBusinessLicense@baltimorecity.gov",
+   "id": "4df8bc2f840b",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "baltimorecity.gov",
+    "mx": [
+     "mail.baltimorecity.gov"
+    ],
+    "mail_provider": "self/other",
+    "elapsed_s": 0.02
+   }
+  },
+  {
+   "stratum": "anchor",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q5092)",
+   "value": "http://www.baltimorecity.gov",
+   "id": "273b887d16d4",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://www.baltimorecity.gov/",
+    "final_domain": "baltimorecity.gov",
+    "start_domain": "baltimorecity.gov",
+    "domain_changed": false,
+    "title": "Home | Baltimore City",
+    "hops": [
+     [
+      301,
+      "http://www.baltimorecity.gov"
+     ],
+     [
+      200,
+      "https://www.baltimorecity.gov/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.41,
+    "net_s": 0.36,
+    "wait_s": 0.9,
+    "bytes": 195747,
+    "wikidata": {
+     "qid": "Q5092",
+     "label": "Baltimore",
+     "p856": [
+      "https://www.baltimorecity.gov/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": true
+    }
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "Board of Municipal and Zoning Appeals MPIA requests",
+   "value": "bmza@baltimorecity.gov",
+   "id": "031dfb6a4355",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "baltimorecity.gov",
+    "mx": [
+     "mail.baltimorecity.gov"
+    ],
+    "mail_provider": "self/other",
+    "elapsed_s": 0.005
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "Department of Housing & Community Development MPIA requests",
+   "value": "dhcd.mpia@baltimorecity.gov",
+   "id": "2a4ce02d9c90",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "baltimorecity.gov",
+    "mx": [
+     "mail.baltimorecity.gov"
+    ],
+    "mail_provider": "self/other",
+    "elapsed_s": 0.004
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "Office of the Inspector General PIA requests",
+   "value": "oig@baltimorecity.gov",
+   "id": "5ef6eb45e14f",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site"
+    ],
+    "domain": "baltimorecity.gov",
+    "mx": [
+     "mail.baltimorecity.gov"
+    ],
+    "mail_provider": "self/other",
+    "elapsed_s": 0.007
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "page",
+   "question": "business",
+   "source": "local-research",
+   "label": "DHCD ePermits for Use & Occupancy permits",
+   "value": "(no URL stored)",
+   "stored_as_url": false,
+   "id": "77279934e273",
+   "result": {
+    "class": "unverifiable",
+    "reason": "no_url_stored",
+    "flags": [],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": null,
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": "no_url",
+    "requests": 0,
+    "elapsed_s": null,
+    "net_s": null,
+    "wait_s": null,
+    "bytes": null
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "Maryland Public Access Ombudsman",
+   "value": "(no URL stored)",
+   "stored_as_url": false,
+   "id": "afb7776bc7ea",
+   "result": {
+    "class": "unverifiable",
+    "reason": "no_url_stored",
+    "flags": [],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": null,
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": "no_url",
+    "requests": 0,
+    "elapsed_s": null,
+    "net_s": null,
+    "wait_s": null,
+    "bytes": null
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "Health Department Plan Review (food facilities)",
+   "value": "410-396-4544",
+   "numbers": [
+    "4103964544"
+   ],
+   "id": "57b54ba1604d",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4103964544",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 4
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "21200400100000",
+   "state": "md",
+   "gov": "City of Baltimore",
+   "gov_kind": "municipality",
+   "population": 576498,
+   "tier": "large",
+   "wikidata": "Q5092",
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "City general information (listed on DCPBL and Fire pages)",
+   "value": "410-396-3100; 443-263-2220",
+   "numbers": [
+    "4103963100",
+    "4432632220"
+   ],
+   "id": "7157228ac68c",
+   "result": {
+    "class": "ok",
+    "reason": "on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "4103963100",
+      "nanp_valid": true,
+      "on_home_page": true,
+      "on_other_official_page": false
+     },
+     {
+      "number": "4432632220",
+      "nanp_valid": true,
+      "on_home_page": true,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 4
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "email",
+   "question": "records",
+   "source": "local-research",
+   "label": "FOIA administrative appeals to the Mayor",
+   "value": "foia.appeals@dc.gov",
+   "id": "7b9f855ac6dc",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_matches_gov_site",
+     "on_fetched_official_page"
+    ],
+    "domain": "dc.gov",
+    "mx": [
+     "dc-gov.mail.protection.outlook.com"
+    ],
+    "mail_provider": "microsoft365",
+    "elapsed_s": 0.004
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "business",
+   "source": "local-research",
+   "label": "DLCP online business licensing and corporate registration (CorpOnline redirects here)",
+   "value": "https://boss.dc.gov",
+   "stored_as_url": false,
+   "id": "db37ed71eb55",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "name_absent"
+    ],
+    "status": 200,
+    "final_url": "https://boss.dc.gov",
+    "final_domain": "dc.gov",
+    "start_domain": "dc.gov",
+    "domain_changed": false,
+    "title": "District of Columbia Government",
+    "hops": [
+     [
+      200,
+      "https://boss.dc.gov"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.61,
+    "net_s": 0.57,
+    "wait_s": 0.0,
+    "bytes": 34400
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "business",
+   "source": "local-research",
+   "label": "Certificate of Occupancy applications",
+   "value": "(no URL stored)",
+   "stored_as_url": false,
+   "id": "9213cec93636",
+   "result": {
+    "class": "unverifiable",
+    "reason": "no_url_stored",
+    "flags": [],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": null,
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": "no_url",
+    "requests": 0,
+    "elapsed_s": null,
+    "net_s": null,
+    "wait_s": null,
+    "bytes": null
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "business",
+   "source": "local-research",
+   "label": "OTR FR-500 new business tax registration",
+   "value": "https://MyTax.DC.gov",
+   "stored_as_url": false,
+   "id": "1c7ed68a8741",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [
+     "name_absent"
+    ],
+    "status": 200,
+    "final_url": "https://MyTax.DC.gov/_/",
+    "final_domain": "dc.gov",
+    "start_domain": "dc.gov",
+    "domain_changed": false,
+    "title": "MyTax DC",
+    "hops": [
+     [
+      302,
+      "https://MyTax.DC.gov"
+     ],
+     [
+      302,
+      "https://MyTax.DC.gov/?Check=1"
+     ],
+     [
+      200,
+      "https://MyTax.DC.gov/_/"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 3,
+    "elapsed_s": 2.08,
+    "net_s": 0.27,
+    "wait_s": 1.77,
+    "bytes": 9805
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "Submit and track FOIA requests and appeals (redirects to myfoiadc.govqa.us)",
+   "value": "(no URL stored)",
+   "stored_as_url": false,
+   "id": "a15185376e25",
+   "result": {
+    "class": "unverifiable",
+    "reason": "no_url_stored",
+    "flags": [],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": null,
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": "no_url",
+    "requests": 0,
+    "elapsed_s": null,
+    "net_s": null,
+    "wait_s": null,
+    "bytes": null
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "Requests to the Office of the Chief Financial Officer (linked from dc.gov/foia)",
+   "value": "(no URL stored)",
+   "stored_as_url": false,
+   "id": "a15185376e25",
+   "result": {
+    "class": "unverifiable",
+    "reason": "no_url_stored",
+    "flags": [],
+    "status": null,
+    "final_url": null,
+    "final_domain": null,
+    "start_domain": null,
+    "domain_changed": false,
+    "title": null,
+    "hops": [],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": "no_url",
+    "requests": 0,
+    "elapsed_s": null,
+    "net_s": null,
+    "wait_s": null,
+    "bytes": null
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "records",
+   "source": "local-research",
+   "label": "DC FOIA overview page",
+   "value": "https://dc.gov/foia",
+   "stored_as_url": false,
+   "id": "925d85ef9e26",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://dc.gov/page/freedom-information-act-foia",
+    "final_domain": "dc.gov",
+    "start_domain": "dc.gov",
+    "domain_changed": false,
+    "title": "Freedom of Information Act (FOIA) | DC",
+    "hops": [
+     [
+      301,
+      "https://dc.gov/foia"
+     ],
+     [
+      200,
+      "https://dc.gov/page/freedom-information-act-foia"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 1.08,
+    "net_s": 0.25,
+    "wait_s": 0.79,
+    "bytes": 80965
+   }
+  },
+  {
+   "stratum": "pages",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "page",
+   "question": "records",
+   "source": "site-scan",
+   "label": "FOIA Requests",
+   "value": "https://dc.gov/page/freedom-information-act-foia",
+   "stored_as_url": true,
+   "id": "73f34fc831fd",
+   "result": {
+    "class": "ok",
+    "reason": "live",
+    "flags": [],
+    "status": 200,
+    "final_url": "https://dc.gov/page/freedom-information-act-foia",
+    "final_domain": "dc.gov",
+    "start_domain": "dc.gov",
+    "domain_changed": false,
+    "title": "Freedom of Information Act (FOIA) | DC",
+    "hops": [
+     [
+      200,
+      "https://dc.gov/page/freedom-information-act-foia"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 1,
+    "elapsed_s": 0.21,
+    "net_s": 0.2,
+    "wait_s": 0.0,
+    "bytes": 80965
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "DC Department of Buildings",
+   "value": "202-671-3500",
+   "numbers": [
+    "2026713500"
+   ],
+   "id": "013152e00bc9",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "2026713500",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 2
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "DLCP Business Licensing Division",
+   "value": "202-671-4500",
+   "numbers": [
+    "2026714500"
+   ],
+   "id": "143db1d13b64",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "2026714500",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 2
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "09200100100000",
+   "state": "dc",
+   "gov": "City of Washington DC",
+   "gov_kind": "municipality",
+   "population": 670050,
+   "tier": "large",
+   "wikidata": null,
+   "kind": "phone",
+   "question": "business",
+   "source": "local-research",
+   "label": "OTR (727-4TAX)",
+   "value": "202-727-4829",
+   "numbers": [
+    "2027274829"
+   ],
+   "id": "e38d3bdebd42",
+   "result": {
+    "class": "unverifiable",
+    "reason": "not_on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "2027274829",
+      "nanp_valid": true,
+      "on_home_page": false,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 2
+   }
+  },
+  {
+   "stratum": "emails",
+   "gov_id": "21201630100000",
+   "state": "md",
+   "gov": "Village of North Chevy Chase",
+   "gov_kind": "municipality",
+   "population": 676,
+   "tier": "small",
+   "wikidata": "Q2288793",
+   "kind": "email",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Email (Wikidata Q2288793)",
+   "value": "nccinfo@northchevychase.org",
+   "id": "5c25e3880302",
+   "result": {
+    "class": "ok",
+    "reason": "mx",
+    "flags": [
+     "domain_of_retired_site"
+    ],
+    "domain": "northchevychase.org",
+    "mx": [
+     "mx1.emailsrvr.com",
+     "mx2.emailsrvr.com"
+    ],
+    "mail_provider": "self/other",
+    "elapsed_s": 0.027
+   }
+  },
+  {
+   "stratum": "anchor",
+   "gov_id": "21201630100000",
+   "state": "md",
+   "gov": "Village of North Chevy Chase",
+   "gov_kind": "municipality",
+   "population": 676,
+   "tier": "small",
+   "wikidata": "Q2288793",
+   "kind": "website",
+   "question": "general",
+   "source": "census-gus-2022+governments.website+wikidata",
+   "label": "Official website (Census); Official website (Wikidata Q2288793)",
+   "value": "http://www.northchevychase.org/",
+   "id": "c303842d40e7",
+   "result": {
+    "class": "moved",
+    "reason": "domain_changed",
+    "flags": [
+     "https_upgrade"
+    ],
+    "status": 200,
+    "final_url": "https://northchevychase.gov",
+    "final_domain": "northchevychase.gov",
+    "start_domain": "northchevychase.org",
+    "domain_changed": true,
+    "title": "Village of North Chevy Chase, Montgomery County, Maryland – Official Website of the Village of North Chevy Chase",
+    "hops": [
+     [
+      301,
+      "http://www.northchevychase.org/"
+     ],
+     [
+      200,
+      "https://northchevychase.gov"
+     ]
+    ],
+    "client_redirect": null,
+    "fallback": null,
+    "first_error": null,
+    "error": null,
+    "requests": 2,
+    "elapsed_s": 0.46,
+    "net_s": 0.33,
+    "wait_s": 0.0,
+    "bytes": 566622,
+    "wikidata": {
+     "qid": "Q2288793",
+     "label": "North Chevy Chase",
+     "p856": [
+      "https://northchevychase.org/"
+     ],
+     "error": null,
+     "matches_stored": true,
+     "matches_live": false
+    }
+   }
+  },
+  {
+   "stratum": "phones",
+   "gov_id": "21201630100000",
+   "state": "md",
+   "gov": "Village of North Chevy Chase",
+   "gov_kind": "municipality",
+   "population": 676,
+   "tier": "small",
+   "wikidata": "Q2288793",
+   "kind": "phone",
+   "question": "general",
+   "source": "wikidata",
+   "label": "Phone (Wikidata Q2288793)",
+   "value": "301-654-7084",
+   "numbers": [
+    "3016547084"
+   ],
+   "id": "fce8c1cae3c0",
+   "result": {
+    "class": "ok",
+    "reason": "on_home_page",
+    "flags": [],
+    "numbers": [
+     {
+      "number": "3016547084",
+      "nanp_valid": true,
+      "on_home_page": true,
+      "on_other_official_page": false
+     }
+    ],
+    "home_page_numbers_found": 2
+   }
+  }
+ ]
+}

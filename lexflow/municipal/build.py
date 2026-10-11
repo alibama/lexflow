@@ -12,11 +12,12 @@ Order of preference:
 from __future__ import annotations
 
 import json
+import re
 import time
 
 import requests
 
-from .. import config
+from .. import config, reviewers, signoff
 from ..extract.compile import compile_facts
 from ..extract.evaluate import score as compare
 from ..extract.ollama import ExtractionResult, OllamaClient, check_facts, extract
@@ -193,6 +194,134 @@ def _compile(facts: LegalProcessFacts, state: str, question: str, texts, provena
     return model
 
 
+# the stages whose timestamps record a build of the model (lexflow/municipal/method.py STAGES)
+BUILD_STAGES = ("extracted", "compiled")
+
+
+def earliest_build(row: dict | None) -> str | None:
+    """The date of the earliest build a stored model row records (its build stages' timestamps), or None for a
+    row that records none (a law located but never built)."""
+    stages = (db.loads(row.get("stages"), {}) if isinstance(row.get("stages"), str) else row.get("stages")) \
+        if row else None
+    dates = [d for d in (signoff.iso_date((stages or {}).get(s)) for s in BUILD_STAGES) if d]
+    return min(dates) if dates else None
+
+
+def signoff_floor(row: dict | None) -> str | None:
+    """The date a sign-off of a stored model may not come before: its ``first_built`` (stored once, never
+    lowered: ``first_built``), or for a row stored without one (by older code) the earliest build it records."""
+    if not row:
+        return None
+    metrics = (db.loads(row.get("metrics"), {}) if isinstance(row.get("metrics"), str) else row.get("metrics")) or {}
+    return signoff.iso_date(metrics.get("first_built")) or earliest_build(row)
+
+
+def drafting_date(spec: dict) -> str | None:
+    """The date a curated file's drafting note opens with (``drafted_by``, or the older ``reviewed_by`` string:
+    "Claude (...), 2026-10-10; every quote checked ..."): the first date in it, not the earliest date anywhere in
+    it, so a note that also mentions an older draft does not move the date back."""
+    for note in (spec.get("drafted_by"), spec.get("reviewed_by")):
+        if isinstance(note, str):
+            for x in re.findall(r"\d{4}-\d{2}-\d{2}", note):
+                if signoff.iso_date(x):
+                    return signoff.iso_date(x)
+    return None
+
+
+def first_built(con, spec: dict, state: str, question: str) -> str:
+    """The date a curated model was first built, which a sign-off may not come before.  It is stored once, at the
+    model's first build on this copy, and never lowered: once the stored row has it, a later build keeps it, so
+    editing the drafting note cannot move it back (and a pull keeps it too: turso.keep_first_built).  A stored row
+    without it (built by older code) takes the earliest build it records (``signoff_floor``).  A model built here
+    for the first time takes the date its drafting note opens with (``drafting_date``), else today."""
+    row = db.one(con, "SELECT metrics, stages FROM process_models WHERE model_id=?", model_id(state, question))
+    return signoff_floor(row) or drafting_date(spec) or db.now()[:10]
+
+
+def curated_text(spec: dict) -> dict:
+    """What the stored model row is built from when it is built from this curated file (``signoff.model_text`` of
+    the facts as the row holds them, the sections and the plain-language notes): the text a curated sign-off is
+    bound to."""
+    stored = json.loads(json.dumps(LegalProcessFacts.model_validate(spec["facts"]).model_dump(), ensure_ascii=False))
+    return signoff.model_text(stored, {"sections": spec.get("sections"), "reader_gaps": spec.get("reader_gaps"),
+                                       "reader_notes": spec.get("reader_notes")})
+
+
+def file_carries(row: dict, rev) -> bool:
+    """Whether this copy's own curated file for a stored model (``curated/<state>/<question>.json``) carries the
+    sign-off ``rev`` that the row keeps: the same reviewer, date and statement, the file's own text_hash, and a
+    row text_hash that is that of the text the file builds.  A review in a stored row that the file does not hold
+    (one pulled from another copy, or written into the database by hand) is not this copy's.  A curated sign-off is
+    recorded by whoever edits the file, with no token: the operator answers for it."""
+    mid = str((row or {}).get("model_id") or "")
+    state, _, question = mid.partition(".")
+    if not isinstance(rev, dict) or not state or not question or "/" in mid or "\\" in mid:
+        return False
+    try:
+        spec = json.loads((config.CURATED_DIR / state / f"{question}.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    mine = spec.get("reviewed_by") if isinstance(spec, dict) else None
+    if not isinstance(mine, dict) or mine.get("attested") is not True or mine.get("reviewer") != rev.get("reviewer") \
+            or signoff.iso_date(mine.get("date")) != signoff.iso_date(rev.get("date")) \
+            or mine.get("text_hash") != signoff.file_hash(spec):
+        return False
+    try:
+        return rev.get("text_hash") == signoff.text_hash(curated_text(spec))
+    except (KeyError, TypeError, ValueError):            # ValueError covers pydantic's ValidationError
+        return False
+
+
+def recount(row: dict) -> dict | None:
+    """A stored model's quote count made again now, by the build's own check (``validate.lex_checks``): its stored
+    facts compiled with the statute text this copy holds for its sections, and every step, deadline and law quote
+    matched to that text.  ``{"quotes_checked": n, "quote_misses": m}``, never the count stored in its metrics
+    (which a pull may bring from another copy); None when the text of its sections is not at hand here, or the row
+    has no facts to count."""
+    from ..validate import lex_checks
+    mid = str(row.get("model_id") or model_id(row.get("state") or "", row.get("question") or ""))
+    state, _, question = mid.partition(".")
+    facts = db.loads(row.get("facts"), None) if isinstance(row.get("facts"), str) else row.get("facts")
+    metrics = (db.loads(row.get("metrics"), {}) if isinstance(row.get("metrics"), str) else row.get("metrics")) or {}
+    sections = metrics.get("sections") or []
+    if not facts or not sections or state not in S.NAME or not question:
+        return None
+    import sqlite3
+    try:
+        texts = statutes.section_texts(state, list(sections))
+    except (KeyError, ValueError, OSError, LookupError, sqlite3.Error):
+        return None
+    if not texts:
+        return None
+    try:
+        model = _compile(LegalProcessFacts.model_validate(facts), state, question, texts,
+                         Provenance(method="gold-manual", notes=[f"lexflow {mid}: quotes counted again"]))
+    except (KeyError, TypeError, ValueError):
+        return None
+    rep = lex_checks(model)
+    return {"quotes_checked": rep.quotes_checked, "quote_misses": len(rep.quote_misses)}
+
+
+def _signoff(con, spec: dict, stored_facts: dict, metrics: dict, where: str, log: Log):
+    """A curated file's ``reviewed_by`` as the model row keeps it: the older drafting note (a string) as it is; a
+    sign-off only when it names someone on the operator's reviewer list, its text_hash is the file's, and its date
+    is neither in the future nor before the model was first built (``metrics["first_built"]``, ``first_built``),
+    then bound to the stored copy of the text (facts, sections, notes), so the page names the reviewer only while it
+    shows what they read and this copy's file still carries the sign-off (``file_carries``; lexflow/signoff.py)."""
+    rev = spec.get("reviewed_by")
+    if isinstance(rev, str) or not rev:
+        return rev or None
+    roster = reviewers.roster(con)
+    since = metrics.get("first_built")
+    who = signoff.bound(rev, signoff.strip_signoffs(spec), roster, not_before=since)
+    if not who:
+        why = "; ".join(signoff.problems(rev, roster, not_before=since)) or "its text_hash is not the file's"
+        log(f"{where}: reviewed_by is not a sign-off of this text ({why}; `lexflow review-hash {where}` prints the "
+            f"hash); the page will say it is not yet reviewed")
+        return None
+    return signoff.bind(who, signoff.model_text(stored_facts, metrics))
+
+
 def build(con, state: str, question: str, *, use_llm: bool = True, force: bool = False, log: Log = print,
           use_curated: bool = True) -> dict:
     q = get_question(question)
@@ -221,17 +350,25 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
             log(f"{state} {question}: curated facts no longer match the statute text ({len(problems)} problems): "
                 + "; ".join(problems[:3]))
         else:
+            # reviewed_by is a sign-off by someone on the operator's reviewer list ({reviewer, date, attested, text_hash}:
+            # lexflow/signoff.py) or, in the older files, the note of the AI system that drafted and checked the model;
+            # only the note names a "model"
+            drafted = spec.get("reviewed_by") if isinstance(spec.get("reviewed_by"), str) else spec.get("drafted_by")
             model = _compile(facts, state, question, texts,
-                             Provenance(method="gold-manual", model=spec.get("reviewed_by"), created=db.now(),
+                             Provenance(method="gold-manual", model=drafted, created=db.now(),
                                         notes=[f"curated/{state}/{question}.json"]))
             model.texts = texts
             res = assess(model, agreement=1.0)
             stages = _stages(located=True, text=True, extracted=True, cross_checked=True, compiled=True,
                              validated=res["validated"], reviewed=True)
+            stored = json.loads(json.dumps(facts.model_dump(), ensure_ascii=False))     # as the row will hold it
+            metrics = {**res["metrics"], "errors": res["errors"], "sections": spec["sections"], "gaps": facts.gaps,
+                       "reader_gaps": spec.get("reader_gaps"), "reader_notes": spec.get("reader_notes"),
+                       "checked_on": db.now()[:10],      # check_facts just matched every quote
+                       "first_built": first_built(con, spec, state, question)}
+            metrics["reviewed_by"] = _signoff(con, spec, stored, metrics, f"curated/{state}/{question}.json", log)
             row = _row(state, question, tier="reviewed", built_by="claude", stages=stages, title=facts.process_name,
-                       metrics={**res["metrics"], "reviewed_by": spec.get("reviewed_by"), "errors": res["errors"],
-                                "sections": spec["sections"], "gaps": facts.gaps},
-                       quality=res["quality"], facts=facts.model_dump(), bpmn=res["bpmn"], dmn=res["dmn"],
+                       metrics=metrics, quality=res["quality"], facts=stored, bpmn=res["bpmn"], dmn=res["dmn"],
                        svg=res["svg"], loc=loc)
             db.upsert(con, "process_models", [row])
             db.bump(con)
@@ -323,7 +460,7 @@ def build(con, state: str, question: str, *, use_llm: bool = True, force: bool =
                title=facts.process_name, quality=res["quality"], facts=facts.model_dump(), bpmn=res["bpmn"],
                dmn=res["dmn"], svg=res["svg"], loc=loc,
                metrics={**res["metrics"], "chosen": llm, "agreement_detail": agree, "errors": res["errors"],
-                        "sections": sections, "gaps": facts.gaps})
+                        "sections": sections, "gaps": facts.gaps, "checked_on": db.now()[:10]})
     db.upsert(con, "process_models", [row])
     db.bump(con)
     con.commit()
@@ -339,8 +476,9 @@ def rebuild(con, mid: str):
     facts = LegalProcessFacts.model_validate(db.loads(r["facts"]))
     metrics = db.loads(r["metrics"], {})
     texts = statutes.section_texts(r["state"], metrics.get("sections") or [])
+    note = metrics.get("reviewed_by") if isinstance(metrics.get("reviewed_by"), str) else None
     prov = Provenance(method="gold-manual" if r["built_by"] == "claude" else "llm-extraction",
-                      model=metrics.get("reviewed_by") or metrics.get("chosen"), notes=[f"lexflow {mid}"])
+                      model=note or metrics.get("chosen"), notes=[f"lexflow {mid}"])
     model = _compile(facts, r["state"], r["question"], texts, prov)
     model.texts = texts
     return model

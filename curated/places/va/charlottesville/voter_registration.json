@@ -1,0 +1,874 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "voter_registration",
+ "title": "Register to vote or update a registration",
+ "question": "How do I register to vote in Charlottesville or update my address?",
+ "category": "elections",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "college students",
+  "new residents",
+  "military and overseas voters"
+ ],
+ "office": "Office of Voter Registration and Elections (General Registrar), appointed by the Charlottesville Electoral Board",
+ "summary": "Charlottesville's Office of Voter Registration and Elections (the General Registrar) registers city residents under state law. With a Virginia driver's license or DMV ID you can register or update your address or name online on the Department of Elections Citizen Portal. Otherwise mail the state VA-NVRA-1 form, postmarked by the deadline, or apply in person at 120 7th Street NE, Room 142. The last day of regular registration is the 11th day before a general or primary election (October 23, 2026 for November 3, 2026); the records are then closed for the 10 days before the election. Later, register in person at the office during early voting or at your polling place on Election Day, and vote a provisional ballot. A denial can be appealed to the Circuit Court within 10 days of being notified of it ($10 fee).",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-110(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-110/",
+   "quote": "Each electoral board shall meet in the month of May or June in 2007, and every four years thereafter, and shall appoint a general registrar",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-101",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-101/",
+   "quote": "means the person appointed by the electoral board of a county or city pursuant to § 24.2-110 to be responsible for all aspects of voter registration",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-417",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-417/",
+   "quote": "Each registrar shall register every resident of his county or city who has the qualifications required by the Constitution of Virginia and this title and who applies for registration or transfer of his registration from another county or city in the Commonwealth at the time and in the manner required by law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-400",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-400/",
+   "quote": "Any person who is not registered to vote, but would otherwise be a qualified voter, is entitled to register to vote as provided in this chapter.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-101",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-101/",
+   "quote": "To establish domicile, a person must live in a particular locality with the intention to remain.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-403",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-403/",
+   "quote": "Any person who is otherwise qualified and will be 18 years of age on or before the day of the next general election shall be permitted to register in advance and also vote in any intervening primary or special election.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-418(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-418/",
+   "quote": "The application to register shall be only on a form or forms prescribed by the State Board.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-418(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-418/",
+   "quote": "Unless physically disabled, he shall sign the application.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.1",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.1/",
+   "quote": "A person may apply to register to vote by mail by completing and returning a mail voter registration application form in the manner and time provided by law.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.2",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.2/",
+   "quote": "the national mail voter registration application form promulgated by the Election Assistance Commission pursuant to the National Voter Registration Act (52 U.S.C. § 20501 et seq.) shall be accepted for the registration of otherwise qualified voters to vote in federal, state, and local elections.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.7(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.7/",
+   "quote": "a person who is qualified to register to vote may apply to register to vote by electronic means as authorized by the State Board by completing an electronic registration application.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.7(C)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.7/",
+   "quote": "Provide a social security number and Department of Motor Vehicles customer identifier number that matches the applicant's record in the Department of Motor Vehicles records",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.7(F)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.7/",
+   "quote": "The Department of Elections shall transmit to the general registrar an applicant's completed voter registration application and digital signature not later than five business days after the date of receipt.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416/",
+   "quote": "The registration records shall be closed during the 10 days before a primary or general election.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-414",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-414/",
+   "quote": "On the final day of registration, the principal office of the general registrar shall be open a minimum of eight hours.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.4(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.4/",
+   "quote": "a mail voter registration application returned through the United States Postal Service shall be deemed to have been made as of the date of the postmark affixed to such application by the United States Postal Service.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.4(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.4/",
+   "quote": "such application shall be deemed to have been timely if received through the United States mail no later than five days following the time for the closing of the registration books pursuant to § 24.2-416 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-416.4(B)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416.4/",
+   "quote": "a completed mail voter registration application shall be deemed timely if received by any general registrar or any person authorized to receive voter registration applications pursuant to § 24.2-415.1 by 5:00 p.m. on the final day of registration provided for in § 24.2-414 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-420.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-420.1/",
+   "quote": "any person who is qualified to register to vote shall be entitled to register in person up to and including the day of the election at the office of the general registrar in the locality in which such person resides or at the polling place for the precinct in which such person resides.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-419",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-419/",
+   "quote": "The registration application from a person listed in subdivisions 1 and 2 may be accepted notwithstanding the provisions of § 24.2-416 if they are eligible to be registered and if, by reason of active duty, they are normally absent from the city or county in which they reside.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-424(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-424/",
+   "quote": "Whenever a registered voter changes his place of residence within the Commonwealth, he shall promptly notify any general registrar of the address of his new residence.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-424(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-424/",
+   "quote": "Such notice may be made in person, in writing, by return of the voter registration card noting the new address, or on a form approved by the State Board of Elections, which may be electronic.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-424(B)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-424/",
+   "quote": "This transfer may be entered in the registration records at any time the registration records are not closed pursuant to § 24.2-416 .",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-423",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-423/",
+   "quote": "Whenever a registered voter changes his legal name, either by marriage, divorce, order of court, or otherwise, the voter shall promptly notify the general registrar of the jurisdiction where he is registered.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-401",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-401/",
+   "quote": "A person who is qualified to vote except for having moved his residence from one precinct to another within the Commonwealth may vote in the precinct from which he has moved in the following November general election and any intervening election unless his registration has been transferred or cancelled as provided in this chapter.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-411.3(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-411.3/",
+   "quote": "shall be presented with (a) a question asking whether or not the person is a United States citizen and (b) the option to decline to have his information transmitted to the Department of Elections for voter registration purposes.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-411.3(D)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-411.3/",
+   "quote": "if the information indicates that the voter has moved within the Commonwealth, the Department of Elections shall transmit the information and the registration record to the appropriate general registrar, who shall treat such transmittal as a request for transfer and process it in accordance with the provisions of this chapter.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-114(6)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-114/",
+   "quote": "Accept a registration application or request for transfer or change of address submitted by or for a resident of any other county or city in the Commonwealth.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-418.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-418.1/",
+   "quote": "The state form for the application to register to vote shall contain a receipt that shall be given to the applicant upon his completion of the form.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-411(B)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-411/",
+   "quote": "The general registrar's office in all counties and cities shall be open a minimum of five days each week, except as provided in subsection C.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-422(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-422/",
+   "quote": "Within five days after the denial of an application to register, the general registrar shall notify the applicant of the denial.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-422(B)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-422/",
+   "quote": "A person denied registration shall have the right to appeal, without payment of writ tax or giving security for costs, to the circuit court of the county or city in which he offers to register by filing with the clerk of the court, within 10 days of being notified of the denial, a petition in writing to have his right to register determined.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-422(B)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-422/",
+   "quote": "state that a filing fee of $10 must be paid when filing the petition",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-675.3",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-675.3/",
+   "quote": "a notice of appeal to the Court of Appeals in any case within the jurisdiction of the court shall be filed within 30 days from the date of any final judgment order, decree, or conviction.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-1016",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-1016/",
+   "quote": "Any willfully false material statement or entry made by any person in any statement, form, or report required by this title shall constitute the crime of election fraud and be punishable as a Class 5 felony.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 24.2-103(A)",
+   "url": "https://law.lis.virginia.gov/vacode/24.2-103/",
+   "quote": "The State Board, through the Department of Elections, shall supervise and coordinate the work of the county and city electoral boards and of the registrars to obtain uniformity in their practices and proceedings and legality and purity in all elections.",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "1VAC20-20-80(A)",
+   "url": "https://law.lis.virginia.gov/admincode/title1/agency20/chapter20/section80/",
+   "quote": "Any person may make an informal complaint electronically or by telephone.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "1VAC20-20-80(B)",
+   "url": "https://law.lis.virginia.gov/admincode/title1/agency20/chapter20/section80/",
+   "quote": "A person may file a formal written complaint with the board as required by the Help America Vote Act of 2002, 42 USC § 15301 et seq., using the form and instructions available from the board.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that you are eligible to register",
+   "who": "Applicant",
+   "how": "You must be a U.S. citizen and a resident of Virginia and of the Charlottesville precinct where you live (a home where you live and intend to stay). You must be 18 by election day; a 17-year-old who will be 18 by the next general election may register early. You must not be registered and planning to vote in another state, currently judged by a court to lack capacity to vote, or in prison for a felony. On felony convictions, the Department of Elections says that under a federal court order only a few offenses still take the vote away unless the Governor restores it (see caveats). Students may register at a dorm or college address.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.elections.virginia.gov/registration/how-to-register/",
+   "quote": "Be a resident of Virginia (a person who has come to Virginia for temporary purposes and intends to return to another state is not considered a resident for voting purposes).",
+   "source": "https://www.elections.virginia.gov/registration/how-to-register/"
+  },
+  {
+   "id": "s2",
+   "step": "Check whether you are already registered, and in which locality",
+   "who": "Applicant; Virginia Department of Elections (Citizen Portal); Office of Voter Registration and Elections",
+   "how": "Look up your record on the Department of Elections Citizen Portal (name, date of birth, last four digits of the Social Security number and locality), or call the office at 434-970-3250. If the search says 'Record Not Found', the city suggests trying Albemarle County, then your previous Virginia locality (you may still be registered at a former address). The city also notes that UVA and PVCC are both primarily in Albemarle County. If you moved, you must be registered at your current residence address.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "The borders between Charlottesville and Albemarle are confusing.",
+   "source": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "id": "s3",
+   "step": "Register or update online through the Citizen Portal",
+   "who": "Applicant with a Virginia driver's license or DMV-issued ID card (the city also says any currently registered Virginia voter may update online; see caveats)",
+   "how": "Complete the electronic application on the Department of Elections Citizen Portal. Your Social Security number and DMV customer number must match DMV records, and DMV's copy of your signature is used. The Department sends the completed application to the Charlottesville registrar within five business days. State law requires a Virginia driver's license or other DMV-issued document for an electronic application, and an online address or name update is made on the same electronic application (Va. Code § 24.2-416.7(B), (C)(2)). Without a DMV credential you can fill in the form online, but you must then print, sign and mail it (step s4).",
+   "deadline": "Before the registration records close: they are closed during the 10 days before a primary or general election, so the last day is the 11th day before (October 23, 2026 for the November 3, 2026 general election). The Citizen Portal's cut-off time on that day was not found.",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "Currently registered Virginia voters may update their registration entirely online, and Virginia residents with a Virginia driver’s license or DMV-issued ID card may register completely online at the Virginia Department of Elections.",
+   "source": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "id": "s4",
+   "step": "Or mail a paper Virginia Voter Registration Application",
+   "who": "Applicant",
+   "how": "Download the current state form VA-NVRA-1 (or ask the office to mail you one; paper forms are also at the City Hall lobby, public libraries and DMV). Complete every starred item, including your full Social Security number if you have one (an application without it is denied), and sign it. Mail it to Voter Registration, P.O. Box 1219, Charlottesville, VA 22902, or to the Department of Elections. The city does not accept new applications by fax or email. If your residence cannot receive mail, or you are homeless, also give a mailing address. Protected voters (for example law-enforcement officers, people with a court protective order and Address Confidentiality Program participants) may give a Virginia P.O. Box to be shown in place of the street address on public lists (Va. Code § 24.2-418(B)). The national mail voter registration form is also accepted. The state form says that in federal elections a first-time voter who registered by mail must show an acceptable ID when voting in person, and a written statement is not accepted.",
+   "deadline": "Postmarked no later than the registration deadline (the 11th day before a general or primary election; October 23, 2026 for November 3, 2026). An application with no postmark or an illegible one counts if it arrives within five days after the books close (Va. Code § 24.2-416.4(A)).",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "Others can fill out the application on line, but then must print, sign and mail it so that it is postmarked by the registration deadline.",
+   "source": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "id": "s5",
+   "step": "Or apply in person at the registrar's office",
+   "who": "Applicant; Office of Voter Registration and Elections",
+   "how": "Go to the Office of Voter Registration and Elections, City Hall Annex, 120 7th Street NE, Room 142 (next to the Ting Pavilion, across the Downtown Mall from the Transit Station), Monday through Friday, 8:30 a.m. to 4:30 p.m., and complete the application there. Any general registrar's office in Virginia must accept your application and forward it to Charlottesville.",
+   "deadline": "Received by the final day of registration (the day before the books close; October 23, 2026 for November 3, 2026). On that day the office must be open at least eight hours, the Department of Elections says registrar offices close at 5:00 p.m., and people in line at closing may still apply (Va. Code § 24.2-414).",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "Our office is located at 120 7th Street NE Room 142 (next to The Pavilion and across the Mall from the Transit Station) and is open Monday through Friday, 8:30 am to 4:30 pm.",
+   "source": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "id": "s6",
+   "step": "Or register or change your address through DMV or another registration agency",
+   "who": "Applicant; Department of Motor Vehicles; state-designated voter registration agencies; Virginia Department of Elections; General Registrar",
+   "how": "When you get, renew or replace a driver's license or ID (not a driver privilege or identification privilege card), or change its address, at DMV in person or online, you are asked if you are a U.S. citizen and may decline to send your information for voter registration. If you do not decline, DMV sends it to the Department of Elections, and the registrar treats it as a new application or as a transfer if you moved within Virginia. The Department of Elections also lists social services offices (when applying or re-certifying for TANF, SNAP, WIC, Medicaid or Rehabilitation Services), state-funded offices serving people with disabilities, armed forces recruitment offices, public libraries and voter registration drives as places to get an application. If an office, group or person other than a registrar's office or the Department of Elections takes your completed form, they must complete and give you the receipt at the bottom of the form (Va. Code § 24.2-418.1), and the form says the collector must submit your application within 10 days or by the registration deadline, whichever comes first. The city warns that students who use a parent's address at DMV can switch their registration back home by mistake.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "Some students who use a parent’s home for DMV purposes unintentionally switch their voter registration back home when renewing a driver’s license.",
+   "source": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "id": "s7",
+   "step": "Military and overseas voters: register with the federal form",
+   "who": "Active-duty uniformed services members, their spouses and dependents, and citizens living outside the United States",
+   "how": "You may register, and ask for an absentee ballot at the same time, with the Federal Post Card Application from the Federal Voting Assistance Program. The application of an active-duty member, or of a spouse or dependent living with one, who is normally away from Charlottesville because of active duty may be accepted after the books close.",
+   "deadline": "The regular deadline applies, except that an application from an active-duty member, or a spouse or dependent living with one, may be accepted after the books close if, by reason of active duty, they are normally absent from the city (Va. Code § 24.2-419). That exception does not cover subdivision 3 of § 24.2-419 (persons temporarily residing outside the United States).",
+   "fee": null,
+   "form": "f5",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "The registration application from a person listed in subdivisions 1 and 2 may be accepted notwithstanding the provisions of § 24.2-416 if they are eligible to be registered and if, by reason of active duty, they are normally absent from the city or county in which they reside.",
+   "source": "Va. Code § 24.2-419"
+  },
+  {
+   "id": "s8",
+   "step": "Update your address or name after a move or name change",
+   "who": "Registered voter; Office of Voter Registration and Elections",
+   "how": "If you move within Virginia or change your legal name, tell a general registrar promptly. You can do this through the Citizen Portal, the DMV address change, a new VA-NVRA-1 form, or a signed letter to the voter registration office for the place you live. The letter should give your name, enough to identify you (such as your Social Security number), your current and previous addresses, and your signature. The Charlottesville office does not take address or name changes by email. State law also allows a written notice by mail or fax (Va. Code §§ 24.2-423, 24.2-424(A)); whether the city accepts faxed changes was not confirmed (see caveats). When you move within the city, the registrar enters the new address, moves you to the new precinct and sends confirmation documents. If you move to Virginia from another state, complete a new Virginia application. If you miss the deadline after a move within Virginia, state law lets you vote in your old precinct in the following November general election and any intervening election, unless your registration has been transferred or cancelled (Va. Code § 24.2-401).",
+   "deadline": "Same as for registering: before the books close (Department of Elections: postmarked at least 11 days before the next primary or general election). A transfer can be entered only while the records are not closed (Va. Code § 24.2-424(B)).",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.elections.virginia.gov/registration/view-your-info/",
+   "quote": "Such notice may be made in person, in writing, by return of the voter registration card noting the new address, or on a form approved by the State Board of Elections, which may be electronic.",
+   "source": "Va. Code § 24.2-424(A)"
+  },
+  {
+   "id": "s9",
+   "step": "Missed the deadline: register in person on the same day and vote a provisional ballot",
+   "who": "Applicant; Office of Voter Registration and Elections; officers of election; Charlottesville Electoral Board",
+   "how": "After the books close you can still register, but only in person: at the registrar's office during early voting, or on Election Day at the polling place for the precinct where you live (polls open 6 a.m. to 7 p.m.). You then vote a provisional ballot. You get a notice of when and where the electoral board will decide on it; you may attend but do not have to. For November 3, 2026, the office's posted early-voting hours are Monday to Friday 8:30 a.m. to 4:30 p.m. through October 30, Saturdays October 24 and 31 (8:30 a.m. to 5:00 p.m.) and Sundays October 18 and 25 (noon to 5:00 p.m.); no city page says same-day registration is offered in every one of those hours (see caveats). If the deadline has passed, the city asks you to call 434-970-3250.",
+   "deadline": "Up to and including Election Day (Va. Code § 24.2-420.1(A))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.elections.virginia.gov/registration/same-day-voter-registration/",
+   "quote": "any person who is qualified to register to vote shall be entitled to register in person up to and including the day of the election at the office of the general registrar in the locality in which such person resides or at the polling place for the precinct in which such person resides.",
+   "source": "Va. Code § 24.2-420.1(A)"
+  },
+  {
+   "id": "s10",
+   "step": "The registrar decides, then confirms or denies the application",
+   "who": "General Registrar (Office of Voter Registration and Elections)",
+   "how": "The registrar must register every qualified Charlottesville resident who applies on time and in the required way. You should then receive a voter information card or other confirmation. If you hear nothing, check the Citizen Portal or call the office; the Department of Elections suggests contacting the office if nothing arrives within 30 days. If the application is denied, the registrar must notify you in writing, and by email or phone if you gave them, and include a new application and the appeal form.",
+   "deadline": "A denial notice is due within five days after the denial (Va. Code § 24.2-422(A)). No deadline was found for the registrar to act on an application.",
+   "fee": null,
+   "form": null,
+   "url": "https://www.elections.virginia.gov/registration/how-to-register/",
+   "quote": "Within five days after the denial of an application to register, the general registrar shall notify the applicant of the denial.",
+   "source": "Va. Code § 24.2-422(A)"
+  },
+  {
+   "id": "s11",
+   "step": "If denied: correct and resubmit, or appeal to the Circuit Court",
+   "who": "Applicant; Office of Voter Registration and Elections; Clerk of the Charlottesville Circuit Court",
+   "how": "If the only problem was a missing signature or a missing item, complete and return the new application sent with the denial, or make the correction by phone if the office reaches you. Whatever the reason for the denial, you may instead appeal (and a second denial can also be appealed): file the 'Petition for Appeal of Denial of Virginia Voter Registration' with the Clerk of the Charlottesville Circuit Court, 315 East High Street, with the $10 filing fee (check payable to the Clerk of Circuit Court). The court hears the petition ahead of its other business; the Commonwealth's Attorney defends, and a judgment in your favor entitles you to be registered. A resubmitted application or petition is still subject to the close of books.",
+   "deadline": "Within 10 days of being notified of the denial (Va. Code § 24.2-422(B))",
+   "fee": "$10 filing fee for the court petition; no writ tax or security for costs",
+   "form": "f6",
+   "url": "https://www.elections.virginia.gov/voter-complaints/",
+   "quote": "A person denied registration shall have the right to appeal, without payment of writ tax or giving security for costs, to the circuit court of the county or city in which he offers to register by filing with the clerk of the court, within 10 days of being notified of the denial, a petition in writing to have his right to register determined.",
+   "source": "Va. Code § 24.2-422(B)"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Virginia Voter Registration Application (current state form; file name rev-6-2025, form footer 'VA-NVRA-1 05/2025'; the Spanish, Vietnamese and Korean versions linked from the same page are the rev-5-2024 files)",
+   "number": "VA-NVRA-1",
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/VA-NVRA-1-Voter-Registration-Application-rev-6-2025.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f2",
+   "title": "Online Voter Registration Application (Department of Elections Citizen Portal)",
+   "number": null,
+   "url": "https://www.elections.virginia.gov/citizen-portal/",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Paper voter registration application linked from the city's pages (older VA-NVRA-1 04/16 revision; prefer f1)",
+   "number": "VA-NVRA-1 04/16",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1790",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "National Mail Voter Registration Form (U.S. Election Assistance Commission)",
+   "number": null,
+   "url": "https://www.eac.gov/voters/national-mail-voter-registration-form/",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f5",
+   "title": "Federal Post Card Application (FPCA), Federal Voting Assistance Program",
+   "number": "FPCA",
+   "url": "https://www.fvap.gov/",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Petition for Appeal of Denial of Virginia Voter Registration",
+   "number": null,
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f7",
+   "title": "Virginia Voters' Election Day Complaint Form (formal HAVA Title III complaint; must be notarized; Rev. 9/2017)",
+   "number": "ELECT-15512",
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/voter-complaints/ELECT-15512-Management-Voter-Complaint-Form-9-17.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f8",
+   "title": "Online voter complaint form (informal complaint; linked from the Department of Elections Voter Complaints page)",
+   "number": null,
+   "url": "https://www.elections.virginia.gov/voter-complaints/",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Circuit Court petition appealing a registration denial: filing fee",
+   "amount": "$10",
+   "basis": "Va. Code § 24.2-422(B)",
+   "quote": "state that a filing fee of $10 must be paid when filing the petition"
+  },
+  {
+   "item": "Circuit Court petition appealing a registration denial: how to pay (state appeal form)",
+   "amount": "$10.00, by check payable to the Clerk of Circuit Court",
+   "basis": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
+   "quote": "Send filing fee of $10.00 with your petition; make your check payable to the Clerk of Circuit Court."
+  },
+  {
+   "item": "Writ tax and security for costs on the denial appeal",
+   "amount": "None required",
+   "basis": "Va. Code § 24.2-422(B)",
+   "quote": "without payment of writ tax or giving security for costs"
+  },
+  {
+   "item": "Notarizing a formal HAVA complaint (only if one is filed)",
+   "amount": "Not stated (any notary charge)",
+   "basis": "https://www.elections.virginia.gov/voter-complaints/",
+   "quote": "Have the Complaint Form notarized."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Office of Voter Registration and Elections (General Registrar), open Monday through Friday, 8:30 a.m. to 4:30 p.m.",
+   "label": "Office of Voter Registration and Elections",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections"
+  },
+  {
+   "kind": "address",
+   "value": "120 7th Street NE, City Hall Annex, Room 142, Charlottesville, VA 22902 (physical address)",
+   "label": "Office of Voter Registration and Elections",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections"
+  },
+  {
+   "kind": "address",
+   "value": "Voter Registration, P.O. Box 1219, Charlottesville, VA 22902 (mailing address for applications)",
+   "label": "Office of Voter Registration and Elections",
+   "url": "https://www.charlottesville.gov/FAQ.aspx?TID=55"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3250",
+   "label": "Office of Voter Registration and Elections",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections"
+  },
+  {
+   "kind": "email",
+   "value": "vote@charlottesville.gov (not for registration applications or address or name changes, which the office does not accept by email)",
+   "label": "Office of Voter Registration and Elections",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "label": "Office of Voter Registration and Elections (Register to Vote)",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/454/Polling-Places",
+   "label": "Office of Voter Registration and Elections (precinct map and polling places, for same-day registration on Election Day)",
+   "url": "https://www.charlottesville.gov/454/Polling-Places"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-4173",
+   "label": "Albemarle County voter registrar (for addresses on the county side of the line; number published on the Charlottesville page)",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.elections.virginia.gov/citizen-portal/",
+   "label": "Virginia Department of Elections (Citizen Portal: register, update, check status)",
+   "url": "https://www.elections.virginia.gov/registration/how-to-register/"
+  },
+  {
+   "kind": "portal",
+   "value": "https://vote.elections.virginia.gov/VoterInformation/PublicContactLookup",
+   "label": "Virginia Department of Elections (local registrar address and phone lookup)",
+   "url": "https://www.elections.virginia.gov/contact-us/"
+  },
+  {
+   "kind": "phone",
+   "value": "(800) 552-9745 (toll free); (804) 864-8901; TTY 711",
+   "label": "Virginia Department of Elections",
+   "url": "https://www.elections.virginia.gov/contact-us/"
+  },
+  {
+   "kind": "email",
+   "value": "info@elections.virginia.gov",
+   "label": "Virginia Department of Elections (general questions)",
+   "url": "https://www.elections.virginia.gov/contact-us/"
+  },
+  {
+   "kind": "address",
+   "value": "Washington Building, First Floor, 1100 Bank Street, Richmond, VA 23219 (office hours 8:15 a.m. to 5:00 p.m., Monday through Friday)",
+   "label": "Virginia Department of Elections",
+   "url": "https://www.elections.virginia.gov/contact-us/"
+  },
+  {
+   "kind": "phone",
+   "value": "(434) 970-3766",
+   "label": "Charlottesville Circuit Court, Clerk's Office (denial appeals)",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  },
+  {
+   "kind": "address",
+   "value": "315 East High Street, Charlottesville, VA 22902 (Clerk's Office hours 8:30 a.m. to 4:30 p.m.)",
+   "label": "Charlottesville Circuit Court, Clerk's Office",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3176",
+   "label": "Commonwealth's Attorney's Office, City of Charlottesville (complaints of unlawful conduct under the election laws)",
+   "url": "https://www.charlottesville.gov/198/Commonwealths-Attorneys-Office"
+  },
+  {
+   "kind": "address",
+   "value": "605 E Main Street, Room 331, Charlottesville, VA 22902 (mailing address P.O. Box 911, Charlottesville, VA 22902; hours Monday through Friday, 8 a.m. to 5 p.m.)",
+   "label": "Commonwealth's Attorney's Office, City of Charlottesville",
+   "url": "https://www.charlottesville.gov/198/Commonwealths-Attorneys-Office"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Application denied only for a missing signature or a missing required item",
+   "next": "Office of Voter Registration and Elections: return the new application sent with the denial notice, or correct it by phone if the office reaches you",
+   "type": "internal appeal",
+   "deadline": "Before the registration records close; the close-of-books rule applies to a resubmitted application (Va. Code § 24.2-422(C))",
+   "basis": "Va. Code § 24.2-422(A), (C)",
+   "quote": "The general registrar shall advise the applicant that he may complete and submit the new application, in lieu of filing an appeal, if the reason stated for denial is that the applicant has failed to sign the application or failed to provide a required item of information on the application."
+  },
+  {
+   "trigger": "Registration denied (or a second application denied)",
+   "next": "Charlottesville Circuit Court, by petition filed with the Clerk; the Commonwealth's Attorney defends and the hearing takes precedence over other business",
+   "type": "judicial review",
+   "deadline": "Within 10 days of being notified of the denial",
+   "basis": "Va. Code § 24.2-422(B)",
+   "quote": "A person denied registration shall have the right to appeal, without payment of writ tax or giving security for costs, to the circuit court of the county or city in which he offers to register by filing with the clerk of the court, within 10 days of being notified of the denial, a petition in writing to have his right to register determined."
+  },
+  {
+   "trigger": "The Circuit Court rules against the petitioner",
+   "next": "Court of Appeals of Virginia",
+   "type": "judicial review",
+   "deadline": "Notice of appeal within 30 days from the date of the final judgment order (Va. Code § 8.01-675.3)",
+   "basis": "Va. Code §§ 24.2-422(B), 8.01-675.3",
+   "quote": "From a judgment rendered against the petitioner, an appeal shall lie to the Court of Appeals."
+  },
+  {
+   "trigger": "No confirmation and no denial notice received (application apparently not acted on)",
+   "next": "Office of Voter Registration and Elections, then the Virginia Department of Elections",
+   "type": "referral",
+   "deadline": "A denial notice is due within five days of a denial (Va. Code § 24.2-422(A)); the Department of Elections suggests following up if no acknowledgement arrives within 30 days",
+   "basis": "https://www.elections.virginia.gov/voter-complaints/; https://www.elections.virginia.gov/registration/view-your-info/; Va. Code § 24.2-422(A)",
+   "quote": "If you believe you have been wrongfully denied registration and have not received any communication, please contact the general registrar for the city or county where you live or the Department of Elections for immediate assistance."
+  },
+  {
+   "trigger": "Unhappy with how the office handled a registration (service complaint)",
+   "next": "Office of Voter Registration and Elections or the Charlottesville Electoral Board (which appoints and reviews the General Registrar), by email, phone or in writing",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "https://www.charlottesville.gov/FAQ.aspx?TID=55; Va. Code §§ 24.2-109, 24.2-109.1",
+   "quote": "Please file your suggestion or complaint with the Office of Voter Registration or the Charlottesville Electoral Board via email, by phone, or in writing."
+  },
+  {
+   "trigger": "Problem not resolved locally, or a time-critical registration problem",
+   "next": "Virginia Department of Elections: informal complaint online or by phone ((800) 552-9745); the online form also notifies the local registrar",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "1VAC20-20-80(A); Va. Code § 24.2-103(A)",
+   "quote": "Any person may make an informal complaint electronically or by telephone."
+  },
+  {
+   "trigger": "A violation of Title III of the Help America Vote Act (which covers the statewide voter registration list and the contents of registration forms)",
+   "next": "Virginia Department of Elections: formal complaint on the notarized ELECT-15512 form mailed to the Deputy Commissioner; hearing on request; alternative dispute resolution if not resolved in 90 days",
+   "type": "external administrative review",
+   "deadline": "Within 10 days of the incident; final determination within 90 days of receipt of the complaint (Department of Elections)",
+   "basis": "1VAC20-20-80(B); https://www.elections.virginia.gov/voter-complaints/",
+   "quote": "A person may file a formal written complaint with the board as required by the Help America Vote Act of 2002, 42 USC § 15301 et seq., using the form and instructions available from the board."
+  },
+  {
+   "trigger": "Disagree with the Commissioner's final determination on a formal complaint",
+   "next": "State Board of Elections (it may hold a hearing or decide on the record within 45 days)",
+   "type": "external administrative review",
+   "deadline": "Within 15 days",
+   "basis": "https://www.elections.virginia.gov/voter-complaints/",
+   "quote": "The Commissioner’s final determination may be appealed to the full State Board of Elections within 15 days."
+  },
+  {
+   "trigger": "Repeated neglect of a clear ministerial duty by the registrar (for example, applications persistently not processed)",
+   "next": "Charlottesville Electoral Board or State Board of Elections, which may start removal proceedings in the Circuit Court (a resident can raise the matter with them but cannot start the proceedings: §§ 24.2-234.1(B) and 24.2-234 give the petition to the boards, and the voter petition in § 24.2-233 covers elected officers)",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "Va. Code §§ 24.2-109(B), 24.2-103(E), 24.2-234.1(B), 24.2-234, 24.2-233",
+   "quote": "A general registrar may be removed or have removal proceedings instituted against him pursuant to this subsection for (i) neglect of a clear, ministerial duty of the office, misuse of the office, or incompetence in the performance of the duties of the office where such neglect, misuse, or incompetence has a material adverse effect upon the conduct of the office"
+  },
+  {
+   "trigger": "Suspected unlawful conduct under the election laws, such as a false statement on an application",
+   "next": "Commonwealth's Attorney for the City of Charlottesville",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 24.2-1019",
+   "quote": "Any complaint or allegation concerning unlawful conduct under this title shall be filed with the attorney for the Commonwealth of the county or city in which the alleged violation occurred."
+  }
+ ],
+ "caveats": [
+  "Stale city deadline. The city's Register to Vote page says the deadline is '21 days before most elections', and its Voter FAQ says registration records close 'for the 21 days preceding any election'. Since the 2025 amendment (Acts 2025, cc. 548 and 559), Va. Code § 24.2-416(A) closes the records during the 10 days before a primary or general election. The city's own Voter Registration & Elections page ('CLOSE OF BOOKS: October 23, 2026') and the Department of Elections deadline table ('11 Days before election') match the 10-day rule. This page follows the statute.",
+  "The Department of Elections pages disagree with each other. 'View Your Info' says 'POSTMARKED at least 11 days' but also that changes cannot be made 'during the 21 day period before any general or primary election or during the 12 day period before a special election'. The Same Day Voter Registration page still speaks of the 21-day period and an 'October 24 deadline' from an earlier year. The How to Register table gives 14 days for a special election and 7 days for a special election called by the Governor, while the Registration page says 'Special Elections are 11 days before election'. Under § 24.2-416(A), the records close during the 6 days before a special election called by the Governor, the Speaker, the President pro tempore or a house of the General Assembly, and during the 10 days before any other special election. Confirm special-election dates with the office.",
+  "Mail deadline wording differs. The city's Register to Vote page says 'postmarked by the registration deadline' and the Department of Elections How to Register page says 'postmarked no later than the registration deadline', which both match Va. Code § 24.2-416.4(A). The city's Voter FAQ instead says the application must be 'received by our office by voter registration deadline'.",
+  "Old form on the city site. The application the city links (DocumentCenter/View/1790) is the VA-NVRA-1 04/16 revision. It still says mailed applications must be postmarked at least 22 days before the election and that all voters must show photo ID. The Department of Elections now posts the newer form (f1). Its text layer drops the postmark-day figure, but the page image reads 'postmarked at least 11 days before the next election in which you plan to vote', which matches the statute (a transcription from the page image, which a text search cannot confirm). Va. Code § 24.2-424(E) keeps any complete application on a previously authorized form valid for continuing or transferring a registration; whether the old form is still accepted for a new registration was not confirmed.",
+  "Fax and email. The city says faxes and email are not acceptable for new applications and that it cannot accept address or name changes by email. However, Va. Code § 24.2-424(A) allows a written change-of-address notice 'by mail or by facsimile', and the Department of Elections 'View Your Info' page says the update form 'may be faxed'. The city publishes a fax number (434-970-3249) only for mail ballot applications, so it is not listed as a registration contact. Whether the Charlottesville office accepts faxed address changes was not confirmed.",
+  "The Citizen Portal and registrar lookup on vote.elections.virginia.gov refuse automated readers. Their functions are described from www.elections.virginia.gov pages. No cut-off time for online registration on the final day was found.",
+  "Same-day registration hours at the office. The Department of Elections says same-day registration is available at the registrar's office 'during the early voting period'. Step s9 gives the office's posted early-voting hours for the November 3, 2026 election; that same-day registration is offered during every one of those hours is not stated on any page read. No local page on same-day registration was found. Whether a voter who is already registered elsewhere in Virginia gets a regular rather than a provisional ballot depends on the case (the Department of Elections says such a voter 'may be eligible' for a non-provisional ballot).",
+  "Same-day registration on Election Day. Va. Code § 24.2-420.1(A) lets a qualified person register in person 'up to and including the day of the election at the office of the general registrar' or at the polling place for the precinct where they live. The Department of Elections says same-day registration is at the registrar's office during the early voting period and that 'On Election Day, you must go to the polling place for the precinct in which you reside.' Early voting ends on Saturday, October 31, 2026, so whether the office takes same-day registrations on Monday, November 2 or on Election Day was not confirmed; step s9 follows the Department's guidance. Call the office.",
+  "Felony convictions. The Department of Elections says that, under a recent federal court order, only convictions for certain 1870 common-law felonies (it lists §§ 18.2-32, 18.2-35 and 18.2-36) take away the right to vote, and that rights return automatically on release for other felonies. The city's Voter FAQ still says a person convicted in Virginia can vote only after the Governor restores their rights, and Va. Code § 24.2-101 as indexed still says no person convicted of a felony is a qualified voter until their civil rights are restored. The legal position may be changing; the order itself was not read. Applicants should ask the office.",
+  "Versions. In the index, Va. Code §§ 24.2-101, 24.2-418 and 24.2-427 carry contingent effective or expiration notes (Acts 2026, cc. 992 and 1081), and § 24.2-401 (voting in the old precinct after a move) is marked effective until July 1, 2027. Re-check these sections on or after those dates.",
+  "Local ordinance not read. Voter registration is governed by Title 24.2 and State Board rules, and no Charlottesville ordinance on registration was found. The City Code is published on Municode, whose terms-of-use page returned HTTP 520 on 2026-10-10, so no Municode text was read or quoted. No local legal_basis entry is recorded.",
+  "Fee for registering. No source read (state law, the city pages or the Department of Elections pages) sets or mentions any fee for registering or updating a registration, so no registration fee is recorded. No source quote saying registration is free was found. Court of Appeals fees for a further appeal are not covered here.",
+  "The appeal form (f6) is a scanned image with no text layer. Its fee quote is a transcription from the page image, which a text search cannot confirm. The form also says the appeal must be received by the Clerk 'no later than ten days after the date shown on the reverse side'. The PDF has one page and no reverse side, so that date could not be seen. The statute counts 10 days from being notified of the denial. The Department of Elections Voter Complaints page says 'your appeal must be filed within 10 days after the denial', which would start the clock earlier than the statute; filing as soon as possible avoids the question.",
+  "The Charlottesville Electoral Board publishes no separate contact. The office page says it meets on the second Wednesday of every month unless posted otherwise. The FAQ routes complaints to the office or the Board 'via email, by phone, or in writing', which this page takes to mean through the office's channels. The city's Government page links 'Electoral Board' to the Voter Registration & Elections page.",
+  "The formal HAVA complaint (f7) covers only Title III matters, which include the statewide voter registration list and the contents of registration forms. Other complaints are handled informally under 1VAC20-20-80. The Commonwealth's Attorney's Office contacts (last escalation rung) are the office line and address from the city's Commonwealth's Attorney's Office page; the elected officer's name on that page is not recorded.",
+  "Fillable status: no form fields were found in either VA-NVRA-1 PDF, but the PDFs use compressed object streams, so 'fillable' is left null.",
+  "Privacy: the city page names the Director of Elections and General Registrar, and the court page names the Clerk and judges and gives a clerk mailbox. None of these is recorded; only office channels are listed. The office mailbox shown here (vote@charlottesville.gov) is the one the office's own page publishes as 'Email Voter Registration and Elections'. The page also links an older vote@charlottesville.org address in its candidate section, which is not used here.",
+  "Students: the city FAQ, in its answer on absentee voting, says of UVA and PVCC 'which are both primarily in Albemarle County'. A student living on Grounds or in county housing may therefore be a county resident, and would register with Albemarle's registrar, not Charlottesville's. Check the address's locality first (step s2).",
+  "Online updates without a DMV credential. The city's Register to Vote page says 'Currently registered Virginia voters may update their registration entirely online', and its Voter FAQ says the online application can be submitted 'if you just need to update your name or address on your existing voter registration'. Va. Code § 24.2-416.7(B) lets a registered voter report a new name or address by completing an electronic registration application, and § 24.2-416.7(C)(2) requires every electronic application to have a Virginia driver's license or other DMV-issued document. The Citizen Portal refuses automated readers, so whether a registered voter without a DMV credential can finish an update online was not confirmed; step s3 keeps the statutory requirement and the city's statement side by side."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "title": "Register to Vote (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections",
+   "title": "Voter Registration & Elections (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/FAQ.aspx?TID=55",
+   "title": "Voter Registration & Elections - Voter FAQ (City of Charlottesville; served at /m/faq?cat=55)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/454/Polling-Places",
+   "title": "Polling Places (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1790",
+   "title": "Virginia Voter Registration Application, VA-NVRA-1 04/16 (PDF linked from the city pages)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/how-to-register/",
+   "title": "How to Register (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/",
+   "title": "Registration (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/view-your-info/",
+   "title": "View Your Info (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/same-day-voter-registration/",
+   "title": "Same Day Voter Registration (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/voter-forms/",
+   "title": "Voter Forms (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/election-voter-faq/",
+   "title": "Election and Voter FAQ (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/felony-convictions-and-voter-eligibility/",
+   "title": "Felony Convictions and Voter Eligibility (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/registration/college-student-info/",
+   "title": "College Student Info (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/citizen-portal/",
+   "title": "Citizen Portal landing page (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/voter-complaints/",
+   "title": "Voter Complaints (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/contact-us/",
+   "title": "Contact Us (Virginia Department of Elections)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/VA-NVRA-1-Voter-Registration-Application-rev-6-2025.pdf",
+   "title": "Virginia Voter Registration Application, VA-NVRA-1 rev. 6-2025 (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
+   "title": "Petition for Appeal of Denial of Virginia Voter Registration (PDF, scanned image)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.elections.virginia.gov/media/formswarehouse/voter-complaints/ELECT-15512-Management-Voter-Complaint-Form-9-17.pdf",
+   "title": "Virginia Voters' Election Day Complaint Form, ELECT-15512 Rev. 9/2017 (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title1/agency20/chapter20/section80/",
+   "title": "1VAC20-20-80. Complaints (Virginia Administrative Code, LIS)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home",
+   "title": "Charlottesville Circuit Court (Virginia's Judicial System)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/198/Commonwealths-Attorneys-Office",
+   "title": "Commonwealth's Attorney's Office (City of Charlottesville)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.charlottesville.gov/27/Government",
+   "title": "Government (City of Charlottesville; links 'Electoral Board' to the Voter Registration & Elections page)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/24.2-416/",
+   "title": "Va. Code Title 24.2, Chapters 1, 4 and 10, and § 8.01-675.3 (sections 24.2-101, -103, -109, -110, -114, -400, -401, -403, -411, -411.3, -414, -416, -416.1, -416.2, -416.4, -416.7, -417, -418, -418.1, -419, -420.1, -422, -423, -424, -1016, -1019, -234.1)",
+   "retrieved": "2026-10-10"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 63,
+  "quotes_confirmed": 63,
+  "removed": [],
+  "corrections": [
+   "Quotes: all 63 structured quotes were re-checked. The 48 state-law quotes (legal_basis, steps, fees and escalation) match I.text_of for their cited sections with whitespace-only normalisation. The 14 quotes from official pages (city Register to Vote and Voter FAQ, Department of Elections How to Register and Voter Complaints, 1VAC20-20-80 on LIS) match the pages fetched again on 2026-10-11. The fee wording on the scanned appeal form (f6) was re-read from the page image and matches word for word. The 28 quoted fragments in caveats and the 2 in step text were also checked; three come from PDFs and were read from page images (the f6 reverse-side wording, the f6 title, printed in capitals on the form, and the f1 postmark figure).",
+   "Summary: 'Regular registration closes on the 11th day before' could be read as the books closing that day. It now says the 11th day before is the last day of regular registration and the records are closed for the 10 days before (Va. Code §§ 24.2-414, 24.2-416(A)). The appeal window now runs from being notified of the denial, as in § 24.2-422(B).",
+   "s3: the 'who' line stated as fact that any registered voter may update online. That is the city's statement; § 24.2-416.7(B) and (C)(2) require a Virginia driver's license or other DMV document for any electronic application, including an update. The step and a new caveat now give both.",
+   "s4: added from the state form and § 24.2-418(B): a mailing address for residences that cannot receive mail or for homeless applicants, the protected-voter Virginia P.O. Box, and the form's note that first-time voters who registered by mail must show ID in federal elections.",
+   "s6: the draft said social services, disability services, library and recruitment offices 'take applications'. The Department of Elections lists them, with registration drives, as places to obtain an application; the text now says so. The receipt duty (§ 24.2-418.1) and the form's 10-day rule for application collectors are added, and driver privilege cards are excluded as in § 24.2-411.3(A).",
+   "s7: the deadline said active-duty members and families 'are not held to the close of books'. § 24.2-419 says such an application 'may be accepted' after the books close, only if by reason of active duty they are normally absent from the locality, and the exception does not reach subdivision 3 (persons temporarily outside the United States). The deadline and how text now keep the 'may' and the condition.",
+   "s8: the old-precinct rule now keeps the statute's limit 'unless his registration has been transferred or cancelled' (§ 24.2-401). Added that state law allows written name and address notices by mail or fax (§§ 24.2-423, 24.2-424(A)), with the city's fax practice unconfirmed.",
+   "s9: the early-voting hours are now stated as the office's posted early-voting hours, not as confirmed same-day registration hours. A new caveat records that § 24.2-420.1(A) names the registrar's office 'up to and including the day of the election', while the Department of Elections sends Election Day registrants to their polling place.",
+   "s11: the draft's 'Otherwise file' wording implied that a denial for a missing signature or item could not be appealed. § 24.2-422(A) makes resubmission an option 'in lieu of filing an appeal'; the step now says any denial, and a second denial, can be appealed.",
+   "Escalation: the no-response rung now also cites the View Your Info page, the source of the 30-day follow-up advice. The removal rung now cites §§ 24.2-234 and 24.2-233 for its statement that a resident cannot start removal proceedings.",
+   "Contacts: the office mailbox was labelled 'questions only', but the office's page also takes mail ballot applications by email; it now says only that registration applications and address or name changes are not accepted by email. Added the Commonwealth's Attorney's Office line and address from the city's office page (office channels only; the elected officer's name is not recorded), closing the draft's gap for the last rung.",
+   "Forms: f1's title now gives the form's own footer (VA-NVRA-1 05/2025) beside the file name (rev-6-2025), and notes that the linked Spanish, Vietnamese and Korean files are rev-5-2024.",
+   "Caveats: the mail-deadline caveat attributed 'postmarked by' to the Department of Elections, which says 'postmarked no later than the registration deadline'; both wordings are now quoted from their own pages. The old-form caveat now records the f1 postmark figure (11 days) read from the page image. Added the Registration page's 11-day special-election figure, the Voter Complaints page's 'within 10 days after the denial' wording, the Government page's Electoral Board link, and the context of the city's UVA and PVCC remark."
+  ],
+  "open_issues": [
+   "City Code not read: Municode was not accessed (its terms page returned HTTP 520 to the modeller). Registration is governed by Title 24.2 and State Board rules, and no local legal_basis is recorded.",
+   "The Citizen Portal on vote.elections.virginia.gov was not read (its robots.txt disallows all automated access), so the online cut-off time on the final registration day, and whether a registered voter without a DMV credential can finish an update online, are not confirmed.",
+   "Felony eligibility is unsettled in the sources: the Department of Elections cites a federal court order limiting disqualifying felonies, while § 24.2-101 as indexed and the city FAQ still require restoration of rights. The order itself was not read; step s1 attributes the rule to the Department and points to the caveat.",
+   "Same-day registration: whether the office takes same-day registrations after early voting ends (Monday, November 2) or on Election Day itself, and whether every posted early-voting hour is open for it, was not confirmed.",
+   "Not confirmed: whether the Charlottesville office accepts faxed address or name changes, and whether the old VA-NVRA-1 04/16 form linked from the city site is still accepted for a new registration.",
+   "Special-election deadlines differ between Department of Elections pages (14, 11 and 7 days); the caveat gives the statutory periods. The steps cover general and primary elections.",
+   "Two PDF readings are visual only (no text layer): the f6 fee and reverse-side wording, and the f1 postmark figure.",
+   "The Charlottesville Electoral Board has no separate published contact; it is reached through the office's channels. Court of Appeals fees for a further appeal were not researched."
+  ]
+ }
+}

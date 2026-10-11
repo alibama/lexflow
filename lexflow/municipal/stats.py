@@ -1,6 +1,7 @@
 """Aggregates for the dashboard, the maps and the README charts."""
 from __future__ import annotations
 
+from ..law import wording as W
 from ..store import db
 from . import method as M
 from . import states as S
@@ -202,8 +203,11 @@ def steps_of(model: dict | None) -> list[dict]:
         q = s.get("source") or {}
         sub = "".join(f"({p})" for p in (q.get("subsection") or "").split(".") if p)
         d = s.get("deadline")
+        # "deadline" is lexflow's unit, for the arithmetic; "law_deadline" is the statute's own words (or a figure
+        # marked as lexflow's count), which is what public pages print (lexflow/law/wording.py)
         out.append({"step": s["action"], "who": actors.get(s["actor"], s["actor"]),
                     "cite": f"{code} {q.get('section', '')}{sub}".strip(), "quote": q.get("quote"),
                     "deadline": f"{d['amount']} {d['unit'].replace('_', ' ')}" if d else None,
+                    "law_deadline": W.describe(s, f) if d else None,
                     "modality": s.get("modality")})
     return out

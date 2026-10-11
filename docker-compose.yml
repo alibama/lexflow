@@ -2,9 +2,10 @@
 #
 #   docker compose up -d                          dashboard + pipeline on http://localhost:8000
 #   docker compose --profile llm up -d            + Ollama for local model builds
-#   docker compose --profile shared up -d         + a local libSQL server (a stand-in for Turso)
+#   docker compose --profile shared up -d         + a local libSQL server (a stand-in for Turso, on 127.0.0.1)
 #   docker compose --profile search up -d         + SearXNG
 #   docker compose --profile test run --rm test   the test suite
+#   docker compose --profile test-ui up -d test-ui  a second dashboard on 127.0.0.1:8001, on a throwaway store
 #
 # GPU for Ollama (NVIDIA): add -f docker-compose.gpu.yml.  On a Mac, run Ollama natively (it uses
 # the GPU there) and set OLLAMA_URL=http://host.docker.internal:11434 in .env.
@@ -35,7 +36,11 @@ x-app: &app
 services:
   app:
     <<: *app
-    ports: ["${LEXFLOW_PORT:-8000}:8000"]
+    # The dashboard and its API have no sign-in, so the port is published on this machine only (127.0.0.1).
+    # To reach it from other machines, put it behind your own sign-in (a reverse proxy with authentication) and
+    # use the line below instead; the review API still asks for each reviewer's own token.
+    ports: ["127.0.0.1:${LEXFLOW_PORT:-8000}:8000"]
+    # ports: ["${LEXFLOW_PORT:-8000}:8000"]
     # the job runner's id: a fixed hostname lets a recreated container recover the jobs it left running
     hostname: lexflow-app
     restart: unless-stopped
@@ -56,9 +61,17 @@ services:
   libsql:
     image: ghcr.io/tursodatabase/libsql-server:latest
     profiles: ["shared"]
-    ports: ["${LIBSQL_PORT:-8081}:8080"]
+    # The shared database has no sign-in unless you give sqld a key, and whoever can write it can change what every
+    # copy that pulls from it stores (a pull is trusted data only as far as this server is).  So its port is published
+    # on this machine only (127.0.0.1); the app reaches it as http://libsql:8080 inside the compose network either way.
+    # To share it with other machines, do so only on a network you control: set LIBSQL_BIND in .env to the address
+    # of that network's interface (never 0.0.0.0 on a machine reachable from the internet), and give sqld a key:
+    # SQLD_AUTH_JWT_KEY (or SQLD_AUTH_JWT_KEY_FILE) holds the Ed25519 public key that checks the JWT each copy sends
+    # as TURSO_AUTH_TOKEN, so a request without a token signed by the matching private key is refused.
+    ports: ["${LIBSQL_BIND:-127.0.0.1}:${LIBSQL_PORT:-8081}:8080"]
     environment:
       SQLD_NODE: primary
+      # SQLD_AUTH_JWT_KEY: ${SQLD_AUTH_JWT_KEY:-}
     volumes: ["libsql:/var/lib/sqld"]
     restart: unless-stopped
 
@@ -71,6 +84,30 @@ services:
       SEARXNG_SECRET: ${SEARXNG_SECRET:-change-me-to-64-random-characters}
     restart: unless-stopped
 
+  # A second dashboard on port 8001 for trying changes, on a throwaway store of its own (not the app's /data) and
+  # with every credential blank.  Like the app it has no sign-in and a job API that runs any step, so its port is
+  # published on this machine only (127.0.0.1):
+  #   docker compose --profile test-ui up -d test-ui
+  # Do not start one with `docker compose run -p 8001:8000 ...`: a -p without an address publishes on every interface.
+  test-ui:
+    <<: *app
+    profiles: ["test-ui"]
+    ports: ["127.0.0.1:${LEXFLOW_TEST_UI_PORT:-8001}:8000"]
+    hostname: lexflow-test-ui
+    volumes:
+      - lexflow-test-data:/data
+    environment:                         # never your .env services
+      LEXFLOW_DATA: /data
+      LEXFLOW_ORIGIN: lexflow-test-ui
+      TURSO_DATABASE_URL: ""
+      TURSO_AUTH_TOKEN: ""
+      DOKUWIKI_URL: ""
+      DOKUWIKI_TOKEN: ""
+      LEXIPEDIA_TOKEN: ""
+      LEXFLOW_CORRECTIONS: ""
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+    restart: "no"
+
   test:
     <<: *app
     profiles: ["test"]
@@ -82,10 +119,12 @@ services:
       DOKUWIKI_URL: ""
       DOKUWIKI_TOKEN: ""
       LEXIPEDIA_TOKEN: ""
+      LEXFLOW_CORRECTIONS: ""
       OLLAMA_URL: http://127.0.0.1:9
     command: ["python", "-m", "pytest", "-q"]
 
 volumes:
   lexflow-data: {}
+  lexflow-test-data: {}
   ollama: {}
   libsql: {}

@@ -50,6 +50,14 @@ def _local(el) -> str:
     return etree.QName(el).localname
 
 
+def _short(text: str, limit: int) -> str:
+    """A label in full, or cut at a word boundary with an ellipsis: never mid-word (extract/compile.py's rule)."""
+    t = " ".join(str(text or "").split())
+    if len(t) <= limit or " " not in t[:limit - 1]:
+        return t
+    return t[:limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-(") + "…"
+
+
 def _wrap(text: str, width_px: float, size: float = 11) -> list[str]:
     per_line = max(4, int(width_px / (size * 0.56)))
     words, lines, cur = text.split(), [], ""
@@ -62,7 +70,9 @@ def _wrap(text: str, width_px: float, size: float = 11) -> list[str]:
             cur = w
     if cur:
         lines.append(cur)
-    return lines[:4]
+    if len(lines) > 4:                  # what does not fit ends at a word, with an ellipsis
+        lines = lines[:3] + [lines[3].rstrip(" ,;:-(") + "…"]
+    return lines
 
 
 def _text(x, y, lines, size=11, anchor="middle", color=None, weight="400"):
@@ -154,14 +164,14 @@ def render(bpmn_xml: str, title: str | None = None, scale: float = 1.0, margin: 
             out.append(f'<line x1="{b.x + 30}" y1="{b.y}" x2="{b.x + 30}" y2="{b.y + b.h}" stroke="{P["muted"]}"/>')
             name = el.get("name", "")
             out.append(f'<text transform="translate({b.x + 19},{b.cy}) rotate(-90)" font-size="12" text-anchor="middle" '
-                       f'fill="{P["ink"]}" font-weight="600" font-family="Inter, Helvetica, Arial, sans-serif">{html.escape(name[:60])}</text>')
+                       f'fill="{P["ink"]}" font-weight="600" font-family="Inter, Helvetica, Arial, sans-serif">{html.escape(_short(name, 60))}</text>')
     for i, b, expanded, _ in shapes:
         t, el = el_type(i)
         if t == "lane":
             out.append(f'<rect x="{b.x}" y="{b.y}" width="{b.w}" height="{b.h}" fill="none" stroke="{P["lane"]}"/>')
             out.append(f'<line x1="{b.x + 24}" y1="{b.y}" x2="{b.x + 24}" y2="{b.y + b.h}" stroke="{P["lane"]}"/>')
             out.append(f'<text transform="translate({b.x + 16},{b.cy}) rotate(-90)" font-size="10.5" text-anchor="middle" '
-                       f'fill="{P["muted"]}" font-family="Inter, Helvetica, Arial, sans-serif">{html.escape(el.get("name", "")[:50])}</text>')
+                       f'fill="{P["muted"]}" font-family="Inter, Helvetica, Arial, sans-serif">{html.escape(_short(el.get("name", ""), 50))}</text>')
     for i, b, expanded, _ in shapes:
         t, el = el_type(i)
         if t in ("subProcess", "transaction", "adHocSubProcess") and expanded != "false" and i not in drilldown:
@@ -278,7 +288,7 @@ def render(bpmn_xml: str, title: str | None = None, scale: float = 1.0, margin: 
                 if lb is not None:
                     out.append(_text(lb.cx, lb.cy + 3, _wrap(name, max(lb.w, 90), 10), size=10, color=P["muted"]))
                 else:
-                    out.append(_text(b.cx, b.y - 6, [name[:40]], size=10, color=P["muted"]))
+                    out.append(_text(b.cx, b.y - 6, [_short(name, 40)], size=10, color=P["muted"]))
         elif t in ("dataObjectReference", "dataObject"):
             f = 10
             out.append(f'<path d="M{b.x},{b.y} h{b.w - f} l{f},{f} v{b.h - f} h{-b.w} z M{b.x + b.w - f},{b.y} v{f} h{f}" '

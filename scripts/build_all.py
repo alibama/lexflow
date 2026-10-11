@@ -1,13 +1,16 @@
 """Regenerate every artifact under out/ and write out/report.json (numbers used in the deck).
 
     python scripts/build_all.py                     # offline: gold models, compiled model, checks
-    DOKUWIKI_URL=... DOKUWIKI_TOKEN=... python scripts/build_all.py --publish
+
+``--publish`` is refused: the gold models' pages are process: and law: pages (with media and a "Machine checks"
+block), outside the lexflow: namespace that lexflow may write on lexipedia.xyz.  The lexflow pages are published by
+the publish step (``python -m lexflow run publish --dry-run`` first), which, like the DokuWiki client itself, goes
+through ``lexflow.publish.dokuwiki.require_namespace``.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from collections import Counter
 from pathlib import Path
@@ -73,10 +76,28 @@ def model_report(name, m, out: Path) -> dict:
     return rep
 
 
-def main():
+PUBLISH_REFUSED = ("scripts/build_all.py --publish is refused: it would write process: and law: pages and media, "
+                   "outside the lexflow: namespace. Publish the lexflow: pages with `python -m lexflow run publish "
+                   "--dry-run`, then `python -m lexflow run publish`.")
+
+
+def refuse_publish() -> None:
+    """The legacy writer's ids go through the same namespace rule as the publish step, before anything is built."""
+    from lexflow.publish.dokuwiki import NamespaceError, page_id, require_namespace
+    try:
+        for legacy in (page_id("process", "va/albemarle_county", "17-211"), page_id("law", "va", "17-211")):
+            require_namespace(legacy)
+    except NamespaceError as e:
+        print(f"{PUBLISH_REFUSED} ({e})", file=sys.stderr)
+        raise SystemExit(2) from None
+
+
+def main(argv: list[str] | None = None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--publish", action="store_true", help="publish to DOKUWIKI_URL with DOKUWIKI_TOKEN")
-    args = ap.parse_args()
+    ap.add_argument("--publish", action="store_true", help="refused: see the module docstring")
+    args = ap.parse_args(argv)
+    if args.publish:
+        refuse_publish()
     OUT.mkdir(exist_ok=True)
     report = {"models": {}}
     models = {name: fn() for name, fn in gold.ALL.items()}
@@ -105,16 +126,6 @@ def main():
     rt = OUT / "bpmn_assistant_roundtrip.json"
     if rt.exists():
         report["bpmn_assistant_roundtrip"] = json.loads(rt.read_text())
-    if args.publish:
-        from lexflow.publish.dokuwiki import DokuWiki, publish
-        wiki = DokuWiki(os.environ["DOKUWIKI_URL"], token=os.environ["DOKUWIKI_TOKEN"])
-        report["published"] = {}
-        for name in ("albemarle_17_211", "charlottesville_noise"):
-            m = models[name]
-            powl_map = {k: v["powl"] for k, v in report["models"][name]["petri"].items() if v["powl"]}
-            report["published"][name] = publish(m, wiki, (OUT / f"{name}.bpmn").read_text(),
-                                                (OUT / f"{name}.dmn").read_text(), powl=powl_map,
-                                                checks=report["models"][name]["lex"])
     (OUT / "report.json").write_text(json.dumps(report, indent=2, default=str))
     print("wrote", OUT / "report.json")
 

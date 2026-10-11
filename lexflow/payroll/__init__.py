@@ -1,0 +1,1 @@
+"""Public-employee aggregates (headcount and rounded pay quartiles by government, agency and title) from official open payroll data; no person-level field is ever kept, and the disclosure rules in aggregate.py limit what a published figure says about any one person (its docstring lists what they do not cover)."""

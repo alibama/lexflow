@@ -123,6 +123,13 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s.replace("’", "'")).strip()
 
 
+def quote_in(quote: str, text: str) -> bool:
+    """The quote check every state model's quotes pass (``lex_checks``): the quote word for word in the section
+    text, spacing and curly apostrophes aside.  A researched local process's quotes from the state code are
+    matched with it too (lexflow/municipal/places.py)."""
+    return bool(quote) and _norm(quote) in _norm(text or "")
+
+
 def lex_checks(model: LegalProcessModel) -> LexReport:
     rep = LexReport()
     texts = {(t.section, t.code): _norm(t.text) for t in model.texts}
@@ -133,7 +140,7 @@ def lex_checks(model: LegalProcessModel) -> LexReport:
             if s.quote:
                 rep.quotes_checked += 1
                 text = texts.get((s.section, s.code))
-                if text is None or _norm(s.quote) not in text:
+                if text is None or not quote_in(s.quote, text):
                     rep.quote_misses.append(f"{owner}: {s.citation}: {s.quote[:60]}")
 
     for _, _, n in model.iter_nodes():

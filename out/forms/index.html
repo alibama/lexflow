@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Drafts from the statute</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#1d1d1b;--muted:#5d5c57;--line:#dddbd3;--accent:#1f5f8b;--warn-bg:#fff4d6;
+--warn-ink:#5a4200;--warn-line:#e0b84c;--quote:#f1efe8;--req:#8a2b12;--ask:#6a4c00;--opt:#1f5f8b;--info:#4d5b2a}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#171716;--card:#21211f;--ink:#ecebe6;
+--muted:#a8a69e;--line:#3a3935;--accent:#7fb6dc;--warn-bg:#3a2f0f;--warn-ink:#f4dc9a;--warn-line:#8a6d1e;
+--quote:#2a2a27;--req:#f0a08a;--ask:#e8c66a;--opt:#7fb6dc;--info:#b9c98a}}
+:root[data-theme=dark]{--bg:#171716;--card:#21211f;--ink:#ecebe6;--muted:#a8a69e;--line:#3a3935;--accent:#7fb6dc;
+--warn-bg:#3a2f0f;--warn-ink:#f4dc9a;--warn-line:#8a6d1e;--quote:#2a2a27;--req:#f0a08a;--ask:#e8c66a;--opt:#7fb6dc;
+--info:#b9c98a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+a{color:var(--accent)}
+h1{font-size:1.6rem;line-height:1.25;margin:.4em 0 .3em}
+h2{font-size:1.15rem;margin:1.6em 0 .6em}
+h3{font-size:1rem;margin:0}
+.banner{background:var(--warn-bg);color:var(--warn-ink);border:2px solid var(--warn-line);border-radius:8px;
+padding:12px 14px;font-weight:600}
+.lede{color:var(--muted);max-width:75ch}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:12px 0}
+.box ul{margin:.3em 0;padding-left:1.2em}
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:960px){.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.sticky{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}}
+.el{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;
+padding:12px 14px;margin:0 0 12px}
+.el.required{border-left-color:var(--req)}.el.if_asked{border-left-color:var(--ask)}
+.el.right{border-left-color:var(--opt)}.el.duty,.el.notice{border-left-color:var(--info)}
+.el header{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;justify-content:space-between}
+.badge{font-size:.78rem;border:1px solid currentColor;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.required .badge{color:var(--req)}.if_asked .badge{color:var(--ask)}.right .badge{color:var(--opt)}
+.duty .badge,.notice .badge,.context .badge{color:var(--muted)}
+label{display:block;font-size:.9rem;margin:.6em 0 .2em}
+label.inline{display:flex;gap:8px;align-items:flex-start}
+input[type=text],input[type=email],input[type=date],textarea,select{width:100%;font:inherit;color:var(--ink);
+background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+textarea{min-height:4.5em}
+.help,.cond{font-size:.92rem;margin:.5em 0 0}.cond{color:var(--req)}
+blockquote{margin:.6em 0 0;background:var(--quote);border-radius:6px;padding:8px 10px;font-size:.9rem}
+blockquote p{margin:0}blockquote footer{margin-top:4px;font-size:.82rem;color:var(--muted)}
+.forms{font-size:.9rem;margin:.5em 0 0}
+.letter{background:#fff;color:#111;border:1px solid var(--line);border-radius:4px;padding:28px 30px;
+font:15px/1.55 Georgia,"Times New Roman",serif}
+.letter p{margin:0 0 .9em;white-space:pre-line}
+.letter .subject{font-weight:700}
+.letter .cite{color:#555;font-size:.8em}
+.letter .blank{border-bottom:1px solid #444;display:inline-block;min-width:9em}
+.letter .hint{color:#8a8a8a;font:11px/1.2 system-ui,sans-serif;vertical-align:top}
+.letter .tick{font-family:system-ui,sans-serif;color:#555}
+.letter-banner{font:600 12px/1.4 system-ui,sans-serif;color:#5a4200;border:1px solid #e0b84c;background:#fff4d6;
+padding:6px 8px;margin:0 0 18px;border-radius:4px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+button{font:inherit;padding:6px 14px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);
+color:#fff;cursor:pointer}
+.muted{color:var(--muted)}
+.notes{break-before:page}
+.printonly{display:none}
+@media print{body{background:#fff}main{max-width:none;padding:0}.noprint{display:none!important}
+.printonly{display:block}
+.grid{display:block}.sticky{position:static;max-height:none;overflow:visible}.letter{border:0;padding:0}
+.el{break-inside:avoid}.first-page{break-after:page}}
+@page{margin:18mm 14mm 14mm}
+@page{@top-center{content:"Draft made by lexflow from the statute; not an official form and not legal advice; use the official form if the agency has one";font:600 8pt/1.3 system-ui,sans-serif;color:#5a4200}}
+</style>
+</head>
+<body>
+<main>
+<div class="banner" role="note">Draft made by lexflow from the statute; not an official form and not legal advice; use the official form if the agency has one</div><h1>Drafts from the statute</h1><p class="lede">Worked examples of lexflow's draft generator (<code>lexflow/forms/draft.py</code>) for steps with no official form. See <code>docs/design/forms-plan.md</code>.</p><ul class="box" style="padding-left:2em"><li><strong>Request for public records (Virginia Freedom of Information Act)</strong><br><a href="va-foia-request.form.html">Fillable form</a> · <a href="va-foia-request.letter.html">Printable letter</a> · <a href="va-foia-request.json">Data (elements, quotes, sources)</a><br><span class="muted">20 elements, each citing its section and quoting it; step <code>submit_request</code> in <code>curated/va/records.json</code></span></li><li><strong>Request for a hearing on a licence denial based on a conviction (Cal. Bus. &amp; Prof. Code §§ 485, 480, 482)</strong><br><a href="ca-bpc-485-hearing-request.form.html">Fillable form</a> · <a href="ca-bpc-485-hearing-request.letter.html">Printable letter</a> · <a href="ca-bpc-485-hearing-request.json">Data (elements, quotes, sources)</a><br><span class="muted">26 elements, each citing its section and quoting it; step <code>request_hearing</code> in <code>curated_ask/license_conviction/ca.json</code></span></li></ul>
+</main>
+</body>
+</html>

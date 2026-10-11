@@ -1,0 +1,529 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "parking_ticket",
+ "title": "Pay, ask for a waiver of, or appeal a parking ticket",
+ "question": "I got a parking ticket in Charlottesville. How do I pay it, and how do I contest it?",
+ "category": "transportation_parking",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "visitors",
+  "vehicle owners"
+ ],
+ "office": "City Treasurer",
+ "summary": "City parking tickets are paid to the City Treasurer online (no convenience fee), in person at City Hall, by card over the phone, or by mail or drop box. Each fine doubles if not paid within 96 hours. A first overtime ticket (code 02) downtown may qualify for a one-time waiver, requested online. To contest a ticket, appeal in writing to the Parking Ticket Review Board within 96 hours, online or by mail with the original ticket; you need not pay first. If the appeal is denied, pay within 5 days or the fine doubles, unless you asked on the form for a General District Court hearing. A conviction there can be appealed to circuit court within 10 days. University of Virginia tickets are separate.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1220",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1220/",
+   "quote": "The governing body of any county, city, or town may by ordinance provide for the regulation of parking, stopping, and standing of vehicles within its limits",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1220",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1220/",
+   "quote": "The ordinance may delegate to that department, official, or employee the authority to make and enforce any additional regulations concerning parking that may be required, including penalties for violations, deadlines for the payment of fines, and late payment penalties for fines not paid when due.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1220",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1220/",
+   "quote": "shall constitute in evidence a prima facie presumption that the registered owner of the vehicle was the person who committed the violation",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1225(1)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1225/",
+   "quote": "That uncontested payment of parking citation penalties be collected and accounted for by a local administrative official or officials",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1225(2)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1225/",
+   "quote": "That contest by any person of any parking citation shall be certified on an appropriate form, to the appropriate district court, by such official or officials",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1225(3)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1225/",
+   "quote": "That the local administrative official or officials shall cause complaints, summons, or warrants to be issued for delinquent parking citations.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1225",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1225/",
+   "quote": "Every action to collect unpaid parking citation penalties imposed for violation of a city or county ordinance regulating parking under this article shall be commenced within three years of the date upon which such penalty became delinquent.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1216",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1216/",
+   "quote": "any motor vehicle, vehicle, or trailer parked on the public highways or public grounds against which there are three or more unpaid or otherwise unsettled parking violation notices may be removed",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1216",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1216/",
+   "quote": "shall be allowed at least 24 hours from the time of immobilization to repossess or secure the release of the motor vehicle, vehicle, or trailer",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1216",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1216/",
+   "quote": "by payment of the outstanding parking violation notices for which the motor vehicle, vehicle, or trailer was removed or immobilized and by payment of all costs incidental to the immobilization, removal, and storage of the motor vehicle, vehicle, or trailer",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1242(B)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1242/",
+   "quote": "Any local governing body, by such ordinance, may assess and retain a fine of not less than $100 nor more than $500 for its violation.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "whereby the Commissioner will refuse to issue or renew any vehicle registration of any applicant therefor who owes to such county, city, or town any local vehicle license fees or delinquent tangible personal property tax or parking citations",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "shall provide the debtor notice of the intent to deny renewal of registration or issuance of registration for any currently unregistered vehicle at least 30 days prior to the expiration date of a current vehicle registration",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "In the case of parking violations, the Commissioner shall only refuse to issue or renew the vehicle registration of any applicant therefor pursuant to this subsection for the vehicle that incurred the parking violations.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(D)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "any city may require that no motor vehicle, trailer, or semitrailer shall be licensed by that jurisdiction unless all fines owed to the jurisdiction by the owner of the vehicle, trailer, or semitrailer for violation of the jurisdiction's ordinances governing parking of vehicles have been paid",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-1228",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-1228/",
+   "quote": "nothing in this section shall prevent any educational institution which adopts, or has adopted, regulations pursuant to § 23.1-1301 providing for administrative disposition of contested, uncontested, or delinquent citations from disposing of those citations in accordance with those regulations",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-132",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-132/",
+   "quote": "Any person convicted in a district court of an offense not felonious shall have the right, at any time within ten days from such conviction, and whether or not such conviction was upon a plea of guilty, to appeal to the circuit court.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-136",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-136/",
+   "quote": "Any appeal taken under the provisions of this chapter shall be heard de novo in the appellate court",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-69.48:1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.48:1/",
+   "quote": "a fee of $35 shall be taxed as costs whenever a defendant fails to appear, unless, after a hearing requested by such person, good cause is shown for such failure to appear",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "City Code § 15-149",
+   "url": "https://www.charlottesville.gov/557/Parking-Tickets",
+   "quote": "City of Charlottesville parking tickets may be appealed in writing with the City of Charlottesville Parking Ticket Review Board, as long as appeals are postmarked or received within 96 hours of the ticket’s issue date",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "City Code §§ 15-129 to 15-204 (violation sections listed on the Violation Fees table)",
+   "url": "https://www.charlottesville.gov/560/Violation-Fees",
+   "quote": "Fine Amount (If Paid After 96 Hours)",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "City Council resolution, Proposed One-Time Fine Waiver for Parking Tickets (council agenda of October 21, 2013)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1197/Council-Resolution-Authorizing-the-Waiver-Program-PDF",
+   "quote": "the City Manager be authorized to design and implement a one-time fine waiver program for tickets issued in the downtown parking corridor",
+   "role": "authority"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that the ticket is a City of Charlottesville parking ticket",
+   "who": "Person who received the ticket (the vehicle's registered owner is responsible for it)",
+   "how": "University of Virginia parking tickets look similar but are paid and appealed through the University, not the City. The Parking Tickets page also says moving violations are not paid to the Treasurer; they are paid at the Police Department.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/557/Parking-Tickets",
+   "quote": "The University administers its own parking enforcement program and its appeals and payment process is completely separate from that of the City of Charlottesville.",
+   "source": "https://www.charlottesville.gov/557/Parking-Tickets"
+  },
+  {
+   "id": "s2",
+   "step": "Look up the fine and decide quickly whether to pay, ask for a waiver, or appeal",
+   "who": "Person who received the ticket",
+   "how": "Find the violation code on the ticket and look it up on the city's Violation Fees table. Every fine has a lower amount if paid within 96 hours and a doubled amount after 96 hours. Appeals are also due within 96 hours.",
+   "deadline": "Lower fine if paid within 96 hours; higher fine if paid after 96 hours",
+   "fee": "$10 to $180 if paid within 96 hours, $20 to $360 after 96 hours, depending on the violation (see fees)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/560/Violation-Fees",
+   "quote": "Fine Amount (If Paid Within 96 Hours)",
+   "source": "https://www.charlottesville.gov/560/Violation-Fees"
+  },
+  {
+   "id": "s3",
+   "step": "Pay online",
+   "who": "Person who received the ticket, paying the City Treasurer",
+   "how": "On the city's Parking Ticket Payment site, search by license plate number and plate state, or by the 8-digit ticket number, then pay the full balance on the account. A ticket issued very recently may not show up yet.",
+   "deadline": "Within 96 hours for the lower fine",
+   "fee": "The fine on the ticket; the Treasurer's Payment Methods page says there is no convenience fee for parking ticket payments online",
+   "form": null,
+   "url": "https://apps.charlottesville.gov/ticketpayment/Tickets",
+   "quote": "Full Payment is required on your account when paying online.",
+   "source": "https://apps.charlottesville.gov/ticketpayment/Tickets"
+  },
+  {
+   "id": "s4",
+   "step": "Or pay in person, by mail or drop box, or by card over the phone",
+   "who": "Person who received the ticket, paying the City Treasurer's Office",
+   "how": "In person at the customer service counter in the lobby of City Hall, 605 East Main Street (Treasurer's Office, Room A120), Monday through Friday, 8:30 am to 4:30 pm, except legal holidays; the counter takes cash, checks, debit cards and money orders, and credit cards for non-tax payments. By mail: a check or money order payable to \"City of Charlottesville\", sent to City of Charlottesville, Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902; do not mail cash or card details. The U.S. Post Office postmark, not a business meter stamp, decides whether a mailed payment is on time. By drop box: checks and money orders, 24 hours a day, beside the 6th and 7th Street entrances of City Hall (on foot) or in the parking lot between the Downtown Recreation Center and the City Hall Annex (by car); enclose the ticket or a description of it and a return address or phone number. By phone: credit or debit card at 866-660-5185. Questions about a ticket account go to the Treasurer's Office at 434-970-3146 (8:00 am to 5:00 pm).",
+   "deadline": "Within 96 hours for the lower fine (for mailed payments, the postmark decides timeliness)",
+   "fee": "The fine on the ticket; whether a card convenience fee applies to a parking ticket paid by phone is not clear (see fees)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "Credit and debit card payments may be made by phoning 866-660-5185 for:",
+   "source": "https://www.charlottesville.gov/562/Payment-Methods"
+  },
+  {
+   "id": "s5",
+   "step": "If you have three or more unpaid tickets, pay in person at City Hall",
+   "who": "Owner of a vehicle with three or more unpaid tickets",
+   "how": "The Treasurer's Office recommends paying in person at City Hall so the payment posts at once. If you pay online, by phone or by mail instead, it says it is not responsible for towing fees incurred between the time you pay and the time it receives the payment. A vehicle with three or more unsettled tickets can be towed or immobilized (see s15).",
+   "deadline": null,
+   "fee": "The unpaid tickets; towing fees if the vehicle is towed before the payment reaches the Treasurer",
+   "form": null,
+   "url": "https://www.charlottesville.gov/557/Parking-Tickets",
+   "quote": "If you have three or more unpaid tickets, we recommend that you pay in person at City Hall, so they will post to our system immediately.",
+   "source": "https://www.charlottesville.gov/557/Parking-Tickets"
+  },
+  {
+   "id": "s6",
+   "step": "Ask for a one-time waiver of a first overtime parking ticket downtown",
+   "who": "Person who received the ticket, to the City Treasurer's Office",
+   "how": "Only overtime parking tickets (violation code 02) issued in the downtown parking corridor, and only tickets that mention the waiver program at the bottom, qualify. Fill in the online Parking Waiver Request with the ticket details, your name, email and mailing address and your reasons, and certify with your initials that this is your first City ticket, that the violation was accidental or beyond your control, and that you understand the waiver is one-time. A waiver request is not a way to argue that the ticket was wrong; use the appeal for that.",
+   "deadline": null,
+   "fee": "None stated",
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver",
+   "quote": "Only tickets that reference the waiver program at the bottom of the ticket are eligible to apply for a waiver, so inspect your ticket carefully for eligibility.",
+   "source": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver"
+  },
+  {
+   "id": "s7",
+   "step": "Wait for the written waiver decision",
+   "who": "A city employee decides; the decision is sent in writing",
+   "how": "The fine does not get late penalties while the waiver request is under review. The waiver form says checking on the request is your job: if you hear nothing within 5 business days, call the Treasurer's Office at (434) 970-3146. No page says how long you have to pay if the waiver is denied, or whether you can still appeal then (see caveats); ask the Treasurer's Office.",
+   "deadline": "If you do not receive a response within 5 business days, call (434) 970-3146",
+   "fee": "No late penalties while the request is under review",
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver",
+   "quote": "For your convenience, fine amounts will not be subject to any late penalties while your waiver request is under review.",
+   "source": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver"
+  },
+  {
+   "id": "s8",
+   "step": "Appeal the ticket in writing to the Parking Ticket Review Board",
+   "who": "Person who received the ticket (the appellant)",
+   "how": "Use the online Parking Citation Appeal form, or mail a letter or appeal form with the original ticket and your return address to Parking Ticket Review Board, P.O. Box 2854, Charlottesville, VA 22902 (the envelope that comes with the ticket can be used). You do not have to pay first; the form asks you to wait for the decision before paying. It is up to you to give facts that would invalidate the ticket, such as illness that made the violation necessary, a breakdown handled reasonably quickly, documented officer error, or other circumstances unusual enough to warrant special consideration. The form lists reasons that will not be accepted: not knowing the law, having no prior offenses, not following posted signs, not finding a legal space, not putting on a city vehicle decal or zone permit by the deadline, parking in a handicapped space without the proper permit, not being able to pay, or that you or others have parked the same way before.",
+   "deadline": "Postmarked or received within 96 hours of the ticket's issue date (or by the close of the next business day, if the appeal would be due on a weekend or legal holiday)",
+   "fee": "None stated; the ticket need not be paid before appealing",
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/557/Parking-Tickets",
+   "quote": "City of Charlottesville parking tickets may be appealed in writing with the City of Charlottesville Parking Ticket Review Board, as long as appeals are postmarked or received within 96 hours of the ticket’s issue date",
+   "source": "https://www.charlottesville.gov/557/Parking-Tickets"
+  },
+  {
+   "id": "s9",
+   "step": "On the appeal form, choose whether you want a court hearing if the appeal is denied",
+   "who": "Appellant",
+   "how": "Choose Yes to have the case sent to Charlottesville General District Court if the appeal is denied (the form then asks for your date of birth and driver's license number), or No. If you go to court and lose, you still pay the fine plus $61.00 in court costs; if you do not appear, you are tried in your absence and a $35.00 fee is added unless you prepaid. Convictions are reported to the DMV or other licensing authority, and unpaid court fines and costs lead to suspension of the driver's license.",
+   "deadline": "With the appeal (within 96 hours of the ticket)",
+   "fee": "$61.00 in court costs if found guilty in court; $35.00 tried in absence fee unless prepaid",
+   "form": "f1",
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "quote": "Should your appeal be denied, check the appropriate box below to indicate whether or not you would like to appear in General District Court.",
+   "source": "https://webform.charlottesville.org/parkingcitation_appeal.aspx"
+  },
+  {
+   "id": "s10",
+   "step": "The appeal is reviewed and the decision is mailed",
+   "who": "Parking Ticket Review Board; the appeal form says a representative of the Police Department's traffic division decides",
+   "how": "Answers come by mail only, not by phone, fax or email. Checking on the appeal is your job: the appeal form says to call the office at (434) 970-3146 if no response letter arrives within 3 business days of submitting.",
+   "deadline": "Responses by mail within 5 to 10 business days (Parking Tickets page); call if no letter within 3 business days (appeal form)",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/557/Parking-Tickets",
+   "quote": "Responses to appeals will be made by mail only within 5 to 10 business days.",
+   "source": "https://www.charlottesville.gov/557/Parking-Tickets"
+  },
+  {
+   "id": "s11",
+   "step": "If the appeal is denied and you did not ask for court, pay within 5 days",
+   "who": "Appellant, paying the City Treasurer",
+   "how": "Pay by any method in s3 or s4. Unpaid tickets are forwarded to the City Treasurer's office for collection.",
+   "deadline": "Within 5 days after the appeal is denied (the form does not say from which date the 5 days run)",
+   "fee": "The fine; it doubles if not paid within 5 days",
+   "form": null,
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "quote": "If your appeal is denied, please remit payment within 5 days or the fine will double unless you have chosen to go to court.",
+   "source": "https://webform.charlottesville.org/parkingcitation_appeal.aspx"
+  },
+  {
+   "id": "s12",
+   "step": "If you asked for court, the case goes to the General District Court",
+   "who": "City (certifies the contested ticket to the court); Charlottesville General District Court",
+   "how": "After 5 days the city forwards the case to the court and court costs apply. State law requires the city to certify a contested parking ticket to the district court.",
+   "deadline": "Forwarded after 5 days",
+   "fee": "Court costs apply ($61.00 per the appeal form)",
+   "form": "f1",
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "quote": "If you have chosen to go to court, after 5 days your case will be forwarded to the General District Court and court costs will apply.",
+   "source": "https://webform.charlottesville.org/parkingcitation_appeal.aspx"
+  },
+  {
+   "id": "s13",
+   "step": "Go to the hearing in Charlottesville General District Court",
+   "who": "Registered owner (defendant); Charlottesville General District Court",
+   "how": "The court's schedule lists parking appeals on the first Thursday at 9 AM. The court is at 606 E Market Street; call the clerk's office general line, 434-970-3365, to confirm your date. If you do not appear you are tried in your absence. The appeal form says that if you prepay, court costs are $61.00 and no $35.00 tried in absence fee is added.",
+   "deadline": "The hearing date set by the court",
+   "fee": "Fine plus $61.00 court costs if found guilty; plus $35.00 if tried in absence (appeal form)",
+   "form": null,
+   "url": "https://www.vacourts.gov/courts/gd/charlottesville/home",
+   "quote": "Parking Appeals: First Thursday 9AM",
+   "source": "https://www.vacourts.gov/courts/gd/charlottesville/home"
+  },
+  {
+   "id": "s14",
+   "step": "Appeal a General District Court conviction to the Circuit Court",
+   "who": "Defendant; Charlottesville Circuit Court",
+   "how": "Appeal within 10 days of the conviction, even after a guilty plea. The circuit court hears the case anew (de novo). Ask the General District Court clerk's office how to note the appeal and what costs apply.",
+   "deadline": "Within ten days from the conviction",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/16.1-132/",
+   "quote": "Any person convicted in a district court of an offense not felonious shall have the right, at any time within ten days from such conviction, and whether or not such conviction was upon a plea of guilty, to appeal to the circuit court.",
+   "source": "Va. Code § 16.1-132"
+  },
+  {
+   "id": "s15",
+   "step": "What happens if tickets are left unpaid",
+   "who": "City Treasurer (collection); law enforcement (towing or immobilization)",
+   "how": "Unpaid tickets go to the City Treasurer for collection. The appeal form says a vehicle found illegally parked with three or more unsettled tickets will be towed or immobilized and not released until all tickets are paid in full; state law requires a towing ordinance to let the owner get the vehicle back by paying those tickets and the costs of the immobilization, removal and storage. State law requires the city's parking ordinance to have complaints, summonses or warrants issued for delinquent tickets, and any action to collect must be started within three years of the date the penalty became delinquent. State law also lets a treasurer make an agreement with the DMV Commissioner to refuse to issue or renew the registration of the vehicle that got the tickets, after at least 30 days' notice (whether Charlottesville has such an agreement was not confirmed).",
+   "deadline": null,
+   "fee": "Outstanding fines, plus towing, immobilization and storage costs if the vehicle is removed or immobilized",
+   "form": null,
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "quote": "Any vehicle illegally parked with three (3) or more unsettled parking violations will be towed or immobilized and will not be released until all tickets are paid in full.",
+   "source": "https://webform.charlottesville.org/parkingcitation_appeal.aspx"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Charlottesville Parking Citation Appeal (online form)",
+   "number": null,
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Charlottesville Parking Waiver Request (online form)",
+   "number": null,
+   "url": "https://webform.charlottesville.org/parkingcitation_waiverrequest.aspx",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {"item": "Blocking Driveway (violation code 13), City Code § 15-129", "amount": "$20 if paid within 96 hours; $40 if paid after 96 hours", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Blocking Driveway (13) Section 15-129 $20 $40"},
+  {"item": "Double Parking (06), City Code § 15-137", "amount": "$20 within 96 hours; $40 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Double Parking (06) Section 15-137 $20 $40"},
+  {"item": "Handicapped Space (22), City Code § 15-133", "amount": "$180 within 96 hours; $360 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Handicapped Space (22) Section 15-133 $180 $360"},
+  {"item": "Yellow Painted Curb (26), City Code § 15-136(b)", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Yellow Painted Curb (26) Section 15-136(b) $15 $30"},
+  {"item": "Park Further than 12 Inches from Curb (27), City Code § 15-136(c)", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Park Further than 12 Inches from Curb (27) Section 15-136(c) $15 $30"},
+  {"item": "No Parking - 3 to 5 am Downtown (20), City Code § 15-143", "amount": "$10 within 96 hours; $20 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "No Parking - 3 to 5 am Downtown (20) Section 15-143 $10 $20"},
+  {"item": "No Parking - Designated Hours (19), City Code § 15-139", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "No Parking - Designated Hours (19) Section 15-139 $15 $30"},
+  {"item": "No Parking - Dual Wheeled Vehicle Overnight (21), City Code § 15-144", "amount": "$10 within 96 hours; $20 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "No Parking - Dual Wheeled Vehicle Overnight (21) Section 15-144 $10 $20"},
+  {"item": "No Parking at Any Time (18), City Code § 15-138", "amount": "$25 within 96 hours; $50 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "No Parking at Any Time (18) Section 15-138 $25 $50"},
+  {"item": "Obstructing Traffic (24), City Code § 15-145", "amount": "$30 within 96 hours; $60 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Obstructing Traffic (24) Section 15-145 $30 $60"},
+  {"item": "Overtime Parking (02), City Code § 15-140", "amount": "$20 within 96 hours; $40 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Overtime Parking (02) Section 15-140 $20 $40"},
+  {"item": "Vehicle Occupying Part of Adjoining Space (28), City Code § 15-141", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Vehicle Occupying Part of Adjoining Space (28) Section 15-141 $15 $30"},
+  {"item": "Parking in Loading Zone (07), City Code § 15-178(d)", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking in Loading Zone (07) Section 15-178 (d) $15 $30"},
+  {"item": "Parking in Permit Zone Without Permit (16), City Code § 15-204", "amount": "$25 within 96 hours; $50 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking in Permit Zone Without Permit (16) Section 15-204 $25 $50"},
+  {"item": "Parking in Prohibited Zone (11), no City Code section listed", "amount": "$10 within 96 hours; $20 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking in Prohibited Zone (11) N/A $10 $20"},
+  {"item": "Parking on Sidewalk (25), City Code § 15-151", "amount": "$70 within 96 hours; $140 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking on Sidewalk (25) Section 15-151 $70 $140"},
+  {"item": "Parking with Left Side to Curb (05), City Code § 15-136(a)", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking with Left Side to Curb (05) Section 15-136(a) $15 $30"},
+  {"item": "Parking Within 15 Feet of Fire Hydrant (12), City Code § 15-129", "amount": "$25 within 96 hours; $50 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking Within 15 Feet of Fire Hydrant (12) Section 15-129 $25 $50"},
+  {"item": "Parking within 20 Feet of Intersection (15), City Code § 15-129", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Parking within 20 Feet of Intersection (15) Section 15-129 $15 $30"},
+  {"item": "Violation of Meter Ordinance (01), City Code § 15-176", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Violation of Meter Ordinance (01) Section 15-176 $15 $30"},
+  {"item": "Other (09), no City Code section listed", "amount": "$15 within 96 hours; $30 after", "basis": "https://www.charlottesville.gov/560/Violation-Fees", "quote": "Other (09) N/A $15 $30"},
+  {"item": "Convenience fee for paying a parking ticket online", "amount": "None", "basis": "https://www.charlottesville.gov/562/Payment-Methods", "quote": "There is no convenience fee for utility or parking ticket transactions."},
+  {"item": "Card payment by phone (866-660-5185)", "amount": "Not clearly stated for parking tickets: the page says a convenience fee applies to card transactions for tax payments, and that 2.5% is added to all credit card transactions and $2.25 to electronic check payments", "basis": "https://www.charlottesville.gov/562/Payment-Methods", "quote": "There is a fixed rate of 2.5% added to all credit card transactions, and a flat fee of $2.25 is added to electronic check payments from a checking or savings account."},
+  {"item": "Appeal to the Parking Ticket Review Board", "amount": "No fee stated; paying first is not required", "basis": "https://webform.charlottesville.org/parkingcitation_appeal.aspx", "quote": "It is not necessary to pay your ticket prior to filing an appeal."},
+  {"item": "Fine after a denied appeal, if not paid within 5 days (no court hearing requested)", "amount": "The fine doubles", "basis": "https://webform.charlottesville.org/parkingcitation_appeal.aspx", "quote": "If your appeal is denied, please remit payment within 5 days or the fine will double unless you have chosen to go to court."},
+  {"item": "Court costs in General District Court if found guilty, or if prepaid", "amount": "$61.00", "basis": "https://webform.charlottesville.org/parkingcitation_appeal.aspx", "quote": "If prepaid, court costs will be $61.00."},
+  {"item": "Failure to appear (tried in absence) fee in General District Court", "amount": "$35 (the appeal form states $35.00, unless prepaid)", "basis": "Va. Code § 16.1-69.48:1(A)", "quote": "a fee of $35 shall be taxed as costs whenever a defendant fails to appear, unless, after a hearing requested by such person, good cause is shown for such failure to appear"},
+  {"item": "Release of a towed or immobilized vehicle (three or more unsettled tickets)", "amount": "All outstanding tickets plus towing, immobilization and storage costs (local amounts not stated)", "basis": "Va. Code § 46.2-1216", "quote": "by payment of the outstanding parking violation notices for which the motor vehicle, vehicle, or trailer was removed or immobilized and by payment of all costs incidental to the immobilization, removal, and storage of the motor vehicle, vehicle, or trailer"},
+  {"item": "Disabled parking space fine range allowed by state law (the city charges $180 or $360)", "amount": "$100 to $500", "basis": "Va. Code § 46.2-1242(B)(1)", "quote": "Any local governing body, by such ordinance, may assess and retain a fine of not less than $100 nor more than $500 for its violation."},
+  {"item": "DMV registration-hold enforcement fee (only if the city uses a DMV hold; not confirmed)", "amount": "A reasonable fee set by the DMV Commissioner, which may be added to the parking citation", "basis": "Va. Code § 46.2-752(J)", "quote": "The Commissioner shall charge a reasonable fee to cover the costs of such enforcement action, and the treasurer or director of finance may add the cost of this fee to the delinquent tax bill or the amount of the parking citation."}
+ ],
+ "contacts": [
+  {"kind": "office", "value": "City Treasurer's Office, City of Charlottesville (elected constitutional officer; collects parking ticket fines)", "label": "City Treasurer", "url": "https://www.charlottesville.gov/551/City-Treasurer"},
+  {"kind": "address", "value": "City Hall, 605 E Main Street, Room A120, Charlottesville, VA 22902 (in person Monday through Friday, 8:30 am to 4:30 pm)", "label": "City Treasurer", "url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver"},
+  {"kind": "address", "value": "City of Charlottesville, Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902 (mailing address; checks and money orders by mail)", "label": "City Treasurer", "url": "https://www.charlottesville.gov/562/Payment-Methods"},
+  {"kind": "address", "value": "Parking Ticket Review Board, P.O. Box 2854, Charlottesville, VA 22902 (mailed appeals)", "label": "Parking Ticket Review Board", "url": "https://www.charlottesville.gov/557/Parking-Tickets"},
+  {"kind": "phone", "value": "434-970-3146 (Monday through Friday, 8:00 am to 5:00 pm)", "label": "City Treasurer", "url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver"},
+  {"kind": "phone", "value": "434-970-3155 (questions in Spanish)", "label": "City Treasurer", "url": "https://www.charlottesville.gov/551/City-Treasurer"},
+  {"kind": "phone", "value": "866-660-5185 (credit and debit card payments by phone, including parking tickets)", "label": "City Treasurer (payments by phone)", "url": "https://www.charlottesville.gov/562/Payment-Methods"},
+  {"kind": "email", "value": "citytreas@charlottesville.gov", "label": "City Treasurer", "url": "https://apps.charlottesville.gov/ticketpayment/Tickets"},
+  {"kind": "portal", "value": "https://apps.charlottesville.gov/ticketpayment/Tickets", "label": "City Treasurer (Parking Ticket Payment Online)", "url": "https://www.charlottesville.gov/557/Parking-Tickets"},
+  {"kind": "page", "value": "https://www.charlottesville.gov/557/Parking-Tickets", "label": "City Treasurer (Parking Tickets)", "url": "https://www.charlottesville.gov/557/Parking-Tickets"},
+  {"kind": "page", "value": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver", "label": "City Treasurer (Parking Ticket Waiver)", "url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver"},
+  {"kind": "phone", "value": "434-970-3365 (general line for the Clerk's Office)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "address", "value": "606 E Market Street, Charlottesville, VA 22902; mailing address P. O. Box 2677, Charlottesville, VA 22902 (Clerk's Office Monday through Friday, 8:30 am to 4:30 pm)", "label": "Charlottesville General District Court", "url": "https://www.charlottesville.gov/176/General-District-Court"},
+  {"kind": "page", "value": "https://www.vacourts.gov/courts/gd/charlottesville/home", "label": "Charlottesville General District Court", "url": "https://www.vacourts.gov/courts/gd/charlottesville/home"}
+ ],
+ "escalation": [
+  {
+   "trigger": "The ticket is believed to have been issued in error",
+   "next": "City of Charlottesville Parking Ticket Review Board (decided, per the appeal form, by a representative of the Police Department's traffic division)",
+   "type": "internal appeal",
+   "deadline": "Postmarked or received within 96 hours of the ticket's issue date (or by the close of the next business day, if the appeal would be due on a weekend or legal holiday)",
+   "basis": "City Code § 15-149 (as cited on https://www.charlottesville.gov/557/Parking-Tickets)",
+   "quote": "City of Charlottesville parking tickets may be appealed in writing with the City of Charlottesville Parking Ticket Review Board, as long as appeals are postmarked or received within 96 hours of the ticket’s issue date"
+  },
+  {
+   "trigger": "Appeal denied, and a General District Court hearing was requested on the appeal form",
+   "next": "Charlottesville General District Court (parking appeals docket)",
+   "type": "judicial review",
+   "deadline": "The city forwards the case after 5 days (appeal form)",
+   "basis": "Va. Code § 46.2-1225(2)",
+   "quote": "That contest by any person of any parking citation shall be certified on an appropriate form, to the appropriate district court, by such official or officials"
+  },
+  {
+   "trigger": "Found guilty in General District Court",
+   "next": "Charlottesville Circuit Court (new trial, heard de novo)",
+   "type": "judicial review",
+   "deadline": "Within ten days from the conviction",
+   "basis": "Va. Code § 16.1-132",
+   "quote": "Any person convicted in a district court of an offense not felonious shall have the right, at any time within ten days from such conviction, and whether or not such conviction was upon a plea of guilty, to appeal to the circuit court."
+  },
+  {
+   "trigger": "The ticket was issued by the University of Virginia, not the City",
+   "next": "University of Virginia parking enforcement (its own payment and appeals process)",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 46.2-1228",
+   "quote": "nothing in this section shall prevent any educational institution which adopts, or has adopted, regulations pursuant to § 23.1-1301 providing for administrative disposition of contested, uncontested, or delinquent citations from disposing of those citations in accordance with those regulations"
+  }
+ ],
+ "caveats": [
+  "The City Code has not been checked. The city links its Code of Ordinances on Municode (https://library.municode.com/va/charlottesville/codes/code_of_ordinances); Municode's terms of use page answered HTTP 520 on 2026-10-10, and the library's content API needs authentication, so Municode text is treated as not reusable. City Code § 15-149 (appeals) and §§ 15-129 to 15-204 (violations) are cited as the city's own pages cite them, and the local quotes come from those city pages, not from the ordinance.",
+  "Who decides an appeal is described differently: the Parking Tickets page sends appeals to the Parking Ticket Review Board, while the online appeal form says a representative of the traffic division of the Police Department reviews it and decides. The 2013 council agenda item calls the body the Parking Ticket Appeals Review Board.",
+  "Response times differ: the Parking Tickets page says responses come by mail within 5 to 10 business days, but the appeal form says to call if no response letter arrives within 3 business days, and that the timeline for court tickets is very short.",
+  "The weekend rule differs slightly: the Parking Tickets page extends the 96-hour deadline when the appeal would be due on a weekend or legal holiday, while the appeal form says 96 hours (4 days) or the close of the next business day if the citation was issued on a weekend.",
+  "The waiver pages give no deadline for asking for a waiver. The 2013 council agenda item proposed handling waivers through the appeals process (and reviewing three years of ticket history), which suggests the 96-hour appeal window may apply, but no current page says so.",
+  "Waiver eligibility is worded differently: the waiver page speaks of the first overtime parking ticket, while the waiver form's certification says the ticket is the first ticket received from the City of Charlottesville.",
+  "No page says whether a denied waiver can then be appealed, or whether a ticket can still be contested in court once the 96-hour appeal window has passed. State law (Va. Code § 46.2-1225(2)) requires contested tickets to be certified to the district court; ask the Treasurer's Office.",
+  "On the Parking Ticket Waiver page, the link labelled Parking Citation Appeal Form points to the waiver request form (parkingcitation_waiverrequest.aspx), not the appeal form (parkingcitation_appeal.aspx). Use the appeal form link on the Parking Tickets page.",
+  "The $61.00 court cost comes from the city's appeal form. In Open US Law's copy of the Code of Virginia, Va. Code § 16.1-69.48:1(B) sets a $61 fixed fee for misdemeanors tried in district court (traffic infractions are $51 under subsection D), and the General District Court's Traffic and Criminal Prepayment Fees sheet on the city's site lists $61.00 for misdemeanors and $35.00 for trial in absence. So the $61.00 matches the misdemeanor fixed fee, but no source cited here says parking ordinance cases are tried as misdemeanors, so the amount is cited to the form, not the statute.",
+  "Whether a parking ordinance case in General District Court is a conviction appealable under Va. Code § 16.1-132 or a civil judgment under Va. Code § 16.1-106 was not confirmed in the City Code. The appeal form speaks of being found guilty, of sentence and of convictions reported to the DMV, and the court costs match the misdemeanor fee, so § 16.1-132 is used. Both allow 10 days, but § 16.1-106 gives a civil appeal of right only when more than $20 is in controversy, which many of these fines are not. Appeal bonds and circuit court costs are not covered here.",
+  "Payment methods and fees come from the Treasurer's general Payment Methods page, which covers taxes, utility bills and parking tickets together, not from a parking page. It lists parking tickets for card payments by phone (866-660-5185) and online, and says there is no online convenience fee for parking tickets. For phone payments it says a convenience fee applies to card transactions for tax payments and that 2.5% is added to all credit card transactions, so whether a card payment of a parking ticket by phone carries a fee is not clear. The Pay page also tells mail payers to make payments payable to City of Charlottesville at P.O. Box 2854.",
+  "Whether Charlottesville has a DMV registration-hold agreement for parking tickets under Va. Code § 46.2-752(J), or refuses its local vehicle license for unpaid parking fines under § 46.2-752(D), was not confirmed on the city's pages.",
+  "The City Treasurer's Liens page says the Treasurer collects all taxes, fines and fees and may use salary liens (Va. Code § 58.1-3952(B)), but it does not mention parking tickets specifically, so liens are not listed as a parking ticket step.",
+  "The towing or immobilization ordinance for vehicles with three or more unsettled tickets (Va. Code § 46.2-1216) was not read; the 24-hour release window and the costs come from the state statute, and the local towing and storage amounts were not found.",
+  "The City Treasurer's page also shows citytreas@charlottesville.org in its text; the contact block and the ticket payment page use citytreas@charlottesville.gov, which is recorded here.",
+  "The court schedule says parking appeals are heard on the first Thursday at 9AM; it does not say whether that is the first Thursday of each month. Confirm the date with the General District Court clerk's office.",
+  "The Parking Ticket Waiver page links a Downtown Parking Corridor Map (PDF), which shows the area where the waiver applies; the map was retrieved but its street labels were not checked against a ticket's location."
+ ],
+ "sources": [
+  {"url": "https://www.charlottesville.gov/557/Parking-Tickets", "title": "Parking Tickets (City of Charlottesville, City Treasurer)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/558/Parking-Ticket-Waiver", "title": "Parking Ticket Waiver (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/560/Violation-Fees", "title": "Violation Fees (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://apps.charlottesville.gov/ticketpayment/Tickets", "title": "Parking Tickets Payment Online (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx", "title": "Charlottesville Parking Citation Appeal (online form)", "retrieved": "2026-10-10"},
+  {"url": "https://webform.charlottesville.org/parkingcitation_waiverrequest.aspx", "title": "Charlottesville Parking Citation Waiver Request (online form)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/551/City-Treasurer", "title": "City Treasurer (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/753/Pay", "title": "Pay (City of Charlottesville): parking tickets can be paid online, in person, by phone, or by mail", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/DocumentCenter/View/1197/Council-Resolution-Authorizing-the-Waiver-Program-PDF", "title": "City Council agenda item and resolution: Parking Ticket Waiver Program (October 21, 2013)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/2024/Treasurers-Liens", "title": "Treasurer's Liens (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/176/General-District-Court", "title": "General District Court (City of Charlottesville page)", "retrieved": "2026-10-10"},
+  {"url": "https://www.vacourts.gov/courts/gd/charlottesville/home", "title": "Charlottesville General District Court (Virginia's Judicial System)", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-1220/", "title": "Va. Code § 46.2-1220", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-1225/", "title": "Va. Code § 46.2-1225", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-1216/", "title": "Va. Code § 46.2-1216", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-1228/", "title": "Va. Code § 46.2-1228", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-1242/", "title": "Va. Code § 46.2-1242", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/46.2-752/", "title": "Va. Code § 46.2-752", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-132/", "title": "Va. Code § 16.1-132", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-136/", "title": "Va. Code § 16.1-136", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/16.1-69.48:1/", "title": "Va. Code § 16.1-69.48:1", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/562/Payment-Methods", "title": "Payment Methods (City of Charlottesville, City Treasurer)", "retrieved": "2026-10-11"},
+  {"url": "https://www.charlottesville.gov/DocumentCenter/View/182/Traffic-and-Criminal-Prepayment-Fees-PDF", "title": "Traffic and Criminal Prepayment Fees (General District Court sheet on the city's site, updated 3/21/2025)", "retrieved": "2026-10-11"},
+  {"url": "https://www.charlottesville.gov/DocumentCenter/View/1198/Downtown-Parking-Corridor-Map-PDF", "title": "Downtown Parking Corridor Map (City of Charlottesville)", "retrieved": "2026-10-11"}
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 71,
+  "quotes_confirmed": 71,
+  "removed": [],
+  "corrections": [
+   "Phone payments: the draft gave the Treasurer's office line 434-970-3146 as the number to pay by phone. The Treasurer's Payment Methods page (/562/Payment-Methods) gives 866-660-5185 for credit and debit card payments of parking tickets. s4 now uses 866-660-5185, quoted from that page, and keeps 434-970-3146 for questions. The 866 line is added to contacts.",
+   "Payment details: the draft caveat said payment types, the online fee and the mailing address for payments were not stated. The Payment Methods and Pay pages state them: cash, checks, debit cards and money orders at the City Hall counter, with credit cards for non-tax payments; checks and money orders by mail, payable to City of Charlottesville, to the Treasurer's Office at P.O. Box 2854, with the postmark deciding timeliness; drop boxes at City Hall; and no online convenience fee for parking tickets. s3, s4, the fees and the caveat are updated. The phone card fee is ambiguous, and the fees and caveat say so.",
+   "Split the old s4: the three-or-more-tickets advice is now its own step, s5, keeping its verbatim quote. It is worded as the Treasurer's recommendation ('we recommend'), not as a rule. Steps s5 to s14 are renumbered s6 to s15, and the cross-references are updated.",
+   "s7 (waiver decision): removed 'If the waiver is denied, pay the fine.' No page says this. It is replaced by a pointer to the caveat on what happens after a denied waiver.",
+   "s8 (appeal): the list of reasons the appeal form says will not be accepted is now complete. It adds handicapped-space parking without the proper permit, decal or zone permit deadlines, and 'others parked the same way'. It also adds the form's 'other circumstances' ground.",
+   "s11: the 5-day deadline no longer says 'of the denial' as if the form said so. The form does not say when the 5 days start.",
+   "s15 (unpaid tickets): two duties were run together in one clause. The duty to have summonses issued for delinquent tickets (§ 46.2-1225(3)) and the three-year limit on actions to collect are now stated separately. The DMV hold is now described as an agreement between a treasurer and the DMV Commissioner, with 30 days' notice (§ 46.2-752(J)).",
+   "Court-cost caveat: the index's Va. Code § 16.1-69.48:1(B) sets a $61 fixed fee for misdemeanors in district court, which matches the appeal form's $61.00. The General District Court's prepayment fee sheet on the city's site lists 61.00 for misdemeanors and 35.00 for trial in absence. The caveat now says this and still cites the amount to the form.",
+   "Appeal-route caveat: under § 16.1-106, a civil appeal is a right only when more than $20 is in controversy. Many of these fines are $20 or less, so the civil route matters; the caveat now says so.",
+   "Mailing-address contact: now cites the Payment Methods page and names the Treasurer's Office, as that page writes the address.",
+   "Added three sources: the Payment Methods page, the General District Court's prepayment fee sheet and the Downtown Parking Corridor Map. Added a caveat about the map, and updated the summary to name the payment channels."
+  ],
+  "open_issues": [
+   "City Code text (§ 15-149 and the violation sections) was not read: Municode was not used. Local rules come from the city's own pages that cite those sections.",
+   "No source gives a deadline for asking for a waiver, says whether a denied waiver can then be appealed, or says whether a ticket can be contested in court after the 96-hour window.",
+   "Not confirmed whether a card payment of a parking ticket by phone carries a convenience fee.",
+   "Not confirmed whether a parking case in General District Court is criminal (§ 16.1-132) or civil (§ 16.1-106).",
+   "Not confirmed whether Charlottesville has a DMV registration-hold agreement (§ 46.2-752(J)) or withholds its local vehicle licence for unpaid tickets (§ 46.2-752(D)). Local towing and storage amounts were not found.",
+   "The court schedule says 'First Thursday' without saying whether that means each month."
+  ]
+ }
+}

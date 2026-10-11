@@ -1,18 +1,18 @@
 {
  "summary": {
-  "heuristic@5": 0.148,
-  "learned@5": 0.161,
-  "heuristic@10": 0.191,
-  "learned@10": 0.231
+  "heuristic@5": 0.149,
+  "learned@5": 0.175,
+  "heuristic@10": 0.199,
+  "learned@10": 0.238
  },
  "cases": [
   {
    "case": "court_debt.ca",
    "heuristic@5": 0.1,
-   "learned@5": 0.15,
+   "learned@5": 0.2,
    "heuristic@10": 0.15,
    "learned@10": 0.25,
-   "top_p": 0.616
+   "top_p": 0.453
   },
   {
    "case": "court_debt.dc",
@@ -20,7 +20,7 @@
    "learned@5": 0.08333333333333333,
    "heuristic@10": 0.08333333333333333,
    "learned@10": 0.08333333333333333,
-   "top_p": 0.411
+   "top_p": 0.44
   },
   {
    "case": "court_debt.md",
@@ -28,15 +28,15 @@
    "learned@5": 0.047619047619047616,
    "heuristic@10": 0.047619047619047616,
    "learned@10": 0.047619047619047616,
-   "top_p": 0.452
+   "top_p": 0.299
   },
   {
    "case": "court_debt.tx",
    "heuristic@5": 0.12903225806451613,
    "learned@5": 0.12903225806451613,
    "heuristic@10": 0.22580645161290322,
-   "learned@10": 0.22580645161290322,
-   "top_p": 0.795
+   "learned@10": 0.1935483870967742,
+   "top_p": 0.722
   },
   {
    "case": "court_debt.va",
@@ -44,23 +44,23 @@
    "learned@5": 0.35714285714285715,
    "heuristic@10": 0.35714285714285715,
    "learned@10": 0.42857142857142855,
-   "top_p": 0.631
+   "top_p": 0.438
   },
   {
    "case": "license_conviction.ca",
    "heuristic@5": 0.034482758620689655,
    "learned@5": 0.034482758620689655,
-   "heuristic@10": 0.06896551724137931,
+   "heuristic@10": 0.034482758620689655,
    "learned@10": 0.06896551724137931,
-   "top_p": 0.723
+   "top_p": 0.868
   },
   {
    "case": "license_conviction.dc",
-   "heuristic@5": 0.0,
-   "learned@5": 0.0,
-   "heuristic@10": 0.0,
-   "learned@10": 0.06666666666666667,
-   "top_p": 0.316
+   "heuristic@5": 0.13333333333333333,
+   "learned@5": 0.2,
+   "heuristic@10": 0.2,
+   "learned@10": 0.2,
+   "top_p": 0.734
   },
   {
    "case": "license_conviction.md",
@@ -68,23 +68,23 @@
    "learned@5": 0.0,
    "heuristic@10": 0.0,
    "learned@10": 0.0,
-   "top_p": 0.268
+   "top_p": 0.637
   },
   {
    "case": "license_conviction.tx",
-   "heuristic@5": 0.06060606060606061,
-   "learned@5": 0.030303030303030304,
-   "heuristic@10": 0.09090909090909091,
-   "learned@10": 0.09090909090909091,
-   "top_p": 0.519
-  },
-  {
-   "case": "license_conviction.va",
    "heuristic@5": 0.0,
    "learned@5": 0.0,
    "heuristic@10": 0.0,
    "learned@10": 0.0,
-   "top_p": 0.46
+   "top_p": 0.661
+  },
+  {
+   "case": "license_conviction.va",
+   "heuristic@5": 0.047619047619047616,
+   "learned@5": 0.047619047619047616,
+   "heuristic@10": 0.047619047619047616,
+   "learned@10": 0.047619047619047616,
+   "top_p": 0.76
   },
   {
    "case": "phone_commissary.ca",
@@ -92,15 +92,15 @@
    "learned@5": 0.125,
    "heuristic@10": 0.125,
    "learned@10": 0.125,
-   "top_p": 0.898
+   "top_p": 0.875
   },
   {
    "case": "phone_commissary.dc",
    "heuristic@5": 0.1111111111111111,
    "learned@5": 0.4444444444444444,
    "heuristic@10": 0.2222222222222222,
-   "learned@10": 0.4444444444444444,
-   "top_p": 0.783
+   "learned@10": 0.5555555555555556,
+   "top_p": 0.624
   },
   {
    "case": "phone_commissary.md",
@@ -108,7 +108,7 @@
    "learned@5": 0.05263157894736842,
    "heuristic@10": 0.10526315789473684,
    "learned@10": 0.05263157894736842,
-   "top_p": 0.771
+   "top_p": 0.7
   },
   {
    "case": "phone_commissary.tx",
@@ -116,15 +116,15 @@
    "learned@5": 0.25,
    "heuristic@10": 0.125,
    "learned@10": 0.375,
-   "top_p": 0.823
+   "top_p": 0.649
   },
   {
    "case": "phone_commissary.va",
    "heuristic@5": 0.25,
    "learned@5": 0.25,
    "heuristic@10": 0.25,
-   "learned@10": 0.5,
-   "top_p": 0.883
+   "learned@10": 0.25,
+   "top_p": 0.828
   },
   {
    "case": "pretrial_clock.ca",
@@ -132,7 +132,7 @@
    "learned@5": 0.0,
    "heuristic@10": 0.0,
    "learned@10": 0.0,
-   "top_p": 0.731
+   "top_p": 0.724
   },
   {
    "case": "pretrial_clock.dc",
@@ -140,7 +140,7 @@
    "learned@5": 0.42857142857142855,
    "heuristic@10": 0.5714285714285714,
    "learned@10": 0.5714285714285714,
-   "top_p": 0.867
+   "top_p": 0.878
   },
   {
    "case": "pretrial_clock.md",
@@ -148,7 +148,7 @@
    "learned@5": 0.3,
    "heuristic@10": 0.4,
    "learned@10": 0.4,
-   "top_p": 0.815
+   "top_p": 0.834
   },
   {
    "case": "pretrial_clock.tx",
@@ -156,7 +156,7 @@
    "learned@5": 0.0,
    "heuristic@10": 0.0,
    "learned@10": 0.0,
-   "top_p": 0.757
+   "top_p": 0.693
   },
   {
    "case": "pretrial_clock.va",
@@ -164,15 +164,15 @@
    "learned@5": 0.2222222222222222,
    "heuristic@10": 0.1111111111111111,
    "learned@10": 0.2222222222222222,
-   "top_p": 0.728
+   "top_p": 0.699
   },
   {
    "case": "prison_wages.ca",
    "heuristic@5": 0.05555555555555555,
    "learned@5": 0.05555555555555555,
    "heuristic@10": 0.05555555555555555,
-   "learned@10": 0.1111111111111111,
-   "top_p": 0.63
+   "learned@10": 0.16666666666666666,
+   "top_p": 0.433
   },
   {
    "case": "prison_wages.dc",
@@ -180,55 +180,55 @@
    "learned@5": 0.16666666666666666,
    "heuristic@10": 0.3333333333333333,
    "learned@10": 0.25,
-   "top_p": 0.69
+   "top_p": 0.642
   },
   {
    "case": "prison_wages.md",
    "heuristic@5": 0.0,
    "learned@5": 0.08333333333333333,
    "heuristic@10": 0.08333333333333333,
-   "learned@10": 0.16666666666666666,
-   "top_p": 0.698
+   "learned@10": 0.08333333333333333,
+   "top_p": 0.471
   },
   {
    "case": "prison_wages.tx",
    "heuristic@5": 0.18181818181818182,
-   "learned@5": 0.13636363636363635,
+   "learned@5": 0.22727272727272727,
    "heuristic@10": 0.2727272727272727,
-   "learned@10": 0.3181818181818182,
-   "top_p": 0.443
+   "learned@10": 0.2727272727272727,
+   "top_p": 0.274
   },
   {
    "case": "prison_wages.va",
    "heuristic@5": 0.26666666666666666,
-   "learned@5": 0.26666666666666666,
+   "learned@5": 0.3333333333333333,
    "heuristic@10": 0.4,
-   "learned@10": 0.3333333333333333,
-   "top_p": 0.614
+   "learned@10": 0.4,
+   "top_p": 0.383
   },
   {
    "case": "record_sealing.ca",
-   "heuristic@5": 0.1,
+   "heuristic@5": 0.0,
    "learned@5": 0.05,
    "heuristic@10": 0.1,
    "learned@10": 0.15,
-   "top_p": 0.513
+   "top_p": 0.485
   },
   {
    "case": "record_sealing.dc",
    "heuristic@5": 0.5555555555555556,
    "learned@5": 0.5555555555555556,
    "heuristic@10": 0.6666666666666666,
-   "learned@10": 0.7777777777777778,
-   "top_p": 0.723
+   "learned@10": 0.8888888888888888,
+   "top_p": 0.6
   },
   {
    "case": "record_sealing.md",
    "heuristic@5": 0.2222222222222222,
    "learned@5": 0.2222222222222222,
-   "heuristic@10": 0.2777777777777778,
-   "learned@10": 0.3333333333333333,
-   "top_p": 0.666
+   "heuristic@10": 0.3888888888888889,
+   "learned@10": 0.4444444444444444,
+   "top_p": 0.701
   },
   {
    "case": "record_sealing.tx",
@@ -236,15 +236,15 @@
    "learned@5": 0.03333333333333333,
    "heuristic@10": 0.03333333333333333,
    "learned@10": 0.03333333333333333,
-   "top_p": 0.468
+   "top_p": 0.512
   },
   {
    "case": "record_sealing.va",
    "heuristic@5": 0.35714285714285715,
    "learned@5": 0.35714285714285715,
    "heuristic@10": 0.5714285714285714,
-   "learned@10": 0.5,
-   "top_p": 0.632
+   "learned@10": 0.5714285714285714,
+   "top_p": 0.633
   }
  ]
 }

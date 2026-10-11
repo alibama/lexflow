@@ -4,9 +4,12 @@
     lexflow run <step> [--states va,dc]    run one step now (see `lexflow status` for ids)
     lexflow run quickstart --states va     every required step for the states you name
     lexflow serve                          the dashboard and API on :8000
-    lexflow sync push|pull [--states va]   share through Turso
+    lexflow sync push|pull [--states va]   share through Turso (only the shared tables: --tables refuses any other)
     lexflow import-contacts file.csv       gov_id,question,kind,value,label
     lexflow export-status docs/status.json the snapshot the README charts are drawn from
+    lexflow index --regulations [--states] the state regulations' search indexes (statutes without the flag)
+    lexflow reviewer add|list|token|remove the reviewer list the operator keeps (pages name reviewers only from it;
+                                           it is this copy's own: sync refuses the table)
 """
 from __future__ import annotations
 
@@ -47,6 +50,7 @@ def cmd_run(args) -> int:
     for k in ("force", "no_llm", "regulations", "full", "dry_run"):
         if getattr(args, k, False):
             params[k] = True
+    from .store.turso import SyncTableError
     con = db.connect()
     ctx = JobContext(args.job, con)
     ctx.log(f"{step.title} {json.dumps(params) if params else ''}".strip())
@@ -56,6 +60,10 @@ def cmd_run(args) -> int:
         ctx.log("result: " + json.dumps(result, default=str)[:2000])
         ctx.finish(result, True, "Finished")
         return 0
+    except SyncTableError as e:          # a table sync does not take: say so, without a traceback
+        print(f"sync: {e}", file=sys.stderr)
+        ctx.finish(None, False, f"refused: {e}")
+        return 2
     except Exception as e:  # noqa: BLE001
         traceback.print_exc()
         ctx.finish(None, False, f"{type(e).__name__}: {e}")
@@ -71,6 +79,14 @@ def cmd_serve(args) -> int:
 
 
 def cmd_sync(args) -> int:
+    """Push or pull the shared tables (db.SYNCED).  Any other table named in --tables (the reviewer list, the review
+    log ...) is refused before the shared database is reached: exit status 2 and one line saying why."""
+    from .store import turso as T
+    try:
+        T.check_tables(args.tables)
+    except T.SyncTableError as e:
+        print(f"sync {args.direction}: {e}", file=sys.stderr)
+        return 2
     ns = argparse.Namespace(step="sync", job=None, args=json.dumps({"direction": args.direction}),
                             states=args.states, tables=args.tables, full=args.full, questions=None)
     return cmd_run(ns)
@@ -139,16 +155,18 @@ def cmd_statute_search(args) -> int:
 
 
 def cmd_ask_search(args) -> int:
-    """Full-text search of one state's statutes: each argument is a concept, synonyms separated by '|'."""
+    """Full-text search of one state's statutes (or, with --regulations, its regulations): each argument is a
+    concept, synonyms separated by '|'."""
     from .ask import index as I
     from .municipal import states as S
     st = S.normalise(args.state)
-    if not I.ensure(st, log=lambda *_: None):
-        print(f"{st}: statutes not downloaded")
+    corpus = "regulations" if getattr(args, "regulations", False) else I.CORPUS
+    if not I.ensure(st, log=lambda *_: None, corpus=corpus):
+        print(f"{st}: {corpus} not downloaded")
         return 1
     groups = [[t.strip() for t in c.split("|") if t.strip()] for c in args.concepts]
     expr = args.fts or I.match(groups, "or" if args.any else "and", columns="title" if args.title else None)
-    hits = I.search(st, expr, limit=args.limit) if expr else []
+    hits = I.search(st, expr, limit=args.limit, corpus=corpus) if expr else []
     for h in hits:
         print(f"{h['ref']:<34} {int(h['words'] or 0):>6}w  {h['title'][:100]}")
     print(f"({len(hits)} shown; query {expr})")
@@ -233,11 +251,26 @@ def cmd_index(args) -> int:
     from .ask import index as I
     from .municipal import states as S
     from .municipal import statutes
+    if getattr(args, "regulations", False):
+        return _index_regulations(args)
     sts = S.parse_states(args.states) if args.states else [s for s, _, _ in S.STATES if statutes.have(s)]
     for st in sts:
         if args.force or not I.ready(st):
             I.build(st)
     return 0
+
+
+def _index_regulations(args) -> int:
+    """lexflow index --regulations: every state with a regulations file on disk, or those --states names (a named
+    state with no file makes the exit status 1)."""
+    from .corpus import regulations as R
+    from .municipal import states as S
+    named = args.states and args.states.strip().lower() != "all"
+    out = R.build_all(S.parse_states(args.states) if named else None, force=args.force)
+    for st, v in out.items():
+        print(f"{st:<4} {v['sections']:>8,} sections {v['seconds']:>7.1f}s {v['mb']:>8.1f} MB" if isinstance(v, dict)
+              else f"{st:<4} {v}")
+    return 1 if any(v == "no file" for v in out.values()) else 0
 
 
 def cmd_ceiling(args) -> int:
@@ -365,6 +398,88 @@ def cmd_wiki_pages(args) -> int:
     return 0
 
 
+def cmd_review_hash(args) -> int:
+    """Print the text_hash a reviewer records in a curated file's reviewed_by (lexflow/signoff.py): the file without
+    its sign-offs, and, for a place file, each answer on its own."""
+    from pathlib import Path
+    from . import signoff
+    from .municipal import places as P
+    for name in args.paths:
+        path = Path(name)
+        spec = json.loads(path.read_text(encoding="utf-8"))
+        print(f"{path}  text_hash {signoff.file_hash(spec)}  (the whole file)")
+        for qid, ans in (spec.get("answers") or {}).items():
+            row = P.local_row(ans, spec)
+            print(f"{path}  answers.{qid}  text_hash {signoff.text_hash(signoff.row_text(row, signoff.LOCAL_TEXT))}")
+    print('Record it with the review: "reviewed_by": {"reviewer": "<the id `lexflow reviewer list` gives>", '
+          '"date": "YYYY-MM-DD", "attested": true, "text_hash": "<the hash>"}, where attested is the reviewer\'s own '
+          "statement that they, a person, read this exact text, and the reviewer is someone the operator has put on "
+          "the list (`lexflow reviewer add`). Any later edit to the text needs a new review.")
+    return 0
+
+
+TOKEN_NOTE = ("reviewer token (shown this once; lexflow keeps only its hash): {token}\n"
+              "Give it to the reviewer alone. The review API records or removes a review only with it, in the "
+              "X-Lexflow-Reviewer-Token header, and keeps which reviewer's token was used. "
+              "`lexflow reviewer token <id>` makes a new one.")
+
+
+def cmd_reviewer(args) -> int:
+    """The reviewer list (lexflow/reviewers.py): the people the operator vouches for.  lexflow cannot check that a
+    reviewer is a person; a page names a reviewer only from this list."""
+    from . import reviewers as RV
+    from . import signoff
+    with db.session() as con:
+        try:
+            if args.action == "add":
+                r = RV.add(con, args.name, args.role, licensed_in=args.licensed_in, added_by=args.added_by,
+                           confirm_person=args.confirm_person)
+                print(f"added {r['id']}: {r['name']}, {r['role']}"
+                      + (f" licensed in {r['licensed_in']}" if r["licensed_in"] else "")
+                      + f" (added by {r['added_by']}). You vouch that this reviewer is a person: lexflow cannot "
+                        "check it. A review names them as \"reviewer\": \"" + r["id"] + "\".")
+                print(TOKEN_NOTE.format(token=r["token"]))
+                if signoff.is_ai_name(r["name"]):
+                    print("warning: the name contains the name of an AI system or product; added because you "
+                          "confirmed the reviewer is a person (--confirm-person)")
+            elif args.action == "token":
+                token = RV.rotate_token(con, args.id)
+                print(f"new token for {args.id}; the old one no longer works.")
+                print(TOKEN_NOTE.format(token=token))
+            elif args.action == "remove":
+                r = RV.remove(con, args.id)
+                print(f"removed {r['id']}: {r['name']}; their token no longer works, and pages they signed will say "
+                      "\"Not yet reviewed by a person\" at the next render")
+            else:
+                rows = RV.listing(con, removed=args.all)
+                for r in rows:
+                    print(f"{r['id']}  {r['name']}  {r['role']}"
+                          + (f" licensed in {r['licensed_in']}" if r["licensed_in"] else "")
+                          + f"  added by {r['added_by']} on {r['added_at'][:10]}"
+                          + (f"  removed on {r['removed_at'][:10]}" if r["removed_at"] else
+                             "" if r.get("token_hash") else f"  no token yet (`lexflow reviewer token {r['id']}`)"))
+                print(f"{len(rows)} reviewer{'s' if len(rows) != 1 else ''} on the list"
+                      + (" (with those removed)" if args.all else ""))
+        except RV.ReviewerError as e:
+            print(f"reviewer {args.action}: {e}", file=sys.stderr)
+            return 1
+    return 0
+
+
+def cmd_deadline_words(args) -> int:
+    """Read every curated deadline in the words of its quote; list those whose stored unit or number the quote does
+    not bear out (relabelled units, figures only lexflow's count gives, figures not in the deadline's own quote)."""
+    from .law import wording as W
+    rows = W.audit(config.CURATED_DIR)
+    odd = [r for r in rows if r["wording"] != "agrees" or not r["in_deadline_quote"]]
+    for r in (rows if args.all else odd):
+        flag = r["wording"] + ("" if r["in_deadline_quote"] or r["wording"] in ("derived", "no figure", "not stated")
+                               else ", not in the deadline's own quote")
+        print(f"{r['model']:14} {r['step']:28} stored {r['amount']} {r['unit']:<14} {flag:<42} {r['text']}")
+    print(f"{len(rows)} deadlines; {len(odd)} where the stored unit or figure is lexflow's, not the quote's")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="lexflow", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -413,6 +528,30 @@ def main(argv: list[str] | None = None) -> int:
     wp = sub.add_parser("wiki-pages", help="write lexipedia.xyz pages to a directory for review")
     wp.add_argument("--out", default="/data/wiki")
     wp.set_defaults(fn=cmd_wiki_pages)
+    rh = sub.add_parser("review-hash", help="the text_hash a reviewer records in a curated file's reviewed_by")
+    rh.add_argument("paths", nargs="+")
+    rh.set_defaults(fn=cmd_review_hash)
+    rv = sub.add_parser("reviewer", help="the reviewer list the operator keeps (this copy's own, not synced): add, "
+                                         "list, remove a reviewer, or give one a new token")
+    rvs = rv.add_subparsers(dest="action", required=True)
+    ra = rvs.add_parser("add", help="put a person you vouch for on the list")
+    ra.add_argument("name")
+    ra.add_argument("--role", required=True, help="one of: attorney, paralegal, law student, clerk, records officer, "
+                                                   "planner, municipal attorney, researcher, student, volunteer, other person")
+    ra.add_argument("--licensed-in", help="for an attorney: the state where they are licensed (va or Virginia)")
+    ra.add_argument("--added-by", required=True, help="who vouches for this reviewer (the operator)")
+    ra.add_argument("--confirm-person", action="store_true",
+                    help="add a name that contains the name of an AI system or product: you confirm the reviewer is a person")
+    rvs.add_parser("list", help="the reviewers on the list").add_argument("--all", action="store_true",
+                                                                         help="with those removed")
+    rr = rvs.add_parser("remove", help="take a reviewer off the list")
+    rr.add_argument("id")
+    rt = rvs.add_parser("token", help="print a new token for a reviewer (the old one stops working)")
+    rt.add_argument("id")
+    rv.set_defaults(fn=cmd_reviewer)
+    dw = sub.add_parser("deadline-words", help="re-check curated deadlines against the words of their quotes")
+    dw.add_argument("--all", action="store_true", help="list every deadline, not only those that differ")
+    dw.set_defaults(fn=cmd_deadline_words)
     an = sub.add_parser("answer", help="one place's answers as Markdown: lexflow answer va:charlottesville")
     an.add_argument("place")
     an.add_argument("--out", help="directory to write <state>-<place>.md files into")
@@ -426,6 +565,7 @@ def main(argv: list[str] | None = None) -> int:
     asr.add_argument("--any", action="store_true", help="any concept instead of all of them")
     asr.add_argument("--title", action="store_true", help="search headings only")
     asr.add_argument("--fts", help="a raw SQLite FTS5 MATCH expression instead of concepts")
+    asr.add_argument("--regulations", action="store_true", help="search the state's regulations instead")
     asr.add_argument("--limit", type=int, default=25)
     asr.set_defaults(fn=cmd_ask_search)
     ca = sub.add_parser("check-ask", help="check a reference answer in curated_ask/<question>/<state>.json")
@@ -448,9 +588,12 @@ def main(argv: list[str] | None = None) -> int:
     cl.add_argument("state")
     cl.add_argument("question")
     cl.set_defaults(fn=cmd_check_labels)
-    ix = sub.add_parser("index", help="build the statute search index (all downloaded states, or --states)")
+    ix = sub.add_parser("index", help="build the statute search index (all downloaded states, or --states); with "
+                                      "--regulations, the regulations indexes (every state with a file on disk)")
     ix.add_argument("--states")
     ix.add_argument("--force", action="store_true")
+    ix.add_argument("--regulations", action="store_true",
+                    help="index the regulations files already on disk (data/index/regulations_<state>.sqlite)")
     ix.set_defaults(fn=cmd_index)
     sub.add_parser("ceiling", help="Claude-vs-Claude agreement and perfect-selection bounds -> docs/ceiling.json"
                    ).set_defaults(fn=cmd_ceiling)

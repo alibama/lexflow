@@ -9,8 +9,14 @@ Conventions (same for every ordinance, reviewable by lawyers once):
 * a filing/notice by an outside party becomes a message catch in the agency process; with
   a lapsing deadline it becomes an event-based gateway (message vs timer);
 * agency deadlines become timer boundary events: non-interrupting when the text says
-  missing them has no effect (directory), interrupting otherwise;
-* decision steps with a table become business-rule tasks bound to DMN.
+  missing them has no effect (directory), interrupting otherwise.  Every timer is named in the
+  statute's own words, or "lexflow's count: ..." for a sum (lexflow/law/wording.py), never in the
+  stored amount and unit, which are only for the ISO duration;
+* decision steps with a table become business-rule tasks bound to DMN;
+* every label a reader sees (gateways, flows, events) is the law's words or a plain sentence from the facts (a
+  step's action, an outcome's description), never a condition's snake_case id (that stays only in the flow's
+  condition expression), and a long label is given in full or cut at a word boundary with an ellipsis
+  (``short``), never mid-word.
 """
 from __future__ import annotations
 
@@ -18,6 +24,7 @@ import re
 
 from ..ir import (Actor, Decision, InputClause, Lane, LegalProcessModel, MessageFlow, Node, OutputClause,
                   Participant, Process, Provenance, Review, Rule, SectionText, SequenceFlow, Source, Timer)
+from ..law import wording as W
 from .schema import LegalProcessFacts, Quote
 
 INTERNAL = {"public-body", "official", "other-government"}
@@ -25,6 +32,29 @@ UNIT = {"hours": "H", "days": "D", "business_days": "D", "weeks": "W", "months":
 TASK_FOR_KIND = {"notice": "sendTask", "decision": "userTask", "hearing": "userTask", "record": "task",
                  "review": "userTask", "inspection": "userTask", "payment": "receiveTask", "act": "task",
                  "filing": "receiveTask"}
+
+
+LABEL_MAX = 100          # the longest label drawn in full on a map
+FLOW_LABEL_MAX = 60      # a flow's label runs along its arrow
+OTHERWISE_END = "Otherwise this map ends here"
+
+
+def short(text: str | None, limit: int = LABEL_MAX) -> str:
+    """A label as a map draws it: the whole text, or, when it is longer than ``limit``, cut at the last word boundary
+    before it with an ellipsis; never mid-word (a text with no space to cut at is given in full)."""
+    t = " ".join(str(text or "").split())
+    if len(t) <= limit:
+        return t
+    head = t[:limit - 1]
+    if " " not in head:
+        return t
+    return head.rsplit(" ", 1)[0].rstrip(" ,;:-–—(") + "…"
+
+
+def ask(text: str | None, limit: int = LABEL_MAX) -> str:
+    """A plain sentence as a gateway's question: '<text>?', cut like ``short``."""
+    t = " ".join(str(text or "").split()).rstrip(".?")
+    return t + "?" if len(t) + 1 <= limit else short(t, limit)
 
 
 def iso_duration(amount: int, unit: str) -> str:
@@ -50,6 +80,13 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     flows: list[SequenceFlow] = []
     mflows: list[MessageFlow] = []
     counter = iter(range(1, 10_000))
+    # timers are named in the statute's own words (or "lexflow's count: ..."), never in lexflow's stored unit
+    plain = facts.model_dump(mode="json")
+    plain_steps = {x["id"]: x for x in plain.get("steps") or []}
+
+    def timer_name(step_id: str, d, waiting: bool = False) -> str:
+        return (W.timer_label(plain_steps.get(step_id) or {}, plain, waiting=waiting)
+                or f"{d.amount} {d.unit.replace('_', ' ')}{' pass' if waiting else ''}")
 
     def fid():
         return f"sf{next(counter)}"
@@ -57,7 +94,7 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     def lane_of(actor_id):
         return f"ln_{actor_id}" if actor_id in {a.id for a in internal} else default_lane
 
-    start = Node(id="start", type="startEvent", name=facts.trigger[:60], lane=default_lane,
+    start = Node(id="start", type="startEvent", name=short(facts.trigger), lane=default_lane,
                  sources=[src(facts.trigger_source)])
     nodes.append(start)
     entry: dict[str, str] = {}      # step id -> first node id of its block
@@ -84,7 +121,7 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
                 d = s.deadline
                 soft = d.consequence == "directory-only"
                 b = Node(id=f"{s.id}_deadline", type="boundaryEvent", attached_to=s.id, interrupting=not soft,
-                         event="timer", name=f"{d.amount} {d.unit.replace('_', ' ')}",
+                         event="timer", name=timer_name(s.id, d),
                          timer=Timer(value=iso_duration(d.amount, d.unit), anchor=d.anchor, strict=not soft),
                          sources=[src(d.source)])
                 if d.on_miss:
@@ -92,7 +129,7 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
                     miss_flows.append((b.id, d.on_miss))
                 else:
                     name = ("Deadline passed (no effect)" if soft else "Deemed denied" if d.consequence == "deemed-denial"
-                            else f"Deadline missed: {s.action}"[:60])
+                            else short(f"Deadline missed: {s.action}"))
                     end = Node(id=f"{s.id}_deadline_end", type="endEvent", lane=lane_of(a.id), name=name,
                                sources=[src(d.source, "explicit" if soft or d.consequence == "deemed-denial" else "implied")])
                     nodes += [b, end]
@@ -101,14 +138,14 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
             # observed from the agency side: a message arrives (optionally racing a deadline)
             recv_lane = lane_of(s.recipient) if s.recipient else default_lane
             catch = Node(id=s.id, type="intermediateCatchEvent", event="message", ref=s.action,
-                         name=f"{s.action}"[:60], lane=recv_lane, sources=sources,
+                         name=short(s.action), lane=recv_lane, sources=sources,
                          deontic=None if s.modality == "none" else s.modality, bearer=a.id if s.modality != "none" else None)
             mflows.append(MessageFlow(id=f"mf_{s.id}", source=pool_of_external[a.id], target=s.id, name=s.action))
             if s.deadline and s.deadline.consequence in ("right-lapses", "action-invalid", "deemed-denial", "unstated"):
                 d = s.deadline
-                gw = Node(id=f"{s.id}_wait", type="eventBasedGateway", name=f"{s.action} in time?"[:60], lane=recv_lane)
+                gw = Node(id=f"{s.id}_wait", type="eventBasedGateway", name=ask(f"{s.action} in time"), lane=recv_lane)
                 timer = Node(id=f"{s.id}_timeout", type="intermediateCatchEvent", event="timer", lane=recv_lane,
-                             name=f"{d.amount} {d.unit.replace('_', ' ')} pass",
+                             name=timer_name(s.id, d, waiting=True),
                              timer=Timer(value=iso_duration(d.amount, d.unit), anchor=d.anchor),
                              sources=[src(d.source)])
                 nodes += [gw, catch, timer]
@@ -127,7 +164,8 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
                 entry[s.id] = exit_[s.id] = s.id
 
     for o in facts.outcomes:
-        nodes.append(Node(id=o.id, type="endEvent", name=o.description[:60], lane=default_lane, sources=[src(o.source)]))
+        nodes.append(Node(id=o.id, type="endEvent", name=short(o.description), lane=default_lane,
+                          sources=[src(o.source)]))
         entry[o.id] = exit_[o.id] = o.id
 
     # ---------------------------------------------------------------- wiring
@@ -136,6 +174,9 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     miss_only = {s.deadline.on_miss for s in facts.steps if s.deadline and s.deadline.on_miss}
     preds = {i: (after or ([] if i in miss_only else ["__start"])) for i, after, _ in items}
     cond = {i: c for i, _, c in items}
+    # what a reader sees where a path is chosen: the plain sentence of the step or outcome the path leads to (the
+    # condition's id stays only in the flow's condition expression)
+    said = {s.id: s.action for s in facts.steps} | {o.id: o.description for o in facts.outcomes}
     succs: dict[str, list[str]] = {}
     for i, after in preds.items():
         for p in after:
@@ -164,8 +205,8 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
         if len(children) == 1:
             c = children[0]
             if cond[c]:
-                gw = Node(id=f"{src_node}_gw", type="exclusiveGateway", name=f"{cond[c].replace('_', ' ')}?", lane=lane)
-                end = Node(id=f"{src_node}_not_{c}", type="endEvent", name=f"Not {cond[c].replace('_', ' ')}"[:60], lane=lane)
+                gw = Node(id=f"{src_node}_gw", type="exclusiveGateway", name=ask(said[c]), lane=lane)
+                end = Node(id=f"{src_node}_not_{c}", type="endEvent", name=OTHERWISE_END, lane=lane)
                 dflt = fid()
                 gw.default = dflt
                 nodes += [gw, end]
@@ -182,8 +223,8 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
             nodes.append(gw)
             flows.append(SequenceFlow(id=fid(), source=src_node, target=gw.id))
             for c in conditional:
-                flows.append(SequenceFlow(id=fid(), source=gw.id, target=target_of(c), name=cond[c].replace("_", " "),
-                                          condition=cond[c]))
+                flows.append(SequenceFlow(id=fid(), source=gw.id, target=target_of(c),
+                                          name=short(said[c], FLOW_LABEL_MAX), condition=cond[c]))
             if plain:
                 dflt = fid()
                 gw.default = dflt
@@ -237,7 +278,7 @@ def compile_facts(facts: LegalProcessFacts, *, model_id: str, jurisdiction: str,
     decisions = []
     for d in facts.decisions:
         decisions.append(Decision(
-            id=d.id, name=d.question[:80], question=d.question, hit_policy=d.hit_policy,
+            id=d.id, name=short(d.question, 80), question=d.question, hit_policy=d.hit_policy,
             inputs=[InputClause(id=f"{d.id}_in_{c.name}", label=c.label, expression=c.name, type_ref=c.type) for c in d.inputs],
             outputs=[OutputClause(id=f"{d.id}_out_{c.name}", label=c.label, name=c.name, type_ref=c.type) for c in d.outputs],
             rules=[Rule(id=f"{d.id}_r{i + 1}", inputs=r.when, outputs=r.then, sources=[src(r.source)])

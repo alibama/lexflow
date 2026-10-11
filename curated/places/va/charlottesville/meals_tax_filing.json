@@ -1,0 +1,1021 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "meals_tax_filing",
+ "title": "Register for, collect and file the meals (food and beverage) tax",
+ "question": "I run a restaurant, caterer, food truck or pop-up. How do I register for and pay the 7% meals tax?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "restaurants",
+  "caterers",
+  "food truck operators"
+ ],
+ "office": "Commissioner of the Revenue (registration, monthly returns and assessment); City Treasurer (payee on checks and collection)",
+ "summary": "Every restaurant, caterer, food truck or pop-up in the City of Charlottesville must add the city's 7% meals tax to prepared food and drinks, on top of the 5.3% Virginia sales tax. To start, send the Commissioner of the Revenue a business license application, a Meals Tax Registration form (food trucks use the mobile food unit version) and a copy of your health permit, through the Secure Portal or by mail. Food trucks also need a Mobile Food Unit Permit from Neighborhood Development Services. The office then sends credentials for the online Business Tax Portal. File and pay every month by the 20th for the month before, even with no sales. Filing and paying on time earns a 3% seller's discount; paying late costs 5% of the tax (at least $2) plus interest.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "any city or town having general taxing powers established by charter pursuant to or consistent with the provisions of § 15.2-1104 and, to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "No such taxes on meals may be imposed on (i) that portion of the amount paid by the purchaser as a discretionary gratuity in addition to the sales price of the meal",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "that portion of the amount paid by the purchaser as a mandatory gratuity or service charge added by the restaurant in addition to the sales price of the meal, but only to the extent that such mandatory gratuity or service charge does not exceed 20 percent of the sales price",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "food and beverages sold through vending machines or on any tangible personal property purchased with food coupons issued by the U.S. Department of Agriculture under the Food Stamp Program or drafts issued through the Virginia Special Supplemental Food Program for Women, Infants, and Children",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "to their employees as part of their compensation when no charge is made to the employee",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "the first three times per calendar year and, beginning with the fourth time, on the first $100,000 of gross receipts per calendar year from sales of meals (excluding gross receipts from the first three times), as a fundraising activity",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "Also, the tax shall not be levied on meals: (1) when used or consumed and paid for by the Commonwealth, any political subdivision of the Commonwealth, or the United States",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "no city or town shall levy any tax under this section upon alcoholic beverages sold in factory sealed containers and purchased for off-premises consumption or food purchased for human consumption as \"food\" is defined in the Food Stamp Act of 1977",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "except for the following items: sandwiches, salad bar items sold from a salad bar, prepackaged single-serving salads consisting primarily of an assortment of vegetables, and nonfactory sealed beverages",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "Any place where food is prepared for service to the public on or off the premises, or any place where food is served",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "including operations preparing or storing food for catering services, push cart operations, hotdog stands, and other mobile points of service",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3841(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+   "quote": "The situs for taxation for any tax levied on the sale of food and beverages or meals shall be the county, city, or town in which the sales are made, namely the locality in which each place of business is located without regard to the locality of delivery or possible use by the purchaser.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3841(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+   "quote": "If any person has a definite place of business or maintains an office in more than one locality, then such other locality may impose its tax on the sale of food and beverages or meals which are made by such person, provided the locality imposes a local tax on the sale of food and beverages or meals.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "quote": "The owner of a mobile food unit shall be required to register with the commissioner of the revenue or director of finance in any locality in which he conducts business from such mobile food unit, regardless of whether the owner is exempt from paying license tax in the locality pursuant to the provisions of this section.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "quote": "If the owner of a new business that operates a mobile food unit pays the license tax required by the locality in which the mobile food unit is registered, such owner shall not be required to pay any further license tax imposed by any other locality for conducting business from such mobile food unit in the confines of such other locality.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "quote": "The exemption from paying the license tax in other localities shall expire two years after the payment of the initial license tax in the locality in which the mobile food unit is registered",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "All food and beverage tax collections and all meals tax collections shall be deemed to be held in trust for the county, city, or town imposing the applicable tax.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "The wrongful and fraudulent use of such collections other than remittance of the same as provided by law shall constitute embezzlement",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The governing body may also by ordinance establish due dates for the payment of local taxes",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "may provide by ordinance penalties for failure to file such applications and returns and for nonpayment in time; may provide for payment of interest on delinquent taxes",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "(4) in the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, 10 percent for the first month the taxes are past due, and five percent for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to file a return shall be greater than 10 percent of the tax assessable on such return or $10, whichever is greater",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No such penalty and interest shall be imposed if a taxpayer provides evidence that a tax return filing or a tax payment was timely by producing a United States Postal Service Certificate of Mailing, or other proof of mailing",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax, and the commissioner of the revenue shall make determinations of fault relating exclusively to failure to file a return.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3903",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3903/",
+   "quote": "the commissioner of the revenue or other assessing officer shall list and assess the same with taxes at the rate or rates prescribed for that year",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3110(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3110/",
+   "quote": "The commissioner may, for the purpose of assessing all taxes assessable by his office, summon the taxpayer or any other person to appear before him at his office",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3906(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3906/",
+   "quote": "be liable for a penalty of the amount of the tax evaded or not paid, collected, or accounted for and paid over",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3907(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "quote": "who willfully fails to collect or truthfully account for and pay over such tax, and any such officer or person who willfully evades or attempts to evade any such tax or the payment thereof, shall, in addition to any other penalties provided by law, be guilty of a Class 1 misdemeanor",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3907(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "quote": "any person violating subsection B shall pay a civil penalty of $20,000",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "including, but not limited to, taxes on tangible personal property, machinery and tools, merchants' capital, transient occupancy, food and beverage, or admissions, or a local license tax, aggrieved by any such assessment, may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "direct the treasurer of the county, city or town to refund the excess to the taxpayer",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "If the assessment is less than the proper amount, the commissioner shall assess such applicant with the proper amount.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "quote": "means machinery and tools tax, business tangible personal property tax (including, without limitation, computer equipment), merchant's capital tax, and a consumer utility tax where the amount in dispute exceeds $2,500",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "City Code ch. 30, art. X (as cited on the city's Meals Tax Registration form; ordinance text not read)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF",
+   "quote": "Pursuant to Chapter 30 – Article X of the Charlottesville City Code -Every business in the City of Charlottesville is required to levy a 7%(Meals Tax) on all prepared edible refreshments, nourishments, and liquids (including alcoholic beverages).",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "City Code § 30-284 (as cited in the Commissioner's Meals Tax FAQ; ordinance text not read)",
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "alcoholic and non-alcoholic beverages sold for off-premise consumption in factory sealed containers are exempt from the Meals Tax",
+   "role": "exception"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that the business is inside Charlottesville city limits, and which locality's meals tax applies",
+   "who": "Business owner",
+   "how": "Look up the business address on the Charlottesville GIS Viewer (https://gisweb.charlottesville.org/GisViewer/). If no record comes back, call the Commissioner's office: some 'Charlottesville' addresses are in Albemarle County, which has its own meals tax. The tax follows the place of business where the sale is made, not where the customer eats. The city's Meals Tax FAQ says a caterer based in the city collects city meals tax wherever the food is served, and a caterer based outside the city does not; it ties this to the locality where the caterer owes business license tax (Va. Code § 58.1-3841). A business with a place of business or office in more than one locality should ask the office, because § 58.1-3841(B) lets each such locality tax its sales.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "quote": "Your business may be located in the Albemarle County portion of Charlottesville.",
+   "source": "https://www.charlottesville.gov/186/Business-License-Tax"
+  },
+  {
+   "id": "s2",
+   "step": "Get the health permit and state registrations a food business needs",
+   "who": "Business owner, with the Blue Ridge Health District, Virginia Tax and the State Corporation Commission",
+   "how": "Most food businesses need a health permit or inspection from the Blue Ridge Health District, and a copy goes with the meals tax registration. Register with Virginia Tax for a retail sales tax number, because the 5.3% sales tax is filed with the state, not the city. Register any trade name, LLC or corporation with the State Corporation Commission, and get ABC licensing if you will sell alcohol. The business must be properly zoned before it opens (Business License Application); the checklist also lists an Occupancy Permit from Neighborhood Development Services for commercial locations, and a Virginia Department of Agriculture and Consumer Services food permit for bakeries. The city's New Business License Checklist lists these agencies.",
+   "deadline": null,
+   "fee": null,
+   "form": "f5",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
+   "quote": "Health Permit – Required for most food preparation and handling businesses",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF"
+  },
+  {
+   "id": "s3",
+   "step": "Fill in the Meals Tax Registration form (restaurants, caterers, pop-ups)",
+   "who": "Business owner (officer, member, partner or sole proprietor responsible for the tax)",
+   "how": "Complete the fillable Meals Tax Registration PDF. It asks for the legal and trade names, EIN or SSN, mailing and location addresses, type of ownership, start date and any business you are taking over. It also asks for the day-to-day manager, the person who will file each month, and the owner responsible for collecting and paying the tax, with that owner's SSN, date of birth and home address. The owner signs the certification, and page 2 is an acknowledgement of the meals tax rules.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF",
+   "quote": "I certify that the above information is true and correct to the best of my knowledge and understand the responsibility for the collection and remittance of meals tax.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF"
+  },
+  {
+   "id": "s4",
+   "step": "Food trucks and trailers: use the mobile food unit registration and get the NDS permit",
+   "who": "Mobile food unit owner; Neighborhood Development Services (permit)",
+   "how": "Food trucks and trailers fill in the Meals Tax Registration - Mobile Food Units form instead. It asks for your home licensing locality (if you are based outside the city), the locality where the unit is registered with Virginia DMV, your start date in the city, and the months you expect to be active. Food trucks also apply to Neighborhood Development Services for a Mobile Food Unit Permit. Under state law, a mobile food unit owner must register with the Commissioner in every locality where it does business, even when it owes no business license tax there. The city's business license for food trucks, pop-ups and peddlers is $125 a year, pro-rated (Business License Tax page, Food Establishments tab). Under Va. Code § 58.1-3715.1(B), a new mobile food business that paid the license tax where the unit is registered owes no further license tax to other localities for two years, for up to three units; this exempts it from license tax only, not from registering or from meals tax.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "The owner of a mobile food unit shall be required to register with the commissioner of the revenue or director of finance in any locality in which he conducts business from such mobile food unit, regardless of whether the owner is exempt from paying license tax in the locality pursuant to the provisions of this section.",
+   "source": "Va. Code § 58.1-3715.1(C)"
+  },
+  {
+   "id": "s5",
+   "step": "Complete the Business License Application",
+   "who": "Business owner",
+   "how": "A new food business files a Business License Application together with the meals tax registration. In the first year the license tax is based on estimated gross receipts. New licenses cannot be opened in the online portal; the Commissioner's staff process them. The business must be properly zoned before it opens. Make a license check payable to 'City of Charlottesville' (meals tax checks are payable to the City Treasurer). Call the office to confirm your classification and the amount.",
+   "deadline": "Applications are due within the first thirty days of establishing business.",
+   "fee": "Food trucks, pop-ups and peddlers: $125 a year, pro-rated. Other food businesses: $35.00 if gross receipts are under $50,000; $50.00 for $50,001 to $100,000; over $100,000, gross receipts times the rate for the business classification",
+   "form": "f4",
+   "url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "quote": "Applications are due within the first thirty days of establishing business.",
+   "source": "https://www.charlottesville.gov/186/Business-License-Tax"
+  },
+  {
+   "id": "s6",
+   "step": "Send the registration package to the Commissioner of the Revenue",
+   "who": "Business owner",
+   "how": "Send the business license application, the meals tax registration form and a copy of the health permit or inspection. Upload them through the Commissioner's Secure Portal under the category 'Food & Beverage (Meals) Tax Registration / Tax Return', or mail them to Charlottesville Commissioner of the Revenue, PO Box 2964, Charlottesville, VA 22902. The Business Tax Portal page also mentions email or delivery in person.",
+   "deadline": null,
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Go to Secure Portal and choose Category – Food & Beverage (Meals) Tax Registration / Tax Return",
+   "source": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "id": "s7",
+   "step": "Receive your account number and Business Tax Portal credentials",
+   "who": "Commissioner of the Revenue",
+   "how": "After processing the registration, the office contacts you with credentials for the online Business Tax Portal. To sign in you need the account's mailing ZIP code, the business license account number (the six digits before the dash, no leading zeros) and the business's SSN or EIN (nine digits, no dashes). You must also accept the portal's legal disclaimer.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Once received, our office will contact you with credentials for our online portal to facilitate payment of your business license, future renewals and monthly filings.",
+   "source": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "id": "s8",
+   "step": "Charge the 7% meals tax on every taxable sale",
+   "who": "Business (restaurant, caterer, food truck or pop-up)",
+   "how": "Add the 7% city meals tax to prepared food and drinks, including alcoholic drinks, whether eaten on site or taken away. It comes on top of the 5.3% Virginia sales tax. Do not tax discretionary tips, mandatory service charges up to 20% of the price, free meals given to employees as part of their pay, vending machine sales, factory-sealed drinks and grocery-type food sold to go, or meals paid for directly by a government. Va. Code § 58.1-3840(A) lists further exemptions, for example qualifying nonprofit and church fundraisers, schools serving their students or employees, hospitals and nursing homes serving patients or residents, day care centers, and farmers market and roadside stand sellers whose annual sales are $2,500 or less. The tax you collect is held in trust for the city.",
+   "deadline": null,
+   "fee": "7% of the amount charged for taxable meals, in addition to the 5.3% Virginia Retail Sales & Use Tax",
+   "form": null,
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Every business in the City of Charlottesville is required to levy a 7% (Meals Tax) on all prepared edible refreshments, nourishments, and liquids (including alcoholic beverages).",
+   "source": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "id": "s9",
+   "step": "Keep proof of exempt sales and send it with the return",
+   "who": "Business",
+   "how": "To deduct exempt sales, attach documents to the return. Examples are the customer's Virginia sales tax exemption certificate (ST-10 for resale, ST-12 for governments, ST-13 for nonprofits) with the transaction totals, or a monthly recap of free employee meals from your point-of-sale system. A government or nonprofit exemption counts only when the organization pays with its own check, card or purchase order. Put retail items such as gift cards, hats and sealed bottles in gross receipts, then deduct them with a line-item list. If the Commissioner emails that documents are missing, you have five days to send them; otherwise the tax is calculated on total gross receipts without the exemptions for that month.",
+   "deadline": "Missing documents must be supplied within five days of the Commissioner's email notice",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "You must include documentation with your return in order for exemptions to be considered.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?TID=60"
+  },
+  {
+   "id": "s10",
+   "step": "File the monthly return and pay online by the 20th",
+   "who": "Business (the owner or the filer named on the registration)",
+   "how": "In the Business Tax Portal, open the meals tax item and file the oldest unfiled monthly installment first. Report gross receipts and deductions, then give your name, phone number and email, tick the box certifying the information is accurate, and submit. You get a confirmation email and an invoice. Pay through the city's payment partner, Value Payment Systems, by card, e-check or another electronic method; the oldest unpaid invoice of each tax type must be paid first. File every month, including a zero return for a month with no sales, and give a valid email address on the return.",
+   "deadline": "On or before the 20th of the month following the month being reported; if the 20th falls on a weekend or holiday, the first business day after the 20th",
+   "fee": "7% of taxable sales, less a 3% seller's discount when the return and payment are on time",
+   "form": null,
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "quote": "Meals Tax is to be reported and remitted on or before the 20th of the month following the month being reported.",
+   "source": "https://www.charlottesville.gov/1488/Business-Tax-Portal"
+  },
+  {
+   "id": "s11",
+   "step": "Or file a paper return and pay by check",
+   "who": "Business",
+   "how": "Fill in the Meals Tax Return PDF: gross receipts, deductions, 7% tax, and the 3% seller's discount if on time. Sign it and mail it with a check payable to City Treasurer, Charlottesville, Virginia, to Commissioner of the Revenue, P.O. Box 2964, Charlottesville, VA 22902-2964. You can also leave business tax filings and payments in the City Hall drop boxes on 6th Street and 7th Street, or the drive-up box by the Key Rec Center. A mailed return must carry a postmark by the due date.",
+   "deadline": "Postmarked on or before the 20th day of the month following the tax month",
+   "fee": "7% of taxable sales, less a 3% seller's discount when the return and payment are on time",
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/2805/Meals-Tax-Return-PDF",
+   "quote": "MAKE CHECK PAYABLE TO: CITY TREASURER, CHARLOTTESVILLE, VIRGINIA",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/2805/Meals-Tax-Return-PDF"
+  },
+  {
+   "id": "s12",
+   "step": "If a return or payment is late: penalty, interest and a statutory assessment",
+   "who": "Commissioner of the Revenue (assessment); City Treasurer (collection)",
+   "how": "A late payment loses the 3% seller's discount and adds a penalty of 5% of the tax (at least $2.00). Interest at 10% starts once the filing or payment is 30 days late. If no return arrives by the end of the month, the office mails a reminder. If you still do not file within seven days, it assesses the tax from the best information it has. Continued non-filing can lead to an administrative summons and court action. Willfully failing to collect or truthfully account for and pay over meals tax is a Class 1 misdemeanor (§ 58.1-3907(A)). A corporate, partnership or LLC officer or employee who has that duty, knew of the failure and could have prevented it is personally liable for a penalty equal to the unpaid tax (§ 58.1-3906). Meals tax collected is held in trust for the city, and its wrongful and fraudulent use is embezzlement (§ 58.1-3833(B)).",
+   "deadline": "File within seven days of the mailed reminder to avoid a statutory assessment",
+   "fee": "5% of the tax due (minimum $2.00), plus 10% interest once 30 days past due",
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "If we have not received your filing by the end of the month, you will be notified by mail reminding you to file within seven days to avoid a statutory assessment wherein we levy an assessment based on the best available information at our disposal.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?TID=60"
+  },
+  {
+   "id": "s13",
+   "step": "Correct a return you have already filed",
+   "who": "Business; Commissioner of the Revenue business tax office",
+   "how": "You cannot re-file a return in the portal once it is submitted. Call the business tax office and send a paper amended return. The Business Tax Portal page gives 434-970-3165 in one place and 434-970-3170 in another for this. If you paid too much because of an error, ask the Commissioner to correct the assessment (see the escalation route).",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "quote": "If you need to submit an amended return, you must call our business tax office at 434-970-3165 and submit a paper document.",
+   "source": "https://www.charlottesville.gov/1488/Business-Tax-Portal"
+  },
+  {
+   "id": "s14",
+   "step": "Report changes, and tell the office when you close",
+   "who": "Business owner",
+   "how": "Tell the Commissioner when the individuals listed on the registration form change (the form asks for this), and report changes to the mailing or location address, point of contact, SSN or EIN at charlottesville.gov/cor/bizchange (Business License Tax page). Report a closure at charlottesville.gov/cor/bizchange; the office may ask for supporting documents. Until the office knows you have closed, missed filings can lead to statutory assessments.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "If the business closes and is no longer in operation, you need to contact the Commissioner of Revenue office to notify us of closure at Charlottesville.gov/cor/bizchange – additional supporting documentation may be requested.",
+   "source": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "id": "s15",
+   "step": "Keep up the related annual business filings",
+   "who": "Business owner",
+   "how": "The meals tax account sits under your business license account. Renew the business license each year, and file the business tangible personal property return with an itemized list of equipment as of January 1. Both can be filed in the same Business Tax Portal.",
+   "deadline": "Business license renewal by March 1 (the 2026 application form gives March 2, 2026); business tangible personal property return on or before January 31",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "quote": "Business license renewals are due by March 1st of each year.",
+   "source": "https://www.charlottesville.gov/1488/Business-Tax-Portal"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Meals Tax Registration (PDF, marked Rev. 7/30/26)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Meals Tax Registration - Mobile Food Units - Food Trucks / Trailers (PDF, V2.2026)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16217/Meals-Tax-Registration---Mobile-Food-Units-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Meals Tax Return (PDF, revised 7/10/24)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/2805/Meals-Tax-Return-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Business License Application, Tax Year 2026 (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10846/Business-License-Application-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "New Business License Checklist (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f6",
+   "title": "Commissioner of the Revenue Secure Portal (online document submission; category Food & Beverage (Meals) Tax Registration / Tax Return)",
+   "number": null,
+   "url": "https://corforms.charlottesville.gov/Forms/securedocsubmit",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Meals tax",
+   "amount": "7.0% of gross receipts less allowable deductions (rate in effect since 7/1/24)",
+   "basis": "https://www.charlottesville.gov/DocumentCenter/View/2805/Meals-Tax-Return-PDF",
+   "quote": "TAX (7.0% OF LINE 3). Starting 7/1/24"
+  },
+  {
+   "item": "Seller's discount (a credit, not a charge)",
+   "amount": "3% of the tax, only when the return and payment are both on time",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "A 3% discount on the tax due is available for those who file and pay timely by the due date each month."
+  },
+  {
+   "item": "Late payment penalty",
+   "amount": "5% of the tax due, minimum $2.00",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "If the filing is paid late, there is a penalty of 5% of the tax due with a minimum penalty of $2.00."
+  },
+  {
+   "item": "Interest on late tax",
+   "amount": "10% (return line 8), starting once the filing or payment is 30 days past due",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "quote": "Interest will begin to accrue once the filing or payment is thirty days past due."
+  },
+  {
+   "item": "State cap on the late remittance penalty",
+   "amount": "10% for the first month, 5% for each month after, up to 25% of the tax collected but not remitted (or $10 if that is greater), and never more than the tax",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "(4) in the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, 10 percent for the first month the taxes are past due, and five percent for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted"
+  },
+  {
+   "item": "State cap on the failure-to-file penalty",
+   "amount": "10% of the tax on the return or $10, whichever is greater, and never more than the tax",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "No penalty for failure to file a return shall be greater than 10 percent of the tax assessable on such return or $10, whichever is greater"
+  },
+  {
+   "item": "Business license (filed with the meals tax registration)",
+   "amount": "$35.00 under $50,000 of gross receipts; $50.00 for $50,001 to $100,000; over $100,000, gross receipts times the classification rate (food trucks, pop-ups and peddlers pay the flat rate below)",
+   "basis": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "quote": "$50,001 - $100,000 - $50.00"
+  },
+  {
+   "item": "Business license for food trucks, pop-ups and peddlers",
+   "amount": "$125 a year, pro-rated (a new mobile food business already licensed where its unit is registered may be exempt for two years under Va. Code § 58.1-3715.1(B))",
+   "basis": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "quote": "$125/yr – Pro-rated"
+  },
+  {
+   "item": "Civil penalty for falsifying cash register or point-of-sale records",
+   "amount": "$20,000",
+   "basis": "Va. Code § 58.1-3907(C)",
+   "quote": "any person violating subsection B shall pay a civil penalty of $20,000"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "City Hall, 605 E Main Street, Room A-130, Charlottesville, VA 22902 (in person Monday to Friday, 8:30 am to 4:30 pm; by phone 8:00 am to 5:00 pm)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "address",
+   "value": "Charlottesville Commissioner of the Revenue, PO Box 2964, Charlottesville, VA 22902",
+   "label": "Commissioner of the Revenue (registration documents and paper meals tax returns)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3170",
+   "label": "Commissioner of the Revenue, business tax (meals tax questions)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "email",
+   "value": "citycorbiz@charlottesville.gov",
+   "label": "Commissioner of the Revenue, business tax",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3165",
+   "label": "Commissioner of the Revenue, business tax office (amended returns)",
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3160 (fax 434-970-3663)",
+   "label": "Commissioner of the Revenue, main office line",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.charlottesville.gov/1710/Online-Portal",
+   "label": "Business Tax Portal (Commissioner of the Revenue): file and pay monthly meals tax",
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal"
+  },
+  {
+   "kind": "portal",
+   "value": "https://corforms.charlottesville.gov/Forms/securedocsubmit",
+   "label": "Commissioner of the Revenue Secure Portal: upload registration documents",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/cor/bizchange",
+   "label": "Commissioner of the Revenue: report business changes or closure",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/189/Meals-Tax",
+   "label": "Commissioner of the Revenue, Meals Tax page",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "address",
+   "value": "City Hall drop boxes on 6th Street and 7th Street, and the drive-up box by the Key Rec Center (business tax filings and payments)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "office",
+   "value": "City Hall, 605 E Main Street, Room A120, Charlottesville, VA 22902; mail P.O. Box 2854, Charlottesville, VA 22902",
+   "label": "City Treasurer (collects meals and lodging taxes; decides fault for late payment)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3146 (fax 434-970-3148)",
+   "label": "City Treasurer",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "email",
+   "value": "citytreas@charlottesville.gov",
+   "label": "City Treasurer",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "label": "Neighborhood Development Services (Mobile Food Unit Permit for food trucks)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "office",
+   "value": "610 East Main Street, Charlottesville, VA 22902; mail P.O. Box 911, Charlottesville, VA 22902; 434-970-3181 (Monday to Friday, 8:30 am to 5:00 pm)",
+   "label": "Neighborhood Development Services (Mobile Food Unit Permit, zoning and occupancy permits)",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3182",
+   "label": "Neighborhood Development Services: listed for zoning on the New Business License Checklist and the Business License Application; the NDS page lists this number for permit portal assistance and 434-970-3995 for zoning",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-6219",
+   "label": "Blue Ridge Health District (health permits; as listed on the city's New Business License Checklist)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF"
+  },
+  {
+   "kind": "office",
+   "value": "315 East High Street, Charlottesville, VA 22902; (434) 970-3766; Clerk's Office hours 8:30 am to 4:30 pm",
+   "label": "Charlottesville Circuit Court, Clerk's Office",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "A meals tax assessment is believed wrong, including a statutory assessment made from the 'best available information' because no return was filed, or exempt sales that were disallowed",
+   "next": "Commissioner of the Revenue: written application for correction of the assessment",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof"
+  },
+  {
+   "trigger": "The correction application is filed within 90 days of the assessment",
+   "next": "Collection pauses: the assessment is not treated as delinquent while the application is pending and for 30 days after the decision (interest may still be charged on any amount found due)",
+   "type": "deferral",
+   "deadline": "Application filed within 90 days of the date of the assessment",
+   "basis": "Va. Code § 58.1-3916; § 58.1-3958",
+   "quote": "so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal"
+  },
+  {
+   "trigger": "The Commissioner denies the application, or grants only part of it",
+   "next": "Commissioner of the Revenue: ask for a written statement of the facts and law behind the decision, mailed to you",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3981(F)",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application"
+  },
+  {
+   "trigger": "Tax was overpaid because of an erroneous assessment (for example, exempt sales left in)",
+   "next": "Commissioner of the Revenue corrects the assessment. If the tax was already paid, on the Commissioner's certificate that the assessment was erroneous, given with the consent of the City Attorney, the governing body directs the City Treasurer to refund the excess, with interest where authorized. State law also lets a governing body authorize the treasurer to approve refunds up to $10,000 (whether Charlottesville has done so was not checked)",
+   "type": "internal appeal",
+   "deadline": "Same as the correction application: three years from the end of the tax year, or one year from the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3981(A); § 58.1-3980(A)",
+   "quote": "direct the treasurer of the county, city or town to refund the excess to the taxpayer"
+  },
+  {
+   "trigger": "The Commissioner agrees the assessment is improper or an obvious error but cannot correct it under § 58.1-3981",
+   "next": "The Commissioner applies to the Circuit Court of the City of Charlottesville for relief on the taxpayer's behalf",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3984(D)",
+   "quote": "the commissioner of the revenue or other assessing official shall apply to the appropriate court, in the manner herein provided for relief of the taxpayer"
+  },
+  {
+   "trigger": "Still aggrieved after the Commissioner's decision, or no decision (no state deadline for deciding a meals tax correction application was found), or choosing to go straight to court",
+   "next": "Circuit Court of the City of Charlottesville, with the City of Charlottesville as the named party (heard by a judge, no jury)",
+   "type": "judicial review",
+   "deadline": "Whichever is latest: three years from the last day of the tax year, one year from the assessment, or one year from the Commissioner's final determination under § 58.1-3981",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made"
+  },
+  {
+   "trigger": "A late-filing penalty or interest was charged when the late filing was not the business's fault (including a timely mailing with proof of mailing)",
+   "next": "Commissioner of the Revenue, which decides fault for failure to file",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "the commissioner of the revenue shall make determinations of fault relating exclusively to failure to file a return"
+  },
+  {
+   "trigger": "A late-payment penalty or interest was charged when the late payment was not the business's fault",
+   "next": "City Treasurer, which decides fault for failure to pay",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax"
+  }
+ ],
+ "caveats": [
+  "The local ordinance has not been checked. Charlottesville's Code of Ordinances is published on Municode (https://library.municode.com/va/charlottesville/codes/code_of_ordinances), whose terms of use could not be confirmed (the terms page answered HTTP 520 or 403). City Code chapter 30, article X (meals tax) and § 30-284 are cited only as the city's own registration form and FAQ cite them, and the local quotes come from those city pages, not from the ordinance. So the ordinance's text on due dates, the seller's discount, penalty, interest and statutory assessment has not been compared with the city's pages.",
+  "The ordinance that set the 7% rate was not found. The return says the 7.0% rate applies from 7/1/24. The approved City Council minutes of April 1, 2024 (CivicClerk) record that meals, lodging, real estate and personal property rates were under consideration for FY2025. The annual tax levy ordinances for tax years 2024 and 2026 set only property tax rates, so the meals rate sits in the City Code. A CivicClerk search result for the FY2027 budget work session packet of January 29, 2026 shows the meals tax listed at 7.0% (the packet itself was not opened), and no later rate change was found.",
+  "Some city documents are out of date. The Meals Tax FAQ PDF (DocumentCenter/View/209), still linked from the Forms Index, gives the rate as 6.5%. The web FAQ on the seller's discount says that if a timely filing comes without payment, the tax will be 'calculated at 6.5%' with penalties and interest. That figure looks left over from the old rate, and its meaning under the 7% rate is unclear. Ask the office.",
+  "The city's FAQ (web and PDF) says nonprofit fundraising sales are exempt when 'not exceeding six times per calendar year'. Current Va. Code § 58.1-3840(A) exempts the first three times per calendar year and, from the fourth time, the first $100,000 of gross receipts per calendar year. State law limits what a city may tax, so the FAQ wording appears to be out of date. The FAQ also cites 'subdivision 9 of section 35.1-1'; the definitions in the current § 35.1-1 are not numbered.",
+  "Penalty and interest come from the city's FAQ and return, not from the ordinance: a 5% late-payment penalty (minimum $2.00), and 10% interest starting 30 days past due. These are within the state caps in § 58.1-3916. No separate late-filing penalty amount is stated on the city's pages. The return's line 8 says only 'INTEREST (10%)', without saying whether that is a yearly rate.",
+  "The Business Tax Portal page gives two numbers for amended returns: 434-970-3165 in the installments section and 434-970-3170 in the filing confirmation section. Both are listed.",
+  "Card and e-check fees for meals tax paid through the Business Tax Portal (payment partner Value Payment Systems) were not found. The Treasurer's Payment Methods page states fees for its own channels: 2.59% with a $1.95 minimum for card tax payments online; 2.5% by card and $2.25 by e-check over the phone. Whether these apply to portal meals tax payments is not known. The portal (/1710/Online-Portal redirects to charlottesville.prod.pci.catalisgov.com) and its legal disclaimer were not opened.",
+  "No fee for the meals tax registration itself is stated on any city page or form read. The Mobile Food Unit Permit (Neighborhood Development Services) and Blue Ridge Health District permit requirements and fees are not covered here. The NDS page cited has no link to a mobile food unit page, and the asterisk after 'Food Trucks*' on the Meals Tax page has no footnote.",
+  "Food trucks based outside the city: the mobile food unit form asks for the home licensing locality and the DMV registration locality, which suggests the city expects them to register and file meals tax on sales made in the city. Va. Code § 58.1-3715.1 exempts a new mobile food business from other localities' business license tax for two years (up to three units), but still requires registration. How Charlottesville applies § 58.1-3841 to sales from trucks based elsewhere was not confirmed with the office.",
+  "Privacy: the registration form asks for the responsible owner's SSN, date of birth and home address. The Business Tax Portal page says the form may be sent 'via mail, email, or in person', but the Meals Tax page names the Secure Portal or mail. Ordinary email is not a secure way to send an SSN.",
+  "The Secure Portal (corforms.charlottesville.gov) is an online form with reCAPTCHA whose categories load in the browser. The category name is given as the Meals Tax page states it; the portal was not used or submitted.",
+  "The appeal route for meals tax is narrower than for business property or business license tax. Va. Code § 58.1-3983.1 (90-day written determination, appeal to the State Tax Commissioner, written rulings and Tax Commissioner advisory opinions) covers only 'local business tax' as defined there (machinery and tools, business tangible property, merchants' capital and some consumer utility tax), and BPOL has its own route under § 58.1-3703.1. Neither covers meals tax. So the route here is a correction application to the Commissioner (§ 58.1-3980), then the circuit court (§ 58.1-3984). No state deadline for the Commissioner to decide a meals tax correction application was found, and no city administrative appeals guide for meals tax was found (the Forms Index has guides only for business license and personal property).",
+  "The 'statutory assessment' on the city's FAQ and forms is the city's practice. Va. Code § 58.1-3903 (omitted taxes) is the general state authority for the Commissioner to assess unassessed local taxes for the three preceding years. The city ordinance provision, if any, was not read. Whether Charlottesville has a refund ordinance under § 58.1-3990, or has authorized the Treasurer to approve refunds up to $10,000 under § 58.1-3981(A), was not checked.",
+  "The legal hints Va. Code §§ 58.1-3819 and 58.1-3826 concern the transient occupancy (lodging) tax, not meals, and are not used here. § 58.1-3833 is the county food and beverage tax (capped at 6%) and does not apply to the City of Charlottesville, except subsection B (meals tax collections held in trust), which names counties, cities and towns. The 6% county cap matters only if the business turns out to be in Albemarle County.",
+  "The 5.3% Virginia Retail Sales & Use Tax is stated by the city; it is filed with Virginia Tax, not the city, and the state filing is not covered here.",
+  "The registration form's revision mark reads 'Rev. 7/30/26' as printed. Hours and phone numbers are as published on 2026-10-10.",
+  "A correction application can raise the assessment as well as lower it: under Va. Code § 58.1-3981(B), if the Commissioner finds the assessment is less than the proper amount, the Commissioner must assess the proper amount.",
+  "The $125 pro-rated license rate for food trucks, pop-ups and peddlers comes from the Business License Tax page (Food Establishments tab). How the city applies the two-year license exemption in Va. Code § 58.1-3715.1(B) to a food truck already licensed in another locality was not confirmed with the office. The exemption covers license tax only; registration and meals tax still apply.",
+  "Neighborhood Development Services phone numbers differ by source: the New Business License Checklist and the Business License Application give 434-970-3182 for zoning, while the NDS page lists 434-970-3182 for permit portal assistance, 434-970-3995 for zoning and 434-970-3181 as the main line."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "title": "Meals Tax | Charlottesville, VA (Commissioner of the Revenue)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "title": "Frequently Asked Questions: Commissioner of Revenue - Meals Taxes | Charlottesville, VA (served at /m/faq?cat=60)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "title": "Business Tax Portal | Charlottesville, VA (Commissioner of the Revenue)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1710/Online-Portal",
+   "title": "Online Business Tax Portal link (redirects to charlottesville.prod.pci.catalisgov.com; not used)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://corforms.charlottesville.gov/Forms/securedocsubmit",
+   "title": "Commissioner of the Revenue Secure Portal, New Submission (online form; not submitted)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "title": "Business License Tax | Charlottesville, VA (Food Establishments tab)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/188/Forms-Index",
+   "title": "Forms Index | Charlottesville, VA (Commissioner of the Revenue)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF",
+   "title": "Meals Tax Registration (PDF, Rev. 7/30/26)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16217/Meals-Tax-Registration---Mobile-Food-Units-PDF",
+   "title": "Meals Tax Registration - Mobile Food Units (PDF, V2.2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/2805/Meals-Tax-Return-PDF",
+   "title": "Meals Tax Return (PDF, revised 7/10/24)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/209/Meals-Tax-FAQ-PDF",
+   "title": "Meals Tax FAQ (PDF; outdated, gives the rate as 6.5%)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10846/Business-License-Application-PDF",
+   "title": "Business License Application, Tax Year 2026 (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
+   "title": "New Business License Checklist (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax",
+   "title": "Transient Occupancy Tax | Charlottesville, VA (context only)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/551/City-Treasurer",
+   "title": "City Treasurer | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "title": "Payment Methods | Charlottesville, VA (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "title": "Neighborhood Development Services | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home",
+   "title": "Charlottesville Circuit Court | Virginia Court System",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4996,plainText=false)",
+   "title": "City Council Meeting, approved minutes of April 1, 2024 (FY2025 budget and tax rate public hearing) (CivicClerk)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4801,plainText=false)",
+   "title": "City Council Meeting, agenda packet for April 15, 2024 (Ordinance To Establish the Annual Tax Levy for Tax Year 2024) (CivicClerk)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Search?search=meals%20tax",
+   "title": "CivicClerk search for 'meals tax' (result snippet from PACKET_20260129Jan29BudgetWS, fileId 6147)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6502,plainText=false)",
+   "title": "City Council Special Meeting - FY27 Budget, approved minutes of April 9, 2026 (Tax Year 2026 levy ordinance) (CivicClerk)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "title": "Va. Code § 58.1-3840",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+   "title": "Va. Code § 58.1-3841",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "title": "Va. Code § 58.1-3833",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "title": "Va. Code § 35.1-1",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "title": "Va. Code § 58.1-3715.1",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "title": "Va. Code § 58.1-3916",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3903/",
+   "title": "Va. Code § 58.1-3903",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3110/",
+   "title": "Va. Code § 58.1-3110",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3906/",
+   "title": "Va. Code § 58.1-3906",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "title": "Va. Code § 58.1-3907",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3958/",
+   "title": "Va. Code § 58.1-3958",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "title": "Va. Code § 58.1-3980",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "title": "Va. Code § 58.1-3981",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "title": "Va. Code § 58.1-3983.1",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984",
+   "retrieved": "2026-10-10"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 84,
+  "quotes_confirmed": 84,
+  "removed": [],
+  "corrections": [
+   "Quotes: 72 quote fields were checked (40 legal basis, 15 steps, 9 fees, 8 escalation), plus 12 short phrases quoted inside caveats, step text and escalation triggers. The 50 state-law quotes (48 from the draft and 2 added) are exact substrings of I.text_of for the cited sections, inside the cited subsections. The 22 local and procedure quotes (21 from the draft and 1 added) were matched against the official pages and PDFs, fetched again read-only: city pages 189, the Meals Tax FAQ (Faq.aspx?TID=60), 1488, 186, 1345, 188, 551, 562 and 261; DocumentCenter 210, 16217, 2805, 209, 10846 and 14534; and the Charlottesville Circuit Court page. Two draft local quotes were not word for word. The registration form quote ('Pursuant to Chapter 30 – Article X ...') and the s2 checklist quote ('Health Permit – Required ...') used a hyphen where the source has an en dash (U+2013). Both were corrected to the source character; no quote was removed.",
+   "Added legal basis: § 58.1-3715.1(B), the two-year limit on a new mobile food unit's license-tax exemption in other localities; § 58.1-3981(B), under which a correction can raise an assessment that is too low.",
+   "Missing fee added: the Business License Tax page (Food Establishments tab) sets a $125 a year, pro-rated license for food trucks, pop-ups and peddlers. It is now in s4, s5 and the fees list. The general business license fee entry now points to it.",
+   "Summary: the 3% seller's discount needs both filing and paying on time (FAQ and return line 5), not only paying. Added that food trucks also need the NDS Mobile Food Unit Permit.",
+   "s1: the caterer rule was not on the cited page; it is now attributed to the Meals Tax FAQ. Added that § 58.1-3841(B) lets each locality where a business has a place of business or office tax its sales.",
+   "s2: added that the business must be properly zoned before it opens (Business License Application), and the checklist's NDS Occupancy Permit for commercial locations and VDACS food permit for bakeries.",
+   "s4: added the $125 license rate and § 58.1-3715.1(B), with the note that the exemption covers license tax only, not registration or meals tax.",
+   "s5: added the zoning requirement, and that license checks are payable to the City of Charlottesville (meals tax checks go to the City Treasurer).",
+   "s8: added the other exemptions in § 58.1-3840(A), such as nonprofit fundraisers, schools, hospitals, day care centers and small farmers market sellers.",
+   "s9: added what the FAQ says happens if documents are missing: the office emails, you have five days, and after that the tax is calculated on total gross receipts.",
+   "s10: added the certification fields at submission, and that the oldest invoice must be paid first (Business Tax Portal page).",
+   "s12: 'the officers of a business can be personally liable' was broader than § 58.1-3906. That section covers an officer or employee who has the duty, knew of the failure, could have prevented it and acted willfully, and sets a penalty equal to the tax. The § 58.1-3907(A) wording ('collect or truthfully account for and pay over') and the § 58.1-3833(B) trust and embezzlement rule were added.",
+   "s13: both amended-return numbers on the Business Tax Portal page are now given in the step.",
+   "s14: 'ownership' changes was not stated on any page. The changes to report now follow the registration form (individuals listed) and the Business License Tax page (mailing or location address, point of contact, SSN or EIN).",
+   "s15: added that the 2026 Business License Application gives March 2, 2026 as the due date.",
+   "Fees: the state cap on the late-remittance penalty now includes the '$10, whichever is greater' alternative and the rule that the penalty never exceeds the tax (§ 58.1-3916).",
+   "Escalation rung 4: under § 58.1-3981(A), a paid erroneous assessment is refunded when the governing body, on the Commissioner's certificate given with the City Attorney's consent, directs the Treasurer to refund it. The draft said only that the Commissioner certifies and the Treasurer refunds.",
+   "Contacts: the NDS page lists 434-970-3182 for permit portal assistance and 434-970-3995 for zoning, so the label now says the checklist and the license application list 3182 for zoning. Added the NDS office contact (610 East Main Street, P.O. Box 911, 434-970-3181). All contacts are office channels; no staff names or personal mailboxes are in the file.",
+   "Caveats added: a correction can increase an assessment (§ 58.1-3981(B)); how the $125 food truck license and the § 58.1-3715.1(B) exemption interact was not confirmed; NDS phone numbers differ by source.",
+   "Legal route confirmed. Meals tax is not a 'local business tax' or 'local mobile property tax' under § 58.1-3983.1(A), so subsections B through K of that section, including the appeal to the Tax Commissioner, do not apply. The correction application (§ 58.1-3980), the 90-day deferral (§§ 58.1-3916 and 58.1-3958), the written statement (§ 58.1-3981(F)), and both court routes (§ 58.1-3984(A) and (D)) match the statute text. The rules on who decides fault (Treasurer for payment, Commissioner for filing) also match. The schema was checked: valid JSON, unique step and form ids, every step form id exists."
+  ],
+  "open_issues": [
+   "City Code chapter 30, article X and § 30-284 were not read, because Municode's terms of use were not confirmed. So the 7% rate, the 20th-of-the-month due date, the 3% seller's discount, the 5% penalty (minimum $2.00), the 10% interest and the statutory assessment rest on the city's official pages and forms, not on the ordinance. The ordinance that set the 7% rate from 7/1/24 was not found. The April 1, 2024 minutes show the meals rate was under consideration, and the April 15, 2024 packet has no rate ordinance.",
+   "Some city documents are out of date. The Meals Tax FAQ PDF gives 6.5%. The web FAQ says a timely filing without payment is 'calculated at 6.5%', and says fundraising sales are exempt 'not exceeding six times per calendar year', which conflicts with current § 58.1-3840(A).",
+   "The Business Tax Portal page gives 434-970-3165 and 434-970-3170 for amended returns.",
+   "Not found on any city page: the card and e-check fees for meals tax paid in the Business Tax Portal (Value Payment Systems), and any fee for the meals tax registration itself. The return's 'INTEREST (10%)' does not say whether the rate is per year.",
+   "Not researched: the requirements and fees for the NDS Mobile Food Unit Permit and the Blue Ridge Health District permit. Not confirmed: how the city treats food trucks based in other localities, both for meals tax situs under § 58.1-3841 and for the § 58.1-3715.1(B) license exemption against the $125 rate.",
+   "No state deadline was found for the Commissioner to decide a meals tax correction application. Not checked: whether Charlottesville has a refund ordinance under § 58.1-3990, or has authorized the Treasurer to approve refunds up to $10,000 under § 58.1-3981(A)."
+  ]
+ }
+}

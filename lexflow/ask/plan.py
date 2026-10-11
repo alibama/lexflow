@@ -19,7 +19,7 @@ state states local city county town law laws legal rule rules require required r
 step steps someone somebody person people much many item items thing things kind kinds type types
 lot lots often usually there's i'm can't don't set sets setting keep keeps kept take takes taken give gives
 put puts let lets say says said know tell find use used able happen happens happened instead option options
-whether anything something one ones""".split())
+whether anything something one ones because since""".split())
 
 # words a code uses for the same thing; keys and values are matched as written (FTS5 stems them)
 THESAURUS: dict[str, list[str]] = {
@@ -40,6 +40,12 @@ THESAURUS: dict[str, list[str]] = {
     "seal": ["seal", "sealing", "sealed", "expunge", "expungement"],
     "record": ["record", "records", "criminal history", "conviction"],
     "conviction": ["conviction", "convicted", "criminal history", "offense"],
+    "criminal": ["criminal", "conviction", "convicted", "criminal history", "criminal record"],
+    # what a board or agency does, and what a person does about it ("deny", "challenge" alone are rare words a
+    # code spreads over many sections; with their synonyms they become one concept the search can require)
+    "deny": ["deny", "denial", "denied", "refuse", "refusal", "disqualify"],
+    "denial": ["deny", "denial", "denied", "refuse", "refusal", "disqualify"],
+    "challenge": ["challenge", "appeal", "hearing", "review", "reconsideration"],
     "license": ["license", "licence", "licensure", "permit", "certificate", "registration"],
     "licence": ["license", "licence", "licensure", "permit", "certificate"],
     "permit": ["permit", "license", "certificate", "approval"],

@@ -1,4 +1,11 @@
 <title>Lexipedia Process Viewer</title>
+<!-- Privacy: the Google Fonts links below (fonts.googleapis.com, fonts.gstatic.com) and the bpmn-js script from
+     cdn.jsdelivr.net near the end of this file send every viewer's IP address (and browser details) to those hosts.
+     The dashboard serves its own copies and contacts nobody else; this viewer does not yet.
+     TODO: self-host before this viewer is published. bpmn-js is already in tools/web/node_modules/bpmn-js/dist/
+     (scripts/build_viewer.py could inline bpmn-navigated-viewer.production.min.js as it inlines the CSS); the
+     IBM Plex and Source Serif 4 files (SIL OFL 1.1) are not in the repository, so either add them or drop the
+     links and let the system fonts already named in the font variables take over. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -79,7 +86,8 @@ h1, h2, h3 { font-family: var(--font-head); text-wrap: balance; margin: 0; }
 .tools select { font: 13px var(--font-ui); max-width: 260px; padding: 5px 8px; border-radius: var(--radius); border: 1px solid var(--rule); background: var(--surface); color: var(--ink); }
 .tools button { font: 500 13px var(--font-ui); min-width: 32px; padding: 5px 9px; border-radius: var(--radius); border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
 .canvas { position: relative; height: clamp(420px, 64vh, 780px); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
-.canvas .bjs-powered-by { opacity: .55; }
+/* No rule may touch .bjs-powered-by: the bpmn.io licence requires the watermark to stay fully visible and not
+   overlapped by other elements. */
 .canvas .djs-element.lx-cited .djs-hit { cursor: pointer; }
 .canvas .djs-element.lx-implied .djs-visual > :first-child { stroke: var(--d-implied) !important; stroke-dasharray: 6 3; }
 .canvas .djs-element.lx-assumed .djs-visual > :first-child { stroke: var(--d-assumed) !important; stroke-dasharray: 6 3; }
@@ -213,11 +221,13 @@ footer { margin-top: 28px; padding-top: 12px; border-top: 1px solid var(--rule);
 
   <footer>
     <div>Prototype. Not legal advice. The gold models were hand-built from the code text for testing and still need review by a lawyer.</div>
-    <div>Local code text: LocalLaws/LOCUS-v1 (Peskoff, Barrow, Vu, Davenport 2026; CC BY-NC 4.0), rebuilt and cleaned; verify against the official code. State text: Code of Virginia via law.lis.virginia.gov. Legislative history: Albemarle County Legistar Web API.</div>
+    <div>Local code text: quoted from LocalLaws/LOCUS-v1 (Peskoff, Barrow, Vu, Davenport 2026; CC BY-NC 4.0), a machine-labelled dataset, rebuilt and cleaned for these test models only; it is not the official text, so check it against the official code. lexflow's pipeline uses LOCUS to find law, never to cite it. State text: Code of Virginia via law.lis.virginia.gov. Legislative history: Albemarle County Legistar Web API.</div>
     <div>Diagram rendering: bpmn-js (bpmn.io). Models: BPMN 2.0 with diagram interchange, DMN 1.3, validated against the OMG schemas.</div>
   </footer>
 </div>
 
+<!-- TODO (privacy): loading bpmn-js from cdn.jsdelivr.net sends each viewer's IP address to jsDelivr; inline the
+     local copy instead (see the note at the top of this file). -->
 <script src="https://cdn.jsdelivr.net/npm/bpmn-js@18.31.0/dist/bpmn-navigated-viewer.production.min.js"></script>
 <script type="application/json" id="data">__DATA__</script>
 <script>

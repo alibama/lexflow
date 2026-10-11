@@ -12,6 +12,7 @@ openpyxl>=3.1          # Census Government Units List (.xlsx)
 citeurl>=12
 eyecite>=2.7
 cairosvg>=2.7
+fonttools>=4.40        # Unicode script data for reviewer names (lexflow/signoff.py; already pulled in by matplotlib)
 fastapi>=0.115
 uvicorn[standard]>=0.30
 pytest>=8

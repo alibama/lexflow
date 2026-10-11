@@ -1,0 +1,611 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "real_estate_tax_relief_elderly_disabled",
+ "title": "Apply for real estate tax relief for the elderly and disabled",
+ "question": "I am 65 or older or disabled and own my home. Can I get real estate tax relief?",
+ "category": "tax_relief",
+ "kind": "process",
+ "audience": ["residents", "property owners"],
+ "office": "Commissioner of the Revenue (City of Charlottesville)",
+ "summary": "Charlottesville takes a percentage off the city real estate tax for homeowners who were 65 or older, or permanently and totally disabled, on December 31 of the prior year. On January 1 of the tax year you must own the home and live there as your only residence, and neither you nor a spouse living with you may own other real estate. Combined adjusted gross income of you, your spouse, co-owners and relatives in the home must be $65,000 or less. Relief is 100, 80, 60 or 40 percent, by income tier. File a full application every third year (by last-name group) and recertify in between, with the Commissioner of the Revenue, by April 1. No fee is stated. Applications for 2026 are closed. No appeal route is written for this program; a denial can likely be raised with the Commissioner as an erroneous assessment, and then in the circuit court.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "The governing body of any locality may, by ordinance, provide for the exemption from, deferral of, or a combination program of exemptions from and deferrals of taxation of real estate and manufactured homes",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "Such real estate shall be owned by, and be occupied as the sole dwelling of anyone at least 65 years of age or if provided in the ordinance, anyone found to be permanently and totally disabled as defined in § 58.1-3217",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "A dwelling jointly held by married individuals, with no other joint owners, may qualify if either spouse is 65 or over or is permanently and totally disabled",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "(iii) held in an irrevocable trust under which an eligible person alone or in conjunction with his spouse possesses a life estate or an estate for joint lives or enjoys a continuing right of use or support",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "the General Assembly hereby authorizes the governing body of a county, city or town to establish by ordinance net financial worth or annual income limitations as a condition of eligibility for any exemption or deferral of tax allowed pursuant to this article.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "No local ordinance shall require that a citizen reside in the jurisdiction for a designated period of time as a condition for qualifying for any real estate tax exemption or deferral program established pursuant to § 58.1-3210",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "enter into an installment agreement with the locality for the payment of all such delinquent amounts in installments over a period that is reasonable under the circumstances, but that in no event shall exceed 72 months",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "The person claiming such exemption shall file annually with the commissioner of the revenue of the county, city or town assessing officer or such other officer as may be designated by the governing body in which such dwelling lies, on forms to be supplied by the county, city or town concerned",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "a county, city or town may prescribe by ordinance for the filing of the affidavit or written statement on a three-year cycle with an annual certification by the taxpayer",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "a certification pursuant to 42 U.S.C. § 423 (d) by the Social Security Administration so long as the person remains eligible for such social security benefits shall be deemed to satisfy such definition in § 58.1-3217",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "a sworn affidavit by two medical doctors who are either licensed to practice medicine in the Commonwealth or are military officers on active duty who practice medicine with the United States Armed Forces",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(E)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "Such affidavit, written statement or certification shall be filed after January 1 of each year, but before April 1, or such later date as may be fixed by ordinance.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(E)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "Such ordinance may include a procedure for late filing by first-time applicants or for hardship cases.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "The local governing body may, in addition, require the production of certified tax returns to establish the income or financial worth of any applicant for tax relief or deferral.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3214",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3214/",
+   "quote": "shall not be construed to mean that the real estate for which tax exemption or deferral is sought does not continue to be the sole dwelling of such persons during such extended periods of other residence so long as such real estate is not used by or leased to others for consideration.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3215(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "quote": "shall nullify any exemption or deferral for the remainder of the current taxable year and the taxable year immediately following.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3215(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "quote": "However, any locality may by ordinance provide (i) a prorated exemption or deferral for the portion of the taxable year during which the taxpayer qualified for such exemption or deferral",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3217",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3217/",
+   "quote": "the term \"permanently and totally disabled\" shall mean unable to engage in any substantial gainful activity by reason of any medically determinable physical or mental impairment or deformity which can be expected to result in death or can be expected to last for the duration of such person's life.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-97",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "It is hereby declared to be the purpose of this article to provide real estate tax exemptions for qualified property owners who are not less than sixty-five (65) years of age or permanently and totally disabled and who are otherwise eligible according to the terms of this article.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-96 (definition of permanently and totally disabled)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "who is found by the commissioner of revenue to be unable to engage in any substantial gainful activity by reason of any medically determinable physical or mental impairment or deformity which can be expected to result in death or can be expected to last for the duration of the person's life.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-96 (area median family income)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "Area median family income (MFI) means and refers to the median family income most recently established by the United States Department of Housing and Urban Development (HUD) for the Charlottesville, Virginia Metropolitan Statistical Area, rounded up to the nearest five thousand dollars ($5,000.00).",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-96 (combined household income)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "The adjusted gross income, as shown on the federal income tax return as of December 31 of the calendar year immediately preceding the taxable year, of the applicant and all relatives living in the same dwelling, and of any other person who is an owner of and resides in the applicant's dwelling",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(2)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "the claimant must occupy the real property for which the exemption is sought as their sole place of residence (dwelling) and must intend to occupy the real property as such throughout the remainder of the taxable year.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(4)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "The claimant must be sixty-five (65) years of age or older, or permanently and totally disabled, as of December 31 of the year immediately preceding the taxable year for which the exemption is claimed.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(5)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "The combined household income of such claimant must not exceed an amount equivalent to fifty (50) percent of area median family income.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(6)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "Neither an applicant, nor an applicant's spouse who resides within the same dwelling, shall be an owner of any other real property.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(7)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "the tax exemption for the real property shall be prorated by multiplying the amount of the exemption by a fraction",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-98(8)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "must be in good standing on a payment plan with the treasurer's office with the aim of paying off said delinquency in a period not exceeding twelve (12) months.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-99(a)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "In the first year for which exemption is sought, and every third year thereafter, every person claiming an exemption under this article shall file an application with the commissioner of revenue of the city setting forth the basis for their claim of exemption.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-99(a)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "may be extended by the commissioner of revenue to July 1 of a taxable year for a first-time applicant",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-99(c)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "a sworn affidavit by two (2) medical doctors licensed to practice medicine in the commonwealth, to the effect that the person is permanently and totally disabled, as defined in section 30-96.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-99(d)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "the commissioner of revenue may make such further inquiry of persons seeking to claim exemptions requiring answers under oath and the production of certified tax returns",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-100",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "The commissioner of revenue, after audit and investigation, shall certify a list of the persons and property qualifying for exemption under this article and the amount thereof to the city treasurer",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-101(1)",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "An approved applicant whose combined household income is between zero dollars ($0.00) and thirty (30) percent of MFI shall receive an exemption equivalent to one hundred (100) percent of the real estate tax assessed for the taxable year on the property for which an exemption is claimed.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-102",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "shall result in a prorated exemption for the then current taxable year.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code § 30-103",
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "It shall be unlawful and a Class 1 misdemeanor for any person to falsely claim an exemption under this article.",
+   "role": "penalty"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that you meet the age or disability test and the home test",
+   "who": "Homeowner (applicant)",
+   "how": "You must be 65 or older, or permanently and totally disabled, on December 31 of the year before the tax year. The home must be in the City of Charlottesville. On January 1 of the tax year and on the day you apply, you must own it and live there as your only residence, and you must intend to keep living there for the rest of the year. For a manufactured home, you must own both the home and the lot. A stay in a hospital, nursing home or other care facility still counts as living there, as long as the home is not used by or rented to others for pay. A married couple who are the only joint owners can qualify if either spouse meets the age or disability test.",
+   "deadline": "as of December 31st of the prior year",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Applicant must be 65 years of age or older or permanently and totally disabled (proof of disability required) as of December 31st of the prior year.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s2",
+   "step": "Check the income limit and the ownership limits",
+   "who": "Homeowner (applicant)",
+   "how": "Add up the prior year's federal adjusted gross income (AGI) of you, your spouse, and any co-owners and relatives living in the home. For someone who does not have to file a federal return, their income for the prior year counts instead. The total must be $65,000 or less. The ordinance sets the limit at 50 percent of area median family income. Neither you nor a spouse living with you may own any other real estate. The TY 2026 application asked the same of co-owners living in the home, and counted an interest held through a trust, an LLC or another entity. If you share the home with a co-owner who is not 65 or disabled (other than a spouse who is the only other owner), relief is prorated by the eligible owners' share of ownership.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Combined Federal Adjusted Gross Income (AGI) for the prior year for applicant, applicant’s spouse, and any co-owners and relatives residing in the home cannot exceed $65,000.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s3",
+   "step": "If you owe back real estate taxes on the home, set up a payment plan with the Treasurer's Office",
+   "who": "Homeowner; City Treasurer's Office",
+   "how": "The ordinance requires an applicant who is behind on real estate taxes for the home to be in good standing on a Treasurer's Office payment plan that pays off the delinquency within 12 months. The Treasurer's Real Estate Taxes page says to call 434-970-3146 to set up an arrangement, and that an arrangement does not stop late-payment penalties and interest. The city's tax relief page and the TY 2026 forms do not mention this requirement.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "must be in good standing on a payment plan with the treasurer's office with the aim of paying off said delinquency in a period not exceeding twelve (12) months.",
+   "source": "Charlottesville City Code § 30-98(8), in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  },
+  {
+   "id": "s4",
+   "step": "Find out whether you file a full application or a recertification this year",
+   "who": "Homeowner (applicant)",
+   "how": "You file a full application in your first year and every third year after that, and recertify in the two years between. The city schedules this by last name. For tax year 2026: Group 1 (A to G) and Group 2 (H to P) recertified, and Group 3 (Q to Z) filed a full application. Group 4 filed a full application: people who did not get relief in 2025, people who bought a city home in 2025, and Group 1 or 2 homeowners whose income rose or fell by more than 10 percent.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "In the first year for which exemption is sought, and every third year thereafter, every person claiming an exemption under this article shall file an application with the commissioner of revenue of the city setting forth the basis for their claim of exemption.",
+   "source": "Charlottesville City Code § 30-99(a), in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  },
+  {
+   "id": "s5",
+   "step": "Gather proof of income (full applications: Groups 3 and 4)",
+   "who": "Homeowner (applicant)",
+   "how": "Get a copy of the filed IRS Form 1040 for the prior tax year, or all taxable income statements, for you, your spouse, and any co-owners and relatives living in the home. The tax year 2026 application asked for pages 1 and 2 of each Form 1040. It had a worksheet for people who did not file a Form 1040, to be sent with copies of their income statements (such as Forms W-2, 1099-R and SSA-1099).",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Proof of Income: Copy of filed IRS Form 1040 or all taxable income statements for Tax Year 2025 for applicant, applicant's spouse, and any other co-owners and relatives living in the home.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s6",
+   "step": "If you are under 65, get proof of permanent and total disability",
+   "who": "Homeowner (applicant); Social Security Administration or two physicians",
+   "how": "Attach a letter from the Social Security Administration, or a letter from two physicians licensed in Virginia, that confirms the disability and its date. The ordinance also accepts certification by the Veterans Administration or the Railroad Retirement Board. Under the ordinance, the two-doctor route is for people who are not eligible for certification by those agencies, the doctors' statements are sworn affidavits, and at least one of them must be based on a physical examination.",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Proof of Disability (if applicant is under 65 years of age): Copy of a letter from Social Security Administration (SSA) or a letter from two licensed physicians in Virginia confirming the disability and the date.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s7",
+   "step": "Complete and sign the application or the recertification",
+   "who": "Homeowner (applicant), or the applicant's power of attorney",
+   "how": "Use the online form, or the fillable PDF for your group: the recertification (Groups 1 and 2) or the full application (Groups 3 and 4). The TY 2026 forms asked for the applicant's name, Social Security number, date of birth, date any disability was awarded, contact details, property address, parcel number, deed name and mailing address. The full application also asked how the home is owned (solely, jointly, life rights or revocable trust) and for the household's AGI. You sign a certification that the information is complete and accurate, and that you own no real estate other than this home.",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Application must be signed by applicant or applicant's power-of-attorney.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s8",
+   "step": "Submit it to the Commissioner of the Revenue by April 1, online, by mail or in person",
+   "who": "Homeowner (applicant), to the Commissioner of the Revenue",
+   "how": "Online: use the city's online application/recertification form while the filing window is open. By mail: send the completed form and copies of your documents to Commissioner of the Revenue, P.O. Box 2964, Charlottesville, VA 22902-2964. In person: bring the form and documents to 605 E Main Street, Room A-130 (8:30 am to 4:30 pm). For tax year 2026 the office accepted filings from February 2 through April 1, 2026.",
+   "deadline": "Due by April 1, 2026 (tax year 2026). The ordinance sets April 1 of each taxable year.",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "Open and complete the downloaded application and mail it to the address below.",
+   "source": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "id": "s9",
+   "step": "If you missed April 1, ask the Commissioner for an extension to July 1 (first-time applicants and hardship cases)",
+   "who": "Homeowner (applicant); Commissioner of the Revenue",
+   "how": "The ordinance lets the Commissioner extend the deadline to July 1 for a first-time applicant. It also allows July 1 in a hardship case, where illness or a stay in a nursing home, hospital or other medical facility kept the applicant from filing by April 1. The city's tax relief page does not describe this extension, so ask the office.",
+   "deadline": "July 1 of the taxable year (if the Commissioner grants the extension)",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "may be extended by the commissioner of revenue to July 1 of a taxable year for a first-time applicant",
+   "source": "Charlottesville City Code § 30-99(a), in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  },
+  {
+   "id": "s10",
+   "step": "The Commissioner reviews the claim and may ask further questions",
+   "who": "Commissioner of the Revenue",
+   "how": "The Commissioner audits the claim and may ask further questions that must be answered under oath. The Commissioner may also ask for certified tax returns. The Commissioner decides whether an applicant under 65 is permanently and totally disabled. The TY 2026 application said the final relief percentage is subject to review.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)",
+   "quote": "the commissioner of revenue may make such further inquiry of persons seeking to claim exemptions requiring answers under oath and the production of certified tax returns",
+   "source": "Charlottesville City Code § 30-99(d), in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  },
+  {
+   "id": "s11",
+   "step": "Relief is taken off your real estate tax bill",
+   "who": "Commissioner of the Revenue; City Treasurer",
+   "how": "The Commissioner certifies the approved homeowners and amounts to the Treasurer, who deducts them from the year's real estate tax. For tax year 2026 the relief was 100 percent for combined AGI of $0 to $39,000, 80 percent for $39,001 to $52,000, 60 percent for $52,001 to $58,500, and 40 percent for $58,501 to $65,000. Any remaining tax is due in two equal installments, on June 5 and December 5.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "The commissioner of revenue, after audit and investigation, shall certify a list of the persons and property qualifying for exemption under this article and the amount thereof to the city treasurer",
+   "source": "Charlottesville City Code § 30-100, in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  },
+  {
+   "id": "s12",
+   "step": "Tell the Commissioner about changes, and recertify or reapply in later years",
+   "who": "Homeowner; Commissioner of the Revenue",
+   "how": "Under the ordinance, a change during the year in income, ownership or other factors that breaks the limits gives a prorated exemption for that year. In later years, recertify on your group's schedule. File a full application if your circumstances have changed, or if your income changed by more than 10 percent. Falsely claiming the exemption is a Class 1 misdemeanor under the ordinance.",
+   "deadline": "Each year's filing deadline (April 1 for tax year 2026)",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "quote": "shall result in a prorated exemption for the then current taxable year.",
+   "source": "Charlottesville City Code § 30-102, in the January 16, 2024 City Council agenda packet: https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Real Estate Tax Relief Application / Recertification (Online Form; Laserfiche Forms)",
+   "number": null,
+   "url": "https://corforms.charlottesville.gov/Forms/RETRPUBLIC",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Recertification for Real Estate Tax Relief for the Elderly and Disabled, TY 2026 (PDF; Groups 1 and 2)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/3116/Real-Estate-Tax-Relief-for-the-Elderly-and-Disabled-Recertification-PDF-for-Group-1-or-2-CY-2026",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Application for Real Estate Tax Relief for the Elderly and Disabled, TY 2026 (PDF; Groups 3 and 4)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/3115/Real-Estate-Tax-Relief-for-the-Elderly-and-Disabled-Application-PDF-for-Group-3-or-4-CY-2026",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Commissioner of the Revenue, City of Charlottesville (tax relief). In person Monday through Friday 8:30 am to 4:30 pm; by phone 8:00 am to 5:00 pm.",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "phone",
+   "value": "(434) 970-3160",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "kind": "email",
+   "value": "TaxRelief@Charlottesville.gov",
+   "label": "Commissioner of the Revenue (tax relief)",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "kind": "address",
+   "value": "Commissioner of the Revenue, P.O. Box 2964, Charlottesville, VA 22902-2964 (mail)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "kind": "address",
+   "value": "605 E Main Street, Room A-130, Charlottesville, VA 22902 (in person, City Hall first floor; 8:30 am to 4:30 pm)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3663 (fax)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief",
+   "label": "Commissioner of the Revenue: Real Estate Tax Relief",
+   "url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3146 (payment arrangements for unpaid real estate taxes)",
+   "label": "City Treasurer's Office",
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Relief denied, or the relief percentage seems wrong, so too much real estate tax is charged",
+   "next": "Commissioner of the Revenue: apply for correction of the erroneous assessment",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later (Va. Code § 58.1-3980(A))",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "Sections 58.1-3980 through 58.1-3983 shall also apply to erroneous assessments of real estate if the error sought to be corrected in any case was made by the commissioner of the revenue or such other official to whom the application is made"
+  },
+  {
+   "trigger": "The Commissioner acts on your correction request and you want the reasons",
+   "next": "Commissioner of the Revenue: a written statement of the facts and law, on request",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3981(F)",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application and mail a copy of such writing to the applicant at his last known address."
+  },
+  {
+   "trigger": "Correction refused, or no decision from the Commissioner",
+   "next": "Circuit Court of the City of Charlottesville: application to correct an erroneous assessment",
+   "type": "judicial review",
+   "deadline": "Within three years from the last day of the tax year, one year from the assessment, or one year from the Commissioner's final determination under § 58.1-3981, whichever is later (Va. Code § 58.1-3984(A))",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made"
+  },
+  {
+   "trigger": "Not eligible, for example under 65 and not disabled, but income is within the limit",
+   "next": "Charlottesville Homeowner Assistance Program (CHAP) grant of $1,000 to $2,500, run by the same office. For 2026 it required owning and living in the home on January 1, no other real estate owned by the applicant, spouse or a co-owner living there, an assessed value of $550,000 or less, and combined AGI of $65,000 or less.",
+   "type": "referral",
+   "deadline": "Set each year by the city (closed for 2026)",
+   "basis": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief (local grant program; no Virginia Code or City Code section found)",
+   "quote": "This program is only for homeowners who are not receiving real estate tax relief for elderly or disabled persons, or real estate tax exemption for qualified veterans or surviving spouses for the 2026 Tax Year."
+  },
+  {
+   "trigger": "The homeowner is a veteran rated 100 percent service-connected, permanently and totally disabled (or a qualifying surviving spouse)",
+   "next": "Disabled veteran real estate tax exemption, Commissioner of the Revenue (separate application on the same page)",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3219.5(A)",
+   "quote": "the General Assembly hereby exempts from taxation the real property, including the joint real property of married individuals, of any veteran who has been rated by the U.S. Department of Veterans Affairs or its successor agency pursuant to federal law to have a 100 percent service-connected, permanent, and total disability"
+  }
+ ],
+ "caveats": [
+  "Applications for tax year 2026 are closed: the page says 'Applications are no longer being accepted.' The dates for the next cycle are not published yet. For tax year 2026, an archived copy of the city page (Internet Archive, March 5, 2026) said the office accepted filings from February 2, 2026 through April 1, 2026.",
+  "The form links were removed from the city page when the cycle closed. The PDF URLs (DocumentCenter 3115 and 3116) now return HTTP 404. The online form (corforms.charlottesville.gov/Forms/RETRPUBLIC) answers with a 'business process ... is not published' error. The URLs and the form contents (TY 2026) were taken from Internet Archive copies of the official page and PDFs. The March 2026 copy of the page linked document 3115 under an older 'CY-2025' name; the document number is what counts. Expect new URLs, or new versions at these IDs, for the next cycle.",
+  "The local ordinance text (City Code Chapter 30, Article IV, §§ 30-96 to 30-103) is quoted from the proposed ordinance in the January 16, 2024 City Council agenda packet (ordinance on packet pages 68 to 73, after the staff report on pages 66 and 67), on the city's CivicClerk agenda system. That version is marked up to change the filing date from March 1 to April 1, so no quote here includes the marked-up date. The approved minutes of January 22, 2024 show it adopted 5-0 on the consent agenda (https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4761,plainText=false)). The codified text on Municode (https://library.municode.com/va/charlottesville/codes/code_of_ordinances) was not read, because Municode's terms of use could not be confirmed (the CivicPlus terms page returned HTTP 403). A CivicClerk search found no later amendment of Article IV, but the current codified text was not compared.",
+  "The packet is large (about 94 MB). The stable stream URL is given because the direct link to the ordinance attachment is a signed, expiring blob URL.",
+  "The city page calls the program a 'grant', while the ordinance calls it an 'exemption' that the Commissioner certifies and the Treasurer deducts from the tax. The page's dollar tiers ($39,000, $52,000, $58,500, $65,000) equal 30, 40, 45 and 50 percent of $130,000. This suggests the TY 2026 area median family income used was $130,000, but the city does not state that figure. That is an inference.",
+  "Possible conflict on trusts: the TY 2026 application (archived copy) says a home titled to an irrevocable trust is not eligible. But Va. Code § 58.1-3210(B) counts as the eligible person's dwelling property held in an irrevocable trust under which the eligible person has a life estate or a continuing right of use or support. A homeowner in that situation should ask the office, and may want legal advice.",
+  "Disability proof: the city page names an SSA letter or a letter from two licensed Virginia physicians. The ordinance also accepts VA or Railroad Retirement Board certification. Va. Code § 58.1-3213(D) also allows affidavits from military doctors on active duty, and says an SSA certification under 42 U.S.C. § 423(d) is deemed to meet the definition.",
+  "Income: the page counts the AGI of the applicant, spouse, co-owners and relatives in the home, and the ordinance counts all relatives living in the dwelling. But the TY 2026 application's income question and table name only the applicant, spouse and co-owners living in the home, not other relatives, and it excluded people providing bona fide caregiving services. Va. Code § 58.1-3212(A) excludes relatives providing bona fide caregiving services from the income count. Ordinance § 30-98(5) excludes a caregiving relative's income only on clear and convincing evidence that the alternative is a nursing home or similar facility. The state rule likely controls, but the office applies its own form.",
+  "No net-worth limit was found for this program. Ordinance § 30-98(3) is 'Reserved', and neither the page nor the form asks about assets. The separate rent relief program does have a $125,000 net-worth limit.",
+  "The page lists required documents only for Groups 3 and 4, and the TY 2026 recertification form asks for no attachments. To recertify, all five of the form's statements had to be true: relief received in 2025, a last name beginning A through P, income for 2025 within 10 percent of 2024, the same home owned, and residence there on January 1, 2026. Otherwise a new application was needed. Which letter groups apply and which recertify rotates each year: in 2025 the forms were for Groups 1 or 3 (recertification) and Groups 2 or 4 (application), per an Internet Archive copy of the page from February 2025.",
+  "Neither the page, nor the ordinance, nor the forms state an application or recertification fee, and state law sets none. The fees list is left empty.",
+  "Penalty: the ordinance (§ 30-103) makes a false claim a Class 1 misdemeanor. The TY 2026 forms instead warn of a Class 5 felony under Va. Code §§ 63.2-502 and 18.2-434, calling the form an application for public assistance. In Open US Law's copy of the Code of Virginia, § 18.2-434 makes perjury a Class 5 felony, and § 63.2-502 applies to false applications for public assistance and false swearing under Title 63.2 (social services). Whether either reaches this local tax exemption is not settled here; the forms are signed 'under penalties provided by law', not expressly under oath.",
+  "Escalation is inferred. Neither Article 2 of Chapter 32 of Title 58.1 nor City Code Chapter 30, Article IV sets an appeal route, and the city page describes none. A denial leads to the full tax being charged. The route shown is the general correction process for erroneous local assessments made by the Commissioner (Va. Code §§ 58.1-3980, 58.1-3981, 58.1-3984). Real estate valuation itself is assessed by the City Assessor and appealed through a separate process. Va. Code § 58.1-3983.1 (appeals to the Tax Commissioner) covers only local mobile property and business taxes, so it does not apply here. No statute sets a deadline for the Commissioner to decide a relief application.",
+  "Va. Code § 58.1-3211 (restrictions and conditions) is missing from Open US Law's copy of the Code of Virginia, so it is not quoted. Read https://law.lis.virginia.gov/vacode/58.1-3211/ before relying on it.",
+  "The 'Three options to apply' block (online, mail, in person) sits below all three program tabs on the page, so it is read as covering this program. The Secure Document Submission upload is described only on the rent relief page, not for real estate tax relief.",
+  "Other real estate: ordinance § 30-98(6) bars other real estate owned by the applicant or a spouse living in the home. The TY 2026 application went further: it asked the same of any co-owner living in the home, counted interests held as a trust beneficiary, an LLC member or through another entity, and said a YES answer makes the applicant ineligible. A household where only a non-spouse co-owner owns other real estate should ask the office.",
+  "The Commissioner of the Revenue's page names the elected Commissioner, with an email link in his name that goes to the office's general mailbox, and the council packet names staff. The names were left out under the contact rules; only office channels are recorded."
+ ],
+ "sources": [
+  {"url": "https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief", "title": "Real Estate Tax Relief (City of Charlottesville, Commissioner of the Revenue)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue", "title": "Commissioner of Revenue (City of Charlottesville)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/188/Forms-Index", "title": "Commissioner of the Revenue Forms Index (no tax relief forms listed)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/571/Real-Estate-Taxes", "title": "Real Estate Taxes (City of Charlottesville, Treasurer)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/192/Rent-Relief", "title": "Rent Relief (City of Charlottesville; cites City Code § 30-96 for disability)", "retrieved": "2026-10-10"},
+  {"url": "https://www.charlottesville.gov/1077/Agendas-Minutes", "title": "Agendas & Minutes (City of Charlottesville; CivicClerk portal, tenant charlottesvilleva)", "retrieved": "2026-10-10"},
+  {"url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4569,plainText=false)", "title": "City Council agenda packet, January 16, 2024 (meeting held January 22, 2024): staff report and ordinance amending City Code Chapter 30, Article IV (packet pages 66 to 73)", "retrieved": "2026-10-10"},
+  {"url": "https://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4761,plainText=false)", "title": "City Council regular meeting minutes, January 22, 2024 (approved): consent agenda adopted 5-0, including item 6, the Article IV ordinance", "retrieved": "2026-10-10"},
+  {"url": "https://web.archive.org/web/20260305134225/https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief", "title": "Internet Archive copy of the city's Real Estate Tax Relief page, March 5, 2026 (filing window and form links)", "retrieved": "2026-10-10"},
+  {"url": "https://web.archive.org/web/20250226151750/https://www.charlottesville.gov/1513/Real-Estate-Tax-Relief", "title": "Internet Archive copy of the city's Real Estate Tax Relief page, February 26, 2025 (2025 group rotation and filing window)", "retrieved": "2026-10-10"},
+  {"url": "https://web.archive.org/web/20260410035152/https://www.charlottesville.gov/DocumentCenter/View/3115/Real-Estate-Tax-Relief-for-the-Elderly-and-Disabled-Application-PDF-for-Group-3-or-4-CY-2026", "title": "Internet Archive copy of the city's TY 2026 Application for Real Estate Tax Relief for the Elderly and Disabled (PDF)", "retrieved": "2026-10-10"},
+  {"url": "https://web.archive.org/web/20260305134420/https://www.charlottesville.gov/DocumentCenter/View/3116/Real-Estate-Tax-Relief-for-the-Elderly-and-Disabled-Recertification-PDF-for-Group-1-or-2-CY-2026", "title": "Internet Archive copy of the city's TY 2026 Recertification for Real Estate Tax Relief (PDF)", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3210/", "title": "Va. Code § 58.1-3210", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3212/", "title": "Va. Code § 58.1-3212", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3213/", "title": "Va. Code § 58.1-3213", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3214/", "title": "Va. Code § 58.1-3214", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3215/", "title": "Va. Code § 58.1-3215", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3217/", "title": "Va. Code § 58.1-3217", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3219.5/", "title": "Va. Code § 58.1-3219.5", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3980/", "title": "Va. Code § 58.1-3980", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3981/", "title": "Va. Code § 58.1-3981", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3984/", "title": "Va. Code § 58.1-3984", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/", "title": "Va. Code § 58.1-3983.1", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/18.2-434/", "title": "Va. Code § 18.2-434 (penalty cited on the forms)", "retrieved": "2026-10-10"},
+  {"url": "https://law.lis.virginia.gov/vacode/63.2-502/", "title": "Va. Code § 63.2-502 (penalty cited on the forms)", "retrieved": "2026-10-10"}
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 53,
+  "quotes_confirmed": 53,
+  "removed": [],
+  "corrections": [
+   "s1 and summary: added the January 1 test. Under City Code § 30-98(1) and (2), the claimant must own the home and live in it as their only residence on January 1 of the tax year and on the day of filing, and must intend to stay for the rest of the year. The TY 2026 application asked this as question C. Also added the manufactured-home rule (own both the home and the lot).",
+   "s1: the care-facility exception now says the home must not be used by or rented to others for pay, following § 30-96, § 30-98(2) and Va. Code § 58.1-3214. The draft said only 'not rented to others'. The married-couple rule now says 'can qualify', keeping the 'may qualify' of § 58.1-3210(A).",
+   "s2: added the income rule for people who need not file a federal return (§ 30-96). Proration under § 30-98(7) now applies to a co-owner who shares the home, and the spouse exception only when the spouse is the only other owner. The step also notes that the TY 2026 application asked co-owners living in the home about other real estate, and counted interests held through a trust, an LLC or another entity.",
+   "s3: added the Treasurer page's warning that a payment arrangement does not stop late-payment penalties and interest. Noted that the TY 2026 forms, like the relief page, do not mention the delinquency requirement.",
+   "s5: added what the TY 2026 application asked for: pages 1 and 2 of each Form 1040, or the non-filer worksheet with copies of income statements.",
+   "s6: under § 30-99(c), the two-doctor route applies only to someone not eligible for certification by SSA, the VA or the Railroad Retirement Board, and the doctors' statements are sworn affidavits. The draft left both points out.",
+   "s7: added the details the TY 2026 forms asked for (including Social Security number, parcel number, deed name and how the home is owned).",
+   "Summary: the escalation sentence is now worded as likely, not certain. No source sets an appeal route for this program.",
+   "CHAP escalation rung: added the grant amounts and the 2026 eligibility tests from the city page: own and live in the home on January 1, no other real estate, assessed value of $550,000 or less, and AGI of $65,000 or less.",
+   "Caveat on the ordinance source: the packet pages were wrong. The ordinance is on pages 68 to 73, and the staff report on pages 66 and 67 (the draft said 67 to 71). The source title now says pages 66 to 73 (it said 66 to 71).",
+   "Caveat on contacts: the Commissioner's page has no 'personal email link'. The link in the Commissioner's name goes to the office's general mailbox. The wording is corrected, and still no name is recorded.",
+   "Caveat on income: the TY 2026 application's income question and table name only the applicant, spouse and co-owners. Relatives are left out, although the page and § 30-96 count relatives living in the home.",
+   "Caveat on recertification: the page does not literally say that recertification needs no income documents. The caveat now says what the page and the recertification form do say, including the form's five statements. The 2025 group rotation had no source, so the February 2025 Internet Archive copy, which confirms it, is now in sources.",
+   "Caveat on penalty: Va. Code §§ 18.2-434 and 63.2-502 were read in the index. § 18.2-434 makes perjury a Class 5 felony, and § 63.2-502 covers false applications for public assistance under Title 63.2. The caveat says so; both are added to sources.",
+   "New caveat: the TY 2026 application's other-real-estate question is broader than § 30-98(6).",
+   "Caveat on forms: noted that the March 2026 page linked document 3115 under an older 'CY-2025' name."
+  ],
+  "open_issues": [
+   "The local ordinance is quoted from the version shown to council in the January 16, 2024 packet, not from the current codified code. The approved January 22, 2024 minutes confirm adoption 5-0 on the consent agenda. A verifier search of CivicClerk found no later amendment of Chapter 30, Article 4, and the live page's April 1 date and $65,000 tiers match. Compare against the codified text when a source with permitted access is available.",
+   "The TY 2026 forms are no longer available: PDFs 3115 and 3116 return HTTP 404, and the online form's business process ('RETR 2024') is not published. URLs for the next cycle are unknown.",
+   "Va. Code § 58.1-3211 is not in the lexflow index, so it is unread and unquoted.",
+   "The escalation route is inferred from Va. Code §§ 58.1-3980, 58.1-3981 and 58.1-3984. No source states it for this program.",
+   "The TY 2026 forms differ from state or city law in five places, all flagged in caveats: irrevocable trusts, a caregiving relative's income, other relatives' income, co-owners' other real estate, and a felony warning where the ordinance sets a misdemeanor. The steps state the ordinance rule; how the office applies its form is not confirmed."
+  ]
+ }
+}

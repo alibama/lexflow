@@ -53,6 +53,9 @@ ORIGIN = _env("LEXFLOW_ORIGIN", socket.gethostname())
 # The wiki to publish to.  LEXIPEDIA_TOKEN is accepted as a shorthand for lexipedia.xyz.
 DOKUWIKI_TOKEN = _env("DOKUWIKI_TOKEN") or _env("LEXIPEDIA_TOKEN")
 DOKUWIKI_URL = _env("DOKUWIKI_URL") or ("https://lexipedia.xyz" if _env("LEXIPEDIA_TOKEN") else "")
+# where readers report an error, shown on lexflow:method's "Corrections:" line: an e-mail address or an http(s) URL
+# that the operator sets.  Every page links lexflow:method, so until it is set the publish step writes no page.
+CORRECTIONS = _env("LEXFLOW_CORRECTIONS")
 
 COURTLISTENER_TOKEN = _env("COURTLISTENER_TOKEN")   # optional: higher rate limits for case-law search
 WIKIBASE_URL = _env("WIKIBASE_URL", "https://lexipedia.wikibase.cloud")

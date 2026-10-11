@@ -6,7 +6,7 @@
  "verified": true,
  "answers": {
   "records": {
-   "summary": "In DC, anyone can ask a District agency for public records under the DC Freedom of Information Act (DC Code §§ 2-531 to 2-539). The easiest way is the DC Government Public FOIA Portal (myfoia.dc.gov). You can also send your request to the agency's FOIA Officer by mail, fax or email. Requests to the Office of the Chief Financial Officer go through a separate OCFO portal. It costs nothing to submit a request, but agencies can charge for searching, reviewing and copying under 1 DCMR § 408, and you can ask for a fee waiver or reduction. Agencies must answer within 15 business days and can add 10 more business days. If you are denied, you can file an administrative appeal with the Mayor through the portal, by email to foia.appeals@dc.gov, or by mail to the Mayor's Office of Legal Counsel. After that you can file a civil action in DC Superior Court.",
+   "summary": "In DC, anyone can ask a District agency for public records under the DC Freedom of Information Act (DC Code §§ 2-531 to 2-539). The easiest way is the DC Government Public FOIA Portal (myfoia.dc.gov). You can also send your request to the agency's FOIA Officer by mail, fax or email. Requests to the Office of the Chief Financial Officer go through a separate OCFO portal. It costs nothing to submit a request, but agencies can charge for searching, reviewing and copying under 1 DCMR § 408, and you can ask for a fee waiver or reduction. By law, agencies must answer within 15 days (except Saturdays, Sundays, and legal public holidays) and, in unusual circumstances, can extend that by up to 10 more such days (D.C. Code § 2-532(c)(1), (d)(1)). If you are denied, you can file an administrative appeal with the Mayor through the portal, by email to foia.appeals@dc.gov, or by mail to the Mayor's Office of Legal Counsel. After that you can file a civil action in DC Superior Court.",
    "steps": [
     {
      "step": "Submit a FOIA request online through the DC Public FOIA Portal",
@@ -30,9 +30,9 @@
      "quote": "There is no initial fee for submitting a FOIA request."
     },
     {
-     "step": "Wait for the response (15 business days, with a possible 10-business-day extension)",
+     "step": "Wait for the response: within 15 days (except Saturdays, Sundays, and legal public holidays), or up to 10 more such days if the agency extends",
      "who": "Public body",
-     "how": "Weekends and legal holidays are not counted. The agency can extend the deadline by 10 more business days. Under D.C. Code § 2-532(e), a missed deadline counts as a denial, which you can appeal.",
+     "how": "The law does not count Saturdays, Sundays and legal public holidays (dc.gov/foia calls these business days). In unusual circumstances the agency can extend the deadline by written notice, by up to 10 more days counted the same way (D.C. Code § 2-532(d)). Under D.C. Code § 2-532(e), a missed deadline counts as a denial, which you can appeal.",
      "url": "https://dc.gov/foia",
      "quote": "All public bodies are required to respond to a FOIA request within 15 business-days"
     },
@@ -104,9 +104,9 @@
    "caveats": [
     "The per-page and hourly FOIA rates come from a 2013 copy of 1 DCMR 408 hosted by opc-dc.gov, not the current official text on dcregs.dc.gov. Individual agencies (for example DCPS and OCFO) may publish their own fee schedules.",
     "The 2013 text of 408.5 says no fee is charged for review to decide whether a record can be disclosed. dc.gov/foia says review fees may apply even when no records are found. Check the current rule.",
-    "myfoia.dc.gov currently redirects to myfoiadc.govqa.us, and I did not fetch the portal's content. The OCFO portal page loaded only the title 'Public Portal', so I confirmed it only through the dc.gov/foia link.",
-    "Some independent bodies (for example OCFO) use separate portals, and the DC Council and courts may have their own records processes. I did not verify those.",
-    "The 15-day clock is in business days. The extension is up to 10 more business days; § 2-532(d) limits it to unusual circumstances."
+    "myfoia.dc.gov currently redirects to myfoiadc.govqa.us; the portal's own pages are not described here. The OCFO portal page shows only the title 'Public Portal', so it is confirmed only through the dc.gov/foia link.",
+    "Some independent bodies (for example OCFO) use separate portals, and the DC Council and courts may have their own records processes. Those are not checked here.",
+    "The law counts the 15 days without Saturdays, Sundays and legal public holidays; dc.gov/foia calls them business days. The extension is up to 10 more days counted the same way; § 2-532(d) limits it to unusual circumstances."
    ]
   },
   "business": {
@@ -143,7 +143,7 @@
     {
      "step": "Commercial location: get a Certificate of Occupancy (C of O)",
      "who": "DC Department of Buildings",
-     "how": "Apply through Certifi (certifi.dob.dc.gov). Approval typically takes about seven business days. The application is invoiced after approval, and the C of O is issued once payment is received. DOB is at 1100 4th Street SW, (202) 671-3500.",
+     "how": "Apply through Certifi (certifi.dob.dc.gov). DOB's page says approval typically takes about seven business days. The application is invoiced after approval, and the C of O is issued once payment is received. DOB is at 1100 4th Street SW, (202) 671-3500.",
      "url": "https://dob.dc.gov/service/get-certificate-occupancy",
      "quote": "Certifi, a user-friendly platform, is used to submit C of O applications."
     },
@@ -224,15 +224,15 @@
      "url": "https://code.dccouncil.gov/us/dc/council/code/sections/47-2862"
     }
    ],
-   "fees": "From DLCP's License & Corporate Filing Fees page: General Business license $49 for 6 months, $99 for 2 years, $198 for 4 years. Corporate initial registration: domestic for-profit $99, domestic non-profit $80, foreign for-profit $220, foreign non-profit $80. Biennial reports: $300 for-profit and $80 non-profit, with a late fee after April 1 of the year due of $100 for-profit or $50 non-profit. Fees for other license categories and endorsements vary by business activity. The DOB pages do not state HOP or C of O fees; the C of O is invoiced after approval. I found no FR-500 registration fee stated.",
+   "fees": "From DLCP's License & Corporate Filing Fees page: General Business license $49 for 6 months, $99 for 2 years, $198 for 4 years. Corporate initial registration: domestic for-profit $99, domestic non-profit $80, foreign for-profit $220, foreign non-profit $80. Biennial reports: $300 for-profit and $80 non-profit, with a late fee after April 1 of the year due of $100 for-profit or $50 non-profit. Fees for other license categories and endorsements vary by business activity. The DOB pages do not state HOP or C of O fees; the C of O is invoiced after approval. The research found no FR-500 registration fee stated.",
    "caveats": [
-    "The fee page lists only general business and corporate registration figures. Other BBL categories (for example food, home improvement or professional services) have different fees and may need endorsements, and I did not verify those. The full corporate fee schedule is at dlcp.dc.gov/node/1621901, which I did not fetch.",
-    "Trade name fees are not listed on the DLCP fee page I checked.",
-    "Third-party sources mention a 10% technology fee and $25-per-endorsement amounts under older law. D.C. Code § 47-2851.08 is now marked repealed, so I did not include those amounts.",
-    "corponline.dlcp.dc.gov now redirects to boss.dc.gov, which suggests corporate registration has moved to BOSS. The BOSS, MyTax.DC.gov and Certifi pages did not render any content when fetched, so I confirmed them only through the agency pages that link to them.",
-    "The DLCP steps page does not mention sole proprietors. Sole proprietors using their own legal name generally do not need corporate registration but still need tax registration, zoning clearance and a BBL; I did not verify this on an official page. Trade name registration applies if they use a different name.",
+    "The fee page lists only general business and corporate registration figures. Other BBL categories (for example food, home improvement or professional services) have different fees and may need endorsements, and those are not checked here. The full corporate fee schedule is at dlcp.dc.gov/node/1621901, which is not checked here either.",
+    "Trade name fees are not listed on the DLCP fee page cited here.",
+    "Third-party sources mention a 10% technology fee and $25-per-endorsement amounts under older law. D.C. Code § 47-2851.08 is now marked repealed, so lexflow does not give those amounts.",
+    "corponline.dlcp.dc.gov now redirects to boss.dc.gov, which suggests corporate registration has moved to BOSS. The BOSS, MyTax.DC.gov and Certifi pages are web applications whose content does not load without a browser, so they are confirmed only through the agency pages that link to them.",
+    "The DLCP steps page does not mention sole proprietors. Sole proprietors using their own legal name generally do not need corporate registration but still need tax registration, zoning clearance and a BBL; this is not confirmed on an official page. Trade name registration applies if they use a different name.",
     "Some older DLCP pages reportedly cite a $100 Clean Hands threshold. The current D.C. Code § 47-2862 uses $1,000, apart from Department of Motor Vehicles licenses and permits.",
-    "Certain uses (child development homes, regulated professions, alcohol, rental housing) have extra requirements that I did not research.",
+    "Certain uses (child development homes, regulated professions, alcohol, rental housing) have extra requirements that are not covered here.",
     "According to the OTR page, businesses with a withholding account should also contact the Department of Employment Services (DOES) to register for unemployment insurance."
    ]
   }

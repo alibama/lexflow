@@ -1,0 +1,1081 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "short_term_rental_registration",
+ "title": "Register a short-term rental (homestay): zoning permit or registry, business license and lodging tax",
+ "question": "I want to rent out my home or a room for short stays in Charlottesville. What permit or registration do I need, and what taxes apply?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "businesses"
+ ],
+ "office": "Neighborhood Development Services, Zoning (homestay accessory use permit); Commissioner of the Revenue (business license, lodging tax and business property)",
+ "summary": "No Charlottesville short-term rental registry was found; the City regulates homestays by zoning permit. In the six residential districts that allow them, a stay under 30 days is a homestay, and the owner must live there at least 185 days a year. Get an annual NDS Zoning Accessory Use Permit in the Permit Portal: $100, due each January, valid to December 31. Limits: 6 adult guests, no sign, no meals, smoke and CO detectors and extinguishers. The Commissioner of the Revenue needs a business license ($35 or $50 below $100,000 in receipts), a yearly attestation by March 1, and a list of furnishings for business property tax. On direct bookings you collect the 9% lodging tax (filed monthly by the 20th) and 5.3% state sales tax. Platforms collect both on their bookings. If you rent more than one room, ask the local health department whether you need a state lodging permit.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-983(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "quote": "\"Short-term rental\" means the provision of a room or space that is suitable or intended for occupancy for dwelling, sleeping, or lodging purposes, for a period of fewer than 30 consecutive days, in exchange for a charge for the occupancy.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-983(B)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "quote": "any locality may, by ordinance, establish a short-term rental registry and require operators within the locality to register annually.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-983(E)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "quote": "nothing herein shall be construed to prohibit, limit, or otherwise supersede existing local authority to regulate the short-term rental of property through general land use and zoning authority.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-983(D)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "quote": "No local ordinance shall prohibit an operator from offering a property as a short-term rental solely on the basis that such operator is a lessee or sublessee, provided that the property owner has granted permission for such property's use as a short-term rental.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-983(D)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "quote": "No local ordinance enacted after December 31, 2023, or any subsequent amendment, shall require that a special exception, special use, or conditional use permit be obtained for the use of a residential dwelling as a short-term rental where the dwelling unit is also legally occupied by the property owner as his primary residence.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "The zoning administrator shall have all necessary authority on behalf of the governing body to administer and enforce the zoning ordinance.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "The zoning administrator shall respond within 90 days of a request for a decision or determination on zoning matters within the scope of his authority unless the requester has agreed to a longer period.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(6)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "For the collection of fees to cover the cost of making inspections, issuing permits, advertising of notices and other expenses incident to the administration of a zoning ordinance or to the filing or processing of any appeal or amendment thereto.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(5)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "Any such violation shall be a misdemeanor punishable by a fine of not more than $1,000.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code (City Code ch. 34) § 3.5.2.E.1",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Allows for an individual who owns a dwelling unit and uses it as their permanent residence to hire out as lodging the dwelling unit or any portion of the dwelling unit.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.3",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "No more than 6 adult overnight guests are allowed on each lot per day.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.4",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Homestays are not permitted to have an exterior sign.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.5",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "An individual who applies for an Accessory Use Permit to authorize the operation of a homestay must present proof of the following:",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.5.a",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Acceptable proof of permanent residence includes: applicant’s drivers license, voter registration card or U.S. passport, or other documents showing the address of the property which the Administrator determines provide equivalent proof of permanent residence at the property",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.6",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Food cannot be prepared for or served to the guests of the homestay by the owner or the owner’s agents or contractors.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.7",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Every homestay must comply with requirements of the applicable version of the Virginia Uniform Building Code, as determined by the City’s Building Code Official.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.8",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "By the application for an Accessory Use Permit for a homestay, an applicant authorizes City inspectors to enter the subject property, upon reasonable advance written notice to the applicant, at least 1 time during the calendar year for which the permit is valid, to verify the homestay is being operated in accordance with the requirements of this Section.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.9",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "During this period of validity, the owner of the homestay must occupy the dwelling unit as their permanent residence for a minimum of 185 days.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.5.2.E.10",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "An Accessory Use Permit for a homestay may be revoked by the Administrator for the following reasons:",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 5.1.6.A.2",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "The Director of Neighborhood Development Services is designated as the Administrator.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 5.2.1.C.3.c",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "All filing fees must be paid in full for an application to be considered complete.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 5.4.4.E.1",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Any violation of the following provisions of this Chapter is subject to a civil penalty of $200.00 for the first violation, and a civil penalty of $500.00 for each subsequent violation arising from the same set of operative facts:",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "it shall be unlawful to engage in such business, employment or profession without first obtaining the required license.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "The governing body of any county, city or town may charge a fee for issuing a license in an amount not to exceed $100 for any locality with a population greater than 50,000, $50 for any locality with a population of 25,000 but no more than 50,000 and $30 for any locality with a population smaller than 25,000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "Any county, city or town with a population greater than 50,000 shall reduce the fee to an amount not to exceed $50 by January 1, 2000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "Any business with gross receipts of more than $100,000, or $50,000, as applicable, may be subject to the tax at a rate not to exceed the rate set forth below for the class of enterprise listed:",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A penalty of 10 percent of the tax may be imposed upon the failure to file an application or the failure to pay the tax by the appropriate due date.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code (business license), as cited by the Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/CivicAlerts.aspx?AID=2455",
+   "quote": "Filing and paying for your annual business license is a requirement of City Code.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "any city or town having general taxing powers established by charter pursuant to or consistent with the provisions of § 15.2-1104 and, to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3843(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3843/",
+   "quote": "The scope of the transient occupancy tax imposed pursuant to this article shall be consistent with the scope of the transient occupancy tax imposed under Article 6 (§ 58.1-3818.8 et seq.).",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3826(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3826/",
+   "quote": "For any retail sale of accommodations not facilitated by an accommodations intermediary, the accommodations provider shall collect the tax imposed pursuant to this article, computed on the total price paid for the use or possession of the accommodations, and shall remit the same to the locality and shall be liable for the same.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3826(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3826/",
+   "quote": "The accommodations intermediary shall collect the tax imposed pursuant to this article, computed on the room charge, and shall remit the same to the locality and shall be liable for the same.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3826(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3826/",
+   "quote": "An accommodations intermediary shall submit to a locality the property addresses and gross receipts for all accommodations facilitated by the accommodations intermediary in such locality.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3827(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3827/",
+   "quote": "An accommodations provider shall not be required to transmit a return to the tax-assessing officer of a county, city, or town if (i) all retail sales of accommodations owned by the accommodations provider are facilitated by an accommodations intermediary and (ii) the accommodations provider attests to the locality that all such sales were facilitated by an accommodations intermediary.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3827(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3827/",
+   "quote": "Such attestation shall be effective for 12 months beginning with the month in which the attestation is made, and thereafter, such attestation shall be due annually on a date determined by the locality.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville City Code ch. 30, art. IX (§ 30-251 et seq.), as cited on the Accommodations Provider Annual Attestation",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14356/Accommodations-Provider-Annual-Attestation",
+   "quote": "I am responsible for collecting, reporting and remitting transient occupancy tax to the City of Charlottesville in accordance with Article IX (Sec. 30-251 et seq) of the Charlottesville City Code.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "(4) in the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, 10 percent for the first month the taxes are past due, and five percent for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-612.2(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-612.2/",
+   "quote": "For any retail sale of accommodations not facilitated by an accommodations intermediary, the accommodations provider shall collect the retail sales and use taxes imposed in accordance with this chapter, computed on the total charges for the accommodations, and shall remit the same to the Department and shall be liable for the same.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "\"Hotel\" means any place offering to the public for compensation transitory lodging or sleeping accommodations, overnight or otherwise, including facilities known by varying nomenclatures or designations as hotels, motels, travel lodges, tourist homes, or hostels.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-18",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-15.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-15.1/",
+   "quote": "\"Hotel\" does not include a short-term rental property as defined in § 58.1-3510.4 .",
+   "role": "exception"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that your property can be a homestay",
+   "who": "Operator (the owner who lives in the home)",
+   "how": "Homestays are allowed only in the residential districts R-A, RN-A, R-B, R-C, RX-3 and RX-5. Look up your parcel's district in the City GIS Viewer. Also check that the address is inside city limits, because some Charlottesville mailing addresses are in Albemarle County, which runs its own process. You may rent the whole home, part of it, or an accessory apartment. In any other zoning district, the NDS Homestays page treats a short-term rental as a lodging facility (General Lodging in the Development Code), which has its own rules and is not covered here. Private covenants and condominium or HOA rules may also limit rentals.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1928/Homestays",
+   "quote": "A Homestay is a rental property that is offered for a period of less than 30 days within a residential zoning district (R-A, RN-A, R-B, R-C, RX-3, RX-5).",
+   "source": "https://www.charlottesville.gov/1928/Homestays"
+  },
+  {
+   "id": "s2",
+   "step": "Confirm you meet the owner-occupancy rule (or, as a tenant, have the owner's permission)",
+   "who": "Operator",
+   "how": "The owner must use the home as a permanent residence and live there at least 185 days in each calendar year the permit covers. The Development Code is written for owners. State law (Va. Code § 15.2-983(D)) says no ordinance may refuse an operator only because the operator is a tenant or subtenant who has the owner's permission. The City says that rule applies now and that it will adjust its process. Tenants should ask NDS Zoning how to apply.",
+   "deadline": "At least 185 days of residence in each calendar year of the permit",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "During this period of validity, the owner of the homestay must occupy the dwelling unit as their permanent residence for a minimum of 185 days.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16092"
+  },
+  {
+   "id": "s3",
+   "step": "Meet the homestay operating standards before you list",
+   "who": "Operator",
+   "how": "Rules for every homestay: at most 6 adult overnight guests per lot per night. No exterior sign. The owner, agents and contractors may not prepare or serve food to guests. Working smoke detectors, carbon monoxide detectors and fire extinguishers, which guests can reach at all times. The home must meet the Virginia Uniform Statewide Building Code, as the City's Building Code Official decides. The Code also applies home-occupation standards 1, 2, 4 to 12, 14 and 15 to homestays (§ 3.5.2.E.2): for example, the use must stay subordinate to the residence, no more than one person besides the resident may work in it on the property at a time, there is no outside storage, and no noise, vibration or odor may reach beyond the dwelling. Those standards also limit visits by customers, clients or employees, and deliveries, to 8:00 AM to 9:00 PM; the Code does not say how that applies to overnight guests.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Every homestay must have working smoke detectors, carbon monoxide detectors, and fire extinguishers, and all equipment must be accessible to overnight guests of the homestay at all times.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16092"
+  },
+  {
+   "id": "s4",
+   "step": "Check whether you need a Virginia Department of Health lodging permit",
+   "who": "Operator; the local health department (Virginia Department of Health)",
+   "how": "This is a state rule, separate from the City permit, and the City pages do not mention it. State law requires a hotel to be licensed under Title 35.1, and 'hotel' includes tourist homes (Va. Code §§ 35.1-1, 35.1-18). VDH's guidance says a rental might need a hotel permit if, for example, you rent more than one room for at least one night. Its permit page says residential-style rentals that meet its 'bed and breakfast facility' definition need a VDH lodging permit; that definition turns on food service, which a Charlottesville homestay may not offer. Before listing, ask your local health department whether your homestay needs a permit, especially if you rent more than one room. VDH says its human trafficking training rule for hotel employees does not apply to short-term rental properties.",
+   "deadline": "Before you list the rental (VDH guidance)",
+   "fee": null,
+   "form": null,
+   "url": "https://www.vdh.virginia.gov/environmental-health/tourist-lodging-hotels-motels-bed-and-breakfasts/doineedapermit/",
+   "quote": "To find out if you need a permit, please contact your local health department.",
+   "source": "https://www.vdh.virginia.gov/blog/2025/08/12/preparing-to-rent-your-house-or-property-online-or-on-an-app/"
+  },
+  {
+   "id": "s5",
+   "step": "Gather proof of ownership and residence, and the responsible party's contact details",
+   "who": "Operator; the responsible party, if different",
+   "how": "You need proof that you own the property and live there permanently. The Code accepts a driver's license, voter registration card or U.S. passport, or other documents the Administrator accepts. The City's web page asks for a government-issued ID, and its May 2026 Council presentation says a voter ID is not accepted, so bring a license or passport. Give contact details for the responsible party. If that person is not the owner, they must be named and must sign the application.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "If the owner is not the responsible party who will be responsible during the time of use as a homestay, then the responsible party must be identified and must sign the application form.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16092"
+  },
+  {
+   "id": "s6",
+   "step": "Apply for the homestay Accessory Use Permit in the City Permit Portal and pay the fee",
+   "who": "Operator, through the NDS Permit Portal",
+   "how": "Sign in to the City Permit Portal (or create an account). Start a homestay (Accessory Use Permit) application, upload proof of residency, and pay $100 online. The City has posted a step-by-step video. By applying you agree to one inspection a year by City staff, with advance written notice. Apply before you start renting. Renewals are due every January. NDS warns that the City does not email invoices for permit or application fees unless you ask, so do not pay a fee demanded by email; pay in the Permit Portal.",
+   "deadline": "Homestay/Short-term Rental permits are due in January each year (renewals); new operators apply before renting",
+   "fee": "$100.00 annually",
+   "form": "f1",
+   "url": "https://permits.charlottesville.gov/portal/",
+   "quote": "The application, payment ($100.00 annually) and supporting documents (proof of residency) may all be addressed in the portal.",
+   "source": "https://www.charlottesville.gov/1928/Homestays"
+  },
+  {
+   "id": "s7",
+   "step": "NDS Zoning reviews the application and decides",
+   "who": "Zoning Administrator (the Director of Neighborhood Development Services or a designee)",
+   "how": "The Administrator (the Director of NDS or a designee) decides the application under Development Code § 3.5.2.E. The Code sets no separate review procedure for Accessory Use Permits. An approved permit runs from the date of issue to December 31 of that year. If the Administrator does not act, that counts as a decision you can appeal (see escalation).",
+   "deadline": "Within 90 days of the request (Development Code § 5.1.6.B.1.g; Va. Code § 15.2-2286(A)(4))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Each Accessory Use Permit for a homestay will be valid from the date on which the permit is issued through December 31 of the calendar year in which the permit is issued.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16092"
+  },
+  {
+   "id": "s8",
+   "step": "Apply to the Commissioner of the Revenue for a business license",
+   "who": "Operator; Commissioner of the Revenue, business tax office",
+   "how": "Fill in the Request for Business Information (Homestay) form. Its listed activity is 'Hotel Residential'. Report gross receipts as the total the guest paid, not the platform's payout, and list receipts for any rentals already made in 2023 to 2026. Send it through the Commissioner's Secure Portal (category: Business License Application) or by mail to P.O. Box 2964; the Business Tax Portal page also allows a new application in person or by email. A new license cannot be opened in the online Business Tax Portal. The office sets your classification and fee, then sends you portal credentials. In your first year the tax is based on estimated gross receipts.",
+   "deadline": "Applications are due within the first thirty days of establishing business (City page); state law says apply before beginning business (Va. Code § 58.1-3703.1(A)(2)(a))",
+   "fee": "$35.00 if gross receipts are under $50,000; $50.00 for $50,001 to $100,000; above $100,000, tax at the rate for the business classification",
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "You are required to obtain a business license for each year in operation.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "id": "s9",
+   "step": "File the Accommodations Provider Annual Attestation",
+   "who": "Operator; Commissioner of the Revenue",
+   "how": "If every booking goes through an accommodations intermediary (Airbnb, VRBO and similar), fill in Sections 1 and 2. That exempts you from monthly lodging tax returns for the license year. If you take any bookings directly, fill in Sections 1 and 3 and file monthly returns (step s10). Submit the attestation with your business license application or renewal.",
+   "deadline": "This attestation is required yearly during license renewal by March 1st (the form says March 1 or the first business day in March)",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "This will exempt you from monthly reporting requirements for the given license year.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "id": "s10",
+   "step": "Collect and pay the 9% lodging tax on direct bookings every month",
+   "who": "Operator for bookings it makes itself; the platform (accommodations intermediary) for bookings it facilitates",
+   "how": "For stays of under 30 consecutive days that you book yourself, charge the 9% transient occupancy tax on the total amount paid and show it separately on the bill. File and pay by the 20th of each month, in the Business Tax Portal or on the Virginia Local Transient Occupancy Tax Return with a check. Report platform-booked receipts too (no extra tax is owed on them) and attach booking documentation. If you cannot show that the platform paid the tax, you owe it yourself. File a zero return for months with no rentals. Stays of 30 days or longer are exempt. If no return arrives by the end of the month, the Commissioner sends a letter giving seven days to file before a statutory assessment. The attestation form warns that failing to collect, file and remit the tax on direct bookings would be subject to criminal penalties.",
+   "deadline": "Filing and payment is due on the 20th of each month (next business day if the 20th is a weekend or holiday)",
+   "fee": "9% of the total amount paid; late payment: 5% penalty (minimum $2.00) and interest once 30 days past due",
+   "form": "f5",
+   "url": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax",
+   "quote": "Gross receipts from direct bookings are taxed and paid.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "id": "s11",
+   "step": "Account for Virginia retail sales tax on direct bookings",
+   "who": "Operator for direct bookings; platforms for the bookings they facilitate",
+   "how": "The City's lodging tax comes on top of the 5.3% Virginia Retail Sales and Use Tax. For stays you book yourself, you collect the state sales tax and pay it to the Virginia Department of Taxation. That means registering with the Department as a dealer, a state process not modeled here. Platforms collect it on the bookings they handle, but you still owe sales tax on any amount you charge the guest directly that the platform does not collect (Va. Code § 58.1-612.2(D)).",
+   "deadline": null,
+   "fee": "5.3% (rate as stated on the City's page)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax",
+   "quote": "This is in addition to the 5.3% Virginia Retail Sales & Use Tax.",
+   "source": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax"
+  },
+  {
+   "id": "s12",
+   "step": "Report the furnishings as business tangible personal property",
+   "who": "Operator; Commissioner of the Revenue",
+   "how": "On the Fixed Asset Schedule, list the furniture, fixtures, computers, décor and other equipment used in the homestay, with each item's original cost and purchase date. Items you think of as personal become taxable business property once they are used in the rental. If nothing is filed, the Commissioner makes a statutory assessment. Due dates and rates are in the separate business tangible personal property return process (business_tangible_personal_property_return).",
+   "deadline": "On or before January 31 each year, per the Business Tax Portal page (another City page says March 15; see caveats)",
+   "fee": "Business tangible personal property tax, billed later by the City Treasurer (rate not modeled here)",
+   "form": "f4",
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "Report furniture, fixtures, computers, décor, and all other equipment used in the business operation.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "id": "s13",
+   "step": "Receive the business license and start hosting",
+   "who": "Commissioner of the Revenue",
+   "how": "The Commissioner issues the business license once three things are done: all documents are in, NDS has approved the homestay permit, and the license payment has gone through.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "Once all documents have been submitted, your Homestay permit approved, and your business license payment has been processed, you will be issued with a business license enabling you to conduct your homestay business.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "id": "s14",
+   "step": "Stay in compliance during the year",
+   "who": "Operator; NDS Zoning (inspection and enforcement)",
+   "how": "Allow one inspection a year after reasonable written notice. The Administrator may revoke the permit after 3 or more substantiated complaints in a calendar year, or if you fail any homestay requirement. After a revocation you cannot get a new homestay permit for the rest of that year or all of the next. A violation notice or correction order suspends any permit for the property until it is withdrawn or stayed by an appeal (Development Code § 5.4.4.B.2). A violation listed in the civil penalty schedule costs $200 for a first violation and $500 for each later one, and is in lieu of a criminal charge unless someone is injured (§ 5.4.4.D.6, E.1). Other violations can be prosecuted as a misdemeanor with a fine of up to $1,000 (§ 5.4.4.C).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "A property owner whose Accessory Use Permit has been revoked is not eligible to receive any new Accessory Use Permits for homestays for the remaining portion of the calendar year in which the permit is revoked and for the entire succeeding calendar year.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/16092"
+  },
+  {
+   "id": "s15",
+   "step": "Renew every year",
+   "who": "Operator",
+   "how": "Reapply for the homestay permit in the Permit Portal each January, because it expires on December 31. By March 1, renew the business license in the online Business Tax Portal, which takes paperless renewals from the 2026 cycle on, and file the attestation. In 2026 the deadline was March 2 because March 1 fell on a Sunday. A license that is not renewed is statutorily assessed.",
+   "deadline": "Homestay permit: January; business license and attestation: by March 1 (first business day in March if March 1 is a weekend or holiday)",
+   "fee": "$100 permit; business license fee or tax as in step s8",
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/1928/Homestays",
+   "quote": "Owners must reapply annually to maintain compliance and ensure all regulations are met.",
+   "source": "https://www.charlottesville.gov/1928/Homestays"
+  },
+  {
+   "id": "s16",
+   "step": "Close the accounts if you stop hosting",
+   "who": "Operator; Commissioner of the Revenue",
+   "how": "Report the closure to the Commissioner of the Revenue on the online business change form. Otherwise the license and business property keep being assessed. Stop renewing the homestay permit.",
+   "deadline": null,
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "Business Licenses & Business Tangible Property will be statutorily assessed each year if a filing is not received.",
+   "source": "https://www.charlottesville.gov/1939/Homestays"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Homestay Accessory Use Permit application (online, City Permit Portal)",
+   "number": null,
+   "url": "https://permits.charlottesville.gov/portal/",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Request for Business Information - Homestay (Commissioner of the Revenue)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14503/Request-for-Business-Information---Homestay-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Accommodations Provider Annual Attestation",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14356/Accommodations-Provider-Annual-Attestation",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Fixed Asset / Leased Equipment Schedule",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/217/Fixed-AssetLeased-Equipment-Schedule-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Virginia Local Transient Occupancy Tax Return (uniform statewide form, City copy)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10601/Transient-Occupancy-Tax-Return-v-10-30-2023",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f6",
+   "title": "Report business account changes, move-outs or closures (Commissioner of the Revenue online form)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/cor/bizchange",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Homestay Accessory Use Permit (annual)",
+   "amount": "$100.00 annually",
+   "basis": "https://www.charlottesville.gov/1928/Homestays; NDS Fee Schedule (Update March 23, 2026), row 'Accessory Use Permits', $100, approved 1-Feb-24 (https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF); authority Va. Code § 15.2-2286(A)(6) and Development Code § 5.2.1.C.3",
+   "quote": "The application, payment ($100.00 annually) and supporting documents (proof of residency) may all be addressed in the portal."
+  },
+  {
+   "item": "Business license fee, gross receipts under $50,000",
+   "amount": "$35.00",
+   "basis": "https://www.charlottesville.gov/186/Business-License-Tax (state cap: Va. Code § 58.1-3703(A))",
+   "quote": "<$50,000 - $35.00"
+  },
+  {
+   "item": "Business license fee, gross receipts $50,001 to $100,000",
+   "amount": "$50.00",
+   "basis": "https://www.charlottesville.gov/186/Business-License-Tax (state cap: Va. Code § 58.1-3703(A))",
+   "quote": "$50,001 - $100,000 - $50.00"
+  },
+  {
+   "item": "Business license tax, gross receipts over $100,000",
+   "amount": "Gross receipts times the tax rate for the classification (rate not published on the pages read; ask the business tax office)",
+   "basis": "https://www.charlottesville.gov/186/Business-License-Tax; rate caps in Va. Code § 58.1-3706(A)",
+   "quote": ">$100,000 x (Tax Rate) – Based on Classification"
+  },
+  {
+   "item": "Transient occupancy (lodging) tax on stays under 30 consecutive days",
+   "amount": "9% of the total amount paid",
+   "basis": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax; City Code ch. 30, art. IX (§ 30-251 et seq.); authority Va. Code § 58.1-3840(A)",
+   "quote": "Any establishment offering lodging for a period of less than 30 consecutive days, shall impose a 9% (Transient Occupancy Tax) on the total amount paid."
+  },
+  {
+   "item": "Late lodging tax filing or payment",
+   "amount": "5% of the tax due, minimum $2.00; interest once 30 days past due",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=76 (state cap: Va. Code § 58.1-3916)",
+   "quote": "If the filing is paid late, there is a penalty of 5% of the tax due with a minimum penalty of $2.00."
+  },
+  {
+   "item": "Virginia retail sales and use tax on lodging (direct bookings)",
+   "amount": "5.3%",
+   "basis": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax; Va. Code § 58.1-612.2(A)",
+   "quote": "This is in addition to the 5.3% Virginia Retail Sales & Use Tax."
+  },
+  {
+   "item": "Appeal to the Board of Zoning Appeals",
+   "amount": "$100/$250 as printed for 'BZA – Appeal/Variance', plus mailing costs ($1.00 per owner notice) and the cost of published notice",
+   "basis": "NDS Fee Schedule (Update March 23, 2026), row 'BZA – Appeal/Variance': https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF; state cap Va. Code § 15.2-2311(A)",
+   "quote": "BZA – Appeal/Variance $100/$250"
+  },
+  {
+   "item": "Civil penalty for a scheduled zoning violation",
+   "amount": "$200.00 for the first violation; $500.00 for each later violation from the same facts (total for a series capped at $5,000.00)",
+   "basis": "Charlottesville Development Code § 5.4.4.D.7 and E.1: https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Any violation of the following provisions of this Chapter is subject to a civil penalty of $200.00 for the first violation, and a civil penalty of $500.00 for each subsequent violation arising from the same set of operative facts:"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "605 E Main St, Charlottesville, VA 22902",
+   "label": "Neighborhood Development Services, Zoning",
+   "url": "https://www.charlottesville.gov/268/Zoning"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3995",
+   "label": "Neighborhood Development Services, Zoning",
+   "url": "https://www.charlottesville.gov/268/Zoning"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3182",
+   "label": "Neighborhood Development Services, homestay permits and Permit Portal assistance",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "email",
+   "value": "str@charlottesville.gov",
+   "label": "Short-Term Rental (homestay) permits, Neighborhood Development Services",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "address",
+   "value": "Neighborhood Development Services, 610 East Main Street, Charlottesville, VA 22902 (Monday to Friday, 8:30 AM to 5:00 PM; appointments recommended); mailing address P.O. Box 911, Charlottesville, VA 22902",
+   "label": "Neighborhood Development Services",
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services"
+  },
+  {
+   "kind": "portal",
+   "value": "https://permits.charlottesville.gov/portal/",
+   "label": "City Permit Portal (Neighborhood Development Services)",
+   "url": "https://www.charlottesville.gov/1928/Homestays"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/1928/Homestays",
+   "label": "Neighborhood Development Services, Zoning: Homestays",
+   "url": "https://www.charlottesville.gov/1928/Homestays"
+  },
+  {
+   "kind": "office",
+   "value": "City Hall, 605 E Main Street, Room A-130, Charlottesville, VA 22902 (in person Monday to Friday, 8:30 AM to 4:30 PM; by phone 8:00 AM to 5:00 PM)",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "address",
+   "value": "Charlottesville Commissioner of the Revenue, PO Box 2964, Charlottesville, VA 22902",
+   "label": "Commissioner of the Revenue (mail business license documents)",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3170",
+   "label": "Commissioner of the Revenue, business tax (business license, transient occupancy tax, business tangible property)",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "email",
+   "value": "citycorbiz@charlottesville.gov",
+   "label": "Commissioner of the Revenue, business tax",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "portal",
+   "value": "https://corforms.charlottesville.gov/Forms/securedocsubmit",
+   "label": "Commissioner of the Revenue Secure Portal (choose Category: Business License Application)",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "label": "Commissioner of the Revenue, Online Business Tax Portal (renewals and monthly lodging tax)",
+   "url": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/1939/Homestays",
+   "label": "Commissioner of the Revenue: Homestays",
+   "url": "https://www.charlottesville.gov/1939/Homestays"
+  },
+  {
+   "kind": "office",
+   "value": "315 East High Street, Charlottesville, VA 22902 (Clerk's Office hours 8:30 AM to 4:30 PM)",
+   "label": "Charlottesville Circuit Court, Clerk's Office",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  },
+  {
+   "kind": "phone",
+   "value": "(434) 970-3766",
+   "label": "Charlottesville Circuit Court, Clerk's Office",
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Homestay permit denied (or conditions imposed that you dispute)",
+   "next": "Board of Zoning Appeals: file a notice of appeal, giving the grounds, with the Zoning Administrator (NDS Zoning) and with the Board",
+   "type": "internal appeal",
+   "deadline": "Within 30 days after the decision",
+   "basis": "Va. Code § 15.2-2311(A); Charlottesville Development Code § 5.2.17.B.1",
+   "quote": "The appeal shall be taken within 30 days after the decision appealed from by filing with the zoning administrator, and with the board, a notice of appeal specifying the grounds thereof."
+  },
+  {
+   "trigger": "No decision on the permit application",
+   "next": "Board of Zoning Appeals (the Administrator's failure to act counts as an appealable decision)",
+   "type": "internal appeal",
+   "deadline": "The Administrator must decide within 90 days of the request, unless you agreed to longer; then appeal within 30 days",
+   "basis": "Charlottesville Development Code §§ 5.2.17.A, 5.1.6.B.1.g; Va. Code § 15.2-2286(A)(4)",
+   "quote": "The Administrator’s failure to act on any process in this Development Code Chapter constitutes a decision, and may be appealed according to the requirements of this Section."
+  },
+  {
+   "trigger": "Notice of violation, correction order, or revocation of the homestay permit",
+   "next": "Board of Zoning Appeals (an appeal stays the action appealed from, unless the official certifies imminent peril)",
+   "type": "internal appeal",
+   "deadline": "30 days, or 10 days for violations involving occupancy requirements or home-occupation rules in residential zones; the period runs from the written notice that states the right to appeal",
+   "basis": "Charlottesville Development Code § 5.4.4.B.4-5; Va. Code §§ 15.2-2286(A)(4), 15.2-2311(A)-(B)",
+   "quote": "The appeal period for a violation notice and correction order is 30 days except that the appeal period is 10 days for violations involving the following:"
+  },
+  {
+   "trigger": "Refused only because you rent the home (tenant or subtenant with the owner's permission)",
+   "next": "Ask NDS Zoning to apply state law, which the City says applies now; if refused in writing, appeal to the Board of Zoning Appeals",
+   "type": "internal appeal",
+   "deadline": "Within 30 days after a written refusal",
+   "basis": "Va. Code §§ 15.2-983(D), 15.2-2311(A); City statement at https://www.charlottesville.gov/1935/Homestay-Short-Term-Regulations-Study",
+   "quote": "No local ordinance shall prohibit an operator from offering a property as a short-term rental solely on the basis that such operator is a lessee or sublessee, provided that the property owner has granted permission for such property's use as a short-term rental."
+  },
+  {
+   "trigger": "Board of Zoning Appeals decides against you",
+   "next": "Charlottesville Circuit Court: petition filed with the Clerk, served on the necessary parties and the BZA secretary within 30 days of filing",
+   "type": "judicial review",
+   "deadline": "Within 30 days after the Board's final decision (mandatory and jurisdictional). The Board must decide within 90 days of the appeal's filing (Va. Code § 15.2-2312), but the statute does not say what happens if it does not.",
+   "basis": "Va. Code §§ 15.2-2314(A), 15.2-2312",
+   "quote": "Such 30-day filing requirement shall be mandatory and jurisdictional."
+  },
+  {
+   "trigger": "Civil summons or ticket for a zoning violation that you contest",
+   "next": "Trial in Charlottesville General District Court (instead of paying the civil penalty to the City Treasurer)",
+   "type": "judicial review",
+   "deadline": "By the trial date on the summons",
+   "basis": "Charlottesville Development Code § 5.4.4.D.4-5",
+   "quote": "If a person charged with a violation does not elect to enter a waiver of trial and admit liability, the violation must be tried in the Charlottesville General District Court in the same manner and with the same right of appeal as provided by law."
+  },
+  {
+   "trigger": "Business license assessment disputed, including a statutory assessment or the classification",
+   "next": "Commissioner of the Revenue (administrative appeal)",
+   "type": "internal appeal",
+   "deadline": "Within one year from the last day of the tax year or from the appealable event, whichever is later",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(b); https://www.charlottesville.gov/186/Business-License-Tax",
+   "quote": "may file an administrative appeal of the assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of the appealable event, whichever is later, with the commissioner of the revenue or other local assessing official."
+  },
+  {
+   "trigger": "Commissioner of the Revenue's determination on the business license appeal is adverse",
+   "next": "Tax Commissioner (Virginia Department of Taxation)",
+   "type": "external administrative review",
+   "deadline": "Within 90 days of the Commissioner of the Revenue's determination",
+   "basis": "Va. Code § 58.1-3703.1(A)(6)(a)",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "Lodging tax (transient occupancy) assessment believed wrong, for example platform-paid tax not credited",
+   "next": "Commissioner of the Revenue (application for correction)",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year or one year from the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof."
+  },
+  {
+   "trigger": "Still aggrieved by a business license or lodging tax assessment",
+   "next": "Charlottesville Circuit Court (application to correct the assessment)",
+   "type": "judicial review",
+   "deadline": "Within three years from the last day of the tax year, one year from the assessment, one year from the Tax Commissioner's final determination, or one year from the final determination on an application for correction under § 58.1-3981, whichever is later",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made."
+  }
+ ],
+ "caveats": [
+  "No registry. Va. Code § 15.2-983 lets a locality create a short-term rental registry, but no Charlottesville registry was found on the City pages cited here. The City regulates homestays through the zoning Accessory Use Permit in Development Code § 3.5.2.E. The City Code itself (Municode) has not been checked, so a registry provision there cannot be ruled out.",
+  "Tenants. Development Code § 3.5.2.E covers owners who live in the home. Va. Code § 15.2-983(D) bars refusing a lessee or sublessee who has the owner's permission. The May 18, 2026 Council presentation said this was \"Only required if the City amends the current ordinance\", but the City's study page, updated after that meeting, says it \"is applicable today\" and that the City will adjust its internal process and amend the code next year. How a tenant applies, and what proof of the owner's permission the City wants, is not published.",
+  "Proof of residence. Development Code § 3.5.2.E.5.a lists a voter registration card as acceptable. The May 18, 2026 Council presentation says \"A voter ID doesn't provide proof of residency\", and the Homestays page asks for a government-issued ID. Use a driver's license or passport.",
+  "Permit fee. The Homestays page and the NDS Fee Schedule (row \"Accessory Use Permits\", $100, approved 1-Feb-24) agree on $100. The fee schedule's permit system maintenance fees sit under the Building Inspection heading as \"Fee Applies to All Permits\". Whether they apply to a homestay permit was not confirmed. The fee schedule's text layer scrambles its columns, so its rows were read from the PDF's table layout.",
+  "Due dates. The permit is \"due in January\" each year and expires December 31. No grace period was found. A new operator should apply and be approved before renting, but the pages do not say so in those words.",
+  "Permit review. The Development Code has no review procedure written for Accessory Use Permits. Permit Review (§ 5.2.10) covers tree removal, floodplain, sign and temporary use permits, and the common review procedures (§ 5.2.1) are written for applications under Articles 5 and 6. Any Administrator decision, or failure to act, can still be appealed to the Board of Zoning Appeals (§ 5.2.17.A). The Code does not say when the 30-day appeal period starts after a failure to act, so appeal promptly once the 90 days have passed.",
+  "Business license start date. The City page says applications are \"due within the first thirty days of establishing business\". Va. Code § 58.1-3703.1(A)(2)(a) says to apply before beginning business. Apply before the first booking to be safe.",
+  "Business license rate. Above $100,000 in gross receipts the tax is \"Based on Classification\". The homestay form lists the activity as \"Hotel Residential\". The rate for that class is not published on the pages cited here, and City Code ch. 14 (Municode) has not been checked. The fee tiers ($35 and $50) are within the $50 state cap for a locality of 25,000 or more people (Va. Code § 58.1-3703(A)). Charlottesville's population tier is not confirmed against the Weldon Cooper estimates.",
+  "Late business license penalty. State law allows up to 10 percent (Va. Code § 58.1-3703.1(A)(2)(d)). The City's actual penalty and interest for business licenses were not found on the pages read.",
+  "Lodging tax ordinance. The 9% rate comes from the City's Transient Occupancy Tax, Homestays and Business Tax Portal pages. The ordinance (City Code ch. 30, art. IX, § 30-251 et seq., cited on the attestation form) was not read. The FAQ still mentions the older 8% rate in its 2022 history. The 5% / $2.00 late penalty comes from the FAQ, not the ordinance. It is within the state cap in Va. Code § 58.1-3916.",
+  "Lodging tax forms. The Business Tax Portal page says \"New businesses should complete the Transient Occupancy Tax Registration Form\", and the Transient Occupancy Tax page lists that form for hotels, motels and intermediaries. The Commissioner's Homestays page lists only the business information request, the attestation and the fixed asset schedule, so the registration form is not modeled as a homestay step. The FAQ's statement that \"Filing by the host IS STILL REQUIRED\" dates from 2022 and predates the attestation that Va. Code § 58.1-3827(D) allows for hosts whose bookings all go through platforms.",
+  "Platforms. Under Va. Code §§ 58.1-3826(C) and (F), platforms collect the lodging tax and must report addresses and gross receipts monthly. The City's FAQ says one major platform has not provided gross receipts or addresses. It requires hosts to document platform remittances, or the host is liable. City lodging tax law reaches the county rules in Article 6 through Va. Code § 58.1-3843(C).",
+  "State sales tax. For direct bookings, hosts collect Virginia retail sales tax under Va. Code § 58.1-612.2(A), which means registering with the Virginia Department of Taxation. That state process is not covered here. The 5.3% figure is the City page's statement for Charlottesville.",
+  "Human trafficking training. The May 2026 Council presentation lists \"State mandated human trafficking training\" among proposed changes and says Virginia operators will have to comply with a new regulation. The indexed Va. Code § 35.1-15.1 requires training for hotel employees and excludes from \"hotel\" a short-term rental property as defined in § 58.1-3510.4, a definition about tangible personal property held for rental, not lodging. VDH, which enforces the rule, says in its October 29, 2024 handout: \"This requirement does not apply to short term rental properties.\" No indexed section requiring training for short-term rental operators was found. A newer law may not be in the index, so check before relying on either.",
+  "State lodging permit. Va. Code §§ 35.1-1 and 35.1-18 require a \"hotel\", which includes tourist homes, to be licensed under Title 35.1. VDH's August 12, 2025 guidance says a rental \"might need a hotel permit from VDH\" if, among other things, more than one room is rented, and its permit page says residential-style rentals that meet the bed and breakfast facility definition (which requires food service) need a lodging permit. Whether a no-food homestay of one or more rooms needs a VDH permit was not settled, VDH's fees are not covered here, and the local health district's office was not identified. Step s4 tells the host to ask.",
+  "BZA appeal fee. The fee schedule row \"BZA – Appeal/Variance\" prints \"$100/$250\" and does not say which amount is for an appeal. No BZA appeal application form was found. The Board's page on the City boards site refuses automated readers, so it is not described here.",
+  "Violation appeal period. Development Code § 5.4.4.B.5 sets 10 days, not 30, for violations involving \"Occupancy requirements in residential zones\" and \"Home occupation or office of resident regulations in residential zones\". Homestays must follow the home-occupation standards. Whether a given homestay notice carries the 10-day period depends on the notice, so act within 10 days to be safe.",
+  "Civil penalty schedule. Development Code § 5.4.4.E.1 lists scheduled violations, including any use \"not authorized either as a matter of right or by special use permit\". Which item a homestay violation falls under is not stated, nor whether homestay rules are a scheduled violation at all.",
+  "Business tangible property due date. The Business Tax Portal page says January 31. The Business Personal Property Tax page has said March 15 (see business_tangible_personal_property_return). The Homestays page gives no date.",
+  "Versions. The Homestays page links the 2023 Development Code PDF (DocumentCenter/View/11104). This page cites the March 23, 2026 update (View/16092, amended February 17, 2026), linked from the Zoning page. The homestay text in § 3.5.2.E reads the same in both. Open US Law's copy marks Va. Code § 15.2-2286 as effective until January 1, 2027 and has no successor text, so re-check it after that date.",
+  "Not observed. The Permit Portal needs an account, so the application screens, document upload and payment steps were not seen. The City's step-by-step video is on YouTube and was not reviewed. Whether a building permit or certificate of occupancy is needed for a homestay was not found. The Building Code Official decides building-code compliance.",
+  "Out of scope. Short-term rentals in districts other than the six residential districts are General Lodging uses (the NDS page cites the permitted use table in Development Code § 3.2.2; the use standards are in § 3.4.4) and must meet the Building Code; they are not modeled here. Charlottesville's separate \"Short Term Daily Rental Tax\" is for equipment rentals (Va. Code § 58.1-3510.4 et seq.), not lodging.",
+  "Private rules. Va. Code § 15.2-983(E) keeps recorded covenants, condominium instruments and property owners' association declarations in force. They may bar or limit rentals even where the City permits them."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/1928/Homestays",
+   "title": "Homestays | Charlottesville, VA (Neighborhood Development Services, Zoning)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "title": "Homestays | Charlottesville, VA (Commissioner of the Revenue: Homestay Operators / Short Term Rentals)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1935/Homestay-Short-Term-Regulations-Study",
+   "title": "Homestay / Short-Term Regulations Study | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://permits.charlottesville.gov/portal/",
+   "title": "Charlottesville, VA Application Portal (sign-in page only)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "title": "Charlottesville Development Code (City Code ch. 34), adopted December 18, 2023, amended February 17, 2026 (PDF updated March 23, 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/11104/Development-Code-PDF",
+   "title": "Charlottesville Development Code, as adopted December 18, 2023 (PDF linked from the Homestays page)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "title": "Neighborhood Development Services and Department of Public Works Fee Schedule (NDS Fee Schedule - Update March 23, 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/268/Zoning",
+   "title": "Zoning | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "title": "Neighborhood Development Services | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1944/Transient-Occupancy-Tax",
+   "title": "Transient Occupancy Tax | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=76",
+   "title": "FAQs: Commissioner of Revenue - Transient Occupancy Taxes | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "title": "Business License Tax | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "title": "Business Tax Portal | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/CivicAlerts.aspx?AID=2455",
+   "title": "Charlottesville Commissioner of the Revenue Reminds Business Taxpayers of Renewal Cycle for 2026 and Paperless Online Filing (February 9, 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue | Charlottesville, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14503/Request-for-Business-Information---Homestay-PDF",
+   "title": "Request for Business Information - Homestay (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14356/Accommodations-Provider-Annual-Attestation",
+   "title": "Accommodations Provider Annual Attestation (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/217/Fixed-AssetLeased-Equipment-Schedule-PDF",
+   "title": "Fixed Asset / Leased Equipment Schedule (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10601/Transient-Occupancy-Tax-Return-v-10-30-2023",
+   "title": "Virginia Local Transient Occupancy Tax Return (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/cor/bizchange",
+   "title": "Commissioner of the Revenue business change form (redirects to corforms.charlottesville.gov/Forms/bizchange)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://charlottesvilleva.portal.civicclerk.com/event/2670/files/attachment/7229",
+   "title": "Homestay Presentation for City Council, City Council meeting May 18, 2026 (CivicClerk agenda item 'Home Stay/Short-Term Rentals Report')",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/charlottesville/home",
+   "title": "Charlottesville Circuit Court | Virginia Judicial System",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-983/",
+   "title": "Va. Code § 15.2-983, Creation of registry for short-term rental of property",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "title": "Va. Code § 15.2-2286 (effective until January 1, 2027), Permitted provisions in zoning ordinances",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "title": "Va. Code § 15.2-2311, Appeals to board",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2312/",
+   "title": "Va. Code § 15.2-2312, Procedure on appeal",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2314/",
+   "title": "Va. Code § 15.2-2314, Review of decision of board",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "title": "Va. Code § 58.1-3700, License requirement",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "title": "Va. Code § 58.1-3703, Local license taxes and fees",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "title": "Va. Code § 58.1-3703.1, Uniform ordinance provisions",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "title": "Va. Code § 58.1-3706, Limitation on rate of license taxes",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3826/",
+   "title": "Va. Code § 58.1-3826, Scope of transient occupancy tax",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3827/",
+   "title": "Va. Code § 58.1-3827, Administration of transient occupancy tax",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "title": "Va. Code § 58.1-3840, Certain excise taxes permitted",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3843/",
+   "title": "Va. Code § 58.1-3843, Scope of transient occupancy tax (cities and towns)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "title": "Va. Code § 58.1-3916, Dates for filing returns; penalties and interest",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "title": "Va. Code § 58.1-3980, Application for correction",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984, Application to court to correct erroneous assessments",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-612.2/",
+   "title": "Va. Code § 58.1-612.2, Tax collectible from accommodations providers and intermediaries",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-15.1/",
+   "title": "Va. Code § 35.1-15.1, Required human trafficking training",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/tourist-lodging-hotels-motels-bed-and-breakfasts/doineedapermit/",
+   "title": "Do I need a permit? | Virginia Department of Health, Environmental Health, Tourist Lodging (last updated May 20, 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blog/2025/08/12/preparing-to-rent-your-house-or-property-online-or-on-an-app/",
+   "title": "Preparing to Rent Your House or Property Online or on an App? | Virginia Department of Health (August 12, 2025)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/20/2024/10/10_24-Handout-Human-Trafficking-Training.pdf",
+   "title": "Required Human Trafficking Training, VDH Office of Environmental Health Services handout (Version 10/29/2024)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "title": "Va. Code § 35.1-1, Definitions",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "title": "Va. Code § 35.1-18, License required",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 78,
+  "quotes_confirmed": 78,
+  "removed": [
+   "Va. Code § 58.1-3706(A) quote \"shall be imposed on any person whose gross receipts from a business, profession or occupation subject to licensure are less than: ...\": verbatim, but it started after the words \"no local license tax\", so on its own it said the opposite of the statute. It was replaced with the sentence of § 58.1-3706(A) that lets a locality tax receipts above $100,000 or $50,000, and its role changed from exception to fee."
+  ],
+  "corrections": [
+   "Quotes: all 74 draft quotes are verbatim. The 32 state-law quotes match I.text_of for the cited sections (whitespace normalised only). The 42 local quotes were found again in the official pages and PDFs, fetched read-only with the project User-Agent and at least 1.6 seconds between requests: City pages 1928, 1939, 1935, 1944, 186, 1488, 1345, 268 and 261, the FAQ (TID=76), news item 2455, DocumentCenter 16092, 9634, 14503, 14356, 217 and 10601, and the Council presentation (CivicClerk attachment 7229, read through the CivicClerk API). Four apostrophe misses in a first automated pass were an encoding artefact of the PDF text tool, not quote errors. The fee schedule's scrambled text layer was checked against rendered page images: 'Accessory Use Permits' $100 (1-Feb-24) and 'BZA – Appeal/Variance' $100/$250 are right. One quote was replaced (see removed) and 3 quotes were added and checked, for 77 quotes in the file and 78 checks in all. The 22 short quotes inside caveats were also confirmed against their sources.",
+   "Added step s4 (old steps s4 to s15 are now s5 to s16, and the two cross-references were updated): ask the local health department whether a VDH lodging permit is needed. Va. Code § 35.1-18 requires a hotel to be licensed, § 35.1-1 counts tourist homes as hotels, and VDH guidance says a rental 'might' need a hotel permit, for example when more than one room is rented. Both sections were added to legal_basis, and three VDH pages to sources. The summary now mentions it.",
+   "Summary: 'Charlottesville has no short-term rental registry' was stronger than the evidence, since the City Code was not read. It now says no registry was found.",
+   "s1: 'a mixed-use or other non-residential district' could be read to include RX-3 and RX-5, which do allow homestays. It now says any other zoning district, as the NDS page does.",
+   "s3: added the home-occupation standards that § 3.5.2.E.2 applies to homestays: no more than one person besides the resident working on the property at a time, and the 8:00 AM to 9:00 PM limit on visits and deliveries, noting that the Code does not say how it applies to guests.",
+   "s6 (the permit application): added the NDS warning that the City does not email invoices for permit fees unless asked, so fees should be paid only in the Permit Portal.",
+   "s7 (the NDS decision): 'approves it, approves it with conditions, or denies it' is not in the Code for Accessory Use Permits. The Code has no procedure for them; Permit Review (§ 5.2.10) lists other permits only. It now says the Administrator decides under § 3.5.2.E.",
+   "s8 (the business license): added the Business Tax Portal page's in-person and email options for a new application.",
+   "s10 (lodging tax): added the seven-day letter before a statutory assessment (FAQ) and the attestation form's warning of criminal penalties for not collecting, filing and remitting.",
+   "s11 (sales tax): added Va. Code § 58.1-612.2(D): the host still owes sales tax on any amount charged directly that the platform does not collect.",
+   "s14 (compliance): 'civil penalties ... or a misdemeanor charge' ignored § 5.4.4.D.6, which makes a scheduled civil penalty in lieu of criminal prosecution. Now: a scheduled violation costs $200 and then $500; other violations can be a misdemeanor with a fine of up to $1,000 (§ 5.4.4.C). Added that a violation notice suspends any permit for the property until it is withdrawn or stayed by an appeal (§ 5.4.4.B.2).",
+   "s15 (renewal): the attestation is no longer said to be filed in the Business Tax Portal, which the pages do not say. The license is renewed in the portal, and the attestation is filed, both by March 1.",
+   "Escalation: rung 5's trigger 'or does not decide within 90 days of filing' implied a court petition when the BZA misses its deadline. Va. Code § 15.2-2312 sets the 90 days, but § 15.2-2314 allows a petition only from a final decision, so that part was removed and the deadline now says the statute does not state a remedy. The petition must also be served on the BZA secretary. Rung 1's trigger now reads 'denied (or conditions imposed that you dispute)'. Rung 10 adds the fourth period in § 58.1-3984(A): one year from a final determination under § 58.1-3981.",
+   "Caveats: tenants (the May 18, 2026 presentation said the tenant rule was 'Only required if the City amends the current ordinance'; the study page, updated afterwards, says it 'is applicable today'). Trafficking training: § 35.1-15.1 excludes 'short-term rental property' as defined in § 58.1-3510.4, which defines equipment rental property, not lodging; VDH's handout says the rule does not apply to short-term rental properties. New caveats on the state lodging permit, on lodging tax forms (the Business Tax Portal page names a TOT Registration Form that the Homestays page does not list; the FAQ's 2022 'Filing by the host IS STILL REQUIRED' predates the attestation) and on permit review. The out-of-scope caveat now gives both § 3.2.2 (NDS page) and § 3.4.4 (use standards).",
+   "Confirmed unchanged: the six districts, the 185 days, the 6 adult guests, the sign, food and safety rules, the $100 permit (Homestays page and fee schedule), due in January and valid to December 31; the license fees $35 and $50; the 9% lodging tax due the 20th; the 5% / $2.00 penalty; the 5.3% sales tax; the attestation by March 1 (March 2 in 2026); business property by January 31 on the portal page; the BZA appeal in 30 days (10 days for the listed violations); the Circuit Court in 30 days; the license appeal ladder (one year, 90 days, court). The 2023 Development Code PDF (View/11104) was fetched, and its § 3.5.2.E text is the same as in the 2026 PDF. Contacts are office channels only: the City phone lines, the str@ and citycorbiz@ mailboxes, the portals and the office addresses. No staff names are recorded. The JSON is valid; step ids s1 to s16 are unique and sequential; the form ids referenced (f1 to f6) all exist."
+  ],
+  "open_issues": [
+   "City Code (Municode) not read: whether it has a registry, the license tax rate above $100,000 for the Hotel Residential class, the City's late penalty and interest for business licenses, and the lodging tax ordinance text (§ 30-251 et seq.). The steps send the host to the business tax office for the rate.",
+   "VDH lodging permit: whether a no-food homestay (one room, or several) needs a VDH hotel permit is not settled. VDH says it 'might' and to ask the local health department; the fees and the local health district office were not researched. Step s4 tells the host to ask before listing.",
+   "Tenant operators: the City says the state rule applies now, but has not published how a tenant applies or what proof of the owner's permission it wants. Step s2 tells tenants to ask NDS Zoning.",
+   "Business tangible property due date: January 31 (Business Tax Portal page) against March 15 (Business Personal Property Tax page). The step advises January 31, so following it cannot make a filing late.",
+   "BZA appeal fee: the fee schedule prints $100/$250 for 'BZA – Appeal/Variance' without saying which is the appeal fee; no BZA appeal form was found.",
+   "Not observed: the Permit Portal application screens (they need an account), the City's video, the Business Tax Portal and the bizchange form beyond their instruction pages, and Virginia Tax dealer registration.",
+   "Va. Code § 15.2-2286 is indexed as effective until January 1, 2027, with no successor text; re-check the zoning administrator's 90-day rule and the violation appeal periods after that date. The human trafficking 'new regulation' named in the Council presentation was not found in the index."
+  ]
+ }
+}

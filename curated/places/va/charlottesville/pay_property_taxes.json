@@ -1,0 +1,948 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "pay_property_taxes",
+ "title": "Pay real estate and personal property taxes",
+ "question": "When are real estate and personal property (car) taxes due in Charlottesville, and how can I pay them?",
+ "category": "taxes_assessments",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "vehicle owners"
+ ],
+ "office": "City Treasurer (elected constitutional officer)",
+ "summary": "Charlottesville's City Treasurer bills and collects real estate and personal property (vehicle) taxes. Real estate tax is due in two equal halves, and personal property tax in two installments, on June 5 and December 5 (the following Monday if the date falls on a weekend); the June vehicle bill includes the city vehicle license fee. Pay online through the city's InvoiceCloud portal (e-check free, credit cards carry a fee), by phone at 866-660-5185, by mail to P.O. Box 2854, or in person at City Hall, 605 East Main Street. Late payments get a 10% penalty plus 10% yearly interest. If you cannot pay, call 434-970-3146 to arrange payments; penalties still apply. Waiver requests go to the Treasurer by letter; disputes over the amount go to the Commissioner of the Revenue or City Assessor.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3910(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3910/",
+   "quote": "Each county and city treasurer shall receive the local taxes and other amounts payable into the treasury of the political subdivision of the Commonwealth served by the treasurer, and shall account for and pay over the same in the manner provided by law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3910(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3910/",
+   "quote": "Taxpayers shall make checks payable to \"Treasurer (or title of other officer or employee who performs the duties of a treasurer) of (name of political subdivision)\" or \"(name of political subdivision)\".",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The governing body may also by ordinance establish due dates for the payment of local taxes; may provide that payment be made in a single installment or in two equal installments;",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3913",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3913/",
+   "quote": "continue to receive the same without penalty up to and including December 5 of each year, or such other date set by the governing body.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3913",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3913/",
+   "quote": "Unless otherwise provided by ordinance of the governing body, any payment of local levies received shall be credited first against the most delinquent local account, the collection of which is not subject to a defense of an applicable statute of limitations.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "but not later than 14 days prior to the due date of the taxes, send or cause to be sent by United States mail to each taxpayer assessed with taxes and levies for that year a bill or bills setting forth the amounts due.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "Upon nonpayment of taxes by either the obligee or obligor, a past-due tax bill will be sent to the taxpayer.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "The treasurer may elect not to send a bill amounting to $20 or less as shown by an assessment book in such treasurer's office.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(E)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "each such bill required to be sent pursuant to subsection A shall state on its face (i) whether the vehicle is a qualifying vehicle as defined in § 58.1-3523 ;",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(F)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "may convey, with the written consent of the taxpayer, any tax bill or other tax document by electronic means chosen by the taxpayer, including without limitation facsimile transmission or electronic mail (email), in lieu of posting such bill by first-class mail.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3281",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3281/",
+   "quote": "the owner of real estate on that day shall be assessed for the taxes for the year beginning on that day.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "\"Qualifying vehicle\" means any passenger car, motorcycle, autocycle, and pickup or panel truck",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3524(C)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3524/",
+   "quote": "shall fix or establish one or more reduced tax rates (lower than the rate applied to the general class of tangible personal property) that shall be applied solely to that portion of the value of each qualifying vehicle that is not in excess of $20,000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "The amount of the license fee or tax imposed by any county, city, or town on any motor vehicle, trailer, or semitrailer shall not be greater than the annual or one-year fee imposed by the Commonwealth on the motor vehicle, trailer, or semitrailer in effect on January 1, 2020.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "bearing a postmark or a confirmation of shipment on or before midnight of the day such return is required to be filed or such payment made without penalty or interest",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "shall be deemed to have been timely if received through the United States mail no later than five days following the time of the close of business on the last day on which such return may be filed or such tax may be paid without penalty or interest.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "When remittance of a tax payment is made by electronic funds transfer, receipt of funds available for withdrawal, in a bank account designated to receive such payments by the person to whom such payment is required to be made, on or before midnight of the day such payment is required to be made without penalty or interest, shall constitute payment as if such payment had been made before the close of business on the last day on which such tax may be paid without penalty or interest.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 1-210(E)",
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "quote": "the act may be performed or the action may be filed on the next business day that is not a Saturday, Sunday, legal holiday, or day on which the state or local government office is closed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to pay a tax or installment shall exceed (1) 10 percent of the tax past due on such property",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "penalty for failure to pay any tax may be assessed on the day after the first installment is due.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Any such penalty when so assessed shall become a part of the tax.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No such penalty and interest shall be imposed if a taxpayer provides evidence that a tax return filing or a tax payment was timely by producing a United States Postal Service Certificate of Mailing, or other proof of mailing",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The failure to file a return or to pay a tax due to the death of the taxpayer or a medically determinable physical or mental impairment on the date the return or tax is due shall be presumptive proof of lack of fault on the taxpayer's part, provided the return is filed or the taxes are paid within 30 days of the due date;",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax, and the commissioner of the revenue shall make determinations of fault relating exclusively to failure to file a return.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to pay any tax shall be imposed for any assessment made later than two weeks prior to the day on which the taxes are due, if such assessment is made thereafter through the fault of a local official, and if such assessment is paid within two weeks after the notice thereof is mailed.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "the local governing body shall allow an automatic extension on real property taxes imposed upon a primary residence and personal property taxes imposed upon a qualifying vehicle, as defined in § 58.1-3523 , owed by members of the armed services of the United States deployed outside of the United States.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under § 58.1-3980 , so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3018(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3018/",
+   "quote": "The treasurer of any county, city or town may enter into agreements authorizing third parties to offer to taxpayers within such locality third-party tax payment agreements",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3914",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3914/",
+   "quote": "The treasurer shall deliver on request a receipt to each taxpayer from whom he has collected taxes or levies, showing plainly the date of payment and the tax ticket description of each parcel for which payment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3919",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3919/",
+   "quote": "upon failure or refusal of such person or agent to pay the same he shall proceed to collect by distress or otherwise.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3952(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3952/",
+   "quote": "The treasurer or other tax collector of any county, city, or town may apply in writing a treasurer's lien to any person indebted to or having in his hands estate of a taxpayer or other debtor for payment of taxes, or other charges collected by the treasurer, more than 30 days delinquent out of such debt or estate.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "whereby the Commissioner will refuse to issue or renew any vehicle registration of any applicant therefor who owes to such county, city, or town any local vehicle license fees or delinquent tangible personal property tax or parking citations.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "Any agreement entered into pursuant to the provisions of this subsection shall provide the debtor notice of the intent to deny renewal of registration or issuance of registration for any currently unregistered vehicle at least 30 days prior to the expiration date of a current vehicle registration.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3958",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3958/",
+   "quote": "The administrative costs shall be in addition to all penalties and interest, and shall not exceed $30 for taxes or other charges collected subsequent to 30 or more days after notice of delinquent taxes or charges pursuant to § 58.1-3919 but prior to the taking of any judgment with respect to such delinquent taxes or charges, and $35 for taxes or other charges collected subsequent to judgment.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3340",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3340/",
+   "quote": "There shall be a lien on real estate for the payment of taxes and levies assessed thereon prior to any other lien or encumbrance.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3965(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3965/",
+   "quote": "When any taxes on any real estate in a locality are delinquent on December 31 following the second anniversary of the date on which such taxes have become due",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3974",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3974/",
+   "quote": "shall have the right to redeem such real estate prior to the date set for a judicial sale thereof by paying into court all taxes, penalties, and interest due with respect to such real estate",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3940(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3940/",
+   "quote": "Except as otherwise specifically provided, collection of local taxes shall only be enforceable for five years following December 31 of the year for which such taxes were assessed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3940(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3940/",
+   "quote": "Real property taxes shall be enforceable by sale under Article 4 (§ 58.1-3965 et seq.) of the property on which such taxes were assessed and by other means permitted under this chapter for 20 years after December 31 of the year for which such taxes were assessed",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3994(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3994/",
+   "quote": "the treasurer or other official responsible for the collection of any local tax imposed pursuant to this title may, with the consent of the governing body or its designee, compromise and settle the amount due and payable when the treasurer or other official determines that the collection of the entire amount due and owing is in substantial doubt and the best interests of the locality will be served by such compromise.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "an unpaid tangible personal property tax assessment may be appealed to the commissioner of the revenue or other assessing official at any time during which such assessment is collectible under § 58.1-3940 , provided the taxpayer can demonstrate by clear factual evidence that he was not subject to the tax for the year in question.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3379(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3379/",
+   "quote": "The board shall hear and give consideration to such complaints and shall adjust and equalize such assessments",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville Treasurer, Late Payment Penalty Policy (administrative policy, not an ordinance)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1232/Late-Payment-Penalty-Policy-PDF",
+   "quote": "Late payment penalty and interest may be waived if the lateness was due to a medically determinable physical or mental impairment on the due date, provided payment is made within 30 days of the due date.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville Treasurer, Late Payment Penalty Policy (administrative policy, not an ordinance)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1232/Late-Payment-Penalty-Policy-PDF",
+   "quote": "Penalty and interest cannot be waived because the taxpayer did not know the deadline or misread the deadline on the tax bill",
+   "role": "exception"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Note the two due dates: June 5 and December 5 each year",
+   "who": "Taxpayer (for real estate, the owner of record on January 1); the City Treasurer bills and collects",
+   "how": "Real estate tax is due in two equal halves on June 5 and December 5. Personal property (vehicle) tax is also due in two installments on June 5 and December 5, and the June 5 installment includes the city vehicle license fee. If a due date falls on a weekend, it moves to the following Monday. A real estate bill is in the name of whoever owned the property on January 1, even if it was sold later in the year. If you bought the property, any unpaid taxes that were overlooked at settlement stay with the property and become the new owner's responsibility (Property Transfers & Sales page).",
+   "deadline": "June 5 and December 5 (the following Monday if the date falls on a weekend)",
+   "fee": "Real estate: $0.99 per $100 of assessed value; personal property: $4.40 per $100 of assessed value (rates as published by the Treasurer; the personal property rate is stated for tax year 2024, see caveats)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Real estate taxes are due in equal installments on June 5th and December 5th of each year.",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "id": "s2",
+   "step": "Receive the bill by mail or, if you opt in, paperless",
+   "who": "City Treasurer",
+   "how": "The Treasurer must mail bills at least 14 days before the due date, and may choose not to mail a bill of $20 or less. You can choose paperless bills and email reminders in the city's InvoiceCloud payment portal. The city's penalty policy says not receiving a bill is no excuse for paying late, so if no bill arrives, contact the Treasurer's Office before the due date.",
+   "deadline": "Bills are mailed no later than 14 days before the due date",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "but not later than 14 days prior to the due date of the taxes, send or cause to be sent by United States mail to each taxpayer assessed with taxes and levies for that year a bill or bills setting forth the amounts due.",
+   "source": "Va. Code § 58.1-3912(A)"
+  },
+  {
+   "id": "s3",
+   "step": "Check the bill, and report errors to the office that assessed the tax before the due date",
+   "who": "Taxpayer; Commissioner of the Revenue (vehicles and other personal property); City Assessor (real estate values)",
+   "how": "Check that each vehicle is correctly shown as qualifying, or not, for state car tax relief (PPTR). Paying the bill is treated as accepting the vehicle's relief status. If you sold or disposed of a vehicle, the DMV and the Commissioner of the Revenue must be told within 30 days; use the Commissioner's online Personal Property Disposal form (a bill of sale or repossession notice is needed for proration). If you moved out of the city, use the online COR Address Change form. A vehicle bill can be prorated if you sold the vehicle or moved out of state or to another Virginia locality that prorates (with the other state's registration, or a paid receipt from that locality); if you moved after January 1 to a locality that does not prorate, the whole year is owed to Charlottesville. The Treasurer collects but does not set the amount: take questions about a vehicle to the Commissioner (434-970-3160) and questions about a real estate value to the City Assessor (434-970-3136). Asking for a correction does not by itself move the due date (see escalation and caveats).",
+   "deadline": null,
+   "fee": null,
+   "form": "f4",
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=75",
+   "quote": "A personal property tax payment submitted to the City of Charlottesville is considered an acknowledgement that the vehicle has been qualified correctly.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?TID=75"
+  },
+  {
+   "id": "s4",
+   "step": "If your mortgage company pays from escrow, confirm that it has paid",
+   "who": "Property owner; mortgage company",
+   "how": "Escrowed owners still receive a copy of the real estate bill, marked to check payment with the mortgage company. After a refinance, make sure the new lender asks the city for the bill. You can check a parcel's balance in the online inquiry with the parcel ID and the current owner's last name or business name.",
+   "deadline": "June 5 and December 5",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/556/Mortgage-Companies",
+   "quote": "Please keep in mind that the payment of your real estate taxes by a mortgage company is a private arrangement between you and your mortgage company.",
+   "source": "https://www.charlottesville.gov/556/Mortgage-Companies"
+  },
+  {
+   "id": "s5",
+   "step": "Pay online through the city's InvoiceCloud portal",
+   "who": "Taxpayer; City Treasurer (through InvoiceCloud)",
+   "how": "From the city's Pay page, choose Real Estate Taxes or Personal Property Tax and find your bill. You do not need to register for a one-time payment, but you do need an email address for the confirmation (InvoiceCloud FAQ published by the city). Electronic check (ACH) has no fee. Credit card payments carry a third-party convenience fee; the pages do not say whether a debit card used online is charged the same way. Business personal property is paid through the separate Business Taxes portal.",
+   "deadline": "By the due date",
+   "fee": "E-check: no fee. Credit card: 2.59% convenience fee, $1.95 minimum (Payment Methods page)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/753/Pay",
+   "quote": "There is no fee to pay by ACH/Electronic check.",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "id": "s6",
+   "step": "Or pay by phone",
+   "who": "Taxpayer",
+   "how": "Call the city's payment line at 866-660-5185 to pay real estate or personal property tax by credit or debit card, or by electronic check. A convenience fee applies to all card payments of tax by phone.",
+   "deadline": "By the due date",
+   "fee": "2.5% on credit card payments; flat $2.25 on electronic check payments (Payment Methods page, Phone tab). The page says a fee applies to debit card payments too but gives no separate debit rate.",
+   "form": null,
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "Credit and debit card payments may be made by phoning 866-660-5185.",
+   "source": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "id": "s7",
+   "step": "Or pay by mail",
+   "who": "Taxpayer to the City Treasurer's Office",
+   "how": "Mail a check or money order, payable to \"City of Charlottesville\" (Pay page), to City of Charlottesville, Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902. Include the bill stub or account number. Do not mail cash or card details. Under state law, if through no fault of yours the Post Office applies no postmark, or an illegible or undated one, a payment received by mail within five days after the deadline counts as on time, and a USPS Certificate of Mailing or other proof of mailing can show that a payment was on time (Va. Code §§ 58.1-9(A), 58.1-3916).",
+   "deadline": "Received, or postmarked by the U.S. Post Office, by the due date. A business postage-meter stamp does not count.",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "U.S. Post Office postmarks, not business meter stamps, determine the timeliness of payments.",
+   "source": "https://www.charlottesville.gov/562/Payment-Methods"
+  },
+  {
+   "id": "s8",
+   "step": "Or pay in person at City Hall, or use a drop box",
+   "who": "Taxpayer; City Hall Customer Service Counter (Treasurer's Office)",
+   "how": "The Customer Service Counter is in the City Hall lobby, 605 East Main Street, open Monday to Friday, 8:30 am to 4:30 pm, except legal holidays. It takes cash, checks, debit cards and money orders. It does not take credit cards for tax payments. You can leave a check or money order in the 24-hour drop boxes beside the 6th and 7th Street entrances (on foot) or in the parking lot between the Downtown Recreation Center and the City Hall Annex (drive-up), or, during business hours, in the drop box in the vestibule of the 605 East Market Street entrance. Enclose the bill stub or account number and a return address or phone number.",
+   "deadline": "By the due date",
+   "fee": "No fee for PIN-based debit card payments",
+   "form": null,
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "Credit cards are not accepted at the customer service counter for tax payments.",
+   "source": "https://www.charlottesville.gov/562/Payment-Methods"
+  },
+  {
+   "id": "s9",
+   "step": "Optional: set up automatic payments",
+   "who": "Taxpayer",
+   "how": "Register an account in the city's InvoiceCloud portal (automatic payments need a registered account), open your invoice and set your payment preference (AutoPay), so each bill is paid in full automatically on its due date from your bank account or card. If you already have an automatic draft set up with your bank, cancel it with your bank before the payment is due. These details come from the InvoiceCloud FAQ that the city publishes.",
+   "deadline": null,
+   "fee": "No fee when paying by e-check",
+   "form": null,
+   "url": "https://www.charlottesville.gov/564/Automated-Payment-Plan",
+   "quote": "Have the tax bill due on June 5th and December 5th automatically deducted from your account.",
+   "source": "https://www.charlottesville.gov/564/Automated-Payment-Plan"
+  },
+  {
+   "id": "s10",
+   "step": "If you cannot pay in full by the due date, call to set up a payment arrangement",
+   "who": "Taxpayer; City Treasurer's Office",
+   "how": "Call the Treasurer's Office at 434-970-3146. An arrangement does not stop the late penalty or interest. If you do not keep to the arrangement, the debt goes to collection.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Making a payment arrangement does not prevent late payment penalties and interest from being applied to your account.",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "id": "s11",
+   "step": "If you pay late: a 10% penalty, then 10% a year interest",
+   "who": "City Treasurer",
+   "how": "A payment not received or postmarked by the deadline gets a 10% penalty on the day after the deadline. For personal property the penalty is 10% of the balance after car tax relief. Interest of 10% a year, charged monthly, starts on the first day of the next month, so July 1 for the June bill and January 1 for the December bill. The city's penalty policy says that a bill delinquent for more than a year may be charged interest at the IRS rate.",
+   "deadline": "Penalty on the day after the due date; interest from July 1 or January 1",
+   "fee": "10% penalty; 10% a year interest",
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Real estate taxes not received or postmarked by the deadline are assessed on the first day after the deadline with a penalty of 10% of the tax due.",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "id": "s12",
+   "step": "Ask the Treasurer to waive a penalty that was not your fault",
+   "who": "Taxpayer to the City Treasurer",
+   "how": "Read the Late Payment Penalty Policy. Then write a letter to the Treasurer explaining your case, attach supporting documents and mail it to P.O. Box 2854, Charlottesville, VA 22902. The policy says penalty and interest may be waived if the payment was late because of a medically determinable physical or mental impairment on the due date and was made within 30 days of the due date; if the Commissioner abates the tax; if the Commissioner certifies that the tax was not assessed on time because of a clerical error by the Commissioner's staff; or if the lateness was solely the fault of the Treasurer or Commissioner. It refuses a waiver for not knowing or misreading the deadline, not receiving a bill, a bill sent to the wrong address, an incorrect bill, or wrong information from city staff. State law (Va. Code § 58.1-3916) says penalty and interest shall not be imposed when the failure was not the taxpayer's fault; it also treats the taxpayer's death like a medical impairment (tax paid within 30 days, or within 120 days after a fiduciary qualifies or begins to act), and bars penalty when a USPS Certificate of Mailing or other proof of mailing shows the payment was on time. The Treasurer decides fault for late payment.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "write a letter addressed to the Treasurer presenting your case, attach any supporting documentation and mail it to",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "id": "s13",
+   "step": "If you are deployed outside the United States with the armed forces: automatic extension",
+   "who": "Service member; City Treasurer",
+   "how": "State law requires an automatic extension for members of the U.S. armed services who are deployed outside the United States. It covers real estate tax on a primary residence and personal property tax on a qualifying vehicle. Active duty in the regular forces, the National Guard and the reserves all count. The taxes fall due 90 days after the deployment ends. The city's pages do not say how to tell the Treasurer, so call the office. Separately, the Commissioner's FAQ says active-duty members who are in Charlottesville only because of military orders and keep their legal residence elsewhere are not liable for the city's personal property tax; the Commissioner asks for the most recent leave and earnings statement.",
+   "deadline": "90 days after the deployment ends",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Such extension shall end and the taxes shall be due 90 days following the completion of such member's deployment.",
+   "source": "Va. Code § 58.1-3916"
+  },
+  {
+   "id": "s14",
+   "step": "If taxes stay unpaid: collection, and in the end a judicial sale of real estate",
+   "who": "City Treasurer (collections); Charlottesville Circuit Court (tax sale)",
+   "how": "The Treasurer mails a final notice before any collection action. Unpaid taxes with no arrangement, or with an arrangement that is not kept, go to collection. The pages list liens on bank accounts and rent, wage garnishment, withholding of state income tax refunds or lottery winnings, and, for vehicle taxes, a hold on DMV registration (state law requires notice of the intent to refuse renewal at least 30 days before the current registration expires). The Treasurer's Liens page says liens are a last resort, issued when a taxpayer has missed two deadlines covering a 12-month period without setting up a payment arrangement; that the office has eliminated administrative and collection fees; and that it no longer uses property seizure, credit bureau reporting or Warrant in Debt proceedings. Real estate with three or more years of unpaid tax can be sold at a judicial sale (city page). Before the sale date, the owner can redeem it by paying all taxes, penalties, interest and costs into court. Real estate taxes stay enforceable for 20 years after December 31 of the tax year, and most other local taxes for five (Va. Code § 58.1-3940).",
+   "deadline": "A treasurer's lien is allowed once taxes are more than 30 days delinquent (state law); judicial sale after three or more years unpaid (city page)",
+   "fee": "A DMV fee for the registration hold may be added to the tax bill (amount not published)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Properties that have accumulated three or more years of unpaid tax are subject to judicial sale.",
+   "source": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Late Payment Penalty Policy (PDF), linked from the Real Estate Taxes page. This is guidance for the waiver letter; there is no request form.",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1232/Late-Payment-Penalty-Policy-PDF",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f2",
+   "title": "Late Payment Penalty Policy, 2016 edition (Word DOC), linked from the Personal Property Taxes page",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1230/2016-Late-Payment-Penalty-Policy-DOC",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f3",
+   "title": "Assessment Appeal Application (City Assessor; online form or fillable PDF), for disputing a real estate value",
+   "number": null,
+   "url": "https://www.charlottesville.gov/1411/Assessment-Appeal-Application-Form",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Personal Property Disposal (Commissioner of the Revenue online form): report a vehicle sold or disposed of",
+   "number": null,
+   "url": "https://corforms.charlottesville.gov/Forms/PPDisp2025",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "COR Address Change (Commissioner of the Revenue online form): report a change of address or property moved out of the city",
+   "number": null,
+   "url": "https://corforms.charlottesville.gov/Forms/CORADC2025",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Real estate tax rate",
+   "amount": "$0.99 per $100 of value",
+   "basis": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "The City of Charlottesville’s real estate tax rate, set by City Council, is $0.99 per $100 dollars of value."
+  },
+  {
+   "item": "Personal property tax rate",
+   "amount": "$4.40 per $100 of assessed value (stated for tax year 2024)",
+   "basis": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "quote": "For tax year 2024, the tax rate for personal property taxes is $4.40 per $100 of assessed value."
+  },
+  {
+   "item": "Car tax relief (PPTR) on qualifying vehicles",
+   "amount": "Relief on the first $20,000 of value at the rate City Council sets each year (31% for 2025); no tax on a qualifying vehicle assessed at $1,500 or less",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=75",
+   "quote": "If a qualifying vehicle’s assessed value is $1,500 or less, the tax is eliminated, and the Commonwealth’s share is 100%."
+  },
+  {
+   "item": "City vehicle license fee",
+   "amount": "Not stated on the pages read; charged on all vehicles with active license plates and billed with the June 5 personal property installment. State law caps it at the state registration fee in effect on January 1, 2020 (Va. Code § 46.2-752(A)).",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?TID=75",
+   "quote": "The first installment, which includes your city vehicle license fee, is due June 5."
+  },
+  {
+   "item": "Online payment by electronic check (ACH)",
+   "amount": "No fee",
+   "basis": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "There is no fee to pay by ACH/Electronic check."
+  },
+  {
+   "item": "Online payment by credit card",
+   "amount": "2.59%, $1.95 minimum",
+   "basis": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "There is a 2.59% convenience fee with a $1.95 minimum for all tax payment transactions made by credit card."
+  },
+  {
+   "item": "Payment by phone (866-660-5185)",
+   "amount": "2.5% on credit card payments; flat $2.25 on electronic check payments",
+   "basis": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "There is a fixed rate of 2.5% added to all credit card transactions, and a flat fee of $2.25 is added to electronic check payments from a checking or savings account."
+  },
+  {
+   "item": "In-person payment by PIN debit card",
+   "amount": "No fee",
+   "basis": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "No fee is charged for pin-based debit card transactions."
+  },
+  {
+   "item": "Late payment penalty",
+   "amount": "10% of the tax due (personal property: 10% of the balance after car tax relief)",
+   "basis": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "quote": "Personal property tax payments not received or postmarked by the deadline are assessed with a penalty of 10% of the balance due (after personal property tax relief) on the first day after the deadline."
+  },
+  {
+   "item": "Interest on unpaid tax",
+   "amount": "10% a year, charged monthly from the first day of the month after the deadline",
+   "basis": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Taxes remaining unpaid on the first day of the month following the deadline accrue interest on a monthly basis at a rate of 10% per annum."
+  },
+  {
+   "item": "State cap on the late payment penalty",
+   "amount": "10% of the tax past due (higher caps apply to some personal property more than 30 days late), or $10 if greater; never more than the tax",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "No penalty for failure to pay a tax or installment shall exceed (1) 10 percent of the tax past due on such property"
+  },
+  {
+   "item": "Administrative collection costs",
+   "amount": "None charged, per the Treasurer's Office. State law allows up to $30 before judgment and $35 after (Va. Code § 58.1-3958).",
+   "basis": "https://www.charlottesville.gov/2024/Treasurers-Liens",
+   "quote": "Eliminating administrative and collection fees"
+  },
+  {
+   "item": "DMV registration hold",
+   "amount": "A reasonable DMV fee may be added to the delinquent tax bill (amount not published by the city)",
+   "basis": "Va. Code § 46.2-752(J)",
+   "quote": "The Commissioner shall charge a reasonable fee to cover the costs of such enforcement action, and the treasurer or director of finance may add the cost of this fee to the delinquent tax bill or the amount of the parking citation."
+  },
+  {
+   "item": "Additional paper receipt",
+   "amount": "Up to $2 (state cap; city practice not stated)",
+   "basis": "Va. Code § 58.1-3914",
+   "quote": "charge a reasonable sum, not to exceed two dollars, to cover the cost of preparing any additional receipt."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "City Treasurer's Office, City Hall, 605 E Main Street, Room A120, Charlottesville, VA 22902 (in person Monday to Friday 8:30 am to 4:30 pm; by phone 8:00 am to 5:00 pm; fax 434-970-3148)",
+   "label": "City Treasurer",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "address",
+   "value": "City of Charlottesville, Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902",
+   "label": "City Treasurer (payments by mail and penalty waiver letters)",
+   "url": "https://www.charlottesville.gov/562/Payment-Methods"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3146",
+   "label": "City Treasurer (main line; payment arrangements)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3155",
+   "label": "City Treasurer (questions in Spanish)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "email",
+   "value": "citytreas@charlottesville.gov",
+   "label": "City Treasurer (office mailbox)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "email",
+   "value": "collections@charlottesville.gov",
+   "label": "City Treasurer, Revenue Compliance (collections and Treasurer's liens)",
+   "url": "https://www.charlottesville.gov/2024/Treasurers-Liens"
+  },
+  {
+   "kind": "phone",
+   "value": "866-660-5185",
+   "label": "City Treasurer pay-by-phone line (card or e-check; convenience fee)",
+   "url": "https://www.charlottesville.gov/562/Payment-Methods"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.charlottesville.gov/759",
+   "label": "City Treasurer online payment, real estate taxes (redirects to InvoiceCloud)",
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.charlottesville.gov/758",
+   "label": "City Treasurer online payment, personal property taxes (redirects to InvoiceCloud)",
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/753/Pay",
+   "label": "City of Charlottesville Pay page (links for each kind of payment)",
+   "url": "https://www.charlottesville.gov/753/Pay"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3160",
+   "label": "Commissioner of the Revenue (personal property assessment, car tax relief)",
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax"
+  },
+  {
+   "kind": "email",
+   "value": "citycor@charlottesville.gov",
+   "label": "Commissioner of the Revenue (office mailbox for personal property questions)",
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax"
+  },
+  {
+   "kind": "address",
+   "value": "Commissioner of the Revenue, 605 E Main Street, Room A-130, Charlottesville, VA 22902; mail: P.O. Box 2964, Charlottesville, VA 22902",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3136",
+   "label": "City Assessor's Office (real estate values and assessment appeals; by appointment)",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  },
+  {
+   "kind": "address",
+   "value": "City Assessor's Office, 102 5th Street NE, P.O. Box 911, Charlottesville, VA 22902",
+   "label": "City Assessor's Office",
+   "url": "https://www.charlottesville.gov/210/City-Assessor"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "A late penalty was charged and you believe the lateness was not your fault",
+   "next": "City Treasurer (written waiver request; the Treasurer decides fault for failure to pay)",
+   "type": "internal appeal",
+   "deadline": "None stated for the letter. For a medical-impairment claim, the tax must have been paid within 30 days of the due date.",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax"
+  },
+  {
+   "trigger": "You cannot pay in full by the due date because of financial difficulty",
+   "next": "City Treasurer's Office: a payment arrangement (penalty and interest still accrue)",
+   "type": "deferral",
+   "deadline": null,
+   "basis": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "If you are unable to pay your taxes in full by the specified deadline due to financial difficulties, you may make payment arrangements with the Treasurer’s Office."
+  },
+  {
+   "trigger": "The Treasurer considers that collecting the full amount is in substantial doubt",
+   "next": "City Treasurer: a written offer in compromise. The Treasurer may accept it only with the consent of City Council or its designee, and only if the compromise serves the city's best interests (Va. Code § 58.1-3994(B)). The city's pages do not mention this option.",
+   "type": "internal appeal",
+   "deadline": "Not stated",
+   "basis": "Va. Code § 58.1-3994(C)",
+   "quote": "Any offer in compromise submitted to an official responsible for the assessment or collection of local taxes shall be made in writing and shall be deemed accepted only when the taxpayer is notified in writing of the acceptance by the responsible official."
+  },
+  {
+   "trigger": "The personal property (vehicle) amount on the bill is wrong: vehicle sold or moved, wrong value, or wrong car tax relief status",
+   "next": "Commissioner of the Revenue (application for correction). An appeal filed within 90 days of the assessment keeps the bill from being treated as delinquent for collection until 30 days after the decision, but interest can still be charged on any amount found due.",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later. An unpaid personal property assessment can also be challenged at any time while it is collectible, with clear factual evidence that you were not subject to the tax (Va. Code § 58.1-3980(B)).",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof."
+  },
+  {
+   "trigger": "You disagree with the real estate assessment behind the bill",
+   "next": "City Assessor's Office: talk to the appraiser, then file an Assessment Appeal Application",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "https://www.charlottesville.gov/210/City-Assessor",
+   "quote": "The next step in the appeal process is to file an Assessment Appeal Application, formally requesting an assessment review."
+  },
+  {
+   "trigger": "You disagree with the Assessor's decision on your appeal",
+   "next": "Board of Equalization (citizen panel appointed by the Circuit Court judge; Va. Code § 58.1-3379)",
+   "type": "external administrative review",
+   "deadline": "Within 30 days of the date of the Assessor's formal appeal decision letter",
+   "basis": "https://www.charlottesville.gov/210/City-Assessor",
+   "quote": "An appeal form for the Board must be filed within 30 days of the date of the formal appeal decision letter."
+  },
+  {
+   "trigger": "You are still aggrieved by the assessment (the City Assessor's page lists the court as the last step; § 58.1-3984 itself does not make the earlier steps a condition)",
+   "next": "Charlottesville Circuit Court (application for relief from an erroneous assessment)",
+   "type": "judicial review",
+   "deadline": "The latest of: three years from the last day of the tax year; one year from the date of the assessment; or one year from a final determination under § 58.1-3981 (the Commissioner's decision on an application for correction)",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made."
+  }
+ ],
+ "caveats": [
+  "Local ordinance not checked. Charlottesville's City Code is published on Municode, whose terms are not confirmed to allow reuse, so no City Code text is quoted and lexflow has not checked it. The ordinance that sets Charlottesville's due dates, penalty and interest under Va. Code § 58.1-3916 is therefore not cited. The dates, penalty and interest here come from the Treasurer's own pages.",
+  "Convenience fees conflict on the city's pages. The Payment Methods Online tab gives 2.59% with a $1.95 minimum for credit cards, then says \"There is no convenience fee for tax payments made online.\" The Phone tab gives 2.5% for credit cards and $2.25 for electronic checks. The Real Estate and Personal Property pages say ACH/e-check online is free. Check the fee shown on the payment screen before paying.",
+  "Tax rates. The Treasurer's Real Estate Taxes page gives $0.99 per $100. The Commissioner's personal property FAQ says mobile homes pay the real estate rate, \"currently $0.98\". The personal property rate of $4.40 is stated \"for tax year 2024\". The rates for the current tax year were not confirmed, and the 2026 car tax relief percentage was not published on the FAQ read (the latest listed is 31% for 2025).",
+  "The amount of the city vehicle license fee was not found on the pages read. The FAQ says only that it is billed with the June 5 personal property installment and that no decal is required.",
+  "The city links two versions of the Late Payment Penalty Policy. The PDF linked from the Real Estate Taxes page is undated and carries a former Treasurer's letterhead with an old P.O. Box 9048. The DOC linked from the Personal Property Taxes page is the 2016 edition and uses P.O. Box 2854. Current pages direct waiver letters to P.O. Box 2854. The policy may not reflect current practice.",
+  "The penalty policy cites Va. Code § 46.2-754 for DMV registration withholding, but in the index that section deals with Arlington County vehicle licences. The general authority for a DMV registration hold is Va. Code § 46.2-752(J).",
+  "Timeliness rules differ between the city and state law. The city counts only U.S. Post Office postmarks, not business meter stamps. Va. Code § 58.1-9(A) also accepts a confirmation of shipment by a recognized commercial delivery service, and § 58.1-9(B) treats an electronic payment as on time when the funds are received by midnight on the due date. The city's pages do not say how they date card payments that settle after the due date; the InvoiceCloud FAQ says card transactions typically settle in 48 hours and ACH in 48 to 72 hours.",
+  "Weekend rule: the city's pages extend a weekend due date to the following Monday but do not mention holidays. Va. Code § 1-210(E) also moves a deadline that falls on a legal holiday or office-closure day to the next business day.",
+  "Penalty minimum: state law allows a penalty of 10% or $10, whichever is greater, but never more than the tax (Va. Code § 58.1-3916). The city's pages state only 10%. Whether the city applies a $10 minimum was not confirmed.",
+  "Payment arrangements are a city practice described on the Treasurer's pages. No Code section was found that gives treasurers a general power to make installment plans. The 72-month plan in § 58.1-3916 needs a governing-body resolution and applies only to omitted taxes, and no such resolution was found. No third-party tax payment agreement under § 58.1-3018 was found for Charlottesville.",
+  "Disputes and the due date. The 90-day protection in Va. Code § 58.1-3916 applies to administrative appeals under § 58.1-3980, which go to the Commissioner of the Revenue, and even then interest can be charged on any amount found due. A City Assessor review or a Board of Equalization appeal of a real estate value is a separate process, and the pages read do not say that it delays the due date or stops the late penalty.",
+  "Offers in compromise (Va. Code § 58.1-3994) are discretionary for the Treasurer, need the consent of City Council or its designee, and are not mentioned on the city's pages.",
+  "Judicial sale timing. The Real Estate Taxes page says three or more years of unpaid tax. State law allows a sale once taxes are delinquent on December 31 after the second anniversary of the due date. It allows a sale after the first anniversary for condemned, nuisance, derelict or blighted property, and, on a court finding, for real estate assessed at $100,000 or less (Va. Code § 58.1-3965(A)).",
+  "No outside administrative review of the Treasurer's refusal to waive a penalty was found. § 58.1-3916 makes an assessed penalty \"part of the tax\", but the sources read do not settle whether a refused waiver can be taken to the circuit court under § 58.1-3984.",
+  "Assessment appeals are summarised here only as escalation. The City Assessor's page states no deadline for filing the Assessment Appeal Application. The form page does not link the online form or the PDF. The appeal email published on those pages is a staff mailbox and is not recorded; use the office phone or mailing address instead.",
+  "The Treasurer's Office email appears in two forms: citytreas@charlottesville.gov in the office contact block and citytreas@charlottesville.org in the body text of the City Treasurer and Automated Payment Plan pages. The .gov address is recorded.",
+  "Not covered: business tangible personal property, which is paid through the separate Business Taxes portal; real estate tax relief for elderly or disabled owners; the disabled veteran vehicle exemption; and the homeowner assistance programs. The Real Estate Taxes page points to taxva.com, a third-party site that was not read, for judicial sale notices.",
+  "The Treasurer's Liens page says wage liens follow two missed deadlines in 12 months, and that administrative and collection fees have been eliminated. Both are office practice that can change.",
+  "Some addresses with a Charlottesville mailing address are in Albemarle County. Taxes on property there are billed by Albemarle County, not the city. Check that the property is inside city limits.",
+  "The city pages and documents cited were retrieved on 2026-10-10 and their quoted text was unchanged on 2026-10-11. Due dates and rates change with City Council action; check the Treasurer's pages before relying on them."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "title": "Real Estate Taxes (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "title": "Personal Property Taxes (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/753/Pay",
+   "title": "Pay (City of Charlottesville)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "title": "Payment Methods (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/564/Automated-Payment-Plan",
+   "title": "Automated Payment Plan (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/556/Mortgage-Companies",
+   "title": "Mortgage Companies (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/551/City-Treasurer",
+   "title": "City Treasurer",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "title": "Property Transfers & Sales (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/2024/Treasurers-Liens",
+   "title": "Treasurer's Liens (City Treasurer)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1232/Late-Payment-Penalty-Policy-PDF",
+   "title": "Late Payment Penalty Policy (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1230/2016-Late-Payment-Penalty-Policy-DOC",
+   "title": "Late Payment Penalty Policy, 2016 edition (DOC)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/7633",
+   "title": "InvoiceCloud Biller FAQs (PDF, published by the city)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax",
+   "title": "Personal Property Tax (Commissioner of Revenue)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=75",
+   "title": "Commissioner of Revenue - Personal Property Tax FAQs",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/210/City-Assessor",
+   "title": "City Assessor (Real Estate Assessment Appeals)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1411/Assessment-Appeal-Application-Form",
+   "title": "Assessment Appeal Application Form (City Assessor)",
+   "retrieved": "2026-10-10"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 83,
+  "quotes_confirmed": 83,
+  "removed": [],
+  "corrections": [
+   "Quotes: all 77 original quotes confirmed. The 49 state-law quotes are substrings of I.text_of for the cited section, and each subsection label matches the text. The 26 quotes from city web pages were matched against pages re-fetched on 2026-10-11. The 2 penalty-policy quotes were matched against the re-fetched PDF (DocumentCenter/View/1232). Six state-law quotes were added and checked the same way: § 58.1-3912(A) ($20 bills), § 58.1-9(A) (five-day rule), § 58.1-3916 (Certificate of Mailing), § 46.2-752(J) (30 days' notice), § 58.1-3940(B) (20 years for real estate) and § 58.1-3980(B) (unpaid personal property assessments).",
+   "Summary and s1: personal property is billed in two installments, not equal halves; the June installment includes the vehicle license fee. The January 1 owner rule now applies only to real estate, since vehicle bills are prorated by month. s1 adds, from the Property Transfers & Sales page, that unpaid taxes overlooked at settlement become the new owner's responsibility. The fee notes that the personal property rate is stated for tax year 2024.",
+   "s2: adds the Treasurer's option not to mail a bill of $20 or less (§ 58.1-3912(A)). It matters to anyone relying on getting a bill.",
+   "s3: the title said to fix errors 'before you pay', which could read as advice to hold back payment. It now says to report errors before the due date, and that a correction request does not move the due date. The proration sentence was too broad. The FAQ prorates only a sale, a move out of state, or a move to another prorating Virginia locality; a move after January 1 to a non-prorating locality owes the full year. Added the 30-day notice to the DMV and the Commissioner, and the documents needed.",
+   "s5: the online pages state a convenience fee only for credit cards. The draft's 'credit and debit cards carry a fee' is corrected, and the step says the debit-card fee online is not stated. s6: the Phone tab says a fee applies to debit cards too, and the fee note now says so.",
+   "s7: adds the state-law timeliness rules missing from the step. A payment with no postmark, or an illegible or undated one, counts as on time if it arrives by mail within five days, and a USPS Certificate of Mailing or other proof of mailing shows a payment was on time (§§ 58.1-9(A), 58.1-3916). 'Payable to City of Charlottesville' is credited to the Pay page, where it appears.",
+   "s8: adds the business-hours drop box in the vestibule of the 605 East Market Street entrance. The Payment Methods page lists it, and the draft left it out.",
+   "s9: AutoPay needs a registered InvoiceCloud account. The due-date timing and the advice to cancel a bank draft come from the city-published InvoiceCloud FAQ, not the Automated Payment Plan page, and the step now says so.",
+   "s12: the clerical-error ground was misdescribed. The policy covers the Commissioner certifying that the taxpayer was not assessed on time because of a clerical error by the Commissioner's staff. 'Misread the deadline' is added to the refused grounds. Added the state-law rule that penalty and interest 'shall not be imposed' without taxpayer fault, the death and fiduciary (120-day) presumptions, and the proof-of-mailing bar (§ 58.1-3916).",
+   "s13: adds the Commissioner's FAQ on service members who are in the city only because of military orders and keep their legal residence elsewhere: they are not liable, and the Commissioner asks for the latest leave and earnings statement.",
+   "s14: 'wage lien only after two missed deadlines' overstated the Treasurer's Liens page. That page says liens are a last resort, issued when two deadlines in 12 months are missed without an arrangement. Added the DMV notice rule (notice of intent to refuse renewal at least 30 days before the registration expires, § 46.2-752(J)) and the collection methods the office says it no longer uses. legal_basis cited only the five-year limit of § 58.1-3940(A), which does not govern real estate, so the 20-year rule of § 58.1-3940(B) is added and the step states both.",
+   "Escalation, offer in compromise: removed the invented example '(for example, serious hardship)'. § 58.1-3994(B) turns on substantial doubt about collection and the locality's best interests, with consent of the governing body or its designee. The rung also says the city's pages do not mention offers in compromise.",
+   "Escalation, Commissioner correction: notes that interest can still be charged during a § 58.1-3980 appeal (§ 58.1-3916 proviso). Adds the § 58.1-3980(B) route: an unpaid personal property assessment can be challenged at any time while it is collectible.",
+   "Escalation, circuit court: the deadline said 'one year from ... the final local determination'. § 58.1-3984(A)(d) runs from a final determination under § 58.1-3981 (the Commissioner's correction decision), not from an Assessor or Board of Equalization decision, so it is corrected. The trigger's 'the court does not require them first' is reworded as a statement about the text of § 58.1-3984.",
+   "Fees: the vehicle license fee is charged on all vehicles with active plates (Commissioner FAQ).",
+   "Contacts: added the Treasurer's Revenue Compliance office mailbox, collections@charlottesville.gov, from the Treasurer's Liens page. It is a function mailbox, not a person's. Confirmed that /759 and /758 redirect to InvoiceCloud (HTTP Location headers only; InvoiceCloud was not fetched). Privacy check: no staff names, personal mailboxes or direct lines. The Treasurer's name on the city pages, the former Treasurer's name on the PDF letterhead and the Assessor's personal-looking appeal mailbox are not recorded.",
+   "Caveats: added three: real estate disputes and the due date (the 90-day protection covers only § 58.1-3980 appeals); offers in compromise; and the judicial-sale timing in state law (§ 58.1-3965(A)) compared with the city page. The retrieval caveat now records the verifier's re-fetch."
+  ],
+  "open_issues": [
+   "City Code not read: the local ordinance setting due dates, penalty and interest under § 58.1-3916 is not cited (Municode was not accessed). The steps rely on the Treasurer's official pages, which state these rules, so step correctness is not affected.",
+   "The amount of the city vehicle license fee was not found on the pages read.",
+   "Rates: the current-year rates and the 2026 car tax relief percentage are not confirmed. The Treasurer gives $0.99 for real estate, but the Commissioner's FAQ uses $0.98 for mobile homes, and the $4.40 personal property rate is stated for tax year 2024.",
+   "The Payment Methods page contradicts itself on the online convenience fee: 2.59% with a $1.95 minimum for credit cards, then 'no convenience fee for tax payments made online'.",
+   "Whether the city applies the $10 minimum penalty allowed by § 58.1-3916 is not stated.",
+   "No outside review of a refused penalty waiver was found. No filing deadline for the City Assessor's Assessment Appeal Application is stated.",
+   "Whether a pending City Assessor or Board of Equalization appeal affects the due date or the penalty is not stated on the city's pages."
+  ]
+ }
+}

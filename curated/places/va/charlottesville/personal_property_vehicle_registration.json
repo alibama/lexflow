@@ -1,0 +1,758 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "personal_property_vehicle_registration",
+ "title": "Register a vehicle for local personal property tax",
+ "question": "I moved to Charlottesville or bought a car. Do I have to tell the Commissioner of the Revenue?",
+ "category": "taxes_assessments",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "vehicle owners"
+ ],
+ "office": "Commissioner of the Revenue, City of Charlottesville (elected constitutional officer); billing and collection by the City Treasurer",
+ "summary": "Yes. Charlottesville taxes vehicles normally garaged in the city, and the Commissioner of the Revenue assesses them. The city says to register with the Commissioner's Office within 30 days of moving here or of buying a vehicle. If your DMV record shows Charlottesville as the garage jurisdiction, DMV should pass it on; if not, contact the office by phone, email or in person. There is no decal. The tax is prorated by month, reduced by state car tax relief on qualifying personal vehicles, and billed by the City Treasurer in two halves due June 5 and December 5. Students taxed at home and service members here on orders are not taxed here.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3500",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3500/",
+   "quote": "Such tangible personal property is hereby segregated for and made subject to local taxation only pursuant to Article X",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "the situs for purposes of assessment of motor vehicles, travel trailers, boats and airplanes as personal property shall be the county, district, town or city where the vehicle is normally garaged, docked or parked",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "the situs shall be the domicile of the owner of the motor vehicle, provided the owner presents sufficient evidence that he has paid a personal property tax on the motor vehicle in his domicile",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3515",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3515/",
+   "quote": "tangible personal property, machinery and tools and merchants' capital shall be returned for taxation as of January 1 of each year, which date shall be known as the effective date of assessment or the tax day.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3518",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518/",
+   "quote": "Every taxpayer owning any of the property subject to taxation under this chapter on January 1 of any year shall file a return thereof with the commissioner of the revenue for his county or city on the appropriate forms",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3518",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518/",
+   "quote": "Such returns shall be filed on or before May 1 of each year, except as otherwise provided by ordinance authorized by",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3518.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518.1/",
+   "quote": "Any jurisdiction adopting such an alternative method may require the owner of a motor vehicle, trailer or boat to file a new personal property tax return whenever there is: (i) a change in the name or address of the person or persons owning taxable personal property; (ii) a change in the situs of personal property",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3517",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3517/",
+   "quote": "The commissioner of the revenue of any county or city may use a local form in lieu of that prescribed by the Department.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3519",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3519/",
+   "quote": "the commissioner of the revenue shall, from the best information he can obtain, enter the fair market value of such property and assess the same as if it had been reported to him.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3503(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3503/",
+   "quote": "which shall be valued by means of a recognized pricing guide",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3503(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3503/",
+   "quote": "A commissioner of revenue shall upon request take into account the condition of the property.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "When any person, after the tax day or situs day, acquires a motor vehicle, trailer, semitrailer, or boat with a situs in the locality, the tax shall be assessed on the motor vehicle, trailer, or boat for the portion of the tax year during which the new owner owns the motor vehicle, trailer, semitrailer, or boat and it has a situs within the locality.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "For purposes of proration, a period of more than one-half of a month shall be counted as a full month and a period of less than one-half of a month shall not be counted.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "In determining whether a vehicle is a qualifying vehicle, the commissioner of revenue must rely on the registration of such vehicle with the Department",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "\"Used for nonbusiness purposes\" means the preponderance of use is for other than business purposes.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "\"Qualifying vehicle\" means any passenger car, motorcycle, autocycle, and pickup or panel truck",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "(i) privately owned; (ii) leased pursuant to a contract requiring the lessee to pay the tangible personal property tax on such vehicle; or (iii) held in a private trust for nonbusiness purposes.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3524(C)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3524/",
+   "quote": "that shall be applied solely to that portion of the value of each qualifying vehicle that is not in excess of $20,000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3668(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3668/",
+   "quote": "one motor vehicle owned and used primarily by or for a veteran of the Armed Forces of the United States or the Virginia National Guard who has been rated by the U.S. Department of Veterans Affairs or its successor agency pursuant to federal law with a 100 percent service-connected, permanent, and total disability shall be exempt from taxation.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3668(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3668/",
+   "quote": "This exemption shall be applicable beginning on the date the motor vehicle is acquired or January 1, 2021, whichever is later, and shall not be applicable for any period of time prior to January 1, 2021.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3668(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3668/",
+   "quote": "The exemption shall expire on the date of the disabled veteran's death and shall not be available for his surviving spouse.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "The amount of the license fee or tax imposed by any county, city, or town on any motor vehicle, trailer, or semitrailer shall not be greater than the annual or one-year fee imposed by the Commonwealth on the motor vehicle, trailer, or semitrailer in effect on January 1, 2020.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(I)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "Purchasers of new or used motor vehicles shall be allowed at least a 10-day grace period, beginning with the date of purchase, during which to pay license fees charged by local governments under authority of this section.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "The treasurer or director of finance of any county, city, or town may enter into an agreement with the Commissioner whereby the Commissioner will refuse to issue or renew any vehicle registration of any applicant therefor who owes to such county, city, or town any local vehicle license fees or delinquent tangible personal property tax or parking citations.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-600",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-600/",
+   "quote": "shall, within 30 days of the purchase or transfer, apply to the Department for a certificate of ownership.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-662(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-662/",
+   "quote": "for the first 30 days of his residency in the Commonwealth without registering the passenger car, pickup or panel truck, moped, autocycle, or motorcycle or paying any fees to the Commonwealth.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-662(B)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-662/",
+   "quote": "any locality may adopt an ordinance imposing a penalty of up to $250 upon the resident owner of any motor vehicle that, following the end of the 30-day period provided in subsection A, is required to be registered in Virginia but has not been so registered.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-606(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-606/",
+   "quote": "he shall notify the Department of his change of address within 30 days.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-324(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-324/",
+   "quote": "he shall, within 30 days, notify the Department of his change of address.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "the governing body of any county, city, or town may provide by ordinance the time for filing local license applications and annual returns of taxable tangible personal property, machinery and tools, and merchants' capital.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to file a return shall be greater than 10 percent of the tax assessable on such return or $10, whichever is greater, provided, however, that the penalty shall in no case exceed the amount of the tax assessable.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "in the case of delinquent tangible personal property tax more than 30 days past due, 25 percent of the tax past due on such tangible personal property",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "the local governing body shall allow an automatic extension on real property taxes imposed upon a primary residence and personal property taxes imposed upon a qualifying vehicle",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Such extension shall end and the taxes shall be due 90 days following the completion of such member's deployment.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "not later than 14 days prior to the due date of the taxes, send or cause to be sent by United States mail to each taxpayer assessed with taxes and levies for that year a bill or bills setting forth the amounts due.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application and mail a copy of such writing to the applicant at his last known address.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983.1(B)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "quote": "Any person assessed with any local mobile property tax or local business tax as defined in this section may appeal such assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of such assessment, whichever is later, to the commissioner of the revenue or other assessing official.",
+   "role": "deadline"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Title and register the vehicle in Virginia with its Charlottesville address",
+   "who": "Vehicle owner; Virginia DMV, or the City's DMV Select office in the Treasurer's Office at City Hall",
+   "how": "If you bought the vehicle, apply to DMV for a Virginia title within 30 days of the purchase. If you moved to Virginia from another state, you may drive a passenger car, pickup or panel truck, moped, autocycle or motorcycle that is registered for the current year in that state, with its plates, for your first 30 days of residency; then register it in Virginia. If you moved, tell DMV your new address within 30 days. The City's DMV Select office in the first-floor lobby of City Hall (605 East Main Street) handles original titles and registrations, 8:30 am to 4:15 pm, Monday to Friday except holidays. A non-resident active-duty service member (or activated or mobilized reserve or National Guard member) living here need not title or register in Virginia a vehicle registered and titled in another state (Va. Code § 46.2-600). If your DMV record shows Charlottesville as the garage jurisdiction, the city says DMV should forward it to the Commissioner (step s2).",
+   "deadline": "within 30 days of the purchase or transfer (title); the first 30 days of residency (driving on out-of-state plates); within 30 days of a move (address change)",
+   "fee": "DMV title and registration fees, set by the state (not covered here)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/552/DMV-Select",
+   "quote": "shall, within 30 days of the purchase or transfer, apply to the Department for a certificate of ownership.",
+   "source": "Va. Code § 46.2-600"
+  },
+  {
+   "id": "s2",
+   "step": "New resident: register with the Commissioner of the Revenue within 30 days of moving here",
+   "who": "Vehicle owner (new resident), to the Commissioner of the Revenue",
+   "how": "If you changed your vehicle record at DMV to show Charlottesville as the garage jurisdiction, the city says DMV should forward it to the Commissioner. If you have not, the city says to contact the Commissioner's Office immediately: call 434-970-3160, email citycor@charlottesville.gov, or go to the Customer Service window in City Hall (605 E Main Street, Room A-130, 8:30 am to 4:30 pm, Monday to Friday). The city publishes no separate form for this. In either case, the city says you should also register with the office within 30 days of moving here.",
+   "deadline": "within 30 days of moving here",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=488",
+   "quote": "You should also register with the Commissioner’s Office for personal property tax within 30 days of moving here.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?QID=488"
+  },
+  {
+   "id": "s3",
+   "step": "Bought a vehicle: register it with the Commissioner of the Revenue within 30 days of becoming the owner",
+   "who": "Vehicle owner (buyer), to the Commissioner of the Revenue",
+   "how": "Tell the Commissioner's Office about the vehicle by phone, email or in person, as in step s2. If it replaces a vehicle you sold, traded or junked, also report the old one with the city's Disposed Personal Property online form (f4); the paper Request for Refund or Prorated Assessment form (f5) covers the same notice. The city says DMV and the Commissioner must be told of a sale within 30 days, and that this is the owner's own duty, not the dealer's or the new owner's (FAQ QID=489). If the disposal is reported to DMV more than 30 days after it happened, the city uses the reporting date as the disposal date for tax purposes unless you provide proper documentation, such as a bill of sale (Report page).",
+   "deadline": "within 30 days of purchasing (or otherwise becoming the owner) of a vehicle",
+   "fee": null,
+   "form": "f4",
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=490",
+   "quote": "Virginia law requires you to register with the locality of your jurisdiction within 30 days of purchasing (or otherwise becoming the owner) of a vehicle.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?QID=490"
+  },
+  {
+   "id": "s4",
+   "step": "Check whether you are taxed elsewhere or exempt (students, military, disabled veterans)",
+   "who": "Vehicle owner; the Commissioner of the Revenue decides",
+   "how": "A full-time student at a college or university in Charlottesville is not taxed here if the vehicle is taxed in the student's domicile; state law lets the city ask for evidence of that tax. A Charlottesville resident attending college elsewhere is taxed here. Active-duty service members who, with their spouses, are in Charlottesville by virtue of military orders are not liable here; send a copy of your most recent Leave and Earnings Statement to claim this. A service member who keeps Charlottesville as legal residence, with the vehicle registered in Virginia, is liable here wherever stationed. A veteran rated 100% service-connected, permanently and totally disabled can exempt one passenger car, pickup or panel truck registered for personal use: owned by the veteran, jointly with the spouse, or by the spouse and used primarily by or for the veteran. Apply on the city's form with the VA certification; the form says you must reapply if you change vehicles. The exemption runs from the date the vehicle is acquired (never before January 1, 2021) and ends at the veteran's death; it does not pass to a surviving spouse. Leased vehicles, business-owned vehicles and vehicles held in a trust do not qualify for the veteran exemption.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=492",
+   "quote": "If you are a full-time student attending an institution of higher learning in Charlottesville, you would not be liable here if you are paying a personal property tax on the vehicle in your domicile.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?QID=492"
+  },
+  {
+   "id": "s5",
+   "step": "The Commissioner assesses the vehicle and prorates the tax by month",
+   "who": "Commissioner of the Revenue",
+   "how": "The Commissioner values cars and trucks at the NADA clean trade-in value. Motorcycles are valued from the NADA motorcycle guide, and trailers at a percentage of original cost. A vehicle that arrives in the city, or is bought, after January 1 is taxed by the month, for the months it is garaged in the city and owned by you. More than half a month counts as a full month. If you do not file a required return, state law says the Commissioner shall still assess the vehicle at fair market value from the best information he can obtain. To ask for a lower value for high mileage, a branded title, or a DMV salvage or non-repairable certificate, see step s8.",
+   "deadline": "ownership and value are fixed as of January 1 (the tax day), or as of the day the vehicle acquires a situs in the city",
+   "fee": null,
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=484",
+   "quote": "In general terms, a vehicle’s tax will be prorated on a monthly basis based on the number of months it has a situs in the City of Charlottesville or is owned by the taxpayer.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?QID=484"
+  },
+  {
+   "id": "s6",
+   "step": "Check that the bill gives the vehicle car tax relief (PPTR)",
+   "who": "Vehicle owner; Commissioner of the Revenue",
+   "how": "Car tax relief applies to the first $20,000 of value of a passenger car, pickup or panel truck, or motorcycle. The city says the vehicle must be owned by a natural person, or leased by a natural person under a contract requiring that person to pay the tax, and used for nonbusiness purposes. State law also counts an autocycle, and a vehicle held in a private trust for nonbusiness purposes (Va. Code § 58.1-3523); the city FAQ does not mention these. City Council sets the relief percentage each year (31% for 2025). If the vehicle is worth $1,500 or less, the tax is eliminated. A vehicle counts as used for business, and does not qualify, if more than 50% of its mileage is deducted as a business expense or reimbursed by an employer, more than 50% of its depreciation is deducted, its cost is expensed under Internal Revenue Code § 179, or it is leased and the leasing company pays the tax without reimbursement. Review the bill, and contact the Commissioner if the vehicle is qualified wrongly. The city treats paying the bill as your acknowledgement that the qualification is correct. The city audits income tax schedules; if they show more than 50% business mileage, relief is withdrawn by a supplemental assessment with late payment penalty and interest, for the current and up to three prior tax years.",
+   "deadline": null,
+   "fee": "relief percentage set each year by City Council (2025: 31%, applied to the first $20,000 of value)",
+   "form": null,
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=512",
+   "quote": "Citizens are obligated to thoroughly review information detailed on their tax bills to ensure their vehicles are properly qualified.",
+   "source": "https://www.charlottesville.gov/Faq.aspx?QID=512"
+  },
+  {
+   "id": "s7",
+   "step": "Pay the City Treasurer's bill in two installments",
+   "who": "City Treasurer (bills and collects); vehicle owner (pays)",
+   "how": "The Treasurer mails the bill. The first installment, which includes the city vehicle license fee, is due June 5; the second is due December 5. If a due date falls on a weekend, it moves to the following Monday. The city issues no decal. You can pay: online through the city's payment link; by mail to City of Charlottesville Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902 (the U.S. Post Office postmark, not a meter stamp, decides timeliness); at the City Hall customer service counter (cash, check, debit card or money order; no credit cards for taxes there); in the City Hall drop boxes (checks and money orders); or by card at 866-660-5185. If you cannot pay in full, call the Treasurer's Office at 434-970-3146 about a payment arrangement. Penalty and interest still apply under an arrangement. Members of the armed services deployed outside the United States get an automatic extension on the tax on a qualifying vehicle, due 90 days after the deployment ends (Va. Code § 58.1-3916). The Treasurer's 2016 Late Payment Penalty Policy says not receiving a bill is no ground for waiving penalty, so contact the office before the due date if no bill arrives. Unpaid taxes can lead to withholding of state income tax refunds or lottery winnings, DMV vehicle registration withholding, and tax liens.",
+   "deadline": "June 5 (first installment) and December 5 (second installment)",
+   "fee": "$4.40 per $100 of assessed value, less car tax relief; city vehicle license fee in the first installment (amount not found); 10% late payment penalty and 10% a year interest",
+   "form": null,
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "quote": "Taxes are due on June 5th and December 5th of each year.",
+   "source": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "id": "s8",
+   "step": "If the assessment is wrong, apply to the Commissioner of the Revenue for a correction",
+   "who": "Vehicle owner, to the Commissioner of the Revenue",
+   "how": "Send an application for correction, made in good faith, with your name, identification number, account number, address and phone number. Include a copy of the assessment, a written statement of why it is wrong and how you worked that out, the papers you rely on, the relief you want, and the name of a contact person to arrange an inspection of the vehicle if one is needed. Supporting papers can include a branded title, a DMV certificate, or the High Mileage Application (f3; passenger vehicles only), whose supporting document must show the VIN and be dated before January 1. On request, the Commissioner reduces the value for condition: a water-damage title by 20%, a rebuilt or repaired title by 50%, a salvage certificate by 75%, and a non-repairable certificate by 90%; the city's sheet says an additional form may be required and should show the condition before January 1. The Commissioner may ask for more information and may hold an informal conference. The city's sheet says filing does not extend the due date and that penalty and interest may apply, so pay on time (see the escalation rung on collection during an appeal filed within 90 days). You may ask for the decision's facts and law in writing.",
+   "deadline": "within three years from the last day of the tax year or within one year from the date of the assessment, whichever is later (Va. Code § 58.1-3980(A)); the Commissioner answers in writing within 90 days of a complete application",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/8056/Administrative-Appeals-Process-for-Personal-Property-PDF",
+   "quote": "Within 90 days of receipt of a complete application for correction, the Commissioner of the Revenue will thoroughly review and analyze said application and notify the taxpayer in writing of his determination.",
+   "source": "https://www.charlottesville.gov/DocumentCenter/View/8056/Administrative-Appeals-Process-for-Personal-Property-PDF"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Application for Disabled Veteran Personal Property Tax Exemption (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/6193/Charlottesville-Application-for-Disabled-Veteran-Personal-Property-Tax-Exemption-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Administrative Appeals Process for Personal Property (PDF; instructions for an application for correction, revised 6/21/2022)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/8056/Administrative-Appeals-Process-for-Personal-Property-PDF",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f3",
+   "title": "Passenger Vehicle High Mileage Application (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/206/Passenger-Vehicle-High-Mileage-Application-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Disposed Personal Property (online form)",
+   "number": null,
+   "url": "https://corforms.charlottesville.gov/Forms/PPDisp2025",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Request for Refund or Prorated Assessment of Personal Property (PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/216/Request-for-Refund-or-Prorated-Assessment-of-Personal-Property-PDF",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Personal property tax on vehicles",
+   "amount": "$4.40 per $100 of assessed value",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?QID=483",
+   "quote": "The current personal property rate is $4.40 per $100 of assessed value."
+  },
+  {
+   "item": "Car tax relief (PPTR) on qualifying vehicles",
+   "amount": "set yearly by City Council: 31% for 2025, on the first $20,000 of value; tax eliminated when the value is $1,500 or less",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?QID=512",
+   "quote": "If a qualifying vehicle’s assessed value is $1,500 or less, the tax is eliminated, and the Commonwealth’s share is 100%."
+  },
+  {
+   "item": "City vehicle license fee (no decal)",
+   "amount": "not stated on the city pages read; billed in the first installment; capped by Va. Code § 46.2-752(A) at the state fee in effect on January 1, 2020",
+   "basis": "https://www.charlottesville.gov/Faq.aspx?QID=487",
+   "quote": "All vehicles with active license plates will be charged a city license fee."
+  },
+  {
+   "item": "Late payment penalty",
+   "amount": "10% of the balance due after car tax relief",
+   "basis": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "quote": "Personal property tax payments not received or postmarked by the deadline are assessed with a penalty of 10% of the balance due (after personal property tax relief) on the first day after the deadline."
+  },
+  {
+   "item": "Interest on unpaid tax",
+   "amount": "10% a year, charged monthly from the first day of the month after the deadline",
+   "basis": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "quote": "Taxes remaining unpaid on the first day of the month following the deadline accrue interest on a monthly basis at a rate of 10% per annum."
+  },
+  {
+   "item": "Penalty for failure to file a return (state cap)",
+   "amount": "no more than 10% of the tax assessable or $10, whichever is greater, and never more than the tax; the city's own failure-to-file penalty was not found",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "No penalty for failure to file a return shall be greater than 10 percent of the tax assessable on such return or $10, whichever is greater, provided, however, that the penalty shall in no case exceed the amount of the tax assessable."
+  },
+  {
+   "item": "Card convenience fee on tax payments",
+   "amount": "2.59% (minimum $1.95) by credit card online; 2.5% by card by phone; $2.25 for an electronic check by phone",
+   "basis": "https://www.charlottesville.gov/562/Payment-Methods",
+   "quote": "There is a 2.59% convenience fee with a $1.95 minimum for all tax payment transactions made by credit card."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Commissioner of the Revenue, City Hall, 605 E Main Street, Room A-130, Charlottesville, VA 22902 (in person 8:30 am to 4:30 pm, Monday to Friday; by phone 8:00 am to 5:00 pm)",
+   "label": "Commissioner of the Revenue, City of Charlottesville",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "address",
+   "value": "Commissioner of the Revenue, P.O. Box 2964, Charlottesville, VA 22902",
+   "label": "Commissioner of the Revenue, City of Charlottesville (mailing address)",
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3160",
+   "label": "Commissioner of the Revenue, City of Charlottesville (personal property)",
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax"
+  },
+  {
+   "kind": "email",
+   "value": "citycor@charlottesville.gov",
+   "label": "Commissioner of the Revenue, City of Charlottesville (personal property)",
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.charlottesville.gov/190/Personal-Property-Tax",
+   "label": "Commissioner of the Revenue, City of Charlottesville: Personal Property Tax",
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax"
+  },
+  {
+   "kind": "office",
+   "value": "City Treasurer, City Hall, 605 E Main Street, Room A120, Charlottesville, VA 22902 (in person 8:30 am to 4:30 pm, Monday to Friday; by phone 8:00 am to 5:00 pm)",
+   "label": "City Treasurer, City of Charlottesville",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "address",
+   "value": "City of Charlottesville Treasurer's Office, P.O. Box 2854, Charlottesville, VA 22902",
+   "label": "City Treasurer, City of Charlottesville (tax payments by mail)",
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3146",
+   "label": "City Treasurer, City of Charlottesville (bills and payment arrangements)",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "email",
+   "value": "citytreas@charlottesville.gov",
+   "label": "City Treasurer, City of Charlottesville",
+   "url": "https://www.charlottesville.gov/551/City-Treasurer"
+  },
+  {
+   "kind": "phone",
+   "value": "866-660-5185",
+   "label": "City Treasurer, City of Charlottesville (card payments by phone)",
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.charlottesville.gov/758",
+   "label": "City Treasurer, City of Charlottesville (pay taxes online)",
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes"
+  },
+  {
+   "kind": "office",
+   "value": "DMV Select, City Treasurer's Office, City Hall first-floor lobby, 605 East Main St, Charlottesville, VA 22902 (8:30 am to 4:15 pm, Monday to Friday except holidays)",
+   "label": "City of Charlottesville DMV Select (City Treasurer)",
+   "url": "https://www.charlottesville.gov/552/DMV-Select"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "you think the assessment is wrong (value, condition, mileage, situs, or car tax relief qualification)",
+   "next": "Commissioner of the Revenue, City of Charlottesville (application for correction)",
+   "type": "internal appeal",
+   "deadline": "within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof."
+  },
+  {
+   "trigger": "an unpaid bill for a year in which you were not subject to the tax (for example, the vehicle was not garaged in the city), and you can show this by clear factual evidence",
+   "next": "Commissioner of the Revenue, City of Charlottesville",
+   "type": "internal appeal",
+   "deadline": "at any time while the assessment is collectible (generally five years after December 31 of the tax year, Va. Code § 58.1-3940(A))",
+   "basis": "Va. Code § 58.1-3980(B)",
+   "quote": "an unpaid tangible personal property tax assessment may be appealed to the commissioner of the revenue or other assessing official at any time during which such assessment is collectible"
+  },
+  {
+   "trigger": "you filed an application for correction within 90 days of the assessment and want collection held while it is decided",
+   "next": "City Treasurer, City of Charlottesville (collection is held while the appeal is pending)",
+   "type": "deferral",
+   "deadline": "appeal filed within 90 days of the assessment; the hold lasts until 30 days after the final determination",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under"
+  },
+  {
+   "trigger": "an airplane, boat, camper, recreational vehicle or trailer (local mobile property tax): your appeal to the Commissioner of the Revenue under § 58.1-3983.1(B) is denied in whole or in part, or has had no final determination for more than one year",
+   "next": "Tax Commissioner, Virginia Department of Taxation",
+   "type": "external administrative review",
+   "deadline": "the appeal to the Commissioner of the Revenue under § 58.1-3983.1(B) must be filed within one year from the last day of the tax year or within one year from the assessment, whichever is later; then appeal to the Tax Commissioner within 90 days of the Commissioner of the Revenue's determination, or, if there is no final determination after more than one year, on at least 30 days' written notice",
+   "basis": "Va. Code § 58.1-3983.1(B)(1), (B)(6), (D)(1)",
+   "quote": "may appeal the determination of the commissioner of the revenue or other assessing official by filing an appeal with the Tax Commissioner and serving a copy of the appeal upon the commissioner of the revenue or other assessing official within 90 days of the date of the determination of the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "the correction is denied, or you get no answer (for a passenger car, pickup or motorcycle there is no Tax Commissioner step, and you need not apply to the Commissioner first)",
+   "next": "Charlottesville Circuit Court (16th Judicial Circuit), application filed in the Clerk's Office",
+   "type": "judicial review",
+   "deadline": "the latest of: three years from the last day of the tax year, one year from the assessment, one year from the Tax Commissioner's final determination, or one year from the Commissioner of the Revenue's final determination",
+   "basis": "Va. Code §§ 58.1-3983, 58.1-3984(A)",
+   "quote": "Application may be made to the proper court whether or not such applicant has theretofore made application to the commissioner of the revenue for the correction of any such assessment."
+  },
+  {
+   "trigger": "you were charged a late payment or late filing penalty although the lateness was not your fault",
+   "next": "City Treasurer, City of Charlottesville (late payment: write to the Treasurer with your reasons and documents); Commissioner of the Revenue (late filing)",
+   "type": "internal appeal",
+   "deadline": "for a medical impairment or the taxpayer's death, the return must be filed or the tax paid within 30 days of the due date",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax, and the commissioner of the revenue shall make determinations of fault relating exclusively to failure to file a return."
+  }
+ ],
+ "caveats": [
+  "The 30-day deadlines for registering with the Commissioner come from the city's FAQ answers (Faq.aspx?QID=488 and QID=490). QID=490 says 'Virginia law requires' it. The state sections read set a January 1 tax day and a May 1 return (Va. Code §§ 58.1-3515, 58.1-3518), and let a locality require a new return when a vehicle is acquired or changes situs (Va. Code § 58.1-3518.1(B)), but none of them sets a 30-day deadline for telling the Commissioner. That deadline probably comes from the City Code (Chapter 30, Taxation), which was not read. The 30-day DMV deadlines are state law (Va. Code §§ 46.2-600, 46.2-606, 46.2-662).",
+  "Local ordinance not checked. The city links its Code of Ordinances to Municode. Municode's terms of use could not be read (its terms page answered HTTP 520), and its content API refuses unauthenticated requests, so no City Code text is quoted. A search-engine summary of city WebLink records mentioned City Code § 30-31 (recognized pricing guide), Chapter 30, Article II, Division 2 (§ 30-51 et seq., personal property tax relief) and § 15-36 (vehicle licensing). These are unverified hints and have not been checked.",
+  "The amount of the city vehicle license fee was not found on any current city page read. The FAQ (QID=487) says only that vehicles with active plates are charged the fee in the first installment. State law caps it at the state registration fee in effect on January 1, 2020 (Va. Code § 46.2-752(A)).",
+  "Tax rate and relief year: the FAQ calls $4.40 per $100 the 'current' rate. The Treasurer's Personal Property Taxes page gives $4.40 'For tax year 2024'. The FAQ lists relief rates only through 2025 (31%). A 2026 City Council resolution on the city's WebLink records system could not be opened (WebLink returned an error), so no 2026 rate or relief percentage is recorded. Confirm the current year's rate and relief percentage with the Commissioner.",
+  "No form for registering a newly acquired vehicle, or a new resident's vehicle, was found on the Forms Index or the Personal Property Tax page. The FAQ says DMV 'should' forward a Charlottesville garage jurisdiction and otherwise directs people to contact the office. How the office takes the details (phone, email or counter) is not described. The Disposed Personal Property and address-change forms are online Laserfiche forms that render only with JavaScript; their fields were not read.",
+  "Proration timing for mid-year arrivals: the city prorates monthly (FAQ QID=484). State law lets a locality bill partial-year taxes on or after December 15 with a due date at least 30 days later (Va. Code § 58.1-3516(B)). Whether Charlottesville bills newly registered vehicles on the June 5 and December 5 cycle or on a separate supplemental bill was not stated on the pages read.",
+  "Appeals and penalties: the city's Administrative Appeals sheet says filing does not extend the due date and that penalty and interest may apply. Va. Code § 58.1-3916 says a bill is not delinquent or subject to collection procedures while an appeal filed within 90 days of the assessment is pending, and for 30 days after the decision. Paying by the due date is the safe course.",
+  "Va. Code § 58.1-3983.1 gives a Tax Commissioner appeal only for 'local mobile property tax' (airplanes, boats, campers, recreational vehicles and trailers) and business taxes. For an ordinary passenger car, pickup or motorcycle, the route after the Commissioner of the Revenue is the circuit court.",
+  "Military: the FAQ (QID=491) bases the service-member rule on the federal Servicemembers Civil Relief Act. That federal law is not in the 'va' index and is not quoted here. The state deployment extension (Va. Code § 58.1-3916) is quoted. The Treasurer's late-payment penalty policy is the 2016 edition (DOC). It cites Va. Code § 46.2-754, which now concerns Arlington County only; the general DMV registration-withholding authority is Va. Code § 46.2-752(J). The Treasurer's Personal Property Taxes page lists 'DMV vehicle registration withholding' among its collection procedures.",
+  "Whether Charlottesville has adopted the optional local penalty of up to $250 for a vehicle not registered in Virginia after a new resident's first 30 days (Va. Code § 46.2-662(B)), or imposes a failure-to-file penalty on late vehicle registration, was not found. Only the state caps are recorded.",
+  "The Payment Methods page is internally inconsistent about online fees. It says 'There is no convenience fee for tax payments made online' right after stating a 2.59% credit card fee. The Treasurer's Personal Property Taxes page says there is no fee for ACH or electronic check. The fee entry records the card fees as stated.",
+  "Contact notes: the Treasurer's page also shows citytreas@charlottesville.org; the .gov address from its 'Email the City Treasurer' link is recorded. The Request for Refund or Prorated Assessment form (dated 10/14/15) gives an older charlottesville.org mailbox and asks for Social Security numbers; that mailbox is not recorded. Staff names shown on the office pages and forms are not recorded.",
+  "Open US Law's copy of the Code of Virginia renders the section sign as a replacement character, so state-law quotes were chosen or cut to avoid it. DMV's own title and registration fees and documents are not covered here (state agency).",
+  "Delinquency costs: the Treasurer's 2016 Late Payment Penalty Policy restates Va. Code § 58.1-3958, under which a locality may add administrative costs of up to $30 (collected 30 or more days after a delinquency notice, before judgment) or $35 (after judgment), plus attorney's or collection agency fees of up to 20%. It also says a fee for removing a DMV registration withholding is added to the tax due. Whether the city currently charges these, and the amount of the withholding fee, were not found on a current page, so they are not listed as fees.",
+  "Some step details come from pages other than the step's cited URL: in s3, the sale-notice duty is from FAQ QID=489 and the late-disposal rule from the Report page (/1106/Report); in s4, the military rule is from FAQ QID=491 and the veteran exemption from the Personal Property Tax page (/190) and the veteran form (f1); in s7, the payment methods are from the Payment Methods page (/562) and the no-bill rule from the 2016 Late Payment Penalty Policy."
+ ],
+ "sources": [
+  {
+   "url": "https://www.charlottesville.gov/190/Personal-Property-Tax",
+   "title": "Personal Property Tax (Commissioner of Revenue), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=488",
+   "title": "FAQ: I have just moved into the City of Charlottesville, must I notify the Commissioner's Office? (redirects to https://www.charlottesville.gov/m/faq?cat=75, which holds all 13 personal property FAQ answers)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=489",
+   "title": "FAQ: I sold or no longer own a vehicle or trailer, who do I notify?",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=490",
+   "title": "FAQ: If I buy an automobile, whom must I notify?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=482",
+   "title": "FAQ: How is personal property assessed?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=483",
+   "title": "FAQ: How is the amount of tax determined?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=484",
+   "title": "FAQ: What is proration?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=486",
+   "title": "FAQ: When is my personal property tax bill due?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=487",
+   "title": "FAQ: I have purchased a new vehicle and registered it at DMV. Do I need to obtain a City of Charlottesville decal?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=491",
+   "title": "FAQ: I am active duty military, am I liable for personal property tax in the City of Charlottesville?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=492",
+   "title": "FAQ: I am a full-time college student, am I liable for personal property tax in the City of Charlottesville?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?QID=512",
+   "title": "FAQ: What is PPTR and How do I Qualify?",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue, City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/188/Forms-Index",
+   "title": "Forms Index (Commissioner of Revenue), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1106/Report",
+   "title": "Report (New Address and Disposed Personal Property forms), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/551/City-Treasurer",
+   "title": "City Treasurer, City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
+   "title": "Personal Property Taxes (City Treasurer), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/552/DMV-Select",
+   "title": "DMV Select (City Treasurer), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/562/Payment-Methods",
+   "title": "Payment Methods (City Treasurer), City of Charlottesville",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/8056/Administrative-Appeals-Process-for-Personal-Property-PDF",
+   "title": "Administrative Appeals Process of Tangible Personal Property Assessment (PDF, revised 6/21/2022)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/206/Passenger-Vehicle-High-Mileage-Application-PDF",
+   "title": "High Mileage Application, passenger vehicles only (PDF, revised 11/15)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/6193/Charlottesville-Application-for-Disabled-Veteran-Personal-Property-Tax-Exemption-PDF",
+   "title": "Application for Personal Property Tax Exemption for Veterans with 100% Service-Connected Disability (PDF)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/216/Request-for-Refund-or-Prorated-Assessment-of-Personal-Property-PDF",
+   "title": "Request for Refund or Prorated Assessment (PDF, dated 10/14/15)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/1230/2016-Late-Payment-Penalty-Policy-DOC",
+   "title": "City Treasurer Late Payment Penalty Policy, 2016 edition (DOC)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/",
+   "title": "Code of Virginia(va, open-us-law) with I.lookup and I.text_of: Va. Code §§ 46.2-324, 46.2-600, 46.2-606, 46.2-662, 46.2-752, 46.2-754, 58.1-3500, 58.1-3503, 58.1-3511, 58.1-3515, 58.1-3516, 58.1-3517, 58.1-3518, 58.1-3518.1, 58.1-3519, 58.1-3523, 58.1-3524, 58.1-3668, 58.1-3912, 58.1-3916, 58.1-3940, 58.1-3958, 58.1-3980, 58.1-3981, 58.1-3983, 58.1-3983.1, 58.1-3984",
+   "retrieved": "2026-10-10"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 58,
+  "quotes_confirmed": 58,
+  "removed": [],
+  "corrections": [
+   "s2: the draft told readers to 'register with the office within 30 days' as a flat command. The FAQ (QID=488) says 'should', and that DMV 'should' forward the record. The step now keeps the city's 'should' and attributes both points to the city.",
+   "s1: the draft said a DMV record is how the Commissioner 'usually' learns of a vehicle; no source says that. It now says the city expects DMV to forward the record. It adds that § 46.2-662(A) covers only passenger cars, pickup or panel trucks, mopeds, autocycles and motorcycles registered for the current year in the other state, and the § 46.2-600 exception for non-resident active-duty service members with out-of-state title and registration.",
+   "s5: the draft said the Commissioner 'can still assess' an unreported vehicle. § 58.1-3519 says the Commissioner 'shall' assess it from the best information he can obtain. The wording now follows the statute.",
+   "s6: 'owned by a person' is now 'a natural person', as the FAQ and § 58.1-3523 say. It adds the state-law qualifying categories the FAQ leaves out (autocycles; vehicles held in a private trust for nonbusiness purposes), quoted from § 58.1-3523. It also adds the FAQ's full business-use tests and its audit rule: relief is withdrawn for the current and up to three prior years if income tax schedules show more than 50% business mileage.",
+   "s4: added from the FAQ (QID=491, QID=492) that a service member whose legal residence is Charlottesville is liable wherever stationed, and that a city resident at college elsewhere is taxed here. From the veteran form (f1) and § 58.1-3668(B)-(C), it adds spouse ownership, reapplication on a change of vehicle, the start date (never before January 1, 2021) and the end at the veteran's death. Two § 58.1-3668(C) quotes are added to legal_basis.",
+   "s7: added the automatic extension that § 58.1-3916 says the locality 'shall allow' for deployed service members (new legal_basis quote); that drop boxes take checks and money orders, and that a postal meter stamp does not count (Payment Methods page); that not receiving a bill is no ground for a waiver (2016 policy); and the Treasurer's collection measures (refund and lottery setoff, DMV registration withholding, liens).",
+   "s8: completed the application contents from the Administrative Appeals sheet: identification number, the contact person for an inspection, condition shown as before January 1, and the Commissioner's power to ask for more information and hold an informal conference. It names the High Mileage Application (f3), which is for passenger vehicles only and needs a document showing the VIN dated before January 1. It also points to the § 58.1-3916 collection hold. A § 58.1-3503(B) quote is added: the Commissioner 'shall upon request' take condition into account.",
+   "s3: added, from FAQ QID=489 (now in sources), the 30-day sale notice to DMV and the Commissioner. From the Report page it adds that a disposal reported to DMV more than 30 days late is dated by the report unless you document it. The paper refund and proration form (f5) is now linked from a step.",
+   "Escalation (Tax Commissioner rung): added airplanes, which are in the § 58.1-3983.1(A) definition of local mobile property tax. It also adds the one-year deadline for the underlying § 58.1-3983.1(B)(1) appeal, which is shorter than the three years of § 58.1-3980(A). The new § 58.1-3983.1(B)(1) quote is in legal_basis and the basis cites (B)(1).",
+   "Escalation (§ 58.1-3980(B) rung): the trigger now includes the statute's condition that the taxpayer 'can demonstrate by clear factual evidence' that he was not subject to the tax.",
+   "Caveats: the draft recorded a 2026 relief figure (31%) taken from a search-engine summary of a resolution that was never read. That unverified figure is removed. Two caveats are added: one on delinquency costs and DMV withholding fees (2016 policy, § 58.1-3958), and one naming the pages that support details not on a step's cited URL. FAQ QID=489 is added to sources, and §§ 46.2-754 and 58.1-3958 are added to the state-law source list."
+  ],
+  "open_issues": [
+   "City Code (Municode) not read. The 30-day registration rule is stated only in the city FAQ ('Virginia law requires', QID=490); no state section read sets it. The steps attribute it to the city, so step correctness is not affected.",
+   "The amount of the city vehicle license fee was not found on any current city page (the Treasurer's 'Vehicle License Fees' quick link goes to the Personal Property Tax page, which has no amount).",
+   "The current-year (2026) tax rate and relief percentage are not confirmed. The FAQ calls $4.40 'current', and the Treasurer's page dates it to tax year 2024.",
+   "Not stated: whether newly registered vehicles get a separate supplemental bill (§ 58.1-3516(B)), whether the city has adopted the § 46.2-662(B) penalty or a failure-to-file penalty, and whether it charges § 58.1-3958 administrative costs.",
+   "The Payment Methods page contradicts itself on the online card fee. The city's Administrative Appeals sheet says penalty and interest may apply during an appeal. § 58.1-3916 says a bill is not delinquent while an appeal filed within 90 days is pending, and for 30 days after the decision. Both are noted and the statute is quoted.",
+   "The federal Servicemembers Civil Relief Act is not in the va index and is not quoted."
+  ]
+ }
+}

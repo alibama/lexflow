@@ -1,6 +1,6 @@
 """The local layer of an answer: what a city or county adds to its state's law, and whom to contact.
 
-LOCUS-v1 (the Local Laws Observatory's corpus of local codes) is read once per state and cached on disk, so a
+LOCUS-v1 (LocalLaws' Local Ordinance Corpus for the United States) is read once per state and cached on disk, so a
 batch over every place in a state reads it once.  Its headings are matched against the question's concepts.
 LOCUS is CC BY-NC and machine-labelled: it is used to point at local provisions, never quoted as law.
 """

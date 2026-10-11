@@ -1,11 +1,14 @@
-"""Publish Lexipedia models to DokuWiki over the JSON-RPC API (DokuWiki >= 2024-02-06 "Kaos").
+"""The DokuWiki JSON-RPC client (DokuWiki >= 2024-02-06 "Kaos"), and the older page renderer for the gold models.
 
-Server prerequisites (lexipedia.xyz currently has the API switched off):
+lexflow writes only the ``lexflow:`` namespace on lexipedia.xyz: ``DokuWiki.save_page`` and ``save_media`` refuse
+any other id (``require_namespace``), and the pages themselves come from lexflow/publish/lexipedia.py through the
+publish step.  Server prerequisites:
   $conf['remote'] = 1;  $conf['remoteuser'] = '@bots';   # never leave remoteuser empty
-  a bot user in group "bots" with edit+upload ACL on law:* and process:*;
+  a bot user in group "bots" with edit+upload ACL on lexflow:*;
   a token from the bot's profile page (sent as "Authorization: Bearer ...").
 
-Page layout
+The older layout below (``publish``, used by ``scripts/build_all.py``) predates the namespace rule and is kept only
+to render the gold models; its ids are outside ``lexflow:``, so ``publish`` refuses before writing anything:
   law:<state>:<locality>:<section>      one page per code section (the cross-reference target)
   process:<state>:<locality>:<slug>     the process page with inline <bpmnio> BPMN and DMN
   media  process:<...>:<slug>.bpmn/.dmn/.pnml   canonical downloads
@@ -51,6 +54,22 @@ class DokuWikiError(RuntimeError):
     pass
 
 
+# lexflow writes only its own namespace on lexipedia.xyz (beside the community's pages).  Every writer goes through
+# this: the publish step (lexflow/pipeline/steps.py), the DokuWiki client itself, and the legacy ``publish`` below.
+NAMESPACE = "lexflow"
+
+
+class NamespaceError(DokuWikiError):
+    pass
+
+
+def require_namespace(page: str, namespace: str = NAMESPACE) -> str:
+    """``page`` (a page or media id) when it is inside ``namespace:``; otherwise NamespaceError, before any write."""
+    if not str(page or "").startswith(f"{namespace}:"):
+        raise NamespaceError(f"refusing to write {page}: outside the {namespace}: namespace")
+    return page
+
+
 @dataclass
 class DokuWiki:
     base_url: str
@@ -89,9 +108,11 @@ class DokuWiki:
         return self.call("core.getPage", page=page)
 
     def save_page(self, page: str, text: str, summary: str = "lexflow", minor: bool = False):
+        require_namespace(page)
         return self.call("core.savePage", page=page, text=text, summary=summary, isminor=minor)
 
     def save_media(self, media: str, data: bytes, overwrite: bool = True):
+        require_namespace(media)
         return self.call("core.saveMedia", media=media, base64=base64.b64encode(data).decode(), overwrite=overwrite)
 
 
@@ -186,6 +207,11 @@ def publish(model: LegalProcessModel, wiki: DokuWiki, bpmn_xml: str, dmn_xml: st
             checks: dict | None = None) -> dict:
     pid = process_page_id(model)
     media_ns = pid
+    # every id first, so a refused id leaves nothing half-written (these legacy ids are process: and law:, which
+    # are outside the lexflow: namespace: the lexflow pages are published by the publish step)
+    for target in ([law_page_id(t.jurisdiction, t.section) for t in model.texts] + [pid, f"{media_ns}.bpmn"]
+                   + ([f"{media_ns}.dmn"] if dmn_xml else [])):
+        require_namespace(target)
     done = {"law_pages": [], "process_page": pid, "media": []}
     for t in model.texts:
         lp = law_page_id(t.jurisdiction, t.section)
