@@ -69,10 +69,21 @@ Charlottesville handles public records requests under the Virginia Freedom of In
 
 **Fees.** Reasonable charges, capped at actual cost: staff search time, copying, and similar direct costs, with no general overhead. Requests that take 15 minutes or less to research and supply are free. You can ask for an estimate in advance. If the estimate is over $200, the city may require a deposit up to that amount before it proceeds. If an earlier FOIA bill has been unpaid for more than 30 days, the city may require payment before it handles a new request.
 
+### Court decisions citing this law
+
+- [Department of Corrections v. Surovell](https://www.courtlistener.com/opinion/2959683/department-of-corrections-v-surovell/) (Supreme Court of Virginia, 2015, 776 S.E.2d 579; 290 Va. 255; 2015 Va. LEXIS 107)
+- [Daily Press, LLC v. Office of the Exec. Sec'y of the Supreme Court of Va.](https://www.courtlistener.com/opinion/4404754/daily-press-llc-v-office-of-the-exec-secy-of-the-supreme-court-of-va/) (Supreme Court of Virginia, 2017, 800 S.E.2d 822; 45 Media L. Rep. (BNA) 1953; 293 Va. 551; 2017 WL 2806367; 2017 Va. LEXIS 98)
+- [Bland v. Virginia State University](https://www.courtlistener.com/opinion/1058812/bland-v-virginia-state-university/) (Supreme Court of Virginia, 2006, 630 S.E.2d 525; 272 Va. 198; 2006 Va. LEXIS 55)
+- [Christian v. STATE CORP. COM'N](https://www.courtlistener.com/opinion/1057981/christian-v-state-corp-comn/) (Supreme Court of Virginia, 2011, 718 S.E.2d 767; 282 Va. 392; 2011 Va. LEXIS 217)
+- [Globe Newspaper Co. v. Commonwealth](https://www.courtlistener.com/opinion/1059274/globe-newspaper-co-v-commonwealth/) (Supreme Court of Virginia, 2002, 570 S.E.2d 809; 264 Va. 622; 31 Media L. Rep. (BNA) 1312; 2002 Va. LEXIS 156)
+- [Fenter v. Norfolk Airport Authority](https://www.courtlistener.com/opinion/1058606/fenter-v-norfolk-airport-authority/) (Supreme Court of Virginia, 2007, 649 S.E.2d 704; 274 Va. 524; 2007 Va. LEXIS 102)
+- [Commonwealth of Virginia v. Heather Sawyer](https://www.courtlistener.com/opinion/10401324/commonwealth-of-virginia-v-heather-sawyer/) (Court of Appeals of Virginia, 2025)
+- [Thomas A. Blackstock, Jr. v. Virginia Department of Transportation](https://www.courtlistener.com/opinion/10363453/thomas-a-blackstock-jr-v-virginia-department-of-transportation/) (Court of Appeals of Virginia, 2025)
+
 ### Caveats and gaps
 
 - Under Va. Code § 2.2-3704(A), the right of access belongs to citizens of the Commonwealth and to qualifying Virginia media. Out-of-state requesters may be refused. The earlier claim about the city's past MuckRock responses was not re-verified.
-- The FOIA Officers directory lists several officers: Monica Mallory (FOIA & Records Officer, 434-970-3827) and Kelly Molina (FOIA and Public Records Officer), plus separate officers for the Sheriff, Treasurer, Commissioner of the Revenue, and Airport Authority. Confirm the current contact before relying on a name.
+- The FOIA Officers directory lists several officers: the FOIA & Records Officer (434-970-3827) and the FOIA and Public Records Officer, plus separate officers for the Sheriff, Treasurer, Commissioner of the Revenue, and Airport Authority. Confirm the current contact on the directory before you write.
 - The Requesting Records page says requests may be made by email or by phone. The Submit a FOIA Request page lists no email address. FOIA@charlottesville.gov comes only from the 'Email Us' link on the staff directory.
 - Not re-verified: Police Department records are said to be handled under Police General Order 523.20 through the department's Public Information Officer. Ask the department directly.
 - University of Virginia records are not city records. UVA runs its own FOIA process (not verified here).
@@ -149,6 +160,17 @@ Before or alongside opening, register any LLC, corporation, or trade name (DBA) 
 - [Charlottesville City Code, Chapter 14 (Licenses), incl. § 14-12](https://library.municode.com/va/charlottesville/codes/code_of_ordinances?nodeId=CO_CH14LI_S14-12WHAPDUWHTAPAEXPEINLAPARECODE): This city ordinance imposes the annual business licence fee and tax. The city's Business License Tax page applies it: new businesses apply within 30 days of starting, and the licence is $35 or $50 below $100,000 in gross receipts, with a classification rate above that. The Municode text of § 14-12 could not be loaded for verification.
 
 **Fees.** Business licence by gross receipts: under $50,000 is $35.00; $50,001–$100,000 is $50.00; over $100,000 is gross receipts times the tax rate for the business classification. The first year is based on estimated gross receipts. Meals tax is 7%, due monthly by the 20th, for food establishments. Business tangible personal property is taxed on an itemized equipment list as of January 1. State SCC entity or trade-name filing fees and zoning or health permit fees are separate and were not verified here.
+
+### Court decisions citing this law
+
+- [C.F. Trust, Inc. v. First Flight Ltd. Partnership](https://www.courtlistener.com/opinion/1059215/cf-trust-inc-v-first-flight-ltd-partnership/) (Supreme Court of Virginia, 2003, 580 S.E.2d 806; 266 Va. 3; 2 A.L.R. 6th 719; 2003 Va. LEXIS 61)
+- [Bain v. Phillips](https://www.courtlistener.com/opinion/1417110/bain-v-phillips/) (Supreme Court of Virginia, 1976, 217 Va. 387; 228 S.E.2d 576; 1976 Va. LEXIS 293)
+- [City of Lynchburg v. ENGLISH CONST.](https://www.courtlistener.com/opinion/1058361/city-of-lynchburg-v-english-const/) (Supreme Court of Virginia, 2009, 675 S.E.2d 197; 277 Va. 574; 2009 Va. LEXIS 46)
+- [Sloan v. Thornton](https://www.courtlistener.com/opinion/1395358/sloan-v-thornton/) (Supreme Court of Virginia, 1995, 457 S.E.2d 60; 249 Va. 492; 1995 Va. LEXIS 65)
+- [Sloan v. Thornton](https://www.courtlistener.com/opinion/1395358/sloan-v-thornton/) (Supreme Court of Virginia, 1995, 457 S.E.2d 60; 249 Va. 492; 1995 Va. LEXIS 65)
+- [Hampton Nissan Ltd. Partnership v. City of Hampton](https://www.courtlistener.com/opinion/1060209/hampton-nissan-ltd-partnership-v-city-of-hampton/) (Supreme Court of Virginia, 1996, 466 S.E.2d 95; 251 Va. 100; 1996 Va. LEXIS 13)
+- [Ford Motor Credit v. Chesterfield County](https://www.courtlistener.com/opinion/1058078/ford-motor-credit-v-chesterfield-county/) (Supreme Court of Virginia, 2011, 707 S.E.2d 311; 281 Va. 321; 2011 Va. LEXIS 52)
+- [County of Chesterfield v. BBC Brown Boveri, Inc.](https://www.courtlistener.com/opinion/1248183/county-of-chesterfield-v-bbc-brown-boveri-inc/) (Supreme Court of Virginia, 1989, 380 S.E.2d 890; 238 Va. 64; 5 Va. Law Rep. 2764; 1989 Va. LEXIS 106)
 
 ### Caveats and gaps
 
