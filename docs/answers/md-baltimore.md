@@ -60,10 +60,10 @@ In Baltimore City, you request public records under the Maryland Public Informat
 ### What City of Baltimore adds
 
 1. **Identify which city agency holds the records (each agency handles its own requests; there is no single citywide portal)** - Requester; use the agency's own MPIA page or the Maryland Manual directory of Baltimore City agencies. Find the MPIA contact on the agency's page at baltimorecity.gov. To find the right city agency, the Department of Public Works (DPW) points requesters to the Maryland Manual's online directory. ([source](https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests))
-2. **Put the request in writing, describe the records specifically, and give a way to reply** - Requester, writing to the agency's records contact (example: DPW, Dominic Lamartina). Send it by email (DPW prefers email but does not require it) or by U.S. mail. Describe the records reasonably and specifically, and include an email or return mailing address. ([source](https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests))
-3. **Use an agency webform where one exists (example: Board of Municipal and Zoning Appeals)** - Board of Municipal and Zoning Appeals (BMZA). Fill out the BMZA MPIA Request Webform. Or download the BMZA Document Request Form and email it to bmza@baltimorecity.gov with the subject line 'MPIA Request'. Or mail it to BMZA, Attn: Carolyn Young, MPIA Request, 417 E. Fayette Street, Room 922, Baltimore, MD 21202. ([source](https://www.baltimorecity.gov/zoning/how-to-view-records))
+2. **Put the request in writing, describe the records specifically, and give a way to reply** - Requester, writing to the agency's records contact (example: DPW's records contact, listed on its MPIA page). Send it by email (DPW prefers email but does not require it) or by U.S. mail. Describe the records reasonably and specifically, and include an email or return mailing address. ([source](https://www.baltimorecity.gov/publicworks/contact-us/maryland-public-information-act-requests))
+3. **Use an agency webform where one exists (example: Board of Municipal and Zoning Appeals)** - Board of Municipal and Zoning Appeals (BMZA). Fill out the BMZA MPIA Request Webform. Or download the BMZA Document Request Form and email it to bmza@baltimorecity.gov with the subject line 'MPIA Request'. Or mail it to BMZA, Attn: MPIA Request, 417 E. Fayette Street, Room 922, Baltimore, MD 21202. ([source](https://www.baltimorecity.gov/zoning/how-to-view-records))
 4. **Agencies that take requests by email (example: Housing & Community Development)** - Department of Housing & Community Development (DHCD), which routes MPIA requests for processing. Fill out the DHCD MPIA request form and email it to dhcd.mpia@baltimorecity.gov. If you want a search for outstanding fees and violations on a property, that is not an MPIA request. You apply for it through a separate process run by the City's Finance Department. ([source](https://www.baltimorecity.gov/dhcd/contact/public-information-act-request))
-5. **Requests to the Office of the Inspector General** - Baltimore City Office of the Inspector General (OIG). Email oig@baltimorecity.gov and Dereka.Bolden@baltimorecity.gov with the subject line 'MD Public Information Act Request'. ([source](https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request))
+5. **Requests to the Office of the Inspector General** - Baltimore City Office of the Inspector General (OIG). Email oig@baltimorecity.gov with the subject line 'MD Public Information Act Request'. ([source](https://www.baltimorecity.gov/inspector-general/contact/public-information-act-request))
 6. **Know the fee rules: the first 2 hours are free, and after that fees must be reasonable and tied to actual costs** - Agency records custodian (state law applies to all city agencies). Under GP § 4-206(c), the first 2 hours of search and preparation are free. After that, the fee must reasonably relate to the agency's actual costs. DPW provides records at no cost if the request takes under 2 hours. For longer requests it gives a written time estimate first. ([source](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false))
 7. **Ask for a fee waiver if you cannot pay or the request serves the public interest** - Requester, asking the custodian. Ask for a waiver. Under GP § 4-206(e), the custodian may waive fees if you are indigent and file an affidavit of indigency. It may also waive fees if, after considering your ability to pay and other factors, it finds a waiver is in the public interest. ([source](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-206&enactments=false))
 8. **Expect a response within the legal deadline** - Agency records custodian. State law requires the custodian to grant or deny the request promptly, and no later than 30 days after receiving it. Within 10 days of receipt, DPW sends either the records or a written notice that processing may take up to 30 days. ([source](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-203&enactments=false))
@@ -73,12 +73,12 @@ In Baltimore City, you request public records under the Maryland Public Informat
 
 ### Who to contact
 
-- Department of Public Works MPIA contact: dominic.lamartina@baltimorecity.gov; 200 Holliday Street, Suite 203, Baltimore, MD 21202; 410-396-3312
-- Board of Municipal and Zoning Appeals MPIA requests: bmza@baltimorecity.gov (subject: MPIA Request); BMZA, Attn: Carolyn Young, 417 E. Fayette Street, Room 922, Baltimore, MD 21202
+- Department of Public Works MPIA contact: 200 Holliday Street, Suite 203, Baltimore, MD 21202; 410-396-3312 (the request address is on the linked page)
+- Board of Municipal and Zoning Appeals MPIA requests: bmza@baltimorecity.gov (subject: MPIA Request); BMZA, 417 E. Fayette Street, Room 922, Baltimore, MD 21202
 - Department of Housing & Community Development MPIA requests: dhcd.mpia@baltimorecity.gov
-- Office of the Inspector General PIA requests: oig@baltimorecity.gov; Dereka.Bolden@baltimorecity.gov (subject: MD Public Information Act Request)
+- Office of the Inspector General PIA requests: oig@baltimorecity.gov (subject: MD Public Information Act Request)
 - Law Department (as listed on the OIG PIA page): Baltimore City Law Department, City Hall, Room 101, 100 N. Holliday Street, Baltimore, MD 21202; (410) 396-3297
-- Board of Finance MPIA contact: Jennell Rogers, 200 N. Holliday Street, Room 7, Baltimore, MD 21202; 410-396-4570; jrogers@baltimorecity.gov
+- Board of Finance MPIA contact: Board of Finance, 200 N. Holliday Street, Room 7, Baltimore, MD 21202; 410-396-4570
 - Maryland Public Access Ombudsman: Request Mediation link; 410-576-6560; 200 St. Paul Place, Baltimore, MD 21202
 
 ### Local law
@@ -88,6 +88,17 @@ In Baltimore City, you request public records under the Maryland Public Informat
 - [Md. Code, General Provisions § 4-362 (judicial review)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=ggp&section=4-362&enactments=false): A person denied inspection may file a complaint in the circuit court for the county where they live or have their principal place of business, or where the record is located.
 
 **Fees.** There is no application fee. Under GP § 4-206(c), the first 2 hours of search and preparation are free. After that, the agency may charge a reasonable fee tied to its actual costs. DPW provides records at no cost if a request takes under 2 hours. For longer requests it gives a written estimate first, and it bases the fee on staff and attorney salaries prorated for the time spent. Fees may be waived for indigent requesters who file an affidavit, or when a waiver is in the public interest. The agency pages reviewed did not list per-page copy charges.
+
+### Court decisions citing this law
+
+- [Lawrence v. State](https://www.courtlistener.com/opinion/5313588/lawrence-v-state/) (Court of Appeals of Maryland, 2021, 257 A.3d 588; 475 Md. 384)
+- [McDaniel v. Baranowski](https://www.courtlistener.com/opinion/2560029/mcdaniel-v-baranowski/) (Court of Appeals of Maryland, 2011, 19 A.3d 927; 419 Md. 560; 2011 Md. LEXIS 231)
+- [State v. Smith](https://www.courtlistener.com/opinion/2323249/state-v-smith/) (Court of Appeals of Maryland, 1986, 505 A.2d 511; 305 Md. 489; 1986 Md. LEXIS 204)
+- [Lema v. Bank of America](https://www.courtlistener.com/opinion/1989455/lema-v-bank-of-america/) (Court of Appeals of Maryland, 2003, 826 A.2d 504; 375 Md. 675)
+- [Glass v. Anne Arundel County](https://www.courtlistener.com/opinion/4394410/glass-v-anne-arundel-county/) (Court of Appeals of Maryland, 2017, 160 A.3d 658; 453 Md. 201; 2017 WL 2290104; 2017 Md. LEXIS 340)
+- [Glass v. Anne Arundel County](https://www.courtlistener.com/opinion/4394410/glass-v-anne-arundel-county/) (Court of Appeals of Maryland, 2017, 160 A.3d 658; 453 Md. 201; 2017 WL 2290104; 2017 Md. LEXIS 340)
+- [Balt. Police Dept. v. Open Justice Balt.](https://www.courtlistener.com/opinion/9423891/balt-police-dept-v-open-justice-balt/) (Court of Appeals of Maryland, 2023, 301 A.3d 201; 485 Md. 605)
+- [Action Committee for Transit, Inc. v. Town of Chevy Chase](https://www.courtlistener.com/opinion/4253538/action-committee-for-transit-inc-v-town-of-chevy-chase/) (Court of Special Appeals of Maryland, 2016, 145 A.3d 640; 229 Md. App. 540; 44 Media L. Rep. (BNA) 2249; 2016 Md. App. LEXIS 102)
 
 ### Caveats and gaps
 
@@ -175,6 +186,17 @@ To start a business in Baltimore City, first register your business with the Sta
 - [Baltimore City Code, Art. 32 (Zoning) § 15-507 (Home occupation)](https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/15-507): A home business must be run entirely inside the dwelling and stay secondary to the residential use. It may employ no more than 1 person who is not a resident family member, and client visits are limited to 3 a day and 10 a week. Other limits cover deliveries, vehicles, outside storage, and nuisances.
 
 **Fees.** Trader's license (Baltimore City schedule, Bus. Reg. § 17-1807(c)(3)): $20 to $2,125, based on the value of stock-in-trade. City business license application fees are paid online at pay.baltimorecity.gov, but the amounts were not listed on the DCPBL page reviewed. Use & Occupancy, Fire Prevention, and Health permit fees vary and were not verified. SDAT formation fees were not verified on the pages reviewed.
+
+### Court decisions citing this law
+
+- [Hartford Accident & Indemnity Co. v. Scarlett Harbor Associates Ltd. Partnership](https://www.courtlistener.com/opinion/7974191/hartford-accident-indemnity-co-v-scarlett-harbor-associates-ltd/) (Court of Special Appeals of Maryland, 1996, 109 Md. App. 217; 674 A.2d 106; 1996 Md. App. LEXIS 56)
+- [Hartford Accident & Indemnity Co. v. Scarlett Harbor Associates Ltd. Partnership](https://www.courtlistener.com/opinion/7974191/hartford-accident-indemnity-co-v-scarlett-harbor-associates-ltd/) (Court of Special Appeals of Maryland, 1996, 109 Md. App. 217; 674 A.2d 106; 1996 Md. App. LEXIS 56)
+- [Hecht v. Resolution Trust Corp.](https://www.courtlistener.com/opinion/1529634/hecht-v-resolution-trust-corp/) (Court of Appeals of Maryland, 1994, 635 A.2d 394; 333 Md. 324; 1994 Md. LEXIS 9)
+- [Blackstone v. Sharma](https://www.courtlistener.com/opinion/4523099/blackstone-v-sharma/) (Court of Appeals of Maryland, 2018, 191 A.3d 1188; 461 Md. 87)
+- [Mayor of Baltimore v. Chase](https://www.courtlistener.com/opinion/1922223/mayor-of-baltimore-v-chase/) (Court of Appeals of Maryland, 2000, 756 A.2d 987; 360 Md. 121; 2000 Md. LEXIS 457)
+- [Plank v. Cherneski](https://www.courtlistener.com/opinion/10020970/plank-v-cherneski/) (Court of Appeals of Maryland, 2020, 231 A.3d 436; 469 Md. 548)
+- [Klein v. Weiss](https://www.courtlistener.com/opinion/1501692/klein-v-weiss/) (Court of Appeals of Maryland, 1978, 395 A.2d 126; 284 Md. 36; 1978 Md. LEXIS 450)
+- [Renbaum v. Custom Holding, Inc.](https://www.courtlistener.com/opinion/2180448/renbaum-v-custom-holding-inc/) (Court of Appeals of Maryland, 2005, 871 A.2d 554; 386 Md. 28; 2005 Md. LEXIS 170)
 
 ### Caveats and gaps
 
