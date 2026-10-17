@@ -101,6 +101,19 @@ model = compile_facts(res.facts, model_id="va-albemarle-17-211-llm", jurisdictio
 bpmn, warnings = auto_layout(to_bpmn_xml(model))
 ```
 
+### Decision models
+
+A decision model (Ollama's `POST /v1/systemone`, `tev1:0.8b` by default) answers typed questions about a text with a probability over the options instead of writing an answer; `lexflow/extract/decide.py` is the client, with a chat fallback (`qwen3:1.7b` and a JSON schema) when no decision model is pulled, and a cache under `LEXFLOW_DATA/cache/decide/`. The measured case for and against it is in [design/decision-models.md](design/decision-models.md). Settings, all in `.env`:
+
+| variable | default | what it does |
+|---|---|---|
+| `LEXFLOW_DECIDE` | `0` | `1` turns the live uses on: the kind of a step in the local extraction strategies and of a researched local process step, from the model where its confidence is at least 0.8, else the verb rule as before. Off, the rules alone run. |
+| `LEXFLOW_DECIDE_URL` | `OLLAMA_URL` | the Ollama that serves decisions; `tev1` needs Ollama 0.40.4 or later, so this may be a second server. |
+| `LEXFLOW_DECIDE_MODEL` | `tev1:0.8b` | the decision model; when it is not pulled, the first `tev1` or `nimble` tag is used. |
+| `LEXFLOW_DECIDE_FALLBACK` | `LEXFLOW_MODEL_A` | the chat model that answers the same questions when no decision model is pulled. |
+
+A step whose kind the model chose carries `kind_by: "decision"` (else `"rule"`). Topics and audiences for place processes whose category `schema.CATEGORY_TOPIC` does not map are not decided live: `scripts/assign_topics.py` runs the model once over them and writes `fixtures/places/topics.json` with the confidence, and the graph uses an entry only when a person set `accepted: true` or the confidence is at least 0.9.
+
 ### Publishing to DokuWiki
 
 The wiki needs the settings in `docker/dokuwiki/local.php.snippet`:

@@ -21,7 +21,7 @@ from datetime import datetime, timedelta, timezone
 from .. import config
 from ..store import db
 
-EXCLUSIVE = {"build", "quickstart", "models", "ask"}      # these share Ollama: one at a time
+EXCLUSIVE = {"build", "quickstart", "models", "ask", "ontology"}      # these share Ollama: one at a time
 INDEXING = {"index", "ask"}                               # these build the same per-state search index files
 GROUPS = (EXCLUSIVE, INDEXING)                            # two jobs in one group never run at once
 # which runner started a job: the container's hostname unless set (process ids are only meaningful inside one

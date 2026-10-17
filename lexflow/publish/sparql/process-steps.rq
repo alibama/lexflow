@@ -1,0 +1,39 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: one process's steps in order, with kind, bearer, recipient, deadline, form and fee
+# params: process=lexflow:process:va.records
+# status: 15 Oct 2026: local 7 rows (with kind and deadline); live 5 rows (steps, order and bearer; kind, recipient, deadline, form and fee wait for pass 2)
+SELECT ?step ?stepLabel (COUNT(DISTINCT ?before) AS ?position) (SAMPLE(?kindLabel) AS ?kind) (SAMPLE(?bearerLabel) AS ?bearer)
+       (SAMPLE(?recipientLabel) AS ?recipient) (SAMPLE(?limit) AS ?deadline) (SAMPLE(?unitLabel) AS ?unit)
+       (SAMPLE(?formLabel) AS ?form) (SAMPLE(?fee) AS ?feeUSD) WHERE {
+  VALUES ?process { lx:{Q:lexflow:process:va.records} }
+  ?step lxt:{P:part of} ?process ;
+        lxt:{P:instance of} lx:{Q:legal process step} ;
+        rdfs:label ?stepLabel .
+  FILTER(lang(?stepLabel) = "en")
+  OPTIONAL { ?step lxt:{P:follows}+ ?before . ?before lxt:{P:part of} ?process }
+  OPTIONAL { ?step lxt:{P:step kind} ?k . ?k rdfs:label ?kindLabel . FILTER(lang(?kindLabel) = "en") }
+  OPTIONAL { ?step lxt:{P:bearer} ?b . ?b rdfs:label ?bearerLabel . FILTER(lang(?bearerLabel) = "en") }
+  OPTIONAL { ?step lxt:{P:recipient} ?r . ?r rdfs:label ?recipientLabel . FILTER(lang(?recipientLabel) = "en") }
+  OPTIONAL {
+    ?step lxp:{P:time limit} ?st . ?st lxps:{P:time limit} ?limit .
+    OPTIONAL { ?st lxpq:{P:time unit} ?u . ?u rdfs:label ?unitLabel . FILTER(lang(?unitLabel) = "en") }
+  }
+  OPTIONAL { ?step lxt:{P:form used} ?f . ?f rdfs:label ?formLabel . FILTER(lang(?formLabel) = "en") }
+  OPTIONAL { ?step lxt:{P:fee} ?fee }
+}
+GROUP BY ?step ?stepLabel
+ORDER BY ?position ?stepLabel

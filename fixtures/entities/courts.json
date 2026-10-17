@@ -1,0 +1,695 @@
+{
+ "note": "CourtListener courts lexflow searches (lexflow.municipal.caselaw.COURTS), named from CourtListener's public courts API (https://www.courtlistener.com/api/rest/v4/courts/<id>/); the graph labels each court item with the name and keeps the id as an alias. jurisdiction is lexflow's state code; type is CourtListener's jurisdiction code.",
+ "source": "https://www.courtlistener.com/api/rest/v4/courts/",
+ "checked": "2026-10-16",
+ "courts": {
+  "ala": {
+   "name": "Supreme Court of Alabama",
+   "jurisdiction": "al",
+   "url": "http://judicial.alabama.gov/supreme.cfm",
+   "citation": "Ala.",
+   "type": "S"
+  },
+  "alacivapp": {
+   "name": "Court of Civil Appeals of Alabama",
+   "jurisdiction": "al",
+   "url": "http://judicial.alabama.gov/civil.cfm",
+   "citation": "Ala. Civ. App.",
+   "type": "SA"
+  },
+  "alacrimapp": {
+   "name": "Court of Criminal Appeals of Alabama",
+   "jurisdiction": "al",
+   "url": "http://judicial.alabama.gov/criminal.cfm",
+   "citation": "Ala. Crim. App.",
+   "type": "SA"
+  },
+  "alaska": {
+   "name": "Alaska Supreme Court",
+   "jurisdiction": "ak",
+   "url": "http://courts.alaska.gov/sp.htm",
+   "citation": "Alaska",
+   "type": "S"
+  },
+  "alaskactapp": {
+   "name": "Court of Appeals of Alaska",
+   "jurisdiction": "ak",
+   "url": "http://courts.alaska.gov/appcts.htm",
+   "citation": "Alaska Ct. App.",
+   "type": "SA"
+  },
+  "ariz": {
+   "name": "Arizona Supreme Court",
+   "jurisdiction": "az",
+   "url": "http://www.azcourts.gov/azsupremecourt.aspx",
+   "citation": "Ariz.",
+   "type": "S"
+  },
+  "arizctapp": {
+   "name": "Court of Appeals of Arizona",
+   "jurisdiction": "az",
+   "url": "http://www.azcourts.gov/AZCourts/CourtofAppeals.aspx‎",
+   "citation": "Ariz. Ct. App.",
+   "type": "SA"
+  },
+  "ark": {
+   "name": "Supreme Court of Arkansas",
+   "jurisdiction": "ar",
+   "url": "https://courts.arkansas.gov/courts/supreme-court",
+   "citation": "Ark.",
+   "type": "S"
+  },
+  "arkctapp": {
+   "name": "Court of Appeals of Arkansas",
+   "jurisdiction": "ar",
+   "url": "https://courts.arkansas.gov/courts/court-of-appeals",
+   "citation": "Ark. Ct. App.",
+   "type": "SA"
+  },
+  "cal": {
+   "name": "California Supreme Court",
+   "jurisdiction": "ca",
+   "url": "http://www.courts.ca.gov/supremecourt.htm",
+   "citation": "Cal.",
+   "type": "S"
+  },
+  "calctapp": {
+   "name": "California Court of Appeal",
+   "jurisdiction": "ca",
+   "url": "http://www.courts.ca.gov/courtsofappeal.htm",
+   "citation": "Cal. Ct. App.",
+   "type": "SA"
+  },
+  "colo": {
+   "name": "Supreme Court of Colorado",
+   "jurisdiction": "co",
+   "url": "http://www.coloradosupremecourt.com/",
+   "citation": "Colo.",
+   "type": "S"
+  },
+  "coloctapp": {
+   "name": "Colorado Court of Appeals",
+   "jurisdiction": "co",
+   "url": "http://www.courts.state.co.us/Courts/Court_Of_Appeals/",
+   "citation": "Colo. Ct. App.",
+   "type": "SA"
+  },
+  "conn": {
+   "name": "Supreme Court of Connecticut",
+   "jurisdiction": "ct",
+   "url": "http://www.jud.state.ct.us/external/supapp/",
+   "citation": "Conn.",
+   "type": "S"
+  },
+  "connappct": {
+   "name": "Connecticut Appellate Court",
+   "jurisdiction": "ct",
+   "url": "http://www.jud.ct.gov/external/supapp/appellate.htm‎",
+   "citation": "Conn. App. Ct.",
+   "type": "SA"
+  },
+  "dc": {
+   "name": "District of Columbia Court of Appeals",
+   "jurisdiction": "dc",
+   "url": "http://www.dccourts.gov/internet/appellate/main.jsf",
+   "citation": "D.C.",
+   "type": "S"
+  },
+  "del": {
+   "name": "Supreme Court of Delaware",
+   "jurisdiction": "de",
+   "url": "http://courts.delaware.gov/supreme/",
+   "citation": "Del.",
+   "type": "S"
+  },
+  "delch": {
+   "name": "Court of Chancery of Delaware",
+   "jurisdiction": "de",
+   "url": "http://courts.delaware.gov/chancery/",
+   "citation": "Del. Ch.",
+   "type": "SA"
+  },
+  "delsuperct": {
+   "name": "Superior Court of Delaware",
+   "jurisdiction": "de",
+   "url": "http://courts.delaware.gov/Superior/",
+   "citation": "Del. Super. Ct.",
+   "type": "SA"
+  },
+  "fla": {
+   "name": "Supreme Court of Florida",
+   "jurisdiction": "fl",
+   "url": "http://www.floridasupremecourt.org/",
+   "citation": "Fla.",
+   "type": "S"
+  },
+  "fladistctapp": {
+   "name": "District Court of Appeal of Florida",
+   "jurisdiction": "fl",
+   "url": "http://www.flcourts.org/courts/dca/dca.shtml",
+   "citation": "Fla. Dist. Ct. App.",
+   "type": "SA"
+  },
+  "ga": {
+   "name": "Supreme Court of Georgia",
+   "jurisdiction": "ga",
+   "url": "http://www.gasupreme.us/",
+   "citation": "Ga.",
+   "type": "S"
+  },
+  "gactapp": {
+   "name": "Court of Appeals of Georgia",
+   "jurisdiction": "ga",
+   "url": "http://www.gaappeals.us/",
+   "citation": "Ga. Ct. App.",
+   "type": "SA"
+  },
+  "haw": {
+   "name": "Hawaii Supreme Court",
+   "jurisdiction": "hi",
+   "url": "http://www.courts.state.hi.us/",
+   "citation": "Haw.",
+   "type": "S"
+  },
+  "hawapp": {
+   "name": "Hawaii Intermediate Court of Appeals",
+   "jurisdiction": "hi",
+   "url": "http://www.courts.state.hi.us/",
+   "citation": "Haw. App.",
+   "type": "SA"
+  },
+  "idaho": {
+   "name": "Idaho Supreme Court",
+   "jurisdiction": "id",
+   "url": "http://www.isc.idaho.gov/",
+   "citation": "Idaho",
+   "type": "S"
+  },
+  "idahoctapp": {
+   "name": "Idaho Court of Appeals",
+   "jurisdiction": "id",
+   "url": "http://www.isc.idaho.gov/",
+   "citation": "Idaho Ct. App.",
+   "type": "SA"
+  },
+  "ill": {
+   "name": "Illinois Supreme Court",
+   "jurisdiction": "il",
+   "url": "http://www.state.il.us/court/",
+   "citation": "Ill.",
+   "type": "S"
+  },
+  "illappct": {
+   "name": "Appellate Court of Illinois",
+   "jurisdiction": "il",
+   "url": "http://www.state.il.us/court/appellatecourt/",
+   "citation": "Ill. App. Ct.",
+   "type": "SA"
+  },
+  "ind": {
+   "name": "Indiana Supreme Court",
+   "jurisdiction": "in",
+   "url": "http://www.in.gov/judiciary/supreme/",
+   "citation": "Ind.",
+   "type": "S"
+  },
+  "indctapp": {
+   "name": "Indiana Court of Appeals",
+   "jurisdiction": "in",
+   "url": "http://www.in.gov/judiciary/appeals/",
+   "citation": "Ind. Ct. App.",
+   "type": "SA"
+  },
+  "iowa": {
+   "name": "Supreme Court of Iowa",
+   "jurisdiction": "ia",
+   "url": "http://www.iowacourts.gov/supreme_court/",
+   "citation": "Iowa",
+   "type": "S"
+  },
+  "iowactapp": {
+   "name": "Court of Appeals of Iowa",
+   "jurisdiction": "ia",
+   "url": "http://www.iowacourts.gov/court_of_appeals/",
+   "citation": "Iowa Ct. App.",
+   "type": "SA"
+  },
+  "kan": {
+   "name": "Supreme Court of Kansas",
+   "jurisdiction": "ks",
+   "url": "http://www.kscourts.org/kansas-courts/supreme-court/",
+   "citation": "Kan.",
+   "type": "S"
+  },
+  "kanctapp": {
+   "name": "Court of Appeals of Kansas",
+   "jurisdiction": "ks",
+   "url": "http://www.kscourts.org/kansas-courts/court-of-appeals/",
+   "citation": "Kan. Ct. App.",
+   "type": "SA"
+  },
+  "ky": {
+   "name": "Kentucky Supreme Court",
+   "jurisdiction": "ky",
+   "url": "http://courts.ky.gov/courts/supreme/‎",
+   "citation": "Ky.",
+   "type": "S"
+  },
+  "kyctapp": {
+   "name": "Court of Appeals of Kentucky",
+   "jurisdiction": "ky",
+   "url": "http://courts.ky.gov/courts/coa/Pages/coa.aspx",
+   "citation": "Ky. Ct. App.",
+   "type": "SA"
+  },
+  "la": {
+   "name": "Supreme Court of Louisiana",
+   "jurisdiction": "la",
+   "url": "http://www.lasc.org/",
+   "citation": "La.",
+   "type": "S"
+  },
+  "lactapp": {
+   "name": "Louisiana Court of Appeal",
+   "jurisdiction": "la",
+   "url": "http://louisiana.gov/Government/Judicial_Branch/#courtsofappeal",
+   "citation": "La. Ct. App.",
+   "type": "SA"
+  },
+  "mass": {
+   "name": "Massachusetts Supreme Judicial Court",
+   "jurisdiction": "ma",
+   "url": "http://www.mass.gov/courts/sjc/",
+   "citation": "Mass.",
+   "type": "S"
+  },
+  "massappct": {
+   "name": "Massachusetts Appeals Court",
+   "jurisdiction": "ma",
+   "url": "http://www.mass.gov/courts/appealscourt/",
+   "citation": "Mass. App. Ct.",
+   "type": "SA"
+  },
+  "md": {
+   "name": "Court of Appeals of Maryland",
+   "jurisdiction": "md",
+   "url": "http://www.courts.state.md.us/coappeals/",
+   "citation": "Md.",
+   "type": "S"
+  },
+  "mdctspecapp": {
+   "name": "Court of Special Appeals of Maryland",
+   "jurisdiction": "md",
+   "url": "http://www.courts.state.md.us/cosappeals/",
+   "citation": "Md. Ct. Spec. App.",
+   "type": "SA"
+  },
+  "me": {
+   "name": "Supreme Judicial Court of Maine",
+   "jurisdiction": "me",
+   "url": "http://www.courts.state.me.us/maine_courts/supreme/",
+   "citation": "Me.",
+   "type": "S"
+  },
+  "mich": {
+   "name": "Michigan Supreme Court",
+   "jurisdiction": "mi",
+   "url": "http://courts.mi.gov/",
+   "citation": "Mich.",
+   "type": "S"
+  },
+  "michctapp": {
+   "name": "Michigan Court of Appeals",
+   "jurisdiction": "mi",
+   "url": "http://courts.mi.gov/courts/coa/pages/default.aspx",
+   "citation": "Mich. Ct. App.",
+   "type": "SA"
+  },
+  "minn": {
+   "name": "Supreme Court of Minnesota",
+   "jurisdiction": "mn",
+   "url": "http://www.mncourts.gov/?page=550",
+   "citation": "Minn.",
+   "type": "S"
+  },
+  "minnctapp": {
+   "name": "Court of Appeals of Minnesota",
+   "jurisdiction": "mn",
+   "url": "http://www.mncourts.gov/?page=551",
+   "citation": "Minn. Ct. App.",
+   "type": "SA"
+  },
+  "miss": {
+   "name": "Mississippi Supreme Court",
+   "jurisdiction": "ms",
+   "url": "http://courts.ms.gov/appellate_courts/sc/sc.html",
+   "citation": "Miss.",
+   "type": "S"
+  },
+  "missctapp": {
+   "name": "Court of Appeals of Mississippi",
+   "jurisdiction": "ms",
+   "url": "http://courts.ms.gov/appellate_courts/coa/coa.html",
+   "citation": "Miss. Ct. App.",
+   "type": "SA"
+  },
+  "mo": {
+   "name": "Supreme Court of Missouri",
+   "jurisdiction": "mo",
+   "url": "http://www.courts.mo.gov/page.jsp?id=27",
+   "citation": "Mo.",
+   "type": "S"
+  },
+  "moctapp": {
+   "name": "Missouri Court of Appeals",
+   "jurisdiction": "mo",
+   "url": "http://www.courts.mo.gov/page.jsp?id=261",
+   "citation": "Mo. Ct. App.",
+   "type": "SA"
+  },
+  "mont": {
+   "name": "Montana Supreme Court",
+   "jurisdiction": "mt",
+   "url": "http://courts.mt.gov/supreme/default.mcpx",
+   "citation": "Mont.",
+   "type": "S"
+  },
+  "nc": {
+   "name": "Supreme Court of North Carolina",
+   "jurisdiction": "nc",
+   "url": "http://www.nccourts.org/courts/appellate/supreme/",
+   "citation": "N.C.",
+   "type": "S"
+  },
+  "ncctapp": {
+   "name": "Court of Appeals of North Carolina",
+   "jurisdiction": "nc",
+   "url": "http://www.nccourts.org/courts/appellate/appeal/",
+   "citation": "N.C. Ct. App.",
+   "type": "SA"
+  },
+  "nd": {
+   "name": "North Dakota Supreme Court",
+   "jurisdiction": "nd",
+   "url": "http://www.ndcourts.gov/default.htm",
+   "citation": "N.D.",
+   "type": "S"
+  },
+  "ndctapp": {
+   "name": "North Dakota Court of Appeals",
+   "jurisdiction": "nd",
+   "url": "http://www.ndcourts.gov/default.htm",
+   "citation": "N.D. Ct. App.",
+   "type": "SA"
+  },
+  "neb": {
+   "name": "Nebraska Supreme Court",
+   "jurisdiction": "ne",
+   "url": "http://supremecourt.ne.gov/",
+   "citation": "Neb.",
+   "type": "S"
+  },
+  "nebctapp": {
+   "name": "Nebraska Court of Appeals",
+   "jurisdiction": "ne",
+   "url": "http://supremecourt.ne.gov/",
+   "citation": "Neb. Ct. App.",
+   "type": "SA"
+  },
+  "nev": {
+   "name": "Nevada Supreme Court",
+   "jurisdiction": "nv",
+   "url": "http://www.nevadajudiciary.us/index.php/supremecourt",
+   "citation": "Nev.",
+   "type": "S"
+  },
+  "nevapp": {
+   "name": "Court of Appeals of Nevada",
+   "jurisdiction": "nv",
+   "url": "",
+   "citation": "Nev.",
+   "type": "SA"
+  },
+  "nh": {
+   "name": "Supreme Court of New Hampshire",
+   "jurisdiction": "nh",
+   "url": "http://www.courts.state.nh.us/supreme/",
+   "citation": "N.H.",
+   "type": "S"
+  },
+  "nj": {
+   "name": "Supreme Court of New Jersey",
+   "jurisdiction": "nj",
+   "url": "http://www.judiciary.state.nj.us/supreme/",
+   "citation": "N.J.",
+   "type": "S"
+  },
+  "njsuperctappdiv": {
+   "name": "New Jersey Superior Court Appellate Division",
+   "jurisdiction": "nj",
+   "url": "http://www.judiciary.state.nj.us/appdiv/index.htm",
+   "short_name": "New Jersey Superior Court App Division",
+   "citation": "N.J. Super. Ct. App. Div.",
+   "type": "SA"
+  },
+  "nm": {
+   "name": "New Mexico Supreme Court",
+   "jurisdiction": "nm",
+   "url": "https://nmsupremecourt.nmcourts.gov/index.php",
+   "citation": "N.M.",
+   "type": "S"
+  },
+  "nmctapp": {
+   "name": "New Mexico Court of Appeals",
+   "jurisdiction": "nm",
+   "url": "https://coa.nmcourts.gov/index.php",
+   "citation": "N.M. Ct. App.",
+   "type": "SA"
+  },
+  "ny": {
+   "name": "New York Court of Appeals",
+   "jurisdiction": "ny",
+   "url": "http://www.nycourts.gov/ctapps/",
+   "citation": "NY",
+   "type": "S"
+  },
+  "nyappdiv": {
+   "name": "Appellate Division of the Supreme Court of the State of New York",
+   "jurisdiction": "ny",
+   "url": "http://www.courts.state.ny.us/courts/appellatedivisions.shtml‎",
+   "short_name": "Appellate Division of the Supreme Court of New York",
+   "citation": "N.Y. App. Div.",
+   "type": "SA"
+  },
+  "ohio": {
+   "name": "Ohio Supreme Court",
+   "jurisdiction": "oh",
+   "url": "http://www.supremecourt.ohio.gov/",
+   "citation": "Ohio",
+   "type": "S"
+  },
+  "ohioctapp": {
+   "name": "Ohio Court of Appeals",
+   "jurisdiction": "oh",
+   "url": "http://www.supremecourt.ohio.gov/JudSystem/districtCourts/",
+   "citation": "Ohio Ct. App.",
+   "type": "SA"
+  },
+  "okla": {
+   "name": "Supreme Court of Oklahoma",
+   "jurisdiction": "ok",
+   "url": "http://www.oscn.net/oscn/schome/start.htm",
+   "citation": "Okla.",
+   "type": "S"
+  },
+  "oklacivapp": {
+   "name": "Court of Civil Appeals of Oklahoma",
+   "jurisdiction": "ok",
+   "url": "http://www.oscn.net/oscn/schome/civilappeals.htm",
+   "citation": "Okla. Civ. App.",
+   "type": "SA"
+  },
+  "oklacrimapp": {
+   "name": "Court of Criminal Appeals of Oklahoma",
+   "jurisdiction": "ok",
+   "url": "http://www.okcca.net/",
+   "citation": "Okla. Crim. App.",
+   "type": "SA"
+  },
+  "or": {
+   "name": "Oregon Supreme Court",
+   "jurisdiction": "or",
+   "url": "http://www.publications.ojd.state.or.us/Pages/OpinionsSC.aspx",
+   "citation": "Or.",
+   "type": "S"
+  },
+  "orctapp": {
+   "name": "Court of Appeals of Oregon",
+   "jurisdiction": "or",
+   "url": "http://courts.oregon.gov/COA/",
+   "citation": "Or. Ct. App.",
+   "type": "SA"
+  },
+  "pa": {
+   "name": "Supreme Court of Pennsylvania",
+   "jurisdiction": "pa",
+   "url": "http://www.pacourts.us/courts/supreme-court/",
+   "citation": "Pa.",
+   "type": "S"
+  },
+  "pacommwct": {
+   "name": "Commonwealth Court of Pennsylvania",
+   "jurisdiction": "pa",
+   "url": "http://www.pacourts.us/courts/commonwealth-court/",
+   "citation": "Pa. Commw. Ct.",
+   "type": "SA"
+  },
+  "pasuperct": {
+   "name": "Superior Court of Pennsylvania",
+   "jurisdiction": "pa",
+   "url": "http://www.pacourts.us/courts/superior-court/",
+   "citation": "Pa. Super. Ct.",
+   "type": "SA"
+  },
+  "ri": {
+   "name": "Supreme Court of Rhode Island",
+   "jurisdiction": "ri",
+   "url": "http://www.courts.ri.gov/courts/supremecourt/default.aspx",
+   "citation": "R.I.",
+   "type": "S"
+  },
+  "sc": {
+   "name": "Supreme Court of South Carolina",
+   "jurisdiction": "sc",
+   "url": "http://www.judicial.state.sc.us/supreme/",
+   "citation": "S.C.",
+   "type": "S"
+  },
+  "scctapp": {
+   "name": "Court of Appeals of South Carolina",
+   "jurisdiction": "sc",
+   "url": "http://www.judicial.state.sc.us/appeals/",
+   "citation": "S.C. Ct. App.",
+   "type": "SA"
+  },
+  "sd": {
+   "name": "South Dakota Supreme Court",
+   "jurisdiction": "sd",
+   "url": "http://www.sdjudicial.com/",
+   "citation": "S.D.",
+   "type": "S"
+  },
+  "tenn": {
+   "name": "Tennessee Supreme Court",
+   "jurisdiction": "tn",
+   "url": "https://www.tncourts.gov/courts/supreme-court",
+   "citation": "Tenn.",
+   "type": "S"
+  },
+  "tennctapp": {
+   "name": "Court of Appeals of Tennessee",
+   "jurisdiction": "tn",
+   "url": "http://www.tncourts.gov/courts/court-appeals",
+   "citation": "Tenn. Ct. App.",
+   "type": "SA"
+  },
+  "tex": {
+   "name": "Texas Supreme Court",
+   "jurisdiction": "tx",
+   "url": "http://www.supreme.courts.state.tx.us/",
+   "citation": "Tex.",
+   "type": "S"
+  },
+  "texapp": {
+   "name": "Court of Appeals of Texas",
+   "jurisdiction": "tx",
+   "url": "http://www.courts.state.tx.us/courts/coa.asp",
+   "citation": "Tex. App.",
+   "type": "SA"
+  },
+  "texcrimapp": {
+   "name": "Court of Criminal Appeals of Texas",
+   "jurisdiction": "tx",
+   "url": "http://www.cca.courts.state.tx.us/",
+   "citation": "Tex. Crim. App.",
+   "type": "S"
+  },
+  "utah": {
+   "name": "Utah Supreme Court",
+   "jurisdiction": "ut",
+   "url": "http://www.utcourts.gov/opinions/supopin/index.htm",
+   "citation": "Utah",
+   "type": "S"
+  },
+  "utahctapp": {
+   "name": "Court of Appeals of Utah",
+   "jurisdiction": "ut",
+   "url": "http://www.utcourts.gov/courts/appell/",
+   "citation": "Utah Ct. App.",
+   "type": "SA"
+  },
+  "va": {
+   "name": "Supreme Court of Virginia",
+   "jurisdiction": "va",
+   "url": "http://www.courts.state.va.us/courts/scv/",
+   "citation": "Va.",
+   "type": "S"
+  },
+  "vactapp": {
+   "name": "Court of Appeals of Virginia",
+   "jurisdiction": "va",
+   "url": "http://www.courts.state.va.us/courts/cav/",
+   "citation": "Va. Ct. App.",
+   "type": "SA"
+  },
+  "vt": {
+   "name": "Supreme Court of Vermont",
+   "jurisdiction": "vt",
+   "url": "http://www.vermontjudiciary.org/gtc/supreme/default.aspx",
+   "citation": "Vt.",
+   "type": "S"
+  },
+  "wash": {
+   "name": "Washington Supreme Court",
+   "jurisdiction": "wa",
+   "url": "https://www.courts.wa.gov/appellate_trial_courts/SupremeCourt/",
+   "citation": "Wash.",
+   "type": "S"
+  },
+  "washctapp": {
+   "name": "Court of Appeals of Washington",
+   "jurisdiction": "wa",
+   "url": "https://www.courts.wa.gov/appellate_trial_courts/",
+   "citation": "Wash. Ct. App.",
+   "type": "SA"
+  },
+  "wis": {
+   "name": "Wisconsin Supreme Court",
+   "jurisdiction": "wi",
+   "url": "http://www.wicourts.gov/courts/supreme/index.htm",
+   "citation": "Wis.",
+   "type": "S"
+  },
+  "wisctapp": {
+   "name": "Court of Appeals of Wisconsin",
+   "jurisdiction": "wi",
+   "url": "http://www.wicourts.gov/courts/appeals/",
+   "citation": "Wis. Ct. App.",
+   "type": "SA"
+  },
+  "wva": {
+   "name": "West Virginia Supreme Court",
+   "jurisdiction": "wv",
+   "url": "http://www.courtswv.gov/supreme-court/",
+   "citation": "W. Va.",
+   "type": "S"
+  },
+  "wyo": {
+   "name": "Wyoming Supreme Court",
+   "jurisdiction": "wy",
+   "url": "http://www.courts.state.wy.us/",
+   "citation": "Wyo.",
+   "type": "S"
+  }
+ }
+}

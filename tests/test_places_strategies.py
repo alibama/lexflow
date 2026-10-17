@@ -54,6 +54,40 @@ def test_rules_strategy_quotes_are_exact(va_statutes):
     assert any(s.deadline and s.deadline.amount == 5 for s in r.facts.steps)
 
 
+def test_step_kinds_from_a_stubbed_decision_model(va_statutes):
+    """LEXFLOW_DECIDE off: the verb rule, kind_by 'rule'.  With a decider: the model's kind only where it is sure
+    (confidence >= 0.8), kind_by 'decision' there and 'rule' elsewhere; the facts schema sent to Ollama never asks
+    for kind_by."""
+    from lexflow.extract import decide as D
+    from lexflow.extract.schema import ollama_schema
+    t = statutes.section_texts("va", ["2.2-3704"])[0]
+    off = ST.run("rules", t.text, section=t.section, title=t.title, code=t.code, jurisdiction="Virginia", question="records")
+    assert off.facts and all(s.kind_by == "rule" for s in off.facts.steps)
+    assert not any("decision model" in n for n in off.notes)
+    seen = []
+
+    def answer(state, questions):
+        seen.append(D.normalise_state(state))
+        assert set(questions) == {"kind"} and questions["kind"]["criteria"] == D.STEP_KINDS
+        sure = "within five working days" in seen[-1].lower()
+        return {"model": "stub", "answers": {"kind": D.parse_answer(
+            "choice", {"choice": "notice", "probabilities": {"notice": 0.9}, "confidence": 0.95 if sure else 0.4})},
+            "usage": {}, "ms": 1.0}
+    stub = D.Decider(cache=False, backend_info={"kind": "decision", "model": "stub", "models": []}, answer=answer)
+    on = ST.run("rules", t.text, section=t.section, title=t.title, code=t.code, jurisdiction="Virginia",
+                question="records", decider=stub)
+    assert on.facts and len(seen) == len(on.facts.steps) and all(s.startswith("Step: ") and "\nLaw: " in s for s in seen)
+    decided = [s for s in on.facts.steps if s.kind_by == "decision"]
+    assert decided and all(s.kind == "notice" for s in decided)
+    assert all("within five working days" in s.source.quote.lower() for s in decided)
+    ruled = [s for s in on.facts.steps if s.kind_by == "rule"]
+    assert ruled and [s.kind for s in ruled] == [o.kind for o in off.facts.steps if o.id in {r.id for r in ruled}]
+    assert any(n.startswith(f"{len(decided)} of {len(on.facts.steps)} step kinds from the decision model") for n in on.notes)
+    assert "kind_by" not in json.dumps(ollama_schema()) and "kind_by" in on.facts.model_dump()["steps"][0]
+    # the round trip keeps it
+    assert LegalProcessFacts.model_validate_json(on.facts.model_dump_json()).steps[0].kind_by in ("rule", "decision")
+
+
 def test_multi_section_text_cites_each_section(va_statutes):
     texts = statutes.section_texts("va", ["13.1-1010", "13.1-1011"])
     text = statutes.combined_text(texts)

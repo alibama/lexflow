@@ -1,0 +1,1946 @@
+{
+ "generated": "2026-10-15T18:58:24Z",
+ "scope": {
+  "states": null,
+  "places": null,
+  "drafts": false,
+  "sample": 0.1,
+  "seed": 20261015,
+  "cap": 150
+ },
+ "items": 4502,
+ "new": 3432,
+ "checked": {
+  "new": 3432,
+  "changed": 107
+ },
+ "findings_by_code": {
+  "label-bare-key": 78,
+  "direct-line": 2,
+  "person-name": 1
+ },
+ "held_count": 82,
+ "held_by_kind": {
+  "cluster": 1,
+  "agency": 78,
+  "rung": 2,
+  "step": 1
+ },
+ "held": [
+  {
+   "key": "courtlistener:cluster:10373782",
+   "kind": "cluster",
+   "label": "Melissa Garlington v. Two Rivers Farm, LLC",
+   "description": "Court of Chancery of Delaware, 2025-04-07",
+   "why": "new",
+   "reasons": [
+    "ollama: person"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ak:court_alaskactapp",
+   "kind": "agency",
+   "label": "Alaska court alaskactapp",
+   "description": "Court in Alaska (CourtListener court alaskactapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Alaska court alaskactapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ar:court_ark",
+   "kind": "agency",
+   "label": "Arkansas court ark",
+   "description": "Court in Arkansas (CourtListener court ark)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Arkansas court ark"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ar:court_arkctapp",
+   "kind": "agency",
+   "label": "Arkansas court arkctapp",
+   "description": "Court in Arkansas (CourtListener court arkctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Arkansas court arkctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:co:court_colo",
+   "kind": "agency",
+   "label": "Colorado court colo",
+   "description": "Court in Colorado (CourtListener court colo)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Colorado court colo"
+   ]
+  },
+  {
+   "key": "lexflow:agency:co:court_coloctapp",
+   "kind": "agency",
+   "label": "Colorado court coloctapp",
+   "description": "Court in Colorado (CourtListener court coloctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Colorado court coloctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ga:court_ga",
+   "kind": "agency",
+   "label": "Georgia court ga",
+   "description": "Court in Georgia (CourtListener court ga)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Georgia court ga"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ga:court_gactapp",
+   "kind": "agency",
+   "label": "Georgia court gactapp",
+   "description": "Court in Georgia (CourtListener court gactapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Georgia court gactapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:hi:court_haw",
+   "kind": "agency",
+   "label": "Hawaii court haw",
+   "description": "Court in Hawaii (CourtListener court haw)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Hawaii court haw"
+   ]
+  },
+  {
+   "key": "lexflow:agency:hi:court_hawapp",
+   "kind": "agency",
+   "label": "Hawaii court hawapp",
+   "description": "Court in Hawaii (CourtListener court hawapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Hawaii court hawapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ia:court_iowa",
+   "kind": "agency",
+   "label": "Iowa court iowa",
+   "description": "Court in Iowa (CourtListener court iowa)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Iowa court iowa"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ia:court_iowactapp",
+   "kind": "agency",
+   "label": "Iowa court iowactapp",
+   "description": "Court in Iowa (CourtListener court iowactapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Iowa court iowactapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:id:court_idaho",
+   "kind": "agency",
+   "label": "Idaho court idaho",
+   "description": "Court in Idaho (CourtListener court idaho)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Idaho court idaho"
+   ]
+  },
+  {
+   "key": "lexflow:agency:id:court_idahoctapp",
+   "kind": "agency",
+   "label": "Idaho court idahoctapp",
+   "description": "Court in Idaho (CourtListener court idahoctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Idaho court idahoctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:il:court_ill",
+   "kind": "agency",
+   "label": "Illinois court ill",
+   "description": "Court in Illinois (CourtListener court ill)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Illinois court ill"
+   ]
+  },
+  {
+   "key": "lexflow:agency:il:court_illappct",
+   "kind": "agency",
+   "label": "Illinois court illappct",
+   "description": "Court in Illinois (CourtListener court illappct)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Illinois court illappct"
+   ]
+  },
+  {
+   "key": "lexflow:agency:in:court_ind",
+   "kind": "agency",
+   "label": "Indiana court ind",
+   "description": "Court in Indiana (CourtListener court ind)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Indiana court ind"
+   ]
+  },
+  {
+   "key": "lexflow:agency:in:court_indctapp",
+   "kind": "agency",
+   "label": "Indiana court indctapp",
+   "description": "Court in Indiana (CourtListener court indctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Indiana court indctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ks:court_kan",
+   "kind": "agency",
+   "label": "Kansas court kan",
+   "description": "Court in Kansas (CourtListener court kan)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Kansas court kan"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ks:court_kanctapp",
+   "kind": "agency",
+   "label": "Kansas court kanctapp",
+   "description": "Court in Kansas (CourtListener court kanctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Kansas court kanctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ky:court_ky",
+   "kind": "agency",
+   "label": "Kentucky court ky",
+   "description": "Court in Kentucky (CourtListener court ky)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Kentucky court ky"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ky:court_kyctapp",
+   "kind": "agency",
+   "label": "Kentucky court kyctapp",
+   "description": "Court in Kentucky (CourtListener court kyctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Kentucky court kyctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:la:court_la",
+   "kind": "agency",
+   "label": "Louisiana court la",
+   "description": "Court in Louisiana (CourtListener court la)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Louisiana court la"
+   ]
+  },
+  {
+   "key": "lexflow:agency:la:court_lactapp",
+   "kind": "agency",
+   "label": "Louisiana court lactapp",
+   "description": "Court in Louisiana (CourtListener court lactapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Louisiana court lactapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ma:court_mass",
+   "kind": "agency",
+   "label": "Massachusetts court mass",
+   "description": "Court in Massachusetts (CourtListener court mass)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Massachusetts court mass"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ma:court_massappct",
+   "kind": "agency",
+   "label": "Massachusetts court massappct",
+   "description": "Court in Massachusetts (CourtListener court massappct)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Massachusetts court massappct"
+   ]
+  },
+  {
+   "key": "lexflow:agency:me:court_me",
+   "kind": "agency",
+   "label": "Maine court me",
+   "description": "Court in Maine (CourtListener court me)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Maine court me"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mi:court_mich",
+   "kind": "agency",
+   "label": "Michigan court mich",
+   "description": "Court in Michigan (CourtListener court mich)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Michigan court mich"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mi:court_michctapp",
+   "kind": "agency",
+   "label": "Michigan court michctapp",
+   "description": "Court in Michigan (CourtListener court michctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Michigan court michctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mn:court_minn",
+   "kind": "agency",
+   "label": "Minnesota court minn",
+   "description": "Court in Minnesota (CourtListener court minn)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Minnesota court minn"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mn:court_minnctapp",
+   "kind": "agency",
+   "label": "Minnesota court minnctapp",
+   "description": "Court in Minnesota (CourtListener court minnctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Minnesota court minnctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mo:court_mo",
+   "kind": "agency",
+   "label": "Missouri court mo",
+   "description": "Court in Missouri (CourtListener court mo)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Missouri court mo"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mo:court_moctapp",
+   "kind": "agency",
+   "label": "Missouri court moctapp",
+   "description": "Court in Missouri (CourtListener court moctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Missouri court moctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ms:court_miss",
+   "kind": "agency",
+   "label": "Mississippi court miss",
+   "description": "Court in Mississippi (CourtListener court miss)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Mississippi court miss"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ms:court_missctapp",
+   "kind": "agency",
+   "label": "Mississippi court missctapp",
+   "description": "Court in Mississippi (CourtListener court missctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Mississippi court missctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:mt:court_mont",
+   "kind": "agency",
+   "label": "Montana court mont",
+   "description": "Court in Montana (CourtListener court mont)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Montana court mont"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nc:court_nc",
+   "kind": "agency",
+   "label": "North Carolina court nc",
+   "description": "Court in North Carolina (CourtListener court nc)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): North Carolina court nc"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nc:court_ncctapp",
+   "kind": "agency",
+   "label": "North Carolina court ncctapp",
+   "description": "Court in North Carolina (CourtListener court ncctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): North Carolina court ncctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nd:court_nd",
+   "kind": "agency",
+   "label": "North Dakota court nd",
+   "description": "Court in North Dakota (CourtListener court nd)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): North Dakota court nd"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nd:court_ndctapp",
+   "kind": "agency",
+   "label": "North Dakota court ndctapp",
+   "description": "Court in North Dakota (CourtListener court ndctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): North Dakota court ndctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ne:court_neb",
+   "kind": "agency",
+   "label": "Nebraska court neb",
+   "description": "Court in Nebraska (CourtListener court neb)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Nebraska court neb"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ne:court_nebctapp",
+   "kind": "agency",
+   "label": "Nebraska court nebctapp",
+   "description": "Court in Nebraska (CourtListener court nebctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Nebraska court nebctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nh:court_nh",
+   "kind": "agency",
+   "label": "New Hampshire court nh",
+   "description": "Court in New Hampshire (CourtListener court nh)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New Hampshire court nh"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nj:court_nj",
+   "kind": "agency",
+   "label": "New Jersey court nj",
+   "description": "Court in New Jersey (CourtListener court nj)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New Jersey court nj"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nj:court_njsuperctappdiv",
+   "kind": "agency",
+   "label": "New Jersey court njsuperctappdiv",
+   "description": "Court in New Jersey (CourtListener court njsuperctappdiv)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New Jersey court njsuperctappdiv"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nm:court_nm",
+   "kind": "agency",
+   "label": "New Mexico court nm",
+   "description": "Court in New Mexico (CourtListener court nm)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New Mexico court nm"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nm:court_nmctapp",
+   "kind": "agency",
+   "label": "New Mexico court nmctapp",
+   "description": "Court in New Mexico (CourtListener court nmctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New Mexico court nmctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nv:court_nev",
+   "kind": "agency",
+   "label": "Nevada court nev",
+   "description": "Court in Nevada (CourtListener court nev)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Nevada court nev"
+   ]
+  },
+  {
+   "key": "lexflow:agency:nv:court_nevapp",
+   "kind": "agency",
+   "label": "Nevada court nevapp",
+   "description": "Court in Nevada (CourtListener court nevapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Nevada court nevapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ny:court_ny",
+   "kind": "agency",
+   "label": "New York court ny",
+   "description": "Court in New York (CourtListener court ny)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New York court ny"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ny:court_nyappdiv",
+   "kind": "agency",
+   "label": "New York court nyappdiv",
+   "description": "Court in New York (CourtListener court nyappdiv)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): New York court nyappdiv"
+   ]
+  },
+  {
+   "key": "lexflow:agency:oh:court_ohio",
+   "kind": "agency",
+   "label": "Ohio court ohio",
+   "description": "Court in Ohio (CourtListener court ohio)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Ohio court ohio"
+   ]
+  },
+  {
+   "key": "lexflow:agency:oh:court_ohioctapp",
+   "kind": "agency",
+   "label": "Ohio court ohioctapp",
+   "description": "Court in Ohio (CourtListener court ohioctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Ohio court ohioctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ok:court_okla",
+   "kind": "agency",
+   "label": "Oklahoma court okla",
+   "description": "Court in Oklahoma (CourtListener court okla)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Oklahoma court okla"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ok:court_oklacivapp",
+   "kind": "agency",
+   "label": "Oklahoma court oklacivapp",
+   "description": "Court in Oklahoma (CourtListener court oklacivapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Oklahoma court oklacivapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ok:court_oklacrimapp",
+   "kind": "agency",
+   "label": "Oklahoma court oklacrimapp",
+   "description": "Court in Oklahoma (CourtListener court oklacrimapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Oklahoma court oklacrimapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:or:court_or",
+   "kind": "agency",
+   "label": "Oregon court or",
+   "description": "Court in Oregon (CourtListener court or)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Oregon court or"
+   ]
+  },
+  {
+   "key": "lexflow:agency:or:court_orctapp",
+   "kind": "agency",
+   "label": "Oregon court orctapp",
+   "description": "Court in Oregon (CourtListener court orctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Oregon court orctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:pa:court_pa",
+   "kind": "agency",
+   "label": "Pennsylvania court pa",
+   "description": "Court in Pennsylvania (CourtListener court pa)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Pennsylvania court pa"
+   ]
+  },
+  {
+   "key": "lexflow:agency:pa:court_pacommwct",
+   "kind": "agency",
+   "label": "Pennsylvania court pacommwct",
+   "description": "Court in Pennsylvania (CourtListener court pacommwct)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Pennsylvania court pacommwct"
+   ]
+  },
+  {
+   "key": "lexflow:agency:pa:court_pasuperct",
+   "kind": "agency",
+   "label": "Pennsylvania court pasuperct",
+   "description": "Court in Pennsylvania (CourtListener court pasuperct)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Pennsylvania court pasuperct"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ri:court_ri",
+   "kind": "agency",
+   "label": "Rhode Island court ri",
+   "description": "Court in Rhode Island (CourtListener court ri)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Rhode Island court ri"
+   ]
+  },
+  {
+   "key": "lexflow:agency:sc:court_sc",
+   "kind": "agency",
+   "label": "South Carolina court sc",
+   "description": "Court in South Carolina (CourtListener court sc)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): South Carolina court sc"
+   ]
+  },
+  {
+   "key": "lexflow:agency:sc:court_scctapp",
+   "kind": "agency",
+   "label": "South Carolina court scctapp",
+   "description": "Court in South Carolina (CourtListener court scctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): South Carolina court scctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:sd:court_sd",
+   "kind": "agency",
+   "label": "South Dakota court sd",
+   "description": "Court in South Dakota (CourtListener court sd)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): South Dakota court sd"
+   ]
+  },
+  {
+   "key": "lexflow:agency:tn:court_tenn",
+   "kind": "agency",
+   "label": "Tennessee court tenn",
+   "description": "Court in Tennessee (CourtListener court tenn)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Tennessee court tenn"
+   ]
+  },
+  {
+   "key": "lexflow:agency:tn:court_tennctapp",
+   "kind": "agency",
+   "label": "Tennessee court tennctapp",
+   "description": "Court in Tennessee (CourtListener court tennctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Tennessee court tennctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:tx:court_tex",
+   "kind": "agency",
+   "label": "Texas court tex",
+   "description": "Court in Texas (CourtListener court tex)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Texas court tex"
+   ]
+  },
+  {
+   "key": "lexflow:agency:tx:court_texapp",
+   "kind": "agency",
+   "label": "Texas court texapp",
+   "description": "Court in Texas (CourtListener court texapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Texas court texapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:tx:court_texcrimapp",
+   "kind": "agency",
+   "label": "Texas court texcrimapp",
+   "description": "Court in Texas (CourtListener court texcrimapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Texas court texcrimapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ut:court_utah",
+   "kind": "agency",
+   "label": "Utah court utah",
+   "description": "Court in Utah (CourtListener court utah)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Utah court utah"
+   ]
+  },
+  {
+   "key": "lexflow:agency:ut:court_utahctapp",
+   "kind": "agency",
+   "label": "Utah court utahctapp",
+   "description": "Court in Utah (CourtListener court utahctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Utah court utahctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:vt:court_vt",
+   "kind": "agency",
+   "label": "Vermont court vt",
+   "description": "Court in Vermont (CourtListener court vt)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Vermont court vt"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wa:court_wash",
+   "kind": "agency",
+   "label": "Washington court wash",
+   "description": "Court in Washington (CourtListener court wash)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Washington court wash"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wa:court_washctapp",
+   "kind": "agency",
+   "label": "Washington court washctapp",
+   "description": "Court in Washington (CourtListener court washctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Washington court washctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wi:court_wis",
+   "kind": "agency",
+   "label": "Wisconsin court wis",
+   "description": "Court in Wisconsin (CourtListener court wis)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Wisconsin court wis"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wi:court_wisctapp",
+   "kind": "agency",
+   "label": "Wisconsin court wisctapp",
+   "description": "Court in Wisconsin (CourtListener court wisctapp)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Wisconsin court wisctapp"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wv:court_wva",
+   "kind": "agency",
+   "label": "West Virginia court wva",
+   "description": "Court in West Virginia (CourtListener court wva)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): West Virginia court wva"
+   ]
+  },
+  {
+   "key": "lexflow:agency:wy:court_wyo",
+   "kind": "agency",
+   "label": "Wyoming court wyo",
+   "description": "Court in Wyoming (CourtListener court wyo)",
+   "why": "new",
+   "reasons": [
+    "label-bare-key (label): Wyoming court wyo"
+   ]
+  },
+  {
+   "key": "lexflow:rung:47100200200000:dog_license:4-202-c:internal-appeal",
+   "kind": "rung",
+   "label": "internal appeal: PetData customer service (1-833-991-0933 or its email form); if still unresolved, the Department of Finance & Budget (4… (Albemarle County)",
+   "description": "No tag or receipt arrives, or the application stalls, after the 10 business days PetData states plus mailing time",
+   "why": "new",
+   "reasons": [
+    "direct-line (label): phone number in text"
+   ]
+  },
+  {
+   "key": "lexflow:rung:47100200200000:pay_property_taxes:local:deferral-to-another-process",
+   "kind": "rung",
+   "label": "deferral: Office of Revenue Administration (delinquent collections), 434-296-5851; no published installment plan for current taxes (Albemarle County)",
+   "description": "You cannot pay on time or have fallen behind",
+   "why": "new",
+   "reasons": [
+    "direct-line (label): phone number in text"
+   ]
+  },
+  {
+   "key": "lexflow:step:47100200200000:dog_license:s6",
+   "kind": "step",
+   "label": "Or apply by mail to Albemarle County Dog Licensing, c/o PetData (Albemarle County)",
+   "description": "Step of “Get a dog license”, Albemarle County",
+   "why": "new",
+   "reasons": [
+    "person-name (label): Attn/c-o marker"
+   ]
+  }
+ ],
+ "ollama": {
+  "model": "qwen3:1.7b",
+  "prompt_hash": "71cb2ef8e704",
+  "calls": [
+   {
+    "n": 1,
+    "items": 25,
+    "answered": 25,
+    "seconds": 133.7,
+    "error": null
+   },
+   {
+    "n": 2,
+    "items": 25,
+    "answered": 25,
+    "seconds": 105.3,
+    "error": null
+   },
+   {
+    "n": 3,
+    "items": 25,
+    "answered": 25,
+    "seconds": 144.1,
+    "error": null
+   },
+   {
+    "n": 4,
+    "items": 25,
+    "answered": 25,
+    "seconds": 178.0,
+    "error": null
+   },
+   {
+    "n": 5,
+    "items": 25,
+    "answered": 25,
+    "seconds": 190.8,
+    "error": null
+   },
+   {
+    "n": 6,
+    "items": 25,
+    "answered": 25,
+    "seconds": 225.8,
+    "error": null
+   },
+   {
+    "n": 7,
+    "items": 25,
+    "answered": 25,
+    "seconds": 204.0,
+    "error": null
+   },
+   {
+    "n": 8,
+    "items": 25,
+    "answered": 25,
+    "seconds": 179.7,
+    "error": null
+   },
+   {
+    "n": 9,
+    "items": 25,
+    "answered": 25,
+    "seconds": 173.2,
+    "error": null
+   },
+   {
+    "n": 10,
+    "items": 25,
+    "answered": 25,
+    "seconds": 148.5,
+    "error": null
+   },
+   {
+    "n": 11,
+    "items": 25,
+    "answered": 25,
+    "seconds": 205.2,
+    "error": null
+   },
+   {
+    "n": 12,
+    "items": 25,
+    "answered": 25,
+    "seconds": 155.2,
+    "error": null
+   },
+   {
+    "n": 13,
+    "items": 25,
+    "answered": 25,
+    "seconds": 187.2,
+    "error": null
+   },
+   {
+    "n": 14,
+    "items": 25,
+    "answered": 25,
+    "seconds": 200.9,
+    "error": null
+   },
+   {
+    "n": 15,
+    "items": 25,
+    "answered": 25,
+    "seconds": 425.9,
+    "error": null
+   },
+   {
+    "n": 16,
+    "items": 25,
+    "answered": 25,
+    "seconds": 293.3,
+    "error": null
+   },
+   {
+    "n": 17,
+    "items": 25,
+    "answered": 25,
+    "seconds": 477.7,
+    "error": null
+   },
+   {
+    "n": 18,
+    "items": 6,
+    "answered": 6,
+    "seconds": 118.0,
+    "error": null
+   }
+  ],
+  "seconds": 3747.2,
+  "items_sent": 431,
+  "items_answered": 431,
+  "reused_from": "2026-10-15T18:50:53Z",
+  "flags": [
+   {
+    "key": "courtlistener:cluster:10373782",
+    "kind": "cluster",
+    "label": "Melissa Garlington v. Two Rivers Farm, LLC",
+    "description": "Court of Chancery of Delaware, 2025-04-07",
+    "readable": true,
+    "person": true,
+    "jargon": false,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:agency:ca:bureau_for_private_postsecondary_education",
+    "kind": "agency",
+    "label": "Bureau for Private Postsecondary Education",
+    "description": "Government agency of California",
+    "readable": true,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:class:concept",
+    "kind": "class",
+    "label": "concept",
+    "description": "A legal concept a defined term or role stands for (the terms plan).",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:class:legal-document",
+    "kind": "class",
+    "label": "legal document",
+    "description": "A document the law names (the terms plan).",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:form:47213000100000:meals_tax_filing:f2",
+    "kind": "form",
+    "label": "Meals Tax Return, fillable version (linked as 'Meals Tax Form Interactive'; calculates lines 3 to 7 and 10, with the 3% discount only when its box is ticked; penalty and interest, lines 8 and 9, are typed in; created October 2021)",
+    "description": "Form used in the City of Staunton process “Register for, collect and file the meals (food and beverage) tax”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Meals Tax Form Interactive"
+   },
+   {
+    "key": "lexflow:form:47213000100000:pay_property_taxes:f3",
+    "kind": "form",
+    "label": "Coin acceptance policy (PDF linked from the Treasurer's Paying Taxes & Fees page; a policy, not a form)",
+    "description": "Form used in the City of Staunton process “Pay real estate and personal property taxes”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Coin Acceptance Policy"
+   },
+   {
+    "key": "lexflow:form:47213000100000:public_records_request:f2",
+    "kind": "form",
+    "label": "Sample request letter under the Virginia Freedom of Information Act (Virginia FOIA Council, Word .doc template; optional)",
+    "description": "Form used in the City of Staunton process “Request public records (Virginia FOIA)”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Sample Request Letter under Virginia FOIA"
+   },
+   {
+    "key": "lexflow:form:47213000100000:short_term_rental_registration:f2",
+    "kind": "form",
+    "label": "Business License Application, with the Business License Classifications and Rates table (PDF created August 2024)",
+    "description": "Form used in the City of Staunton process “Register a short-term rental (homestay): zoning permit or registry, business ",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Business License Application"
+   },
+   {
+    "key": "lexflow:form:47213000100000:small_claims_civil:f18",
+    "kind": "form",
+    "label": "Suggestion for Summons in Garnishment",
+    "description": "Form used in the City of Staunton process “File a small claims or other civil case in General District Court”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Suggestion for Summons in Garnishment"
+   },
+   {
+    "key": "lexflow:form:47213000100000:small_claims_civil:f6",
+    "kind": "form",
+    "label": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs (circuit court form, linked from the state self-help site)",
+    "description": "Form used in the City of Staunton process “File a small claims or other civil case in General District Court”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs"
+   },
+   {
+    "key": "lexflow:office-type:fl:county_or_municipality",
+    "kind": "office-type",
+    "label": "County or municipality issuing the local business tax receipt",
+    "description": "Office-type (local government) in Florida; resolved by county_or_city_of_place",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "County or municipality issuing the local business tax receipt"
+   },
+   {
+    "key": "lexflow:office-type:va:public_body",
+    "kind": "office-type",
+    "label": "Virginia public body that is the custodian of the records",
+    "description": "Office-type in Virginia; resolved by record_holder",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Virginia public body that is the custodian of the records"
+   },
+   {
+    "key": "lexflow:outcome:fl.records:record_withheld",
+    "kind": "outcome",
+    "label": "Record withheld as exempt; refusal not contested",
+    "description": "Outcome of “Request to inspect or copy Florida public records”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Record withheld as exempt; refusal not contested"
+   },
+   {
+    "key": "lexflow:outcome:nc.business:appeal_unsuccessful",
+    "kind": "outcome",
+    "label": "Court does not order filing; final decision appealable",
+    "description": "Outcome of “Start a business in North Carolina (LLC filing path)”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Court does not order filing; final decision appealable"
+   },
+   {
+    "key": "lexflow:outcome:nc.records:records_released",
+    "kind": "outcome",
+    "label": "Records inspected or copies provided",
+    "description": "Outcome of “Request public records from a North Carolina custodian”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Records inspected or copies provided"
+   },
+   {
+    "key": "lexflow:outcome:oh.records:failure_resolved",
+    "kind": "outcome",
+    "label": "Failure cured or resolved to the requester's satisfaction",
+    "description": "Outcome of “Request public records under the Ohio Public Records Act”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Failure cured or resolved to the requester's satisfaction"
+   },
+   {
+    "key": "lexflow:outcome:oh.records:records_provided",
+    "kind": "outcome",
+    "label": "Records inspected or copies provided",
+    "description": "Outcome of “Request public records under the Ohio Public Records Act”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Records inspected or copies provided"
+   },
+   {
+    "key": "lexflow:outcome:oh.records:suit_dismissed",
+    "kind": "outcome",
+    "label": "Suit dismissed for want of the written affirmation",
+    "description": "Outcome of “Request public records under the Ohio Public Records Act”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Suit dismissed for want of the written affirmation"
+   },
+   {
+    "key": "lexflow:outcome:tx.records:withheld_prior_determination",
+    "kind": "outcome",
+    "label": "Withheld under a previous determination",
+    "description": "Outcome of “Request public information from a Texas governmental body”",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Withheld under a previous determination"
+   },
+   {
+    "key": "lexflow:position-type:dc:freedom_of_information_officer",
+    "kind": "position-type",
+    "label": "Freedom of Information Officer of the public body",
+    "description": "Position-type in District of Columbia; resolved by record_holder",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Freedom of Information Officer of the public body"
+   },
+   {
+    "key": "lexflow:position-type:md:appointing_authority_of_custodian",
+    "kind": "position-type",
+    "label": "Appointing authority of the custodian",
+    "description": "Position-type in Maryland; resolved by record_holder",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Appointing authority of the custodian"
+   },
+   {
+    "key": "lexflow:position-type:ny:foil_appeals_officer",
+    "kind": "position-type",
+    "label": "Head, chief executive or governing body of the entity, or the person it designates",
+    "description": "Position-type in New York; resolved by record_holder",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Head, chief executive or governing body of the entity, or the person it designates"
+   },
+   {
+    "key": "lexflow:position:il:secretary_of_state",
+    "kind": "position",
+    "label": "Illinois Secretary of State",
+    "description": "Position in Illinois",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Illinois Secretary of State"
+   },
+   {
+    "key": "lexflow:position:oh:secretary_of_state",
+    "kind": "position",
+    "label": "Ohio Secretary of State",
+    "description": "Position in Ohio",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Ohio Secretary of State"
+   },
+   {
+    "key": "lexflow:process:47100200200000:building_permit_residential",
+    "kind": "process",
+    "label": "Get a residential building permit (including trade permits) and schedule inspections (Albemarle County)",
+    "description": "Researched local process in Albemarle County, Virginia; Albemarle County enforces Virginia's Uniform Statewide Building ",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Get a residential building permit (including trade permits) and schedule inspections (Albemarle County)"
+   },
+   {
+    "key": "lexflow:process:47210400100000:parking_ticket",
+    "kind": "process",
+    "label": "Pay, ask for a waiver of, or appeal a parking ticket (City of Charlottesville)",
+    "description": "Researched local process in City of Charlottesville, Virginia; City parking tickets are paid to the City Treasurer onlin",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Pay, ask for a waiver of, or appeal a parking ticket (City of Charlottesville)"
+   },
+   {
+    "key": "lexflow:process:47210400100000:small_claims_civil",
+    "kind": "process",
+    "label": "File a small claims or other civil case in General District Court (City of Charlottesville)",
+    "description": "Researched local process in City of Charlottesville, Virginia; Sue in the Charlottesville General District Court if the ",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "File a small claims or other civil case in General District Court (City of Charlottesville)"
+   },
+   {
+    "key": "lexflow:process:47210400100000:traffic_ticket",
+    "kind": "process",
+    "label": "Prepay, contest or appeal a traffic ticket (City of Charlottesville)",
+    "description": "Researched local process in City of Charlottesville, Virginia; Yes, for most tickets. If the offence is on the Supreme C",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Prepay, contest or appeal a traffic ticket (City of Charlottesville)"
+   },
+   {
+    "key": "lexflow:process:47213000100000:real_estate_tax_relief_elderly_disabled",
+    "kind": "process",
+    "label": "Apply for real estate tax relief for the elderly and disabled (City of Staunton)",
+    "description": "Researched local process in City of Staunton, Virginia; Staunton exempts some or all of the city real estate tax for hom",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": "Apply for real estate tax relief for the elderly and disabled (City of Staunton)"
+   },
+   {
+    "key": "lexflow:rung:47210400100000:small_claims_civil:55.1-1243.1-c:judicial-review",
+    "kind": "rung",
+    "label": "judicial review: Charlottesville General District Court, on a Tenant's Petition for Relief from Unlawful Exclusion (DC-431) (City of Charlottesville)",
+    "description": "The landlord locks you out, shuts off an essential service, or makes the home unsafe without a court order",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47210400100000:small_claims_civil:8.01-428-a:internal-appeal",
+    "kind": "rung",
+    "label": "internal appeal: Charlottesville General District Court, on a Motion to Set Aside Default Judgment (DC-434) (City of Charlottesville)",
+    "description": "A default judgment was obtained by fraud on the court, is void, covers a claim already settled, or was entered against a",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47210400100000:zoning_variance:15.2-2311-a:external-administrative-review",
+    "kind": "rung",
+    "label": "external administrative review: Board of Zoning Appeals (City of Charlottesville)",
+    "description": "denied: a written order, requirement, decision, determination or notice of violation of the Zoning Administrator or anot",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:absentee_voting:24.2-103-a:oversight-inspector-general",
+    "kind": "rung",
+    "label": "oversight: Virginia Department of Elections and the State Board of Elections, which supervise local electoral boards and registrar… (City of Staunton)",
+    "description": "The local office or electoral board does not follow election law",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:absentee_voting:24.2-705-a:referral",
+    "kind": "rung",
+    "label": "referral: General Registrar: emergency absentee ballot delivered through a designated representative (City of Staunton)",
+    "description": "Requested ballot not received within 10 days of the election, and the voter's hospitalization or illness, the hospitaliz",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:absentee_voting:24.2-706-b:internal-appeal",
+    "kind": "rung",
+    "label": "internal appeal: General Registrar: send a corrected application before the deadline, or vote early in person instead (no application ne… (City of Staunton)",
+    "description": "Mail ballot application not accepted (for example, the last four digits of the Social Security number or the signature a",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:bpol_business_license:58.1-3984-a:judicial-review",
+    "kind": "rung",
+    "label": "judicial review: Staunton Circuit Court (the application names the \"City of Staunton\"; the city attorney defends) (City of Staunton)",
+    "description": "Still aggrieved after the Tax Commissioner's determination, or choosing to go straight to court",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:business_tangible_personal_property_return:58.1-3983.1-d-1:external-administrative-review",
+    "kind": "rung",
+    "label": "external administrative review: Tax Commissioner (Virginia Department of Taxation), using the Appeals Form; serve a copy on the Commissioner of the Rev… (City of Staunton)",
+    "description": "Commissioner denies the appeal in whole or in part",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:meals_tax_filing:58.1-3980-a:internal-appeal",
+    "kind": "rung",
+    "label": "internal appeal: Commissioner of the Revenue: written application for correction of the assessment (City of Staunton)",
+    "description": "A meals tax assessment is believed wrong (for example an assessment of omitted tax under § 58.1-3903, deductions or exem",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:pay_property_taxes:local:external-administrative-review",
+    "kind": "rung",
+    "label": "external administrative review: Board of Equalization (appeal forms only from the Assessor's Office; Va. Code § 58.1-3378) (City of Staunton)",
+    "description": "You still disagree after the Assessor's review",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:real_estate_assessment_appeal:58.1-3981-c:internal-appeal",
+    "kind": "rung",
+    "label": "internal appeal: City Assessor's Office (application for correction of an erroneous assessment) (City of Staunton)",
+    "description": "After the deadlines you find a factual error in the record (for example wrong acreage or square footage)",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:real_estate_tax_relief_elderly_disabled:58.1-3984-a:judicial-review",
+    "kind": "rung",
+    "label": "judicial review: Circuit Court of the City of Staunton: application to correct an erroneous assessment (City of Staunton)",
+    "description": "Correction refused or no decision from the Commissioner; § 58.1-3984(A) does not require a prior application to the Comm",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:small_claims_civil:17.1-606-a:internal-appeal",
+    "kind": "rung",
+    "label": "internal appeal: A Staunton General District Court judge, on a Petition for Proceeding in Civil Case Without Payment of Fees or Costs (D… (City of Staunton)",
+    "description": "You cannot pay the filing and service fees",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:small_claims_civil:local:oversight-inspector-general",
+    "kind": "rung",
+    "label": "oversight: Accommodation requests in a pending case go first to the Staunton General District Court clerk. A complaint about the G… (City of Staunton)",
+    "description": "A disability accommodation is refused, or you have an accessibility complaint about the court",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:zoning_variance:15.2-2201:referral",
+    "kind": "rung",
+    "label": "referral: Planning & Zoning, through a rezoning or special use permit application (a separate process, not modelled here; $250.00… (City of Staunton)",
+    "description": "prerequisite: what you need is a different use or a change of zoning, which a variance cannot give",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:zoning_variance:15.2-2311-a:external-administrative-review",
+    "kind": "rung",
+    "label": "external administrative review: Board of Zoning Appeals (City of Staunton)",
+    "description": "denied: a written order, requirement, decision, determination or notice of violation of the Zoning Administrator or anot",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:47213000100000:zoning_variance:15.2-2314-a:judicial-review",
+    "kind": "rung",
+    "label": "judicial review: Staunton Circuit Court, by a petition filed with the Clerk of the Circuit Court (City of Staunton)",
+    "description": "appeal_denied: the BZA denies the variance or rules against the appellant (or a neighbor, taxpayer or City body is aggri",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:ca:records:gov-7923.000:injunctive-relief-or-mandate",
+    "kind": "rung",
+    "label": "injunctive or declaratory relief, or writ of mandate (California public records)",
+    "description": "no determination within 10 days (or the extended date): no deemed denial, so silence is enforced directly",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:dc:records:2-538-d:designated-officer",
+    "kind": "rung",
+    "label": "designated officer (District of Columbia public records)",
+    "description": "any request",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:md:records:ggp-4-1a-10-b-1:board-decision-appeal",
+    "kind": "rung",
+    "label": "appeal of Board decision (automatic stay) (Maryland public records)",
+    "description": "party disagrees with a Compliance Board decision",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:md:records:ggp-4-362-a-1:complaint",
+    "kind": "rung",
+    "label": "complaint (de novo, expedited) (Maryland public records)",
+    "description": "Burden on the defendant; precedence on the docket; statutory damages up to $1,000 for knowing and willful failure; couns",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:nc:records:132-9-a:action-to-compel",
+    "kind": "rung",
+    "label": "action to compel disclosure (immediate hearing) (North Carolina public records)",
+    "description": "denied access or copies",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:ny:records:pbo-89-1-b-ii:advisory-opinion",
+    "kind": "rung",
+    "label": "advisory opinion (New York public records)",
+    "description": "any question about FOIL, before or after a denial",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:ny:records:pbo-89-4-a:appeal-copy",
+    "kind": "rung",
+    "label": "copy of each appeal and determination (New York public records)",
+    "description": "an appeal is received and decided",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:rung:ny:records:pbo-89-4-d-i:appeal",
+    "kind": "rung",
+    "label": "appeal (New York public records)",
+    "description": "party aggrieved by the Article 78 judgment",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47100200200000:personal_property_vehicle_registration:s5",
+    "kind": "step",
+    "label": "The county values the vehicle and taxes it by the month (Albemarle County)",
+    "description": "Step of “Register a vehicle for local personal property tax”, Albemarle County",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47100200200000:public_benefits_application:s12",
+    "kind": "step",
+    "label": "Send the proof the office asks for (Albemarle County)",
+    "description": "Step of “Apply for public benefits (SNAP, Medicaid, TANF, energy assistance)”, Albemarle County",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47100200200000:real_estate_assessment_appeal:s6",
+    "kind": "step",
+    "label": "The appraiser inspects the property and the Assessor answers in writing (Albemarle County)",
+    "description": "Step of “Ask for review of a real estate assessment and appeal to the Board of Equalization”, Albemarle County",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47100200200000:short_term_rental_registration:s6",
+    "kind": "step",
+    "label": "Enroll on the Short-Term Rental Registry at the same time (Albemarle County)",
+    "description": "Step of “Register a short-term rental (homestay): zoning permit or registry, business license and lodging tax”, Albemarl",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:absentee_voting:s12",
+    "kind": "step",
+    "label": "In an emergency after the deadline, ask for an emergency absentee ballot (City of Charlottesville)",
+    "description": "Step of “Vote early in person or by mail (absentee voting)”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:building_permit_residential:s12",
+    "kind": "step",
+    "label": "Pass the inspections in order and fix any defects (City of Charlottesville)",
+    "description": "Step of “Get a residential building permit (including trade permits) and schedule inspections”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:building_permit_residential:s3",
+    "kind": "step",
+    "label": "Decide who applies: a licensed contractor, or the owner acting as their own contractor (City of Charlottesville)",
+    "description": "Step of “Get a residential building permit (including trade permits) and schedule inspections”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:building_permit_residential:s5",
+    "kind": "step",
+    "label": "Apply online in the City Public Permit Portal (City of Charlottesville)",
+    "description": "Step of “Get a residential building permit (including trade permits) and schedule inspections”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:building_permit_residential:s7",
+    "kind": "step",
+    "label": "Plan review; correct and resubmit if the application is not approved (City of Charlottesville)",
+    "description": "Step of “Get a residential building permit (including trade permits) and schedule inspections”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:business_tangible_personal_property_return:s13",
+    "kind": "step",
+    "label": "If you think the assessment is wrong, apply to the Commissioner for a correction (City of Charlottesville)",
+    "description": "Step of “File the business tangible personal property (and machinery and tools) return”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:business_tangible_personal_property_return:s7",
+    "kind": "step",
+    "label": "Manufacturers: report idle machinery and tools in writing by April 1 (City of Charlottesville)",
+    "description": "Step of “File the business tangible personal property (and machinery and tools) return”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:dog_license:s2",
+    "kind": "step",
+    "label": "Have the dog vaccinated against rabies and keep the certificate (City of Charlottesville)",
+    "description": "Step of “Get a dog license”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:marriage_license:s4",
+    "kind": "step",
+    "label": "Apply together, in person, at the Charlottesville Circuit Court Clerk's Office and swear to the application (City of Charlottesville)",
+    "description": "Step of “Get a marriage license”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:meals_tax_filing:s1",
+    "kind": "step",
+    "label": "Check that the business is inside Charlottesville city limits, and which locality's meals tax applies (City of Charlottesville)",
+    "description": "Step of “Register for, collect and file the meals (food and beverage) tax”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:meals_tax_filing:s4",
+    "kind": "step",
+    "label": "Food trucks and trailers: use the mobile food unit registration and get the NDS permit (City of Charlottesville)",
+    "description": "Step of “Register for, collect and file the meals (food and beverage) tax”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:meals_tax_filing:s8",
+    "kind": "step",
+    "label": "Charge the 7% meals tax on every taxable sale (City of Charlottesville)",
+    "description": "Step of “Register for, collect and file the meals (food and beverage) tax”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:meals_tax_filing:s9",
+    "kind": "step",
+    "label": "Keep proof of exempt sales and send it with the return (City of Charlottesville)",
+    "description": "Step of “Register for, collect and file the meals (food and beverage) tax”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:parking_ticket:s11",
+    "kind": "step",
+    "label": "If the appeal is denied and you did not ask for court, pay within 5 days (City of Charlottesville)",
+    "description": "Step of “Pay, ask for a waiver of, or appeal a parking ticket”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:parking_ticket:s3",
+    "kind": "step",
+    "label": "Pay online (City of Charlottesville)",
+    "description": "Step of “Pay, ask for a waiver of, or appeal a parking ticket”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:parking_ticket:s7",
+    "kind": "step",
+    "label": "Wait for the written waiver decision (City of Charlottesville)",
+    "description": "Step of “Pay, ask for a waiver of, or appeal a parking ticket”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:pay_property_taxes:s5",
+    "kind": "step",
+    "label": "Pay online through the city's InvoiceCloud portal (City of Charlottesville)",
+    "description": "Step of “Pay real estate and personal property taxes”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:pay_property_taxes:s6",
+    "kind": "step",
+    "label": "Or pay by phone (City of Charlottesville)",
+    "description": "Step of “Pay real estate and personal property taxes”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:personal_property_vehicle_registration:s8",
+    "kind": "step",
+    "label": "If the assessment is wrong, apply to the Commissioner of the Revenue for a correction (City of Charlottesville)",
+    "description": "Step of “Register a vehicle for local personal property tax”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:probate_will_qualify_executor:s14",
+    "kind": "step",
+    "label": "Record the will where any other Virginia real estate lies (City of Charlottesville)",
+    "description": "Step of “Probate a will or qualify as executor or administrator”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:step:47210400100000:public_benefits_application:s14",
+    "kind": "step",
+    "label": "If you disagree with the decision, appeal to the state (City of Charlottesville)",
+    "description": "Step of “Apply for public benefits (SNAP, Medicaid, TANF, energy assistance)”, City of Charlottesville",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:unit:az:t39-c1",
+    "kind": "unit",
+    "label": "A.R.S. Title 39, Chapter 1",
+    "description": "Chapter 1 of the A.R.S.",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:unit:ca:ccorp-t1",
+    "kind": "unit",
+    "label": "Cal. CORP Title 1",
+    "description": "Title 1 of the Cal. CORP",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:vocab:determination-method:curated",
+    "kind": "vocab",
+    "label": "curated",
+    "description": "A person curated or reviewed the claim.",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   },
+   {
+    "key": "lexflow:vocab:determination-method:software-match",
+    "kind": "vocab",
+    "label": "matched by lexflow's software",
+    "description": "lexflow's software found the quote verbatim in the cited text.",
+    "readable": false,
+    "person": false,
+    "jargon": true,
+    "suggested_label": ""
+   }
+  ]
+ },
+ "suggested_labels": [
+  {
+   "key": "lexflow:form:47213000100000:meals_tax_filing:f2",
+   "label": "Meals Tax Return, fillable version (linked as 'Meals Tax Form Interactive'; calculates lines 3 to 7 and 10, with the 3% discount only when its box is ticked; penalty and interest, lines 8 and 9, are typed in; created October 2021)",
+   "suggested_label": "Meals Tax Form Interactive"
+  },
+  {
+   "key": "lexflow:form:47213000100000:pay_property_taxes:f3",
+   "label": "Coin acceptance policy (PDF linked from the Treasurer's Paying Taxes & Fees page; a policy, not a form)",
+   "suggested_label": "Coin Acceptance Policy"
+  },
+  {
+   "key": "lexflow:form:47213000100000:public_records_request:f2",
+   "label": "Sample request letter under the Virginia Freedom of Information Act (Virginia FOIA Council, Word .doc template; optional)",
+   "suggested_label": "Sample Request Letter under Virginia FOIA"
+  },
+  {
+   "key": "lexflow:form:47213000100000:short_term_rental_registration:f2",
+   "label": "Business License Application, with the Business License Classifications and Rates table (PDF created August 2024)",
+   "suggested_label": "Business License Application"
+  },
+  {
+   "key": "lexflow:form:47213000100000:small_claims_civil:f18",
+   "label": "Suggestion for Summons in Garnishment",
+   "suggested_label": "Suggestion for Summons in Garnishment"
+  },
+  {
+   "key": "lexflow:form:47213000100000:small_claims_civil:f6",
+   "label": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs (circuit court form, linked from the state self-help site)",
+   "suggested_label": "Petition for Proceeding in Civil Case Without Payment of Fees or Costs"
+  },
+  {
+   "key": "lexflow:office-type:fl:county_or_municipality",
+   "label": "County or municipality issuing the local business tax receipt",
+   "suggested_label": "County or municipality issuing the local business tax receipt"
+  },
+  {
+   "key": "lexflow:office-type:va:public_body",
+   "label": "Virginia public body that is the custodian of the records",
+   "suggested_label": "Virginia public body that is the custodian of the records"
+  },
+  {
+   "key": "lexflow:outcome:fl.records:record_withheld",
+   "label": "Record withheld as exempt; refusal not contested",
+   "suggested_label": "Record withheld as exempt; refusal not contested"
+  },
+  {
+   "key": "lexflow:outcome:nc.business:appeal_unsuccessful",
+   "label": "Court does not order filing; final decision appealable",
+   "suggested_label": "Court does not order filing; final decision appealable"
+  },
+  {
+   "key": "lexflow:outcome:nc.records:records_released",
+   "label": "Records inspected or copies provided",
+   "suggested_label": "Records inspected or copies provided"
+  },
+  {
+   "key": "lexflow:outcome:oh.records:failure_resolved",
+   "label": "Failure cured or resolved to the requester's satisfaction",
+   "suggested_label": "Failure cured or resolved to the requester's satisfaction"
+  },
+  {
+   "key": "lexflow:outcome:oh.records:records_provided",
+   "label": "Records inspected or copies provided",
+   "suggested_label": "Records inspected or copies provided"
+  },
+  {
+   "key": "lexflow:outcome:oh.records:suit_dismissed",
+   "label": "Suit dismissed for want of the written affirmation",
+   "suggested_label": "Suit dismissed for want of the written affirmation"
+  },
+  {
+   "key": "lexflow:outcome:tx.records:withheld_prior_determination",
+   "label": "Withheld under a previous determination",
+   "suggested_label": "Withheld under a previous determination"
+  },
+  {
+   "key": "lexflow:position-type:dc:freedom_of_information_officer",
+   "label": "Freedom of Information Officer of the public body",
+   "suggested_label": "Freedom of Information Officer of the public body"
+  },
+  {
+   "key": "lexflow:position-type:md:appointing_authority_of_custodian",
+   "label": "Appointing authority of the custodian",
+   "suggested_label": "Appointing authority of the custodian"
+  },
+  {
+   "key": "lexflow:position-type:ny:foil_appeals_officer",
+   "label": "Head, chief executive or governing body of the entity, or the person it designates",
+   "suggested_label": "Head, chief executive or governing body of the entity, or the person it designates"
+  },
+  {
+   "key": "lexflow:position:il:secretary_of_state",
+   "label": "Illinois Secretary of State",
+   "suggested_label": "Illinois Secretary of State"
+  },
+  {
+   "key": "lexflow:position:oh:secretary_of_state",
+   "label": "Ohio Secretary of State",
+   "suggested_label": "Ohio Secretary of State"
+  },
+  {
+   "key": "lexflow:process:47100200200000:building_permit_residential",
+   "label": "Get a residential building permit (including trade permits) and schedule inspections (Albemarle County)",
+   "suggested_label": "Get a residential building permit (including trade permits) and schedule inspections (Albemarle County)"
+  },
+  {
+   "key": "lexflow:process:47210400100000:parking_ticket",
+   "label": "Pay, ask for a waiver of, or appeal a parking ticket (City of Charlottesville)",
+   "suggested_label": "Pay, ask for a waiver of, or appeal a parking ticket (City of Charlottesville)"
+  },
+  {
+   "key": "lexflow:process:47210400100000:small_claims_civil",
+   "label": "File a small claims or other civil case in General District Court (City of Charlottesville)",
+   "suggested_label": "File a small claims or other civil case in General District Court (City of Charlottesville)"
+  },
+  {
+   "key": "lexflow:process:47210400100000:traffic_ticket",
+   "label": "Prepay, contest or appeal a traffic ticket (City of Charlottesville)",
+   "suggested_label": "Prepay, contest or appeal a traffic ticket (City of Charlottesville)"
+  },
+  {
+   "key": "lexflow:process:47213000100000:real_estate_tax_relief_elderly_disabled",
+   "label": "Apply for real estate tax relief for the elderly and disabled (City of Staunton)",
+   "suggested_label": "Apply for real estate tax relief for the elderly and disabled (City of Staunton)"
+  }
+ ]
+}

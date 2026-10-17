@@ -1,0 +1,45 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: a body, its office channels with their sources and retrieval dates, and every process it plays a role in
+# params: body=lexflow:agency:fl:division_of_corporations
+# status: 15 Oct 2026: local 3 rows (website and the processes the body plays a role in; 5,481 items, 47 local processes built); live 0 (bodies, channels and played by wait for pass 2)
+SELECT DISTINCT ?body ?bodyLabel ?kind ?value ?source ?retrieved ?process ?processLabel WHERE {
+  VALUES ?body { lx:{Q:lexflow:agency:fl:division_of_corporations} }
+  ?body rdfs:label ?bodyLabel .
+  FILTER(lang(?bodyLabel) = "en")
+  {
+    VALUES (?prop ?kind) {
+      (lxp:{P:official website} "website") (lxp:{P:contact page URL} "page") (lxp:{P:email address} "email")
+      (lxp:{P:phone number} "phone") (lxp:{P:postal address} "postal")
+    }
+    ?body ?prop ?st .
+    ?st ?ps ?value .
+    FILTER(STRSTARTS(STR(?ps), "https://lexipedia.wikibase.cloud/prop/statement/"))
+    OPTIONAL {
+      ?st prov:wasDerivedFrom ?ref .
+      OPTIONAL { ?ref lxpr:{P:source URL} ?source }
+      OPTIONAL { ?ref lxpr:{P:retrieved} ?retrieved }
+    }
+  } UNION {
+    ?role lxt:{P:played by} ?body .
+    ?step lxt:{P:bearer} ?role ;
+          lxt:{P:part of} ?process .
+    ?process rdfs:label ?processLabel .
+    FILTER(lang(?processLabel) = "en")
+    BIND("process" AS ?kind)
+  }
+}
+ORDER BY ?kind ?value ?processLabel

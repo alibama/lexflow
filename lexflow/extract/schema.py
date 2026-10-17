@@ -45,6 +45,9 @@ class FStep(BaseModel):
     actor: str = Field(description="FActor.id of who performs the step")
     action: str = Field(description="Imperative, at most 8 words, e.g. 'File written request with clerk'")
     kind: Literal["act", "notice", "filing", "hearing", "decision", "payment", "inspection", "record", "review"]
+    # lexflow's own bookkeeping, never asked of a model (ollama_schema leaves it out): where the kind came from in
+    # the local strategies: the verb rule, the chat model's label, or the decision model (extract/decide.py)
+    kind_by: Optional[Literal["rule", "model", "decision"]] = None
     modality: Literal["obligation", "permission", "prohibition", "right", "none"]
     after: list[str] = Field(default_factory=list, description="Ids of steps that must happen first; empty = right after the trigger")
     join: Literal["all", "any"] = Field("all", description="With several 'after' ids: 'all' waits for every one "
@@ -106,6 +109,9 @@ class LegalProcessFacts(BaseModel):
     gaps: list[str] = Field(default_factory=list, description="Things the text presupposes but does not say")
 
 
+PRIVATE_FIELDS = ("kind_by",)
+
+
 def ollama_schema() -> dict:
     """JSON schema for Ollama's ``format``: $refs inlined, no Optional anyOf, no unsupported keywords.
 
@@ -130,6 +136,8 @@ def ollama_schema() -> dict:
                     continue
                 out[k] = inline(v)
             if out.get("type") == "object":
+                for private in PRIVATE_FIELDS:            # lexflow's bookkeeping is not the model's to fill
+                    out.get("properties", {}).pop(private, None)
                 out.setdefault("additionalProperties", False)
             return out
         if isinstance(node, list):

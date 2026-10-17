@@ -1,0 +1,48 @@
+lexflow:agency:ca:department_of_general_services: minted as the parent of a ladder body from the fixture's record of Q5020423
+lexflow:agency:dc:mayors_office_of_legal_counsel: parent Q5190572 is not a body the fixture can mint; part of dropped
+lexflow:agency:il:public_access_counselor: parent Q3406491 is not a body the fixture can mint; part of dropped
+lexflow:agency:md:office_of_the_public_access_ombudsman: parent Q4818647 is not a body the fixture can mint; part of dropped
+could not supply: contact rows refused by the privacy checks: 229
+could not supply: courts without a name in case_law: 78
+could not supply: fee and deadline texts withheld (NO_REPRINT host): 60
+could not supply: fixture QIDs left off (untyped item): 4
+could not supply: ladder QIDs left off (kind check failed): 5
+could not supply: ladder QIDs left off (not an exact match or not a body/position key): 10
+could not supply: ladder parent edges dropped (parent not mintable from the fixture): 3
+could not supply: local deadlines not reducible to a number: 273
+could not supply: local fees not reducible to a number: 177
+could not supply: local legal-basis citations not in the index: 7
+could not supply: local processes of unmapped category (courts_legal): 9
+could not supply: local processes of unmapped category (health_social_services): 2
+could not supply: local processes of unmapped category (permits_construction): 2
+could not supply: local processes of unmapped category (zoning_land_use): 2
+could not supply: local step citations not in the index: 31
+could not supply: mailboxes removed from labels and descriptions: 1
+could not supply: quotes withheld (NO_REPRINT host): 372
+could not supply: roles without a body to play them: 37
+could not supply: sections not in the index: 178
+could not supply: sections whose path and act_id disagree: 11
+could not supply: units without a heading: 2084
+could not supply: values dropped: personal-looking mailbox: 6
+deterministic: 3539 items checked, 100 with findings
+ollama: 431 items in 18 calls (cap 40), model qwen3:1.7b
+  ollama call 1: 25/25 verdicts in 133.7 s
+  ollama call 2: 25/25 verdicts in 105.3 s
+  ollama call 3: 25/25 verdicts in 144.1 s
+  ollama call 4: 25/25 verdicts in 178.0 s
+  ollama call 5: 25/25 verdicts in 190.8 s
+  ollama call 6: 25/25 verdicts in 225.8 s
+  ollama call 7: 25/25 verdicts in 204.0 s
+  ollama call 8: 25/25 verdicts in 179.7 s
+  ollama call 9: 25/25 verdicts in 173.2 s
+  ollama call 10: 25/25 verdicts in 148.5 s
+  ollama call 11: 25/25 verdicts in 205.2 s
+  ollama call 12: 25/25 verdicts in 155.2 s
+  ollama call 13: 25/25 verdicts in 187.2 s
+  ollama call 14: 25/25 verdicts in 200.9 s
+  ollama call 15: 25/25 verdicts in 425.9 s
+  ollama call 16: 25/25 verdicts in 293.3 s
+  ollama call 17: 25/25 verdicts in 477.7 s
+  ollama call 18: 6/6 verdicts in 118.0 s
+held 101 items; report: /data/wikibase-push/lint-report.md
+exit 1

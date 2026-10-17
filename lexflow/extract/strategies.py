@@ -24,6 +24,7 @@ from difflib import SequenceMatcher
 import requests
 from pydantic import ValidationError
 
+from . import decide as DEC
 from .ollama import OllamaClient, check_facts, extract
 from .schema import (FActor, FCrossRef, FDeadline, FOutcome, FStep, LegalProcessFacts, Quote)
 from .segment import Clause, outline as clause_outline, segment
@@ -151,8 +152,8 @@ def assemble(drafts: list[dict], clauses: list[Clause], section: str, question: 
                              consequence="unstated", source=quote(section, c)) if dl else None
         cond = slug(d["condition"], 32) if d.get("condition") else None
         steps.append(FStep(id=sid, actor=aid, action=d["action"][:80], kind=d["kind"], modality=d["modality"],
-                           after=[last_plain] if last_plain else [], condition=cond, deadline=deadline,
-                           source=quote(section, c)))
+                           kind_by=d.get("kind_by") or "rule", after=[last_plain] if last_plain else [],
+                           condition=cond, deadline=deadline, source=quote(section, c)))
         if not cond:
             last_plain = sid
     if not steps:
@@ -332,6 +333,7 @@ def hybrid_drafts(asker: Asker, clauses: list[Clause], question: str, goal: str)
         action = (r.get("action") or d["action"]).strip()
         action = " ".join(action.split()[:8])
         out.append({**d, "action": action[:1].upper() + action[1:], "kind": r.get("kind") or d["kind"],
+                    "kind_by": "model" if r.get("kind") else "rule",
                     "condition": (r.get("condition") or "").strip() or None})
     return out
 
@@ -372,6 +374,7 @@ def pick_drafts(asker: Asker, clauses: list[Clause], question: str, goal: str) -
         d = candidates[cid.group(0)] if cid else candidates[duty[0].id]
         action = " ".join((r.get("action") or d["action"]).split()[:8]) or d["action"]
         out.append({**d, "action": action[:1].upper() + action[1:], "kind": r.get("kind") or d["kind"],
+                    "kind_by": "model" if r.get("kind") else "rule",
                     "condition": (r.get("condition") or "").strip() or None})
     return out
 
@@ -576,6 +579,7 @@ def outline_drafts(asker: Asker, clauses: list[Clause], question: str, goal: str
         action = " ".join((s.get("action") or "Act").split()[:8])
         out.append({"clause": best, "actor": (s.get("who") or best.subject or filer_for(question)).strip()[:60],
                     "action": action[:1].upper() + action[1:], "kind": s.get("kind") or kind_of(action),
+                    "kind_by": "model" if s.get("kind") else "rule",
                     "modality": modality_of(best.modal), "condition": (s.get("condition") or "").strip() or None,
                     "deadline": dl})
     return out
@@ -692,6 +696,31 @@ def stacked_drafts(clauses: list[Clause], question: str, state: str | None, *, v
     return sorted(keep, key=lambda d: d["clause"].start)
 
 
+# ------------------------------------------------------------------ step kinds from the decision model
+def decided_kinds(drafts: list[dict], decider=None, notes: list | None = None) -> list[dict]:
+    """With ``LEXFLOW_DECIDE=1`` and a decision backend (``decide.shared()``, or the ``decider`` given), the kind
+    of every draft step is asked of the decision model from its action and the clause's words; the model's choice
+    replaces the rule's only when its confidence is at least ``decide.KIND_CONFIDENCE`` (0.8), and every draft
+    records ``kind_by`` (``decision`` or what it had: ``rule``, or ``model`` for a chat strategy's label).  Without
+    a backend the drafts come back as they are, ``kind_by`` filled in."""
+    for d in drafts:
+        d.setdefault("kind_by", "rule")
+    d_ = decider if decider is not None else DEC.shared()
+    if d_ is None or not drafts:
+        return drafts
+    replaced = 0
+    for d in drafts:
+        kind, by, conf = DEC.step_kind(d_, d["action"], d["clause"].text, d["kind"])
+        d["kind_confidence"] = conf
+        if by == "decision":
+            d["kind_before"], d["kind"], d["kind_by"] = d["kind"], kind, "decision"
+            replaced += 1
+    if notes is not None:
+        notes.append(f"{replaced} of {len(drafts)} step kinds from the decision model ({d_.model}, confidence >= "
+                     f"{DEC.KIND_CONFIDENCE})")
+    return drafts
+
+
 # ------------------------------------------------------------------ snapping
 def snap_quotes(facts: LegalProcessFacts, text: str, threshold: float = 0.72) -> tuple[LegalProcessFacts, int]:
     """Replace each quote that is not an exact span with the most similar clause (if similar enough)."""
@@ -730,7 +759,10 @@ GOALS = {"records": "requesting public records from a public body", "business": 
 
 
 def run(strategy: str, text: str, *, section: str, title: str, code: str, jurisdiction: str, question: str,
-        client: OllamaClient | None = None, prior: LegalProcessFacts | None = None, state: str | None = None) -> Run:
+        client: OllamaClient | None = None, prior: LegalProcessFacts | None = None, state: str | None = None,
+        decider=None) -> Run:
+    """One strategy over ``text``.  ``decider`` (a ``decide.Decider``) classifies the step kinds; None means the
+    shared one when ``LEXFLOW_DECIDE=1`` and a backend is pulled, else the verb rule alone."""
     t0 = time.time()
     goal = GOALS.get(question, question)
     name = {"records": "Request public records", "business": "Form a business entity"}.get(question, title)
@@ -796,6 +828,7 @@ def run(strategy: str, text: str, *, section: str, title: str, code: str, jurisd
             before = len(drafts)
             drafts = review(asker, drafts, goal)
             notes.append(f"review kept {len(drafts)} of {before}")
+        drafts = decided_kinds(drafts, decider, notes)
         facts = assemble(drafts, clauses, section, question, name)
         problems = check_facts(facts, text)
         return Run(strategy_name, client.model if client else None, facts, problems, asker.calls if asker else 0,

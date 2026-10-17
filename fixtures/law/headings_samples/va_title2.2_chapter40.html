@@ -1,0 +1,166 @@
+<!-- trimmed from https://law.lis.virginia.gov/vacode/title2.2/chapter40/ (retrieved 2026-10-15) -->
+<html><body>
+    <!-- #region Login -->
+    <!-- #endregion -->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head id="Head1">
+		    <title>Code of Virginia Code - Chapter 40. Administrative Process Act</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<link rel="apple-touch-icon" href="./images/favicon-law16.png" sizes="16x16" />
+		<link rel="apple-touch-icon" href="./images/favicon-law32.png" sizes="32x32" />
+        
+		<link rel="stylesheet" href="/Content/base.css" type="text/css" media="all" />
+		<!--[if lt IE 9 ]><link rel="stylesheet" href="./Content/720_grid.css" type="text/css" /><![endif]-->
+		<link rel="stylesheet" href="/Content/720_grid.css" type="text/css" media="screen and (min-width: 720px)" />
+		<link rel="stylesheet" href="/Content/986_grid.css" type="text/css" media="screen and (min-width: 986px)" />
+		<link rel="stylesheet" href="/Content/1236_grid.css" media="screen and (min-width: 1236px)" />
+		<link rel="stylesheet" href="/Content/font-awesome.min.css" />
+		<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css' />
+		<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT Serif:r,i,400,700" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,300,300italic,400italic,700italic' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="/Content/jquery.fancybox.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="/Content/jquery.qtip.min.css" type="text/css" media="all" />
+		
+		<meta name='robots' content='no-index' />
+
+		<style type="text/css">.fancybox-margin {margin-right: 0px;}</style>
+        <!-- Google tag (gtag.js) -->
+        
+        
+        
+        
+        
+        
+	</head>
+
+<body>
+    <input aria-hidden="true" type="text" style="width:0;height:0;visibility:hidden;position:absolute;left:0;top:0" /> 
+    <input aria-hidden="true" type="password" style="width:0;height:0;visibility:hidden;position:absolute;left:0;top:0" />
+    <input aria-hidden="true" type="hidden" id="hidSignIn" value="0" />
+    
+    
+    <div class="mobile-overlay"></div>
+    <div class="top-bar"></div>
+    <header>
+        <nav>
+            <div class="lis-links-content full">
+                <ul>
+                    <li><a href="https://virginiageneralassembly.gov/">Virginia General Assembly</a> /</li>
+                    <li><a href="https://help.lis.virginia.gov">LIS Learning Center</a> /</li>
+                    <li><a href="https://lis.virginia.gov/privacy">Privacy Policy</a> /</li>
+                    <li><a href="https://lis.virginia.gov">LIS home</a> /</li>
+                    <li><a href="https://lis.virginia.gov/register-account">Register Account</a> /</li>
+                    <li><a href="https://lis.virginia.gov/login">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="grid-wrapper one-and-three halves">
+        
+			<a href="https://lis.virginia.gov" id="logo-link">
+				<img alt="LIS Logo" src="/images/lis_logo.png" /> 
+			</a>
+		
+        <div class="portal-links">
+            <ul>
+                <li>
+                    <a class="txt-blue" href="https://lis.virginia.gov">Session Information</a>
+                </li>
+                <li>
+                    <a class="txt-dark-blue" href="https://lis.virginia.gov/bill-search">Bills & Resolutions</a>
+                </li>
+                <li>
+                    <a class="txt-green" href="https://budget.lis.virginia.gov/default/2025/1">State Budget</a>
+                </li>
+                <li>
+                    <a class="txt-light-green" href="https://law.lis.virginia.gov/">Virginia Law</a>
+                </li>
+                <li>
+                    <a class="txt-orange" href="https://rga.lis.virginia.gov/">Reports to the General Assembly</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mobile-menu">
+            <i id="mobile-menu-toggle" class="fa fa-bars"></i>
+        </div>
+    </div>
+        
+        
+        <div class="va-law">
+            <div class="grid">
+                <div class="row">
+                    <div class="slot-0-1-2">
+                        <h1><a href="https://law.lis.virginia.gov">Virginia Law</a></h1>
+                    </div>
+                    <div class="slot-3-4-5">
+                        <div class="input-group .search-comp ">
+                            <div class="input-group-btn">
+                                <label for="searchList" class="sr-only">Select Search Type</label>
+                                <select id="searchList" name="searchTypeSelect" class="btn input-sm btn-default dropdown-toggle" aria-label="Select Search Type">
+                                    <option value="all">All</option>
+                                    <option value="code">Code of Virginia</option>
+                                    <option value="admin">Administrative Code</option>
+                                    <option value="constitution">Constitution</option>
+                                    <option value="charters">Charters</option>
+                                    <option value="authorities">Authorities</option>
+                                    <option value="compacts">Compacts</option>
+                                    <option value="uncodified">Uncodified Acts</option>
+                                </select>
+                            </div>
+                            <input aria-label="search input" type="text" id="txtSearch" class="form-control input-sm" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button aria-label="search button" class="btn btn-sm btn-default" id="searchBtn" type="submit" value="LAW">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="grid">
+            <!-- #region Variables -->
+<!-- #endregion -->
+<!-- #region Highlights -->
+<!-- #endregion -->
+<!-- #region Build Pages -->
+<!-- #endregion -->
+
+
+<body class="flipcol ">
+	<input type="hidden" id="hidST" />
+	<input type="hidden" id="hidToC" value="2" />
+	<input type="hidden" id="hidID" />
+	<input type="hidden" id="hidNote"/>
+	<input type="hidden" id="hidBiP" value="false" />
+	<input type="hidden" id="hidReport" value="0" />
+	<input type="hidden" id="hidSegments" />
+    <input type="hidden" id="hidPage" value="vacode" />
+	<div class="grid">
+		<div class="row">
+			<div class="slot-6-7-8">
+				<section id="pageTitle"><h2 class='pg-title'>Code of Virginia</h2></section>
+				<section class="breadcrumbs" id="breadcrumbs"><p><a href='/vacode/'>Table of Contents</a> &raquo; <a href='/vacode/title2.2/'>Title 2.2. Administration of Government</a>  &raquo; <a href='/vacode/title2.2#subtitleII/'>Subtitle II. Administration of State Government</a>  &raquo; <a href='/vacode/title2.2#subtitleIIpartB/'>Part B. Transaction of Public Business</a>  &raquo; <span class='breadcrumb-inactive'>Chapter 40. Administrative Process Act</span></p></section>
+				<section class="content-header-menu" id="menucontainer">
+					<nav class="content-header-menu-left"><ul><li><a title='Chapter 39. Virginia Human Rights Act' href='/vacode/title2.2/chapter39/''><i class='fa fa-long-arrow-left'></i></a> Chapter <a title='Chapter 41. VIRGINIA REGISTER ACT' href='/vacode/title2.2/chapter41/''><i class='fa fa-long-arrow-right'></i></a></li></ul></nav>
+					<a href="#" class="scroll_top" aria-hidden="true"><i class="fa fa-arrow-up"></i></a>
+					<nav class="content-header-menu-middle"><ul><li><a id='reportClick' class='reportClick' title='Create a Report' href=''><i class='fa fa-paperclip'></i> Create a Report</a></li><li><a id='A1' onclick='PrintPreview();' title='Print page' href=''><i class='fa fa-print'></i> Print</a></li></ul></nav>
+							<nav class="content-header-menu-right"><div class='search-in-label'><label for='txtsearch-in'>Search Chapter</label></div><div class='input-group secondary-search'><input type='text' id='txtsearch-in' class='form-control input-sm' placeholder='keyword'><button class='btn btn-sm btn-default input-group-btn' id='search-in' type=button>Go</button></div><!-- /input-group --></nav>
+
+				</section>
+				<p class="sidenote alert rptCheckbox"><strong>Creating a Report:</strong> Check the sections you'd like to appear in the report, then use the "Create Report" button at the bottom of the page to generate your report. Once the report is generated you'll then have the option to download it as a pdf, print or email the report.</p>
+				<article id="vacode" class="content">
+					<div id="printStuff"></div>
+					<span id='va_code' class="x-wide"><!--googleon: index--><h2><input type='checkbox' id='chapter40' class='parentCheck rptCheckbox'> Chapter 40. <div contenteditable='false' id='chapter17051' class='chapter'>Administrative Process Act</div><span class='read-text'><a href='/vacodefull/title2.2/chapter40/'>Read Chapter <i class='fa fa-angle-right'></i></a></span></li></h2><ul class='outline'><li><input type='checkbox' class='parentCheck rptCheckbox chapter1' id='article1'/> <b><span id='article1'>Article 1. <div contenteditable='false' id='article17034' class='article'>General Provisions</div></span></b><span class='read-text'><a href='/vacodefull/title2.2/chapter40/article1/'>Read all <i class='fa fa-angle-right'></i></a></span></li><dl class='number-descrip-list-outline'><dt><input type='checkbox' id='2.2-4000' name='article1' class='rptCheckbox chapter1 article1' /> <a href='/vacode/title2.2/chapter40/section2.2-4000/'>§ 2.2-4000</a></dt><dd><div contenteditable='false' id='section17034' class='section'>Short title; purpose</div></dd><dt><input type='checkbox' id='2.2-4001' name='article1' class='rptCheckbox chapter1 article1' /> <a href='/vacode/title2.2/chapter40/section2.2-4001/'>§ 2.2-4001</a></dt><dd class='child'><div contenteditable='false' id='section27595' class='section'>Definitions</div></dd><dt><input type='checkbox' id='2.2-4002' name='ar
+</body></html>

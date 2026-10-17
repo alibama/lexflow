@@ -1,0 +1,46 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: for a jurisdiction: process, step, bearer role, the body that plays it, that body's parent and head, and the step's deadline with the words that create it
+# params: jurisdiction=lexflow:jurisdiction:va
+# status: 15 Oct 2026: local 15 rows (with bodies, deadlines and quotes); live 12 rows (process, step and role only; played by, time limit and the quote wait for pass 2)
+SELECT ?process ?processLabel ?step ?stepLabel ?role ?roleLabel ?body ?bodyLabel ?parent ?parentLabel ?head ?headLabel ?limit ?unit ?quote WHERE {
+  VALUES ?jurisdiction { lx:{Q:lexflow:jurisdiction:va} }
+  ?process lxt:{P:applies to jurisdiction} ?jurisdiction ;
+           lxt:{P:instance of} lx:{Q:legal process} ;
+           rdfs:label ?processLabel .
+  FILTER(lang(?processLabel) = "en")
+  ?step lxt:{P:part of} ?process ;
+        lxt:{P:instance of} lx:{Q:legal process step} ;
+        rdfs:label ?stepLabel .
+  FILTER(lang(?stepLabel) = "en")
+  OPTIONAL {
+    ?step lxt:{P:bearer} ?role .
+    ?role rdfs:label ?roleLabel . FILTER(lang(?roleLabel) = "en")
+    OPTIONAL {
+      ?role lxt:{P:played by} ?body .
+      ?body rdfs:label ?bodyLabel . FILTER(lang(?bodyLabel) = "en")
+      OPTIONAL { ?body lxt:{P:part of} ?parent . ?parent rdfs:label ?parentLabel . FILTER(lang(?parentLabel) = "en") }
+      OPTIONAL { ?body lxt:{P:head position} ?head . ?head rdfs:label ?headLabel . FILTER(lang(?headLabel) = "en") }
+    }
+  }
+  OPTIONAL {
+    ?step lxp:{P:time limit} ?st .
+    ?st lxps:{P:time limit} ?limit .
+    OPTIONAL { ?st lxpq:{P:time unit} ?u . ?u rdfs:label ?unit . FILTER(lang(?unit) = "en") }
+    OPTIONAL { ?st prov:wasDerivedFrom ?ref . ?ref lxpr:{P:quoted text} ?quote }
+  }
+}
+ORDER BY ?processLabel ?stepLabel

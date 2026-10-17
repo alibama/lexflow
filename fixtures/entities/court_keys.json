@@ -1,0 +1,12 @@
+{
+  "note": "CourtListener court ids (lexflow.municipal.caselaw.COURTS, named in case_law.court) that are the same court as a body of fixtures/authority/ladders.json. graph.py builds one item under the ladder's key and keeps the CourtListener name as an alias; an id not listed here gets lexflow:agency:<st>:court_<id>. Only courts whose names confirm the identity are listed; ny:nyappdiv (Appellate Division) is left out because the ladder holds it as an office type, not a court item, and md:md (Court of Appeals of Maryland, now the Supreme Court of Maryland) has no ladder body.",
+  "checked": "2026-10-15",
+  "courts": {
+    "va:va": {"key": "lexflow:agency:va:supreme_court", "courtlistener": "Supreme Court of Virginia", "ladder": "Supreme Court of Virginia"},
+    "va:vactapp": {"key": "lexflow:agency:va:court_of_appeals", "courtlistener": "Court of Appeals of Virginia", "ladder": "Court of Appeals of Virginia"},
+    "dc:dc": {"key": "lexflow:agency:dc:court_of_appeals", "courtlistener": "District of Columbia Court of Appeals", "ladder": "District of Columbia Court of Appeals"},
+    "fl:fladistctapp": {"key": "lexflow:agency:fl:district_courts_of_appeal", "courtlistener": "District Court of Appeal of Florida", "ladder": "Florida District Court of Appeal (district with jurisdiction)"},
+    "ca:calctapp": {"key": "lexflow:agency:ca:courts_of_appeal", "courtlistener": "California Court of Appeal", "ladder": "California Court of Appeal (district with jurisdiction)"},
+    "md:mdctspecapp": {"key": "lexflow:agency:md:appellate_court", "courtlistener": "Court of Special Appeals of Maryland", "ladder": "Appellate Court of Maryland", "note": "the Court of Special Appeals was renamed the Appellate Court of Maryland on 14 December 2022"}
+  }
+}

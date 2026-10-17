@@ -284,6 +284,13 @@ CREATE TABLE IF NOT EXISTS wikibase_items (
   updated_at TEXT
 );
 
+CREATE TABLE IF NOT EXISTS wikibase_props (
+  label TEXT PRIMARY KEY,
+  pid TEXT,
+  datatype TEXT,
+  updated_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS statute_files (
   state TEXT PRIMARY KEY,
   file TEXT,
@@ -386,6 +393,23 @@ CREATE TABLE IF NOT EXISTS meta (
   key TEXT PRIMARY KEY,
   value TEXT
 );
+
+-- lexflow.law.ontology: one row per section of a state's statute index (structure, norm types, ELI id).  Local,
+-- never synced: derived from this copy's index files and rebuilt here (1.7 million rows for 47 states).
+CREATE TABLE IF NOT EXISTS section_tags (
+  state TEXT NOT NULL,
+  ref TEXT NOT NULL,
+  act_id TEXT,
+  structure TEXT,
+  norm_types TEXT,
+  method TEXT,
+  model TEXT,
+  confidence TEXT,
+  updated_at TEXT,
+  origin TEXT,
+  PRIMARY KEY (state, ref)
+);
+CREATE INDEX IF NOT EXISTS section_tags_state_method ON section_tags(state, method);
 INSERT OR IGNORE INTO meta(key, value) VALUES ('version', '0');
 """
 
@@ -406,7 +430,7 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "asked_answers": ("question_id", "target"),     # carries its question's text, so asked_questions stays local
 }
 # this copy's own tables that upsert() writes: primary key columns (never synced)
-LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",)}
+LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref")}
 
 # columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists).  Those on shared
 # tables are also applied to the shared database (turso.ensure_schema).  reviewed_by is a person's sign-off, JSON
@@ -418,7 +442,9 @@ MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE job
               "ALTER TABLE asked_answers ADD COLUMN reviewed_by TEXT",
               "ALTER TABLE local_answers ADD COLUMN reviewed_by TEXT",
               "ALTER TABLE place_processes ADD COLUMN quote_check TEXT",
-              "ALTER TABLE reviewers ADD COLUMN token_hash TEXT"]
+              "ALTER TABLE reviewers ADD COLUMN token_hash TEXT",
+              # the digest of what lexflow.publish.push last wrote for the key (this copy's own; never synced)
+              "ALTER TABLE wikibase_items ADD COLUMN content_hash TEXT"]
 
 _ready: set[str] = set()
 _lock = threading.Lock()

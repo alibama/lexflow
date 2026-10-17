@@ -1,0 +1,40 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: every time limit in a jurisdiction, with its unit, what it is counted from, what happens on expiry, and the quote
+# params: jurisdiction=lexflow:jurisdiction:va
+# status: 15 Oct 2026: local 10 rows; live 0 (time limits become statements in pass 2)
+SELECT ?holder ?holderLabel ?process ?processLabel ?limit ?unit ?countedFrom ?onExpiry ?section ?sectionLabel ?pinpoint ?quote WHERE {
+  VALUES ?jurisdiction { lx:{Q:lexflow:jurisdiction:va} }
+  ?process lxt:{P:applies to jurisdiction} ?jurisdiction ;
+           lxt:{P:instance of} lx:{Q:legal process} ;
+           rdfs:label ?processLabel .
+  FILTER(lang(?processLabel) = "en")
+  ?holder lxt:{P:part of}* ?process ;
+          lxp:{P:time limit} ?st ;
+          rdfs:label ?holderLabel .
+  FILTER(lang(?holderLabel) = "en")
+  ?st lxps:{P:time limit} ?limit .
+  OPTIONAL { ?st lxpq:{P:time unit} ?u . ?u rdfs:label ?unit . FILTER(lang(?unit) = "en") }
+  OPTIONAL { ?st lxpq:{P:counted from} ?countedFrom }
+  OPTIONAL { ?st lxpq:{P:on expiry} ?o . ?o rdfs:label ?onExpiry . FILTER(lang(?onExpiry) = "en") }
+  OPTIONAL {
+    ?st prov:wasDerivedFrom ?ref .
+    OPTIONAL { ?ref lxpr:{P:source section} ?section . ?section rdfs:label ?sectionLabel . FILTER(lang(?sectionLabel) = "en") }
+    OPTIONAL { ?ref lxpr:{P:pinpoint} ?pinpoint }
+    OPTIONAL { ?ref lxpr:{P:quoted text} ?quote }
+  }
+}
+ORDER BY ?processLabel ?holderLabel

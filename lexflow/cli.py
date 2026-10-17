@@ -10,6 +10,8 @@
     lexflow index --regulations [--states] the state regulations' search indexes (statutes without the flag)
     lexflow reviewer add|list|token|remove the reviewer list the operator keeps (pages name reviewers only from it;
                                            it is this copy's own: sync refuses the table)
+    lexflow qs write|resolve|check         QuickStatements batches for Claude in Chrome (out/wikibase/)
+    lexflow wikibase lint|push [...]       the cleanliness gate, then the direct API push (dry run by default)
 """
 from __future__ import annotations
 
@@ -480,6 +482,90 @@ def cmd_deadline_words(args) -> int:
     return 0
 
 
+def cmd_qs(args) -> int:
+    from .publish import qs
+    return qs.main(args.qs_args)
+
+
+def cmd_wikibase(args) -> int:
+    """``lint``: the cleanliness gate (out/wikibase/lint-report.md); ``push``: the graph through the API."""
+    if args.action == "push":
+        from .publish import push
+        return push.main(args.wb_args)
+    from .publish import lint
+    return lint.main(args.wb_args)
+
+
+def cmd_sparql(args) -> int:
+    """Run a SPARQL query (a canned name, a .rq file or text) on the local Wikibase copy, or live with --live."""
+    from .publish import ids as I
+    from .publish import rdf
+    from .publish import sparql as SQ
+    if args.build:
+        config.ensure_dirs()
+        con = db.connect()
+        try:
+            rdf.build(con, states=args.states.split(",") if args.states else None, drafts=not args.no_drafts)
+        finally:
+            con.close()
+        if not args.query:
+            return 0
+    if not args.query:
+        print("canned queries (lexflow sparql <name> [--param k=v]):\n")
+        for q in SQ.catalogue():
+            ps = ", ".join(f"{k}={v}" if v else k for k, v in q.params.items())
+            print(f"  {q.name:16} {q.question}" + (f"\n{'':19}params: {ps}" if ps else ""))
+        return 0
+    q = SQ.resolve(args.query)
+    params = {}
+    for p in args.param or []:
+        if "=" not in p:
+            print(f"--param wants name=value, not {p!r}", file=sys.stderr)
+            return 2
+        k, v = p.split("=", 1)
+        params[k.strip()] = v.strip()
+    idmap = I.IdMap() if args.live else I.IdMap.for_turtle()
+    if not args.live and I.IdMap.turtle_stale():
+        print("note: out/wikibase/ids.json is newer than the local Turtle; run `lexflow sparql --build` to use the "
+              "wiki's ids locally", file=sys.stderr)
+    try:
+        text = SQ.prepare(q, params, idmap, live=args.live)
+    except KeyError as e:
+        print(str(e), file=sys.stderr)
+        return 2
+    if args.show:
+        print(text)
+        return 0
+    if q.live_only and not args.live:
+        print(f"{q.name} is live-only (federated); add --live", file=sys.stderr)
+        return 2
+    try:
+        store = None if args.live else rdf.open_store()
+        rows = rdf.query(store, text, live=args.live, limit=args.limit)
+    except FileNotFoundError as e:
+        print(str(e), file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"query failed: {e}", file=sys.stderr)
+        return 1
+    if idmap.unresolved:
+        print("unresolved tokens (provisional ids used): " + ", ".join(sorted(set(idmap.unresolved))), file=sys.stderr)
+    if args.json:
+        print(json.dumps({"head": {"vars": rows.vars}, "results": {"bindings": list(rows)}, "truncated": rows.truncated},
+                         indent=1, ensure_ascii=False))
+        return 0
+    simple = rows.simple()
+    cols = rows.vars or sorted({k for r in simple for k in r})
+    widths = {c: min(60, max([len(c)] + [len(str(r.get(c, ""))) for r in simple])) for c in cols}
+    print("  ".join(c.ljust(widths[c]) for c in cols))
+    print("  ".join("-" * widths[c] for c in cols))
+    for r in simple:
+        print("  ".join(str(r.get(c, "")).replace("\n", " ")[:60].ljust(widths[c]) for c in cols))
+    print(f"\n{len(rows):,} row{'s' if len(rows) != 1 else ''}{' (truncated)' if rows.truncated else ''}"
+          f" from {'the live endpoint' if args.live else 'the local store'}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="lexflow", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -605,6 +691,30 @@ def main(argv: list[str] | None = None) -> int:
     k.add_argument("state")
     k.add_argument("question")
     k.set_defaults(fn=cmd_check_curated)
+    q = sub.add_parser("qs", help="QuickStatements batches for Claude in Chrome -> out/wikibase/: lexflow qs write "
+                                  "[--pass 2] | resolve | check (see lexflow.publish.qs)")
+    q.add_argument("qs_args", nargs=argparse.REMAINDER, help="arguments passed to lexflow.publish.qs")
+    q.set_defaults(fn=cmd_qs)
+    wb = sub.add_parser("wikibase", help="the Lexipedia Wikibase through the API: lexflow wikibase lint [--no-ollama] "
+                                         "writes out/wikibase/lint-report.md; lexflow wikibase push [--really] "
+                                         "executes the graph (dry run by default; see lexflow.publish.push)")
+    wb.add_argument("action", choices=["lint", "push"])
+    wb.add_argument("wb_args", nargs=argparse.REMAINDER, help="arguments passed to lexflow.publish.lint or .push")
+    wb.set_defaults(fn=cmd_wikibase)
+    sq = sub.add_parser("sparql", help="run SPARQL on the local Wikibase copy (data/wikibase/) or, with --live, on "
+                                       "lexipedia.wikibase.cloud: lexflow sparql process-steps --param "
+                                       "process=lexflow:process:va.records; no argument lists the canned queries")
+    sq.add_argument("query", nargs="?", help="a canned query name, a .rq file, or SPARQL text ({P:label} and {Q:key} "
+                                             "tokens are expanded)")
+    sq.add_argument("--live", action="store_true", help="query the public endpoint instead of the local store")
+    sq.add_argument("--param", action="append", metavar="NAME=VALUE", help="set a VALUES parameter (repeatable)")
+    sq.add_argument("--json", action="store_true", help="print SPARQL JSON results instead of a table")
+    sq.add_argument("--build", action="store_true", help="regenerate the Turtle and store from the database first")
+    sq.add_argument("--states", help="with --build: only these states (va,dc)")
+    sq.add_argument("--no-drafts", action="store_true", help="with --build: leave draft (single-tier) models out")
+    sq.add_argument("--limit", type=int, default=None, help="keep at most this many rows")
+    sq.add_argument("--show", action="store_true", help="print the expanded query and stop")
+    sq.set_defaults(fn=cmd_sparql)
     args = ap.parse_args(argv)
     return args.fn(args)
 

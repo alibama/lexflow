@@ -45,6 +45,14 @@ ASK_MIN_SIMILARITY = float(_env("LEXFLOW_ASK_MIN_SIMILARITY", "0.55"))
 # with a trained section-relevance model (scripts/train_relevance.py): the least probability that still answers
 ASK_MIN_RELEVANCE = float(_env("LEXFLOW_ASK_MIN_RELEVANCE", "0.25"))
 VECTORS = _env("LEXFLOW_VECTORS", "combo")     # clause vectors for the learned selector: combo | tfidf | embed | none
+# Decision models (Ollama POST /v1/systemone; lexflow/extract/decide.py, docs/design/decision-models.md).  The
+# Ollama that serves decisions may be a second, newer server beside the main one (tev1 needs Ollama >= 0.40.4);
+# the chat fallback answers the same questions with a JSON schema when no decision model is pulled.  LEXFLOW_DECIDE
+# turns the live uses on (local step kinds in extract/strategies.py and publish/graph.py); off, the rules alone run.
+DECIDE_URL = _env("LEXFLOW_DECIDE_URL") or OLLAMA_URL
+DECIDE_MODEL = _env("LEXFLOW_DECIDE_MODEL", "tev1:0.8b")
+DECIDE_FALLBACK = _env("LEXFLOW_DECIDE_FALLBACK") or MODEL_A or "qwen3:1.7b"
+DECIDE = _env("LEXFLOW_DECIDE", "0") not in ("", "0", "false", "no")
 
 TURSO_URL = _env("TURSO_DATABASE_URL")
 TURSO_TOKEN = _env("TURSO_AUTH_TOKEN")

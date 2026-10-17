@@ -1,0 +1,59 @@
+# expected counts from the generated items (lexflow.publish.qs write):
+#   class legal process step: 1531
+#   class statute or legal provision: 929
+#   class statutory unit: 575
+#   class escalation mechanism: 488
+#   class legal role: 459
+#   class court decision: 347
+#   class government form: 309
+#   class government agency: 160
+#   class legal process: 134
+#   class court: 117
+#   class process outcome: 84
+#   class legal code: 63
+#   class decision point: 56
+#   class jurisdiction: 52
+#   class office type: 23
+#   class topic: 22
+#   class unit level: 22
+#   class escalation type: 20
+#   class reference type: 20
+#   class step kind: 20
+#   class time unit: 16
+#   class audience: 12
+#   class position type: 11
+#   class position: 11
+#   class determination method: 10
+#   class review status: 8
+#   class organizational unit: 6
+#   class government: 5
+#   class currency: 2
+#   review status agreed: 1068
+#   review status draft: 979
+#   review status reviewed: 470
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: how many items of each class, by review status (the --check numbers)
+# status: 15 Oct 2026: local 36 rows (5,481 items; 375,686 triples; local processes, forms and offices included); live 7 rows (counts by class; status is empty until pass 2)
+SELECT ?class ?classLabel ?status (COUNT(DISTINCT ?item) AS ?n) WHERE {
+  ?item lxt:P5 ?class ;
+        lxt:P25 ?key .
+  ?class rdfs:label ?classLabel .
+  FILTER(lang(?classLabel) = "en")
+  OPTIONAL { ?item lxt:{P:review status} ?s . ?s rdfs:label ?status . FILTER(lang(?status) = "en") }
+}
+GROUP BY ?class ?classLabel ?status
+ORDER BY DESC(?n) ?classLabel ?status

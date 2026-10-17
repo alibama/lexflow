@@ -1,0 +1,29 @@
+lexflow:agency:ca:department_of_general_services: minted as the parent of a ladder body from the fixture's record of Q5020423
+lexflow:agency:dc:mayors_office_of_legal_counsel: parent Q5190572 is not a body the fixture can mint; part of dropped
+lexflow:agency:il:public_access_counselor: parent Q3406491 is not a body the fixture can mint; part of dropped
+lexflow:agency:md:office_of_the_public_access_ombudsman: parent Q4818647 is not a body the fixture can mint; part of dropped
+could not supply: contact rows refused by the privacy checks: 229
+could not supply: courts without a name in case_law: 78
+could not supply: fee and deadline texts withheld (NO_REPRINT host): 60
+could not supply: fixture QIDs left off (untyped item): 4
+could not supply: ladder QIDs left off (kind check failed): 5
+could not supply: ladder QIDs left off (not an exact match or not a body/position key): 10
+could not supply: ladder parent edges dropped (parent not mintable from the fixture): 3
+could not supply: local deadlines not reducible to a number: 273
+could not supply: local fees not reducible to a number: 177
+could not supply: local legal-basis citations not in the index: 7
+could not supply: local processes of unmapped category (courts_legal): 9
+could not supply: local processes of unmapped category (health_social_services): 2
+could not supply: local processes of unmapped category (permits_construction): 2
+could not supply: local processes of unmapped category (zoning_land_use): 2
+could not supply: local step citations not in the index: 31
+could not supply: mailboxes removed from labels and descriptions: 1
+could not supply: quotes withheld (NO_REPRINT host): 341
+could not supply: roles without a body to play them: 37
+could not supply: sections not in the index: 181
+could not supply: sections whose path and act_id disagree: 11
+could not supply: units without a heading: 2084
+could not supply: values dropped: personal-looking mailbox: 6
+deterministic: 3539 items checked, 81 with findings
+ollama: reusing 83 flags from the previous report
+held 82 items; report: /data/wikibase-push/lint-report.md

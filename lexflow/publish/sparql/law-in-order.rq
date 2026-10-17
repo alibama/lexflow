@@ -1,0 +1,32 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: every section of Va. Code Title 2.2 Chapter 37 in the code's order, with heading, effective dates and official text
+# params: unit=lexflow:unit:va:t2.2-sii-pb-c37
+# status: 15 Oct 2026: local 11 rows (Va. Code Title 2.2 Chapter 37: the sections lexflow has, rebuilt from the live database); live 0 (units, sort keys and headings wait for pass 2)
+SELECT ?section ?sectionLabel ?number ?heading ?from ?until ?text ?sort WHERE {
+  VALUES ?unit { lx:{Q:lexflow:unit:va:t2.2-sii-pb-c37} }
+  ?section lxt:{P:part of} ?unit ;
+           lxt:{P:instance of} lx:{Q:statute or legal provision} ;
+           rdfs:label ?sectionLabel .
+  FILTER(lang(?sectionLabel) = "en")
+  OPTIONAL { ?section lxt:{P:sort key} ?sort }
+  OPTIONAL { ?section lxt:{P:section number} ?number }
+  OPTIONAL { ?section lxt:{P:heading text} ?heading }
+  OPTIONAL { ?section lxt:{P:effective date} ?from }
+  OPTIONAL { ?section lxt:{P:effective until} ?until }
+  OPTIONAL { ?section lxt:{P:official text} ?text }
+}
+ORDER BY ?sort ?sectionLabel

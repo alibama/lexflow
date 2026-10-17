@@ -1,0 +1,32 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: from any step: the escalation and deferral chain, with each rung's type, the body it reaches, its time limit and section
+# params: step=lexflow:step:va.business:local_license
+# status: 15 Oct 2026: local 2 rows (the rung and the body it reaches); live 0 (escalates to / defers to wait for pass 2)
+SELECT ?target ?targetLabel ?type ?body ?bodyLabel ?limit ?unit ?section ?sectionLabel WHERE {
+  VALUES ?step { lx:{Q:lexflow:step:va.business:local_license} }
+  ?step (lxt:{P:escalates to}|lxt:{P:defers to})+ ?target .
+  ?target rdfs:label ?targetLabel .
+  FILTER(lang(?targetLabel) = "en")
+  OPTIONAL { ?target lxt:{P:escalation type} ?t . ?t rdfs:label ?type . FILTER(lang(?type) = "en") }
+  OPTIONAL { ?target (lxt:{P:escalates to}|lxt:{P:defers to}) ?body . ?body rdfs:label ?bodyLabel . FILTER(lang(?bodyLabel) = "en") }
+  OPTIONAL {
+    ?target lxp:{P:time limit} ?st . ?st lxps:{P:time limit} ?limit .
+    OPTIONAL { ?st lxpq:{P:time unit} ?u . ?u rdfs:label ?unit . FILTER(lang(?unit) = "en") }
+  }
+  OPTIONAL { ?target lxt:{P:references} ?section . ?section rdfs:label ?sectionLabel . FILTER(lang(?sectionLabel) = "en") }
+}
+ORDER BY ?targetLabel

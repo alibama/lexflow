@@ -757,6 +757,96 @@ def put_method(value: dict):
         c.close()
 
 
+# ------------------------------------------------------------------ who do I ask
+@app.get("/api/who")
+def who(q: str = Query(..., min_length=1, max_length=500, description="a plain question"),
+        place: str | None = Query(None, max_length=120, description="a government id, state code or place name"),
+        live: int = 0):
+    """Who do I ask: the roles of the processes a question names, who plays them, their office channels, links and
+    the statute words (``lexflow.ask.who``); from the local SPARQL store, or the live endpoint with live=1."""
+    from concurrent.futures import TimeoutError as PoolTimeout
+    from ..ask import who as W
+    c = con()
+    try:
+        r = W.route(q, place, c)
+        try:
+            return _sparql_pool().submit(W.answer, r, c, bool(live)).result(timeout=SPARQL_TIMEOUT * 2)
+        except PoolTimeout as e:
+            raise HTTPException(504, "the answer took too long") from e
+    finally:
+        c.close()
+
+
+# ------------------------------------------------------------------ sparql
+# Read-only SPARQL over the local Wikibase copy (data/wikibase/, built by `lexflow sparql --build`) or, with
+# live=1, the public endpoint.  GET only, 30 s, at most 2,000 rows; the dashboard's Query page uses it.
+SPARQL_TIMEOUT = 30
+SPARQL_ROWS = 2000
+
+
+_SPARQL_POOL = None
+
+
+def _sparql_pool():
+    from concurrent.futures import ThreadPoolExecutor
+    global _SPARQL_POOL
+    if _SPARQL_POOL is None:
+        _SPARQL_POOL = ThreadPoolExecutor(max_workers=2, thread_name_prefix="sparql")
+    return _SPARQL_POOL
+
+
+@app.get("/api/sparql/queries")
+def sparql_queries():
+    """The canned queries (docs/design/wikibase-schema.md section 6) with their question, parameters and text."""
+    from ..publish import ids as I
+    from ..publish import rdf
+    from ..publish import sparql as SQ
+    return {"queries": [q.as_dict() for q in SQ.catalogue()], "prefixes": rdf.QUERY_PREFIXES, "endpoint": rdf.ENDPOINT,
+            "local_built": rdf.TTL_PATH.exists(), "ids_resolved": I.IDS_PATH.exists() or bool(I.database_ids()[1]),
+            "turtle_stale": I.IdMap.turtle_stale(rdf.TTL_PATH), "max_rows": SPARQL_ROWS, "timeout": SPARQL_TIMEOUT}
+
+
+@app.get("/api/sparql")
+def sparql(q: str = Query(..., min_length=1, max_length=20000, description="a canned query name or SPARQL text"),
+           live: int = 0, limit: int = SPARQL_ROWS,
+           param: list[str] = Query(default=[], description="name=value for a VALUES parameter (repeatable)")):
+    import time as _time
+    from concurrent.futures import TimeoutError as PoolTimeout
+    from ..publish import ids as I
+    from ..publish import rdf
+    from ..publish import sparql as SQ
+    params = {}
+    for p in param:
+        if "=" in p:
+            k, v = p.split("=", 1)
+            params[k.strip()] = v.strip()
+    query = SQ.get(q.strip()) if re.fullmatch(r"[a-z0-9\-]+", q.strip()) and SQ.exists(q.strip()) else SQ.parse(q, "")
+    if query.live_only and not live:
+        raise HTTPException(400, f"{query.name} is a federated query: run it with live=1")
+    idmap = I.IdMap() if live else I.IdMap.for_turtle()
+    try:
+        text = SQ.prepare(query, params, idmap, live=bool(live))
+    except KeyError as e:
+        raise HTTPException(400, str(e)) from e
+    limit = max(1, min(limit, SPARQL_ROWS))
+    started = _time.monotonic()
+
+    def run():
+        store = None if live else rdf.open_store()
+        return rdf.query(store, text, live=bool(live), timeout=SPARQL_TIMEOUT, limit=limit)
+    try:
+        rows = _sparql_pool().submit(run).result(timeout=SPARQL_TIMEOUT)
+    except PoolTimeout as e:
+        raise HTTPException(504, f"the query took longer than {SPARQL_TIMEOUT} s") from e
+    except FileNotFoundError as e:
+        raise HTTPException(409, str(e)) from e
+    except Exception as e:
+        raise HTTPException(400, f"query failed: {str(e)[:800]}") from e
+    return {"vars": rows.vars, "rows": list(rows), "n": len(rows), "truncated": rows.truncated, "live": bool(live),
+            "query": text, "name": query.name or None, "unresolved": sorted(set(idmap.unresolved)),
+            "ms": int((_time.monotonic() - started) * 1000)}
+
+
 # ------------------------------------------------------------------ static
 if config.WEB_VENDOR_DIR.exists():
     app.mount("/vendor", StaticFiles(directory=str(config.WEB_VENDOR_DIR)), name="vendor")

@@ -1,0 +1,37 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: what Va. Code § 2.2-3704 references and what references it, with reference types and the quoted words
+# params: section=lexflow:statute:va:2.2-3704
+# status: 15 Oct 2026: local 87 rows; live 23 rows ("cited by": the processes and court decisions that reference the section); "cites", reference types and quotes wait for pass 2
+SELECT ?direction ?other ?otherLabel ?class ?type ?pinpoint ?quote WHERE {
+  VALUES ?section { lx:{Q:lexflow:statute:va:2.2-3704} }
+  {
+    ?section lxp:{P:references} ?st .
+    ?st lxps:{P:references} ?other .
+    BIND("cites" AS ?direction)
+  } UNION {
+    ?other lxp:{P:references} ?st .
+    ?st lxps:{P:references} ?section .
+    BIND("cited by" AS ?direction)
+  }
+  ?other rdfs:label ?otherLabel .
+  FILTER(lang(?otherLabel) = "en")
+  OPTIONAL { ?other lxt:{P:instance of} ?c . ?c rdfs:label ?class . FILTER(lang(?class) = "en") }
+  OPTIONAL { ?st lxpq:{P:reference type} ?t . ?t rdfs:label ?type . FILTER(lang(?type) = "en") }
+  OPTIONAL { ?st lxpq:{P:pinpoint} ?pinpoint }
+  OPTIONAL { ?st prov:wasDerivedFrom ?ref . ?ref lxpr:{P:quoted text} ?quote }
+}
+ORDER BY ?direction ?otherLabel

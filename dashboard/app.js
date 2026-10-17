@@ -117,7 +117,7 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
-  jobs: viewJobs, job: viewJob, method: viewMethod };
+  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
   refreshers = [];
@@ -1378,6 +1378,272 @@ async function viewMethod() {
       h("button", { class: "btn", onclick: async () => { await put("/api/method", r.defaults); viewMethod(); } }, "Reset to defaults"),
       saveMsg));
   check();
+}
+
+// -------------------------------------------------------------------- query
+// SPARQL over the local Wikibase copy (data/wikibase/) or the live lexipedia.wikibase.cloud endpoint, through
+// GET /api/sparql.  Canned queries come from lexflow/publish/sparql/*.rq (docs/design/wikibase-schema.md §6).
+const ENTITY_BASE = "https://lexipedia.wikibase.cloud/entity/";
+function shortIri(iri) {
+  const bases = [["lx", ENTITY_BASE], ["lxt", "https://lexipedia.wikibase.cloud/prop/direct/"], ["lxp", "https://lexipedia.wikibase.cloud/prop/"],
+    ["wd", "http://www.wikidata.org/entity/"], ["wikibase", "http://wikiba.se/ontology#"]];
+  for (const [p, b] of bases) if (iri.startsWith(b) && /^[A-Za-z0-9_-]+$/.test(iri.slice(b.length))) return `${p}:${iri.slice(b.length)}`;
+  return iri;
+}
+function wikiHref(iri) {
+  const m = iri.startsWith(ENTITY_BASE) && iri.slice(ENTITY_BASE.length).match(/^([PQ])(\d+)$/);
+  if (!m) return iri;
+  if (Number(m[2]) >= 900) return null;                       // provisional id: nothing on the wiki yet
+  return `https://lexipedia.wikibase.cloud/wiki/${m[1] === "P" ? "Property" : "Item"}:${m[1]}${m[2]}`;
+}
+function cellValue(b) {
+  if (!b) return "";
+  if (b.type === "uri") return shortIri(b.value);
+  return b.value;
+}
+function cell(b) {
+  if (!b) return h("span", { class: "muted" }, "–");
+  if (b.type === "uri") {
+    const href = wikiHref(b.value);
+    const short = shortIri(b.value);
+    return href ? h("a", { href, target: "_blank", rel: "noopener", title: b.value }, short) : h("span", { class: "mono", title: b.value }, short);
+  }
+  const v = b.value;
+  const num = b.datatype && /#(integer|decimal|double|float|int|long)$/.test(b.datatype);
+  return h("span", { class: num ? "num" : "", title: v.length > 60 ? v : null }, v.length > 200 ? `${v.slice(0, 200)}…` : v);
+}
+// ------------------------------------------------------------------ who do I ask
+const PLAYED_KIND = { body: "a body", unit: "a unit of a body", court: "a court", "office type": "an office every locality has",
+  post: "a post", "post type": "a post every body has", government: "a government", "private-party": "you, or a private party", unknown: "nobody recorded yet" };
+function channelRow(c) {
+  const link = c.kind === "website" || c.kind === "page" ? h("a", { href: c.value, target: "_blank", rel: "noopener" }, c.value)
+    : c.kind === "email" ? h("a", { href: `mailto:${c.value}` }, c.value) : h("span", {}, c.value);
+  const src = c.source ? (c.source.startsWith("http") ? h("a", { href: c.source, target: "_blank", rel: "noopener", class: "muted" }, "source") : h("span", { class: "muted" }, c.source)) : null;
+  return h("li", { class: "chan" }, h("span", { class: "tag" }, c.kind), link, c.label ? h("span", { class: "muted" }, c.label) : null,
+    src, c.retrieved ? h("span", { class: "muted" }, c.retrieved) : null);
+}
+function roleCard(r) {
+  const pb = r.played_by || {};
+  const links = pb.links || {};
+  const quotes = (r.quotes || []).filter((q) => q.text);
+  return h("section", { class: "card role-card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, r.label), h("p", {}, r.process ? r.process.label : ""))),
+    h("div", { class: "card-pad role-body" },
+      h("div", { class: "role-row" }, h("span", { class: "k" }, "Played by"),
+        h("div", {}, h("strong", {}, pb.label || "–"), PLAYED_KIND[pb.kind] && PLAYED_KIND[pb.kind] !== pb.label ? h("span", { class: "muted" }, ` · ${PLAYED_KIND[pb.kind]}`) : null,
+          pb.lexipedia ? h("a", { class: "muted", href: pb.lexipedia, target: "_blank", rel: "noopener", style: "margin-left:8px" }, "on Lexipedia") : null,
+          pb.resolved_for ? h("div", { class: "muted", style: "font-size:12.5px" }, pb.office_type ? `the ${pb.office_type.label} of ${pb.resolved_for}` : `resolved to the office of ${pb.resolved_for}`) : null)),
+      pb.chain && pb.chain.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Part of"),
+        h("div", {}, pb.chain.map((c, i) => h("span", {}, i ? " › " : "", c.lexipedia ? h("a", { href: c.lexipedia, target: "_blank", rel: "noopener" }, c.label) : c.label)))) : null,
+      pb.head ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Head"), h("div", {}, pb.head.label)) : null,
+      pb.channels && pb.channels.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Reach them"),
+        h("ul", { class: "chans" }, pb.channels.map(channelRow), pb.channels_more ? h("li", { class: "muted" }, `${pb.channels_more} more on the body's page`) : null)) : null,
+      links.wikidata || links.govdirectory ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Elsewhere"),
+        h("div", { class: "row-flex" }, links.wikidata ? h("a", { href: links.wikidata, target: "_blank", rel: "noopener" }, `Wikidata ${links.wikidata_qid}`) : null,
+          links.govdirectory ? h("a", { href: links.govdirectory, target: "_blank", rel: "noopener" }, "Govdirectory") : null)) : null,
+      quotes.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "The law says"),
+        h("div", {}, quotes.map((q) => h("blockquote", { class: "quote" }, `“${q.text}”`,
+          h("div", { class: "cite" }, q.url ? h("a", { href: q.url, target: "_blank", rel: "noopener" }, q.section) : q.section, q.pinpoint ? ` ${q.pinpoint}` : ""))))) : null,
+      r.steps && r.steps.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Does"),
+        h("ul", { class: "does" }, r.steps.map((s) => h("li", {}, s.label, s.limit ? h("span", { class: "tag", style: "margin-left:6px" }, `${s.limit} ${s.unit || ""}`) : null,
+          (s.fees || []).map((f) => h("span", { class: "tag", style: "margin-left:6px" }, `$${f.amount}${f.basis ? ` ${f.basis}` : ""}`)),
+          (s.sections || []).map((c) => h("div", { class: "muted", style: "font-size:12.5px" }, c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.section) : c.section, c.pinpoint ? ` ${c.pinpoint}` : "", c.text ? ` — “${c.text}”` : "")),
+          !(s.sections || []).length && s.quote ? h("div", { class: "muted", style: "font-size:12.5px" }, `“${s.quote}”`) : null,
+          (s.forms || []).map((f) => h("div", { style: "font-size:12.5px" }, "Form: ", f.url ? h("a", { href: f.url, target: "_blank", rel: "noopener" }, f.label) : f.label, f.number ? ` (${f.number})` : "")))))) : null,
+      r.missing && r.missing.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Still missing"),
+        h("ul", { class: "does muted" }, r.missing.map((m) => h("li", {}, m)))) : null));
+}
+async function viewWho() {
+  const question = h("input", { type: "search", "aria-label": "Your question", placeholder: "e.g. who handles a FOIA request in Charlottesville", autocomplete: "off",
+    style: "width:100%;box-sizing:border-box;padding:10px;font-size:15px" });
+  question.value = store("lexflow-who-q") || "";
+  let chosen = JSON.parse(store("lexflow-who-place") || "null");
+  const chip = h("span", {});
+  const find = h("input", { type: "search", placeholder: "Place (optional): a state, county, city or town", "aria-label": "Place", autocomplete: "off", style: "width:100%;box-sizing:border-box" });
+  const results = h("div", { class: "card", style: "position:absolute;z-index:5;min-width:280px;max-width:100%;display:none;max-height:300px;overflow:auto" });
+  function drawChip() {
+    rc(chip, chosen ? h("span", { class: "tag", style: "display:inline-flex;gap:6px;align-items:center;text-transform:none;font-size:13px" }, chosen.label,
+      h("button", { class: "icon-btn", "aria-label": `Remove ${chosen.label}`, onclick: () => { chosen = null; store("lexflow-who-place", ""); drawChip(); } }, "×")) : null);
+  }
+  let timer = null;
+  find.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      const q = find.value.trim();
+      if (q.length < 2) { results.style.display = "none"; return; }
+      const rows = await api(`/api/targets?q=${encodeURIComponent(q)}`);
+      rc(results, rows.length ? rows.map((r) => h("button", { class: "btn", style: "display:block;width:100%;text-align:left;border:0;border-radius:0",
+        onclick: () => { chosen = { target: r.target, label: r.label }; store("lexflow-who-place", JSON.stringify(chosen)); drawChip(); find.value = ""; results.style.display = "none"; } },
+        r.label, h("span", { class: "muted" }, r.kind === "state" ? "" : ` · ${r.kind}${r.population ? ` · ${fmtInt(r.population)}` : ""}`)))
+        : h("p", { class: "card-pad muted" }, "No match."));
+      results.style.display = "block";
+    }, 200);
+  });
+  let live = store("lexflow-who-live") === "1";
+  const liveSeg = h("div", { class: "seg", role: "group", "aria-label": "Store" });
+  function drawSeg() {
+    rc(liveSeg, h("button", { type: "button", "aria-pressed": String(!live), onclick: () => { live = false; store("lexflow-who-live", "0"); drawSeg(); } }, "Local"),
+      h("button", { type: "button", "aria-pressed": String(live), onclick: () => { live = true; store("lexflow-who-live", "1"); drawSeg(); } }, "Live"));
+  }
+  drawSeg();
+  const status = h("p", { class: "muted" });
+  const out = h("div");
+  async function run() {
+    const q = question.value.trim();
+    store("lexflow-who-q", q);
+    if (!q) { status.textContent = "Type a question first."; return; }
+    status.textContent = live ? "Asking lexipedia.wikibase.cloud…" : "Looking it up…";
+    rc(out);
+    let a;
+    try {
+      const u = new URLSearchParams({ q, live: live ? "1" : "0" });
+      if (chosen) u.set("place", chosen.target);
+      a = await api(`/api/who?${u}`);
+    } catch (e) {
+      status.textContent = "";
+      rc(out, h("div", { class: "notice" }, icon("info"), h("div", {}, h("strong", {}, "Could not answer. "), String(e.message || e))));
+      return;
+    }
+    const r = a.route;
+    const where = r.place ? r.place.name + ", " : "";
+    status.textContent = `${where}${r.jurisdiction ? S.meta.states?.[r.jurisdiction] || r.jurisdiction.toUpperCase() : "no place"} · topic: ${r.topic_label || "not recognised"}${r.topic_by === "decision" ? ` (decision model, ${(r.confidence * 100).toFixed(0)}%)` : ""} · ${a.source === "store" ? "local store" : a.source === "live" ? "live endpoint" : "models' facts (no store built)"}`;
+    const sparqlLink = a.sparql ? h("a", { class: "btn small", href: `#/query/${a.sparql.query}/${encodeURIComponent(Object.entries(a.sparql.params).map(([k, v]) => `${k}=${v}`).join("&"))}` }, "Run as SPARQL") : null;
+    const place = a.place ? h("section", { class: "card role-card" },
+      h("div", { class: "card-head" }, h("div", {}, h("h2", {}, a.place.label), h("p", {}, "The locality itself"))),
+      h("div", { class: "card-pad role-body" },
+        a.place.channels.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Reach them"), h("ul", { class: "chans" }, a.place.channels.map(channelRow))) : null,
+        a.place.links.wikidata ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Elsewhere"), h("div", {}, h("a", { href: a.place.links.wikidata, target: "_blank", rel: "noopener" }, `Wikidata ${a.place.links.wikidata_qid}`))) : null)) : null;
+    rc(out,
+      h("div", { class: "row-flex", style: "margin-bottom:12px" }, sparqlLink, r.processes.length ? h("span", { class: "muted" }, `${r.processes.length} ${r.processes.length === 1 ? "process" : "processes"}: ${r.processes.map((p) => p.title || p.process || p.model_id).join("; ")}`) : null),
+      a.roles.length ? h("div", { class: "grid who-grid" }, a.roles.map(roleCard)) : null,
+      a.local.length ? [h("h2", { style: "margin:18px 0 10px" }, "Ask the locality"), h("div", { class: "grid who-grid" }, a.local.map(roleCard))] : null,
+      place ? [h("h2", { style: "margin:18px 0 10px" }, "The place"), place] : null,
+      a.missing.length ? h("div", { class: "notice", style: "margin-top:16px" }, icon("info"), h("ul", { class: "does", style: "margin:0" }, a.missing.map((m) => h("li", {}, m)))) : null,
+      !a.roles.length && !a.local.length ? h("p", { class: "muted" }, "No roles found for this question yet.") : null);
+  }
+  question.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); run(); } });
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Who do I ask"),
+      h("p", {}, "Name a thing you want to do and a place: every role the law gives it, who plays the role, how to reach them, and the words of the statute that make them responsible. Organisations and office channels only, never a person."))),
+    h("section", { class: "card card-pad", style: "margin-bottom:16px" },
+      h("div", { class: "who-form" },
+        question,
+        h("div", { class: "who-place" }, find, results, chip),
+        h("div", { class: "query-bar" }, h("button", { class: "btn primary", type: "button", onclick: run }, "Ask"), liveSeg,
+          h("span", { class: "muted" }, "Try: starting an LLC in Virginia · FOIA request in Charlottesville · dog license in Staunton")))),
+    status, out);
+  drawChip();
+  if (question.value) run();
+}
+
+async function viewQuery(pickName, pickParams) {
+  const cat = await api("/api/sparql/queries");
+  let live = store("lexflow-sparql-live") === "1";
+  let current = null;
+  const params = {};
+  const editor = h("textarea", { class: "sparql", spellcheck: "false", "aria-label": "SPARQL query", placeholder: "Pick a question on the left, or write SPARQL here. {P:label} and {Q:key} tokens are expanded." });
+  const paramBox = h("div", { class: "query-params" });
+  const results = h("div");
+  const status = h("span", { class: "muted" });
+  const list = h("ul", { class: "query-list" });
+  const liveSeg = h("div", { class: "seg", role: "group", "aria-label": "Store" });
+  function drawSeg() {
+    rc(liveSeg, h("button", { type: "button", "aria-pressed": String(!live), onclick: () => { live = false; store("lexflow-sparql-live", "0"); drawSeg(); } }, "Local"),
+      h("button", { type: "button", "aria-pressed": String(live), onclick: () => { live = true; store("lexflow-sparql-live", "1"); drawSeg(); } }, "Live"));
+  }
+  drawSeg();
+  function drawList() {
+    rc(list, ...cat.queries.map((q) => h("li", {}, h("button", { type: "button", class: "query-btn", "aria-pressed": String(current && current.name === q.name), onclick: () => pick(q) },
+      h("span", { class: "name" }, q.name, q.live_only ? h("span", { class: "tag" }, "live only") : null), h("span", { class: "q" }, q.question)))));
+  }
+  function pick(q) {
+    current = q;
+    editor.value = q.text;
+    for (const k of Object.keys(params)) delete params[k];
+    drawList();
+    drawParams();
+    if (q.live_only && !live) { live = true; store("lexflow-sparql-live", "1"); drawSeg(); }
+  }
+  function drawParams() {
+    const entries = current ? Object.entries(current.params) : [];
+    rc(paramBox, ...entries.map(([k, v]) => h("label", { class: "field" }, k,
+      h("input", { type: "text", value: v, placeholder: v || "any", "aria-label": `parameter ${k}`, oninput: (e) => { params[k] = e.target.value; } }))));
+    paramBox.style.display = entries.length ? "" : "none";
+  }
+  function request() {
+    const u = new URLSearchParams();
+    const canned = current && editor.value === current.text;
+    u.set("q", canned ? current.name : editor.value);
+    u.set("live", live ? "1" : "0");
+    if (canned) for (const [k, v] of Object.entries(params)) if (v) u.append("param", `${k}=${v}`);
+    return u;
+  }
+  function curlText() {
+    const u = request();
+    const parts = [`curl -sG '${location.origin}/api/sparql'`];
+    for (const [k, v] of u.entries()) parts.push(`--data-urlencode ${JSON.stringify(`${k}=${v}`).replace(/'/g, "'\\''").replace(/^"|"$/g, "'")}`);
+    return parts.join(" \\\n  ");
+  }
+  async function copy(text, label) {
+    try { await navigator.clipboard.writeText(text); status.textContent = `${label} copied.`; } catch (e) { window.prompt(`Copy ${label}:`, text); }
+  }
+  async function run() {
+    if (!editor.value.trim()) { status.textContent = "Nothing to run."; return; }
+    status.textContent = live ? "Asking lexipedia.wikibase.cloud…" : "Running on the local store…";
+    rc(results);
+    let r;
+    try {
+      r = await api(`/api/sparql?${request()}`);
+    } catch (e) {
+      status.textContent = "";
+      rc(results, h("div", { class: "notice" }, icon("info"), h("div", {}, h("strong", {}, "Query failed. "), String(e.message || e))));
+      return;
+    }
+    const cols = r.vars.map((v) => ({ key: v, label: v, render: (row) => cell(row[v]), sort: (row) => {
+      const b = row[v]; if (!b) return null; const n = Number(b.value); return b.type === "literal" && b.value !== "" && !Number.isNaN(n) ? n : cellValue(b); } }));
+    const where = r.live ? "live endpoint" : "local store";
+    status.textContent = `${fmtInt(r.n)} row${r.n === 1 ? "" : "s"}${r.truncated ? ` (first ${fmtInt(r.n)} only)` : ""} from the ${where} in ${fmtInt(r.ms)} ms` +
+      (r.unresolved.length ? ` · provisional ids for: ${r.unresolved.join(", ")}` : "");
+    rc(results, r.n ? h("section", { class: "card" }, h("div", { class: "card-pad", style: "padding-top:8px" }, sortableTable(cols, r.rows)))
+      : h("p", { class: "muted" }, r.live ? "No rows on the wiki yet; this part of the schema may be waiting for pass 2." : "No rows. If the local store is empty, run lexflow sparql --build."));
+    for (const td of results.querySelectorAll("td")) td.classList.add("cell");
+  }
+  const runBtn = h("button", { class: "btn primary", type: "button", onclick: run }, "Run");
+  editor.addEventListener("keydown", (e) => { if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); run(); } });
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Query"),
+      h("p", {}, "Ask the law graph in SPARQL: the local copy built from this database (", h("code", {}, "lexflow sparql --build"), ") or the live ",
+        h("a", { href: "https://lexipedia.wikibase.cloud/query/", target: "_blank", rel: "noopener" }, "lexipedia.wikibase.cloud"), " endpoint. ",
+        cat.local_built ? "" : "The local store has not been built yet. ", cat.ids_resolved ? "" : "Ids not yet on the wiki are provisional (P900+, Q900000+). ",
+        cat.turtle_stale ? "The wiki's id map is newer than the local store: rebuild it to query by the wiki's ids." : ""))),
+    h("div", { class: "grid query-layout" },
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("h2", {}, "Questions")), list),
+      h("div", {},
+        h("section", { class: "card card-pad" },
+          editor, paramBox,
+          h("div", { class: "query-bar" }, runBtn, liveSeg,
+            h("button", { class: "btn small", type: "button", onclick: () => copy(curlText(), "cURL") }, "Copy as cURL"),
+            h("button", { class: "btn small", type: "button", onclick: () => copy(editor.value, "query") }, "Copy query"),
+            h("span", { class: "muted" }, "Ctrl+Enter runs")),
+          h("div", { class: "query-bar" }, status)),
+        h("div", { class: "spacer" }),
+        results,
+        h("div", { class: "spacer" }),
+        h("details", { class: "card prefixes" }, h("summary", {}, "Prefixes for the wiki's own query UI"),
+          h("div", { class: "query-note" }, "Lexipedia's entities are not under wd:/wdt:; paste these before a query at ",
+            h("a", { href: `${cat.endpoint.replace(/\/sparql$/, "/")}`, target: "_blank", rel: "noopener" }, "the wiki's query service"), "."),
+          h("pre", { class: "log" }, cat.prefixes),
+          h("div", { class: "query-note" }, h("button", { class: "btn small", type: "button", onclick: () => copy(cat.prefixes, "prefix block") }, "Copy prefixes"))))));
+  drawList();
+  drawParams();
+  const wanted = pickName && cat.queries.find((q) => q.name === pickName);
+  if (wanted) {
+    pick(wanted);
+    for (const [k, v] of new URLSearchParams(pickParams || "")) if (k in wanted.params) params[k] = v;
+    drawParams();
+    for (const input of paramBox.querySelectorAll("input")) if (params[input.getAttribute("aria-label").replace("parameter ", "")]) input.value = params[input.getAttribute("aria-label").replace("parameter ", "")];
+    run();
+  } else if (cat.queries.length) pick(cat.queries.find((q) => q.name === "coverage") || cat.queries[0]);
 }
 
 poll();

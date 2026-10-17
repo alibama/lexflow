@@ -1,0 +1,42 @@
+{
+  "note": "Office types every locality of a state has (lexflow:office-type:<st>:<slug>; publish/graph.py). A state model's role whose actor id or name matches an entry's 'match' words is 'played by' the office type when no body plays it, and a researched local office whose name matches is an 'instance of' it, so a locality query resolves a state step to the local office. The Virginia entries are the constitutional officers of Va. Const. art. VII, § 4 plus the general registrar (Va. Code § 24.2-110). 'match' is matched case-insensitively against the whole name as a regular expression; 'actors' lists state-model actor ids.",
+  "checked": "2026-10-16",
+  "va": {
+    "commissioner_of_the_revenue": {
+      "name": "Commissioner of the Revenue",
+      "description": "Constitutional officer of a Virginia county or city who assesses local taxes and issues business licences (Va. Const. art. VII, § 4; Va. Code § 58.1-3100 ff.)",
+      "match": ["commissioner of (?:the )?revenue"],
+      "actors": ["commissioner_revenue", "commissioner_of_the_revenue"]
+    },
+    "treasurer": {
+      "name": "Treasurer",
+      "description": "Constitutional officer of a Virginia county or city who bills and collects local taxes and fees (Va. Const. art. VII, § 4; Va. Code § 58.1-3123 ff.)",
+      "match": ["\\b(?:city |county |town )?treasurer\\b"],
+      "actors": ["treasurer", "local_treasurer"]
+    },
+    "clerk_of_the_circuit_court": {
+      "name": "Clerk of the Circuit Court",
+      "description": "Constitutional officer who keeps the records of a Virginia circuit court, records deeds and issues marriage licences and probate (Va. Const. art. VII, § 4; Va. Code § 17.1-200 ff.)",
+      "match": ["clerk of (?:the )?(?:\\w+ )*circuit court", "circuit court,? clerk", "circuit court clerk"],
+      "actors": ["clerk", "circuit_court_clerk", "clerk_of_court"]
+    },
+    "attorney_for_the_commonwealth": {
+      "name": "Attorney for the Commonwealth",
+      "description": "Constitutional officer who prosecutes for the Commonwealth in a Virginia county or city (Va. Const. art. VII, § 4; Va. Code § 15.2-1626 ff.)",
+      "match": ["commonwealth'?s attorney", "attorney for the commonwealth"],
+      "actors": ["commonwealths_attorney", "attorney_for_the_commonwealth"]
+    },
+    "sheriff": {
+      "name": "Sheriff",
+      "description": "Constitutional officer of a Virginia county or city (Va. Const. art. VII, § 4; Va. Code § 15.2-1609 ff.)",
+      "match": ["\\bsheriff\\b"],
+      "actors": ["sheriff"]
+    },
+    "general_registrar": {
+      "name": "General Registrar",
+      "description": "The officer who registers voters and runs elections in a Virginia county or city, with the electoral board (Va. Code § 24.2-110 ff.)",
+      "match": ["general registrar", "\\bregistrar\\b", "voter registration"],
+      "actors": ["registrar", "general_registrar"]
+    }
+  }
+}

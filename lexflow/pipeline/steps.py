@@ -251,6 +251,53 @@ def run_ask(con, args, log, progress):
                   log=log, progress=progress, question_id=args.get("question_id"))
 
 
+def st_ontology(con):
+    """Done when every state with a statute index has a section_tags row for every section."""
+    from ..ask import index as I
+    from ..law import ontology as O
+    have = [r["state"] for r in db.rows(con, "SELECT state FROM statute_files WHERE status='downloaded'")]
+    have = [st for st in have if I.ready(st)]
+    if not have:
+        return {"status": "optional", "done": 0, "total": 0, "detail": "Make the statutes searchable first"}
+    tagged = O.status(con, have)
+    full = sum(1 for st in have if sum(tagged.get(st, {}).values()) >= O.section_count(st))
+    return {"status": "done" if full >= len(have) else "partial" if full else "optional", "done": full,
+            "total": len(have), "detail": f"{full} of {plural(len(have), 'state')} tagged"}
+
+
+def run_ontology(con, args, log, progress):
+    """Tag every section of each named state's index (lexflow.law.ontology): structure and ELI id by rules; norm
+    types by rules, plus the decision model when ``model`` is set (``decision`` or ``chat``) and ``no_llm`` is not.
+    ``budget`` caps the model calls per run (default 200), ``pace`` sleeps between them, ``limit`` stops a state
+    after that many sections (a trial)."""
+    from ..ask import index as I
+    from ..law import ontology as O
+    have = [r["state"] for r in db.rows(con, "SELECT state FROM statute_files WHERE status='downloaded'")]
+    sts = [s for s in (_states(args, con) if args.get("states") else have) if I.ready(s)]
+    decider = None
+    if args.get("model") and not args.get("no_llm"):
+        from ..extract import decide as D
+        decider = D.Decider()
+        if decider.backend["kind"] == "none":
+            log("no decision model and no chat model is pulled: rules only")
+            decider = None
+        elif args.get("model") == "chat" and decider.backend["kind"] == "decision":
+            decider = D.Decider(backend_info={"kind": "chat", "model": decider.chat_model, "models": []})
+    budget = int(args.get("budget") or 200)
+    out = {}
+    for i, st in enumerate(sts):
+        out[st] = O.run_state(con, st, decider=decider, force=bool(args.get("force")), budget=budget,
+                              pace=float(args.get("pace") or 0), limit=args.get("limit"), log=log,
+                              progress=lambda p, i=i: progress((i + p) / max(1, len(sts))))
+        if decider is not None:
+            budget -= out[st]["model_calls"]
+        _mark_scan(con, "ontology", st, rows=out[st]["tagged"], matched=out[st]["model_calls"])
+        progress((i + 1) / max(1, len(sts)))
+    return {"states": len(sts), "tagged": sum(v["tagged"] for v in out.values()),
+            "model_calls": sum(v["model_calls"] for v in out.values()),
+            "seconds": round(sum(v["seconds"] for v in out.values()), 1)}
+
+
 def _upper_list(states: list[str], limit: int = 8, why=None) -> str:
     shown = [f"{s.upper()} ({why(s)})" if why else s.upper() for s in states[:limit]]
     return ", ".join(shown) + (f" and {len(states) - limit} more" if len(states) > limit else "")
@@ -761,6 +808,33 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "and every page links.",
          "optional", st_publish, run_publish, needs=["build"], params=["dry_run"],
          credits=[C.DOKUWIKI, C.BPMNIO_PLUGIN]),
+    Step("ontology", "Tag sections with ontology types",
+         "For every section of a state's statute index: its place in the code's hierarchy as an Akoma Ntoso "
+         "element (title, chapter, article, section), its ELI-style identifier, and which LKIF norm types it "
+         "carries (definition, obligation, permission, prohibition, power, penalty, procedure). Rules give the "
+         "structure and identifier; the norm types come from cue phrases, with the local decision model's yes/no "
+         "answers on the section head and first 1,500 characters when asked for. Kept in this copy's own "
+         "section_tags table (docs/design/legal-ontologies.md).",
+         "optional", st_ontology, run_ontology, needs=["index"], params=["states", "force", "no_llm"],
+         cost="rules: about a minute per state, every state in under an hour; with the decision model about "
+              "12 s per section on this CPU (seven yes/no questions in one call; budget 200 calls per run by default), so a "
+              "model pass over a whole state is days and over all states months; see the doc's estimate",
+         credits=[C.used_for(C.SQLITE_FTS5, "The index whose sections and paths are tagged"),
+                  C.credit("LKIF-Core", "Hoekstra, Breuker, Di Bello, Boer (ESTRELLA project)", "CC BY 4.0",
+                           "https://github.com/RinkeHoekstra/lkif-core", "The norm types a section is tagged with "
+                           "(Obligation, Permission, Prohibition, Definitional_Expression, Hohfeldian_Power)",
+                           licence_url="https://github.com/RinkeHoekstra/lkif-core/blob/master/LICENSE"),
+                  C.credit("Akoma Ntoso 1.0 (LegalDocML)", "OASIS LegalDocML TC", "OASIS RF on Limited Terms",
+                           "https://docs.oasis-open.org/legaldocml/akn-core/v1.0/os/part1-vocabulary/"
+                           "akn-core-v1.0-os-part1-vocabulary.html",
+                           "The hierarchy element names a section's structure is tagged with",
+                           licence_url="https://www.oasis-open.org/policies-guidelines/ipr/"),
+                  C.credit("European Legislation Identifier (ELI) ontology", "Publications Office of the EU",
+                           "EU reuse policy (Commission Decision 2011/833/EU)", "https://data.europa.eu/eli/ontology",
+                           "The identifier template and the LegalResource / LegalResourceSubdivision types",
+                           licence_url="https://op.europa.eu/en/web/eu-vocabularies/eli"),
+                  *C.model_credits([(config.DECIDE_MODEL, "Yes/no norm-type answers when the model pass is asked for"),
+                                    (config.DECIDE_FALLBACK, "The chat fallback for the same answers")])]),
     Step("sync", "Share through Turso",
          "Push your results to a shared Turso (libSQL) database, or pull states other people have built.",
          "optional", st_sync, run_sync, params=["direction", "states", "tables", "full"],

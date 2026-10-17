@@ -1,0 +1,30 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: a body's Wikidata head and parent through SERVICE <https://query.wikidata.org/sparql>, joined on the lxn: normalised Wikidata IRI (live only)
+# params: body=lexflow:agency:fl:division_of_corporations
+# live-only: yes
+# status: 15 Oct 2026: live 0 rows (no Wikidata item ID property on the wiki until pass 1; the local store does not run SERVICE)
+SELECT ?body ?bodyLabel ?wd ?wdLabel ?parent ?parentLabel ?head ?headLabel WHERE {
+  VALUES ?body { lx:{Q:lexflow:agency:fl:division_of_corporations} }
+  ?body rdfs:label ?bodyLabel ;
+        lxn:{P:Wikidata item ID} ?wd .
+  FILTER(lang(?bodyLabel) = "en")
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?wd rdfs:label ?wdLabel . FILTER(lang(?wdLabel) = "en")
+    OPTIONAL { ?wd wdt:P749 ?parent . ?parent rdfs:label ?parentLabel . FILTER(lang(?parentLabel) = "en") }
+    OPTIONAL { ?wd wdt:P2388 ?head . ?head rdfs:label ?headLabel . FILTER(lang(?headLabel) = "en") }
+  }
+}
