@@ -1,0 +1,91 @@
+{
+ "qid": "meals_tax",
+ "state": "va",
+ "question": "I run a restaurant. How do I collect, file and pay the meals tax?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-3840",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3833",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3916",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "meals_tax_filing",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Cities and towns may levy a meals tax under their general taxing powers.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "58.1-3840",
+   "quote": "The provisions of Chapter 6 (§ 58.1-600 et seq.) to the contrary notwithstanding, any city or town having general taxing powers established by charter pursuant to or consistent with the provisions of § 15.2-1104 and, to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A county meals tax may not exceed six percent.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-3833",
+   "quote": "Any county is hereby authorized to levy a tax on food and beverages sold, for human consumption, by a restaurant, as such term is defined in § 35.1-1 , not to exceed six percent of the amount charged for such food and beverages.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Late remittance of collected meals tax carries 10 percent the first month and 5 percent a month after.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "58.1-3916",
+   "quote": "(4) in the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, 10 percent for the first month the taxes are past due, and five percent for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted; or (5) $10, whichever is greater",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "In Charlottesville the Commissioner of the Revenue registers and assesses the meals tax; the Treasurer collects.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47210400100000:meals_tax_filing",
+   "field": "office",
+   "url": null,
+   "quote": "Commissioner of the Revenue (registration, monthly returns and assessment); City Treasurer (payee on checks and collection)",
+   "source": "local"
+  },
+  {
+   "id": "N5",
+   "text": "Returns and payment are due by the 20th of the following month.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "local:47210400100000:meals_tax_filing",
+   "field": "step s10 quote",
+   "url": "https://www.charlottesville.gov/1488/Business-Tax-Portal",
+   "quote": "Meals Tax is to be reported and remitted on or before the 20th of the month following the month being reported.",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The city's meals tax return form is used.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "local:47210400100000:meals_tax_filing",
+   "field": "step s6 how",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Upload them through the Commissioner's Secure Portal under the category 'Food & Beverage (Meals) Tax Registration / Tax Return', or mail them to Charlottesville Commissioner of the Revenue, PO Box 2964, Charlottesville, VA 22902. The Business Tax Portal page also mentions email or delivery in person.",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

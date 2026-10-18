@@ -1,0 +1,89 @@
+{
+ "qid": "start_llc",
+ "state": "va",
+ "question": "How do I form a limited liability company, and what does it cost?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "13.1-1010",
+   "role": "primary"
+  },
+  {
+   "ref": "13.1-1005",
+   "role": "primary"
+  },
+  {
+   "ref": "13.1-1011",
+   "role": "supporting"
+  },
+  {
+   "ref": "13.1-1015",
+   "role": "supporting"
+  },
+  {
+   "ref": "13.1-1062",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Organizers sign and deliver articles of organization to the State Corporation Commission.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "13.1-1010",
+   "quote": "One or more persons may act as organizers of a limited liability company by signing and delivering articles of organization to the Commission for filing.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The filing fee for articles of organization is $100.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "13.1-1005",
+   "quote": "For filing any one of the following, the fee shall be $100: a.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The articles must set forth the required contents.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "13.1-1011",
+   "quote": "The articles of organization shall set forth: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The company must continuously maintain a registered office and registered agent in Virginia.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "13.1-1015",
+   "quote": "A registered office that may be the same as any of its places of business; and 2.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "An annual registration fee is due to the Commission each year.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "13.1-1062",
+   "quote": "an annual registration fee of $50, provided that (i) for a domestic limited liability company that became a domestic limited liability company by conversion from a domestic stock corporation or nonstock corporation, or by domestication from a foreign limited liability company that was registered to transact business",
+   "source": "index"
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "$100",
+    "nuggets": [
+     "N2"
+    ]
+   }
+  ]
+ },
+ "notes": ""
+}

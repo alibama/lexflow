@@ -1,0 +1,55 @@
+{
+ "qid": "expungement",
+ "state": "dc",
+ "question": "How do I get a criminal record expunged or sealed?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "16-803",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A person files a motion in the Superior Court to expunge records.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "16-803",
+   "quote": "or charged files a written motion and demonstrates, by a preponderance of the evidence, that the offense for which the person was cited, arrested, or charged: (A) Did not occur; or (B) Was not committed by the person.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Superior Court decides the motion.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "16-803",
+   "quote": "(a) The Court shall order expungement of all criminal records and court proceedings related only to citations, arrests, or charges for the commission of a criminal offense on the grounds of actual innocence if: (1) The case was terminated by the prosecutor or otherwise reached a final disposition and did not result in",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A second motion waits a year after the first was denied.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "16-803",
+   "quote": "(6) If the Court denies the motion, the Court shall entertain a second motion for the same relief no sooner than one year after the date on which the order on the initial motion was resolved, unless the second motion raises grounds different than the first motion, in which case, it shall be entertained at any time.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A denied movant may file again.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "16-803",
+   "quote": "(6) If the Court denies the motion, the Court shall entertain a second motion for the same relief no sooner than one year after the date on which the order on the initial motion was resolved, unless the second motion raises grounds different than the first motion, in which case, it shall be entertained at any time.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

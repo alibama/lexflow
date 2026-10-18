@@ -22,7 +22,7 @@ genre of document); Q294414 is "public office", a subclass of position (Q4164871
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 # --------------------------------------------------------------------------- classes
 
@@ -35,6 +35,8 @@ class Cls:
     wikidata: str | None = None           # the equivalent Wikidata item (P8 exact match), when one fits
     subclass_of: str | None = None        # slug of the parent class (P6)
     qid: str | None = None                # the Lexipedia item that already exists (Q7 ...), else None: create it
+    exact: tuple[str, ...] = ()           # P8 exact match IRIs of the published ontologies (ontology_map.CLASS_MATCH)
+    close: tuple[str, ...] = ()           # close match (property 60) IRIs (ontology_map.CLASS_CLOSE)
 
 
 CLASSES: list[Cls] = [
@@ -242,6 +244,8 @@ class Prop:
     formatter_url: str | None = None      # property 2 on this property
     formatter_rdf: str | None = None      # property 3 on this property
     allowed: tuple[str, ...] = ()         # kinds of item the value may be (item properties) or of literal
+    equivalents: tuple[str, ...] = ()     # P7 equivalent property IRIs of the published ontologies
+    #                                       (ontology_map.PROPERTY_EQUIV), beside the Wikidata one
 
 
 def _p(number, label, datatype, wikidata, description, allowed=(), formatter_url=None, formatter_rdf=None):
@@ -389,6 +393,27 @@ VOCAB_BY_KEY[USD] = VOCAB["currency"][0]
 CLASSES.append(Cls("currency", "currency", "Vocabulary: the unit of a fee.", "Q8142"))
 CLASS_BY_SLUG["currency"] = CLASSES[-1]
 CLASS_BY_LABEL["currency"] = CLASSES[-1]
+
+# The ontology hook (docs/design/legal-ontologies.md section 2): every property and class carries the IRIs of the
+# published ontologies it is equivalent to or matches, from ``ontology_map``'s tables.  ``EXISTING_EQUIVALENTS``
+# is the same for the 21 live properties (P5-P25), which have no ``Prop`` record.
+from . import ontology_map as OM  # noqa: E402  (the map is pure data and imports nothing of this module)
+
+PROPERTIES[:] = [replace(p, equivalents=tuple(OM.PROPERTY_EQUIV.get(p.label, ()))) for p in PROPERTIES]
+CLASSES[:] = [replace(c, exact=tuple(OM.CLASS_MATCH.get(c.slug, ())), close=tuple(OM.CLASS_CLOSE.get(c.slug, ())))
+              for c in CLASSES]
+PROP_BY_LABEL.update({p.label: p for p in PROPERTIES})
+CLASS_BY_SLUG.update({c.slug: c for c in CLASSES})
+CLASS_BY_LABEL.update({c.label: c for c in CLASSES})
+EXISTING_EQUIVALENTS: dict[str, tuple[str, ...]] = {label: tuple(OM.PROPERTY_EQUIV.get(label, ())) for label in EXISTING}
+
+
+def equivalents_of(label: str) -> tuple[str, ...]:
+    """The ontology IRIs a property (existing or new) is equivalent to; ``()`` when the map has none."""
+    if label in EXISTING_EQUIVALENTS:
+        return EXISTING_EQUIVALENTS[label]
+    p = PROP_BY_LABEL.get(label)
+    return p.equivalents if p else ()
 
 PRIVATE_PARTY = "lexflow:private-party"
 

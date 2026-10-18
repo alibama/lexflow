@@ -1,0 +1,67 @@
+{
+ "qid": "nonprofit_formation",
+ "state": "dc",
+ "question": "How do I form a nonprofit corporation?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "29-402.01",
+   "role": "primary"
+  },
+  {
+   "ref": "29-402.02",
+   "role": "supporting"
+  },
+  {
+   "ref": "29-406.03",
+   "role": "supporting"
+  },
+  {
+   "ref": "29-102.13",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Incorporators deliver articles of incorporation to the Mayor for filing.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "29-402.01",
+   "quote": "One or more persons may act as the incorporators of a nonprofit corporation by delivering articles of incorporation to the Mayor for filing.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The articles must set forth the required contents.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "29-402.02",
+   "quote": "(a) The articles of incorporation shall set forth: (1) A name for the nonprofit corporation that satisfies the requirements of § 29-103.01 ;",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The board must have the statutory minimum number of directors.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "29-406.03",
+   "quote": "(a) A board of directors shall consist of 3 or more directors, with the number specified in or fixed in accordance with the articles of incorporation or bylaws.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Entity filing fees (section 29-102.12) go to the Corporate Recordation Fund.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "29-102.13",
+   "quote": "The Fund shall be credited with all fees: (1) That are identified in § 29-102.12 that are collected for Chapters 10, 12, and 13;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

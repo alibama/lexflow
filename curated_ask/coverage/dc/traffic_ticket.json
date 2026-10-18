@@ -1,0 +1,63 @@
+{
+ "qid": "traffic_ticket",
+ "state": "dc",
+ "question": "I got a traffic ticket. How do I pay it or contest it in court?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "50-2303.05",
+   "role": "primary"
+  },
+  {
+   "ref": "50-2304.02",
+   "role": "supporting"
+  },
+  {
+   "ref": "50-2303.03",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Answer the notice of infraction by admitting, admitting with explanation or denying.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "50-2303.05",
+   "quote": "(a) (1) In answer to a notice of infraction, a person to whom the notice was issued may: (A) Admit, by payment of the civil fine and any related vehicle conveyance fee, the commission of the infraction;",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Late answers cost penalties.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "50-2303.05",
+   "quote": "Failure to answer the notice within this period shall result in the imposition of monetary penalties established by § 50-2301.05 , in addition to the potential civil fine for the infraction and any related vehicle conveyance fee.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Appeal to the appeals board.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "50-2304.02",
+   "quote": "found liable by a hearing examiner after a reconsideration conducted pursuant to § 50-2303.11 may appeal the matter to the appeals board pursuant to the provisions of this subchapter; provided, that a denial by a hearing examiner of a motion to vacate a finding of liability based on a failure to appear at a scheduled",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The notice of infraction is adjudicated by the DMV.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "50-2303.03",
+   "quote": "(a) The notice of infraction shall be the summons and complaint for the purposes of this subchapter.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -1,0 +1,77 @@
+{
+ "qid": "procurement_bids",
+ "state": "va",
+ "question": "How do I bid on a government contract, and how do I protest an award?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-4302.1",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-4360",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Public notice of an Invitation to Bid is given at least 10 days before bids are due.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2.2-4302.1",
+   "quote": "Public notice of the Invitation to Bid at least 10 days prior to the date set for receipt of bids by posting on the Department of General Services' central electronic procurement website or other appropriate websites.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Notice is posted on the Department of General Services' central electronic procurement website.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "2.2-4302.1",
+   "quote": "Public notice of the Invitation to Bid at least 10 days prior to the date set for receipt of bids by posting on the Department of General Services' central electronic procurement website or other appropriate websites.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Sealed bidding starts with a written Invitation to Bid.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-4302.1",
+   "quote": "Issuance of a written Invitation to Bid containing or incorporating by reference the specifications and contractual terms and conditions applicable to the procurement.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A protest is submitted in writing to the public body.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2.2-4360",
+   "quote": "Any bidder or offeror, who desires to protest the award or decision to award a contract shall submit the protest in writing to the public body, or an official designated by the public body, no later than ten days after the award or the announcement of the decision to award, whichever occurs first.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "The protest is due within ten days of the award or announcement.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2.2-4360",
+   "quote": "Any bidder or offeror, who desires to protest the award or decision to award a contract shall submit the protest in writing to the public body, or an official designated by the public body, no later than ten days after the award or the announcement of the decision to award, whichever occurs first.",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "The body decides the protest in writing within ten days.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2.2-4360",
+   "quote": "The public body or designated official shall issue a decision in writing within ten days stating the reasons for the action taken.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

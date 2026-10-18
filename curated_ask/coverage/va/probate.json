@@ -1,0 +1,82 @@
+{
+ "qid": "probate",
+ "state": "va",
+ "question": "A relative died. How do I open the estate and qualify as executor?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "64.2-443",
+   "role": "primary"
+  },
+  {
+   "ref": "64.2-444",
+   "role": "supporting"
+  },
+  {
+   "ref": "58.1-1712",
+   "role": "supporting"
+  },
+  {
+   "ref": "64.2-446",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "probate_will_qualify_executor",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The will is offered for probate in the circuit court of the decedent's residence.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "64.2-443",
+   "quote": "The circuit courts shall have jurisdiction of the probate of wills.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The clerk of the circuit court may admit the will and grant qualification.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "64.2-444",
+   "quote": "The clerk of any circuit court, or any duly qualified deputy of such clerk, may admit wills to probate, appoint and qualify executors, administrators, and curators of decedents, and require and take from them the necessary bonds, in the same manner and with like effect as the circuit court.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The state probate tax is 10 cents per $100 of the estate.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-1712",
+   "quote": "For every $100 of value, or fraction of $100, a tax of 10 cent(s) is imposed.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The will is offered to the court or the clerk for probate.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "64.2-446",
+   "quote": "A person offering, or intending to offer, to a circuit court or to the clerk of the circuit court a will for probate, may request that the clerk of such court summon any person interested in the probate of the will to appear to show cause why the will should not be admitted to probate.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville the Circuit Court Clerk's probate office handles it.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:probate_will_qualify_executor",
+   "field": "step s1 how",
+   "url": "Va. Code § 64.2-443(A)",
+   "quote": "in the circuit court of the city or county where the person who died lived. If they lived in the City of Charlottesville, go to the Charlottesville Circuit Court Clerk's Office. If they lived in Albemarle County, use the Albemarle County Circuit Court, which is a separate court with its own clerk. Moving into a",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

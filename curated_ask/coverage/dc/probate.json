@@ -1,0 +1,67 @@
+{
+ "qid": "probate",
+ "state": "dc",
+ "question": "A relative died. How do I open the estate and qualify as executor?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "20-302",
+   "role": "primary"
+  },
+  {
+   "ref": "15-707",
+   "role": "primary"
+  },
+  {
+   "ref": "20-303",
+   "role": "supporting"
+  },
+  {
+   "ref": "20-323",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "An estate is administered through the Probate Division of the Superior Court.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "20-302",
+   "quote": "(a) A will is ineffective to transfer property or to nominate a personal representative unless it is admitted to probate or recorded as provided in section 20-341 (b).",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Register of Wills collects fees set by the court, in advance.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "15-707",
+   "quote": "(a) Except as provided in subsection (b), the Register of Wills may demand and receive in advance for services performed by him such fees as shall be set by the court having jurisdiction over probate matters in the District of Columbia.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The court appoints a personal representative.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "20-303",
+   "quote": "(a) General. — (1) The Court shall, except as provided in subsections (b) and (d), appoint personal representatives, successor personal representatives, and special administrators according to the following order of priority, with all persons in any one of the following paragraphs considered as a class: (A) the personal representative or representatives named in a will admitted to probate;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Notice of a request for formal probate is on the statutory form.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "20-323",
+   "quote": "(a) When given. – A person filing a petition for formal probate shall promptly give notice to all known interested persons.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

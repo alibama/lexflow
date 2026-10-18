@@ -1,0 +1,63 @@
+{
+ "qid": "unemployment_appeal",
+ "state": "va",
+ "question": "My unemployment claim was denied. How do I appeal?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "60.2-619",
+   "role": "primary"
+  },
+  {
+   "ref": "60.2-620",
+   "role": "supporting"
+  },
+  {
+   "ref": "60.2-625",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The deputy's determination is final unless appealed within 30 days.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "60.2-619",
+   "quote": "The Commission shall issue a new monetary determination as a result of such review, and such monetary determination shall become final unless appealed by the claimant within 30 days of the date of mailing.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Commission's Office of First Level Appeals hears the appeal.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "60.2-620",
+   "quote": "Appeals filed under § 60.2-619 shall be heard by the Commission's Administrative Law Division's Office of First Level Appeals.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A further appeal to the Commission must be initiated within 30 days.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "60.2-620",
+   "quote": "The parties shall be duly notified of such office's decision, together with its reasons therefor, which shall be deemed to be the final decision of the Commission, unless within 30 days after the date of notification or mailing of such decision, further appeal is initiated pursuant to § 60.2-622 .",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Judicial review is in the circuit court.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "60.2-625",
+   "quote": "Within 30 days after the decision of the Commission upon a hearing pursuant to § 60.2-622 has been mailed, any party aggrieved who seeks judicial review shall commence an action in the circuit court of the county or city in which the individual who filed the claim was last employed.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

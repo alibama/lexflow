@@ -1,0 +1,83 @@
+{
+ "qid": "building_permit",
+ "state": "va",
+ "question": "Do I need a building permit for a home addition, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "36-105",
+   "role": "primary"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "building_permit_residential",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Enforcement of the Building Code is the local building department's responsibility.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "36-105",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The locality may levy fees to defray the cost of enforcement.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "36-105",
+   "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Decisions are appealed to the local board of building code appeals.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "36-105",
+   "quote": "There shall be established within each local building department a local board of Building Code appeals whose composition, duties and responsibilities shall be prescribed in the Building Code.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Charlottesville's local process says how the residential permit application is made.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "local:47210400100000:building_permit_residential",
+   "field": "step s1 how",
+   "url": "13VAC5-63-80 (USBC § 108.1)",
+   "quote": "A permit is needed before starting construction, demolition, additions or removal of walls, structural work, and installing or altering plumbing, electrical wiring, mechanical, gas or fuel systems, or any equipment the building code regulates. The USBC lists exempt work (for example one-story sheds up to 256 square",
+   "source": "local"
+  },
+  {
+   "id": "N5",
+   "text": "The city's Neighborhood Development Services (Building Inspections) handles the application.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "local:47210400100000:building_permit_residential",
+   "field": "contact office label",
+   "url": null,
+   "quote": "NDS Building Inspections",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The city's permit application form is used.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "local:47210400100000:building_permit_residential",
+   "field": "step s1 quote",
+   "url": "13VAC5-63-80 (USBC § 108.1)",
+   "quote": "Application for a permit shall be made to the building official and a permit shall be obtained prior to the commencement of any of the following activities",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

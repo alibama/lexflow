@@ -1,0 +1,78 @@
+{
+ "qid": "absentee_voting",
+ "state": "va",
+ "question": "How do I vote absentee or by mail?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "24.2-700",
+   "role": "primary"
+  },
+  {
+   "ref": "24.2-701",
+   "role": "primary"
+  },
+  {
+   "ref": "24.2-709",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "absentee_voting",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Any registered voter may vote absentee.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "24.2-700",
+   "quote": "Any registered voter may vote by absentee ballot in accordance with the provisions of this chapter in any election in which he is qualified to vote.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "An application for a mailed ballot must reach the registrar by the eleventh day before the election.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "24.2-701",
+   "quote": "The application shall be made to the appropriate registrar no later than 5:00 p.m. on the eleventh day prior to the election in which the applicant offers to vote.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The application is made on the prescribed form.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "24.2-701",
+   "quote": "The Department shall furnish each general registrar with a sufficient number of applications for official absentee ballots.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A mailed ballot postmarked by election day counts if received by noon on the third day after.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "24.2-709",
+   "quote": "Notwithstanding the provisions of subsection A, any absentee ballot (i) returned to the general registrar after the closing of the polls on election day but before noon on the third day after the election and (ii) postmarked on or before the date of the election shall be counted pursuant to the procedures set forth in this chapter if the voter is found entitled to vote.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville the registrar's office handles absentee voting.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:absentee_voting",
+   "field": "step s1 how",
+   "url": "https://www.charlottesville.gov/396/Voter-Registration-Elections",
+   "quote": "the Virginia Citizen Portal or by calling the Office of Voter Registration and Elections. Absentee ballots come from the registrar of the locality where you are registered. The city's Register to Vote page warns that its borders with Albemarle County are confusing (the Albemarle registrar's number, 434-972-4173, is on",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

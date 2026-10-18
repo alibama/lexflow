@@ -1,0 +1,68 @@
+{
+ "qid": "eviction",
+ "state": "dc",
+ "question": "My landlord is trying to evict me. What are the steps and how long do I have?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "42-3505.01",
+   "role": "primary"
+  },
+  {
+   "ref": "42-3505.09",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The housing provider serves a 30-day notice to vacate.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "42-3505.01",
+   "quote": "Except as otherwise provided in paragraph (2)(B) of this subsection, the housing provider shall serve on the tenant a 30-day notice to vacate.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "For nonpayment of at least $600 the tenant has 30 days to pay in full.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "42-3505.01",
+   "quote": "\"[Name of housing provider] has the right to file a case in court seeking your eviction if the amount of rent you owe is equal to at least $600 and you do not pay the balance of unpaid rent in full within 30 days of this notice.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Some grounds need a 90-day notice.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "42-3505.01",
+   "quote": "The housing provider shall serve on the tenant a 90-day notice to vacate in advance of action to recover possession of the rental unit in instances arising under this subsection.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Only a court can order the eviction.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "42-3505.01",
+   "quote": "failed to provide the Superior Court of the District of Columbia with photographic evidence of the posted service with a readable timestamp that indicates the date and time of when the notice or summons were posted, or (D) In cases where the landlord knows the tenant speaks a primary language other than English or",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Eviction court records may be sealed.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "42-3505.09",
+   "quote": "or (B) The Superior Court determines that there are other grounds justifying sealing the court records.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -1,0 +1,89 @@
+{
+ "qid": "business_license",
+ "state": "va",
+ "question": "Do I need a local business licence to operate, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-3700",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3703",
+   "role": "supporting"
+  },
+  {
+   "ref": "58.1-3703.1",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47100200200000",
+  "process": "bpol_business_license",
+  "place": "albemarle"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Where the locality requires a licence it is unlawful to do business without first obtaining it.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "58.1-3700",
+   "quote": "Whenever a license is required by ordinance adopted pursuant to this chapter and whenever the local governing body shall impose a license fee or levy a license tax on any business, employment or profession, it shall be unlawful to engage in such business, employment or profession without first obtaining the required license.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The issuance fee is capped by the locality's population ($100 / $50 / $30).",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-3703",
+   "quote": "The governing body of any county, city or town may charge a fee for issuing a license in an amount not to exceed $100 for any locality with a population greater than 50,000, $50 for any locality with a population of 25,000 but no more than 50,000 and $30 for any locality with a population smaller than 25,000.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Apply before beginning business, or by March 1 of the licensing year if already licensed.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "58.1-3703.1",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "An assessment can be appealed administratively to the local assessing officer and then to the Tax Commissioner.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "58.1-3703.1",
+   "quote": "Administrative appeals to commissioner of the revenue or other assessing official. a.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Albemarle County the Department of Finance & Budget (Office of Revenue Administration) handles the business licence.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47100200200000:bpol_business_license",
+   "field": "office",
+   "url": null,
+   "quote": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit); the Director of Finance holds the commissioner of the revenue's assessing powers under the county executive form of government",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The county's New Business License Application is filed within 30 days of starting business.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "local:47100200200000:bpol_business_license",
+   "field": "step s4 how",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "quote": "Use the county's 2026 New Business License Application (form dated 11/2025). Enter the date the business began in the county, the type of business, the legal and trade names, and your Social Security number or federal EIN. If you have an EIN, the county may not insist on your SSN. Add the addresses and contact",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -296,16 +296,20 @@ def parse_fee(text: str | None) -> tuple[str, str | None] | None:
 
 
 class Build:
-    def __init__(self, con, *, states=None, places=None, drafts=True, log: Log = print, decider=None):
+    def __init__(self, con, *, states=None, places=None, drafts=True, asked_drafts=False, log: Log = print,
+                 decider=None):
         self.con, self.log = con, log
         self.states = sorted(S.normalise(s) for s in states) if states else None
         self.places = set(places or ())
         self.drafts = drafts
+        self.asked_drafts = asked_drafts          # asked answers as draft process items (``asked``); default off
         # the decision model for the kind of a local step the file leaves without one: the one given (tests), else
         # the shared one when LEXFLOW_DECIDE=1 and a backend is pulled, else none (no step kind claim, as before)
         self.decider = decider if decider is not None else DEC.shared()
         self.items: dict[str, Item] = {}
-        self.existing: set[str] = {r["key"] for r in db.rows(con, "SELECT key FROM wikibase_items")}
+        self.existing_labels: dict[str, str] = {r["key"]: r["label"] or "" for r in
+                                                db.rows(con, "SELECT key, label FROM wikibase_items")}
+        self.existing: set[str] = set(self.existing_labels)
         self.rows: dict[tuple[str, str], dict | None] = {}        # (state, ref) -> index row
         self.sec_key: dict[tuple[str, int], str] = {}             # (state, index id) -> section key
         self.sections: dict[str, tuple[str, dict]] = {}           # section key -> (state, row)
@@ -477,6 +481,7 @@ class Build:
                 legacy = SC.legacy_class_key(c.slug)
                 if legacy != it.key and (legacy in self.existing or legacy in SC.LEGACY_CLASS_KEYS.values()):
                     self.claim(it, "legal identifier", ext(legacy))
+                self._ontology_matches(it, c)
                 continue
             it = self.add(SC.key_for("class", c.slug), c.label, c.description, None)
             if c.subclass_of:
@@ -484,9 +489,18 @@ class Build:
             if c.wikidata:
                 self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + c.wikidata))
                 self.claim(it, "Wikidata item ID", ext(c.wikidata))
+            self._ontology_matches(it, c)
         for set_, entries in SC.VOCAB.items():
             for v in entries:
                 self.add(SC.key_for("vocab", set_, v.slug), v.label, v.description, cls(set_))
+
+    def _ontology_matches(self, it: Item, c) -> None:
+        """One ``P8 exact match`` per IRI of ``ontology_map.CLASS_MATCH`` and one ``close match`` per IRI of
+        ``CLASS_CLOSE`` on a class item (schema.Cls.exact / .close), beside the Wikidata one."""
+        for iri in c.exact:
+            self.claim(it, "exact match", url(iri))
+        for iri in c.close:
+            self.claim(it, "close match", url(iri))
 
     # ---- jurisdictions
     def jurisdictions(self):
@@ -844,6 +858,26 @@ class Build:
                 pats = [re.compile(p, re.I) for p in spec.get("match") or [] if isinstance(p, str)]
                 self.office_types.setdefault(st, []).append((key, pats, set(spec.get("actors") or [])))
 
+    def _supersede_merged_office(self, gid: str, gov_name: str, office_text: str | None, offices: list[tuple[str, str]],
+                                 gov: Value) -> None:
+        """The item the wiki holds for the file's whole office text (one item per text, before ``split_offices``)
+        when the split no longer yields its key: kept under its key and old label, described as superseded and
+        pointed at the offices that replace it (``replaced by``), so a re-run never creates a duplicate and never
+        deletes.  A text whose first office keeps the merged key is simply relabelled by the writer."""
+        if not office_text or not offices:
+            return
+        merged = SC.key_for("agency", gid, office_text)
+        if merged in self.items or merged not in self.existing or merged in dict(offices):
+            return
+        label = self.existing_labels.get(merged) or office_text
+        it = self.add(merged, label, superseded_description([lab for _, lab in offices], gov_name), cls("government-agency"))
+        self.claim(it, "part of", gov)
+        self.claim(it, "applies to jurisdiction", gov)
+        for okey, _ in offices:
+            self.claim(it, "replaced by", item(okey))
+        self.gap("merged office items on the wiki marked superseded by the split")
+        self.log(f"{merged}: on the wiki as one item; now split into {', '.join(k for k, _ in offices)}; marked superseded")
+
     def office_type_for(self, st: str, name: str | None, actor_id: str | None = None) -> str | None:
         """The office-type key whose match words the name (or the state model's actor id) carries, else None."""
         text = " ".join((name or "").split())
@@ -979,36 +1013,88 @@ class Build:
             if m["tier"] == "single" and not self.drafts:
                 continue
             self._model(m)
+        if self.asked_drafts:
+            self.asked()
+
+    # ---- asked answers as drafts
+    def asked_rows(self) -> list[dict]:
+        """The state answers of ``asked_answers`` that can go up as drafts: status answered or partial, facts (a
+        map) stored, every quote checked word for word against the statute text (``pipeline.quote_counts``:
+        ``quotes_checked`` > 0 and no miss).  Each as the model dict ``_model`` reads, tier ``asked``."""
+        from ..ask import coverage as CV
+        out = []
+        cov = {q["id"]: q for q in CV.questions()}
+        for r in db.rows(self.con, "SELECT * FROM asked_answers WHERE gov_id IS NULL AND target = state AND "
+                                   "status IN ('answered', 'partial') AND facts IS NOT NULL ORDER BY state, question_id"):
+            if not self.want(r["state"]):
+                continue
+            metrics = db.loads(r["metrics"], {}) or {}
+            if not metrics.get("quotes_checked") or metrics.get("quote_misses"):
+                self.gap("asked answers left out (quotes unchecked or not matching the statute text)")
+                continue
+            facts = db.loads(r["facts"], {}) or {}
+            if not facts.get("steps"):
+                self.gap("asked answers left out (no steps)")
+                continue
+            sections = db.loads(r["sections"], {}) or {}
+            q = cov.get(r["question_id"]) or {}
+            if not q:
+                self.gap("asked answers without a coverage question (no topic)")
+            out.append({"state": r["state"], "question": r["question_id"],
+                        "model_id": f"asked:{r['state']}:{r['question_id']}", "tier": "asked", "title": None,
+                        "citation": None, "source_url": None, "facts": r["facts"],
+                        "metrics": json.dumps({"sections": [c["ref"] for c in sections.get("chosen") or []
+                                                            if c.get("ref")]}),
+                        "stages": json.dumps({"validated": metrics.get("answered_at")}), "updated_at": r["updated_at"],
+                        "question_text": (q.get("text") or r["question_text"] or "").strip(),
+                        "topic": q.get("topic"), "audience": q.get("audience"), "method": "software-match"})
+        return out
+
+    def asked(self):
+        """Asked answers as draft process items, ``lexflow:process:asked:<state>:<question_id>`` (schema §4.4):
+        the model branch on the stored facts, review status draft, the question asked and the coverage question's
+        topic, steps with their roles and grounded deadlines; never contacts, escalation or office types."""
+        for m in self.asked_rows():
+            self._model(m)
+            self.gap("asked answers written as drafts")
 
     def _model(self, m: dict):
         st, q, mid = m["state"], m["question"], m["model_id"]
         facts = db.loads(m["facts"], {}) or {}
         metrics = db.loads(m["metrics"], {}) or {}
         stages = db.loads(m["stages"], {}) or {}
-        draft = m["tier"] == "single"
+        asked = m["tier"] == "asked"
+        draft = m["tier"] in ("single", "asked")
         status = {"reviewed": "reviewed", "agreed": "agreed"}.get(m["tier"], "draft")
-        short = QUESTIONS[q].short.lower() if q in QUESTIONS else q
-        title = m["title"] or facts.get("process_name") or mid
+        method = m.get("method") or "curated"          # how the step and deadline quotes were checked
+        short = QUESTIONS[q].short.lower() if q in QUESTIONS else q.replace("_", " ")
+        title = m.get("title") or facts.get("process_name") or mid
         jur = item(SC.key_for("jurisdiction", st))
         pkey = SC.key_for("process", mid)
+        # no word of the drafting process in a label or description (lint's drafting-words): the review status
+        # claim says draft
         how = {"reviewed": "reviewed, every quote checked", "agreed": "two independent extractions agree",
-               "single": "unreviewed draft from one extraction"}[m["tier"]]
+               "single": "unreviewed draft from one extraction",
+               "asked": "answered from the statute index, not yet reviewed"}[m["tier"]]
+        question_title = QUESTIONS[q].title if q in QUESTIONS else (m.get("question_text") or None)
         proc = self.add(pkey, f"{title} ({S.NAME[st]})",
-                        f"{QUESTIONS[q].title if q in QUESTIONS else q} Process model by lexflow, {how}.",
-                        cls("legal-process"))
+                        f"{question_title or q} Process model by lexflow, {how}.", cls("legal-process"))
         self.claim(proc, "applies to jurisdiction", jur)
         if m.get("citation"):
             self.claim(proc, "citation", string(m["citation"]))
         if m.get("source_url") and privacy.is_office_url(m["source_url"]):
             self.claim(proc, "official text", url(m["source_url"]))
-        if q in QUESTIONS:
-            self.claim(proc, "question asked", mono(QUESTIONS[q].title))
-            proc.aliases.append(_cut(QUESTIONS[q].title, SC.LABEL_MAX))
-        if q in SC.QUESTION_TOPIC:
-            self.claim(proc, "topic", vocab("topic", SC.QUESTION_TOPIC[q]))
-            self.claim(proc, "audience", vocab("audience", SC.QUESTION_AUDIENCE[q]))
+        if question_title:
+            self.claim(proc, "question asked", mono(question_title))
+            proc.aliases.append(_cut(question_title, SC.LABEL_MAX))
+        topic = m.get("topic") or SC.QUESTION_TOPIC.get(q)
+        audience = m.get("audience") or SC.QUESTION_AUDIENCE.get(q)
+        if topic and SC.key_for("vocab", "topic", topic) in SC.VOCAB_BY_KEY:
+            self.claim(proc, "topic", vocab("topic", topic))
+        if audience and SC.key_for("vocab", "audience", audience) in SC.VOCAB_BY_KEY:
+            self.claim(proc, "audience", vocab("audience", audience))
         self.claim(proc, "review status", vocab("review-status", status))
-        self.claim(proc, "checked on", time(stages.get("validated") or stages.get("compiled") or m["updated_at"]))
+        self.claim(proc, "checked on", time(stages.get("validated") or stages.get("compiled") or m.get("updated_at")))
         sections: dict[str, str] = {}                     # bare section number -> key
         for ref in metrics.get("sections") or []:
             key = self.section(st, ref)
@@ -1101,8 +1187,9 @@ class Build:
             sec = self._src_section(st, src, sections) if src.get("section") else None
             if sec:
                 self.claim(step, "references", item(sec), references=[
-                    self.ground(sec, src.get("subsection"), src.get("quote"))])
-            d = s.get("deadline") if not draft else None
+                    self.ground(sec, src.get("subsection"), src.get("quote"), method=method)])
+            # a single draft keeps its deadlines back; an asked draft's deadlines were cut from checked quotes
+            d = s.get("deadline") if (not draft or asked) else None
             if d and d.get("amount") is not None:
                 dsrc = d.get("source") or src
                 dsec = self._src_section(st, dsrc, sections) if dsrc.get("section") else sec
@@ -1117,7 +1204,7 @@ class Build:
                 if d.get("on_miss") in outcomes:
                     quals.append(("on expiry", item(SC.key_for("outcome", mid, d["on_miss"]))))
                 c = self.claim(step, "time limit", quantity(d["amount"]), quals,
-                               [self.ground(dsec, dsrc.get("subsection"), dsrc.get("quote"))])
+                               [self.ground(dsec, dsrc.get("subsection"), dsrc.get("quote"), method=method)])
                 if headline is None and c is not None:
                     headline = c
             for rk in rungs.get(s["id"], []):
@@ -1325,6 +1412,7 @@ class Build:
                 offices.append((key, label))
         if len(offices) > 1:
             self.gap("local office texts split into several offices")
+        self._supersede_merged_office(gid, g["name"], spec.get("office"), offices, gov)
         office_key = offices[0][0] if offices else None
         roles = {}
         office_roles: list[tuple[str, str, str]] = []         # (role key, office key, label)
@@ -1760,6 +1848,13 @@ def _is_office_name(part: str) -> bool:
     return bool(part) and part[:1].isupper() and not _NOT_A_NAME.match(part) and bool(_OFFICE_WORD.search(part))
 
 
+def superseded_description(labels: list[str], gov_name: str) -> str:
+    """The description of a merged office item the split replaced: ``Superseded: split into A and B (City of X)``
+    (the government keeps two localities' identical splits apart: a label and description pair is unique on a wiki)."""
+    names = labels[:-2] + [" and ".join(labels[-2:])] if len(labels) > 1 else list(labels)
+    return _cut(f"Superseded: split into {', '.join(names)} ({gov_name})", SC.DESCRIPTION_MAX)
+
+
 def split_offices(text: str | None) -> list[tuple[str, str | None]]:
     """A researched file's ``office`` text as ``[(office name, remark)]``: ``"Commissioner of the Revenue
     (assessment); City Treasurer (billing and collection)"`` -> ``[("Commissioner of the Revenue", "assessment"),
@@ -1885,6 +1980,8 @@ def _office_acts(who: str | None) -> bool:
     return not _PERSON.search(w) and bool(w.strip())
 
 
-def build(con, *, states=None, places=None, drafts: bool = True, log: Log = print, decider=None) -> list[Item]:
+def build(con, *, states=None, places=None, drafts: bool = True, asked_drafts: bool = False, log: Log = print,
+          decider=None) -> list[Item]:
     """Everything section 4 describes, as items in sorted key order; see the module docstring."""
-    return Build(con, states=states, places=places, drafts=drafts, log=log, decider=decider).run()
+    return Build(con, states=states, places=places, drafts=drafts, asked_drafts=asked_drafts, log=log,
+                 decider=decider).run()

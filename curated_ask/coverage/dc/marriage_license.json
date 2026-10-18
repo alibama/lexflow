@@ -1,0 +1,68 @@
+{
+ "qid": "marriage_license",
+ "state": "dc",
+ "question": "How do we get a marriage licence?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "46-410",
+   "role": "primary"
+  },
+  {
+   "ref": "15-717",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The Clerk of the Superior Court issues marriage licences.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "46-410",
+   "quote": "It shall be the duty of the Mayor or the Clerk of the Superior Court of the District of Columbia before issuing any license to solemnize a marriage to examine any applicant for said license under oath and to ascertain the names and ages of the parties desiring to marry, whether they were previously married, whether",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The statutory licence fee is $2.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "15-717",
+   "quote": "For each marriage license, the fee shall be $2; for each certified copy of a marriage license return, the fee shall be $1; for each certified copy of application for marriage license the fee shall be $1; and for registering authorizations to perform marriages and issuing certificate, the fee shall be $1.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The applicant is examined under oath.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "46-410",
+   "quote": "of the District of Columbia before issuing any license to solemnize a marriage to examine any applicant for said license under oath and to ascertain the names and ages of the parties desiring to marry, whether they were previously married, whether they are related or not, and if so, in what degree, which facts shall",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "An application is made for the licence.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "46-410",
+   "quote": "which facts shall appear on the face of the application, of which the Mayor or the Clerk shall provide a printed form, and any false swearing in regard to such matters shall be deemed perjury.",
+   "source": "index"
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "$2",
+    "nuggets": [
+     "N2"
+    ]
+   }
+  ]
+ },
+ "notes": ""
+}

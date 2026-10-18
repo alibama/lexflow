@@ -1,0 +1,59 @@
+{
+ "qid": "business_closure",
+ "state": "dc",
+ "question": "I am closing my business. How do I dissolve the company and cancel its registration?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "29-807.01",
+   "role": "primary"
+  },
+  {
+   "ref": "29-807.02",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "An LLC is dissolved on the events the statute lists, including the members' consent.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "29-807.01",
+   "quote": "(a) A limited liability company is dissolved, and its activities and affairs shall be wound up, upon the occurrence of any of the following: (1) An event or circumstance that the operating agreement states causes dissolution;",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "After dissolution the company may deliver a statement of dissolution to the Mayor for filing.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "29-807.02",
+   "quote": "and (B) Deliver to the Mayor for filing a statement of dissolution stating the name of the company and that the company is dissolved; and (2) May: (A) Preserve the company activities and affairs and property as a going concern for a reasonable time",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The company winds up its activities and affairs.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "29-807.02",
+   "quote": "(a) A dissolved limited liability company shall wind up its activities and affairs, and, except as otherwise provided in § 29-807.06 , shall continue after dissolution only for the purpose of winding up.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Filings go to the Mayor.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "29-807.02",
+   "quote": "and (B) Deliver to the Mayor for filing a statement of dissolution stating the name of the company and that the company is dissolved; and (2) May: (A) Preserve the company activities and affairs and property as a going concern for a reasonable time",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -45,11 +45,12 @@ def cmd_run(args) -> int:
     config.ensure_dirs()
     step = get_step(args.step)
     params = json.loads(args.args) if args.args else {}
-    for k in ("states", "questions", "direction", "tables", "cases", "strategies", "models", "places"):
+    for k in ("states", "questions", "direction", "tables", "cases", "strategies", "models", "places", "arm", "node",
+              "run", "llm_cells", "model"):
         v = getattr(args, k, None)
         if v:
             params[k] = v
-    for k in ("force", "no_llm", "regulations", "full", "dry_run"):
+    for k in ("force", "no_llm", "regulations", "full", "dry_run", "local", "fill"):
         if getattr(args, k, False):
             params[k] = True
     from .store.turso import SyncTableError
@@ -580,7 +581,14 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--strategies", help="benchmark: rules,hybrid,outline_review ...")
     r.add_argument("--models", help="benchmark: qwen3:1.7b,gemma3:1b")
     r.add_argument("--places", help="va:charlottesville,dc,md:baltimore")
-    for flag in ("--force", "--no-llm", "--regulations", "--full", "--dry-run"):
+    r.add_argument("--arm", help="coverage: coverage (probe only) or ollama (probe, answer and score)")
+    r.add_argument("--node", help="coverage: the LEXFLOW_LLM_NODES node to run the model calls on")
+    r.add_argument("--run", help="coverage: a run id to resume (default: the date and time)")
+    r.add_argument("--llm-cells", help="coverage: Ollama answers for this many state cells per state")
+    r.add_argument("--model", help="coverage: the chat model (default LEXFLOW_ASK_MODEL)")
+    r.add_argument("--fill", action="store_true", help="coverage: answer the gap cells of the run with the ask pipeline "
+                                                       "and store the drafts (--llm-cells caps the cells per state)")
+    for flag in ("--force", "--no-llm", "--regulations", "--full", "--dry-run", "--local"):
         r.add_argument(flag, action="store_true")
     r.add_argument("--job", type=int)
     r.add_argument("--args")
@@ -711,7 +719,8 @@ def main(argv: list[str] | None = None) -> int:
     sq.add_argument("--json", action="store_true", help="print SPARQL JSON results instead of a table")
     sq.add_argument("--build", action="store_true", help="regenerate the Turtle and store from the database first")
     sq.add_argument("--states", help="with --build: only these states (va,dc)")
-    sq.add_argument("--no-drafts", action="store_true", help="with --build: leave draft (single-tier) models out")
+    sq.add_argument("--no-drafts", action="store_true", help="with --build: leave draft (single-tier) models and "
+                                                             "the asked answers' drafts out")
     sq.add_argument("--limit", type=int, default=None, help="keep at most this many rows")
     sq.add_argument("--show", action="store_true", help="print the expanded query and stop")
     sq.set_defaults(fn=cmd_sparql)

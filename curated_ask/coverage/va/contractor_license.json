@@ -1,0 +1,63 @@
+{
+ "qid": "contractor_license",
+ "state": "va",
+ "question": "Do I need a contractor's licence, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "54.1-1103",
+   "role": "primary"
+  },
+  {
+   "ref": "54.1-1100",
+   "role": "supporting"
+  },
+  {
+   "ref": "54.1-1106",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "No one may contract without a licence from the Board for Contractors.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "54.1-1103",
+   "quote": "No person shall engage in, or offer to engage in, contracting work in the Commonwealth unless he has been licensed under the provisions of this chapter.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Class A covers contracts of $150,000 or more; the classes are set by contract value.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "54.1-1100",
+   "quote": "\"Class A contractors\" perform or manage construction, removal, repair, or improvements when (i) the total value referred to in a single contract or project is $150,000 or more, or (ii) the total value of all such construction, removal, repair, or improvements undertaken by such person within any 12-month period is $1 million or more.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Class A licence requirements.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "54.1-1106",
+   "quote": "Any person desiring to be licensed as a Class A contractor shall file with the Department a written application on a form prescribed by the Board.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Application is on the Board's form, with a fee.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "54.1-1106",
+   "quote": "Any person desiring to be licensed as a Class A contractor shall file with the Department a written application on a form prescribed by the Board.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

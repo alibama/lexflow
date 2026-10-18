@@ -777,6 +777,26 @@ def who(q: str = Query(..., min_length=1, max_length=500, description="a plain q
         c.close()
 
 
+# ---------------------------------------------------------------- coverage
+@app.get("/api/coverage")
+def coverage(run: str | None = Query(None, max_length=60, pattern=r"^[\w\-]+$")):
+    """The coverage matrix (lexflow.ask.coverage): the latest run's rows and matrix from coverage_runs, or the run
+    named; ``runs`` lists every run.  The same data as docs/coverage-<run>.json."""
+    from ..ask import coverage as CV
+    c = con()
+    try:
+        run_id = run or CV.latest_run(c)
+        if not run_id:
+            return {"run": None, "runs": [], "questions": CV.questions(), "matrix": None, "rows": []}
+        rows = CV.rows_of(c, run_id)
+        if not rows:
+            raise HTTPException(404, f"no coverage run {run_id}")
+        return {"run": run_id, "runs": CV.runs(c), "questions": CV.questions(), "matrix": CV.matrix(rows),
+                "rows": rows, "kinds": list(CV.KINDS)}
+    finally:
+        c.close()
+
+
 # ------------------------------------------------------------------ sparql
 # Read-only SPARQL over the local Wikibase copy (data/wikibase/, built by `lexflow sparql --build`) or, with
 # live=1, the public endpoint.  GET only, 30 s, at most 2,000 rows; the dashboard's Query page uses it.

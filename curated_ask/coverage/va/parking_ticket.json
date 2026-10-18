@@ -1,0 +1,76 @@
+{
+ "qid": "parking_ticket",
+ "state": "va",
+ "question": "I got a parking ticket. How do I pay it or contest it?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "46.2-1216",
+   "role": "primary"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "parking_ticket",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "State law lets localities enforce parking citations, including towing or immobilising vehicles with unpaid citations.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "46.2-1216",
+   "quote": "trailer parked on the public highways or public grounds against which there are three or more unpaid or otherwise unsettled parking violation notices may be removed to a place within such county, city, or town or in an adjacent locality designated by the chief law-enforcement officer for the temporary storage of the",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "In Charlottesville parking tickets are paid to the City Treasurer.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47210400100000:parking_ticket",
+   "field": "office",
+   "url": null,
+   "quote": "City Treasurer",
+   "source": "local"
+  },
+  {
+   "id": "N3",
+   "text": "The lower fine and any appeal are due within 96 hours.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "local:47210400100000:parking_ticket",
+   "field": "step s2 how",
+   "url": "https://www.charlottesville.gov/560/Violation-Fees",
+   "quote": "Find the violation code on the ticket and look it up on the city's Violation Fees table. Every fine has a lower amount if paid within 96 hours and a doubled amount after 96 hours. Appeals are also due within 96 hours.",
+   "source": "local"
+  },
+  {
+   "id": "N4",
+   "text": "A ticket can be contested in General District Court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "local:47210400100000:parking_ticket",
+   "field": "step s12 how",
+   "url": "https://webform.charlottesville.org/parkingcitation_appeal.aspx",
+   "quote": "After 5 days the city forwards the case to the court and court costs apply. State law requires the city to certify a contested parking ticket to the district court.",
+   "source": "local"
+  },
+  {
+   "id": "N5",
+   "text": "The fine amounts.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "local:47210400100000:parking_ticket",
+   "field": "step s2 fee",
+   "url": "https://www.charlottesville.gov/560/Violation-Fees",
+   "quote": "$10 to $180 if paid within 96 hours, $20 to $360 after 96 hours, depending on the violation (see fees)",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

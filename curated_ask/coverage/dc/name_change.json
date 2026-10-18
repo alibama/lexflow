@@ -1,0 +1,59 @@
+{
+ "qid": "name_change",
+ "state": "dc",
+ "question": "How do I legally change my name?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "16-2501",
+   "role": "primary"
+  },
+  {
+   "ref": "16-2503",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A District resident applies to the Superior Court giving the reasons and the new name.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "16-2501",
+   "quote": "Whoever, being a resident of the District and desiring a change of name, may file an application in the Superior Court setting forth the reasons therefor and also the name desired to be assumed.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "On a satisfactory showing the court changes the name.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "16-2503",
+   "quote": "(a) Upon a showing that the court deems satisfactory, the court may change the name of the applicant according to the prayer of the application.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The same court declares a change of gender.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "16-2503",
+   "quote": "(b) (1) Any District resident may seek a declaration by the Superior Court reflecting a change of gender.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The application sets out the reasons and the name desired.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "16-2501",
+   "quote": "Whoever, being a resident of the District and desiring a change of name, may file an application in the Superior Court setting forth the reasons therefor and also the name desired to be assumed.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

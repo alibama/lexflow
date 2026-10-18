@@ -1,0 +1,87 @@
+{
+ "qid": "public_records",
+ "state": "dc",
+ "question": "How do I request public records from a government body, and how long does it have to respond?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2-532",
+   "role": "primary"
+  },
+  {
+   "ref": "2-537",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The public body answers within 15 working days of a request.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2-532",
+   "quote": "shall within 15 days (except Saturdays, Sundays, and legal public holidays) of the receipt of any such request either make the requested public record accessible or notify the person making such request of its determination not to make the requested public record or any part thereof accessible and the reasons therefor.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Any person may inspect and copy a public record of a public body.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2-532",
+   "quote": "(a) Any person has a right to inspect, and at his or her discretion, to copy any public record of a public body, except as otherwise expressly provided by § 2-534 , in accordance with reasonable rules that shall be issued by a public body after notice and comment, concerning the time and place of access.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Fees are capped at actual cost.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "2-532",
+   "quote": "(b) A public body may establish and collect fees not to exceed the actual cost of searching for, reviewing, redacting, and making copies of records.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "An extension is at most 10 working days.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2-532",
+   "quote": "Such extension shall not exceed 10 days (except Saturdays, Sundays, and legal public holidays) for records requested under subsection (c)(1) of this section and 15 days (except Saturdays, Sundays, and legal public holidays) for records requested under subsection (c)(2) of this section.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "No answer in time is deemed a denial.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2-532",
+   "quote": "request under subsection (a) of this section within the time provisions of subsections (c) and (d) of this section shall be deemed a denial of the request, and the person making such request shall be deemed to have exhausted his administrative remedies with respect to such request, unless such person chooses to",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "A denial is appealed to the Mayor, then the Superior Court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2-537",
+   "quote": "(a) Except as provided in subsections (a-1) and (a-2) of this section, any person denied the right to inspect a public record of a public body may petition the Mayor to review the public record to determine whether it may be withheld from public inspection.",
+   "source": "index"
+  }
+ ],
+ "slots": {
+  "deadline": [
+   {
+    "amount": 15,
+    "unit": "days",
+    "nuggets": [
+     "N1"
+    ]
+   }
+  ]
+ },
+ "notes": ""
+}

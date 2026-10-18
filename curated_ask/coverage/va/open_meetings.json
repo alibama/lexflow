@@ -1,0 +1,76 @@
+{
+ "qid": "open_meetings",
+ "state": "va",
+ "question": "Can I attend a council or board meeting, and how much notice must the public get?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-3707",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-3711",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-3712",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-3713",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "All meetings of public bodies are open except as the Act allows.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2.2-3707",
+   "quote": "All meetings of public bodies shall be open, except as provided in §§ 2.2-3707.01 and 2.2-3711 .",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Notice is posted at least three working days before.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2.2-3707",
+   "quote": "The notice shall be posted at least three working days prior to the meeting.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Closed meetings are allowed only for listed purposes.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-3711",
+   "quote": "Public bodies may hold closed meetings only for the following purposes: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A closed meeting needs an affirmative recorded vote in open meeting.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-3712",
+   "quote": "No closed meeting shall be held unless the public body proposing to convene such meeting has taken an affirmative recorded vote in an open meeting approving a motion that (i) identifies the subject matter, (ii) states the purpose of the meeting as authorized in subsection A of § 2.2-3711 or other provision of law and",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Violations are enforced by petition for mandamus or injunction.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2.2-3713",
+   "quote": "Any person, including the attorney for the Commonwealth acting in his official or individual capacity, denied the rights and privileges conferred by this chapter may proceed to enforce such rights and privileges by filing a petition for mandamus or injunction, supported by an affidavit showing good cause.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

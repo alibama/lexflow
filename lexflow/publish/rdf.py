@@ -56,6 +56,7 @@ PREFIXES: dict[str, str] = {
     "schema": "http://schema.org/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "prov": "http://www.w3.org/ns/prov#",
     "wd": "http://www.wikidata.org/entity/",
@@ -70,6 +71,10 @@ DATATYPES = {"item": "WikibaseItem", "string": "String", "url": "Url", "time": "
              "monolingual": "Monolingualtext", "external-id": "ExternalId"}
 # external-id properties whose value is also written as an IRI (the schema's formatter_rdf wins when present)
 FORMATTER_RDF = {"Wikidata item ID": "http://www.wikidata.org/entity/$1"}
+# the claims that are also written as the SKOS / OWL mapping triple, so the store joins the published ontologies
+MATCH_PREDICATES = {"exact match": "skos:exactMatch", "close match": "skos:closeMatch", "broad match": "skos:broadMatch",
+                    "narrow match": "skos:narrowMatch", "related match": "skos:relatedMatch",
+                    "equivalent property": "owl:equivalentProperty"}
 TTL_PATH = config.DATA_DIR / "wikibase" / "lexipedia.ttl"
 STORE_DIR = config.DATA_DIR / "wikibase" / "store"
 ENDPOINT = I.ENDPOINT
@@ -154,6 +159,7 @@ class Writer:
         self.formatters = dict(FORMATTER_RDF)
         self.datatypes: dict[str, str] = {}       # property label -> kind
         self.descriptions: dict[str, str] = {}
+        self.equivalents: dict[str, tuple[str, ...]] = {}   # property label -> owl:equivalentProperty IRIs
         self.lines: list[str] = []
         self.values: dict[str, str] = {}          # value node id -> its triples
         self.refs: dict[str, str] = {}
@@ -165,6 +171,9 @@ class Writer:
         self.datatypes.update({"equivalent property": "url", "exact match": "url", "citation": "string",
                                "official text": "url", "effective date": "time", "legal identifier": "external-id"})
         sch = I._schema()
+        for label, iris in (getattr(sch, "EXISTING_EQUIVALENTS", None) or {}).items():
+            if iris:
+                self.equivalents[label] = tuple(iris)
         for p in _properties(sch):
             if p.get("label"):
                 self.datatypes[p["label"]] = _kind(p.get("datatype") or "string")
@@ -172,6 +181,8 @@ class Writer:
                     self.formatters[p["label"]] = p["formatter_rdf"]
                 if p.get("description"):
                     self.descriptions[p["label"]] = p["description"]
+                if p.get("equivalents"):
+                    self.equivalents[p["label"]] = tuple(p["equivalents"])
         self.formatters.update(formatters or {})
         self.datatypes.update(datatypes or {})
 
@@ -265,6 +276,8 @@ class Writer:
             pid = self.p(c.prop)
             term = self.term(c.value, c.prop)
             head.append(f"lxt:{pid} {term}")
+            if c.prop in MATCH_PREDICATES and c.value.kind == "url":
+                head.append(f"{MATCH_PREDICATES[c.prop]} {term}")    # the SKOS / OWL triple beside the claim
             norm = self.normalised(c.value, c.prop)
             if norm:
                 head.append(f"lxn:{pid} {norm}")
@@ -301,6 +314,8 @@ class Writer:
                 parts.append(f"wikibase:statementValueNormalized lxpsn:{pid}")
             if label in self.descriptions:
                 parts.append(f"schema:description {_lit(self.descriptions[label], 'en')}")
+            for iri in self.equivalents.get(label, ()):
+                parts.append(f"owl:equivalentProperty {_iri(iri)}")
             self.lines.append(" ;\n    ".join(parts) + " .")
         self.lines.append("")
 
@@ -328,7 +343,7 @@ def _properties(sch) -> list[dict]:
             out.append(p)
         else:
             out.append({k: getattr(p, k, None) for k in ("order", "label", "datatype", "wikidata", "description",
-                                                          "formatter", "formatter_rdf")})
+                                                          "formatter", "formatter_rdf", "equivalents")})
     return out
 
 
@@ -552,14 +567,19 @@ def query(store_or_live, text: str, live: bool = False, timeout: int = 30, limit
     return rows
 
 
-def build(con=None, path: Path | str | None = None, states=None, places=None, drafts: bool = True, log=print) -> dict:
-    """Regenerate the Turtle from the database (``graph.build``) and reload the store."""
+def build(con=None, path: Path | str | None = None, states=None, places=None, drafts: bool = True,
+          asked_drafts: bool | None = None, log=print) -> dict:
+    """Regenerate the Turtle from the database (``graph.build``) and reload the store.  The local store carries the
+    asked answers' drafts along with the single-tier ones (``asked_drafts`` follows ``drafts`` unless given), so
+    the coverage probe sees them before any push."""
+    if asked_drafts is None:
+        asked_drafts = drafts
     from . import graph
     from ..store import db
     own = con is None
     con = con or db.connect()
     try:
-        items = graph.build(con, states=states, places=places, drafts=drafts)
+        items = graph.build(con, states=states, places=places, drafts=drafts, asked_drafts=asked_drafts)
     finally:
         if own:
             con.close()

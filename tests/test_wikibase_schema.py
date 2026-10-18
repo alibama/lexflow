@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from lexflow.ask import coverage as CV
 from lexflow.municipal import quotes as QT
 from lexflow.publish import graph, schema as SC
 from lexflow.store import db
@@ -342,7 +343,12 @@ def test_build_yields_the_item_kinds_and_a_grounded_deadline(seeded):
     cd = by["lexflow:class:court-decision"]
     assert cd.exists and [c.value.value for c in cd.claims if c.prop == "legal identifier"] == [
         "lexflow:class:court decision", "lexflow:class:court-decision"]
-    assert [c.value.value for c in by["lexflow:class:legal-process"].claims] == ["lexflow:class:legal-process"]
+    lp = by["lexflow:class:legal-process"]
+    assert [c.value.value for c in lp.claims if c.prop == "legal identifier"] == ["lexflow:class:legal-process"]
+    # the ontology hook: the existing class item is appended its close matches (CLASS_CLOSE), nothing else
+    assert sorted((c.prop, c.value.value) for c in lp.claims if c.prop != "legal identifier") == [
+        ("close match", "http://www.estrellaproject.org/lkif-core/process.owl#Process"),
+        ("close match", "https://schema.org/GovernmentService")]
     assert not by["lexflow:class:government"].exists
     assert any(c.prop == "CourtListener ID" for c in case.claims) and any(c.prop == "date decided" for c in case.claims)
     # every item value points at something in the build (or an existing class)
@@ -719,3 +725,129 @@ def test_labels_and_descriptions_are_unique_and_levels_are_classified(seeded):
     for ref, m in court_keys.items():
         st, cid = ref.split(":")
         assert cid in COURTS[st] and m["key"] in ladder_keys and SC.kind_of(m["key"]) == "agency", ref
+
+
+# --------------------------------------------------------------------------- the ontology hook
+def test_ontology_hook_fills_equivalents_and_class_matches():
+    from lexflow.publish import ontology_map as OM
+    for p in SC.PROPERTIES:
+        assert p.equivalents == tuple(OM.PROPERTY_EQUIV.get(p.label, ())), p.label
+        assert SC.PROP_BY_LABEL[p.label] is p
+    for c in SC.CLASSES:
+        assert c.exact == tuple(OM.CLASS_MATCH.get(c.slug, ())) and c.close == tuple(OM.CLASS_CLOSE.get(c.slug, ())), c.slug
+        assert SC.CLASS_BY_SLUG[c.slug] is c and SC.CLASS_BY_LABEL[c.label] is c
+    with_equiv = {p.label for p in SC.PROPERTIES if p.equivalents} | {l for l, v in SC.EXISTING_EQUIVALENTS.items() if v}
+    assert with_equiv == set(OM.PROPERTY_EQUIV) and len(with_equiv) == 43          # the doc's 43 of 85
+    assert sum(1 for c in SC.CLASSES if c.exact) == 20 and sum(1 for c in SC.CLASSES if c.close) == 18
+    assert SC.equivalents_of("part of") == ("http://data.europa.eu/eli/ontology#is_part_of", "https://schema.org/isPartOf")
+    assert SC.equivalents_of("topic") == SC.PROP_BY_LABEL["topic"].equivalents and SC.equivalents_of("sort key") == ()
+    assert SC.CLASS_BY_SLUG["norm"].exact == ("http://www.estrellaproject.org/lkif-core/norm.owl#Norm",)
+    assert SC.CLASS_BY_SLUG["currency"].exact == () and SC.CLASS_BY_SLUG["currency"].wikidata == "Q8142"
+
+
+def test_class_items_carry_exact_and_close_matches(seeded):
+    items = graph.build(seeded, states=["va"], log=lambda s: None)
+    by = {it.key: it for it in items}
+    statute = by["lexflow:class:statute"]
+    assert [c.value.value for c in statute.claims if c.prop == "exact match"] == [
+        "http://data.europa.eu/eli/ontology#LegalResourceSubdivision"]
+    assert [c.value.value for c in statute.claims if c.prop == "close match"] == ["https://schema.org/Legislation"]
+    court = by["lexflow:class:court"]
+    assert sorted(c.value.value for c in court.claims if c.prop == "exact match") == sorted(
+        [SC.WIKIDATA_ENTITY + SC.CLASS_BY_SLUG["court"].wikidata] + list(SC.CLASS_BY_SLUG["court"].exact))
+    # an existing class item (Q11 norm) is appended its LKIF exact match beside its keys
+    norm = by["lexflow:class:norm"]
+    assert norm.exists and [c.value.value for c in norm.claims if c.prop == "exact match"] == [
+        "http://www.estrellaproject.org/lkif-core/norm.owl#Norm"]
+    assert all(c.value.kind == "url" for it in items for c in it.claims if c.prop in ("exact match", "close match"))
+
+
+# --------------------------------------------------------------------------- a merged office already on the wiki
+def test_merged_office_on_the_wiki_is_marked_superseded_not_duplicated(seeded):
+    gid = "47210400100000"
+    spec = json.loads(db.one(seeded, "SELECT spec FROM place_processes")["spec"])
+    merged_text = "Commissioner of the Revenue (assessment); City Treasurer (billing and collection)"
+    spec["office"] = merged_text
+    seeded.execute("UPDATE place_processes SET spec=?, office=? WHERE gov_id=?", (json.dumps(spec), merged_text, gid))
+    merged_key = SC.key_for("agency", gid, merged_text)
+    seeded.execute("INSERT INTO wikibase_items (key, qid, label) VALUES (?, ?, ?)", (merged_key, "Q4242", merged_text))
+    seeded.commit()
+    items = graph.build(seeded, states=["va"], log=lambda s: None)
+    by = {it.key: it for it in items}
+    cor, tre = f"lexflow:agency:{gid}:commissioner_of_the_revenue", f"lexflow:agency:{gid}:city_treasurer"
+    assert cor in by and tre in by and merged_key not in (cor, tre)
+    old = by[merged_key]
+    assert old.exists and old.label == merged_text and old.cls == "lexflow:class:government-agency"
+    assert old.description.startswith("Superseded: split into Commissioner of the Revenue and City Treasurer (")
+    assert sorted(c.value.value for c in old.claims if c.prop == "replaced by") == sorted([cor, tre])
+    assert any(c.prop == "part of" and c.value.value == f"lexflow:gov:{gid}" for c in old.claims)
+    # nothing else points at the old item, and no second item carries its label
+    assert not [k for k, it in by.items() for c in it.claims if c.value.value == merged_key and k != merged_key]
+    assert sum(1 for it in items if it.label == merged_text) == 1
+    assert graph.superseded_description(["A"], "Town") == "Superseded: split into A (Town)"
+    assert graph.superseded_description(["A", "B", "C"], "Town") == "Superseded: split into A, B and C (Town)"
+
+
+# ---------------------------------------------------------------- asked answers as drafts (schema 4.4)
+def _asked_row(con, qid="public_records", misses=0, status="answered"):
+    model = json.loads((ROOT / "curated" / "va" / "records.json").read_text(encoding="utf-8"))
+    db.upsert(con, "asked_answers", [{
+        "question_id": qid, "target": "va", "state": "va", "gov_id": None, "question_text": "a question",
+        "status": status, "sections": json.dumps({"chosen": [{"ref": "2.2-3704", "id": 1}]}),
+        "facts": json.dumps(model["facts"]), "answer": "{}", "model": "qwen3:1.7b", "seconds": 30.0,
+        "metrics": json.dumps({"quotes_checked": 4, "quote_misses": misses, "answered_at": "2026-10-18T10:00:00Z",
+                               "coverage_fill": {"run": "r1", "node": "ollama"}})}])
+    con.commit()
+
+
+def test_asked_answers_become_draft_process_items_only_when_asked_for(seeded):
+    _asked_row(seeded)
+    _asked_row(seeded, qid="dog_license", misses=1)                     # a quote the statute text does not hold
+    _asked_row(seeded, qid="eviction", status="not_found")
+    # the default build (and so the push and the lint by default) has no asked item
+    plain = {it.key for it in graph.build(seeded, states=["va"], log=lambda s: None)}
+    assert not any(":asked:" in k for k in plain)
+    logs = []
+    items = graph.build(seeded, states=["va"], asked_drafts=True, log=logs.append)
+    by = {it.key: it for it in items}
+    asked = {k: it for k, it in by.items() if ":asked:" in k}
+    pkey = "lexflow:process:asked:va:public_records"
+    assert pkey in by and not any("dog_license" in k or "eviction" in k for k in asked)
+    proc = by[pkey]
+    props = {c.prop: c for c in proc.claims}
+    assert proc.cls == "legal process" and not proc.exists
+    assert props["review status"].value.value == "lexflow:vocab:review-status:draft"
+    assert props["question asked"].value.value == CV.question("public_records")["text"]    # the coverage question
+    assert props["topic"].value.value == "lexflow:vocab:topic:public-records"
+    assert props["audience"].value.value == "lexflow:vocab:audience:resident"
+    assert props["applies to jurisdiction"].value.value == "lexflow:jurisdiction:va"
+    assert props["checked on"].value.value.startswith("2026-10-18")
+    assert any(c.prop == "references" and c.value.value == "lexflow:statute:va:2.2-3704" for c in proc.claims)
+    assert "draft" not in proc.description.lower() and "draft" not in proc.label.lower()
+    # steps hang on the process with their roles; the roles are the question's own, drafts too
+    steps = [it for k, it in asked.items() if k.startswith("lexflow:step:asked:va:public_records:")]
+    assert steps and all(any(c.prop == "part of" and c.value.value == pkey for c in s.claims) for s in steps)
+    bearers = {c.value.value for s in steps for c in s.claims if c.prop == "bearer"}
+    assert bearers and all(b.startswith("lexflow:role:va:public_records:") and b in by for b in bearers)
+    assert all(any(c.prop == "review status" and c.value.value.endswith(":draft") for c in by[b].claims) for b in bearers)
+    # a deadline cut from a checked quote keeps its grounding, marked as matched by software
+    limit = next(c for s in steps for c in s.claims if c.prop == "time limit")
+    ref = dict(limit.references[0])
+    assert ref["quoted text"].kind == "string" and ref["determination method"].value.endswith(":software-match")
+    # never a contact, an office type, an escalation or a decision on an asked draft
+    contact = {"contact page URL", "email address", "phone number", "official website", "postal address"}
+    for it in asked.values():
+        assert not any(c.prop in contact or c.prop in ("escalates to", "defers to") for c in it.claims), it.key
+        assert not any(":decision:" in c.value.value or ":outcome:" in c.value.value for c in it.claims
+                       if c.value.kind == "item"), it.key
+    roles = [by[b] for b in bearers]
+    assert all(all(c.value.value == "lexflow:private-party" for c in r.claims if c.prop == "played by") for r in roles)
+    assert not any(c.prop in contact for r in roles for c in r.claims)
+    # the lint holds nothing new on them: no drafting words, no person names, no bare labels
+    from datetime import date
+    from lexflow.publish import lint
+    findings = {k: lint.check_item(it, date(2026, 10, 18), set(by)) for k, it in asked.items()}
+    assert not {k: f for k, f in findings.items() if f}, findings
+    assert any("asked answers written as drafts: 1" in line for line in logs)
+    assert graph.build(seeded, states=["dc"], asked_drafts=True, log=lambda s: None) and \
+        not any(":asked:" in it.key for it in graph.build(seeded, states=["dc"], asked_drafts=True, log=lambda s: None))

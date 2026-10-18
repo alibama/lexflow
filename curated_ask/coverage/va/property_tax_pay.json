@@ -1,0 +1,83 @@
+{
+ "qid": "property_tax_pay",
+ "state": "va",
+ "question": "When are property taxes due, and how do I pay them?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-3916",
+   "role": "primary"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "pay_property_taxes",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The local governing body sets the due dates by ordinance.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "58.1-3916",
+   "quote": "The governing body may also by ordinance establish due dates for the payment of local taxes; may provide that payment be made in a single installment or in two equal installments; may offer options, which may include coupon books and payroll deductions, which allow the taxpayer to determine whether to pay the tangible",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The late-payment penalty is capped at 10 percent of the tax.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-3916",
+   "quote": "No penalty for failure to pay a tax or installment shall exceed (1) 10 percent of the tax past due on such property;",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Interest starts the day after the due date, at up to 10 percent a year.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "58.1-3916",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The City Treasurer bills and collects.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47210400100000:pay_property_taxes",
+   "field": "office",
+   "url": null,
+   "quote": "City Treasurer (elected constitutional officer)",
+   "source": "local"
+  },
+  {
+   "id": "N5",
+   "text": "Charlottesville real estate tax is due in two installments (June 5 and December 5).",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "local:47210400100000:pay_property_taxes",
+   "field": "step s1 how",
+   "url": "https://www.charlottesville.gov/571/Real-Estate-Taxes",
+   "quote": "Real estate tax is due in two equal halves on June 5 and December 5. Personal property (vehicle) tax is also due in two installments on June 5 and December 5, and the June 5 installment includes the city vehicle license fee. If a due date falls on a weekend, it moves to the following Monday. A real estate bill is in",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "Bills can be paid through the city's InvoiceCloud payment portal.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:pay_property_taxes",
+   "field": "step s2 how",
+   "url": "Va. Code § 58.1-3912(A)",
+   "quote": "The Treasurer must mail bills at least 14 days before the due date, and may choose not to mail a bill of $20 or less. You can choose paperless bills and email reminders in the city's InvoiceCloud payment portal. The city's penalty policy says not receiving a bill is no excuse for paying late, so if no bill arrives, contact the Treasurer's Office before the due date.",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

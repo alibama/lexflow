@@ -1,0 +1,59 @@
+{
+ "qid": "unemployment_appeal",
+ "state": "dc",
+ "question": "My unemployment claim was denied. How do I appeal?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "51-111",
+   "role": "primary"
+  },
+  {
+   "ref": "51-112",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The initial determination is appealed within 15 days.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "51-111",
+   "quote": "The 15-day appeal period may be extended if the claimant or any party to the proceeding shows excusable neglect or good cause.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "An appeal tribunal hears the appeal.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "51-111",
+   "quote": "the agent shall promptly transmit such claim to an appeal tribunal which shall make a decision thereon after such investigation as it deems necessary, and after affording the parties opportunity for fair hearing in accordance with subsection (e) of this section, and the claimant and interested parties shall be given",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A further appeal to the Director is due within 10 days.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "51-111",
+   "quote": "Unless a petition for such appeal is filed within 10 days of mailing of the decision of an appeal tribunal, or within such 10-day period the Director has taken action on the Director’s own motion in accordance with the provisions of this subsection, the decision of the appeal tribunal shall constitute the decision of the Director and shall be effective as such.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Judicial review follows.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "51-112",
+   "quote": "Any person aggrieved by the decision of the Director may seek review of such decision in the District of Columbia Court of Appeals in accordance with the District of Columbia Administrative Procedure Act.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

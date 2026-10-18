@@ -1,0 +1,59 @@
+{
+ "qid": "name_change",
+ "state": "va",
+ "question": "How do I legally change my name?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "8.01-217",
+   "role": "primary"
+  },
+  {
+   "ref": "17.1-275",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Apply to the circuit court of the city or county where you live.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "8.01-217",
+   "quote": "Any person desiring to change his own name, or that of his child or ward, may apply therefor to the circuit court of the county or city in which the person whose name is to be changed resides, or if no place of abode exists, such person may apply to any circuit court which shall consider such application if it finds that good cause exists therefor under the circumstances alleged.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The application is made under oath with the required details.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "8.01-217",
+   "quote": "Every application shall be under oath and shall include the place of residence of the applicant, the names of both parents, including the maiden name of his mother, the date and place of birth of the applicant, the applicant's felony conviction record, if any, whether the applicant is a person for whom registration",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A parent or guardian applies for a minor.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "8.01-217",
+   "quote": "In case of a minor who has no living parent or guardian, the application may be made by his next friend.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The clerk's fee for a change of name.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "17.1-275",
+   "quote": "For all services rendered by the clerk in matters under § 8.01-217 relating to change of name, $20; however, this subdivision shall not be applicable in cases where the change of name is incident to a divorce.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

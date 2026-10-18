@@ -1,0 +1,72 @@
+{
+ "qid": "business_closure",
+ "state": "va",
+ "question": "I am closing my business. How do I dissolve the company and cancel its registration?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "13.1-1050",
+   "role": "primary"
+  },
+  {
+   "ref": "13.1-1005",
+   "role": "supporting"
+  },
+  {
+   "ref": "13.1-1046",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "After winding up, the LLC files articles of cancellation with the Commission.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "13.1-1050",
+   "quote": "When the affairs of a limited liability company have been wound up pursuant to § 13.1-1048 , it shall file articles of cancellation with the Commission.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Commission issues a certificate of cancellation ending the company's existence.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "13.1-1050",
+   "quote": "If the Commission finds that the articles of cancellation comply with the requirements of law and that all required fees have been paid, it shall by order issue a certificate of cancellation, canceling the limited liability company's existence.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Articles of cancellation carry a $25 filing fee.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "13.1-1005",
+   "quote": "For filing any one of the following, the fee shall be $25: a.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Dissolution and winding up come first.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "13.1-1046",
+   "quote": "A limited liability company organized under this chapter is dissolved and its affairs shall be wound up upon the happening of the first to occur of the following events: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "The articles of cancellation set forth the required statements.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "13.1-1050",
+   "quote": "The articles shall set forth: 1.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

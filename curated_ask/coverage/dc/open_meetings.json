@@ -1,0 +1,63 @@
+{
+ "qid": "open_meetings",
+ "state": "dc",
+ "question": "Can I attend a council or board meeting, and how much notice must the public get?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2-575",
+   "role": "primary"
+  },
+  {
+   "ref": "2-576",
+   "role": "primary"
+  },
+  {
+   "ref": "2-579",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Meetings of public bodies are open to the public except as the Act allows.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2-575",
+   "quote": "(a) Except as provided in subsection (b) of this section, a meeting shall be open to the public.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Notice is given at least 48 hours or 2 business days before.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2-576",
+   "quote": "A public body shall attempt to provide notice as early as possible, but not less than 48 hours or 2 business days, whichever is greater, before a meeting.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A notice of a closed meeting states the intent and the reason.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2-576",
+   "quote": "If the meeting or any portion of the meeting is to be closed, the notice shall include, if feasible, a statement of intent to close the meeting or any portion of the meeting, including citations to the reason for closure under § 2-575(b) , and a description of the matters to be discussed.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Act is enforced in the Superior Court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2-579",
+   "quote": "(a) The Office of Open Government may bring a lawsuit in the Superior Court of the District of Columbia for injunctive or declaratory relief for any violation of this subchapter before or after the meeting in question takes place; provided, that the Council shall adopt its own rules for enforcement related to meetings and gatherings of councilmembers.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

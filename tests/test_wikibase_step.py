@@ -1,0 +1,99 @@
+"""The dashboard's wikibase step (lexflow/pipeline/steps.py) after the v1 loader's retirement: it runs the v2
+pusher (lexflow.publish.push) as a dry run unless the job says ``really``, refuses ``really`` without a passing
+lint report, never passes ``allow_held``, and is never part of a run-all chain.  No network: ``push.run`` is
+recorded, not run."""
+import inspect
+import json
+
+import pytest
+
+from lexflow.pipeline import steps
+from lexflow.publish import push
+
+
+@pytest.fixture()
+def pushed(monkeypatch):
+    """Records every call of push.run instead of planning anything."""
+    calls = []
+
+    def fake_run(con, **kw):
+        calls.append(kw)
+        return {"dry_run": kw["dry_run"], "pass": "all", "items": 3, "plan": str(kw["out_dir"] / push.PLAN_NAME),
+                "api_writes": 0 if kw["dry_run"] else 3, "seconds": 0.1,
+                "summary": {"creates": 1, "updates": 2, "held_skipped": [], "dropped_snaks": 0, "failures_by_code": {}}}
+    monkeypatch.setattr(push, "run", fake_run)
+    return calls
+
+
+def _lint(out, held):
+    out.mkdir(parents=True, exist_ok=True)
+    (out / push.LINT_NAME).write_text(json.dumps({"held": [{"key": k} for k in held]}), encoding="utf-8")
+
+
+def _run(con, args, tmp_path):
+    logs = []
+    out = steps.run_wikibase(con, {"out": str(tmp_path / "wb"), **args}, logs.append, lambda p: None)
+    return out, logs
+
+
+def test_the_step_is_a_dry_run_by_default(con, pushed, tmp_path):
+    out, logs = _run(con, {}, tmp_path)
+    assert len(pushed) == 1 and pushed[0]["dry_run"] is True and pushed[0]["allow_held"] is False
+    assert pushed[0]["drafts"] is False and pushed[0]["resume"] is True
+    assert out["dry_run"] is True and out["really"] is False and out["api_writes"] == 0
+    assert out["creates"] == 1 and out["updates"] == 2 and out["plan"].endswith(push.PLAN_NAME)
+    assert any("dry run" in m and "nothing is written" in m for m in logs)
+
+
+def test_really_is_refused_without_a_lint_report(con, pushed, tmp_path):
+    out, logs = _run(con, {"really": True}, tmp_path)
+    assert pushed == []                                           # the pusher is not even reached
+    assert out["refused"].endswith("run `lexflow wikibase lint` first") and out["dry_run"] is True
+    assert any(m.startswith("push refused: nothing was written") for m in logs)
+
+
+def test_really_is_refused_while_the_lint_report_holds_items(con, pushed, tmp_path):
+    _lint(tmp_path / "wb", ["lexflow:step:va.records:respond", "lexflow:role:va:records:custodian"])
+    out, _ = _run(con, {"really": True}, tmp_path)
+    assert pushed == [] and out["refused"] == "the lint report holds 2 items: fix them and re-run the lint"
+
+
+def test_really_with_a_passing_lint_report_pushes_without_allow_held(con, pushed, tmp_path):
+    _lint(tmp_path / "wb", [])
+    out, logs = _run(con, {"really": True, "drafts": True, "full": True, "states": "va,dc"}, tmp_path)
+    assert len(pushed) == 1 and pushed[0]["dry_run"] is False and pushed[0]["allow_held"] is False
+    assert pushed[0]["drafts"] is True and pushed[0]["resume"] is False and sorted(pushed[0]["states"]) == ["dc", "va"]
+    assert out["dry_run"] is False and out["really"] is True and out["api_writes"] == 3
+    assert any(m.startswith("real push to") for m in logs)
+
+
+def test_a_dry_run_flag_wins_over_really(con, pushed, tmp_path):
+    _lint(tmp_path / "wb", [])
+    out, _ = _run(con, {"really": True, "dry_run": True}, tmp_path)
+    assert pushed[0]["dry_run"] is True and out["really"] is False
+
+
+def test_the_step_never_reaches_the_v1_loader():
+    src = inspect.getsource(steps.run_wikibase)
+    body = src.split('"""', 2)[2]                                 # the code, not the docstring that tells the story
+    assert "wikibase_lexipedia" not in body and "retire_drafts" not in body and "allow_held=False" in body
+    step = steps.STEPS["wikibase"]
+    assert step.run is steps.run_wikibase and "really" in step.params and "dry_run" not in step.params
+    assert "dry run" in step.why and "lint" in step.why
+
+
+def test_run_everything_never_includes_a_step_that_writes_to_an_outside_site(con, monkeypatch):
+    """The quickstart composite (the dashboard's run-all button) runs local steps only."""
+    ran = []
+    for name in ("governments", "statutes", "locate", "contacts", "crawl", "local", "build", "score"):
+        monkeypatch.setattr(steps, f"run_{name}", lambda con, args, log, progress, n=name: ran.append(n) or {})
+    for ext in steps.EXTERNAL_WRITERS:
+        monkeypatch.setattr(steps, f"run_{ext}", lambda *a, **k: (_ for _ in ()).throw(AssertionError(ext)))
+    steps.run_quickstart(con, {"states": "va", "places": "va:charlottesville"}, lambda m: None, lambda p: None)
+    assert ran and not set(ran) & steps.EXTERNAL_WRITERS
+    assert steps.EXTERNAL_WRITERS >= {"wikibase", "publish", "sync"}
+    assert not any(ext in inspect.getsource(steps.run_quickstart) for ext in steps.EXTERNAL_WRITERS)
+    # and no other composite step calls one either
+    for comp in steps.COMPOSITE.values():
+        src = inspect.getsource(comp.run)
+        assert not any(f"run_{ext}" in src for ext in steps.EXTERNAL_WRITERS), comp.id

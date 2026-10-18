@@ -386,3 +386,24 @@ def test_privacy_scan_of_the_turtle_built_from_the_database(tmp_path, monkeypatc
     urls = re.findall(r"<(https?://[^>]+)>", text)
     staff = [u for u in urls if not privacy.is_office_url(u) and "wikidata.org" not in u and "lexipedia" not in u]
     assert not staff, f"person-level links in the Turtle: {staff[:5]}"
+
+
+def test_turtle_carries_the_ontology_mapping_triples(tmp_path, idmap):
+    eli_lrs, sch_leg = "http://data.europa.eu/eli/ontology#LegalResourceSubdivision", "https://schema.org/Legislation"
+    items = [Item("lexflow:class:statute", "statute", "a class", [], None, [
+        Claim("exact match", Value("url", "http://www.wikidata.org/entity/Q820655")),
+        Claim("exact match", Value("url", eli_lrs)),
+        Claim("close match", Value("url", sch_leg))])]
+    out = rdf.write(items, tmp_path / "lexipedia.ttl", idmap)
+    ttl = out.read_text(encoding="utf-8")
+    assert "@prefix owl: <http://www.w3.org/2002/07/owl#> ." in ttl
+    assert f"skos:exactMatch <{eli_lrs}>" in ttl and f"skos:closeMatch <{sch_leg}>" in ttl
+    assert f"lxt:P8 <{eli_lrs}>" in ttl, "the claim itself is still written"
+    # the properties: owl:equivalentProperty for the existing and the new ones with equivalents, none for the rest
+    assert "owl:equivalentProperty <http://data.europa.eu/eli/ontology#is_part_of>" in ttl
+    assert "owl:equivalentProperty <https://schema.org/about>" in ttl
+    store = rdf.memory_store(out)
+    rows = q(store, "SELECT ?o WHERE { ?s lxt:{P:legal identifier} 'lexflow:class:statute' ; skos:exactMatch ?o } ORDER BY ?o")
+    assert [r["o"] for r in rows] == [eli_lrs, "wd:Q820655"]
+    rows = q(store, "SELECT ?o WHERE { ?s lxt:{P:legal identifier} 'lexflow:class:statute' ; skos:closeMatch ?o }")
+    assert [r["o"] for r in rows] == [sch_leg]

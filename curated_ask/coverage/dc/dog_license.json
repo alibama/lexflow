@@ -1,0 +1,55 @@
+{
+ "qid": "dog_license",
+ "state": "dc",
+ "question": "Does my dog need a licence, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "8-1804",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A dog must wear a licence tag.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "8-1804",
+   "quote": "An owner shall ensure that his or her dog wears a collar or harness and a license.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Department of Health issues licences (and may delegate to veterinarians).",
+   "importance": "vital",
+   "kind": "who",
+   "section": "8-1804",
+   "quote": "(h) Any license issued pursuant to this section shall be issued by the Department of Health.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Licence fees are set by the Mayor.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "8-1804",
+   "quote": "(e) The annual license fees for dogs is as follows: (1) No fee for a dog trained as a service animal and actually used for the purpose of assisting a person with a physical or sensory impairment, such as a vision or hearing impairment;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A current rabies vaccination is required.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "8-1804",
+   "quote": "(c) Before any annual license may be issued, the owner of the dog shall have the dog vaccinated against rabies and distemper, and shall pay any outstanding fines.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

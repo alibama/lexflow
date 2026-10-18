@@ -1,0 +1,59 @@
+{
+ "qid": "deed_recording",
+ "state": "dc",
+ "question": "How do I record a deed, and what does it cost?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "47-1431",
+   "role": "primary"
+  },
+  {
+   "ref": "42-1103",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A deed is recorded within 30 days of execution.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "47-1431",
+   "quote": "(a) Within 30 days after the execution of a deed or other document by which legal title to real property, an estate for life or a lease or ground rent (including renewals) for a term that is at least 30 years, or an economic interest in real property is transferred, or after a security interest in a real property is",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Deeds are recorded with the Recorder of Deeds.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "47-1431",
+   "quote": "with the Recorder of Deeds of the District of Columbia.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The recordation tax is set as a rate on the consideration.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "42-1103",
+   "quote": "it shall be taxed at the rate of 1.1% (to complete the calculation of total recordation tax due at time of recording, see also additional tax in subsection (a-4) of this section), as follows: (A) A deed that conveys title to real property in the District shall be taxed at a rate of 1.1% (to complete the calculation of",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A return is filed with the deed.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "42-1103",
+   "quote": "(b) (1) Each such deed shall be accompanied by a return in such form as the Mayor may prescribe, executed by all parties to the deed, setting forth the consideration for the deed or debt secured by the deed, and such other information as the Mayor may require.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

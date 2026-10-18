@@ -1,0 +1,76 @@
+{
+ "qid": "start_llc",
+ "state": "dc",
+ "question": "How do I form a limited liability company, and what does it cost?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "29-802.01",
+   "role": "primary"
+  },
+  {
+   "ref": "29-104.02",
+   "role": "supporting"
+  },
+  {
+   "ref": "29-102.13",
+   "role": "supporting"
+  },
+  {
+   "ref": "29-102.01",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "One or more persons form an LLC by delivering a certificate of organization to the Mayor for filing.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "29-802.01",
+   "quote": "(a) One or more persons may act as organizers to form a limited liability company by signing and delivering to the Mayor for filing a certificate of organization.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The certificate must state the company's name and registered agent.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "29-802.01",
+   "quote": "(b) A certificate of organization shall state: (1) The name of the limited liability company, which shall comply with §§ 29-103.01 and 29-103.02(f) ;",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Every entity must designate and maintain a registered agent in the District.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "29-104.02",
+   "quote": "The following shall designate and maintain a registered agent in the District: (a) (1) A domestic filing entity;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Entity filing fees (section 29-102.12) go to the Corporate Recordation Fund.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "29-102.13",
+   "quote": "The Fund shall be credited with all fees: (1) That are identified in § 29-102.12 that are collected for Chapters 10, 12, and 13;",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Records are delivered to the Mayor (DLCP Corporations Division) for filing.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "29-102.01",
+   "quote": "(2) The entity filing shall be physically delivered in written form unless and to the extent the Mayor permits electronic delivery of entity filings in other than written form.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

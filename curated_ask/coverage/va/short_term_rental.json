@@ -1,0 +1,81 @@
+{
+ "qid": "short_term_rental",
+ "state": "va",
+ "question": "Can I rent my home as a short-term rental, and what do I have to register or pay?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "15.2-983",
+   "role": "primary"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "short_term_rental_registration",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A locality may by ordinance keep a short-term rental registry and require annual registration.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "15.2-983",
+   "quote": "Notwithstanding any other provision of law, general or special, any locality may, by ordinance, establish a short-term rental registry and require operators within the locality to register annually.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A short-term rental is occupancy for fewer than 30 consecutive days for a charge.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "15.2-983",
+   "quote": "\"Short-term rental\" means the provision of a room or space that is suitable or intended for occupancy for dwelling, sleeping, or lodging purposes, for a period of fewer than 30 consecutive days, in exchange for a charge for the occupancy.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The registration fee must relate to the actual cost of the registry.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "15.2-983",
+   "quote": "A locality may charge a reasonable fee for such registration related to the actual costs of establishing and maintaining the registry.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Offering an unregistered property can cost up to $500 per violation.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "15.2-983",
+   "quote": "If a locality adopts a registry ordinance pursuant to this section, such ordinance may include a penalty not to exceed $500 per violation for an operator required to register who offers for short-term rental a property that is not registered with the locality.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville a homestay needs an accessory use permit from NDS Zoning, and a business licence and lodging tax account with the Commissioner of the Revenue.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47210400100000:short_term_rental_registration",
+   "field": "office",
+   "url": null,
+   "quote": "Neighborhood Development Services, Zoning (homestay accessory use permit); Commissioner of the Revenue (business license, lodging tax and business property)",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The city's transient occupancy tax applies to the stays.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "local:47210400100000:short_term_rental_registration",
+   "field": "step s10 how",
+   "url": "https://www.charlottesville.gov/1939/Homestays",
+   "quote": "charge the 9% transient occupancy tax on the total amount paid and show it separately on the bill. File and pay by the 20th of each month, in the Business Tax Portal or on the Virginia Local Transient Occupancy Tax Return with a check. Report platform-booked receipts too (no extra tax is owed on them) and attach",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

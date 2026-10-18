@@ -1,0 +1,89 @@
+{
+ "qid": "property_tax_appeal",
+ "state": "va",
+ "question": "How do I appeal my real estate assessment?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-3379",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3984",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3980",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "real_estate_assessment_appeal",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The board of equalization hears assessment complaints.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "58.1-3379",
+   "quote": "The board shall hear and give consideration to such complaints and shall adjust and equalize such assessments and shall, moreover, be charged with the especial duty of increasing as well as decreasing assessments, whether specific complaint be laid or not, if in its judgment, the same be necessary to equalize and",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A taxpayer may apply to the circuit court to correct an erroneous assessment.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "58.1-3984",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The court application is due within three years of the last day of the tax year.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "58.1-3984",
+   "quote": "(a) within three years from the last day of the tax year for which any such assessment is made, (b) within one year from the date of the assessment, (c) within one year from the date of the Tax Commissioner's final determination under subdivision A 6 of § 58.1-3703.1 or subsection D of § 58.1-3983.1 , or (d) within",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The taxpayer may first apply to the commissioner of the revenue for correction.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "58.1-3980",
+   "quote": "firm or corporation assessed by a commissioner of the revenue or other official performing the duties imposed on commissioners of the revenue under this title with any local tax authorized by this title, including, but not limited to, taxes on tangible personal property, machinery and tools, merchants' capital",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville the appeal starts with the City Assessor.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:real_estate_assessment_appeal",
+   "field": "office",
+   "url": null,
+   "quote": "City Assessor",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The application is due by the date on the notice (March 4, 2026 for the 2026 assessment).",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "local:47210400100000:real_estate_assessment_appeal",
+   "field": "step s5 deadline",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/13021/Y2026-Assessment-Appeal-Application-PDF",
+   "quote": "By the date printed on that year's notice and application form: on or before March 4, 2026 for the 2026 assessment (the city's 2025 sample notice gave February 28, 2025)",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

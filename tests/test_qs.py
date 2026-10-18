@@ -683,3 +683,39 @@ def test_generated_readme_lists_every_file():
     assert "https://lexipedia.wikibase.cloud/tools/quickstatements/#/batch" in readme
     assert "Project:Copyrights" in readme and "Project:People" in readme
     assert "@" not in readme
+
+
+def test_ontology_equivalents_and_class_matches():
+    from collections import OrderedDict
+    """P7 per equivalent IRI on a new property (pass 1) and on an existing one (05-updates.qs); P8 per exact
+    match on a new class item (pass 1); close match (a new property) as a pass-2 claim."""
+    eli_about, sch_about = "http://data.europa.eu/eli/ontology#is_about", "https://schema.org/about"
+    eli_lrs, sch_leg = "http://data.europa.eu/eli/ontology#LegalResourceSubdivision", "https://schema.org/Legislation"
+    lkif_norm = "http://www.estrellaproject.org/lkif-core/norm.owl#Norm"
+    schema = SimpleNamespace(
+        PROPERTIES=[dict(order=48, label="topic", datatype="item", wikidata=None, description="t",
+                         equivalents=[eli_about, sch_about]),
+                    dict(order=60, label="close match", datatype="url", wikidata=None, description="c")],
+        CLASSES=[dict(slug="norm", label="norm", description="n", qid="Q11", exact=[lkif_norm]),
+                 dict(slug="statute", label="statute", description="s", exact=[eli_lrs], close=[sch_leg])],
+        VOCAB=[], EXISTING=EXISTING,
+        EXISTING_EQUIVALENTS={"part of": ("http://data.europa.eu/eli/ontology#is_part_of",), "follows": ()})
+    (_, text), = qs.render(qs.properties_batch(schema), "abc1234")
+    _, cmds = parse(text, "01-properties.qs")
+    assert [(c.prop, c.value) for c in cmds if c.kind == "statement"] == [("P7", f'"{eli_about}"'), ("P7", f'"{sch_about}"')]
+    class_items = qs.schema_items(schema)
+    (_, text), = qs.render(qs.classes_batch(schema, class_items), "abc1234")
+    _, cmds = parse(text, "02-classes.qs")
+    assert [(c.prop, c.value) for c in cmds if c.kind == "statement" and c.prop == "P8"] == [("P8", f'"{eli_lrs}"')]
+    ids = qs.Ids()
+    ids.add_schema(schema)
+    ids.properties.update({"topic": "P100", "close match": "P101"})
+    ids.items["lexflow:class:statute"] = "Q1000"
+    batches, updates = qs.claims_batches(OrderedDict(), ids, schema, class_items)
+    (_, text), = qs.render(updates, "abc1234")
+    _, up = parse(text, "05-updates.qs")
+    assert ("P9", "P7", '"http://data.europa.eu/eli/ontology#is_part_of"') in [(c.subject, c.prop, c.value) for c in up]
+    assert not any(c.subject == "P11" for c in up), "follows has no equivalent"
+    (_, text), = qs.render(batches[0], "abc1234")
+    _, cls = parse(text, "04-claims-classes.qs")
+    assert [(c.subject, c.prop, c.value) for c in cls] == [("Q1000", "P101", f'"{sch_leg}"')]

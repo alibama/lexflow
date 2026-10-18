@@ -117,7 +117,7 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
-  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho };
+  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
   refreshers = [];
@@ -536,7 +536,7 @@ async function viewSetup() {
       values.direction = () => sel.value;
       opts.append(sel);
     }
-    for (const [k, label] of [["force", "Redo"], ["no_llm", "Skip models"], ["regulations", "+ regulations"], ["full", "Full resend"], ["dry_run", "Dry run"]]) {
+    for (const [k, label] of [["force", "Redo"], ["no_llm", "Skip models"], ["regulations", "+ regulations"], ["full", "Full resend"], ["dry_run", "Dry run"], ["drafts", "+ drafts"], ["really", "Write to the wiki"]]) {
       if (!s.params.includes(k)) continue;
       const cb = h("input", { type: "checkbox" });
       values[k] = () => cb.checked;
@@ -1412,6 +1412,101 @@ function cell(b) {
   const num = b.datatype && /#(integer|decimal|double|float|int|long)$/.test(b.datatype);
   return h("span", { class: num ? "num" : "", title: v.length > 60 ? v : null }, v.length > 200 ? `${v.slice(0, 200)}…` : v);
 }
+// ----------------------------------------------------------------- coverage
+// The coverage matrix (lexflow.ask.coverage): questions x states and places, a verdict per cell, and on a click the
+// probe counts, the answer, the score and what is missing.
+const VERDICT_WORD = { adequate: "Adequate", partial: "Partial", none: "None", draft: "Partial, on drafts alone" };
+function verdictCell(cell, onpick, picked) {
+  if (!cell) return h("td", { class: "num muted" }, "–");
+  // the fourth shade: a partial cell whose process items are all drafts (a single-tier model or an asked answer)
+  const v = cell.verdict || "none", shade = cell.draft && v === "partial" ? "draft" : v;
+  const miss = (cell.missing || []).join(", ");
+  return h("td", { class: `cov-cell cov-${shade}${picked ? " picked" : ""}`, title: `${VERDICT_WORD[shade]}${miss ? `; missing ${miss}` : ""}${cell.composite != null ? `; composite ${fx(cell.composite)}` : ""}` },
+    h("button", { type: "button", class: "cov-btn", "aria-label": `${cell.qid} ${cell.col}: ${VERDICT_WORD[shade]}${miss ? `, missing ${miss}` : ""}`, onclick: onpick },
+      h("span", { class: "cov-mark" }, shade === "adequate" ? "A" : shade === "draft" ? "D" : shade === "partial" ? "P" : "–"),
+      cell.composite != null ? h("span", { class: "cov-score" }, fx(cell.composite)) : null,
+      miss ? h("span", { class: "cov-miss" }, miss) : null));
+}
+function coverageDetail(d, row, q) {
+  const p = row.probe || {}, c = p.counts || {}, s = row.score, a = p.answer;
+  const kv = (k, v) => h("div", { class: "role-row" }, h("span", { class: "k" }, k), h("span", {}, v == null ? "–" : String(v)));
+  const counts = h("div", { class: "cov-counts" },
+    kv("Wikibase source", `${p.source || "none"}${p.sparql_calls ? ` (${p.sparql_calls} queries)` : ""}`),
+    kv("Process items", (p.processes || []).length ? p.processes.map((x) => `${x.key} [${x.status || "no status"}]`).join("; ") : "none for this topic and jurisdiction"),
+    kv("Steps / with bearer", `${c.steps ?? 0} / ${c.steps_with_bearer ?? 0}`),
+    kv("Bearers resolved to bodies / with channels", `${c.bearers_resolved ?? 0} / ${c.bodies_with_channels ?? 0}`),
+    kv("Deadlines / with quotes", `${c.deadlines ?? 0} / ${c.deadlines_quoted ?? 0}`),
+    kv("Forms · fees · escalation · cited sections", `${c.forms ?? 0} · ${c.fees ?? 0} · ${c.escalation ?? 0} · ${c.sections ?? 0}`),
+    kv("Who do I ask", p.who ? `${p.who.source || "no store"}: ${p.who.roles} state roles, ${p.who.local} local, ${p.who.bodies_with_channels} bodies with channels` : "–"),
+    kv("Gold", p.gold || "–"), kv("Route", p.route ? `${p.route.jurisdiction}${p.route.gov_id ? "/" + p.route.gov_id : ""} · topic ${p.route.topic || "?"} (${p.route.topic_by || "none"})` : "–"),
+    kv("Timing", p.timings ? Object.entries(p.timings).map(([k, v]) => `${k} ${v}s`).join(" · ") : `${row.seconds} s`));
+  const kinds = h("div", { class: "cov-kinds" }, (d.kinds || []).map((k) => {
+    const need = (q.needs || []).includes(k), have = (p.kinds || {})[k] || (s && s.kinds && s.kinds[k]);
+    return h("span", { class: `badge ${!need ? "muted" : have ? "ok" : "warn"}`, title: !need ? "not needed" : have ? "present" : "missing" }, `${k}${!need ? "" : have ? " ✓" : " ✗"}`);
+  }));
+  const score = s ? h("div", { class: "cov-counts" },
+    kv("Composite", fx(s.composite)), kv("Vital nuggets quoted", pct(s.vital_recall)), kv("All nuggets quoted", pct(s.nugget_recall)),
+    kv("Citation precision / support", `${pct(s.citation_precision)} / ${pct(s.citation_support)}`), kv("Gold sections in top 10", pct(s["recall@10"])),
+    kv("Fees and deadlines", pct(s.slot_match)), kv("Quotes shown (of them from the wiki)", `${s.quotes_shown} (${s.wiki_quotes})`), kv("Summary claims", s.claims),
+    kv("Nuggets hit", (s.nuggets_hit || []).join(", ") || "none")) : h("p", { class: "muted" }, row.arm === "ollama" ? "No gold for this cell: coverage only." : "Coverage-only cell (no Ollama answer).");
+  const claims = a && a.summary && a.summary.claims ? h("ul", { style: "padding-left:18px" }, a.summary.claims.map((cl) => h("li", {}, cl.text, " ", h("span", { class: "muted mono" }, (cl.quotes || []).join(" "))))) : null;
+  const quotes = a && a.quotes ? h("details", {}, h("summary", {}, `${a.quotes.length} quotes (${a.chosen?.length || 0} sections chosen: ${(a.chosen || []).join(", ")})`),
+    h("ul", { style: "padding-left:18px" }, a.quotes.slice(0, 40).map((x) => h("li", {}, h("span", { class: "mono" }, `[${x.id}] ${x.section || x.label || ""} `), String(x.text || "").slice(0, 300))))) : null;
+  return h("section", { class: "card", id: "cov-detail" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `${q.text}`), h("p", {}, `${row.state}${row.gov_id ? " / " + row.gov_id : ""} · ${row.arm} arm${row.model ? ` · ${row.model}` : ""}${row.node ? ` on ${row.node}` : ""} · verdict ${VERDICT_WORD[row.verdict] || row.verdict}${(row.missing || []).length ? ` · missing ${row.missing.join(", ")}` : ""}`))),
+    h("div", { class: "card-pad" }, h("h3", {}, "What the question needs"), kinds, h("h3", {}, "Wikibase probe"), counts, h("h3", {}, "Score against the gold"), score,
+      a ? [h("h3", {}, `Answer (${a.status || "–"})`), a.summary_error ? h("p", { class: "muted" }, `Summary failed: ${a.summary_error}`) : null, claims || h("p", { class: "muted" }, "No summary claims."), quotes] : null));
+}
+async function viewCoverage(runId) {
+  const body = h("div");
+  rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Coverage"),
+    h("p", {}, "Can we answer what people actually ask? For each question and state (or place): is there a Wikibase process for the topic with bearers, bodies, channels, deadlines, forms, fees and escalation, and does the local model's answer carry the gold facts. A = adequate, P = partial, – = none; the words are the kinds of facts still missing. Click a cell for the details."))), body);
+  async function load() {
+    const d = await api(`/api/coverage${runId ? `?run=${encodeURIComponent(runId)}` : ""}`);
+    if (!d.run || !d.matrix) {
+      rc(body, h("div", { class: "notice" }, icon("info"), h("div", {}, "No coverage run yet. Start one with ", h("code", {}, "lexflow run coverage --states va,dc"), " or the button below."),
+        h("button", { class: "btn right", onclick: async () => { await startRunJob("coverage", { states: "va,dc", arm: "coverage" }); location.hash = "#/jobs"; } }, "Run the coverage probe")));
+      return;
+    }
+    const m = d.matrix, cols = Object.keys(m.columns);
+    const rowsBy = {};
+    for (const r of d.rows) rowsBy[`${r.qid}|${r.state}${r.gov_id ? "/" + r.gov_id : ""}`] = r;
+    const qs = {};
+    for (const q of d.questions) qs[q.id] = q;
+    let picked = store("lexflow-cov-pick") || null;
+    const detail = h("div");
+    const table = h("table", { class: "data cov-table" });
+    function draw() {
+      rc(table,
+        h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Question"), cols.map((c) => h("th", { scope: "col" }, c.replace("/", " / "))))),
+        h("tbody", {}, m.questions.map((q) => h("tr", {}, h("th", { scope: "row", title: q.text }, h("span", { class: "mono", style: "font-size:12px" }, q.id), h("span", { class: "muted", style: "display:block;font-size:12px" }, `${q.topic} · ${q.level}`)),
+          cols.map((c) => { const key = `${q.id}|${c}`; return verdictCell(m.cells[key], () => { picked = key; store("lexflow-cov-pick", key); draw(); drawDetail(); document.getElementById("cov-detail")?.scrollIntoView({ block: "nearest" }); }, picked === key); })))));
+    }
+    function drawDetail() {
+      const r = picked && rowsBy[picked];
+      rc(detail, r ? coverageDetail(d, r, qs[r.qid] || { text: r.qid, needs: [] }) : h("p", { class: "muted" }, "Click a cell to see its probe, answer, score and what is missing."));
+    }
+    const summary = h("table", { class: "data" },
+      h("thead", {}, h("tr", {}, ["Column", "Cells", "Adequate", "Partial", "None", "Top missing kinds", "Ollama cells", "Composite", "Vital recall", "Citation precision", "s / cell", "s / Ollama cell"].map((t) => h("th", { scope: "col" }, t)))),
+      h("tbody", {}, cols.map((c) => { const x = m.columns[c], o = x.ollama || {}; return h("tr", {}, h("td", {}, c), h("td", { class: "num" }, x.cells), h("td", { class: "num" }, x.adequate || 0), h("td", { class: "num" }, x.partial || 0), h("td", { class: "num" }, x.none || 0),
+        h("td", {}, (x.top_missing || []).map(([k, n]) => `${k} (${n})`).join(", ") || "–"), h("td", { class: "num" }, x.ollama_cells), h("td", { class: "num" }, x.ollama ? fx(o.composite) : "–"), h("td", { class: "num" }, x.ollama ? pct(o.vital_recall) : "–"), h("td", { class: "num" }, x.ollama ? pct(o.citation_precision) : "–"), h("td", { class: "num" }, fx(x.seconds_mean, 1)), h("td", { class: "num" }, x.ollama_seconds_mean ? fx(x.ollama_seconds_mean, 0) : "–")); })));
+    const runs = h("select", { "aria-label": "Run", onchange: (e) => { location.hash = `#/coverage/${encodeURIComponent(e.target.value)}`; } }, (d.runs || []).map((r) => h("option", { value: r.run_id, selected: r.run_id === d.run ? true : null }, `${r.run_id} · ${r.states} · ${r.cells} cells`)));
+    rc(body,
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `Run ${d.run}`), h("p", {}, `${m.totals.adequate} adequate, ${m.totals.partial} partial, ${m.totals.none} none over ${Object.values(m.totals).reduce((a, b) => a + b, 0)} cells. Per column: verdict counts, the kinds most often missing, and the Ollama arm's AskBench means.`)), h("div", { class: "row-flex" }, runs)),
+        h("div", { class: "card-pad table-wrap" }, summary)),
+      h("div", { class: "spacer" }),
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Questions × jurisdictions"), h("p", {}, "Rows are the questions people ask (fixtures/coverage/questions.json); columns a state or a place. A cell shows the verdict, the Ollama composite when scored, and the missing kinds."))),
+        h("div", { class: "card-pad table-wrap" }, table),
+        h("div", { class: "legend" }, h("span", { class: "title" }, "Verdict"), ...[["adequate", "Adequate"], ["partial", "Partial"], ["draft", "Partial, on drafts alone"], ["none", "None"]].map(([k, l]) => h("span", {}, h("span", { class: `sw cov-${k}` }), l)))),
+      h("div", { class: "spacer" }), detail,
+      h("div", { class: "row-flex", style: "margin-top:16px" }, h("button", { class: "btn", onclick: async () => { await startRunJob("coverage", { states: "va,dc", arm: "coverage" }); location.hash = "#/jobs"; } }, "Run the coverage probe again")));
+    draw();
+    drawDetail();
+  }
+  onRefresh(load);
+  await load();
+}
+
 // ------------------------------------------------------------------ who do I ask
 const PLAYED_KIND = { body: "a body", unit: "a unit of a body", court: "a court", "office type": "an office every locality has",
   post: "a post", "post type": "a post every body has", government: "a government", "private-party": "you, or a private party", unknown: "nobody recorded yet" };

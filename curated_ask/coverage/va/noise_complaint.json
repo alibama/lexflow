@@ -1,0 +1,28 @@
+{
+ "qid": "noise_complaint",
+ "state": "va",
+ "question": "How do I complain about a noisy neighbour, and what can the locality do about it?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "15.2-980",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Localities may set civil penalties for violations of their noise ordinances.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "15.2-980",
+   "quote": "Any locality may, by ordinance, adopt a uniform schedule of civil penalties for violations of that locality's noise ordinance.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": "State law only enables local noise ordinances; the rule itself is in the city code, which lexflow has not researched."
+}

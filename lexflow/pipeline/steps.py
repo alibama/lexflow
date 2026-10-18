@@ -583,21 +583,73 @@ def run_cases(con, args, log, progress):
     return out
 
 
+# Steps that write to an outside site.  None of them is ever part of a chain: "run everything" (the quickstart
+# composite and the dashboard's run-all button) runs the required local steps only, and each of these runs as a
+# job of its own that the operator starts on purpose.  The wikibase step writes nothing unless its job says so.
+EXTERNAL_WRITERS = frozenset({"wikibase", "publish", "sync"})
+
+
 def st_wikibase(con):
     if not (config.WIKIBASE_BOT_USER and config.WIKIBASE_BOT_PASSWORD):
         return {"status": "optional", "done": 0, "total": 0,
                 "detail": f"Set WIKIBASE_BOT_USER and WIKIBASE_BOT_PASSWORD (a bot password on {config.WIKIBASE_URL})"}
     n = db.scalar(con, "SELECT count(*) FROM wikibase_items", default=0)
     return {"status": "done" if n else "todo", "done": n, "total": n,
-            "detail": f"{plural(n, 'item')} on {config.WIKIBASE_URL}" if n else f"Ready to load {config.WIKIBASE_URL}"}
+            "detail": f"{plural(n, 'item')} on {config.WIKIBASE_URL}" if n else f"Ready to plan a push to {config.WIKIBASE_URL}"}
+
+
+def wikibase_push_refusal(out_dir) -> str | None:
+    """Why a real push may not run now: the lint report (``lexflow wikibase lint``) is missing from ``out_dir``, or
+    it holds items.  None when it passes.  The step never passes ``allow_held``, so the pusher's own gate
+    (``push.run``) asks the same question a second time."""
+    from ..publish import push as P
+    report = P.read_lint(out_dir / P.LINT_NAME)
+    if report is None:
+        return f"{out_dir / P.LINT_NAME} is missing: run `lexflow wikibase lint` first"
+    held = P.held_keys(report)
+    if held:
+        return f"the lint report holds {len(held)} items: fix them and re-run the lint"
+    return None
 
 
 def run_wikibase(con, args, log, progress):
-    from ..publish import wikibase_lexipedia as WL
+    """Plan, or with ``really`` perform, the two-pass API push of the schema-v2 graph (``lexflow.publish.push``,
+    the same code as ``lexflow wikibase push``).
+
+    A job is a dry run unless its args carry ``really: true`` (a ``dry_run`` flag wins over it): the plan goes to
+    ``out/wikibase/push-plan.json`` (``out`` names another directory) and nothing is POSTed.  A real push also
+    needs a passing lint report in that directory (``lint-report.json`` present with no HELD items); the step
+    never passes ``allow_held``, so a held or missing report is refused here before the pusher is reached.  Draft
+    (single-tier) models stay out unless ``drafts`` is set; ``full`` resends every item instead of skipping those
+    whose content hash is already recorded (``--resume``).
+
+    The v1 loader this step used to run (``wikibase_lexipedia.Loader``: ``clear`` with the v1 statement set, then
+    ``retire_drafts``) is gone.  Job 77 (2026-10-18) ran it over 1,795 items the v2 pusher had written and wiped
+    their schema-v2 claims; nothing reachable from a job writes the v1 shape any more.
+    """
+    from pathlib import Path
+    from ..publish import push as P
     sts = S.parse_states(args["states"]) if args.get("states") else None
-    out = WL.run(con, dry_run=bool(args.get("dry_run")), states=sts, log=log)
+    out_dir = Path(args["out"]) if args.get("out") else P.OUT_DIR
+    really = bool(args.get("really")) and not args.get("dry_run")
+    if really:
+        why = wikibase_push_refusal(out_dir)
+        if why:
+            log(f"push refused: nothing was written to {config.WIKIBASE_URL}, because {why}")
+            progress(1.0)
+            return {"refused": why, "dry_run": True, "really": False, "plan": None, "api_writes": 0}
+        log(f"real push to {config.WIKIBASE_URL}: the lint report in {out_dir} holds nothing")
+    else:
+        log(f"dry run: the plan goes to {out_dir / P.PLAN_NAME} and nothing is written to {config.WIKIBASE_URL} "
+            "(a job started with really, and a passing lint report, pushes)")
+    out = P.run(con, dry_run=not really, states=sts, drafts=bool(args.get("drafts")), resume=not args.get("full"),
+                allow_held=False, out_dir=out_dir, log=log)
     progress(1.0)
-    return out
+    s = out.get("summary") or {}
+    return {"dry_run": out.get("dry_run", True), "really": really, "items": out.get("items"), "plan": out.get("plan"),
+            "creates": s.get("creates"), "updates": s.get("updates"), "held_skipped": len(s.get("held_skipped") or ()),
+            "dropped_snaks": s.get("dropped_snaks"), "failures_by_code": s.get("failures_by_code"),
+            "api_writes": out.get("api_writes"), "seconds": out.get("seconds")}
 
 
 def run_publish(con, args, log, progress):
@@ -795,11 +847,15 @@ STEPS: dict[str, Step] = {s.id: s for s in [
               "the states not done yet. A state whose search failed is searched again; Redo also searches the done "
               "states again, oldest search first",
          credits=[C.COURTLISTENER]),
-    Step("wikibase", "Load the Lexipedia Wikibase",
-         "Statutes, process models and their steps, jurisdictions and the court decisions that cite them, as linked "
-         "items in the wiki's own ontology (part of, follows, deontic modality, bearer, references).",
-         "optional", st_wikibase, run_wikibase, needs=["build"], params=["states", "dry_run"],
-         cost="one edit per item; a few minutes",
+    Step("wikibase", "Push the graph to the Lexipedia Wikibase",
+         "Plans the two-pass API push of the schema-v2 graph (the same as lexflow wikibase push): statutes and "
+         "codes, the reviewed and agreed processes with their roles, steps, decisions, outcomes, forms and "
+         "escalation rungs, agencies, jurisdictions and the court decisions that cite the sections. A job is a dry "
+         "run, with the plan in out/wikibase/push-plan.json, unless it is started with 'Write to the wiki'; a real "
+         "push also needs a passing lint report (lexflow wikibase lint, no HELD items) and is refused without one. "
+         "Drafts from one extraction stay out unless asked for. Never part of a run-all chain.",
+         "optional", st_wikibase, run_wikibase, needs=["build"], params=["states", "really", "drafts", "full"],
+         cost="dry run: about a minute of reads; a real push about 1.5 s a write (pass 1 creates, pass 2 claims)",
          credits=[C.WIKIBASE_CLOUD, C.used_for(C.WIKIDATA, "Items link to their Wikidata entities", note="")]),
     Step("publish", "Publish to Lexipedia",
          "Writes the lexflow: pages (process maps, places, start and method) to DokuWiki over JSON-RPC (bot account, "
@@ -854,7 +910,44 @@ def run_benchmark(con, args, log, progress):
     return BM.run(con, case_list, strategy_list, model_list, log=log, progress=progress)
 
 
+def run_coverage(con, args, log, progress):
+    """The coverage test (lexflow.ask.coverage): for every question people ask x state (x place), the Wikibase
+    probe, the Ollama answer scored against the gold, and a verdict; writes docs/coverage-<run>.json and
+    docs/coverage.md.  ``arm``: coverage | ollama; ``llm_cells``: Ollama answers for that many state cells per
+    state; ``node``: a node of LEXFLOW_LLM_NODES; ``run``: a run id to resume; ``local``: probe the local store;
+    ``fill``: answer the gap cells of the run with the ask pipeline instead (``llm_cells`` caps the cells per state)."""
+    from ..ask import coverage as CV
+    sts = _states(args, con)
+    qids = [q.strip() for q in (args.get("questions") or "").split(",") if q.strip()] or None
+    llm = args.get("llm_cells")
+    if args.get("fill"):
+        # the gap-filling loop: answer the gap cells of the run (the latest unless ``run`` names one) with the
+        # ask pipeline; ``llm_cells`` caps the cells per state
+        return CV.fill(con, sts, run_id=args.get("run") or None, qids=qids,
+                       llm_cells=int(llm) if llm not in (None, "") else None, node=args.get("node") or None,
+                       model=args.get("model") or None, force=bool(args.get("force")), log=log, progress=progress)
+    return CV.run(con, sts, _places(con, args), qids, arm=args.get("arm") or "ollama",
+                  llm_cells=int(llm) if llm not in (None, "") else None, run_id=args.get("run") or None,
+                  node=args.get("node") or None, live=not args.get("local"), force=bool(args.get("force")),
+                  model=args.get("model") or None, log=log, progress=progress)
+
+
 COMPOSITE = {
+    "coverage": Step("coverage", "Test coverage of the questions people ask",
+                     "For each of the 36 plain-language questions (fixtures/coverage/questions.json) and each state "
+                     "or place: is there a Wikibase process for the topic, with bearers, bodies, channels, deadlines, "
+                     "forms, fees and escalation; can the local model answer it from the statute index plus those "
+                     "facts; how does the answer score against the gold (curated_ask/coverage/). Writes the matrix "
+                     "docs/coverage.md and shows it on the Coverage page.", "optional", lambda con: {}, run_coverage,
+                     params=["states", "places", "questions", "arm", "node", "force", "fill"],
+                     cost="coverage-only: seconds per cell (the live endpoint, one request a second); with the Ollama "
+                          "answer a few minutes per cell on this CPU; --fill answers each gap cell with the ask "
+                          "pipeline (a minute or two per cell)",
+                     credits=[C.used_for(C.OPEN_US_LAW, "The statutes it searches and quotes"),
+                              C.used_for(C.SQLITE_FTS5, "Searches each state's statutes"),
+                              *C.model_credits([(config.ASK_MODEL, "Writes the plain-language summary that is scored"),
+                                                (config.EMBED_MODEL, "Similarity between the question and each clause")]),
+                              C.used_for(C.CLAUDE, "Wrote the gold the answers are scored against")]),
     "quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
                        "models and scores in one job.", "required", lambda con: {}, run_quickstart,
                        params=["states", "places", "no_llm"],

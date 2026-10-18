@@ -1,0 +1,65 @@
+{
+ "qid": "benefits_apply",
+ "state": "va",
+ "question": "How do I apply for food assistance (SNAP) or other public benefits?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "63.2-501",
+   "role": "supporting"
+  },
+  {
+   "ref": "63.2-517",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "public_benefits_application",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Applications for public assistance are made to the local board or local department.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "63.2-501",
+   "quote": "application for public assistance shall be made to the local department and filed with the local director of the county or city in which the applicant resides; however, when necessary to overcome backlogs in the application and renewal process, the Commissioner may temporarily utilize other entities to receive and",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The application is electronic or on the Commissioner's forms.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "63.2-501",
+   "quote": "Such application may be made either electronically or in writing on forms prescribed by the Commissioner and shall be signed by the applicant or otherwise attested to in a manner prescribed by the Commissioner under penalty of perjury in accordance with § 63.2-502 .",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An applicant whose claim is denied or not acted on may appeal to the Commissioner for a hearing.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "63.2-517",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board in granting, denying, changing or discontinuing public assistance, may, within thirty days after receiving written notice of such decision, appeal therefrom to the Commissioner.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "In Charlottesville the Department of Social Services takes applications.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "local:47210400100000:public_benefits_application",
+   "field": "step s1 how",
+   "url": "https://www.charlottesville.gov/393/How-to-Apply-for-Financial-Assistance---",
+   "quote": "The online screening tool on CommonHelp gives an estimate only. An eligibility worker at the Charlottesville Department of Social Services makes the final decision. If you apply for financial (cash) or medical assistance, you must also apply for other benefits you may be entitled to, such as Social Security, workers'",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

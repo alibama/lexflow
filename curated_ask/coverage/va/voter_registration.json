@@ -1,0 +1,78 @@
+{
+ "qid": "voter_registration",
+ "state": "va",
+ "question": "How do I register to vote, and what is the deadline?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "24.2-416",
+   "role": "primary"
+  },
+  {
+   "ref": "24.2-418",
+   "role": "primary"
+  },
+  {
+   "ref": "24.2-114",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "voter_registration",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Registration records close before each election.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "24.2-416",
+   "quote": "In any county, city, or town in which an election is being held, the registration records shall be closed for the purpose of registering voters on the election day and during the period in advance of the election as provided in this section.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Registration is by the prescribed application form.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "24.2-418",
+   "quote": "The application to register shall be only on a form or forms prescribed by the State Board.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The general registrar of the locality registers voters.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "24.2-114",
+   "quote": "In addition to the other duties required by this title, the general registrar, and the deputy registrars acting under his supervision, shall: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Records close during the 10 days before a primary or general election.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "24.2-416",
+   "quote": "The registration records shall be closed during the 10 days before a primary or general election.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville the Office of Voter Registration handles it.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:voter_registration",
+   "field": "step s3 how",
+   "url": "https://www.charlottesville.gov/455/Register-to-Vote",
+   "quote": "and DMV's copy of your signature is used. The Department sends the completed application to the Charlottesville registrar within five business days. State law requires a Virginia driver's license or other DMV-issued document for an electronic application, and an online address or name update is made on the same",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

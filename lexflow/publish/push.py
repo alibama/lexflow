@@ -231,6 +231,16 @@ def statement(c: graph.Claim, pid_of: Callable[[str], str], qid_of: Callable[[st
     return st
 
 
+def equivalent_claims(label: str, wikidata: str | None) -> list[graph.Claim]:
+    """The ``P7 equivalent property`` claims of a property item: the Wikidata property first, then one per
+    ontology IRI of ``schema.equivalents_of`` (docs/design/legal-ontologies.md section 2)."""
+    out = []
+    if wikidata:
+        out.append(graph.Claim("equivalent property", graph.url(SC.WIKIDATA_ENTITY + wikidata)))
+    out += [graph.Claim("equivalent property", graph.url(iri)) for iri in SC.equivalents_of(label)]
+    return out
+
+
 def snak_sig(s: dict) -> tuple:
     """What makes two main snaks the same statement for the append-only diff."""
     dv = s.get("datavalue") or {}
@@ -595,10 +605,7 @@ class Pusher:
             body: dict[str, Any] = {"datatype": DATATYPES[p.datatype],
                                     "labels": {LANG: {"language": LANG, "value": p.label}},
                                     "descriptions": {LANG: {"language": LANG, "value": p.description[:LABEL_MAX]}}}
-            claims = []
-            if p.wikidata:
-                claims.append(statement(graph.Claim("equivalent property", graph.url(SC.WIKIDATA_ENTITY + p.wikidata)),
-                                        self.ids.pid, self.qid_of))
+            claims = [statement(c, self.ids.pid, self.qid_of) for c in equivalent_claims(p.label, p.wikidata)]
             if claims:
                 body["claims"] = claims
             w = Write(1, "property", p.label, "create", new="property", body=body)
@@ -727,11 +734,17 @@ class Pusher:
 
     def update_properties(self) -> None:
         """The formatter claims of the new properties (their properties are new too, so they wait for pass 2) and
-        the ``P7`` claim when the create did not carry it: appended when missing."""
-        pids = [self.ids.pids[p.label] for p in SC.PROPERTIES if p.label in self.ids.pids
-                and p.label not in self.ids.placeholders]
+        the ``P7 equivalent property`` claims (Wikidata and the ontology IRIs of ``schema.equivalents_of``) when
+        the create did not carry them: appended when missing.  The 21 existing properties (P5-P25) get their
+        ``P7`` ontology claims the same way."""
+        existing = [(label, pid) for label, pid in SC.EXISTING.items() if SC.EXISTING_EQUIVALENTS.get(label)]
+        pids = [pid for _, pid in existing] + [self.ids.pids[p.label] for p in SC.PROPERTIES if p.label in self.ids.pids
+                                              and p.label not in self.ids.placeholders]
         if self.session is not None and pids:
             self.fetch_live(pids)
+        for label, pid in existing:
+            claims = [statement(c, self.ids.pid, self.qid_of) for c in equivalent_claims(label, None)]
+            self._append_property_claims(label, pid, claims, "ontology equivalents")
         for p in SC.PROPERTIES:
             if p.label not in self.ids.pids:
                 self.record(Write(2, "property", p.label, "skip-unresolved", note="not created in pass 1"))
@@ -744,27 +757,29 @@ class Pusher:
                         claims.append(statement(graph.Claim(fprop, graph.string(tpl)), self.ids.pid, self.qid_of))
                     except Unresolved as e:
                         dropped.append(f"{p.label} {fprop}: {e}")
-            if p.wikidata:
-                claims.append(statement(graph.Claim("equivalent property", graph.url(SC.WIKIDATA_ENTITY + p.wikidata)),
-                              self.ids.pid, self.qid_of))
+            claims += [statement(c, self.ids.pid, self.qid_of) for c in equivalent_claims(p.label, p.wikidata)]
             self.dropped += dropped
-            live = self.live_entities.get(pid) or {}
-            have = {snak_sig(s.get("mainsnak") or {}) for ss in (live.get("claims") or {}).values() for s in ss}
-            missing = [s for s in claims if snak_sig(s["mainsnak"]) not in have] if live else claims
-            if not missing:
-                self.record(Write(2, "property", p.label, "skip-current", qid=pid))
-                continue
-            w = Write(2, "property", p.label, "update", qid=pid, body={"claims": missing},
-                      placeholder=p.label in self.ids.placeholders)
-            if self.dry_run:
-                self.record(w)
-                continue
-            try:
-                self.api.edit(w.body, qid=pid, summary=f"lexflow: property {p.label} formatters")
-            except (WikibaseError, KeyError, ValueError) as e:
-                w.action, w.error, w.code = "fail", str(e)[:300], error_code(e)
-                self.log(f"property {p.label}: {e}")
+            self._append_property_claims(p.label, pid, claims, "formatters")
+
+    def _append_property_claims(self, label: str, pid: str, claims: list[dict], what: str) -> None:
+        """Append to a property item the statements of ``claims`` it does not carry (one ``Write`` either way)."""
+        live = self.live_entities.get(pid) or {}
+        have = {snak_sig(s.get("mainsnak") or {}) for ss in (live.get("claims") or {}).values() for s in ss}
+        missing = [s for s in claims if snak_sig(s["mainsnak"]) not in have] if live else claims
+        if not missing:
+            self.record(Write(2, "property", label, "skip-current", qid=pid))
+            return
+        w = Write(2, "property", label, "update", qid=pid, body={"claims": missing},
+                  placeholder=label in self.ids.placeholders)
+        if self.dry_run:
             self.record(w)
+            return
+        try:
+            self.api.edit(w.body, qid=pid, summary=f"lexflow: property {label} {what}")
+        except (WikibaseError, KeyError, ValueError) as e:
+            w.action, w.error, w.code = "fail", str(e)[:300], error_code(e)
+            self.log(f"property {label}: {e}")
+        self.record(w)
 
     def update_item(self, it: graph.Item) -> Write:
         kind = SC.kind_of(it.key)
@@ -880,8 +895,9 @@ def check_live(items: list[graph.Item], pusher: Pusher, log: Log = print) -> dic
 
 
 def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", limit: int | None = None,
-        kinds: list[str] | None = None, states=None, places=None, drafts: bool = True, resume: bool = False,
-        allow_held: bool = False, check: bool = False, live: bool = True, out_dir: Path | None = None,
+        kinds: list[str] | None = None, states=None, places=None, drafts: bool = True, asked_drafts: bool = False,
+        resume: bool = False, allow_held: bool = False, check: bool = False, live: bool = True,
+        out_dir: Path | None = None,
         items: list[graph.Item] | None = None, api: Api | None = None, session=None, log: Log = print) -> dict:
     out_dir = out_dir or OUT_DIR
     ensure_tables(con)
@@ -894,7 +910,7 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
             raise HeldError(f"the lint report holds {len(held)} items: fix them and re-run the lint, or --allow-held "
                             f"(held items are never pushed either way)")
     if items is None:
-        items = graph.build(con, states=states, places=places, drafts=drafts, log=log)
+        items = graph.build(con, states=states, places=places, drafts=drafts, asked_drafts=asked_drafts, log=log)
     if kinds:
         items = [it for it in items if SC.kind_of(it.key) in kinds]
     if limit:
@@ -921,7 +937,8 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
         pusher.pass2()
     summary = pusher.summary()
     meta = {"dry_run": dry_run, "pass": pass_no, "items": len(items), "limit": limit, "kinds": kinds, "states": states,
-            "places": places, "drafts": drafts, "resume": resume, "live": live, "held": sorted(held),
+            "places": places, "drafts": drafts, "asked_drafts": asked_drafts, "resume": resume, "live": live,
+            "held": sorted(held),
             "seconds": round(time.monotonic() - t, 1), "api_writes": api.writes,
             "placeholders": sorted(pusher.ids.placeholders)[:20], "placeholder_count": len(pusher.ids.placeholders)}
     path = write_plan(pusher, summary, out_dir, meta)
@@ -947,6 +964,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--states", help="comma-separated state codes to limit the graph")
     ap.add_argument("--places", help="comma-separated government ids to limit the graph")
     ap.add_argument("--no-drafts", action="store_true", help="leave draft (single-tier) models out")
+    ap.add_argument("--asked-drafts", action="store_true", help="include asked answers as draft process items "
+                                                               "(lexflow:process:asked:<state>:<question>)")
     ap.add_argument("--resume", action="store_true", help="skip items whose content hash is already recorded")
     ap.add_argument("--allow-held", action="store_true", help="run --really although the lint report holds items "
                                                              "(held items are still skipped)")
@@ -962,7 +981,8 @@ def main(argv: list[str] | None = None) -> int:
                      kinds=args.kinds.split(",") if args.kinds else None,
                      states=args.states.split(",") if args.states else None,
                      places=args.places.split(",") if args.places else None, drafts=not args.no_drafts,
-                     resume=args.resume, allow_held=args.allow_held, check=args.check, live=not args.no_live,
+                     asked_drafts=args.asked_drafts, resume=args.resume, allow_held=args.allow_held,
+                     check=args.check, live=not args.no_live,
                      out_dir=Path(args.out) if args.out else None, log=log)
     except HeldError as e:
         log(f"refused: {e}")

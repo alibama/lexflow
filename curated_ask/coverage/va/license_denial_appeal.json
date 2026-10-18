@@ -1,0 +1,67 @@
+{
+ "qid": "license_denial_appeal",
+ "state": "va",
+ "question": "My professional licence application was denied. How do I appeal?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-4026",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-4020",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-4019",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-4021",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A party aggrieved by a case decision has a right to direct court review.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2.2-4026",
+   "quote": "2.2-4006 et seq.) or 3 (§ 2.2-4018 et seq.) shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The agency affords a formal hearing on the record.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "2.2-4020",
+   "quote": "The agency shall afford opportunity for the formal taking of evidence upon relevant fact issues in any case in which the basic laws provide expressly for decisions upon or after hearing and may do so in any case to the extent that informal procedures under § 2.2-4019 have not been had or have failed to dispose of a case by consent.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An informal fact-finding conference comes first.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-4019",
+   "quote": "Agencies shall ascertain the fact basis for their decisions of cases through informal conference or consultation proceedings unless the named party and the agency consent to waive such a conference or proceeding to go directly to a formal hearing.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The decision is rendered within 90 days of the informal fact-finding or formal proceeding.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2.2-4021",
+   "quote": "or agency personnel responsible for rendering a decision shall render that decision within 90 days from the date of the informal fact-finding, formal proceeding, or completion of a summary case decision proceeding, or from a later date agreed to by the named party and the agency.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

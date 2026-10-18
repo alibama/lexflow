@@ -1,0 +1,59 @@
+{
+ "qid": "vehicle_registration",
+ "state": "dc",
+ "question": "I moved here with a car. Who do I tell, and what do I have to pay?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "50-1501.02",
+   "role": "primary"
+  },
+  {
+   "ref": "50-1501.03",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A motor vehicle operated in the District must be registered with the Department of Motor Vehicles.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "50-1501.02",
+   "quote": "(a) Except as provided by § 50-1401.02 , any motor vehicle or trailer operated in the District of Columbia shall be registered with the Department of Transportation by the owner of that motor vehicle or trailer.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Registration fees are set by vehicle weight.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "50-1501.03",
+   "quote": "the registration fee provided in this section, except that in the event the Council of the District of Columbia prescribes and the Mayor of the District of Columbia issues as the official identification tags for the District of Columbia tags treated with special reflective materials designed to increase the visibility",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The DMV mails a renewal notice at least 30 days before registration expires.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "50-1501.02",
+   "quote": "The required notice shall be mailed to the named owner at the address of record at least 30 days prior to the date of expiration.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Mayor (DMV) issues certificates and tags.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "50-1501.02",
+   "quote": "(b) (1) Except as provided in subsections (d) and (e) of this section, a registration shall be valid for a period determined by the Mayor and shall expire at midnight of the last day of the designated period.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

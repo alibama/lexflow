@@ -1,0 +1,69 @@
+{
+ "qid": "deed_recording",
+ "state": "va",
+ "question": "How do I record a deed, and what does it cost?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "17.1-223",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-801",
+   "role": "primary"
+  },
+  {
+   "ref": "17.1-275",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "deed_recording",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The clerk of the circuit court records deeds.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "17.1-223",
+   "quote": "Every writing authorized by law to be recorded, with all certificates, plats, schedules or other papers thereto annexed or thereon endorsed, upon payment of fees for the same and the tax thereon, if any, shall, when admitted to record, be recorded by or under the direction of the clerk on such media as are prescribed by § 17.1-239 .",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The state recordation tax is 25 cents per $100 of consideration.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-801",
+   "quote": "The rate of the tax shall be 25 cents on every $100 or fraction thereof of (i) the consideration of the deed or (ii) the actual value of the property conveyed, whichever is greater.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The clerk's recording fee.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "17.1-275",
+   "quote": "For recording and indexing in the proper book any writing and all matters therewith, or for recording and indexing anything not otherwise provided for, $18 for an instrument or document consisting of 10 or fewer pages or sheets; $32 for an instrument or document consisting of 11 to 30 pages or sheets; and $52 for an instrument or document consisting of 31 or more pages or sheets.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "In Charlottesville deeds are recorded with the Circuit Court Clerk.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:deed_recording",
+   "field": "step s1 how",
+   "url": "https://www.charlottesville.gov/570/Property-Transfers-Sales",
+   "quote": "becomes the new owner's responsibility. After settlement the deed naming the new owner is recorded with the Charlottesville Circuit Court.",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

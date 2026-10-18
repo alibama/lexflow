@@ -1,0 +1,59 @@
+{
+ "qid": "benefits_apply",
+ "state": "dc",
+ "question": "How do I apply for food assistance (SNAP) or other public benefits?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "4-205.19",
+   "role": "supporting"
+  },
+  {
+   "ref": "4-210.02",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "An application is accepted from anyone who believes they are eligible.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "4-205.19",
+   "quote": "(a) Application for public assistance shall be accepted from, or on behalf of, any person who believes himself or herself eligible for public assistance.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The application is in the form the Council prescribes.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "4-205.19",
+   "quote": "The application shall be made in the manner and form prescribed by the Council, and shall contain such information as the Mayor shall require.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An applicant may request a fair hearing.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "4-210.02",
+   "quote": "shall grant a fair hearing to any applicant for or a recipient of public assistance whose claim for assistance has been denied or has not been acted upon within a reasonable time not to exceed 45 days; or who is aggrieved by any other action or inaction of the Mayor which affects the receipt, termination, amount",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Mayor (Department of Human Services) sets what the application must contain.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "4-205.19",
+   "quote": "The application shall be made in the manner and form prescribed by the Council, and shall contain such information as the Mayor shall require.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

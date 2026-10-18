@@ -164,8 +164,8 @@ def out(tmp_path):
 @pytest.fixture()
 def wiki():
     return FakeSession(entities={
-        "P5": {"id": "P5", "datatype": "wikibase-item", "labels": {"en": {"language": "en", "value": "instance of"}}},
-        "P25": {"id": "P25", "datatype": "external-id", "labels": {"en": {"language": "en", "value": "legal identifier"}}},
+        **{pid: {"id": pid, "datatype": SC.EXISTING_DATATYPES[label], "labels": {"en": {"language": "en", "value": label}},
+                 "descriptions": {}, "aliases": {}, "claims": {}} for label, pid in SC.EXISTING.items()},
         "Q7": entity("Q7", "legal process", "A modeled legal process."),
         "Q8": entity("Q8", "legal process step", "A step or action within a legal process."),
         "Q10": entity("Q10", "statute or legal provision", "A statute or provision."),
@@ -418,3 +418,36 @@ def test_really_refuses_without_a_lint_report_or_with_held_items(con, wiki, out)
     result = push.run(con, items=graph_items(), api=api_for(wiki, False), out_dir=out, dry_run=False,
                       log=lambda *a: None, pass_no="1")
     assert result["summary"]["counts"]["1"]["step"] == {"create": 1}
+
+
+# --------------------------------------------------------------------------- the ontology equivalents
+def test_property_items_carry_the_ontology_equivalents(con, wiki, out):
+    _run(con, wiki, out, graph_items(), pass_no="1")
+    topic = SC.PROP_BY_LABEL["topic"]
+    assert topic.equivalents == ("http://data.europa.eu/eli/ontology#is_about", "https://schema.org/about")
+    create = next(json.loads(p["data"]) for p in wiki.posts if p.get("new") == "property" and '"topic"' in p["data"])
+    p7 = [s["mainsnak"]["datavalue"]["value"] for s in create["claims"] if s["mainsnak"]["property"] == "P7"]
+    assert p7 == ([SC.WIKIDATA_ENTITY + topic.wikidata] if topic.wikidata else []) + list(topic.equivalents)
+    assert all(s["mainsnak"]["datavalue"]["type"] == "string" for s in create["claims"])        # url snaks
+    # pass 2: the existing properties (P5-P25) are appended their P7 ontology claims, once
+    wiki.posts.clear()
+    result = _run(con, wiki, out, graph_items(), pass_no="2")
+    part_of = [json.loads(p["data"]) for p in wiki.posts if p.get("id") == "P9"]
+    assert len(part_of) == 1 and "clear" not in next(p for p in wiki.posts if p.get("id") == "P9")
+    assert [s["mainsnak"]["datavalue"]["value"] for s in part_of[0]["claims"]] == [
+        "http://data.europa.eu/eli/ontology#is_part_of", "https://schema.org/isPartOf"]
+    assert all(s["mainsnak"]["property"] == "P7" for s in part_of[0]["claims"])
+    posted = {p.get("id") for p in wiki.posts if p.get("id", "").startswith("P")}
+    assert {pid for label, pid in SC.EXISTING.items() if SC.EXISTING_EQUIVALENTS[label]} <= posted
+    assert "P12" not in posted, "followed by has no equivalent: nothing to append"
+    c = result["summary"]["counts"]["2"]["property"]
+    assert c.get("update", 0) >= 13 + 1
+    # a second pass 2 finds them present and appends nothing
+    wiki.posts.clear()
+    result = _run(con, wiki, out, graph_items(), pass_no="2", resume=True)
+    assert not [p for p in wiki.posts if p.get("id", "").startswith("P")]
+    assert result["summary"]["counts"]["2"]["property"].get("update", 0) == 0
+    assert push.equivalent_claims("part of", None) == [
+        graph.Claim("equivalent property", graph.url("http://data.europa.eu/eli/ontology#is_part_of")),
+        graph.Claim("equivalent property", graph.url("https://schema.org/isPartOf"))]
+    assert push.equivalent_claims("sort key", None) == []

@@ -1,0 +1,59 @@
+{
+ "qid": "license_denial_appeal",
+ "state": "dc",
+ "question": "My professional licence application was denied. How do I appeal?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2-509",
+   "role": "primary"
+  },
+  {
+   "ref": "2-510",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "In a contested case the party gets notice and a hearing.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "2-509",
+   "quote": "The notice shall state the time, place, and issues involved, but if, by reason of the nature of the proceeding, the Mayor or the agency determines that the issues cannot be fully stated in advance of the hearing, or if subsequent amendment of the issues is necessary, they shall be fully stated as soon as practicable",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Judicial review is by petition to the District of Columbia Court of Appeals.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2-510",
+   "quote": "(a) Any person suffering a legal wrong, or adversely affected or aggrieved, by an order or decision of the Mayor or an agency in a contested case, is entitled to a judicial review thereof in accordance with this subchapter upon filing in the District of Columbia Court of Appeals a written petition for review.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The petition is due within the time the Court's rules set.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2-510",
+   "quote": "A petition for review shall be filed in such Court within such time as such Court may by rule prescribe and a copy of such petition shall forthwith be served by mail by the clerk of the Court upon the Mayor or upon the agency, as the case may be.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Mayor or the agency decides the contested case.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "2-509",
+   "quote": "no order or decision adverse to a party to the case (other than the Mayor or an agency) shall be made until a proposed order or decision, including findings of fact and conclusions of law, has been served upon the parties and an opportunity has been afforded to each party adversely affected to file exceptions and",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -237,6 +237,22 @@ For the 22 reviewed and the agreed models (`process_models.tier in ('reviewed','
 Draft (`single`) models get the process, steps and roles with `review status = draft`, no contacts and no
 escalation.
 
+**Asked answers as drafts** (`graph.Build.asked`, off unless `--asked-drafts` is given to `lexflow wikibase push`
+or `lexflow wikibase lint`; `lexflow sparql --build` includes them with the other drafts so the coverage probe sees
+them before any push). A state answer of `asked_answers` (the ask pipeline's answer to a question people asked, or
+to a coverage question the gap-filling loop `lexflow run coverage --fill` answered) goes up as a **process** item
+keyed `lexflow:process:asked:<state>:<question_id>` when its status is answered or partial, it holds facts (a map)
+and every quote was matched word for word against the statute text (`pipeline.quote_counts`: no miss). It carries
+`review status = draft`, *question asked* (the question's text), *topic* and *audience* from the coverage question
+(`fixtures/coverage/questions.json`) when the id is one, *checked on* (when the quotes were taken), P13 references →
+the sections the answer chose, and its steps (`lexflow:step:asked:<state>:<question_id>:<step>`), roles
+(`lexflow:role:<state>:<question_id>:<actor>`) and deadlines exactly as the model branch writes them, each quote in
+the grounding reference with *determination method* = matched by lexflow's software. Like every draft it never
+carries contacts, office types, escalation, decisions or outcomes; its roles are played by `lexflow:private-party`
+or nothing. Nothing in a draft's label or description says it is one (the lint's drafting-words check): the review
+status claim does. The coverage probe counts draft process items apart (`counts.drafts`) and a cell that rests on
+drafts alone is at most `partial` (`D` in docs/coverage.md).
+
 ### 4.5 Local processes and contacts
 
 For each verified researched process (`place_processes.verified = 1`; on 15 October 2026 the live table holds

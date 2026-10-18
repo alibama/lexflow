@@ -494,6 +494,9 @@ def create_lines(item: Any, ids: Ids | None = None, with_class: bool = False) ->
         wd = _get(item, "wikidata")
         if wd and QID.match(str(wd)):
             lines.append(f"LAST\t{EXACT_MATCH}\t{qs_url('http://www.wikidata.org/entity/' + wd)}")
+        for iri in _get(item, "exact") or ():
+            lines.append(f"LAST\t{EXACT_MATCH}\t{qs_url(iri)}")
+        # close match (property 60) is a new property: its lines wait for pass 2 (schema_items' claims)
     return lines
 
 
@@ -529,6 +532,8 @@ def properties_batch(schema) -> Batch:
         wd = _get(p, "wikidata")
         if wd and re.fullmatch(r"P\d+", str(wd)):
             lines.append(f"LAST\t{EQUIVALENT_PROPERTY}\t{qs_url('http://www.wikidata.org/entity/' + wd)}")
+        for iri in _get(p, "equivalents") or ():
+            lines.append(f"LAST\t{EQUIVALENT_PROPERTY}\t{qs_url(iri)}")
         b.add(lines)
     # formatter URL / formatter URI for RDF resource are new properties themselves: their ids are unknown in
     # pass 1, so the formatter claims go to 05-updates.qs in pass 2 (see updates_for_properties)
@@ -537,8 +542,15 @@ def properties_batch(schema) -> Batch:
 
 def updates_for_properties(schema, ids: Ids) -> tuple[list[list[str]], list[str]]:
     """Pass 2: the formatter claims on the property items (``formatter URL`` and ``formatter URI for RDF resource``
-    are themselves new properties)."""
+    are themselves new properties) and the ``P7 equivalent property`` ontology IRIs of the existing properties
+    (``schema.EXISTING_EQUIVALENTS``; the new properties carry theirs from 01-properties.qs)."""
     groups, skipped = [], []
+    for label, iris in (getattr(schema, "EXISTING_EQUIVALENTS", None) or {}).items():
+        for iri in iris:
+            try:
+                groups.append([f"{ids.prop(label)}\t{EQUIVALENT_PROPERTY}\t{qs_url(iri)}"])
+            except Unresolved as e:
+                skipped.append(f"{label} equivalent property: {e}")
     for p in _records(getattr(schema, "PROPERTIES")):
         label = _get(p, "label")
         for fprop, attrs in (("formatter URL", ("formatter", "formatter_url")),
@@ -577,7 +589,9 @@ def schema_items(schema) -> list[Any]:
             sup = f"lexflow:class:{sup}"                      # a slug: the parent class's key
         out.append(PlainItem(key=class_key(c), label=_get(c, "label"), description=_get(c, "description") or "",
                              aliases=list(_get(c, "aliases") or []), cls=None, subclass_of=sup, exists=bool(qid),
-                             kind="class", wikidata=_get(c, "wikidata")))
+                             kind="class", wikidata=_get(c, "wikidata"), exact=tuple(_get(c, "exact") or ()),
+                             close=tuple(_get(c, "close") or ()),
+                             claims=[PlainClaim("close match", PlainValue("url", iri)) for iri in _get(c, "close") or ()]))
     for set_name, v in vocab_records(schema):
         key = _get(v, "key") or f"lexflow:vocab:{set_name}:{_get(v, 'slug')}"
         cls = _first(v, "cls", "class", "vocabulary") or f"lexflow:class:{set_name}"
@@ -617,6 +631,25 @@ class PlainItem:
     kind: str = ""
     subclass_of: str | None = None
     wikidata: str | None = None
+    exact: tuple = ()                 # P8 exact match IRIs (ontology_map.CLASS_MATCH), written in pass 1
+    close: tuple = ()                 # close match IRIs (ontology_map.CLASS_CLOSE), written as claims in pass 2
+
+
+@dataclass
+class PlainValue:
+    kind: str
+    value: str
+    unit: str | None = None
+    lang: str | None = None
+    precision: int | None = None
+
+
+@dataclass
+class PlainClaim:
+    prop: str
+    value: PlainValue
+    qualifiers: list = field(default_factory=list)
+    references: list = field(default_factory=list)
 
 
 def merge_schema_items(class_items: list[PlainItem], items: list[Any]) -> list[PlainItem]:
@@ -630,7 +663,8 @@ def merge_schema_items(class_items: list[PlainItem], items: list[Any]) -> list[P
             ci = PlainItem(key=ci.key, label=_get(g, "label") or ci.label, description=_get(g, "description") or
                            ci.description, aliases=list(_get(g, "aliases") or ci.aliases), cls=ci.cls or _get(g, "cls"),
                            claims=list(_get(g, "claims") or []), exists=bool(ci.exists or _get(g, "exists")),
-                           kind=ci.kind, subclass_of=ci.subclass_of, wikidata=ci.wikidata)
+                           kind=ci.kind, subclass_of=ci.subclass_of, wikidata=ci.wikidata, exact=ci.exact,
+                           close=ci.close)
         out.append(ci)
     return out
 

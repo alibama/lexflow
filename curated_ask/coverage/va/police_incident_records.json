@@ -1,0 +1,81 @@
+{
+ "qid": "police_incident_records",
+ "state": "va",
+ "question": "How do I get a copy of a police report or the records of a police incident I was involved in?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-3706.1",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-3704",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-3713",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Law-enforcement bodies must release criminal incident information on felonies on request.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2.2-3706.1",
+   "quote": "All public bodies engaged in criminal law-enforcement activities shall provide records and information when requested in accordance with the provisions of this chapter regarding criminal incident information relating to felony offenses contained in any report, notes, electronic communication, or other document, including filings through an incident-based reporting system, which shall include: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Criminal investigative files (reports, statements, evidence) are a separate, more limited category.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-3706.1",
+   "quote": "For purposes of this section: \"Criminal investigative files\" means any documents and information, including complaints, court orders, memoranda, notes, diagrams, maps, photographs, correspondence, reports, witness statements, and evidence, relating to a criminal investigation or prosecution, other than criminal incident information subject to disclosure in accordance with subsection B.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The five-working-day response rule applies.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2.2-3704",
+   "quote": "Any public body that is subject to this chapter and that is the custodian of the requested records shall promptly, but in all cases within five working days of receiving a request, provide the requested records to the requester or make one of the following responses in writing: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "For criminal investigative files the extension is 60 work days.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2.2-3704",
+   "quote": "If the response is made within five working days, the public body shall have an additional seven work days or, in the case of a request for criminal investigative files pursuant to § 2.2-3706.1 , 60 work days in which to provide one of the four preceding responses.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Charges are limited to actual cost.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "2.2-3704",
+   "quote": "a public body may make reasonable charges not to exceed its actual cost incurred in accessing, duplicating, supplying, or searching for the requested records and shall make all reasonable efforts to supply the requested records at the lowest possible cost.",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "Denial is enforced by a petition for mandamus or injunction.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2.2-3713",
+   "quote": "Any person, including the attorney for the Commonwealth acting in his official or individual capacity, denied the rights and privileges conferred by this chapter may proceed to enforce such rights and privileges by filing a petition for mandamus or injunction, supported by an affidavit showing good cause.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

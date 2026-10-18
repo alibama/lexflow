@@ -1,0 +1,85 @@
+{
+ "qid": "zoning_variance",
+ "state": "va",
+ "question": "How do I apply for a zoning variance, and who decides it?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "15.2-2309",
+   "role": "primary"
+  },
+  {
+   "ref": "15.2-2314",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "zoning_variance",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The board of zoning appeals decides variances.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "15.2-2309",
+   "quote": "Boards of zoning appeals shall have the following powers and duties: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A variance is granted on application in specific cases under the statutory standard.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "15.2-2309",
+   "quote": "to grant upon appeal or original application in specific cases a variance as defined in § 15.2-2201 , provided that the burden of proof shall be on the applicant for a variance to prove by a preponderance of the evidence that his application meets the standard for a variance as defined in § 15.2-2201 and the criteria",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A board decision is reviewed by petition to the circuit court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "15.2-2314",
+   "quote": "Any person or persons jointly or severally aggrieved by any decision of the board of zoning appeals, or any aggrieved taxpayer or officer, department, board, or bureau of the locality, may, within 30 days after the final decision of the board, file with the clerk of the circuit court for the county or city a petition that shall be styled \"[Petitioner v.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The petition is filed within 30 days of the board's decision.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "15.2-2314",
+   "quote": "Any person or persons jointly or severally aggrieved by any decision of the board of zoning appeals, or any aggrieved taxpayer or officer, department, board, or bureau of the locality, may, within 30 days after the final decision of the board, file with the clerk of the circuit court for the county or city a petition that shall be styled \"[Petitioner v.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "A pre-application conference with the Zoning Administrator comes before the application.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "local:47210400100000:zoning_variance",
+   "field": "step s4 how",
+   "url": "City Code § 34-5.2.12(B)(2) (Development Code)",
+   "quote": "Schedule a pre-application conference with the Zoning Administrator (or designee) to go over the procedures, standards and regulations the variance must meet; the Administrator may waive it. Sign the Pre-Application Meeting Acknowledgement (posted as the Preapplication Verification Form) and upload it with the",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The city's Board of Zoning Appeals hears it.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:zoning_variance",
+   "field": "legal basis Va. Code § 15.2-2308(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2308/",
+   "quote": "Every locality that has enacted or enacts a zoning ordinance pursuant to this chapter or prior enabling laws shall establish a board of zoning appeals",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

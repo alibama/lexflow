@@ -1,0 +1,72 @@
+{
+ "qid": "short_term_rental",
+ "state": "dc",
+ "question": "Can I rent my home as a short-term rental, and what do I have to register or pay?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "30-201.03",
+   "role": "primary"
+  },
+  {
+   "ref": "30-201.02",
+   "role": "primary"
+  },
+  {
+   "ref": "30-201.04",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A host applies for a short-term rental licence endorsement.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "30-201.03",
+   "quote": "A host applying for a short-term rental license endorsement shall: (a) (1) Provide evidence that he or she complies with the requirements of § 30-201.02 ;",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Only the host's primary residence may be a short-term rental.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "30-201.02",
+   "quote": "(d) The property at which the short-term rental is located shall be the host's primary residence.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The host must carry at least $500,000 of liability insurance.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "30-201.02",
+   "quote": "(b) A host providing a short-term rental shall have current liability insurance of at least $500,000, which may be provided by the booking service.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Department issues the endorsement only to the host.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "30-201.04",
+   "quote": "(a) The Department shall not issue a short-term rental license endorsement to any person or entity other than to a host.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "The rental needs a basic business license with a Short-Term Rental endorsement.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "30-201.02",
+   "quote": "(a) A short-term rental shall require a valid basic business license with a \"Short-Term Rental\" endorsement, in addition to any other license required by law.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -464,11 +464,12 @@ def reuse_ollama(out_dir: Path) -> dict | None:
 
 
 def run(con, *, ollama: bool = True, sample: float = SAMPLE, cap: int = CAP, seed: int = SEED, states=None,
-        places=None, drafts: bool = True, client=None, items: list[graph.Item] | None = None,
+        places=None, drafts: bool = True, asked_drafts: bool = False, client=None,
+        items: list[graph.Item] | None = None,
         out_dir: Path | None = None, today: date | None = None, reuse: bool = False, log: Log = print) -> dict:
     out_dir = out_dir or OUT_DIR
     if items is None:
-        items = graph.build(con, states=states, places=places, drafts=drafts, log=log)
+        items = graph.build(con, states=states, places=places, drafts=drafts, asked_drafts=asked_drafts, log=log)
     stored = {r["key"]: r["label"] for r in db.rows(con, "SELECT key, label FROM wikibase_items")} if con is not None \
         else {}
     findings, checked = deterministic(items, stored, today)
@@ -482,7 +483,8 @@ def run(con, *, ollama: bool = True, sample: float = SAMPLE, cap: int = CAP, see
         chosen = select_for_ollama(items, findings, sample=sample, seed=seed, cap=cap)
         log(f"ollama: {len(chosen)} items in {-(-len(chosen) // BATCH)} calls (cap {cap}), model {client.model}")
         result = ollama_pass(chosen, client, cap=cap, log=log)
-    scope = {"states": states, "places": places, "drafts": drafts, "sample": sample, "seed": seed, "cap": cap}
+    scope = {"states": states, "places": places, "drafts": drafts, "asked_drafts": asked_drafts, "sample": sample,
+             "seed": seed, "cap": cap}
     report = assemble(items, findings, checked, result, scope)
     md, js = write_report(report, out_dir)
     log(f"held {report['held_count']} items; report: {md}")
@@ -501,6 +503,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--states", help="comma-separated state codes to limit the graph")
     ap.add_argument("--places", help="comma-separated government ids to limit the graph")
     ap.add_argument("--no-drafts", action="store_true", help="leave draft (single-tier) models out")
+    ap.add_argument("--asked-drafts", action="store_true", help="include asked answers as draft process items")
     ap.add_argument("--db", help="path of the lexflow database")
     ap.add_argument("--out", help=f"output directory (default {OUT_DIR})")
     args = ap.parse_args(argv)
@@ -510,6 +513,7 @@ def main(argv: list[str] | None = None) -> int:
         report = run(con, ollama=not args.no_ollama, sample=args.sample, cap=args.cap, seed=args.seed,
                      states=args.states.split(",") if args.states else None,
                      places=args.places.split(",") if args.places else None, drafts=not args.no_drafts,
+                     asked_drafts=args.asked_drafts,
                      client=None if (args.no_ollama or args.reuse) else make_client(args.model),
                      out_dir=Path(args.out) if args.out else None, reuse=args.reuse, log=log)
     finally:

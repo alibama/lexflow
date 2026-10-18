@@ -1,0 +1,102 @@
+{
+ "qid": "dog_license",
+ "state": "va",
+ "question": "Does my dog need a licence, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "3.2-6524",
+   "role": "primary"
+  },
+  {
+   "ref": "3.2-6528",
+   "role": "primary"
+  },
+  {
+   "ref": "3.2-6530",
+   "role": "supporting"
+  },
+  {
+   "ref": "3.2-6526",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "dog_license",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A dog four months or older must be licensed.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "3.2-6524",
+   "quote": "It shall be unlawful for any person other than a releasing agency that has registered as such annually with local animal control to own a dog four months old or older in the Commonwealth unless such dog is licensed, as required by the provisions of this article.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The tax is at most $10 a year or $50 for a lifetime licence.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "3.2-6528",
+   "quote": "The tax for each dog or cat shall not be more than $10 for each year or $50 for a lifetime license issued pursuant to subsection B of § 3.2-6530 .",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The licence is obtained within 30 days of the dog reaching four months or being acquired.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "3.2-6530",
+   "quote": "The license tax as prescribed in § 3.2-6528 is due not later than 30 days after a dog or cat has reached the age of four months, or not later than 30 days after an owner acquires a dog or cat four months of age or older, and each year thereafter.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The application needs a current rabies vaccination certificate.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "3.2-6526",
+   "quote": "satisfactory evidence that such dog or cat has been inoculated or vaccinated against rabies by a currently licensed veterinarian or currently licensed veterinary technician who was under the immediate and direct supervision of a licensed veterinarian on the premises.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "In Charlottesville the City Treasurer sells the licence.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "local:47210400100000:dog_license",
+   "field": "office",
+   "url": null,
+   "quote": "City Treasurer",
+   "source": "local"
+  },
+  {
+   "id": "N6",
+   "text": "The city's lifetime dog licence costs $10.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "local:47210400100000:dog_license",
+   "field": "step s4 how",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/3873",
+   "quote": "Download the application (PDF, fillable). It asks for the owner's name, address and phone number, and for each dog its name and rabies expiration date, at $10 per dog. Attach a copy of the current rabies certificate, or ask your veterinarian to send the Treasurer's Office a copy.",
+   "source": "local"
+  }
+ ],
+ "slots": {
+  "fee": [
+   {
+    "value": "$10",
+    "nuggets": [
+     "N2"
+    ]
+   }
+  ]
+ },
+ "notes": ""
+}

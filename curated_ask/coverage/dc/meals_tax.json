@@ -1,0 +1,59 @@
+{
+ "qid": "meals_tax",
+ "state": "dc",
+ "question": "I run a restaurant. How do I collect, file and pay the meals tax?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "47-2002",
+   "role": "primary"
+  },
+  {
+   "ref": "47-2015",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Food or drink prepared for immediate consumption is taxed at the rate the section gives (9% in the current text).",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "47-2002",
+   "quote": "(3) The rate of tax shall be 9% of the gross receipts from the sale of or charges for: (A) Food or drink prepared for immediate consumption as defined in § 47-2001(g-1) or spirituous or malt liquors, beer, and wine sold by an alcoholic beverage licensee acting under authority of §§ 25-112(h)(1) , 25-113(a)(3)(C) , or 25-113.01(f) or (g) ;",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The vendor collects the sales tax.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "47-2002",
+   "quote": "(a) A tax is imposed upon all vendors for the privilege of selling at retail certain tangible personal property and for the privilege of selling certain selected services (defined as “retail sale” and “sale at retail” in this chapter).",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Returns are filed and the tax paid on the statutory schedule.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "47-2015",
+   "quote": "(a) On or before the 20th day of each calendar month, every vendor who has made any sale at retail, taxable under the provisions of this chapter, during the preceding calendar month, shall file a return with the Mayor.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The tax applies to each retail sale.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "47-2002",
+   "quote": "(a) A tax is imposed upon all vendors for the privilege of selling at retail certain tangible personal property and for the privilege of selling certain selected services (defined as “retail sale” and “sale at retail” in this chapter).",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

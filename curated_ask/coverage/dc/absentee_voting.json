@@ -1,0 +1,50 @@
+{
+ "qid": "absentee_voting",
+ "state": "dc",
+ "question": "How do I vote absentee or by mail?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "1-1001.09",
+   "role": "primary"
+  },
+  {
+   "ref": "1-1001.07",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Mail-in voting is part of each election the Board runs.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "1-1001.09",
+   "quote": "Election observers shall be allowed uniform and nondiscriminatory access to all stages of the election process, including the certification of election technologies, early and mail-in voting, and vote tabulation.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Board of Elections administers it.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "1-1001.09",
+   "quote": "(2) The Board shall permit any duly registered voter to vote by mail-in ballot, for any reason, under such rules as the Board may issue.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Registration must be in by the 21st day before the election to vote in it.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "1-1001.07",
+   "quote": "A registration or request to activate the elector's registration that is received no later than 4:45 P.M. on the 21st day preceding any election, or such time on that day as the Board’s office remains open to receive registrations, shall be accepted.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

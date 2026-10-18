@@ -1,0 +1,76 @@
+{
+ "qid": "marriage_license",
+ "state": "va",
+ "question": "How do we get a marriage licence?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "20-14",
+   "role": "primary"
+  },
+  {
+   "ref": "20-15",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "marriage_license",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Marriage licences are issued by the clerk or deputy clerk of a circuit court.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "20-14",
+   "quote": "Every license for a marriage shall be issued by the clerk or deputy clerk of a circuit court of any county or city.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A $20 licence tax is collected by the clerk when the licence is issued.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "20-15",
+   "quote": "On each marriage license issued under § 20-14 there is hereby levied a license tax of $20, which tax shall be collected by the clerk when the license is issued and accounted for as in the case of other state taxes collected by him.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A licence is required before the marriage is solemnised.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "20-14",
+   "quote": "Every license for a marriage shall be issued by the clerk or deputy clerk of a circuit court of any county or city.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "In Charlottesville the Clerk of the Circuit Court issues it.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:marriage_license",
+   "field": "office",
+   "url": null,
+   "quote": "Clerk of the Charlottesville Circuit Court (constitutional officer)",
+   "source": "local"
+  },
+  {
+   "id": "N5",
+   "text": "The clerk's marriage licence application is used.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "local:47210400100000:marriage_license",
+   "field": "step s3 how",
+   "url": "https://www.charlottesville.gov/177/Marriage-License-Information",
+   "quote": "passport or DMV ID card). The application asks each of you for: full name; address; age and date of birth; place of birth (state or foreign country); which number marriage this is (first, second, third and so on); marital status if previously married (widowed or divorced); education (highest grade completed); and both",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

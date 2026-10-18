@@ -1,0 +1,91 @@
+{
+ "qid": "concealed_carry",
+ "state": "va",
+ "question": "How do I get a concealed handgun permit?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "18.2-308.02",
+   "role": "primary"
+  },
+  {
+   "ref": "18.2-308.03",
+   "role": "supporting"
+  },
+  {
+   "ref": "18.2-308.04",
+   "role": "primary"
+  },
+  {
+   "ref": "18.2-308.08",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47213000100000",
+  "process": "concealed_handgun_permit",
+  "place": "staunton"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Apply to the clerk of the circuit court of the county or city where you live.",
+   "importance": "vital",
+   "kind": "where",
+   "section": "18.2-308.02",
+   "quote": "Any person 21 years of age or older may apply in writing or electronically to the clerk of the circuit court of the county or city in which he resides, or if he is a member of the United States Armed Forces and stationed outside the Commonwealth, the county or city in which he is domiciled, for a five-year permit to carry a concealed handgun.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The application is on the prescribed form.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "18.2-308.02",
+   "quote": "The application shall be on a form prescribed by the Department of State Police, in consultation with the Supreme Court, requiring only that information necessary to determine eligibility for the permit.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The statutory fees.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "18.2-308.03",
+   "quote": "The clerk shall charge a fee of $10 for the processing of an application or issuing of a permit, including his costs associated with the consultation with law-enforcement agencies.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The court issues the permit within 45 days of a complete application.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "18.2-308.04",
+   "quote": "The court shall issue the permit via United States mail and notify the State Police of the issuance of the permit within 45 days of receipt of the completed application unless it is determined that the applicant is disqualified.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "A denial may be appealed.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "18.2-308.08",
+   "quote": "Any order denying issuance of a concealed handgun permit shall state the basis for the denial of the permit, including, if applicable, any reason under § 18.2-308.09 that is the basis of the denial, and the clerk shall provide notice, in writing, upon denial of the application, of the applicant's right to an ore tenus hearing and the requirements for perfecting an appeal of such order.",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "In Staunton the Circuit Court Clerk takes applications.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47213000100000:concealed_handgun_permit",
+   "field": "step s1 how",
+   "url": "https://www.ci.staunton.va.us/departments/clerk-of-circuit-court/concealed-weapons-permit",
+   "quote": "apply to that circuit court instead. You must not fall under any of the 20 disqualifications in Va. Code § 18.2-308.09. Among them: being barred from having a firearm; being subject to a protective order; a pending felony charge; two or more misdemeanors in the last five years if one was Class 1; DUI or public",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

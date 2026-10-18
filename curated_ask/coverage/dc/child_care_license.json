@@ -1,0 +1,50 @@
+{
+ "qid": "child_care_license",
+ "state": "dc",
+ "question": "How do I get licensed to run a child care centre or family day home?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "7-2034",
+   "role": "primary"
+  },
+  {
+   "ref": "7-2036",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "No person may operate a child development facility without a licence from the Mayor (OSSE).",
+   "importance": "vital",
+   "kind": "who",
+   "section": "7-2034",
+   "quote": "(a) Except as otherwise provided in this subchapter, no person shall, either directly or indirectly, operate a child development facility in the District without first having obtained a license to do so.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A change in ownership requires relicensure.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "7-2034",
+   "quote": "Any change in ownership of a licensee owned by a person or in the legal or beneficial ownership of a percentage of stock established by rule of a corporate licensee shall require relicensure.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Hearings follow the contested-case procedure of § 2-509.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "7-2036",
+   "quote": "(B) Administrative procedures for hearings consistent with the requirements of § 2-509 , unless otherwise provided in this subchapter;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

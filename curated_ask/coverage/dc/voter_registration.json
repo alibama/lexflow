@@ -1,0 +1,55 @@
+{
+ "qid": "voter_registration",
+ "state": "dc",
+ "question": "How do I register to vote, and what is the deadline?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "1-1001.07",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Registration received by 4:45 p.m. on the 21st day before an election is processed before it.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "1-1001.07",
+   "quote": "A registration or request to activate the elector's registration that is received no later than 4:45 P.M. on the 21st day preceding any election, or such time on that day as the Board’s office remains open to receive registrations, shall be accepted.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Board of Elections registers voters.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "1-1001.07",
+   "quote": "(B) Automatically registers pursuant to subsection (c) of this section; or (C) Has been placed on the preapproved for registration list pursuant to § 1-1001.07b and subsequently activates the person's registration; and (3) The Board approves the person's registration application as provided in subsections (e) and (g) of this section.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Same-day registration is available.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "1-1001.07",
+   "quote": "Each individual who successfully registers on Election Day shall cast a regular ballot.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A mail registration form is available.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "1-1001.07",
+   "quote": "42 U.S.C. § 1973gg et seq.) and the Help America Vote Act of 2002, shall be designed to provide an easily understood method of registering to vote by mail, and shall be mailable to the Board with postage prepaid.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

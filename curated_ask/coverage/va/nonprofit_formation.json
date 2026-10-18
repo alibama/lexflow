@@ -1,0 +1,80 @@
+{
+ "qid": "nonprofit_formation",
+ "state": "va",
+ "question": "How do I form a nonprofit corporation?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "13.1-818",
+   "role": "primary"
+  },
+  {
+   "ref": "13.1-815.1",
+   "role": "supporting"
+  },
+  {
+   "ref": "13.1-816",
+   "role": "supporting"
+  },
+  {
+   "ref": "13.1-819",
+   "role": "supporting"
+  },
+  {
+   "ref": "57-49",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Incorporators sign and deliver articles of incorporation to the Commission.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "13.1-818",
+   "quote": "One or more persons may act as the incorporator or incorporators of a corporation by signing and delivering articles of incorporation to the Commission for filing.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A nonstock corporation pays a $50 charter fee.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "13.1-815.1",
+   "quote": "Every domestic corporation, upon the granting of its charter or upon domestication, shall pay a charter fee in the amount of $50 into the state treasury, and every foreign corporation shall pay an entrance fee of $50 into the state treasury for its certificate of authority to transact business in the Commonwealth.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Filing the articles of incorporation costs $25.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "13.1-816",
+   "quote": "For filing any one of the following, the fee shall be $25: a.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The articles must set forth the corporation's name, registered office and agent and other required terms.",
+   "importance": "vital",
+   "kind": "form",
+   "section": "13.1-819",
+   "quote": "The articles of incorporation shall set forth: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "A charity that solicits must register with the Commissioner of Agriculture and Consumer Services.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "57-49",
+   "quote": "Every charitable organization, except as otherwise provided in this chapter, which intends to solicit contributions within the Commonwealth, or have funds solicited on its behalf, shall, prior to any solicitation, file an initial registration statement with the Commissioner upon forms acceptable to him.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

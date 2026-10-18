@@ -1,0 +1,46 @@
+{
+ "qid": "property_tax_pay",
+ "state": "dc",
+ "question": "When are property taxes due, and how do I pay them?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "47-811",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Real property tax is due in two installments, March 31 and September 15.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "47-811",
+   "quote": "the first installment to be paid on or before March 31st, and the second installment to be paid on or before September 15th; provided, that an owner shall have at least 30 days from the date of the issuance of a bill to pay an installment; provided further, that for the tax year beginning July 1, 1989, and ending June",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A penalty and interest are added to unpaid tax.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "47-811",
+   "quote": "(c) If at any time after [July 1, 1987], any real property tax, or any installment of real property tax, is not paid within the time prescribed, there shall be added to the real property tax or installment a penalty of 10% of the unpaid amount plus simple interest on the unpaid amount at the rate of 1-1/2% per month or portion of a month until the real property tax or installment is paid.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An owner has at least 30 days from the bill to pay an installment.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "47-811",
+   "quote": "that an owner shall have at least 30 days from the date of the issuance of a bill to pay an installment; provided further, that for the tax year beginning July 1, 1989, and ending June 30, 1990, the amount of the first and second installments shall reflect and be consistent with the tax rates applicable to that tax",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

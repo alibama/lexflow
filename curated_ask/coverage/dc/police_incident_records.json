@@ -1,0 +1,72 @@
+{
+ "qid": "police_incident_records",
+ "state": "dc",
+ "question": "How do I get a copy of a police report or the records of a police incident I was involved in?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2-532",
+   "role": "primary"
+  },
+  {
+   "ref": "2-534",
+   "role": "primary"
+  },
+  {
+   "ref": "2-537",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A request for an MPD body-worn camera recording has its own response time.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2-532",
+   "quote": "(2) (A) If the public record requested is a body-worn camera recording recorded by the Metropolitan Police Department, the Metropolitan Police Department, upon request reasonably describing the recording, shall within 25 days (except Saturdays, Sundays, and legal public holidays) of the receipt of any such request",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Other records: 15 working days.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2-532",
+   "quote": "shall within 15 days (except Saturdays, Sundays, and legal public holidays) of the receipt of any such request either make the requested public record accessible or notify the person making such request of its determination not to make the requested public record or any part thereof accessible and the reasons therefor.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Investigatory records may be withheld only to the extent disclosure would cause a listed harm.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2-534",
+   "quote": "(3) Investigatory records compiled for law-enforcement purposes, including the records of Council investigations and investigations conducted by the Office of Police Complaints, but only to the extent that the production of such records would: (A) Interfere with: (i) Enforcement proceedings;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Fees are limited to actual cost.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "2-532",
+   "quote": "(b) A public body may establish and collect fees not to exceed the actual cost of searching for, reviewing, redacting, and making copies of records.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Appeal a denial to the Mayor, then the Superior Court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2-537",
+   "quote": "(a) Except as provided in subsections (a-1) and (a-2) of this section, any person denied the right to inspect a public record of a public body may petition the Mayor to review the public record to determine whether it may be withheld from public inspection.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

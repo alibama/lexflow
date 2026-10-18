@@ -1,0 +1,63 @@
+{
+ "qid": "business_license",
+ "state": "dc",
+ "question": "Do I need a local business licence to operate, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "47-2851.02",
+   "role": "primary"
+  },
+  {
+   "ref": "47-2851.03",
+   "role": "supporting"
+  },
+  {
+   "ref": "47-2851.04",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "No person may engage in a business activity listed in the chapter without a basic business license.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "47-2851.02",
+   "quote": "(a) A person doing business in the District of Columbia shall maintain a basic business license in accordance with this subchapter .",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The licence carries endorsements for each activity category.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "47-2851.03",
+   "quote": "and (2) Create and revise basic business license endorsement categories for specific business activities within each business license category of subsection (a) of this section and any additional business license categories created through rulemaking; provided, that such endorsements shall not have a cost to the",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An initial licence costs $49 for 6 months, $99 for 2 years or $198 for 4 years.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "47-2851.04",
+   "quote": "(2) $99 for a 2-year license; and (3) $198 for a 4-year license.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A 6-month initial licence is $49.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "47-2851.04",
+   "quote": "(a) A person applying for an initial basic business license shall pay a license fee of: (1) $49 for a 6-month license;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

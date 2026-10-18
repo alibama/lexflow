@@ -1,0 +1,69 @@
+{
+ "qid": "traffic_ticket",
+ "state": "va",
+ "question": "I got a traffic ticket. How do I pay it or contest it in court?",
+ "as_of": "2026-10-17",
+ "gold": "mixed",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "16.1-132",
+   "role": "primary"
+  },
+  {
+   "ref": "16.1-123.1",
+   "role": "supporting"
+  },
+  {
+   "ref": "16.1-69.40:1",
+   "role": "supporting"
+  }
+ ],
+ "local_process": {
+  "gov_id": "47210400100000",
+  "process": "traffic_ticket",
+  "place": "charlottesville"
+ },
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A district court conviction is appealed to the circuit court within ten days.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "16.1-132",
+   "quote": "Any person convicted in a district court of an offense not felonious shall have the right, at any time within ten days from such conviction, and whether or not such conviction was upon a plea of guilty, to appeal to the circuit court.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The general district court has jurisdiction over traffic infractions.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "16.1-123.1",
+   "quote": "All other misdemeanors and traffic infractions arising in such county, including the towns in such county, or city.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Many traffic infractions can be prepaid without a court appearance.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "16.1-69.40:1",
+   "quote": "The chief judge of each circuit may establish a schedule of the fines, within the limits prescribed by local ordinances, to be imposed for prepayment of local ordinances designating each offense specifically.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "In Charlottesville the General District Court handles tickets.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "local:47210400100000:traffic_ticket",
+   "field": "step s1 how",
+   "url": "https://www.vacourts.gov/caseinfo/tickets_dc",
+   "quote": "pay or appear in that court. A ticket for an offence in the city is normally returnable to the Charlottesville General District Court, and a ticket written elsewhere (for example in Albemarle County) goes to the court that summons names. Read the NOTICE on the back and the charge after DESCRIBE CHARGE on the front",
+   "source": "local"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

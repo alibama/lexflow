@@ -1,0 +1,54 @@
+{
+ "qid": "contractor_license",
+ "state": "dc",
+ "question": "Do I need a contractor's licence, and how do I get one?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "47-2883.01",
+   "role": "primary"
+  },
+  {
+   "ref": "47-2883.02",
+   "role": "supporting"
+  },
+  {
+   "ref": "47-2851.02",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Home improvement contractors must be bonded and licensed.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "47-2883.01",
+   "quote": "The Council of the District of Columbia is authorized, in connection with the licensing of persons engaged in the home improvement business, whether as principal, agent, salesman, employee, or otherwise, to require the furnishing of bond as a condition to the issuance of such license.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Council may set classes of licensed home improvement contractors.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "47-2883.02",
+   "quote": "(a) The Council of the District of Columbia may, from time to time, and in its discretion, establish classes and subclasses of persons licensed to engage in the home improvement business and specify the amount and conditions of the bond or other security acceptable to the Council to be deposited by each of the members of any such class or subclass.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The contractor also needs a basic business license.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "47-2851.02",
+   "quote": "(a) A person doing business in the District of Columbia shall maintain a basic business license in accordance with this subchapter .",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

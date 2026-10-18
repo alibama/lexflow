@@ -1,0 +1,59 @@
+{
+ "qid": "child_care_license",
+ "state": "va",
+ "question": "How do I get licensed to run a child care centre or family day home?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "22.1-289.011",
+   "role": "primary"
+  },
+  {
+   "ref": "22.1-289.025",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A child day program or home-based child care system needs a licence from the Superintendent.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "22.1-289.011",
+   "quote": "Every person who constitutes, or who operates or maintains, a child day program or home-based child care system shall obtain the appropriate license from the Superintendent, which may be renewed.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A home-based licence may run up to three years.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "22.1-289.011",
+   "quote": "Each license for home-based child care or a home-based child care system and renewals thereof may be issued for periods of up to three successive years, unless sooner revoked or surrendered.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Refusal, revocation or denial may be appealed.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "22.1-289.025",
+   "quote": "Any child day program or home-based child care system operated by an agency of the Commonwealth shall have the right to appeal any notice of intent as follows: 1.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A licensee has 30 days from a notice of intent to request the Superintendent's review.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "22.1-289.025",
+   "quote": "Within 30 days after receiving a notice of intent to impose a sanction, the licensee shall request in writing that the Superintendent review the intended agency action and may submit, together with such request, relevant information, documentation, or other pertinent data supporting its appeal.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

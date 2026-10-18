@@ -1,0 +1,68 @@
+{
+ "qid": "procurement_bids",
+ "state": "dc",
+ "question": "How do I bid on a government contract, and how do I protest an award?",
+ "as_of": "2026-10-17",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2-360.08",
+   "role": "primary"
+  },
+  {
+   "ref": "2-360.03",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A protest is filed with the Contract Appeals Board.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2-360.08",
+   "quote": "(a) This section shall apply to a protest of a solicitation or award of a contract addressed to the Board by any actual or prospective bidder, offeror, or contractor who is aggrieved in connection with the solicitation or award of a contract.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Protests are due within 10 business days of when the protester knew or should have known of the grounds.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "2-360.08",
+   "quote": "(2) In cases other than those covered in paragraph (1) of this subsection, protests shall be filed not later than 10 business days after the basis of protest is known or should have been known, whichever is earlier.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The Board decides within 60 business days.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2-360.08",
+   "quote": "The decision of the Board shall be issued within 60 business days from the date on which the protest is filed.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Contract Appeals Board has jurisdiction over protests.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2-360.03",
+   "quote": "(a) The Board shall be the exclusive hearing tribunal for, and shall review and determine de novo: (1) Any protest of a solicitation or award of a contract addressed to the Board by any actual or prospective bidder, offeror, or the contractor who is aggrieved in connection with the solicitation or award of a contract;",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "An award is held while the protest is pending.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2-360.08",
+   "quote": "Except as provided in this section, no contract shall be awarded in any procurement after the contracting officer has received the notice and while the protest is pending.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}
