@@ -1,0 +1,52 @@
+# deploy/netbird-server/config.yaml  (copy to config.yaml, fill the three secrets, chmod 600).
+# Keys follow combined/config.yaml.example in netbirdio/netbird (v0.81.x) and the
+# "external reverse proxy" rendering of getting-started.sh; only the port differs (8443).
+
+server:
+  # Plain HTTP/h2c inside the compose network; Caddy terminates TLS on 8443.
+  listenAddress: ":80"
+
+  # Public address peers use (relay, management DNS domain). Port included on purpose.
+  exposedAddress: "https://net.lexipedia.xyz:8443"
+
+  # Embedded STUN. Published as 3478/udp in compose.yml.
+  stunPorts:
+    - 3478
+
+  metricsPort: 9090              # not published
+  healthcheckAddress: ":9000"    # not published; GET /health inside the container
+
+  logLevel: "info"
+  logFile: "console"
+
+  # Relay shared secret. Generate:  openssl rand -base64 32 | tr -d '='
+  authSecret: "REPLACE_ME_RELAY_SECRET"
+
+  dataDir: "/var/lib/netbird"
+
+  auth:
+    # The embedded IdP (Dex). Always on in the combined server.
+    issuer: "https://net.lexipedia.xyz:8443/oauth2"
+    localAuthDisabled: false
+    signKeyRefreshEnabled: true
+    # Generate:  openssl rand -base64 32
+    sessionCookieEncryptionKey: "REPLACE_ME_32_BYTE_BASE64"
+    dashboardRedirectURIs:
+      - "https://net.lexipedia.xyz:8443/nb-auth"
+      - "https://net.lexipedia.xyz:8443/nb-silent-auth"
+    cliRedirectURIs:
+      - "http://localhost:53000/"
+    # MFA session defaults (docs: enable-local-mfa). Left at the defaults on purpose.
+    mfaSessionMaxLifetime: "24h"
+    mfaSessionIdleTimeout: "1h"
+
+  reverseProxy:
+    # Caddy's fixed address on the compose network (compose.yml ipam). Required so the
+    # server trusts X-Forwarded-For from the proxy.
+    trustedHTTPProxies:
+      - "172.30.0.10/32"
+
+  store:
+    engine: "sqlite"
+    # Generate:  openssl rand -base64 32     (32 bytes; losing this makes the store unreadable)
+    encryptionKey: "REPLACE_ME_32_BYTE_BASE64"

@@ -1,0 +1,90 @@
+# NetBird control plane for the lexflow compute pool, on the operator's existing
+# DigitalOcean droplet, beside Apache (which keeps 80/443).
+#
+# Three containers, two published ports:
+#   8443/tcp  caddy            TLS from the box's certbot files; routes to the two below
+#   3478/udp  netbird-server   STUN (must be reached directly, not through a proxy)
+# Nothing else is published; dashboard and server are reachable only on the
+# compose network "netbird". Memory is capped so the WordPress stack is never starved.
+#
+# Image tags are pinned; see README.md "Pinned versions" for where each was verified.
+# Validate without running anything:  docker compose -f compose.yml config
+
+name: netbird
+
+services:
+  caddy:
+    # One TLS front for everything on 8443: the dashboard image cannot load certificate
+    # files (it only knows certbot --nginx inside the container), so a tiny proxy is the
+    # documented way to put the dashboard and the server behind one certificate.
+    image: caddy:${CADDY_IMAGE_TAG:-2.11.7}
+    restart: unless-stopped
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro   # live/ are symlinks into archive/, so mount the whole tree
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      netbird:
+        ipv4_address: 172.30.0.10               # the address config.yaml trusts as the HTTP proxy
+    depends_on:
+      - netbird-server
+      - dashboard
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+
+  netbird-server:
+    # Management + Signal + Relay + STUN + embedded IdP (Dex) in one process. AGPL-3.0.
+    image: netbirdio/netbird-server:${NETBIRD_SERVER_IMAGE_TAG:-0.81.3}
+    restart: unless-stopped
+    command: ["--config", "/etc/netbird/config.yaml"]
+    ports:
+      - "3478:3478/udp"
+    volumes:
+      - netbird_data:/var/lib/netbird
+      - ./config.yaml:/etc/netbird/config.yaml:ro
+    networks:
+      - netbird
+    deploy:
+      resources:
+        limits:
+          memory: ${NETBIRD_SERVER_MEM:-384m}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  dashboard:
+    # Static web UI behind nginx. AGPL-3.0. Plain HTTP on the compose network only.
+    image: netbirdio/dashboard:${NETBIRD_DASHBOARD_IMAGE_TAG:-v2.95.0}
+    restart: unless-stopped
+    env_file:
+      - ./dashboard.env
+    networks:
+      - netbird
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+volumes:
+  netbird_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  netbird:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

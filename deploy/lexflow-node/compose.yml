@@ -1,0 +1,58 @@
+# lexflow pool node "shop" (Linux). The NetBird client and Ollama run natively (see README.md:
+# the native package is the simpler choice for a laptop, and Ollama is already native); this
+# compose only runs the tiny status endpoint, published on the node's NetBird address only.
+#
+# Optional profile "container-overlay": the NetBird client as a container with host networking,
+# for a node where the native package is unwanted. Not used on shop.
+#
+# Validate without running anything:  docker compose -f compose.yml config
+
+name: lexflow-node
+
+services:
+  status:
+    # ~60 lines of stdlib Python: GET /status.json on 9101, 404 otherwise.
+    image: python:3.12-alpine
+    restart: unless-stopped
+    command: ["python", "-I", "/app/status.py"]
+    ports:
+      # Bind to the NetBird address only, never 0.0.0.0: the LAN never sees it.
+      - "${NODE_OVERLAY_IP:?set NODE_OVERLAY_IP to this node's NetBird IP (netbird status)}:9101:9101"
+    environment:
+      LEXFLOW_NODE_NAME: ${NODE_NAME:-shop}
+      LEXFLOW_NODE_MODELS: ${LEXFLOW_NODE_MODELS:-qwen3:1.7b}
+      LEXFLOW_NODE_ACCEPT: ${LEXFLOW_NODE_ACCEPT:-1}
+      LEXFLOW_NODE_SLOTS: ${LEXFLOW_NODE_SLOTS:-1}
+      LEXFLOW_NODE_HOURS: ${LEXFLOW_NODE_HOURS:-}
+      OLLAMA_URL: ${OLLAMA_URL:-http://host-gateway:11434}
+    extra_hosts:
+      - "host-gateway:host-gateway"      # so the container can ask the native Ollama for its version
+    volumes:
+      - ./status.py:/app/status.py:ro
+      - /sys/class/thermal:/host/thermal:ro
+      - /sys/class/power_supply:/host/power:ro
+    read_only: true
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+
+  overlay:
+    # Alternative to the native package (profile only). Per docs.netbird.io/get-started/install/docker:
+    # NET_ADMIN + SYS_ADMIN + SYS_RESOURCE (eBPF, raw sockets), /dev/net/tun, host networking,
+    # state in /var/lib/netbird. With host networking wt0 appears on the host like the native client.
+    profiles: ["container-overlay"]
+    image: netbirdio/netbird:${NETBIRD_CLIENT_IMAGE_TAG:-0.81.3}
+    restart: unless-stopped
+    network_mode: host
+    cap_add: [NET_ADMIN, SYS_ADMIN, SYS_RESOURCE]
+    devices: ["/dev/net/tun:/dev/net/tun"]
+    environment:
+      NB_SETUP_KEY: ${NB_SETUP_KEY:-}
+      NB_MANAGEMENT_URL: ${NB_MANAGEMENT_URL:-https://net.lexipedia.xyz:8443}
+      NB_HOSTNAME: ${NODE_NAME:-shop}
+    volumes:
+      - netbird-client:/var/lib/netbird
+
+volumes:
+  netbird-client:

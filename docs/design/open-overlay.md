@@ -765,3 +765,107 @@ earlier note was ever built (it was not yet); update `compute-tailnet.md`'s §2.
 - Pocket ID `LICENSE` and releases; Zitadel `LICENSE`; Authentik `LICENSE`; Dex `LICENSE`; Caddy `LICENSE` and
   releases; Traefik `LICENSE.md`; Ollama releases (v0.40.6).
 - DigitalOcean droplet pricing page.
+
+---
+
+## Runbook for the dtech droplet
+
+_19 October 2026. Research only, again: nothing was installed, run or contacted. This section adapts §3.1 to the
+operator's existing droplet instead of a new one, and corrects one mistake in §3.1. The files are in
+[`deploy/netbird-server/`](../../deploy/netbird-server/README.md) (server) and
+[`deploy/lexflow-node/`](../../deploy/lexflow-node/README.md) (nodes, the Mac, and lexflow's `.env`); both compose
+files parse with `docker compose config`._
+
+**The box.** Ubuntu 22.04.5, 1 vCPU, 1.9 GB (1.1 GB free), 16 GB disk, Docker 29.1.4. Apache 2.4 owns 80 and
+443 for a dozen sites with certbot (snap) certificates; Postgres, MariaDB, uvicorn, Streamlit, tailscaled, sshd
+and postfix are also there. The operator wants the droplet to do the handshake only.
+
+**Shape.** Three containers, 512 MB cap in total, two published ports, no Apache involvement:
+
+| Container | Image (pinned, verified today) | Port | Cap |
+|---|---|---|---|
+| `caddy` | `caddy:2.11.7` | **8443/tcp**: TLS from the box's certbot files for `net.lexipedia.xyz`; routes gRPC (h2c), `/relay* /ws-proxy/* /api/* /oauth2/*` to the server and everything else to the dashboard, per the docs' "External Caddy" template | 64 MB |
+| `netbird-server` | `netbirdio/netbird-server:0.81.3` (combined: management, signal, relay, STUN, embedded Dex; AGPL) | **3478/udp** STUN; plain `:80` on the compose network for Caddy | 384 MB |
+| `dashboard` | `netbirdio/dashboard:v2.95.0` | none (compose network only) | 64 MB |
+
+No separate signal, relay or coturn container exists in 0.81.x; the combined `config.yaml.example` states
+"Management: Always runs locally … Signal: Local by default … Relay: Local by default … STUN: Local on port 3478"
+[source]. The relay is on and idle until a peer pair cannot hole-punch.
+
+**Why Caddy and not the server's own TLS.** `combined/config.yaml.example` has `server.tls.certFile/keyFile` and a
+`letsencrypt` block [source], so the API, gRPC and relay could terminate TLS themselves. The dashboard image cannot
+take certificate files (its `docker/init_cert.sh` only runs `certbot --nginx` inside the container, which would need
+port 80) [source], so the one-port rule forces one front for both. Caddy is the lightest documented option.
+
+**Corrections to §3.1 and §5.1.** (1) `NETBIRD_AGENT_NETWORK` is **not** the overlay address range: in
+`getting-started.sh` it is a `true` switch for NetBird's "Agent Network" (LLM-API access) preset [source: the script's
+header and `docs.netbird.io/agent-network/quickstart`]. The range is set in the dashboard, Settings → Networks →
+**Network Range** (default: a random /16 inside `100.64.0.0/10`; changing it re-allocates every peer's IP, so do
+it before the first peer joins) [source: `manage/settings/networks`]. `10.231.0.0/16` stays the choice for
+coexistence with Tailscale. (2) The management URL everywhere is `https://net.lexipedia.xyz:8443`, with the port;
+`exposedAddress`, `auth.issuer`, the redirect URIs and `dashboard.env` all carry it. (3) The backup unit is the
+`netbird_data` volume plus `config.yaml`/`dashboard.env`/`compose.yml` [source: `maintenance/backup`]; the store
+file names inside the volume are still [unconfirmed].
+
+**Order of operations (exact commands in the server README).**
+
+1. DNS: `net.lexipedia.xyz` → `137.184.50.98` (today it points at `134.209.128.119`); `dig +short` must show the
+   new address before step 3; `mesh.lexipedia.xyz` stays unresolvable.
+2. Firewall: DO cloud firewall inbound `8443/tcp`, `3478/udp` (Networking → Firewalls → Rules → Add inbound rule
+   [source]); the same in ufw if ufw is active.
+3. `sudo certbot certonly --apache -d net.lexipedia.xyz`; install `certbot-deploy-hook.sh` as
+   `/etc/letsencrypt/renewal-hooks/deploy/netbird-caddy.sh` (restarts Caddy; `$RENEWED_LINEAGE` per certbot's docs
+   [source]); `certbot renew --dry-run`.
+4. `/opt/netbird-server`: copy the files, generate the three secrets (`authSecret`, `sessionCookieEncryptionKey`,
+   `store.encryptionKey`) with `openssl rand -base64 32`, `chmod 600 config.yaml`, `docker compose config`.
+5. `docker compose pull && docker compose up -d`; `/health` on the server's internal `:9000`; `docker stats`.
+6. `https://net.lexipedia.xyz:8443/` → `/setup` (Owner: email, name, 8+ character password; the page then returns
+   412 forever) [source]; Settings → Authentication → **Local MFA** → Save, re-login to enrol TOTP [source];
+   Settings → Networks → Network Range `10.231.0.0/16`, DNS Domain `mesh.lexipedia.xyz`.
+7. Groups `control`, `compute`, `admins`, `members` (Access Control → Groups); policies `pool-ollama`
+   (`control`→`compute`, TCP 11434, 9101, one-way), `admin-dashboard` (`admins`→`control`, TCP 8000, one-way),
+   `admin-ssh` (`admins`→`compute`, TCP 22, one-way); delete **Default** [source: `manage-network-access`];
+   Settings → Setup Keys → Create: one-off, auto-assign `compute`, for `shop` [source]; Team → Service Users →
+   role User (read-only) → token, into lexflow's `.env` only [source: `manage/public-api`].
+8. `backup.sh` nightly at 04:00 (SQLite online backups of every `*.db` in the volume plus the config files; 14
+   kept; copy off-box).
+
+**Verify from elsewhere:** `curl -s https://net.lexipedia.xyz:8443/api/instance` → `{"setup_required":false}`
+(unauthenticated [source: `api/resources/instance`]); `curl -sI https://net.lexipedia.xyz:8443/` → 200; with the
+token, `GET /api/peers` lists the peers with `ip`, `connected`, `groups[]`, `dns_label` [source].
+
+**Nodes.** `shop` runs the native `netbird` package (apt repo `https://pkgs.netbird.io/debian stable main`
+[source]) rather than the container: native Ollama needs `wt0` on the host anyway, and the container route only
+provides it as a privileged host-network container. Join: `sudo netbird up --setup-key … --management-url
+https://net.lexipedia.xyz:8443 --hostname shop`. Ollama moves from the Tailscale IP to `OLLAMA_HOST=0.0.0.0:11434`
+with ufw admitting 11434/9101 only `in on wt0` (and `tailscale0` until the move is done), or binds the NetBird IP
+with `Restart=on-failure` and `After=netbird.service`; both in the node README. The compose there runs only the
+status endpoint, published on the NetBird address. The Mac installs `netbird_0.81.3_darwin_arm64.pkg` (the only
+signed build [source]) or `brew install --cask netbirdio/tap/netbird-ui`, enters the self-hosted URL in the GUI,
+and sets `launchctl setenv OLLAMA_HOST "<netbird ip>:11434"` [source: Ollama FAQ].
+
+**lexflow `.env`, final names:** `LEXFLOW_OVERLAY=netbird`, `LEXFLOW_OVERLAY_URL=https://net.lexipedia.xyz:8443`,
+`LEXFLOW_OVERLAY_TOKEN=<service-user PAT>`, `LEXFLOW_OVERLAY_COMPUTE_GROUP=compute`,
+`LEXFLOW_OVERLAY_RANGE=10.231.0.0/16`, `LEXFLOW_OVERLAY_POLL=60`; `LEXFLOW_LLM_NODES` keeps today's
+`name=url|opt` format with `10.231.*` addresses as the fallback and the rollback (`LEXFLOW_OVERLAY=none`).
+
+**Still [unconfirmed] after today's reading:** that `netbirdio/dashboard:v2.95.0` exists as a Docker Hub tag (the
+first page of the tag list showed only `sha-*`/`pr-*`/`main`; the GitHub release is v2.95.0); the file names inside
+`/var/lib/netbird`; the Dex discovery path `/oauth2/.well-known/openid-configuration`; the exact `doctl` inbound
+rule string; whether the policy dialog takes a port list or one port per rule; NetBird 0.81.3 on Ubuntu 26.04 and
+on macOS 27; running NetBird and Tailscale together on the Mac; the server's real idle memory on this box
+(`docker stats` for a day); `alpine:3.22` as the current backup helper tag; and the earlier open questions 1, 3,
+5 and 6 of §7.
+
+**Sources added today:** `docs.netbird.io`: `selfhosted/selfhosted-quickstart`, `selfhosted/external-reverse-proxy`,
+`selfhosted/maintenance/{configuration-files,backup,admin-cli}`, `selfhosted/identity-providers/{local,enable-local-mfa}`,
+`selfhosted/sqlite-store`, `manage/settings/networks`, `manage/peers/register-machines-using-setup-keys`,
+`manage/access-control/manage-network-access`, `manage/public-api`, `api/guides/authentication`,
+`api/resources/{peers,instance}`, `get-started/cli`, `get-started/install/{linux,macos,docker,windows}`,
+`client/environment-variables`, `agent-network/quickstart`; `github.com/netbirdio/netbird`: release v0.81.3 and its
+assets, `combined/{config.yaml.example,Dockerfile,Dockerfile.multistage}`, `combined/cmd/config.go`,
+`infrastructure_files/getting-started.sh`; `github.com/netbirdio/dashboard`: release v2.95.0,
+`docker/{README.md,init_cert.sh,default.conf}`; Docker Hub tag lists for `netbirdio/netbird-server`,
+`netbirdio/netbird`, `netbirdio/dashboard`, `library/caddy`; `caddyserver.com/docs/caddyfile/directives/{tls,reverse_proxy}`;
+`eff-certbot.readthedocs.io` (using); `docs.digitalocean.com` (firewall rules); `docs.ollama.com/{faq,linux}`;
+`github.com/ollama/ollama` release v0.40.6.

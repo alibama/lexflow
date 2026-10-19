@@ -1,0 +1,25 @@
+# Caddy front for NetBird on the droplet's port 8443.
+# Routes follow docs.netbird.io/selfhosted/external-reverse-proxy ("External Caddy", combined server):
+#   gRPC (Content-Type application/grpc*)         -> netbird-server:80 over h2c
+#   /relay* /ws-proxy/* /api/* /oauth2/*           -> netbird-server:80
+#   everything else                                -> dashboard:80
+# TLS comes from the certificate certbot issued on the host for net.lexipedia.xyz
+# (mounted read-only). Caddy does not watch these files: the certbot deploy hook
+# restarts this container after every renewal (see certbot-deploy-hook.sh).
+
+{
+	auto_https off
+	admin off
+}
+
+net.lexipedia.xyz:8443 {
+	tls /etc/letsencrypt/live/net.lexipedia.xyz/fullchain.pem /etc/letsencrypt/live/net.lexipedia.xyz/privkey.pem
+
+	@grpc header Content-Type application/grpc*
+	reverse_proxy @grpc h2c://netbird-server:80
+
+	@backend path /relay* /ws-proxy/* /api/* /oauth2/*
+	reverse_proxy @backend netbird-server:80
+
+	reverse_proxy /* dashboard:80
+}
