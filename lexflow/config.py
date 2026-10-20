@@ -44,9 +44,10 @@ ASK_MODEL = _env("LEXFLOW_ASK_MODEL", "qwen3:1.7b")
 # when several models have answered the same question for the same target (asked_answers keeps one row per
 # model), the one the readers show; "" = the best-scoring row (lexflow/ask/prefer.py)
 ASK_PREFER = _env("LEXFLOW_ASK_PREFER", "")
-# how the summary is asked for: schema (Ollama's grammar-guided JSON; today's default), json (JSON in words,
-# format json: what qwen3 needs to write any claim at all, see extract.strategies.Asker) or lines
-ASK_MODE = _env("LEXFLOW_ASK_MODE", "schema")
+# how the summary is asked for: json (the default: the schema described in words, Ollama ``format: json``; what
+# qwen3 needs to write any claim at all, see extract.strategies.Asker and docs/design/askbench-json-mode.md),
+# schema (Ollama's grammar-guided JSON: qwen3 1.7b and 8b answer "not_found, no claims" every time) or lines
+ASK_MODE = _env("LEXFLOW_ASK_MODE", "json")
 ASK_MIN_SIMILARITY = float(_env("LEXFLOW_ASK_MIN_SIMILARITY", "0.55"))
 # with a trained section-relevance model (scripts/train_relevance.py): the least probability that still answers
 ASK_MIN_RELEVANCE = float(_env("LEXFLOW_ASK_MIN_RELEVANCE", "0.25"))

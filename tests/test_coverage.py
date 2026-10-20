@@ -437,3 +437,22 @@ def test_fill_cells_filled_answers_the_same_set_with_a_second_model_beside_the_f
     # the CLI and the step take --cells
     from lexflow.pipeline.steps import get_step
     assert "cells" in get_step("coverage").params
+
+
+def test_fill_cells_named_takes_the_questions_given_filled_or_not(con, monkeypatch):
+    """``--cells named --questions a,b``: every state-level cell of those questions, whether any model filled it
+    before (then the first fill's verdict and the other models are carried) or not; it needs --questions."""
+    import pytest
+    from lexflow.ask import coverage as CV
+    monkeypatch.setattr(CV, "load_gold", lambda st, qid: {"gold": "index"} if qid == "dog_license" else None)
+    qs = [q["id"] for q in CV.questions()][:2] + ["dog_license"]
+    calls = []
+    CV.fill(con, ["va"], run_id="r1", pipeline=_stub(calls, "partial"), model="qwen3:1.7b", cells="named",
+            qids=["dog_license"], log=lambda *_: None)
+    cells = CV.fill_cells(con, "r9", ["va", "dc"], qids=qs, cells="named", model="qwen3:8b")
+    assert [(c["qid"], c["state"], c["gold"]) for c in cells] == \
+        [("dog_license", "va", True), (qs[0], "va", False), (qs[1], "va", False),
+         ("dog_license", "dc", True), (qs[0], "dc", False), (qs[1], "dc", False)]
+    assert cells[0]["filled_by"] == ["qwen3:1.7b"] and cells[1]["filled_by"] == []
+    with pytest.raises(ValueError):
+        CV.fill_cells(con, "r9", ["va"], cells="named")

@@ -841,7 +841,7 @@ def filled(con, qid: str, state: str, model: str | None = None) -> dict | None:
     return by[best["model"]] if best else None
 
 
-CELLS = ("gaps", "filled", "all")
+CELLS = ("gaps", "filled", "all", "named")
 
 
 def filled_cells(con, states: list[str], qids: list[str] | None = None, model: str | None = None) -> list[dict]:
@@ -868,7 +868,8 @@ def filled_cells(con, states: list[str], qids: list[str] | None = None, model: s
 def fill_cells(con, run_id: str, states: list[str], qids: list[str] | None = None, cells: str = "gaps",
                model: str | None = None) -> list[dict]:
     """The cells a fill answers: ``gaps`` (gap_cells of the run), ``filled`` (filled_cells: those another model
-    filled already) or ``all`` (both, each cell once)."""
+    filled already), ``all`` (both, each cell once) or ``named`` (every state-level cell of the questions given,
+    filled before or not: how two models are run over one fixed set of cells)."""
     if cells not in CELLS:
         raise ValueError(f"--cells takes one of {', '.join(CELLS)}, not {cells!r}")
     order = {q["id"]: i for i, q in enumerate(questions())}
@@ -879,6 +880,20 @@ def fill_cells(con, run_id: str, states: list[str], qids: list[str] | None = Non
     if cells in ("filled", "all"):
         for c in filled_cells(con, states, qids, model):
             out.setdefault((c["qid"], c["state"]), c)
+    if cells == "named":
+        if not qids:
+            raise ValueError("--cells named needs --questions")
+        for st_ in states:
+            for qid in qids:
+                if qid not in order:
+                    continue
+                g = load_gold(st_, qid)
+                by = fills(con, qid, st_)
+                first = next(iter(by.values()), {})
+                out.setdefault((qid, st_), {"qid": qid, "state": st_, "verdict": first.get("verdict"),
+                                            "missing": first.get("missing") or [],
+                                            "gold": bool(g and g.get("gold") != "none"),
+                                            "filled_by": sorted(k for k in by if k != model)})
     return sorted(out.values(), key=lambda c: (states.index(c["state"]), not c["gold"], order[c["qid"]]))
 
 
@@ -1140,7 +1155,8 @@ def main(argv=None) -> int:
     ap.add_argument("--fill", action="store_true", help="answer the gap cells of the run (--run, else the latest) with "
                                                         "the ask pipeline and store the drafts in asked_answers")
     ap.add_argument("--cells", choices=CELLS, default="gaps", help="--fill: gaps (default), filled (the cells another "
-                                                                   "model filled already, for a comparison) or all")
+                                                                   "model filled already, for a comparison), all or "
+                                                                   "named (the --questions cells, filled or not)")
     a = ap.parse_args(argv)
     states = S.parse_states(a.states)
     if a.fill:

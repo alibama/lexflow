@@ -189,7 +189,12 @@ def llm_groups(asker, text: str) -> list[list[str]]:
     r = asker.ask(PLAN_SYSTEM, f"Question: {text}", PLAN_SCHEMA)
     out = []
     for c in (r or {}).get("concepts", [])[:4]:
-        terms = [x.strip(" .;\"'").lower() for x in re.split(r"[,;/]| or ", c.get("terms") or "") if x.strip()]
+        if not isinstance(c, dict):
+            continue
+        raw = c.get("terms") or ""
+        # in json mode (no grammar) the model may give the terms as a list rather than one string
+        raw = ", ".join(str(x) for x in raw) if isinstance(raw, (list, tuple)) else str(raw)
+        terms = [x.strip(" .;\"'").lower() for x in re.split(r"[,;/]| or ", raw) if x.strip()]
         terms = [x for x in terms if 2 < len(x) < 40 and len(x.split()) <= 4]
         head = (c.get("concept") or "").strip().lower()
         g = list(dict.fromkeys(([head] if head and len(head.split()) <= 3 else []) + terms))

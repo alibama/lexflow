@@ -933,7 +933,8 @@ def run_coverage(con, args, log, progress):
     docs/coverage.md.  ``arm``: coverage | ollama; ``llm_cells``: Ollama answers for that many state cells per
     state; ``node``: a node of LEXFLOW_LLM_NODES; ``run``: a run id to resume; ``local``: probe the local store;
     ``fill``: answer the gap cells of the run with the ask pipeline instead (``llm_cells`` caps the cells per state);
-    ``cells``: gaps | filled (the cells another model filled, for a comparison) | all."""
+    ``cells``: gaps | filled (the cells another model filled, for a comparison) | all | named (the ``questions``
+    cells, filled or not)."""
     from ..ask import coverage as CV
     sts = _states(args, con)
     qids = [q.strip() for q in (args.get("questions") or "").split(",") if q.strip()] or None

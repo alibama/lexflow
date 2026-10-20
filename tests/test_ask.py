@@ -314,5 +314,37 @@ def test_asker_json_mode_describes_the_schema_in_words_and_parses_the_reply():
     assert "valid JSON object with the keys status, claims" in c.calls[1][0][-1]["content"]
     # a reply without the required keys is a miss after the retry
     assert Asker(Client(['{"claims": []}', '{"nope": 1}']), mode="json").ask("s", "u", A.SUMMARY_SCHEMA) is None
-    # the default mode is unchanged (schema), and LEXFLOW_ASK_MODE picks the mode of the pipeline's asker
     assert Asker(Client([]), mode="schema").mode == "schema" and config.ASK_MODE in ("schema", "json", "lines")
+
+
+def test_json_is_the_default_ask_mode_and_schema_stays_selectable(monkeypatch):
+    """Unset, LEXFLOW_ASK_MODE is ``json`` (under the grammar-guided ``schema`` mode qwen3 1.7b and 8b answer
+    "not_found, no claims" to every summary); ``schema`` is still selectable, and the pipeline's asker (ask, bench,
+    coverage) takes whatever config says."""
+    import runpy
+    from lexflow.ask import coverage as CV, pipeline as AP
+    from lexflow.municipal import build as MB
+    monkeypatch.delenv("LEXFLOW_ASK_MODE", raising=False)
+    assert runpy.run_path(config.__file__)["ASK_MODE"] == "json"
+    monkeypatch.setenv("LEXFLOW_ASK_MODE", "schema")
+    assert runpy.run_path(config.__file__)["ASK_MODE"] == "schema"
+    monkeypatch.setattr(MB, "ollama_models", lambda url=None: ["qwen3:1.7b"])
+    import requests
+    monkeypatch.setattr(requests, "get", lambda *a, **k: type("R", (), {"json": lambda self: {"models": [{"name": "qwen3:1.7b"}]}})())
+    for mode in ("json", "schema"):
+        monkeypatch.setattr(config, "ASK_MODE", mode)
+        assert AP.asker_for("qwen3:1.7b").mode == mode
+        assert CV.asker_at("http://ollama:11434", "qwen3:1.7b").mode == mode
+
+
+def test_llm_groups_accepts_terms_given_as_a_list():
+    """In json mode (no grammar) the planner's reply may carry the terms as a list, or a concept that is not an
+    object: both are taken as they come, never a TypeError."""
+    class Asker:
+        def ask(self, system, user, schema):
+            return {"concepts": [{"concept": "inmate wages", "terms": ["prison labor pay", "compensation", 7]},
+                                 {"concept": "deductions", "terms": "withholding, restitution; victim fund"},
+                                 "not an object"]}
+    groups = PL.llm_groups(Asker(), "How much are inmates paid?")
+    assert groups == [["inmate wages", "prison labor pay", "compensation"],
+                      ["deductions", "withholding", "restitution", "victim fund"]]

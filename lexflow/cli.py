@@ -621,9 +621,9 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--model", help="coverage: the chat model (default LEXFLOW_ASK_MODEL)")
     r.add_argument("--fill", action="store_true", help="coverage: answer the gap cells of the run with the ask pipeline "
                                                        "and store the drafts (--llm-cells caps the cells per state)")
-    r.add_argument("--cells", choices=["gaps", "filled", "all"], help="coverage --fill: gaps (default), filled (the "
-                                                                       "cells another model filled already, answered "
-                                                                       "again by --model for a comparison) or all")
+    r.add_argument("--cells", choices=["gaps", "filled", "all", "named"],
+                   help="coverage --fill: gaps (default), filled (the cells another model filled already, answered "
+                        "again by --model for a comparison), all, or named (every cell of --questions, filled or not)")
     for flag in ("--force", "--no-llm", "--regulations", "--full", "--dry-run", "--local"):
         r.add_argument(flag, action="store_true")
     r.add_argument("--job", type=int)
