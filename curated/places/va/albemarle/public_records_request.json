@@ -1,0 +1,978 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "public_records_request",
+ "title": "Request public records (Virginia FOIA)",
+ "question": "How do I ask Albemarle County for copies of public records?",
+ "category": "records",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "businesses",
+  "media",
+  "property owners"
+ ],
+ "office": "County Attorney's Office (County FOIA Officer)",
+ "summary": "Virginia citizens and Virginia media can ask Albemarle County for copies of existing public records under Virginia's Freedom of Information Act. Use the County's online FOIA form, or write to the FOIA contact of the department that holds the records; the County FOIA Officer in the County Attorney's Office can help. Describe the records specifically; ask for a cost estimate. The County must answer within five working days, or seven more if it explains in writing. Charges are limited to actual cost: requests over 30 minutes may be charged, and estimates over $200 may need a deposit. If denied or ignored, ask the Virginia FOIA Council for an advisory opinion or petition the Albemarle General District or Circuit Court.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3700(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3700/",
+   "quote": "All public records and meetings shall be presumed open, unless an exemption is properly invoked.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3700(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3700/",
+   "quote": "Any ordinance adopted by a local governing body that conflicts with the provisions of this chapter shall be void.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3701",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3701/",
+   "quote": "prepared or owned by, or in the possession of a public body or its officers, employees, or agents in the transaction of public business",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3703(A)(6)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3703/",
+   "quote": "Such records shall be requested in accordance with the provisions of §§ 16.1-69.54:1 and 17.1-208 , as appropriate.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3703(C)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3703/",
+   "quote": "No provision of this chapter or Chapter 21 (§ 30-178 et seq.) of Title 30 shall be construed to afford any rights to any person (i) incarcerated in a state, local, or federal correctional facility",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "all public records shall be open to citizens of the Commonwealth, representatives of newspapers and magazines with circulation in the Commonwealth, and representatives of radio and television stations broadcasting in or into the Commonwealth during the regular office hours of the custodian of such records",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Access to such records shall be provided by the custodian in accordance with this chapter by inspection or by providing copies of the requested records, at the option of the requester.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "The custodian may require the requester to provide his name and legal address.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "A request for public records shall identify the requested records with reasonable specificity.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "The request need not make reference to this chapter in order to invoke the provisions of this chapter or to impose the time limits for response by a public body.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "promptly, but in all cases within five working days of receiving a request",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "cite, as to each category of withheld records, the specific Code section that authorizes the withholding of the records",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "However, if the public body that received the request knows that another public body has the requested records, the response shall include contact information for the other public body.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(B)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "If the response is made within five working days, the public body shall have an additional seven work days or, in the case of a request for criminal investigative files pursuant to § 2.2-3706.1 , 60 work days in which to provide one of the four preceding responses.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(C)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Any public body may petition the appropriate court for additional time to respond to a request for records when the request is for an extraordinary volume of records or requires an extraordinarily lengthy search",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(D)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "no public body shall be required to create a new record if the record does not already exist",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(D)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "However, a public body may abstract or summarize information under such terms and conditions as agreed between the requester and the public body.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(E)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Failure to respond to a request for records shall be deemed a denial of the request and shall constitute a violation of this chapter.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "a public body may make reasonable charges not to exceed its actual cost incurred in accessing, duplicating, supplying, or searching for the requested records",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Prior to conducting a search for records, the public body shall notify the requester in writing that the public body may make reasonable charges not to exceed its actual cost incurred in accessing, duplicating, supplying, or searching for requested records and inquire of the requester whether he would like to request a cost estimate in advance of the supplying of the requested records.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "The public body shall provide the requester with a cost estimate if requested.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "The period within which the public body shall respond under this section shall be tolled for the amount of time that elapses between notice of the cost estimate and the response of the requester.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "If the public body receives no response from the requester within 30 days of sending the cost estimate, the request shall be deemed to be withdrawn.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(F)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Any local public body that charges for the production of records pursuant to this section may provide an electronic method of payment through which all payments for the production of such records to such locality may be made.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(G)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Public bodies shall produce nonexempt records maintained in an electronic database in any tangible medium identified by the requester, including, where the public body has the capability, the option of posting the records on a website or delivering the records through an electronic mail address provided by the requester, if that medium is used by the public body in the regular course of business.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(H)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "In any case where a public body determines in advance that charges for producing the requested records are likely to exceed $200, the public body may, before continuing to process the request, require the requester to pay a deposit not to exceed the amount of the advance determination.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704(I)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "Before processing a request for records, a public body may require the requester to pay any amounts owed to the public body for previous requests for records that remain unpaid 30 days or more after billing.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704.01",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.01/",
+   "quote": "A public record may be withheld from disclosure in its entirety only to the extent that an exclusion from disclosure under this chapter or other provision of law applies to the entire content of the public record.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704.1(A)(7)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.1/",
+   "quote": "A written policy (i) explaining how the public body assesses charges for accessing or searching for requested records and (ii) noting the current fee charged, if any, for accessing and searching for such requested records.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.1/",
+   "quote": "shall post a link on its official public government website to the online public comment form on the Freedom of Information Advisory Council's website",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704.2(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.2/",
+   "quote": "shall designate and publicly identify one or more Freedom of Information Act officers (FOIA officer) whose responsibility is to serve as a point of contact for members of the public in requesting public records and to coordinate the public body's compliance with the provisions of this chapter",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3704.2(D)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.2/",
+   "quote": "For the purposes of this section, local public bodies shall include constitutional officers.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3706(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3706/",
+   "quote": "The following records are excluded from the mandatory disclosure provisions of this chapter, but may be disclosed by the custodian, in his discretion, except where such disclosure is prohibited by law",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3706.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3706.1/",
+   "quote": "All public bodies engaged in criminal law-enforcement activities shall provide records and information when requested in accordance with the provisions of this chapter regarding criminal incident information relating to felony offenses",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3706.1(D)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3706.1/",
+   "quote": "however, such records shall be disclosed, by request, to the following persons, regardless of whether any such person is a citizen of the Commonwealth",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3713(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "quote": "denied the rights and privileges conferred by this chapter may proceed to enforce such rights and privileges by filing a petition for mandamus or injunction, supported by an affidavit showing good cause.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3713(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "quote": "In a case involving a local public body, to the general district court or circuit court of the county or city from which the public body has been elected or appointed to serve and in which such rights and privileges were so denied",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3713(C)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "quote": "the petition for mandamus or injunction shall be heard within seven days of the date when the same is made, provided the party against whom the petition is brought has received a copy of the petition at least three working days prior to filing",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3713(D)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "quote": "the petitioner shall be entitled to recover reasonable costs, including costs and reasonable fees for expert witnesses, and attorney fees from the public body if the petitioner substantially prevails on the merits of the case, unless special circumstances would make an award unjust",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3713(E)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "quote": "In any action to enforce the provisions of this chapter, the public body shall bear the burden of proof to establish an exclusion by a preponderance of the evidence.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-3714(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3714/",
+   "quote": "the court, if it finds that a violation was willfully and knowingly made, shall impose upon such officer, employee, or member in his individual capacity, whether a writ of mandamus or injunctive relief is awarded or not, a civil penalty of not less than $500 nor more than $2,000, which amount shall be paid into the Literary Fund",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 30-179(1)",
+   "url": "https://law.lis.virginia.gov/vacode/30-179/",
+   "quote": "Furnish, upon request, advisory opinions or guidelines, and other appropriate information regarding the Virginia Freedom of Information Act (§ 2.2-3700 et seq.) to any person or public body, in an expeditious manner",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 16.1-69.48:2",
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.48:2/",
+   "quote": "For all court and magistrate services in each distress, detinue, interrogatory summons, unlawful detainer, civil warrant, notice of motion, garnishment, attachment issued, or other civil proceeding, the fee shall be $36.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County, Freedom of Information Act page (County Attorney): published FOIA charges policy, not a County Code section",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "capture": "20260417130728",
+   "paraphrase": "A request that takes more than 30 minutes may be charged for.",
+   "role": "fee",
+   "quote_sha256": "3eb92372ecd7145bd20e46a09b0cd6b0219c84bdb0cd85309c1bc3604c1c5608",
+   "quote_words": 14
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County, Freedom of Information Act page (County Attorney): County response practice",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "capture": "20260417130728",
+   "paraphrase": "The response days are counted from the day after the County receives the request.",
+   "role": "deadline",
+   "quote_sha256": "4c0ee19196ede5548129e6529d12979b8527a84ca02346b74ad0e3730fd6ca73",
+   "quote_words": 11
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Work out which existing records you want",
+   "who": "Requester (a Virginia citizen, or a representative of a newspaper, magazine, radio or TV station that circulates or broadcasts in Virginia)",
+   "how": "Ask for records, not answers to questions. The County will send documents that contain the information you want, but it will not create new documents. It may agree with you to abstract or summarize information, but it does not have to. Describe the records with reasonable specificity: subject, date range, the department and any project, address or parcel. You do not need to mention FOIA. Some records are held by other bodies: the Sheriff and the School Board have their own FOIA officers, and court case records are requested from the court clerks under the court-records statutes rather than FOIA (see caveats).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "3b93fbd0c1a8838175010c0350e1cc2e80a37b224af073d3cdf821fdfd4c4104",
+   "quote_words": 26
+  },
+  {
+   "id": "s2",
+   "step": "Send the request through the County's online FOIA form or to the department's FOIA contact",
+   "who": "Requester, to Albemarle County (the department that holds the records, or the County FOIA Officer in the County Attorney's Office)",
+   "how": "Use the County's online FOIA submission form, which has a CAPTCHA. Or send the request to the FOIA contact of the department that holds the records; the County's FOIA page lists them and says this helps it fill the request quickly. If you are unsure where to send it, or have questions, contact the County FOIA Officer through the County Attorney's Office (434-972-4067). State law does not say a request must be in writing, but the County says putting it in writing is appreciated and helps ensure an accurate response. You can use the Virginia FOIA Council's sample request letter, but see the caveat on its deposit wording. The County may ask for your name and legal address.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "32278f7334dc32b17a854205852c33bede0e20e7dcc17ddefef06669fffc0489",
+   "quote_words": 11
+  },
+  {
+   "id": "s3",
+   "step": "Ask for a cost estimate before the County searches",
+   "who": "Requester; the County must offer the estimate",
+   "how": "Before it searches, the County must tell you in writing that it may charge its actual costs, and ask whether you want a cost estimate in advance. Ask for one in your request if cost matters. The response clock stops between the estimate and your reply. If you do not reply within 30 days of the estimate, the request is treated as withdrawn. Any cost of preparing the estimate counts toward the total charge.",
+   "deadline": "Reply within 30 days of the cost estimate, or the request is deemed withdrawn (Va. Code § 2.2-3704(F))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "0b51a772c01e32f2a9ec9c9c39dede8be1c948c6ea1bb4987f8acfb9d4790afa",
+   "quote_words": 12
+  },
+  {
+   "id": "s4",
+   "step": "The County responds within five working days",
+   "who": "Albemarle County: the department that holds the records, coordinated by the County FOIA Officer",
+   "how": "Day one is the day after the County receives the request; weekends and holidays are not counted. By the deadline the County must either give you the records or answer in writing that: (1) they are withheld in full; (2) they are provided in part and withheld in part; (3) they cannot be found or do not exist (naming any other public body it knows has them); or (4) it is not practically possible to respond in time. You choose whether to inspect the records during office hours or get copies. Records kept in a database can be sent by email or another medium the County regularly uses.",
+   "deadline": "Within five working days of receiving the request; \"Day One\" is the day after receipt, and weekends and holidays are not counted",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "43c6a62df25972cb37f5a757725fa846236ebe966b31af279cff1cccf0fafd6e",
+   "quote_words": 13
+  },
+  {
+   "id": "s5",
+   "step": "If the County needs more time, it can take up to seven more working days",
+   "who": "Albemarle County",
+   "how": "To get more time, the County must explain in writing, within the first five working days, why a response is not practically possible. It then has seven more working days to give one of the four responses, or 60 work days for criminal investigative files. For an extraordinarily large request, the County may also ask a court for more time, but it must first try to agree with you on how the records will be produced.",
+   "deadline": "Seven additional working days (60 work days for criminal investigative files), if the County gives written notice within the first five working days (Va. Code § 2.2-3704(B)(4))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "d6449bc1c4622dda61a092bf372bc1f583d8950ac1e069085712e2bd2e49568d",
+   "quote_words": 31
+  },
+  {
+   "id": "s6",
+   "step": "Pay any deposit or past-due FOIA bill the County asks for",
+   "who": "Requester",
+   "how": "If the County expects charges over $200, it may ask for a deposit of up to the estimated amount before it goes on. The response clock is paused until you reply, and the deposit is credited to your final bill. If you still owe for an earlier FOIA request billed 30 days or more ago, the County may require payment before it starts the new one.",
+   "deadline": null,
+   "fee": "Deposit of up to the estimated amount when the estimate is over $200; any earlier FOIA bill unpaid 30 days or more after billing",
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "c6bcdb9634c3a6f67c573492a17313c59c1c27286fc400c81bbc612b19f377c2",
+   "quote_words": 13
+  },
+  {
+   "id": "s7",
+   "step": "Receive the records and pay the charges",
+   "who": "Albemarle County; requester",
+   "how": "The County may charge only its actual cost of accessing, copying, supplying or searching for the records, with no overhead or extra fees. Its FOIA page says requests that take more than 30 minutes may be charged, but it publishes no hourly rate or per-page price, so ask the department or rely on the estimate. Records from the County's GIS may carry an actual-cost charge for anyone other than the landowner. State law allows a local public body to offer electronic payment of FOIA charges; whether the County does was not found.",
+   "deadline": null,
+   "fee": "Actual cost only; requests taking longer than 30 minutes may be charged (no rate published)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "capture": "20260417130728",
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote_sha256": "3eb92372ecd7145bd20e46a09b0cd6b0219c84bdb0cd85309c1bc3604c1c5608",
+   "quote_words": 14
+  },
+  {
+   "id": "s8",
+   "step": "If records are withheld, check the written reasons",
+   "who": "Requester",
+   "how": "A withholding response must describe the volume and subject of what is withheld, and cite the specific Code section for each category. A record can be withheld in full only if an exclusion covers all of it; otherwise only the excluded parts may be redacted. Law-enforcement records have special rules. Criminal incident information about felonies must be released. Criminal investigative files are generally released at the custodian's discretion, but files in a case that is no longer ongoing must be disclosed on request to the victim, certain family members and certain attorneys, subject to the limits in Va. Code § 2.2-3706.1(E).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "quote": "cite, as to each category of withheld records, the specific Code section that authorizes the withholding of the records",
+   "source": "Va. Code § 2.2-3704(B)(1)"
+  },
+  {
+   "id": "s9",
+   "step": "If you are denied or get no answer, ask the FOIA Council for an opinion or petition the court",
+   "who": "Requester; Virginia Freedom of Information Advisory Council; Albemarle General District Court or Albemarle Circuit Court",
+   "how": "If the County misses the deadline, the law treats that as a denial. The County's pages describe no internal appeal, but you can raise the problem with the County FOIA Officer. The Virginia FOIA Council gives advisory opinions on whether FOIA was followed, but it cannot make the County produce records. To enforce your rights, file a petition for mandamus or injunction, supported by an affidavit showing good cause, in the Albemarle General District Court or the Albemarle Circuit Court. In the general district court, form DC-495 serves as the petition and sworn affidavit; no circuit court form was researched. The court must hear the petition within seven days of the date it is made, provided the County received a copy at least three working days before you filed, so give the County a copy first. State law sets no deadline for filing. See the escalation section.",
+   "deadline": "No filing deadline is stated; the petition is to be heard within seven days of the date it is made, provided the County received a copy at least three working days before filing (Va. Code § 2.2-3713(C))",
+   "fee": "$36 general district court fee for a civil proceeding (Va. Code § 16.1-69.48:2), if filed there; other costs such as service, and circuit court fees, are not covered here; costs and attorney fees are recoverable if you substantially prevail",
+   "form": "f4",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "quote": "If you believe that your FOIA rights have been violated, you may file a petition in district or circuit court to compel compliance with FOIA.",
+   "paraphrase": null,
+   "source": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Albemarle County online FOIA Request (submission form)",
+   "number": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act/foia-request",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Sample request letter under the Virginia Freedom of Information Act (Virginia FOIA Council, Word .doc template; optional)",
+   "number": null,
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/request%20letter%202021.doc",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f3",
+   "title": "Requester Public Comment Form (Virginia FOIA Council, Word .docx; comment on the quality of assistance from a public body)",
+   "number": null,
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/Requester%20public%20comment%20form%202021.docx",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "Petition for Injunction or Mandamus - Freedom of Information Act and Affidavit for Good Cause or Protection of Social Security Numbers Act (Supreme Court of Virginia district court form)",
+   "number": "DC-495",
+   "url": "https://www.vacourts.gov/forms/district/dc495.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Instructions for Form DC-495 (Supreme Court of Virginia)",
+   "number": "DC-495 instructions",
+   "url": "https://www.vacourts.gov/forms/district/dc495inst.pdf",
+   "official": true,
+   "fillable": false
+  }
+ ],
+ "fees": [
+  {
+   "item": "Charges for a FOIA request (search, copying, supplying)",
+   "amount": "Actual cost only; the County says requests taking longer than 30 minutes may be charged; no hourly rate or per-page price is published",
+   "basis": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "capture": "20260417130728",
+   "quote_sha256": "3eb92372ecd7145bd20e46a09b0cd6b0219c84bdb0cd85309c1bc3604c1c5608",
+   "quote_words": 14
+  },
+  {
+   "item": "State limit on charges",
+   "amount": "Reasonable charges not exceeding actual cost; no overhead, intermediary or surplus fees",
+   "basis": "Va. Code § 2.2-3704(F)",
+   "quote": "No public body shall impose any extraneous, intermediary, or surplus fees or expenses to recoup the general costs associated with creating or maintaining records or transacting the general business of the public body."
+  },
+  {
+   "item": "Deposit when the estimate is over $200",
+   "amount": "Up to the estimated amount, credited toward the final bill",
+   "basis": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "capture": "20260417130728",
+   "quote_sha256": "c6bcdb9634c3a6f67c573492a17313c59c1c27286fc400c81bbc612b19f377c2",
+   "quote_words": 13
+  },
+  {
+   "item": "Earlier FOIA bills unpaid more than 30 days",
+   "amount": "The past-due balance, which may be required before a new request is processed",
+   "basis": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "capture": "20260417130728",
+   "quote_sha256": "ce3993aa68e0cb49c91e5524edb885a199efa609c1e40d6bab8369b969252b67",
+   "quote_words": 36
+  },
+  {
+   "item": "Cost of preparing a cost estimate",
+   "amount": "Counted toward the total charges, not billed on top",
+   "basis": "Va. Code § 2.2-3704(F)",
+   "quote": "Any costs incurred by the public body in estimating the cost of supplying the requested records shall be applied toward the overall charges to be paid by the requester for the supplying of such requested records."
+  },
+  {
+   "item": "Records produced from the County's geographic information system (GIS)",
+   "amount": "Reasonable charge not exceeding actual cost, for anyone other than the owner of the land concerned",
+   "basis": "Va. Code § 2.2-3704(F)",
+   "quote": "The public body may also make a reasonable charge for the cost incurred in supplying records produced from a geographic information system at the request of anyone other than the owner of the land that is the subject of the request."
+  },
+  {
+   "item": "Filing a FOIA petition in the general district court",
+   "amount": "$36 (district court fee for any other civil proceeding; other costs not verified)",
+   "basis": "Va. Code § 16.1-69.48:2",
+   "quote": "For all court and magistrate services in each distress, detinue, interrogatory summons, unlawful detainer, civil warrant, notice of motion, garnishment, attachment issued, or other civil proceeding, the fee shall be $36."
+  },
+  {
+   "item": "Costs and attorney fees if you win in court",
+   "amount": "Recoverable from the public body if the petitioner substantially prevails, unless special circumstances make an award unjust",
+   "basis": "Va. Code § 2.2-3713(D)",
+   "quote": "the petitioner shall be entitled to recover reasonable costs, including costs and reasonable fees for expert witnesses, and attorney fees from the public body if the petitioner substantially prevails on the merits of the case, unless special circumstances would make an award unjust"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "portal",
+   "value": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act/foia-request",
+   "label": "Albemarle County online FOIA submission form",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "label": "Albemarle County Freedom of Information Act page (rights, costs, response times and the department FOIA contacts table)",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-4067",
+   "label": "County Attorney's Office (coordinates FOIA requests; office main line)",
+   "url": "https://www.albemarle.org/government/county-attorney"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/county-attorney",
+   "label": "County Attorney's Office",
+   "url": "https://www.albemarle.org/government/county-attorney"
+  },
+  {
+   "kind": "address",
+   "value": "Albemarle County, 401 McIntire Road, Charlottesville, VA 22902",
+   "label": "Albemarle County government (address in the County website footer; the County Attorney's Office page gives no separate address)",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5822",
+   "label": "Albemarle County main number (County website footer)",
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act"
+  },
+  {
+   "kind": "page",
+   "value": "https://foiaform.dls.virginia.gov/Home/Searchforms/0",
+   "label": "Virginia FOIA Council: FOIA Officers by Agency or Organization (to confirm the County's current FOIA officer)",
+   "url": "https://foiacouncil.dls.virginia.gov/foiacouncil.htm"
+  },
+  {
+   "kind": "email",
+   "value": "foiacouncil@dls.virginia.gov",
+   "label": "Virginia Freedom of Information Advisory Council (opinions and general questions)",
+   "url": "https://foiacouncil.dls.virginia.gov/foiacouncil.htm"
+  },
+  {
+   "kind": "phone",
+   "value": "804-698-1810",
+   "label": "Virginia Freedom of Information Advisory Council",
+   "url": "https://foiacouncil.dls.virginia.gov/foiacouncil.htm"
+  },
+  {
+   "kind": "phone",
+   "value": "1-866-448-4100 (toll-free)",
+   "label": "Virginia Freedom of Information Advisory Council",
+   "url": "https://foiacouncil.dls.virginia.gov/Services/opinions.htm"
+  },
+  {
+   "kind": "address",
+   "value": "General Assembly Building, 201 North 9th Street, 4th Floor, Richmond, VA 23219",
+   "label": "Virginia Freedom of Information Advisory Council (address on the Council home page)",
+   "url": "https://foiacouncil.dls.virginia.gov/foiacouncil.htm"
+  },
+  {
+   "kind": "office",
+   "value": "Albemarle General District Court, 350 Park Street, Charlottesville, VA 22902-5113; civil (434) 972-4007; Clerk's Office hours 8:00AM - 4:00PM",
+   "label": "Albemarle General District Court (16th Judicial District)",
+   "url": "https://www.vacourts.gov/courts/gd/albemarle/home"
+  },
+  {
+   "kind": "office",
+   "value": "Albemarle Circuit Court Clerk's Office, Albemarle County Courthouse, Court Square, 350 Park Street, Charlottesville, VA 22902-5113; civil (434) 972-4086; Clerk's Office hours 8:00AM - 4:00PM",
+   "label": "Albemarle Circuit Court (16th Judicial Circuit)",
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "The records are held by another public body, such as the Sheriff, the school division or the Albemarle County Service Authority",
+   "next": "That body's own FOIA officer, with a new request; if the County knows who holds the records, its response must give that body's contact information",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 2.2-3704(B)(3)",
+   "quote": "However, if the public body that received the request knows that another public body has the requested records, the response shall include contact information for the other public body."
+  },
+  {
+   "trigger": "You want court case files or other records kept by a court clerk",
+   "next": "The Clerk of the Albemarle Circuit Court (or the district court clerk), under the court-records statutes rather than FOIA; other records the clerks keep remain subject to FOIA",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 2.2-3703(A)(6); Va. Code §§ 16.1-69.54:1 and 17.1-208",
+   "quote": "Such records shall be requested in accordance with the provisions of §§ 16.1-69.54:1 and 17.1-208 , as appropriate."
+  },
+  {
+   "trigger": "The County says it cannot respond within five working days",
+   "next": "Albemarle County, the same office, which may take up to seven more working days; for extraordinary requests it may ask the court for more time",
+   "type": "deferral",
+   "deadline": "Seven additional working days (60 work days for criminal investigative files)",
+   "basis": "Va. Code § 2.2-3704(B)(4)",
+   "quote": "If the response is made within five working days, the public body shall have an additional seven work days or, in the case of a request for criminal investigative files pursuant to § 2.2-3706.1 , 60 work days in which to provide one of the four preceding responses."
+  },
+  {
+   "trigger": "No answer by the deadline (a deemed denial), or a department's response seems incomplete",
+   "next": "The County FOIA Officer in the County Attorney's Office, as an informal follow-up; the County's pages describe no formal internal appeal",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 2.2-3704.2(A); Va. Code § 2.2-3704(E)",
+   "quote": "whose responsibility is to serve as a point of contact for members of the public in requesting public records and to coordinate the public body's compliance with the provisions of this chapter"
+  },
+  {
+   "trigger": "Denied, partly denied or deemed denied, or a dispute over charges or process",
+   "next": "Virginia Freedom of Information Advisory Council: a written opinion (ask in writing with the facts) or informal advice by phone or email; the Council cannot compel production",
+   "type": "advisory opinion",
+   "deadline": "The Council says it strives to answer written requests within 14 business days; it will not issue an opinion while litigation on the issue is pending",
+   "basis": "Va. Code § 30-179(1)",
+   "quote": "Furnish, upon request, advisory opinions or guidelines, and other appropriate information regarding the Virginia Freedom of Information Act (§ 2.2-3700 et seq.) to any person or public body, in an expeditious manner"
+  },
+  {
+   "trigger": "Poor assistance from the County in handling a request",
+   "next": "Virginia FOIA Council's Requester Public Comment Form, sent to the Council, to the County, or to both",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "Va. Code § 30-179(6)",
+   "quote": "Develop an online public comment form to be posted on the Council's official public government website, as defined in § 2.2-3701 , to enable any requester to comment on the quality of assistance provided to the requester by a public body"
+  },
+  {
+   "trigger": "Denied, partly denied or deemed denied, or any other violation of FOIA",
+   "next": "Albemarle General District Court or Albemarle Circuit Court: a petition for mandamus or injunction supported by an affidavit showing good cause (form DC-495 in the general district court); the County bears the burden of proving an exclusion",
+   "type": "judicial review",
+   "deadline": "No filing deadline is stated; heard within seven days of the date the petition is made, provided the County received a copy at least three working days before filing",
+   "basis": "Va. Code § 2.2-3713(A), (C)",
+   "quote": "denied the rights and privileges conferred by this chapter may proceed to enforce such rights and privileges by filing a petition for mandamus or injunction, supported by an affidavit showing good cause."
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The FOIA page's copy of 2026-04-17 is the newest the Internet Archive holds. The live pages may have changed since; confirm on them before you act. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "Privacy: the County FOIA page names the County FOIA Officer and lists the department FOIA contacts by name, with personal mailboxes and direct extensions. It also names a media contact. None of these are recorded here. Use the online form, the department contacts table on the County's own page, the County Attorney's Office main line, or the FOIA Council's FOIA-officer listing.",
+  "The online form is built by script and protected by a CAPTCHA, and its archived copies (2026-03-16 and 2026-05-08) hold only the page shell, so what the form asks for, and whether it sends you a copy, is not confirmed.",
+  "No fee schedule was found. The FOIA page says requests taking longer than 30 minutes may be charged, but it states no hourly rate or per-page copy price. Va. Code § 2.2-3704.1(A)(7) requires a written policy that notes the current fee charged, if any. If the County has one elsewhere, it was not found. Ask for an estimate.",
+  "The County's 30-minute threshold appears only on its FOIA page. No County Code section or Board resolution adopting it was found, so it is recorded as the County's published practice.",
+  "No local FOIA ordinance was found. The County Code is published on Municode, whose terms (CivicPlus Terms of Service) forbid automated access and copying, so it has not been searched. A search of Board of Supervisors matter titles in the County's Legistar system for 'Freedom of Information' or 'FOIA' found only item 20-549 (2020), an amendment to a COVID-19 continuity-of-government ordinance. Only its title has been checked. Under Va. Code § 2.2-3700(B), a local ordinance that conflicts with FOIA is void. Its title says the proposed amendment concerned 'the deadlines to respond to requests for public records'. A continuity ordinance under Va. Code § 15.2-1413 'shall be limited in its effect to a period not exceeding 12 months after any such attack or disaster', so it is unlikely to govern requests now, but its status was not confirmed.",
+  "Who may ask: Va. Code § 2.2-3704(A) gives the right to citizens of the Commonwealth and to media that circulate or broadcast in Virginia. The County page says 'citizens of Virginia and certain representatives of the media'. A requester from outside Virginia may be refused; whether the County answers such requests anyway was not found. State law adds one limit and one exception. Va. Code § 2.2-3703(C) gives no FOIA rights to people incarcerated in a correctional facility or civilly committed as sexually violent predators. Va. Code § 2.2-3706.1(D) requires criminal investigative files in cases no longer ongoing to be disclosed to victims and certain family members and attorneys 'regardless of whether any such person is a citizen of the Commonwealth'.",
+  "Other custodians: the Sheriff is a constitutional officer, and constitutional officers count as local public bodies with their own FOIA officers (Va. Code § 2.2-3704.2(D)), so Sheriff's Office records are requested from that office. Albemarle County Public Schools (the School Board), the Albemarle County Service Authority, the regional authorities and the courts' clerks are also separate custodians or follow other rules. The County FOIA contacts table includes the Commonwealth's Attorney and a contact for Fire Rescue and Police. Police incident and crash reports have their own process. The table also lists a contact for the Emergency Communications Center; whether that center answers requests as part of the County or as a separate body is not confirmed.",
+  "The court route is only partly covered here. The $36 fee is the general district court fee in Va. Code § 16.1-69.48:2 for an 'other civil proceeding'. Whether the clerk charges exactly that for a FOIA petition, plus any service or local costs, is not confirmed with the court, and circuit court filing fees and appeals from a district court decision are not covered here. Va. Code § 2.2-3713 states no time limit for filing the petition. The DC-495 is a general district court form; its instructions say the petition is 'Prepared by petitioner and acknowledged by a clerk, deputy clerk, magistrate or notary public.'",
+  "FOIA Council addresses conflict. The Council home page gives the General Assembly Building, 201 North 9th Street, 4th Floor. The advisory-opinions page gives 900 E. Main Street, 10th Floor, and fax (804) 698-1899, and the 2021 comment form gives the Pocahontas Building, 8th Floor, 900 East Main Street. Use the email address, or confirm the mailing address first. The Council's current phone number is 804-698-1810. An older Charlottesville file lists 804-225-3056.",
+  "State law is current. The quotes from the Code of Virginia are matched to Open US Law's copy, which includes 2026 Acts (for example, § 2.2-3705.1 shows 2026, c. 115). The FOIA Council's 2026 Legislative Update lists no 2026 change to §§ 2.2-3704, 2.2-3704.1, 2.2-3704.2, 2.2-3706, 2.2-3713 or 30-179. Some quotes keep that copy's space before punctuation after a cross-reference (for example '§ 2.2-3706.1 , 60').",
+  "The archived FOIA page links to the FOIA Council home page. No link to the Council's requester comment form (Va. Code § 2.2-3704.1(B)) was seen on that page; the County home page was not checked.",
+  "The County's 'Submit a FOIA Request' page under How Do I? (archived 2026-03-05) holds only its title, a site banner and the site menus, so nothing is quoted from it.",
+  "The step s5 quote copies the County page exactly, including its typo 'If it not possible'.",
+  "The FOIA Council's 2021 sample request letter says 'I am obligated to pay that amount before you continue to process my request' when charges are likely to exceed $200. State law is narrower: the County may require a deposit 'not to exceed the amount of the advance determination', credited toward the final cost (Va. Code § 2.2-3704(H)). Edit that sentence if you do not want to commit in advance.",
+  "The Council's FOIA-officer listing (foiaform.dls.virginia.gov) is linked from the Council home page, but it did not answer on 2026-10-11, so its Albemarle entry is not confirmed."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "title": "Freedom of Information Act | Albemarle County, VA (County Attorney)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260417130728/https://www.albemarle.org/government/county-attorney/freedom-of-information-act",
+   "title": "Internet Archive capture of the County FOIA page, 2026-04-17",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/freedom-of-information-act/foia-request",
+   "title": "FOIA Request (online submission form) | Albemarle County, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260508090051/https://www.albemarle.org/government/county-attorney/freedom-of-information-act/foia-request",
+   "title": "Internet Archive capture of the online FOIA form page, 2026-05-08 (form fields not captured)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260316081256/https://www.albemarle.org/Home/Components/FormBuilder/FormBuilder/9410d3132aca406d9de2d5335d54db5a/1575?fcmsg=true&entryGuid=entryGuid",
+   "title": "Internet Archive capture of the FOIA form component, 2026-03-16 (shell only)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/how-do-i/submit-a-foia-request",
+   "title": "Submit a FOIA Request | Albemarle County, VA (How Do I)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260305035924/https://www.albemarle.org/how-do-i/submit-a-foia-request",
+   "title": "Internet Archive capture of the How Do I page, 2026-03-05 (title only)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney",
+   "title": "County Attorney | Albemarle County, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260814172621/https://www.albemarle.org/government/county-attorney",
+   "title": "Internet Archive capture of the County Attorney page, 2026-08-14",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "County Code | Albemarle County, VA (links the Municode Code of Ordinances)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260814172920/https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "Internet Archive capture of the County Code page, 2026-08-14",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions | Albemarle County, VA",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260720023202/https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Internet Archive capture of the Terms and Conditions page, 2026-07-20",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://web.archive.org/web/20260501074444/https://www.albemarle.org/robots.txt",
+   "title": "Internet Archive capture of www.albemarle.org/robots.txt, 2026-05-01",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters",
+   "title": "Albemarle County Legistar web API, matters search for 'Freedom of Information' or 'FOIA' in titles",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/foiacouncil.htm",
+   "title": "Virginia Freedom of Information Advisory Council (home page and contact information)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/Services/welcome.htm",
+   "title": "Services of the Council (Virginia FOIA Council)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/Services/opinions.htm",
+   "title": "Advisory Opinions (Virginia FOIA Council)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/welcome.htm",
+   "title": "Forms and Sample Letters (Virginia FOIA Council)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/request%20letter%202021.doc",
+   "title": "Sample request letter (Virginia FOIA Council, 2021)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/sample%20letters/Requester%20public%20comment%20form%202021.docx",
+   "title": "Requester Public Comment Form (Virginia FOIA Council, 2021)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://foiacouncil.dls.virginia.gov/2026updt.pdf",
+   "title": "2026 FOIA Legislative Update (Virginia FOIA Council)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/forms/district/dc495.pdf",
+   "title": "Form DC-495, Petition for Injunction or Mandamus - Freedom of Information Act (Supreme Court of Virginia; served from /static/forms/district/dc495.pdf)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/forms/district/dc495inst.pdf",
+   "title": "Form DC-495 instructions (Supreme Court of Virginia)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/gd/albemarle/home",
+   "title": "Albemarle General District Court (Virginia's Judicial System)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home",
+   "title": "Albemarle Circuit Court (Virginia's Judicial System)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3700/",
+   "title": "Va. Code § 2.2-3700. Short title; policy",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3701/",
+   "title": "Va. Code § 2.2-3701. Definitions",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3703/",
+   "title": "Va. Code § 2.2-3703. Public bodies and records to which chapter inapplicable",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
+   "title": "Va. Code § 2.2-3704. Public records to be open to inspection; procedure for requesting records and responding to request; charges",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.01/",
+   "title": "Va. Code § 2.2-3704.01. Records containing both excluded and nonexcluded information; duty to redact",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.1/",
+   "title": "Va. Code § 2.2-3704.1. Posting of notice of rights and responsibilities by state and local public bodies",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3704.2/",
+   "title": "Va. Code § 2.2-3704.2. Public bodies to designate FOIA officer",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3706/",
+   "title": "Va. Code § 2.2-3706. Disclosure of law-enforcement and criminal records; limitations",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3706.1/",
+   "title": "Va. Code § 2.2-3706.1. Disclosure of law-enforcement records; criminal incident information and certain criminal investigative files",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3713/",
+   "title": "Va. Code § 2.2-3713. Proceedings for enforcement of chapter",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-3714/",
+   "title": "Va. Code § 2.2-3714. Violations and penalties",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/30-179/",
+   "title": "Va. Code § 30-179. Powers and duties of the Council",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.48:2/",
+   "title": "Va. Code § 16.1-69.48:2. Fees for services of district court judges and clerks and magistrates in civil cases",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-1413/",
+   "title": "Va. Code § 15.2-1413. Governing bodies of localities may provide for continuity of government in case of enemy attack, etc",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/16.1-69.54:1/",
+   "title": "Va. Code § 16.1-69.54:1. Request for district court records (cited, not quoted)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/17.1-208/",
+   "title": "Va. Code § 17.1-208. Records, etc., open to inspection; copies; exception (cited, not quoted)",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 81,
+  "quotes_confirmed": 81,
+  "removed": [],
+  "corrections": [
+   "s9 and escalation rung 7: the three-working-day copy is the condition for the seven-day hearing in Va. Code § 2.2-3713(C), not a separate filing rule; reworded, and added that § 2.2-3713 sets no filing deadline.",
+   "s9 and escalation rung 7: the petition must be supported by an affidavit showing good cause (§ 2.2-3713(A)); DC-495 is a general district court form, so the text no longer implies it is used in the circuit court.",
+   "s9 fee: added that service and other costs were not verified and circuit court fees were not researched.",
+   "s8: criminal investigative files are not purely discretionary; files in cases no longer ongoing must be disclosed on request to victims, certain family members and certain attorneys (§ 2.2-3706.1(D)). Added a legal_basis entry.",
+   "s1: court case records are not requested from the clerks under FOIA (§ 2.2-3703(A)(6)), so the clerks were taken out of the list of bodies with their own FOIA officers; added the optional abstract or summary (§ 2.2-3704(D)) with a legal_basis entry.",
+   "s2: 'the fastest route' overstated the County page, which says the department contact helps it fill requests quickly; 'the County does not require a written request' is not on the County page, so it now says state law does not require writing and the County appreciates it. Pointed to a new caveat on the sample letter's deposit wording.",
+   "s7: added the optional electronic payment of FOIA charges (§ 2.2-3704(F)) with a legal_basis entry.",
+   "Escalation rung 2: basis now also cites § 16.1-69.54:1 (district court records); added that other records the clerks keep remain subject to FOIA.",
+   "Added § 2.2-3703(C) (no FOIA rights for incarcerated or civilly committed persons) to legal_basis and to the who-may-ask caveat.",
+   "Caveat on robots.txt: the archived file disallows Baiduspider and Yandex from the whole site; only the User-agent: * group is limited to /scripts, /admin and .asmx.",
+   "Caveat on FOIA Council addresses: the opinions page gives 900 E. Main Street, 10th Floor; the 2021 comment form gives the Pocahontas Building, 8th Floor.",
+   "Caveat on the How Do I page: the quoted title 'How Do I: Submit a FOIA Request' was not the page's wording; it is now 'Submit a FOIA Request'.",
+   "Caveat on the local ordinance: described Legistar item 20-549 from its title (FOIA response deadlines during COVID-19) and added the § 15.2-1413 12-month limit on continuity ordinances.",
+   "New caveats: the FOIA Council sample letter commits the requester to pay over $200, which goes further than § 2.2-3704(H); the Council's FOIA-officer listing did not respond on 2026-10-11. Added sources for §§ 15.2-1413, 16.1-69.54:1 and 17.1-208."
+  ],
+  "open_issues": [
+   "www.albemarle.org still returns HTTP 403 to this client (robots.txt included, 2026-10-11). The 13 County quotes were confirmed word for word against the Internet Archive copy of 2026-04-17, which the Internet Archive index shows is the newest capture, not against the live page. Re-check the live FOIA page (the 30-minute rule, the Day One rule, the department contacts) when it can be read.",
+   "What the online FOIA form asks for, and whether it sends a copy, is unknown: it is built by script behind a CAPTCHA, and the archived copies (2026-03-16, 2026-05-08) show only 'Please resolve the captcha.'",
+   "The County publishes no hourly rate or per-page price. The written fee note that § 2.2-3704.1(A)(7) requires was not found beyond the 30-minute statement.",
+   "Court costs beyond the $36 general district court fee in § 16.1-69.48:2 (service, other costs), circuit court filing fees, and appeals from a district court decision were not researched.",
+   "The County Code (Municode) was not searched because of that site's terms. The current status of the 2020 COVID-19 continuity ordinance amendment (Legistar 20-549) was not confirmed.",
+   "Not checked: whether the County home page links the FOIA Council's requester comment form (§ 2.2-3704.1(B)), whether the County answers requesters from outside Virginia, and whether the Emergency Communications Center answers as part of the County.",
+   "The FOIA Council's FOIA-officer listing (foiaform.dls.virginia.gov) did not respond on 2026-10-11."
+  ]
+ }
+}

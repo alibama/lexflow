@@ -1,0 +1,66 @@
+{
+ "qid": "glass_q3",
+ "state": "va",
+ "question": "Can I hold glassblowing classes for the public?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "36-105",
+   "role": "primary"
+  },
+  {
+   "ref": "27-98",
+   "role": "primary"
+  },
+  {
+   "ref": "65.2-101",
+   "role": "supporting"
+  },
+  {
+   "ref": "60.2-210",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The local building department enforces the code that sets whether the space may hold a class.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "36-105",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The locality may enforce the fire code, which covers public demonstrations of hot work.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "27-98",
+   "quote": "Any local government may enforce the Fire Prevention Code in its entirety or with respect only to those provisions of the Fire Prevention Code relating to open burning, fire lanes, fireworks, and hazardous materials.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "With fewer than three regular employees, workers' compensation coverage is not required.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "65.2-101",
+   "quote": "Employees of any person, firm or private corporation, including any public service corporation, that has regularly in service less than three employees in the same business within this Commonwealth, unless such employees and their employers voluntarily elect to be bound by this title.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Paying $1,500 of wages in a quarter makes the studio an unemployment-insurance employer.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "60.2-210",
+   "quote": "In any calendar quarter in either the current or preceding calendar year paid for some service in employment wages of $1,500 or more or such other amount as provided by federal law pursuant to 26 U.S.C. § 3306; or",
+   "source": "index"
+  }
+ ],
+ "notes": "Occupancy for classes (Group B under 50 people) and the hot-work permit are in the building and fire codes (13VAC5-63, 13VAC5-52), outside the statute index."
+}

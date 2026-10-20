@@ -1,0 +1,997 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "real_estate_tax_relief_elderly_disabled",
+ "title": "Apply for real estate tax relief for the elderly and disabled",
+ "question": "I am over 65 or disabled. Can I get help with my real estate tax?",
+ "category": "tax_relief",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "older adults",
+  "people with disabilities"
+ ],
+ "office": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit), under the Director of Finance",
+ "summary": "Albemarle County cuts the real estate tax on your home and up to 10 acres by 50 to 100 percent if, by December 31 last year, you were 65 or older or permanently and totally disabled (if a married couple owns the home together, either spouse can meet this test). You must hold title on January 1, live there as your only home, and use it for no business that needs a County business license. For 2026, household income must be at most $100,650 and net worth, excluding the home, at most $321,000. Apply online or by email, mail or fax, with proof of income and assets. New applicants file by October 31 (November 2 in 2026); recipients recertify by April 1 and reapply every third year. No fee. No source sets an appeal route; a denial can likely be contested with the Director of Finance and then in circuit court.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "The governing body of any locality may, by ordinance, provide for the exemption from, deferral of, or a combination program of exemptions from and deferrals of taxation of real estate and manufactured homes",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "Such real estate shall be owned by, and be occupied as the sole dwelling of anyone at least 65 years of age or if provided in the ordinance, anyone found to be permanently and totally disabled as defined in § 58.1-3217",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "A dwelling jointly held by married individuals, with no other joint owners, may qualify if either spouse is 65 or over or is permanently and totally disabled",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3210(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "quote": "(ii) held in a revocable inter vivos trust over which the eligible person or the eligible person and his spouse hold the power of revocation",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3211.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3211.1/",
+   "quote": "The governing body of the county, city, or town may, by ordinance, also provide for an exemption from or deferral of (or combination program thereof) real estate taxes for dwellings jointly held by two or more individuals not all of whom are at least age 65",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "the General Assembly hereby authorizes the governing body of a county, city or town to establish by ordinance net financial worth or annual income limitations as a condition of eligibility for any exemption or deferral of tax allowed pursuant to this article.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "(ii) owners' relatives who live in the dwelling, except for those relatives living in the dwelling and providing bona fide caregiving services to the owner whether such relatives are compensated or not",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "may exempt or defer the real property taxes of the qualifying dwelling and the land, not exceeding ten acres, upon which it is situated.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3212(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "quote": "No local ordinance shall require that a citizen reside in the jurisdiction for a designated period of time as a condition for qualifying for any real estate tax exemption or deferral program established pursuant to § 58.1-3210",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "The person claiming such exemption shall file annually with the commissioner of the revenue of the county, city or town assessing officer or such other officer as may be designated by the governing body in which such dwelling lies, on forms to be supplied by the county, city or town concerned",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "a county, city or town may prescribe by ordinance for the filing of the affidavit or written statement on a three-year cycle with an annual certification by the taxpayer",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "If such person is under 65 years of age, such form shall have attached thereto a certification by the Social Security Administration, the Department of Veterans Affairs or the Railroad Retirement Board",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "a sworn affidavit by two medical doctors who are either licensed to practice medicine in the Commonwealth or are military officers on active duty who practice medicine with the United States Armed Forces",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(D)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "The affidavit of at least one of the doctors shall be based upon a physical examination of the person by such doctor.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(E)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "Such affidavit, written statement or certification shall be filed after January 1 of each year, but before April 1, or such later date as may be fixed by ordinance.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(E)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "Such ordinance may include a procedure for late filing by first-time applicants or for hardship cases.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "quote": "The local governing body may, in addition, require the production of certified tax returns to establish the income or financial worth of any applicant for tax relief or deferral.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3213.1",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213.1/",
+   "quote": "The treasurer of any county, city, or town shall enclose written notice, in each real estate tax bill, of the terms and conditions of any local real estate tax exemption or deferral program established in the jurisdiction pursuant to § 58.1-3210",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3214",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3214/",
+   "quote": "shall not be construed to mean that the real estate for which tax exemption or deferral is sought does not continue to be the sole dwelling of such persons during such extended periods of other residence so long as such real estate is not used by or leased to others for consideration.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3215(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "quote": "may be granted for any year following the date that the qualifying individual occupying such dwelling and owning title or partial title thereto reaches the age of 65 years or for any year following the date the disability occurred.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3215(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "quote": "shall nullify any exemption or deferral for the remainder of the current taxable year and the taxable year immediately following.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3215(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "quote": "An ordinance enacted pursuant to this article may provide that a change in ownership to a spouse or a nonqualifying individual, when such change resulted solely from the death of the qualifying individual, or a sale of such property shall result in a prorated exemption or deferral for the then current taxable year.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3217",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3217/",
+   "quote": "the term \"permanently and totally disabled\" shall mean unable to engage in any substantial gainful activity by reason of any medically determinable physical or mental impairment or deformity which can be expected to result in death or can be expected to last for the duration of such person's life.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-519",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-519/",
+   "quote": "(iii) the collection of taxes, license fees and other revenues",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-521(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "quote": "The director of finance shall exercise all the powers conferred and perform all the duties imposed by general law upon commissioners of the revenue",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 1-210(E)",
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "quote": "the act may be performed or the action may be filed on the next business day that is not a Saturday, Sunday, legal holiday, or day on which the state or local government office is closed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "Sections 58.1-3980 through 58.1-3983 shall also apply to erroneous assessments of real estate if the error sought to be corrected in any case was made by the commissioner of the revenue or such other official to whom the application is made",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under § 58.1-3980",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-705 (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The purpose of this article is to provide relief to certain elderly and disabled persons who are subject to a real property tax burden that is extraordinary in relation to their income and financial worth.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-706 (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "This article shall be administered by the Director of Finance",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-706 (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The Director is authorized to require the production of certified tax returns and appraisal reports to establish eligible owners’ total combined income and net combined financial worth.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-707, Total combined income (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "Total combined income means the income received from all sources during the preceding calendar year, without regard to whether a tax return is actually filed",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-707, Total combined income (a) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The first $6,500.00 of income of each relative who is not the spouse of an owner living in the dwelling",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-707, Total combined income (b) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The first $7,500.00 of income for an owner who is permanently disabled.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-707, Total combined income (c) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "none of the income of the relative or of the relative’s spouse shall be counted towards the income limit",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-707, Net combined financial worth (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "the value of the subject dwelling and the land, not exceeding ten acres, upon which it is situated",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-708(A) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "held in a revocable inter vivos trust over which an eligible owner or an eligible owner and his spouse hold the power of revocation",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(A)(1) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "Reached the age of 65 years prior to the taxable year for which the exemption is claimed",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(B) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The eligible owners claiming the exemption shall own title or partial title to the real estate for which the exemption is claimed on January 1 of the taxable year.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(C)(2) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "A dwelling jointly owned by two or more persons, all of whom are either 65 years of age or older or are permanently and total disabled.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(D)(1) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The dwelling may not be used in a business that is required to pay a County business license tax or fee.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(F) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The total combined income shall not exceed the US Department of Housing & Urban Development Area Median Income (AMI) Limits, using the value for eighty (80%) percent AMI for a family of four in Albemarle County for the calendar year immediately preceding the taxable year.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-709(G) (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The net combined financial worth shall not exceed the inflation adjusted value of $200,000 in January 2007 and rounded to the nearest $1,000 for the calendar year immediately preceding the taxable year.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-710 (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "An approved applicant whose combined household income is no more than fifty (50%) percent of the maximum annual income allowed shall receive an exemption equivalent to one hundred (100%) percent of the real estate tax assessed for the taxable year on the property for which an exemption is claimed.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-710 (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The exemption established by this article shall apply only to the real property taxes for the qualifying dwelling and the land, not exceeding ten acres, upon which it is situated.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Ordinance No. 25-15(4), effective date (Ord. 25-15(4), adopted December 3, 2025)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "This ordinance is effective on and after tax year 2026 that begins on January 1, 2026.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(A) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "the eligible owners shall file the affidavit required by this section with the Director of Finance between January 1 and April 1 of each taxable year for which the exemption is claimed.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(A) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The annual certification must be filed not later than April 1 of the taxable year.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(A)(1) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "An owner claiming the exemption for the first time may file the affidavit required by this section after April 1, but before November 1, of the taxable year.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(A)(2) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "An owner claiming the exemption as a hardship claimants may file the affidavit required by this section after April 1, but before November 1, of the taxable year.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(B) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The affidavit shall be on a form prescribed and provided by the Director of Finance.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(C) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "If, after audit and investigation, the Director determines that the real property is eligible for the exemption, he shall grant the exemption and exonerate the amount of the exemption from the real property tax liability of those properties entitled to the exemption.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-711(D) (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "An exemption granted shall be effective only for the current taxable year and shall not be retroactive in effect.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-712 (Ord. 19-15(1), adopted April 17, 2019)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "nullifies any exemption for the remainder of the current taxable year and the taxable year immediately following; provided that a change in status due to the death of a qualified spouse will result in a prorated exemption for the eligible year.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-106(B) (Ord. 22-8(1) & 22-15(6), adopted November 2, 2022)",
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=922693&GUID=D08A2620-CC79-4AB4-8E9E-64104D2F0747&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "The Director of Finance shall investigate, exonerate, and refund erroneously assessed fees and taxes in accordance with Virginia Code § 58.1-3981.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check the age or disability test",
+   "who": "Homeowner (applicant)",
+   "how": "You must have been 65 or older, or permanently and totally disabled, by December 31 of the year before the tax year. If you and your spouse own the home together (with no other owners), either of you can meet this test. Permanently and totally disabled means unable to do any substantial paid work because of a physical or mental impairment expected to last for life or to result in death.",
+   "deadline": "on December 31 of the previous year",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "6bf22da4b1d4e7627fe2203e2bbc39e2aed205c374609464bd607ff0346424c5",
+   "quote_words": 25
+  },
+  {
+   "id": "s2",
+   "step": "Check the ownership and home tests",
+   "who": "Homeowner (applicant)",
+   "how": "You must hold title (or partial title, including a life estate or certain trusts) on January 1 of the tax year, and live in the home as your only residence. A stay in a hospital, nursing home or care facility does not count against you, as long as the home is not used by or leased to others for consideration. The home may not be used for a business that needs a County business license. A home owned jointly by a married couple may qualify if either spouse meets the age or disability test. Other co-owners must all be 65 or older or disabled. A manufactured home qualifies only if you show the Director of Finance that it is permanently affixed: for example, you also own the land and it is connected to permanent water and sewer, or it rests on a permanent foundation with connected units or additions that keep it from being towed as it stands.",
+   "deadline": "Title held on January 1 of the tax year",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "fe4291ebec9d1b3060762c749fce6011426fe314434bb4058c3eadf95e065a39",
+   "quote_words": 16
+  },
+  {
+   "id": "s3",
+   "step": "Check the income and net worth limits for the tax year",
+   "who": "Homeowner (applicant)",
+   "how": "Add up last year's gross income from all sources for you, your spouse, co-owners and others living in the home. The ordinance leaves out relatives who live there to give bona fide care, and nonrelatives who are bona fide tenants or paid caregivers. Deduct $6,500 of the income of each relative living there other than an owner's spouse, and $7,500 of the income of an owner who is permanently disabled (the 2026 form puts this as a disabled applicant or spouse under 65). For tax year 2026 the total must be $100,650 or less. Net worth (assets minus debts on December 31 of last year, for you, your spouse, co-owners and their spouses) must be $321,000 or less. The home and up to 10 acres, and furniture, household appliances and other items typically used in a home, are not counted. The limits are reset each year by ordinance formula.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "40ea36229e40f015c5750cb5fb9c5ab1003592ff9233b6c518f08b4efa7a2ac5",
+   "quote_words": 14
+  },
+  {
+   "id": "s4",
+   "step": "Optionally, check eligibility online or book an appointment",
+   "who": "Homeowner (applicant); Business & Personal Tax Unit",
+   "how": "The county's 'apply online' link opens a Laserfiche form. It first asks four yes-or-no questions: income $100,650 or less, assets $321,000 or less, sole primary residence, and title holder on January 1. If any answer is No, the form will not let you submit. You can also book a virtual or in-person appointment with a tax specialist through the link on the relief page.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program (form template read 2026-10-11; nothing was submitted)",
+   "quote_sha256": "673888016d36de65b079255056e6a6eeee483731ae03ca7fd00b2907d4c55f92",
+   "quote_words": 10
+  },
+  {
+   "id": "s5",
+   "step": "Gather proof of income, assets and debts",
+   "who": "Homeowner (applicant)",
+   "how": "All applicants attach proof of every income source (W-2, SSA-1099, 1099s, and Schedules C, D and E/K), December 31 statements for all bank and investment accounts, assessments of all real estate owned, and December 31 statements of debts. This covers you, your spouse, co-owners and their spouses. If you must file a federal income tax return, include a copy. If the home is held in a trust or life estate, include the trust or life estate documents.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "7a6e7d698eb043a6d201b77bd7cd74a98db4dfc415fed3bcbefde7aada2bff1c",
+   "quote_words": 15
+  },
+  {
+   "id": "s6",
+   "step": "First-time applicants: add proof of age, disability and any death certificate",
+   "who": "Homeowner (applicant); Social Security Administration, Railroad Retirement Board, Department of Veterans Affairs, or two physicians",
+   "how": "attach a copy of a driver's license or a birth certificate. If you are under 65, attach a disability certification from the Social Security Administration, the Railroad Retirement Board or the Department of Veterans Affairs. If you are not eligible for certification by any of these agencies, state law allows a sworn affidavit by two medical doctors instead. The county page and form ask for doctors licensed in Virginia; state law also accepts active-duty military doctors, and at least one affidavit must be based on a physical examination. If a spouse or co-owner has died, attach a certified copy of the death certificate.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "553db5e53725d83de3a0f640696045eb02d2264f3bfef553f2ac264ef99ab6e1",
+   "quote_words": 17
+  },
+  {
+   "id": "s7",
+   "step": "Complete and sign the application",
+   "who": "Homeowner (applicant); optionally a representative the applicant appoints on the form",
+   "how": "Use the 2026 Real Estate Tax Relief Application (fillable PDF) or the online form. Tick 'New applicant' or 'Renewal'. Fill in every item, writing None, N/A or 0 where an item does not apply. List everyone who lives in the home. You sign that the amounts are true, that you own the property, and that it is your only residence. You may name a representative to help with the application.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000",
+   "paraphrase": null,
+   "capture": "20260316083951",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000 (read from the Internet Archive copy of March 16, 2026, https://web.archive.org/web/20260316083951/https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "7266aa7bdd2ac2797fe5f14766e87740a6d8a8375fbb9aa66f70170fab142b75",
+   "quote_words": 19
+  },
+  {
+   "id": "s8",
+   "step": "Submit the application by the deadline",
+   "who": "Homeowner (applicant), to the Department of Finance and Budget, Business & Personal Tax Unit",
+   "how": "Submit online, by email to Tax@Albemarle.org, by mail to County of Albemarle, 401 McIntire Rd, Room 133, Charlottesville, VA 22902, or by fax to (434) 243-7906. First-time applicants file by October 31. If that falls on a weekend or holiday, the deadline moves to the next business day: for 2026 the form says November 2. Existing recipients file by April 1. Late renewals and applications are not accepted, according to the county's dates page.",
+   "deadline": "New applicants: October 31 (November 2 for 2026, per the form). Renewals and recertifications: April 1. A weekend or holiday deadline moves to the next business day.",
+   "fee": "None",
+   "form": "f2",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000",
+   "paraphrase": null,
+   "capture": "20260316083951",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000 (read from the Internet Archive copy of March 16, 2026, https://web.archive.org/web/20260316083951/https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "9ae418006ab687d5952c3e3424b5f8443361af32462fc82244deb071d5d06987",
+   "quote_words": 30
+  },
+  {
+   "id": "s9",
+   "step": "If you were in a hospital or nursing home in the filing season, ask about a hardship filing",
+   "who": "Homeowner (applicant); Director of Finance",
+   "how": "The ordinance lets a hardship claimant file after April 1 and before November 1. That covers someone who was hospitalized or in a nursing home between January 1 and April 1, or a similar case the Director of Finance accepts as a hardship. The county pages do not mention this, and they say late filings are not accepted, so ask the office.",
+   "deadline": "before November 1 of the taxable year",
+   "fee": null,
+   "form": null,
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "An owner claiming the exemption as a hardship claimants may file the affidavit required by this section after April 1, but before November 1, of the taxable year.",
+   "source": "Albemarle County Code § 15-711(A)(2), Ord. 19-15(1), adopted April 17, 2019, in the Board of Supervisors Actions document (Attachment 11): https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2"
+  },
+  {
+   "id": "s10",
+   "step": "The Director of Finance reviews the application",
+   "who": "Director of Finance (Business & Personal Tax Unit)",
+   "how": "Staff audit and investigate the application. The Director may require answers under oath, certified tax returns and appraisal reports. An incomplete application or missing documents may lead to denial, and the form has office-use fields for a denial reason. No source sets a time limit for the decision.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000",
+   "paraphrase": null,
+   "capture": "20260316083951",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000 (read from the Internet Archive copy of March 16, 2026, https://web.archive.org/web/20260316083951/https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "008c578a3514d106836c1effe3adce037848cc18d6fc670a00395b6a06c6d5fb",
+   "quote_words": 16
+  },
+  {
+   "id": "s11",
+   "step": "Relief is taken off the real estate tax for the year",
+   "who": "Director of Finance",
+   "how": "If you qualify, the Director grants the exemption and takes it off that year's real estate tax on the home and up to 10 acres. For tax year 2026: 100 percent for combined income up to $50,325, 75 percent for $50,326 to $75,488, and 50 percent for $75,489 to $100,650 (net worth up to $321,000). The exemption covers only the current tax year and is not retroactive. Any remaining real estate tax is due in two installments, on June 25 and December 5 (county dates page).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "5c8d9115f6549bb62895ad9d56b99d397bdcf31c1826731c929709ba7dfd082a",
+   "quote_words": 23
+  },
+  {
+   "id": "s12",
+   "step": "Recertify by April 1 in the years between full applications",
+   "who": "Existing tax relief recipient; Business & Personal Tax Unit",
+   "how": "In the two years between full applications, the county mails a recertification letter in January. Return the recertification by April 1 (or the next business day). If you miss it, you are dropped from the program and must start a new application the following year.",
+   "deadline": "April 1st (next business day if on a weekend or holiday)",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "12e624f7c79c0172660580d9a8c8da0d7438ac2387d49a6b1be4b6af64b11cda",
+   "quote_words": 33
+  },
+  {
+   "id": "s13",
+   "step": "File a full application again every third year",
+   "who": "Existing tax relief recipient",
+   "how": "Every third year, file the full application with all income, asset and debt documents. Tick 'Renewal' on the form and submit it by April 1. If a spouse or co-owner has died since the last application, attach the death certificate.",
+   "deadline": "April 1 (renewal)",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "paraphrase": null,
+   "capture": "20260916171502",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief (read from the Internet Archive copy of September 16, 2026, https://web.archive.org/web/20260916171502/https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "1834b5263b666c6f483fa2363ba52e420db5583553fa8be743c47bd6d489219d",
+   "quote_words": 15
+  },
+  {
+   "id": "s14",
+   "step": "Tell the office about changes during the year",
+   "who": "Homeowner; Director of Finance",
+   "how": "A change during the year in income, net worth, ownership or other facts that breaks the limits ends the exemption for the rest of that year and for the next year. If the change is the death of a qualifying spouse, the exemption is prorated for that year instead.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "quote": "nullifies any exemption for the remainder of the current taxable year and the taxable year immediately following; provided that a change in status due to the death of a qualified spouse will result in a prorated exemption for the eligible year.",
+   "source": "Albemarle County Code § 15-712, Ord. 19-15(1), adopted April 17, 2019, in the Board of Supervisors Actions document (Attachment 11): https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Eligible for Real Estate Tax Relief Application for the Elderly and Disabled (online form; Laserfiche Forms, starts with four eligibility questions)",
+   "number": null,
+   "url": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "2026 Real Estate Tax Relief Application (PDF, updated 12/2025; for new applicants and renewals)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Application, renewal or recertification",
+   "amount": "None (no application fee and no late filing penalty)",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines (Internet Archive copy of March 8, 2026: https://web.archive.org/web/20260308180913/https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "96dda3db126cac9f77d93a1f909e33166409b5e990baf30340dc86dd3f38e3cd",
+   "quote_words": 7
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "County of Albemarle, Department of Finance and Budget, Office of Revenue Administration, Business & Personal Tax Unit, County Office Building, 401 McIntire Road, Room 133, Charlottesville, VA 22902",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5852",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "email",
+   "value": "Tax@Albemarle.org",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "phone",
+   "value": "800-828-1120 (TTY)",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000"
+  },
+  {
+   "kind": "phone",
+   "value": "434-243-7906 (fax; applications may be faxed)",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, 401 McIntire Rd, Room 133, Charlottesville, VA 22902 (mail; the 2026 form writes Suite 133, Charlottesville, VA 22902-4579)",
+   "label": "Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "portal",
+   "value": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program",
+   "label": "Online tax relief application (Laserfiche Forms)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "portal",
+   "value": "https://outlook.office365.com/owa/calendar/AlbemarleCountyAssessmentsUnit@albemarle.org/bookings/",
+   "label": "Appointment booking with a tax specialist, virtual or in person (linked from the relief page)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "label": "Real Estate Tax Relief (Department of Finance and Budget)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5856",
+   "label": "Real Estate Office (veterans real estate tax exemption)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief"
+  },
+  {
+   "kind": "address",
+   "value": "Circuit Court Clerk's Office, 350 Park Street, Court Square, Charlottesville, VA 22902",
+   "label": "Clerk of the Circuit Court of Albemarle County (court filings)",
+   "url": "https://www.albemarle.org/government/circuit-court-clerk-s-office"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-4083",
+   "label": "Clerk of the Circuit Court of Albemarle County",
+   "url": "https://www.albemarle.org/government/circuit-court-clerk-s-office"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Relief denied, or the relief percentage looks wrong, so too much real estate tax is billed",
+   "next": "Director of Finance (Department of Finance and Budget): a written request for correction of the assessment",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or one year from the date of the assessment, whichever is later (Va. Code § 58.1-3980(A); county appeal-rights page). A bill under appeal is not treated as delinquent while the appeal is pending, if the appeal is filed within 90 days of the assessment (Va. Code § 58.1-3916).",
+   "basis": "Va. Code §§ 58.1-3980(A), 15.2-521(A); Albemarle County Code § 15-106(B)",
+   "quote": "Sections 58.1-3980 through 58.1-3983 shall also apply to erroneous assessments of real estate if the error sought to be corrected in any case was made by the commissioner of the revenue or such other official to whom the application is made"
+  },
+  {
+   "trigger": "The Director acts on the correction request and you want the reasons in writing",
+   "next": "Director of Finance: a written statement of the facts and law behind the decision, on request",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3981(F)",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application and mail a copy of such writing to the applicant at his last known address."
+  },
+  {
+   "trigger": "Correction refused, or no decision from the Director (the county says court may be used at any point)",
+   "next": "Circuit Court of Albemarle County: an application to correct an erroneous assessment",
+   "type": "judicial review",
+   "deadline": "Within three years from the last day of the tax year, one year from the assessment, or one year from the Director's final determination under § 58.1-3981, whichever is later (Va. Code § 58.1-3984(A))",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made"
+  },
+  {
+   "trigger": "A renewal is refused as late, but you were in a hospital or nursing home between January 1 and April 1 (or a similar hardship)",
+   "next": "Director of Finance: ask to file as a hardship claimant",
+   "type": "internal appeal",
+   "deadline": "before November 1 of the taxable year",
+   "basis": "Albemarle County Code § 15-711(A)(2) (Ord. 19-15(1), adopted April 17, 2019)",
+   "quote": "An owner claiming the exemption as a hardship claimants may file the affidavit required by this section after April 1, but before November 1, of the taxable year."
+  },
+  {
+   "trigger": "Not eligible here, but the owner is a veteran rated 100 percent service-connected, permanently and totally disabled (or a qualifying surviving spouse)",
+   "next": "Veterans Real Estate Tax Exemption, Real Estate Office (separate application on the same county page)",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3219.5(A)",
+   "quote": "the General Assembly hereby exempts from taxation the real property, including the joint real property of married individuals, of any veteran who has been rated by the U.S. Department of Veterans Affairs or its successor agency pursuant to federal law to have a 100 percent service-connected, permanent, and total disability"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The live pages may have changed since; confirm on them before you act. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "The County Code's published edition is on Municode, whose terms bar automated access and copying, so no text was read there. The County Code quotes come from adopted ordinances in the Board of Supervisors' meeting records on albemarle.legistar.com. Ord. 19-15(1) (April 17, 2019, the Chapter 15 recodification; Actions document, Attachment 11) is the source for §§ 15-705 to 15-708, 15-711 and 15-712. Ord. 25-15(4) (December 3, 2025; Actions document, Attachment 7) is the source for §§ 15-709 and 15-710. A Legistar title search found later amendments only to §§ 15-709 and 15-710 (2022 to 2025). The current codified text of §§ 15-705 to 15-708, 15-711 and 15-712 was not compared, so a change made by an ordinance whose title does not name these sections would be missed. § 15-106 is quoted from Ord. 22-8(1) & 22-15(6) (November 2, 2022; Actions document, Attachment 6) and was not compared with the current codified text either. To read the current code in a browser: https://library.municode.com/va/albemarle_county/codes/code_of_ordinances.",
+  "Ordinance No. 25-15(4) was adopted 6:0 on December 3, 2025 (Actions document), effective for tax year 2026. Its history notes read 'Ord. 25-15(4) 11-5-24' and 'Ord. 25-15(3) 11-20-24'. The 25-15(4) note looks like a clerical error, since the Board scheduled the hearing on November 5, 2025 and adopted the ordinance on December 3, 2025.",
+  "The 2026 dollar figures come from the county page, the online form and the 2026 application: the $100,650 income limit, the $321,000 net worth limit and the tiers at $50,325 and $75,488. The ordinance sets formulas instead: 80 percent of HUD area median income for a family of four, and $200,000 from January 2007 adjusted for inflation by CPI-U. The figures will change each year. The tier boundaries are the ordinance's 50 and 75 percent of the income limit. The page's 75 percent tier ends at $75,488, while 75 percent of $100,650 is $75,487.50, so the page has rounded.",
+  "Deadline wording differs. Ordinance § 15-711(A)(1) lets first-time claimants file 'after April 1, but before November 1'. The county page and dates page say October 31. The 2026 form says 'SUBMIT BY NOVEMBER 2', because October 31, 2026 is a Saturday and the county's page moves weekend deadlines to the next business day. As of 2026-10-11, the 2026 window for new applicants is still open according to the form.",
+  "Hardship filing: ordinance § 15-711(A)(2) allows a filing after April 1 and before November 1 for an owner who was hospitalized or in a nursing home between January 1 and April 1, or a similar case. The county pages do not mention it. The dates page says renewals or applications received after the due dates 'are not accepted', and the relief page says a missed April 1 recertification means restarting the next year. Ask the office.",
+  "Joint owners: § 15-709(C)(2) requires every non-spouse co-owner to be 65 or older or disabled. As far as the 2019 and 2025 texts show, Albemarle has not adopted the optional proration for mixed joint ownership in Va. Code § 58.1-3211.1.",
+  "Disability proof: the county page and form accept certification from the Social Security Administration, the Railroad Retirement Board or the Department of Veterans Affairs, or an affidavit by two Virginia-licensed medical doctors. Va. Code § 58.1-3213(D) allows the doctors' affidavit only for a person not eligible for certification by those agencies, requires it to be sworn, also accepts active-duty military doctors, requires at least one affidavit to rest on a physical examination, and treats an SSA certification under 42 U.S.C. § 423(d) as meeting the definition.",
+  "Caregiving relatives: § 15-707 (2019 text) defines total combined income the way Va. Code § 58.1-3212(A) does. It leaves out relatives who live in the home and provide bona fide caregiving services, paid or not, and nonrelatives who are bona fide tenants or paid caregivers. Paragraph (c) of the definition goes further: if the owner proves by clear and convincing evidence that the only alternative to living in a hospital, nursing home or similar facility is a relative moving in to give care, none of that relative's or the relative's spouse's income counts, provided the owner has not transferred more than $5,000 in assets without adequate consideration within three years before or after the move. The 2026 form asks for the income of all others living in the home and does not mention these exclusions, so ask the office.",
+  "Net worth: the 2026 form lists 'Personal Property (Autos, etc.)' as an asset. § 15-707 (2019 text) leaves out furniture, household appliances and items typically used in a home, and the home with up to 10 acres. Whether vehicles count is not stated in the ordinance.",
+  "Online application: the 'apply online' link opens Laserfiche form 174. It shows four yes-or-no eligibility questions and blocks submission on any No. The rest of the online application appears only after answering them, so it was not viewed. Nothing was submitted, and the page uses reCAPTCHA.",
+  "The recertification form is mailed to recipients in January. No online copy was found. The relief page's 'Instructional Video' document link was not opened.",
+  "Timing of relief: no source says how relief is applied for a first-time applicant who files after the June 25 installment (for example, a refund or a credit on the December bill). Ordinance § 15-711(D) says the exemption is for the current taxable year only and is not retroactive.",
+  "No false-claim penalty was found in Division 2 (2019 text), and the 2026 form has only a signed affirmation. Open US Law's copy of Article 2 (§§ 58.1-3210 to 58.1-3217) has no false-claim penalty; § 58.1-3211 is not in that copy, and perjury law is not covered here.",
+  "Escalation is inferred. Neither Article 2 of Chapter 32 of Title 58.1 nor County Code Chapter 15, Article 7, Division 2 sets an appeal route for a denied application. The route shown is the general correction process for erroneous local assessments (Va. Code §§ 58.1-3980, 58.1-3981, 58.1-3984; County Code § 15-106), which the county's appeal-rights page describes for local taxes. Albemarle's Director of Finance holds the commissioner of the revenue's powers (Va. Code § 15.2-521). Va. Code § 58.1-3983.1 (appeals to the Tax Commissioner) covers only local business and mobile property taxes, so it does not apply. No statute or page sets a deadline for the Director to decide an application. Circuit court filing fees are not covered here.",
+  "Va. Code §§ 15.2-519 and 15.2-521 apply only to counties that have adopted the county executive form of government (Va. Code § 15.2-500). No county source read here states Albemarle's form of government. County Code § 15-706 separately assigns this program to the Director of Finance, so the office named does not depend on it.",
+  "Va. Code § 58.1-3211 (restrictions and conditions) is not in Open US Law's copy of the Code of Virginia, so it is cited nowhere and not quoted. Read https://law.lis.virginia.gov/vacode/58.1-3211/ before relying on the state restrictions.",
+  "The adopted ordinance texts come from the Board of Supervisors Actions documents on albemarle.legistar.com. The proposed ordinance of December 2025, the staff presentation and the agenda PDFs are not used.",
+  "Contacts: the Circuit Court Clerk's page and the Board staff reports name individuals, and the clerk page links a personal mailbox. None are recorded; only office lines, the office mailbox Tax@Albemarle.org, addresses and portals are kept. The appointment link is the Assessments Unit's Outlook Bookings page, linked from the relief page.",
+  "https://www.albemarle.org/community/apply-tax-relief is a shortcut that redirects (navid=296) to the Real Estate Tax Relief page; it has no content of its own.",
+  "albemarle.org's terms allow browsing for information but forbid reposting its content without permission. Page quotes here are kept to one sentence or clause for citation."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments/real-estate-tax-relief",
+   "title": "Real Estate Tax Relief (Albemarle County Department of Finance and Budget); Internet Archive copy of 16 September 2026",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/community/apply-tax-relief",
+   "title": "Apply: Tax Relief (shortcut that redirects to the Real Estate Tax Relief page); Internet Archive copies of March 4 and September 16, 2026",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24955/639032048208730000",
+   "title": "2026 Real Estate Tax Relief Application (PDF, updated 12/2025); Internet Archive copy of 16 March 2026",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program",
+   "title": "Eligible for Real Estate Tax Relief Application for the Elderly and Disabled (Laserfiche Forms, form 174)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "title": "Important Dates and Deadlines (Albemarle County Finance); Internet Archive copy of 8 March 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "title": "Notice of Taxpayer Appeal Rights: Corrections and Administrative Appeals Process; Internet Archive copy of 11 March 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/circuit-court-clerk-s-office",
+   "title": "Circuit Court Clerk's Office (Albemarle County); Internet Archive copy of 9 May 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "County Code (links the Municode edition); Internet Archive copy of 14 August 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=1273213&GUID=AD51F694-C03F-4F6F-A2B7-FBD473817878&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors Actions, December 3, 2025 (item 11 adopted 6:0; Attachment 7, Ordinance No. 25-15(4), §§ 15-709 and 15-710)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/MeetingDetail.aspx?LEGID=1531&GID=561&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors meeting, December 3, 2025 (Legistar meeting detail; file 25-445)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8390/texts/8519",
+   "title": "Legistar file 25-445 agenda text (Board of Supervisors, December 3, 2025): staff summary of the indexing ordinance",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=654943&GUID=62CA21C6-D53B-4034-8879-F9AB5F9C7EFB&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors Actions, April 17, 2019 (item 18 adopted 6:0 as amended; Attachment 11, Ordinance No. 19-15(1), Chapter 15 including Article 7, Division 2, §§ 15-705 to 15-712, and § 15-106)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/MeetingDetail.aspx?LEGID=1194&GID=561&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors meeting, April 17, 2019 (Legistar meeting detail; file 19-237)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/View.ashx?M=E1&ID=922693&GUID=D08A2620-CC79-4AB4-8E9E-64104D2F0747&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors Actions, November 2, 2022 (Attachment 6, Ordinance No. 22-8(1) & 22-15(6), amending County Code § 15-106, Erroneous assessments)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://albemarle.legistar.com/MeetingDetail.aspx?LEGID=1375&GID=561&G=0F98DBBA-4095-49BE-99DD-067A5CF2E1D2",
+   "title": "Board of Supervisors meeting, November 2, 2022 (Legistar meeting detail; file 22-450)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters",
+   "title": "Albemarle County Legistar web API: matter titles for files 19-237, 22-256, 23-233, 24-212, 24-472, 25-113, 25-422 and 25-445 (tax relief ordinance history, 2019 to 2025)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3210/",
+   "title": "Va. Code § 58.1-3210",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3211.1/",
+   "title": "Va. Code § 58.1-3211.1",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3212/",
+   "title": "Va. Code § 58.1-3212",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213/",
+   "title": "Va. Code § 58.1-3213",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3213.1/",
+   "title": "Va. Code § 58.1-3213.1",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3214/",
+   "title": "Va. Code § 58.1-3214",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3215/",
+   "title": "Va. Code § 58.1-3215",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3217/",
+   "title": "Va. Code § 58.1-3217",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3219.5/",
+   "title": "Va. Code § 58.1-3219.5",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "title": "Va. Code § 58.1-3916",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "title": "Va. Code § 58.1-3980",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "title": "Va. Code § 58.1-3981",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-519/",
+   "title": "Va. Code § 15.2-519",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "title": "Va. Code § 15.2-521",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "title": "Va. Code § 1-210",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "title": "Va. Code § 58.1-3983.1 (checked for scope only)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions (Albemarle County website); Internet Archive copy of 20 July 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8367",
+   "title": "Legistar file 25-422, Schedule a Public Hearing to Consider the Adoption of an Ordinance to Modify Real Estate Tax Relief for Elderly and Disabled Persons (consent agenda, November 5, 2025)",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 76,
+  "quotes_confirmed": 76,
+  "removed": [],
+  "corrections": [
+   "Summary: the escalation sentence now says no source sets an appeal route and that a denial can likely be contested with the Director of Finance and then in circuit court. The draft stated it as fact. Also added the married-couple rule and that the business bar covers a business needing a County business license (§ 15-709(D)(1)).",
+   "s1: the draft said 'You (or your spouse)'. Under § 15-709(C)(1) and Va. Code § 58.1-3210(A), a spouse's age or disability counts only for a home the couple owns jointly with no other owners.",
+   "s2: the care-facility exception now says the home must not be 'used or leased to others for consideration' (§ 15-709(D)(2), Va. Code § 58.1-3214); the draft said only 'not rented to others'. The married-couple rule now says 'may qualify', as in § 15-709(C)(1). Added the manufactured-home rule of § 15-709(E).",
+   "s3: added the ordinance's income exclusions for caregiving relatives and for bona fide tenants and paid caregivers (§ 15-707, total combined income (ii) and (iii)). The $6,500 deduction is limited to relatives who are not an owner's spouse (§ 15-707(a)). The $7,500 deduction is the ordinance's 'owner who is permanently disabled' (§ 15-707(b)); the form's 'under 65' wording is noted. Net worth also leaves out furniture, household appliances and items typically used in a home.",
+   "s6: under Va. Code § 58.1-3213(D), the two-doctor affidavit is only for a person not eligible for certification by SSA, VA or the Railroad Retirement Board, and it must be sworn. The draft offered it as an equal alternative and called it 'signed'.",
+   "s11: 'two halves' changed to 'two installments, on June 25 and December 5', which is what the county dates page says.",
+   "s12: the title said 'Recertify every year'. Recertification is only for the years between full applications (§ 15-711(A); relief page).",
+   "s13: added the 2026 form's requirement that renewals include a death certificate if a spouse or co-owner died since the last application.",
+   "Caveat on caregiving relatives was wrong: § 15-707 (2019 text), clause (ii), already leaves out relatives giving bona fide care, paid or not, as Va. Code § 58.1-3212(A) does. The clear-and-convincing test in paragraph (c) is an extra exclusion, which also covers the relative's spouse's income. Rewritten.",
+   "Caveat on disability proof: added that state law limits the doctors' affidavit to people not eligible for agency certification and requires it to be sworn.",
+   "Caveat on the County Code: added that § 15-106 (2022 text) was not compared with the codified code either.",
+   "Caveat on dollar figures: noted that the page's $75,488 tier boundary rounds 75 percent of $100,650 ($75,487.50).",
+   "Caveat on penalties: a verifier index search found no false-claim penalty in the indexed sections of Article 2.",
+   "New caveat: Va. Code §§ 15.2-519 and 15.2-521 apply only to county-executive-form counties (§ 15.2-500); this is not confirmed from a county source, but County Code § 15-706 names the Director of Finance in any case.",
+   "Sources: added the county terms page (Internet Archive copy of July 20, 2026), which confirms the reposting caveat, and Legistar file 25-422 (consent agenda of November 5, 2025), which confirms the hearing-scheduling date in the caveat on Ord. 25-15(4)."
+  ],
+  "open_issues": [
+   "County Code text is quoted from adopted ordinances in Board Actions documents on albemarle.legistar.com (Ord. 19-15(1) of 2019, Ord. 25-15(4) of 2025, Ord. 22-8(1) & 22-15(6) of 2022), not from the current codified code, because Municode's terms bar automated access. The 2025 history notes show later amendments only to §§ 15-709 and 15-710, and the county page's 2026 figures match the 2025 formulas, but §§ 15-705 to 15-708, 15-711, 15-712 and 15-106 were not compared with the codified text.",
+   "www.albemarle.org returned HTTP 403 to every automated request, so the relief page (copy of September 16, 2026, the latest in the Internet Archive), the 2026 form (copy of March 16, 2026), the dates page (March 8, 2026), the appeal-rights page (March 11, 2026) and the clerk page (May 9, 2026) were checked against Internet Archive copies. The live pages may differ.",
+   "The escalation route is inferred from Va. Code §§ 58.1-3980, 58.1-3981 and 58.1-3984 and the county's appeal-rights page. No source sets an appeal route for a denied application, and no source sets a time limit for the Director's decision.",
+   "Va. Code § 58.1-3211 is not in the lexflow index, so it is unread and unquoted.",
+   "The 2026 form and county pages differ from the ordinance in places, all flagged in steps or caveats: the caregiver and tenant income exclusions, the spouse limit on the $6,500 deduction, the form's 'under 65' limit on the $7,500 deduction, the hardship filing the pages do not mention, and the October 31 date versus 'before November 1'. The steps state the ordinance rule; how the office applies its form is not confirmed.",
+   "The recertification form is mailed in January and was not seen; the online application beyond its four eligibility questions was not viewed."
+  ]
+ }
+}

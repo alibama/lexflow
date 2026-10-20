@@ -186,6 +186,7 @@ def check_quotes(spec: dict, state: str, today: str | None = None) -> dict:
     from ..validate import quote_in
     from . import quotes as Q
     from . import statutes
+    Q.restore(spec)                                                # withheld words, when the evidence file is present
     day = (today or db.now())[:10]
     cache = Q.cache_dir()
     try:
@@ -242,6 +243,13 @@ def check_quotes(spec: dict, state: str, today: str | None = None) -> dict:
         why = _unmatched_why(urls, tried, others)
         items[where] = {"by": None, "why": why, "url": urls[0] if urls else None}
         unmatched.append({"where": where, "why": why, "url": urls[0] if urls else None})
+    for q in Q.withheld_quotes(spec):                              # words held in data/evidence/, not present here
+        if not q["restored"] and q["where"] not in items:
+            n += 1
+            why = ("its words are from a site whose terms forbid reprinting them and are kept in lexflow's evidence "
+                   "store (data/evidence/), which this copy does not have")
+            items[q["where"]] = {"by": None, "why": why, "url": q["url"]}
+            unmatched.append({"where": q["where"], "why": why, "url": q["url"]})
     for u in list(dict.fromkeys([i["url"] for i in items.values() if i.get("url")] + file_pages)):
         e = Q.cached(u)
         pages[u] = ({"via": e.get("via"), "capture": e.get("capture"), "fetched": e.get("fetched"),
@@ -326,6 +334,8 @@ def load_processes(con, govs: list[dict] | None = None, log: Log = print) -> dic
         except ValueError as e:
             log(f"{path.parent.name}/{path.name}: not valid JSON ({e}); skipped")
             continue
+        from . import quotes as Q
+        Q.restore(spec, path)                                      # the withheld words, from data/evidence/
         g = next(iter(db.rows(con, "SELECT * FROM governments WHERE gov_id=?", spec.get("gov_id") or "")), None)
         if g is None:
             hits = resolve(con, spec.get("place") or "")

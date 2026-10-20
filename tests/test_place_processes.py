@@ -473,9 +473,9 @@ def test_several_archive_readers_keep_to_one_clock(con):
 
 # ---- the researched files' wording ----------------------------------------------------------------------------
 
-QUOTES = {"albemarle": (1973, "c29fdf0b44e39c84e801c029fbb1ea119c9f60cc1c39564e415606ac2b7e21ed"),
-          "charlottesville": (1566, "73025d20bf2009eb2d98b687598fb789af39d85a477aa98b5fb39a88137a80ef"),
-          "staunton": (1915, "43413f8d4291da681fd58193ce930002fb12c595e41a61fff6598b4d33658973")}
+QUOTES = {"albemarle": (2308, "ee94740ac5560ef91d2d2da8e52afa3fa46d17c7a577fd75292edd7178b59b0f"),
+          "charlottesville": (1848, "74bceedb09a6f8933bdf417a94b247d863a5c95dd7075c0c2d35eff4d57eb69d"),
+          "staunton": (2237, "c38c641b9ed25782069825c074193a1c512909f356eb177d84e6991fb52bc97c")}
 
 
 def _quotes(value, out):
@@ -495,10 +495,15 @@ def _files(place):
     out = []
     for p in sorted((config.CURATED_DIR / "places" / "va" / place).glob("*.json")):
         try:
-            out.append((p, json.loads(p.read_text(encoding="utf-8"))))
+            out.append((p, Q.restore(json.loads(p.read_text(encoding="utf-8")), p)))   # withheld words, if here
         except ValueError:
             continue
     return out
+
+
+def _held_back(files):
+    """Whether every withheld quote of the files has its words (the evidence files are present)."""
+    return all(q["restored"] for _, spec in files for q in Q.withheld_quotes(spec))
 
 
 def test_the_researched_files_describe_the_place_not_the_drafting_and_keep_every_quote():
@@ -508,8 +513,10 @@ def test_the_researched_files_describe_the_place_not_the_drafting_and_keep_every
     seen = 0
     for place, (n, digest) in QUOTES.items():
         files = _files(place)
-        if len(files) != 20:
+        if len(files) != 27:
             pytest.skip("another workflow may be writing these files")
+        if not _held_back(files):
+            pytest.skip("the evidence files (data/evidence/) are not present here")
         qs = [q for _, spec in files for q in _quotes(spec, [])]
         assert (len(qs), hashlib.sha256(json.dumps(qs, ensure_ascii=False).encode()).hexdigest()) == (n, digest), place
         for path, spec in files:
@@ -519,7 +526,7 @@ def test_the_researched_files_describe_the_place_not_the_drafting_and_keep_every
             assert not re.search(r"Claude|browser pane|desktop browser", json.dumps(
                 {k: v for k, v in spec.items() if k not in ("checks", "researched_by")}), re.I), path.name
             seen += 1
-    assert seen == 60
+    assert seen == 81
 
 
 def test_the_dc_caveats_describe_the_place():

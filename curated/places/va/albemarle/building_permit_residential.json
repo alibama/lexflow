@@ -1,0 +1,1824 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "building_permit_residential",
+ "title": "Get a residential building permit (including trade permits) and schedule inspections",
+ "question": "I want to build, add on, renovate, or do electrical, plumbing or mechanical work on my home in Albemarle County. Do I need a permit, how do I apply, and how are inspections scheduled?",
+ "category": "permits_construction",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "contractors"
+ ],
+ "office": "Community Development Department, Building Inspections (the County's Building Inspection Office and Building Official under County Code §§ 5-102 and 5-103)",
+ "summary": "Albemarle County enforces Virginia's Uniform Statewide Building Code. New homes, additions, structural changes and most electrical, plumbing and mechanical work need a permit before work starts; small sheds and ordinary repairs usually do not, but may still need zoning approval. Apply in the County's Civic Access portal with plans and a recorded plat (and well, septic or land-disturbance papers if they apply). Each trade is a separate sub-permit. Pay the invoice, post the permit, and request each inspection in Civic Access by noon the day before. Final building and zoning inspections lead to the certificate of occupancy. Decisions can be appealed to the County's Board of Building Code Appeals within 30 days, then to the State Review Board.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-98",
+   "url": "https://law.lis.virginia.gov/vacode/36-98/",
+   "quote": "Such building code shall supersede the building codes and regulations of the counties, municipalities and other political subdivisions and state agencies.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "quote": "shall also prescribe procedures for the administration and enforcement of such regulations, including procedures to be used by the local building department in the evaluation and granting of modifications for any provision of the Building Code",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "quote": "Notwithstanding the provisions of this section, farm buildings and structures shall be exempt from the provisions of the Building Code",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-97",
+   "url": "https://law.lis.virginia.gov/vacode/36-97/",
+   "quote": "\"Equipment\" means plumbing, heating, electrical, ventilating, air-conditioning and refrigeration equipment, elevators, dumbwaiters, escalators, and other mechanical additions or installations.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Any person aggrieved by the local building department's application of the Building Code or refusal to grant a modification to the provisions of the Building Code may appeal to the local board of Building Code appeals.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "No appeal to the State Building Code Technical Review Board shall lie prior to a final determination by the local board of Building Code appeals.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Where the construction cost is less than $2,500, however, the inspection may, in the discretion of the inspecting authority, be waived.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "The building official shall coordinate all reports of inspections for compliance with the Building Code, with inspections of fire and health officials delegated such authority, prior to issuance of an occupancy permit.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(B)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(D)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "the locality may require full payment of any and all financial obligations of the property owner to the locality to satisfy such lien prior to issuance of such permit",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(D)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-106(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-106/",
+   "quote": "Any such violation shall be deemed a misdemeanor and any owner or any other person, firm, or corporation convicted of such a violation shall be punished by a fine of not more than $2,500.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-114",
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "quote": "The Review Board shall have the power and duty to hear all appeals from decisions arising under application of the Building Code",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-114",
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "quote": "Proceedings of the Review Board shall be governed by the provisions of the Administrative Process Act (§ 2.2-4000 et seq.), except that an informal conference pursuant to § 2.2-4019 shall not be required.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-118",
+   "url": "https://law.lis.virginia.gov/vacode/36-118/",
+   "quote": "The Review Board shall interpret the provisions of the Building Code, and the Fire Prevention Code",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-137(7)",
+   "url": "https://law.lis.virginia.gov/vacode/36-137/",
+   "quote": "Local building departments shall collect such levy and transmit it quarterly to the Department of Housing and Community Development.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-98.01",
+   "url": "https://law.lis.virginia.gov/vacode/36-98.01/",
+   "quote": "If the designation of a mechanics' lien agent is not so requested by the applicant, the building permit shall at the time of issuance state that none has been designated with the words \"None Designated.\"",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 43-4.01(A)",
+   "url": "https://law.lis.virginia.gov/vacode/43-4.01/",
+   "quote": "The permit shall be posted on the property before any labor is performed or any material furnished on the property for which the building permit is issued.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1111(A)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1111(A)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "quote": "The applicant shall also furnish satisfactory proof that the taxes or license fees required by any county, city, or town have been paid so as to be qualified to bid upon or contract for the work for which the permit has been applied.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1101(A)(7)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "quote": "Any person who performs or supervises the construction, removal, repair, or improvement of no more than one primary residence owned by him and for his own use during any 24-month period",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1101(C)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "quote": "Any person who is exempt from the provisions of this chapter as a result of subdivision 7, 8, 9, 10, 11, 12, or 14 of subsection A shall comply with the provisions of the Uniform Statewide Building Code (§ 36-97 et seq.).",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-99.7(C)",
+   "url": "https://law.lis.virginia.gov/vacode/36-99.7/",
+   "quote": "The provisions of this section shall not apply to single-family dwellings or residential housing with four or fewer units, unless the renovation or demolition of such buildings is for commercial or public development purposes.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-176.5(B)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-176.5/",
+   "quote": "may by ordinance establish reasonable testing requirements to determine compliance with existing federal or state drinking water quality standards and require that such testing be done prior to the issuance of building permits",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2311(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "quote": "The appeal shall be taken within 30 days after the decision appealed from by filing with the zoning administrator, and with the board, a notice of appeal specifying the grounds thereof.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4026(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Application for a permit shall be made to the building official and a permit shall be obtained prior to the commencement of any of the following activities",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "applications for emergency construction, alterations, or equipment replacement shall be submitted by the end of the first working day that follows the day such work commences",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Notwithstanding the requirements of Section 108.1, application for a permit and any related inspections shall not be required for the following; however, this section shall not be construed to exempt such activities from other applicable requirements of this code.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, item 2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "One story detached structures used as tool and storage sheds, playhouses, or similar uses, provided the building area does not exceed 256 square feet",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, item 7)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Retaining walls supporting less than three feet of unbalanced fill",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, item 14.4)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Replacement of mechanical appliances provided such equipment is not fueled by gas or oil in Group R-2 where serving a single-family dwelling and in Groups R-3, R-4, and R-5.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2, Exception 2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "Application for a permit may be required by the building official for any items exempted in this section that are located in a special flood hazard area.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "In addition, when an owner or an owner's agent requests that a permit be issued for any of the following, then a permit shall be issued and any related inspections shall be required.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.3)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "In no case shall an applicant be required to appear in person.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-80 (USBC § 108.8)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "quote": "An application for a permit for any proposed work shall be deemed to have been abandoned six months after the date of filing unless such application has been pursued in good faith or a permit has been issued",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-60 (USBC § 106.3)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section60/",
+   "quote": "Upon written application by an owner or an owner's agent, the building official may approve a modification of any provision of the USBC provided the spirit and functional intent of the code are observed and public health, welfare and safety are assured.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "The local governing body shall establish a fee schedule incorporating unit rates, which may be based on square footage, cubic footage, estimated cost of construction, or other appropriate criteria.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "A permit or any amendments to an existing permit shall not be issued until the designated fees have been paid, except that the building official may authorize the delayed payment of fees.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.1.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "When requested in writing by a permit holder, the locality shall provide a fee refund in the case of the revocation of a permit or the abandonment or cancellation of a building project.",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-70 (USBC § 107.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "quote": "the local building department shall collect a 2.0% levy of fees charged for permits issued under this code and transmit it quarterly to DHCD to support training programs of the Virginia Building Code Academy",
+   "role": "fee"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-90 (USBC § 109.4)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section90/",
+   "quote": "The building official shall examine or cause to be examined all construction documents or site plans, or both, within a reasonable time after filing.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-90 (USBC § 109.5)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section90/",
+   "quote": "one set shall be kept at the building site and shall be available to the building official at all reasonable times",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "If the applications or amendments do not comply with the provisions of this code or all pertinent laws and ordinances, the permit shall not be issued and the permit applicant shall be notified in writing of the reasons for not issuing the permit.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "If the application complies with the applicable requirements of this code, a permit shall be issued as soon as practicable.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.5)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "A copy of the permit shall be posted on the construction site for public inspection until the work is completed.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.5)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "Such posting shall include the street or lot number if one has been assigned, to be readable from a public way.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "A building official shall be permitted to revoke a permit if work on the site authorized by the permit is not commenced within six months after issuance of the permit or if the authorized work on the site is suspended or abandoned for a period of six months after the permit is issued",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "Upon written request, the building official may grant one or more extensions of time, not to exceed one year per extension.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-100 (USBC § 110.7)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "The building official shall be permitted to require a three-year time limit to complete construction of new detached single-family dwellings, additions to detached single-family dwellings, and residential accessory structures.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.1.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "Any ladder, scaffolding, or test equipment necessary to conduct or witness a requested inspection shall be provided by the permit holder.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.1.2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "When construction reaches a stage of completion that requires an inspection, the permit holder shall notify the building official.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.3.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "Upon the replacement or new installation of any fuel-burning appliances or equipment in existing Group R-5 occupancies, an inspection shall be conducted to ensure that the connected vent or chimney systems comply with the following:",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "The building official shall either approve the work in writing or give written notice of defective work to the permit holder.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.7)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "Under circumstances where the building official is unable to make the inspection or test required by Section 113.3 or 113.4 within two working days of a request or an agreed upon date or if authorized for other circumstances in the building official's written policy, the building official shall accept reports for review.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-130 (USBC § 113.7, Exception)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "The licensed mechanical contractor installing the mechanical system shall be permitted to perform duct tests required by Section R403.3.5 of the IECC or Section N1103.3.5 of the IRC.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-160 (USBC § 116.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "quote": "The building official shall issue the certificate of occupancy within five working days after approval of the final inspection and when the building or structure or portion thereof is determined to be in compliance with this code and any pertinent laws or ordinances, or when otherwise entitled.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-160 (USBC § 116.1, Exceptions 1 and 2)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "quote": "A new certificate of occupancy is not required for an addition to an existing Group R-5 building that already has a certificate of occupancy.",
+   "role": "exception"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.5)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The applicant shall submit a written request for appeal to the LBBCA within 30 calendar days of the receipt of the decision being appealed.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.6)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The LBBCA shall meet within 30 calendar days after the date of receipt of the application for appeal, except that a period of up to 45 calendar days shall be permitted where the LBBCA has regularly scheduled monthly meetings.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.8)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "The application for appeal shall be made to the State Review Board within 21 calendar days of the receipt of the decision to be appealed.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-190 (USBC § 119.9)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "quote": "you have thirty (30) days from the date of service (the date you actually received this decision or the date it was mailed to you, whichever occurred first) within which to appeal this decision by filing a Notice of Appeal with the Secretary of the Review Board",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 5-102(A) (Building Inspection Office; County Code PDF, Supp. #39, 7-18)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "capture": "20260517181211",
+   "paraphrase": "The Building Inspection Office runs the Building Code locally: it reviews plans, inspects buildings and issues the permits and certificates.",
+   "role": "authority",
+   "quote_sha256": "057b2c99828d894d1b8c7d2f553783e602a8ed770716c883ae3a85abd93a9588",
+   "quote_words": 32
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 5-105(A) (Board of Appeals; County Code PDF, Supp. #39, 7-18)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "capture": "20260517181211",
+   "paraphrase": "The Board of Appeals hears anyone aggrieved by how the Building Inspection Office applied the Building Code, or by its refusal of a modification.",
+   "role": "procedure",
+   "quote_sha256": "bc6da28db5d1d3830911a32a7f040fea2e88bc715ed5bf7516af7f711548b15f",
+   "quote_words": 33
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 5-209(A) (Refunds; County Code PDF, Supp. #39, 7-18)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "capture": "20260517181211",
+   "paraphrase": "A refund request must reach the Building Official within six months of the event in subsection (B) that gives rise to it.",
+   "role": "deadline",
+   "quote_sha256": "784a612c9b901829fb132ba166de72bcd0b12fe61b5d1297b1263d4808c6a61a",
+   "quote_words": 21
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 5-209(B)(1) (Refunds; County Code PDF, Supp. #39, 7-18)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "capture": "20260517181211",
+   "paraphrase": "The refund is at most 80% of the original fee.",
+   "role": "fee",
+   "quote_sha256": "37eddfa6f3c364d40df8bd6a519303b77ff5ab2bffdf04b15dd95dbe0684c50c",
+   "quote_words": 16
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 5-503 (Private ground water well testing; County Code PDF, Supp. #39, 7-18)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "capture": "20260517181211",
+   "paraphrase": "Where the well-testing article applies, the well must be tested before the County issues the building permit.",
+   "role": "eligibility",
+   "quote_sha256": "ff40f58f8c96647c1866bdefc8026ef0900bd160ebd72d17522259a93956c4c5",
+   "quote_words": 34
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Board of Building Code Appeals Bylaws, Article 3-1 (adopted October 21, 2020)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/6234/637423390222270000",
+   "capture": "20260309044608",
+   "paraphrase": "An appeal to the local board is filed with the code official, with any fees paid.",
+   "role": "procedure",
+   "quote_sha256": "9af987da945ec73cb9930247bb7f7c80f2c81a658b8fda30cf39e51d0fffdd1f",
+   "quote_words": 19
+  },
+  {
+   "level": "local",
+   "citation": "Board of Supervisors item 23-451 (Legistar matter 7614): CDD fee restructuring into County Code Chapter 1, Article 5 (public hearing December 6, 2023; the staff report for matter 24-114 records that the Board adopted the fee-restructuring ordinances, including Ordinance No. 23-5(1), that day)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7614",
+   "quote": "To receive comments on proposed ordinances to consolidate Community Development Department (CDD) fees in a single new Article 5, in Chapter 1 of the Albemarle County Code.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Board of Supervisors item 26-256 (Legistar matter 8572): amendment of County Code Chapter 1, Article 5 (Fee Schedule), adopted April 22, 2026",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "quote": "If adopted, the revised fees would take effect January 1, 2027.",
+   "role": "fee"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether the work needs a building permit",
+   "who": "Property owner, or the contractor or designer working for them",
+   "how": "A permit is needed before starting new construction, additions, accessory apartments, demolition, structural changes (walls, beams and other load-bearing parts), changes to required exits or fire-rated assemblies, retaining walls over 3 feet, asbestos removal, installing, replacing or altering electrical, plumbing, mechanical, gas, water or sewer systems, projects that need a new certificate of occupancy, and lot line changes that affect an existing building's code compliance. The County's list of work that does not need a building permit includes small roof-covering repairs, siding, painting, like-for-like windows and doors, cabinets, flooring, replacing plumbing fixtures, receptacles and switches, and replacing appliances that are not gas or oil fueled; the Building Permits page adds patios, fences (unless needed for safety or as a pool barrier), flagpoles, and tents or air-supported structures under 900 square feet, which may still need zoning approval. Exempt work must still meet the code, and an owner may ask for a permit and inspections anyway. In a special flood hazard area the building official may require a permit for otherwise exempt work. If unsure, ask Community Development (434-296-5832, applicationservices@albemarle.org) before starting.",
+   "deadline": "Before work starts; for emergency construction, alterations or equipment replacement, the application is due by the end of the first working day after the work begins",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/building-code",
+   "paraphrase": null,
+   "capture": "20260616093941",
+   "source": "https://www.albemarle.org/government/community-development/planning-codes/building-code",
+   "quote_sha256": "78bc953f2966d7708535437e755b387df74029a7767141fdb440d3fb1275ba1c",
+   "quote_words": 20
+  },
+  {
+   "id": "s2",
+   "step": "For small sheds, low retaining walls and farm buildings, get the zoning permit instead",
+   "who": "Property owner; Community Development zoning staff",
+   "how": "One-story storage sheds under 256 square feet, retaining walls 3 feet or less, and farm buildings exempt from the building code do not need a building permit but do need zoning approval before construction; properties served by a well and septic system may also need Health Department approval. The state rules are worded a little differently: the shed exemption covers a building area that does not exceed 256 square feet, and the retaining-wall exemption covers walls supporting less than three feet of unbalanced fill (USBC § 108.2, items 2 and 7), so ask Community Development before building a wall of exactly 3 feet. Electrical or plumbing work for a shed needs its own permits. For a farm building or detached shed, mark the proposed location on site so zoning staff can check it. Farm buildings use the County's Exemption of Farm Buildings or Structures Form, the Farm Building or Structure Application Checklist and the Farm Building application in Civic Access (building plans, plat and affidavit). The state farm-building exemption does not cover a farm building operated as a licensed restaurant, and farm buildings in a flood plain or mudslide-prone area stay subject to flood-proofing or mudslide rules (Va. Code § 36-99(B)).",
+   "deadline": "Before construction begins",
+   "fee": "Not stated for these zoning permits on the pages read (the fee schedule lists a $25 zoning inspection and zoning clearances; see caveats)",
+   "form": "f15",
+   "url": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "quote_sha256": "c2a8e340a0590185ce1e3c252ea7f2f3e480065ac7d5cb5c5180f9c432fc7c0d",
+   "quote_words": 21
+  },
+  {
+   "id": "s3",
+   "step": "Gather the site documents the County needs",
+   "who": "Property owner or applicant",
+   "how": "Most residential applications need building plans and a recorded plat (filed with the Clerk of the Circuit Court; usually shows a deed book and page or instrument number). A plat is required for new dwellings, additions, accessory structures and other exterior work, with the work shown against property lines and setbacks; interior alterations generally do not need one. If a private well or septic system serves the property, include the Virginia Department of Health well and septic construction permits, an approved well log for parcels under 21 acres, and a BTEX well-test report if the parcel is in a LUST or BTEX zone. projects that disturb over 10,000 square feet need land-disturbance approvals; the Residential Building Permits page also lists a Stormwater Pollution Prevention Plan (SWPPP) form for a single-family home in a common plan of development. The County's Setbacks and Plats: What is Required for Permit Review explains what a plat must show. A map of steep slopes or stream buffers (Critical Resource Plan layer in County GIS) helps, and work needing special inspections (for example helical piers or segmental retaining walls) needs a Special Inspections Report with the application.",
+   "deadline": "With the application",
+   "fee": "Land disturbance for a single-family dwelling (VESMP): $235 for plan review, land disturbance permit and first-year maintenance, if required (see fees)",
+   "form": "f17",
+   "url": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "quote_sha256": "744c0ed28db80b706fe64dc1dc64b2c4e7e64f0774252f99ab604d43509d369d",
+   "quote_words": 12
+  },
+  {
+   "id": "s4",
+   "step": "Decide who applies: a licensed contractor, or the owner acting as their own contractor",
+   "who": "Applicant (owner, contractor or design professional)",
+   "how": "Before a permit is issued the applicant must give a Virginia (DPOR) contractor license number or file a written statement of exemption; the County's form for owners is the Affidavit Not a Contractor. An owner may build or improve one primary residence for their own use in any 24-month period without a contractor license, but must still meet the building code. The applicant must also give satisfactory proof that any local taxes or license fees required to bid on or contract for the work have been paid (Va. Code § 54.1-1111(A)); the County's Building Permits page links the Albemarle County business license page (Department of Finance & Budget). The County links the DPOR license lookup from its Building Permits page.",
+   "deadline": "Before the permit is issued",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+   "source": "Va. Code § 54.1-1111(A)"
+  },
+  {
+   "id": "s5",
+   "step": "Prepare construction drawings and energy paperwork",
+   "who": "Applicant or the designer",
+   "how": "Follow the Residential Permit Application Checklist (modified 6-4-25): digital PDF drawings at a minimum 1/4 inch scale with foundation plan, floor plans, floor and roof framing (including decks), a typical wall section, elevations, energy compliance (insulation and the residential HVAC certification form), masonry fireplace and chimney details, and any fire separation. Trusses, engineered beams or walls over 12 feet may need more structural information; truss shop drawings must be on site at inspection. Project-specific checklists cover basements, decks, pools and spas, photovoltaic systems and prefabricated sheds and carports. The County's Building Permit Information Guide explains what plans and plats should show.",
+   "deadline": "With the application",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/10102/638846408214100000",
+   "paraphrase": null,
+   "capture": "20260317092104",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/10102/638846408214100000",
+   "quote_sha256": "2a2e7b8df68499714bef1e8f3a01d68eb3528844f96f2793e5d87aed014b49e6",
+   "quote_words": 8
+  },
+  {
+   "id": "s6",
+   "step": "Register in Civic Access and apply online for the building permit",
+   "who": "Applicant",
+   "how": "Register an account in the County's Civic Access portal and log in. On the Residential Building Permits page, pick the application type (for example Additions, Alteration/Remodel/Repair, Single-Family Detached, Storage Building/Accessory Structures, Swimming Pools, Roof Mount Solar, Demolition); the direct links work only after you have registered. The page's table lists the documents for each type: most need building plans, a plat and HD approval (if applicable); Demolition also needs a utility cut-off letter; Single-Family Accessory Apartment needs an Accessory Apartment Form and a Critical Resource Map; Farm Building needs an affidavit; roof or ground mount solar needs manufacturer specs; Swimming Pools, Hot Tubs, and Spas and the trade sub-permits list none; for a type not listed, contact Community Development. In Civic Access, click Apply, use the Search Assistant if unsure, find the application type and click Apply. Each section has Save Draft, but attachments are not saved in drafts; drafts are under Saved Work, My Drafts. Upload all documents with the application. State rules say no applicant can be required to appear in person; the County's pages describe only online filing (see caveats). Name a mechanics' lien agent if you want one, or the permit will say \"None Designated\".",
+   "deadline": "An application not pursued in good faith is treated as abandoned six months after filing (USBC § 108.8)",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "paraphrase": null,
+   "capture": "20260612084454",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "quote_sha256": "7dcc6e0cfc00532694529e14dd098f242b383c0edd9e4564f8dcc4873defe555",
+   "quote_words": 20
+  },
+  {
+   "id": "s7",
+   "step": "Apply for each trade sub-permit (electrical, mechanical, plumbing)",
+   "who": "Each licensed trade contractor (or the owner-builder)",
+   "how": "Electrical, Mechanical and Plumbing Sub-Permits are separate applications in Civic Access, listed on the Residential Building Permits page with no required documents. Work on equipment (for example a gas or oil furnace, a gas line, a water line or an electrical service change) needs the trade permit even when no building permit is needed; replacing an appliance that is not gas or oil fueled in a one- or two-family home is exempt (USBC § 108.2, item 14.4; see step s1).",
+   "deadline": "Before the trade work starts",
+   "fee": "By trade and item, for example electrical additions, alterations and repairs $0.04 per sq. ft. (minimum $90); furnace, wood stove or gas log system $75; plumbing $10.00 per fixture (minimum $90) (see fees)",
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "quote_sha256": "86a0030257f2b3cb333565d0c4d04d7164faa46e5bac9dbf3b244023e6c28384",
+   "quote_words": 11
+  },
+  {
+   "id": "s8",
+   "step": "Plan review, and correction if the application does not comply",
+   "who": "Community Development (Building Inspections plan reviewers, zoning staff, and other reviewers such as the Albemarle County Service Authority where its review is required)",
+   "how": "Track the application and read reviewers' comments in Civic Access. If the plans do not comply, the County must say why in writing; a denied applicant may submit a revised application addressing those reasons. Plan amendments after submission are charged a fee. For a code modification, ask the building official in writing (the fee schedule lists a $250 code modification request, no refund).",
+   "deadline": "Review within a reasonable time after filing, and issuance as soon as practicable once the application complies (USBC §§ 109.4, 110.1); no local turnaround time was found",
+   "fee": "Residential plan review: $0.05 per sq. ft., minimum $10 (building, electrical, mechanical and plumbing rows each list this); permits and plan amendments $35",
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "paraphrase": null,
+   "capture": "20260612084454",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "quote_sha256": "cb35a7622068dfb64cc1c2ba33cfd4e7f25c0ca99fcfcf823da41a90eac3d900",
+   "quote_words": 29
+  },
+  {
+   "id": "s9",
+   "step": "Pass the preliminary zoning review or inspection",
+   "who": "Community Development zoning staff; applicant",
+   "how": "Zoning checks that the use is allowed and the structure meets setbacks and location rules. Request a preliminary zoning inspection in Civic Access. For a farm building or detached shed, mark the proposed location on site.",
+   "deadline": "The County page says preliminary zoning reviews are done before the permit is issued, after grading and before the footing inspection",
+   "fee": "Zoning inspection: $25 each (preliminary or final)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "paraphrase": null,
+   "capture": "20260720023202",
+   "source": "https://www.albemarle.org/government/community-development/request/inspection",
+   "quote_sha256": "9cf6873ae1ceb13f4220c978f8bbb3f122149932161d198fd29bf6117f13efb0",
+   "quote_words": 21
+  },
+  {
+   "id": "s10",
+   "step": "Pay the invoiced fees",
+   "who": "Applicant",
+   "how": "Fees are paid after the County issues an invoice. Pay by credit card or electronic check in the Civic Access payment portal using the invoice number; or pay cash (exact change only) or check in person at Community Development; or mail a check to Community Development, 401 McIntire Rd, Charlottesville, VA 22902. Credit cards are not accepted at the front desk.",
+   "deadline": "Before the permit is issued, unless the building official allows delayed payment (USBC § 107.1.1)",
+   "fee": "Per the Community Development fee schedule (for example a new single-family dwelling under 1,500 sq. ft. is $500), plus a 4% technology surcharge on each fee (see fees and caveats)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "paraphrase": null,
+   "capture": "20260814172719",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "quote_sha256": "aa9232d220dd1104ee35ca1cf25936ad9fa07a0befae9598ffb7638da70cf606",
+   "quote_words": 10
+  },
+  {
+   "id": "s11",
+   "step": "Receive the permit and post it on the property",
+   "who": "Permit holder",
+   "how": "When a permit is issued, the County sends a Civic Access link to track it. Post the permit on the property before any work or deliveries and keep it posted until the work is finished; the posting must include the street or lot number, if one has been assigned, readable from a public way (USBC § 110.5). Keep one set of the approved construction documents at the site for the inspector (USBC § 109.5). The permit names the mechanics' lien agent or says \"None Designated\"; it can be amended later to name one. A change of contractor after issuance has a fee.",
+   "deadline": "Posted before any labor is performed or material furnished, and kept posted until the work is completed (Va. Code § 43-4.01(A))",
+   "fee": "Addition or change in contractor after the permit is issued: $35",
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "quote": "The permit shall be posted on the property before any labor is performed or any material furnished on the property for which the building permit is issued.",
+   "source": "Va. Code § 43-4.01(A)"
+  },
+  {
+   "id": "s12",
+   "step": "Request each required inspection in Civic Access",
+   "who": "Permit holder (or the trade contractor on a sub-permit)",
+   "how": "Log in, open Dashboard, then View My Permits, click the permit number and open the Inspections tab. Tick the inspection needed, click Request Inspection, enter a name, phone number and the requested date and time, add gate codes or a field contact in Comments, and click Submit. Several inspections can be requested at once. A green check mark confirms the request; requested and past inspections show in the Workflow section of the Summary. The County also posts a daily inspection report. Provide any ladder, scaffolding or test equipment the inspector needs.",
+   "deadline": "For a next-day inspection, request by 12:00 noon; request each inspection when the work reaches that stage, before it is covered (USBC § 113.1.2)",
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "paraphrase": null,
+   "capture": "20260720023202",
+   "source": "https://www.albemarle.org/government/community-development/request/inspection",
+   "quote_sha256": "fcf4827140b1e7e3ffacd3f87368f5651c24d51145263659abfbca108ff77b3c",
+   "quote_words": 10
+  },
+  {
+   "id": "s13",
+   "step": "Pass the inspections and correct any defects",
+   "who": "County building inspectors; permit holder",
+   "how": "The state minimum inspections, where they apply, are footings before concrete, foundations, preparatory work before concrete, structural members and fasteners before concealment, electrical, mechanical and plumbing work before concealment, energy conservation materials before concealment, and the final; the building official may add others. The inspector approves the work in writing or gives written notice of defects, which must be fixed and reinspected before they are covered. When a fuel-burning appliance is replaced or added in an existing one- or two-family home, the vent or chimney must be checked. Results show in the permit's Workflow section in Civic Access.",
+   "deadline": null,
+   "fee": "Building re-inspection: $100 for each inspection after the second inspection of the same work",
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "quote": "The building official shall either approve the work in writing or give written notice of defective work to the permit holder.",
+   "source": "13VAC5-63-130 (USBC § 113.6)"
+  },
+  {
+   "id": "s14",
+   "step": "Turn in the HVAC and energy test forms on time",
+   "who": "HVAC system designer or mechanical contractor; duct and blower door testers",
+   "how": "The Residential HVAC Certification Form (one per system, Manual J/S/D sizing) must be on site for mechanical inspections and submitted before the rough-in inspection. Submit the Duct Leakage Testing Affidavit before rough-in if possible (the code allows it at the end), and the Building Envelope Leakage (Blower Door) results before the HVAC final. Existing buildings follow the 2018 Virginia Energy Conservation Code, per the County page.",
+   "deadline": "HVAC certification before rough-in inspection; blower door results before HVAC final inspection",
+   "fee": null,
+   "form": "f7",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "paraphrase": null,
+   "capture": "20260612084454",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "quote_sha256": "35ab6cd3fdfac1376ec9f4a0a857fac621b48e67a84c4606eb170d72f5731d94",
+   "quote_words": 10
+  },
+  {
+   "id": "s15",
+   "step": "Keep the permit active, or ask for an extension",
+   "who": "Permit holder; building official",
+   "how": "Start work within six months of issuance and keep making progress, shown by at least one approved inspection every six months, or the permit may be revoked. Ask in writing for an extension (up to one year each) using the County's Permit Extension Request Form (the forms library also has Building Permit Extension Instructions). Trade permits are not revoked while the building permit is in effect.",
+   "deadline": "Work must start within six months of issuance and not be suspended or abandoned for six months (USBC § 110.6)",
+   "fee": "Permit extension request: $75",
+   "form": "f10",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "quote": "Upon written request, the building official may grant one or more extensions of time, not to exceed one year per extension.",
+   "source": "13VAC5-63-100 (USBC § 110.6)"
+  },
+  {
+   "id": "s16",
+   "step": "Pass the final building and final zoning inspections and get the certificate of occupancy",
+   "who": "Permit holder requests; building official issues the certificate",
+   "how": "Request the final inspections in Civic Access, including the final zoning inspection. Use of a new dwelling must wait for the certificate of occupancy. A certificate is not needed for an accessory structure, and a new one is not needed for an addition to an existing one- or two-family home that already has one. A temporary certificate can be requested when part of a building can be occupied safely.",
+   "deadline": "Request the final zoning inspection a minimum of two weeks ahead of when you need the certificate of occupancy; the certificate is due within five working days after the final inspection is approved (USBC § 116.1)",
+   "fee": "Zoning inspection: $25 (final)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "paraphrase": null,
+   "capture": "20260720023202",
+   "source": "https://www.albemarle.org/government/community-development/request/inspection",
+   "quote_sha256": "356d53d2b257edff65471fa2de0c881892f19f0dd0bc998f9e03d99c8f93f1a4",
+   "quote_words": 18
+  },
+  {
+   "id": "s17",
+   "step": "Ask for a refund if the project is cancelled",
+   "who": "Owner; Building Official",
+   "how": "Send a written refund request to the Building Official (the County publishes a Refund Request Form). If an application is withdrawn or voided after plan review but before work starts, the refund is the fee minus plan review and administration costs, at most 80 percent. If an issued permit expires, is abandoned or revoked, or the work stops, the refund matches the share of work not done, minus plan review, administrative fees and penalties (at least 20 percent of the fee is kept). Code modification request fees are not refunded.",
+   "deadline": "Within six months after the withdrawal, voiding, expiry, abandonment, revocation or stopping of work (County Code § 5-209(A))",
+   "fee": null,
+   "form": "f11",
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "paraphrase": null,
+   "capture": "20260720023202",
+   "source": "https://www.albemarle.org/government/community-development/request/inspection",
+   "quote_sha256": "d0613d2b3dd2b301b78178927404b544e17ef8c83e206ad3e376be5e7a4d6f14",
+   "quote_words": 20
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Civic Access online application (building permit types and electrical, mechanical and plumbing sub-permits; registration required)",
+   "number": null,
+   "url": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/home",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Residential Permit Application Checklist (Minimum Information for Application Submittal), modified 6-4-25",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/10102/638846408214100000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f3",
+   "title": "Affidavit Not a Contractor (owner's written statement of exemption; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/2672/637626294704970000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "Building Permit Information Guide (not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24246/638810134465830000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f5",
+   "title": "How to Apply for an Application (Civic Access how-to)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/25073/638723524115670000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f6",
+   "title": "How to Schedule an Inspection from Your Dashboard (Civic Access how-to)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/25076/638723524119570000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f7",
+   "title": "Residential HVAC Certification Form (one per system)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16050/638064527987030000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f8",
+   "title": "Duct Leakage Testing Affidavit (1/2023)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16048/638096246644370000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f9",
+   "title": "Building Envelope Leakage (Blower Door) Testing Form",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16046/638064528180000000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f10",
+   "title": "Permit Extension Request Form (not read; the forms library also lists Building Permit Extension Instructions)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/27108/638908614765470000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f11",
+   "title": "Refund Request Form (not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/27745/639046880547170000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f12",
+   "title": "Quick Reference Guide for Inspections (not read; the forms library lists two versions)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/29784/639129573591100000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f13",
+   "title": "Residential Building Inspections (forms library document; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/29014/639059722671800000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f14",
+   "title": "Residential Deck Application Checklist (not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/7081/638791881011130000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f15",
+   "title": "Exemption of Farm Buildings or Structures Form (not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24035/638636304797170000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f16",
+   "title": "Special Inspections Report Packet (when special inspections are required; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/6804/637461237750830000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f17",
+   "title": "Land Disturbance Permit Requirements for Detached Single-Family Home Permits (not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26813/638869555542670000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f18",
+   "title": "Application for Administrative Appeal (State Building Code Technical Review Board, DHCD)",
+   "number": null,
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f19",
+   "title": "Stormwater Pollution Prevention Plan (SWPPP), Single Family Residential in a Common Plan of Development (linked from the Residential Building Permits page; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/2662",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f20",
+   "title": "Farm Building or Structure Application Checklist (forms library; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/5583/638791796594130000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f21",
+   "title": "Setbacks and Plats: What is Required for Permit Review (linked from Application Requirements; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/28625/639033706674630000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f22",
+   "title": "Building Permit Extension Instructions (forms library; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/29769/639137649668570000",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "New single-family dwelling, less than 1,500 sq. ft.",
+   "amount": "$500",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "4be93298989533af40d5fd06bd35609eef08a1fdc58958df469708abd34630eb",
+   "quote_words": 10
+  },
+  {
+   "item": "New single-family dwelling, 1,501 to 2,500 sq. ft.",
+   "amount": "$1,000",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "e557da5da33e6636cbb7e2fc253992c8f19431bdb4f54d3f64b4afa565122959",
+   "quote_words": 10
+  },
+  {
+   "item": "New single-family dwelling, 2,501 to 3,500 sq. ft.",
+   "amount": "$1,500",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "3f1f3363dafca24a3d28527c8a67a065274650aaf9f2e20580daa657fac2496d",
+   "quote_words": 10
+  },
+  {
+   "item": "New single-family dwelling, 3,501 to 4,500 sq. ft.",
+   "amount": "$2,000",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "8c99cc840d744d6c78adffe18c4665d708bbdaf8ba6fa893e2f03a9ba35eb1e7",
+   "quote_words": 10
+  },
+  {
+   "item": "New single-family dwelling, 4,501 to 7,500 sq. ft.",
+   "amount": "$3,000",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "2aaa5bb0546bb5e26fa27d9b030c039ccdce5066cd7c9c812e27b9952e1f215a",
+   "quote_words": 10
+  },
+  {
+   "item": "New single-family dwelling, greater than 7,500 sq. ft.",
+   "amount": "$4,000",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "04e42638f88f37e602da756a98df78ee6c9e10c4d42970cabf276c645f46f917",
+   "quote_words": 10
+  },
+  {
+   "item": "Building alterations, additions and repairs (all use groups)",
+   "amount": "$0.20 per sq. ft.; minimum fee $90.00",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "6cee0803da81f8340624aff6373fa114b2b2448b81323629405734ee0f4d2e53",
+   "quote_words": 9
+  },
+  {
+   "item": "Residential accessory structure (attached or detached garage, shed, deck or porch 10 sq. ft. or larger)",
+   "amount": "$0.18 per square foot of gross finished square footage; minimum $35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "9aa2aab584edb5bb739e15e84c0dfc792993981365087757692a4c6864e8be65",
+   "quote_words": 18
+  },
+  {
+   "item": "Residential plan review (building; the electrical, mechanical and plumbing rows list the same rate)",
+   "amount": "$0.05 per sq. ft.; minimum fee $10",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "80e838a832503d04e8b9bcf496f7d8deae1b5af16241fe9de3acb47e2700749c",
+   "quote_words": 5
+  },
+  {
+   "item": "Residential swimming pool, hot tub or spa (also tents)",
+   "amount": "$60",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "67a21b73912cc216e70dab67186aba9dcba374c8557f06ea31581cd09aaffffa",
+   "quote_words": 11
+  },
+  {
+   "item": "Mobile or prefabricated home (building)",
+   "amount": "$55",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "8c549156458f0d40eebeb7a446ac445c0a0f5a19d5e26350b68fdb3b4f2d8fab",
+   "quote_words": 4
+  },
+  {
+   "item": "Demolition permit",
+   "amount": "$110",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "2b829680319f27fac8c7c49fe468798b4680e1c7adf71fe678527ebc2ceedf57",
+   "quote_words": 4
+  },
+  {
+   "item": "Elevators, escalators and lifts (building)",
+   "amount": "$285",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "fcf1bc70ab2f6c1bd2e8a1ae5cea8322aedf7589b30f83a62db3ed0274f328ca",
+   "quote_words": 6
+  },
+  {
+   "item": "Electrical additions, alterations and repairs",
+   "amount": "$0.04 per sq. ft.; minimum fee $90",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "quote": "Electric- Additions/Alterations/Repairs",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees"
+  },
+  {
+   "item": "Electrical: residential accessory structure, service change, pool, hot tub or spa, mobile or prefabricated home (bonding and wiring separate fees)",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "d7d457fe89e23bc490fc1ac68a526ab49a3770bdd466dfddaf9fb85964b2d79a",
+   "quote_words": 23
+  },
+  {
+   "item": "Electrical temporary service",
+   "amount": "$110",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "6020da439cc9f85ab738d0b26d19a0fba06bf8b28bbfebb5c9f4f8aeaaa1051b",
+   "quote_words": 4
+  },
+  {
+   "item": "Electrical early service",
+   "amount": "$70",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "d4a945fca0deb8338b13cbb6ea688d47e21a02cc57e48ab27f07874e4895fe6e",
+   "quote_words": 4
+  },
+  {
+   "item": "Mechanical additions, alterations and repairs",
+   "amount": "$0.04 per sq. ft.; minimum fee $90",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "4011801a502e2c1d65b65eb53a48910d5184bb49d4d14961af40a28480f46652",
+   "quote_words": 3
+  },
+  {
+   "item": "Mechanical: furnace, wood stove or gas log system",
+   "amount": "$75",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "1219180e65cf1ca8b290771ece68959cb3df7a8daa857c83b019d985e281a530",
+   "quote_words": 5
+  },
+  {
+   "item": "Mechanical: gas or oil lines",
+   "amount": "$40",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "468e0cf7e1111752a81287f630873e0fff1eb8d37651913dd858c403d0e773d4",
+   "quote_words": 4
+  },
+  {
+   "item": "Mechanical: mobile or prefabricated home (the same row covers hood suppression systems)",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "856ccb10ff7d47c42b3df69d4f1d56e56eb0486bbe25a5caad517108f0cd24b7",
+   "quote_words": 7
+  },
+  {
+   "item": "Plumbing additions, alterations and repairs",
+   "amount": "$10.00 per fixture; minimum fee $90",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "44dd9a2f2e8aa1b76d8f6f1695e7252ab8184d85fa0e5195c6c7f86b7867860d",
+   "quote_words": 3
+  },
+  {
+   "item": "Plumbing: residential accessory structures",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "3bf9a288f648da861f6ecef110e749185d3c999d5116c268e740659d7ba31037",
+   "quote_words": 5
+  },
+  {
+   "item": "Plumbing: mobile or prefabricated home",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "bbf66014e8fd833ce8223b6dd69250f0aa414148ac371896b7cc9cbddc1c5fa2",
+   "quote_words": 4
+  },
+  {
+   "item": "Plumbing: water line (unless included in a permit)",
+   "amount": "$30",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "040dd3192335ae6cade7a8e107dcbecc97799090db65f9ef70195bc74f86901c",
+   "quote_words": 14
+  },
+  {
+   "item": "Plumbing: sewer lateral (unless included in a permit)",
+   "amount": "$30",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "ed4bf3d4fc06cc05003e11b5e23e929e6b8fbd280aca369dc6a7670c17ece2f5",
+   "quote_words": 14
+  },
+  {
+   "item": "Permits and plan amendments",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "52801c66746ecb857f83e2a693364db77dd0cff4a0eeae12407b3cf4f83bce5f",
+   "quote_words": 6
+  },
+  {
+   "item": "Change of building occupancy classification",
+   "amount": "$175",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "c63aa3365e822ab577eb867e817a89aaef96f4d9a13a39fc1939f06a37ec217a",
+   "quote_words": 7
+  },
+  {
+   "item": "Addition or change in contractor after the permit is issued",
+   "amount": "$35",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "911520981a2e2b5f9263890cceac255fc21b685ebd9880ff71810bee9f6399f3",
+   "quote_words": 11
+  },
+  {
+   "item": "Permit extension request",
+   "amount": "$75",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "8f5239c6490aa77adbe23b2abbef65b9509aad1ebd3c47c4b0b027e462814e37",
+   "quote_words": 5
+  },
+  {
+   "item": "Code modification request",
+   "amount": "$250 (no refund)",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "78ed1169a1853c992d914c20587fd60be48679adf66bad78bc0a9806978554cc",
+   "quote_words": 8
+  },
+  {
+   "item": "Administrative fee for working without a permit",
+   "amount": "$250",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "c00374baeb96183c9fb68bc75bdbf0f524ea37913d9dee001de6c26b5495e062",
+   "quote_words": 9
+  },
+  {
+   "item": "Building re-inspection (each inspection after the second inspection of the same work)",
+   "amount": "$100",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "f3a15abb0ba3e58b59f23ec5803ffdb4f8f93666f3e5fb6b7beb1895bf133bfa",
+   "quote_words": 16
+  },
+  {
+   "item": "Zoning inspection (preliminary or final)",
+   "amount": "$25 each",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "3e4b09aaac4d45c5c898f3974c46544de79a8f654240d704f8193893a5bc4cc8",
+   "quote_words": 7
+  },
+  {
+   "item": "Land disturbance for a sole single-family detached dwelling (VESMP, under 5 acres disturbed), where required",
+   "amount": "$235 (plan review, land disturbance permit and first-year annual maintenance, or each amendment); $235 annual maintenance from the second year",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "6e6b6ee2cbe8873ea75ea0c124c4d54b1b8d64dbdc96d1ed8090e9a98d4aaf5f",
+   "quote_words": 30
+  },
+  {
+   "item": "Appeal to the Board of Building Appeals (local board of Building Code appeals)",
+   "amount": "$350",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "1b9cc69b2997a73f8c900e8d3d644393f1bd904ca03218f38fa88bdf25186310",
+   "quote_words": 6
+  },
+  {
+   "item": "Appeal to the Board of Zoning Appeals (zoning decisions)",
+   "amount": "$350",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "5568499bd496336923abf9792a5271154b73ad1d51187ff0dbe99fb6ccbb4806",
+   "quote_words": 6
+  },
+  {
+   "item": "Technology surcharge on each fee",
+   "amount": "4%",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "b8d579e24f720e45cc66452832b96ffbd58238915cead2d2de76e79b39b7bdda",
+   "quote_words": 12
+  },
+  {
+   "item": "State Building Code Academy levy on permit fees",
+   "amount": "2.0% of permit fees (not shown as a separate line on the County fee page; see caveats)",
+   "basis": "13VAC5-63-70 (USBC § 107.2); Va. Code § 36-137(7)",
+   "quote": "the local building department shall collect a 2.0% levy of fees charged for permits issued under this code and transmit it quarterly to DHCD to support training programs of the Virginia Building Code Academy"
+  },
+  {
+   "item": "Fee schedule change",
+   "amount": "Revised fees adopted April 22, 2026 take effect January 1, 2027 (new amounts not read)",
+   "basis": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "quote": "If adopted, the revised fees would take effect January 1, 2027."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Community Development Department (Building Inspections and Application Services); walk-in lobby hours Monday - Friday, 8:00AM - 5:00PM",
+   "label": "Albemarle County Community Development Department",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "address",
+   "value": "401 McIntire Road, North Wing, Charlottesville, VA 22902",
+   "label": "Albemarle County Community Development Department",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5832",
+   "label": "Albemarle County Community Development Department",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "email",
+   "value": "applicationservices@albemarle.org",
+   "label": "Community Development Application Services (which permit or checklist applies, applications and inspection requests)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "email",
+   "value": "cddinquiry@albemarle.org",
+   "label": "Community Development Department (general inquiries)",
+   "url": "https://www.albemarle.org/government/community-development/forms-library"
+  },
+  {
+   "kind": "portal",
+   "value": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/home",
+   "label": "Civic Access portal (applications, tracking, reviewer comments and inspection requests; registration required)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits"
+  },
+  {
+   "kind": "portal",
+   "value": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/payinvoice",
+   "label": "Civic Access payment portal (pay by invoice number)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "page",
+   "value": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/inspection/todaysinspections",
+   "label": "Civic Access daily inspection report",
+   "url": "https://www.albemarle.org/government/community-development/request/inspection"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "label": "Residential Building Permits (application types, required documents and resources)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits"
+  },
+  {
+   "kind": "page",
+   "value": "https://lfweb.albemarle.org/WebLink/Browse.aspx?id=107166&dbid=0&repo=CountyofAlbemarle",
+   "label": "Community Development Laserfiche document center (project information)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/community-development/boards-and-commissions/board-of-building-code-appeals",
+   "label": "Albemarle County Board of Building Code Appeals",
+   "url": "https://www.albemarle.org/government/community-development/boards-and-commissions/board-of-building-code-appeals"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5822",
+   "label": "Albemarle County main number (County website footer)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.dpor.virginia.gov/LicenseLookup",
+   "label": "Virginia Department of Professional and Occupational Regulation, contractor license lookup (linked from the County's Building Permits page)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+  },
+  {
+   "kind": "address",
+   "value": "State Building Codes Office and Office of the State Technical Review Board, Department of Housing and Community Development, Main Street Centre, 600 E. Main Street, Suite 300, Richmond, Virginia 23219",
+   "label": "State Building Code Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 371-7150",
+   "label": "State Building Codes Office and Office of the State Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf"
+  },
+  {
+   "kind": "email",
+   "value": "sbco@dhcd.virginia.gov",
+   "label": "DHCD State Building Codes Office (appeal applications, interpretation requests, informal staff opinions)",
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb",
+   "label": "State Building Code Technical Review Board (DHCD)",
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "The County cannot make a requested inspection within two working days of the request or an agreed date",
+   "next": "A third-party inspector approved under the building official's written policy; the building official must review the report and approve it unless there is cause to reject it",
+   "type": "referral",
+   "deadline": "A rejected report must be explained in writing within two working days of receipt",
+   "basis": "13VAC5-63-130 (USBC §§ 113.7, 113.7.1)",
+   "quote": "Failure to approve a report shall be in writing within two working days of receiving it stating the reason for the rejection."
+  },
+  {
+   "trigger": "Permit denied, or any other decision applying the building code (refused modification, failed inspection or notice of defective work, stop work order, permit revocation, refused certificate of occupancy)",
+   "next": "Albemarle County Board of Building Code Appeals (the local board of Building Code appeals, LBBCA); the written appeal is filed with the code official (building official) and the fee paid",
+   "type": "internal appeal",
+   "deadline": "Written application within 30 calendar days of receipt of the decision (USBC § 119.5; the County's board page says 30 calendar days of the decision); the board meets within 30 calendar days (up to 45 with regular monthly meetings; it meets the third Wednesday of each month when appeals are pending) and must give notice of its decision within 60 days of filing",
+   "basis": "Albemarle County Board of Building Code Appeals page (quote), https://www.albemarle.org/government/community-development/boards-and-commissions/board-of-building-code-appeals; Va. Code § 36-105(A); 13VAC5-63-190 (USBC §§ 119.5, 119.6); Albemarle County Code § 5-105; Board of Building Code Appeals Bylaws 2-1, 3-1 and 3-7; fee: Community Development fee schedule ($350)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/boards-and-commissions/board-of-building-code-appeals",
+   "capture": null,
+   "quote_sha256": "a816a5749fbe892dc8380d5ff0c9dafdb05b5bc391a6ee96e50cca20b7c486a0",
+   "quote_words": 24
+  },
+  {
+   "trigger": "Disagree with the local board's decision",
+   "next": "State Building Code Technical Review Board (Department of Housing and Community Development), using DHCD's Application for Administrative Appeal with copies of the building official's decision and the local board's decision",
+   "type": "external administrative review",
+   "deadline": "21 calendar days after receipt of the local board's decision; DHCD treats the certificate-of-service date as the filing date only if the application arrives within five working days of it",
+   "basis": "Va. Code §§ 36-105(A), 36-114; 13VAC5-63-190 (USBC § 119.8)",
+   "quote": "The application for appeal shall be made to the State Review Board within 21 calendar days of the receipt of the decision to be appealed."
+  },
+  {
+   "trigger": "Disagree with the State Review Board's decision",
+   "next": "Circuit court, under the Administrative Process Act (notice of appeal filed with the Secretary of the Review Board)",
+   "type": "judicial review",
+   "deadline": "30 days from service of the decision (Rule 2A:2), plus 3 days if served by mail",
+   "basis": "Va. Code §§ 36-114, 2.2-4026; 13VAC5-63-190 (USBC § 119.9)",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia"
+  },
+  {
+   "trigger": "Zoning review or zoning inspection refused (for example a setback, use or location decision by the zoning administrator)",
+   "next": "Albemarle County Board of Zoning Appeals (notice of appeal filed with the zoning administrator and the board)",
+   "type": "internal appeal",
+   "deadline": "30 days after the decision",
+   "basis": "Va. Code § 15.2-2311(A); fee: Community Development fee schedule ($350)",
+   "quote": "The appeal shall be taken within 30 days after the decision appealed from by filing with the zoning administrator, and with the board, a notice of appeal specifying the grounds thereof."
+  },
+  {
+   "trigger": "A question about what the building code means (no appeal pending)",
+   "next": "Interpretation by the State Building Code Technical Review Board, requested by code enforcement staff with the building official's approval; DHCD's State Building Codes Office also gives informal staff opinions",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 36-118",
+   "quote": "The Review Board shall interpret the provisions of the Building Code, and the Fire Prevention Code"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The live pages may have changed since; confirm on them before you act. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "Legistar: matter titles and staff-report text come from the County's Legistar records (webapi.legistar.com). The current text of County Code Chapter 1, Article 5 (§ 1-501, Building Fees) and of the amended Chapter 5 (the adopted 2023 Chapter 1 and Chapter 5 ordinances, the 2024 clarifying ordinance and the 2026 fee ordinance) has not been checked.",
+  "Fees: amounts come from the County's Community Development Fees page (capture of 2026-08-20). The Board of Supervisors adopted an amended fee schedule (County Code Chapter 1, Article 5) on April 22, 2026; the staff report says the revised fees take effect January 1, 2027. The new amounts were not read. Check the live fee page for permits invoiced on or after January 1, 2027.",
+  "County Code: the County-hosted Chapter 5 PDF is Supp. #39 (7-18). Its fee sections (§§ 5-200 to 5-208) show older amounts (for example $0.53 per square foot for new dwellings) and were superseded when the fees were consolidated into Chapter 1, Article 5 (adopted December 6, 2023, as the staff report for matter 24-114 records; that item proposed July 1, 2024 as the effective date, and its Legistar API record shows only a public hearing, so the effective date was not confirmed). Whether § 5-209 (refunds) and Article 1 were changed by Ordinance No. 23-5(1) was not determined; the County's Inspection page (2026-07) still points to § 5-209. Section 5-200(C) of the 2018 text says fees are paid when an application is filed, but the current Building Permits page says payment follows an invoice; the current practice is shown in step s10. The County Code on Municode was not accessed (its publisher's terms forbid automated access).",
+  "Trade fees for new homes: the 2018 County Code included electrical, plumbing and mechanical fees for new one- and two-family dwellings in the building permit fee. The current fee page does not say whether the tiered New SF Residential fee covers the trade sub-permits, or whether the residential plan review rows ($0.05 per sq. ft.) are charged on top. Ask Application Services for an estimate.",
+  "State levy: USBC § 107.2 requires a 2% levy on permit fees for the Virginia Building Code Academy unless the locality runs an accredited academy. The County fee page does not list it as a line; it mentions a 'State Permit Issuance Fee' only as an exclusion from the 4% technology surcharge. How the levy appears on Albemarle invoices was not confirmed.",
+  "'HD approval (if applicable)' in the County's table of required documents is not defined on the page. Other County pages refer to Health Department approval for properties on a well and septic system, so it is read here as Health Department approval; this is an inference.",
+  "The County's Residential Building Permits page still lists the ACSA Building Permit Pre-Application Form, but the Albemarle County Service Authority's own page (Internet Archive copy of 2023-11-29; serviceauthority.org also refuses automated requests) says ACSA is no longer reviewing pre-applications and reviews building permits within the County's process. The ACSA form is therefore not listed as a step.",
+  "Documents listed but not read (no Internet Archive copy, and the County site blocks automated access): Affidavit Not a Contractor, Building Permit Information Guide, Permit Extension Request Form, Building Permit Extension Instructions, Refund Request Form, Quick Reference Guide for Inspections, Residential Building Inspections, Residential Deck Application Checklist, Exemption of Farm Buildings or Structures Form, Special Inspections Report Packet, Land Disturbance Permit Requirements, Setbacks and Plats: What is Required for Permit Review, and the residential basement, pool and spa, and photovoltaic checklists. Their contents (and whether they are fillable) are not described.",
+  "The Civic Access portal (a Tyler EnerGov web app) was not opened; no account was created and nothing was submitted. Portal steps come from the County's how-to PDFs, which may not match the current screens.",
+  "Paper or mailed applications: USBC § 108.3 says no applicant can be required to appear in person, but requires processing by mail only where the jurisdiction does not offer an online permit option (Albemarle offers Civic Access). The County accepts mailed checks, but the residential pages describe only online filing in Civic Access. Whether the County accepts paper residential applications by mail was not found; ask Application Services.",
+  "The County's list of work that does not need a permit (Building Regulations and Code page) is a summary and differs in wording from the full USBC § 108.2 list; for example the County says retaining walls under three feet and sheds under 256 square feet need zoning approval. The full state list is in 13VAC5-63-80 (USBC § 108.2). Albemarle has no locally designated historic district permit trigger in the sources read; the flood hazard exception still applies.",
+  "Inspection scheduling: the 12:00 noon next-day deadline has applied since January 1, 2021. The Zoning Information Packet (revised 10/18/2018, written for properties with a site plan) gives an older inspections hotline and a 4 pm deadline, and is superseded by the portal; it is not used. The Building Permits page's daily inspection report link is malformed ('http://https://...'); the Inspection page has the working address.",
+  "The Inspection page says inspector cell phone numbers are provided when permits are issued. Privacy: those numbers, and the staff names and personal mailboxes on the Board of Building Code Appeals page and staff directories, are not recorded. Only office lines, the Application Services and CDD inquiry role mailboxes, portals and pages are listed.",
+  "Third-party inspections: USBC § 113.7.1 requires each building official to have a written third-party inspector policy. Albemarle's policy was not found in the pages read, so the third-party route in the escalation list rests on the state rule only.",
+  "No published local turnaround time for plan review or permit issuance was found. State rules require review 'within a reasonable time' and issuance 'as soon as practicable'. No source read says whether a long delay can be appealed to the local board.",
+  "The sources do not say whether Albemarle waives inspections for work under $2,500 (Va. Code § 36-105(B)), applies the optional three-year completion limit for new single-family dwellings (USBC § 110.7), or withholds permits from owners with delinquent County obligations (Va. Code § 36-105(D)(1)).",
+  "Code editions: the County page links the 2021 Virginia codes, but the blower door form certifies compliance with the 2018 Virginia Residential Code (the HVAC form cites the Virginia Residential Code with no edition, and the duct affidavit cites N1103.3.3 (R403.3.3) while USBC § 113.7 now refers to N1103.3.5 and R403.3.5), and the residential page says energy compliance for existing buildings follows the 2018 Virginia Energy Conservation Code. Which edition applies to a given permit was not confirmed.",
+  "Local appeal form: no County application form for the Board of Building Code Appeals was found. The bylaws say appeals are filed with the code official with the fee paid. The board page (2026-04 capture) says meetings are held virtually until further notice and lists meeting materials only through 2022. Fire code (SFPC) decisions have a 14-day appeal period, unlike the 30 days for building code decisions.",
+  "Zoning-only permits for small sheds, low retaining walls and farm buildings: the fee that applies (the $25 zoning inspection, a zoning clearance, or another row) is not stated on the pages read.",
+  "The Residential Building Permits page (2026-06 capture) has an empty link beside Electrical Sub-Permits to an outside service (app.oncamino.com). Its purpose was not determined and it is not used here.",
+  "Town of Scottsville: the County building department's role inside the town is not covered here (Va. Code § 36-105(A) lets small towns choose to enforce the code themselves).",
+  "The farm-building exemption (Va. Code § 36-99(B)) is listed because it was among the legal hints; it covers farm buildings, not dwellings. The County requires an exemption form or affidavit and a zoning permit for exempt farm buildings.",
+  "The step s12 quote copies the County page exactly, including '12:00noon' without a space.",
+  "HVAC paperwork: the Residential Building Permits page (2026-06 capture) says the certification form must be submitted before the rough-in inspection, and the 6-4-25 checklist asks for it, but the same page also says permits issued after 1/1/23 'will not be required to submit the certification form', which reads like a wording error (perhaps 'before'). Step s14 follows the specific timing instructions and the checklist; confirm with Application Services.",
+  "Not every County requirement for special cases was read: the Accessory Apartment Form, the utility cut-off letter for demolitions and the SWPPP form are named on the Residential Building Permits page but their contents were not read."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/residential-building-permits",
+   "title": "Residential Building Permits | Albemarle County, VA (Internet Archive copy of 12 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "title": "Building Permits | Albemarle County, VA (Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "title": "Application Requirements (Know Before You Apply) | Albemarle County, VA (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/building-code",
+   "title": "Building Regulations and Code | Albemarle County, VA (Internet Archive copy of 16 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/request/inspection",
+   "title": "Inspection | Albemarle County, VA (Internet Archive copy of 20 July 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "title": "Community Development Fees | Albemarle County, VA (Internet Archive copy of 20 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/boards-and-commissions/board-of-building-code-appeals",
+   "title": "Board of Building Code Appeals | Albemarle County, VA (Internet Archive copy of 17 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/6234/637423390222270000",
+   "title": "Albemarle County Board of Building Code Appeals Bylaws, adopted October 21, 2020 (PDF; Internet Archive copy of 9 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/262/637202442756370000",
+   "title": "Albemarle County Code, Chapter 5, Building Regulations (PDF, Supp. #39, 7-18; Internet Archive copy of 17 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/10102/638846408214100000",
+   "title": "Residential Permit Application Checklist, modified 6-4-25 (PDF; Internet Archive copy of 7 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/25073/638723524115670000",
+   "title": "How to Apply for an Application (Civic Access how-to, PDF; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/25076/638723524119570000",
+   "title": "How to Schedule an Inspection from Your Dashboard (Civic Access how-to, PDF; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16050/638064527987030000",
+   "title": "Residential HVAC Certification Form (PDF; Internet Archive copy of 28 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16048/638096246644370000",
+   "title": "Duct Leakage Testing Affidavit (PDF; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/16046/638064528180000000",
+   "title": "Building Envelope Leakage (Blower Door) Testing Form (PDF; Internet Archive copy of 11 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/320/637551114400530000",
+   "title": "Zoning Information Packet, revised 10/18/2018 (PDF, for properties with a site plan; Internet Archive copy of 9 March 2026; not quoted)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/forms-library",
+   "title": "Community Development Forms Library, with the Building & Inspections, Applications & Checklists and Affidavits folders (Internet Archive copies of 2026-08-14, 2026-04-21 and 2026-05-18)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions | Albemarle County, VA (Internet Archive copy of 20 July 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://serviceauthority.org/building-permit-pre-application-form/",
+   "title": "ACSA Building Permit Pre-Application Form (Albemarle County Service Authority; Internet Archive copy of 29 November 2023)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7614",
+   "title": "Albemarle County Legistar API: matter 23-451, CDD Fee Restructuring (title)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7668/texts/7793",
+   "title": "Albemarle County Legistar API: matter 24-114, Clarifying the Effective Date of the Community Development Fee Restructuring (staff report text)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8536/texts/8668",
+   "title": "Albemarle County Legistar API: matter 26-220, Public Hearing to Amend County Code Chapter 1, Article 5 (Fee Schedule) (staff report text)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "title": "Albemarle County Legistar API: matter 26-256, adoption of the FY 27 budget and the Chapter 1, Article 5 fee ordinance, April 22, 2026 (staff report text; history shows adopted)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section60/",
+   "title": "13VAC5-63-60. Section 106 Powers and duties of the building official (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "title": "13VAC5-63-70. Section 107 Fees (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "title": "13VAC5-63-80. Section 108 Application for permit (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section90/",
+   "title": "13VAC5-63-90. Section 109 Construction documents (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "title": "13VAC5-63-100. Section 110 Permits (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "title": "13VAC5-63-130. Section 113 Inspections (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "title": "13VAC5-63-160. Section 116 Certificates of occupancy (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "title": "13VAC5-63-190. Section 119 Appeals (Virginia Administrative Code)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb",
+   "title": "State Building Code Technical Review Board (SBCTRB) (DHCD)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf",
+   "title": "Application for Administrative Appeal (DHCD, State Technical Review Board) (PDF)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-97/",
+   "title": "Va. Code § 36-97",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-98/",
+   "title": "Va. Code § 36-98",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-98.01/",
+   "title": "Va. Code § 36-98.01",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-99/",
+   "title": "Va. Code § 36-99",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-99.7/",
+   "title": "Va. Code § 36-99.7",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "title": "Va. Code § 36-105",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-106/",
+   "title": "Va. Code § 36-106",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "title": "Va. Code § 36-114",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-118/",
+   "title": "Va. Code § 36-118",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-137/",
+   "title": "Va. Code § 36-137",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/43-4.01/",
+   "title": "Va. Code § 43-4.01",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1101/",
+   "title": "Va. Code § 54.1-1101",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "title": "Va. Code § 54.1-1111",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/32.1-176.5/",
+   "title": "Va. Code § 32.1-176.5",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "title": "Va. Code § 15.2-2311",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "title": "Va. Code § 2.2-4026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8572/histories",
+   "title": "Albemarle County Legistar API: matter 26-256 action history (April 22, 2026: the Board adopted the Chapter 1, Article 5 (Fee Schedule) ordinance as presented in Attachment B)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7668",
+   "title": "Albemarle County Legistar API: matter 24-114 (status Public Hearing, January 10, 2024)",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 134,
+  "quotes_confirmed": 134,
+  "removed": [],
+  "corrections": [
+   "Escalation rung 2 (local Board of Building Code Appeals): the quote ('can be appealed by any person aggrieved ...') is the County board page's wording, not text of USBC § 119 or the other sources the basis listed; the board page URL is now in the basis. The deadline now runs from receipt of the decision, as USBC § 119.5 says ('within 30 calendar days of the receipt of the decision being appealed'); the County page's shorter wording is noted.",
+   "s11: USBC § 110.5 requires the street or lot number in the posting to be readable from a public way, not the permit itself; reworded, and added that one set of approved construction documents stays at the site (USBC § 109.5). Two legal_basis quotes added (§§ 109.5, 110.5), both confirmed on law.lis.virginia.gov.",
+   "s7: said replacing a furnace always needs a trade permit; USBC § 108.2 item 14.4 exempts replacing appliances not fueled by gas or oil in one- and two-family homes, so the example now says a gas or oil furnace and points to the exemption.",
+   "s2: the County page says properties on a well and septic system 'may require' Health Department approval; the step had said it is required. Added the state wording of the shed (building area does not exceed 256 sq. ft.) and retaining-wall (less than three feet of unbalanced fill) exemptions, with a new confirmed legal_basis quote for item 7, and the limits of the farm-building exemption in Va. Code § 36-99(B) (licensed farm restaurants; flood-proofing and mudslide rules). Added the Farm Building or Structure Application Checklist (f20).",
+   "s4: Va. Code § 54.1-1111(A) requires proof that the local taxes or license fees needed to bid on or contract for the work are paid; the step had said an Albemarle County business license specifically. Reworded to the statute; the County link is kept.",
+   "s1: added the Building Permits page's other permit triggers (projects needing a new certificate of occupancy; lot line changes affecting an existing building) and its list of projects that generally need no building permit (patios, most fences, flagpoles, tents under 900 sq. ft.).",
+   "s6: added the per-type required documents from the Residential Building Permits table (utility cut-off letter for demolition; Accessory Apartment Form and Critical Resource Map; affidavit for farm buildings; manufacturer specs for solar; none for pools and trade sub-permits).",
+   "s3 and s15: added the SWPPP form for a single-family home in a common plan of development, the Setbacks and Plats guide and the Building Permit Extension Instructions, as forms f19, f21 and f22 (listed on County pages; contents not read).",
+   "Fees: the sewer lateral is its own $30 row (the water-line entry said 'water line or sewer lateral', '$30 each'); split into two entries. Added four residential rows from the fee page capture of 2026-08-20: plumbing and mechanical for mobile or prefabricated homes ($35 each), elevators, escalators and lifts ($285), change of building occupancy classification ($175). All amounts and row labels confirmed.",
+   "legal_basis item 23-451: the Legistar record for matter 7614 shows only the December 6, 2023 public hearing (no passed date); the adoption that day is recorded in the staff report for matter 24-114. Citation reworded to say so.",
+   "Caveats: the July 1, 2024 effective date for the fee restructuring was only proposed by matter 24-114 (its API status is Public Hearing); the code-editions caveat said the HVAC form cites 2018 sections, but only the blower door form cites the 2018 Virginia Residential Code; the paper-application caveat now notes that USBC § 108.3 requires processing by mail only where no online permit option is offered. New caveats on the Residential Building Permits page's contradictory HVAC certification sentence and on documents named but not read.",
+   "Sources: added the Legistar action history for matter 26-256 (the Board adopted the Chapter 1, Article 5 fee ordinance as presented on April 22, 2026) and the matter 24-114 record."
+  ],
+  "open_issues": [
+   "www.albemarle.org still returns HTTP 403 to this client (robots.txt included; re-tested 2026-10-11). Every County page and PDF quote was re-checked word for word against the Internet Archive copies the file cites; the Archive index shows these are the newest captures (Residential Building Permits 2026-06-12, Building Permits 2026-08-14, Application Requirements 2026-08-13, Building Regulations and Code 2026-06-16, Inspection 2026-07-20, Fees 2026-08-20, Board of Building Code Appeals 2026-04-17). Later changes to the live pages would be missed.",
+   "The fee ordinance adopted April 22, 2026 takes effect January 1, 2027 per the staff report; its amounts were not read, so the fee entries hold only through December 31, 2026.",
+   "The current codified County Code Chapter 5 (Municode, under its terms) and the 2023 Ordinance No. 23-5(1) (an attachment on albemarle.legistar1.com, which robots.txt disallows) were not read. Steps s17 and s3 rest on the 2018 County-hosted Chapter 5 PDF that the County's Inspection page (2026-07) still links, and on that page's statement that refunds follow § 5-209.",
+   "Whether the tiered New SF Residential fee includes the trade sub-permits, and whether the residential plan review rows are added on top, is not stated on the fee page; ask Application Services.",
+   "The Residential Building Permits page both says the HVAC certification form must be submitted before rough-in and that permits issued after 1/1/23 'will not be required to submit the certification form'; s14 follows the specific timing instructions and the 6-4-25 checklist.",
+   "Albemarle's written third-party inspector policy (USBC § 113.7.1) was not found; escalation rung 1 rests on the state rule.",
+   "Forms marked 'not read' (including the Affidavit Not a Contractor, Refund Request Form, Permit Extension Request Form and the new f19 to f22) were not opened; their contents and fillability are unknown.",
+   "Policy judgement for the user: the albemarle.org terms bar reposting site content without written permission; the file keeps County quotes short, as the other Albemarle files do."
+  ]
+ }
+}

@@ -308,7 +308,7 @@ used or published:
 | "105.2.6 displaces every exemption in the same way" | True of the text, but the model does not apply it to 105.2.2 (W1) |
 | NC (c)(1): re-decking at $40,000 or less needs no permit; new framing is a reading | Confirmed, live and in the index (W3 for duplexes) |
 | NC sheds not settled; § 143-138 mentions sheds only in (b4) | Confirmed: three occurrences, all inside (b4) |
-| Albemarle fixture: "Tool sheds and playhouses less than 256 square feet …" | Confirmed verbatim in `fixtures/places/va/discovery-albemarle.json`. The regulation says "does not exceed 256 square feet", so the two differ at exactly 256 |
+| Albemarle fixture: the county page puts the shed exemption at under 256 square feet | Confirmed verbatim in `fixtures/places/va/discovery-albemarle.json`. The regulation says "does not exceed 256 square feet", so the two differ at exactly 256 |
 | VA history note "Volume 40, Issue 9, eff. January 18, 2024"; the date is not in the index text | Confirmed live. "2024" occurs in neither 13VAC5-63-10, -30 nor -80 in the index |
 | Charlottesville fixture: "New permits since January 18, 2025 are under the 2021 …" | Confirmed verbatim |
 | Process ids `building_permit`, `building_permit_residential`, `residential_building_permit` | Confirmed in the three fixtures, with the legal-basis shapes the note describes (`legal_basis.state`; `{cite, url, source, note}`; `va_code` strings) |

@@ -1,114 +1,969 @@
 {
  "_about": "The questions people actually ask a state or a locality, for the coverage test (lexflow.ask.coverage; docs/coverage.md). topic is a lexflow.publish.schema VOCAB['topic'] slug; level says whether the answer lives in state law, local law, or either; needs lists the kinds of facts an adequate answer must carry: who (the body or office), steps, deadline, fee, form, where (how and where to file), appeal.",
- "kinds": ["who", "steps", "deadline", "fee", "form", "where", "appeal"],
+ "kinds": [
+  "who",
+  "steps",
+  "deadline",
+  "fee",
+  "form",
+  "where",
+  "appeal"
+ ],
  "questions": [
-  {"id": "public_records", "text": "How do I request public records from a government body, and how long does it have to respond?",
-   "topic": "public-records", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "fee", "appeal"],
-   "phrasings": ["I want to see a government document. How do I file a FOIA request?", "How long does a public body have to answer a records request?", "What can the government charge me for copies of public records?"]},
-  {"id": "foia_appeal", "text": "My public records request was denied or ignored. How do I appeal or enforce it?",
-   "topic": "public-records", "audience": "requester", "level": "either", "needs": ["who", "steps", "deadline", "appeal"],
-   "phrasings": ["The city refused my FOIA request. Who do I complain to?", "A records request was ignored past the deadline; what can I do?", "Can I take a public body to court over a denied records request?"]},
-  {"id": "police_incident_records", "text": "How do I get a copy of a police report or the records of a police incident I was involved in?",
-   "topic": "public-records", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "deadline", "appeal"],
-   "phrasings": ["Can I get the body-camera footage from my traffic stop?", "How do I request an incident report from the police department?", "Are criminal investigative files public records?"]},
-  {"id": "start_llc", "text": "How do I form a limited liability company, and what does it cost?",
-   "topic": "business", "audience": "business", "level": "state", "needs": ["who", "steps", "fee", "form", "where"],
-   "phrasings": ["What do I file to start an LLC?", "Who registers new companies and how much is the filing fee?", "Do I need a registered agent to form an LLC?"]},
-  {"id": "business_license", "text": "Do I need a local business licence to operate, and how do I get one?",
-   "topic": "business", "audience": "business", "level": "local", "needs": ["who", "steps", "fee", "where", "deadline"],
-   "phrasings": ["How do I get a business license from the city?", "What is the BPOL tax and when is it due?", "Who issues business licences in the county?"]},
-  {"id": "business_closure", "text": "I am closing my business. How do I dissolve the company and cancel its registration?",
-   "topic": "business", "audience": "business", "level": "state", "needs": ["who", "steps", "fee", "form"],
-   "phrasings": ["How do I dissolve an LLC?", "What do I file to cancel a company registration?", "Do I owe a fee to close my corporation?"]},
-  {"id": "nonprofit_formation", "text": "How do I form a nonprofit corporation?",
-   "topic": "business", "audience": "business", "level": "state", "needs": ["who", "steps", "fee", "form", "where"],
-   "phrasings": ["What do I file to start a nonprofit?", "How many directors does a nonstock corporation need?", "Who do I register a charity with?"]},
-  {"id": "procurement_bids", "text": "How do I bid on a government contract, and how do I protest an award?",
-   "topic": "business", "audience": "business", "level": "either", "needs": ["who", "steps", "deadline", "where", "appeal"],
-   "phrasings": ["Where are public contracts advertised and how are bids opened?", "How do I protest a contract award?", "What is the deadline to challenge a procurement decision?"]},
-  {"id": "short_term_rental", "text": "Can I rent my home as a short-term rental, and what do I have to register or pay?",
-   "topic": "business", "audience": "property-owner", "level": "either", "needs": ["who", "steps", "fee", "where"],
-   "phrasings": ["Do I need a permit to list my house on Airbnb?", "How do I register a short-term rental?", "What taxes apply to a homestay?"]},
-  {"id": "building_permit", "text": "Do I need a building permit for a home addition, and how do I get one?",
-   "topic": "building-and-zoning", "audience": "property-owner", "level": "either", "needs": ["who", "steps", "fee", "form", "where"],
-   "phrasings": ["How do I apply for a permit to build an addition on my house?", "Who issues building permits and what do they cost?", "Do I need a permit for a deck?"]},
-  {"id": "zoning_variance", "text": "How do I apply for a zoning variance, and who decides it?",
-   "topic": "building-and-zoning", "audience": "property-owner", "level": "either", "needs": ["who", "steps", "fee", "deadline", "appeal"],
-   "phrasings": ["My setback does not meet the zoning rules. How do I get a variance?", "Who hears variance applications?", "How do I appeal a board of zoning appeals decision?"]},
-  {"id": "noise_complaint", "text": "How do I complain about a noisy neighbour, and what can the locality do about it?",
-   "topic": "building-and-zoning", "audience": "resident", "level": "local", "needs": ["who", "steps", "where"],
-   "phrasings": ["Who enforces the noise ordinance?", "What hours does the noise rule cover?", "How do I report loud construction at night?"]},
-  {"id": "property_tax_appeal", "text": "How do I appeal my real estate assessment?",
-   "topic": "taxes", "audience": "property-owner", "level": "either", "needs": ["who", "steps", "deadline", "appeal", "where"],
-   "phrasings": ["My property assessment is too high. How do I challenge it?", "Who hears assessment appeals and by when must I file?", "Can I appeal an assessment to court?"]},
-  {"id": "property_tax_pay", "text": "When are property taxes due, and how do I pay them?",
-   "topic": "taxes", "audience": "property-owner", "level": "either", "needs": ["who", "deadline", "where", "fee"],
-   "phrasings": ["When is the real estate tax bill due?", "What is the penalty for paying property tax late?", "Who collects local taxes?"]},
-  {"id": "vehicle_registration", "text": "I moved here with a car. Who do I tell, and what do I have to pay?",
-   "topic": "taxes", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "fee", "where"],
-   "phrasings": ["How do I register my car after moving?", "Do I owe personal property tax on my vehicle?", "How long do I have to register a vehicle after moving in?"]},
-  {"id": "meals_tax", "text": "I run a restaurant. How do I collect, file and pay the meals tax?",
-   "topic": "taxes", "audience": "business", "level": "either", "needs": ["who", "steps", "deadline", "fee", "form"],
-   "phrasings": ["When is the meals tax return due?", "What is the local food and beverage tax rate?", "Who do I send the meals tax to?"]},
-  {"id": "voter_registration", "text": "How do I register to vote, and what is the deadline?",
-   "topic": "voting", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "form", "where"],
-   "phrasings": ["When is the last day to register before an election?", "Where do I register to vote?", "Can I register to vote online?"]},
-  {"id": "absentee_voting", "text": "How do I vote absentee or by mail?",
-   "topic": "voting", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "form"],
-   "phrasings": ["How do I apply for a mail ballot?", "When must an absentee ballot be received?", "Who do I send an absentee ballot application to?"]},
-  {"id": "dog_license", "text": "Does my dog need a licence, and how do I get one?",
-   "topic": "animals", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "form", "deadline"],
-   "phrasings": ["How much is a dog license?", "Where do I buy a dog tag?", "How soon after getting a puppy must it be licensed?"]},
-  {"id": "marriage_license", "text": "How do we get a marriage licence?",
-   "topic": "courts", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "where", "form"],
-   "phrasings": ["Who issues marriage licenses?", "How much does a marriage license cost?", "Is there a waiting period for a marriage license?"]},
-  {"id": "parking_ticket", "text": "I got a parking ticket. How do I pay it or contest it?",
-   "topic": "courts", "audience": "visitor", "level": "local", "needs": ["who", "steps", "deadline", "appeal", "fee"],
-   "phrasings": ["How do I fight a parking ticket?", "What happens if I do not pay a parking citation?", "Where do I pay a parking fine?"]},
-  {"id": "traffic_ticket", "text": "I got a traffic ticket. How do I pay it or contest it in court?",
-   "topic": "courts", "audience": "visitor", "level": "either", "needs": ["who", "steps", "deadline", "appeal"],
-   "phrasings": ["Can I prepay a speeding ticket?", "Which court handles traffic tickets?", "How do I appeal a traffic conviction?"]},
-  {"id": "small_claims", "text": "How do I sue someone in small claims court?",
-   "topic": "courts", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "where", "form"],
-   "phrasings": ["What is the most I can sue for in small claims?", "Do I need a lawyer in small claims court?", "Where do I file a small claim?"]},
-  {"id": "probate", "text": "A relative died. How do I open the estate and qualify as executor?",
-   "topic": "courts", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "where", "deadline"],
-   "phrasings": ["Where do I take a will to be probated?", "How do I qualify as executor?", "Is there a fee to probate a will?"]},
-  {"id": "eviction", "text": "My landlord is trying to evict me. What are the steps and how long do I have?",
-   "topic": "courts", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "appeal"],
-   "phrasings": ["How much notice must a landlord give before eviction?", "Can a landlord change the locks without a court order?", "How do I appeal an eviction judgment?"]},
-  {"id": "name_change", "text": "How do I legally change my name?",
-   "topic": "courts", "audience": "resident", "level": "state", "needs": ["who", "steps", "fee", "form", "where"],
-   "phrasings": ["Which court handles name changes?", "What do I file to change my name?", "Can a minor's name be changed?"]},
-  {"id": "benefits_apply", "text": "How do I apply for food assistance (SNAP) or other public benefits?",
-   "topic": "benefits", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "where", "form"],
-   "phrasings": ["Where do I apply for SNAP?", "How long does the agency have to decide my benefits application?", "Who runs public assistance locally?"]},
-  {"id": "unemployment_appeal", "text": "My unemployment claim was denied. How do I appeal?",
-   "topic": "benefits", "audience": "resident", "level": "state", "needs": ["who", "steps", "deadline", "appeal", "form"],
-   "phrasings": ["How many days do I have to appeal an unemployment decision?", "Who hears unemployment appeals?", "Can I appeal an unemployment ruling to court?"]},
-  {"id": "expungement", "text": "How do I get a criminal record expunged or sealed?",
-   "topic": "criminal-records", "audience": "resident", "level": "state", "needs": ["who", "steps", "fee", "form", "where", "appeal"],
-   "phrasings": ["Can I expunge a charge that was dismissed?", "Where do I file a petition for expungement?", "Is there a fee to seal a criminal record?"]},
-  {"id": "concealed_carry", "text": "How do I get a concealed handgun permit?",
-   "topic": "licensing", "audience": "resident", "level": "either", "needs": ["who", "steps", "fee", "form", "deadline", "appeal"],
-   "phrasings": ["Where do I apply for a concealed carry permit?", "How long does the permit decision take?", "What if my concealed handgun permit is denied?"]},
-  {"id": "child_care_license", "text": "How do I get licensed to run a child care centre or family day home?",
-   "topic": "licensing", "audience": "business", "level": "state", "needs": ["who", "steps", "fee", "form", "deadline", "appeal"],
-   "phrasings": ["Who licenses day care providers?", "When does a family day home need a license?", "How do I appeal a child care license denial?"]},
-  {"id": "contractor_license", "text": "Do I need a contractor's licence, and how do I get one?",
-   "topic": "licensing", "audience": "business", "level": "state", "needs": ["who", "steps", "fee", "form"],
-   "phrasings": ["What is the threshold for needing a contractor license?", "Who licenses home improvement contractors?", "What classes of contractor license are there?"]},
-  {"id": "license_denial_appeal", "text": "My professional licence application was denied. How do I appeal?",
-   "topic": "licensing", "audience": "applicant", "level": "state", "needs": ["who", "steps", "deadline", "appeal"],
-   "phrasings": ["Can I get a hearing on a license denial?", "How do I appeal an agency's decision to court?", "How long do I have to ask for review of a license denial?"]},
-  {"id": "open_meetings", "text": "Can I attend a council or board meeting, and how much notice must the public get?",
-   "topic": "public-records", "audience": "resident", "level": "either", "needs": ["who", "steps", "deadline", "appeal"],
-   "phrasings": ["Are government meetings open to the public?", "How many days' notice must a public body give of a meeting?", "When can a board meet in closed session?"]},
-  {"id": "public_comment", "text": "How do I speak at a city council meeting?",
-   "topic": "public-records", "audience": "resident", "level": "local", "needs": ["who", "steps", "deadline", "where"],
-   "phrasings": ["How do I sign up for public comment at council?", "How long can I speak at a council meeting?", "Do I have a right to address the council?"]},
-  {"id": "deed_recording", "text": "How do I record a deed, and what does it cost?",
-   "topic": "property", "audience": "property-owner", "level": "either", "needs": ["who", "steps", "fee", "where"],
-   "phrasings": ["Where do I record a deed?", "What is the recording fee and tax on a deed?", "Who keeps land records?"]}
- ]
+  {
+   "id": "public_records",
+   "text": "How do I request public records from a government body, and how long does it have to respond?",
+   "topic": "public-records",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "fee",
+    "appeal"
+   ],
+   "phrasings": [
+    "I want to see a government document. How do I file a FOIA request?",
+    "How long does a public body have to answer a records request?",
+    "What can the government charge me for copies of public records?"
+   ]
+  },
+  {
+   "id": "foia_appeal",
+   "text": "My public records request was denied or ignored. How do I appeal or enforce it?",
+   "topic": "public-records",
+   "audience": "requester",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "The city refused my FOIA request. Who do I complain to?",
+    "A records request was ignored past the deadline; what can I do?",
+    "Can I take a public body to court over a denied records request?"
+   ]
+  },
+  {
+   "id": "police_incident_records",
+   "text": "How do I get a copy of a police report or the records of a police incident I was involved in?",
+   "topic": "public-records",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Can I get the body-camera footage from my traffic stop?",
+    "How do I request an incident report from the police department?",
+    "Are criminal investigative files public records?"
+   ]
+  },
+  {
+   "id": "start_llc",
+   "text": "How do I form a limited liability company, and what does it cost?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "What do I file to start an LLC?",
+    "Who registers new companies and how much is the filing fee?",
+    "Do I need a registered agent to form an LLC?"
+   ]
+  },
+  {
+   "id": "business_license",
+   "text": "Do I need a local business licence to operate, and how do I get one?",
+   "topic": "business",
+   "audience": "business",
+   "level": "local",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where",
+    "deadline"
+   ],
+   "phrasings": [
+    "How do I get a business license from the city?",
+    "What is the BPOL tax and when is it due?",
+    "Who issues business licences in the county?"
+   ]
+  },
+  {
+   "id": "business_closure",
+   "text": "I am closing my business. How do I dissolve the company and cancel its registration?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form"
+   ],
+   "phrasings": [
+    "How do I dissolve an LLC?",
+    "What do I file to cancel a company registration?",
+    "Do I owe a fee to close my corporation?"
+   ]
+  },
+  {
+   "id": "nonprofit_formation",
+   "text": "How do I form a nonprofit corporation?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "What do I file to start a nonprofit?",
+    "How many directors does a nonstock corporation need?",
+    "Who do I register a charity with?"
+   ]
+  },
+  {
+   "id": "procurement_bids",
+   "text": "How do I bid on a government contract, and how do I protest an award?",
+   "topic": "business",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "where",
+    "appeal"
+   ],
+   "phrasings": [
+    "Where are public contracts advertised and how are bids opened?",
+    "How do I protest a contract award?",
+    "What is the deadline to challenge a procurement decision?"
+   ]
+  },
+  {
+   "id": "short_term_rental",
+   "text": "Can I rent my home as a short-term rental, and what do I have to register or pay?",
+   "topic": "business",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where"
+   ],
+   "phrasings": [
+    "Do I need a permit to list my house on Airbnb?",
+    "How do I register a short-term rental?",
+    "What taxes apply to a homestay?"
+   ]
+  },
+  {
+   "id": "building_permit",
+   "text": "Do I need a building permit for a home addition, and how do I get one?",
+   "topic": "building-and-zoning",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "How do I apply for a permit to build an addition on my house?",
+    "Who issues building permits and what do they cost?",
+    "Do I need a permit for a deck?"
+   ]
+  },
+  {
+   "id": "zoning_variance",
+   "text": "How do I apply for a zoning variance, and who decides it?",
+   "topic": "building-and-zoning",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "My setback does not meet the zoning rules. How do I get a variance?",
+    "Who hears variance applications?",
+    "How do I appeal a board of zoning appeals decision?"
+   ]
+  },
+  {
+   "id": "noise_complaint",
+   "text": "How do I complain about a noisy neighbour, and what can the locality do about it?",
+   "topic": "building-and-zoning",
+   "audience": "resident",
+   "level": "local",
+   "needs": [
+    "who",
+    "steps",
+    "where"
+   ],
+   "phrasings": [
+    "Who enforces the noise ordinance?",
+    "What hours does the noise rule cover?",
+    "How do I report loud construction at night?"
+   ]
+  },
+  {
+   "id": "property_tax_appeal",
+   "text": "How do I appeal my real estate assessment?",
+   "topic": "taxes",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal",
+    "where"
+   ],
+   "phrasings": [
+    "My property assessment is too high. How do I challenge it?",
+    "Who hears assessment appeals and by when must I file?",
+    "Can I appeal an assessment to court?"
+   ]
+  },
+  {
+   "id": "property_tax_pay",
+   "text": "When are property taxes due, and how do I pay them?",
+   "topic": "taxes",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "deadline",
+    "where",
+    "fee"
+   ],
+   "phrasings": [
+    "When is the real estate tax bill due?",
+    "What is the penalty for paying property tax late?",
+    "Who collects local taxes?"
+   ]
+  },
+  {
+   "id": "vehicle_registration",
+   "text": "I moved here with a car. Who do I tell, and what do I have to pay?",
+   "topic": "taxes",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "fee",
+    "where"
+   ],
+   "phrasings": [
+    "How do I register my car after moving?",
+    "Do I owe personal property tax on my vehicle?",
+    "How long do I have to register a vehicle after moving in?"
+   ]
+  },
+  {
+   "id": "meals_tax",
+   "text": "I run a restaurant. How do I collect, file and pay the meals tax?",
+   "topic": "taxes",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "fee",
+    "form"
+   ],
+   "phrasings": [
+    "When is the meals tax return due?",
+    "What is the local food and beverage tax rate?",
+    "Who do I send the meals tax to?"
+   ]
+  },
+  {
+   "id": "voter_registration",
+   "text": "How do I register to vote, and what is the deadline?",
+   "topic": "voting",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "When is the last day to register before an election?",
+    "Where do I register to vote?",
+    "Can I register to vote online?"
+   ]
+  },
+  {
+   "id": "absentee_voting",
+   "text": "How do I vote absentee or by mail?",
+   "topic": "voting",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "form"
+   ],
+   "phrasings": [
+    "How do I apply for a mail ballot?",
+    "When must an absentee ballot be received?",
+    "Who do I send an absentee ballot application to?"
+   ]
+  },
+  {
+   "id": "dog_license",
+   "text": "Does my dog need a licence, and how do I get one?",
+   "topic": "animals",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "deadline"
+   ],
+   "phrasings": [
+    "How much is a dog license?",
+    "Where do I buy a dog tag?",
+    "How soon after getting a puppy must it be licensed?"
+   ]
+  },
+  {
+   "id": "marriage_license",
+   "text": "How do we get a marriage licence?",
+   "topic": "courts",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where",
+    "form"
+   ],
+   "phrasings": [
+    "Who issues marriage licenses?",
+    "How much does a marriage license cost?",
+    "Is there a waiting period for a marriage license?"
+   ]
+  },
+  {
+   "id": "parking_ticket",
+   "text": "I got a parking ticket. How do I pay it or contest it?",
+   "topic": "courts",
+   "audience": "visitor",
+   "level": "local",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal",
+    "fee"
+   ],
+   "phrasings": [
+    "How do I fight a parking ticket?",
+    "What happens if I do not pay a parking citation?",
+    "Where do I pay a parking fine?"
+   ]
+  },
+  {
+   "id": "traffic_ticket",
+   "text": "I got a traffic ticket. How do I pay it or contest it in court?",
+   "topic": "courts",
+   "audience": "visitor",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Can I prepay a speeding ticket?",
+    "Which court handles traffic tickets?",
+    "How do I appeal a traffic conviction?"
+   ]
+  },
+  {
+   "id": "small_claims",
+   "text": "How do I sue someone in small claims court?",
+   "topic": "courts",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where",
+    "form"
+   ],
+   "phrasings": [
+    "What is the most I can sue for in small claims?",
+    "Do I need a lawyer in small claims court?",
+    "Where do I file a small claim?"
+   ]
+  },
+  {
+   "id": "probate",
+   "text": "A relative died. How do I open the estate and qualify as executor?",
+   "topic": "courts",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where",
+    "deadline"
+   ],
+   "phrasings": [
+    "Where do I take a will to be probated?",
+    "How do I qualify as executor?",
+    "Is there a fee to probate a will?"
+   ]
+  },
+  {
+   "id": "eviction",
+   "text": "My landlord is trying to evict me. What are the steps and how long do I have?",
+   "topic": "courts",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "How much notice must a landlord give before eviction?",
+    "Can a landlord change the locks without a court order?",
+    "How do I appeal an eviction judgment?"
+   ]
+  },
+  {
+   "id": "name_change",
+   "text": "How do I legally change my name?",
+   "topic": "courts",
+   "audience": "resident",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "Which court handles name changes?",
+    "What do I file to change my name?",
+    "Can a minor's name be changed?"
+   ]
+  },
+  {
+   "id": "benefits_apply",
+   "text": "How do I apply for food assistance (SNAP) or other public benefits?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "where",
+    "form"
+   ],
+   "phrasings": [
+    "Where do I apply for SNAP?",
+    "How long does the agency have to decide my benefits application?",
+    "Who runs public assistance locally?"
+   ]
+  },
+  {
+   "id": "unemployment_appeal",
+   "text": "My unemployment claim was denied. How do I appeal?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal",
+    "form"
+   ],
+   "phrasings": [
+    "How many days do I have to appeal an unemployment decision?",
+    "Who hears unemployment appeals?",
+    "Can I appeal an unemployment ruling to court?"
+   ]
+  },
+  {
+   "id": "expungement",
+   "text": "How do I get a criminal record expunged or sealed?",
+   "topic": "criminal-records",
+   "audience": "resident",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where",
+    "appeal"
+   ],
+   "phrasings": [
+    "Can I expunge a charge that was dismissed?",
+    "Where do I file a petition for expungement?",
+    "Is there a fee to seal a criminal record?"
+   ]
+  },
+  {
+   "id": "concealed_carry",
+   "text": "How do I get a concealed handgun permit?",
+   "topic": "licensing",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Where do I apply for a concealed carry permit?",
+    "How long does the permit decision take?",
+    "What if my concealed handgun permit is denied?"
+   ]
+  },
+  {
+   "id": "child_care_license",
+   "text": "How do I get licensed to run a child care centre or family day home?",
+   "topic": "licensing",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Who licenses day care providers?",
+    "When does a family day home need a license?",
+    "How do I appeal a child care license denial?"
+   ]
+  },
+  {
+   "id": "contractor_license",
+   "text": "Do I need a contractor's licence, and how do I get one?",
+   "topic": "licensing",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form"
+   ],
+   "phrasings": [
+    "What is the threshold for needing a contractor license?",
+    "Who licenses home improvement contractors?",
+    "What classes of contractor license are there?"
+   ]
+  },
+  {
+   "id": "license_denial_appeal",
+   "text": "My professional licence application was denied. How do I appeal?",
+   "topic": "licensing",
+   "audience": "applicant",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Can I get a hearing on a license denial?",
+    "How do I appeal an agency's decision to court?",
+    "How long do I have to ask for review of a license denial?"
+   ]
+  },
+  {
+   "id": "open_meetings",
+   "text": "Can I attend a council or board meeting, and how much notice must the public get?",
+   "topic": "public-records",
+   "audience": "resident",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "appeal"
+   ],
+   "phrasings": [
+    "Are government meetings open to the public?",
+    "How many days' notice must a public body give of a meeting?",
+    "When can a board meet in closed session?"
+   ]
+  },
+  {
+   "id": "public_comment",
+   "text": "How do I speak at a city council meeting?",
+   "topic": "public-records",
+   "audience": "resident",
+   "level": "local",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "where"
+   ],
+   "phrasings": [
+    "How do I sign up for public comment at council?",
+    "How long can I speak at a council meeting?",
+    "Do I have a right to address the council?"
+   ]
+  },
+  {
+   "id": "deed_recording",
+   "text": "How do I record a deed, and what does it cost?",
+   "topic": "property",
+   "audience": "property-owner",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "where"
+   ],
+   "phrasings": [
+    "Where do I record a deed?",
+    "What is the recording fee and tax on a deed?",
+    "Who keeps land records?"
+   ]
+  },
+  {
+   "id": "glass_studio",
+   "text": "How do I start a glass studio / hot shop business?",
+   "topic": "business",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "I want to open a glassblowing studio with a furnace and classes. Which approvals do I need and in what order?",
+    "What permits and registrations does a hot shop need before it opens?",
+    "Who do I talk to first about opening a glass studio?"
+   ],
+   "glass_topics": [
+    "formation_registration",
+    "building_occupancy",
+    "fire",
+    "food_drink",
+    "people",
+    "signs_hours_noise"
+   ]
+  },
+  {
+   "id": "glass_q1",
+   "parent": "glass_studio",
+   "text": "Do I need a permit for a gas-fired glass furnace, glory hole or kiln?",
+   "topic": "building-and-zoning",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form"
+   ],
+   "phrasings": [
+    "Does installing a gas furnace in my studio need a building permit?",
+    "Who issues the mechanical and gas permits for a kiln?"
+   ],
+   "glass_topics": [
+    "building_occupancy",
+    "fire",
+    "air"
+   ]
+  },
+  {
+   "id": "glass_q2",
+   "parent": "glass_studio",
+   "text": "Can I open a hot shop in this building, and what occupancy is it?",
+   "topic": "building-and-zoning",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "where",
+    "appeal"
+   ],
+   "phrasings": [
+    "Is a glass studio an industrial use under the zoning ordinance?",
+    "Do I need a new certificate of occupancy to turn a warehouse into a hot shop?"
+   ],
+   "glass_topics": [
+    "building_occupancy",
+    "signs_hours_noise"
+   ]
+  },
+  {
+   "id": "glass_q3",
+   "parent": "glass_studio",
+   "text": "Can I hold glassblowing classes for the public?",
+   "topic": "building-and-zoning",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps"
+   ],
+   "phrasings": [
+    "What do I need before I teach glassblowing classes in my studio?",
+    "Is a public glass demonstration an assembly use or hot work?"
+   ],
+   "glass_topics": [
+    "building_occupancy",
+    "fire",
+    "people"
+   ]
+  },
+  {
+   "id": "glass_q4",
+   "parent": "glass_studio",
+   "text": "Can minors take a class or work in the hot shop?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps"
+   ],
+   "phrasings": [
+    "Can a 16-year-old work in my glass studio?",
+    "Is there a minimum age for glassblowing students?"
+   ],
+   "glass_topics": [
+    "people"
+   ]
+  },
+  {
+   "id": "glass_q5",
+   "parent": "glass_studio",
+   "text": "Can I serve wine or beer at a sip-and-blow event or on gallery nights?",
+   "topic": "licensing",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form"
+   ],
+   "phrasings": [
+    "Which ABC licence lets an art studio serve wine?",
+    "Can I give customers a glass of wine during a glassblowing class?"
+   ],
+   "glass_topics": [
+    "food_drink",
+    "fire"
+   ]
+  },
+  {
+   "id": "glass_q6",
+   "parent": "glass_studio",
+   "text": "If I add a cafe or sell snacks, do I need a health permit and do I collect meals tax?",
+   "topic": "licensing",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "fee"
+   ],
+   "phrasings": [
+    "Does a studio cafe need a health department permit?",
+    "Do packaged snacks sold at my gallery carry the meals tax?"
+   ],
+   "glass_topics": [
+    "food_drink"
+   ]
+  },
+  {
+   "id": "glass_q7",
+   "parent": "glass_studio",
+   "text": "Which business licence category am I: manufacturer, retailer or service?",
+   "topic": "taxes",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "appeal"
+   ],
+   "phrasings": [
+    "Is a glass studio a manufacturer for BPOL purposes?",
+    "What BPOL rate applies to class tuition?"
+   ],
+   "glass_topics": [
+    "formation_registration"
+   ]
+  },
+  {
+   "id": "glass_q8",
+   "parent": "glass_studio",
+   "text": "Do I charge sales tax on the glass I sell, and can I buy my furnace and gas tax-free as a manufacturer?",
+   "topic": "taxes",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "deadline",
+    "form"
+   ],
+   "phrasings": [
+    "Do I need a sales tax certificate to sell glass at my studio?",
+    "Is a glass furnace exempt from sales tax under the manufacturing exemption?"
+   ],
+   "glass_topics": [
+    "formation_registration"
+   ]
+  },
+  {
+   "id": "glass_q9",
+   "parent": "glass_studio",
+   "text": "How do I set up the business: LLC, name, registrations?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "form",
+    "where"
+   ],
+   "phrasings": [
+    "What do I file to form an LLC for my studio and trade under a studio name?",
+    "Which state registrations does a new studio need before the local licence?"
+   ],
+   "glass_topics": [
+    "formation_registration",
+    "people"
+   ]
+  },
+  {
+   "id": "glass_q10",
+   "parent": "glass_studio",
+   "text": "What fire permits does a hot shop need, and who issues them?",
+   "topic": "licensing",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "appeal"
+   ],
+   "phrasings": [
+    "Does the fire marshal need to permit my furnace and propane?",
+    "Who enforces the fire code for a glass studio?"
+   ],
+   "glass_topics": [
+    "fire"
+   ]
+  },
+  {
+   "id": "glass_q11",
+   "parent": "glass_studio",
+   "text": "What do I do with cold-shop slurry, glass dust and cullet?",
+   "topic": "building-and-zoning",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps"
+   ],
+   "phrasings": [
+    "Can I pour glass grinding slurry down the drain?",
+    "Is glass waste from a studio hazardous waste?"
+   ],
+   "glass_topics": [
+    "environmental_wastewater"
+   ]
+  },
+  {
+   "id": "glass_q12",
+   "parent": "glass_studio",
+   "text": "Can I put up a sign, run the furnace overnight and stay open late?",
+   "topic": "building-and-zoning",
+   "audience": "business",
+   "level": "either",
+   "needs": [
+    "who",
+    "steps",
+    "fee",
+    "appeal"
+   ],
+   "phrasings": [
+    "Do I need a permit for a studio sign?",
+    "Can the locality limit my studio's hours or the noise from the furnace blower?"
+   ],
+   "glass_topics": [
+    "signs_hours_noise"
+   ]
+  }
+ ],
+ "_glass": "The glass_* questions are one master question and the twelve sub-questions of fixtures/places/va/glass/questions.json (parent names the master; glass_topics the backbone topics). Their Virginia gold is written from the index-verified quotes of fixtures/places/va/glass/state-backbone.json."
 }

@@ -1,0 +1,83 @@
+{
+ "qid": "glass_q7",
+ "state": "va",
+ "question": "Which business licence category am I: manufacturer, retailer or service?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-3703",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3706",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3703.1",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-3700.1",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "No licence tax falls on a manufacturer's wholesale sales at the place of manufacture.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "58.1-3703",
+   "quote": "On a manufacturer for the privilege of manufacturing and selling goods, wares and merchandise at wholesale at the place of manufacture.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Retail sales are taxed at no more than twenty cents per $100 of gross receipts.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-3706",
+   "quote": "For retail sales, twenty cents per $100 of gross receipts;",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Services and unlisted businesses are taxed at no more than thirty-six cents per $100.",
+   "importance": "vital",
+   "kind": "fee",
+   "section": "58.1-3706",
+   "quote": "For repair, personal and business services, and all other businesses and occupations not specifically listed or excepted in this section, thirty-six cents per $100 of gross receipts.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A classification or assessment may be appealed to the Tax Commissioner within 90 days of the local determination.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "58.1-3703.1",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "The licence is applied for before beginning business.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "58.1-3703.1",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "A definite place of business is a location with a regular course of dealing for thirty consecutive days or more.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "58.1-3700.1",
+   "quote": "\"Definite place of business\" means an office or a location at which occurs a regular and continuous course of dealing for thirty consecutive days or more.",
+   "source": "index"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "qid": "glass_q10",
+ "state": "va",
+ "question": "What fire permits does a hot shop need, and who issues them?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "27-98",
+   "role": "primary"
+  },
+  {
+   "ref": "27-30",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A local government may enforce the Fire Prevention Code, in whole or in part.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "27-98",
+   "quote": "Any local government may enforce the Fire Prevention Code in its entirety or with respect only to those provisions of the Fire Prevention Code relating to open burning, fire lanes, fireworks, and hazardous materials.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Where the locality does not enforce the code, the State Fire Marshal does and issues the permits.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "27-98",
+   "quote": "The State Fire Marshal shall also have authority to enforce the Code in those jurisdictions in which the local governments do not enforce the Code and may establish such procedures or requirements as may be necessary for the administration and enforcement of the Code in such jurisdictions.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The local governing body may levy fees to cover enforcement.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "27-98",
+   "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The State Fire Marshal may charge a fee to recover its enforcement cost.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "27-98",
+   "quote": "the State Fire Marshal may charge a fee to recover the actual cost of administering and enforcing the Code in jurisdictions for which he serves as the enforcement authority.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Appeals go first to a local board of appeals and then to the State Building Code Technical Review Board; appeals from the State Fire Marshal go straight to the Review Board.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "27-98",
+   "quote": "Appeals concerning the application of the Code by the local enforcing agency shall first lie to a local board of appeals and then to the State Building Code Technical Review Board. Appeals from the application of the Code by the State Fire Marshal shall be made directly to the State Building Code Technical Review Board as provided in Article 2 (§ 36-108 et seq.) of Chapter 6 of Title 36.",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "A locality may appoint a fire marshal when it sees fit.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "27-30",
+   "quote": "An officer, who shall be called a \"fire marshal,\" may be appointed for each county, city or town, by the governing body thereof, whenever, in the opinion of such body, the appointment shall be deemed expedient.",
+   "source": "index"
+  }
+ ],
+ "notes": "The operational permits themselves (hot work, industrial ovens, compressed gases, LP-gas, open flames, places of assembly) are in the Statewide Fire Prevention Code (13VAC5-52-70, Table 107.2), outside the statute index."
+}

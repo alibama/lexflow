@@ -1,0 +1,1369 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "topic": "glass studio (hot shop with gas furnace, glory hole, kilns, torches; classes; possible cafe and events)",
+ "researched_by": "Claude (lexflow agent)",
+ "retrieved": "2026-10-19",
+ "method": "Read-only fetches with user agent lexflow-research/0.1 (https://github.com/alibama/lexflow), robots.txt obeyed, at least 1.5 seconds between requests per host, no browser, no forms, no logins. HTML text extracted with scripts and styles dropped; PDFs with pdftotext (layout and raw passes). Docker was down, so every quote is marked source: official-page and was checked locally as a normalised substring of the fetched text (309 of 309 matched; 14 of them only in the raw-order PDF text, which lexflow's matcher also uses). Municode (library.municode.com) was not read because its terms forbid reprinting; cvillepedia and other unofficial sites were not used.",
+ "files_written": [
+  "curated/places/va/charlottesville/glass_studio_overview.json",
+  "curated/places/va/charlottesville/glass_studio_zoning_use.json",
+  "curated/places/va/charlottesville/glass_studio_building_mechanical.json",
+  "curated/places/va/charlottesville/glass_studio_fire_permits.json",
+  "curated/places/va/charlottesville/glass_studio_business_license.json",
+  "curated/places/va/charlottesville/glass_studio_food_and_events.json",
+  "curated/places/va/charlottesville/glass_studio_utilities_and_environment.json"
+ ],
+ "pages": [
+  {
+   "url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "final_url": "https://www.charlottesville.gov/261/Neighborhood-Development-Services",
+   "title": "Neighborhood Development Services | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 130162,
+   "contributed": "NDS office, phones, mailboxes, hours; Building Inspections moved to City Hall first floor January 26, 2026; invoice-scam warning",
+   "used_in": [
+    "glass_studio_overview",
+    "glass_studio_zoning_use",
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/262/Building-Inspections",
+   "final_url": "https://www.charlottesville.gov/262/Building-Inspections",
+   "title": "Building Inspections | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 108307,
+   "contributed": "Permit portal, inspections phone and mailboxes, 2021 USBC from January 18, 2025, list of building forms",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/268/Zoning",
+   "final_url": "https://www.charlottesville.gov/268/Zoning",
+   "title": "Zoning | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 109044,
+   "contributed": "Zoning office contact, GIS Viewer for district lookup, Development Code dates",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "final_url": "https://www.charlottesville.gov/1906/Permit-Portal-Assistance",
+   "title": "Permit Portal Assistance | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 133901,
+   "contributed": "Step-by-step portal instructions: new and linked applications, fees, inspections, stamped plans, uploads",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "final_url": "https://www.charlottesville.gov/186/Business-License-Tax",
+   "title": "Business License Tax | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 123744,
+   "contributed": "Business license application route, due date, fee tiers, classification by the Commissioner, contractor rate, food establishment package, appeals",
+   "used_in": [
+    "glass_studio_business_license",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
+   "title": "Microsoft Word - Checklist",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 192498,
+   "contributed": "New Business License Checklist: EIN, sales tax, SCC, DPOR, ABC, zoning items (Occupancy Permit), health permit, OED",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "title": "SKM_C450i24020215510",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 416149,
+   "contributed": "NDS and Public Works Fee Schedule (March 23, 2026): building and trade permit fees, kitchen hood, temporary CO, SUP, site plan, accessory use, sign, temporary use, zoning compliance letter, E&S and stormwater fees",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_zoning_use",
+    "glass_studio_fire_permits",
+    "glass_studio_food_and_events",
+    "glass_studio_utilities_and_environment",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16423/3rd-Party-Inspection-Policy-6-4-2026-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 341346,
+   "contributed": "Voluntary third-party inspection program rules",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10846/Business-License-Application-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/10846/Business-License-Application-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 1012021,
+   "contributed": "2026 application: zoning prerequisite, penalty and interest, per-activity lines, estimating receipts, technology credit",
+   "used_in": [
+    "glass_studio_business_license",
+    "glass_studio_zoning_use",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1025/Departments-L-V",
+   "final_url": "https://www.charlottesville.gov/1025/Departments-L-V",
+   "title": "Departments L-V | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 292712,
+   "contributed": "Department index used to find Utilities, Public Works, Special Events pages",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/1938/Zoning-Determinations",
+   "final_url": "https://www.charlottesville.gov/1938/Zoning-Determinations",
+   "title": "Zoning Determinations | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 101101,
+   "contributed": "Posted written zoning determinations (none about studios or manufacturing)",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1893/Sign-Regulations",
+   "final_url": "https://www.charlottesville.gov/1893/Sign-Regulations",
+   "title": "Sign Regulations | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 115723,
+   "contributed": "Sign permit process, exemptions, temporary signs, historic districts",
+   "used_in": [
+    "glass_studio_zoning_use",
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/272/Development-Review",
+   "final_url": "https://www.charlottesville.gov/272/Development-Review",
+   "title": "Development Review | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 109215,
+   "contributed": "Development Review scope, use regulations overview, contacts",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/266/Development-Requirements-and-Processes",
+   "final_url": "https://www.charlottesville.gov/266/Development-Requirements-and-Processes",
+   "title": "Development Requirements and Processes | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 130995,
+   "contributed": "Pre-application conference, review timelines, change-of-use rule, Final Site Plan before building permits, application guidelines",
+   "used_in": [
+    "glass_studio_zoning_use",
+    "glass_studio_building_mechanical",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1651/Permit-Fee-Calculations",
+   "final_url": "https://www.charlottesville.gov/1651/Permit-Fee-Calculations",
+   "title": "Permit Fee Calculations | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 94613,
+   "contributed": "Permit fee calculator page; no text content retrieved",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/9153/Mandatory-Inspections-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 623664,
+   "contributed": "Minimum inspections, gas rough-in under pressure, gas unlock, trenches by City Gas and Dominion, CO before use, Chapter 17 special inspections, $100 not-ready fee",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_utilities_and_environment",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9652",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/9652/Inspection-Results-Cheat-Sheet-PDF?bidId=",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 227634,
+   "contributed": "Inspection Results Cheat Sheet: fully digital permit system",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/10193/Building-Permit-Application-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 322834,
+   "contributed": "Building Permit Application: VRC/VCC, Tank, Fire Sprinkler/Line, Tent options, separate trade applications, § 54.1-1111 text",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "final_url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 114604,
+   "contributed": "Commissioner's office hours, address, drop boxes, phones",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/188/Forms-Index",
+   "final_url": "https://www.charlottesville.gov/188/Forms-Index",
+   "title": "Forms Index | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 110057,
+   "contributed": "Commissioner's forms index",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/818/Licenses-and-Taxes",
+   "final_url": "https://www.charlottesville.gov/818/Licenses-and-Taxes",
+   "title": "Licenses and Taxes | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 95525,
+   "contributed": "Licenses and taxes landing page",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16092/Charlottesville-Development-Code-PDF-Updated-March-23-2026?bidId=",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 72844082,
+   "contributed": "Development Code PDF (March 23, 2026): use table, artisan workshop and industrial definitions, food and beverage, entertainment, vocational school, home occupation, change of use, SUP procedure, temporary uses, permit review",
+   "used_in": [
+    "glass_studio_zoning_use",
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/27/Government",
+   "final_url": "https://www.charlottesville.gov/27/Government",
+   "title": "Government | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 345946,
+   "contributed": "Government index used to find Fire, Fire Marshal and Economic Development pages",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/directory.aspx",
+   "final_url": "https://www.charlottesville.gov/m/directory",
+   "title": "Staff Directory • Charlottesville, VA • CivicEngage",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 847266,
+   "contributed": "Staff directory (not used: contacts are office channels only)",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/277/Public-Works",
+   "final_url": "https://www.charlottesville.gov/277/Public-Works",
+   "title": "Public Works | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 123476,
+   "contributed": "Public Works divisions, Engineering (E&S, stormwater), office address and phone",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/458/Utilities",
+   "final_url": "https://www.charlottesville.gov/458/Utilities",
+   "title": "Utilities | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 121963,
+   "contributed": "Utilities department overview, Utility Billing address, hours, phones, emergency line",
+   "used_in": [
+    "glass_studio_utilities_and_environment",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/469/Gas-Services-Information",
+   "final_url": "https://www.charlottesville.gov/469/Gas-Services-Information",
+   "title": "Gas Services & Information | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 121451,
+   "contributed": "Gas service application, connection fee and 2027 increase, 7 inch w.c. standard and PSIG requests, who to call, two-part inspection and meter unlock",
+   "used_in": [
+    "glass_studio_utilities_and_environment",
+    "glass_studio_building_mechanical",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/465/Natural-Gas",
+   "final_url": "https://www.charlottesville.gov/465/Natural-Gas",
+   "title": "Natural Gas | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 105607,
+   "contributed": "City-owned gas utility, contacts, standards documents",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/642/Current-rates-for-Water-Sewer-Gas",
+   "final_url": "https://www.charlottesville.gov/642/Current-rates-for-Water-Sewer-Gas",
+   "title": "Current rates for Water, Sewer & Gas | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 100072,
+   "contributed": "Water, sewer and gas rates effective July 1, 2026 (firm, interruptible, summer AC, transport)",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/582/Wastewater",
+   "final_url": "https://www.charlottesville.gov/582/Wastewater",
+   "title": "Wastewater | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 102646,
+   "contributed": "Sewer taps via Utility Billing, lateral permit via NDS, Rivanna treatment, standards",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1095/Stormwater-Erosion-Control",
+   "final_url": "https://www.charlottesville.gov/1095/Stormwater-Erosion-Control",
+   "title": "Stormwater & Erosion Control | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 96252,
+   "contributed": "E&S and VSMP resources",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "final_url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "title": "Special Event Permits | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 100734,
+   "contributed": "Parks & Recreation special event permit: $25 fee, 30/60 days, mailing address",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1905/Special-Events",
+   "final_url": "https://www.charlottesville.gov/1905/Special-Events",
+   "title": "Special Events | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 119422,
+   "contributed": "City special events listing (context only)",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/602/Utility-Billing",
+   "final_url": "https://www.charlottesville.gov/602/Utility-Billing",
+   "title": "Utility Billing | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 105052,
+   "contributed": "Utility Billing page",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/233/Fire-Marshal",
+   "final_url": "https://www.charlottesville.gov/233/Fire-Marshal",
+   "title": "Fire Marshal | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 109442,
+   "contributed": "Fire Marshal's Office phone; page is home fire safety only",
+   "used_in": [
+    "glass_studio_fire_permits",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/222/Fire",
+   "final_url": "https://www.charlottesville.gov/222/Fire",
+   "title": "Fire | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 107574,
+   "contributed": "Fire Department address and phone",
+   "used_in": [
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1702/Fire-Watch",
+   "final_url": "https://www.charlottesville.gov/1702/Fire-Watch",
+   "title": "Fire Watch | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 94833,
+   "contributed": "Fire watch page (context)",
+   "used_in": [
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/201/Economic-Development",
+   "final_url": "https://www.charlottesville.gov/201/Economic-Development",
+   "title": "Economic Development | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 127682,
+   "contributed": "OED programs (GO Start-Up, GO Hire), office contact",
+   "used_in": [
+    "glass_studio_business_license",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/466/Gas-Safety",
+   "final_url": "https://www.charlottesville.gov/466/Gas-Safety",
+   "title": "Gas Safety | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 111127,
+   "contributed": "Gas safety tips (context)",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/280/Office-of-Sustainability",
+   "final_url": "https://www.charlottesville.gov/280/Office-of-Sustainability",
+   "title": "Office of Sustainability | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 142119,
+   "contributed": "Office of Sustainability (no permit role found)",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/1052/Report-an-Environmental-Issue",
+   "final_url": "https://www.charlottesville.gov/1052/Report-an-Environmental-Issue",
+   "title": "Report an Environmental Issue | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 95300,
+   "contributed": "Environmental issue reporting (context)",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/380/Stormwater-Management-Program",
+   "final_url": "https://www.charlottesville.gov/380/Stormwater-Management-Program",
+   "title": "Stormwater Management Program  | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 107198,
+   "contributed": "MS4 program overview",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/491/Stormwater-Utility",
+   "final_url": "https://www.charlottesville.gov/491/Stormwater",
+   "title": "Stormwater  | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 175443,
+   "contributed": "Stormwater page: utility fee calculation, illicit discharges, Pollution Prevention Report Form, adjustment and credit",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/607/Virginia-Stormwater-Management-Program",
+   "final_url": "https://www.charlottesville.gov/607/Virginia-Stormwater-Management-Program",
+   "title": "Virginia Stormwater Management Program | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 99947,
+   "contributed": "CGP forms, state fee schedule paid to the City",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1870/Inspection-Reports-Online-IROL",
+   "final_url": "https://www.charlottesville.gov/1870/Inspection-Reports-Online-IROL",
+   "title": "Inspection Reports Online (IROL) | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 102940,
+   "contributed": "IROL reporting system, $18.99 per report, submission time frames",
+   "used_in": [
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1701/Third-Party-Inspections",
+   "final_url": "https://www.charlottesville.gov/1701/Third-Party-Inspections",
+   "title": "Third Party Inspections | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 110864,
+   "contributed": "Reproduces City Code § 12-32(11) ITM reporting rule; lists occupancies the Fire Marshal inspects",
+   "used_in": [
+    "glass_studio_fire_permits",
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/13182/Service-Guide-for-New-Gas-Connections-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/13182/Service-Guide-for-New-Gas-Connections-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 202118,
+   "contributed": "Gas connection steps, timing, cost information, deposits",
+   "used_in": [
+    "glass_studio_utilities_and_environment",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/964/Important-Installation-Requirements-for-New-Construction-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/964/Important-Installation-Requirements-for-New-Construction-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 23923,
+   "contributed": "Gas main, service and meter installation requirements, regulator vent clearances, connected load reporting",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16093",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16093/Development-Review-Procedures-Manual-PDF-Updated-March-23-2026?bidId=",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 584167,
+   "contributed": "Development Review Procedures Manual: pre-application requirements, building permit and land disturbance permit administrators",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/11182",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/11182/Fee-Schedule-PDF?bidId=",
+   "title": "SKM_C450i24020215510",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 416149,
+   "contributed": "Same fee schedule as DocumentCenter/View/9634 (identical file)",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16179/Preapplication-Verification-Form-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16179/Preapplication-Verification-Form-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 286348,
+   "contributed": "Pre-Application Meeting Acknowledgement form",
+   "used_in": [
+    "glass_studio_zoning_use",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16201/Special-Use-Permit-Application-Guidelines-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16201/Special-Use-Permit-Application-Guidelines-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 78831,
+   "contributed": "SUP checklist: pre-application meeting, 30-day reviews, community meeting",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/13551",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/13551/34-311_Applicability_Use?bidId=",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 42926,
+   "contributed": "Development Code 3.1.1 use applicability by project activity",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/187/Business-Tangible-Property-Tax",
+   "final_url": "https://www.charlottesville.gov/187/Business-Personal-Property-Tax",
+   "title": "Business Personal Property Tax | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 102443,
+   "contributed": "Business tangible property and machinery and tools returns, March 15, 4.4% rate, age ratios",
+   "used_in": [
+    "glass_studio_business_license",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/cor",
+   "final_url": "https://www.charlottesville.gov/1345/Commissioner-of-Revenue",
+   "title": "Commissioner of Revenue | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 114604,
+   "contributed": "Redirects to the Commissioner of Revenue page",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "final_url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "title": "Meals Tax | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 105128,
+   "contributed": "7% meals tax, 20th-of-month filing, new business package",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_business_license",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16372/ICC-Plan-Review-Services-Flyer-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16372/ICC-Plan-Review-Services-Flyer-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 384357,
+   "contributed": "ICC plan review flyer posted by Building Inspections (role unexplained)",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16369/3rd-Party-Approved-Inspectors-6-4-2026-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16369/3rd-Party-Approved-Inspectors-6-4-2026-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 305895,
+   "contributed": "Pre-approved third-party inspector list",
+   "used_in": [
+    "glass_studio_building_mechanical"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9692",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/9692/Contractor-Prohibited-Acts-PDF?bidId=",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 252205,
+   "contributed": "Contractor Prohibited Acts PDF: scanned image, no text layer",
+   "used_in": []
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-97/",
+   "final_url": "https://law.lis.virginia.gov/vacode/27-97/",
+   "title": "§ 27-97. Adoption of Fire Prevention Code",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 35499,
+   "contributed": "SFPC adoption; localities may be more restrictive",
+   "used_in": [
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-98/",
+   "final_url": "https://law.lis.virginia.gov/vacode/27-98/",
+   "title": "§ 27-98. Enforcement of Fire Prevention Code; appeals from decisions of local enforcing agencies; inspection of buildings",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 33884,
+   "contributed": "Local enforcement, fees by ordinance, appeals",
+   "used_in": [
+    "glass_studio_fire_permits",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section130/",
+   "final_url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section130/",
+   "title": "13VAC5-51-130. (Repealed.)",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 29650,
+   "contributed": "Repealed SFPC chapter (checked)",
+   "used_in": [
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "final_url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "title": "§ 58.1-3703. Counties, cities and towns may impose local license taxes and fees; limitation of authority",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 42477,
+   "contributed": "BPOL fee cap, manufacturer exemption",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "final_url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "title": "§ 58.1-3706. Limitation on rate of license taxes",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 38630,
+   "contributed": "BPOL thresholds and rate caps",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+   "final_url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+   "title": "§ 58.1-3507. Certain machinery and tools segregated for local taxation only; notice prior to change in valuation, hearing",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 35715,
+   "contributed": "Machinery and tools class",
+   "used_in": [
+    "glass_studio_business_license"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "final_url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "title": "§ 58.1-3703.1. Uniform ordinance provisions",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 67291,
+   "contributed": "Uniform BPOL provisions: apply before beginning business, penalty",
+   "used_in": [
+    "glass_studio_business_license",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "final_url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "title": "§ 15.2-2286. (Effective January 1, 2027; Effective until January 1, 2031) Permitted provisions in zoning ordinances; amendments; applicant to pay delinquent taxes; penalties",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 73590,
+   "contributed": "Zoning administrator 90-day response, fees",
+   "used_in": [
+    "glass_studio_zoning_use",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "final_url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "title": "§ 15.2-2311. Appeals to board",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 34905,
+   "contributed": "BZA appeal within 30 days",
+   "used_in": [
+    "glass_studio_zoning_use"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "final_url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "title": "§ 35.1-18. License required; name in which issued; not assignable or transferable",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 27900,
+   "contributed": "Restaurant licence required",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "final_url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "title": "§ 35.1-1. Definitions",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 34562,
+   "contributed": "Definition of restaurant",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "final_url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "title": "§ 4.1-206.3. Retail licenses",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 79006,
+   "contributed": "ABC retail licence types",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/10.1-1307/",
+   "final_url": "https://law.lis.virginia.gov/vacode/10.1-1307/",
+   "title": "§ 10.1-1307. Further powers and duties of Board and Department",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 35146,
+   "contributed": "Air Pollution Control Board and DEQ powers",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "final_url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "title": "§ 36-105. Enforcement of Code; appeals from decisions of local department; inspection of buildings; inspection warrants; inspection of elevators; issuance of permits",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 41761,
+   "contributed": "Local building department enforcement, appeals, fees",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "final_url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "title": "13VAC5-63-80. Section 108 Application for permit.",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 56408,
+   "contributed": "USBC § 108: when permits are required, change of occupancy, exemptions",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_zoning_use",
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "final_url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "title": "13VAC5-63-160. Section 116 Certificates of occupancy.",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 37740,
+   "contributed": "USBC § 116: certificate of occupancy, temporary CO, revocation",
+   "used_in": [
+    "glass_studio_building_mechanical",
+    "glass_studio_zoning_use",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+   "title": "Food Safety in Virginia - Environmental Health",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 89234,
+   "contributed": "VDH food establishment permit requirement",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/",
+   "title": "Environmental Health - Blue Ridge",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 111312,
+   "contributed": "Blue Ridge Health District EH offices, Charlottesville/Albemarle contact",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/1360/Fire-Marshal---School-Information",
+   "final_url": "https://www.charlottesville.gov/1360/Fire-Marshal---School-Information",
+   "title": "Fire marshal - School  information | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 96964,
+   "contributed": "Fire Marshal school information (not relevant)",
+   "used_in": []
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+   "final_url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+   "title": "9VAC5-80-1105. Permit exemptions.",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 103829,
+   "contributed": "DEQ minor NSR permit exemptions (fuel burning equipment thresholds)",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/Faq.aspx?TID=60",
+   "final_url": "https://www.charlottesville.gov/m/faq?cat=60",
+   "title": "FAQs - CivicPlus.CMS.FAQ",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 127406,
+   "contributed": "Meals tax FAQ (context; modeled in meals_tax_filing.json)",
+   "used_in": []
+  },
+  {
+   "url": "https://www.charlottesville.gov/1985/Fats-Oils-and-Grease-FOG-Program",
+   "final_url": "https://www.charlottesville.gov/1985/Fats-Oils-and-Grease-FOG-Program",
+   "title": "Fats, Oils, and Grease (FOG) Program  | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 97069,
+   "contributed": "FOG program (scrape, cool, dispose)",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/641/Fee-Schedule",
+   "final_url": "https://www.charlottesville.gov/641/Fee-Schedule",
+   "title": "Fee Schedule | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 102787,
+   "contributed": "Utility Billing fee schedule: water meter set and facility fees, sewer facility fees, deposits, gas meter set",
+   "used_in": [
+    "glass_studio_utilities_and_environment",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/947/Online-Applications-and-Forms",
+   "final_url": "https://www.charlottesville.gov/947/Online-Applications-and-Forms",
+   "title": "Utility Billing - Online Applications and Forms | Charlottesville, VA",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 98905,
+   "contributed": "Utility Billing online forms (Application for Service: Business)",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16335/2027-Summary-of-Rates-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/16335/2027-Summary-of-Rates-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 3588689,
+   "contributed": "FY2027 utility rate summary: gas connection fee change",
+   "used_in": [
+    "glass_studio_utilities_and_environment"
+   ]
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "final_url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 345784,
+   "contributed": "Special Event Regulations: timing, tents, health and ABC permits as denial grounds, insurance",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_fire_permits"
+   ]
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses",
+   "final_url": "https://www.abc.virginia.gov/licenses",
+   "title": "Licenses",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 141723,
+   "contributed": "Virginia ABC licences landing page",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/retail-licenses",
+   "final_url": "https://www.abc.virginia.gov/licenses/retail-licenses",
+   "title": "Get a Virginia ABC Retail License",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 136835,
+   "contributed": "ABC retail licence page (navigation shell only)",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/",
+   "title": "Blue Ridge Health District - Blue Ridge",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 104342,
+   "contributed": "BRHD home (context)",
+   "used_in": []
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "final_url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "title": "13VAC5-52-70. Section 107 Permits and fees.",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 235337,
+   "contributed": "SFPC § 107 permits and fees, Table 107.2 operational permits",
+   "used_in": [
+    "glass_studio_fire_permits",
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/foodapplication/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/foodapplication/",
+   "title": "Applying for a Food Permit - Environmental Health",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 73549,
+   "contributed": "VDH how to apply: plan review $40, permit $40, 30 days",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "title": "Temporary Food Establishments - Environmental Health",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 84875,
+   "contributed": "Temporary food establishments: $40, 10 days, permanent permit holders",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-foodservice-permit-to-operate/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-foodservice-permit-to-operate/",
+   "title": "Applying for Foodservice Permits to Operate - Blue Ridge",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 70992,
+   "contributed": "BRHD permit application index and form links",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf",
+   "final_url": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 151312,
+   "contributed": "BRHD EH fee schedule: food plan review and permit $40 each",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-exemptions/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-safety-exemptions/",
+   "title": "Food Safety Exemptions - Environmental Health",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 69441,
+   "contributed": "VDH food permit exemptions",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "title": "Applying for New Foodservice Facility Permit - Blue Ridge",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 77446,
+   "contributed": "BRHD new facility steps: plan review before construction, $80 application, occupancy permit at pre-opening",
+   "used_in": [
+    "glass_studio_food_and_events",
+    "glass_studio_overview"
+   ]
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "title": "Temporary Events - Blue Ridge",
+   "retrieved": "2026-10-19",
+   "status": 200,
+   "bytes": 76099,
+   "contributed": "BRHD temporary event process",
+   "used_in": [
+    "glass_studio_food_and_events"
+   ]
+  }
+ ],
+ "not_read": [
+  {
+   "url": "https://www.charlottesville.gov/1024/Departments-A-K",
+   "final_url": "https://www.charlottesville.gov/1024/Departments-A-K",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/get-a-license",
+   "final_url": "https://www.abc.virginia.gov/licenses/get-a-license",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/permits/air",
+   "final_url": "https://www.deq.virginia.gov/permits/air",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 403,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 403"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=fire%20permit",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=operational%20permit",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=hot%20work",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=propane",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=certificate%20of%20occupancy",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.charlottesville.gov/Search?searchPhrase=change%20of%20use",
+   "final_url": null,
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": null,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "disallowed by robots.txt"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/permits-regulations/permits/air",
+   "final_url": "https://www.deq.virginia.gov/permits-regulations/permits/air",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 403,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 403"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-establishment-permits/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-establishment-permits/",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/plan-review/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/plan-review/",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/temporary-food-events/",
+   "final_url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/temporary-food-events/",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/food-establishments/",
+   "final_url": "https://www.vdh.virginia.gov/blue-ridge/food-establishments/",
+   "title": null,
+   "retrieved": "2026-10-19",
+   "status": 404,
+   "bytes": null,
+   "contributed": "read for context; nothing cited",
+   "used_in": [],
+   "error": "HTTP 404"
+  }
+ ],
+ "gaps": [
+  "The City publishes no guide, checklist or page for opening a studio, makerspace, artisan workshop or manufacturing business; the sequence in glass_studio_overview is assembled from the Development Code, NDS, Fire, Utilities and Commissioner pages.",
+  "No written zoning determination on hot-glass, kiln or furnace studios is posted; whether a gas-fired hot shop is an 'Artisan workshop' (by right) or 'industrial and manufacturing' (size-limited or SUP) is not stated anywhere.",
+  "The Fire Marshal's Office publishes no list of the SFPC Table 107.2 operational permits it requires, no application forms and no fee schedule; City Code chapter 12 (fire prevention) is only partly reproduced on the Third Party Inspections page.",
+  "The NDS Fee Schedule is a scanned PDF; the building base rate (BR) and several rows (stop-work order, CO not required by USBC, Board of Appeals application, zoning compliance letters) are not legible or do not align in text extraction. The Permit Fee Calculations page returned no text.",
+  "Building Inspections publishes nothing on furnaces, glory holes, kilns or hot-shop ventilation, and does not explain the ICC Plan Review Services flyer.",
+  "Charlottesville Gas pages are residential: no commercial connection fee, no detail on elevated-pressure (PSIG) service, and no guidance on which rate schedule a continuously running furnace falls under.",
+  "No City page on industrial pretreatment, sewer-use limits or disposal of glass grinding slurry; City Code chapters 10 and 31 not read (Municode).",
+  "The Commissioner of the Revenue publishes no BPOL rate table for retail, service or manufacturing classifications, and no statement on whether a glass studio is a manufacturer for the wholesale exemption or the machinery and tools class.",
+  "The Blue Ridge Health District's fees conflict across pages ($80 application vs $40 plan review plus $40 permit).",
+  "Virginia ABC's retail licence page loaded as a navigation shell (no licence list); ABC licensing is pointed to, not modeled.",
+  "DEQ's air permit pages answered HTTP 403 to the research user agent; only the exemption regulation (9VAC5-80-1105) was read.",
+  "The City site's search endpoint is disallowed by robots.txt, so pages were found by following navigation links; a City page on fire permits, change-of-use procedure or occupancy permits could exist unlinked from the pages read."
+ ]
+}

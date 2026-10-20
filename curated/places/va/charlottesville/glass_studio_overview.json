@@ -138,7 +138,7 @@
    "fee": "Zoning Compliance Letter (mixed use/commercial) $250 as printed in the NDS Fee Schedule",
    "form": "f4",
    "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
-   "quote": "A use that provides a work space for artists or artisans that may include the production of hand-crafted products.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -210,7 +210,7 @@
    "fee": "VDH plan review $40 and annual permit $40 (district page: $80 application); TFE $40; meals tax 7%; Temporary Use Permit $250; special event application $25",
    "form": "f3",
    "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
-   "quote": "Per the Virginia Food Regulations , owner of record must apply at least 30 days prior to opening to the public or start of renovation.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -488,7 +488,7 @@
    "type": "internal appeal",
    "deadline": "One year from the end of the tax year or from the appealable event",
    "basis": "Va. Code § 58.1-3703.1(A)(5), as described on the city's Business License Tax page",
-   "quote": "Pursuant to the provisions of Virginia Code Section 58.1-3703.1(A)(5), any taxpayer assessed with a local business license tax as the result of an appealable event may apply within one year from the last day of the tax year for which such assessment is made, or within one year from the date of such appealable event to the Commissioner of the Revenue.",
+   "quote": null,
    "source": "official-page"
   }
  ],
@@ -498,7 +498,8 @@
   "Three things no City page settles and only the offices can: how NDS classifies a gas-fired hot shop (artisan workshop vs. industrial), which fire operational permits the Fire Marshal's Office requires and at what fee, and what Charlottesville Gas will charge to serve the furnace load at elevated pressure.",
   "All fees are as published on 2026-10-19; the NDS Fee Schedule is a scanned PDF and several rows are hard to read.",
   "Sites in the Albemarle County part of greater Charlottesville follow Albemarle County's processes instead (the Albemarle website's terms forbid reprinting; not researched here).",
-  "State processes (Virginia sales tax, SCC registration, ABC licensing, DEQ air permits, DPOR) are pointed to but not modeled."
+  "State processes (Virginia sales tax, SCC registration, ABC licensing, DEQ air permits, DPOR) are pointed to but not modeled.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Decision 1: what kind of use is the studio, and where can it go' (https://www.charlottesville.gov/DocumentCenter/View/16092); the step 'Decision 4: cafe, drinks or events' (https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/); the escalation 'Business license classification or assessment disputed' were not found on the cited page as lexflow read it (not found word for word in Open US Law's copy of § 58.1-3703.1; not found word for word in the cited page as read on 20 October 2026). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -623,13 +624,29 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
-  "removed": [],
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 38,
+  "quotes_confirmed": 35,
+  "removed": [
+   {
+    "where": "steps[0]",
+    "what": "the step 'Decision 1: what kind of use is the studio, and where can it go'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[6]",
+    "what": "the step 'Decision 4: cafe, drinks or events'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "escalation[3]",
+    "what": "the escalation 'Business license classification or assessment disputed'",
+    "why": "not found word for word in Open US Law's copy of § 58.1-3703.1"
+   }
+  ],
   "corrections": [],
   "open_issues": [
    "NDS Zoning's classification of a gas-fired hot shop with oxygen and propane (artisan workshop by right, or industrial).",
@@ -637,6 +654,7 @@
    "Charlottesville Gas's ability, cost and rate schedule to serve the furnace load at elevated pressure.",
    "The BPOL classification and rate for each activity, and whether the studio counts as a manufacturer.",
    "Blue Ridge Health District fees and whether a drinks-only service needs a permit; the ABC licence type for drinks at classes and events."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

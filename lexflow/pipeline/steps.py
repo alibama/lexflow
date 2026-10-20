@@ -932,7 +932,8 @@ def run_coverage(con, args, log, progress):
     probe, the Ollama answer scored against the gold, and a verdict; writes docs/coverage-<run>.json and
     docs/coverage.md.  ``arm``: coverage | ollama; ``llm_cells``: Ollama answers for that many state cells per
     state; ``node``: a node of LEXFLOW_LLM_NODES; ``run``: a run id to resume; ``local``: probe the local store;
-    ``fill``: answer the gap cells of the run with the ask pipeline instead (``llm_cells`` caps the cells per state)."""
+    ``fill``: answer the gap cells of the run with the ask pipeline instead (``llm_cells`` caps the cells per state);
+    ``cells``: gaps | filled (the cells another model filled, for a comparison) | all."""
     from ..ask import coverage as CV
     sts = _states(args, con)
     qids = [q.strip() for q in (args.get("questions") or "").split(",") if q.strip()] or None
@@ -942,7 +943,8 @@ def run_coverage(con, args, log, progress):
         # ask pipeline; ``llm_cells`` caps the cells per state
         return CV.fill(con, sts, run_id=args.get("run") or None, qids=qids,
                        llm_cells=int(llm) if llm not in (None, "") else None, node=args.get("node") or None,
-                       model=args.get("model") or None, force=bool(args.get("force")), log=log, progress=progress)
+                       model=args.get("model") or None, force=bool(args.get("force")), log=log, progress=progress,
+                       cells=args.get("cells") or "gaps")
     return CV.run(con, sts, _places(con, args), qids, arm=args.get("arm") or "ollama",
                   llm_cells=int(llm) if llm not in (None, "") else None, run_id=args.get("run") or None,
                   node=args.get("node") or None, live=not args.get("local"), force=bool(args.get("force")),
@@ -956,7 +958,7 @@ COMPOSITE = {
                      "forms, fees and escalation; can the local model answer it from the statute index plus those "
                      "facts; how does the answer score against the gold (curated_ask/coverage/). Writes the matrix "
                      "docs/coverage.md and shows it on the Coverage page.", "optional", lambda con: {}, run_coverage,
-                     params=["states", "places", "questions", "arm", "node", "force", "fill"],
+                     params=["states", "places", "questions", "arm", "node", "force", "fill", "cells"],
                      cost="coverage-only: seconds per cell (the live endpoint, one request a second); with the Ollama "
                           "answer a few minutes per cell on this CPU; --fill answers each gap cell with the ask "
                           "pipeline (a minute or two per cell)",

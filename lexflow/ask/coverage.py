@@ -25,8 +25,11 @@ shardable by state; ``--node`` pins the model calls to one node of ``LEXFLOW_LLM
 
 The gap-filling loop (``fill``, ``lexflow run coverage --fill``): every state-level cell of the latest run whose
 verdict is none, or partial with steps or who still missing, is answered with the ask pipeline (the question
-registered in asked_questions under the coverage qid, the answer stored in asked_answers with the node and model in
-its metrics).  ``lexflow sparql --build`` then puts those answers in the local store as draft process items
+registered in asked_questions under the coverage qid, the answer stored in asked_answers under the model that
+answered, with the node and model in its metrics).  ``--cells`` picks the cells: ``gaps`` (the default),
+``filled`` (the cells another model has already filled, so a second model answers the same set and the two can be
+compared: asked_answers keeps one row per model, and the readers show the preferred one, ``lexflow.ask.prefer``)
+or ``all`` (both).  ``lexflow sparql --build`` then puts those answers in the local store as draft process items
 (``lexflow.publish.graph.Build.asked``), the probe counts them apart (``counts.drafts``), and a cell that rests on
 drafts alone is at most partial (``D`` in the matrix).
 """
@@ -160,7 +163,8 @@ def local_text(gov_id: str, process: str) -> str:
     p = local_file(gov_id, process)
     if not p or not p.exists():
         return ""
-    return _flatten(json.loads(p.read_text(encoding="utf-8")))
+    from ..municipal import quotes as Q
+    return _flatten(Q.restore(json.loads(p.read_text(encoding="utf-8")), p))
 
 
 def check_gold(spec: dict, state: str | None = None, qid: str | None = None, skip_missing: bool = False) -> dict:
@@ -812,25 +816,84 @@ def register_question(con, q: dict) -> str:
     return q["id"]
 
 
-def filled(con, qid: str, state: str) -> dict | None:
-    """The stored fill of a cell (an asked answer whose metrics carry ``coverage_fill``), or None."""
-    r = db.one(con, "SELECT status, metrics FROM asked_answers WHERE question_id=? AND target=?", qid, state)
-    if not r:
+def fills(con, qid: str, state: str) -> dict[str, dict]:
+    """The stored fills of a cell by model (the asked answers whose metrics carry ``coverage_fill``):
+    model -> {status, model, run, node, at, verdict, missing, seconds}."""
+    out = {}
+    for r in db.rows(con, "SELECT model, status, metrics FROM asked_answers WHERE question_id=? AND target=? "
+                          "ORDER BY model", qid, state):
+        m = db.loads(r["metrics"], {}) or {}
+        if m.get("coverage_fill"):
+            out[r["model"]] = {"status": r["status"], **m["coverage_fill"], "model": r["model"]}
+    return out
+
+
+def filled(con, qid: str, state: str, model: str | None = None) -> dict | None:
+    """The stored fill of a cell by ``model`` (any model's, the preferred reader's first, when None), or None."""
+    from . import prefer
+    by = fills(con, qid, state)
+    if model:
+        return by.get(model)
+    if not by:
         return None
-    m = db.loads(r["metrics"], {}) or {}
-    return {"status": r["status"], **m["coverage_fill"]} if m.get("coverage_fill") else None
+    rows = db.rows(con, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, state)
+    best = prefer.pick([r for r in rows if r["model"] in by])
+    return by[best["model"]] if best else None
+
+
+CELLS = ("gaps", "filled", "all")
+
+
+def filled_cells(con, states: list[str], qids: list[str] | None = None, model: str | None = None) -> list[dict]:
+    """The state-level cells that already carry a fill answer by a model other than ``model`` (any model when
+    None): what a second model answers so the two can be compared.  Shaped like ``gap_cells`` (the verdict and
+    missing kinds are those the first fill recorded), gold cells first, then in question order."""
+    order = {q["id"]: i for i, q in enumerate(questions())}
+    seen: dict[tuple[str, str], dict] = {}
+    for r in db.rows(con, "SELECT question_id, target, model, metrics FROM asked_answers WHERE gov_id IS NULL AND "
+                          "target = state AND metrics LIKE '%coverage_fill%' ORDER BY target, question_id"):
+        qid, st_ = r["question_id"], r["target"]
+        if st_ not in states or (qids and qid not in qids) or qid not in order or r["model"] == model:
+            continue
+        f = (db.loads(r["metrics"], {}) or {}).get("coverage_fill")
+        if not f or (qid, st_) in seen:
+            continue
+        g = load_gold(st_, qid)
+        seen[(qid, st_)] = {"qid": qid, "state": st_, "verdict": f.get("verdict"), "missing": f.get("missing") or [],
+                            "gold": bool(g and g.get("gold") != "none"),
+                            "filled_by": sorted(k for k in fills(con, qid, st_) if k != model)}
+    return sorted(seen.values(), key=lambda c: (states.index(c["state"]), not c["gold"], order[c["qid"]]))
+
+
+def fill_cells(con, run_id: str, states: list[str], qids: list[str] | None = None, cells: str = "gaps",
+               model: str | None = None) -> list[dict]:
+    """The cells a fill answers: ``gaps`` (gap_cells of the run), ``filled`` (filled_cells: those another model
+    filled already) or ``all`` (both, each cell once)."""
+    if cells not in CELLS:
+        raise ValueError(f"--cells takes one of {', '.join(CELLS)}, not {cells!r}")
+    order = {q["id"]: i for i, q in enumerate(questions())}
+    out: dict[tuple[str, str], dict] = {}
+    if cells in ("gaps", "all"):
+        for c in gap_cells(con, run_id, states, qids):
+            out[(c["qid"], c["state"])] = c
+    if cells in ("filled", "all"):
+        for c in filled_cells(con, states, qids, model):
+            out.setdefault((c["qid"], c["state"]), c)
+    return sorted(out.values(), key=lambda c: (states.index(c["state"]), not c["gold"], order[c["qid"]]))
 
 
 def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | None = None,
          llm_cells: int | None = None, node: str | None = None, model: str | None = None, force: bool = False,
-         log=print, progress=None, pipeline=None) -> dict:
+         log=print, progress=None, pipeline=None, cells: str = "gaps") -> dict:
     """Answer the gap cells of a coverage run (``gap_cells``: the latest run unless ``run_id`` names one) with the
     ask pipeline: the question is registered in asked_questions, then for each cell ``pipeline.answer_state``
     (retrieval over the statute index, quotes, the facts and the map, quote verification, the local model's
-    summary when the node has it) stores the answer in asked_answers under target = state, with the node and model
-    in its metrics (``coverage_fill``).  Resumable (a cell with a stored fill is skipped unless ``force``),
-    shardable by state, at most ``llm_cells`` cells per state (the cells with gold come first).  ``pipeline``
-    stands in for ``lexflow.ask.pipeline.answer_state`` (the tests' stub)."""
+    summary when the node has it) stores the answer in asked_answers under target = state and the model that
+    answered, with the node and model in its metrics (``coverage_fill``).  ``cells``: ``gaps``, ``filled`` (the
+    cells another model filled already, answered again by this model beside the first answer, never over it) or
+    ``all``.  Resumable (a cell this model filled already is skipped unless ``force``), shardable by state, at
+    most ``llm_cells`` cells per state (the cells with gold come first).  ``pipeline`` stands in for
+    ``lexflow.ask.pipeline.answer_state`` (the tests' stub)."""
     from . import pipeline as AP
     from .plan import Plan, plan as make_plan
     ensure_table(con)
@@ -848,7 +911,9 @@ def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | No
             emb = AP.embedder()
         except Exception:  # noqa: BLE001
             emb = None
-    cells = gap_cells(con, run_id, states, qids)
+    used = asker.client.model if asker else (model or config.ASK_MODEL)      # the row's model lane
+    mode = cells
+    cells = fill_cells(con, run_id, states, qids, mode, used)
     todo: list[dict] = []
     per_state: dict[str, int] = {}
     for c in cells:
@@ -856,15 +921,15 @@ def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | No
             continue
         per_state[c["state"]] = per_state.get(c["state"], 0) + 1
         todo.append(c)
-    log(f"coverage fill of run {run_id}: {len(cells)} gap cells over {', '.join(states)}, {len(todo)} to answer"
-        f"{f' (at most {llm_cells} per state)' if llm_cells is not None else ''}, node {node_name}"
-        f"{f', model {asker.client.model}' if asker else ''}")
+    log(f"coverage fill of run {run_id}: {len(cells)} {mode} cells over {', '.join(states)}, {len(todo)} to answer"
+        f"{f' (at most {llm_cells} per state)' if llm_cells is not None else ''}, node {node_name}, model {used}"
+        f"{'' if asker else ' (no summary)'}")
     qs = {q["id"]: q for q in questions()}
     counts: dict[str, int] = {"answered": 0, "partial": 0, "not_found": 0, "skipped": 0, "failed": 0}
     seconds: list[float] = []
     for i, c in enumerate(todo):
         q = qs[c["qid"]]
-        prior = filled(con, q["id"], c["state"])
+        prior = filled(con, q["id"], c["state"], used)
         if prior and not force:
             counts["skipped"] += 1
             log(f"{q['id']:<24} {c['state']:<4} skipped: filled {prior.get('at', '')} on {prior.get('node', '?')} ({prior['status']})")
@@ -877,7 +942,8 @@ def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | No
                     source="coverage-fill", notes=list(base.notes))
         t0 = time.time()
         try:
-            row = answer_state(con, q["id"], plan, c["state"], asker=asker, emb=emb, log=lambda *_: None, store=True)
+            row = answer_state(con, q["id"], plan, c["state"], asker=asker, emb=emb, log=lambda *_: None, store=True,
+                               model=used)
         except Exception as e:  # noqa: BLE001 - one cell must not stop the fill
             counts["failed"] += 1
             log(f"{q['id']:<24} {c['state']:<4} failed: {type(e).__name__}: {str(e)[:200]}")
@@ -885,10 +951,12 @@ def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | No
         took = round(time.time() - t0, 1)
         seconds.append(took)
         metrics = db.loads(row.get("metrics"), {}) if isinstance(row.get("metrics"), str) else dict(row.get("metrics") or {})
-        metrics["coverage_fill"] = {"run": run_id, "node": node_name, "model": row.get("model") or (asker.client.model if asker else None),
-                                    "at": db.now(), "verdict": c["verdict"], "missing": c["missing"], "seconds": took}
-        con.execute("UPDATE asked_answers SET metrics=?, updated_at=? WHERE question_id=? AND target=?",
-                    (json.dumps(metrics, default=str), db.now(), q["id"], c["state"]))
+        lane = row.get("model") or used
+        metrics["coverage_fill"] = {"run": run_id, "node": node_name, "model": lane, "summary": bool(asker),
+                                    "at": db.now(), "verdict": c["verdict"], "missing": c["missing"], "seconds": took,
+                                    "beside": c.get("filled_by") or []}
+        con.execute("UPDATE asked_answers SET metrics=?, updated_at=? WHERE question_id=? AND target=? AND model=?",
+                    (json.dumps(metrics, default=str), db.now(), q["id"], c["state"], lane))
         con.commit()
         status = row.get("status") or "failed"
         counts[status] = counts.get(status, 0) + 1
@@ -899,8 +967,8 @@ def fill(con, states: list[str], run_id: str | None = None, qids: list[str] | No
             f"quotes {metrics.get('quotes_checked', 0)}/{metrics.get('quote_misses', 0)} misses · {took}s")
         if progress:
             progress((i + 1) / len(todo))
-    return {"run": run_id, "gap_cells": len(cells), "answered": len(seconds), "status": counts, "node": node_name,
-            "seconds_mean": _mean(seconds), "seconds_total": round(sum(seconds), 1)}
+    return {"run": run_id, "cells": mode, "gap_cells": len(cells), "answered": len(seconds), "status": counts,
+            "node": node_name, "model": used, "seconds_mean": _mean(seconds), "seconds_total": round(sum(seconds), 1)}
 
 
 # ---------------------------------------------------------------------------------------------------- reports
@@ -991,7 +1059,9 @@ def markdown(m: dict, run_id: str) -> str:
          "form, where, appeal)?  `A` adequate, `P` partial, `D` partial on draft process items alone (a `single` "
          "state model or an asked answer's draft; never more than partial), `-` none; the kinds still missing follow "
          "the verdict.  `lexflow run coverage --states va,dc` regenerates this file (lexflow/ask/coverage.py); "
-         "`lexflow run coverage --fill` answers the gap cells with the ask pipeline and stores the drafts.", "",
+         "`lexflow run coverage --fill` answers the gap cells with the ask pipeline and stores the drafts "
+         "(`--cells filled --model <other>` answers the filled cells again with another model, beside the first "
+         "answers, for a comparison).", "",
          "| Column | Cells | Adequate | Partial | Draft | None | Top missing kinds | Ollama cells | Composite | "
          "Vital recall | Citation precision | s/cell | s/Ollama cell |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for col in cols:
@@ -1069,13 +1139,15 @@ def main(argv=None) -> int:
     ap.add_argument("--check", action="store_true", help="check the question file and every gold entry, then stop")
     ap.add_argument("--fill", action="store_true", help="answer the gap cells of the run (--run, else the latest) with "
                                                         "the ask pipeline and store the drafts in asked_answers")
+    ap.add_argument("--cells", choices=CELLS, default="gaps", help="--fill: gaps (default), filled (the cells another "
+                                                                   "model filled already, for a comparison) or all")
     a = ap.parse_args(argv)
     states = S.parse_states(a.states)
     if a.fill:
         con = db.connect()
         try:
             out = fill(con, states, run_id=a.run, qids=[q for q in (a.questions or "").split(",") if q] or None,
-                       llm_cells=a.llm_cells, node=a.node, model=a.model, force=a.force)
+                       llm_cells=a.llm_cells, node=a.node, model=a.model, force=a.force, cells=a.cells)
             print(json.dumps(out, indent=1))
         finally:
             con.close()

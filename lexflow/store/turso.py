@@ -162,6 +162,29 @@ def ensure_schema(client: Turso) -> None:
         except TursoError as e:
             if "duplicate column" not in str(e).lower():
                 raise
+    rebuild_asked_answers(client)
+
+
+def rebuild_asked_answers(client: Turso) -> bool:
+    """The shared copy of asked_answers gets ``model`` in its key the way the local one does
+    (db.migrate_asked_answers: the rows keep their model, those without one are filed under the default), once,
+    in one transaction; a push's upsert names the new key, which the old table would refuse.  True when it ran."""
+    try:
+        res = client.pipeline([("PRAGMA table_info(asked_answers)", ())])
+    except TursoError:
+        return False                             # a read-only token: the push that needs the key will say so
+    info = ((res[0] if res else None) or {}).get("rows") or []
+    pk = tuple(name for _, name in sorted((r.get("pk"), r.get("name")) for r in info if r.get("pk")))
+    if not info or pk == db.SYNCED["asked_answers"]:
+        return False
+    cols = [r["name"] for r in info]
+    picks = [f"COALESCE(model, '{db.ASKED_DEFAULT_MODEL}') AS model" if c == "model" else c for c in cols]
+    create = next(s for s in remote_schema() if s.startswith("CREATE TABLE IF NOT EXISTS asked_answers"))
+    client.pipeline([("BEGIN", ()), ("ALTER TABLE asked_answers RENAME TO asked_answers_old", ()), (create, ()),
+                     (f"INSERT INTO asked_answers ({', '.join(cols)}) SELECT {', '.join(picks)} FROM asked_answers_old", ()),
+                     ("DROP TABLE asked_answers_old", ()),
+                     ("CREATE INDEX IF NOT EXISTS asked_answers_state ON asked_answers(state)", ()), ("COMMIT", ())])
+    return True
 
 
 # ------------------------------------------------------------------ tables
@@ -281,6 +304,7 @@ def drop_stale_reviews(con: sqlite3.Connection, table: str, rows: list[dict]) ->
     keys = db.SYNCED[table]
     dropped = 0
     for r in rows:
+        r = db.keyed(table, r)              # a row from a copy on older code names no model: the default's
         if any(r.get(k) is None for k in keys):
             continue
         local = db.one(con, f"SELECT * FROM {table} WHERE " + " AND ".join(f"{k}=?" for k in keys),

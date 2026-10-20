@@ -1,0 +1,1411 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "meals_tax_filing",
+ "title": "Register for, collect and file the meals (food and beverage) tax",
+ "question": "My business serves food or drinks. How do I file and pay the meals tax?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "restaurants",
+  "caterers",
+  "food truck operators",
+  "convenience and grocery stores with prepared food"
+ ],
+ "office": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit); the Director of Finance holds the commissioner of the revenue's and treasurer's powers under the county executive form of government",
+ "summary": "Restaurants, caterers, food trucks, delis and other Albemarle County businesses that prepare or serve food must add the county's 6% food and beverage tax to taxable sales, on top of state sales tax. The county has no Commissioner of the Revenue: the Department of Finance & Budget's Business & Personal Tax Unit registers sellers through the business license application, filed by email, mail or fax (the County Code says before opening; the county's form allows 30 days before a 10% penalty). File a return and pay every month by the 20th for the month before, online, by mail, drop box or in person, even with no sales. There is no seller's discount. Late filing costs 10% (at least $10); late payment adds up to 25%, plus 10% yearly interest.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "Any county is hereby authorized to levy a tax on food and beverages sold, for human consumption, by a restaurant, as such term is defined in § 35.1-1 , not to exceed six percent of the amount charged for such food and beverages.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": "to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-521(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "quote": "The director of finance shall exercise all the powers conferred and perform all the duties imposed by general law upon commissioners of the revenue",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-522",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-522/",
+   "quote": "The director of finance shall also exercise the powers conferred and perform the duties imposed by general law upon county treasurers",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "Collection of such tax shall be in a manner prescribed by the governing body.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "The tax shall be in addition to the sales tax currently imposed by the county pursuant to the authority of Chapter 6 (§ 58.1-600 et seq.).",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "Any place where food is prepared for service to the public on or off the premises, or any place where food is served",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "including operations preparing or storing food for catering services, push cart operations, hotdog stands, and other mobile points of service",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "The term \"beverage\" as set forth herein means alcoholic beverages as defined in § 4.1-100 and nonalcoholic beverages served as part of a meal.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "Grocery stores and convenience stores selling prepared foods ready for human consumption at a delicatessen counter shall be subject to the tax, for that portion of the grocery store or convenience store selling such items.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "Such tax shall not be levied on food and beverages sold through vending machines",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "restaurants to their employees as part of their compensation when no charge is made to the employee",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "the first three times per calendar year and, beginning with the fourth time, on the first $100,000 of gross receipts per calendar year from sales of food and beverages (excluding gross receipts from the first three times), as a fundraising activity",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "public or private elementary or secondary schools or institutions of higher education to their students or employees",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "hospitals, medical clinics, convalescent homes, nursing homes, or other extended care facilities to patients or residents thereof",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "sellers at local farmers markets and roadside stands, when such sellers' annual income from such sales does not exceed $2,500",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "when used or consumed and paid for by the Commonwealth, any political subdivision of the Commonwealth, or the United States",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "that portion of the amount paid by the purchaser as a discretionary gratuity in addition to the sales price",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "that portion of the amount paid by the purchaser as a mandatory gratuity or service charge added by the restaurant in addition to the sales price, but only to the extent that such mandatory gratuity or service charge does not exceed 20 percent of the sales price",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "alcoholic beverages sold in factory sealed containers and purchased for off-premises consumption or food purchased for human consumption as \"food\" is defined in the Food Stamp Act of 1977",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "except for the following items: sandwiches, salad bar items sold from a salad bar, prepackaged single-serving salads consisting primarily of an assortment of vegetables, and nonfactory sealed beverages",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "The county tax limitations imposed pursuant to § 58.1-3711 shall apply to any tax levied under this section, mutatis mutandis.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3711(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3711/",
+   "quote": "Any county license tax imposed pursuant to this chapter shall not apply within the limits of any town located in such county, where such town now, or hereafter, imposes a town license tax on the same privilege.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3841(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+   "quote": "The situs for taxation for any tax levied on the sale of food and beverages or meals shall be the county, city, or town in which the sales are made, namely the locality in which each place of business is located without regard to the locality of delivery or possible use by the purchaser.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3834",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3834/",
+   "quote": "the tax rate shall be computed by applying the apportionment formula in § 58.1-3709 to the food and beverage or meals tax rate of each applicable local jurisdiction.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "quote": "The owner of a mobile food unit shall be required to register with the commissioner of the revenue or director of finance in any locality in which he conducts business from such mobile food unit, regardless of whether the owner is exempt from paying license tax in the locality pursuant to the provisions of this section.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "quote": "If the owner of a new business that operates a mobile food unit pays the license tax required by the locality in which the mobile food unit is registered, such owner shall not be required to pay any further license tax imposed by any other locality for conducting business from such mobile food unit in the confines of such other locality.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-18",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "may require that no business license under this chapter shall be issued until the applicant has produced satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance and admissions taxes owed by the business to the county, city or town have been paid",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "All food and beverage tax collections and all meals tax collections shall be deemed to be held in trust for the county, city, or town imposing the applicable tax.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3833(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "quote": "The wrongful and fraudulent use of such collections other than remittance of the same as provided by law shall constitute embezzlement",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The governing body may also by ordinance establish due dates for the payment of local taxes",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "in a sealed envelope or container bearing a postmark or a confirmation of shipment on or before midnight of the day such return is required to be filed or such payment made without penalty or interest, shall constitute filing and payment",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 1-210(E)",
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "quote": "the act may be performed or the action may be filed on the next business day that is not a Saturday, Sunday, legal holiday, or day on which the state or local government office is closed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "(4) in the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, 10 percent for the first month the taxes are past due, and five percent for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to file a return shall be greater than 10 percent of the tax assessable on such return or $10, whichever is greater",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No such penalty and interest shall be imposed if a taxpayer provides evidence that a tax return filing or a tax payment was timely by producing a United States Postal Service Certificate of Mailing, or other proof of mailing",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "In jurisdictions not having a treasurer or commissioner of the revenue, the governing body may delegate to the appropriate local tax officials the responsibility to make the determination of fault.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3903",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3903/",
+   "quote": "the commissioner of the revenue or other assessing officer shall list and assess the same with taxes at the rate or rates prescribed for that year",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3958",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3958/",
+   "quote": "The attorney's or collection agency's fees shall not exceed 20 percent of the taxes or other charges so collected.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3906(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3906/",
+   "quote": "be liable for a penalty of the amount of the tax evaded or not paid, collected, or accounted for and paid over",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3907(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "quote": "who willfully fails to collect or truthfully account for and pay over such tax, and any such officer or person who willfully evades or attempts to evade any such tax or the payment thereof, shall, in addition to any other penalties provided by law, be guilty of a Class 1 misdemeanor",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3907(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "quote": "any person violating subsection B shall pay a civil penalty of $20,000",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "However, the governing body of the county, city or town may authorize the treasurer to approve and issue any refund up to $10,000 as a result of an erroneous assessment.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "quote": "means machinery and tools tax, business tangible personal property tax (including, without limitation, computer equipment), merchant's capital tax, and a consumer utility tax where the amount in dispute exceeds $2,500",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "All proceedings pursuant to this section shall be conducted as an action at law before the court, sitting without a jury.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(A), shown as existing (unmarked) text in proposed Ordinance No. 22-8( ) & 22-15( ), Board of Supervisors agenda of Nov. 2, 2022, Att. A, Legistar matter 7194 (its history note cites Ord. 19-8(1), 4-17-19); current Code text not read; see the bpol_business_license process",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14127/file",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in the County on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1001, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; the same words are reproduced as the in-force text, with the history note \"§ 15-1001, Ord. 19-15(1), 4-17-19\", in proposed Ord. 22-15( ), Legistar matter 7003; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "A tax is hereby imposed on the purchaser of all food served, sold, or delivered for human consumption in the County in or from a restaurant, whether prepared in that restaurant or not, or prepared by a caterer, subject to the limitations and conditions of Virginia Code § 58.1-3833.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1001(A), as amended by Ord. 22-15( ), effective July 1, 2022 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 20, 2022, Att. A, Legistar matter 7003; adoption not recorded in Legistar)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7003/attachments/13445/file",
+   "quote": "The rate of this tax is six percent of the amount paid for the food.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1001(B), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; the same words are reproduced as the in-force text, with the history note \"§ 15-1001, Ord. 19-15(1), 4-17-19\", in proposed Ord. 22-15( ), Legistar matter 7003; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "In computing this tax, any fraction of $0.005 or more shall be treated as $0.01.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1000, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Food means any and all edible refreshments or nourishment, liquid or otherwise, including beverages as defined in this section, purchased in or from a restaurant or from a caterer, but excluding snack foods.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1000, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Beverage means any alcoholic beverages as defined in Virginia Code § 4.1-100 and nonalcoholic beverages, any of which are served as part of a meal, excluding alcoholic beverages sold in factory sealed containers and purchased for off-premises consumption.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1000, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Snack food means chewing gum, candy, popcorn, peanuts and other nuts, and unopened prepackaged cookies, donuts, crackers, potato chips, and other items of essentially the same nature and consumed for essentially the same purpose.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1000, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Caterer means a person who furnishes food on the premises of another for compensation.",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1000, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "lunch wagon or truck, pushcart or other mobile facility that sells food",
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1002, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "The amount of tax owed by the purchaser shall be added to the cost of the food by the seller, who shall collect and remit the taxes to the County as provided in this article.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1002(D), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; subsection letter as in that draft: the 2020 COVID-19 ordinance, Legistar matter 4155, cites the remittance deadline as § 15-1002(F); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "It is presumed that all food served, sold, or delivered in the County in or from a restaurant is taxable under this article and the burden is on the seller of the food to establish by records what food is not taxable.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1002(E), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; subsection letter as in that draft: the 2020 COVID-19 ordinance, Legistar matter 4155, cites the remittance deadline as § 15-1002(F); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "The reports and remittance of the tax shall be made on or before the twentieth day of each month.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1003(B), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "The seller shall retain the records identified in subsection (A) for three years.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1004, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "any tax payable under this article shall become immediately due and payable and that person shall immediately make a report and pay the tax due to the Director of Finance.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1005, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "No seller shall advertise or hold out to the public in any manner, directly or indirectly, that all or any part of the tax imposed by this article will be paid or absorbed by the seller or anyone else",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-1007(A), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Any person who commits the following acts shall be guilty of a Class 1 misdemeanor:",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-102, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "the Director of Finance shall proceed as he may deem best to obtain facts and information on which to base his estimate of the tax due.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-102, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "the total amount thereof shall be payable within 10 days from the date of the notice.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-103(B), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "In the case of delinquent remittance of excise taxes on meals, lodging, or admissions collected from consumers, a penalty of: (i) 10 percent for the first month the taxes are past due, and 5% for each month thereafter, up to a maximum of 25 percent of the taxes collected but not remitted; or (ii) $10.00, whichever is greater, is imposed on all taxes remaining unpaid after the due date",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-103(C), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Any taxpayer who fails to file a return required under this chapter is subject to a penalty of 10 percent of the tax levied on the return or $10.00, whichever is greater; provided, however, that the penalty shall not exceed the amount of the tax assessable.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-104, as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "Interest at the rate of 10 percent per year shall apply on all unpaid taxes and penalties commencing the first day of the month following the month in which the taxes are due, and continuing until paid.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-105(A), as enacted by Ord. 19-15(1), Apr. 17, 2019 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Apr. 17, 2019, Att. A, Legistar matter 3565; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "The attorney’s or collection agency’s fees shall not exceed 20 percent of the taxes or other charges so collected.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-106, as amended by Ord. 22-15( ), Nov. 2, 2022 (adopted reading of the proposed ordinance, Board of Supervisors agenda of Nov. 2, 2022, Att. A, Legistar matter 7194; adoption not confirmed)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14127/file",
+   "quote": "The Director is authorized to approve and issue any refund of erroneously assessed or paid taxes, up to the maximum amount allowed under Virginia Code § 58.1-3981(A), without consulting the Board of Supervisors or the County Attorney.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check that your sales are subject to Albemarle County's food and beverage tax",
+   "who": "Business owner",
+   "how": "The county tax applies to food and drinks prepared or served by a restaurant, a word that covers much more than sit-down restaurants. The county lists cafes, coffee and doughnut shops, delis, caterers, food trucks and vendors, bars and nightclubs, hotels and motels, theatres, bowling alleys, skating rinks, clubs, buffets, and the deli or prepared-food counters of grocery stores, convenience stores and gas stations. Bakeries are covered only if they have seating. Colleges and universities are covered only on sales to people who are not their students or employees, hospitals and nursing homes only on sales to people who are not their patients or residents (the county's guide says sales to employees and the public are covered), and industrial cafeterias only on sales to people who are not their employees. The tax goes to the locality where your place of business is, not where the customer eats. A business inside the City of Charlottesville pays the city's own meals tax instead, even though many county businesses have a Charlottesville mailing address. The Town of Scottsville has its own meals tax too (see caveats).",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "paraphrase": null,
+   "capture": "20260814172555",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "quote_sha256": "c65a008593088dbe442109cc9c84dea240ec38c19119c43d29ea3f729b71afea",
+   "quote_words": 42
+  },
+  {
+   "id": "s2",
+   "step": "Get zoning approval, a health permit and the state registrations a food business needs",
+   "who": "Business owner, with the Community Development Department, the Virginia Department of Health, Virginia Tax, the State Corporation Commission and Virginia ABC",
+   "how": "Apply for a Zoning Clearance in the county's Civic Access portal: there is one for a business in a commercial or industrial space and one for mobile food vendors. The clearance can depend on Health Department approval. The New Business License Application says zoning approval is required but does not have to be obtained before you apply for the license. State law requires a restaurant to hold a Virginia Department of Health permit. Register with Virginia Tax to collect the 5.3% retail sales tax (4.3% state and 1% local, per the county's Tax Rates page), which is filed with the state, not the county. File any trade name or company with the SCC, and get a state ABC license before selling alcohol (the county also charges a local ABC license fee on the business license application). Fees for the clearance and the health permit are not covered here.",
+   "deadline": null,
+   "fee": null,
+   "form": "f5",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "paraphrase": null,
+   "capture": "20260316083537",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "quote_sha256": "a0dc278dba108da86959c335e3ce1146262b73653ce7709ccc8aae748ddbf317",
+   "quote_words": 29
+  },
+  {
+   "id": "s3",
+   "step": "Register with the Business & Personal Tax Unit by applying for a business license",
+   "who": "Business owner, filing with the Office of Revenue Administration, Business & Personal Tax Unit (Department of Finance & Budget)",
+   "how": "The county has no Commissioner of the Revenue. The Director of Finance does that job, and the Business & Personal Tax Unit registers meals tax collectors. Fill in the New Business License Application. Give the start date, legal and trade names, SSN or federal EIN, addresses, a description of the business and your estimated gross receipts. A convenience store with a deli and a hotel with an on-site restaurant report those receipts on the extra lines in Step 7. Add any county ABC licenses in Step 6. The county's FAQ says a new business cannot open an account online, although the Food & Beverage page has a button labelled 'Register your Business & Pay Business Taxes Online' that opens the business tax portal (see caveats). Email the application and documents to tax@albemarle.org, mail them to 401 McIntire Rd, Room (Suite) 133, Charlottesville, VA 22902, or fax them to 434-243-7906. No separate meals tax registration form was found. Ask the unit how you will get the account number that goes on the monthly coupon.",
+   "deadline": "The application form and the county's FAQ say to apply within 30 days of the date the business began in Albemarle County to avoid a 10% late filing penalty; County Code § 8-201(A) says a new business shall apply for a license before beginning business",
+   "fee": "No fee for registering for the meals tax was found. The business license costs $0 at gross receipts of $25,000 or less and $50 between $25,000 and $100,000, with a rate-based tax at $100,000 or more. County ABC license fees run from $25 to $1,000 (see fees).",
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "paraphrase": null,
+   "capture": "20260814172555",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "quote_sha256": "f2c67c64c8deebb2b71d6b54236c40e6fe69639620e7b9bcb11e3407cc4b07e1",
+   "quote_words": 40
+  },
+  {
+   "id": "s4",
+   "step": "Food trucks and mobile vendors: get a business license, the mobile food vendor clearance and a health permit, and register in every locality",
+   "who": "Mobile food unit owner; Community Development Department (zoning); Virginia Department of Health",
+   "how": "Every mobile food vendor that operates in the county must apply for a county business license; the flat license tax for a mobile food peddler or a food itinerant merchant is $50. Under state law, a new business whose mobile food unit has paid the license tax where the unit is registered owes no further license tax in other localities for two years, for up to three units, but it must still register here. You need a Mobile Food Vendor Zoning Clearance if you are based in the county, or if you stay at one site for more than two hours at a time; a stay of more than two hours on commercial or industrial land may also need the owner's site plan updated. Vendors tied to an approved restaurant, or at a permitted special or temporary event, need no clearance. Health Department approval comes first: no zoning permit is issued without it. State law makes a mobile food unit owner register with the commissioner of the revenue or director of finance in every locality where it sells, even when it owes no license tax there. As a registered seller, the truck collects the 6% tax on sales made in the county and files the monthly return (see caveats on trucks based elsewhere).",
+   "deadline": "Before beginning or operating in the county",
+   "fee": "$50 flat business license tax (Peddlers, Mobile Food; Itinerant Merchant, Food), unless the unit is exempt under Va. Code § 58.1-3715.1(B); clearance and health permit fees not covered here",
+   "form": "f4",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/254/637517581348000000",
+   "paraphrase": null,
+   "capture": "20260312010828",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/254/637517581348000000",
+   "quote_sha256": "dd88b3645e9ad992bfcd8b3f2389199583c26121178f6954c01accc52a2bc0a2",
+   "quote_words": 17
+  },
+  {
+   "id": "s5",
+   "step": "Charge the 6% food and beverage tax on every taxable sale",
+   "who": "Seller (restaurant, caterer, food truck or other food business)",
+   "how": "Add 6% to the price of taxable food and drinks and collect it from the customer when payment is due, whether in cash or by card. It comes on top of the sales tax. Round a fraction of half a cent or more up to the next cent. The county guide treats hot or cold meals, made-to-order food, deli counter food and drinks, desserts, ice cream or snacks sold with a meal as taxable. The guide lists drinks sold alone, groceries, and prepackaged desserts, ice cream and snack foods sold alone as not taxable (see caveats on drinks). State law also exempts discretionary tips, mandatory service charges up to 20% of the price, free meals given to employees as pay, vending machine sales, factory-sealed alcohol sold to go, and meals paid for directly by a government. A nonprofit buying food is not exempt. You may not advertise that you will absorb the tax. The tax you collect is held in trust for the county.",
+   "deadline": null,
+   "fee": "6% of the amount paid for taxable food and beverages",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "paraphrase": null,
+   "capture": "20260814172555",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "quote_sha256": "97845beb2d3227e92d905363c161873d807fe8eda46223abd0e3a4d1e47ae051",
+   "quote_words": 17
+  },
+  {
+   "id": "s6",
+   "step": "Keep sales records and proof of exempt sales",
+   "who": "Seller",
+   "how": "Keep records of gross sales of all food and beverages, the amount charged on each sale, the date, the tax collected and the tax that should have been collected. Keep them for three years and open to county agents during business hours. The county presumes all food sold by a restaurant is taxable, so it is up to you to prove which sales were not. The unit's auditors do audits, revenue discovery and field inspections.",
+   "deadline": "Keep records for three years",
+   "fee": null,
+   "form": null,
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "The seller shall retain the records identified in subsection (A) for three years.",
+   "source": "Albemarle County Code § 15-1003(B) (Ord. 19-15(1), adopted reading of the proposed ordinance, Legistar matter 3565)"
+  },
+  {
+   "id": "s7",
+   "step": "Fill in the monthly Food and Beverage Tax coupon (return)",
+   "who": "Seller (owner or authorized filer)",
+   "how": "Get the coupon from the county's Food & Beverage page, or ask the Business & Personal Tax Unit to email or mail it (434-296-5852, tax@albemarle.org). For each month, report total food and beverage sales (line 1) and subtract exempt sales (line 2). Attach an itemized list of exempt sales, or copies of receipts, giving each exempt buyer's legal name; the list must equal line 2 and be sent with each monthly return. Line 3 is taxable sales and line 4 is the tax at 6%. Add late penalties on lines 5 and 6 if you are late. Sign the coupon and give your printed name, email and phone. Use a separate return for each location, and file a return even for a month with no sales. An unsigned or incomplete return is sent back as unfiled and can draw penalties, and any underpayment is subject to additional penalty. The coupon has no seller's discount line.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "quote_sha256": "d4e030238068a1f055c669b278bc61d038751a88469d9f73209633d7645c2946",
+   "quote_words": 33
+  },
+  {
+   "id": "s8",
+   "step": "File the return and pay online by the 20th of the following month",
+   "who": "Seller",
+   "how": "Existing accounts file and pay in the county's Business Tax Online Filing and Payment Portal (albemarlecountytaxes.org/business). E-check payments are free. Card payments go through PayPal at 2.50% (credit) or 2.35% (debit), with a $1.95 minimum. The portal's sign-in steps are not described here.",
+   "deadline": "By 11:59 PM ET on the 20th day of the month following the month the tax was collected (for a 20th that falls on a weekend or holiday, see caveats)",
+   "fee": "6% of taxable sales; card convenience fee 2.50% credit or 2.35% debit (minimum $1.95), e-check free",
+   "form": "f3",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "quote_sha256": "977bab9f77eae2174afdb53b8c265bbac5d1a408544d19247d5d43e2a07933a6",
+   "quote_words": 26
+  },
+  {
+   "id": "s9",
+   "step": "Or file the paper coupon by mail, drop box, email or in person",
+   "who": "Seller; Business & Personal Tax Unit",
+   "how": "Mail the signed coupon and a check (do not staple it, do not mail cash) to County of Albemarle, Business & Personal Tax Unit, 401 McIntire Road, Suite 133, Charlottesville, VA 22902, postmarked by the due date. Or leave it in a sealed envelope in a payment drop box in the parking lots of the County Office Building at 401 McIntire Road by the due date. Or file at the Business & Personal Tax Unit office by 5 PM. The county's tax guide also accepts filings emailed to tax@albemarle.org. Payments can be made by phone at (866) 820-5450 until 11:59 PM ET on the due date. The county's pages name the payee both as County of Albemarle and as Albemarle County.",
+   "deadline": "Postmarked by the due date (the 20th); drop box on the due date; in person by 5 PM ET; phone payment by 11:59 PM ET (for a 20th that falls on a weekend or holiday, see caveats)",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "quote_sha256": "eb52643c526c281fdd8f2b0ade6db5facb5c4df709ab59f69fe20ff738c3f066",
+   "quote_words": 15
+  },
+  {
+   "id": "s10",
+   "step": "Correct a return you have already filed",
+   "who": "Seller; Business & Personal Tax Unit",
+   "how": "The coupon has an AMENDED FILING box. Send a corrected coupon for the period, with the itemized exemption list if exemptions change, and call 434-296-5852 or email tax@albemarle.org to confirm how the office wants it. If the county has already assessed or billed the tax, or you paid too much, ask in writing for a correction of the assessment (see escalation).",
+   "deadline": "A correction of assessment: within three years from the last day of the tax year, or one year from the assessment, whichever is later",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "paraphrase": null,
+   "capture": "20260311113611",
+   "source": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "quote_sha256": "9d05b9a69faaa12dda86bd70f777178356f91da5b9e7ed921ea67e72255c5d96",
+   "quote_words": 18
+  },
+  {
+   "id": "s11",
+   "step": "If a return or payment is late or missing: penalties, interest, a statutory assessment and collection",
+   "who": "Director of Finance (Office of Revenue Administration: assessment; Payment Processing Unit and delinquent collections)",
+   "how": "A late return costs 10% of the tax or $10, whichever is more, but never more than the tax. Late payment adds 10% for the first month and 5% for each month after, up to 25%, with a $10 minimum. Interest of 10% a year runs from the first day of the month after the due date. If you do not file, the Director of Finance estimates the tax from the best information available and sends a bill by registered mail, payable within 10 days. Delinquent notices go out 14 days after a deadline. The county uses a private collection agency for taxes delinquent 3 months or more, which adds 20% of the amount collected. Its other collection methods include DMV registration stops, tax liens (for example on bank accounts, salary or a business's credit card company), set-off against state tax refunds, and court judgments. Willfully failing to collect or pay over the tax is a Class 1 misdemeanor, and company officers can be held personally liable. Call the Payment Processing Unit (434-296-5851) early.",
+   "deadline": "A statutory assessment is payable within 10 days of the notice",
+   "fee": "Late filing 10% or $10; late payment 10% then 5% a month, up to 25% (minimum $10); interest 10% a year; collection agency fee 20%; $25 fees for a DMV stop removal and for debt set-off",
+   "form": null,
+   "url": "https://www.albemarle.org/home/showdocument?id=24563&t=638677975576072956",
+   "paraphrase": null,
+   "capture": "20260423025752",
+   "source": "https://www.albemarle.org/home/showdocument?id=24563&t=638677975576072956",
+   "quote_sha256": "e8916e714c639d9426e74ca92ee8eb1493036c0f59e8b4548b3cfceaead60e1e",
+   "quote_words": 25
+  },
+  {
+   "id": "s12",
+   "step": "Report changes, and file and pay at once when you close",
+   "who": "Business owner",
+   "how": "The county's page says you must notify the Revenue Administration's Business & Personal Tax Unit (tax@albemarle.org or the mailing address) when the business closes. On closing, all tax owed becomes due at once, and you must make a final report and pay the tax to the Director of Finance. Until the office knows you have closed, missing monthly returns can lead to statutory assessments. The page does not say what to do on a move or a change of owner; since each location files its own return and needs its own license, ask the unit.",
+   "deadline": "Immediately on ceasing to operate or disposing of the business",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "d16d4340ba5b845ca042470c25dcb8358f21ed62b1f8d2515f11a62c8b92577d",
+   "quote_words": 11
+  },
+  {
+   "id": "s13",
+   "step": "Keep up the annual business filings that go with the meals tax account",
+   "who": "Business owner",
+   "how": "Renew the business license every year by March 1, online, on the digital renewal form or on the PDF, reporting the prior year's gross receipts. File the business tangible personal property return for equipment, furniture and fixtures by May 1. A hotel also collects the transient occupancy (lodging) tax, a separate monthly return.",
+   "deadline": "Business license renewal by March 1; business tangible personal property return by May 1",
+   "fee": null,
+   "form": "f6",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "d76d48330b1e2c3c728731ef05fbfb17ee52d3d29c4d2d5209298198cb1a8017",
+   "quote_words": 13
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "County of Albemarle - Food and Beverage Tax Coupon (monthly return; marked UPDATED 12/2025)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "2026 New Business License Application (Department of Finance and Budget, Revenue Administration; form dated 11/2025)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Albemarle County Business Tax Online Filing and Payment Portal (file and pay Food & Beverage tax; existing accounts)",
+   "number": null,
+   "url": "https://www.albemarlecountytaxes.org/business",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Zoning Clearance application: Mobile Food Vendors (Community Development, Civic Access portal)",
+   "number": null,
+   "url": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/plan/apply/90/0/0",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Zoning Clearance application: Business in a Commercial or Industrial Space (Community Development, Civic Access portal)",
+   "number": null,
+   "url": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/plan/apply/87/0/0",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f6",
+   "title": "2026 Business License Renewal (downloadable PDF)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f7",
+   "title": "Food & Beverage, Transient Occupancy, Short-Term Rental, and Motor Vehicle Dealership Fiduciary Tax Guide (Department of Finance and Budget; information leaflet)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showdocument?id=24563&t=638677975576072956",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f8",
+   "title": "Albemarle County Mobile Food Vendor Information Sheet (Community Development)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/254/637517581348000000",
+   "official": true,
+   "fillable": false
+  }
+ ],
+ "fees": [
+  {
+   "item": "Food and beverage tax",
+   "amount": "6% of the amount paid for taxable food and beverages (6% since July 1, 2022; 4% before)",
+   "basis": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage; Albemarle County Code § 15-1001(A) (Ord. 22-15( ), effective July 1, 2022); Va. Code § 58.1-3833(A)(1) caps a county at 6%",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "capture": "20260814172555",
+   "quote_sha256": "97845beb2d3227e92d905363c161873d807fe8eda46223abd0e3a4d1e47ae051",
+   "quote_words": 17
+  },
+  {
+   "item": "Rounding",
+   "amount": "A fraction of $0.005 or more counts as $0.01",
+   "basis": "Albemarle County Code § 15-1001(B) (Ord. 19-15(1)), https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "quote": "In computing this tax, any fraction of $0.005 or more shall be treated as $0.01."
+  },
+  {
+   "item": "Late filing penalty",
+   "amount": "10% of the tax shown on the return, or $10 if that is more, never more than the tax",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines; https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000 (line 5); Albemarle County Code § 15-103(C); Va. Code § 58.1-3916",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "7d1ecca4a985acd9c31aeee65b9dd813289baa6b49937f1a434970cfc8383d4d",
+   "quote_words": 36
+  },
+  {
+   "item": "Late payment (late remittance) penalty",
+   "amount": "10% for the first month after the due date and 5% for each month after, up to 25%, minimum $10 (the coupon applies it to the tax plus any late filing penalty)",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000 (line 6); Albemarle County Code § 15-103(B); Va. Code § 58.1-3916",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "capture": null,
+   "quote_sha256": "40b5c226ccdbd3785c36c868b7ca8cf1c29eb3513ebada83eabaab81b6f1c1cd",
+   "quote_words": 5
+  },
+  {
+   "item": "Interest on unpaid tax and penalties",
+   "amount": "10% a year, from the first day of the month after the month the tax was due, until paid",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines; Albemarle County Code § 15-104; Va. Code § 58.1-3916 (cap 10% a year in the first year)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "f08f5460454c2c70e334a208999bcfd82f56f483ee5af06ad3ea89e7f845e745",
+   "quote_words": 38
+  },
+  {
+   "item": "Collection agency fee on delinquent accounts",
+   "amount": "20% of the amount collected, for taxes delinquent 3 months or more (County Code § 15-105 also sets administrative costs of $30 for taxes collected 30 or more days after a delinquency notice but before judgment, and $35 after judgment)",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines; Albemarle County Code § 15-105; Va. Code § 58.1-3958",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "6f2c693e9b9c7452284cd0ab1a551b701dcdd7363f66f54ffd02cd855620feb8",
+   "quote_words": 21
+  },
+  {
+   "item": "DMV stop removal fee (delinquent taxes)",
+   "amount": "$25 for each DMV vehicle registration stop removed",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines (Delinquent Collections)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "63cc4c07de7b5946a5bf4c0af00b160edcc4075440e45336ce1d28f48390e4e0",
+   "quote_words": 20
+  },
+  {
+   "item": "Debt set-off fee (state tax refund or lottery winnings withheld for delinquent taxes)",
+   "amount": "$25 county fee, plus 4% of the amount withheld charged by the Department of Taxation",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines (Delinquent Collections)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "5cd838ecfd249ff01f1ba705046c58c513a50fc474166589cc11101d1b6d7026",
+   "quote_words": 11
+  },
+  {
+   "item": "Card convenience fee (online, in person and kiosk payments)",
+   "amount": "Credit card 2.50%, debit card 2.35%, minimum $1.95; e-check no fee",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "27ff48e1a06b2b0e31fee1219ff2fd73bb0cec72b20e4a1ed76e8ffd78364a9e",
+   "quote_words": 9
+  },
+  {
+   "item": "Business license (BPOL) for a food business",
+   "amount": "$0 at gross receipts of $25,000 or less; $50 over $25,000 and under $100,000; at $100,000 or more, a rate by category (retail $0.20 per $100)",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000; https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses; see the bpol_business_license process",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "capture": "20260813133605",
+   "quote_sha256": "930b8c7cc0b1d10397dbbda57563c9dc74d3f67eb59de4dc3c34c2551e7abf86",
+   "quote_words": 22
+  },
+  {
+   "item": "Flat business license tax for mobile food peddlers and food itinerant merchants",
+   "amount": "$50",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000 (Table 2); https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "capture": null,
+   "quote_sha256": "29f929fe7433456acba3e8e30b62aa57bccbf7a4af1c678c89994be7f423853a",
+   "quote_words": 3
+  },
+  {
+   "item": "County ABC (alcohol) license fees, on the business license application",
+   "amount": "Beer only $25 to $75; beer and wine $37.50 or $75; mixed beverages $200 (0-100 seats), $350 (101-150) or $500 (151 or more); wineries, breweries and distilleries $50 to $1,000 (farm wineries no fee; wine retailers by gross receipts)",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000 (Step 6)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "capture": null,
+   "quote_sha256": "6ebc4cee1e526c90688462594f2fc01a30ff589a1cfe1f65554af3e0fff0e0ff",
+   "quote_words": 13
+  },
+  {
+   "item": "Personal liability of a company officer who willfully fails to collect or pay over the tax",
+   "amount": "A penalty equal to the tax not paid over",
+   "basis": "Va. Code § 58.1-3906(A)",
+   "quote": "be liable for a penalty of the amount of the tax evaded or not paid, collected, or accounted for and paid over"
+  },
+  {
+   "item": "Civil penalty for falsifying cash register or point-of-sale records",
+   "amount": "$20,000",
+   "basis": "Va. Code § 58.1-3907(C)",
+   "quote": "any person violating subsection B shall pay a civil penalty of $20,000"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Office of Revenue Administration, Business & Personal Tax Unit, 1st floor, Room 133, County Office Building, 401 McIntire Road, Charlottesville, VA 22902 (Monday to Friday, 8:00 am to 5:00 pm, except holidays)",
+   "label": "Department of Finance & Budget, Office of Revenue Administration, Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5852",
+   "label": "Business & Personal Tax Unit (Food and Beverage Tax)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000"
+  },
+  {
+   "kind": "email",
+   "value": "tax@albemarle.org",
+   "label": "Business & Personal Tax Unit (Food and Beverage Tax; registrations and emailed filings)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, Business & Personal Tax Unit, 401 McIntire Road, Suite 133, Charlottesville, VA 22902",
+   "label": "Business & Personal Tax Unit (mail the monthly coupon and payment)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.albemarlecountytaxes.org/business",
+   "label": "Albemarle County Business Tax Online Filing and Payment Portal (file and pay Food & Beverage tax)",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage"
+  },
+  {
+   "kind": "phone",
+   "value": "(866) 820-5450",
+   "label": "County tax payments by phone (as printed on the Food and Beverage Tax coupon)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000"
+  },
+  {
+   "kind": "address",
+   "value": "Payment drop boxes in the parking lots of the County Office Building, 401 McIntire Road (by the visitor entrance and in the lower commuter lot); no cash",
+   "label": "Department of Finance & Budget (filings in a sealed envelope and payments)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5851",
+   "label": "Payment Processing Unit (balances, delinquent collections)",
+   "url": "https://www.albemarle.org/home/showdocument?id=24563&t=638677975576072956"
+  },
+  {
+   "kind": "email",
+   "value": "payments@albemarle.org",
+   "label": "Office of Revenue Administration, Payments & Billing",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000"
+  },
+  {
+   "kind": "phone",
+   "value": "434-243-7906 (fax)",
+   "label": "Business & Personal Tax Unit (fax for business license applications)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000"
+  },
+  {
+   "kind": "phone",
+   "value": "800-828-1120 (TTY)",
+   "label": "Business & Personal Tax Unit (TTY number on the license application)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000"
+  },
+  {
+   "kind": "page",
+   "value": "https://outlook.office365.com/owa/calendar/AlbemarleCountyAssessmentsUnit@albemarle.org/bookings/",
+   "label": "Office of Revenue Administration: book a virtual or in-person appointment with a tax specialist",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "label": "Department of Finance & Budget, Food & Beverage tax page",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage"
+  },
+  {
+   "kind": "office",
+   "value": "Community Development Department, 401 McIntire Road, North Wing, Charlottesville, VA 22902; 434-296-5832",
+   "label": "Community Development Department (zoning clearances, including mobile food vendors)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.vdh.virginia.gov/thomas-jefferson/",
+   "label": "Virginia Department of Health, local health district (food establishment and mobile unit permits; as linked from the county's Zoning Clearance page)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.tax.virginia.gov/retail-sales-and-use-tax",
+   "label": "Virginia Department of Taxation, Retail Sales and Use Tax (state filing, not the county)",
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/other-consumer-taxes"
+  },
+  {
+   "kind": "office",
+   "value": "Albemarle County Courthouse, Court Square, 350 Park Street, Charlottesville, VA 22902-5113; (434) 972-4083, civil (434) 972-4086; Clerk's Office hours 8:00 am to 4:00 pm",
+   "label": "Albemarle Circuit Court, Clerk's Office (16th Judicial Circuit)",
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home"
+  },
+  {
+   "kind": "office",
+   "value": "Town of Scottsville, 401 Valley Street, Scottsville, VA 24590; 434-286-9267; admin@scottsville.org",
+   "label": "Town of Scottsville town office (the town's own meals tax, for businesses inside town limits)",
+   "url": "https://www.townofscottsville.org/taxes"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "A food and beverage tax assessment or bill is believed wrong, including a statutory assessment estimated from the best available information because no return was filed, or exempt sales that were disallowed",
+   "next": "Director of Finance (Department of Finance & Budget, Office of Revenue Administration): written request for correction of the assessment",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3980(A); Va. Code § 15.2-521(A); https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights (request in writing; the court is available at any point)",
+   "quote": "may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof"
+  },
+  {
+   "trigger": "The correction request is filed within 90 days of the assessment",
+   "next": "Collection pauses: the bill is not treated as delinquent while the request is pending and for 30 days after the decision (interest may still be due on any amount upheld)",
+   "type": "deferral",
+   "deadline": "Request filed within 90 days of the date of the assessment",
+   "basis": "Va. Code § 58.1-3916; Va. Code § 58.1-3958",
+   "quote": "so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal"
+  },
+  {
+   "trigger": "The Director of Finance denies the correction request, or grants only part of it",
+   "next": "Director of Finance: ask for a written statement of the facts and law behind the decision, mailed to you",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3981(F)",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application"
+  },
+  {
+   "trigger": "Tax was overpaid because of an erroneous assessment",
+   "next": "Director of Finance corrects the assessment and refunds the excess; the County Code (2022 amendment) authorizes the Director to approve refunds up to the state limit ($10,000) without going to the Board of Supervisors",
+   "type": "internal appeal",
+   "deadline": "Same as the correction request; Va. Code § 58.1-3990 bars a refund applied for more than three years after the last day of the tax year",
+   "basis": "Va. Code § 58.1-3981(A); Albemarle County Code § 15-106 (Ord. 22-15( ), Nov. 2, 2022)",
+   "quote": "However, the governing body of the county, city or town may authorize the treasurer to approve and issue any refund up to $10,000 as a result of an erroneous assessment."
+  },
+  {
+   "trigger": "The Director of Finance agrees the assessment is improper or based on obvious error but cannot correct it under § 58.1-3981",
+   "next": "The Director of Finance applies to the Circuit Court of Albemarle County for relief on the taxpayer's behalf",
+   "type": "referral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3984(D)",
+   "quote": "the commissioner of the revenue or other assessing official shall apply to the appropriate court, in the manner herein provided for relief of the taxpayer"
+  },
+  {
+   "trigger": "Still aggrieved after the Director's decision, no decision (no state deadline for deciding a correction request was found), or choosing to go to court at any point",
+   "next": "Circuit Court of Albemarle County, with \"Albemarle County\" as the named party (heard by a judge, no jury)",
+   "type": "judicial review",
+   "deadline": "Whichever is latest: three years from the last day of the tax year, one year from the assessment, or one year from the Director's final determination under § 58.1-3981",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made"
+  },
+  {
+   "trigger": "A late filing or late payment penalty or interest was charged although the lateness was not the seller's fault (including a timely mailing with proof of mailing, or a medically determinable impairment with filing within 30 days)",
+   "next": "Director of Finance, who decides fault for both late filing and late payment because the county has no Commissioner of the Revenue or Treasurer",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3916; https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. albemarle.org/business/food-and-beverage-tax redirects to the Finance Food & Beverage page. The live pages may have changed since; confirm on them before you act. The coupon and forms carry new dates each year. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "Local law. The County Code is published on Municode, whose terms forbid automated access, so the current Code text has not been checked. The County Code quotes come from ordinance drafts in the county's Legistar system (webapi.legistar.com). The drafts are redlines, so the quotes give the adopted reading: struck text dropped, underlined and unmarked text kept. The Article 1 and Article 10 sections come from the draft of Ord. 19-15(1) for the Board's April 17, 2019 hearing. Later ordinances cite that ordinance as adopted on 4-17-19, but whether the final text matched this draft was not confirmed. That draft has slips: its history notes number the Article 10 sections one higher than its headings (the quotes follow the headings), and § 15-1002(D) says 'The lodging provider shall complete a report' in the food and beverage article. Since 2019, Legistar titles show only the 2022 rate change to Article 10. Article 1 has had other amendments (§ 15-101 due dates in 2021, § 15-106 in 2022), and § 15-102 to § 15-105 have not been checked for later changes. The 2022 rate ordinance (Legistar matter 7003) reproduces § 15-1001 as in force, with the history note '§ 15-1001, Ord. 19-15(1), 4-17-19' and the same words as the 2019 draft, and the 2022 § 15-106 ordinance (matter 7194) treats § 15-106 as the erroneous assessments section of Ord. 19-15(1). The history-note slip also affects Article 1 of the draft (the notes under §§ 15-105 and 15-106 say § 15-106 and § 15-107). The 2020 COVID-19 due-date ordinance (Legistar matter 4155, file 20-335) cites the food and beverage remittance deadline as '15-1002(F)' and collection as § 15-1002(A); the 2019 draft letters the deadline (E). So the adopted § 15-1002 may be lettered differently from the draft, and the (D) and (E) pinpoints here follow the draft. A Legistar title search (matters titled 'Food and Beverage', and 'Chapter 15' matters since May 2019) found no other Article 10 change besides the 2022 rate change and that ordinance's temporary payment date of July 20, 2020 for taxes collected in March to May 2020, and no title naming §§ 15-102 to 15-105; Legistar records no vote on any of these matters.",
+  "Rate. Ordinance 22-15( ) raised the tax from 4% to 6% from July 1, 2022 (Legistar matter 22-258, April 20, 2022). Legistar records no vote for it. That it was adopted is inferred from the county's page, the 12/2025 coupon and the county tax guide, which all say 6%; the guide says the 6% rate took effect July 1, 2022. The tax was first enacted on December 10, 1997 (history note '§ 8-76, 12-10-97'). The county's Tax Rates page also lists a 'State and County Meals Tax' of 4% under 'Virginia Taxes'. That entry is unexplained and looks out of date; the same page lists the county Food & Beverage Tax at 6%.",
+  "No seller's discount. The 2019 rewrite repealed former County Code § 15-1205, a 3% deduction for sellers capped at $100 per monthly return. The 2026 coupon has no discount line. The county's 3% discount for timely filers applies only to the transient occupancy (lodging) tax. The adopted text of § 15-1002 has not been checked: the 2020 ordinance's '15-1002(F)' matches the lettering of the transient occupancy § 15-902, which in the 2019 draft keeps a 3% commission as its subsection D, so a drafting parallel is the likely reason, but a different adopted text cannot be ruled out. Ask the office to confirm.",
+  "Registration and account number. The county's page says sellers must 'register with the Business & Personal Tax Unit', but no separate food and beverage registration form was found. The 2026 New Business License Application has no meals tax box. Its only food-related lines are a convenience store's prepared food or deli receipts and a hotel's on-site restaurant receipts in Step 7. How and when a new seller gets the account number for the coupon, and online portal access, was not found. The county says a new business cannot open an account online. The portal (albemarlecountytaxes.org, a Catalis web application) loads its content in the browser and was not used, so its sign-in steps, and any online filing fee beyond the PayPal card fees, are not described. The Food & Beverage page also has a button labelled 'Register your Business & Pay Business Taxes Online' that opens the same portal, which conflicts with the Existing Businesses FAQ ('a new business cannot yet open an online account.'). Ask the unit whether a new seller can register online.",
+  "Penalties. The pages and forms state the penalties in slightly different ways. The coupon applies the late payment penalty to 'TOTAL OF LINES 4 & 5', the tax plus any late filing penalty, with a $10 minimum. County Code § 15-103(B) and Va. Code § 58.1-3916 apply the remittance penalty to the taxes collected but not remitted, capped at 25%. The Important Dates page gives the late filing penalty as '10%' with no $10 minimum. The county guide says a non-filer is charged both the late filing and the late payment penalty. Whether the combined penalties respect the state caps in every case is not clear. The weekend rule on the Important Dates page is stated only for property tax due dates. State law (Va. Code § 1-210(E)) lets an act that a local governing body requires on a date that is a Saturday, Sunday, legal holiday or a day the office is closed be done on the next business day; the county's pages do not say how it applies this to the meals tax, especially to online filing, so ask the office. By mail, a return or payment postmarked by midnight of the due date is timely (Va. Code § 58.1-9(A)). Line 4 of both the 1/2025 and the 12/2025 coupon carries an asterisk with no matching footnote.",
+  "Penalty waivers. The county's penalty policy says the Director of Finance acts as commissioner of the Revenue and the Treasurer. It lists cases where penalty and interest cannot be waived, including reliance on erroneous information from county staff, in person or by phone. State law (§ 58.1-3916) forbids penalty and interest when the failure was not the taxpayer's fault. A timely USPS Certificate of Mailing or other proof of mailing also counts. How the county applies the no-fault rule to meals tax was not tested.",
+  "What is taxable. The county guide says 'Beverages sold alone' are non-taxable, and the County Code defines beverage as drinks 'served as part of a meal'. The state definition in § 58.1-3833 is worded differently, and the County Code defines food as edible refreshments 'liquid or otherwise'. Whether a drink sold on its own at a bar or coffee shop is taxed in Albemarle is therefore unclear. Ask the office. The county page's list also names theatres, gas stations and convenience stores, which are taxed only on prepared food. The guide says nonprofit buyers are not exempt. Several state exemptions do not appear in the county's materials: nonprofit fundraising sales (the first three times a year, then the first $100,000), farmers market and roadside stand sellers earning up to $2,500 a year, and others.",
+  "Town of Scottsville. The town levies its own meals tax; its taxes page says 'Scottsville funds its operations through locally generated revenues, including utility taxes, meals tax, business and professional licenses, bank franchise tax' (https://www.townofscottsville.org/taxes). Va. Code § 58.1-3833(B) applies the county limits of § 58.1-3711 'mutatis mutandis'. Under § 58.1-3711, a county tax does not apply inside a town that levies the same tax, unless the town agrees. So the county's 6% probably does not apply to businesses inside Scottsville town limits. The county's pages do not say so, the town's meals tax rate and filing rules are not covered here, and part of the town lies in Fluvanna County. Ask both offices.",
+  "Other localities. The City of Charlottesville is a separate locality with a 7% meals tax filed with the city's Commissioner of the Revenue (see the va:charlottesville meals_tax_filing process). The tax follows the place of business, not the customer's location (§ 58.1-3841). A business that straddles the city-county line pays an apportioned rate under § 58.1-3834. Food trucks based in another locality and selling in Albemarle must register here (§ 58.1-3715.1(C)), but a new business that paid the license tax where its unit is registered owes no further license tax here for two years, for up to three units (§ 58.1-3715.1(B)). How the county taxes their sales here was taken from the county's materials only and not confirmed with the office.",
+  "Appeal route. The meals tax route is a correction request to the Director of Finance (§ 58.1-3980), then the circuit court (§ 58.1-3984). The county's appeal page names food and beverage tax as subject to correction of assessment. The State Tax Commissioner appeal and written rulings under § 58.1-3983.1 cover only 'local business tax' as defined there (machinery and tools, business tangible property, merchants' capital, some consumer utility tax). The license tax route under § 58.1-3703.1 covers only BPOL. Neither covers the food and beverage tax. The county's Notice of Taxpayer Appeal Rights describes those two routes, not this one. No state deadline for the Director to decide a meals tax correction request was found. Whether the 2022 amendment to County Code § 15-106 (Director may approve refunds up to the § 58.1-3981(A) limit) was adopted was not confirmed.",
+  "Payments. The Payment Options page's phone section swaps the card rates (debit 2.50%, credit 2.35%) compared with its online and in-person sections (credit 2.50%, debit 2.35%). Its mail-in check address (P.O. Box 7604, Merrifield) is for tax bills processed by a vendor, while the meals tax coupon says to remit to 401 McIntire Road, Suite 133. County pages give the room as 'Room 133' and the forms as 'Suite 133'. The phone payment number (866) 820-5450 on the coupon is the same number the county lists for its collection agency's general collections line. Whether the county has adopted a payment plan resolution for omitted taxes (§ 58.1-3916, up to 72 months) was not checked.",
+  "Not covered here: the Zoning Clearance and Virginia Department of Health permit requirements and fees. The county's link to the health district points to a 'thomas-jefferson' path on vdh.virginia.gov, while the county's mobile food vendor sheet names the Blue Ridge Health District. State sales tax registration and filing with Virginia Tax, and Virginia ABC licensing, are not covered here. The mobile food vendor sheet is from 2021, and the fiduciary tax guide predates July 2024 (it says the lodging tax 'will be 9%' from July 1, 2024).",
+  "Legal hints. Va. Code §§ 58.1-3819 and 58.1-3826 are the transient occupancy (lodging) tax sections. They matter here only because a hotel or motel collects both taxes on separate returns, and are not quoted. § 58.1-3840 gives the general authority to impose meals taxes; § 58.1-3833 is the county food and beverage tax actually used.",
+  "Privacy. County pages and documents name staff with personal mailboxes and direct lines, including on the zoning clearance page, the mobile food vendor sheet and the Legistar records. None are recorded. Only office main lines, published unit mailboxes (tax@, payments@) and portals are kept. Hours and phone numbers are as published in the archived copies."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "title": "Food & Beverage | Albemarle County, VA (Finance and Budget; Internet Archive copy of 14 August 2026; albemarle.org/business/food-and-beverage-tax redirects here)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24950/639032036183130000",
+   "title": "County of Albemarle - Food and Beverage Tax Coupon (PDF, UPDATED 12/2025; Internet Archive copy of 8 March 2026; the 1/2025 version, https://www.albemarle.org/home/showpublisheddocument/24950/638901812368702249, was compared)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showdocument?id=24563&t=638677975576072956",
+   "title": "Food & Beverage, Transient Occupancy, Short-Term Rental, and Motor Vehicle Dealership Fiduciary Tax Guide (PDF; Internet Archive copy of 23 April 2026; linked from the Tax Education page)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "title": "Important Dates and Deadlines | Albemarle County, VA (including the Late Payment, Filing, & Remittance Penalty Policy and Delinquent Collections; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "title": "Payment Options | Albemarle County, VA (Internet Archive copy of 16 September 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes",
+   "title": "Business License & Taxes | Albemarle County, VA (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "title": "Start a Business (Finance & Budget) | Albemarle County, VA (Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "title": "License and Taxes for Existing Businesses | Albemarle County, VA (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "title": "2026 New Business License Application (PDF, form dated 11/2025; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "title": "Notice of Taxpayer Appeal Rights: Corrections and Administrative Appeals Process | Albemarle County, VA (Internet Archive copy of 11 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "title": "Notice of Taxpayer Appeal Rights (PDF; covers license tax and local business tax appeals, not meals tax; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "title": "Tax Rates (business) | Albemarle County, VA (Internet Archive copy of 17 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/tax-education",
+   "title": "Tax Education | Albemarle County, VA (Internet Archive copy of 12 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/other-consumer-taxes",
+   "title": "Other Consumer Taxes | Albemarle County, VA (Internet Archive copy of 12 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/business-audits",
+   "title": "Business Audits | Albemarle County, VA (Internet Archive copy of 14 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000",
+   "title": "Finance & Budget Offices Contact Information (PDF, linked as 'Contact' from the business tax portal; Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "title": "Zoning Clearance | Albemarle County, VA (Community Development; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/254/637517581348000000",
+   "title": "Albemarle County Mobile Food Vendor Information Sheet (PDF; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarlecountytaxes.org/business",
+   "title": "Albemarle County - VA - Tax, business portal (Catalis web application; not used)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565/attachments/6430/file",
+   "title": "Ordinance No. 19-15(1), An Ordinance to Amend Chapter 15, Taxation (proposed ordinance, Att. A to Board of Supervisors agenda item of April 17, 2019; Legistar matter 3565, file 19-237)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7003/attachments/13445/file",
+   "title": "Ordinance No. 22-15, amending County Code § 15-1001 (Food and Beverage Tax rate from four to six percent, effective July 1, 2022) (proposed ordinance, Att. A to Board of Supervisors agenda item of April 20, 2022; Legistar matter 7003, file 22-258)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7003",
+   "title": "Legistar matter 22-258, Public Hearing to Consider the Adoption of an Ordinance to Increase the Food and Beverage Tax Rate (Board of Supervisors, agenda date April 20, 2022; Legistar Web API record; no action recorded)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14127/file",
+   "title": "Proposed Ordinance No. 22-8 & 22-15, amending County Code § 8-201 and § 15-106 (Att. A, Board of Supervisors agenda of November 2, 2022; Legistar matter 7194, file 22-450)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/4155/attachments/8579/file",
+   "title": "Proposed ordinance to establish due dates for filing certain tax returns and paying certain local taxes during the COVID-19 disaster (Att. A, Board of Supervisors agenda of May 20, 2020; Legistar matter 4155, file 20-335)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.townofscottsville.org/taxes",
+   "title": "Taxes | Town of Scottsville",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home",
+   "title": "Albemarle Circuit Court | Virginia Court System",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "title": "Va. Code § 58.1-3833",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "title": "Va. Code § 58.1-3840",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "title": "Va. Code § 15.2-521",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-522/",
+   "title": "Va. Code § 15.2-522",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "title": "Va. Code § 35.1-1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "title": "Va. Code § 35.1-18",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3711/",
+   "title": "Va. Code § 58.1-3711",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+   "title": "Va. Code § 58.1-3841",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3834/",
+   "title": "Va. Code § 58.1-3834",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715.1/",
+   "title": "Va. Code § 58.1-3715.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "title": "Va. Code § 58.1-3700",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "title": "Va. Code § 58.1-3916",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3903/",
+   "title": "Va. Code § 58.1-3903",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3958/",
+   "title": "Va. Code § 58.1-3958",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3906/",
+   "title": "Va. Code § 58.1-3906",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3907/",
+   "title": "Va. Code § 58.1-3907",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "title": "Va. Code § 58.1-3980",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "title": "Va. Code § 58.1-3981",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "title": "Va. Code § 58.1-3983.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3990/",
+   "title": "Va. Code § 58.1-3990",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3819/",
+   "title": "Va. Code § 58.1-3819",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3826/",
+   "title": "Va. Code § 58.1-3826",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "title": "Va. Code § 58.1-9",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "title": "Va. Code § 1-210",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 109,
+  "quotes_confirmed": 109,
+  "removed": [],
+  "corrections": [
+   "Quotes: all 103 original quotes were re-checked. The 58 state-law quotes are exact substrings of I.text_of for the cited sections. The 45 local and page quotes were found word for word in fresh reads of the cited sources (Internet Archive copies of the albemarle.org pages and PDFs, the same captures the modeller cites and the newest ones the archive index lists; the Legistar Web API files, with struck text dropped). None needed changing. Six quotes were added (below) and checked the same way, so 109 of 109 are confirmed.",
+   "Caveat 'Rate.': the inline history-note quote read 'Sec. 8-76, 12-10-97'; the source says '§ 8-76, 12-10-97'. Fixed.",
+   "s1: 'covered only on sales to outsiders' misstated hospitals and nursing homes, whose sales to employees and the public are taxable by the county's page and guide (only patients and residents are excluded). Reworded for colleges, hospitals and nursing homes, and industrial cafeterias separately.",
+   "s3 deadline and summary: the 30 days came only from the county's form and FAQ; County Code § 8-201(A) says a new business applies before beginning business. Both are now stated, with a local legal_basis quote for § 8-201(A) from the 2022 Legistar draft (Legistar matter 7194), where it is unchanged text.",
+   "s3 and caveat 'Registration and account number.': the Food & Beverage page has a 'Register your Business & Pay Business Taxes Online' button to the portal, which conflicts with the FAQ's statement that a new business cannot open an account online. Both are now stated.",
+   "s4: added the Va. Code § 58.1-3715.1(B) exemption (a new business's mobile food unit that paid the license tax where it is registered owes no further license tax in other localities for two years, up to three units), with a state legal_basis quote; added the vendor sheet's exceptions (no zoning clearance for vendors tied to an approved restaurant or at a permitted special or temporary event) and its site plan rule for stays of more than two hours; 'needs a county business license' is now 'must apply for', as the sheet says; fee and the 'Other localities' caveat updated.",
+   "s5: the list of non-taxable items is now attributed to the county guide, pointing to the caveat on drinks sold alone, instead of being stated as law.",
+   "s7: added where to get the coupon (the Food & Beverage page, or by email or mail from the unit), and the coupon's rules that the exemption list goes with each monthly return and that any underpayment draws an additional penalty.",
+   "s8, s9 and caveat 'Penalties.': added the state next-business-day rule (Va. Code § 1-210(E)) and the postmark rule (Va. Code § 58.1-9(A)), each with a state legal_basis quote; the caveat no longer says the weekend rule was not found, and notes the unexplained asterisk on coupon line 4.",
+   "s11: the collection agency is used for taxes delinquent 3 months or more (the page says the agency is employed 'to assist with the collection' of them); 'go to' softened. Added the county's other collection methods (DMV stops, tax liens, debt set-off, judgments) and two fees from the Delinquent Collections section ($25 DMV stop removal; $25 county debt set-off fee plus the state's 4%), each with a quote.",
+   "s12: the Existing Businesses page only requires notice on closing; the step had added moves and ownership changes. Reworded, with the final report and payment going to the Director of Finance (§ 15-1004).",
+   "s2: noted that the license application says zoning approval is required but need not come before the license application; the 5.3% sales tax now names its split (4.3% state, 1% local) from the county's Tax Rates page.",
+   "Fees: the ABC fee range now notes farm wineries (no fee) and wine retailers (gross receipts); the collection fee now states when the $30 and $35 administrative costs apply, as § 15-105(A) of the draft says.",
+   "Citations and caveat 'Local law.': § 15-1001 (intro and B) now notes that the 2022 rate ordinance reproduces the same words as in-force text adopted by Ord. 19-15(1) on 4-17-19. § 15-1002(D) and (E) now note that a 2020 ordinance (Legistar matter 4155) cites the deadline as § 15-1002(F). The caveat records this, the history-note slip in Article 1, and the verifier's Legistar title search. Escalation rung 1 basis now adds the county appeal page (request in writing; court at any point). Added sources: Legistar matter 4155 attachment, Va. Code §§ 58.1-9 and 1-210."
+  ],
+  "open_issues": [
+   "www.albemarle.org still returns HTTP 403 to this client (robots.txt included, 2026-10-11). Every county page and PDF quote was confirmed only against Internet Archive copies (March to September 2026); the archive index lists the 2026-08-14 copy of the Food & Beverage page and the 12/2025 coupon as the newest. Re-check the live pages, and the 2027 forms when they appear.",
+   "The current County Code (Municode) was not read because of that site's terms. Article 1 and Article 10 quotes rest on the April 17, 2019 draft of Ord. 19-15(1). The 2022 ordinances confirm § 15-1001 and the § 15-106 numbering, but a 2020 ordinance cites the remittance deadline as § 15-1002(F) where the draft has (E). The subsection letters of § 15-1002 and the absence of a seller's discount in the adopted text are therefore not confirmed from the Code itself. Every county form and page agrees on the 20th deadline and shows no discount.",
+   "Adoption of the 2022 rate increase (matter 22-258) and of the 2022 § 15-106 amendment (matter 22-450) is not recorded in the Legistar Web API (no history rows). The 6% rate is confirmed by the county's page, coupon and guide; the refund-authority amendment affects only escalation rung 4's wording.",
+   "Policy judgement for the user: the County Code quotes come from Legistar attachments read through the Legistar Web API (no robots.txt) rather than albemarle.legistar1.com, whose robots.txt disallows crawlers, as in the sibling Albemarle processes. If the user disagrees, those quotes should come out.",
+   "Open questions for the office, flagged in caveats and not affecting the steps as written: whether drinks sold alone (at a bar or coffee shop) are taxed, given the guide and the County Code definitions; how a new seller gets its account number and whether it can register online; whether the county's 6% applies inside the Town of Scottsville (§ 58.1-3711 via § 58.1-3833(B)); how sales by trucks based elsewhere are treated; whether the 20th moves when it falls on a weekend or holiday.",
+   "Not opened or used: the Business Tax portal, the Civic Access zoning portal and the booking page. Zoning, health permit and state sales tax and ABC requirements and fees were not researched.",
+   "The bpol_business_license verification reports that the albemarle.org terms of use bar reusing or reposting site content without written permission (the terms were not re-read here); whether publishing short quoted passages needs permission is for the user to decide."
+  ]
+ }
+}

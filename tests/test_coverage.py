@@ -16,11 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 # ---------------------------------------------------------------------------------------------- the questions
 def test_question_file_shape_and_topic_slugs():
     qs = CV.questions()
-    assert len(qs) == 36
+    assert len(qs) == 49
     assert CV.check_questions(qs) == []
     topics = {v.slug for v in SC.VOCAB["topic"]}
     assert all(q["topic"] in topics for q in qs)
-    assert len({q["id"] for q in qs}) == 36
+    assert len({q["id"] for q in qs}) == 49
     assert all(set(q["needs"]) <= set(CV.KINDS) and 2 <= len(q["phrasings"]) <= 3 for q in qs)
     assert {q["level"] for q in qs} <= set(CV.LEVELS)
     bad = CV.check_questions([{"id": "x", "text": "t", "topic": "nope", "audience": "resident", "level": "state",
@@ -322,20 +322,28 @@ def test_gap_cells_are_none_or_partial_without_steps_or_who_gold_first(con):
     assert terms and all(isinstance(g, list) and g for g in terms)
 
 
+def _stub(calls, status="answered"):
+    """A stand-in for pipeline.answer_state that stores a row under the model lane the fill names."""
+    from lexflow.store import db
+
+    def stub(con_, qid, plan, state, *, asker=None, emb=None, log=print, store=True, oracle_refs=None, model=None):
+        calls.append((qid, state, plan.kind, plan.source))
+        row = {"question_id": qid, "target": state, "state": state, "gov_id": None, "question_text": plan.text,
+               "status": status, "sections": json.dumps({"chosen": [{"ref": "3.2-6524", "id": 1}]}),
+               "facts": json.dumps({"steps": [{"id": "s1"}]}), "answer": "{}", "model": model, "seconds": 1.0,
+               "metrics": json.dumps({"quotes_checked": 3, "quote_misses": 0, "answered_at": db.now()})}
+        db.upsert(con_, "asked_answers", [row])
+        con_.commit()
+        return row
+    return stub
+
+
 def test_fill_registers_questions_runs_the_stub_pipeline_resumes_and_caps(con):
     from lexflow.store import db
     _seed_run(con)
     calls = []
 
-    def stub(con_, qid, plan, state, *, asker=None, emb=None, log=print, store=True, oracle_refs=None):
-        calls.append((qid, state, plan.kind, plan.source))
-        row = {"question_id": qid, "target": state, "state": state, "gov_id": None, "question_text": plan.text,
-               "status": "answered", "sections": json.dumps({"chosen": [{"ref": "3.2-6524", "id": 1}]}),
-               "facts": json.dumps({"steps": [{"id": "s1"}]}), "answer": "{}", "model": None, "seconds": 1.0,
-               "metrics": json.dumps({"quotes_checked": 3, "quote_misses": 0, "answered_at": db.now()})}
-        db.upsert(con_, "asked_answers", [row])
-        con_.commit()
-        return row
+    stub = _stub(calls)
     log = []
     out = CV.fill(con, ["va", "dc"], run_id="r1", llm_cells=1, pipeline=stub, log=log.append)
     assert out["run"] == "r1" and out["gap_cells"] == 4 and out["answered"] == 2 and out["status"]["answered"] == 2
@@ -347,6 +355,10 @@ def test_fill_registers_questions_runs_the_stub_pipeline_resumes_and_caps(con):
     fill_ = json.loads(a["metrics"])["coverage_fill"]
     assert fill_["run"] == "r1" and fill_["node"] and fill_["verdict"] == "none" and "steps" in fill_["missing"]
     assert CV.filled(con, "dog_license", "dc")["status"] == "answered" and CV.filled(con, "dog_license", "va") is None
+    # the row is filed under the model the fill ran with (no asker in the tests: the configured ask model)
+    from lexflow import config
+    assert a["model"] == config.ASK_MODEL and fill_["model"] == config.ASK_MODEL and fill_["summary"] is False
+    assert out["model"] == config.ASK_MODEL and out["cells"] == "gaps"
     # resumable: the same call again answers nothing new; without the cap the remaining cells are answered
     out = CV.fill(con, ["va", "dc"], run_id="r1", llm_cells=1, pipeline=stub, log=log.append)
     assert out["answered"] == 0 and out["status"]["skipped"] == 2 and len(calls) == 2
@@ -363,3 +375,65 @@ def test_fill_registers_questions_runs_the_stub_pipeline_resumes_and_caps(con):
     # the step takes --fill
     from lexflow.pipeline.steps import get_step
     assert "fill" in get_step("coverage").params
+
+
+def test_fill_cells_filled_answers_the_same_set_with_a_second_model_beside_the_first(con):
+    """``--cells filled``: a second model answers the cells another model filled, under its own key, so the first
+    answer stays and the two can be compared; ``all`` adds the remaining gaps; the resume is per model."""
+    from lexflow import config
+    from lexflow.store import db
+    _seed_run(con)
+    calls = []
+    # the first model fills two cells (one per state): the former gaps are no gaps any more once the next run
+    # marks them partial with steps and who (what happened after the qwen3:1.7b fill)
+    out = CV.fill(con, ["va", "dc"], run_id="r1", llm_cells=1, pipeline=_stub(calls), model="qwen3:1.7b", log=lambda *_: None)
+    assert out["answered"] == 2 and out["model"] == "qwen3:1.7b"
+    for qid, st in (("public_records", "va"), ("dog_license", "dc")):
+        db.upsert(con, "coverage_runs", [{"run_id": "r2", "qid": qid, "state": st, "gov_id": "", "arm": "coverage",
+                                          "verdict": "partial", "missing": json.dumps(["fee"]), "probe": "{}",
+                                          "seconds": 1.0, "updated_at": db.now()}],
+                  keys=("run_id", "qid", "state", "gov_id", "arm"), stamp=False)
+    con.commit()
+    assert CV.gap_cells(con, "r2", ["va", "dc"]) == []
+    with pytest.raises(ValueError):
+        CV.fill_cells(con, "r2", ["va", "dc"], cells="nope")
+    # the filled cells, as another model sees them: both, with who filled them and the first fill's verdict
+    cells = CV.filled_cells(con, ["va", "dc"], model="qwen3:8b")
+    assert [(c["qid"], c["state"], c["filled_by"], c["verdict"]) for c in cells] == [
+        ("public_records", "va", ["qwen3:1.7b"], "partial"), ("dog_license", "dc", ["qwen3:1.7b"], "none")]
+    assert CV.filled_cells(con, ["va", "dc"], model="qwen3:1.7b") == []       # its own fills are not "another model's"
+    assert CV.fill_cells(con, "r2", ["va", "dc"], cells="gaps") == []
+    assert [(c["qid"], c["state"]) for c in CV.fill_cells(con, "r2", ["va", "dc"], cells="filled", model="qwen3:8b")] == \
+        [("public_records", "va"), ("dog_license", "dc")]
+    # the second model answers the same two cells under its own key: the first answers are untouched
+    calls.clear()
+    out = CV.fill(con, ["va", "dc"], run_id="r2", pipeline=_stub(calls, "partial"), model="qwen3:8b", cells="filled",
+                  log=lambda *_: None)
+    assert out["answered"] == 2 and out["cells"] == "filled" and out["model"] == "qwen3:8b"
+    assert [c[:2] for c in calls] == [("public_records", "va"), ("dog_license", "dc")]
+    rows = db.rows(con, "SELECT model, status, metrics FROM asked_answers WHERE question_id='dog_license' AND target='dc' "
+                        "ORDER BY model")
+    assert [(r["model"], r["status"]) for r in rows] == [("qwen3:1.7b", "answered"), ("qwen3:8b", "partial")]
+    fills = CV.fills(con, "dog_license", "dc")
+    assert fills["qwen3:1.7b"]["run"] == "r1" and fills["qwen3:8b"]["run"] == "r2"
+    assert fills["qwen3:8b"]["beside"] == ["qwen3:1.7b"] and fills["qwen3:8b"]["model"] == "qwen3:8b"
+    # resumable per model: the second model skips its own fills, the first model's are still skipped too
+    out = CV.fill(con, ["va", "dc"], run_id="r2", pipeline=_stub(calls), model="qwen3:8b", cells="filled", log=lambda *_: None)
+    assert out["answered"] == 0 and out["status"]["skipped"] == 2
+    # ``all`` = the gaps of the run plus the filled cells: r1 still has two gap cells the first model never answered
+    cells = CV.fill_cells(con, "r1", ["va", "dc"], cells="all", model="qwen3:8b")
+    assert sorted((c["qid"], c["state"]) for c in cells) == sorted([("public_records", "va"), ("dog_license", "va"),
+                                                                     ("dog_license", "dc"), ("noise_complaint", "dc")])
+    # the preferred reader shows one answer per cell: the better status wins, LEXFLOW_ASK_PREFER overrides
+    from lexflow.ask import prefer
+    assert prefer.answer(con, "dog_license", "dc")["model"] == "qwen3:1.7b"
+    config.ASK_PREFER = "qwen3:8b"
+    try:
+        assert prefer.answer(con, "dog_license", "dc")["model"] == "qwen3:8b"
+        assert CV.filled(con, "dog_license", "dc")["model"] == "qwen3:8b"
+    finally:
+        config.ASK_PREFER = ""
+    assert prefer.models_of(con, "dog_license", "dc") == ["qwen3:1.7b", "qwen3:8b"]
+    # the CLI and the step take --cells
+    from lexflow.pipeline.steps import get_step
+    assert "cells" in get_step("coverage").params

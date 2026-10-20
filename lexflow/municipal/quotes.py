@@ -589,8 +589,9 @@ def _read(http, url: str, params: dict | None = None) -> tuple[int, str, str, by
         r.close()
 
 
-def _body(entry: dict, data: bytes, ctype: str, quotes: list[str]) -> dict:
-    """Fill ``entry`` with a page's text, or for a NO_REPRINT site only the fingerprints of the quotes it holds."""
+def _body(entry: dict, data: bytes, ctype: str, quotes: list[str], keep: bool = False) -> dict:
+    """Fill ``entry`` with a page's text, or for a NO_REPRINT site only the fingerprints of the quotes it holds
+    (``keep`` True keeps the words in the entry for the evidence rebuild, which never saves it to the cache)."""
     if len(data) >= MAX_BYTES:
         return dict(entry, bytes=len(data), error=f"larger than {MAX_BYTES // 1_000_000} MB, so not read in full")
     kind, text = extract(data, ctype)
@@ -603,7 +604,7 @@ def _body(entry: dict, data: bytes, ctype: str, quotes: list[str]) -> dict:
         entry["error"] = "a bot-check page instead of the content"
         entry["challenge"] = True
         return entry
-    if policy(entry["url"]):
+    if policy(entry["url"]) and not keep:
         texts = variants(text)
         entry["checked"] = sorted({qhash(q) for q in quotes})
         entry["found"] = sorted({qhash(q) for q in quotes if match(q, texts)})
@@ -613,7 +614,7 @@ def _body(entry: dict, data: bytes, ctype: str, quotes: list[str]) -> dict:
     return entry
 
 
-def _live(http, url: str, quotes: list[str]) -> tuple[dict | None, str | None]:
+def _live(http, url: str, quotes: list[str], keep: bool = False) -> tuple[dict | None, str | None]:
     """(entry, None) when the live page was read; (None, why) when an archive capture should be tried instead;
     (entry with an error, None) when it may not be read at all."""
     import requests
@@ -635,13 +636,14 @@ def _live(http, url: str, quotes: list[str]) -> tuple[dict | None, str | None]:
         return None, f"no answer ({type(e).__name__})"
     if LOGIN.search(urlsplit(final).path or ""):
         return dict(base, via=None, error="behind a login; not read"), None
-    entry = _body(dict(base, status=status, fetched_url=final), data, ctype, quotes)
+    entry = _body(dict(base, status=status, fetched_url=final), data, ctype, quotes, keep)
     if entry.get("challenge"):
         return None, "a bot-check page instead of the content"
     return entry, None
 
 
-def _capture(http, ts: str, orig_url: str, base: dict, quotes: list[str]) -> tuple[dict | None, str | None]:
+def _capture(http, ts: str, orig_url: str, base: dict, quotes: list[str],
+             keep: bool = False) -> tuple[dict | None, str | None]:
     """(entry, None) for a usable Internet Archive capture (the one at or nearest before ``ts``: the archive
     redirects to it), or (None, why not)."""
     import requests
@@ -659,7 +661,7 @@ def _capture(http, ts: str, orig_url: str, base: dict, quotes: list[str]) -> tup
             return None, (f"the Internet Archive copy could not be read "
                           f"({f'HTTP {code}' if code else type(e).__name__})")
     got = capture_of(final) or ts
-    entry = _body(dict(base, status=status, fetched_url=final, capture=got), data, ctype, quotes)
+    entry = _body(dict(base, status=status, fetched_url=final, capture=got), data, ctype, quotes, keep)
     if entry.get("challenge"):
         return None, f"the Internet Archive copy {got} holds a bot-check page"
     if entry.get("error"):
@@ -667,7 +669,7 @@ def _capture(http, ts: str, orig_url: str, base: dict, quotes: list[str]) -> tup
     return entry, None
 
 
-def _archive(http, url: str, quotes: list[str], live_error: str | None, log: Log) -> dict:
+def _archive(http, url: str, quotes: list[str], live_error: str | None, log: Log, keep: bool = False) -> dict:
     """The newest Internet Archive capture of ``url`` that is not an error or a bot-check page (or the capture an
     archive address names).  The newest is asked for by a timestamp of today, which the archive redirects to its
     latest capture; only when that one is unusable is the archive's index (CDX) asked for the older captures with
@@ -676,7 +678,7 @@ def _archive(http, url: str, quotes: list[str], live_error: str | None, log: Log
     orig, want = original(key(url)), capture_of(url)
     base = {"url": key(url), "via": "archive", "fetched": _today(), "at": _now(), "live_error": live_error}
     first = want or datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    entry, why = _capture(http, first, orig, base, quotes)
+    entry, why = _capture(http, first, orig, base, quotes, keep)
     if entry:
         return entry
     tried, rows = {first}, None
@@ -698,7 +700,7 @@ def _archive(http, url: str, quotes: list[str], live_error: str | None, log: Log
         if ts in tried:
             continue
         tried.add(ts)
-        entry, why = _capture(http, ts, orig_url, base, quotes)
+        entry, why = _capture(http, ts, orig_url, base, quotes, keep)
         if entry:
             return entry
     if (not rows or len(rows) < 2) and not want:
@@ -713,6 +715,7 @@ def wanted(specs: Iterable[dict], state: str | None = None) -> dict[str, list[st
     from . import places as P
     out: dict[str, set[str]] = {}
     for spec in specs:
+        restore(spec)
         st = state or P.state_of(spec)
         qs = [q for _, q, _ in P.process_quotes(spec)]
         for _, q, cites in P.process_quotes(spec):
@@ -739,7 +742,11 @@ def fetch(pages: dict[str, list[str]], *, retry: bool = False, log: Log = print,
     for u, qs in pages.items():
         have = cached(u)
         kinds = {have.get("type"), f"{have.get('type')}:{have.get('via')}"} if have else set()
-        if have and not (retry and have.get("error")) and not (kinds & again and not have.get("error")):
+        # a page whose words are not kept was checked only for the quotes the files had then: read it again for new ones
+        unchecked = bool(have and not have.get("error") and have.get("text") is None and have.get("checked") is not None
+                         and {qhash(q) for q in qs} - set(have.get("checked") or []))
+        if have and not (retry and have.get("error")) and not (kinds & again and not have.get("error")) \
+                and not unchecked:
             continue
         p = policy(u)
         if p and not p["fetch"]:
@@ -812,14 +819,506 @@ def fetch(pages: dict[str, list[str]], *, retry: bool = False, log: Log = print,
     return counts
 
 
+# ---- the evidence store ----------------------------------------------------------------------------------------
+# Words from a NO_REPRINT site never sit verbatim in a committed file.  ``withhold`` moves each such quote's text
+# out of a researched file (or a fixture) into its evidence file under data/evidence/<state>/<place>/<process>.json
+# (git-ignored), leaving the quote's fingerprint, its length in words, lexflow's paraphrase, the page and the
+# Internet Archive capture it was read from.  ``restore`` puts the words back in memory, for the loader, the matcher
+# and the tests, when the evidence file is present; ``rebuild`` makes the evidence files again from the pages (the
+# cache keeps no words of those sites, so the pages are read again, in memory only, and each quote is found as the
+# run of ``quote_words`` words whose fingerprint is the quote's); ``leaks`` is the scan that proves no committed
+# file holds ``MIN_RUN`` or more consecutive words of a withheld quote.
+EVIDENCE_DIR = config.ROOT / "data" / "evidence"
+MIN_RUN = 8                     # consecutive words of a withheld quote that count as reprinting it
+HELD = ("quote_sha256", "quote_words", "paraphrase", "url", "capture")
+SPEC_LISTS = ("legal_basis", "steps", "fees", "escalation")
+
+
+def evidence_path(state: str, place: str, process: str) -> Path:
+    """The evidence file of a researched process (``place`` is its directory under curated/places/<state>/) or of a
+    fixture (place ``fixtures``)."""
+    return EVIDENCE_DIR / state / place / f"{process}.json"
+
+
+def evidence_name(spec: dict, path: str | Path | None = None) -> str | None:
+    """``<state>/<place>/<process>`` for a spec: from its path (curated/places/<state>/<place>/<process>.json or
+    fixtures/places/<state>/<name>.json), its ``evidence`` field (a fixture), or its place and process."""
+    ev = spec.get("evidence") if isinstance(spec, dict) else None
+    if isinstance(ev, str) and re.fullmatch(r"[a-z]{2}/[\w-]+/[\w.-]+", ev):
+        return ev
+    if path is not None:
+        p = Path(path)
+        if p.parent.parent.name == "places":
+            return f"{p.parent.name}/fixtures/{p.stem}"
+        if p.parent.parent.parent.name == "places":
+            return f"{p.parent.parent.name}/{p.parent.name}/{p.stem}"
+    if not isinstance(spec, dict) or not isinstance(spec.get("process"), str):
+        return None
+    from . import places as P
+    st, pid = P.state_of(spec), spec["process"]
+    if not st:
+        return None
+    for cand in sorted((P.PLACES_DIR / st).glob(f"*/{pid}.json")):
+        try:
+            other = json.loads(cand.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if other.get("gov_id") == spec.get("gov_id"):
+            return f"{st}/{cand.parent.name}/{pid}"
+    name = re.sub(r"[^a-z0-9]+", "_", (spec.get("place") or "").partition(":")[2].lower()).strip("_")
+    return f"{st}/{name.removesuffix('_county')}/{pid}" if name else None
+
+
+def evidence_file(spec: dict, path: str | Path | None = None) -> Path | None:
+    name = evidence_name(spec, path)
+    return EVIDENCE_DIR / f"{name}.json" if name else None
+
+
+def load_evidence(spec: dict, path: str | Path | None = None) -> dict[str, str]:
+    """The withheld words of a file, by fingerprint; {} when its evidence file is not present."""
+    p = evidence_file(spec, path)
+    try:
+        return dict((json.loads(p.read_text(encoding="utf-8")) if p else {}).get("quotes") or {})
+    except (OSError, ValueError):
+        return {}
+
+
+def save_evidence(name: str, quotes: dict[str, str], source: str | None = None, merge: bool = True) -> Path:
+    """Write (``merge`` False) or add to (True) an evidence file."""
+    p = EVIDENCE_DIR / f"{name}.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    have = {}
+    if merge:
+        try:
+            have = json.loads(p.read_text(encoding="utf-8")).get("quotes") or {}
+        except (OSError, ValueError):
+            pass
+    have.update(quotes)
+    p.write_text(json.dumps({"file": source, "written": _today(), "note": "words from sites whose terms forbid "
+                             "reposting them (lexflow.municipal.quotes.NO_REPRINT), kept here as the evidence lexflow's "
+                             "match is made against; never committed", "quotes": dict(sorted(have.items()))},
+                            indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return p
+
+
+def full_hash(quote: str) -> str:
+    """A withheld quote's fingerprint: sha256 of its normalised text (``norm``)."""
+    return hashlib.sha256(norm(quote).encode("utf-8")).hexdigest()
+
+
+def _strings(d: dict) -> list[str]:
+    return [v for v in d.values() if isinstance(v, str)]
+
+
+def quote_dicts(value, path: tuple = ()):
+    """Every dict in a file that holds a quote (``quote``, or ``text`` beside a page address) or a withheld one
+    (``quote_sha256``): (path, dict, key or None when withheld)."""
+    if isinstance(value, dict):
+        key = None
+        for k in ("quote", "text"):
+            if isinstance(value.get(k), str) and value[k].strip():
+                if k == "quote" or any(URL.search(v) for kk, v in value.items() if kk != k and isinstance(v, str)):
+                    key = k
+                break
+        if key:
+            yield path, value, key
+        elif isinstance(value.get("quote_sha256"), str):
+            yield path, value, None
+        for k, v in value.items():
+            yield from quote_dicts(v, path + (k,))
+    elif isinstance(value, list):
+        for i, v in enumerate(value):
+            yield from quote_dicts(v, path + (i,))
+
+
+def _where(path: tuple) -> str | None:
+    """A process file's name for a quote's place: steps[3]."""
+    return f"{path[0]}[{path[1]}]" if len(path) == 2 and path[0] in SPEC_LISTS and isinstance(path[1], int) else None
+
+
+def is_process_file(spec) -> bool:
+    return isinstance(spec, dict) and isinstance(spec.get("process"), str) and any(k in spec for k in SPEC_LISTS)
+
+
+def _place(d: dict, key: str, value, after: str) -> None:
+    """Put ``key`` in ``d`` right after ``after`` (first when ``after`` is None; last when it is not a key)."""
+    items = [(k, v) for k, v in d.items() if k != key]
+    out, done = ({key: value}, True) if after is None else ({}, False)
+    for k, v in items:
+        out[k] = v
+        if k == after:
+            out[key] = value
+            done = True
+    if not done:
+        out[key] = value
+    d.clear()
+    d.update(out)
+
+
+ADDRESS = re.compile(r"\b\d{1,6}\s+\S.{0,60}\b(?:Road|Rd|Street|St|Avenue|Ave|Drive|Dr|Lane|Ln|Way|Court|Ct|Boulevard|"
+                     r"Blvd|Highway|Hwy|Suite|Room|Floor)\b|\(?\d{3}\)?[ .-]\d{3}[ .-]\d{4}|\bAttn:?\b|"
+                     r"\b(?:Suite|Ste|Room)\s+\d+\b|\bVA\s+\d{5}\b", re.I)
+_FREE_PAGES: tuple[str, dict[str, list[str]]] | None = None
+
+
+def _free_pages() -> dict[str, list[str]]:
+    """The text of every cached page of a site that allows reprinting, by address (read once a run)."""
+    global _FREE_PAGES
+    if _FREE_PAGES is None or _FREE_PAGES[0] != str(cache_dir()):
+        out = {}
+        for p in sorted(cache_dir().glob("*.json")) if cache_dir().exists() else []:
+            try:
+                e = json.loads(p.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            if e.get("text") and not e.get("error") and not policy(e.get("url")):
+                out[e["url"]] = [canon(v) for v in variants(e["text"])]
+        _FREE_PAGES = (str(cache_dir()), out)
+    return _FREE_PAGES[1]
+
+
+def canon(text: str) -> str:
+    """Words only, lower case, punctuation at word ends dropped: how the scan compares runs of words."""
+    return " ".join(w for w in (re.sub(r"^\W+|\W+$", "", w).lower() for w in norm(text).split()) if w)
+
+
+def free_words(quote: str, state: str | None = "va") -> str | None:
+    """Why a quote found on a NO_REPRINT page need not be withheld, or None: its words are the state code's (Open US
+    Law's index has them), a free official page's (the quote fetch read them there), or an address or phone number
+    (a fact, not the site's prose)."""
+    q = canon(quote)
+    if not q:
+        return None
+    if len(q.split()) <= 24 and ADDRESS.search(q):
+        return "an address or phone number"
+    if state:
+        try:
+            from ..ask import index as I
+            words = re.findall(r"[A-Za-z0-9]+", q)
+            expr = I.phrase(" ".join(words[:12]))
+            for row in I.search(state, expr, limit=5) if expr else []:
+                if q in canon(I.text_of(state, row["id"])):
+                    return f"the words of {row.get('citation') or row.get('ref')}"
+        except Exception:                                          # noqa: BLE001 - no index here
+            pass
+    for url, texts in _free_pages().items():                       # the texts are normalised already (variants)
+        if any(q in t for t in texts):
+            return f"the words of {url}"
+    return None
+
+
+def withhold(spec: dict, qc: dict | None = None, path: str | Path | None = None) -> dict[str, str]:
+    """Move every quote from a NO_REPRINT site out of ``spec`` (in place) and return the words by fingerprint, for
+    the evidence file.  A quote goes when ``withheld`` says so: matched on a page of such a site (``qc``, lexflow's
+    match, made here for a process file when not given), or not matched and citing one.  What stays in the file:
+    ``quote_sha256``, ``quote_words``, ``paraphrase``, ``url`` (the page, never the archive address), ``capture``
+    (the Internet Archive timestamp it was read from, when known) and, for a ``text`` field, ``quote_key``.  A quote
+    whose words are the state code's, a free official page's or an address stays (``free_words``)."""
+    items = {}
+    state = None
+    try:
+        from . import places as P
+        state = P.state_of(spec) or (evidence_name(spec, path) or "va/")[:2]
+        if is_process_file(spec) and qc is None:
+            qc = P.check_quotes(spec, state)
+    except Exception:                                              # noqa: BLE001 - no statutes, no pydantic: cite rule
+        qc = qc
+    if qc:
+        items = qc.get("items") or {}
+    out: dict[str, str] = {}
+    for p, d, key in list(quote_dicts(spec)):
+        if key is None:
+            continue
+        where = _where(p)
+        hit = items.get(where) if where else None
+        pol = withheld(hit, _strings(d))
+        if pol and free_words(d[key], state):
+            pol = None
+        if not pol:
+            for k in ("quote_sha256", "quote_words", "capture", "quote_key"):   # once withheld, now free: plain again
+                d.pop(k, None)
+            continue
+        keys = list(d)
+        anchor = keys[keys.index(key) - 1] if keys.index(key) else None   # the fingerprint takes the quote's place
+        text = d.pop(key)
+        sha = full_hash(text)
+        out[sha] = text
+        urls = [original(u) for u in cited_urls(_strings(d)) if policy(u)]
+        url = (hit or {}).get("url") if hit and hit.get("by") else None
+        cap = (hit or {}).get("capture") or next((capture_of(u) for u in cited_urls(_strings(d)) if capture_of(u)), None)
+        _place(d, "quote_sha256", sha, anchor)
+        _place(d, "quote_words", len(norm(text).split()), "quote_sha256")
+        last = "quote_words"
+        for k, v in (("paraphrase", None), ("url", url or (urls[0] if urls else None)), ("capture", cap),
+                     ("quote_key", key if key != "quote" else None)):
+            if k in d or (k == "quote_key" and not v):                 # a field the item has stays where it is
+                continue
+            _place(d, k, v, last)
+            last = k
+    if out:
+        runs = {s for text in out.values() for s in shingles(text)}
+        for p, d, key in list(quote_dicts(spec)):                  # the same words quoted again, cited to no page
+            if key and shingles(d[key]) & runs and not free_words(d[key], state):
+                text = d.pop(key)
+                sha = full_hash(text)
+                out[sha] = text
+                anchor = list(d)[0] if d else None
+                _place(d, "quote_sha256", sha, anchor)
+                _place(d, "quote_words", len(norm(text).split()), "quote_sha256")
+                for k, v in (("paraphrase", None), ("url", None), ("capture", None),
+                             ("quote_key", key if key != "quote" else None)):
+                    if k not in d and (v is not None or k != "quote_key"):
+                        _place(d, k, v, "quote_words" if k == "paraphrase" else list(d)[-1])
+        _unquote(spec, out)
+    return out
+
+
+def _unquote(value, words: dict[str, str], parent: dict | None = None) -> None:
+    """Prose that repeats a withheld quote whole (a fee amount, a deadline, a how) keeps the item's paraphrase or a
+    pointer to the page in its place, so the words sit only in the evidence file."""
+    if isinstance(value, dict):
+        for k, v in list(value.items()):
+            if isinstance(v, str) and k not in ("quote", "text", "quote_sha256"):
+                for sha, text in words.items():
+                    if len(norm(text).split()) >= MIN_RUN and norm(text) in norm(v):
+                        rep = value.get("paraphrase") or (parent or {}).get("paraphrase") or "see the cited page"
+                        value[k] = norm(v).replace(norm(text), rep)
+            else:
+                _unquote(v, words, value)
+    elif isinstance(value, list):
+        for v in value:
+            _unquote(v, words, parent)
+
+
+def restore(spec: dict, path: str | Path | None = None, evidence: dict[str, str] | None = None) -> dict:
+    """Put the withheld words back in ``spec`` (in place), from ``evidence`` or the file's evidence file; the spec
+    unchanged when neither is present.  A quote whose words are not found stays withheld, and lexflow's match
+    counts it as not matched (``places.check_quotes``)."""
+    if not isinstance(spec, dict):
+        return spec
+    held = [(p, d) for p, d, key in quote_dicts(spec) if key is None]
+    if not held:
+        return spec
+    ev = evidence if evidence is not None else load_evidence(spec, path)
+    for _, d in held:
+        text = ev.get(d["quote_sha256"])
+        if isinstance(text, str) and text:
+            _place(d, d.get("quote_key") or "quote", text, "quote_sha256")
+    return spec
+
+
+def withheld_quotes(spec: dict) -> list[dict]:
+    """The withheld quotes of a file: {where, sha, words, url, capture, restored}."""
+    out = []
+    for p, d, key in quote_dicts(spec):
+        if "quote_sha256" in d:
+            out.append({"where": _where(p) or ".".join(str(x) for x in p), "sha": d["quote_sha256"],
+                        "words": d.get("quote_words"), "url": d.get("url"), "capture": d.get("capture"),
+                        "restored": isinstance(d.get(d.get("quote_key") or "quote"), str)})
+    return out
+
+
+def withhold_file(path: str | Path, log: Log = print) -> dict:
+    """Withhold a committed file's NO_REPRINT words into its evidence file and rewrite it.  Counts."""
+    p = Path(path)
+    spec = json.loads(p.read_text(encoding="utf-8"))
+    name = evidence_name(spec, p)
+    if not name:
+        raise ValueError(f"{p}: no evidence file name (not a researched process or a places fixture)")
+    restore(spec, p)                                               # words already withheld come back first
+    words = withhold(spec, path=p)
+    save_evidence(name, words, str(p.as_posix()).split("/app/", 1)[-1], merge=False)   # exactly what is withheld now
+    if not is_process_file(spec):
+        spec["evidence"] = name
+    text = json.dumps(spec, indent=1, ensure_ascii=False) + "\n"
+    p.write_text(text, encoding="utf-8")
+    n = len(withheld_quotes(spec))
+    log(f"{p.name}: {len(words)} quotes withheld this time, {n} withheld in all, evidence {name}")
+    return {"file": str(p), "withheld": len(words), "held": n, "evidence": name}
+
+
+def shingles(text: str, n: int = MIN_RUN) -> set[str]:
+    """Every run of ``n`` consecutive words of a text (lower case, punctuation at word ends dropped)."""
+    words = canon(text).split()
+    return {" ".join(words[i:i + n]) for i in range(len(words) - n + 1)}
+
+
+def file_text(path: Path) -> str:
+    """A committed file's text as a reader sees it (JSON decoded, so escapes do not hide a run of words)."""
+    raw = path.read_text(encoding="utf-8", errors="replace")
+    if path.suffix == ".json":
+        try:
+            return json.dumps(json.loads(raw), ensure_ascii=False)
+        except ValueError:
+            pass
+    return raw
+
+
+def leaks(paths: Iterable[Path], evidence: dict[str, str], n: int = MIN_RUN) -> list[dict]:
+    """The runs of ``n`` or more consecutive words of a withheld quote found in the files: {file, sha, words}."""
+    want: dict[str, str] = {}
+    for sha, text in evidence.items():
+        for s in shingles(text, n):
+            want.setdefault(s, sha)
+    out = []
+    free: dict[str, bool] = {}
+    for p in paths:
+        p = Path(p)
+        try:
+            hits = shingles(file_text(p), n) & want.keys()
+        except OSError:
+            continue
+        for s in sorted(hits):
+            if s not in free:                                      # a run the Code or a free page also has is no leak
+                free[s] = bool(free_words(s))
+            if not free[s]:
+                out.append({"file": str(p), "sha": want[s], "words": s})
+    return out
+
+
+def committed_files(root: Path | None = None) -> list[Path]:
+    """The text files a commit would carry (data/, out/, caches and environments left out)."""
+    root = root or config.ROOT
+    skip = {"data", "out", ".git", ".venv", "node_modules", "__pycache__", ".pytest_cache", ".mypy_cache"}
+    exts = {".json", ".md", ".py", ".txt", ".rq", ".ttl", ".yml", ".yaml", ".html", ".csv", ".toml", ".cfg", ".ini"}
+    out = []
+    for p in sorted(root.rglob("*")):
+        rel = p.relative_to(root).parts
+        if not p.is_file() or set(rel[:-1]) & skip or p.suffix.lower() not in exts:
+            continue
+        out.append(p)
+    return out
+
+
+def all_evidence() -> dict[str, str]:
+    """Every withheld quote's words, by fingerprint, from the evidence files."""
+    out: dict[str, str] = {}
+    for p in sorted(EVIDENCE_DIR.rglob("*.json")) if EVIDENCE_DIR.exists() else []:
+        try:
+            out.update(json.loads(p.read_text(encoding="utf-8")).get("quotes") or {})
+        except (OSError, ValueError):
+            continue
+    return out
+
+
+def held_shas(paths: Iterable[Path]) -> set[str]:
+    """The fingerprints of the quotes the committed files withhold (the scan looks for these words, not for
+    words an evidence file may keep from an earlier state of a file)."""
+    out: set[str] = set()
+    for p in paths:
+        p = Path(p)
+        if p.suffix != ".json":
+            continue
+        try:
+            spec = json.loads(p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        out.update(q["sha"] for q in withheld_quotes(spec))
+    return out
+
+
+def _page_words(url: str, capture: str | None, log: Log) -> list[str] | None:
+    """A page's text as matched (``variants``), from the cache where it keeps words, else read again in memory (the
+    live page, or the Internet Archive capture named or the newest) and never saved."""
+    e = cached(url)
+    if e and e.get("_texts"):
+        return e["_texts"]
+    p = policy(url)
+    if p and not p["fetch"]:
+        return None
+    http = _http(log)
+    want = f"https://{ARCHIVE}/web/{capture}/{original(url)}" if capture else url
+    entry = None
+    if not capture:
+        entry, why = _live(http, url, [], keep=True)
+        if entry is not None and entry.get("error"):
+            return None
+    else:
+        why = None
+    if entry is None:
+        entry = _archive(http, want, [], why, log, keep=True)
+    return variants(entry["text"]) if entry.get("text") else None
+
+
+_EDGE = ".,;:!?\"'()[]{}"
+
+
+def _runs(words: list[str]) -> list[str]:
+    """A run of a page's words as a quote may have cut it: as it stands, and with the punctuation around its first
+    and last words dropped."""
+    firsts = dict.fromkeys([words[0], words[0].lstrip(_EDGE)])
+    lasts = dict.fromkeys([words[-1], words[-1].rstrip(_EDGE)])
+    mid = words[1:-1]
+    out = []
+    for f in firsts:
+        for la in lasts:
+            run = " ".join([f] + mid + [la]) if len(words) > 1 else (f if f == la else f.rstrip(_EDGE))
+            if run and run not in out:
+                out.append(run)
+    return out
+
+
+def rebuild(files: Iterable[tuple[Path, dict]], log: Log = print) -> dict:
+    """Make the evidence files again for ``files`` from their pages: each withheld quote is the run of
+    ``quote_words`` words of the page whose fingerprint is ``quote_sha256``.  Counts."""
+    todo: dict[tuple[str, str | None], list[tuple[str, int]]] = {}
+    names: dict[str, tuple[str, str]] = {}
+    for p, spec in files:
+        name = evidence_name(spec, p)
+        for q in withheld_quotes(spec):
+            if not q["url"] or not q["words"] or not name:
+                continue
+            todo.setdefault((key(q["url"]), q["capture"]), []).append((q["sha"], int(q["words"])))
+            names[q["sha"]] = (name, str(p))
+    found: dict[str, str] = {}
+    counts = {"pages": len(todo), "read": 0, "quotes": len(names), "found": 0}
+    for (url, cap), wants in sorted(todo.items()):
+        try:
+            texts = _page_words(url, cap, log)
+        except Exception as e:                                     # noqa: BLE001 - one page never stops the rest
+            texts = None
+            log(f"{url}: could not be read ({type(e).__name__})")
+        if not texts:
+            log(f"not read: {url}{' (' + cap + ')' if cap else ''}")
+            continue
+        counts["read"] += 1
+        for t in texts:
+            words = t.split()
+            for n in {w for _, w in wants}:
+                need = {sha for sha, w in wants if w == n and sha not in found}
+                for i in range(len(words) - n + 1):
+                    if not need:
+                        break
+                    for run in _runs(words[i:i + n]):
+                        h = full_hash(run)
+                        if h in need:
+                            found[h] = run
+                            need.discard(h)
+    by_name: dict[str, dict[str, str]] = {}
+    for sha, text in found.items():
+        name, src = names[sha]
+        by_name.setdefault(name, {})[sha] = text
+    for name, qs in by_name.items():
+        save_evidence(name, qs, names[next(iter(qs))][1])
+    counts["found"] = len(found)
+    missing = [sha for sha in names if sha not in found]
+    if missing:
+        log(f"{len(missing)} withheld quotes were not found on their pages")
+    return counts
+
+
 # ---- the command -----------------------------------------------------------------------------------------------
 def main(argv: list[str] | None = None) -> int:
-    """python -m lexflow.municipal.quotes [--fetch] [--retry] [--state va] [--report] [paths ...]"""
+    """python -m lexflow.municipal.quotes [--fetch] [--retry] [--state va] [--report] [--withhold] [--evidence]
+    [--scan] [paths ...]"""
     import argparse
     from . import places as P
     ap = argparse.ArgumentParser(prog="python -m lexflow.municipal.quotes", description=__doc__.split("\n\n")[0])
     ap.add_argument("paths", nargs="*", help="process files (default: every curated/places/<state>/<place>/*.json)")
     ap.add_argument("--state", help="only this state's files")
+    ap.add_argument("--withhold", action="store_true", help="move the files' NO_REPRINT words to data/evidence/")
+    ap.add_argument("--evidence", action="store_true", help="rebuild the evidence files from the pages")
+    ap.add_argument("--scan", action="store_true", help="find runs of withheld words in the files a commit carries")
     ap.add_argument("--fetch", action="store_true", help="read the cited pages not yet cached")
     ap.add_argument("--retry", action="store_true", help="with --fetch, read again pages whose last read failed")
     ap.add_argument("--refetch", action="append", default=[], metavar="KIND",
@@ -830,14 +1329,27 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--report", action="store_true", help="match every file's quotes and print the counts")
     a = ap.parse_args(argv)
     paths = [Path(p) for p in a.paths] or P.process_files()
+    if a.withhold:
+        for p in paths:
+            withhold_file(p)
     specs = []
     for p in paths:
         try:
             spec = json.loads(Path(p).read_text(encoding="utf-8"))
         except ValueError:
             continue
-        if not a.state or P.state_of(spec) == a.state:
-            specs.append((Path(p), spec))
+        if not a.state or P.state_of(spec) == a.state or not is_process_file(spec):
+            specs.append((Path(p), restore(spec, Path(p))))
+    if a.evidence:
+        print(json.dumps(rebuild(specs)))
+    if a.scan:
+        files = committed_files()
+        held = held_shas(files)
+        found = leaks(files, {sha: text for sha, text in all_evidence().items() if sha in held})
+        for x in found:
+            print(json.dumps(x, ensure_ascii=False))
+        print(f"{len(found)} runs of {MIN_RUN} or more withheld words in {len({x['file'] for x in found})} files")
+        return 1 if found else 0
     if a.fetch:
         print(json.dumps(fetch(wanted([s for _, s in specs]), retry=a.retry, refetch=a.refetch,
                                archive=not a.no_archive, archive_workers=a.archive_workers)))

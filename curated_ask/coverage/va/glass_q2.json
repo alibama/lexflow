@@ -1,0 +1,62 @@
+{
+ "qid": "glass_q2",
+ "state": "va",
+ "question": "Can I open a hot shop in this building, and what occupancy is it?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "15.2-2280",
+   "role": "primary"
+  },
+  {
+   "ref": "36-105",
+   "role": "primary"
+  },
+  {
+   "ref": "36-98",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Zoning decides whether an industrial, business or other use is allowed on the premises.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "15.2-2280",
+   "quote": "The use of land, buildings, structures and other premises for agricultural, business, industrial, residential, flood plain and other specific uses;",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The local building department enforces the building code, which sets the occupancy.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "36-105",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "One statewide building code supersedes local building codes.",
+   "importance": "okay",
+   "kind": "where",
+   "section": "36-98",
+   "quote": "Such building code shall supersede the building codes and regulations of the counties, municipalities and other political subdivisions and state agencies.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A denied building permit comes with written reasons.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "36-105",
+   "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+   "source": "index"
+  }
+ ],
+ "notes": "Occupancy classification and change of occupancy are in the Virginia Construction and Existing Building Codes (13VAC5-63), outside the statute index."
+}

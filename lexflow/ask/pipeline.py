@@ -5,7 +5,8 @@
 
 The state answer is worked out once per (question, state) and shared by every place in that state; each place
 adds its local layer (LOCUS headings that mention the question, and its contacts).  Rows go to ``asked_answers``
-(shared through Turso), keyed by question id and target.
+(shared through Turso), keyed by question id, target and the model that answered (one row per model, so two
+models' answers to the same cell can be compared; the readers show one, ``lexflow.ask.prefer``).
 """
 from __future__ import annotations
 
@@ -101,15 +102,17 @@ def save_question(con, text: str, plan: Plan, qid: str | None = None) -> str:
 
 
 def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None, log=print, store: bool = True,
-                 oracle_refs: list[str] | None = None) -> dict:
+                 oracle_refs: list[str] | None = None, model: str | None = None) -> dict:
     """Retrieve, quote, extract and (optionally) summarise one state's answer; store it as target=state.
-    ``oracle_refs`` answers from those sections instead of retrieving (the benchmark's oracle-sections arm)."""
+    ``oracle_refs`` answers from those sections instead of retrieving (the benchmark's oracle-sections arm).
+    ``model`` names the row's model lane (part of the asked_answers key) when the asker writes no summary; the
+    asker's model when it does, and db.ASKED_DEFAULT_MODEL when neither is given."""
     t0 = time.time()
     timings = {}
     # no "published": re-asking keeps an answer's wiki tick; but a new answer is not the one a person reviewed, so
     # the review goes, and the wiki shows it again only once someone signs the new text (lexflow/signoff.py)
     row = {"question_id": qid, "target": state, "state": state, "gov_id": None, "question_text": plan.text,
-           "model": None, "reviewed_by": None}
+           "model": model or (asker.client.model if asker is not None else None), "reviewed_by": None}
     if not statutes.have(state):
         row.update(status="no-statutes", answer=db_json({"status": "no-statutes", "why":
                    f"{S.NAME[state]} has no statute file in open-us-law"}), seconds=0.0)

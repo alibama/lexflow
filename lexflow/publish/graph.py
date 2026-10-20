@@ -1022,10 +1022,14 @@ class Build:
         map) stored, every quote checked word for word against the statute text (``pipeline.quote_counts``:
         ``quotes_checked`` > 0 and no miss).  Each as the model dict ``_model`` reads, tier ``asked``."""
         from ..ask import coverage as CV
+        from ..ask import prefer
         out = []
         cov = {q["id"]: q for q in CV.questions()}
-        for r in db.rows(self.con, "SELECT * FROM asked_answers WHERE gov_id IS NULL AND target = state AND "
-                                   "status IN ('answered', 'partial') AND facts IS NOT NULL ORDER BY state, question_id"):
+        # one answer per question and state when several models answered it (prefer: LEXFLOW_ASK_PREFER, else
+        # the best-scoring row)
+        for r in prefer.preferred(db.rows(self.con, "SELECT * FROM asked_answers WHERE gov_id IS NULL AND "
+                                                    "target = state AND status IN ('answered', 'partial') AND "
+                                                    "facts IS NOT NULL ORDER BY state, question_id")):
             if not self.want(r["state"]):
                 continue
             metrics = db.loads(r["metrics"], {}) or {}

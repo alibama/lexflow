@@ -1,0 +1,75 @@
+{
+ "qid": "glass_q6",
+ "state": "va",
+ "question": "If I add a cafe or sell snacks, do I need a health permit and do I collect meals tax?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "35.1-18",
+   "role": "primary"
+  },
+  {
+   "ref": "35.1-22",
+   "role": "primary"
+  },
+  {
+   "ref": "35.1-25",
+   "role": "supporting"
+  },
+  {
+   "ref": "58.1-3840",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A restaurant may not operate unless licensed under Title 35.1.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "35.1-18",
+   "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter. The license shall be in the name of the owner or lessee. No license issued hereunder shall be assignable or transferable.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The Commissioner of Health has each restaurant inspected at least annually.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "35.1-22",
+   "quote": "The Commissioner shall cause each restaurant, summer camp, and campground in the Commonwealth to be inspected at least annually, with no more than 12 months elapsing between each such inspection",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A place selling only packaged or canned goods is not a restaurant.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "35.1-25",
+   "quote": "Grocery stores, including the delicatessen portion that is a part of a grocery store selling exclusively for off-premises consumption, and places manufacturing or selling packaged or canned goods;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Cities and towns with charter taxing powers, and counties as authorized, may impose a meals tax.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "58.1-3840",
+   "quote": "any city or town having general taxing powers established by charter pursuant to or consistent with the provisions of § 15.2-1104 and, to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Factory-sealed food for home consumption is outside the meals tax; sandwiches and poured drinks are inside.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "58.1-3840",
+   "quote": "no city or town shall levy any tax under this section upon alcoholic beverages sold in factory sealed containers and purchased for off-premises consumption or food purchased for human consumption as \"food\" is defined in the Food Stamp Act of 1977, 7 U.S.C. § 2012, as amended, and federal regulations adopted pursuant to that act, except for the following items: sandwiches, salad bar items sold from a salad bar, prepackaged single-serving salads consisting primarily of an assortment of vegetables, and nonfactory sealed beverages.",
+   "source": "index"
+  }
+ ],
+ "notes": "The permit lead time (30 days) and the permit term are in the Food Regulations (12VAC5-421), outside the statute index."
+}

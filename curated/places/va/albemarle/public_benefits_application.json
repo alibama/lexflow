@@ -1,0 +1,1308 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "public_benefits_application",
+ "title": "Apply for public benefits (SNAP, Medicaid, TANF, energy assistance)",
+ "question": "How do I apply for SNAP, Medicaid, TANF or energy assistance if I live in Albemarle County?",
+ "category": "health_social_services",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "families",
+  "older adults",
+  "people with disabilities"
+ ],
+ "office": "Albemarle County Department of Social Services",
+ "summary": "Residents apply to the Albemarle County Department of Social Services for SNAP (food), TANF (cash), Medicaid or FAMIS (health coverage) and energy assistance. One online CommonHelp application covers them all. You can also apply by phone at 1-855-635-4370, in person at 1600 5th Street Ext., Suite A, or by fax or mail. No application fee is listed. Fuel assistance is taken from the second Tuesday in October to the second Friday in November; cooling and crisis help have their own windows. Expect an interview for SNAP, requests for proof, and a written decision, generally within 30 days for SNAP and TANF and up to 45 days for Medicaid. If denied, appeal to VDSS, or to DMAS for Medicaid.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-100",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-100/",
+   "quote": "\"Public assistance\" means Temporary Assistance for Needy Families (TANF); auxiliary grants to the aged, blind, and disabled; medical assistance; energy assistance; Supplemental Nutrition Assistance Program (SNAP); employment services; child care; and general relief.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-527",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-527/",
+   "quote": "The local director of social services shall be head of the department of social services, and shall be chosen from a list of eligibles furnished by the Commissioner of Social Services.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-527",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-527/",
+   "quote": "shall exercise the powers conferred and perform the duties imposed by general law upon the local board of social services, not inconsistent herewith",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-500",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-500/",
+   "quote": "The provisions of this chapter shall apply only to counties which have adopted the county executive form.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-300",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-300/",
+   "quote": "There shall be a local board in each county and city of the Commonwealth.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "application for public assistance shall be made to the local department and filed with the local director of the county or city in which the applicant resides",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "Such application may be made either electronically or in writing on forms prescribed by the Commissioner and shall be signed by the applicant or otherwise attested to in a manner prescribed by the Commissioner under penalty of perjury",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "If the condition of the applicant for public assistance precludes his signing or otherwise attesting to the accuracy of information contained in an application for public assistance, the application may be made on his behalf by his guardian or conservator.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "If no guardian or conservator has been appointed for the applicant, the application may be made by any competent adult person having sufficient knowledge of the applicant's circumstances to provide the necessary information, until such time as a guardian or conservator is appointed by a court.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "quote": "Local departments or the Commissioner shall provide each applicant for public assistance with information regarding his rights and responsibilities related to eligibility for and continued receipt of public assistance.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-501.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501.1/",
+   "quote": "To the extent required by federal law and regulations, recipients of public assistance shall notify the local department of any change in address or telephone number within 30 days of such change",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-502",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-502/",
+   "quote": "Any person who knowingly makes any false application for public assistance or who knowingly swears or affirms falsely to any matter or thing required by the provisions of this title or as to any information required by the Commissioner, incidental to the administration of the provisions of this title, to be sworn to or affirmed, shall be guilty of perjury",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "Upon receipt of the application for public assistance, the local director or Commissioner shall make or cause to be made promptly an investigation to determine the completeness and correctness of the statements contained in the application",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "If the applicant fails to respond within 10 days of the date of such notice, the local director shall deny the application for public assistance.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(G)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "The Board may by regulation authorize the local directors to provide immediate and temporary assistance to persons pending action of the local departments.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-503(H)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-503/",
+   "quote": "In the event that any provision of this section conflicts with federal law or regulations, provisions of federal law shall prevail.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-504",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-504/",
+   "quote": "Upon completion of the investigation, the local department shall determine whether the applicant is eligible for public assistance under this subtitle, and, if eligible, the amount of such public assistance and the date upon which such public assistance shall begin.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-508",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-508/",
+   "quote": "No person shall make any charge or receive any fees for representing an applicant for or recipient of public assistance with respect to his application or request for increased assistance prior to a determination thereon by the local board",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-514(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-514/",
+   "quote": "Eligibility for public assistance shall be reconsidered in accordance with federal law or regulations by the local department at least annually",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-514(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-514/",
+   "quote": "If the applicant fails to respond within 10 days of the date of such notice, the local department shall refuse to renew the applicant's eligibility for public assistance.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-515",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-515/",
+   "quote": "As soon as the local board makes any decision granting, denying, changing or discontinuing any grant of public assistance, it shall give written notice thereof to the applicant or recipient.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board in granting, denying, changing or discontinuing public assistance, may, within thirty days after receiving written notice of such decision, appeal therefrom to the Commissioner.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by the failure of the local board to make a decision within a reasonable time may ask for a review of the same by the Commissioner.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-517",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-517/",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board concerning food stamps may appeal to the Commissioner in accordance with federal law and regulation.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-518",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-518/",
+   "quote": "The Commissioner shall provide an opportunity for a hearing, reasonable notice of which shall be given in writing to the applicant or recipient and to the proper local board",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-519",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-519/",
+   "quote": "The decision of the Commissioner shall be binding and considered a final agency action for purposes of judicial review of such action pursuant to the provisions of the Administrative Process Act (§ 2.2-4000 et seq.).",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-405(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-405/",
+   "quote": "The Commissioner shall, in compliance with the state plan for medical assistance services, applicable regulations of the Board and other state and federal law, provide for the determination of eligibility for medical care and medical assistance",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-600(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-600/",
+   "quote": "There is hereby created the Temporary Assistance for Needy Families Program, hereinafter referred to as TANF or the \"Program.\"",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-612",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-612/",
+   "quote": "Unless otherwise exempt, VIEW participants and their families may receive TANF financial assistance for a maximum of 24 months only",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-612",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-612/",
+   "quote": "VIEW participants and their families may receive TANF financial assistance, if otherwise eligible, after a subsequent period of 24 months.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-612",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-612/",
+   "quote": "Notice shall be given 60 days prior to such termination",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-613",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-613/",
+   "quote": "The Board shall adopt regulations providing exceptions to the time limitations of this chapter in cases of hardship.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-617(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-617/",
+   "quote": "An individual may receive diversionary TANF cash assistance only one time in a 12-month period",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-617(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-617/",
+   "quote": "receive a TANF emergency assistance payment of up to $1,500 to prevent eviction or to address needs resulting from a fire or natural disaster",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(A)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "The Board is authorized, in accordance with the federal Food Stamp Act, to implement a SNAP benefits program in which each political subdivision in the Commonwealth shall participate.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(B)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "set the gross income eligibility standard for SNAP benefits at 200 percent of the federal poverty guidelines, and (iii) not impose an asset limit for eligibility for SNAP benefits",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-801(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-801/",
+   "quote": "the Department may not require persons who are applying to participate or renewing their participation in the SNAP benefits program to appear in person as a condition of participation.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-805(C)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-805/",
+   "quote": "The Department shall establish and operate the Home Energy Assistance Program.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-805(F)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-805/",
+   "quote": "Actions of the Department relating to the review, allocation and awarding of benefits and grants shall be exempt from the provisions of Article 3 (§ 2.2-4018 et seq.) and Article 4 (§ 2.2-4024 et seq.) of Chapter 40 of the Administrative Process Act (§ 2.2-4000 et seq.).",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "The Board, subject to the approval of the Governor, is authorized to prepare, amend from time to time, and submit to the U.S. Secretary of Health and Human Services a state plan for medical assistance services pursuant to Title XIX of the United States Social Security Act and any amendments thereto.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)(9)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "A provision identifying entities approved by the Board to receive applications and to determine eligibility for medical assistance",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 32.1-325(A)(23)",
+   "url": "https://law.lis.virginia.gov/vacode/32.1-325/",
+   "quote": "A single application form shall be used to determine eligibility for both programs",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4026(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4026/",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4025(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4025/",
+   "quote": "The provisions of this article, however, shall apply to case decisions regarding the grant or denial of Temporary Assistance for Needy Families, Medicaid, food stamps, general relief, auxiliary grants, or state-local hospitalization.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4025(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4025/",
+   "quote": "the review shall be based solely upon the agency record",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-4003",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-4003/",
+   "quote": "venue shall be as specified in subdivision 1 of § 8.01-261",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 8.01-261(1)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/8.01-261/",
+   "quote": "If the moving or aggrieved party is other than the Commonwealth or an agency thereof, then the county or city wherein such party",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Rules of Supreme Court of Virginia, Rule 2A:2(a)",
+   "url": "https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "quote": "Any party appealing from a regulation or case decision must file with the agency secretary, within 30 days after adoption of the regulation or after service of the final order in the case decision, a notice of appeal signed by the appealing party or that party's counsel.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Rules of Supreme Court of Virginia, Rule 2A:2(a)",
+   "url": "https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "quote": "3 days will be added to the 30-day period for that party",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Rules of Supreme Court of Virginia, Rule 2A:2(b)",
+   "url": "https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "quote": "must specify the circuit court to which the appeal is taken",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Rules of Supreme Court of Virginia, Rule 2A:4(a)",
+   "url": "https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "quote": "Within 30 days after the filing of the notice of appeal, the appellant must file a petition for appeal with the clerk of the circuit court named in the first notice of appeal to be filed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 63.2-305(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/63.2-305/",
+   "quote": "To monitor the formulation and implementation of public assistance and social services programs by the local department",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "A Request for Appeal shall be filed within 30 days of the appellant's receipt of the notice of an action or adverse determination described in 12VAC30-110-70.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "It is presumed that appellants will receive the notice five days after the agency mails the notice unless the appellant shows that he did not receive the notice within the five-day period.",
+   "role": "deadline"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-160",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "quote": "A Request for Appeal on the grounds that an agency has not acted with reasonable promptness may be filed at any time until the agency has acted.",
+   "role": "procedure"
+  },
+  {
+   "level": "regulation",
+   "citation": "12VAC30-110-40",
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section40/",
+   "quote": "An appellant who believes a final decision as defined herein is incorrect may seek judicial review pursuant to The Administrative Process Act (§ 2.2-4000 et seq. of the Code of Virginia) and Part 2A, Rules of the Virginia Supreme Court.",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether you might qualify",
+   "who": "Applicant, or an authorized representative the applicant names (Application for Benefits, Section I). If the applicant's condition prevents signing, a guardian or conservator may apply, or, if none has been appointed, a competent adult who knows the applicant's circumstances (Va. Code § 63.2-501(A))",
+   "how": "SNAP has different eligibility rules from other programs, so apply for SNAP even if you were found ineligible for another benefit; every program has financial and non-financial rules. You apply to the social services department of the county or city where you live, so Albemarle residents apply to the Albemarle County Department of Social Services (the City of Charlottesville has its own department). CommonHelp has a short 'Check eligibility' screening; it gives information only, and the department decides. TANF needs a child under 18 (or 18 and enrolled in high school, secondary school or vocational school) living with a parent or relative caregiver. Energy assistance needs a heating or cooling expense and gross monthly income at or below 150% of the federal poverty level. A Medicaid application is screened for every medical program based on your age, income and other details.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap",
+   "paraphrase": null,
+   "capture": "20260616093607",
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap (read from the Internet Archive copy of June 16, 2026, https://web.archive.org/web/20260616093607/https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "a70f58b0ef0a0a6844a9a7a7fe60cefc8a5b662474f582c6b776a288a9d94826",
+   "quote_words": 24
+  },
+  {
+   "id": "s2",
+   "step": "Gather information and proof for everyone in your household",
+   "who": "Applicant",
+   "how": "Collect full legal names, dates of birth and Social Security numbers (people who are not applying need not give one), immigration document numbers, pay stubs or other income records, bank account details and any other health insurance. For SNAP you must now give documents, not just a verbal statement, for dependent care, shelter (rent, homeowner's insurance, taxes, utilities) and medical expenses. Proof of identity, such as a driver's license or birth certificate, helps at the interview. You do not need every document before applying: the Application for Benefits can be turned in partly completed, and VDSS says you can still attend the SNAP interview without every document and the office will explain next steps.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-requirements-faqs/",
+   "quote": "When applying for or renewing SNAP, you must now provide proof of certain expenses.",
+   "source": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-requirements-faqs/"
+  },
+  {
+   "id": "s3",
+   "step": "Choose the application",
+   "who": "Applicant",
+   "how": "Online, CommonHelp's 'Apply for All Benefit Programs' covers food (SNAP), cash (TANF), health care, heating and cooling, and child care in one application; 'Apply for Health Care Benefits' is for health coverage only. On paper there are separate forms: the Application for Benefits (032-03-1100-39) for SNAP and TANF (a TANF application is also treated as a SNAP application unless you mark TANF-No SNAP); the Virginia Cardinal Care application for Medicaid and FAMIS, with Appendix D if someone is 65 or older, on Medicare or disabled; and separate Fuel, Crisis and Cooling Assistance applications. The paper forms can be printed from the VDSS and Cover Virginia sites; the county SNAP page says a paper application can be returned in person, by fax or by mail.",
+   "deadline": null,
+   "fee": null,
+   "form": "f1",
+   "url": "https://commonhelp.virginia.gov/access/",
+   "quote": "You can choose to apply only for health care coverage or multiple benefit programs.",
+   "source": "https://commonhelp.virginia.gov/access/"
+  },
+  {
+   "id": "s4",
+   "step": "Submit the application to the Albemarle County Department of Social Services",
+   "who": "Applicant; Albemarle County Department of Social Services",
+   "how": "Choose one way. (1) Online through CommonHelp (commonhelp.virginia.gov). (2) By phone through the VDSS Enterprise Customer Service Center, 1-855-635-4370 (Monday to Friday, 7 a.m. to 6 p.m., per VDSS). (3) In person at the Department of Social Services, 5th Street County Office Building, 1600 5th Street Ext., Suite A, Charlottesville, VA 22902, Monday to Friday 8 am to 4:30 pm. (4) A paper application by fax to 434-972-4080, or by mail to that address. The application must be signed or attested under penalty of perjury; giving false information knowingly is perjury (Va. Code § 63.2-502).",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap",
+   "paraphrase": null,
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap (read from the Internet Archive copy of June 16, 2026, https://web.archive.org/web/20260616093607/https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap, because www.albemarle.org refuses automated requests)",
+   "quote": "You may return the application in person, by fax to 434-972-4080, or by postal mail to the address above."
+  },
+  {
+   "id": "s5",
+   "step": "Protect your filing date: turn in at least a partial paper application the same day",
+   "who": "Applicant; Albemarle County Department of Social Services",
+   "how": "If you are eligible for the month you apply, your benefit amount is based on the date you turn in the application. You may leave a completed application, or a partial one with at least your name, address and signature; for SNAP only, the torn-off half-sheet on page iii with those details is enough. You must finish the rest before the office can decide. The Application for Benefits gives you the right to turn in your application any time during office hours on the same day you contact the office, even if it looks like you may not qualify; the county encourages same-day return. This is a right and a recommendation, not a time limit.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap",
+   "paraphrase": null,
+   "capture": "20260616093607",
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap (read from the Internet Archive copy of June 16, 2026, https://web.archive.org/web/20260616093607/https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "1761c72cd343061957c616d9a1ce1f451328934b2130d95e0e97fe954758f104",
+   "quote_words": 25
+  },
+  {
+   "id": "s6",
+   "step": "For Medicaid or FAMIS (Cardinal Care), you can also apply through Cover Virginia",
+   "who": "Applicant; Albemarle County Department of Social Services or Cover Virginia (Department of Medical Assistance Services)",
+   "how": "Besides CommonHelp and the Albemarle office, you can apply by phone with the Cover Virginia Call Center at 1-855-242-8282 (TTY 1-888-221-1590), Monday to Friday 8 a.m. to 7 p.m., or mail the Cardinal Care application to the Cardinal Care Correspondence Center, P.O. Box 1820, Richmond, VA 23218. You can also drop off a paper application at the Albemarle department. Include Appendix D if someone applying is 65 or older, eligible for Medicare or has a disability (it also covers long-term services and supports for people 65 or older or Medicare-eligible); Appendix F if someone 19 to 64 without Medicare needs long-term services and supports; and Appendix C if someone is helping you fill out the application or you are applying for someone other than a spouse or family member under 21. Appendices are not standalone applications and must go with the Cardinal Care application. An application at the Virginia Insurance Marketplace (marketplace.virginia.gov) can also lead to Medicaid enrollment. A mother enrolled in Medicaid must report her baby's birth so the baby can be enrolled, by calling 1-855-635-4370 or online at CommonHelp or CoverVirginia.org.",
+   "deadline": null,
+   "fee": null,
+   "form": "f3",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/",
+   "quote": "Drop off a paper application to your local Department of Social Services.",
+   "source": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "id": "s7",
+   "step": "If you are a UVA hospital patient, apply for Medicaid through the UVA Medicaid Unit",
+   "who": "Applicant who is a UVA Medical Center inpatient or has appointments at a UVA-affiliated clinic (or a family member); UVA Medicaid Unit (set up under a contractual agreement between UVA Medical Center and the Albemarle County Department of Social Services)",
+   "how": "The unit takes Medicaid applications at the bedside or for clinic patients, from residents of anywhere in Virginia, and gives you a checklist of proof right away. It only takes and processes the application; your case is then sent to the social services department where you live. It is in the Primary Care Center, Ground Floor G027, 1215 Lee Street, Charlottesville (phone 434-982-1637), Monday to Friday 8 am to 4:30 pm except state holidays.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit",
+   "paraphrase": null,
+   "capture": "20260612074530",
+   "source": "https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit (read from the Internet Archive copy of June 12, 2026, https://web.archive.org/web/20260612074530/https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "3756c1729b5f44e3fabcac9f3eaf2b7be8d8320b2de2475160b45f6f5cb1c424",
+   "quote_words": 15
+  },
+  {
+   "id": "s8",
+   "step": "Apply for energy assistance in its seasonal window",
+   "who": "Applicant (household with a heating or cooling expense); Albemarle County Department of Social Services",
+   "how": "Apply through CommonHelp, by phone at 1-855-635-4370, or on the paper Fuel, Crisis or Cooling Assistance application at the office. You must live in the locality where you apply and have gross monthly income at or below 150% of the federal poverty level. Fuel assistance helps with heating costs; benefits are worked out and authorizations sent to fuel vendors in December. Crisis assistance is for a heating emergency (no heat, a cut-off notice or unsafe equipment) when no other resource is available. Cooling assistance needs a household member who is 60 or older, living with a disability, or under 6. Crisis and cooling help depend on available funds. For 2026 the fuel rule works out to Tuesday, October 13 through Friday, November 13 (computed, not published).",
+   "deadline": "Fuel: from October's second Tuesday through November's second Friday. Crisis: November 1 through March 15 for equipment repair or purchase or a security deposit; the first work-day in January through March 15 for heating fuel and heat utility bills. Cooling: June 15 through August 15 (the VDSS EAP web page says June 15 to Aug 17).",
+   "fee": null,
+   "form": "f5",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/energy-assistance-heating-cooling-crisis",
+   "paraphrase": null,
+   "capture": "20260417130446",
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/energy-assistance-heating-cooling-crisis (read from the Internet Archive copy of April 17, 2026, https://web.archive.org/web/20260417130446/https://www.albemarle.org/government/human-services/social-services/financial-assistance/energy-assistance-heating-cooling-crisis, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "0d6f528a1b6871acfa10c03e552b69deb9474311d094d6f4238358e0e4276f01",
+   "quote_words": 15
+  },
+  {
+   "id": "s9",
+   "step": "For TANF, say if you have a one-time emergency, and expect work and child support rules",
+   "who": "Applicant family with a minor child; Albemarle County Department of Social Services",
+   "how": "TANF pays a monthly cash benefit and needs a minor child in the home with a parent or other relative. If your need is a one-time financial emergency, say so while you apply: Diversionary Assistance may solve it with one payment, but it causes a period of ineligibility for monthly TANF, and the county says it cannot be used again for another year (state law allows it only one time in a 12-month period). TANF Emergency Assistance can pay up to $1,500 to prevent eviction or meet needs after a fire or natural disaster, for applicants who meet the Board's criteria. Both use the Application for Benefits. With few exceptions TANF has a lifetime limit of 60 cumulative months. Able-bodied adults must take part in VIEW (Virginia Initiative for Education and Work); unless exempt, VIEW participants may get TANF for at most 24 months, and then again only after a further 24 months, subject to hardship exceptions (Va. Code §§ 63.2-612, 63.2-613). You may have to cooperate with the Division of Child Support Enforcement.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/temporary-assistance-for-needy-families-tanf",
+   "paraphrase": null,
+   "capture": "20261005163218",
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/temporary-assistance-for-needy-families-tanf (read from the Internet Archive copy of October 5, 2026, https://web.archive.org/web/20261005163218/https://www.albemarle.org/government/human-services/social-services/financial-assistance/temporary-assistance-for-needy-families-tanf, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "9a2b4d8a13c6e59a83c4ef0313ffcc6a533fd33d79fe571fc50d50a5b674ce13",
+   "quote_words": 21
+  },
+  {
+   "id": "s10",
+   "step": "Ask for expedited SNAP if you have little or no money",
+   "who": "Applicant; Albemarle County Department of Social Services",
+   "how": "Answer the expedited-service questions on the application. You may qualify if (1) gross monthly income is under $150 and liquid resources are $100 or less; (2) monthly rent or mortgage and utilities are more than your gross monthly income plus liquid resources; or (3) someone in the household is a migrant or seasonal farm worker with little or no income and resources.",
+   "deadline": "Benefits within 7 days if eligible",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf",
+   "quote": "Your household may qualify for Expedited Service and receive SNAP benefits within 7 days if you are eligible.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf"
+  },
+  {
+   "id": "s11",
+   "step": "Complete the interview",
+   "who": "Applicant; benefit programs specialist, Albemarle County Department of Social Services",
+   "how": "SNAP and some other programs need an interview, but you can turn in the application first. The office schedules it and sends a letter with the date and time. It may be by phone or in person at the office; state law bars making SNAP applicants appear in person unless federal law requires it. Have income, housing cost, bank, utility and identity papers ready; you can still do the interview without every document.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-interview-resources/",
+   "quote": "When you apply for SNAP, you usually need an interview with a benefit programs specialist.",
+   "source": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-interview-resources/"
+  },
+  {
+   "id": "s12",
+   "step": "Send the proof the office asks for",
+   "who": "Applicant; Albemarle County Department of Social Services",
+   "how": "The office checks your information and tells you in writing what it still needs. Missing proof can stop a decision: the county says all required verifications are needed to determine eligibility, and Cover Virginia says a Medicaid application may be denied if you do not reply. For SNAP expense proof you get a Verification Checklist and at least 10 days. If records the office finds do not match your application, it must notify you in writing, and the application is denied if you do not respond within 10 days of the date of that notice (Va. Code § 63.2-503(C), to the extent consistent with federal law, § 63.2-503(H)). Follow the return instructions on the checklist or letter; the county SNAP page lists in person, fax (434-972-4080) and mail for returning paper applications. For Medicaid you can also send documents through CommonHelp, by email to verify_docs@coverva.org, by fax to 1-888-221-9402, by mail to the Cardinal Care Correspondence Center, or in person at the department.",
+   "deadline": "At least 10 days from the request (SNAP Verification Checklist); 10 days from the date of a written discrepancy notice (Va. Code § 63.2-503(C))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap",
+   "paraphrase": null,
+   "capture": "20260616093607",
+   "source": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap (read from the Internet Archive copy of June 16, 2026, https://web.archive.org/web/20260616093607/https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "17b0aea3b2d0fcf27f5601defe5b6ff288dbf694a0bc200a9bba1a16db65598b",
+   "quote_words": 12
+  },
+  {
+   "id": "s13",
+   "step": "Receive the written decision",
+   "who": "Albemarle County Department of Social Services",
+   "how": "The office decides whether you are eligible and sets the amount and start date. The written notice says whether you qualify, what you will get and how to appeal. SNAP comes on an EBT card; TANF on a debit card. A lost or stolen EBT card can be replaced by calling 1-866-281-2448 or at the office. If no decision comes in time, see the escalation steps.",
+   "deadline": "Generally within 30 days of application for SNAP (7 days if you qualify for emergency service) and for TANF; Medicaid within 45 days (up to 90 days if a disability determination is needed), and 7 calendar days for a pregnant woman; energy assistance as soon as possible but no later than the last day designated for processing (VDSS Benefit Programs brochure B032-01-0002-23, 03/2022). The county Medicaid page says up to 45 days, longer for a disability not yet determined by Social Security, and the Cardinal Care paper application says it should be processed within 45 days from the date it was received.",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/medicaid",
+   "paraphrase": null,
+   "capture": "20260616084014",
+   "source": "https://www.albemarle.org/government/human-services/social-services/health-insurance/medicaid (read from the Internet Archive copy of June 16, 2026, https://web.archive.org/web/20260616084014/https://www.albemarle.org/government/human-services/social-services/health-insurance/medicaid, because www.albemarle.org refuses automated requests)",
+   "quote_sha256": "aedd7660ed942a079b7ed8af42b277e2ff590aef5fe5842a8d6f4f60d8feafa8",
+   "quote_words": 10
+  },
+  {
+   "id": "s14",
+   "step": "Report changes while you get benefits",
+   "who": "Recipient; Albemarle County Department of Social Services",
+   "how": "Report changes online in CommonHelp ('Report changes'), on the VDSS Change Report form, or to your worker; your worker explains which changes must be reported. For SNAP and TANF, report within 10 days of the change and no later than the 10th day of the next month. What SNAP households must report depends on the certification period: households certified five months or longer (Simplified Reporting) report only certain changes, such as household income going over the gross income limit on the Change Report (200% of the federal poverty level, or 130% for households with a member barred from SNAP for certain reasons; the older Application for Benefits says 130%), and may be required to file an Interim Report in the sixth or twelfth month, due by the fifth of the month. State law also requires recipients, to the extent federal law requires, to report a new address or phone number within 30 days; the shorter program deadlines on the forms still apply. A Medicaid member reports a baby's birth by calling 1-855-635-4370 or online at CommonHelp or CoverVirginia.org.",
+   "deadline": "SNAP and TANF: within 10 days of the change, and no later than the 10th day of the next month (Change Report 032-03-0051-45-eng; Application for Benefits); SNAP Interim Report by the fifth of the month; a new address or phone number within 30 days to the extent federal law requires (Va. Code § 63.2-501.1(B))",
+   "fee": null,
+   "form": "f11",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf",
+   "quote": "Report changes within 10 days from when they occur but, no later than the 10th day of the next month.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf"
+  },
+  {
+   "id": "s15",
+   "step": "Renew your benefits",
+   "who": "Recipient; Albemarle County Department of Social Services",
+   "how": "The department reconsiders eligibility at least once a year, and when it learns of a change (Va. Code § 63.2-514(A)). Renew SNAP or TANF online through CommonHelp ('Renew benefits') or on the paper Renewal Application for AG, SNAP and TANF, which you can bring or mail to the department. If the department finds information that does not match what you reported, it must notify you in writing, and it must refuse to renew if you do not respond within 10 days of the date of that notice (Va. Code § 63.2-514(B)). If Medicaid coverage ended because a renewal or renewal verifications were not returned, DMAS gives you 90 days after coverage ended to return the renewal paperwork; Cover Virginia's website explains how to renew.",
+   "deadline": "As your renewal notice states; 10 days from the date of a written discrepancy notice (Va. Code § 63.2-514(B)); Medicaid: renewal paperwork within 90 days after coverage ended for not renewing (DMAS)",
+   "fee": null,
+   "form": "f10",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf",
+   "quote": "You may also apply online for renewal for SNAP or TANF at https://commonhelp.virginia.gov/access/.",
+   "source": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf"
+  },
+  {
+   "id": "s16",
+   "step": "If you disagree with the decision, appeal to the state",
+   "who": "Applicant or recipient (or a legal representative); VDSS Appeals and Fair Hearings Unit; DMAS Appeals Division for Medicaid",
+   "how": "Read the notice for the deadline. If your situation changed after the decision, contact your worker instead, because appeals are decided on the facts known at the time. For SNAP, TANF and energy assistance, use the Appeal to the State Department of Social Services form, write your own letter, or call; file by email, mail, CommonHelp, phone or fax with the VDSS Appeals and Fair Hearings Unit. SNAP and TANF appeals may be made orally. For energy assistance the form allows appeals only on its asterisked grounds (refusal to take an application, ineligibility, cancellation, or no decision in time). For Medicaid or FAMIS, appeal to DMAS. See escalation.",
+   "deadline": "SNAP: the appeal must be received within 90 days of the written notice (any time if you get SNAP now and want more); other VDSS programs: received within 30 days of the written notice (VDSS appeal form 032-03-0024-11; Va. Code § 63.2-517 says within thirty days after receiving written notice); Medicaid: within 30 days of receiving the notice, presumed received 5 days after mailing (12VAC30-110-160)",
+   "fee": null,
+   "form": "f8",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/",
+   "quote": "If you asked for public assistance—or are already receiving it—and you disagree with a decision made by the local office, you can appeal.",
+   "source": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "CommonHelp online application (Apply for All Benefit Programs, or Apply for Health Care Benefits only), Virginia Department of Social Services",
+   "number": null,
+   "url": "https://commonhelp.virginia.gov/access/",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Application for Benefits (Auxiliary Grants, General Relief, Refugee Cash Assistance, SNAP, TANF, TANF Diversionary and Emergency Assistance), English",
+   "number": "032-03-1100-39-eng (12/22)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f3",
+   "title": "Virginia Cardinal Care (Medicaid and FAMIS) Application: Application for Health Coverage & Help Paying Costs, English",
+   "number": null,
+   "url": "https://coverva.dmas.virginia.gov/media/ncuecbw2/magi-standard-application-final-07-22-25-new-address-rev-9-26-25.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "ABD-LTC Application, Appendix D (applicant 65 or older, Medicare-eligible, or with a disability), English",
+   "number": null,
+   "url": "https://coverva.dmas.virginia.gov/media/exmnmopo/abd-ltc-appendix-d-final-07-22-25.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Fuel Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0650-13-eng (9/24)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/FUEL-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Crisis Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0651-13-eng (09/24)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/CRISIS-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f7",
+   "title": "Cooling Assistance Application (Energy Assistance Program), English",
+   "number": "032-03-0657-18 eng (05/23)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/COOLING-ASSISTANCE-APPLICATION.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f8",
+   "title": "Appeal to State Department of Social Services (benefits and services appeal form)",
+   "number": "032-03-0024-11-eng (12/2023)",
+   "url": "https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f9",
+   "title": "Virginia Medicaid / FAMIS Client Appeal Request Form",
+   "number": null,
+   "url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f10",
+   "title": "Renewal Application for Auxiliary Grant (AG), SNAP, and TANF, English",
+   "number": "032-03-729A-19-eng (05/2021)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f11",
+   "title": "Change Report (SNAP and TANF), English",
+   "number": "032-03-0051-45-eng (09/2026)",
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Charge for representing an applicant or recipient before the local department decides the application",
+   "amount": "None allowed: no person may charge or receive a fee",
+   "basis": "Va. Code § 63.2-508",
+   "quote": "No person shall make any charge or receive any fees for representing an applicant for or recipient of public assistance with respect to his application or request for increased assistance prior to a determination thereon by the local board"
+  },
+  {
+   "item": "Circuit court fees for a petition for appeal (court review of a hearing decision)",
+   "amount": "Not stated in the Rules; all fees must be paid within the 30-day period for filing the petition (amount and any waiver not verified)",
+   "basis": "Rules of Supreme Court of Virginia, Rule 2A:4(a), https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "quote": "Such filing must include within such 30-day period both the payment of all fees"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Albemarle County Department of Social Services. Hours Monday to Friday, 8 am to 4:30 pm.",
+   "label": "Albemarle County Department of Social Services",
+   "url": "https://www.albemarle.org/government/human-services/social-services"
+  },
+  {
+   "kind": "address",
+   "value": "5th Street County Office Building, 1600 5th Street Ext., Suite A, Charlottesville, VA 22902 (in person; also the mailing address for paper applications)",
+   "label": "Albemarle County Department of Social Services",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-4010",
+   "label": "Albemarle County Department of Social Services",
+   "url": "https://www.albemarle.org/government/human-services/social-services"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-4080 (fax; paper applications)",
+   "label": "Albemarle County Department of Social Services",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap"
+  },
+  {
+   "kind": "email",
+   "value": "DSSOnline@albemarle.org ('Email the Department')",
+   "label": "Albemarle County Department of Social Services",
+   "url": "https://www.albemarle.org/government/human-services/social-services"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/human-services/social-services/financial-assistance",
+   "label": "Albemarle County Department of Social Services: Financial Assistance (SNAP, TANF, Energy Assistance, Medicaid)",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance"
+  },
+  {
+   "kind": "portal",
+   "value": "https://commonhelp.virginia.gov/access/",
+   "label": "Virginia Department of Social Services: CommonHelp (apply, check eligibility, check status, renew, report changes)",
+   "url": "https://www.albemarle.org/government/human-services/social-services"
+  },
+  {
+   "kind": "phone",
+   "value": "1-855-635-4370 (apply by phone for SNAP, TANF, Medicaid and energy assistance; Monday to Friday, 7 a.m. to 6 p.m. per VDSS)",
+   "label": "Virginia Department of Social Services, Enterprise Customer Service Center",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap"
+  },
+  {
+   "kind": "phone",
+   "value": "833-522-5582 (SNAP applications by phone, as listed on the VDSS SNAP page)",
+   "label": "Virginia Department of Social Services",
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/"
+  },
+  {
+   "kind": "phone",
+   "value": "1-855-242-8282 (TTY 1-888-221-1590; Medicaid and FAMIS applications and help; Monday to Friday, 8 a.m. to 7 p.m.)",
+   "label": "Cover Virginia Call Center (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "address",
+   "value": "Cardinal Care Correspondence Center, P.O. Box 1820, Richmond, VA 23218 (Medicaid applications and documents by mail)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "email",
+   "value": "verify_docs@coverva.org (Medicaid verification documents)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "phone",
+   "value": "1-888-221-9402 (fax; Medicaid verification documents)",
+   "label": "Cover Virginia (Department of Medical Assistance Services)",
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/"
+  },
+  {
+   "kind": "address",
+   "value": "Primary Care Center, Ground Floor G027, 1215 Lee Street, P.O. Box 800721, Charlottesville, VA 22908 (Monday to Friday 8 am to 4:30 pm, except state holidays)",
+   "label": "UVA Medicaid Unit (Albemarle County Department of Social Services)",
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit"
+  },
+  {
+   "kind": "phone",
+   "value": "434-982-1637 (fax 434-982-1795)",
+   "label": "UVA Medicaid Unit (Albemarle County Department of Social Services)",
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit"
+  },
+  {
+   "kind": "phone",
+   "value": "1-866-281-2448 (lost or stolen EBT card)",
+   "label": "EBT card line (listed by the Albemarle County Department of Social Services)",
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap"
+  },
+  {
+   "kind": "email",
+   "value": "appeals@dss.virginia.gov",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 664-0612",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 726-7656 (fax)",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "address",
+   "value": "Manager, Appeals and Fair Hearings Unit, Virginia Department of Social Services, 5600 Cox Road, Glen Allen, Virginia 23060",
+   "label": "Virginia Department of Social Services, Appeals and Fair Hearings Unit",
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/"
+  },
+  {
+   "kind": "email",
+   "value": "appeals@dmas.virginia.gov",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 371-8488 (TTY 1-800-828-1120, as given on the Client Appeal Request Form)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 452-5454 (fax)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "address",
+   "value": "Appeals Division, Department of Medical Assistance Services, 600 E. Broad Street, Richmond, VA 23219 (mail or in person)",
+   "label": "Department of Medical Assistance Services, Appeals Division",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "portal",
+   "value": "https://dmas.virginia.gov/appeals/appeals-portal/",
+   "label": "Department of Medical Assistance Services, Appeals Division (AIMS appeals portal)",
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/human-services/social-services/acdss-advisory-board",
+   "label": "Albemarle County Department of Social Services Advisory Board",
+   "url": "https://www.albemarle.org/government/human-services/social-services/acdss-advisory-board"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "TANF or energy assistance application denied, or assistance reduced, suspended or stopped (for SNAP see the next rung; energy assistance appeals are limited to the form's asterisked grounds)",
+   "next": "Virginia Department of Social Services, Appeals and Fair Hearings Unit (an independent hearing officer acting for the Commissioner); file by the VDSS form, a letter, email, mail, fax, phone or CommonHelp",
+   "type": "external administrative review",
+   "deadline": "Within 30 days after receiving the written notice (Va. Code § 63.2-517). The VDSS appeal form is stricter: other-than-SNAP appeals must be received within 30 days of the written notice, so file early",
+   "basis": "Va. Code § 63.2-517; https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board in granting, denying, changing or discontinuing public assistance, may, within thirty days after receiving written notice of such decision, appeal therefrom to the Commissioner."
+  },
+  {
+   "trigger": "A SNAP decision you disagree with (including denial, a lower benefit, or no expedited service)",
+   "next": "Virginia Department of Social Services, Appeals and Fair Hearings Unit; a SNAP or TANF appeal may be made orally",
+   "type": "external administrative review",
+   "deadline": "The appeal must be received within 90 days of the written notice (VDSS appeal form and How to Appeal page); at any time if you currently get SNAP and want more benefits",
+   "basis": "Va. Code § 63.2-517; https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf; https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/",
+   "quote": "Any applicant or recipient aggrieved by any decision of a local board concerning food stamps may appeal to the Commissioner in accordance with federal law and regulation."
+  },
+  {
+   "trigger": "Benefits you already get are about to be cut or stopped and you want them to continue during the appeal",
+   "next": "Ask the Appeals and Fair Hearings Unit for Continuation of Benefits when you appeal. It is not available for actions taken at renewal, and you may have to repay if you lose.",
+   "type": "external administrative review",
+   "deadline": "Before the local agency takes the negative action; if it acted immediately, ten days after the decision was mailed",
+   "basis": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/",
+   "quote": "The deadline is before the local agency takes the negative action on your case."
+  },
+  {
+   "trigger": "No decision on your SNAP, TANF or energy assistance application within a reasonable time",
+   "next": "Virginia Department of Social Services (Commissioner, through the Appeals and Fair Hearings Unit): review of the local department's failure to decide; the VDSS form lists failure to decide within the allowable time limit as a ground",
+   "type": "external administrative review",
+   "deadline": null,
+   "basis": "Va. Code § 63.2-517",
+   "quote": "Any applicant or recipient aggrieved by the failure of the local board to make a decision within a reasonable time may ask for a review of the same by the Commissioner."
+  },
+  {
+   "trigger": "TANF is about to end because the VIEW time limit has run out and you think you qualify for an extension",
+   "next": "Follow the extension procedure stated in the 60-day termination notice, which must explain the Board's hardship exception rules (Va. Code § 63.2-613) and how to ask for an extension; a refusal is a decision you can appeal to VDSS (Va. Code § 63.2-517)",
+   "type": "internal appeal",
+   "deadline": "The local department must send the notice 60 days before termination; follow the procedure and any time limit in that notice",
+   "basis": "Va. Code § 63.2-612",
+   "quote": "the procedure to be followed by the VIEW participant and his family if he believes that he is entitled to an extension of benefits"
+  },
+  {
+   "trigger": "Medicaid or FAMIS application denied, or coverage or services reduced or ended",
+   "next": "Department of Medical Assistance Services, Appeals Division. File through the AIMS portal, by email, fax, phone or mail, or in person; include a copy of the notice. Managed care (MCO) service denials go to the MCO first.",
+   "type": "external administrative review",
+   "deadline": "Within 30 days of receiving the notice; the notice is presumed received 5 days after mailing; DMAS may accept a late appeal for good cause; MCO appeals must be filed with DMAS within 120 days of receiving the MCO's final decision, and the 120 days cannot be extended",
+   "basis": "12VAC30-110-160",
+   "quote": "A Request for Appeal shall be filed within 30 days of the appellant's receipt of the notice of an action or adverse determination described in 12VAC30-110-70."
+  },
+  {
+   "trigger": "Medicaid application not acted on with reasonable promptness",
+   "next": "Department of Medical Assistance Services, Appeals Division",
+   "type": "external administrative review",
+   "deadline": "At any time until the agency has acted",
+   "basis": "12VAC30-110-160",
+   "quote": "A Request for Appeal on the grounds that an agency has not acted with reasonable promptness may be filed at any time until the agency has acted."
+  },
+  {
+   "trigger": "Medicaid coverage ended because a renewal or renewal verifications were not returned",
+   "next": "Return the renewal paperwork to have coverage reconsidered, rather than appealing; DMAS points to the Cover Virginia website for how to complete a renewal",
+   "type": "internal appeal",
+   "deadline": "Within 90 days after coverage ended",
+   "basis": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/",
+   "quote": "If you lost coverage for not completing a renewal or submitting renewal verifications, you have 90 days after you lost coverage to return the renewal paperwork."
+  },
+  {
+   "trigger": "VDSS hearing decision goes against you (TANF, SNAP (food stamps), general relief and auxiliary grants are named in Va. Code § 2.2-4025(B); whether energy assistance decisions can be taken to court was not determined)",
+   "next": "Circuit court, under the Administrative Process Act: file a notice of appeal with the agency secretary, then a petition for appeal with the clerk of the circuit court named in the notice. A preferred venue is the circuit court of the county or city where you live, so for an Albemarle resident the Albemarle County Circuit Court (Va. Code §§ 2.2-4003, 8.01-261(1)(a)). The court reviews only the agency record (Va. Code § 2.2-4025(B)).",
+   "type": "judicial review",
+   "deadline": "Notice of appeal within 30 days after service of the final order, plus 3 days when it is served by mail (Rule 2A:2(a)); petition for appeal within 30 days after filing the notice, with all fees paid (Rule 2A:4(a)), Rules of Supreme Court of Virginia",
+   "basis": "Va. Code § 63.2-519; Va. Code § 2.2-4026(A); Rules of Supreme Court of Virginia, Rules 2A:2 and 2A:4",
+   "quote": "The decision of the Commissioner shall be binding and considered a final agency action for purposes of judicial review of such action pursuant to the provisions of the Administrative Process Act (§ 2.2-4000 et seq.)."
+  },
+  {
+   "trigger": "DMAS appeal decision on Medicaid or FAMIS goes against you",
+   "next": "Circuit court, under the Administrative Process Act: notice of appeal with the agency secretary, then a petition for appeal with the clerk of the circuit court named in the notice; for an Albemarle resident, a preferred venue is the Albemarle County Circuit Court (Va. Code §§ 2.2-4003, 8.01-261(1)(a)). DMAS says decisions may be appealed to court for review of the record.",
+   "type": "judicial review",
+   "deadline": "Notice of appeal within 30 days after service of the final order, plus 3 days when it is served by mail (Rule 2A:2(a)); petition for appeal within 30 days after filing the notice, with all fees paid (Rule 2A:4(a)), Rules of Supreme Court of Virginia",
+   "basis": "12VAC30-110-40",
+   "quote": "An appellant who believes a final decision as defined herein is incorrect may seek judicial review pursuant to The Administrative Process Act (§ 2.2-4000 et seq. of the Code of Virginia) and Part 2A, Rules of the Virginia Supreme Court."
+  },
+  {
+   "trigger": "You believe you were discriminated against",
+   "next": "A written complaint to a state or federal agency: for SNAP, the U.S. Department of Agriculture (Program Discrimination Complaint Form AD-3027); for TANF and energy assistance (LIHEAP), the U.S. Department of Health and Human Services, Office for Civil Rights; both are listed on the Application for Benefits",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/b032-01-0002-23-eng.pdf",
+   "quote": "If you believe you have been discriminated against, you may file a written complaint with state or federal agencies."
+  },
+  {
+   "trigger": "Concerns about how the department runs its benefit programs in general (not a single case decision)",
+   "next": "Albemarle County Department of Social Services Advisory Board (an appointee from each magisterial district; meets the third Tuesday of each month, 3:30 to 5:00 pm, at the Human Services County Office Building on 5th Street Extended; the county's Legistar lists its annual reports to the Board of Supervisors for fiscal years 2021 to 2023). The duties the county page lists are monitoring, advocacy, liaison and advice; hearing individual appeals is not among them, nor among those in Va. Code § 63.2-305(B).",
+   "type": "oversight",
+   "deadline": null,
+   "basis": "https://www.albemarle.org/government/human-services/social-services/acdss-advisory-board",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/acdss-advisory-board",
+   "capture": "20260417123248",
+   "quote_sha256": "347c2f1444806f61781d4d8c93ed959d6250618e7a00a36e2b348bf7750fce5d",
+   "quote_words": 13
+  },
+  {
+   "trigger": "Facing a utility disconnection or eviction and no other help is available, or need food while waiting",
+   "next": "Albemarle County Emergency Relief Program (ACERP, county-run, for utility disconnection or eviction notices; separate application) and the food resources the department lists, such as 2-1-1 Virginia and the Blue Ridge Area Food Bank",
+   "type": "referral",
+   "deadline": null,
+   "basis": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/acerp-albemarle-county-emergency-relief-program",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/acerp-albemarle-county-emergency-relief-program",
+   "capture": "20260612083910",
+   "quote_sha256": "b4d914298b79536b1bd2d8f6d9e42f6bed04748fe0657a9885b6ef4232f76ded",
+   "quote_words": 27
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The live pages may have changed since; confirm on them before you act.",
+  "Two How Do I shortcuts could not be read: /how-do-i/get-assistance/snap-food and /how-do-i/get-assistance/heating-and-cooling redirect (302) to /?navid=451 and /?navid=452, which the Internet Archive holds only as 403 pages. The shortcut /community/apply-snap, which the site menu labels TANF, redirects to the TANF page.",
+  "No application fee for any program is stated on any county, VDSS or DMAS page or form read. The only fee rule found is Va. Code § 63.2-508, which bars charging for representing an applicant before the local decision.",
+  "Processing times come from the VDSS Benefit Programs brochure B032-01-0002-23 (03/2022) and the county Medicaid page ('up to 45 days'). The federal rules behind them (SNAP 7 CFR 273.2, Medicaid 42 CFR 435.912, TANF) were not read. The Code of Virginia says only that the local director investigates 'promptly' (§ 63.2-503(A)).",
+  "Energy assistance dates differ by source. The county page, the EAP Information Sheet (032-03-0661-26, 05/25) and the Cooling Assistance Application give cooling as June 15 through August 15; the VDSS EAP web page says 'June 15 – Aug 17'. The VDSS EAP page gives crisis fuel and bill help as 'Jan – Mar 15'; the county page says from the first work-day in January. The 2026 fuel window (Tuesday, October 13 to Friday, November 13, 2026) was computed from the published rule; no page read gives those dates. On the retrieval date (Sunday, October 11, 2026) the fuel window had not yet opened. The county energy page read is the April 2026 copy.",
+  "Income limits are not recorded. The SNAP table on the VDSS SNAP page covers October 1, 2025 to September 30, 2026, so it had expired by the retrieval date, and no newer table was found. The EAP income table is on the 05/25 information sheet and may be out of date. Va. Code § 63.2-801(B) sets SNAP gross income at 200 percent of the federal poverty guidelines with no asset limit, to the extent federal law allows.",
+  "Recent and coming SNAP changes are described only on VDSS pages and may keep changing: the 2025 federal law raising the work-requirement age to 65 and requiring documents for dependent care, shelter and medical expenses; the end of VaCAP on June 1, 2026; and, from November 1, 2026, no SNAP purchases of sweetened carbonated beverages. The county's DSS Updates page holds notices from the October to November 2025 federal shutdown (VENA benefits); it shows where the county posts benefit-disruption news but is not current guidance.",
+  "Phone numbers: CommonHelp, Cover Virginia and the VDSS TANF and EAP pages give 1-855-635-4370 for applying by phone; the county SNAP, TANF, Medicaid and energy pages list it as a way to find out about eligibility. The VDSS SNAP page gives 833-522-5582, and the CommonHelp all-programs box gives '(833) 5CALLVA' (the same digits). The hours (Monday to Friday, 7 a.m. to 6 p.m.) come from the VDSS TANF and EAP pages; the county pages give none for the phone line. The VDSS How to Appeal page also lists '(800) 552-7096' as an appeals hotline. That is the number the county Social Services page gives for reporting child abuse or neglect, so it is not recorded as an appeals contact.",
+  "Local board: Albemarle uses the county executive form; the county's County Executive Staff page (Internet Archive copy of August 13, 2026) says 'Albemarle County runs under the county executive form of government.' Under Va. Code § 15.2-527 the local director heads the department and exercises the local board's powers, and a local board 'shall be appointed pursuant to the provisions of § 63.2-303'. The county also has an ACDSS Advisory Board; under § 63.2-305 an advisory board is appointed where a local government official constitutes the local board. Who formally constitutes Albemarle's local board is not confirmed. Only the title of the 2023 Board of Supervisors resolution reorganizing Social Services and Human Services (Legistar file 23-367) has been checked. Appeals by statute run from a 'decision of a local board', which here means the Albemarle department's decision.",
+  "Local law: no County Code provision on benefit applications was found. The Municode-hosted County Code was not read, because its terms bar automated access and copying. A Legistar API title search for 'Social Services' (webapi.legistar.com, 15 matters) found only annual reports, staffing requests and appointment or reorganization resolutions, no ordinance on applying for benefits. So no local-law quote is given.",
+  "ACDSS Advisory Board: the April 2026 copy lists meeting materials through February 17, 2026 and shows the April 21, 2026 meeting as canceled. Its 'Key Contacts' box was empty in that copy. Its stated duty is quoted from the county page; the statutory duties are in § 63.2-305(B). That it reports to the Board of Supervisors rests on Legistar matter titles (22-182, 23-171 and 24-215, advisory board annual reports for fiscal years 2021 to 2023), not on the board's own page.",
+  "Appeal deadlines: Va. Code § 63.2-517 gives 30 days after receiving written notice. The VDSS appeal form says SNAP appeals 'must be received within 90 days of written notice' (federal law, 7 CFR 273.15, not read) and all other appeals 'must be received within 30 days of written notice', which is stricter than the statute, so the steps say to file early. For energy assistance, the VDSS appeal form allows appeals only on its asterisked grounds (refusal to take an application, ineligibility, cancellation, or no timely decision). VDSS says the Appeals and Fair Hearings Unit 'must finish your appeal within 60 days of receiving it, unless you request a delay'. The DMAS At-A-Glance sheet gives '30 days, plus 5 days for mailing' and 120 days for MCO appeals. The DMAS Client Appeal Request Form gives the DMAS appeals TTY number, 1-800-828-1120; the DMAS appeals page itself gives none.",
+  "Judicial review: the deadlines come from Rules 2A:2(a) and 2A:4(a) of the Rules of Supreme Court of Virginia (rulesofcourt.pdf on www.courts.state.va.us, linked from the DMAS appeals page): a notice of appeal to the agency secretary within 30 days after service of the final order (3 more days if served by mail), then a petition for appeal to the circuit court clerk within 30 days after the notice, with fees paid. Venue follows Va. Code § 2.2-4003 and § 8.01-261(1)(a) (the county or city where the party resides, among others). Court review covers the programs named in Va. Code § 2.2-4025(B) (TANF, Medicaid, food stamps, general relief, auxiliary grants) and is on the agency record only. Energy assistance is not named there; Va. Code § 63.2-805(F) exempts EAP award actions from APA Articles 3 (case decisions) and 4 (hearing officers) but not Article 5 (court review). Whether a court will review an energy assistance decision was not determined. Court fee amounts and fee waivers were not checked.",
+  "Scope: child care subsidy is offered through the same CommonHelp application but is outside this process; the county Child Care Subsidy page was not read. ACERP (the county's emergency rent and utility program) is shown only as a referral; it is a separate process with its own application. TANF Diversionary Assistance and TANF Emergency Assistance use the same Application for Benefits; the VDSS TANF How to Apply page links a separate 'Application for TANF DA or EA' only in Spanish, which was not opened.",
+  "Paper forms: the county pages link no paper application; they point to CommonHelp and to paper applications at the office. The forms here are the VDSS and DMAS copies. f2 is the dss.virginia.gov copy linked from the VDSS SNAP page; the VDSS TANF 'How to Apply' page links a copy of the same form number under /tanfview/tanf/ (not opened). 'fillable' is true only where an AcroForm was found in the PDF (the appeal form, the Cardinal Care application, Appendix D and the Change Report, each with form fields); null means none was found or the check was inconclusive (pdftotext reported a malformed AcroForm field in the DMAS appeal form).",
+  "Hours: the county Social Services page (May 2026 copy) gives 'Monday-Friday: 8 am - 4:30 pm' under a notice of new hours 'Starting Tuesday, October 1' that does not give the year. The program pages give the same hours.",
+  "Privacy: no staff names, personal mailboxes or direct lines are recorded. DSSOnline@albemarle.org is the department mailbox published as 'Email the Department'. The UVA Medicaid Unit page names a private contractor that takes applications at the hospital; it is not recorded as a contact. 'Manager, Appeals and Fair Hearings Unit' is a title on the VDSS mailing address, not a person.",
+  "albemarle.org's terms allow browsing for information but forbid reposting its content without written permission. Page quotes here are kept to one sentence or clause for citation. VDSS allows use of its content under fair use."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/supplemental-nutrition-assistance-program-snap",
+   "title": "Supplemental Nutrition Assistance Program (SNAP), Albemarle County Department of Social Services; Internet Archive copy of 16 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/temporary-assistance-for-needy-families-tanf",
+   "title": "Temporary Assistance for Needy Families (TANF), Albemarle County Department of Social Services; Internet Archive copy of 5 October 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/medicaid",
+   "title": "Medicaid, Albemarle County Department of Social Services; Internet Archive copy of 16 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/energy-assistance-heating-cooling-crisis",
+   "title": "Energy Assistance (Heating, Cooling, Crisis), Albemarle County Department of Social Services; Internet Archive copy of 17 April 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services",
+   "title": "Social Services, Albemarle County (contact, hours, resources); Internet Archive copy of 20 May 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance",
+   "title": "Financial Assistance hub, Albemarle County Department of Social Services; Internet Archive copy of 6 March 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance",
+   "title": "Health Insurance hub, Albemarle County Department of Social Services; Internet Archive copy of 12 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/uva-medicaid-unit",
+   "title": "UVA Medicaid Unit, Albemarle County Department of Social Services; Internet Archive copy of 12 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/pregnant-women",
+   "title": "Pregnant Women (health insurance), Albemarle County Department of Social Services; Internet Archive copy of 17 April 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/health-insurance/families-children",
+   "title": "Families & Children (health insurance), Albemarle County Department of Social Services; Internet Archive copy of 12 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/acdss-advisory-board",
+   "title": "ACDSS Advisory Board, Albemarle County; Internet Archive copy of 17 April 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/social-services/financial-assistance/acerp-albemarle-county-emergency-relief-program",
+   "title": "ACERP (Albemarle County Emergency Relief Program); Internet Archive copy of 12 June 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/human-services/albemarle-org-federalshutdown",
+   "title": "DSS Updates: Federal Shutdown Impacts on Albemarle County Services; Internet Archive copy of 13 August 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/community/apply-snap",
+   "title": "Apply shortcut (redirects to the TANF page); Internet Archive copy of October 5, 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-executive/county-executive-staff",
+   "title": "County Executive Staff, Albemarle County (form of government); Internet Archive copy of 13 August 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions, Albemarle County website; Internet Archive copy of 20 July 2026",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters",
+   "title": "Albemarle County Legistar API, title search for 'Social Services' (15 matters, titles only)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://commonhelp.virginia.gov/access/",
+   "title": "Virginia CommonHelp (VDSS)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/",
+   "title": "Supplemental Nutrition Assistance Program (SNAP), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-requirements-faqs/",
+   "title": "SNAP Requirements FAQs, VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/food-assistance/snap/snap-interview-resources/",
+   "title": "SNAP Interview Resources, VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/tanf/",
+   "title": "Temporary Assistance for Needy Families (TANF), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/tanf/apply/",
+   "title": "TANF: How to Apply (forms list), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/relief/ea/",
+   "title": "Energy Assistance Program (EAP), VDSS (the county page's link https://www.dss.virginia.gov/benefit/ea/index.cgi redirects here)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/eap/032-03-00661-26_EAP_Information_Sheet_eng.pdf",
+   "title": "Energy Assistance Program Information Sheet 032-03-0661-26 (05/25), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/b032-01-0002-23-eng.pdf",
+   "title": "Benefit Programs brochure B032-01-0002-23 (03/2022), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/snap/Application-for-Benefits-eng.pdf",
+   "title": "Application for Benefits 032-03-1100-39-eng (12/22), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/FUEL-ASSISTANCE-APPLICATION.pdf",
+   "title": "Fuel Assistance Application 032-03-0650-13-eng (9/24), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/CRISIS-ASSISTANCE-APPLICATION.pdf",
+   "title": "Crisis Assistance Application 032-03-0651-13-eng (09/24), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/403-errors/COOLING-ASSISTANCE-APPLICATION.pdf",
+   "title": "Cooling Assistance Application 032-03-0657-18 eng (05/23), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/032-03-729A-19-eng.pdf",
+   "title": "Renewal Application for AG, SNAP and TANF 032-03-729A-19-eng (05/2021), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/",
+   "title": "Benefits and Service Appeals, VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/compliance/benefits-and-service-appeals-/how-to-appeal/",
+   "title": "How to Appeal (benefits and services), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/compliance/documents/appeals/Appeal-Request-032-03-0024-11-eng.pdf",
+   "title": "Appeal to State Department of Social Services 032-03-0024-11-eng (12/2023), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/general-info/your-rights-and-support-options/",
+   "title": "Your Rights and Support Options, VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/general-info/web-policy/",
+   "title": "Web Policy (content may be used under fair use), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://coverva.dmas.virginia.gov/apply/how-to-apply/",
+   "title": "How to Apply, Cover Virginia (DMAS)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://coverva.dmas.virginia.gov/apply/applications/",
+   "title": "Applications, Cover Virginia (DMAS)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://coverva.dmas.virginia.gov/media/ncuecbw2/magi-standard-application-final-07-22-25-new-address-rev-9-26-25.pdf",
+   "title": "Virginia Cardinal Care Application for Health Coverage & Help Paying Costs (7/22/25), DMAS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://coverva.dmas.virginia.gov/media/exmnmopo/abd-ltc-appendix-d-final-07-22-25.pdf",
+   "title": "ABD-LTC Application, Appendix D (7/22/25), DMAS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmas.virginia.gov/appeals/applicant-member-appeals-resources/",
+   "title": "Applicant / Member Appeals Resources, DMAS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmas.virginia.gov/media/5980/virginia-medicaid-client-appeals-process-at-a-glance-english.pdf",
+   "title": "Virginia Medicaid Client Appeals Process: At-A-Glance, DMAS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmas.virginia.gov/media/3213/client-appeal-request-form-2021-05-21.pdf",
+   "title": "Virginia Medicaid / FAMIS Client Appeal Request Form (May 2021), DMAS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section160/",
+   "title": "12VAC30-110-160. Time limit for filing",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency30/chapter110/section40/",
+   "title": "12VAC30-110-40. Judicial review",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dss.virginia.gov/media/vdss/benefit-programs/documents/tanfview/tanf/Change-Report-032-03-0051-45-eng-(rev_9-2026)_1.pdf",
+   "title": "Change Report 032-03-0051-45-eng (09/2026), VDSS",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.courts.state.va.us/static/courts/scv/rulesofcourt.pdf",
+   "title": "Rules of Supreme Court of Virginia, Part Two A (Appeals Pursuant to the Administrative Process Act), Rules 2A:1 to 2A:4",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/63.2-501/",
+   "title": "Va. Code §§ 2.2-4003, 2.2-4025, 2.2-4026, 8.01-261, 15.2-500, 15.2-527, 32.1-325, 63.2-100, 63.2-300, 63.2-305, 63.2-405, 63.2-501 to 63.2-519, 63.2-600, 63.2-612, 63.2-613, 63.2-617, 63.2-801, 63.2-805",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 87,
+  "quotes_confirmed": 87,
+  "removed": [
+   "Old s14's step quote from Va. Code § 63.2-501.1(B) left the step when it was split into s14 (report changes) and s15 (renew); the same rule stays in legal_basis, now with its qualifier. No quote was removed for being unverifiable: all 71 original quotes were confirmed verbatim (45 against the index text, 26 against the cited pages, read live or from the cited Internet Archive copies)."
+  ],
+  "corrections": [
+   "s1 'who': 'a household member, or a competent adult who knows the applicant's circumstances' misstated Va. Code § 63.2-501(A). A competent adult may apply only when the applicant's condition prevents signing and no guardian or conservator has been appointed; otherwise the applicant or an authorized representative named in Section I of the Application for Benefits applies. The competent-adult quote now includes its condition, and the guardian-or-conservator sentence is added to legal_basis.",
+   "Va. Code § 63.2-501.1(B): the quote now carries its qualifier ('To the extent required by federal law and regulations'). The change-reporting step now gives the shorter program deadlines, which still apply.",
+   "s1 'how': the 'apply even if you were found ineligible' advice is SNAP's, as the county page says. The TANF child-age rule now follows the VDSS TANF page.",
+   "s2: the SSN exemption covers anyone who is not applying, not only those not applying for health coverage (Cover Virginia; Application for Benefits). The shelter examples now follow the VDSS FAQ. 'Apply anyway: the office will tell you what is still needed' is reattributed: the VDSS interview page says you can still attend the interview without every document, and the Application for Benefits allows a partial application.",
+   "s3: 'paper copies are at the department's front desk' had no source for benefit applications (only ACERP's page says front desk). It now says the forms can be printed from VDSS and Cover Virginia, and gives the county's return channels.",
+   "s5: the 'deadline' was removed. The Application for Benefits gives a right to file the same day, and the county encourages it; neither sets a time limit. 'First benefit counted from the day' is now 'benefit amount based on the date', as the form says.",
+   "s6: added Appendix C (help or applying for someone else), Appendix F (long-term services, ages 19 to 64) and the rule that appendices are not standalone (Cardinal Care application; Cover Virginia Applications page), and the ways to report a birth given on the county Pregnant Women page.",
+   "s7 'who': 'run by the Albemarle County Department of Social Services' is now 'set up under a contractual agreement' between UVA Medical Center and the department, as the county page says.",
+   "s9: Diversionary Assistance is now described as the county page and Va. Code § 63.2-617(A) state it, and TANF Emergency Assistance (up to $1,500, § 63.2-617(B)) is added. The VIEW 24-month rule now follows § 63.2-612 (24 months, then eligible again after a further 24 months), with the § 63.2-613 hardship exceptions. Three legal_basis entries are added.",
+   "s12: 'Return papers to the Albemarle office in person, by fax or by mail' was not sourced for verifications; the step now says to follow the checklist or letter, and notes that the fax and mail channels on the county page are for paper applications. Added Cover Virginia's warning that a Medicaid application may be denied without a reply. The § 63.2-503(C) deadline now runs 'from the date of' the notice, and § 63.2-503(H) (federal law prevails) is added.",
+   "s13: the deadline now adds the county Medicaid page's note on disability cases and the Cardinal Care application's statement that it should be processed within 45 days of receipt.",
+   "Old s14 is split. s14 (report changes) cites the VDSS Change Report 032-03-0051-45-eng (09/2026), added as form f11 (fillable: 80 form fields found), and quotes its 10-day rule. 'By phone' was dropped as a way to report changes, since no page read gives it except for a birth. 'SNAP households also file interim reports' is now 'Simplified Reporting households may be required to', due by the fifth of the month, as the Application for Benefits says. The income threshold follows the current Change Report (200%, or 130% for some households). s15 (renew) quotes the Renewal Application (f10) and adds § 63.2-514(B) (refusal to renew if a discrepancy notice is not answered within 10 days). The appeal step is now s16.",
+   "s16 and escalation rungs 1 and 2: the VDSS appeal form says appeals 'must be received' within 90 days (SNAP) or 30 days (others) of written notice, which is stricter than Va. Code § 63.2-517. The deadlines now say so. Rung 1's trigger no longer includes SNAP, which has its own 90-day rung. Rung 2's basis now names the VDSS form and page for the 90-day rule. s16 now lists the filing channels and the limits on energy assistance appeals.",
+   "Escalation rung 5 (VIEW): 'act before the termination date' had no source. The rung now tells the participant to follow the extension procedure that the 60-day notice must state (§§ 63.2-612, 63.2-613); a refusal can be appealed under § 63.2-517.",
+   "Escalation rung 6: the DMAS good-cause wording now follows the At-A-Glance sheet, and the 120-day MCO window runs from receiving the MCO's final decision and cannot be extended.",
+   "Escalation rung 8: the renewal channels (CommonHelp, Cover Virginia, the Albemarle office) were not on the cited DMAS page. The rung now points to Cover Virginia's renewal instructions, as DMAS does.",
+   "Escalation rungs 9 and 10 (court review): the deadline and court, left open by the modeller, are now resolved from the Rules of Supreme Court of Virginia, read on the Supreme Court's site (rulesofcourt.pdf, linked from the DMAS appeals page). Rule 2A:2(a): notice of appeal to the agency secretary within 30 days after service of the final order, plus 3 days if served by mail. Rule 2A:2(b): the notice names the circuit court. Rule 2A:4(a): petition to the circuit court clerk within 30 days, with fees paid. Venue is resolved from the index: Va. Code § 2.2-4003 points to § 8.01-261(1)(a), the county or city where the party resides (the Albemarle County Circuit Court for an Albemarle resident). § 2.2-4025(B) adds that review is on the agency record and names the programs covered. Eight legal_basis entries and a court-fee entry (Rule 2A:4(a); amount not stated) are added.",
+   "Escalation rung 12 (Advisory Board): the meeting place is now the 'Human Services County Office Building on 5th Street Extended', as the county page says. The annual report to the Board of Supervisors was not on the board's page; it is now attributed to Legistar matter titles 22-182, 23-171 and 24-215.",
+   "Contacts: the modeller found no DMAS appeals TTY number. The DMAS Client Appeal Request Form (f9) gives TTY 1-800-828-1120, now on the DMAS appeals phone contact, which cites the form.",
+   "Caveats and sources: the county executive form is now confirmed from the county's County Executive Staff page (Internet Archive copy of August 13, 2026), quoted in the local-board caveat. The Legistar search (15 matters, titles only) was re-run and confirmed; the 23-367 attachments are disallowed by albemarle.legistar1.com's robots.txt and were not read. The caveats on appeal deadlines, judicial review, phone numbers, paper forms, the advisory board and scope are updated. Three sources are added. § 63.2-305(B) is narrowed to (B)(2), the subdivision quoted."
+  ],
+  "open_issues": [
+   "Who formally constitutes Albemarle's local board of social services was not verified. The Legistar 23-367 attachments are disallowed by robots.txt. This does not change the steps: appeals go to VDSS or DMAS either way.",
+   "Whether a court will review an energy assistance (EAP) hearing decision was not determined. Va. Code § 2.2-4025(B) does not name energy assistance; § 63.2-805(F) exempts EAP award actions from APA Articles 3 and 4 but not Article 5. Court fee amounts and waivers were not checked.",
+   "The processing times rest on the VDSS brochure dated 03/2022, and the SNAP 90-day appeal window on the VDSS form and page. The federal rules (7 CFR 273.2, 273.15; 42 CFR 435.912) were not read.",
+   "County pages were read only from Internet Archive copies (March to October 2026), because www.albemarle.org refuses automated requests, robots.txt included. The energy page copy is from April 2026; the live VDSS EAP page gives the same windows except the cooling end date. Two How Do I shortcut pages could not be read.",
+   "Published dates conflict and both versions are recorded: cooling ends August 15 (county page, info sheet, form) or August 17 (VDSS EAP page); crisis fuel and bill help starts in January (VDSS) or on the first work-day in January (county). The 2026 fuel window (October 13 to November 13) is computed, not published.",
+   "Income limits are not recorded: the VDSS SNAP table expired on September 30, 2026, and the EAP table is dated 05/25.",
+   "Fillable status is not determined for f2, f5, f6, f7, f9 and f10: no form fields were found in the streams that could be decoded.",
+   "No Albemarle County Code provision was read, because Municode's terms bar automated access."
+  ]
+ }
+}

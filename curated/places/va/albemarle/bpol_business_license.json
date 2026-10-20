@@ -1,0 +1,1237 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "bpol_business_license",
+ "title": "Get or renew a local business license (BPOL)",
+ "question": "I am starting or running a business in Albemarle County. How do I get a business license, and when must I renew it?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "home-based businesses",
+  "contractors",
+  "peddlers and itinerant merchants"
+ ],
+ "office": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit); the Director of Finance holds the commissioner of the revenue's assessing powers under the county executive form of government",
+ "summary": "Albemarle County requires a business license for each business and each place of business in the county, including one run from home. The county has no Commissioner of the Revenue: the Department of Finance & Budget's Office of Revenue Administration issues licenses. A new business gets zoning approval, then emails, mails or faxes the New Business License Application; it cannot open an account online. The county's forms allow 30 days from the start date, but state law and the County Code say to apply before starting. Every license is renewed by March 1, online or on paper, using last year's gross receipts. Up to $25,000: no fee, but file. Over $25,000 and under $100,000: $50. $100,000 or more: a rate by business category, billed in May and due June 15. Late filing costs 10%.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-521(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "quote": "The director of finance shall exercise all the powers conferred and perform all the duties imposed by general law upon commissioners of the revenue",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "Whenever a license is required by ordinance adopted pursuant to this chapter and whenever the local governing body shall impose a license fee or levy a license tax on any business, employment or profession, it shall be unlawful to engage in such business, employment or profession without first obtaining the required license.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "may require that no business license under this chapter shall be issued until the applicant has produced satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance and admissions taxes owed by the business to the county, city or town have been paid",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "Any person who engages in a business without obtaining a required local license, or after being refused a license, shall not be relieved of the tax imposed by the ordinance.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "\"Definite place of business\" means an office or a location at which occurs a regular and continuous course of dealing for thirty consecutive days or more.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700.1",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "quote": "A person's residence shall be deemed to be a definite place of business if there is no definite place of business maintained elsewhere and the person is not subject to licensure as a peddler or itinerant merchant.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "The governing body of any county, city or town may charge a fee for issuing a license in an amount not to exceed $100 for any locality with a population greater than 50,000",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "Any county, city or town with a population greater than 50,000 shall reduce the fee to an amount not to exceed $50 by January 1, 2000.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "provided such tax shall not be assessed and collected on any amount of gross receipts of each business upon which a license fee is charged",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "No county, city, or town shall impose a license fee or levy any license tax",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703(C)(18)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "quote": "On or measured by receipts of a nonprofit organization described in Internal Revenue Code § 501(c)(3) or 501(c)(19) except to the extent the organization has receipts from an unrelated trade or business the income of which is taxable under Internal Revenue Code § 511 et seq.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A separate license shall be required for each definite place of business and for each business.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "the governing body of any county, city, or town with a population greater than 50,000 may waive the license requirements provided herein for businesses with gross receipts of $200,000 or less.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A person engaged in two or more businesses or professions carried on at the same place of business may elect to obtain one license for all such businesses and professions if all of the following criteria are satisfied",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "The application shall be on forms prescribed by the assessing official, which forms and accompanying communications shall clearly set out the due date for the application and the amount of any penalty to be charged for late filing of the application",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "If the tax is measured by the gross receipts of the business, the tax shall be paid on or before the locality's fixed due date for filing license applications or a later date, including installment payment dates, or 30 or more days after beginning business, at the locality's option.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(c)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "The assessing official may grant an extension of time in which to file an application for a license, for reasonable cause.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A penalty of 10 percent of the tax may be imposed upon the failure to file an application or the failure to pay the tax by the appropriate due date.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Only the late filing penalty shall be imposed by the assessing official if both the application and payment are late",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(d)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "If the failure to file or pay was not the fault of the taxpayer, the penalties shall not be imposed, or if imposed, shall be abated by the official who assessed them.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(2)(e)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Interest shall be charged on the late payment of the tax from the due date until the date paid without regard to fault or other reason for the late payment.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(4)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "the assessing official shall assess the local license tax omitted because of fraud or failure to apply for a license for the current license year and the six preceding license years.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(5)(b)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "may file an administrative appeal of the assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of the appealable event, whichever is later, with the commissioner of the revenue or other local assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(5)(c)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "each locality imposing a tax or fee under this chapter shall maintain on its website the specific procedures to be followed in the jurisdiction with regard to such appeal and the name and address to which the appeal should be directed.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(6)(a)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(8)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Any taxpayer or authorized representative of a taxpayer may request a written ruling regarding the application of a local license tax to a specific situation from the commissioner of the revenue or other assessing official.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(9)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "Every person who is assessable with a local license tax shall keep sufficient records to enable the assessor to verify the correctness of the tax paid for the license years assessable",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.2",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.2/",
+   "quote": "In no event shall a locality require an applicant for a license issued under this chapter to provide a social security number as part of his application if such applicant has been issued a federal employer identification number and provides that number to the locality instead.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "Any business with gross receipts of more than $100,000, or $50,000, as applicable, may be subject to the tax at a rate not to exceed the rate set forth below for the class of enterprise listed",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For contracting, and persons constructing for their own account for sale, sixteen cents per $100 of gross receipts",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For retail sales, twenty cents per $100 of gross receipts",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For financial, real estate and professional services, fifty-eight cents per $100 of gross receipts",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3706(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "quote": "For repair, personal and business services, and all other businesses and occupations not specifically listed or excepted in this section, thirty-six cents per $100 of gross receipts.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3714(B)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3714/",
+   "quote": "Each such governing body shall require every contractor to provide written certification at the time of any application for issuance or reissuance of a business license that such contractor is in compliance with the provisions of Chapter 8 of Title 65.2",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3715(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715/",
+   "quote": "However, when the amount of business done by any such contractor in any other county, city or town exceeds the sum of $25,000 in any year, such other county, city or town may require of such contractor a local license",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3717(C)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3717/",
+   "quote": "Any tax imposed pursuant to § 58.1-3703 on peddlers and itinerant merchants shall not exceed $500 per year.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 54.1-1111(B)",
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "quote": "Any contractor applying for or renewing a business license in any locality in accordance with Chapter 37 (§ 58.1-3700 et seq.) of Title 58.1 shall furnish prior to the issuance or renewal of such license either (i) satisfactory proof that he is duly licensed or certified under the terms of this chapter or (ii) a written statement, supported by an affidavit, that he is not subject to licensure or certification as a contractor or subcontractor pursuant to this chapter.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 59.1-69(B)",
+   "url": "https://law.lis.virginia.gov/vacode/59.1-69/",
+   "quote": "No person shall conduct or transact business in the Commonwealth under any assumed or fictitious name unless such person files in the office of the clerk of the Commission a certificate of assumed or fictitious name.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 59.1-74(B)",
+   "url": "https://law.lis.virginia.gov/vacode/59.1-74/",
+   "quote": "No license shall be issued by a commissioner of the revenue until a certificate of assumed or fictitious name has been made and filed (i) in the office of the clerk of the Commission",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-103(A), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "It is unlawful for any person to engage in a business within the County without first obtaining a license required by this article.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-200(B), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "A separate license is required for each definite place of business and for each business.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-200(C), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "A person engaged in two or more businesses carried on at the same place of business may elect to obtain one license for those businesses if all of the following criteria are satisfied",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-200(D), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Notwithstanding the foregoing, the license requirement is waived for any business with gross receipts not exceeding $25,000.00.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(A), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; the same words appear, unchanged, in proposed Ordinance No. 22-8( ) & 22-15( ) (Board of Supervisors agenda of November 2, 2022, Attachment A, Legistar matter 22-450); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in the County on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(B), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; the same words appear, unchanged, in proposed Ordinance No. 22-8( ) & 22-15( ) (Board of Supervisors agenda of November 2, 2022, Attachment A, Legistar matter 22-450); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "If the tax is measured by the gross receipts of the business, the tax shall be paid on or before June 15 of the license year",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(C), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; the same words appear, unchanged, in proposed Ordinance No. 22-8( ) & 22-15( ) (Board of Supervisors agenda of November 2, 2022, Attachment A, Legistar matter 22-450); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "The Director of Finance may grant an extension of time in which to file an application for a license, for reasonable cause.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(D)(1), text as reproduced in proposed Ordinance No. 22-8( ) & 22-15( ) (Board of Supervisors agenda of November 2, 2022, Attachment A, Legistar matter 22-450; adoption and current Code text not verified). The text enacted by Ordinance No. 19-8(1) in 2019 is the same except that it reads \"10 percent\" where this reads \"ten percent\"",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14127/file",
+   "quote": "A penalty of ten percent of the tax may be imposed by the Director of Finance upon the failure of any person to file an application or the failure to pay the tax by the appropriate due date.",
+   "role": "penalty"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-201(D)(2), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; the same words appear, unchanged, in proposed Ordinance No. 22-8( ) & 22-15( ) (Board of Supervisors agenda of November 2, 2022, Attachment A, Legistar matter 22-450); current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "If the failure to file or pay was not the fault of the taxpayer, the Director of Finance shall not impose a late penalty, or if imposed, shall be abated by the official who assessed them.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-204(A), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "The taxpayer shall file an appeal of an assessment within one year after the last day of the tax year for which the assessment is made, or within one year after the date of the appealable event, whichever is later.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-205(A), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "The appeal shall be filed with the Tax Commissioner within 90 days after the date of the determination by the Director.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-207, as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Any taxpayer or authorized representative of a taxpayer may request a written ruling from the Director of Finance regarding the application of the license tax to a specific situation.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-301, as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance, and admissions taxes owed by the business to the County",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-303(A), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Each person who obtains a license shall keep the license receipt issued by the Director of Finance in a convenient place.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-402, as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "his license tax for the then current year shall be computed on that estimate.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-500, as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "whose gross receipts in the County in a license year from a business subject to licensure are equal to or greater than $100,000.00",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-501, as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Each person who is required to obtain a license but not required to pay a license tax based on gross receipts or (in the case of wholesalers or wholesale merchants) purchases, shall pay a license fee of $50.00.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 8-702(B)(1), as enacted by Ordinance No. 19-8(1), adopted April 17, 2019 (text from the proposed final ordinance, Board of Supervisors agenda of April 17, 2019, Attachment B, Legistar matter 3564; current Code text not read)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "The amount of business done by the contractor in the County exceeds $25,000.00 but is less than $100,000.00, in which case the contractor is subject to the license fee provided in County Code § 8-501",
+   "role": "eligibility"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Check whether your business needs a county license, and how many",
+   "who": "Business owner",
+   "how": "You need an Albemarle County business license if your business has a definite place of business in the county (an office or location used for business for 30 consecutive days or more). If you have no business location anywhere and live in the county, your home counts, so home-based businesses are covered. You need a separate license for each business category and each location, even at the same address. Peddlers, itinerant merchants, carnivals, amusement-machine operators and out-of-county contractors doing more than $25,000 of work in the county also need one. State law and County Code § 8-200(C) let you choose instead to hold one license for several businesses at one location, if each is licensable there, they are taxed at the same rate (or you agree to pay the highest rate on all of them), and you give the Director of Finance the information asked for about them. The county's pages do not mention this option. State law exempts some activities, for example the receipts of 501(c)(3) charities (except unrelated business income) and farm products sold by the person who grew them.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes",
+   "paraphrase": null,
+   "capture": "20260813134034",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes",
+   "quote_sha256": "352769cd38e16973c2025ba807da20cdffa8d2cb0c738b82117f31b096e4157a",
+   "quote_words": 22
+  },
+  {
+   "id": "s2",
+   "step": "Get zoning approval from the Community Development Department",
+   "who": "Business owner, applying to the Community Development Department",
+   "how": "Apply in the county's Civic Access portal. A business in commercial or industrial space needs a Zoning Clearance; there are also separate clearances for a family day home, a mobile food vendor, sales or events at an agricultural operation, and agritourism, events or amplified music at a farm winery, brewery or distillery. Growing and harvesting farm products, and producing, selling or tasting wine, beer or spirits, need no clearance. A business run from the home you live in needs a Home Occupation Clearance, approved before you start: Minor or Major in the Rural Area, Class A in a residential district. A Class B home occupation in a residential district needs a special use permit instead. The clearance confirms the use is allowed at your location and notes parking and other limits. It may also need approval from the Architectural Review Board, a Certified Engineer's Report, or Health Department or VDOT approval. The license application lists zoning approval as required, but says it does not have to be obtained before you apply for the license.",
+   "deadline": "A Home Occupation Clearance must be approved before the business starts; the pages read give no deadline for other clearances",
+   "fee": "Probably $60 for a zoning clearance (the fee schedule's \"All other uses\" line); $30 for a home occupation clearance; $1,185 for a Class B home occupation special use permit; each plus a 4% technology surcharge (see fees)",
+   "form": "f5",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "paraphrase": null,
+   "capture": "20260316083537",
+   "source": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "quote_sha256": "a0dc278dba108da86959c335e3ce1146262b73653ce7709ccc8aae748ddbf317",
+   "quote_words": 29
+  },
+  {
+   "id": "s3",
+   "step": "Register a trade name or business entity with the SCC, and get any state trade license",
+   "who": "Business owner; State Corporation Commission (Clerk's Office); for contractors, the state Board for Contractors",
+   "how": "If you will do business under any name other than your own legal name, file a certificate of assumed or fictitious name with the State Corporation Commission. The county may not issue the license until you show it evidence of that filing. A corporation, LLC, partnership or business trust should have its SCC registration ready. A contractor needs a state contractor's license, or a sworn statement that it is not required to hold one. It must also certify that it has workers' compensation coverage where the law requires it.",
+   "deadline": "Before applying for the county license",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "paraphrase": null,
+   "capture": "20260814172833",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "quote_sha256": "1f84debbfe67a593d7919dd010e011d3e59f70b6d865af072b8f528188a2050b",
+   "quote_words": 21
+  },
+  {
+   "id": "s4",
+   "step": "Fill in the New Business License Application",
+   "who": "Business owner",
+   "how": "Use the county's 2026 New Business License Application (form dated 11/2025). Enter the date the business began in the county, the type of business, the legal and trade names, and your Social Security number or federal EIN. If you have an EIN, the county may not insist on your SSN. Add the addresses and contact details. Describe the business and pick its category. With no full prior year, enter your estimated gross receipts from the start date to December 31; if you began during 2025, give 2025 actual receipts and a 2026 estimate. The tax is computed on the estimate and corrected later. Add any ABC (alcohol) licenses and other activities, list vehicles used more than 50% for business, and sign. Contractors attach their state contractor's license, a certificate of liability insurance, a schedule of gross receipts from all sources and a list of licenses bought in other localities.",
+   "deadline": "Within 30 days of the date the business began in Albemarle County, to avoid the 10% late filing penalty (state law and County Code § 8-201(A) say before beginning business)",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "paraphrase": null,
+   "capture": null,
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "quote_sha256": "0cb68c6c9de1f5a838f133c32c65dd38dd60b92fe00e07f69baabc1aa67280ca",
+   "quote_words": 13
+  },
+  {
+   "id": "s5",
+   "step": "Submit the application, documents and any fee due to the Office of Revenue Administration",
+   "who": "Business owner, filing with the Office of Revenue Administration (Business & Personal Tax Unit)",
+   "how": "A new business cannot open an account in the online portal. Email the signed application and documents to tax@albemarle.org. Or mail them to County of Albemarle, 401 McIntire Rd, Room 133, Charlottesville, VA 22902 (the form says Suite 133), or fax them to 434-243-7906. The county's pages and form do not mention filing a new application in person. Call 434-296-5852 to have an application mailed, or book a virtual or in-person appointment with a tax specialist. Pay any $50 license fee or flat tax with the application, by check payable to Albemarle County. An incomplete application or missing documents may lead to denial and late penalties.",
+   "deadline": "Within 30 days of beginning business (county practice); before beginning business under state law and County Code § 8-201(A)",
+   "fee": "$0 if gross receipts are $25,000 or less; $50 if over $25,000 and under $100,000; a flat tax for listed activities; a rate-based tax if $100,000 or more (see fees)",
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "1cd8cbf541e9ebbd3c8607717fb50939d2b3e600fd866244c76c4207f34bbbd6",
+   "quote_words": 9
+  },
+  {
+   "id": "s6",
+   "step": "The county reviews the application and issues the license",
+   "who": "Director of Finance (who holds a commissioner of the revenue's powers), through the Office of Revenue Administration",
+   "how": "The office checks the documents and the classification. It will not issue a license until any delinquent county business license, real estate, personal property, meals, transient occupancy, severance and admissions taxes owed by the business are paid. For a trade name it needs evidence of the SCC filing. For a contractor it needs the state license number or proof of exemption, and the workers' compensation certification. Keep the license receipt at the business, and show it when an authorized county officer asks.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "satisfactory evidence that all delinquent business license, real estate, personal property, meals, transient occupancy, severance, and admissions taxes owed by the business to the County",
+   "source": "Albemarle County Code § 8-301 (Ordinance No. 19-8(1))"
+  },
+  {
+   "id": "s7",
+   "step": "If gross receipts are $100,000 or more, pay the license tax by June 15",
+   "who": "Business owner, paying the Department of Finance & Budget",
+   "how": "At $100,000 or more in gross receipts you pay a tax at your category's rate instead of the $50 fee. Examples: $0.20 per $100 for retail, $0.36 per $100 for repair, personal, business and other services, $0.58 per $100 for financial, real estate and professional services, and $0.16 per $100 for contractors. The county mails BPOL tax bills in May. You can pay in the Business Tax portal (e-check is free; cards cost 2.50% for credit or 2.35% for debit, minimum $1.95). You can also pay by mail as the bill instructs, at the 24/7 kiosk, in person at 401 McIntire Road, or in a drop box (no cash). The new business form says the tax is due when you apply, and that a business applying after mid-June has 30 days to pay (see caveats).",
+   "deadline": "June 15 of the license year (June 15, 2026 on the 2026 renewal form)",
+   "fee": "Gross receipts times the category rate (see fees)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "02fbfeb75e7888ff3fdbe639c7e534f341c3b1283f974eb193f7f9b12e74aea1",
+   "quote_words": 16
+  },
+  {
+   "id": "s8",
+   "step": "For the first three years, renew on the full application",
+   "who": "Owner of a new business",
+   "how": "For its first three years, a new business renews on the full New Business License Application, not the short renewal form, and replaces its estimate with actual receipts. After the base year the county adjusts the estimated tax to the actual amount. If you overestimated, you get a credit against the next year's tax.",
+   "deadline": "March 1 each year",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "80b485b968054c4ff36066f3a59293f1e1d53689caa5092bde0b9eb342903b40",
+   "quote_words": 17
+  },
+  {
+   "id": "s9",
+   "step": "Renew every license every year by March 1",
+   "who": "Every licensed business, filing with the Office of Revenue Administration",
+   "how": "File a renewal for each license and each county location, reporting the previous calendar year's actual gross receipts. ABC sales count in retail or wholesale receipts. The county mails a BPOL renewal notice that holds the details you need. File online in the Albemarle County Business Tax Online Filing and Payment Portal (you need your county account number), on the county's digital renewal form, or on the downloadable PDF. Send the PDF by email, mail or fax, drop it off at the McIntire Road office building during business hours, or leave it in one of the \"Payment\" boxes in the McIntire Road parking lot. Contractors must include a copy of their workers' compensation verification. From 2026, homestay and other accommodations providers must also file an annual attestation with the renewal. A new line of business or a new location needs a new application.",
+   "deadline": "March 1 each year (the 2026 renewal form gives March 2, 2026, because March 1 fell on a Sunday)",
+   "fee": "$50 or a flat tax due with the renewal by March 1; a rate-based tax is billed in May and due June 15",
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "606397605ca0b091c730121d19e10b1250099d4932d2338b2a7b0533bfaac7c5",
+   "quote_words": 12
+  },
+  {
+   "id": "s10",
+   "step": "File the renewal even if gross receipts were $25,000 or less",
+   "who": "Business owner",
+   "how": "At $25,000 or less in gross receipts there is no fee, and the County Code waives the license requirement. The county still tells you to file every year: its renewal page says you need to file, and its deadlines page says you must still file by March 1, while its FAQ says you are advised to file, to record your receipts and exemption and so that it can remind you if you go over the threshold. Do not send a payment.",
+   "deadline": "March 1 each year",
+   "fee": "None",
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "bf5eac532599b1bcd722312ca3d312c3e07bd8599bdf8ee4ead039c680b65d97",
+   "quote_words": 22
+  },
+  {
+   "id": "s11",
+   "step": "If you cannot file on time, ask for an extension before the due date",
+   "who": "Business owner, asking the Director of Finance",
+   "how": "The Director of Finance may extend the time to file for reasonable cause. The extension may depend on paying a reasonable estimate of the tax on time. Interest runs from the due date on any balance, and if the estimate turns out to be unreasonable, a 10% penalty applies to the part paid late. The county's pages do not say how to ask, so contact the office before the due date.",
+   "deadline": "Not fixed by law or on the county's pages; ask before the filing due date (March 1 for a renewal; for a new business, before it begins, or at the latest within the 30 days the county's forms allow)",
+   "fee": null,
+   "form": null,
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "The Director of Finance may grant an extension of time in which to file an application for a license, for reasonable cause.",
+   "source": "Albemarle County Code § 8-201(C) (Ordinance No. 19-8(1); the same words are in proposed Ordinance No. 22-8( ) & 22-15( ))"
+  },
+  {
+   "id": "s12",
+   "step": "Late filing or late payment: penalties, interest and abatement",
+   "who": "Director of Finance",
+   "how": "The county's forms state a 10% penalty for filing late (County Code § 8-201(D) says the Director of Finance may impose it). If a $50 fee or flat tax is not paid by the March due date, a 10% late payment penalty applies, plus interest at 10% a year from April 1. If a rate-based tax is not paid by June 15, the 10% penalty applies from June 16, plus interest from July 1 (2026 dates). When both the filing and the payment are late, only the late filing penalty is charged, unless you have a history of noncompliance. A penalty is waived or removed if the lateness was not your fault: you must show you acted responsibly and that events beyond your control caused it.",
+   "deadline": null,
+   "fee": "10% of the tax; interest at 10% a year",
+   "form": "f2",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "paraphrase": null,
+   "capture": "20260308160315",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "quote_sha256": "40cfc569a802c791649fe0b0d6085ea50b617fc4948d5288a915fadb0f41ba0e",
+   "quote_words": 13
+  },
+  {
+   "id": "s13",
+   "step": "Tell the county when the business closes, moves out or changes address",
+   "who": "Business owner, notifying the Business & Personal Tax Unit",
+   "how": "If the business has closed or moved out of the county, tick the closure box on the renewal and give the closure date, or tell the Business & Personal Tax Unit by email or letter. Report a new mailing or location address on page 2 of the renewal. If your tax is based on gross receipts and you close during the license year, the County Code may entitle you to a refund (§ 8-603, conditions apply). Business tangible personal property is a separate tax with its own rules.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "paraphrase": null,
+   "capture": "20260813133605",
+   "source": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "quote_sha256": "d16d4340ba5b845ca042470c25dcb8358f21ed62b1f8d2515f11a62c8b92577d",
+   "quote_words": 11
+  },
+  {
+   "id": "s14",
+   "step": "If you disagree with an assessment or your business classification, file a written appeal",
+   "who": "Business owner or authorized representative, writing to the Department of Finance & Budget, Revenue Administration - Assessments Unit",
+   "how": "Send a written administrative appeal, filed in good faith. Include the taxpayer's name and address, federal tax identification number and county account number(s). If someone else files, add a power of attorney or letter of representation. Attach a copy of the assessment, a detailed explanation of your position and the relief you want. The office may hold a conference if you ask, ask for more documents, or audit. While a timely and complete appeal is pending, collection of the disputed amount stops, unless the county finds that collection would be jeopardized by delay, that you have not answered a request for information within a reasonable time, or that the appeal is frivolous. Interest still accrues, but no further penalty is added. See escalation for the next steps.",
+   "deadline": "Within one year from the last day of the tax year assessed, or one year from the appealable event, whichever is later; a classification appeal can be filed at any time",
+   "fee": null,
+   "form": "f4",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "paraphrase": null,
+   "capture": "20260316083131",
+   "source": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "quote_sha256": "65263110047a36b14fc41cb06c41b5451e3d9efca633d5751cc493f554f27459",
+   "quote_words": 33
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "2026 New Business License Application (Department of Finance and Budget, Revenue Administration; form dated 11/2025)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "2026 Business License Renewal (downloadable PDF; due March 2, 2026)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Business License Renewal, digital renewal form (county form hosted on Microsoft Forms, linked from the county's Existing Businesses page)",
+   "number": null,
+   "url": "https://forms.office.com/g/fbkZZYAfh3",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Notice of Taxpayer Appeal Rights (Office of Revenue Administration)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f5",
+   "title": "Zoning Clearance application: business in a commercial or industrial space (Community Development, Civic Access portal)",
+   "number": null,
+   "url": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/plan/apply/87/0/0",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f6",
+   "title": "Home Occupations application (Community Development, Civic Access portal)",
+   "number": null,
+   "url": "https://albemarlecountyva-energovweb.tylerhost.net/apps/selfservice#/plan/apply/35/0/0",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Business license, gross receipts of $25,000 or less",
+   "amount": "No fee (a filing is still requested)",
+   "basis": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses; Albemarle County Code § 8-200(D)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "capture": "20260813133605",
+   "quote_sha256": "bf5eac532599b1bcd722312ca3d312c3e07bd8599bdf8ee4ead039c680b65d97",
+   "quote_words": 22
+  },
+  {
+   "item": "Business license fee, gross receipts over $25,000 and under $100,000",
+   "amount": "$50, due with the application (new business) or by March 1 (renewal)",
+   "basis": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses; Albemarle County Code § 8-501; Va. Code § 58.1-3703(A) caps the fee at $50 in a locality over 50,000 people",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "capture": "20260813133605",
+   "quote_sha256": "930b8c7cc0b1d10397dbbda57563c9dc74d3f67eb59de4dc3c34c2551e7abf86",
+   "quote_words": 22
+  },
+  {
+   "item": "License tax, retail sales (gross receipts of $100,000 or more)",
+   "amount": "$0.20 per $100 of gross receipts (shown as $0.0020 on the county rate table)",
+   "basis": "Albemarle County Code § 8-712 (2022 numbering; § 8-713 before), https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; the same rate is in the Division 7 text enacted by Ordinance No. 19-8(1) in 2019, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "each person engaged as a retailer or retail merchant is subject to a license tax of $0.20 for each $100.00 of gross receipts."
+  },
+  {
+   "item": "License tax, direct retail sales to remote buyers (phone, internet or mail, shipped by carrier or USPS)",
+   "amount": "$0.10 per $100 of gross receipts",
+   "basis": "Albemarle County Code § 8-712(A) (2022 numbering), https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; the same rate is in the Division 7 text enacted by Ordinance No. 19-8(1) in 2019, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Each person engaged as a retailer or retail merchant is subject to a license tax of $0.10 for each $100.00 of gross receipts for direct retail sales."
+  },
+  {
+   "item": "License tax, financial, real estate and professional services",
+   "amount": "$0.58 per $100 of gross receipts",
+   "basis": "Albemarle County Code § 8-711, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "quote": "Each person engaged in a financial, real estate, or professional service is subject to a license tax of $0.58 for each $100.00 of gross receipts."
+  },
+  {
+   "item": "License tax, repair, personal, business and other services, and all other businesses not listed",
+   "amount": "$0.36 per $100 of gross receipts",
+   "basis": "Albemarle County Code § 8-716 (2022 numbering; § 8-712 before), https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; the same rate is in the Division 7 text enacted by Ordinance No. 19-8(1) in 2019, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "is subject to a license tax of $0.36 for each $100.00 of gross receipts."
+  },
+  {
+   "item": "License tax, contractors",
+   "amount": "$0.16 per $100 of gross receipts",
+   "basis": "Albemarle County Code § 8-702(A), https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "quote": "The license tax is $0.16 for each $100.00 of gross receipts from the business conducted during the preceding fiscal or calendar year."
+  },
+  {
+   "item": "License tax, wholesalers (measured by purchases)",
+   "amount": "$0.05 per $100 of purchases",
+   "basis": "Albemarle County Code § 8-713 (2022 numbering; § 8-714 before), https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; the same rate is in the Division 7 text enacted by Ordinance No. 19-8(1) in 2019, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "each person engaged as a wholesaler or wholesale merchant is subject to a license tax of five cents for each $100.00 of purchases."
+  },
+  {
+   "item": "License tax, renting houses, apartments or commercial property",
+   "amount": "$0.20 per $100 of gross receipts",
+   "basis": "Albemarle County Code § 8-714 (2022 numbering; § 8-715 before), https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; the same rate is in the Division 7 text enacted by Ordinance No. 19-8(1) in 2019, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "quote": "Each person engaged in the business of renting houses, apartments or commercial property in the County is subject to a license tax of $0.20 for each $100.00 of gross receipts from the rental of all commercial establishments, apartment units, or dwelling units."
+  },
+  {
+   "item": "Flat license tax, peddlers and itinerant merchants",
+   "amount": "$500 a year; $50 a year for perishable food items",
+   "basis": "Albemarle County Code § 8-708, https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file; https://www.albemarle.org/government/finance-and-budget/business/tax-rates; Va. Code § 58.1-3717(C) caps it at $500",
+   "quote": "Each peddler or itinerant merchant is subject to a license tax of $500.00 per year"
+  },
+  {
+   "item": "Late filing penalty",
+   "amount": "10% of the tax",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000; Albemarle County Code § 8-201(D)(1); Va. Code § 58.1-3703.1(A)(2)(d)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "capture": "20260308160315",
+   "quote_sha256": "3c3d224214124ba96b56da0710d7e66e0fb89c7ba3df5b87c234fa9f10b6e63a",
+   "quote_words": 12
+  },
+  {
+   "item": "Late payment penalty and interest, rate-based license tax",
+   "amount": "10% from June 16, 2026, plus interest at 10% a year from July 1, 2026",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000; Albemarle County Code § 8-201(D)-(E)",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "capture": "20260308160315",
+   "quote_sha256": "547848469938e7c75b98bcbb0ac0c75b432076c3afadabc63e51bff5c2c4e823",
+   "quote_words": 32
+  },
+  {
+   "item": "Late payment penalty and interest, $50 fee or flat tax",
+   "amount": "10% from March 3, 2026, plus interest at 10% a year from April 1, 2026",
+   "basis": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "capture": "20260308160315",
+   "quote_sha256": "aa160da07a76ac6a05c5b5eb992626cdec43ade65344da2e33ea986b33f973c4",
+   "quote_words": 37
+  },
+  {
+   "item": "Zoning clearance for a business use other than a home occupation or homestay (the fee schedule's \"All other uses\" line, which appears to cover a business in commercial or industrial space; confirm with Community Development)",
+   "amount": "$60, plus the 4% technology surcharge",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "2c0fe6f567e0d2d290da7805d8d2d1f654e1227aad21afcd921f838248014cf5",
+   "quote_words": 7
+  },
+  {
+   "item": "Home Occupation Clearance (business run from home)",
+   "amount": "$30, plus the 4% technology surcharge",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees; https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "5cb2c1cc345f3320f3cdb3b1dbd1754b14cef5cdfb698febe68e55abbba05666",
+   "quote_words": 6
+  },
+  {
+   "item": "Special use permit for a Class B home occupation in a residential district",
+   "amount": "$1,185, plus the 4% technology surcharge",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees; https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": null,
+   "quote_sha256": "5471c81706bb6ce8f4cfe990e530a9c289971762d26bf66026f77e993a83a8c0",
+   "quote_words": 14
+  },
+  {
+   "item": "Technology surcharge on Community Development fees",
+   "amount": "4% of each fee",
+   "basis": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture": "20260820023121",
+   "quote_sha256": "b8d579e24f720e45cc66452832b96ffbd58238915cead2d2de76e79b39b7bdda",
+   "quote_words": 12
+  },
+  {
+   "item": "Card convenience fee, online payments (charged by PayPal, a third party)",
+   "amount": "Credit cards 2.50%, debit cards 2.35%, minimum $1.95; e-check free",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "27ff48e1a06b2b0e31fee1219ff2fd73bb0cec72b20e4a1ed76e8ffd78364a9e",
+   "quote_words": 9
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Office of Revenue Administration, Business & Personal Tax Unit, 1st floor, County Office Building, 401 McIntire Road, Room 133, Charlottesville, VA 22902 (Monday to Friday, 8:00 am to 5:00 pm, except holidays)",
+   "label": "Department of Finance & Budget, Office of Revenue Administration",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, 401 McIntire Rd, Room 133, Charlottesville, VA 22902",
+   "label": "Office of Revenue Administration (mail license applications, renewals and closure notices)",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business"
+  },
+  {
+   "kind": "email",
+   "value": "tax@albemarle.org",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5852",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "434-243-7906 (fax)",
+   "label": "Business & Personal Tax Unit (fax for applications and renewals)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000"
+  },
+  {
+   "kind": "phone",
+   "value": "800-828-1120 (TTY)",
+   "label": "Business & Personal Tax Unit (TTY number on the license forms)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.albemarlecountytaxes.org/business#/BusinessTax",
+   "label": "Albemarle County Business Tax Online Filing and Payment Portal (renewals and payments; existing accounts only)",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses"
+  },
+  {
+   "kind": "page",
+   "value": "https://outlook.office365.com/owa/calendar/AlbemarleCountyAssessmentsUnit@albemarle.org/bookings/",
+   "label": "Office of Revenue Administration: book a virtual or in-person appointment with a tax specialist",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, P.O. Box 7604, Merrifield, VA 22116-7604",
+   "label": "Department of Finance & Budget (check payments of tax bills by mail, processed by a third-party vendor)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "office",
+   "value": "Community Development Department, 401 McIntire Road, North Wing, Charlottesville, VA 22902; 434-296-5832",
+   "label": "Community Development Department (zoning clearances)",
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance"
+  },
+  {
+   "kind": "email",
+   "value": "cddinquiry@albemarle.org",
+   "label": "Community Development Department",
+   "url": "https://www.albemarle.org/government/county-attorney/county-code"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.scc.virginia.gov/",
+   "label": "State Corporation Commission (assumed-name certificates and entity registrations)",
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.tax.virginia.gov/administrative-appeals",
+   "label": "Virginia Department of Taxation (Tax Commissioner): administrative appeals, including appeals of local license tax determinations",
+   "url": "https://www.tax.virginia.gov/administrative-appeals"
+  },
+  {
+   "kind": "office",
+   "value": "Albemarle County Courthouse, Court Square, 350 Park Street, Charlottesville, VA 22902-5113; (434) 972-4083 (civil: (434) 972-4086)",
+   "label": "Albemarle Circuit Court, Clerk's Office (16th Judicial Circuit)",
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "Assessment increased, refund denied, tax assessed where none was before, estimated assessment when no application was filed, or classification disputed (an appealable event)",
+   "next": "Director of Finance (Department of Finance & Budget, Revenue Administration - Assessments Unit), by written administrative appeal",
+   "type": "internal appeal",
+   "deadline": "Within one year from the last day of the tax year assessed, or within one year from the appealable event, whichever is later; a classification appeal at any time",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(b); Albemarle County Code § 8-204(A)",
+   "quote": "may file an administrative appeal of the assessment within one year from the last day of the tax year for which such assessment is made, or within one year from the date of the appealable event, whichever is later, with the commissioner of the revenue or other local assessing official."
+  },
+  {
+   "trigger": "A timely and complete administrative appeal is pending",
+   "next": "Collection of the disputed amount is suspended until the Director's final determination, unless collection would be jeopardized by delay, the taxpayer has not answered a request for information within a reasonable time, or the appeal is found frivolous (interest still accrues, no further penalty)",
+   "type": "deferral",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(d); Albemarle County Code § 8-204(E)",
+   "quote": "collection activity with respect to the amount in dispute relating to any assessment by the commissioner of the revenue or other assessing official shall be suspended until a final determination is issued by the commissioner of the revenue or other assessing official"
+  },
+  {
+   "trigger": "No final determination after the appeal has been pending more than one year",
+   "next": "Tax Commissioner (Virginia Department of Taxation), after at least 30 days' written notice to the Director of Finance",
+   "type": "external administrative review",
+   "deadline": "After more than one year without a decision, on at least 30 days' written notice",
+   "basis": "Va. Code § 58.1-3703.1(A)(5)(e)",
+   "quote": "elect to treat the appeal as denied and appeal the assessment or classification of the taxpayer's business to the Tax Commissioner in accordance with the provisions of subdivision 6"
+  },
+  {
+   "trigger": "Director of Finance's determination is adverse",
+   "next": "Tax Commissioner (Virginia Department of Taxation); serve a copy of the appeal on the Director of Finance",
+   "type": "external administrative review",
+   "deadline": "Within 90 days of the date of the Director's determination; the Tax Commissioner decides within 90 days of receipt unless both sides are told it will take longer",
+   "basis": "Va. Code § 58.1-3703.1(A)(6)(a); Albemarle County Code § 8-205(A)",
+   "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "Notice of intent to appeal to the Tax Commissioner given",
+   "next": "Collection of the disputed amount is suspended until the Tax Commissioner's final determination, if the appeal is filed and served within 30 days of the notice",
+   "type": "deferral",
+   "deadline": "Appeal filed and served within 30 days of the notice of intent",
+   "basis": "Va. Code § 58.1-3703.1(A)(6)(b); Albemarle County Code § 8-205(D)",
+   "quote": "collection activity with respect to the amount in dispute relating to any assessment by the commissioner of the revenue or other assessing official shall be suspended until a final determination is issued by the Tax Commissioner"
+  },
+  {
+   "trigger": "Still aggrieved after the Tax Commissioner's determination, or choosing to go straight to court",
+   "next": "Circuit Court of Albemarle County (\"Albemarle County\" is the named party)",
+   "type": "judicial review",
+   "deadline": "Whichever is latest: three years from the last day of the tax year, one year from the assessment, one year from the Tax Commissioner's final determination, or one year from a final determination under § 58.1-3981",
+   "basis": "Va. Code § 58.1-3984(A); § 58.1-3703.1(A)(7)(a); Albemarle County Code § 8-206",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made."
+  },
+  {
+   "trigger": "Late filing or late payment penalty charged although the lateness was not the taxpayer's fault",
+   "next": "Director of Finance (ask for the penalty to be abated; show you acted responsibly and that events beyond your control caused the lateness)",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(2)(d); Albemarle County Code § 8-201(D)(2)",
+   "quote": "If the failure to file or pay was not the fault of the taxpayer, the penalties shall not be imposed, or if imposed, shall be abated by the official who assessed them."
+  },
+  {
+   "trigger": "Unsure how the license tax or a classification applies to your business",
+   "next": "Director of Finance (written ruling; give all relevant facts)",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(8); Albemarle County Code § 8-207",
+   "quote": "Any taxpayer or authorized representative of a taxpayer may request a written ruling regarding the application of a local license tax to a specific situation from the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "Business licensed in several localities and their methods would tax more than 100% of its gross receipts, with no apportionment agreement",
+   "next": "Department of Taxation (advisory opinion; give notice to the Director of Finance). First tell the Director of Finance; the Director must make a good-faith effort to reach an apportionment agreement with the other localities, and either side may ask for the opinion if none is reached",
+   "type": "advisory opinion",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3703.1(A)(3)(c); Albemarle County Code § 8-202(C)",
+   "quote": "either the assessor or taxpayer may seek an advisory opinion from the Department of Taxation pursuant to § 58.1-3701"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. That includes the three forms. The live pages may have changed since; confirm on them before you act. The 2027 forms will carry new dates. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "Local law. The County Code is published on Municode, whose terms forbid automated access, so the current Code text has not been checked. The County Code quotes come from ordinance documents in the county's Legistar system (webapi.legistar.com). Sections 8-103 to 8-702, and § 8-201(A), (B), (C) and (D)(2), are quoted from the proposed final text of Ordinance No. 19-8(1). The county's 2022 documents cite that ordinance as adopted on April 17, 2019, but the draft is a redline, so the quotes give the adopted reading: underlined and unmarked text kept, struck text dropped. § 8-201(D)(1) and the renumbered Division 7 rate sections are quoted from the 2022 proposed ordinances (Legistar matters 22-450 and 22-481, both heard on November 2, 2022). Legistar records no action on either, so their adoption is not confirmed. The rates are the same in the 2019 text, so only the section numbers (and \"ten\" for \"10\" percent in § 8-201(D)(1)) depend on it. A Legistar title search for matters since December 2022 found no later Chapter 8 amendment.",
+  "New business deadline. The county's FAQ and application say to apply within 30 days of beginning business to avoid the 10% late filing penalty. State law (§ 58.1-3703.1(A)(2)(a)) and County Code § 8-201(A) say to apply before beginning business. The safe course is to apply before opening.",
+  "When a new business pays a rate-based tax is unclear. The new business application says a rate-based tax is due when you apply. It also says bills go out in mid-May 2026, gives a June 16, 2026 cutoff (the renewal form and County Code § 8-201(B) say June 15), and says a business applying after June 16 has 30 days. Ask the office which date applies to you. The application also labels its 30-day rule both ways: Step 2 says apply within 30 days \"TO AVOID 10% LATE FILING PENALTY\", while its penalty section says a late new business application is charged a late-payment penalty of 10%, plus interest fees of 10% per annum.\"",
+  "Renewal date. County pages say March 1. The 2026 renewal form gives March 2, 2026, because March 1, 2026 was a Sunday. State law fixes March 1 unless the locality adopts a later date, no later than May 1. Albemarle's Code keeps March 1.",
+  "The $25,000 floor. County Code § 8-200(D), as enacted in 2019, waives the license requirement at gross receipts of $25,000 or less, yet the county asks those businesses to file every year anyway. State law would let a locality of this size waive licenses up to $200,000 (§ 58.1-3703.1(A)(1)). The county's wording of the bands also varies: the rate table says \"less than $25,000\" and \"$100,000 and Over\", the deadlines page says \"greater than $100,000\", and the forms and the renewal page say \"$25,000 or less\" and \"$100,000 or more\". The fees here follow the forms and the County Code.",
+  "Rate table. The county's BPOL rate table is headed \"TAX PER $100,000 GROSS RECEIPTS\", but its figures ($0.0020 for retail, for example) are rates per dollar, equal to the Code's $0.20 per $100. The table also lists a 0.50% utility rate, flat taxes (bondsmen $150, show and sale $50 to $600, fortunetellers $500, carnivals $500 or $25 a day, amusement machines $100 or $200, savings institutions $50) and local ABC license fees ($25 to $1,000). These are not all repeated in fees.",
+  "Population. The $50 fee cap and the $100,000 tax threshold apply because Albemarle has more than 50,000 people (2020 Census), per §§ 58.1-3703(A) and 58.1-3706(A).",
+  "Penalty waivers. The county's late penalty policy, on the Important Dates and Deadlines page, says penalties are not waived when a taxpayer relied on erroneous information from county staff. For the license tax, though, § 58.1-3703.1(A)(2)(d) and County Code § 8-201(D)(2)(b) count reasonable good-faith reliance on erroneous written information from the assessing official as an event beyond the taxpayer's control. Oral advice does not qualify. The policy also cites the general penalty sections (County Code § 15-103, Va. Code § 58.1-3916, which allow 10% or $10). The license forms state a 10% license penalty.",
+  "Appeal notice versus law. The county's Notice of Taxpayer Appeal Rights says that going straight to circuit court suspends collection on written notice. But § 58.1-3703.1(A)(7)(b)(5) and County Code § 8-206 say the suspension does not apply to a direct § 58.1-3984 filing made without first using the local and Tax Commissioner appeals. The notice also lists a Finance mailbox and a fax number that differ from the business tax unit's; they were not recorded.",
+  "Refusal of a license. No statute was found that gives a specific appeal from a refusal to issue a business license (for example because of delinquent local taxes, a missing SCC filing, or missing contractor documents). The administrative appeal covers assessments, refunds and classification. The practical route is to cure the defect. Court remedies against a refusal are not covered here. Operating without a license is a Class 2 misdemeanor under County Code § 8-103(A) (2019 text), and does not relieve the tax (§ 58.1-3700(B)).",
+  "No deadline for the local decision. State law sets no time limit for the Director of Finance to decide a license tax appeal. The only remedy for delay is the one-year rule in § 58.1-3703.1(A)(5)(e). The 90-day limit in § 58.1-3983.1 covers other local business taxes, not the license tax.",
+  "Tax Commissioner appeal form. Virginia Tax's page sends state-tax appeals to its Appeals Form. For local license tax appeals it says only that the appeal must contain what § 58.1-1821 requires, and that a copy must go to the local assessing officer. Whether to use the form is not stated, so it is not listed in forms. Advisory opinion requests use Form Rulings-Fee and may carry a fee.",
+  "Payments. The payment options page gives card fees of 2.50% (credit) and 2.35% (debit) for online payments, but swaps the two in its phone section, and lists the phone line (866-820-5450) only for real estate and personal property taxes. The P.O. Box 7604, Merrifield address is for check payments of bills. Applications and renewals go to 401 McIntire Road. The renewal form says renewals can go in the payment drop boxes in the McIntire Road parking lot. The payment options page says a drop box is open only from June 1 to 25 and from November 1 to December 5; it is not clear whether that limit covers the McIntire Road boxes or only the 5th Street one.",
+  "Separate processes not modelled here: the zoning clearance and home occupation clearance themselves (their requirements, review and the Class B special use permit process), SCC assumed-name filing, the state contractor's license, local ABC licenses, the homestay accommodations provider attestation (required with 2026 renewals), business tangible personal property returns (due May 1), and food and beverage, transient occupancy and short-term rental taxes.",
+  "Not described here: the online Business Tax portal (albemarlecountytaxes.org), the Microsoft Forms digital renewal, the Civic Access zoning portal and the appointment booking page.",
+  "One license for several businesses. The county's page says a separate license is needed for each business category, even at the same location. State law (§ 58.1-3703.1(A)(1)) and County Code § 8-200(C) let a person with several businesses at one place of business elect a single license if each business is licensable there, all are taxed at the same rate or the licensee accepts the highest rate, and the licensee supplies the information the Director asks for. Ask the office how to make the election.",
+  "Zoning fees. The Community Development fee schedule (Internet Archive copy of 2026-08-20) lists a $30 home occupation clearance, a $60 clearance for \"All other uses\", a $120 homestay clearance and a $1,185 special use permit for a Class B home occupation, plus a 4% technology surcharge. It does not name the business-in-commercial-space clearance, so the $60 line is the closest match, not a confirmed fee for it.",
+  "Site terms. The albemarle.org Terms and Conditions allow browsing for informational purposes but say no one may reuse or repost the site's content without written permission, so the County's own words are not reprinted on this page; each entry links the County page instead.",
+  "Privacy. Staff names and personal mailboxes on the zoning and home occupation pages, in the Legistar documents and on the court page were not recorded. Only office addresses, main lines, the tax@albemarle.org and cddinquiry@albemarle.org office mailboxes and official portals are listed. The Community Development line 434-296-5832 is the department's main number (the County Code page gives it for the department). The appointment link, as the county publishes it, contains the Assessments Unit's booking mailbox, which is an office mailbox."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes",
+   "title": "Business License & Taxes | Albemarle County, VA (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "title": "Start a Business (Finance & Budget) | Albemarle County, VA (Internet Archive copy of 14 August 2026; albemarle.org/business/start-a-business redirects here)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "title": "License and Taxes for Existing Businesses | Albemarle County, VA (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "title": "Tax Rates (business) | Albemarle County, VA (Internet Archive copy of 17 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "title": "Important Dates and Deadlines | Albemarle County, VA (Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "title": "Payment Options | Albemarle County, VA (Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "title": "Zoning Clearance | Albemarle County, VA (Community Development; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "County Code | Albemarle County, VA (County Attorney; Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+   "title": "Home Occupations | Albemarle County, VA (Community Development; Internet Archive copy of 12 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "title": "Community Development Fees | Albemarle County, VA (Internet Archive copy of 20 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions | Albemarle County, VA (Internet Archive copy)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24947/639032034433470000",
+   "title": "2026 New Business License Application (PDF, form dated 11/2025; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/24945/639080598925330000",
+   "title": "2026 Business License Renewal (PDF; Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "title": "Notice of Taxpayer Appeal Rights (PDF; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3564/attachments/6441/file",
+   "title": "Ordinance No. 19-8(1), An Ordinance to Amend Chapter 8, Licenses (proposed final ordinance, Attachment B to Board of Supervisors agenda item of April 17, 2019; Legistar matter 3564)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14127/file",
+   "title": "Proposed Ordinance No. 22-8 & 22-15, amending County Code § 8-201 and § 15-106 (Attachment A, Board of Supervisors agenda of November 2, 2022; Legistar matter 22-450)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/attachments/14128/file",
+   "title": "Proposed Ordinance No. 22-8, amending Chapter 8, Division 7, Schedule of Taxes, effective January 1, 2023 (Attachment B, Board of Supervisors agenda of November 2, 2022; Legistar matter 22-450)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7194/texts/7317",
+   "title": "Executive summary, An Ordinance to Amend County Code Chapter 8, Licenses, and Chapter 15, Taxation (Board of Supervisors agenda of November 2, 2022; Legistar Web API)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7225",
+   "title": "Legistar matter 22-481, An Ordinance to Amend County Code Chapter 8, Licenses (Division 7 renumbering, effective January 1, 2023; Board of Supervisors agenda of November 2, 2022; no action recorded in the Legistar Web API)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3494/texts/3591",
+   "title": "Executive summary, Ordinance to Amend County Code Chapter 8, Licenses (Board of Supervisors agenda of February 20 / March 6, 2019; Legistar Web API)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.tax.virginia.gov/administrative-appeals",
+   "title": "Administrative Appeals | Virginia Tax",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.vacourts.gov/courts/circuit/albemarle/home",
+   "title": "Albemarle Circuit Court | Virginia Court System",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "title": "Va. Code § 15.2-521",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "title": "Va. Code § 54.1-1111",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "title": "Va. Code § 58.1-3700",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "title": "Va. Code § 58.1-3700.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "title": "Va. Code § 58.1-3703",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "title": "Va. Code § 58.1-3703.1",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.2/",
+   "title": "Va. Code § 58.1-3703.2",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "title": "Va. Code § 58.1-3706",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3714/",
+   "title": "Va. Code § 58.1-3714",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3715/",
+   "title": "Va. Code § 58.1-3715",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3717/",
+   "title": "Va. Code § 58.1-3717",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "title": "Va. Code § 58.1-3984",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/59.1-69/",
+   "title": "Va. Code § 59.1-69",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/59.1-74/",
+   "title": "Va. Code § 59.1-74",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 100,
+  "quotes_confirmed": 100,
+  "removed": [],
+  "corrections": [
+   "legal_basis Va. Code § 58.1-3706(A): the quote started mid-sentence, after the words that make it a prohibition, so it read as the opposite of the statute (no license tax below $100,000 here). Replaced with the statute's next sentence (a business over $100,000 may be taxed at up to the listed rates); role changed to fee.",
+   "s1: added the single-license election for several businesses at one place of business (Va. Code § 58.1-3703.1(A)(1); County Code § 8-200(C)), with a state and a local legal_basis quote, and a caveat that the county's page does not mention it.",
+   "s2: the Home Occupations page says a Home Occupation Clearance must be approved before the business starts, and a Class B home occupation in a residential district needs a special use permit; the clearance types now match the zoning page (including that farm production and wine, beer or spirits production, sales and tastings need no clearance). Filled the deadline and fee, added form f6 (Home Occupations application) and four fees from the Community Development fee schedule.",
+   "County Code § 8-201(A), (B), (C) and (D)(2), and s11: the same words are in the 2019 text of Ordinance No. 19-8(1), whose adoption on April 17, 2019 the county's 2022 documents record, so these now cite that text; they no longer depend on the unconfirmed 2022 adoption. § 8-201(D)(1) stays on the 2022 text and notes the 2019 wording (\"10 percent\").",
+   "s9: added the in-person drop-off at the McIntire Road office building during business hours, which the 2026 renewal form lists.",
+   "s10: the county's renewal and deadlines pages say a business at $25,000 or less needs to (must) file; only the FAQ says it is advised to. The step had said the county only asks; reworded.",
+   "s11 deadline: neither the law nor the county's pages fix a time for asking for an extension, and a new business's legal due date is before it begins, not 30 days after; reworded.",
+   "s12: the County Code says the Director of Finance may impose the 10% penalty; the step now says the forms state it, not that it is automatic.",
+   "s14 and escalation rung 2: suspension of collection during a local appeal has three exceptions (jeopardy, no response to a request for information, frivolous appeal) under § 58.1-3703.1(A)(5)(d) and County Code § 8-204(E); added, with no further penalty while suspended.",
+   "Escalation rung 9: the taxpayer first notifies the Director of Finance, who must try in good faith to reach an apportionment agreement; either side may then seek the advisory opinion (§ 58.1-3703.1(A)(3)(c)).",
+   "Summary: no longer presents the 30-day window as the rule; it notes that state law and the County Code say to apply before starting.",
+   "Fees for the retail, direct retail, other-business, wholesale and rental rates: basis now notes the same rates are in the 2019 enacted text, so the amounts do not depend on the 2022 renumbering.",
+   "Caveats: rewrote the local-law caveat (verifier's judgement on the Legistar Web API, Legistar matter 22-481 for the Division 7 renumbering, no action recorded for either 2022 matter, no later Chapter 8 matter found); added the new business form's two labels for the 30-day penalty, the single-license option, the zoning fee mapping, the albemarle.org terms of use, and the department main line in the privacy caveat; updated the separate-processes caveat now that the home occupation page was read.",
+   "Sources: added the Home Occupations page, the Community Development Fees page, the albemarle.org Terms and Conditions (Internet Archive copies) and Legistar matter 22-481."
+  ],
+  "open_issues": [
+   "www.albemarle.org still returns HTTP 403 to this client (robots.txt included, 2026-10-11). All 22 county-page and county-form quotes were confirmed word for word against Internet Archive copies (March to August 2026); the Internet Archive index shows the 2026-08-13/14 captures are the newest for the business license pages. Re-check the live pages, and the 2027 forms when they appear.",
+   "The current County Code text (Municode) was not read because of that site's terms. Adoption of the November 2, 2022 ordinances (Legistar matters 22-450 and 22-481) is not recorded in the Legistar Web API; this affects only the Division 7 section numbers and \"ten\" versus \"10\" percent in § 8-201(D)(1), not any amount or step.",
+   "Policy judgement for the user: the 18 County Code quotes in legal_basis, the s6 and s11 quotes and 8 fee quotes come from Legistar attachments read through the Legistar Web API (no robots.txt; published by Granicus for programmatic reads of public items) rather than albemarle.legistar1.com, whose robots.txt disallows crawlers. The verifier judged this acceptable. If the user disagrees, those quotes should come out.",
+   "County practice and law differ on the new-business deadline (30 days versus before beginning business) and the new-business payment date for a rate-based tax (due on application, June 15 or June 16, or 30 days after a late application). The steps state both; ask the office which applies.",
+   "The fee schedule does not name the business-in-commercial-space zoning clearance; the $60 \"All other uses\" fee is the closest match, not a confirmed fee for it.",
+   "No statute or county page was found giving a specific appeal from a refusal to issue a license; judicial remedies were not researched.",
+   "The albemarle.org terms of use bar reusing or reposting site content without written permission; whether publishing short quoted passages needs permission is for the user to decide.",
+   "Not opened or submitted: the Business Tax portal, the Microsoft Forms digital renewal, the Civic Access zoning portal and the booking page; what they ask for is unknown."
+  ]
+ }
+}

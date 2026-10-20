@@ -1,0 +1,1583 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "topic": "glass studio (hot shop with gas furnace, glory hole, kilns, torches, oxygen and propane; cold-working; public classes; optional cafe and sip-and-blow events)",
+ "government": "County of Albemarle, Virginia (county executive form of government; the City of Charlottesville is a separate independent city)",
+ "official_site": "https://www.albemarle.org",
+ "researched": "2026-10-19",
+ "researched_by": "Claude (lexflow agent), read-only research; discovery list for the glass_studio_* process files, not a verified answer set",
+ "method": "Every request used the User-Agent lexflow-research/0.1 (https://github.com/alibama/lexflow), obeyed robots.txt, and waited at least 1.5 s per host and 5 s between requests to web.archive.org. www.albemarle.org (Granicus behind Akamai) and serviceauthority.org answer 403 to automated clients, so their pages and PDFs were read from the newest Internet Archive capture found through the Wayback availability API; the capture URL is recorded for each page. abc.virginia.gov and deq.virginia.gov also refuse automated clients and their newest captures are from 2023 and 2011, so their statements rest on the Code of Virginia and the Virginia Administrative Code (law.lis.virginia.gov, read live). vdh.virginia.gov (Blue Ridge Health District), law.lis.virginia.gov, columbiagasva.com and dominionenergy.com were read live. Municode (County Code, including Chapter 18 Zoning Ordinance and Chapter 17 Water Protection Ordinance) was not fetched because its terms forbid automated access and republication; sections are cited by number only. No browser, forms, logins or submissions were used; the Civic Access portal, Fire Rescue web forms, ACSA service request and ABC licensing portal were not opened. Docker was down, so no quote was matched against the lexflow index; every quote in the process files is marked source: official-page.",
+ "processes": [
+  {
+   "id": "glass_studio_overview",
+   "file": "curated/places/va/albemarle/glass_studio_overview.json",
+   "title": "Open a glass studio in Albemarle County: the master path and decision points",
+   "office": "Community Development Department (pre-application meeting first), Fire Rescue, Finance & Budget, Blue Ridge Health District, ACSA",
+   "urls": [
+    "https://www.albemarle.org/government/community-development/request/pre-application-meeting",
+    "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances",
+    "https://www.albemarle.org/government/community-development/community-development-fees"
+   ]
+  },
+  {
+   "id": "glass_studio_zoning_use",
+   "file": "curated/places/va/albemarle/glass_studio_zoning_use.json",
+   "title": "Zoning for a glass studio: districts, home occupations, special use permits, site plans and the Zoning Clearance",
+   "office": "Community Development Zoning and Planning Divisions; Planning Commission; Board of Supervisors; Board of Zoning Appeals",
+   "urls": [
+    "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+    "https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+    "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/special-use-permits-sp",
+    "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/site-development-plans-sdp-initial-final-major-or-minor-amendment-letter-of-revision",
+    "https://www.albemarle.org/government/community-development/apply-for/sign-permits",
+    "https://library.municode.com/va/albemarle_county/codes/code_of_ordinances?nodeId=CH18ZO"
+   ]
+  },
+  {
+   "id": "glass_studio_building_mechanical",
+   "file": "curated/places/va/albemarle/glass_studio_building_mechanical.json",
+   "title": "Commercial building, mechanical (fuel gas), electrical and plumbing permits through the certificate of occupancy",
+   "office": "Community Development Building Inspections (Civic Access portal)",
+   "urls": [
+    "https://www.albemarle.org/government/community-development/apply-for/building-permit/commercial-building-permits",
+    "https://www.albemarle.org/government/community-development/know-before-you-apply",
+    "https://www.albemarle.org/government/community-development/apply-for/building-permit"
+   ]
+  },
+  {
+   "id": "glass_studio_fire_permits",
+   "file": "curated/places/va/albemarle/glass_studio_fire_permits.json",
+   "title": "Fire Marshal operational permits: hot work, compressed gases, LP-gas, industrial ovens, places of assembly, open flames, tents",
+   "office": "Albemarle County Fire Rescue, Community Risk & Resilience (Fire Marshal's Office)",
+   "urls": [
+    "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections",
+    "https://www.albemarle.org/home/showpublisheddocument/1112/638531067812470000",
+    "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/"
+   ]
+  },
+  {
+   "id": "glass_studio_business_license",
+   "file": "curated/places/va/albemarle/glass_studio_business_license.json",
+   "title": "Business license (BPOL), business tangible property or machinery and tools tax, County tax registrations",
+   "office": "Department of Finance & Budget, Office of Revenue Administration",
+   "urls": [
+    "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+    "https://www.albemarle.org/government/finance/business-license-taxes/business-tangible-personal-property-machinery-and-tools",
+    "https://www.albemarle.org/government/finance-and-budget/business/tax-rates"
+   ]
+  },
+  {
+   "id": "glass_studio_food_and_events",
+   "file": "curated/places/va/albemarle/glass_studio_food_and_events.json",
+   "title": "Cafe, sip-and-blow events and gatherings: Health District food permit, food and beverage tax, ABC license, temporary events",
+   "office": "Blue Ridge Health District (Charlottesville/Albemarle office); Office of Revenue Administration; Virginia ABC; Fire Rescue; ACSA",
+   "urls": [
+    "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+    "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+    "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+    "https://law.lis.virginia.gov/vacode/4.1-206.3/"
+   ]
+  },
+  {
+   "id": "glass_studio_utilities_and_environment",
+   "file": "curated/places/va/albemarle/glass_studio_utilities_and_environment.json",
+   "title": "Water, sewer and grease (ACSA), well and septic, propane and natural gas, stormwater and land disturbance, DEQ air rules",
+   "office": "ACSA; Blue Ridge Health District; Community Development Engineering; Fire Rescue; DEQ",
+   "urls": [
+    "https://serviceauthority.org/connection-charges/",
+    "https://serviceauthority.org/compliance-programs/",
+    "https://www.albemarle.org/government/community-development/know-before-you-apply",
+    "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/"
+   ]
+  }
+ ],
+ "pages_read": [
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section10/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-10. Definitions."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3610/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-3610. Contents of the plans and specifications."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3620/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-3620. When a HACCP plan is required."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3630/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-3630. Contents of a HACCP plan."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3660/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-3660. Permits."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section40/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC5-421-40. Administration of regulation."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section101/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-51-101. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section61/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-51-61. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section71/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-51-71. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section81/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-51-81. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter51/section91/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-51-91. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section10/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-10. Chapter 1 Administration; Section 101 Scope."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section100/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-100. Section 110 Unsafe conditions."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section110/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-110. Section 111 Violations."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section120/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-120. Section 112 Appeals."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section20/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 8.01-581.15:1. Medical malpractice information disclosures"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section30/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-30. Section 103 Incorporation by reference."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section40/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-40. Section 104 Enforcement."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section50/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-50. Section 105 Enforcing agency."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section60/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-60. Section 106 Duties and powers of the fire official."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-70. Section 107 Permits and fees."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section80/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-80. Section 108 Operational permits."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section90/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-52-90. Section 109 Inspection."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section100/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-100. Section 110 Permits."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section130/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-130. Section 113 Inspections."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-160. Section 116 Certificates of occupancy."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-190. Section 119 Appeals."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section20/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-20. Section 102 Purpose and scope."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section270/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-270. Chapter 16 Structural design."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section30/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-30. Section 103 Application of code."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section70/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-70. Section 107 Fees."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "13VAC5-63-80. Section 108 Application for permit."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency25/chapter875/section60/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "9VAC25-875-60. Applicability."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1100/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "9VAC5-80-1100. Applicability."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "9VAC5-80-1105. Permit exemptions."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1110/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "9VAC5-80-1110. Definitions."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1320/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "9VAC5-80-1320. (Repealed.)"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/10.1-1308/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 10.1-1308. Regulations"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2200/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2200. Declaration of legislative intent"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2204/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2204. Advertisement of plans, ordinances, etc.; joint public hearings; written notice of certain amendments"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2209/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2209. Civil penalties for violations of zoning ordinance"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2280/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2280. Zoning ordinances generally"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2283/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2283. Purpose of zoning ordinances"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2285/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2285. Preparation and adoption of zoning ordinance and map and amendments thereto; appeal"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2286. (Effective January 1, 2027; Effective until January 1, 2031) Permitted provisions in zoning ordinances; amendments; applicant to pay delinquent tax"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2288.3/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2288.3. Licensed farm wineries; local regulation of certain activities"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2309/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2309. Powers and duties of boards of zoning appeals"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 15.2-2311. Appeals to board"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-100/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 27-100. Violation a misdemeanor"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-96.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 27-96.1. Chapter inapplicable to certain uses of fireworks"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-97/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 27-97. Adoption of Fire Prevention Code"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-98.2/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 27-98.2. Issuance of warrant"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-98/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 27-98. Enforcement of Fire Prevention Code; appeals from decisions of local enforcing agencies; inspection of buildings"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 35.1-1. Definitions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-14/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 35.1-14. Regulations governing restaurants; advisory standards for exempt entities"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 35.1-18. License required; name in which issued; not assignable or transferable"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-22/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 35.1-22. Periodic inspections"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-25/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "12VAC35-105-1550. Clinically managed high-intensity residential services&nbsp;Level of care 3.5&nbsp;admission criteria."
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 36-105. Enforcement of Code; appeals from decisions of local department; inspection of buildings; inspection warrants; inspection of elevators; issuance of pe"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-106/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 36-106. Violation a misdemeanor; civil penalty"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-114/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 36-114. Board to hear appeals"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-98/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 36-98. Board to promulgate Statewide Code; other codes and regulations superseded; exceptions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-100/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-100. (Effective October 1, 2026) Definitions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-206.1. (Effective July 1, 2028) Manufacturer licenses"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-206.3. Retail licenses"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-209.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-209.1. Direct shipment of wine and beer; shipper's license"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-227/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-227. Suspension or revocation of licenses; notice and hearings; imposition of penalties"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-230/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-230. Applications for licenses; publication; notice to localities; fees; permits"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 4.1-231.1. Fees on state licenses"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 54.1-1111. Prerequisites to obtaining business license; building, etc., permit"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3503/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3503. General classification of tangible personal property"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3507. Certain machinery and tools segregated for local taxation only; notice prior to change in valuation, hearing"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3518. Taxpayers to file returns"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3700.1. Definitions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3700. License requirement; requiring evidence of payment of business license, business personal property, meals and admissions taxes; license revocation"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3701/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3701. Department to promulgate guidelines"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3703.1. Uniform ordinance provisions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3703. Counties, cities and towns may impose local license taxes and fees; limitation of authority"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3706. Limitation on rate of license taxes"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3833. County food and beverage tax"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3840. Certain excise taxes permitted"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 58.1-3916. Counties, cities, and towns may provide dates for filing returns and set penalties, interest, etc"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/62.1-44.15:34/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 62.1-44.15:34. Regulated activities; submission and approval of a permit application; security for performance; exemptions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/62.1-44.15:51/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 62.1-44.15:51. Definitions"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/62.1-44.15:54/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 62.1-44.15:54. Virginia Erosion and Sediment Control Program"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/62.1-44.15:55/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "§ 62.1-44.15:55. Regulated land-disturbing activities; submission and approval of erosion and sediment control plan"
+  },
+  {
+   "url": "https://serviceauthority.org/compliance-programs/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260306072930/https://serviceauthority.org/compliance-programs/",
+   "capture_date": "20260306",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Compliance Programs | ACSA"
+  },
+  {
+   "url": "https://serviceauthority.org/connection-charges/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260410094715/https://serviceauthority.org/connection-charges/",
+   "capture_date": "20260410",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Connection Charges | ACSA"
+  },
+  {
+   "url": "https://serviceauthority.org/fats-oils-grease-program/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://serviceauthority.org/new-construction-guidelines/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515225354/https://serviceauthority.org/new-construction-guidelines/",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "New Construction Guidelines | Albemarle County Service Authority"
+  },
+  {
+   "url": "https://serviceauthority.org/new-customer-packet/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://serviceauthority.org/rates-and-billing/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20261007143737/https://serviceauthority.org/rates-and-billing/",
+   "capture_date": "20261007",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "ACSA Rates & Billing"
+  },
+  {
+   "url": "https://serviceauthority.org/rules-regulations/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://serviceauthority.org/start-stop-service/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515230749/https://serviceauthority.org/start-stop-service/",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Start or Stop Service | ACSA"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/get-a-license",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20231130044231/https://www.abc.virginia.gov/licenses/get-a-license",
+   "capture_date": "20231130",
+   "read_note": "read from an Internet Archive copy because the live request returned HTTP 403",
+   "title": "Get a Virginia ABC License"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/get-a-license/banquet-licenses",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20230930014404/https://www.abc.virginia.gov/licenses/get-a-license/banquet-licenses",
+   "capture_date": "20230930",
+   "read_note": "read from an Internet Archive copy because the live request returned HTTP 403",
+   "title": "Get a Virginia ABC Banquet License"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/get-a-license/license-types",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 403,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/about-us/divisions/zoning",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172719/https://www.albemarle.org/government/community-development/apply-for/building-permit",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Building Permits | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/building-permit/commercial-building-permits",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260316083852/https://www.albemarle.org/government/community-development/apply-for/building-permit/commercial-building-permits",
+   "capture_date": "20260316",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Commercial Building Permits | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260612080259/https://www.albemarle.org/government/community-development/apply-for/home-occupations",
+   "capture_date": "20260612",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Home Occupations | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260417124851/https://www.albemarle.org/government/community-development/apply-for/planning-site-development",
+   "capture_date": "20260417",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Planning, Subdivision, & Site Development | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/site-development-plans-sdp-initial-final-major-or-minor-amendment-letter-of-revision",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260412201844/https://www.albemarle.org/government/community-development/apply-for/planning-site-development/site-development-plans-sdp-initial-final-major-or-minor-amendment-letter-of-revision",
+   "capture_date": "20260412",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Site Development Plans | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/site-plans",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/special-use-permits-sp",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260508082447/https://www.albemarle.org/government/community-development/apply-for/planning-site-development/special-use-permits-sp",
+   "capture_date": "20260508",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Special Use Permits | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/water-protection-ordinance-wpo",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/planning-site-development/zoning-map-amendments-zma",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260612084730/https://www.albemarle.org/government/community-development/apply-for/planning-site-development/zoning-map-amendments-zma",
+   "capture_date": "20260612",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Zoning Map Amendments | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/sign-permits",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260417121940/https://www.albemarle.org/government/community-development/apply-for/sign-permits",
+   "capture_date": "20260417",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Sign Permit | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/special-exceptions-variations-waivers",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260414092037/https://www.albemarle.org/government/community-development/apply-for/special-exceptions-variations-waivers",
+   "capture_date": "20260414",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Special Exceptions, Variations & Exceptions | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/water-protection-ordinance",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/water-protection-ordinance-wpo",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260924052545/https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances",
+   "capture_date": "20260924",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Clearances & Certification | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260316083537/https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/clearance",
+   "capture_date": "20260316",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Zoning Clearance | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/compliance",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260317093036/https://www.albemarle.org/government/community-development/apply-for/zoning-clearances-compliances/compliance",
+   "capture_date": "20260317",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Zoning Compliance | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/apply-for/zoning-determinations-appeals-variances/determinations-and-appeals",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260512061612/https://www.albemarle.org/government/community-development/apply-for/zoning-determinations-appeals-variances/determinations-and-appeals",
+   "capture_date": "20260512",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Zoning Determinations and Appeals | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/community-development-fees",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260820023121/https://www.albemarle.org/government/community-development/community-development-fees",
+   "capture_date": "20260820",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Community Development Fees | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/forms-library",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172932/https://www.albemarle.org/government/community-development/forms-library",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Forms Library | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260813134029/https://www.albemarle.org/government/community-development/know-before-you-apply",
+   "capture_date": "20260813",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Application Requirements  | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/development-areas",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/entrance-corridors",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260305014234/https://www.albemarle.org/government/community-development/learn-more-about/entrance-corridors",
+   "capture_date": "20260305",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Entrance Corridors | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/farm-wineries-breweries-distilleries",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/home-occupations",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515204741/https://www.albemarle.org/government/community-development/learn-more-about/home-occupations",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Home Occupations | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/rural-area",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/rural-areas",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/learn-more-about/zoning-districts",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260815081834/https://www.albemarle.org/government/community-development/planning-codes",
+   "capture_date": "20260815",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Planning & Codes | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/building-code",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/comprehensive-plan",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172920/https://www.albemarle.org/government/community-development/planning-codes/comprehensive-plan",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Comprehensive Plan (AC44) | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/zoning",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/planning-codes/zoning-ordinance",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/community-development/request/pre-application-meeting",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172556/https://www.albemarle.org/government/community-development/request/pre-application-meeting",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Pre-Application Meeting | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172920/https://www.albemarle.org/government/county-attorney/county-code",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "County Code | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/facilities-environmental-services/environmental-services",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260827111914/https://www.albemarle.org/government/facilities-environmental-services/environmental-services",
+   "capture_date": "20260827",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Environmental Services | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/other-consumer-taxes",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260612084852/https://www.albemarle.org/government/finance-and-budget/business/other-consumer-taxes",
+   "capture_date": "20260612",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Other Consumer Taxes | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260417115958/https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "capture_date": "20260417",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Tax Rates | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260813134034/https://www.albemarle.org/government/finance/business-license-taxes",
+   "capture_date": "20260813",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Business License & Taxes | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/business-tangible-personal-property-machinery-and-tools",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260612080041/https://www.albemarle.org/government/finance/business-license-taxes/business-tangible-personal-property-machinery-and-tools",
+   "capture_date": "20260612",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Business Tangible Personal Property & Machinery and Tools | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260813133605/https://www.albemarle.org/government/finance/business-license-taxes/existing-businesses",
+   "capture_date": "20260813",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Existing Businesses | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172555/https://www.albemarle.org/government/finance/business-license-taxes/food-beverage",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Food & Beverage | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172833/https://www.albemarle.org/government/finance/business-license-taxes/start-a-business",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Start a Business | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260820023121/https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency",
+   "capture_date": "20260820",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Community Risk & Resilience | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/open-burning-map-guidelines",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260416202451/https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/open-burning-map-guidelines",
+   "capture_date": "20260416",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Open Air Burning Guidelines | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172925/https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Permits & Inspections | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections/fire-prevention-permit-application-general",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515202420/https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections/fire-prevention-permit-application-general",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Fire Prevention Permit Application - General | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections/fire-prevention-permit-application-tent",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515203005/https://www.albemarle.org/government/fire-rescue/community-risk-reduction-resiliency/permits-inspections/fire-prevention-permit-application-tent",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Fire Prevention Permit Application - Tent | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/community-risk-resilience/fire-marshal-s-office",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/government/fire-rescue/payments",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260813134029/https://www.albemarle.org/government/fire-rescue/payments",
+   "capture_date": "20260813",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Payments | Albemarle County, VA"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/1112/638531067812470000",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515200315/https://www.albemarle.org/home/showpublisheddocument/1112/638531067812470000",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "PDF"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/4744/638512968066770000",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515202222/https://www.albemarle.org/home/showpublisheddocument/4744/638512968066770000",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "PDF"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/792/637207596678570000",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260515202836/https://www.albemarle.org/home/showpublisheddocument/792/637207596678570000",
+   "capture_date": "20260515",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "PDF"
+  },
+  {
+   "url": "https://www.albemarle.org/how-do-i/inspections-and-permits/burn-permits",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.albemarle.org/how-do-i/licensing/business-license",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.columbiagasva.com/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Home - Columbia Gas of Virginia"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/air/permitting",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20111207221903/http://www.deq.virginia.gov/air/permitting/",
+   "capture_date": "20111207",
+   "read_note": "read from an Internet Archive copy because the live request returned HTTP 403",
+   "title": "Virginia DEQ - Air Quality Home - Air Permit Home"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/our-programs/air/air-permits",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 403,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/permits-regulations/permits/air",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20230601033619/https://www.deq.virginia.gov/permits-regulations/permits/air",
+   "capture_date": "20230601",
+   "read_note": "read from an Internet Archive copy because the live request returned HTTP 403",
+   "title": "Air | Virginia DEQ"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/permits/air",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20250815105532/https://www.deq.virginia.gov/permits/air",
+   "capture_date": "20250815",
+   "read_note": "read from an Internet Archive copy because the live request returned HTTP 403",
+   "title": "Air | Virginia DEQ"
+  },
+  {
+   "url": "https://www.deq.virginia.gov/permits/air/permits-and-registration",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 403,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.dominionenergy.com/virginia/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Virginia | Dominion Energy"
+  },
+  {
+   "url": "https://www.dpor.virginia.gov/boards/contractors",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Board for Contractors | Virginia Department of Professional and Occupational Regulation"
+  },
+  {
+   "url": "https://www.serviceauthority.org/",
+   "retrieved": "2026-10-19",
+   "read": "internet-archive",
+   "capture": "http://web.archive.org/web/20260814172829/https://serviceauthority.org/",
+   "capture_date": "20260814",
+   "read_note": "official page read from an Internet Archive copy because the site refuses automated requests",
+   "title": "Home | Albemarle County Service Authority"
+  },
+  {
+   "url": "https://www.serviceauthority.org/business",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.serviceauthority.org/customers/new-connections",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.serviceauthority.org/customers/new-service",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.serviceauthority.org/customers/start-stop-service",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.serviceauthority.org/engineering/new-connections",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": null,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Blue Ridge Health District - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-foodservice-permit-to-operate/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Applying for Foodservice Permits to Operate - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Applying for New Foodservice Facility Permit - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Environmental Health - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/applying-for-foodservice-permits-to-operate/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/district-environmental-health-fee-schedule/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/food-safety/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Safety at Home - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/food-safety-inspection-types/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Safety Inspection Types - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/food-safety/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Safety at Home - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/quick-access-to-applications-2/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Quick Access to Applications - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/resources-for-foodservice-operators/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Resources for Foodservice Operators - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Temporary Events - Blue Ridge"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "PDF"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/196/Foodservice.Application.Fillable.june-2026.pdf",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "PDF"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Safety in Virginia - Environmental Health"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-establishment-permit/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-establishment-permits/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-establishment-regulations/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/food-regulations/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Regulations Update 2026 - Environmental Health"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/plan-review/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/starting-a-food-business/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/temporary-food-establishment-permit/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/temporary-food-establishment/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/temporary-food-establishments/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety/",
+   "retrieved": "2026-10-19",
+   "read": "live",
+   "http": 200,
+   "title": "Food Safety Basics - Environmental Health"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety/opening-a-food-establishment/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety/temporary-events/",
+   "retrieved": "2026-10-19",
+   "read": "unavailable",
+   "http": 404,
+   "read_note": "no archive capture"
+  }
+ ],
+ "pages_read_counts": {
+  "live": 104,
+  "internet-archive": 50,
+  "unavailable": 39,
+  "not-fetched": 0
+ },
+ "code_of_ordinances": {
+  "publisher": "Municode Library (Municipal Code Corporation, a CivicPlus company)",
+  "url": "https://library.municode.com/va/albemarle_county/codes/code_of_ordinances",
+  "note": "Not fetched: Municode's terms forbid automated access and republication (see fixtures/places/va/discovery-albemarle.json). Chapter 18 (Zoning Ordinance) sections cited in the process files: § 3.1 definitions, § 4.14 performance standards, § 4.15 signs, § 5.2 home occupations, § 10 Rural Areas, §§ 22 to 24 commercial districts, §§ 27 and 28 industrial districts, § 32 site plans, § 33 (33.9 special exceptions, 33.14 and 33.31 pre-application meetings, 33.16 supplemental information). Chapter 17 (Water Protection Ordinance) governs land disturbance. Chapter 8 (Licenses) is quoted from the 2019 ordinance on the County's Legistar API, as in bpol_business_license. The County's own PDF of Chapter 5 (Building Regulations, Supp. #39) is cited in building_permit_residential."
+ },
+ "website_terms": {
+  "url": "https://www.albemarle.org/government/terms-and-conditions",
+  "summary": "albemarle.org allows browsing for informational purposes but forbids redistributing or reposting site content without written permission (see fixtures/places/va/discovery-albemarle.json). Every albemarle.org quote in the glass_studio_* files is short, is kept only as evidence, and carries a paraphrase for display."
+ },
+ "key_findings": [
+  "Front door: the free Monday pre-application meeting with Community Development (cdd-preapps@albemarle.org; request in Civic Access with a sketch plan by noon Monday), mandatory before a special use permit, exploratory for everything else.",
+  "Zoning: every commercial or industrial business needs a Zoning Clearance ($60 plus 4%) before a tenant up-fit building permit and before any sign permit; a new building needs an approved site development plan ($1,775 plus 4%); special use permits are $2,365 plus 4% plus a $235 notice fee; a Letter of Determination on use classification is $220 plus 4%; Rural Areas home occupations are capped at 25% of the dwelling or 1,500 sq. ft., 10 vehicle trips a day, two employees, and exclude any use needing a special use permit and restaurants.",
+  "Building: Civic Access commercial permits (new commercial $0.24 per sq. ft. up to 5,000 then $0.17; alterations $0.20 per sq. ft.; mechanical $0.04 per sq. ft.; gas lines $40; change of occupancy $175; temporary CO $150 per 30 days; 4% surcharge); life-safety plan required; each trade files its own sub-permit; CO within five working days of the final inspection.",
+  "Fire: Albemarle enforces the SFPC; its 2022 Fire Marshal fee schedule requires operational permits for compressed gas (oxygen over 504 cu. ft.), hot work, LP-gas (any business storage), industrial ovens, places of assembly over 50 and open flames in dining areas, mostly $200 a year per location; facility inspection free for two hours then $100 an hour; re-inspection $100; appeals within 14 days to the local fire code board ($350).",
+  "Business license: Finance & Budget (no Commissioner of the Revenue); apply by email or mail; $0 under $25,000, $50 to $100,000, then $0.20 (retail) or $0.36 (services) per $100; manufacturers selling at wholesale at the place of manufacture are exempt by state law; BTPP or machinery and tools return by May 1 at $4.28 per $100 (25% of cost in year one).",
+  "Food and drink: Blue Ridge Health District plan review and permit before construction and 30 days before opening ($80 on the page; $40 plus $40 on the 2019 schedule), CO required first, pre-opening inspection with a certified food manager; County 6% food and beverage tax by the 20th monthly; ABC $195 application plus $450 (wine and beer) or $1,050 (mixed beverage, up to 100 seats) a year, or $40 banquet license per event; County ABC flat fee $37.50 to $500.",
+  "Utilities and environment: ACSA needs a signed building permit before a meter, charges system development and RWSA capacity fees, and requires a FOG device and permit for food service; well and septic through the Health District ($350 well, $525 septic); propane tank needs a $120 mechanical permit and the LP-gas fire permit; land disturbance over 10,000 sq. ft. needs a VESMP permit ($235 plus 4% under an acre, $2,205 plus 4% to five acres); gas-fired furnaces under 50,000,000 Btu per hour are exempt from DEQ minor NSR permits."
+ ],
+ "gaps": [
+  "The Zoning Ordinance use name and district table for a hot glass studio (Municode not read); the County publishes no page on artisan or craft manufacturing.",
+  "Whether the Fire Marshal classes a glass furnace and glory hole as industrial ovens, hot work or both, and the exact fee per line (scanned fee table).",
+  "The County's BPOL and machinery-and-tools classification of a studio that makes, sells and teaches.",
+  "The current Blue Ridge Health District food permit fee ($80 on the June 2026 page versus $40 plus $40 on the 2019 schedule) and ACSA FOG permit fees.",
+  "Which ABC license fits a studio serving wine and beer at ticketed classes without being a full restaurant (abc.virginia.gov unreadable; 2023 capture only).",
+  "DEQ's view of a studio's furnace and colorants (deq.virginia.gov unreadable; 2011 and 2023 captures only).",
+  "ACSA connection charge amounts (table not read cleanly), natural gas availability by parcel, and the Water Protection Ordinance thresholds (Municode).",
+  "The 2027 Community Development fee schedule adopted April 22, 2026 (amounts not read).",
+  "Pages with no usable Internet Archive capture: Fire Marshal's Office page, Building Code and Zoning pages under Planning & Codes, Water Protection Ordinance page, Rural Area and Development Areas pages, Farm Wineries page, Zoning Districts page, Business License How-Do-I page, ACSA New Customer Packet and FOG pages, several VDH statewide food pages (404)."
+ ],
+ "privacy_note": "County, Health District and ACSA pages name individual staff (pre-application coordinator, planners, zoning administrators, a Fire Rescue permits contact, a VDH page author). None is recorded in the process files; only office lines, role mailboxes, portals and pages are kept."
+}

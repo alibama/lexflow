@@ -227,7 +227,7 @@
    "fee": "Zoning permit $50.00; special use permit $250.00; sign permit per fee schedule (see glass_studio_zoning_use)",
    "form": null,
    "url": "https://www.ci.staunton.va.us/departments/community-development/apply-online",
-   "quote": "Starting on May 5th. All new permit applications will be entered into the Online Portal .",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -528,7 +528,8 @@
   "The building code occupancy classification of a hot shop with a gallery and classroom (factory, mercantile, business, educational or assembly, or a mix) and whether a sprinkler, exhaust or separation is required are design questions decided in plan review by the Building Official; they are not researched here.",
   "The Fire Marshal's local fee schedule (§ 15.25.055) lists LP-gas, hazardous materials, flammable and combustible liquids, explosives, pyrotechnics, tents and a few other permits, but no entries for compressed gases, hot work, industrial ovens, open flames or places of assembly, which the state code lists as permits the fire official may require. Whether Staunton requires them, and at what fee, was not confirmed.",
   "Staff names and personal mailboxes printed on city pages and forms are omitted; only office lines, office addresses and role mailboxes are recorded.",
-  "The Economic Development office's incentive rules and applications are not on the pages read; the Start a Business page's description of the Enterprise Zone is from a 2026 capture of a page whose program details may have changed."
+  "The Economic Development office's incentive rules and applications are not on the pages read; the Start a Business page's description of the Enterprise Zone is from a 2026 capture of a page whose program details may have changed.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Get the zoning approvals (zoning permit, special use permit if needed, Certificate of Appr' (https://www.ci.staunton.va.us/departments/community-development/apply-online) were not found on the cited page as lexflow read it (not found word for word in the Internet Archive copy of 10 June 2026 of the cited page, read on 11 October 2026). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -723,19 +724,26 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
-  "removed": [],
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 36,
+  "quotes_confirmed": 35,
+  "removed": [
+   {
+    "where": "steps[4]",
+    "what": "the step 'Get the zoning approvals (zoning permit, special use permit if needed, Certificate of Appr'",
+    "why": "not found word for word in the Internet Archive copy of 10 June 2026 of the cited page, read on 11 October 2026"
+   }
+  ],
   "corrections": [],
   "open_issues": [
    "Every step and fee quote is marked source: official-page because the local quote index (Docker) was down; match them against the Internet Archive captures listed in sources.",
    "Which zoning district and listed use fit a hot shop with classes, and whether a special use permit is needed, can only be settled by Planning & Zoning.",
    "Whether the Fire Marshal requires compressed gas, hot work, industrial oven, open flame or place of assembly permits (and the fees) can only be settled by the Fire Marshal's Office.",
    "The occupancy classification and the sprinkler, exhaust and separation requirements for the hot shop are design decisions made in plan review."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

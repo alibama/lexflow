@@ -86,7 +86,7 @@ function store(key, value) {
 // -------------------------------------------------------------- app state
 const S = {
   meta: null, question: store("lexflow-q") || "records", layer: store("lexflow-layer") || "confidence",
-  version: -1, running: 0, current: null, focus: null, county: null, topo: null, tableView: false,
+  version: -1, running: 0, current: null, focus: null, county: null, topo: null, tableView: false, params: new URLSearchParams(),
 };
 let refreshers = [];          // called when the data version changes
 function onRefresh(fn) { refreshers.push(fn); }
@@ -119,7 +119,10 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
   jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute };
 async function route() {
-  const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
+  // #/page/arg?key=value: the query part never reaches the page's arguments; pages read it from S.params
+  const [hashPath, query = ""] = (location.hash || "#/map").split("?");
+  S.params = new URLSearchParams(query);
+  const [, name = "map", ...rest] = hashPath.split("/");
   refreshers = [];
   hideTip();
   for (const a of document.querySelectorAll("nav.tabs a")) {
@@ -213,20 +216,40 @@ function showTip(evt, nodes) {
 function hideTip() { tip.classList.remove("show"); }
 
 // ================================================================== MAP
+// Scored layers read the question's answers; holdings layers (kind "holdings") read what lexflow holds now:
+// state models and asked drafts, the latest coverage run, researched localities, the Wikibase, the statute index.
 const LAYERS = {
   confidence: { label: "Answer confidence", scope: "county", bins: [0.2, 0.35, 0.5, 0.65],
-    labels: ["under 0.20", "0.20–0.35", "0.35–0.50", "0.50–0.65", "0.65 and up"], fmt: (v) => fx(v) },
-  tier: { label: "Who built the state model", scope: "state" },
+    labels: ["under 0.20", "0.20–0.35", "0.35–0.50", "0.50–0.65", "0.65 and up"], fmt: (v) => fx(v),
+    about: "Mean confidence of the answer for each government in the county, for the question chosen above." },
+  tier: { label: "Who built the state model", scope: "state", about: "Whether the state's step-by-step model was reviewed, agreed by two extractions, drafted once, or only the law was found." },
   completion: { label: "State model completion", scope: "state", bins: [0.3, 0.5, 0.7, 0.85],
-    labels: ["1–2 of 8 stages", "3 of 8", "4–5 of 8", "6 of 8", "7–8 of 8"], fmt: (v) => pct(v) },
+    labels: ["1–2 of 8 stages", "3 of 8", "4–5 of 8", "6 of 8", "7–8 of 8"], fmt: (v) => pct(v), about: "How many of the eight build stages the state model has passed." },
   quality: { label: "State model quality", scope: "state", bins: [0.5, 0.65, 0.8, 0.9],
-    labels: ["under 0.50", "0.50–0.65", "0.65–0.80", "0.80–0.90", "0.90 and up"], fmt: (v) => fx(v) },
+    labels: ["under 0.50", "0.50–0.65", "0.65–0.80", "0.80–0.90", "0.90 and up"], fmt: (v) => fx(v), about: "The state model's quality score from its checks." },
   contact: { label: "Contact found", scope: "county", bins: [0.15, 0.3, 0.45, 0.7],
-    labels: ["mailing address", "some websites", "most have a website", "email or phone", "records or licence page"], fmt: (v) => fx(v) },
+    labels: ["mailing address", "some websites", "most have a website", "email or phone", "records or licence page"], fmt: (v) => fx(v), about: "How good a contact we found for the governments in the county." },
   local: { label: "Local law found (LOCUS)", scope: "county", bins: [0.01, 0.1, 0.25, 0.5],
-    labels: ["none", "under 10%", "10–25%", "25–50%", "half or more"], fmt: (v) => pct(v) },
+    labels: ["none", "under 10%", "10–25%", "25–50%", "half or more"], fmt: (v) => pct(v), about: "Share of the county's governments with a local ordinance found in LOCUS." },
+  processes: { label: "Processes modelled", scope: "state", kind: "holdings", bins: [1, 2, 3, 10],
+    labels: ["none yet", "1", "2", "3–9", "10 and up"], fmt: (v) => fmtInt(v), about: "Process items per state: reviewed or agreed state models plus asked answers that stand as drafts." },
+  coverage: { label: "Coverage", scope: "state", kind: "holdings", bins: [0.1, 0.25, 0.5, 0.75],
+    labels: ["under 10% adequate", "10–25%", "25–50%", "50–75%", "75% and up"], fmt: (v) => pct(v), about: "Latest coverage run: the share of the questions people ask that the state answers adequately; dots are researched localities, sized by verified processes." },
+  localproc: { label: "Local processes researched", scope: "county", kind: "holdings", bins: [5, 10, 20, 40],
+    labels: ["1–4", "5–9", "10–19", "20–39", "40 and up"], fmt: (v) => fmtInt(v), about: "Localities with researched local processes (a records request, a licence, a permit): how many, and how many are verified." },
+  wikibase: { label: "On the Wikibase", scope: "state", kind: "holdings", bins: [1, 20, 50, 150],
+    labels: ["none", "1–19", "20–49", "50–149", "150 and up"], fmt: (v) => fmtInt(v), about: "Items published to the Wikibase per state: statutes, units, processes, steps, roles, forms and more." },
+  index: { label: "Statute index", scope: "state", kind: "holdings", bins: [1, 20000, 30000, 50000],
+    labels: ["no index", "under 20,000", "20,000–30,000", "30,000–50,000", "50,000 and up"], fmt: (v) => fmtInt(v), about: "Statute sections indexed for full-text search per state, with the regulations index where it exists." },
 };
 const TIERS_SHOWN = ["found", "single", "agreed", "reviewed"];
+const HOLDING_VALUE = {     // the number a holdings layer colours a state by
+  processes: (st) => st.processes ? st.processes.value : null,
+  coverage: (st) => st.coverage ? st.coverage.share : null,
+  wikibase: (st) => st.wikibase ? st.wikibase.value : null,
+  index: (st) => st.index ? st.index.sections : null,
+};
+const verdictLine = (c) => `${c.adequate} adequate · ${c.partial} partial · ${c.draft} on drafts · ${c.none} none of ${c.cells}`;
 function binColor(v, bins) {
   let i = 0;
   while (i < bins.length && v >= bins[i]) i++;
@@ -255,13 +278,15 @@ async function viewMap() {
   const legend = h("div", { class: "legend", "aria-label": "Legend" });
   const side = h("aside", { class: "card side", "aria-live": "polite" });
   const tableCard = h("div", { class: "card" });
-  rc(view, 
+  const holdingsCard = h("section", { class: "card holdings", "aria-label": "What's on the map" });
+  rc(view,
     h("div", { class: "page-head" }, h("div", {},
       h("h1", {}, "Where the answers stand"),
-      h("p", {}, "Every county, city and town, coloured by how well lexflow can answer the question. Colours update as process models are built, checked and scored."))),
+      h("p", {}, "Every county, city and town, coloured by how well lexflow can answer the question, and every state by what lexflow holds: models, coverage, Wikibase items and the statute index. Colours update as process models are built, checked and scored."))),
     h("div", { class: "filters" }, questionSeg(load), h("label", { class: "field" }, "Layer", layerSel), h("label", { class: "field" }, "Zoom", stateSel), tableBtn),
     kpis,
     h("div", { class: "grid map-layout" }, h("section", { class: "card" }, mapWrap, legend), side),
+    holdingsCard,
     h("div", { class: "spacer" }), tableCard);
 
   const svg = d3.create("svg").attr("viewBox", "0 0 975 610").attr("role", "img").attr("aria-label", "Map of US counties");
@@ -274,17 +299,28 @@ async function viewMap() {
   const countyPaths = g.append("g").selectAll("path").data(counties).join("path").attr("class", "county").attr("d", path);
   g.append("path").datum(topojson.mesh(topo, topo.objects.states, (a, b) => a !== b)).attr("class", "state-line").attr("d", path);
   g.append("path").datum(topojson.mesh(topo, topo.objects.nation)).attr("class", "nation").attr("d", path);
-  const zoom = d3.zoom().scaleExtent([1, 14]).translateExtent([[-50, -50], [1025, 660]]).on("zoom", (e) => g.attr("transform", e.transform));
+  const dotsG = g.append("g").attr("class", "dots");     // researched localities, on the coverage and local-process layers
+  let zoomK = 1;
+  const zoom = d3.zoom().scaleExtent([1, 14]).translateExtent([[-50, -50], [1025, 660]]).on("zoom", (e) => {
+    g.attr("transform", e.transform);
+    zoomK = e.transform.k;
+    dotsG.selectAll("circle").attr("r", (d) => dotR(d) / Math.sqrt(zoomK));
+  });
   svg.call(zoom).on("wheel.zoom", null);   // page scroll stays page scroll; buttons and drag still zoom
   mapWrap.append(svg.node());
 
   let data = null, overview = null, rows = [];
+  const isHoldings = () => LAYERS[S.layer].kind === "holdings";
+  const placeOf = (fips) => data?.places?.[fips] || null;
+  const placeTotal = (p, key) => p.govs.reduce((a, g) => a + (g[key] || 0), 0);
   function valueOf(fips) {
     const layer = LAYERS[S.layer];
+    if (S.layer === "localproc") { const p = placeOf(fips); return p ? placeTotal(p, "processes") : null; }
     if (layer.scope === "county") return data.counties[fips]?.value ?? null;
     const st = data.states[fips.slice(0, 2)];
     if (!st) return null;
     if (S.layer === "tier") return st.tier;
+    if (HOLDING_VALUE[S.layer]) return HOLDING_VALUE[S.layer](st);
     return st[S.layer] ?? null;
   }
   function fillOf(fips) {
@@ -294,6 +330,7 @@ async function viewMap() {
       if (!data.states[fips.slice(0, 2)] || !data.states[fips.slice(0, 2)].governments) return "url(#nodata)";
       return v === "none" || v == null ? css("--neutral-fill") : css(`--tier-${v}`);
     }
+    if (S.layer === "localproc") return v == null ? css("--neutral-fill") : binColor(v, layer.bins);
     if (v == null) return "url(#nodata)";
     return binColor(v, layer.bins);
   }
@@ -302,15 +339,60 @@ async function viewMap() {
     const items = S.layer === "tier"
       ? [["none", "No state law found", css("--neutral-fill")], ...TIERS_SHOWN.map((t) => [t, S.meta.tier_label[t], css(`--tier-${t}`)])]
       : layer.labels.map((l, i) => [i, l, css(`--seq-${i + 1}`)]);
+    if (S.layer === "localproc") items.unshift(["none", "Not researched yet", css("--neutral-fill")]);
+    const noData = S.layer === "coverage" ? "No coverage run for this state yet" : "No data yet";
     rc(legend, h("span", { class: "title" }, layer.label),
       ...items.map(([, label, color]) => h("span", {}, h("span", { class: "sw", style: `background:${color}` }), label)),
-      h("span", {}, h("span", { class: "sw", style: `background:repeating-linear-gradient(45deg, var(--nodata) 0 3px, var(--hatch) 3px 4px)` }), "No data yet"));
+      S.layer === "localproc" ? null : h("span", {}, h("span", { class: "sw", style: `background:repeating-linear-gradient(45deg, var(--nodata) 0 3px, var(--hatch) 3px 4px)` }), noData),
+      S.layer === "coverage" || S.layer === "localproc" ? h("span", {}, h("span", { class: "sw dot" }), "Locality with researched processes") : null,
+      layer.about ? h("span", { class: "about" }, layer.about) : null);
+  }
+  const dotR = (d) => 3 + Math.sqrt(placeTotal(d.place, "verified")) * 1.1;
+  function drawDots() {
+    const show = S.layer === "coverage" || S.layer === "localproc";
+    const feats = show && data?.places ? counties.filter((c) => data.places[c.id]).map((c) => ({ id: c.id, place: data.places[c.id], xy: path.centroid(c) })) : [];
+    dotsG.selectAll("circle").data(feats, (d) => d.id).join("circle")
+      .attr("cx", (d) => d.xy[0]).attr("cy", (d) => d.xy[1]).attr("r", (d) => dotR(d) / Math.sqrt(zoomK));
   }
   function paint() {
     pat.select(".nodata-bg").attr("fill", css("--nodata"));
     pat.select(".nodata-line").attr("stroke", css("--hatch"));
     countyPaths.attr("fill", (d) => fillOf(d.id));
+    drawDots();
     drawLegend();
+  }
+  // the tooltip's lines for a holdings layer: the state's numbers, then the locality's when it has researched processes
+  function holdingLines(fips) {
+    const sd = data.states[fips.slice(0, 2)] || {};
+    const p = placeOf(fips);
+    const out = [];
+    if (S.layer === "processes" && sd.processes) {
+      const t = sd.processes.tiers || {};
+      out.push(h("div", { class: "k" }, `State models: ${["reviewed", "agreed", "single", "found"].filter((k) => t[k]).map((k) => `${t[k]} ${S.meta.tier_label[k] || k}`).join(", ") || "none"}`));
+      out.push(h("div", { class: "k" }, `Asked drafts: ${fmtInt(sd.processes.asked)}`));
+    } else if (S.layer === "coverage") {
+      if (sd.coverage) {
+        out.push(h("div", { class: "k" }, verdictLine(sd.coverage)));
+        if (sd.coverage.missing?.length) out.push(h("div", { class: "k" }, `Most often missing: ${sd.coverage.missing.map(([k, n]) => `${k} (${n})`).join(", ")}`));
+        out.push(h("div", { class: "k" }, `Run ${sd.coverage.run}`));
+      }
+    } else if (S.layer === "wikibase" && sd.wikibase) {
+      const kinds = Object.entries(sd.wikibase.kinds || {}).sort((a, b) => b[1] - a[1]).slice(0, 6);
+      out.push(h("div", { class: "k" }, kinds.length ? kinds.map(([k, n]) => `${n} ${k}`).join(", ") : "nothing published for this state yet"));
+    } else if (S.layer === "index" && sd.index) {
+      out.push(h("div", { class: "k" }, `${fmtInt(sd.index.sections)} statute sections` + (sd.index.regulations ? ` · ${fmtInt(sd.index.regulations)} regulation sections` : "")));
+    }
+    if (p && (S.layer === "coverage" || S.layer === "localproc")) {
+      for (const gv of p.govs) {
+        out.push(h("div", { style: "margin-top:6px;font-weight:600" }, gv.name));
+        out.push(h("div", { class: "k" }, `${fmtInt(gv.processes)} local process${gv.processes === 1 ? "" : "es"} researched, ${fmtInt(gv.verified)} verified`));
+        if (gv.coverage) out.push(h("div", { class: "k" }, verdictLine(gv.coverage)));
+      }
+      out.push(h("div", { class: "k" }, "Click to open the place"));
+    } else if (S.layer === "coverage" && sd.coverage) {
+      out.push(h("div", { class: "k" }, "Click to open the coverage matrix for this state"));
+    }
+    return out;
   }
   countyPaths
     .on("pointermove", (evt, d) => {
@@ -319,8 +401,14 @@ async function viewMap() {
       const v = valueOf(d.id);
       const c = data?.counties[d.id];
       const sd = data?.states[d.id.slice(0, 2)];
-      const vText = S.layer === "tier" ? (S.meta.tier_label[v] || "No data yet") : v == null ? "No data yet" : layer.fmt(v);
-      showTip(evt, [
+      const vText = S.layer === "tier" ? (S.meta.tier_label[v] || "No data yet")
+        : v == null ? (S.layer === "localproc" ? "Not researched yet" : S.layer === "coverage" ? "No coverage run yet" : "No data yet") : layer.fmt(v);
+      showTip(evt, isHoldings() ? [
+        h("div", { class: "v" }, vText),
+        h("div", { class: "k" }, layer.label + (layer.scope === "state" ? ` · ${st ? st.name : ""}` : "")),
+        h("div", { style: "margin-top:6px;font-weight:600" }, `${countyName.get(d.id) || d.id}${st ? `, ${st.name}` : ""}`),
+        ...holdingLines(d.id),
+      ] : [
         h("div", { class: "v" }, vText),
         h("div", { class: "k" }, layer.label),
         h("div", { style: "margin-top:6px;font-weight:600" }, `${countyName.get(d.id) || d.id}${st ? `, ${st.name}` : ""}`),
@@ -331,7 +419,13 @@ async function viewMap() {
       d3.select(evt.currentTarget).raise();
     })
     .on("pointerleave", hideTip)
-    .on("click", (evt, d) => selectCounty(d.id));
+    .on("click", (evt, d) => {
+      const p = placeOf(d.id);
+      const st = stateByFips.get(d.id.slice(0, 2));
+      if (p && (S.layer === "coverage" || S.layer === "localproc")) { location.hash = `#/place/${encodeURIComponent(p.govs[0].gov_id)}`; return; }
+      if (S.layer === "coverage" && st && data.states[st.fips]?.coverage) { location.hash = `#/coverage?state=${st.state}`; return; }
+      selectCounty(d.id);
+    });
 
   function zoomTo(fips) {
     S.focus = fips;
@@ -364,7 +458,19 @@ async function viewMap() {
         h("dt", {}, "Located by"), h("dd", {}, r.method ? `${r.method} (score ${fx(r.locator_score, 1)})` : "–"),
         h("dt", {}, "Mean confidence"), h("dd", {}, mini(r.confidence)),
         h("dt", {}, "Records or licence page"), h("dd", { class: "num" }, pct(r.page_share, 1)),
-        h("dt", {}, "Statutes"), h("dd", {}, r.statutes))));
+        h("dt", {}, "Statutes"), h("dd", {}, r.statutes),
+        ...holdingRows(data?.states[fips] || {}))));
+  }
+  // what lexflow holds for a state, as rows of the side panel's list
+  function holdingRows(sd) {
+    if (!sd.processes) return [];
+    const cov = sd.coverage;
+    return [
+      h("dt", {}, "Processes modelled"), h("dd", {}, h("a", { href: `#/processes` }, `${fmtInt(sd.processes.value)}`), h("span", { class: "muted" }, ` (${fmtInt(sd.processes.asked)} asked drafts)`)),
+      h("dt", {}, "Coverage"), h("dd", {}, cov ? h("a", { href: `#/coverage?state=${sd.state}` }, `${cov.adequate} of ${cov.cells} adequate`) : h("span", { class: "muted" }, "no run yet")),
+      h("dt", {}, "On the Wikibase"), h("dd", { class: "num" }, fmtInt(sd.wikibase?.value)),
+      h("dt", {}, "Index"), h("dd", {}, sd.index?.sections ? `${fmtInt(sd.index.sections)} sections${sd.index.regulations ? ` · ${fmtInt(sd.index.regulations)} regulations` : ""}` : h("span", { class: "muted" }, "not indexed")),
+    ];
   }
   async function selectCounty(fips) {
     S.county = fips;
@@ -416,12 +522,32 @@ async function viewMap() {
       { key: "quality", label: "Quality", num: true, render: (r) => fx(r.quality) },
       { key: "confidence", label: "Mean confidence", render: (r) => mini(r.confidence) },
       { key: "page_share", label: "Page found", num: true, render: (r) => pct(r.page_share, 1) },
+      { key: "modelled", label: "Modelled", num: true, render: (r) => fmtInt(data.states[r.fips]?.processes?.value ?? 0), sort: (r) => data.states[r.fips]?.processes?.value ?? 0 },
+      { key: "covered", label: "Coverage", num: true, render: (r) => { const c = data.states[r.fips]?.coverage; return c ? `${c.adequate}/${c.cells}` : "–"; }, sort: (r) => data.states[r.fips]?.coverage?.share ?? -1 },
+      { key: "wikibase", label: "Wikibase", num: true, render: (r) => fmtInt(data.states[r.fips]?.wikibase?.value ?? 0), sort: (r) => data.states[r.fips]?.wikibase?.value ?? 0 },
+      { key: "indexed", label: "Indexed", num: true, render: (r) => fmtInt(data.states[r.fips]?.index?.sections ?? 0), sort: (r) => data.states[r.fips]?.index?.sections ?? 0 },
       { key: "citation", label: "State law", render: (r) => r.law_url ? h("a", { href: r.law_url, target: "_blank", rel: "noopener", onclick: (e) => e.stopPropagation() }, r.citation) : h("span", { class: "muted" }, r.statutes === "not-in-release" ? "No statutes in release" : r.law_status === "not-located" ? "Not located" : r.law_status) },
     ];
     rc(tableCard, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "State by state"),
       h("p", {}, "Sort by any column. Click a row to zoom the map to that state."))),
       h("div", { class: "card-pad", style: "padding-top:8px" }, sortableTable(cols, rows, { initial: "governments",
         onRow: (r) => { zoomTo(r.fips); window.scrollTo({ top: 0, behavior: "smooth" }); } })));
+  }
+  // "What's on the map": the totals behind the holdings layers, each linking to its page, and the pool when it is on
+  let pool = null;
+  function drawHoldings() {
+    const t = data.holdings || {};
+    const cov = t.coverage || {};
+    const tile = (href, value, label, sub) => h("a", { class: "holding", href }, h("span", { class: "value" }, value), h("span", { class: "label" }, label), sub ? h("span", { class: "sub" }, sub) : null);
+    rc(holdingsCard,
+      h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "What's on the map"), h("p", {}, "Totals behind the holdings layers. Each number opens its page."))),
+      h("div", { class: "holdings-row" },
+        tile("#/processes", fmtInt(t.states_with_models), "states with process models", `${fmtInt(S.meta.states.length)} states and DC`),
+        tile("#/places", fmtInt(t.localities), `localit${t.localities === 1 ? "y" : "ies"} researched`, `${fmtInt(t.local_processes)} local processes`),
+        tile("#/coverage", cov.run ? `${fmtInt(cov.adequate)} of ${fmtInt(cov.cells)}` : "–", "questions covered adequately", cov.run ? `${fmtInt(cov.draft)} on drafts alone · run ${cov.run}` : "no coverage run yet"),
+        tile("#/query", fmtInt(t.wikibase), "Wikibase items", "statutes, units, processes, steps, roles, forms"),
+        tile("#/data", fmtInt(t.index?.sections), "statute sections indexed", `${fmtInt(t.index?.states)} states${t.index?.regulations ? ` · ${fmtInt(t.index.regulations)} regulation sections` : ""}`),
+        pool && pool.pool ? tile("#/compute", `${fmtInt(pool.totals?.online)} of ${fmtInt(pool.totals?.nodes)}`, "pool nodes online", `${fmtInt(pool.totals?.slots)} slots · ${fmtInt(pool.totals?.busy)} busy`) : null));
   }
   function draw() {
     mapWrap.parentElement.style.display = S.tableView ? "none" : "";
@@ -431,9 +557,10 @@ async function viewMap() {
   async function load(themeOnly) {
     if (themeOnly === true && data) { paint(); return; }
     mapWrap.classList.add("loading");
-    [data, overview, rows] = await Promise.all([api(`/api/map?question=${S.question}&layer=${S.layer}`), api("/api/overview"), api(`/api/states?question=${S.question}`)]);
+    [data, overview, rows, pool] = await Promise.all([api(`/api/map?question=${S.question}&layer=${S.layer}`), api("/api/overview"), api(`/api/states?question=${S.question}`),
+      api("/api/compute").catch(() => null)]);
     mapWrap.classList.remove("loading");
-    drawKpis(); drawTable(); draw();
+    drawKpis(); drawHoldings(); drawTable(); draw();
     if (S.county) selectCounty(S.county); else if (S.focus) sideState(S.focus); else sideDefault();
   }
   onRefresh(load);
@@ -1609,7 +1736,10 @@ async function viewCoverage(runId) {
         h("button", { class: "btn right", onclick: async () => { await startRunJob("coverage", { states: "va,dc", arm: "coverage" }); location.hash = "#/jobs"; } }, "Run the coverage probe")));
       return;
     }
-    const m = d.matrix, cols = Object.keys(m.columns);
+    const m = d.matrix;
+    // #/coverage?state=va: only that state's columns (the state and its researched places)
+    const only = (S.params.get("state") || "").toLowerCase();
+    const cols = Object.keys(m.columns).filter((c) => !only || c === only || c.startsWith(`${only}/`));
     const rowsBy = {};
     for (const r of d.rows) rowsBy[`${r.qid}|${r.state}${r.gov_id ? "/" + r.gov_id : ""}`] = r;
     const qs = {};
@@ -1631,9 +1761,12 @@ async function viewCoverage(runId) {
       h("thead", {}, h("tr", {}, ["Column", "Cells", "Adequate", "Partial", "None", "Top missing kinds", "Ollama cells", "Composite", "Vital recall", "Citation precision", "s / cell", "s / Ollama cell"].map((t) => h("th", { scope: "col" }, t)))),
       h("tbody", {}, cols.map((c) => { const x = m.columns[c], o = x.ollama || {}; return h("tr", {}, h("td", {}, c), h("td", { class: "num" }, x.cells), h("td", { class: "num" }, x.adequate || 0), h("td", { class: "num" }, x.partial || 0), h("td", { class: "num" }, x.none || 0),
         h("td", {}, (x.top_missing || []).map(([k, n]) => `${k} (${n})`).join(", ") || "–"), h("td", { class: "num" }, x.ollama_cells), h("td", { class: "num" }, x.ollama ? fx(o.composite) : "–"), h("td", { class: "num" }, x.ollama ? pct(o.vital_recall) : "–"), h("td", { class: "num" }, x.ollama ? pct(o.citation_precision) : "–"), h("td", { class: "num" }, fx(x.seconds_mean, 1)), h("td", { class: "num" }, x.ollama_seconds_mean ? fx(x.ollama_seconds_mean, 0) : "–")); })));
-    const runs = h("select", { "aria-label": "Run", onchange: (e) => { location.hash = `#/coverage/${encodeURIComponent(e.target.value)}`; } }, (d.runs || []).map((r) => h("option", { value: r.run_id, selected: r.run_id === d.run ? true : null }, `${r.run_id} · ${r.states} · ${r.cells} cells`)));
+    const runs = h("select", { "aria-label": "Run", onchange: (e) => { location.hash = `#/coverage/${encodeURIComponent(e.target.value)}${only ? `?state=${only}` : ""}`; } }, (d.runs || []).map((r) => h("option", { value: r.run_id, selected: r.run_id === d.run ? true : null }, `${r.run_id} · ${r.states} · ${r.cells} cells`)));
+    const stateSel = h("select", { "aria-label": "State", onchange: (e) => { location.hash = `#/coverage${runId ? `/${encodeURIComponent(runId)}` : ""}${e.target.value ? `?state=${e.target.value}` : ""}`; } },
+      h("option", { value: "" }, "All states"),
+      [...new Set(Object.values(m.columns).map((c) => c.state))].sort().map((s) => h("option", { value: s, selected: s === only ? true : null }, (S.meta.states.find((x) => x.state === s) || { name: s.toUpperCase() }).name)));
     rc(body,
-      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `Run ${d.run}`), h("p", {}, `${m.totals.adequate} adequate, ${m.totals.partial} partial, ${m.totals.none} none over ${Object.values(m.totals).reduce((a, b) => a + b, 0)} cells. Per column: verdict counts, the kinds most often missing, and the Ollama arm's AskBench means.`)), h("div", { class: "row-flex" }, runs)),
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `Run ${d.run}`), h("p", {}, `${m.totals.adequate} adequate, ${m.totals.partial} partial, ${m.totals.none} none over ${Object.values(m.totals).reduce((a, b) => a + b, 0)} cells. Per column: verdict counts, the kinds most often missing, and the Ollama arm's AskBench means.`)), h("div", { class: "row-flex" }, stateSel, runs)),
         h("div", { class: "card-pad table-wrap" }, summary)),
       h("div", { class: "spacer" }),
       h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Questions × jurisdictions"), h("p", {}, "Rows are the questions people ask (fixtures/coverage/questions.json); columns a state or a place. A cell shows the verdict, the Ollama composite when scored, and the missing kinds."))),

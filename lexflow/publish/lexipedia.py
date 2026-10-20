@@ -1061,7 +1061,8 @@ def published_asked(con, *, state: str | None = None, gov_id: str | None = None)
     elif state:
         sql += " AND state=? AND gov_id IS NULL"
         args.append(state)
-    return [r for r in db.rows(con, sql + " ORDER BY question_id", *args) if wiki_ready(r, con)]
+    from ..ask import prefer
+    return [r for r in prefer.preferred(db.rows(con, sql + " ORDER BY question_id", *args)) if wiki_ready(r, con)]
 
 
 def render_place(con, gov_id: str) -> str:
@@ -1271,10 +1272,12 @@ def render_state_index(con, state: str, models: list[str], places: list[dict]) -
     mrows = [r for r in (_model_row(con, f"{state}.{q}") for q in models) if r]
     locs = _local_rows(con, [g["gov_id"] for g in places])
     asked = published_asked(con, state=state)
-    loose = [r for r in db.rows(con, "SELECT a.*, g.name AS gov_name FROM asked_answers a LEFT JOIN governments g ON "
-                                     "g.gov_id=a.gov_id WHERE a.published=1 AND a.state=? AND a.gov_id IS NOT NULL AND "
-                                     "a.gov_id NOT IN (SELECT l.gov_id FROM local_answers l JOIN governments h ON "
-                                     "h.gov_id=l.gov_id) ORDER BY a.question_id, g.name", state) if wiki_ready(r, con)]
+    from ..ask import prefer
+    loose = [r for r in prefer.preferred(db.rows(
+        con, "SELECT a.*, g.name AS gov_name FROM asked_answers a LEFT JOIN governments g ON g.gov_id=a.gov_id WHERE "
+             "a.published=1 AND a.state=? AND a.gov_id IS NOT NULL AND a.gov_id NOT IN (SELECT l.gov_id FROM "
+             "local_answers l JOIN governments h ON h.gov_id=l.gov_id) ORDER BY a.question_id, g.name", state))
+        if wiki_ready(r, con)]
     # the quotes it vouches for are those of the state law pages it lists (models and asked answers); the places'
     # own pages say how their text was checked.  The software counts the models' and the asked answers' quotes now.
     counted = [m for m in (asked_matched(r) for r in asked + loose) if m and m[1]]
@@ -1620,8 +1623,10 @@ def _all_pages(con) -> dict[str, str]:
         places.setdefault(g["state"], []).append(g)
         place_pages.append((pid, f"{g['name']}, {S.NAME[g['state']]}"))
     asked_states = set()
-    # an asked answer is published only when it is marked for the wiki and a named person has reviewed it
-    for r in db.rows(con, "SELECT * FROM asked_answers WHERE published=1"):
+    # an asked answer is published only when it is marked for the wiki and a named person has reviewed it; one
+    # per question and target when several models answered (lexflow.ask.prefer)
+    from ..ask import prefer
+    for r in prefer.preferred(db.rows(con, "SELECT * FROM asked_answers WHERE published=1")):
         if wiki_ready(r, con):
             pages[asked_page(con, r)] = render_asked(con, r)
             asked_states.add(r["state"])

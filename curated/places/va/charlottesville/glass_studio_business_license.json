@@ -184,7 +184,7 @@
    "fee": null,
    "form": "f3",
    "url": "https://www.charlottesville.gov/186/Business-License-Tax",
-   "quote": "Before completing the application, verify if the proposed business address is located in the city limits of Charlottesville by searching for the address on the Charlottesville GIS Viewer . If a record is returned, proceed with the application. If nothing is found in the search, contact our office for further assistance. Your business may be located in the Albemarle County portion of Charlottesville.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -196,7 +196,7 @@
    "fee": null,
    "form": "f3",
    "url": "https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF",
-   "quote": "www.tax.virginia.gov - To apply for a Retail Sales Tax number",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -256,7 +256,7 @@
    "fee": "7% meals tax collected from customers",
    "form": null,
    "url": "https://www.charlottesville.gov/186/Business-License-Tax",
-   "quote": "Meals Tax is due on the 20 th of each month. Meals Tax is 7%. See Meals Tax page.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -280,7 +280,7 @@
    "fee": null,
    "form": null,
    "url": "https://www.charlottesville.gov/201/Economic-Development",
-   "quote": "All interested businesses must conduct a pre-application meeting with OED staff to discuss program guidelines. To learn more or schedule a meeting, please contact the Office of Economic Development at (434) 970-3110 or via email at ecodev@charlottesville.gov .",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -493,7 +493,7 @@
    "type": "internal appeal",
    "deadline": "Within one year from the last day of the tax year for which the assessment is made, or within one year from the date of the appealable event",
    "basis": "Va. Code § 58.1-3703.1(A)(5), as described on the city's Business License Tax page",
-   "quote": "Pursuant to the provisions of Virginia Code Section 58.1-3703.1(A)(5), any taxpayer assessed with a local business license tax as the result of an appealable event may apply within one year from the last day of the tax year for which such assessment is made, or within one year from the date of such appealable event to the Commissioner of the Revenue.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -522,7 +522,8 @@
   "The business property filing date differs across city pages: the Business Personal Property Tax page says March 15; the Business Tax Portal page (read for meals_tax_filing.json) says January 31. This file uses the Business Personal Property Tax page.",
   "The New Business License Checklist gives 434-825-0508 for Economic Development; the OED page gives 434-970-3110. Both are listed.",
   "Virginia sales tax registration and collection on glass sales, class fees and cafe sales is a Virginia Tax process not modeled here.",
-  "The Office of Economic Development programs change each year; the GO Start-Up and GO Hire details are as posted on 2026-10-19."
+  "The Office of Economic Development programs change each year; the GO Start-Up and GO Hire details are as posted on 2026-10-19.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Confirm the studio is inside city limits and properly zoned' (https://www.charlottesville.gov/186/Business-License-Tax); the step 'Work through the New Business License Checklist' (https://www.charlottesville.gov/DocumentCenter/View/14534/New-Business-License-Checklist-PDF); the step 'Register for the meals tax if the studio serves food or drink' (https://www.charlottesville.gov/186/Business-License-Tax); the step \"Use the Office of Economic Development's start-up programs if they fit\" (https://www.charlottesville.gov/201/Economic-Development); the escalation 'You disagree with the classification, rate or a statutory assessment of the business licen' were not found on the cited page as lexflow read it (not found word for word in Open US Law's copy of § 58.1-3703.1; not found word for word in the cited page as read on 20 October 2026). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -602,18 +603,45 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
-  "removed": [],
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 39,
+  "quotes_confirmed": 34,
+  "removed": [
+   {
+    "where": "steps[0]",
+    "what": "the step 'Confirm the studio is inside city limits and properly zoned'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[1]",
+    "what": "the step 'Work through the New Business License Checklist'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[6]",
+    "what": "the step 'Register for the meals tax if the studio serves food or drink'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[8]",
+    "what": "the step \"Use the Office of Economic Development's start-up programs if they fit\"",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "escalation[0]",
+    "what": "the escalation 'You disagree with the classification, rate or a statutory assessment of the business licen'",
+    "why": "not found word for word in Open US Law's copy of § 58.1-3703.1"
+   }
+  ],
   "corrections": [],
   "open_issues": [
    "The BPOL classification and rate for each activity of a glass studio (making and selling glass, classes, cafe), and whether the Commissioner treats the studio as a manufacturer (wholesale exemption; machinery and tools class).",
    "The current business property return due date (March 15 vs January 31 on different city pages).",
    "Whether class tuition is a licensable 'service' activity and at what rate."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

@@ -829,8 +829,8 @@ Method:
   - "N to the cited pages" includes quotes found on another page the process cites: 25 in the published files.
   - A match in an Internet Archive copy is dated by the day lexflow read the copy. Of the 692 archive matches, 6 are against a 2019 capture, 27 against 2022 ones and 34 against 2025 ones. Albemarle probate_will_qualify_executor, which is published, has six quotes matched only to a 2019 capture of a county form, under "on 11 October 2026". The label gives no capture date.
 - **Albemarle wording in lexflow's own text.**
-  - Lexflow's fee lines and paraphrases on 14 published Albemarle pages repeat 9 to 15 consecutive words of the county wording they replace, mostly penalty formulas. For example, Albemarle personal_property_vehicle_registration has "10% of the tax levied on the return or $10.00, whichever is greater, not more than the tax".
-  - One caveat quotes the county page directly: "MUST be postmarked no later than Election Day" (absentee_voting).
+  - Lexflow's fee lines and paraphrases on 14 published Albemarle pages repeat 9 to 15 consecutive words of the county wording they replace, mostly penalty formulas. For example, Albemarle personal_property_vehicle_registration repeated the county's late-filing penalty sentence (10 percent, at least $10, capped at the tax).
+  - One caveat quoted the county page directly on the election-day postmark rule (absentee_voting).
   - Whether a fee formula is the County's "content" is for the operator to judge.
 - **Builder ids, code names and a file path on 13 of the 47 local process pages.** The page scan for drafting words does not look for these:
   - "The four local legal_basis entries are office procedures …" (7 pages);

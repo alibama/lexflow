@@ -11,6 +11,7 @@ operator of this copy put on its list, and only for a review this copy recorded 
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 import threading
 from contextlib import contextmanager
@@ -258,13 +259,13 @@ CREATE TABLE IF NOT EXISTS asked_answers (
   answer TEXT,
   local TEXT,
   metrics TEXT,
-  model TEXT,
+  model TEXT NOT NULL DEFAULT 'qwen3:1.7b',
   seconds REAL,
   published INTEGER DEFAULT 0,
   updated_at TEXT NOT NULL,
   origin TEXT,
   reviewed_by TEXT,
-  PRIMARY KEY (question_id, target)
+  PRIMARY KEY (question_id, target, model)
 );
 CREATE INDEX IF NOT EXISTS asked_answers_state ON asked_answers(state);
 
@@ -427,7 +428,9 @@ SYNCED: dict[str, tuple[str, ...]] = {
     "local_answers": ("gov_id", "question"),
     "place_processes": ("gov_id", "process"),
     "case_law": ("state", "section", "cluster_id"),
-    "asked_answers": ("question_id", "target"),     # carries its question's text, so asked_questions stays local
+    # carries its question's text, so asked_questions stays local; one row per model that answered (the
+    # readers pick one per question and target: lexflow.ask.prefer)
+    "asked_answers": ("question_id", "target", "model"),
 }
 # this copy's own tables that upsert() writes: primary key columns (never synced)
 LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref")}
@@ -448,8 +451,45 @@ MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE job
               # the digest of what lexflow.publish.push last wrote for the key (this copy's own; never synced)
               "ALTER TABLE wikibase_items ADD COLUMN content_hash TEXT"]
 
+# the model an asked answer is filed under when none is recorded: the rows written before ``model`` joined the
+# key (every one of them was answered, with or without a summary, in the days of qwen3:1.7b), and a row upserted
+# without a model
+ASKED_DEFAULT_MODEL = "qwen3:1.7b"
+
 _ready: set[str] = set()
 _lock = threading.Lock()
+
+
+def primary_key(con: sqlite3.Connection, table: str) -> tuple[str, ...]:
+    info = sorted((r[5], r[1]) for r in con.execute(f"PRAGMA table_info({table})") if r[5])
+    return tuple(name for _, name in info)
+
+
+def _table_sql(table: str) -> str:
+    m = re.search(rf"CREATE TABLE IF NOT EXISTS {table} \(.*?\);", SCHEMA, re.S)
+    if not m:
+        raise KeyError(table)
+    return m.group(0)
+
+
+def migrate_asked_answers(con: sqlite3.Connection) -> bool:
+    """Rebuild ``asked_answers`` with ``model`` in the key, once: the rows keep their model, and those without one
+    (answered without a summary, or before the column was filled) are filed under ASKED_DEFAULT_MODEL.  SQLite
+    cannot alter a primary key in place, so the table is copied.  True when the rebuild ran."""
+    if primary_key(con, "asked_answers") == ("question_id", "target", "model"):
+        return False
+    cols = columns(con, "asked_answers")
+    picks = [f"COALESCE(model, '{ASKED_DEFAULT_MODEL}') AS model" if c == "model" else c for c in cols]
+    con.executescript(f"""
+BEGIN;
+ALTER TABLE asked_answers RENAME TO asked_answers_old;
+{_table_sql("asked_answers")}
+INSERT INTO asked_answers ({', '.join(cols)}) SELECT {', '.join(picks)} FROM asked_answers_old;
+DROP TABLE asked_answers_old;
+CREATE INDEX IF NOT EXISTS asked_answers_state ON asked_answers(state);
+COMMIT;
+""")
+    return True
 
 
 def now() -> str:
@@ -473,6 +513,7 @@ def connect(path: Path | str | None = None) -> sqlite3.Connection:
                     con.execute(m)
                 except sqlite3.OperationalError:
                     pass
+            migrate_asked_answers(con)
             _ready.add(key)
     return con
 
@@ -489,6 +530,14 @@ def session(path: Path | str | None = None):
 
 def columns(con: sqlite3.Connection, table: str) -> list[str]:
     return [r[1] for r in con.execute(f"PRAGMA table_info({table})")]
+
+
+def keyed(table: str, row: dict) -> dict:
+    """The row with every key column it can default filled in: an asked answer without a model is the default
+    model's (ASKED_DEFAULT_MODEL), so a row from a copy on older code, or one written without a model, has a key."""
+    if table == "asked_answers" and not row.get("model"):
+        return {**row, "model": ASKED_DEFAULT_MODEL}
+    return row
 
 
 def upsert(con: sqlite3.Connection, table: str, rows: Iterable[dict], keys: tuple[str, ...] | None = None,
@@ -511,7 +560,7 @@ def upsert(con: sqlite3.Connection, table: str, rows: Iterable[dict], keys: tupl
         for k, v in list(r.items()):
             if isinstance(v, (dict, list)):
                 r[k] = json.dumps(v, ensure_ascii=False)
-        prepared.append(r)
+        prepared.append(keyed(table, r))           # asked_answers: the model is part of the key, never NULL
     use = [c for c in cols if c in prepared[0]]
     update = [c for c in use if c not in keys]
     sql = (f"INSERT INTO {table} ({', '.join(use)}) VALUES ({', '.join('?' for _ in use)}) "

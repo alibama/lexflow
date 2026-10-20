@@ -664,18 +664,19 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 43,
+  "quotes_confirmed": 43,
   "removed": [],
   "corrections": [],
   "open_issues": [
    "Every quote is marked source: official-page because the local quote index was down; match against the captures in sources. The 13VAC5-63 quotes for §§ 106, 107, 109, 110, 113 and 119 are carried over from the verified building_permit_residential file.",
    "Occupancy classification and fire protection requirements for the hot shop are design questions for plan review.",
    "Commercial trade permit processing time and whether the Fire Marshal reviews gas storage at plan review are unconfirmed."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

@@ -139,7 +139,7 @@
    "level": "local",
    "citation": "City of Charlottesville Utility Billing, Fee Schedule (sewer)",
    "url": "https://www.charlottesville.gov/641/Fee-Schedule",
-   "quote": "An Equivalent Residential Connection ( ERC ) is used to calculate the sewer connection fee for customers with a water meter size greater than 6.0 inches. Call Utility Billing for more information at 434-970-3211.",
+   "quote": null,
    "role": "fee",
    "source": "official-page"
   },
@@ -210,7 +210,7 @@
    "fee": null,
    "form": null,
    "url": "https://www.charlottesville.gov/469/Gas-Services-Information",
-   "quote": "To submit a request for higher delivered pressure (PSIG), please email Utilities Outreach .",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -282,7 +282,7 @@
    "fee": null,
    "form": null,
    "url": "https://www.charlottesville.gov/491/Stormwater-Utility",
-   "quote": "To report an environmental incident or concern, illegal dumping, improper disposal, spills, an illicit discharge to the stormwater system or a stream, other stormwater pollution concerns, or complaints regarding land disturbing activities please submit the Pollution Prevention Report Form .",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -455,7 +455,7 @@
    "item": "E&S Plan application (land disturbance of 6,000 square feet or more)",
    "amount": "$200; plan amendment $150 (as printed; scanned schedule)",
    "basis": "NDS and Public Works Fee Schedule (Update March 23, 2026): https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
-   "quote": "land disturbance equal to or greater            $150",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -544,7 +544,7 @@
    "type": "internal appeal",
    "deadline": null,
    "basis": "City of Charlottesville Utilities, Stormwater page",
-   "quote": "If you think your Stormwater Utility Fee needs to be adjusted, please fill out and submit the Stormwater Utility Fee Adjustment Application (PDF) .",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -562,9 +562,10 @@
   "No City page describes the higher-pressure (PSIG) service in detail: minimum load, metering, or cost. The rate pages list firm, interruptible, summer air conditioning and transport schedules; which applies to a studio furnace is not stated.",
   "The City publishes no industrial pretreatment, sewer-use ordinance summary or slurry-disposal guidance. City Code chapter 31 (Utilities) and chapter 10 (Water Protection) were not read (Municode). The Rivanna Water and Sewer Authority's pretreatment rules were not researched.",
   "Fees from the NDS and Public Works schedule (E&S plan $200, amendment $150, stormwater management plan fees) are read from a scanned PDF whose rows do not align cleanly.",
-  "DEQ's air permit pages (deq.virginia.gov) answered HTTP 403 to the research user agent, so only the regulation text is cited. 9VAC5-80-1105 has many exemption rows beyond fuel burning equipment; it was not read in full, and the applicability of the minor NSR rule to a small glass furnace was not confirmed with DEQ.",
+  "DEQ's air permit pages (deq.virginia.gov) refuse automated readers (HTTP 403), so only the regulation text is cited. 9VAC5-80-1105 has many exemption rows beyond fuel burning equipment; it was not read in full, and the applicability of the minor NSR rule to a small glass furnace was not confirmed with DEQ.",
   "Dominion Energy's commercial service process is outside the City and not researched.",
-  "The 2027 Utility Rate Report notes that gas is proposed to no longer offer $340 installations for qualifying appliances; the Gas Services page gives the January 1, 2027 date."
+  "The 2027 Utility Rate Report notes that gas is proposed to no longer offer $340 installations for qualifying appliances; the Gas Services page gives the January 1, 2027 date.",
+  "Not confirmed by lexflow's software: the words once quoted for the legal basis 'City of Charlottesville Utility Billing, Fee Schedule (sewer)' (https://www.charlottesville.gov/641/Fee-Schedule); the step 'Size the gas load and check that Charlottesville Gas can serve it' (https://www.charlottesville.gov/469/Gas-Services-Information); the step 'Keep glass slurry, chemicals and grease out of the sewers' (https://www.charlottesville.gov/491/Stormwater-Utility); the fee 'E&S Plan application (land disturbance of 6,000 square feet or more)' (https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF); the escalation 'A stormwater utility bill is wrong, or you want credit for a stormwater facility' were not found on the cited page as lexflow read it (it cites no page, and none of the 25 pages this process cites has it word for word; not found word for word in the cited page as read on 20 October 2026). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -679,24 +680,54 @@
   },
   {
    "url": "https://www.deq.virginia.gov/permits-regulations/permits/air",
-   "title": "Virginia DEQ air permits page (HTTP 403 to the research user agent; not read)",
+   "title": "Virginia DEQ air permits page (refuses automated readers (HTTP 403); not read)",
    "retrieved": "2026-10-19"
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
-  "removed": [],
-  "corrections": [],
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 48,
+  "quotes_confirmed": 43,
+  "removed": [
+   {
+    "where": "legal_basis[15]",
+    "what": "the legal basis 'City of Charlottesville Utility Billing, Fee Schedule (sewer)'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[0]",
+    "what": "the step 'Size the gas load and check that Charlottesville Gas can serve it'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[6]",
+    "what": "the step 'Keep glass slurry, chemicals and grease out of the sewers'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "fees[10]",
+    "what": "the fee 'E&S Plan application (land disturbance of 6,000 square feet or more)'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "escalation[1]",
+    "what": "the escalation 'A stormwater utility bill is wrong, or you want credit for a stormwater facility'",
+    "why": "it cites no page, and none of the 25 pages this process cites has it word for word"
+   }
+  ],
+  "corrections": [
+   "a caveat reworded to describe the site, not the reader",
+   "source title reworded: Virginia DEQ air permits page (refuses automated readers (HT"
+  ],
   "open_issues": [
    "Can Charlottesville Gas supply the studio's connected load at elevated pressure at the chosen address, what will the commercial service line cost, and which rate schedule applies to a furnace that runs around the clock?",
    "What does Utilities require for cold-working slurry and polishing-compound wastewater and for a cafe's grease (pretreatment, interceptor, or approval), and does the Rivanna Water and Sewer Authority have pretreatment rules that apply?",
    "Does DEQ consider a small gas-fired glass furnace and glory hole exempt from minor NSR permitting, and are there toxic-pollutant concerns with colored glass batch?",
    "Commercial water and gas deposit amounts."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

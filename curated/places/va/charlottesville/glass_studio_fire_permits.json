@@ -500,12 +500,12 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 41,
+  "quotes_confirmed": 41,
   "removed": [],
   "corrections": [],
   "open_issues": [
@@ -513,6 +513,7 @@
    "Whether the fire official treats glass furnaces, glory holes and kilns as industrial ovens under SFPC Chapter 30.",
    "Whether a Hot Work Program permit is available so trained staff can authorize classes and demonstrations.",
    "Local amendments in City Code ch. 12 that are more restrictive than the SFPC, and the local board of appeals procedure and deadline."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

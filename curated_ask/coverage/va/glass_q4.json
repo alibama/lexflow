@@ -1,0 +1,65 @@
+{
+ "qid": "glass_q4",
+ "state": "va",
+ "question": "Can minors take a class or work in the hot shop?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "40.1-78",
+   "role": "primary"
+  },
+  {
+   "ref": "40.1-100",
+   "role": "primary"
+  },
+  {
+   "ref": "40.1-100.1",
+   "role": "primary"
+  },
+  {
+   "ref": "40.1-103",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "No child under 14 may be employed in any gainful occupation.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "40.1-78",
+   "quote": "No child under fourteen years of age shall be employed, permitted or suffered to work in, about or in connection with any gainful occupation except as specified in this chapter.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "No one under 18 may work in an occupation the Commissioner of Labor and Industry or the U.S. Secretary of Labor has declared hazardous.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "40.1-100",
+   "quote": "In any occupation determined and declared hazardous by rules and regulations promulgated by the Commissioner of Labor and Industry or the U.S. Secretary of Labor, except as otherwise provided in subsection D.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "No child may be put to work where a recognized hazard could cause serious harm.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "40.1-100.1",
+   "quote": "No person shall employ, suffer, or permit a child to work in any gainful occupation that exposes such child to a recognized hazard capable of causing serious physical harm or death to such child.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Anyone with custody of a child, including an instructor, must not endanger the child's life or health.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "40.1-103",
+   "quote": "It shall be unlawful for any person employing or having the custody of any child willfully or negligently to cause or permit the life of such child to be endangered or the health of such child to be injured, or willfully or negligently to cause or permit such child to be placed in a situation that its life, health or morals may be endangered",
+   "source": "index"
+  }
+ ]
+}

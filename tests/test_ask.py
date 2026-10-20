@@ -203,3 +203,88 @@ def test_ask_api_queues_and_lists(con, monkeypatch):
         listed = {q["question_id"]: q for q in c.get("/api/ask").json()}[qid]
         assert listed["kind"] == "process" and listed["states"] == 1 and listed["maps"] == 1
         assert c.get(f"/api/ask/{qid}").json()["answers"][0]["map"] is True
+
+
+# ------------------------------------------------------------------------------- one answer row per model
+def test_asked_answers_are_keyed_by_model_and_an_old_store_is_rebuilt(tmp_path, monkeypatch):
+    """The key of asked_answers is (question_id, target, model).  A store made before ``model`` joined the key is
+    rebuilt once on connect: the rows keep their model, those without one are filed under the default
+    (qwen3:1.7b), and nothing else changes."""
+    import sqlite3
+    path = tmp_path / "old.db"
+    old = sqlite3.connect(path)
+    old.executescript(db.SCHEMA.replace("model TEXT NOT NULL DEFAULT 'qwen3:1.7b'", "model TEXT")
+                      .replace("PRIMARY KEY (question_id, target, model)", "PRIMARY KEY (question_id, target)"))
+    old.execute("INSERT INTO asked_answers(question_id, target, state, status, model, published, updated_at, reviewed_by) "
+                "VALUES ('q', 'va', 'va', 'answered', NULL, 1, '2026-10-01T00:00:00Z', 'r')")
+    old.execute("INSERT INTO asked_answers(question_id, target, state, status, model, updated_at) "
+                "VALUES ('q', 'dc', 'dc', 'partial', 'gemma3:1b', '2026-10-02T00:00:00Z')")
+    old.commit()
+    assert db.primary_key(old, "asked_answers") == ("question_id", "target")
+    old.close()
+    con = db.connect(path)
+    try:
+        assert db.primary_key(con, "asked_answers") == ("question_id", "target", "model")
+        rows = db.rows(con, "SELECT * FROM asked_answers ORDER BY target")
+        assert [(r["target"], r["model"], r["status"], r["published"], r["reviewed_by"]) for r in rows] == [
+            ("dc", "gemma3:1b", "partial", 0, None), ("va", db.ASKED_DEFAULT_MODEL, "answered", 1, "r")]
+        assert db.migrate_asked_answers(con) is False                      # once
+        assert any(r[1] == "asked_answers_state" for r in con.execute("PRAGMA index_list(asked_answers)"))
+        # a second model's answer to the same cell lands beside the first; an upsert without a model is the default's
+        db.upsert(con, "asked_answers", [{"question_id": "q", "target": "va", "state": "va", "status": "partial",
+                                          "model": "qwen3:8b", "updated_at": db.now()}])
+        db.upsert(con, "asked_answers", [{"question_id": "q", "target": "va", "state": "va", "status": "not_found",
+                                          "updated_at": db.now()}])
+        rows = db.rows(con, "SELECT model, status FROM asked_answers WHERE target='va' ORDER BY model")
+        assert [(r["model"], r["status"]) for r in rows] == [("qwen3:1.7b", "not_found"), ("qwen3:8b", "partial")]
+        assert db.SYNCED["asked_answers"] == ("question_id", "target", "model")
+    finally:
+        con.close()
+
+
+def test_readers_show_one_answer_per_target_the_preferred_model(con, monkeypatch):
+    """With two models' answers to a cell, the ask API, the drafts of publish.graph and the wiki show one: the
+    model LEXFLOW_ASK_PREFER names, else the best-scoring row; ``?model=`` reads the other."""
+    from fastapi.testclient import TestClient
+    from lexflow.api import app as API
+    from lexflow.ask import prefer
+    from lexflow.ask import pipeline as AP
+    monkeypatch.setattr(config, "JOB_RUNNER", False)
+    text = "How do I license a dog?"
+    AP.save_question(con, text, PL.plan(text), "dog_q")
+    base = {"question_id": "dog_q", "target": "va", "state": "va", "gov_id": None, "question_text": text,
+            "sections": json.dumps({"chosen": [{"ref": "3.2-6524", "id": 1}]}), "bpmn": "<definitions/>",
+            "facts": json.dumps({"steps": [{"id": "s1"}]}), "updated_at": db.now()}
+    small = dict(base, model="qwen3:1.7b", status="partial", answer=json.dumps({"summary": None, "quotes": []}),
+                 metrics=json.dumps({"quotes_checked": 4, "quote_misses": 1, "answered_at": db.now()}))
+    big = dict(base, model="qwen3:8b", status="answered", answer=json.dumps({"summary": {"claims": [{"text": "c"}]},
+                                                                            "quotes": []}),
+               metrics=json.dumps({"quotes_checked": 4, "quote_misses": 0, "answered_at": db.now()}))
+    db.upsert(con, "asked_answers", [small, big])
+    con.commit()
+    assert prefer.pick([small, big])["model"] == "qwen3:8b"            # answered beats partial
+    assert [r["model"] for r in prefer.preferred([small, big, dict(small, target="dc")])] == ["qwen3:8b", "qwen3:1.7b"]
+    with TestClient(API.app) as c:
+        listed = {q["question_id"]: q for q in c.get("/api/ask").json()}["dog_q"]
+        assert listed["answers"] == 1 and listed["answered"] == 1 and listed["partial"] == 0
+        assert listed["models"] == ["qwen3:1.7b", "qwen3:8b"]
+        brief = c.get("/api/ask/dog_q").json()["answers"]
+        assert len(brief) == 1 and brief[0]["model"] == "qwen3:8b" and brief[0]["models"] == ["qwen3:1.7b", "qwen3:8b"]
+        r = c.get("/api/ask/dog_q/va").json()
+        assert r["model"] == "qwen3:8b" and r["status"] == "answered" and r["models"] == ["qwen3:1.7b", "qwen3:8b"]
+        assert c.get("/api/ask/dog_q/va", params={"model": "qwen3:1.7b"}).json()["status"] == "partial"
+        assert c.get("/api/ask/dog_q/va", params={"model": "nope"}).status_code == 404
+        monkeypatch.setattr(config, "ASK_PREFER", "qwen3:1.7b")
+        assert c.get("/api/ask/dog_q/va").json()["model"] == "qwen3:1.7b"
+        monkeypatch.setattr(config, "ASK_PREFER", "")
+    # the drafts for the store: one per question and state
+    from lexflow.publish import graph as G
+    build = G.Build(con, states=["va"], drafts=True, asked_drafts=True)
+    drafts = [m for m in build.asked_rows() if m["question"] == "dog_q"]
+    assert len(drafts) == 1 and drafts[0]["model_id"] == "asked:va:dog_q"
+    # the wiki: one page per published answer, the preferred model's
+    con.execute("UPDATE asked_answers SET published=1 WHERE question_id='dog_q'")
+    con.commit()
+    from lexflow.publish import lexipedia as LX
+    assert len([r for r in prefer.preferred(db.rows(con, "SELECT * FROM asked_answers WHERE published=1"))]) == 1
+    assert LX.published_asked(con, state="va") == []                      # nobody has reviewed either

@@ -14,6 +14,7 @@ import pytest
 
 from lexflow import config, signoff
 from lexflow.law import wording as W
+from lexflow.municipal import quotes as Q
 from lexflow.publish import lexipedia as LX
 from lexflow.publish import notes as N
 from lexflow.store import db
@@ -2005,7 +2006,7 @@ def _process_files():
     out = []
     for p in sorted((CURATED / "places" / "va").glob("*/*.json")):
         try:                                     # another workflow may be writing these: skip a half-written one
-            out.append((p, json.loads(p.read_text(encoding="utf-8"))))
+            out.append((p, Q.restore(json.loads(p.read_text(encoding="utf-8")), p)))   # withheld words, if here
         except ValueError:
             continue
     return out
@@ -2023,6 +2024,8 @@ def test_researched_pages_never_reprint_the_words_of_sites_whose_terms_forbid_it
     files = _process_files()
     if len(files) < 60:
         pytest.skip("another workflow may be writing these files")
+    if not all(q["restored"] for _, spec in files for q in Q.withheld_quotes(spec)):
+        pytest.skip("the evidence files (data/evidence/) are not present here")
     govs = {g["name"]: g for g in db.rows(con, "SELECT * FROM governments")}
     names = {"albemarle": "Albemarle County", "charlottesville": "City of Charlottesville", "staunton": "City of Staunton"}
     held = 0
@@ -2032,12 +2035,16 @@ def test_researched_pages_never_reprint_the_words_of_sites_whose_terms_forbid_it
         text = LX.render_local_process(con, g, {"process": path.stem, "spec": spec})
         free = {q for _, q, cites in places.process_quotes(spec)
                 if not any(Q.policy(u) for u in Q.cited_urls(cites))}
+        held_here = 0
         for where, q, cites in places.process_quotes(spec):
+            if any(q in f for f in free) or places._cited_sections("va", cites)[0]:   # the same words quoted from
+                continue                                            # a free page, or the Code's own words
             if any(Q.policy(u) for u in Q.cited_urls(cites)) and q not in free:
                 held += 1
+                held_here += 1
                 assert f"“{LX.esc(q)}”" not in text and f"//{LX.esc(q)}//" not in text, (path.name, where, q[:80])
                 assert len(q) < 40 or q not in text, (path.name, where, q[:80])       # nor copied elsewhere
-        if held and any(Q.policy(u) for _, _, c in places.process_quotes(spec) for u in Q.cited_urls(c)):
+        if held_here:
             assert "words are not reprinted here" in text, path.name
         for i, x in enumerate(spec.get("legal_basis") or []):     # the law's words, in lexflow's own paraphrase
             if x.get("quote") and any(Q.policy(u) for u in Q.cited_urls([x.get("citation"), x.get("url")])):

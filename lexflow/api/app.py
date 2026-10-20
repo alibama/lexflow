@@ -17,6 +17,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from .. import config, reviewers, signoff
+from ..ask import prefer
 from ..municipal import method as M
 from ..municipal import states as S
 from ..municipal import stats
@@ -195,9 +196,22 @@ def cancel_job(job_id: int):
 # --------------------------------------------------------------------- map
 @app.get("/api/map")
 def map_layer(question: str = "records", layer: str = "confidence"):
+    """The county and state values of the scored layers (stats.county_layer) plus what lexflow holds
+    (municipal.map_layers.holdings, cached ten minutes): per state ``processes``, ``coverage``, ``wikibase`` and
+    ``index`` on each ``states`` entry, the researched localities under ``places`` (by county FIPS), and the
+    totals under ``holdings``."""
+    from ..municipal import map_layers as ML
     c = con()
     try:
-        return stats.county_layer(c, _q(question), layer)
+        out = stats.county_layer(c, _q(question), layer)
+        held = ML.holdings(c)
+        for fips, e in held["states"].items():
+            st = out["states"].setdefault(fips, {"state": e["state"], "name": e["name"]})
+            for k in ("processes", "coverage", "wikibase", "index"):
+                st[k] = e[k]
+        out["places"] = held["places"]
+        out["holdings"] = held["totals"]
+        return out
     finally:
         c.close()
 
@@ -477,28 +491,38 @@ def ask_list():
     """Each question asked, with its answers counted.  ``reviewed`` counts the answers whose review is for the text
     stored now (its text_hash fits, lexflow/signoff.py) and was recorded by this copy's review API (its review_log
     holds it), and ``published`` those of them also marked for the wiki: the answers the next publish writes.  Any
-    other review (of another version of an answer, or one this copy did not record) counts in ``review_stale``."""
+    other review (of another version of an answer, or one this copy did not record) counts in ``review_stale``.
+    When several models answered a target, the counts are of the preferred answer per target (lexflow.ask.prefer),
+    and ``models`` lists every model that answered the question."""
     c = con()
     try:
-        rows = db.rows(c, """SELECT a.question_id, max(a.question_text) AS question, max(q.kind) AS kind,
-                                    count(*) AS answers, sum(a.gov_id IS NULL) AS states,
-                                    sum(a.status='answered') AS answered, sum(a.status='partial') AS partial,
-                                    sum(a.status='not_found') AS not_found,
-                                    sum(a.bpmn IS NOT NULL AND a.bpmn != '') AS maps, max(a.updated_at) AS updated_at
-                             FROM asked_answers a LEFT JOIN asked_questions q ON q.id = a.question_id
-                             GROUP BY a.question_id ORDER BY max(a.updated_at) DESC""")
-        counts: dict[str, dict[str, int]] = {}
+        kinds = {r["id"]: r["kind"] for r in db.rows(c, "SELECT id, kind FROM asked_questions")}
+        every = db.rows(c, "SELECT * FROM asked_answers ORDER BY question_id, target, model")
         roster = reviewers.roster(c)
-        for r in db.rows(c, "SELECT * FROM asked_answers WHERE reviewed_by IS NOT NULL AND reviewed_by != ''"):
-            n = counts.setdefault(r["question_id"], {"reviewed": 0, "published": 0, "review_stale": 0})
-            if _reviewer(c, r, roster):
-                n["reviewed"] += 1
-                n["published"] += int(bool(r.get("published")))
-            else:
-                n["review_stale"] += 1
-        for r in rows:
-            r.update(counts.get(r["question_id"], {"reviewed": 0, "published": 0, "review_stale": 0}))
-        return rows
+        out: dict[str, dict] = {}
+        for r in prefer.preferred(every):
+            q = out.setdefault(r["question_id"], {"question_id": r["question_id"], "question": r["question_text"],
+                                                  "kind": kinds.get(r["question_id"]), "answers": 0, "states": 0,
+                                                  "answered": 0, "partial": 0, "not_found": 0, "maps": 0,
+                                                  "updated_at": None, "models": [], "reviewed": 0, "published": 0,
+                                                  "review_stale": 0})
+            q["question"] = q["question"] or r["question_text"]
+            q["answers"] += 1
+            q["states"] += int(r["gov_id"] is None)
+            if r["status"] in ("answered", "partial", "not_found"):
+                q[r["status"]] += 1
+            q["maps"] += int(bool(r.get("bpmn")))
+            q["updated_at"] = max(q["updated_at"] or "", r["updated_at"] or "") or None
+            if r.get("reviewed_by"):
+                if _reviewer(c, r, roster):
+                    q["reviewed"] += 1
+                    q["published"] += int(bool(r.get("published")))
+                else:
+                    q["review_stale"] += 1
+        for r in every:
+            if r["model"] not in out[r["question_id"]]["models"]:
+                out[r["question_id"]]["models"].append(r["model"])
+        return sorted(out.values(), key=lambda q: q["updated_at"] or "", reverse=True)
     finally:
         c.close()
 
@@ -540,8 +564,12 @@ def ask_question(qid: str):
     c = con()
     try:
         roster = reviewers.roster(c)
-        rows = [_ask_row(c, r, roster) for r in db.rows(c, "SELECT * FROM asked_answers WHERE question_id=? "
-                                                        "ORDER BY gov_id IS NOT NULL, state, target", qid)]
+        every = db.rows(c, "SELECT * FROM asked_answers WHERE question_id=? ORDER BY gov_id IS NOT NULL, state, target, "
+                           "model", qid)
+        models: dict[str, list[str]] = {}
+        for r in every:
+            models.setdefault(r["target"], []).append(r["model"])
+        rows = [_ask_row(c, r, roster) for r in prefer.preferred(every)]      # one per target: the preferred model's
         if not rows:
             raise HTTPException(404, "no answers for that question yet")
         brief = []
@@ -555,6 +583,7 @@ def ask_question(qid: str):
                           "steps": len(a.get("steps") or []), "quotes": len(a.get("quotes") or []),
                           "map": bool(r.get("bpmn")),
                           "local": len(((r["local"] or {}).get("locus")) or []), "model": r["model"],
+                          "models": models.get(r["target"], []),
                           "seconds": r["seconds"], "published": r["published"], "updated_at": r["updated_at"],
                           "reviewed_by": r["reviewed_by"], "review_line": signoff.line(r["reviewed_by"]),
                           "review_stale": r["review_stale"]})
@@ -564,13 +593,15 @@ def ask_question(qid: str):
 
 
 @app.get("/api/ask/{qid}/{target}")
-def ask_answer(qid: str, target: str):
+def ask_answer(qid: str, target: str, model: str | None = None):
+    """The answer for the question and target: ``model``'s when ``?model=`` names one, else the preferred one
+    (LEXFLOW_ASK_PREFER, else the best-scoring; lexflow.ask.prefer).  ``models`` lists every model that answered."""
     c = con()
     try:
-        r = db.one(c, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, target)
-        if not r:
-            raise HTTPException(404, "no such answer")
-        return _ask_row(c, r, reviewers.roster(c))
+        r = _asked(c, qid, target, model)
+        out = _ask_row(c, r, reviewers.roster(c))
+        out["models"] = prefer.models_of(c, qid, target)
+        return out
     finally:
         c.close()
 
@@ -583,8 +614,9 @@ NEEDS_REVIEWER = ("Record a named reviewer first: an answer goes on the wiki onl
                   "against the law.")
 
 
-def _asked(c, qid: str, target: str) -> dict:
-    r = db.one(c, "SELECT * FROM asked_answers WHERE question_id=? AND target=?", qid, target)
+def _asked(c, qid: str, target: str, model: str | None = None) -> dict:
+    """The stored answer a request is about: ``model``'s, else the preferred one (lexflow.ask.prefer)."""
+    r = prefer.answer(c, qid, target, model)
     if not r:
         raise HTTPException(404, "no such answer")
     return r
@@ -599,17 +631,17 @@ def _keep_answer_date(r: dict) -> str:
 
 
 @app.post("/api/ask/{qid}/{target}/publish")
-def ask_publish(qid: str, target: str, body: PublishIn):
+def ask_publish(qid: str, target: str, body: PublishIn, model: str | None = None):
     """Mark an answer for (or withdraw it from) the next Lexipedia publish, as its own sub-page.  Marking needs a
     named reviewer whose review this copy recorded (PUT .../review, with their token): a review that arrived through
     sync, or was written into the database by hand, does not count.  Withdrawing never needs one."""
     c = con()
     try:
-        r = _asked(c, qid, target)
+        r = _asked(c, qid, target, model)
         if body.published and not _reviewer(c, r, reviewers.roster(c)):
             raise HTTPException(409, NEEDS_REVIEWER)
-        c.execute("UPDATE asked_answers SET published=?, metrics=?, updated_at=? WHERE question_id=? AND target=?",
-                  (int(body.published), _keep_answer_date(r), db.now(), qid, target))
+        c.execute("UPDATE asked_answers SET published=?, metrics=?, updated_at=? WHERE question_id=? AND target=? "
+                  "AND model=?", (int(body.published), _keep_answer_date(r), db.now(), qid, target, r["model"]))
         db.bump(c)
         c.commit()
         return {"published": body.published}
@@ -654,7 +686,7 @@ def reviewer_list():
 
 @app.put("/api/ask/{qid}/{target}/review")
 def ask_review(qid: str, target: str, body: Annotated[dict, Body()],
-               token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None):
+               token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None, model: str | None = None):
     """Record that a person on the operator's reviewer list read this answer against the law (lexflow/signoff.py).
     The body is exactly ``{"reviewer": "<id from the list>", "attested": true, "text_hash": "<the answer's
     text_hash as the reviewer read it>"}``: no name, role, licence or date can be typed in (400), since a page
@@ -673,7 +705,7 @@ def ask_review(qid: str, target: str, body: Annotated[dict, Body()],
         bad.append("text_hash is the 64-character SHA-256 (lower-case hex) that GET /api/ask/{qid}/{target} gives")
     c = con()
     try:
-        r = _asked(c, qid, target)
+        r = _asked(c, qid, target, model)
         roster = reviewers.roster(c)
         ts = db.now()           # the review's date and its review_log entry come from the same moment
         rev = {"reviewer": body.get("reviewer"), "date": ts[:10], "attested": body.get("attested")}
@@ -688,8 +720,9 @@ def ask_review(qid: str, target: str, body: Annotated[dict, Body()],
         if h != signoff.text_hash(text):
             raise HTTPException(409, STALE_TEXT)
         rev = signoff.bind(rev, text)
-        c.execute("UPDATE asked_answers SET reviewed_by=?, metrics=?, updated_at=? WHERE question_id=? AND target=?",
-                  (json.dumps(rev, ensure_ascii=False), _keep_answer_date(r), db.now(), qid, target))
+        c.execute("UPDATE asked_answers SET reviewed_by=?, metrics=?, updated_at=? WHERE question_id=? AND target=? "
+                  "AND model=?", (json.dumps(rev, ensure_ascii=False), _keep_answer_date(r), db.now(), qid, target,
+                                  r["model"]))
         # what makes it a review here: a page names the reviewer only while this is the answer's last entry
         reviewers.log_review(c, "review", qid, target, holder["id"], rev["text_hash"], at=ts)
         db.bump(c)
@@ -702,16 +735,18 @@ def ask_review(qid: str, target: str, body: Annotated[dict, Body()],
 
 
 @app.delete("/api/ask/{qid}/{target}/review")
-def ask_unreview(qid: str, target: str, token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None):
+def ask_unreview(qid: str, target: str, token: Annotated[str | None, Header(alias=reviewers.TOKEN_HEADER)] = None,
+                 model: str | None = None):
     """Remove the reviewer; the answer leaves the wiki at the next publish, so its tick goes too.  It takes the
     token of a reviewer on the list (401 without one, 403 for one that is no reviewer's), and ``review_log`` keeps
     whose token removed the review."""
     c = con()
     try:
-        r = _asked(c, qid, target)
+        r = _asked(c, qid, target, model)
         holder = _token_holder(c, token)
         c.execute("UPDATE asked_answers SET reviewed_by=NULL, published=0, metrics=?, updated_at=? "
-                  "WHERE question_id=? AND target=?", (_keep_answer_date(r), db.now(), qid, target))
+                  "WHERE question_id=? AND target=? AND model=?", (_keep_answer_date(r), db.now(), qid, target,
+                                                                   r["model"]))
         reviewers.log_review(c, "unreview", qid, target, holder["id"], signoff.text_hash(_answer_text(r)))
         db.bump(c)
         c.commit()

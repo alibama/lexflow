@@ -1,0 +1,942 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "personal_property_change_report",
+ "title": "Report a vehicle sold, disposed of or moved away (personal property tax)",
+ "question": "I sold my car or moved out of Albemarle. How do I stop being taxed?",
+ "category": "taxes_assessments",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "vehicle owners",
+  "people moving away"
+ ],
+ "office": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit), County of Albemarle. Under the county executive form there is no elected Commissioner of the Revenue or Treasurer: the Director of Finance assesses, bills, collects and refunds the tax (Va. Code §§ 15.2-521, 15.2-522).",
+ "summary": "Albemarle prorates vehicle tax by month, so you stop owing for the months after you sell, trade, junk or move a vehicle away, once the records show it. First tell Virginia DMV: report the sale, surrender the title of a junked vehicle, deal with the plates, or update your address and garage jurisdiction. Then tell the Office of Revenue Administration by phone, email, fax or mail. After a move to another state, send a copy of the new registration within 30 days; until it arrives the county keeps taxing. A move to a Virginia locality that does not prorate leaves you taxed through December 31. Keep paying bills, and ask in writing for a correction if one is wrong.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-521(A)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-521/",
+   "quote": "The director of finance shall exercise all the powers conferred and perform all the duties imposed by general law upon commissioners of the revenue, not inconsistent herewith, and shall be subject to the obligations and penalties imposed by general law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-522",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-522/",
+   "quote": "The director of finance shall also exercise the powers conferred and perform the duties imposed by general law upon county treasurers, and shall be subject to the obligations and penalties imposed by general law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "in a county or city which does not have an elected commissioner of the revenue, \"commissioner of the revenue\" means the officer who is primarily responsible for assessing motor vehicles for the purposes of tangible personal property taxation.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "the situs for purposes of assessment of motor vehicles, travel trailers, boats and airplanes as personal property shall be the county, district, town or city where the vehicle is normally garaged, docked or parked",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "(i) the situs for vehicles with a weight of 10,000 pounds or less registered in Virginia but normally garaged, docked or parked in another state shall be the locality in Virginia where registered",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "Any person who shall pay a personal property tax on a motor vehicle to a county or city in this Commonwealth and a similar tax on the same vehicle in the state of his domicile, or in the state where such vehicle is normally garaged, docked, or parked, may apply to such county or city for a refund of such tax payment.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3511(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3511/",
+   "quote": "Upon a showing of sufficient evidence that such person has paid the tax for the same year in the state in which he is domiciled, the county or city may refund the amount of such payment.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3515",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3515/",
+   "quote": "except as provided by ordinance or special act in localities authorized to tax certain property on a proportional monthly or quarterly basis, tangible personal property, machinery and tools and merchants' capital shall be returned for taxation as of January 1 of each year",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "Such ordinance shall also provide for relief from tax and a refund of the appropriate amount of tax already paid, which shall be prorated on a monthly basis, where any motor vehicle, trailer, semitrailer, or boat loses its situs within such locality after the tax day or after the day on which it acquires a situs",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "When any person sells or otherwise transfers title to a motor vehicle, trailer, semitrailer, or boat with a situs in the locality after the tax day or situs day, the tax shall be relieved, prorated on a monthly basis, and the appropriate amount of tax already paid shall be (i) refunded or (ii) credited against the tax due on any motor vehicle, trailer, semitrailer, or boat owned by the taxpayer during the same tax year by the treasurer of such locality.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "Such refund shall be made within thirty days of the date such tax is relieved.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "No refund of less than five dollars shall be issued to a taxpayer, unless specifically requested by the taxpayer.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "No refund shall be made if the motor vehicle, trailer, semitrailer, or boat acquires a situs within the Commonwealth in a nonprorating locality.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "For purposes of proration, a period of more than one-half of a month shall be counted as a full month and a period of less than one-half of a month shall not be counted.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3516(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "Such ordinance shall also exempt property from the levy of such personal property tax for any tax year or portion thereof during which the property was legally assessed by another jurisdiction in the Commonwealth and the tax paid.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3518",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518/",
+   "quote": "Every taxpayer owning any of the property subject to taxation under this chapter on January 1 of any year shall file a return thereof with the commissioner of the revenue for his county or city on the appropriate forms",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3518.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3518.1/",
+   "quote": "Any jurisdiction adopting such an alternative method may require the owner of a motor vehicle, trailer or boat to file a new personal property tax return whenever there is: (i) a change in the name or address of the person or persons owning taxable personal property; (ii) a change in the situs of personal property",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3519",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3519/",
+   "quote": "the commissioner of the revenue shall, from the best information he can obtain, enter the fair market value of such property and assess the same as if it had been reported to him.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-604",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-604/",
+   "quote": "Whenever a Virginia-registered motor vehicle is sold or its ownership otherwise transferred, the seller or transferor shall notify the Department of the sale or transfer by completing the appropriate portion of the registration card.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-600",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-600/",
+   "quote": "every person residing in the Commonwealth who owns a motor vehicle, trailer, or semitrailer, or his duly authorized attorney-in-fact, shall, within 30 days of the purchase or transfer, apply to the Department for a certificate of ownership.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-606(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-606/",
+   "quote": "Whenever any person who has applied for or obtained the registration or title to a vehicle moves from the address shown in his application, registration card or certificate of title, he shall notify the Department of his change of address within 30 days.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-606(D)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-606/",
+   "quote": "Anyone failing to comply with the provisions of subsection A may be charged a fee of $5, to be used to cover the Department's expenses.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-688",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-688/",
+   "quote": "The Commissioner shall refund to the applicant a proration, in six-month increments, of the total cost of the registration and license plates or license plates with decals if application for the refund is made when there are six or more months remaining in the registration period.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-688",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-688/",
+   "quote": "The Commissioner shall retain five dollars of the fee to cover the costs incurred in issuing the plates and processing the refund.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-688",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-688/",
+   "quote": "No charge or deduction shall be assessed for any refund made under this subsection.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "The license fees and taxes shall be imposed in such manner, on such basis, for such periods, and subject to proration for fractional periods of years, as the proper local authorities may determine.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "provided that no interest shall be required to be paid on such refund if (i) the amount of the refund is $10 or less or (ii) the refund is the result of proration pursuant to",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "an unpaid tangible personal property tax assessment may be appealed to the commissioner of the revenue or other assessing official at any time during which such assessment is collectible",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "provided the taxpayer can demonstrate by clear factual evidence that he was not subject to the tax for the year in question.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3940(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3940/",
+   "quote": "collection of local taxes shall only be enforceable for five years following December 31 of the year for which such taxes were assessed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "If the assessment exceeds the proper amount, he shall exonerate the applicant from the payment of so much as is erroneously charged if not paid into the treasury of the county or city.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "However, the governing body of the county, city or town may authorize the treasurer to approve and issue any refund up to $10,000 as a result of an erroneous assessment.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(F)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "if so requested by the applicant, the commissioner or other such official shall state in writing the facts and law supporting the action on such application and mail a copy of such writing to the applicant at his last known address.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983/",
+   "quote": "Application may be made to the proper court whether or not such applicant has theretofore made application to the commissioner of the revenue for the correction of any such assessment.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3986",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3986/",
+   "quote": "the court may order such erroneous assessment to be corrected and grant redress therefor, whether such erroneously assessed tax has been paid or not, even though the application for such relief or redress be not made to the court within the time hereinbefore required.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "quote": "\"Local mobile property tax\" means the tangible personal property tax on airplanes, boats, campers, recreational vehicles, and trailers.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3983.1(D)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3983.1/",
+   "quote": "by filing an appeal with the Tax Commissioner and serving a copy of the appeal upon the commissioner of the revenue or other assessing official within 90 days of the date of the determination of the commissioner of the revenue or other assessing official.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-801 (as cited and summarised on the county's Personal Property Registration form; the Code text itself was not read)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/21531/639032047511000000",
+   "capture": "20260316090952",
+   "paraphrase": "An owner of a motor vehicle, trailer or boat files a new return when its status changes.",
+   "role": "procedure",
+   "quote_sha256": "289b757f06d0f59525591e76a69bca09b73967d4d956e3233fd541c8d6d43b00",
+   "quote_words": 14
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-103(A) (as stated on the county's Important Dates and Deadlines page; the Code text itself was not read)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Tax still unpaid after the due date bears a late-payment penalty of 10% or $10, whichever is more.",
+   "role": "penalty",
+   "quote_sha256": "79f7b764878c2cd69316731b194640d88291f5a55608ac68ef3238d1fbe25ede",
+   "quote_words": 24
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-104 (as stated on the county's Important Dates and Deadlines page; the Code text itself was not read)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Unpaid tax and penalties bear interest at 10% a year, from the first day of the month after the due date until paid.",
+   "role": "penalty",
+   "quote_sha256": "f08f5460454c2c70e334a208999bcfd82f56f483ee5af06ad3ea89e7f845e745",
+   "quote_words": 38
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Sold, traded or donated the vehicle: sign the title over and tell Virginia DMV yourself",
+   "who": "Vehicle owner (seller), with the Virginia Department of Motor Vehicles (DMV)",
+   "how": "Sign the title over to the buyer and give it to them: every owner on the title signs, and you fill in the buyer's name and address, the odometer reading, the date of sale and the price (or \"gift\"). Then report the sale, trade or donation to DMV online, at a DMV customer service center or by phone. The county page gives DMV's number as (804) 497-7100. Do this yourself: the county warns not to rely on the buyer or the dealer. The county bases the tax, and any refund, on the sale date as updated with DMV, so a late DMV report can mean more months of tax.",
+   "deadline": "as soon as possible (county FAQ). The county's Purchasing and Selling page cites Va. Code § 46.2-600 for notifying DMV within thirty days of a purchase or transfer; that section sets the 30 days for the owner's title application. Va. Code § 46.2-604, which makes the seller notify DMV, sets no time limit.",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "capture": "20260813134029",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "quote_sha256": "f02a5bec9f311a29f25186b71b923b1769ef641c9ef1c7a9fccea543598fb66e",
+   "quote_words": 19
+  },
+  {
+   "id": "s2",
+   "step": "Take off the license plates, then reuse them or turn them in",
+   "who": "Vehicle owner (seller), with Virginia DMV",
+   "how": "Remove the plates before the buyer takes the vehicle. You can move them to a replacement vehicle. If you will not reuse them, turn them in or inactivate them online, or at a DMV customer service center or DMV Select, before you tell your insurance company about the sale. DMV warns that if your insurer cancels coverage before DMV knows of the sale, its records show an uninsured registered vehicle, and it may suspend your driver's license and registration privileges. If six months or more are left on the registration, you may get part of the registration fee back: mail form FMS-210 (f3) with the plates, or hand both in at a customer service center or DMV Select. DMV mails the refund to the address it has on file, so update your address first; the form says to write to the DMV Refund Section if the check has not arrived within 30 days.",
+   "deadline": "a registration refund needs six or more full months left in the registration period (Va. Code § 46.2-688; form FMS 210)",
+   "fee": "a prorated registration refund, in six-month increments, carries no charge or deduction (Va. Code § 46.2-688); form FMS 210 says DMV deducts a $5.00 processing fee only if none of the registration period has passed; partial refunds do not include one-time plate reservation fees, Virginia Road Tax for heavy trucks or late fees (DMV page)",
+   "form": "f3",
+   "url": "https://www.dmv.virginia.gov/vehicles/buy-sell",
+   "quote": "The seller should remove the license plates from the vehicle before allowing the buyer to take possession of the vehicle",
+   "source": "https://www.dmv.virginia.gov/vehicles/buy-sell"
+  },
+  {
+   "id": "s3",
+   "step": "Junked or totaled the vehicle: surrender the title to DMV",
+   "who": "Vehicle owner, with Virginia DMV",
+   "how": "Surrender the title to DMV if you have it. If you no longer have the title, tell DMV that the vehicle has been junked. Then contact the county's Office of Revenue Administration (step s6). The county's refund or adjustment follows the salvage date recorded with DMV. The county's tax guide lists a vehicle that was sold, purchased, junked or totaled among the changes to report on its tax adjustments line, 434-296-5852.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "capture": "20260813134029",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "quote_sha256": "0d49fa2fe7475345e5a0b3f44cde54ed96f6cf256bb9b9d997c6b95e5ff36509",
+   "quote_words": 21
+  },
+  {
+   "id": "s4",
+   "step": "Moved to another Virginia city or county: give DMV your new address, garage jurisdiction and move date",
+   "who": "Vehicle owner, with Virginia DMV; then the Office of Revenue Administration",
+   "how": "Tell DMV your new address, the locality where the vehicle is now garaged and the date you moved. DMV asks for your full name and customer number, and the title number and last 4 digits of the VIN for each vehicle. Then contact the county (step s6). If your new locality prorates, Albemarle's tax stops at the move (step s7). If it does not prorate, Albemarle keeps taxing the vehicle through December 31 of the year you moved, and state law bars a refund for the rest of that year. The county does not list which localities do not prorate; ask your new locality.",
+   "deadline": "within 30 days of the move (Va. Code § 46.2-606(A))",
+   "fee": "DMV may charge $5 if you do not report the address change (Va. Code § 46.2-606(D))",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "paraphrase": null,
+   "capture": "20260508082134",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "quote_sha256": "41ef7a0aee44048bb6a3d81dd65a73af7347b3be3e7fc4542b7620a2f58f5eb2",
+   "quote_words": 16
+  },
+  {
+   "id": "s5",
+   "step": "Moved to another state: register the vehicle there and send the county proof",
+   "who": "Vehicle owner, to the new state's motor vehicle agency and to the Office of Revenue Administration",
+   "how": "Register or title the vehicle in your new state. Then send the Office of Revenue Administration a copy of the new state's title or registration that clearly shows the date the vehicle was registered there. If you sold or traded the vehicle after the move without registering it in the new state, send a copy of the bill of sale showing the Vehicle Identification Number and the date of the sale instead. Send it by fax (434-243-7906), email (Tax@Albemarle.org) or mail (step s6). The county says the vehicle stays taxable here until that evidence reaches its office. DMV encourages you to return the Virginia plates by mail once the vehicle is re-registered (or surrender them online); it says this is not required, but do not cancel your Virginia insurance before the plates are surrendered. If six full months or more remain on the Virginia registration, mail form FMS-210 (f3) with the plates for a refund.",
+   "deadline": "within 30 days of your move, as the county asks (Moving Personal Property page and FAQ); no penalty for missing it was found, but the county keeps taxing the vehicle until the proof reaches its office",
+   "fee": null,
+   "form": "f3",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "paraphrase": null,
+   "capture": "20260508082134",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "quote_sha256": "8294971259d543e3037e99782e4776d05f9741091dab3c0c12ff65f2fd572866",
+   "quote_words": 15
+  },
+  {
+   "id": "s6",
+   "step": "Tell the Office of Revenue Administration, with proof of the date",
+   "who": "Vehicle owner, to the Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit)",
+   "how": "The county asks to be told about every move, in or out, and its Purchasing and Selling page says to contact the Office of Revenue Administration after you have contacted DMV, so that it can update your account and adjust your billing. No separate county form for reporting a sale or disposal was found. Contact the Business & Personal Tax Unit by phone (434-296-5852), email (Tax@Albemarle.org), fax (434-243-7906) or mail (County of Albemarle, Revenue Administration, 401 McIntire Road, Room 133, Charlottesville, VA 22902), in person on the 1st floor of the County Office Building (Monday to Friday, 8 am to 5 pm, except holidays), or book an appointment online. Identify yourself, your account and the vehicle, and give the date it was sold, junked or moved. The county asks for documents only after a move to another state (the new registration, or a bill of sale showing the VIN and the date; step s5); for a sale or junking it goes by the DMV record, so keep your bill of sale or DMV receipt in case the date is questioned. The county's tax guide also says you can notify it by submitting a Personal Property Registration form (f2, or the online version f4); the paper form's fields are for a vehicle coming into the county (purchase date, date the vehicle entered the county, former residence), and it has no field for a sale, disposal or move-out date.",
+   "deadline": "none stated for a sale or junking; within 30 days of a move to another state (step s5)",
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "paraphrase": null,
+   "capture": "20260508082134",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "quote_sha256": "c786b29dbe2b87a0a50106e068b16420294e35e6f321d2492d65efee933e902b",
+   "quote_words": 17
+  },
+  {
+   "id": "s7",
+   "step": "The county ends the tax by the month",
+   "who": "Department of Finance & Budget, Office of Revenue Administration (the Director of Finance holds the commissioner of the revenue's powers, Va. Code § 15.2-521)",
+   "how": "Albemarle prorates. A vehicle is taxed from the date it is bought or registered with DMV as garaged in the county until the date it is retitled elsewhere, sold, junked, or taken to another prorating Virginia locality. Under state law more than half a month counts as a full month, and less than half a month is not counted. The end date used: for a sale or trade, the sale date as updated with DMV; for a junked vehicle, the salvage date recorded with DMV; for a move to another state, the new state's registration date, but the county also says tax continues until the proof reaches its office; for a move to a non-prorating Virginia locality, December 31. Months for which another Virginia locality legally assessed the vehicle and the tax was paid are exempt here.",
+   "deadline": null,
+   "fee": "tax at 4.28% of assessed value ($4.28 per $100) for calendar year 2026, less car tax relief on qualifying vehicles, for the months the vehicle had its situs in the county",
+   "form": null,
+   "url": "https://www.albemarle.org/home/showdocument?id=24562&t=638677975370816566",
+   "paraphrase": null,
+   "capture": "20260413204414",
+   "source": "https://www.albemarle.org/home/showdocument?id=24562&t=638677975370816566",
+   "quote_sha256": "1eaa2e6c20b4b234b76641bdf5b5024338161257edb663f1904fae60225532e8",
+   "quote_words": 41
+  },
+  {
+   "id": "s8",
+   "step": "Get the refund or credit, or a corrected bill",
+   "who": "Department of Finance & Budget, Office of Revenue Administration (the Director of Finance holds the treasurer's powers, Va. Code § 15.2-522)",
+   "how": "If you already paid for months after the vehicle left, state law has the prorated tax refunded to you or credited against tax on another vehicle you own in the same tax year. A refund under $5 is issued only if you ask for it, and the county is not required to pay interest on a refund that results from proration. If the bill is not yet paid, the county relieves the months that are not owed. A change made after billing can come as a supplemental bill, which has its own due date. No county page says how or when refunds are paid; for payments, balances and supplemental bills the office lists 434-296-5851 and payments@albemarle.org.",
+   "deadline": "a refund is due within thirty days of the date the tax is relieved (Va. Code § 58.1-3516(A))",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3516/",
+   "quote": "Such refund shall be made within thirty days of the date such tax is relieved.",
+   "source": "Va. Code § 58.1-3516(A)"
+  },
+  {
+   "id": "s9",
+   "step": "Keep paying any bill by its due date while the change is processed",
+   "who": "Vehicle owner (pays); Office of Revenue Administration (bills and collects)",
+   "how": "Bills are due June 25 and December 5; a due date on a weekend moves to the next business day. The county's penalty policy says penalty and interest are not waived because a bill was incorrect, was not received or was mailed to the wrong address. Pay on time, or get the bill corrected before the due date; once the change is made, an overpayment is refunded or credited (step s8). Unpaid taxes can lead to a DMV registration hold, tax liens, debt set-off and referral to a collection agency. Pay online at albemarlecountytaxes.org, by phone at 866-820-5450, by mail, at the 24/7 kiosk or in person. If you asked in writing for a correction within 90 days of the assessment, state law says the bill is not treated as delinquent, or sent to collection, while the request is pending and for 30 days after the decision; interest can still be charged on any part found to be owed (see the escalation routes).",
+   "deadline": "June 25 and December 5; a supplemental bill has its own due date",
+   "fee": "late-payment penalty of 10 percent (at least $10) on each assessed item; interest of 10% a year (Albemarle County Code §§ 15-103(A), 15-104, as stated by the county)",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "capture": "20260308180913",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote_sha256": "96d197f94769a4962ef9afc24e7d1fd61e80d9de8b35d6915e8684a5a6ed87fd",
+   "quote_words": 15
+  },
+  {
+   "id": "s10",
+   "step": "If the bill is still wrong, ask in writing for a correction",
+   "who": "Vehicle owner, to the Department of Finance & Budget (the assessing official)",
+   "how": "If the disposal date or the address on the bill is wrong, call the tax adjustments line (434-296-5852) first. If that does not fix it, write to the Department of Finance & Budget asking for a correction of the assessment. The county lists no required contents for a correction request. Its appeal-rights notice (f1) says an administrative appeal (the route for local business taxes and for trailers, boats, campers and other local mobile property) must contain the taxpayer's name and address, federal tax identification number, local tax account number, a power of attorney or letter of representation if someone else applies, a copy of the assessment, a detailed explanation of the taxpayer's position and a statement of the relief requested, sent to Department of Finance & Budget, Attn: Revenue Administration - Assessments Unit, 401 McIntire Road, Room 133, Charlottesville, VA 22902. Those contents, with your proof (DMV record, bill of sale or new registration), are a sensible guide for a correction request too. You may ask for the facts and law behind the decision in writing (Va. Code § 58.1-3981(F)). The county says you can go to the Circuit Court at any point. See the escalation routes.",
+   "deadline": "within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later (Va. Code § 58.1-3980(A)); an unpaid bill for a year in which you were not subject to the tax may be challenged while it is collectible (Va. Code § 58.1-3980(B))",
+   "fee": null,
+   "form": "f1",
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "paraphrase": null,
+   "capture": "20260311113611",
+   "source": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "quote_sha256": "32beef3a56d54ca19195ab8be5e74144b948d2ce00f9b734e90f6d0dc7af7c0f",
+   "quote_words": 23
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Notice of Taxpayer Appeal Rights (PDF information sheet: correction, administrative appeal, Tax Commissioner and court routes)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f2",
+   "title": "Personal Property Registration (PDF; Business & Personal Tax Unit edition, the county's return for a change in status; no separate disposal form was found)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/21531/639032047511000000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Vehicle Registration Refund Application (Virginia DMV, 07/01/2022 edition; mailed or handed in with the license plates)",
+   "number": "FMS 210",
+   "url": "https://www.dmv.virginia.gov/sites/default/files/forms/fms210.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Personal property registration, online form (Microsoft Forms, linked from the Personal Property Taxes & Fees page; not read, because forms.office.com's robots.txt disallows general crawlers)",
+   "number": null,
+   "url": "https://forms.office.com/g/DRUNuAYBvK",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "Personal property tax on vehicles (charged only for the months the vehicle had its situs in the county)",
+   "amount": "4.28% of assessed value ($4.28 per $100) for calendar year 2026",
+   "basis": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "capture": "20260813134029",
+   "quote_sha256": "335fa2953b4e5a25b4221a0735b8695a21c61615485bfe2898fcb8d55c1b1879",
+   "quote_words": 14
+  },
+  {
+   "item": "Vehicle license fee (yearly, on the June 25 bill; $40.75 for vehicles of 4,000 lbs or less, $45.75 over 4,000 lbs, $28.75 motorcycles, $18.00 or $28.50 trailers)",
+   "amount": "$18.00 to $45.75 a year by type and weight, described by the county as prorated",
+   "basis": "https://www.albemarle.org/home/showdocument?id=24562&t=638677975370816566",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/home/showdocument?id=24562&t=638677975370816566",
+   "capture": "20260413204414",
+   "quote_sha256": "6aab3c4a408cf8b508b17199d511d2e875f160bfd6c5e50a759a033e3427af10",
+   "quote_words": 33
+  },
+  {
+   "item": "Late payment penalty on a bill not paid by the due date",
+   "amount": "10 percent (at least $10) of the unpaid balance of each assessed item",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "10c69de06c04f8a6ceab85bed41cf3b3b1832aa179767781b7625ec339207c61",
+   "quote_words": 18
+  },
+  {
+   "item": "Interest on unpaid tax and penalty",
+   "amount": "10% a year, accruing monthly",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "0bd5455636b23e7ad379c0ec93d28a70ea6feea82e05a7459b23d102e6d5d3f9",
+   "quote_words": 12
+  },
+  {
+   "item": "DMV registration hold (DMV Stop) removal, if a bill goes delinquent",
+   "amount": "$25 per stop removed, passed on to the taxpayer",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "63cc4c07de7b5946a5bf4c0af00b160edcc4075440e45336ce1d28f48390e4e0",
+   "quote_words": 20
+  },
+  {
+   "item": "DMV registration refund when plates are surrendered (state fee, not county)",
+   "amount": "prorated in six-month increments when six or more full months remain, with no charge or deduction (Va. Code § 46.2-688); a $5.00 processing fee is deducted only if none of the registration period has passed",
+   "basis": "https://www.dmv.virginia.gov/sites/default/files/forms/fms210.pdf",
+   "quote": "A $5.00 processing fee will be deducted from your refund if none of the registration period has passed."
+  },
+  {
+   "item": "DMV fee for not reporting an address change within 30 days (state fee, not county)",
+   "amount": "$5 (DMV may charge it)",
+   "basis": "Va. Code § 46.2-606(D)",
+   "quote": "Anyone failing to comply with the provisions of subsection A may be charged a fee of $5, to be used to cover the Department's expenses."
+  },
+  {
+   "item": "Debt Set-Off fee, if a delinquent bill is sent to the Virginia Department of Taxation to be taken from a state income tax refund or lottery winnings",
+   "amount": "$25 county fee; the Department of Taxation also charges 4% of the amount withheld",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "5cd838ecfd249ff01f1ba705046c58c513a50fc474166589cc11101d1b6d7026",
+   "quote_words": 11
+  },
+  {
+   "item": "Collection agency fee, if a bill stays delinquent for 3 months or more and is referred to the county's collection agency",
+   "amount": "20% of the amount collected, added to the balance",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "6f2c693e9b9c7452284cd0ab1a551b701dcdd7363f66f54ffd02cd855620feb8",
+   "quote_words": 21
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Department of Finance & Budget, Office of Revenue Administration (Business & Personal Tax Unit), County Office Building, 401 McIntire Road, 1st floor, Room 133, Charlottesville, VA 22902 (Monday to Friday, 8:00 am to 5:00 pm, except holidays)",
+   "label": "Office of Revenue Administration, Albemarle County",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5852",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit, Albemarle County (moves, sales, junked vehicles, disposal dates)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property"
+  },
+  {
+   "kind": "email",
+   "value": "Tax@Albemarle.org",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit, Albemarle County",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property"
+  },
+  {
+   "kind": "phone",
+   "value": "434-243-7906 (fax)",
+   "label": "Office of Revenue Administration, Albemarle County (fax for new-state registrations and bills of sale)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, Revenue Administration, 401 McIntire Road room 133, Charlottesville, VA 22902",
+   "label": "Office of Revenue Administration, Albemarle County (mailing address for proof of a move or sale)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "label": "Department of Finance & Budget, Albemarle County: Moving Personal Property",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property"
+  },
+  {
+   "kind": "portal",
+   "value": "https://outlook.office365.com/owa/calendar/AlbemarleCountyAssessmentsUnit@albemarle.org/bookings/",
+   "label": "Office of Revenue Administration, Albemarle County (book a virtual or in-person appointment with a tax specialist)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5851",
+   "label": "Office of Revenue Administration, Albemarle County (payments, balances and supplemental bills)",
+   "url": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills"
+  },
+  {
+   "kind": "email",
+   "value": "payments@albemarle.org",
+   "label": "Office of Revenue Administration, Albemarle County (payments and supplemental bills)",
+   "url": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills"
+  },
+  {
+   "kind": "portal",
+   "value": "http://www.albemarlecountytaxes.org/taxes",
+   "label": "Department of Finance & Budget, Albemarle County (view and pay personal property tax bills online)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "phone",
+   "value": "(804) 497-7100",
+   "label": "Virginia Department of Motor Vehicles (number given on the county's Purchasing and Selling page)",
+   "url": "https://www.albemarle.org/government/finance-and-budget/personal-property/purchasing-and-selling-personal-property"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.dmv.virginia.gov/online-services/report-vehicle",
+   "label": "Virginia Department of Motor Vehicles (report a vehicle sold, traded or donated; linked from DMV's page, not opened)",
+   "url": "https://www.dmv.virginia.gov/vehicles/buy-sell"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.dmv.virginia.gov/vehicles/license-plates/surrender",
+   "label": "Virginia Department of Motor Vehicles (surrender license plates; linked from DMV's page, not opened)",
+   "url": "https://www.dmv.virginia.gov/moving/leaving-virginia"
+  },
+  {
+   "kind": "office",
+   "value": "Circuit Court Clerk's Office, 350 Park Street, Court Square, Charlottesville, VA 22902; 434-972-4083",
+   "label": "Clerk of the Circuit Court of Albemarle County (court applications under Va. Code § 58.1-3984)",
+   "url": "https://www.albemarle.org/government/circuit-court-clerk-s-office"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "the county keeps taxing months after the sale, junking or move, or uses a later end date than your DMV record, bill of sale or new registration shows",
+   "next": "Department of Finance & Budget, Albemarle County (written request for correction of assessment to the assessing official; you may ask for the facts and law behind the decision in writing, Va. Code § 58.1-3981(F))",
+   "type": "internal appeal",
+   "deadline": "within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof."
+  },
+  {
+   "trigger": "an unpaid bill for a year in which you were not subject to the tax at all (for example, the vehicle was sold, or registered in another state, before January 1)",
+   "next": "Department of Finance & Budget, Albemarle County (assessing official; abates the bill)",
+   "type": "internal appeal",
+   "deadline": "at any time while the bill is collectible (generally five years after December 31 of the tax year, Va. Code § 58.1-3940(A)), with clear factual evidence",
+   "basis": "Va. Code § 58.1-3980(B)",
+   "quote": "an unpaid tangible personal property tax assessment may be appealed to the commissioner of the revenue or other assessing official at any time during which such assessment is collectible"
+  },
+  {
+   "trigger": "you asked in writing for a correction (an application under Va. Code § 58.1-3980) within 90 days of the assessment",
+   "next": "Department of Finance & Budget, Albemarle County (collections): no separate request is needed; by law the bill is not treated as delinquent or sent to collection while the request is pending, but interest may still be charged on any part found to be owed",
+   "type": "deferral",
+   "deadline": "appeal filed within 90 days of the assessment; the hold lasts until 30 days after the final determination",
+   "basis": "Va. Code §§ 58.1-3916, 58.1-3958",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under"
+  },
+  {
+   "trigger": "the tax has been relieved for the months after the sale or move, but no refund or credit arrives",
+   "next": "Department of Finance & Budget, Albemarle County (the Director of Finance performs the treasurer's duties and makes prorated refunds)",
+   "type": "internal appeal",
+   "deadline": "the refund is due within thirty days of the date the tax is relieved",
+   "basis": "Va. Code § 58.1-3516(A)",
+   "quote": "Such refund shall be made within thirty days of the date such tax is relieved."
+  },
+  {
+   "trigger": "you paid Albemarle and a tax on the same vehicle in your new state (or state of domicile) for the same year",
+   "next": "Department of Finance & Budget, Albemarle County (application for a refund, with evidence of the other state's tax; the county may refund)",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "Va. Code § 58.1-3511(A)",
+   "quote": "Any person who shall pay a personal property tax on a motor vehicle to a county or city in this Commonwealth and a similar tax on the same vehicle in the state of his domicile, or in the state where such vehicle is normally garaged, docked, or parked, may apply to such county or city for a refund of such tax payment."
+  },
+  {
+   "trigger": "a trailer, boat, camper or recreational vehicle (local mobile property tax): the county denies the correction in whole or in part",
+   "next": "Tax Commissioner, Virginia Department of Taxation",
+   "type": "external administrative review",
+   "deadline": "appeal to the county within one year from the last day of the tax year or one year from the assessment, whichever is later; then appeal to the Tax Commissioner, served on the county, within 90 days of the county's determination (after one year with no determination, on at least 30 days' written notice, the appeal may be treated as denied)",
+   "basis": "Va. Code § 58.1-3983.1(B)(1), (B)(6), (D)(1)",
+   "quote": "by filing an appeal with the Tax Commissioner and serving a copy of the appeal upon the commissioner of the revenue or other assessing official within 90 days of the date of the determination of the commissioner of the revenue or other assessing official."
+  },
+  {
+   "trigger": "the correction is denied or you get no answer (for a car, pickup or motorcycle there is no Tax Commissioner step, and you need not ask the county first)",
+   "next": "Circuit Court of Albemarle County (application filed in the Circuit Court Clerk's Office)",
+   "type": "judicial review",
+   "deadline": "the latest of: three years from the last day of the tax year, one year from the assessment, one year from the Tax Commissioner's final determination, or one year from the county's final determination under Va. Code § 58.1-3981",
+   "basis": "Va. Code §§ 58.1-3983, 58.1-3984(A)",
+   "quote": "Application may be made to the proper court whether or not such applicant has theretofore made application to the commissioner of the revenue for the correction of any such assessment."
+  },
+  {
+   "trigger": "Albemarle and your new Virginia locality both taxed the vehicle for the same months, and one tax has been paid",
+   "next": "Department of Finance & Budget first (state law exempts months legally assessed and paid elsewhere in Virginia, Va. Code § 58.1-3516(B)); then the Circuit Court of Albemarle County",
+   "type": "judicial review",
+   "deadline": "the court may correct a double assessment even after the usual time limits have passed",
+   "basis": "Va. Code § 58.1-3986",
+   "quote": "the court may order such erroneous assessment to be corrected and grant redress therefor, whether such erroneously assessed tax has been paid or not, even though the application for such relief or redress be not made to the court within the time hereinbefore required."
+  },
+  {
+   "trigger": "you were charged a late payment penalty or interest that was not your fault (the county's policy lists a medically determinable impairment, abatement of the underlying tax, a clerical error by its staff in assessing you late, and lateness due solely to the fault of the Treasurer or Commissioner, whose duties the Director of Finance performs; it says a bill that was wrong, not received or misaddressed, not knowing the deadline, or wrong advice from staff, is not grounds)",
+   "next": "Department of Finance & Budget, Albemarle County (the Director of Finance performs the commissioner's and treasurer's duties and decides waivers under the county's penalty policy)",
+   "type": "internal appeal",
+   "deadline": "for a medically determinable impairment or the taxpayer's death, the tax must be paid within 30 days of the due date (within 120 days after a fiduciary qualifies or begins to act, where one handles the taxpayer's affairs)",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The live pages may have changed since; confirm on them before you act. The DMV pages were read live. The County's Terms and Conditions bar reposting its content without written permission, so the County's own words are not reprinted on this page; each step links the County page instead.",
+  "No county disposal form. Unlike Charlottesville, Albemarle publishes no form for reporting a vehicle sold, junked or moved away that was found. Its pages ask you to contact the Office of Revenue Administration by phone, email, fax or mail, and its tax guide says you can also notify it with the Personal Property Registration form (f2). The county's online registration form (forms.office.com) refuses automated readers, so its fields are not described here. No fee for reporting a change was found. Two editions of the paper registration form are linked: the Moving Personal Property page (May 2026 snapshot) links f2, and the Personal Property Taxes & Fees page (August 2026 snapshot) links an older edition (showpublisheddocument/8231) and the online form (f4).",
+  "Deadlines. The only county deadline found is 30 days after a move to another state, for sending the new state's registration. For a sale or junking the county gives none (its FAQ says to tell DMV as soon as possible). The Purchasing and Selling page says Va. Code § 46.2-600 requires notifying DMV within thirty days of purchase or transfer, but that section puts the 30-day duty on the owner applying for a title; § 46.2-604, which makes the seller notify DMV, sets no time limit. The registration form cites County Code § 15-801 for a new return when status changes (compare Va. Code § 58.1-3518.1(B)); the text of § 15-801, and any deadline or penalty in it, were not read.",
+  "Which date ends the tax differs between county pages. For a sale, the FAQ uses the date the sale was updated with DMV and the Purchasing and Selling page uses the date DMV received the information, not necessarily the actual sale date. For a move to another state, the Moving page asks for registration that shows the date the vehicle was registered in the new state, while the FAQ says taxation ceases once the copy has been provided, and the guide says vehicles remain taxable until evidence of registration is received. If the county uses a later date than your documents show, ask for a correction (step s10).",
+  "Statute attribution. The county's Moving page and tax guide say that under Va. Code § 58.1-3511 vehicles remain taxable until evidence of new registration is provided (the guide misprints the citation as §58.3511). The section as indexed does not say that in terms. The closest rule is § 58.1-3511(A)(i): a vehicle of 10,000 pounds or less registered in Virginia but garaged in another state has its situs where it is registered in Virginia. The evidence rule appears to be county practice built on that.",
+  "Local ordinance not checked. Albemarle's tax guide says the county is a pro-rating locality, and its pages describe monthly proration, but the ordinance adopting proration under Va. Code § 58.1-3516 (County Code Chapter 15, Article 8, from § 15-800) has not been checked. The Code of Ordinances is on Municode, whose CivicPlus terms forbid automated access and copying. Legistar's matter records and staff reports give no proposed or adopted ordinance text. The local legal_basis quotes come from county pages and the county's form, not from the Code.",
+  "Vehicle license fee on a sale or move. The guide calls the license fee an annual prorated fee, and Va. Code § 46.2-752(A) lets the locality prorate it, but no county page says whether part of the fee is refunded or credited when a vehicle is sold or moved away. Legistar matter 21-373 (2021) proposed County Code §§ 15-1405 (Prorating) and 15-1406 (Refunds) for the vehicle license tax; their text and adoption were not confirmed (the matter's history in Legistar is empty). DMV's form FMS 210 also tells applicants to contact their locality about refunds of local license fees.",
+  "Refund mechanics. No county page states how or when prorated refunds or credits are paid. The 30-day refund rule, the $5 minimum and the no-interest rule for proration refunds come from state law (Va. Code §§ 58.1-3516, 58.1-3916). A 2026 Board of Supervisors staff report (Legistar 26-344, Quarterly Tax Refund Approval Request) says refunds from erroneous assessments over $10,000 need Board approval and that the county requests them quarterly; ordinary vehicle refunds are far below that. Va. Code § 58.1-3990 (refund ordinance) was not used, because no county source showed it has been adopted.",
+  "Not everything is prorated the same way. Va. Code § 58.1-3516 covers motor vehicles, trailers, semitrailers and boats. Mobile homes classified as personal property are taxed at the real estate rate; a 2022 proposal (Legistar 22-482) to add County Code § 15-806 on proration for manufactured homes was not confirmed. Boats are registered with the Department of Wildlife Resources, and aircraft with the FAA; how to report their sale or move is not covered here. Whether the county excludes heavy interstate for-hire vehicles from proration, as § 58.1-3516(A) allows, was not found.",
+  "Non-prorating localities. The county's pages say a move to a Virginia locality that does not prorate leaves you taxed by Albemarle through December 31, and Va. Code § 58.1-3516(A) bars the refund. The county does not list which localities do not prorate. Charlottesville prorates (see curated/places/va/charlottesville/personal_property_change_report.json); Staunton was not checked.",
+  "Car tax relief (PPTR) and the PPTR percentage for 2026 were not confirmed; how relief is prorated along with the tax on a partial-year bill or refund is not stated by the county.",
+  "Town of Scottsville: the county collects the town's motor vehicle license taxes under a 2021 agreement (Legistar 21-510). How town residents' license tax is prorated or refunded is not covered here.",
+  "The Tax Commissioner appeal (Va. Code § 58.1-3983.1) covers only 'local mobile property tax' (airplanes, boats, campers, recreational vehicles and trailers) and local business taxes. For a car, pickup or motorcycle, the next step after the county is the circuit court. The county's appeal-rights sheet describes the same routes.",
+  "Contacts. The appeal-rights PDF (dated by its URL to December 2022) gives fax 434-244-4929 and a finance department mailbox, and the registration form gives tel 434-296-5851; the county's web pages give 434-296-5852 and Tax@Albemarle.org for the Business & Personal Tax Unit and fax 434-243-7906, which are recorded here. The appeal-rights PDF's mailbox is not recorded because the web pages publish Tax@Albemarle.org for this unit. The office address appears as Room 133 on the web pages and Suite 133 on the forms. The DMV online services (report a vehicle, plate surrender) are linked from DMV's pages and not described here. FMS 210 (07/01/2022 edition) has fillable fields, bases refunds on each 6 full months remaining, and deducts a $5.00 processing fee only if none of the registration period has passed. DMV's Moving Within Virginia page says to return a decal to the old locality; Albemarle no longer issues decals.",
+  "Privacy: the Circuit Court Clerk's page names the Clerk and Chief Deputy Clerk, Legistar records carry staff names and mailboxes, and some county PDFs give department mailboxes. None of these are recorded. The Clerk's page also links an old notice that the office is closed to public traffic; current hours were not confirmed.",
+  "Terms: albemarle.org's terms authorize browsing for informational purposes but require written permission to repost or redistribute site content, so page quotes are kept to one sentence or clause for citation. Republishing them on a wiki may need the county's permission.",
+  "Quotes: state-law quotes are matched to Open US Law's copy of the Code of Virginia, cut before cross-references where that copy puts a space before punctuation. Local quotes keep the county's own wording and spelling, including 'pro-rating' and 'non-prorating'. The tax guide PDF uses typographic ligatures and line-break hyphens, so quotes from it avoid words whose extracted text was ambiguous."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "title": "Moving Personal Property, Department of Finance & Budget, Albemarle County (Internet Archive copy of 8 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "title": "Personal Property Taxes & Fees, with FAQs, Albemarle County (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/personal-property/purchasing-and-selling-personal-property",
+   "title": "Purchasing and Selling Personal Property, Albemarle County (Internet Archive copy of 17 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showdocument?id=24562&t=638677975370816566",
+   "title": "Personal Property and Personal Property Tax Relief Programs (county tax guide PDF, dated by its URL to November 2024, linked from the Tax Education page; Internet Archive copy of 13 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/tax-education",
+   "title": "Tax Education, Albemarle County (links the tax guide; Internet Archive copy of 12 June 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "title": "Taxpayer Appeal Rights (Corrections and Administrative Appeals Process), Albemarle County (Internet Archive copy of 11 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "title": "Notice of Taxpayer Appeal Rights (PDF; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/21531/639032047511000000",
+   "title": "Personal Property Registration form, Business & Personal Tax Unit edition (PDF, dated by its URL to January 2026; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills",
+   "title": "Supplemental Bills, Albemarle County (Internet Archive copy of 14 April 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "title": "Important Dates and Deadlines, including the Late Payment, Filing, & Remittance Penalty Policy and Delinquent Collections, Albemarle County (Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "title": "Payment Options, Albemarle County (Internet Archive copy of 16 September 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance",
+   "title": "Department of Finance & Budget, Albemarle County (Office of Revenue Administration duties; Internet Archive copy of 16 September 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/personal-property-exemptions",
+   "title": "Personal Property Tax Relief and Exemptions, Albemarle County (Internet Archive copy of 17 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "County Code, County Attorney, Albemarle County (links the Code of Ordinances on Municode; Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/circuit-court-clerk-s-office",
+   "title": "Circuit Court Clerk's Office, Albemarle County (Internet Archive copy of 9 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/terms-and-conditions",
+   "title": "Terms and Conditions, Albemarle County website (Internet Archive copy of 20 July 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmv.virginia.gov/vehicles/buy-sell",
+   "title": "Buying/Selling a Vehicle, Virginia Department of Motor Vehicles",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmv.virginia.gov/moving/leaving-virginia",
+   "title": "Leaving Virginia, Virginia Department of Motor Vehicles",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmv.virginia.gov/moving/moves-virginia",
+   "title": "Moving Within Virginia, Virginia Department of Motor Vehicles",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.dmv.virginia.gov/sites/default/files/forms/fms210.pdf",
+   "title": "Vehicle Registration Refund Application (FMS 210, 07/01/2022 edition), Virginia DMV",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8660/texts/8793",
+   "title": "Albemarle County Legistar matter 26-344: Quarterly Tax Refund Approval Request, staff report for August 19, 2026 (Web API text)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/5662",
+   "title": "Albemarle County Legistar matter 21-373: Ordinance to Amend County Code Chapter 15, Taxation, adding Article 14, County Vehicle Licenses (Web API record and staff report text)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/7226",
+   "title": "Albemarle County Legistar matter 22-482: Ordinance to Amend County Code Chapter 15 (§ 15-800; proposed § 15-806, manufactured homes proration) (Web API record)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/3565",
+   "title": "Albemarle County Legistar matter 19-237: Ordinance to Amend County Code Chapter 15, Taxation (recodification; Article 8, Personal Property Tax) (Web API record and staff report text)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/",
+   "title": "Code of Virginia(va) with I.lookup and I.text_of: Va. Code §§ 15.2-521, 15.2-522, 46.2-600, 46.2-604, 46.2-606, 46.2-688, 46.2-752, 58.1-3511, 58.1-3515, 58.1-3516, 58.1-3518, 58.1-3518.1, 58.1-3519, 58.1-3523, 58.1-3916, 58.1-3940, 58.1-3958, 58.1-3980, 58.1-3981, 58.1-3983, 58.1-3983.1, 58.1-3984, 58.1-3986",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://forms.office.com/robots.txt",
+   "title": "robots.txt of forms.office.com (it bars automated readers)",
+   "retrieved": "2026-10-11"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 72,
+  "quotes_confirmed": 72,
+  "removed": [
+   "fees, DMV registration refund: the Va. Code § 46.2-688 quote 'The Commissioner shall retain five dollars of the fee...' was the basis for 'DMV keeps $5' on a prorated refund. The quote is verbatim and stays in legal_basis, but it sits in the paragraph on plates surrendered before the registration period begins; the fee entry now quotes form FMS 210 instead."
+  ],
+  "corrections": [
+   "Method: the 52 state-law quotes were matched against I.text_of for each cited section in lexflow-app-1, whitespace normalised only, and their subsections were checked by reading the section text. The 20 local and DMV quotes were matched against pages fetched read-only with the lexflow-research User-Agent. www.albemarle.org again answered HTTP 403 (robots.txt included), so the Internet Archive snapshots named in sources were fetched in raw (id_) mode a few seconds apart; the tax guide, registration form and appeal-rights PDFs were read from those snapshots with pdftotext. The DMV pages and form FMS 210 were fetched directly, 30 seconds apart as DMV's robots.txt asks. All 72 remaining quotes matched word for word.",
+   "s2 and fees: the draft said DMV keeps $5 of a prorated registration refund. Va. Code § 46.2-688 puts the five-dollar retention in the paragraph on plates surrendered before the registration period begins and says of the prorated refund 'No charge or deduction shall be assessed for any refund made under this subsection' (new legal_basis quote). Form FMS 210, now read, says the $5.00 processing fee is deducted only if none of the registration period has passed. The step, the fee entry and the deadline (six or more full months) now say so. Added from FMS 210 that the refund is mailed to the address DMV has on file and whom to write to if it has not arrived in 30 days.",
+   "fees: the DMV address-change fee was 'up to $5'; Va. Code § 46.2-606(D) says the person 'may be charged a fee of $5'. Now '$5 (DMV may charge it)'.",
+   "s8: 'no interest is paid on a refund that comes from proration' overstated Va. Code § 58.1-3916, which says no interest 'shall be required to be paid' on such a refund. Now 'the county is not required to pay interest'.",
+   "s10: the draft said an administrative appeal 'should give' a shortened list of contents. The appeal-rights notice (f1) says an administrative appeal 'must' contain them, and that route covers local license, business and mobile property taxes, not a correction request for a car. The step now says the county lists no required contents for a correction request, gives f1's full list (including federal tax identification number and power of attorney or letter of representation) and f1's mailing address for appeals, and offers the list only as a guide.",
+   "s5: the 30-day deadline is the county's request ('Please do this within 30 days'); the deadline field now says no penalty for missing it was found and that taxation continues until the proof arrives.",
+   "s6: the draft asked for proof with every report. The county asks for documents only after a move to another state; for a sale or junking it goes by the DMV record. Added the Purchasing and Selling page's instruction to contact the Office of Revenue Administration after DMV so it can update the account and adjust billing, that the registration form's fields are for a vehicle coming into the county (no field for a sale or move-out date), and the online form (new f4, not read).",
+   "s9: added the rule in Va. Code §§ 58.1-3916 and 58.1-3958 that a bill is not treated as delinquent while a correction request filed within 90 days is pending and for 30 days after the decision, with interest still possible on any part found owing.",
+   "Escalation: the collection-hold rung now says the hold is automatic (no separate request) and that interest may still be charged. The penalty-waiver rung now lists the county policy's fourth ground (lateness due solely to the fault of the Treasurer or Commissioner) and 'not knowing the deadline' among the non-grounds, and adds the 120-day period for a fiduciary from Va. Code § 58.1-3916.",
+   "Forms: FMS 210 (f3) is the 07/01/2022 edition and has fillable fields (fillable now true). Added f4, the county's online registration form, recorded but not opened because forms.office.com's robots.txt disallows general crawlers.",
+   "Fees: added the Debt Set-Off fee ($25 county fee plus the Department of Taxation's 4%) and the collection agency fee (20% of the amount collected), both quoted from the Important Dates and Deadlines page, which the draft's step s9 already named as consequences of an unpaid bill.",
+   "Caveats and sources: the contacts caveat no longer says FMS 210 was unread; the disposal-form caveat notes the two linked editions of the paper registration form and the online form; the license-fee caveat adds FMS 210's note to ask the locality about local license fee refunds. Confirmed from the pages: the Legistar 26-344 staff report (agenda date 8/19/2026) says refunds over $10,000 need Board approval and are requested quarterly; the site terms allow browsing for informational purposes and require written permission to repost.",
+   "Confirmed without change: every county, DMV and court contact (office lines, Tax@Albemarle.org and payments@albemarle.org office mailboxes, fax, mailing address, hours, the booking link, the Circuit Court Clerk's office line), the 4.28% rate and the license fee schedule, the June 25 and December 5 due dates, the penalty and interest terms, the county's proration description, and the legal routes and deadlines in escalation. No staff names or personal mailboxes are recorded."
+  ],
+  "open_issues": [
+   "www.albemarle.org blocks automated requests (HTTP 403), so every county page and PDF was checked against Internet Archive snapshots from March to September 2026, not the live site. A later change (for example a new rate, fee or contact) would not show.",
+   "The County Code was not read (Municode's terms forbid automated access): the proration ordinance in Chapter 15, Article 8, and any deadline or penalty in § 15-801 for a new return when status changes, remain unknown. The steps describe the county's published practice and say the Code was not read.",
+   "No county page says whether the vehicle license fee is refunded or credited when a vehicle is sold or moved away, or how and when prorated tax refunds are paid; the steps give only what state law and the pages say.",
+   "County pages differ on the date that ends the tax (the sale date as updated with DMV, or the date DMV received the information; for a move to another state, the new registration date, or the date the proof reaches the county). The steps and caveats give both and point to the correction route."
+  ]
+ }
+}

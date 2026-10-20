@@ -1,0 +1,1400 @@
+{
+ "place": "va:albemarle county",
+ "gov_id": "47100200200000",
+ "process": "pay_property_taxes",
+ "title": "Pay real estate and personal property taxes",
+ "question": "How and when do I pay my Albemarle County property tax bill?",
+ "category": "taxes_assessments",
+ "kind": "process",
+ "audience": [
+  "residents",
+  "property owners",
+  "vehicle owners"
+ ],
+ "office": "Department of Finance & Budget, Office of Revenue Administration (payments); the Director of Finance performs the treasurer's duties under the county executive form",
+ "summary": "Albemarle has no elected treasurer: the Department of Finance & Budget's Office of Revenue Administration bills and collects real estate and personal property (vehicle) taxes. Both are due in halves on June 25 and December 5, or the next business day if the date falls on a weekend; the June bill includes the vehicle license fee. Pay online at albemarlecountytaxes.org (e-check free, cards 2.35% to 2.5%), by phone at 866-820-5450, by mail to P.O. Box 7604, Merrifield, VA 22116-7604 (postmarked by the due date), at the 24-hour kiosk or drop boxes, or in person at 401 McIntire Road. Late payment adds 10% or $10, plus 10% yearly interest. If you fall behind, call 434-296-5851.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-519",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-519/",
+   "quote": "the collection of taxes, license fees and other revenues",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-522",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-522/",
+   "quote": "The director of finance shall also exercise the powers conferred and perform the duties imposed by general law upon county treasurers, and shall be subject to the obligations and penalties imposed by general law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3910(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3910/",
+   "quote": "Each county and city treasurer shall receive the local taxes and other amounts payable into the treasury of the political subdivision of the Commonwealth served by the treasurer, and shall account for and pay over the same in the manner provided by law.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3910(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3910/",
+   "quote": "Taxpayers shall make checks payable to \"Treasurer (or title of other officer or employee who performs the duties of a treasurer) of (name of political subdivision)\" or \"(name of political subdivision)\".",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The governing body may also by ordinance establish due dates for the payment of local taxes; may provide that payment be made in a single installment or in two equal installments;",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "This section shall be the sole authority for local ordinances setting due dates of local taxes and penalty and interest thereon and shall supersede the provisions of any charter or special act.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3915",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3915/",
+   "quote": "any person failing to pay any county, town and city levies on or before December 5 shall incur a penalty thereon of five percent",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3915",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3915/",
+   "quote": "No penalty shall be imposed for failure to pay any tax if such failure was not the fault of the taxpayer.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3913",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3913/",
+   "quote": "continue to receive the same without penalty up to and including December 5 of each year, or such other date set by the governing body.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3913",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3913/",
+   "quote": "Unless otherwise provided by ordinance of the governing body, any payment of local levies received shall be credited first against the most delinquent local account, the collection of which is not subject to a defense of an applicable statute of limitations.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "but not later than 14 days prior to the due date of the taxes, send or cause to be sent by United States mail to each taxpayer assessed with taxes and levies for that year a bill or bills setting forth the amounts due.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "The treasurer may elect not to send a bill amounting to $20 or less as shown by an assessment book in such treasurer's office.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "Upon nonpayment of taxes by either the obligee or obligor, a past-due tax bill will be sent to the taxpayer.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3912(F)(2)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3912/",
+   "quote": "also may convey, with the consent of the taxpayer, any tax bill or other document by permitting the taxpayer to access his information online from a database on the locality's or official's website.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3911",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3911/",
+   "quote": "The treasurer shall publicize at least ten days before the due date of local taxes in such manner as may be necessary to give general notice in his county or city of the fact that taxes are due and payable.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3281",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3281/",
+   "quote": "the owner of real estate on that day shall be assessed for the taxes for the year beginning on that day.",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3523",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3523/",
+   "quote": "\"Qualifying vehicle\" means any passenger car, motorcycle, autocycle, and pickup or panel truck",
+   "role": "definition"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "bearing a postmark or a confirmation of shipment on or before midnight of the day such return is required to be filed or such payment made without penalty or interest",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-9(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-9/",
+   "quote": "When remittance of a tax payment is made by electronic funds transfer, receipt of funds available for withdrawal, in a bank account designated to receive such payments by the person to whom such payment is required to be made, on or before midnight of the day such payment is required to be made without penalty or interest, shall constitute payment as if such payment had been made before the close of business on the last day on which such tax may be paid without penalty or interest.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 1-210(E)",
+   "url": "https://law.lis.virginia.gov/vacode/1-210/",
+   "quote": "the act may be performed or the action may be filed on the next business day that is not a Saturday, Sunday, legal holiday, or day on which the state or local government office is closed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-614.1(A)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-614.1/",
+   "quote": "may accept payment of any amount due by any commercially acceptable means, including, but not limited to, checks, credit cards, debit cards, and electronic funds transfers.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-614.1(B)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-614.1/",
+   "quote": "The public body may add to any amount due a sum, not to exceed the amount charged to that public body for acceptance of any payment by a means that incurs a charge to that public body or the amount negotiated and agreed to in a contract with that public body, whichever is less.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 2.2-614.1(C)",
+   "url": "https://law.lis.virginia.gov/vacode/2.2-614.1/",
+   "quote": "A penalty of $35 or the amount of any costs, whichever is greater, shall be added to such amount.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to pay a tax or installment shall exceed (1) 10 percent of the tax past due on such property",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "(5) $10, whichever is greater, provided, however, that the penalty shall in no case exceed the amount of the tax assessable.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Interest may commence not earlier than the first day following the day such taxes are due by ordinance to be filed, at a rate not to exceed 10 percent per year.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "penalty for failure to pay any tax may be assessed on the day after the first installment is due.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Any such penalty when so assessed shall become a part of the tax.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Penalty and interest for failure to file a return or to pay a tax shall not be imposed if such failure was not the fault of the taxpayer",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No such penalty and interest shall be imposed if a taxpayer provides evidence that a tax return filing or a tax payment was timely by producing a United States Postal Service Certificate of Mailing, or other proof of mailing, showing such return was filed or such payment was made before the close of business on the last day such return may be filed or such tax may be paid without penalty or interest.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The failure to file a return or to pay a tax due to the death of the taxpayer or a medically determinable physical or mental impairment on the date the return or tax is due shall be presumptive proof of lack of fault on the taxpayer's part, provided the return is filed or the taxes are paid within 30 days of the due date;",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "In jurisdictions not having a treasurer or commissioner of the revenue, the governing body may delegate to the appropriate local tax officials the responsibility to make the determination of fault.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No penalty for failure to pay any tax shall be imposed for any assessment made later than two weeks prior to the day on which the taxes are due, if such assessment is made thereafter through the fault of a local official, and if such assessment is paid within two weeks after the notice thereof is mailed.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "the local governing body shall allow an automatic extension on real property taxes imposed upon a primary residence and personal property taxes imposed upon a qualifying vehicle, as defined in § 58.1-3523 , owed by members of the armed services of the United States deployed outside of the United States.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Such extension shall end and the taxes shall be due 90 days following the completion of such member's deployment.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "No tax assessment or tax bill shall be deemed delinquent and subject to the collection procedures prescribed herein during the pendency of any administrative appeal under § 58.1-3980 , so long as the appeal is filed within 90 days of the date of the assessment, and for 30 days after the date of the final determination of the appeal",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "The governing body may further provide by resolution for reasonable extensions of time, not to exceed 90 days, for the payment of real estate and personal property taxes",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "may provide for the recovery of reasonable attorney's or collection agency's fees actually contracted for, not to exceed 20 percent of the delinquent taxes and other charges so collected.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3903",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3903/",
+   "quote": "provided, if such assessment was necessitated through no fault of the taxpayer, such penalty and interest shall accrue after thirty days from such date of assessment until payment.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3018(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3018/",
+   "quote": "The treasurer of any county, city or town may enter into agreements authorizing third parties to offer to taxpayers within such locality third-party tax payment agreements",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3914",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3914/",
+   "quote": "The treasurer shall deliver on request a receipt to each taxpayer from whom he has collected taxes or levies, showing plainly the date of payment and the tax ticket description of each parcel for which payment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(A)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "The amount of the license fee or tax imposed by any county, city, or town on any motor vehicle, trailer, or semitrailer shall not be greater than the annual or one-year fee imposed by the Commonwealth on the motor vehicle, trailer, or semitrailer in effect on January 1, 2020.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "whereby the Commissioner will refuse to issue or renew any vehicle registration of any applicant therefor who owes to such county, city, or town any local vehicle license fees or delinquent tangible personal property tax or parking citations.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3919",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3919/",
+   "quote": "upon failure or refusal of such person or agent to pay the same he shall proceed to collect by distress or otherwise.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3952(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3952/",
+   "quote": "The treasurer or other tax collector of any county, city, or town may apply in writing a treasurer's lien to any person indebted to or having in his hands estate of a taxpayer or other debtor for payment of taxes, or other charges collected by the treasurer, more than 30 days delinquent out of such debt or estate.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-521(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-521/",
+   "quote": "Except for county, city or town governments, which may utilize the provisions of this article",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3958",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3958/",
+   "quote": "The administrative costs shall be in addition to all penalties and interest, and shall not exceed $30 for taxes or other charges collected subsequent to 30 or more days after notice of delinquent taxes or charges pursuant to § 58.1-3919 but prior to the taking of any judgment with respect to such delinquent taxes or charges, and $35 for taxes or other charges collected subsequent to judgment.",
+   "role": "fee"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3340",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3340/",
+   "quote": "There shall be a lien on real estate for the payment of taxes and levies assessed thereon prior to any other lien or encumbrance.",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3965(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3965/",
+   "quote": "When any taxes on any real estate in a locality are delinquent on December 31 following the second anniversary of the date on which such taxes have become due",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3965(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3965/",
+   "quote": "Such notice shall advise the taxpayer that the taxpayer may request the treasurer to enter into a payment agreement to permit the payment of the delinquent taxes, interest, and penalties over a period not to exceed 72 months in accordance with the provisions of subsection C.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3974",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3974/",
+   "quote": "shall have the right to redeem such real estate prior to the date set for a judicial sale thereof by paying into court all taxes, penalties, and interest due with respect to such real estate",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3940(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3940/",
+   "quote": "Except as otherwise specifically provided, collection of local taxes shall only be enforceable for five years following December 31 of the year for which such taxes were assessed.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3940(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3940/",
+   "quote": "Real property taxes shall be enforceable by sale under Article 4 (§ 58.1-3965 et seq.) of the property on which such taxes were assessed and by other means permitted under this chapter for 20 years after December 31 of the year for which such taxes were assessed",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3994(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3994/",
+   "quote": "the treasurer or other official responsible for the collection of any local tax imposed pursuant to this title may, with the consent of the governing body or its designee, compromise and settle the amount due and payable when the treasurer or other official determines that the collection of the entire amount due and owing is in substantial doubt and the best interests of the locality will be served by such compromise.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "may, within three years from the last day of the tax year for which such assessment is made, or within one year from the date of the assessment, whichever is later, apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3981(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3981/",
+   "quote": "If the commissioner of the revenue, or other official performing the duties imposed on commissioners of the revenue under this title, is satisfied that he has erroneously assessed such applicant with any such tax, he shall correct such assessment.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3379(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3379/",
+   "quote": "The board shall hear and give consideration to such complaints and shall adjust and equalize such assessments",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3984(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3984/",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3916",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "however, if there is a committee, legal guardian, conservator or other fiduciary handling the individual's affairs, such return shall be filed or such taxes paid within 120 days after the fiduciary qualifies or begins to act on behalf of the taxpayer.",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 46.2-752(J)",
+   "url": "https://law.lis.virginia.gov/vacode/46.2-752/",
+   "quote": "Any agreement entered into pursuant to the provisions of this subsection shall provide the debtor notice of the intent to deny renewal of registration or issuance of registration for any currently unregistered vehicle at least 30 days prior to the expiration date of a current vehicle registration.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3952(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3952/",
+   "quote": "If the subject of a treasurer's lien is wages or salary due or to become due in the future to the delinquent taxpayer, such lien shall be for no more than 25 percent of the delinquent taxpayer's disposable earnings for each pay period during the pendency of the lien",
+   "role": "exception"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3965(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3965/",
+   "quote": "Upon a finding by the court, on real estate with an assessed value of $100,000 or less in any locality, that (1) any taxes on such real estate are delinquent on December 31 following the first anniversary of the date on which such taxes have become due",
+   "role": "penalty"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3980(B)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3980/",
+   "quote": "an unpaid tangible personal property tax assessment may be appealed to the commissioner of the revenue or other assessing official at any time during which such assessment is collectible under § 58.1-3940 , provided the taxpayer can demonstrate by clear factual evidence that he was not subject to the tax for the year in question.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Late Payment, Filing, & Remittance Penalty Policy (published on the Important Dates and Deadlines page)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "The County's Director of Finance does the work of the Commissioner of the Revenue and of the Treasurer.",
+   "role": "authority",
+   "quote_sha256": "08af5e1f7a0d04d861cb230665203ca01082b7054a0eb022199647539c65ae69",
+   "quote_words": 12
+  },
+  {
+   "level": "local",
+   "citation": "Proposed amendment to Albemarle County Code § 15-101 (When taxes are due), Board of Supervisors agenda item 21-461 (October 6, 2021 public hearing; quoted from the item's title; Legistar records no vote)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/6749",
+   "quote": "to change the due date for the first installment of biannual property taxes from June 5 to June 25 each year",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Proposed amendment to Albemarle County Code § 15-101 (When taxes are due), Board of Supervisors agenda item 21-461 (October 6, 2021 public hearing; quoted from the item's title; Legistar records no vote)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/6749",
+   "quote": "to extend the payment due date for supplemental property tax assessments from within 30 days to within 45 days of the bill date",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Proposed amendment to Albemarle County Code § 15-1404 (When license tax is due), Board of Supervisors agenda item 21-461 (October 6, 2021 public hearing; quoted from the item's title; Legistar records no vote)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/6749",
+   "quote": "to change the due date for vehicle license tax from June 5 to June 25 each year.",
+   "role": "deadline"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-103(A), as stated in the county's Late Payment, Filing, & Remittance Penalty Policy",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Tax still unpaid after the due date bears a late-payment penalty of 10% or $10, whichever is more.",
+   "role": "penalty",
+   "quote_sha256": "79f7b764878c2cd69316731b194640d88291f5a55608ac68ef3238d1fbe25ede",
+   "quote_words": 24
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Code § 15-104, as stated in the county's Late Payment, Filing, & Remittance Penalty Policy",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Unpaid tax and penalties bear interest at 10% a year, from the first day of the month after the due date until paid.",
+   "role": "penalty",
+   "quote_sha256": "f08f5460454c2c70e334a208999bcfd82f56f483ee5af06ad3ea89e7f845e745",
+   "quote_words": 38
+  },
+  {
+   "level": "local",
+   "citation": "Board of Supervisors agenda item 26-256, staff report (April 22, 2026), describing Attachment A, the Resolution to Set Calendar Year 2026 Tax Rates, which Legistar records as adopted that day",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "quote": "The FY 27 budget is based on a real estate tax rate of $0.894 per $100 of assessed valuation and a personal property tax rate of $4.28 per $100 of assessed valuation, as set forth in Attachment A.",
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Late Payment, Filing, & Remittance Penalty Policy",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Penalty and interest can be waived when a medically determinable physical or mental impairment on the due date caused the lateness, if payment follows within 30 days of the due date.",
+   "role": "exception",
+   "quote_sha256": "c60afdc8e848bdd2b00d726e1707fe815f56235b122bbc910826e2ad3c0faaf7",
+   "quote_words": 38
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Late Payment, Filing, & Remittance Penalty Policy",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote": "if the Postmaster, in writing, admits that the Post Office received the payment on time but erroneously placed a late postmark on the envelope or was otherwise at fault for the late postmark",
+   "paraphrase": "A waiver is also possible when the Postmaster states in writing that the Post Office had the payment on time but postmarked it late, or was otherwise at fault.",
+   "role": "exception"
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Late Payment, Filing, & Remittance Penalty Policy",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "paraphrase": "Taxpayers are expected to know the due dates, and file and pay by them.",
+   "role": "exception",
+   "quote_sha256": "96d197f94769a4962ef9afc24e7d1fd61e80d9de8b35d6915e8684a5a6ed87fd",
+   "quote_words": 15
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Notice of Appeal of Vehicle Personal Property Assessment (form f1)",
+   "url": "https://www.albemarle.org/home/showpublisheddocument/13770/639032046392630000",
+   "capture": "20260510205428",
+   "paraphrase": "Appealing does not promise a lower assessment, and every tax must still be paid by the bill's due date to avoid the late-payment penalty.",
+   "role": "penalty",
+   "quote_sha256": "eddf7703c5e3af13088e900baa4a905ee8056ddcf31bc7645786450f211bd6f3",
+   "quote_words": 32
+  },
+  {
+   "level": "local",
+   "citation": "Albemarle County Department of Finance & Budget, Taxpayer Appeal Rights page",
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "capture": "20260311113611",
+   "paraphrase": "The taxpayer may go to the local Circuit Court at any stage of the County's administrative review.",
+   "role": "procedure",
+   "quote_sha256": "17f29884d3ef46cfacce31063d2f6df764af4971b11c4755ce641005dd7fffea",
+   "quote_words": 17
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Note the two due dates: June 25 and December 5 each year",
+   "who": "Taxpayer (for real estate, the owner on January 1); the Department of Finance & Budget bills and collects",
+   "how": "Real estate tax and personal property tax (cars, trucks, motorcycles, boats, trailers, mobile homes) are each billed in two halves. The first half is due June 25 and the second half December 5. If a due date falls on a weekend, it moves to the next business day. Real estate bills go out by post each spring and fall to the owner. The yearly vehicle license fee is added to the June 25 personal property bill. Business tangible personal property, machinery and tools, and public service property have the same dates.",
+   "deadline": "June 25 and December 5 (next business day if the date falls on a weekend)",
+   "fee": "Calendar year 2026 rates: real estate $0.894 per $100 of assessed value; personal property $4.28 per $100 of assessed value",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "paraphrase": null,
+   "capture": "20260814172925",
+   "source": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "quote_sha256": "57dd5c3c24b4d0f4e73dedf32f129e06e7776b246912c56e054bfe04fe6dabcc",
+   "quote_words": 27
+  },
+  {
+   "id": "s2",
+   "step": "Receive the bill, and ask for it if it has not arrived before the due date",
+   "who": "Department of Finance & Budget, Office of Revenue Administration (sends bills); taxpayer",
+   "how": "State law requires bills to be mailed at least 14 days before the due date. The county may choose not to mail a bill of $20 or less. The county's penalty policy says that not receiving a bill, or a bill sent to the wrong address, is not a reason to waive the penalty. If you have no bill shortly before the due date, look it up in the online payment portal or call the Office of Revenue Administration at 434-296-5851 and pay on time.",
+   "deadline": "Bills are to be mailed no later than 14 days before the due date (Va. Code § 58.1-3912(A))",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote": "If no bill is received that duty includes contacting the taxing authority prior to the due date and paying on time",
+   "paraphrase": null,
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines"
+  },
+  {
+   "id": "s3",
+   "step": "Optional: get bills by email (e-statements)",
+   "who": "Taxpayer; the county's e-statement portal (run by a vendor)",
+   "how": "Go to Albemarle.estmt.net and choose Create an Account. Enter the Registration ID printed on your bill and your name exactly as it appears on the bill. Each parcel has its own Registration ID, and you can link more bills after you set up the account. Future bills then arrive as an email from documents@albemarle.estmt.net. The county page lists the vendor's support desk for help with enrolment: 1-800-549-4722, Monday to Friday, 8 am to 5 pm Eastern.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance-and-budget/ebilling",
+   "paraphrase": null,
+   "capture": "20260813134018",
+   "source": "https://www.albemarle.org/government/finance-and-budget/ebilling",
+   "quote_sha256": "ed0aa068d889de057950317ff487bdcd6ff71100d02098c935edf1f7d0f1c9f1",
+   "quote_words": 10
+  },
+  {
+   "id": "s4",
+   "step": "Check the bill, and fix errors with the office that assessed the tax",
+   "who": "Taxpayer; Office of Revenue Administration, Business & Personal Tax Unit (vehicles and other personal property); County Assessor's Office (real estate values and mailing addresses for real estate)",
+   "how": "Check each vehicle and whether it got car tax relief (PPTR); relief is applied automatically to qualifying vehicles. If you sold, traded or junked a vehicle, tell Virginia DMV first and then the county; assessments and refunds depend on the date DMV records. If you moved to another Virginia locality, update your address, garage jurisdiction and move date with DMV and contact the county. If you moved to another state, register the vehicle there and send the county a copy of the new state's registration showing the date it was registered (or, if you sold it before registering it there, the bill of sale), within 30 days of the move; the county keeps taxing the vehicle until it has that evidence. Questions on vehicles go to 434-296-5852 or tax@albemarle.org. Questions on a real estate value go to the County Assessor's Office at 434-296-5856. To change the mailing address for real estate bills, use the Assessor's Address Change form.",
+   "deadline": null,
+   "fee": null,
+   "form": "f2",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "capture": "20260813134029",
+   "source": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "quote_sha256": "f02a5bec9f311a29f25186b71b923b1769ef641c9ef1c7a9fccea543598fb66e",
+   "quote_words": 19
+  },
+  {
+   "id": "s5",
+   "step": "If a mortgage company pays your real estate tax from escrow, check that it has paid",
+   "who": "Property owner; mortgage company or servicer",
+   "how": "Mortgage companies and servicers can get tax due information through a third-party service or by sending the county a list of parcels in its Claim File Layout, and they pay electronically in the county's Payment File Layout. The files go to the Office of Revenue Administration. If the lender does not pay, state law has the past-due bill sent to you, and penalty and interest apply to any unpaid tax. Check the parcel's balance in the online portal before each due date.",
+   "deadline": "June 25 and December 5",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "e311735ec2875b63f0a01d8855e193ea742358d8c7a0af1ae1b8e899c20e75f8",
+   "quote_words": 19
+  },
+  {
+   "id": "s6",
+   "step": "Pay online at albemarlecountytaxes.org",
+   "who": "Taxpayer; Office of Revenue Administration (through the county's separate payment website)",
+   "how": "From the Pay Taxes page, choose Pay Personal Property and Real Estate Taxes, which opens the county's separate payment website. Pay by electronic check from a checking account (free), or by Visa, Mastercard, Discover or American Express credit or debit card, or PayPal. You do not need a PayPal account. Partial payments are accepted, but they are applied to the oldest balance first and do not stop penalty and interest on the unpaid part. Business taxes are paid through a separate business tax portal.",
+   "deadline": "By the due date",
+   "fee": "E-check: no fee. Card payments (processed by PayPal): credit cards 2.50%, debit cards 2.35%, minimum $1.95",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "1d07a85dd345d34bd768d57faac96ae28ff98def46cf12e86e998ac30528b5da",
+   "quote_words": 9
+  },
+  {
+   "id": "s7",
+   "step": "Or pay by phone",
+   "who": "Taxpayer",
+   "how": "Call 866-820-5450 to pay real estate or personal property tax by card or electronic check.",
+   "deadline": "By the due date",
+   "fee": "As printed in the phone section: debit cards 2.50%, credit cards 2.35%, minimum $1.95; electronic checks no fee",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote": "To Pay Real Estate/Personal Property taxes call 866-820-5450.",
+   "paraphrase": null,
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "id": "s8",
+   "step": "Or pay by mail",
+   "who": "Taxpayer; the county's mail payment processor (Direct Mail Processors)",
+   "how": "Follow the payment instructions attached to your bill: make the check payable to County of Albemarle and mail it to County of Albemarle, P.O Box 7604, Merrifield VA 22116-7604. A third-party vendor processes mailed payments for the county. The county warns that the post office may cause delays, so mail early.",
+   "deadline": "Postmarked on or before the due date",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "878cc607d64f0ff18b97a1cd3d66be25a0142a357e309e68b41c2c807803aded",
+   "quote_words": 16
+  },
+  {
+   "id": "s9",
+   "step": "Or use the 24-hour payment kiosk",
+   "who": "Taxpayer",
+   "how": "The automated kiosk is at the County Office Building, 401 McIntire Road, on the side facing Preston Avenue. It takes cash, checks and credit cards, gives change in bills (no coins), and applies any overpayment to future bills.",
+   "deadline": "By the due date",
+   "fee": "Credit card convenience fee of 2.5%",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "4a51d74080789d99bfd15a98f7f782a2b43d0db6a81436ab842cfc5792c82f31",
+   "quote_words": 8
+  },
+  {
+   "id": "s10",
+   "step": "Or leave a check in a county drop box",
+   "who": "Taxpayer",
+   "how": "Drop boxes are at the County Office Building, 401 McIntire Road (in the parking lot by the Visitor's Entrance and in the lower commuter parking lot), and at the 5th Street County Office Building, 1600 5th Street. The 5th Street box is open only from June 1 to June 25 and from November 1 to December 5. Do not put cash in a drop box.",
+   "deadline": "By the due date; the 5th Street box is open only June 1 to June 25 and November 1 to December 5 (or the next business day if the due date falls on a holiday or weekend)",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "618a5fd3d21f5b9f1588aee39cc0d82b42c4176200f3adc9e1e39e7d4596e360",
+   "quote_words": 13
+  },
+  {
+   "id": "s11",
+   "step": "Or pay in person at the County Office Building",
+   "who": "Taxpayer; Office of Revenue Administration",
+   "how": "Go to the Office of Revenue Administration on the 1st floor of the County Office Building, 401 McIntire Road, Charlottesville, Monday to Friday, 8:00 am to 5:00 pm, except holidays. You can pay by cash, check, credit or debit card, or money order. State law entitles you to a receipt on request.",
+   "deadline": "By the due date",
+   "fee": "Card payments: credit cards 2.50%, debit cards 2.35%, minimum $1.95",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "capture": "20260916171459",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "quote_sha256": "35f73e75fc9bc577bd54c173490427f36a866b971df55482659be7d98ef5728b",
+   "quote_words": 12
+  },
+  {
+   "id": "s12",
+   "step": "Pay any supplemental bill by its own due date",
+   "who": "Taxpayer; Office of Revenue Administration",
+   "how": "A supplemental bill adjusts a current or earlier year's bill, or taxes property newly found in the county, for example a vehicle bought after the regular bills went out, a vehicle wrongly garaged elsewhere, a reactivated tag, a business-use vehicle that lost car tax relief, or a new or improved home valued after January 1. It can cover up to three prior years and the current year. These bills are mailed two or three times a year and have their own due dates. Questions go to payments@albemarle.org or 434-296-5851.",
+   "deadline": "The date printed on the supplemental bill (the 2021 proposed amendment to County Code § 15-101, agenda item 21-461, would set it at 45 days from the bill date; its adoption was not confirmed)",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills",
+   "paraphrase": null,
+   "capture": "20260414085641",
+   "source": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills",
+   "quote_sha256": "5e01c2a14b59e6fe6c0376415f7c748b9d192f8cdbc53a6f995f0b99e91fb902",
+   "quote_words": 28
+  },
+  {
+   "id": "s13",
+   "step": "If you pay late: a penalty of 10% or $10, then 10% a year interest",
+   "who": "Department of Finance & Budget",
+   "how": "The penalty is charged the day after the due date and becomes part of the tax. It is 10 percent (at least $10) of the unpaid balance of each assessed item, but never more than the tax. Interest of 10% a year runs on the unpaid tax and penalty from the first day of the month after the due date until paid. A delinquent notice showing the penalty is mailed 14 days after each deadline.",
+   "deadline": "Penalty the day after the due date; interest from the first day of the following month",
+   "fee": "Penalty 10% or $10, whichever is greater (not more than the tax); interest 10% a year",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "capture": "20260308180913",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote_sha256": "79f7b764878c2cd69316731b194640d88291f5a55608ac68ef3238d1fbe25ede",
+   "quote_words": 24
+  },
+  {
+   "id": "s14",
+   "step": "Ask the county to waive a penalty that was not your fault",
+   "who": "Taxpayer to the Department of Finance & Budget, Office of Revenue Administration (the Director of Finance performs the treasurer's role)",
+   "how": "The county's penalty policy allows a waiver if the payment was late because of a medically determinable physical or mental impairment and was paid within 30 days of the due date; if the underlying tax is abated, or the tax was not assessed on time because of a clerical error by the assessing staff; if the lateness was solely the county's fault; or if the Postmaster admits in writing that the Post Office caused a late postmark. State law also excuses a payment shown to be on time by a USPS Certificate of Mailing or other proof of mailing, and treats the taxpayer's death, like a medical impairment, as presumptive proof of no fault if the tax is paid within 30 days of the due date (within 120 days after a fiduciary qualifies, where one handles the taxpayer's affairs); interest still accrues until paid. The policy refuses a waiver for not knowing the deadline, not receiving a bill, a bill sent to the wrong address, an incorrect bill, or wrong information from county staff. No request form or written procedure is published; contact the Office of Revenue Administration with your documents.",
+   "deadline": "None stated for the request; for the medical-impairment ground, the tax must have been paid within 30 days of the due date",
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "capture": "20260308180913",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote_sha256": "c60afdc8e848bdd2b00d726e1707fe815f56235b122bbc910826e2ad3c0faaf7",
+   "quote_words": 38
+  },
+  {
+   "id": "s15",
+   "step": "If you are deployed outside the United States with the armed forces: automatic extension",
+   "who": "Service member; Department of Finance & Budget",
+   "how": "State law requires an automatic extension for members of the U.S. armed services deployed outside the United States, including active duty in the regular forces, the National Guard and the reserves. It covers real estate tax on a primary residence and personal property tax on a qualifying vehicle. The taxes fall due 90 days after the deployment ends. The county pages read do not say how to tell the county, so call the Office of Revenue Administration. A separate exemption for service members whose home of record is not Virginia is handled by the Business & Personal Tax Unit.",
+   "deadline": "90 days after the deployment ends",
+   "fee": null,
+   "form": null,
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3916/",
+   "quote": "Such extension shall end and the taxes shall be due 90 days following the completion of such member's deployment.",
+   "source": "Va. Code § 58.1-3916"
+  },
+  {
+   "id": "s16",
+   "step": "If you cannot pay in full, call the Office of Revenue Administration early",
+   "who": "Taxpayer; Office of Revenue Administration (delinquent collections)",
+   "how": "Call 434-296-5851 as soon as possible. The county says this helps keep penalty and interest down and avoid the extra fee charged when an account is sent to the collection agency. The county pages do not describe an installment plan for current taxes, and no third-party tax payment agreement program was found.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote": "If you by chance become delinquent, please do not hesitate to contact the Revenue Administration at 434-296-5851 as soon as possible"
+  },
+  {
+   "id": "s17",
+   "step": "If taxes stay unpaid: DMV hold, liens, refund set-off and a collection agency",
+   "who": "Department of Finance & Budget, Office of Revenue Administration; Virginia DMV; Virginia Department of Taxation; the county's collection agency (Taxing Authority Consulting Services, PC)",
+   "how": "After the delinquent notice, the county can block DMV registration renewal for every vehicle you own or co-own until all delinquent taxes are paid; allow 2 business days after paying for the hold to clear. State law requires notice of the intended refusal at least 30 days before the current registration expires. It can issue tax liens, without going to court, on salary, bank accounts, rent owed by a tenant, unclaimed property and, for businesses, amounts owed by a credit card company. A lien on wages or salary is generally limited by state law to 25% of disposable earnings each pay period. Each November 1 it sends delinquent accounts to the Department of Taxation, which can take the debt from a state income tax refund or lottery winnings. Accounts 3 months or more delinquent can go to a private collection agency, which adds 20%. The county may also sue and obtain a judgment.",
+   "deadline": "Delinquent notice 14 days after each deadline; set-off list sent each November 1; collection agency after 3 months or more of delinquency; a treasurer's lien is allowed once taxes are more than 30 days delinquent (Va. Code § 58.1-3952(B))",
+   "fee": "DMV hold removal $25; refund set-off $25 county fee plus 4% of the amount withheld (Department of Taxation); collection agency 20% of the amount collected",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "capture": "20260308180913",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote_sha256": "6f2c693e9b9c7452284cd0ab1a551b701dcdd7363f66f54ffd02cd855620feb8",
+   "quote_words": 21
+  },
+  {
+   "id": "s18",
+   "step": "If real estate tax stays unpaid: judicial sale, and the right to redeem",
+   "who": "Department of Finance & Budget (through its tax sale firm, Taxing Authority Consulting Services, P.C.); Albemarle County Circuit Court",
+   "how": "A parcel can be sold at a judicial sale once its taxes are still unpaid on December 31 after the second anniversary of the due date. State law allows sale after the first anniversary for parcels with a condemned structure, a nuisance, a derelict building or a blighted property, and, on a court finding, for parcels assessed at $100,000 or less. The process can take about 18 months. The owner can redeem the property at any time before the sale by paying all taxes, penalties, interest, attorney's fees and costs. State law requires a notice at least 30 days before the suit is filed, telling the owner that a payment agreement of up to 72 months can be requested; such an agreement can suspend the sale.",
+   "deadline": "Eligible for sale when delinquent on December 31 following the second anniversary of the due date; redemption before the sale date",
+   "fee": "All taxes, penalties and interest plus costs, including publication costs and a reasonable attorney fee set by the court",
+   "form": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "capture": "20260308180913",
+   "source": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote_sha256": "1af477ba1d31482f5c35e7392f61ed07ea8fbe3cb14c2cb140a54b1ad86acfeb",
+   "quote_words": 24
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Notice of Appeal of Vehicle Personal Property Assessment (for motor vehicles with damaged condition as of January 1), Office of Revenue Administration, Business & Personal Tax Unit (PDF)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/13770/639032046392630000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f2",
+   "title": "Address Change for Real Property Assessments, Office of the County Assessor (PDF form)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/734/638143114842670000",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f3",
+   "title": "Personal property registration form, linked from the Moving Personal Property page (PDF; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/21531/639032047511000000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f4",
+   "title": "Notice of Taxpayer Appeal Rights (guidance on correction requests and administrative appeals; not a form)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f5",
+   "title": "Mortgage Company Claim File Layout (for mortgage companies and servicers; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/470/637205689527030000",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Mortgage Company Payment File Layout (for mortgage companies and servicers; not read)",
+   "number": null,
+   "url": "https://www.albemarle.org/home/showpublisheddocument/472/637205689530470000",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "Real estate tax rate, calendar year 2026",
+   "amount": "$0.894 per $100 of assessed value",
+   "basis": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "quote": "The FY 27 budget is based on a real estate tax rate of $0.894 per $100 of assessed valuation and a personal property tax rate of $4.28 per $100 of assessed valuation, as set forth in Attachment A."
+  },
+  {
+   "item": "Personal property tax rate, calendar year 2026",
+   "amount": "4.28% of assessed value ($4.28 per $100)",
+   "basis": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "capture": "20260813134029",
+   "quote_sha256": "335fa2953b4e5a25b4221a0735b8695a21c61615485bfe2898fcb8d55c1b1879",
+   "quote_words": 14
+  },
+  {
+   "item": "Mobile home classified as personal property",
+   "amount": "Taxed at the real estate rate, 0.894% of assessed value (2026)",
+   "basis": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "capture": "20260813134029",
+   "quote_sha256": "032738cdd57a68af41869b78b6c1d62c434a41232fc4913f8356eac0d56fc72f",
+   "quote_words": 23
+  },
+  {
+   "item": "Vehicle license fee (billed with the June 25 personal property bill)",
+   "amount": "Motor vehicles and trucks 4,000 lbs or less $40.75; 4,001 lbs or more $45.75; motorcycles $28.75; trailers 1,500 lbs or less $18.00; 1,501 lbs or more $28.50",
+   "basis": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "capture": "20260813134029",
+   "quote_sha256": "0904c95f554bbeb6f2ba664a990200df18353620f5dfb98a11d57d6403ada3b7",
+   "quote_words": 25
+  },
+  {
+   "item": "Car tax relief (PPTR) on qualifying vehicles",
+   "amount": "Relief on up to $20,000 of value, applied automatically; 42% for tax year 2025 (2026 percentage not found)",
+   "basis": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/personal-property-exemptions",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/personal-property-exemptions",
+   "capture": "20260317094711",
+   "quote_sha256": "00663fc9712d9dd634a29f204353ffe3432e56ea2ad687adfc2151b09a6b5e26",
+   "quote_words": 21
+  },
+  {
+   "item": "Online payment by e-check",
+   "amount": "No fee",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "1d07a85dd345d34bd768d57faac96ae28ff98def46cf12e86e998ac30528b5da",
+   "quote_words": 9
+  },
+  {
+   "item": "Online payment by credit or debit card (PayPal)",
+   "amount": "Credit cards 2.50%, debit cards 2.35%, minimum $1.95",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "27ff48e1a06b2b0e31fee1219ff2fd73bb0cec72b20e4a1ed76e8ffd78364a9e",
+   "quote_words": 9
+  },
+  {
+   "item": "Payment by phone (866-820-5450)",
+   "amount": "As printed: debit cards 2.50%, credit cards 2.35%, minimum $1.95; electronic checks no fee",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "047ace63ce7d54bbdfb92bb91a576e51166a2d4ce4bc2f72a74e1c8d3f0bd5bd",
+   "quote_words": 7
+  },
+  {
+   "item": "Payment kiosk by credit card",
+   "amount": "2.5%",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "7f6836723d19683851ead083a7a66d16ea30593fdce1b8bfd45c2b4aa1baf40e",
+   "quote_words": 9
+  },
+  {
+   "item": "In-person payment by credit or debit card",
+   "amount": "Credit cards 2.50%, debit cards 2.35%, minimum $1.95",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "capture": "20260916171459",
+   "quote_sha256": "c15fa1552eef257029b309308ffed5178c4b57232a9037e9615058cf2cbd0629",
+   "quote_words": 12
+  },
+  {
+   "item": "Late payment penalty",
+   "amount": "10 percent (at least $10) of the unpaid balance of each assessed item (not more than the tax)",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "10c69de06c04f8a6ceab85bed41cf3b3b1832aa179767781b7625ec339207c61",
+   "quote_words": 18
+  },
+  {
+   "item": "Interest on unpaid tax and penalty",
+   "amount": "10% a year, accruing monthly from the first day of the month after the due date",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "0bd5455636b23e7ad379c0ec93d28a70ea6feea82e05a7459b23d102e6d5d3f9",
+   "quote_words": 12
+  },
+  {
+   "item": "DMV registration hold (removal)",
+   "amount": "$25 per DMV stop removed, passed on to the taxpayer",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "63cc4c07de7b5946a5bf4c0af00b160edcc4075440e45336ce1d28f48390e4e0",
+   "quote_words": 20
+  },
+  {
+   "item": "State income tax refund set-off (Debt Set-Off program)",
+   "amount": "$25 county fee, plus 4% of the amount withheld charged by the Department of Taxation",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "5cd838ecfd249ff01f1ba705046c58c513a50fc474166589cc11101d1b6d7026",
+   "quote_words": 11
+  },
+  {
+   "item": "Collection agency fee",
+   "amount": "20% of the amount collected, added to the balance",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "capture": "20260308180913",
+   "quote_sha256": "6f2c693e9b9c7452284cd0ab1a551b701dcdd7363f66f54ffd02cd855620feb8",
+   "quote_words": 21
+  },
+  {
+   "item": "State cap on the late payment penalty",
+   "amount": "10% of the tax past due, or $10 if greater, and never more than the tax; state law allows up to 25% on tangible personal property tax more than 30 days past due, but the county pages state 10%",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "No penalty for failure to pay a tax or installment shall exceed (1) 10 percent of the tax past due on such property"
+  },
+  {
+   "item": "Administrative collection costs (state cap)",
+   "amount": "Up to $30 before judgment and $35 after judgment; the county pages do not say the county charges them",
+   "basis": "Va. Code § 58.1-3958",
+   "quote": "The administrative costs shall be in addition to all penalties and interest, and shall not exceed $30 for taxes or other charges collected subsequent to 30 or more days after notice of delinquent taxes or charges pursuant to § 58.1-3919 but prior to the taking of any judgment with respect to such delinquent taxes or charges, and $35 for taxes or other charges collected subsequent to judgment."
+  },
+  {
+   "item": "Returned (dishonored) check or payment",
+   "amount": "$35 or the amount of any costs, whichever is greater (state law; the county pages do not state a returned-payment fee)",
+   "basis": "Va. Code § 2.2-614.1(C)",
+   "quote": "A penalty of $35 or the amount of any costs, whichever is greater, shall be added to such amount."
+  },
+  {
+   "item": "Additional paper receipt",
+   "amount": "Up to $2 (state cap; county practice not stated)",
+   "basis": "Va. Code § 58.1-3914",
+   "quote": "charge a reasonable sum, not to exceed two dollars, to cover the cost of preparing any additional receipt."
+  },
+  {
+   "item": "Redeeming real estate before a judicial sale",
+   "amount": "All taxes, penalties and interest, plus costs including publication and a reasonable attorney fee set by the court",
+   "basis": "Va. Code § 58.1-3974",
+   "quote": "together with all costs including costs of publication and a reasonable attorney fee set by the court."
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Office of Revenue Administration, Albemarle County Office Building, 401 McIntire Road, 1st floor, Charlottesville, VA 22902 (Monday to Friday, 8:00 am to 5:00 pm, except holidays)",
+   "label": "Department of Finance & Budget, Office of Revenue Administration (payments)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5851",
+   "label": "Office of Revenue Administration (payments, billing and delinquent collections)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes"
+  },
+  {
+   "kind": "email",
+   "value": "payments@albemarle.org",
+   "label": "Office of Revenue Administration (payments mailbox)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "866-820-5450",
+   "label": "Pay-by-phone line for real estate and personal property taxes (card or e-check)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "portal",
+   "value": "https://www.albemarlecountytaxes.org/taxes",
+   "label": "County of Albemarle tax payment website (real estate and personal property)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "portal",
+   "value": "https://albemarle.estmt.net",
+   "label": "County of Albemarle tax e-statements (paperless bills)",
+   "url": "https://www.albemarle.org/government/finance-and-budget/ebilling"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, P.O Box 7604, Merrifield VA 22116-7604",
+   "label": "Mailing address for tax payments by check (processed by the county's vendor)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/finance/pay-taxes",
+   "label": "Department of Finance & Budget, Pay Taxes",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "label": "Department of Finance & Budget, Important Dates and Deadlines (penalty policy and delinquent collections)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5852",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit (vehicle assessments, car tax relief, moves and sales)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees"
+  },
+  {
+   "kind": "email",
+   "value": "tax@albemarle.org",
+   "label": "Office of Revenue Administration, Business & Personal Tax Unit (office mailbox)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property"
+  },
+  {
+   "kind": "address",
+   "value": "County of Albemarle, Revenue Administration, 401 McIntire Road room 133, Charlottesville, VA 22902",
+   "label": "Business & Personal Tax Unit (vehicle records and appeals by mail)",
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees"
+  },
+  {
+   "kind": "phone",
+   "value": "434-296-5856",
+   "label": "County Assessor's Office (real estate assessments; 401 McIntire Road, room 243)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments"
+  },
+  {
+   "kind": "email",
+   "value": "CountyAssessor@albemarle.org",
+   "label": "County Assessor's Office (office mailbox)",
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments"
+  },
+  {
+   "kind": "phone",
+   "value": "434.296.5855",
+   "label": "Department of Finance & Budget (main line; 401 McIntire Road, 1st and 2nd floors)",
+   "url": "https://www.albemarle.org/government/finance"
+  },
+  {
+   "kind": "page",
+   "value": "https://taxva.com/",
+   "label": "Taxing Authority Consulting Services, P.C. (county's contracted collection agency and tax sale firm; tax sale phone (866) 951-0742)",
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "A late penalty or interest was charged and the lateness was not your fault (medical impairment, county error, Post Office error, proof of timely mailing)",
+   "next": "Department of Finance & Budget, Office of Revenue Administration: ask for a waiver (the Director of Finance makes the fault decision in the treasurer's role)",
+   "type": "internal appeal",
+   "deadline": "None stated for the request; for the medical-impairment ground, the tax must have been paid within 30 days of the due date",
+   "basis": "Va. Code § 58.1-3916",
+   "quote": "The treasurer shall make determinations of fault relating exclusively to failure to pay a tax"
+  },
+  {
+   "trigger": "You cannot pay on time or have fallen behind",
+   "next": "Office of Revenue Administration (delinquent collections), 434-296-5851; no published installment plan for current taxes",
+   "type": "deferral",
+   "deadline": "As soon as possible; accounts go to the collection agency after 3 months or more of delinquency",
+   "basis": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "quote": "If you by chance become delinquent, please do not hesitate to contact the Revenue Administration at 434-296-5851 as soon as possible"
+  },
+  {
+   "trigger": "You cannot pay the full amount and its collection is in substantial doubt (the collecting official decides this, and whether a compromise serves the county's interest)",
+   "next": "Director of Finance (as collecting official): a written offer in compromise, which needs the consent of the Board of Supervisors or its designee (Va. Code § 58.1-3994(B))",
+   "type": "internal appeal",
+   "deadline": "Not stated",
+   "basis": "Va. Code § 58.1-3994(C)",
+   "quote": "Any offer in compromise submitted to an official responsible for the assessment or collection of local taxes shall be made in writing and shall be deemed accepted only when the taxpayer is notified in writing of the acceptance by the responsible official."
+  },
+  {
+   "trigger": "The personal property (vehicle) amount on the bill is wrong: vehicle sold or moved, not taxable here, wrong car tax relief status, or a damaged vehicle valued at the clean trade-in price",
+   "next": "Department of Finance & Budget, Business & Personal Tax Unit: a written request for correction of assessment, or for damage existing on January 1, the Notice of Appeal of Vehicle Personal Property Assessment (form f1) with an itemized estimate. Under Va. Code § 58.1-3916, a correction appeal filed within 90 days of the assessment keeps the bill from being treated as delinquent and sent to collection until 30 days after the decision, but the county's appeal form warns that appealing does not relieve you of paying all taxes by the bill's due date so no late-payment penalty applies, so pay on time and ask for a refund. Damage adjustments do not renew; the form must be filed each year.",
+   "type": "internal appeal",
+   "deadline": "Within three years from the last day of the tax year, or within one year from the date of the assessment, whichever is later; an unpaid vehicle tax can also be challenged at any time while it is collectible, with clear factual evidence that you were not subject to it (Va. Code § 58.1-3980(B))",
+   "basis": "Va. Code § 58.1-3980(A)",
+   "quote": "apply to the commissioner of the revenue or such other official who made the assessment for a correction thereof."
+  },
+  {
+   "trigger": "You disagree with the real estate assessment behind the bill",
+   "next": "County Assessor's Office: request an Assessor's review (forms from the Assessor's Office)",
+   "type": "internal appeal",
+   "deadline": "By March 2, 2026 for the 2026 assessment (set each year)",
+   "basis": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "capture": "20260814172925",
+   "quote_sha256": "51a629b7fe6af2a0998bbc864778054f59e5e290cf6dc045877eb2bb77dc6857",
+   "quote_words": 23
+  },
+  {
+   "trigger": "You still disagree with the real estate assessment (with or without an Assessor's review)",
+   "next": "Albemarle County Board of Equalization (appeal forms only from the County Assessor's Office; Va. Code § 58.1-3379)",
+   "type": "external administrative review",
+   "deadline": "March 30, 2026, or within 30 days of the Assessor's review letter, whichever is later",
+   "basis": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "paraphrase": null,
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "capture": "20260814172925",
+   "quote_sha256": "d833cea9a5b37b788e2cbc8145af3d74bfce0e07fa91f082a93e65105a2603bb",
+   "quote_words": 49
+  },
+  {
+   "trigger": "You are still aggrieved by an assessment after the county's decision, or the county has not decided (the county's Taxpayer Appeal Rights page says the taxpayer can appeal to the circuit court at any stage of the administrative review)",
+   "next": "Albemarle County Circuit Court: application for relief from an erroneous assessment",
+   "type": "judicial review",
+   "deadline": "Within three years from the last day of the tax year, within one year from the assessment, or within one year from a final local or Tax Commissioner determination, whichever is later",
+   "basis": "Va. Code § 58.1-3984(A)",
+   "quote": "apply for relief to the circuit court of the county or city wherein such assessment was made."
+  },
+  {
+   "trigger": "Your real estate is listed for a judicial sale for unpaid taxes",
+   "next": "Department of Finance & Budget (through its tax sale firm): a payment agreement of up to 72 months, which can suspend the sale; or redeem by paying everything due into court before the sale date",
+   "type": "deferral",
+   "deadline": "Before the date set for the judicial sale",
+   "basis": "Va. Code § 58.1-3965(C)",
+   "quote": "may suspend any action for sale of the property commenced pursuant to this article (i) upon entering into an agreement with the owner of the real property for the payment of all delinquent amounts in installments over a period that is reasonable under the circumstances, but that in no event shall exceed 72 months"
+  }
+ ],
+ "caveats": [
+  "Albemarle County's website (www.albemarle.org) refuses automated readers, so the county pages and PDFs cited here are Internet Archive copies: they show the pages as they were when copied. The Internet Archive holds no later 2026 copy of the Important Dates and Deadlines page than the one of March 8, 2026. The live pages may have changed since; confirm on them before you act.",
+  "Local ordinance not read. The County Code is published only on Municode, whose terms forbid automated access, so no County Code text is quoted. The penalty (§ 15-103(A)) and interest (§ 15-104) are quoted from the county's own penalty policy page, which restates them. The due-date sections (§ 15-101 and § 15-1404) are described from the Board of Supervisors' 2021 agenda item 21-461 in the county's Legistar system, Legistar records no vote on that item, so its adoption is not confirmed there; the 2026 county pages all state June 25 and December 5. The ordinance and resolution attachments have not been checked.",
+  "Tax rates. The 2026 rates ($0.894 per $100 for real estate and $4.28 per $100 for personal property) come from the Board's April 22, 2026 agenda item 26-256 (adopted, per its Legistar history) and the Personal Property page. The Real Estate page copy of August 2026 still says \"The 2025 Real Estate Tax Rate is $0.894 per hundred of assessed value\", which is the same rate. A proposal to raise the personal property rate to $4.43 (item 26-240) was tabled. The 2026 car tax relief (PPTR) percentage was not found; the latest listed is 42% for 2025.",
+  "Card fees conflict on the Payment Options page. The online and in-person sections give credit cards 2.50% and debit cards 2.35%. The phone section prints the reverse (debit cards 2.50%, credit cards 2.35%), and the kiosk section gives a 2.5% credit card fee. The dates page also mentions PayPal as a payment method. Check the fee shown before paying.",
+  "The pay-by-phone number (866-820-5450) is the same number the dates page gives for the collection agency's \"General Collections\" line, so the phone payment line may be run by the county's contractor. This was not confirmed.",
+  "The payment portal (www.albemarlecountytaxes.org) is a JavaScript application run on a vendor platform (Catalis). Its payment screens, fee display and terms of use are not described here.",
+  "Mailbox mismatch: on the Payment Options page the visible address is payments@albemarle.org, but the link behind it points to a different collections mailbox. The visible address, which also appears on the Pay Taxes, Supplemental Bills and Real Estate pages, is recorded.",
+  "Penalty waivers. The county's policy borrows treasurer and commissioner wording (the Director of Finance performs both roles) and refers to approval \"by the Treasurer\". No form, address or written procedure for asking for a waiver is published. Under Va. Code § 58.1-3916 the governing body may delegate fault decisions where there is no treasurer; no delegation ordinance was found, so who decides was not confirmed beyond the policy page.",
+  "Timeliness. The county counts postmarks for mail. State law also accepts a commercial delivery service's confirmation of shipment (Va. Code § 58.1-9(A)) and a USPS Certificate of Mailing or other proof of mailing (§ 58.1-3916). For electronic payments, § 58.1-9(B) counts funds received by midnight on the due date; the county pages do not say how card or e-check payments made on the due date are dated.",
+  "Weekends and holidays. The county pages move a weekend due date to the next business day but say nothing about holidays, except the drop-box note. Va. Code § 1-210(E) also moves a deadline that falls on a legal holiday or an office-closure day to the next business day.",
+  "Payment plans. No installment plan for current taxes, no extension resolution under Va. Code § 58.1-3916 and no third-party tax payment agreement under § 58.1-3018 were found for Albemarle. The 72-month payment agreement in § 58.1-3965 applies once a judicial sale is being prepared. The county does accept deposits toward next year's personal property tax (Personal Property FAQ).",
+  "Supplemental bills. The Supplemental Bills page does not state how many days these bills allow. The 45-day period comes from the 2021 proposed ordinance (item 21-461); its adoption was not confirmed in Legistar. State law (Va. Code § 58.1-3903) starts penalty and interest only 30 days after the assessment when an omitted assessment was not the taxpayer's fault.",
+  "Real estate appeals are summarised only as escalation. The dates given (March 2 and March 30, 2026) are for the 2026 assessment and change each year. The Real Estate page says both that an appeal form \"must be postmarked or received\" by the deadline and that mailed appeals \"must be received by our office, regardless of the postmark date\"; deliver it early. Board of Equalization appeal forms are available only from the County Assessor's Office.",
+  "Bills must be mailed at least 14 days before the due date (Va. Code § 58.1-3912(A)). The 30-day rule in § 58.1-3912(C) applies only to counties next to an urban county executive county; on that reading it does not apply to Albemarle, but this was not confirmed.",
+  "The collection fees (the $25 DMV stop fee, the $25 set-off fee plus 4%, and the 20% collection agency fee) are as stated on the county page. The county pages do not mention the $30 and $35 administrative costs allowed by Va. Code § 58.1-3958, or any returned-check fee.",
+  "Not covered: business tangible personal property, machinery and tools, and other business taxes, which are filed and paid through the separate business tax portal; real estate tax relief for the elderly and disabled; the disabled veteran exemptions; land use deferral; and taxes of the Town of Scottsville. Many Albemarle addresses have a Charlottesville mailing address. Property inside the City of Charlottesville is taxed by the City Treasurer, not the county.",
+  "Escrowed real estate: the county page describes mortgage-company files and payments. It does not say whether the owner also gets a copy of the bill. The statement that penalty and interest still apply if a lender does not pay rests on state law (Va. Code §§ 58.1-3912(A), 58.1-3916), not a county page.",
+  "Staff names, and the personal mailboxes and booking links on some county pages, are deliberately not recorded. Only office lines, office mailboxes (payments@, tax@, CountyAssessor@), the office addresses and the portals are kept.",
+  "Appeals and late penalty. Va. Code § 58.1-3916 says a bill under a timely administrative appeal is not deemed delinquent and subject to collection during the appeal, while the county's vehicle appeal form says an appeal does not relieve the taxpayer of paying by the due date so no late-payment penalty applies. How the county reconciles the two was not found; paying on time and seeking a refund avoids the question.",
+  "The 2026 rate quote ($0.894 and $4.28) is from the staff report of agenda item 26-256, which describes Attachment A; the resolution itself is an attachment on albemarle.legistar1.com and was not read. Legistar's history records the Board's adoption of the tax-rate resolution on April 22, 2026, and the county's Tax Rates and Personal Property pages give the same rates.",
+  "Form of government. The county's penalty policy says only that Albemarle \"has adopted an alternate form of government\" without a Commissioner of the Revenue or Treasurer. This page reads that as the county executive form, whose director of finance collects taxes and has a treasurer's powers (Va. Code §§ 15.2-519, 15.2-522); no county page cited here names the form, so that reading is not confirmed from a county source. The collecting office itself is confirmed by the county pages."
+ ],
+ "sources": [
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes",
+   "title": "Pay Taxes (Department of Finance & Budget; Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/payment-options",
+   "title": "Payment Options (Internet Archive copy of 16 September 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/pay-taxes/important-dates-and-deadlines",
+   "title": "Important Dates and Deadlines, with the Late Payment, Filing, & Remittance Penalty Policy and Delinquent Collections (Internet Archive copy of 8 March 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/supplemental-bills",
+   "title": "Supplemental Bills (Internet Archive copy of 14 April 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/tax-rates",
+   "title": "Tax Rates (Internet Archive copy of 17 April 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees",
+   "title": "Personal Property Taxes & Fees (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/personal-property-exemptions",
+   "title": "Personal Property Tax & Fee Exemptions (Internet Archive copy of 17 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/ebilling",
+   "title": "E-Statements (Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/real-estate-tax-assessments",
+   "title": "Real Estate (assessments, appeals and contacts; Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/business/notice-of-taxpayer-appeal-rights",
+   "title": "Notice of Taxpayer Appeal Rights page (Internet Archive copy of 11 March 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance-and-budget/personal-property/appealing-your-vehicle-assessment",
+   "title": "Appealing Your Vehicle Assessment (Internet Archive copy of 12 April 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance/personal-property-taxes-fees/moving-personal-property",
+   "title": "Moving Personal Property (Internet Archive copy of 8 May 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/finance",
+   "title": "Finance and Budget (Internet Archive copy of 16 September 2026)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://www.albemarle.org/government/county-attorney/county-code",
+   "title": "County Code (links the Municode edition; Internet Archive copy of 14 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/15342/638079199814830000",
+   "title": "Notice of Taxpayer Appeal Rights (PDF; Internet Archive copy of 16 March 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/13770/639032046392630000",
+   "title": "Notice of Appeal of Vehicle Personal Property Assessment (PDF; Internet Archive copy of 10 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/734/638143114842670000",
+   "title": "Address Change for Real Property Assessments (PDF; Internet Archive copy of 15 May 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarle.org/home/showpublisheddocument/26968/638889543877370000",
+   "title": "Finance & Budget Offices Contact Information (PDF; Internet Archive copy of 13 August 2026)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://www.albemarlecountytaxes.org/taxes",
+   "title": "County of Albemarle tax payment website (page shell only; JavaScript application not confirmed)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/6749",
+   "title": "Board of Supervisors agenda item 21-461, An Ordinance to Amend County Code Chapter 15, Taxation (Legistar web API: matter, text and history)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8572/texts/8705",
+   "title": "Board of Supervisors agenda item 26-256, Adoption of Calendar Year 2026 Tax Rates (Legistar web API: text and history)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters?$filter=MatterFile+eq+'26-240'",
+   "title": "Board of Supervisors agenda item 26-240, Calendar Year 2026 Personal Property Tax Rates (proposed $4.43; status Tabled; Legistar web API)",
+   "retrieved": "2026-10-10"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/events/1325/eventitems",
+   "title": "Board of Supervisors meeting of October 6, 2021, agenda items (item 21-461 shows no action or vote; Legistar web API)",
+   "retrieved": "2026-10-10"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": true,
+ "checks": {
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-10",
+  "quotes_checked": 121,
+  "quotes_confirmed": 121,
+  "removed": [],
+  "corrections": [
+   "legal_basis (items 21-461): the three due-date entries are now cited as a proposed amendment to County Code §§ 15-101 and 15-1404, quoted from the agenda item's title, with no vote recorded in Legistar (the Legistar matter, its histories and the October 6, 2021 event items were re-read; the item shows no action).",
+   "legal_basis and fees (item 26-256): the rate quote is from the staff report describing Attachment A, not from the resolution's own text; the citation now says so. Legistar's history records the resolution's adoption on April 22, 2026.",
+   "s4: the vehicle-move guidance said to update DMV first for every move. The Moving and Personal Property pages say an out-of-state mover registers the vehicle in the new state and sends the county the new registration showing its date (or a bill of sale) within 30 days, and that the vehicle stays taxable until the county has it; an in-state mover updates address, garage jurisdiction and move date with DMV. Reworded.",
+   "s8: the county says the check-payment instructions are attached to the bill; the step had the taxpayer mailing the instructions with the check. Reworded.",
+   "s14: the policy's clerical-error ground is that the tax was not assessed on time because of a clerical error by the assessing staff, not that it was 'billed late'; added the state-law death ground and the 120-day fiduciary rule from Va. Code § 58.1-3916, with a new legal_basis entry.",
+   "s17: added the 30-day notice before a DMV registration refusal (Va. Code § 46.2-752(J)) and the general 25% limit on wage and salary liens (Va. Code § 58.1-3952(B), as amended in 2026), with legal_basis entries.",
+   "s18: added the earlier, first-anniversary sale routes in Va. Code § 58.1-3965(A) (condemned, nuisance, derelict or blighted property; parcels assessed at $100,000 or less on a court finding), with a legal_basis entry.",
+   "Fee 'State cap on the late payment penalty': the 25% cap applies to tangible personal property tax more than 30 days past due, not to 'some personal property'; added that the county pages state 10%.",
+   "Escalation rung 3 (offer in compromise): removed '(for example, serious hardship)', which neither § 58.1-3994 nor a county page says; the trigger now follows § 58.1-3994(B).",
+   "Escalation rung 4 (vehicle correction): added the county appeal form's warning that an appeal does not relieve the taxpayer of paying by the due date to avoid a late penalty, that damage adjustments must be refiled each year, and the any-time challenge to an unpaid vehicle tax with clear factual evidence (Va. Code § 58.1-3980(B)); two legal_basis entries added and a caveat on the § 58.1-3916 appeal rule.",
+   "Escalation rung 7 (Circuit Court): the parenthetical that the court does not require the administrative steps first was not in § 58.1-3984; it now rests on the county Taxpayer Appeal Rights page, quoted in a new local legal_basis entry.",
+   "Added caveats on the verification re-read, the appeal and penalty interplay, the 26-256 staff report, and the unconfirmed form-of-government reading; added the Legistar 26-240 matter and the October 6, 2021 event items to sources."
+  ],
+  "open_issues": [
+   "www.albemarle.org refuses automated requests (HTTP 403, robots.txt included); every county page and PDF was checked against Internet Archive copies dated March to September 2026, not the live site, so later changes would be missed.",
+   "County Code (Municode) not read under its terms; the penalty (§ 15-103(A)) and interest (§ 15-104) rest on the county's restatement, and the adoption of the 2021 due-date amendment (item 21-461) is not recorded in Legistar. The county pages consistently state June 25 and December 5.",
+   "The Payment Options page prints the phone-payment card fees the other way round from the online and in-person sections; the file reports both as printed.",
+   "No published waiver request form, installment plan for current taxes, or third-party tax payment agreement; the 2026 car tax relief percentage was not found; the payment portal's own fee display and terms were not read.",
+   "Whether Albemarle's form of government is the county executive form (Va. Code §§ 15.2-519, 15.2-522) was not confirmed from a county source read in the check."
+  ]
+ }
+}

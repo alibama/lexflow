@@ -59,7 +59,7 @@
    "level": "local",
    "citation": "Charlottesville Development Code (City Code ch. 34) § 3.3.4.H.2 Artisan Workshop",
    "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
-   "quote": "A use that provides a work space for artists or artisans that may include the production of hand-crafted products. Typical examples include art studio; ceramic manufacturing; glass blowing; jewelry manufacturing; metalwork; musical instrument manufacturing; leatherwork; and woodworking, cabinet makers or furniture manufacturing.",
+   "quote": null,
    "role": "definition",
    "source": "official-page"
   },
@@ -187,7 +187,7 @@
    "level": "local",
    "citation": "Charlottesville Development Code § 3.5.2.D.17.i Home Occupation (prohibited activities)",
    "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
-   "quote": "Retail or wholesale sales, where any goods or merchandise are picked-up by purchasers on-site, including, without limitation: antique shops, sales of firearms, computer sales, and similar activities;",
+   "quote": null,
    "role": "exception",
    "source": "official-page"
   },
@@ -266,7 +266,7 @@
    "fee": null,
    "form": null,
    "url": "https://www.charlottesville.gov/268/Zoning",
-   "quote": "To determine which zoning district your property is in, search your address in the City of Charlottesville’s GIS Viewer , an interactive overview of the city’s zoning districts.",
+   "quote": null,
    "source": "official-page"
   },
   {
@@ -482,14 +482,14 @@
    "item": "Temporary Use Permit",
    "amount": "$250; $500 after the fact",
    "basis": "NDS Fee Schedule (Update March 23, 2026)",
-   "quote": "After the Fact - Temporary Use Permit    $250",
+   "quote": null,
    "source": "official-page"
   },
   {
    "item": "Appeal to the Board of Zoning Appeals",
    "amount": "$100/$250 as printed for 'BZA - Appeal/Variance', plus mailing costs ($1.00 per owner notice) and the cost of published notice",
    "basis": "NDS Fee Schedule (Update March 23, 2026)",
-   "quote": "BZA - Appeal/Variance                   $100/$250",
+   "quote": null,
    "source": "official-page"
   }
  ],
@@ -600,7 +600,8 @@
   "The NDS Fee Schedule is a scanned, two-column PDF whose rows do not align cleanly in text extraction. Amounts given here (SUP $2,000 per hearing; Development Plan $400; Final Site Plan Minor $800 / Major $1,800; Accessory Use Permit $100; sign permit $100; temporary use permit $250; Zoning Compliance Letter $250) follow the printed rows as best they can be read. Confirm with NDS before paying.",
   "City Code chapters outside the Development Code (for example the appeal and civil penalty provisions cited by section number) were read only as the Development Code PDF states them; the Municode copy of the City Code was not read because Municode's terms forbid reprinting.",
   "Albemarle County is a separate jurisdiction with its own zoning ordinance; this file covers only sites inside Charlottesville city limits.",
-  "The Development Code 'Clean-Up' project (NDS page) may change these sections; the PDF read is the March 23, 2026 update."
+  "The Development Code 'Clean-Up' project (NDS page) may change these sections; the PDF read is the March 23, 2026 update.",
+  "Not confirmed by lexflow's software: the words once quoted for the legal basis 'Charlottesville Development Code (City Code ch. 34) § 3.3.4.H.2 Artisan Workshop' (https://www.charlottesville.gov/DocumentCenter/View/16092); the legal basis 'Charlottesville Development Code § 3.5.2.D.17.i Home Occupation (prohibited activities)' (https://www.charlottesville.gov/DocumentCenter/View/16092); the step 'Find the zoning district of the site you have in mind' (https://www.charlottesville.gov/268/Zoning); the fee 'Temporary Use Permit'; the fee 'Appeal to the Board of Zoning Appeals' were not found on the cited page as lexflow read it (it cites no page, and none of the 18 pages this process cites has it word for word; not found word for word in the cited page as read on 20 October 2026). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -685,19 +686,46 @@
   }
  ],
  "researched_by": "Claude (lexflow agent)",
- "verified": false,
+ "verified": true,
  "checks": {
-  "verified_by": null,
-  "date": null,
-  "quotes_checked": 0,
-  "quotes_confirmed": 0,
-  "removed": [],
+  "verified_by": "Claude (lexflow verifier)",
+  "date": "2026-10-20",
+  "quotes_checked": 52,
+  "quotes_confirmed": 47,
+  "removed": [
+   {
+    "where": "legal_basis[5]",
+    "what": "the legal basis 'Charlottesville Development Code (City Code ch. 34) § 3.3.4.H.2 Artisan Workshop'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "legal_basis[21]",
+    "what": "the legal basis 'Charlottesville Development Code § 3.5.2.D.17.i Home Occupation (prohibited activities)'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "steps[0]",
+    "what": "the step 'Find the zoning district of the site you have in mind'",
+    "why": "not found word for word in the cited page as read on 20 October 2026"
+   },
+   {
+    "where": "fees[7]",
+    "what": "the fee 'Temporary Use Permit'",
+    "why": "it cites no page, and none of the 18 pages this process cites has it word for word"
+   },
+   {
+    "where": "fees[8]",
+    "what": "the fee 'Appeal to the Board of Zoning Appeals'",
+    "why": "it cites no page, and none of the 18 pages this process cites has it word for word"
+   }
+  ],
   "corrections": [],
   "open_issues": [
    "Will NDS Zoning classify a gas-fired hot shop (furnace, glory hole, oxygen and propane) as an Artisan workshop (by right) or as industrial and manufacturing (size-limited or SUP)?",
    "How does Zoning classify public glassblowing classes: accessory to the workshop, 'Gym or studio', or 'College, university or vocational school'?",
    "Exact current amounts for the Zoning Compliance Letter and whether a written determination request has a separate fee.",
    "Whether the Administrator will waive the SUP pre-application conference, and the current community-meeting requirements."
-  ]
+  ],
+  "method": "lexflow's software matched every quote (lexflow/municipal/quotes.py): state code quotes to Open US Law's index, page quotes to the cited page read live or from the Internet Archive capture named in the sources; quotes it could not find were dropped from their claims and listed in removed"
  }
 }

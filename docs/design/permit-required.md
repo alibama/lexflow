@@ -598,8 +598,8 @@ The last two fields are new: they tie the citation to the rule that used it. Alb
 and URL go in each, with `13VAC5-63-20 B (USBC 102.2)` beside it for why a city or county cannot vary the list.
 
 **3. Quote the state text, and cite the local page as guidance.** The Albemarle fixture records the county's building
-code page, read from an Internet Archive copy, as saying "Tool sheds and playhouses less than 256 square feet (zoning
-and health department, if applicable, is required)". The regulation says “does not exceed 256 square feet”. At exactly
+code page, read from an Internet Archive copy, as saying that sheds and playhouses under 256 square feet need no building permit (zoning and health
+approval may still apply). The regulation says “does not exceed 256 square feet”. At exactly
 256 sq ft the two differ, and the regulation governs (case A4). The process should quote 108.2 item 2 and link the
 county page as the office's guidance. The page's note that zoning still applies matches `other_approvals`.
 

@@ -1,0 +1,71 @@
+{
+ "qid": "glass_q1",
+ "state": "va",
+ "question": "Do I need a permit for a gas-fired glass furnace, glory hole or kiln?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "36-105",
+   "role": "primary"
+  },
+  {
+   "ref": "36-97",
+   "role": "primary"
+  },
+  {
+   "ref": "54.1-1111",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The local building department enforces the building code and issues the permits.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "36-105",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Heating, ventilating and other mechanical installations are regulated equipment under the code.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "36-97",
+   "quote": "\"Equipment\" means plumbing, heating, electrical, ventilating, air-conditioning and refrigeration equipment, elevators, dumbwaiters, escalators, and other mechanical additions or installations.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The permit cannot issue unless the installing contractor's licence number (or exemption) is on the application.",
+   "importance": "okay",
+   "kind": "form",
+   "section": "54.1-1111",
+   "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Permit fees are set by the local governing body.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "36-105",
+   "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "A denied permit comes with written reasons.",
+   "importance": "okay",
+   "kind": "appeal",
+   "section": "36-105",
+   "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+   "source": "index"
+  }
+ ],
+ "notes": "The permit requirement itself is in the Uniform Statewide Building Code (13VAC5-63-80), a regulation outside the statute index; the Code of Virginia gives the enforcer, the scope and the contractor rule."
+}

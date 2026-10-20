@@ -1,0 +1,40 @@
+{
+ "qid": "glass_q11",
+ "state": "va",
+ "question": "What do I do with cold-shop slurry, glass dust and cullet?",
+ "as_of": "2026-10-20",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "10.1-1402",
+   "role": "primary"
+  },
+  {
+   "ref": "62.1-44.15",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A generator of hazardous waste must keep the records, manifests and reports federal law requires.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "10.1-1402",
+   "quote": "Require any person who generates, collects, transports, stores or provides treatment or disposal of a hazardous waste to maintain records, manifests and reporting systems required pursuant to federal statute or regulation.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The State Water Control Board issues the certificates for discharging industrial wastes to state waters.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "62.1-44.15",
+   "quote": "To issue, revoke, or amend certificates and land-disturbance approvals under prescribed conditions for (a) the discharge of sewage, stormwater, industrial wastes, and other wastes into or adjacent to state waters",
+   "source": "index"
+  }
+ ],
+ "notes": "Whether slurry is hazardous (9VAC20-60-261, by reference to 40 CFR Part 261) and the sewer pretreatment rules (9VAC25-31) are regulations outside the statute index; the sewer utility's permission is local."
+}
