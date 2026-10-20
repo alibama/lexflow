@@ -54,6 +54,24 @@ DECIDE_MODEL = _env("LEXFLOW_DECIDE_MODEL", "tev1:0.8b")
 DECIDE_FALLBACK = _env("LEXFLOW_DECIDE_FALLBACK") or MODEL_A or "qwen3:1.7b"
 DECIDE = _env("LEXFLOW_DECIDE", "0") not in ("", "0", "false", "no")
 
+# The compute pool (lexflow/compute, docs/compute.md, docs/design/compute-tailnet.md §3).  Unset = today's behaviour:
+# one Ollama at OLLAMA_URL and no pool.  LLM_NODES: "name=url|threads=7|max=1|status=http://...|embed, ..."; the
+# URLs must be compose service names, localhost, the tailnet/overlay ranges or *.ts.net / *.mesh.lexipedia.xyz hosts.
+LLM_NODES = _env("LEXFLOW_LLM_NODES")
+EMBED_URL = _env("LEXFLOW_EMBED_URL")           # the one node that embeds (default: the node marked |embed, else the first)
+LLM_WAIT = int(_env("LEXFLOW_LLM_WAIT", "900"))  # seconds a call waits for a free slot before the job fails
+LLM_POLL = int(_env("LEXFLOW_LLM_POLL", "15"))   # seconds between health checks of an online node
+LLM_ONLY = _env("LEXFLOW_LLM_ONLY")              # pin every call of this process to one node (strict comparisons)
+LLM_FANOUT = int(_env("LEXFLOW_LLM_FANOUT", "4"))   # most worker threads a batch fans out over the pool
+LLM_CALLS_MAX = int(_env("LEXFLOW_LLM_CALLS_MAX", "20000"))   # rows kept in compute.db's calls table
+# The overlay that lists the nodes (docs/design/open-overlay.md §3.5): netbird | headscale | none (= LLM_NODES)
+OVERLAY = _env("LEXFLOW_OVERLAY", "none").lower() or "none"
+OVERLAY_URL = _env("LEXFLOW_OVERLAY_URL")
+OVERLAY_TOKEN = _env("LEXFLOW_OVERLAY_TOKEN")
+OVERLAY_COMPUTE_GROUP = _env("LEXFLOW_OVERLAY_COMPUTE_GROUP", "compute")
+OVERLAY_RANGE = _env("LEXFLOW_OVERLAY_RANGE", "10.231.0.0/16")
+OVERLAY_POLL = int(_env("LEXFLOW_OVERLAY_POLL", "60"))
+
 TURSO_URL = _env("TURSO_DATABASE_URL")
 TURSO_TOKEN = _env("TURSO_AUTH_TOKEN")
 ORIGIN = _env("LEXFLOW_ORIGIN", socket.gethostname())

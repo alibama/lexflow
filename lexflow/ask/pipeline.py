@@ -25,18 +25,25 @@ from .plan import Plan, plan as make_plan, slug
 from .retrieve import in_force, retrieve
 
 
-def asker_for(model: str | None):
-    """A local model to ask small questions of, or None when Ollama does not have it."""
+def asker_for(model: str | None, node: str | None = None):
+    """A local model to ask small questions of, or None when Ollama (any node of the pool) does not have it.
+    ``node`` pins the calls to one node of the pool (``lexflow run ask ... --node``)."""
     from ..extract.ollama import OllamaClient
     from ..extract.strategies import Asker
     from ..municipal.build import _has, ollama_models
     model = model or config.ASK_MODEL
+    url = config.OLLAMA_URL
+    if node:
+        from ..compute import nodes as CN
+        url = CN.url_of(node)
+        if not url:
+            raise ValueError(f"unknown node {node!r}: the configured nodes are {', '.join(CN.names()) or 'none'}")
     try:
-        if not _has(ollama_models(), model):
+        if not _has(ollama_models(url if node else None), model):
             return None
     except Exception:  # noqa: BLE001 - Ollama not running
         return None
-    return Asker(OllamaClient(base_url=config.OLLAMA_URL, model=model, num_ctx=4096, timeout=1800), mode="schema",
+    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=node), mode="schema",
                  max_tokens=400)
 
 
@@ -292,10 +299,11 @@ def answer_place(con, qid: str, plan: Plan, g: dict, state_row: dict, rows: list
 
 
 def run(con, text: str, targets: list[str], *, model: str | None = None, use_llm: bool = True, log=print,
-        progress=None, question_id: str | None = None) -> dict:
+        progress=None, question_id: str | None = None, node: str | None = None) -> dict:
     """Answer one question for every target; returns counts by status.  ``question_id`` is the id the caller
-    already gave out (the API does), so the answers land where its link points."""
-    asker = asker_for(model) if use_llm else None
+    already gave out (the API does), so the answers land where its link points.  ``node`` pins the model calls
+    to one node of the pool."""
+    asker = asker_for(model, node) if use_llm else None
     if use_llm and asker is None:
         log(f"no local chat model ({model or config.ASK_MODEL}) in Ollama: answering from quotes only")
     p = make_plan(text, asker)

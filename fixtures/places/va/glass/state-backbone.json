@@ -1,0 +1,2368 @@
+{
+ "about": "The Virginia state legal backbone for starting a glass studio: a hot shop (gas-fired glass furnace, glory hole, annealing kilns, torches), cold-working (grinding, polishing with water slurries), classes for the public, and possibly a cafe or sip-and-blow events. For each topic: the Code of Virginia and Virginia Administrative Code sections that govern it (quoted verbatim from law.lis.virginia.gov), what the state fixes versus what the locality decides, deadlines, fees, forms, escalation routes and caveats. The local layer (zoning, BPOL rates, fire official, building department, health district) is left for the place files.",
+ "places": [
+  "va"
+ ],
+ "scope": "state layer only; applies to every Virginia county, city and town unless a section says otherwise",
+ "built": "2026-10-19",
+ "status": "design fixture; nothing here is loaded into the DB, the wiki or Wikibase",
+ "sources": {
+  "state_law": "Code of Virginia on law.lis.virginia.gov, read 2026-10-19 with the research User-Agent (no robots.txt served; HTTP 404), at least 1.5 seconds between requests. The lexflow statute index was unavailable (Docker down), so every Code of Virginia quote carries source \"official-page\" and should be matched to the index later.",
+  "regulations": "Virginia Administrative Code on law.lis.virginia.gov (13VAC5-63 USBC, 13VAC5-52 SFPC, 9VAC5-80, 9VAC20-60, 9VAC25-31, 12VAC5-421, 16VAC25-90), read 2026-10-19",
+  "agencies": "www.tax.virginia.gov, www.dhcd.virginia.gov, www.vdh.virginia.gov, www.abc.virginia.gov, workcomp.virginia.gov, www.doli.virginia.gov, www.dpor.virginia.gov pages read 2026-10-19 under robots.txt with the research User-Agent",
+  "model_codes": "The 2021 International Building, Mechanical, Fuel Gas and Fire Codes and NFPA 70 are incorporated by reference and are not reproduced on law.lis.virginia.gov; their text is cited by section number and paraphrased, never quoted.",
+  "blocked": [
+   "scc.virginia.gov (robots.txt disallows the research client; SCC pages not read, statute cited instead)",
+   "www.deq.virginia.gov (HTTP 403 to the research client, robots.txt included; DEQ pages not read, regulations cited instead)",
+   "www.vec.virginia.gov (HTTP 503 on three attempts; VEC pages not read, statute cited instead)",
+   "www.dhcd.virginia.gov State Fire Marshal's Office and Technical Review Board pages (HTTP 404 at the guessed paths; the DHCD codes page was read)"
+  ]
+ },
+ "topics": [
+  {
+   "id": "formation_registration",
+   "topic": "Business formation and registration: SCC entity or assumed name, Virginia Tax registration, sales and use tax on retail glass, the manufacturing exemption, BPOL classification, business tangible and machinery and tools tax",
+   "offices": [
+    {
+     "locality": "va",
+     "office": "State Corporation Commission, Clerk's Office (entity filings and assumed-name certificates)",
+     "url": "https://scc.virginia.gov/",
+     "status": "not read: scc.virginia.gov robots.txt disallows the research client (2026-10-19); office named by its role in Va. Code §§ 13.1-1011 and 59.1-69"
+    },
+    {
+     "locality": "va",
+     "office": "Virginia Department of Taxation (Virginia Tax), business registration and retail sales and use tax",
+     "url": "https://www.tax.virginia.gov/register-business-virginia",
+     "status": "page read 2026-10-19"
+    },
+    {
+     "locality": "local",
+     "office": "Commissioner of the revenue (or the director of finance in a county executive form county): BPOL licence, business tangible personal property and machinery and tools returns",
+     "url": null,
+     "status": "local office; see the place file (fixtures/places/va/state-backbone.json, topic offices)"
+    },
+    {
+     "locality": "va",
+     "office": "Tax Commissioner (Virginia Department of Taxation): rulings, and appeals of local business tax classification",
+     "url": "https://www.tax.virginia.gov/",
+     "status": "home page not fetched this run; contact page read 2026-10-19"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 13.1-1011(A)",
+     "url": "https://law.lis.virginia.gov/vacode/13.1-1011/",
+     "quote": "The articles of organization shall set forth:",
+     "role": "forming an LLC: articles filed with the SCC",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 13.1-1011(D)",
+     "url": "https://law.lis.virginia.gov/vacode/13.1-1011/",
+     "quote": "If the Commission finds that the articles of organization comply with the requirements of law and that all required fees have been paid, it shall issue a certificate of organization.",
+     "role": "when the LLC exists",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 13.1-1005(1)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/13.1-1005/",
+     "quote": "For filing any one of the following, the fee shall be $100:",
+     "role": "LLC filing fee (articles of organization)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 13.1-1062(A)",
+     "url": "https://law.lis.virginia.gov/vacode/13.1-1062/",
+     "quote": "an annual registration fee of $50",
+     "role": "LLC annual registration fee, due by the last day of the twelfth month after organisation and yearly thereafter",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 13.1-619(A)",
+     "url": "https://law.lis.virginia.gov/vacode/13.1-619/",
+     "quote": "The articles of incorporation shall set forth:",
+     "role": "forming a stock corporation instead of an LLC",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 59.1-69(B)",
+     "url": "https://law.lis.virginia.gov/vacode/59.1-69/",
+     "quote": "No person shall conduct or transact business in the Commonwealth under any assumed or fictitious name unless such person files in the office of the clerk of the Commission a certificate of assumed or fictitious name.",
+     "role": "a studio name that is not the owner's or the entity's legal name needs an SCC assumed-name certificate",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 59.1-70(A)",
+     "url": "https://law.lis.virginia.gov/vacode/59.1-70/",
+     "quote": "The certificate of assumed or fictitious name shall be on a form prescribed by the Commission that sets forth the following:",
+     "role": "assumed-name certificate contents (SCC form)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 59.1-74(B)",
+     "url": "https://law.lis.virginia.gov/vacode/59.1-74/",
+     "quote": "No license shall be issued by a commissioner of the revenue until a certificate of assumed or fictitious name has been made and filed (i) in the office of the clerk of the Commission",
+     "role": "the local business licence waits on the assumed-name certificate",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-603",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-603/",
+     "quote": "There is hereby levied and imposed, in addition to all other taxes and fees of every kind now imposed by law, a license or privilege tax upon every person who engages in the business of selling at retail or distributing tangible personal property in this Commonwealth",
+     "role": "retail sales tax on glass sold to customers",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-612(B)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-612/",
+     "quote": "Manufactures or produces tangible personal property for sale at retail, for use, consumption, or distribution, or for storage to be used or consumed in this Commonwealth;",
+     "role": "a studio that makes and sells glass is a \"dealer\"",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-613(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-613/",
+     "quote": "Every person desiring to engage in or conduct business as a dealer in this Commonwealth shall file with the Tax Commissioner or the local commissioner of the revenue, if the local commissioner elects to provide the services authorized under this section, an application for a certificate of registration for each place of business in this Commonwealth.",
+     "role": "register for a sales tax certificate before selling",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-613(C)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-613/",
+     "quote": "It shall be at all times conspicuously displayed at the place for which issued.",
+     "role": "certificate must be displayed",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-613(E)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-613/",
+     "quote": "Any person who engages in business as a dealer in this Commonwealth without obtaining a certificate of registration, or after a certificate of registration has been suspended or revoked, and each officer of any corporation which so engages in business shall be guilty of a Class 2 misdemeanor.",
+     "role": "penalty for selling unregistered",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-615(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-615/",
+     "quote": "A sales or use tax return shall be filed by each registered dealer even though the dealer is not liable to remit to the Tax Commissioner any tax for the period covered by the return.",
+     "role": "returns due on the 20th of the following month, even with no sales",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-616",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-616/",
+     "quote": "The tax imposed by this chapter shall for each period become delinquent on the twenty-first day of the succeeding month if not paid.",
+     "role": "payment deadline",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-609.3(2)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-609.3/",
+     "quote": "(iii) machinery or tools or repair parts therefor or replacements thereof, fuel, power, energy, or supplies, used directly in processing, manufacturing, refining, mining or converting products for sale or resale;",
+     "role": "manufacturing exemption from sales tax on purchases (furnace, glory hole, kilns, gas, batch and colour) if the studio is an industrial manufacturer",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-609.3(2)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-609.3/",
+     "quote": "Machinery, tools and equipment, or repair parts therefor or replacements thereof, shall be exempt if the preponderance of their use is directly in processing, manufacturing, refining, mining or converting products for sale or resale.",
+     "role": "preponderance-of-use test for mixed equipment (a furnace also used for classes)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-602 (\"Manufacturing, processing, refining, or conversion\")",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-602/",
+     "quote": "includes the production line of the plant starting with the handling and storage of raw materials at the plant site and continuing through the last step of production where the product is finished or completed for sale and conveyed to a warehouse at the production site, and also includes equipment and supplies used for production line testing and quality control.",
+     "role": "what counts as the production line",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-602 (\"Used directly\")",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-602/",
+     "quote": "refers to those activities that are an integral part of the production of a product, including all steps of an integrated manufacturing or mining process, but not including ancillary activities such as general maintenance or administration.",
+     "role": "used-directly test",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-602 (\"industrial in nature\")",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-602/",
+     "quote": "is industrial in nature shall be made without regard to plant size, existence or size of finished product inventory, degree of mechanization, amount of capital investment, number of employees or other factors relating principally to the size of the business.",
+     "role": "a small studio is not excluded by size alone; the business must still be industrial in nature (the definition points to SIC codes 20 through 39, which include glass products)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-623(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-623/",
+     "quote": "All sales or leases are subject to the tax until the contrary is established. The burden of proving that a sale, distribution, lease, or storage of tangible personal property is not taxable is upon the dealer unless he takes from the taxpayer a certificate to the effect that the property is exempt under this chapter.",
+     "role": "claim the exemption with an exemption certificate given to the supplier",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3700.1 (\"Definite place of business\")",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3700.1/",
+     "quote": "\"Definite place of business\" means an office or a location at which occurs a regular and continuous course of dealing for thirty consecutive days or more.",
+     "role": "the studio is a definite place of business for BPOL",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3703(C)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3703/",
+     "quote": "On a manufacturer for the privilege of manufacturing and selling goods, wares and merchandise at wholesale at the place of manufacture.",
+     "role": "no BPOL tax on a manufacturer's wholesale sales at the place of manufacture; retail sales from the studio are not covered by this exclusion",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3706(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+     "quote": "no local license tax imposed pursuant to the provisions of this chapter, except §§ 58.1-3712 and 58.1-3713, or any other provision of this title or any charter, shall be imposed on any person whose gross receipts from a business, profession or occupation subject to licensure are less than: (i) $100,000 in any locality with a population greater than 50,000; or (ii) $50,000 in any locality with a population of 25,000 but no more than 50,000.",
+     "role": "gross-receipts threshold below which only a fee, not a tax, may apply",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3706(A)(2)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+     "quote": "For retail sales, twenty cents per $100 of gross receipts;",
+     "role": "rate cap for the retail class (gallery sales)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3706(A)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3706/",
+     "quote": "For repair, personal and business services, and all other businesses and occupations not specifically listed or excepted in this section, thirty-six cents per $100 of gross receipts.",
+     "role": "rate cap for the class that usually catches classes, workshops and event fees",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3703.1(A)(2)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+     "quote": "Each person subject to a license tax shall apply for a license prior to beginning business if he was not subject to licensure in this jurisdiction on or before January 1 of the license year, or no later than March 1 of the license year if he had been issued a license for the preceding year.",
+     "role": "BPOL application deadline",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3703.1(A)(6)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+     "quote": "may appeal such assessment or determination to the Tax Commissioner within 90 days of the date of the determination by the commissioner of the revenue or other assessing official.",
+     "role": "appeal of a classification dispute (manufacturer vs retailer vs service)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3507(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+     "quote": "Machinery and tools, except idle machinery and tools as defined in subsection D and machinery and equipment used by farm wineries as defined in § 4.1-100, used in a manufacturing, mining, water well drilling, processing or reprocessing, radio or television broadcasting, dairy, dry cleaning or laundry business, or a business primarily engaged in advanced recycling, as defined in § 58.1-439.7, shall be listed and are hereby segregated as a class of tangible personal property separate from all other classes of property and shall be subject to local taxation only.",
+     "role": "furnace, glory hole, kilns and cold-working machines of a manufacturing studio are \"machinery and tools\", a separate local class",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3507(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+     "quote": "The rate of tax imposed by a county, city, or town on such machinery and tools shall not exceed the rate imposed upon the general class of tangible personal property.",
+     "role": "M&T rate cap",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3507(B)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3507/",
+     "quote": "Machinery and tools segregated for local taxation pursuant to subsection A, other than energy conservation equipment of manufacturers, shall be valued by means of depreciated cost or a percentage or percentages of original total capitalized cost excluding capitalized interest.",
+     "role": "how M&T is valued",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3503(A)(18)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3503/",
+     "quote": "All tangible personal property employed in a trade or business other than that described in subdivisions 1 through 17, which shall be valued by means of a percentage or percentages of original cost.",
+     "role": "other business property (gallery fixtures, computers, tables) is business tangible personal property",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3515",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3515/",
+     "quote": "tangible personal property, machinery and tools and merchants' capital shall be returned for taxation as of January 1 of each year, which date shall be known as the effective date of assessment or the tax day.",
+     "role": "tax day",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3518",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3518/",
+     "quote": "Every taxpayer owning any of the property subject to taxation under this chapter on January 1 of any year shall file a return thereof with the commissioner of the revenue for his county or city on the appropriate forms",
+     "role": "annual return of business property and machinery and tools",
+     "source": "official-page"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Whether to levy a BPOL tax or fee at all, the rate for each class up to the caps, and which class a glass studio falls in (retail for gallery sales; the services class for classes and events; nothing on wholesale sales at the place of manufacture) (Va. Code §§ 58.1-3703, 58.1-3706).",
+     "Whether to tax machinery and tools and business tangible property, the rates (M&T capped at the general tangible-property rate) and the depreciation schedule (Va. Code §§ 58.1-3507, 58.1-3503).",
+     "The business property return date where the locality has adopted one by ordinance (Va. Code §§ 58.1-3518, 58.1-3916)."
+    ],
+    "state_fixes": [
+     "Entity formation and assumed names are SCC filings with state-set fees (Va. Code §§ 13.1-1005, 13.1-1011, 59.1-69); the local licence cannot issue until the assumed-name certificate is filed (§ 59.1-74).",
+     "Sales tax registration, the certificate for each place of business, monthly or quarterly returns due the 20th, and the manufacturing exemption and its tests (Va. Code §§ 58.1-602, 58.1-603, 58.1-609.3, 58.1-613, 58.1-615).",
+     "The BPOL manufacturer exclusion for wholesale sales at the place of manufacture, the gross-receipts thresholds, rate caps, application deadlines and the appeal route (Va. Code §§ 58.1-3703, 58.1-3703.1, 58.1-3706).",
+     "January 1 tax day and the separate machinery-and-tools class (Va. Code §§ 58.1-3507, 58.1-3515)."
+    ],
+    "observed": [
+     {
+      "locality": "va",
+      "fact": "Virginia Tax says all new businesses must register online; the registration returns a Virginia Tax account number for each tax type and the sales tax certificate.",
+      "url": "https://www.tax.virginia.gov/register-business-virginia",
+      "quote": "While all new businesses are required to register with us online, the following reasons may prevent you from doing so:",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "Virginia Tax sets the filing frequency (monthly or quarterly) from the tax liability; returns are due on the 20th even with no sales, and must be filed electronically.",
+      "url": "https://www.tax.virginia.gov/retail-sales-and-use-tax",
+      "quote": "Returns are due on the 20th of the month following the close of the filing period, even if there are no sales to report.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "The sales tax certificate must be displayed at the registered location.",
+      "url": "https://www.tax.virginia.gov/retail-sales-and-use-tax",
+      "quote": "Your certificate must be displayed prominently at your registered location.",
+      "read": "2026-10-19"
+     }
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "Assumed-name certificate",
+     "rule": "before conducting business under the assumed name, and before the local business licence can issue",
+     "citation": "Va. Code §§ 59.1-69(B), 59.1-74(B)"
+    },
+    {
+     "item": "Sales tax certificate of registration",
+     "rule": "before engaging in business as a dealer (each place of business)",
+     "citation": "Va. Code § 58.1-613(A)"
+    },
+    {
+     "item": "Sales tax return and payment",
+     "rule": "the 20th of the month after the period; delinquent on the 21st",
+     "citation": "Va. Code §§ 58.1-615(A), 58.1-616"
+    },
+    {
+     "item": "LLC annual registration fee",
+     "rule": "last day of the twelfth month after organisation, and yearly",
+     "citation": "Va. Code § 13.1-1062(A)"
+    },
+    {
+     "item": "BPOL application",
+     "rule": "before beginning business; renewals March 1 (local date no later than May 1)",
+     "citation": "Va. Code § 58.1-3703.1(A)(2)(a)"
+    },
+    {
+     "item": "Business tangible property and machinery and tools return",
+     "rule": "property as of January 1; return by May 1 unless the local ordinance sets another date",
+     "citation": "Va. Code §§ 58.1-3515, 58.1-3518"
+    },
+    {
+     "item": "Appeal of a BPOL classification to the Tax Commissioner",
+     "rule": "within 90 days of the local determination",
+     "citation": "Va. Code § 58.1-3703.1(A)(6)(a)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "LLC articles of organization",
+     "rule": "$100",
+     "citation": "Va. Code § 13.1-1005(1)(a)"
+    },
+    {
+     "item": "LLC annual registration fee",
+     "rule": "$50",
+     "citation": "Va. Code § 13.1-1062(A)"
+    },
+    {
+     "item": "Assumed-name certificate",
+     "rule": "SCC form; fee not read (scc.virginia.gov blocked)",
+     "citation": "Va. Code § 59.1-70"
+    },
+    {
+     "item": "Retail sales tax",
+     "rule": "state rate in § 58.1-603 (4 percent) plus the local and regional additions; Virginia Tax lists general rates of 5.3 percent to 6.3 percent by locality",
+     "citation": "Va. Code § 58.1-603; https://www.tax.virginia.gov/retail-sales-and-use-tax"
+    },
+    {
+     "item": "BPOL",
+     "rule": "fee only below the gross-receipts threshold; above it, up to 20 cents per $100 (retail) or 36 cents per $100 (services) unless a higher 1978 rate is kept",
+     "citation": "Va. Code § 58.1-3706(A)-(B)"
+    },
+    {
+     "item": "Machinery and tools tax",
+     "rule": "local rate, not above the general tangible personal property rate, on depreciated cost or a percentage of original cost",
+     "citation": "Va. Code § 58.1-3507(A)-(B)"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_tax_reg",
+     "title": "Virginia Tax online business registration (returns the sales tax certificate of registration); paper Form R-1 Business Registration Application also posted",
+     "url": "https://www.tax.virginia.gov/register-business-virginia",
+     "official": true
+    },
+    {
+     "id": "f_r1",
+     "title": "Form R-1, Business Registration Application (PDF)",
+     "url": "https://www.tax.virginia.gov/sites/default/files/taxforms/business-registration/any/r-1-any.pdf",
+     "official": true
+    },
+    {
+     "id": "f_scc",
+     "title": "SCC Clerk's Information System: articles of organization, articles of incorporation, certificate of assumed or fictitious name",
+     "url": "https://scc.virginia.gov/",
+     "official": true,
+     "note": "not read: robots.txt disallows the research client"
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "BPOL classification or assessment disputed (for example the locality treats class fees as retail, or denies the manufacturer exclusion)",
+     "to": "commissioner of the revenue or other local assessing official (administrative appeal)",
+     "deadline": "one year from the end of the tax year or the appealable event",
+     "citation": "Va. Code § 58.1-3703.1(A)(5)(b)"
+    },
+    {
+     "step": 2,
+     "trigger": "adverse local determination",
+     "to": "Tax Commissioner",
+     "deadline": "90 days",
+     "citation": "Va. Code § 58.1-3703.1(A)(6)(a)"
+    },
+    {
+     "step": 3,
+     "trigger": "still aggrieved",
+     "to": "circuit court of the county or city",
+     "deadline": "see Va. Code § 58.1-3984(A)",
+     "citation": "Va. Code § 58.1-3984(A)"
+    },
+    {
+     "step": 1,
+     "trigger": "sales tax: whether the studio qualifies for the manufacturing exemption",
+     "to": "Virginia Tax (ruling request or audit appeal under Va. Code § 58.1-1821)",
+     "deadline": "90 days from an assessment for an administrative appeal",
+     "citation": "Va. Code § 58.1-1821 (not fetched this run; cited from the Code structure)",
+     "inferred": true
+    }
+   ],
+   "caveats": [
+    "Whether a glass studio is \"industrial in nature\" for the sales-tax manufacturing exemption is not decided by any section read here. The definition in § 58.1-602 points to SIC codes 20 through 39 (which cover glass and glassware manufacturing) and says size does not matter, but a studio whose receipts come mostly from classes and events may be treated as a service business. Not grounded in official text: ask Virginia Tax for a ruling before buying a furnace tax-free.",
+    "The BPOL manufacturer exclusion (§ 58.1-3703(C)(4)) covers only wholesale sales at the place of manufacture. Retail sales from the studio and class fees are licensable; how a locality splits a mixed studio between the retail and services classes is a local decision, appealable to the Tax Commissioner.",
+    "SCC fees for an assumed-name certificate and for a corporation were not read (scc.virginia.gov blocked); only the LLC fees in §§ 13.1-1005 and 13.1-1062 are quoted.",
+    "Population bands for the BPOL threshold depend on the locality; see the place file.",
+    "Virginia Tax's sales-tax page lists general rates of 5.3 percent to 6.3 percent by locality; the regional components are set in other sections not read this run."
+   ]
+  },
+  {
+   "id": "building_occupancy",
+   "topic": "Building and occupancy: the Uniform Statewide Building Code, change of occupancy and certificate of occupancy, occupancy classification for a hot shop with classes, mechanical, fuel-gas and electrical permits for furnaces, glory holes and kilns, and exhaust",
+   "offices": [
+    {
+     "locality": "local",
+     "office": "Local building department (building official): permits, plan review, inspections, certificate of occupancy",
+     "url": null,
+     "status": "local office; see the place file"
+    },
+    {
+     "locality": "local",
+     "office": "Local board of building code appeals",
+     "url": null,
+     "status": "local body; see the place file"
+    },
+    {
+     "locality": "va",
+     "office": "Department of Housing and Community Development, Division of Building and Fire Regulation (codes; staff to the State Building Code Technical Review Board)",
+     "url": "https://www.dhcd.virginia.gov/codes",
+     "status": "page read 2026-10-19"
+    },
+    {
+     "locality": "va",
+     "office": "State Building Code Technical Review Board (second-level appeals)",
+     "url": "https://www.dhcd.virginia.gov/codes",
+     "status": "described on the DHCD codes page read 2026-10-19; the board's own page was not found at the guessed path"
+    },
+    {
+     "locality": "va",
+     "office": "Board for Contractors (DPOR): licences for the HVAC, gas-fitting and electrical contractors who install the equipment",
+     "url": "https://www.dpor.virginia.gov/boards/contractors",
+     "status": "page read 2026-10-19"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 36-98",
+     "url": "https://law.lis.virginia.gov/vacode/36-98/",
+     "quote": "Such building code shall supersede the building codes and regulations of the counties, municipalities and other political subdivisions and state agencies.",
+     "role": "one statewide building code",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 36-97 (\"Equipment\")",
+     "url": "https://law.lis.virginia.gov/vacode/36-97/",
+     "quote": "\"Equipment\" means plumbing, heating, electrical, ventilating, air-conditioning and refrigeration equipment, elevators, dumbwaiters, escalators, and other mechanical additions or installations.",
+     "role": "furnaces, glory holes, kilns and their exhaust are regulated equipment",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 36-99(A)",
+     "url": "https://law.lis.virginia.gov/vacode/36-99/",
+     "quote": "The Building Code shall prescribe building regulations to be complied with in the construction and rehabilitation of buildings and structures, and the equipment therein as defined in § 36-97",
+     "role": "scope of the code",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 36-105(A)",
+     "url": "https://law.lis.virginia.gov/vacode/36-105/",
+     "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+     "role": "the locality enforces",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 36-105(C)(7)",
+     "url": "https://law.lis.virginia.gov/vacode/36-105/",
+     "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals.",
+     "role": "permit fees are local",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 36-105(D)(2)",
+     "url": "https://law.lis.virginia.gov/vacode/36-105/",
+     "quote": "In the event that a local building department denies an application for the issuance of a building permit, the local building department shall provide to the applicant a written explanation detailing the reasons for which the application was denied.",
+     "role": "written reasons for a denial",
+     "source": "official-page"
+    },
+    {
+     "citation": "13VAC5-63-10 (VCC § 101.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section10/",
+     "quote": "Chapters 2 - 35 of the 2021 International Building Code, published by the International Code Council, Inc., are adopted and incorporated by reference to be an enforceable part of the USBC.",
+     "role": "the IBC (and through it the IMC, IFGC and NFPA 70) is the technical code",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-10 (VCC § 101.2, Note 1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section10/",
+     "quote": "The IBC references other International Codes and standards, including the following major codes:",
+     "role": "the list that follows names the 2021 International Mechanical Code (IMC), the 2020 NFPA 70 and the 2021 International Fuel Gas Code (IFGC)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-300 (VCC § 2701.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section300/",
+     "quote": "Electrical components, equipment, and systems shall be designed and constructed in accordance with the provisions of this code and NFPA 70.",
+     "role": "electrical work (furnace controls, kiln circuits, blowers) follows NFPA 70",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-310 (VCC Chapter 28 Mechanical systems)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section310/",
+     "quote": "13VAC5-63-310. Chapter 28 Mechanical systems.",
+     "role": "state amendments to the mechanical chapter; the IMC itself (Chapter 5 exhaust systems, including industrial furnaces and ovens) applies through the IBC reference",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "Application for a permit shall be made to the building official and a permit shall be obtained prior to the commencement of any of the following activities, except that applications for emergency construction, alterations, or equipment replacement shall be submitted by the end of the first working day that follows the day such work commences.",
+     "role": "permit before work",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.1, item 1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "(vi) electric wiring; (vii) fire protection system, mechanical systems, or fuel supply systems; or (viii) any equipment regulated by the USBC.",
+     "role": "installing a gas furnace, glory hole, kiln, gas piping, exhaust or new circuits needs a permit (mechanical, gas, electrical)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.1, item 2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "For change of occupancy, application for a permit shall be made when a new certificate of occupancy is required by the VEBC.",
+     "role": "turning a shop, warehouse or garage into a hot shop with classes is usually a change of occupancy",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.2, item 9)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "9. Signs under the conditions in Section H101.2 of Appendix H.",
+     "role": "small signs exempt from a building permit; others need one",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.2, item 2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "One story detached structures used as tool and storage sheds, playhouses, or similar uses, provided the building area does not exceed 256 square feet (23.78 m2) and the structures are not classified as a Group F-1 or H occupancy.",
+     "role": "the small-shed exemption does not cover a factory (F-1) shed; a backyard hot shop shed still needs a permit",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.2, item 10)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "Replacement of aboveground existing LP-gas containers of the same capacity in the same location and associated regulators when installed by the serving gas supplier.",
+     "role": "like-for-like propane tank swaps by the supplier are exempt; a new or larger tank is not",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-80 (VCC § 108.2, item 14.4)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section80/",
+     "quote": "Replacement of mechanical appliances provided such equipment is not fueled by gas or oil in Group R-2 where serving a single-family dwelling and in Groups R-3, R-4, and R-5.",
+     "role": "the appliance-replacement exemption is for dwellings and never for gas-fired equipment",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-210 (VCC § 303.1.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section210/",
+     "quote": "A building or tenant space used for assembly purposes with an occupant load of less than 50 persons shall be permitted to be classified as a Group B occupancy.",
+     "role": "a class or demonstration space for fewer than 50 people may be Group B rather than Group A",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-210 (VCC § 303.1.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section210/",
+     "quote": "1. A room or space used for assembly purposes with an occupant load of less than 50 persons and ancillary to another occupancy.",
+     "role": "a small viewing or event area ancillary to the hot shop may be Group B or part of the assembly occupancy",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-210 (VCC § 303.1.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section210/",
+     "quote": "2. A room or space used for assembly purposes that is less than 750 square feet (70 m2) in area and ancillary to another occupancy.",
+     "role": "small-area rule",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-160 (VCC § 116.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+     "quote": "Prior to occupancy or change of occupancy of a building or structure, a certificate of occupancy shall be obtained in accordance with this section. The building official shall issue the certificate of occupancy within five working days after approval of the final inspection and when the building or structure or portion thereof is determined to be in compliance with this code and any pertinent laws or ordinances, or when otherwise entitled.",
+     "role": "certificate of occupancy before opening",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-430 (VEBC § 202, \"Change of occupancy\")",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section430/",
+     "quote": "Either of the following shall be considered a change of occupancy where the current VCC requires a greater degree of structural strength, fire protection, means of egress, ventilation, or sanitation than is existing in the current building or structure:",
+     "role": "definition (the two cases that follow are a change in occupancy classification and a change of use within a classification)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-433.5 (VEBC § 701.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section433.5/",
+     "quote": "Compliance with the current VCC for the change of occupancy shall only be required as prescribed in this chapter. Compliance shall be only as necessary to meet the specific provisions of the applicable International Codes and is not intended to require the entire building be brought into compliance.",
+     "role": "an existing building converted to a studio is not rebuilt to current code wholesale",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-433.5 (VEBC § 704.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section433.5/",
+     "quote": "Where a building undergoes a change of occupancy that requires an automatic fire sprinkler system to be provided based on the new occupancy in accordance with Section 903 of the VCC, such automatic fire sprinkler system shall be provided throughout the area where the change of occupancy occurs.",
+     "role": "sprinklers may be triggered by the new occupancy",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-433.5 (VEBC § 705.3)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section433.5/",
+     "quote": "When a change of occupancy classification is made to a higher hazard category (lower number) as shown in Table 705.2, the means of egress serving the area of the change of occupancy shall comply with the requirements of Chapter 10 of the VCC",
+     "role": "egress upgrades when moving to a higher hazard category (for example storage to assembly)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-190 (VCC § 119.5)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+     "quote": "The applicant shall submit a written request for appeal to the LBBCA within 30 calendar days of the receipt of the decision being appealed.",
+     "role": "local appeal deadline",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-63-190 (VCC § 119.8)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+     "quote": "The application for appeal shall be made to the State Review Board within 21 calendar days of the receipt of the decision to be appealed.",
+     "role": "state appeal deadline",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "Va. Code § 54.1-1111(A)",
+     "url": "https://law.lis.virginia.gov/vacode/54.1-1111/",
+     "quote": "It shall be unlawful for the building official or other authority to issue or allow the issuance of such permits unless the applicant has furnished his license or certificate number issued pursuant to this chapter or evidence of being exempt from the provisions of this chapter.",
+     "role": "the installing contractor's DPOR licence number goes on the permit",
+     "source": "official-page"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Permit fees, the fee schedule and the permit system (online or paper) (Va. Code § 36-105; 13VAC5-63-70).",
+     "Plan-review turnaround beyond the code's \"reasonable time\", inspection scheduling and third-party inspection policies (13VAC5-63-90, -130).",
+     "The zoning question of whether a hot shop (an industrial use) is allowed at the address at all, and whether classes, a gallery, a cafe and events are allowed with it (Va. Code § 15.2-2280; see topic signs_hours_noise)."
+    ],
+    "state_fixes": [
+     "One statewide code; localities may not add construction requirements (Va. Code § 36-98).",
+     "What needs a permit: gas, mechanical, electrical and any regulated equipment, and a change of occupancy (13VAC5-63-80).",
+     "The occupancy classification rules, including the under-50 and under-750-square-foot assembly rules that let a classroom or viewing area be Group B (13VAC5-63-210).",
+     "The certificate of occupancy before use and the five-working-day issuance rule (13VAC5-63-160).",
+     "What a change of occupancy triggers in an existing building (VEBC Chapter 7, 13VAC5-63-433.5).",
+     "The appeal ladder and its deadlines: local board within 30 days, State Review Board within 21 days (13VAC5-63-190; Va. Code § 36-105)."
+    ],
+    "observed": [
+     {
+      "locality": "va",
+      "fact": "The 2021 codes (USBC, SFPC) and the 2020 National Electrical Code took effect January 18, 2024.",
+      "url": "https://www.dhcd.virginia.gov/codes",
+      "quote": "Effective January 18, 2024, Virginia adopted the 2021 I-codes as referenced in the Virginia Construction Part 1 and the 2021 Statewide Fire Prevention Code; and the 2020 National Electrical Code.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "Every local permit fee carries a 2 percent state levy for the Building Code Academy.",
+      "url": "https://www.dhcd.virginia.gov/codes",
+      "quote": "The statewide levy (currently at 2 percent) upon all local permit fees issued in accordance with Virginia Uniform Statewide Building Code (VUSBC) is collected to support operations and programs of Virginia Building Code Academy",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "DPOR licenses HVAC and other tradesmen and Class A, B and C contractors; the installer of gas and mechanical equipment should hold the relevant licence.",
+      "url": "https://www.dpor.virginia.gov/boards/contractors",
+      "quote": "In order to become licensed as a Contractor (Class A, Class B, or Class C), applicants must complete eight hours of pre-license education.",
+      "read": "2026-10-19"
+     }
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "Permit",
+     "rule": "before work starts (emergency equipment replacement: application by the end of the next working day)",
+     "citation": "13VAC5-63-80 (VCC § 108.1)"
+    },
+    {
+     "item": "Certificate of occupancy",
+     "rule": "before occupancy or change of occupancy; issued within five working days after the approved final inspection",
+     "citation": "13VAC5-63-160 (VCC § 116.1)"
+    },
+    {
+     "item": "Appeal to the local board of building code appeals",
+     "rule": "30 calendar days from receipt of the decision",
+     "citation": "13VAC5-63-190 (VCC § 119.5)"
+    },
+    {
+     "item": "Appeal to the State Building Code Technical Review Board",
+     "rule": "21 calendar days from receipt of the local board's decision",
+     "citation": "13VAC5-63-190 (VCC § 119.8)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "Building, mechanical, gas and electrical permits",
+     "rule": "local fee schedule, plus the 2 percent state levy",
+     "citation": "Va. Code § 36-105; 13VAC5-63-70"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_local_permit",
+     "title": "Local building, mechanical, gas and electrical permit applications (local building department)",
+     "url": null,
+     "official": true,
+     "note": "see the place file"
+    },
+    {
+     "id": "f_trb_appeal",
+     "title": "Application for Administrative Appeal (State Building Code Technical Review Board, DHCD)",
+     "url": "https://www.dhcd.virginia.gov/sites/default/files/DocX/sbctrb/file-appeal/appeal-application-trb-11-2024.pdf",
+     "official": true,
+     "note": "URL from curated/places/va/charlottesville/building_permit_residential.json; not re-fetched this run"
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "permit denied, occupancy classification or change-of-occupancy requirements disputed, modification refused",
+     "to": "local board of building code appeals",
+     "deadline": "30 calendar days",
+     "citation": "13VAC5-63-190 (VCC § 119.5); Va. Code § 36-105(A)"
+    },
+    {
+     "step": 2,
+     "trigger": "local board decision",
+     "to": "State Building Code Technical Review Board",
+     "deadline": "21 calendar days",
+     "citation": "13VAC5-63-190 (VCC § 119.8); Va. Code § 36-114"
+    },
+    {
+     "step": 3,
+     "trigger": "Review Board decision",
+     "to": "circuit court under the Administrative Process Act",
+     "deadline": "30 days from service",
+     "citation": "Va. Code § 2.2-4026; 13VAC5-63-190 (VCC § 119.9)"
+    }
+   ],
+   "caveats": [
+    "Occupancy classification is set by the 2021 IBC, which is incorporated by reference and not printed on law.lis.virginia.gov. From the model code (paraphrased, not quoted): a hot shop with furnaces is a factory industrial use (Group F-1 covers glass products); a gallery that sells is mercantile (Group M); classes for the public are usually Group B (training and skill development) unless the space seats 50 or more, when it is Group A-3; a cafe seating 50 or more is Group A-2. Which group applies, and whether the mix is handled as separated or non-separated mixed use (IBC § 508), is the building official's call. Not grounded in Virginia text beyond the under-50 rule quoted above.",
+    "Exhaust and combustion-air requirements for furnaces, glory holes and kilns come from the 2021 IMC (Chapter 5 exhaust systems, including Section 510 hazardous exhaust where applicable) and the 2021 IFGC for gas piping and appliance connection; neither is reproduced on law.lis.virginia.gov. Only the state amendments in 13VAC5-63-310 were read, and they do not mention furnaces or kilns.",
+    "A listed furnace or glory hole is rare; most studio equipment is custom-built. Approval of unlisted equipment is at the building official's discretion under the IMC and IFGC rules for unlisted appliances (model-code paraphrase, not grounded in Virginia text).",
+    "Zoning is checked first: the building official cannot issue a certificate of occupancy for a use the zoning ordinance does not allow. See topic signs_hours_noise for the enabling law."
+   ]
+  },
+  {
+   "id": "fire",
+   "topic": "Fire: the Statewide Fire Prevention Code, operational permits for a hot shop (hot work, industrial ovens, compressed gases such as oxygen and propane, LP-gas, flammable liquids, open flames at events, places of assembly), who issues them, fees, inspections and appeals",
+   "offices": [
+    {
+     "locality": "local",
+     "office": "Local fire official or fire marshal (where the locality enforces the SFPC): operational permits and inspections",
+     "url": null,
+     "status": "local office; see the place file"
+    },
+    {
+     "locality": "va",
+     "office": "State Fire Marshal's Office (DHCD): enforces the SFPC where the locality does not, and in state-owned buildings",
+     "url": "https://www.dhcd.virginia.gov/codes",
+     "status": "the SFMO page was not found at the guessed paths (HTTP 404); the DHCD codes page was read 2026-10-19"
+    },
+    {
+     "locality": "local",
+     "office": "Local board of fire prevention code appeals",
+     "url": null,
+     "status": "local body; see the place file"
+    },
+    {
+     "locality": "va",
+     "office": "State Building Code Technical Review Board (fire code appeals)",
+     "url": "https://www.dhcd.virginia.gov/codes",
+     "status": "described on the DHCD codes page read 2026-10-19"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 27-94",
+     "url": "https://law.lis.virginia.gov/vacode/27-94/",
+     "quote": "This chapter may be cited as the \"Virginia Statewide Fire Prevention Code Act.\"",
+     "role": "short title",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-96",
+     "url": "https://law.lis.virginia.gov/vacode/27-96/",
+     "quote": "The purposes of this chapter are to provide for statewide standards for optional local enforcement to safeguard life and property from the hazards of fire or explosion arising from the improper maintenance of life safety and fire prevention and protection materials, devices, systems and structures, and the unsafe storage, handling, and use of substances, materials and devices, including fireworks, explosives and blasting agents, wherever located.",
+     "role": "statewide standards; local enforcement is optional",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-97",
+     "url": "https://law.lis.virginia.gov/vacode/27-97/",
+     "quote": "The Fire Prevention Code shall prescribe regulations to be complied with for the protection of life and property from the hazards of fire or explosion and for the handling, storage, sale, and use of fireworks, explosives, or blasting agents, and shall provide for the administration and enforcement of such regulations.",
+     "role": "what the SFPC covers",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-97",
+     "url": "https://law.lis.virginia.gov/vacode/27-97/",
+     "quote": "Local governments are hereby empowered to adopt fire prevention regulations that are more restrictive or more extensive in scope than the Fire Prevention Code provided such regulations do not affect the manner of construction, or materials to be used in the erection, alteration, repair, or use of a building or structure",
+     "role": "localities may go further on operations, not construction",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-98",
+     "url": "https://law.lis.virginia.gov/vacode/27-98/",
+     "quote": "Any local government may enforce the Fire Prevention Code in its entirety or with respect only to those provisions of the Fire Prevention Code relating to open burning, fire lanes, fireworks, and hazardous materials.",
+     "role": "local enforcement is a choice",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-98",
+     "url": "https://law.lis.virginia.gov/vacode/27-98/",
+     "quote": "The State Fire Marshal shall also have authority to enforce the Code in those jurisdictions in which the local governments do not enforce the Code and may establish such procedures or requirements as may be necessary for the administration and enforcement of the Code in such jurisdictions.",
+     "role": "where there is no local fire marshal, the State Fire Marshal issues permits",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-98",
+     "url": "https://law.lis.virginia.gov/vacode/27-98/",
+     "quote": "the State Fire Marshal may charge a fee to recover the actual cost of administering and enforcing the Code in jurisdictions for which he serves as the enforcement authority.",
+     "role": "State Fire Marshal cost-recovery fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-98",
+     "url": "https://law.lis.virginia.gov/vacode/27-98/",
+     "quote": "Appeals concerning the application of the Code by the local enforcing agency shall first lie to a local board of appeals and then to the State Building Code Technical Review Board. Appeals from the application of the Code by the State Fire Marshal shall be made directly to the State Building Code Technical Review Board as provided in Article 2 (§ 36-108 et seq.) of Chapter 6 of Title 36.",
+     "role": "appeal routes",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-98",
+     "url": "https://law.lis.virginia.gov/vacode/27-98/",
+     "quote": "Fees may be levied by the local governing body in order to defray the cost of such enforcement and appeals",
+     "role": "local permit and inspection fees",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-95 (\"Enforcement agency\")",
+     "url": "https://law.lis.virginia.gov/vacode/27-95/",
+     "quote": "\"Enforcement agency\" means the agency or agencies of any local governing body or the State Fire Marshal charged with the administration or enforcement of the Fire Prevention Code.",
+     "role": "definition",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 27-30",
+     "url": "https://law.lis.virginia.gov/vacode/27-30/",
+     "quote": "An officer, who shall be called a \"fire marshal,\" may be appointed for each county, city or town, by the governing body thereof, whenever, in the opinion of such body, the appointment shall be deemed expedient.",
+     "role": "local fire marshal is optional",
+     "source": "official-page"
+    },
+    {
+     "citation": "13VAC5-52-30 (SFPC § 103.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section30/",
+     "quote": "The International Fire Code -- 2021 Edition, hereinafter referred to as \"IFC,\" published by the International Code Council, Inc., 500 New Jersey Avenue, NW, 6th Floor, Washington, DC 20001-2070, 1-888 422-7233.",
+     "role": "the 2021 IFC is the technical fire code (its Chapter 30 industrial ovens, Chapter 35 welding and hot work, Chapter 53 compressed gases, Chapter 57 flammable liquids and Chapter 61 LP-gas apply through this incorporation)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-20 (SFPC § 102.1.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section20/",
+     "quote": "No change of occupancy shall be made in any building or structure unless such building or structure is made to comply with the requirements of the USBC as determined by the building official.",
+     "role": "the fire code defers to the building official on change of occupancy",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-50 (SFPC § 105.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section50/",
+     "quote": "Each enforcing agency shall have an executive official in charge, hereinafter referred to as the \"fire official.\"",
+     "role": "who the applicant deals with",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "The fire official may require notification prior to (i) activities involving the handling, storage, or use of substances, materials, or devices regulated by the SFPC; (ii) conducting processes that produce conditions hazardous to life or property; or (iii) establishing a place of assembly.",
+     "role": "prior notification",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Operational permits may be required by the fire official as permitted under the SFPC in accordance with Table 107.2, except that the fire official shall require permits for the manufacturing, storage, handling, use, and sale of explosives.",
+     "role": "operational permits are discretionary with the fire official, except explosives",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Compressed gas)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Compressed gas. An operational permit is required for the storage, use, or handling at normal temperature and pressure (NTP) of compressed gases in excess of the amounts listed in this table.",
+     "role": "oxygen for torches: the table sets 504 cubic feet for oxidizing gases (including oxygen) and 200 cubic feet for flammable gases other than LP-gas",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Compressed gas amounts)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Oxidizing (including oxygen)",
+     "role": "the row reads 504 (cubic feet at NTP)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Cutting and welding)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Cutting and welding. An operational permit is required to conduct cutting or welding operations within the jurisdiction.",
+     "role": "torch work may be treated as cutting and welding",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Hot work operations)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Hot work operations. An operational permit is required for hot work, including:",
+     "role": "the list includes \"1. Public exhibitions and demonstrations where hot work is conducted.\" and \"3. Fixed-site hot work equipment such as welding booths.\"",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Hot work operations, item 1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "1. Public exhibitions and demonstrations where hot work is conducted.",
+     "role": "public glassblowing demonstrations and sip-and-blow events",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Hot work operations, item 6)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "6. When approved, the fire official shall issue a permit to carry out a Hot Work Program. This program allows approved personnel to regulate their facility's hot work operations.",
+     "role": "a studio can run its own hot-work program under one permit",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Industrial ovens)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Industrial ovens. An operational permit is required for operation of industrial ovens regulated by Chapter 30.",
+     "role": "glass furnaces, glory holes and kilns may be permitted as industrial ovens",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, LP-gas)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "1. Storage and use of LP-gas.",
+     "role": "propane-fired equipment or a propane tank needs a permit (the only exception is for containers of 500 gallons or less serving Group R-3 homes)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Flammable and combustible liquids, item 2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "2. To store, handle, or use Class I liquids in excess of 5 gallons (19 L) in a building or in excess of 10 gallons (37.9 L) outside of a building, except that a permit is not required for the following:",
+     "role": "solvents and fuels over 5 gallons indoors",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Open flames and candles)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Open flames and candles. An operational permit is required to use open flames or candles in connection with assembly areas or dining areas of restaurants or drinking establishments.",
+     "role": "open flame where guests eat or drink",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Places of assembly)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Places of assembly. An operational permit is required to operate a place of assembly.",
+     "role": "a class or event space classified as assembly",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC Table 107.2, Commercial cooking)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Commercial cooking. An operational permit is required for the operation of commercial cooking appliances in occupancies other than assembly occupancies or dwellings.",
+     "role": "a cafe kitchen",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.4)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Before a permit is issued, the fire official shall make such inspections or tests as are necessary to ensure that the use and activities for which application is made comply with the provisions of this code.",
+     "role": "inspection before issuance",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.5)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "Permits shall remain in effect until revoked or for such period as specified on the permit. Permits are not transferable.",
+     "role": "duration",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.9)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "A permit shall become invalid if the authorized activity is not commenced within six months after issuance of the permit or if the authorized activity is suspended or abandoned for a period of six months after the time of commencement.",
+     "role": "six-month lapse",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.13)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "The local governing body may establish a fee schedule. The schedule shall incorporate unit rates, which may be based on square footage, cubic footage, estimated cost of inspection, or other appropriate criteria.",
+     "role": "local fee schedule",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.14)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "A permit shall not be issued until the designated fees have been paid.",
+     "role": "fees first",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-70 (SFPC § 107.12, item 2.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+     "quote": "2.1. $150 for 3500 square feet or less.",
+     "role": "State Fire Marshal's Office annual compliance inspection fee tier (where the SFMO is the enforcing agency)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-80 (SFPC § 108.1.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section80/",
+     "quote": "Operational permits may be required by the fire official in accordance with Table 107.2. The fire official shall require operational permits for the manufacturing, storage, handling, use, and sale of explosives. Issued permits shall be kept on the premises designated therein at all times and shall be readily available for inspection by the fire official.",
+     "role": "keep permits on site",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-80 (SFPC § 108.1.3)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section80/",
+     "quote": "When more than one operational permit is required for the same location, the fire official is authorized to consolidate such permits into a single permit provided that each provision is listed in the permit.",
+     "role": "one consolidated permit for the hot shop",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-80 (SFPC § 108.2.3)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section80/",
+     "quote": "An application for an operational permit for any proposed work or operation shall be deemed to have been abandoned six months after the date of filing, unless such application has been diligently prosecuted or a permit shall have been issued",
+     "role": "application lapse",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-80 (SFPC § 108.3.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section80/",
+     "quote": "Permits are not transferable, and any change in occupancy, operation, tenancy, or ownership shall require that a new permit be issued.",
+     "role": "new owner, new permit",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-150 (SFPC § 308.2)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section150/",
+     "quote": "Permits shall be obtained from the fire code official in accordance with Section 107.2 prior to engaging in the following activities involving open flame, fire, and burning:",
+     "role": "open-flame permits route through Section 107.2",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-90 (SFPC § 109.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section90/",
+     "quote": "The fire official may inspect all structures and premises for the purposes of ascertaining and causing to be corrected any conditions liable to cause fire, contribute to the spread of fire, interfere with firefighting operations, or endanger life or for any violations of the provisions or intent of the SFPC.",
+     "role": "inspections",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-120 (SFPC § 112.5)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section120/",
+     "quote": "The owner of a structure, the owner's agent, or any other person involved in the maintenance of the structure or activity may appeal a decision of the fire official concerning the application of the SFPC or the fire official's refusal to grant modification under Section 106.5 to the provisions of the SFPC. The appeal shall first lie to the LBFPCA and then to the State Review Board",
+     "role": "who may appeal and where",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-120 (SFPC § 112.6)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section120/",
+     "quote": "The LBFPCA shall meet within 30 calendar days after the date of receipt of the application for appeal.",
+     "role": "local board timing",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "13VAC5-52-120 (SFPC § 112.8.1)",
+     "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section120/",
+     "quote": "Any person who was a party to the appeal may appeal to the State Building Code Technical Review Board (State Review Board) by submitting an application to the State Review Board within 21 calendar days upon receipt by c",
+     "role": "21-day state appeal (the quoted wording is truncated at the end of the page line read; the full sentence continues \"certified mail of this decision\")",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Whether to enforce the SFPC at all, and whether to appoint a fire marshal (Va. Code §§ 27-30, 27-98). Where it does not, the State Fire Marshal enforces and charges cost-recovery fees (Va. Code § 27-98; 13VAC5-52-70 § 107.12).",
+     "Which of the Table 107.2 operational permits it actually requires (they are \"may be required\", except explosives) and whether to consolidate them (13VAC5-52-70 § 107.2; 13VAC5-52-80 § 108.1.3).",
+     "The permit and inspection fee schedule (Va. Code § 27-98; 13VAC5-52-70 §§ 107.10, 107.13).",
+     "More restrictive or extensive operational fire regulations, as long as they do not touch construction (Va. Code § 27-97)."
+    ],
+    "state_fixes": [
+     "The code itself (2021 IFC with Virginia amendments), the permit table and its quantity thresholds (oxygen 504 cubic feet, flammable gas 200 cubic feet, Class I liquids 5 gallons indoors, any LP-gas storage outside a home), the inspection-before-issuance rule, the six-month lapse, non-transferability, posting and the appeal ladder with its 30-day and 21-day clocks (13VAC5-52-70, -80, -120).",
+     "The State Fire Marshal's own fee schedule where it is the enforcing agency (13VAC5-52-70 §§ 107.11, 107.12)."
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "Operational permit application",
+     "rule": "before the activity; abandoned if not pursued within six months",
+     "citation": "13VAC5-52-80 (SFPC §§ 108.1, 108.2.3)"
+    },
+    {
+     "item": "Permit lapse",
+     "rule": "invalid if the activity does not start within six months or stops for six months",
+     "citation": "13VAC5-52-70 (SFPC § 107.9); 13VAC5-52-80 (SFPC § 108.3.4)"
+    },
+    {
+     "item": "Appeal to the local board of fire prevention code appeals",
+     "rule": "application to the board (no fixed filing deadline quoted in § 112.5); board meets within 30 calendar days",
+     "citation": "13VAC5-52-120 (SFPC §§ 112.5, 112.6)"
+    },
+    {
+     "item": "Appeal to the State Building Code Technical Review Board",
+     "rule": "21 calendar days from receipt of the local board's decision; direct where the State Fire Marshal is the enforcing agency",
+     "citation": "13VAC5-52-120 (SFPC §§ 112.8.1, 112.9); Va. Code § 27-98"
+    }
+   ],
+   "fees": [
+    {
+     "item": "Local operational permit and inspection fees",
+     "rule": "local schedule, to defray enforcement cost; no overtime rate during normal business hours",
+     "citation": "Va. Code § 27-98; 13VAC5-52-70 (SFPC §§ 107.10, 107.13)"
+    },
+    {
+     "item": "State Fire Marshal's Office annual compliance inspection (where it enforces)",
+     "rule": "tiered by floor area, for example $150 for 3,500 square feet or less; capped at $2,500 per site",
+     "citation": "13VAC5-52-70 (SFPC § 107.12)"
+    },
+    {
+     "item": "State Fire Marshal's Office inspection labour",
+     "rule": "$60 per staff member per hour in business hours, $90 otherwise (stated for explosives, flame-effects and fireworks permits)",
+     "citation": "13VAC5-52-70 (SFPC § 107.11)"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_fire_permit",
+     "title": "Operational permit application on the form prescribed by the local fire official (or the State Fire Marshal's Office)",
+     "url": null,
+     "official": true,
+     "note": "see the place file"
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "operational permit refused, conditions disputed, or a modification refused",
+     "to": "local board of fire prevention code appeals (LBFPCA)",
+     "deadline": "board meets within 30 days of the application",
+     "citation": "13VAC5-52-120 (SFPC §§ 112.5, 112.6); Va. Code § 27-98"
+    },
+    {
+     "step": 2,
+     "trigger": "local board decision, or any State Fire Marshal decision",
+     "to": "State Building Code Technical Review Board",
+     "deadline": "21 calendar days",
+     "citation": "13VAC5-52-120 (SFPC §§ 112.8.1, 112.9); Va. Code §§ 27-98, 36-114"
+    },
+    {
+     "step": 3,
+     "trigger": "Review Board decision",
+     "to": "circuit court under the Administrative Process Act",
+     "deadline": "30 days from service",
+     "citation": "Va. Code § 2.2-4026"
+    }
+   ],
+   "caveats": [
+    "Whether a glass furnace, glory hole or annealing kiln is an \"industrial oven\" under IFC Chapter 30, and whether torch work is \"hot work\" or \"cutting and welding\", is a fire-official call; the IFC text is incorporated by reference and not reproduced on law.lis.virginia.gov, so only the Virginia permit table is quoted. Not grounded in Virginia text: the IFC Chapter 30 definition of industrial oven.",
+    "The compressed-gas thresholds are per the table at NTP; a typical oxygen cylinder bank for lampworking torches can exceed 504 cubic feet, so count cylinders before assuming no permit.",
+    "Which localities enforce the SFPC and which fall to the State Fire Marshal was not read (the DHCD list page was not found); check the place file.",
+    "Public demonstrations and sip-and-blow events are hot work in front of an audience: expect both a hot-work permit and, if the room is assembly, a place-of-assembly permit, plus the open-flame permit if drinks are served in the same area."
+   ]
+  },
+  {
+   "id": "air",
+   "topic": "Air: DEQ minor new source review permitting (9VAC5-80), the fuel-burning-equipment exemption that covers small natural-gas and propane furnaces and kilns, when a permit is needed, and where to ask",
+   "offices": [
+    {
+     "locality": "va",
+     "office": "Department of Environmental Quality, Air Division (regional office air permit staff)",
+     "url": "https://www.deq.virginia.gov/",
+     "status": "not read: www.deq.virginia.gov answered HTTP 403 to the research client (robots.txt included) on 2026-10-19; office named by its role in Va. Code § 10.1-1322"
+    },
+    {
+     "locality": "va",
+     "office": "DEQ Small Business Environmental Assistance Program",
+     "url": "https://www.deq.virginia.gov/",
+     "status": "not read (HTTP 403); named from general knowledge of the DEQ programme, not grounded this run"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 10.1-1308(A)",
+     "url": "https://law.lis.virginia.gov/vacode/10.1-1308/",
+     "quote": "The Board, after having studied air pollution in the various areas of the Commonwealth, its causes, prevention, control and abatement, shall have the power to promulgate regulations, including emergency regulations, abating, controlling and prohibiting air pollution throughout or in any part of the Commonwealth",
+     "role": "regulatory authority",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 10.1-1322(A)",
+     "url": "https://law.lis.virginia.gov/vacode/10.1-1322/",
+     "quote": "Pursuant to regulations adopted by the Board, permits may be issued, amended, revoked or terminated and reissued by the Department and may be enforced under the provisions of this chapter in the same manner as regulations and orders. Failure to comply with any condition of a permit shall be considered a violation of this chapter",
+     "role": "air permits are issued by DEQ",
+     "source": "official-page"
+    },
+    {
+     "citation": "9VAC5-80-1100(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1100/",
+     "quote": "Except as provided in subsection C of this section, the provisions of this article apply to (i) the construction of any new stationary source or any project (which includes any addition or replacement of an emissions unit, any modification to an emissions unit or any combination of these changes), and (ii) the reduction of any stack outlet elevation at any stationary source.",
+     "role": "minor NSR applies to building a new source unless exempt",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1100(C)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1100/",
+     "quote": "Except as provided in subdivision 3 of this subsection, the provisions of this article do not apply to any stationary source, emissions unit or facility that is exempt under the provisions of 9VAC5-80-1105.",
+     "role": "the exemptions govern",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1100(C)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1100/",
+     "quote": "Exemption from the requirement to obtain a minor NSR permit shall not relieve any owner of the responsibility to comply with any other applicable provisions of regulations of the board or any other applicable regulations, laws, ordinances and orders of the governmental entities having jurisdiction.",
+     "role": "exempt from the permit is not exempt from emission standards",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(A)(1)(a)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "A source must be determined to be exempt both under the provisions of subsections B, C, and D of this section taken as a group and under the provisions of subsections E and F of this section to be exempt from this article.",
+     "role": "two independent tests must both pass",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(B)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "Fuel burning equipment units (external combustion units, not engines and turbines) and space heaters in a single application as follows:",
+     "role": "the fuel-burning-equipment exemption that fits furnaces, glory holes and kilns",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(B)(1)(a)(4)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "(4) Using gaseous fuel with a maximum heat input of less than 50,000,000 Btu per hour.",
+     "role": "natural gas or propane units under 50 million Btu/hr each are exempt (studio furnaces are typically well under 1 million Btu/hr)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(B)(1)(a)(2)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "(2) Using liquid fuel with a maximum heat input of less than 10,000,000 Btu per hour.",
+     "role": "oil-fired units",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(B)(1)(a)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "the exemption thresholds in subdivisions (1) through (4) of this subdivision shall be applied on an individual unit basis for each fuel type.",
+     "role": "per unit, not aggregate",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(B)(1)(b)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "In ozone nonattainment areas designated in 9VAC5-20-204 or ozone maintenance areas designated in 9VAC5-20-203, the exemption thresholds in subdivision 1 a of this subsection shall be applied in the aggregate for each fuel type.",
+     "role": "aggregate in Northern Virginia and other ozone areas",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(C)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "New stationary sources with uncontrolled emission rates less than all of the emission rates specified in the table in this subdivision shall be exempt from the provisions of this article.",
+     "role": "the second test: facility-wide uncontrolled emissions below the table (for example 100 tons per year of carbon monoxide)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(C)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "Facilities exempted by subsection B of this section shall not be included in the summation of uncontrolled emissions for purposes of exempting new stationary sources under this subsection.",
+     "role": "exempt burners do not count toward the facility total",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1105(A)(4)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1105/",
+     "quote": "Any owner claiming that a facility is exempt from this article under the provisions of this section shall keep records as may be necessary to demonstrate to the satisfaction of the department that the facility was exempt at the time a minor NSR permit would have otherwise been required under this article.",
+     "role": "keep burner ratings and fuel records",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC5-80-1100(C)(3)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency5/chapter80/section1100/",
+     "quote": "Any new stationary source or project that would be subject to the provisions of this article except for being exempt based on one or more of the criteria in 9VAC5-80-1105 may opt to be subject to this article notwithstanding the exemptions in 9VAC5-80-1105.",
+     "role": "voluntary permit",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Nothing on air permitting; it is a state (DEQ) programme. Localities act only through zoning and nuisance ordinances (see signs_hours_noise)."
+    ],
+    "state_fixes": [
+     "Whether a permit is needed, the exemption thresholds (gas-fired units under 50 million Btu/hr each; facility emissions below the subsection C table), record-keeping and the opt-in (9VAC5-80-1100, -1105).",
+     "Permit issuance and enforcement by DEQ (Va. Code § 10.1-1322)."
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "Minor NSR permit",
+     "rule": "before construction of a non-exempt source; no deadline applies to an exempt studio beyond keeping records",
+     "citation": "9VAC5-80-1100(A); 9VAC5-80-1105(A)(4)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "Air permit fees",
+     "rule": "set by Board regulation under Va. Code § 10.1-1322(B); the fee schedule (9VAC5-80 Part II fees) was not read this run",
+     "citation": "Va. Code § 10.1-1322(B)"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_deq_air",
+     "title": "DEQ minor NSR permit application (Form 7 and related forms)",
+     "url": "https://www.deq.virginia.gov/",
+     "official": true,
+     "note": "not read: DEQ site returned HTTP 403; form name from general knowledge, not grounded this run"
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "DEQ decides a permit is needed, or denies or conditions one",
+     "to": "DEQ (written statement of basis under Va. Code § 10.1-1307(I)); then the Administrative Process Act",
+     "deadline": "per the APA and 9VAC5-170 (not read)",
+     "citation": "Va. Code §§ 10.1-1307(I), 2.2-4026",
+     "inferred": true
+    }
+   ],
+   "caveats": [
+    "A studio with one or several natural-gas or propane furnaces, glory holes and kilns, each far below 50 million Btu/hr, passes the subsection B exemption on its face, and such units are left out of the subsection C sum. The remaining question is whether anything else at the studio (solvent use, cold-shop dust, a backup generator) pushes facility emissions over the subsection C table; for a studio that is very unlikely. This conclusion is an application of the text, not a DEQ determination.",
+    "Electric kilns and electric furnaces are not fuel-burning equipment and emit nothing on site; they need no air permit (inference from the definitions, not an express exemption).",
+    "Northern Virginia and other ozone maintenance or nonattainment areas aggregate the burners by fuel type; still far below 50 million Btu/hr for any studio.",
+    "DEQ pages were not read (HTTP 403 to the research client). Confirm the regional office contact and the current fee schedule on www.deq.virginia.gov by hand.",
+    "A glass furnace that melts batch from raw materials (soda ash, lime, cullet, colourants including metal oxides) may raise questions about particulate and metals under 9VAC5-40/9VAC5-50 standards even where no permit is needed (9VAC5-80-1100(C)(2)); not grounded in any section read here beyond that cross-reference."
+   ]
+  },
+  {
+   "id": "environmental_wastewater",
+   "topic": "Environmental and wastewater: cold-working slurry and glass dust, Virginia hazardous waste rules (9VAC20-60, 40 CFR 261 by reference), discharge prohibitions and the pretreatment rules for anything sent to the sewer",
+   "offices": [
+    {
+     "locality": "va",
+     "office": "Department of Environmental Quality, Land Protection (hazardous waste) and Water Permitting (VPDES, pretreatment) divisions, regional office",
+     "url": "https://www.deq.virginia.gov/",
+     "status": "not read: www.deq.virginia.gov answered HTTP 403 to the research client (robots.txt included) on 2026-10-19"
+    },
+    {
+     "locality": "local",
+     "office": "The publicly owned treatment works (local sewer utility or service authority): sewer-use ordinance, pretreatment and discharge permission",
+     "url": null,
+     "status": "local office; see the place file"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 10.1-1402(7)",
+     "url": "https://law.lis.virginia.gov/vacode/10.1-1402/",
+     "quote": "Require any person who generates, collects, transports, stores or provides treatment or disposal of a hazardous waste to maintain records, manifests and reporting systems required pursuant to federal statute or regulation.",
+     "role": "hazardous waste generator duties",
+     "source": "official-page"
+    },
+    {
+     "citation": "9VAC20-60-261(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency20/chapter60/section261/",
+     "quote": "Except as otherwise provided, the regulations of the United States Environmental Protection Agency set forth in 40 CFR Part 261 are hereby incorporated as part of the Virginia Hazardous Waste Management Regulations.",
+     "role": "whether a waste is hazardous is decided by 40 CFR Part 261 (the toxicity characteristic for lead and other metals, and listed wastes)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC20-60-260(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency20/chapter60/section260/",
+     "quote": "40 CFR Part 260",
+     "role": "definitions and generator categories by reference (the page's operative text repeats the Part 261 formula for Part 260; quoted as the cross-reference only)",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "Va. Code § 62.1-44.15(5)",
+     "url": "https://law.lis.virginia.gov/vacode/62.1-44.15/",
+     "quote": "To issue, revoke, or amend certificates and land-disturbance approvals under prescribed conditions for (a) the discharge of sewage, stormwater, industrial wastes, and other wastes into or adjacent to state waters",
+     "role": "State Water Control Board permits discharges",
+     "source": "official-page"
+    },
+    {
+     "citation": "9VAC25-31-50(A)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency25/chapter31/section50/",
+     "quote": "Discharge into state waters sewage, industrial wastes, other wastes, or any noxious or deleterious substances;",
+     "role": "no direct discharge of slurry or rinse water to a stream or storm drain without a VPDES permit (the lead-in reads \"Except in compliance with a VPDES permit, or another permit, issued by the department ... it shall be unlawful for any person to:\")",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC25-31-730(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency25/chapter31/section730/",
+     "quote": "This part establishes the responsibilities of state and local government, industry and the public to implement the national pretreatment standards and requirements to control pollutants which pass through or interfere with treatment processes in Publicly Owned Treatment Works (POTWs) or which may contaminate sewage sludge.",
+     "role": "pretreatment applies to industrial users of the sewer",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "9VAC25-31-730(B)(1)",
+     "url": "https://law.lis.virginia.gov/admincode/title9/agency25/chapter31/section730/",
+     "quote": "To pollutants from nondomestic sources covered by pretreatment standards which are indirectly discharged into or transported by truck or rail or otherwise introduced into POTWs;",
+     "role": "cold-shop water to the sewer is a nondomestic (indirect) discharge",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "The sewer-use ordinance and any local limits, grease or solids interceptor requirements and discharge permission for a cold shop, through the publicly owned treatment works (9VAC25-31 Part VII implements the national pretreatment programme through the POTW).",
+     "Solid waste collection rules for ordinary (non-hazardous) glass cullet and dried slurry."
+    ],
+    "state_fixes": [
+     "Whether a waste is hazardous (40 CFR Part 261 by reference), generator duties and manifests (9VAC20-60; Va. Code § 10.1-1402).",
+     "No direct discharge to state waters without a VPDES permit (9VAC25-31-50)."
+    ]
+   },
+   "deadlines": [],
+   "fees": [
+    {
+     "item": "Hazardous waste",
+     "rule": "state fees apply to large quantity generators and to treatment, storage and disposal facilities, not to a small studio (Va. Code § 10.1-1402(15a), (15b))",
+     "citation": "Va. Code § 10.1-1402"
+    }
+   ],
+   "forms": [],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "DEQ or the POTW asserts a discharge or waste violation",
+     "to": "DEQ enforcement and the Administrative Process Act; the POTW's own ordinance appeal for sewer matters",
+     "deadline": "per the APA and the local ordinance",
+     "citation": "Va. Code § 62.1-44.15(8a); Va. Code § 2.2-4026",
+     "inferred": true
+    }
+   ],
+   "caveats": [
+    "Honest limits: no Virginia section read here names glass dust, cold-working slurry or cullet. Ordinary soda-lime glass fines are not a listed hazardous waste; whether a particular slurry is hazardous turns on the toxicity characteristic in 40 CFR 261.24 (lead crystal, coloured glass with cadmium or other metals, and some polishing compounds can fail it). That is a federal-rule application, not grounded in Virginia text beyond the incorporation by reference.",
+    "Sending slurry to the sanitary sewer is an indirect discharge governed by the POTW's sewer-use ordinance; most POTWs forbid settleable solids and require settling tanks. The local rule was not read; ask the sewer utility in writing before connecting a cold shop drain.",
+    "Rinsing into a storm drain or onto the ground is a discharge to state waters and is unlawful without a permit (9VAC25-31-50).",
+    "Very small quantity generator thresholds (100 kg per month) and the Virginia-specific generator rules in 9VAC20-60-262 were not read this run; cited by structure only."
+   ]
+  },
+  {
+   "id": "food_drink",
+   "topic": "Food and drink: when a studio with a cafe, snacks or event refreshments becomes a VDH food establishment, the restaurant licence and food permit, temporary event permits, ABC licences for wine and beer at events or a cafe (banquet, marketplace, arts venue, on-and-off-premises wine and beer, mixed beverage), the local meals tax, and how a mixed glass-studio-with-cafe is classified",
+   "offices": [
+    {
+     "locality": "va",
+     "office": "Virginia Department of Health, Office of Environmental Health Services (food safety) acting through the local health district",
+     "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+     "status": "page read 2026-10-19"
+    },
+    {
+     "locality": "local",
+     "office": "Local health district (environmental health): food establishment permit applications, plan review, inspections",
+     "url": "https://www.vdh.virginia.gov/local-health-districts/",
+     "status": "district list page read 2026-10-19; the district for a place is in the place file"
+    },
+    {
+     "locality": "va",
+     "office": "Virginia Alcoholic Beverage Control Authority (Virginia ABC), licensing",
+     "url": "https://www.abc.virginia.gov/licenses",
+     "status": "page read 2026-10-19"
+    },
+    {
+     "locality": "local",
+     "office": "Commissioner of the revenue (meals tax registration and returns) where the locality levies a meals tax",
+     "url": null,
+     "status": "local office; see the place file"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 35.1-18",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+     "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter. The license shall be in the name of the owner or lessee. No license issued hereunder shall be assignable or transferable.",
+     "role": "a restaurant licence is required",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-1 (\"Restaurant\", item 1)",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+     "quote": "Any place where food is prepared for service to the public on or off the premises, or any place where food is served, including lunchrooms, short order places, cafeterias, coffee shops, cafes, taverns, delicatessens, dining accommodations of public or private clubs, kitchen facilities of hospitals and nursing homes, dining accommodations of public and private schools and institutions of higher education, and kitchen areas of local correctional facilities subject to standards adopted under § 53.1-68.",
+     "role": "a studio cafe, or any place where food is served to the public, is a restaurant",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-1 (\"Restaurant\", item 2)",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+     "quote": "Any place or operation that prepares or stores food for distribution to persons of the same business operation or of a related business operation for service to the public, including operations preparing or storing food for catering services, push cart operations, hotdog stands, and other mobile points of service.",
+     "role": "event catering prepared on site",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-14(C)",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-14/",
+     "quote": "The Board may adopt any edition of the Food and Drug Administration's Food Code, or supplement thereto, or any portion thereof, as regulations, with any amendments as it deems appropriate.",
+     "role": "the Food Regulations (12VAC5-421) are the FDA Food Code with Virginia amendments",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-22",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-22/",
+     "quote": "The Commissioner shall cause each restaurant, summer camp, and campground in the Commonwealth to be inspected at least annually, with no more than 12 months elapsing between each such inspection",
+     "role": "annual inspection",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-25(A)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-25/",
+     "quote": "Grocery stores, including the delicatessen portion that is a part of a grocery store selling exclusively for off-premises consumption, and places manufacturing or selling packaged or canned goods;",
+     "role": "selling only sealed packaged snacks and bottled drinks is not a restaurant",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 35.1-9",
+     "url": "https://law.lis.virginia.gov/vacode/35.1-9/",
+     "quote": "This title and the regulations of the Board shall supersede all local ordinances regulating hotels, restaurants, summer camps, and campgrounds other than those adopted pursuant to the provisions of § 35.1-26, except that any locality may adopt ordinances regarding (i) the sale, preparation, and handling of food",
+     "role": "state rules govern, with a narrow local option",
+     "source": "official-page"
+    },
+    {
+     "citation": "12VAC5-421-10 (\"Food establishment\")",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section10/",
+     "quote": "\"Food establishment\" means an operation that (i) stores, prepares, packages, serves, vends food directly to the consumer, or otherwise provides food to the public for human consumption, such as a restaurant, satellite or catered feeding location, catering operation if the operation provides food directly to a consumer or to a conveyance used to transport people, market, vending location, conveyance used to transport people, institution, or food bank, and (ii) relinquishes possession of food to a consumer directly or indirectly through a delivery service, such as home delivery of grocery orders or restaurant takeout orders, or delivery service that is provided by common carriers.",
+     "role": "definition",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-10 (\"Food establishment\" includes)",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section10/",
+     "quote": "(ii) an operation that is conducted in a mobile, stationary, temporary, or permanent facility or location where consumption is on or off the premises and regardless of whether there is a charge for the food.",
+     "role": "free refreshments at an event still count",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-10 (\"Food\")",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section10/",
+     "quote": "\"Food\" means (i) a raw, cooked, or processed edible substance, ice, beverage, or ingredient used or intended for use or for sale in whole or in part for human consumption or (ii) chewing gum.",
+     "role": "beverages, including wine poured at an event, are food",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-10 (\"Temporary food establishment\")",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section10/",
+     "quote": "\"Temporary food establishment\" means a food establishment that operates for a period of no more than 14 consecutive days in conjunction with a single event or celebration.",
+     "role": "one-off events",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-3660(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3660/",
+     "quote": "No person shall own, establish, conduct, maintain, manage, or operate any food establishment in this Commonwealth unless the food establishment is permitted as provided in this section. All permits shall be in the name of the owner . Permits shall not be issued to newly constructed or extensively remodeled food establishments until a certificate of occupancy has been issued by the Building Official.",
+     "role": "the VDH permit, after the certificate of occupancy",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-3660(E)",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3660/",
+     "quote": "Permits shall expire annually otherwise not to exceed 12 months from the date of issuance.",
+     "role": "annual renewal",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-3670(A)",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3670/",
+     "quote": "An applicant seeking to operate a nontemporary food establishment shall submit an application for a permit at least 30 calendar days before the date planned for opening a food establishment or at least 30 calendar days before the expiration date of the current permit for an existing facility.",
+     "role": "30 days before opening",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-3670(B)",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3670/",
+     "quote": "An applicant seeking to operate a temporary food establishment shall submit an application for a permit at least 10 calendar days before the date planned for opening the temporary food establishment.",
+     "role": "10 days before a temporary event",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "12VAC5-421-3650",
+     "url": "https://law.lis.virginia.gov/admincode/title12/agency5/chapter421/section3650/",
+     "quote": "The department shall conduct one or more preoperational inspections to verify that the food establishment is constructed and equipped in accordance with the approved plans and approved modifications of those plans",
+     "role": "pre-opening inspection",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "Va. Code § 4.1-203(A)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-203/",
+     "quote": "Each license granted by the Board shall designate the place where the business of the licensee will be carried on. Except as otherwise provided in §§ 4.1-206.1, 4.1-206.2, and 4.1-206.3, a separate license shall be required for each separate place of business.",
+     "role": "ABC licence is per premises",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(B)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Hotels, restaurants, and clubs, which shall authorize the licensee to sell wine and beer (i) in closed containers for off-premises consumption or (ii) for on-premises consumption, either with or without meals, in dining areas and other designated areas of such restaurants",
+     "role": "on-and-off-premises wine and beer licence for a studio cafe that is a restaurant",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-100 (\"Restaurant\", wine and beer licence)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-100/",
+     "quote": "\"Restaurant\" means, for a wine and beer license or a limited mixed beverage restaurant license, any establishment provided with special space and accommodation, where, in consideration of payment, meals or other foods prepared on the premises are regularly sold.",
+     "role": "a cafe that regularly sells food prepared on site qualifies",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(A)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Mixed beverage restaurant licenses, which shall authorize the licensee to sell and serve mixed beverages for on-premises consumption in dining areas and other designated areas of such restaurant or off-premises consumption. Such license may be granted only to persons who operate a restaurant that complies with the food-to-beverage ratio provisions set by Board regulation",
+     "role": "spirits need a mixed beverage licence and a food ratio",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(D)(1)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Banquet licenses to persons in charge of private banquets, and to duly organized nonprofit corporations or associations in charge of special events, which shall authorize the licensee to sell or give wine and beer in rooms or areas approved by the Board for the occasion for on-premises consumption in such rooms or areas.",
+     "role": "a one-day banquet licence for an event",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(D)(1)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Except as provided in § 4.1-215, a separate license shall be required for each day of each banquet or special event.",
+     "role": "one licence per day",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(D)(2)(f)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Annual arts venue event licenses, to persons operating an arts venue, which shall authorize the licensee participating in a community art walk that is open to the public to serve lawfully acquired wine or beer on the premises of the licensee to adult patrons thereof during such events. However, alcoholic beverages shall not be sold or charged for in any way, directly or indirectly, by the licensee, and the licensee shall not give more than two five-ounce glasses of wine or two 12-ounce glasses of beer to any one adult patron. The privileges of this license shall be (i) limited to the premises of the arts venue regularly occupied and used as such and (ii) exercised on no more than 12 calendar days per year.",
+     "role": "free wine or beer on art-walk nights, up to 12 days a year",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-100 (\"Arts venue\")",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-100/",
+     "quote": "\"Arts venue\" means a commercial or nonprofit establishment that is open to the public and in which works of art are sold or displayed.",
+     "role": "a glass studio with a gallery is an arts venue",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(E)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "The Board may grant a marketplace license to persons operating a business enterprise of which the primary function is not the sale of alcoholic beverages, which shall authorize the licensee to serve complimentary wine or beer to bona fide customers on the licensed premises subject to any limitations imposed by the Board; however, the licensee shall not give more than two five-ounce glasses of wine or two 12-ounce glasses of beer to any customer per day, nor shall it sell or otherwise charge a fee to such customer for the wine or beer served or consumed.",
+     "role": "year-round complimentary wine or beer for customers (the sip in sip-and-blow, if not charged for)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(E)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "(i) provide a single category of goods or services in a manner intended to create a personalized experience for the customer; (ii) employ staff with expertise in such goods or services; (iii) be ineligible for any other license granted by the Board; (iv) have an alcoholic beverage control manager on the licensed premises at all times alcohol is served; (v) ensure that all employees satisfy any training requirements imposed by the Board; and (vi) purchase all wine and beer to be served from a licensed wholesaler or the Authority",
+     "role": "marketplace licence conditions",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-206.3(D)(1)(d)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+     "quote": "Tasting licenses, which shall authorize the licensee to sell or give samples of alcoholic beverages of the type specified in the license in designated areas at events held by the licensee.",
+     "role": "tasting events",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-231.1(A)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+     "quote": "For each on-and-off premises wine and beer license, $450.",
+     "role": "annual state fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-231.1(A)(6)(a)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+     "quote": "Banquet license, $40 per license granted by the Board, except for banquet licenses granted by the Board pursuant to subsection A of § 4.1-215, which shall be $100 per license;",
+     "role": "per-day banquet fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-231.1(A)(6)(b)(6)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+     "quote": "Annual arts venue event license, $300.",
+     "role": "annual fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-231.1(A)(7)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+     "quote": "For each marketplace license, $1,000. However, if the license privileges are exercised during a period of six or less consecutive months and such period is specified prior to the beginning of the license year, the annual fee shall be $500.",
+     "role": "marketplace fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-231.1(A)(6)(a)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-231.1/",
+     "quote": "Tasting license, $40.",
+     "role": "per-day tasting fee",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 4.1-222(A)(2)(a)",
+     "url": "https://law.lis.virginia.gov/vacode/4.1-222/",
+     "quote": "Does not conform to the requirements of the governing body of the county, city or town in which such place is located with respect to sanitation, health, construction or equipment, or to any similar requirements established by the laws of the Commonwealth or by Board regulation;",
+     "role": "ABC may refuse where the premises fail local health, building or zoning rules",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3840(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+     "quote": "any city or town having general taxing powers established by charter pursuant to or consistent with the provisions of § 15.2-1104 and, to the extent authorized in this chapter, any county may impose excise taxes on cigarettes, admissions, transient room rentals, meals, and travel campgrounds.",
+     "role": "city and town meals tax enabling law",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3840(B)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+     "quote": "no city or town shall levy any tax under this section upon alcoholic beverages sold in factory sealed containers and purchased for off-premises consumption or food purchased for human consumption as \"food\" is defined in the Food Stamp Act of 1977, 7 U.S.C. § 2012, as amended, and federal regulations adopted pursuant to that act, except for the following items: sandwiches, salad bar items sold from a salad bar, prepackaged single-serving salads consisting primarily of an assortment of vegetables, and nonfactory sealed beverages.",
+     "role": "sealed packaged snacks and drinks are outside the meals tax; poured drinks and sandwiches are inside",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3833(A)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+     "quote": "Any county is hereby authorized to levy a tax on food and beverages sold, for human consumption, by a restaurant, as such term is defined in § 35.1-1, not to exceed six percent of the amount charged for such food and beverages.",
+     "role": "county meals tax, capped at 6 percent, keyed to the Title 35.1 restaurant definition",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3833(A)(2)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3833/",
+     "quote": "The term \"beverage\" as set forth herein means alcoholic beverages as defined in § 4.1-100 and nonalcoholic beverages served as part of a meal.",
+     "role": "wine served with food is taxed",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 58.1-3841(A)",
+     "url": "https://law.lis.virginia.gov/vacode/58.1-3841/",
+     "quote": "The situs for taxation for any tax levied on the sale of food and beverages or meals shall be the county, city, or town in which the sales are made, namely the locality in which each place of business is located without regard to the locality of delivery or possible use by the purchaser.",
+     "role": "meals tax goes to the studio's locality",
+     "source": "official-page"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Whether to levy a meals tax, the rate (counties capped at 6 percent; cities and towns by charter), registration and return schedule (Va. Code §§ 58.1-3833, 58.1-3840).",
+     "Health-department plan review timing and fees within the district (state law sets no VDH permit fee in the sections read).",
+     "Zoning approval for a cafe or events, which ABC checks before licensing (Va. Code § 4.1-222)."
+    ],
+    "state_fixes": [
+     "Who is a restaurant and a food establishment, the 30-day and 10-day application windows, the certificate-of-occupancy prerequisite, the annual permit and annual inspection (Va. Code §§ 35.1-1, 35.1-18, 35.1-22; 12VAC5-421-3660, -3670).",
+     "Every ABC licence type, its privileges, limits and state fee (Va. Code §§ 4.1-206.3, 4.1-231.1); one licence per premises (§ 4.1-203).",
+     "What the meals tax may and may not reach (Va. Code § 58.1-3840(B)) and its situs (§ 58.1-3841)."
+    ],
+    "observed": [
+     {
+      "locality": "va",
+      "fact": "VDH says anyone serving food to the public needs a food establishment permit unless exempt or under VDACS.",
+      "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+      "quote": "Any individual or entity that serves food to the public (if not exempt or under the jurisdiction of the Virginia Department of Agriculture and Consumer Services) is required to obtain a Food Establish",
+      "read": "2026-10-19",
+      "note": "the page line was cut by the text extractor at this point; the sentence continues with the permit requirement"
+     },
+     {
+      "locality": "va",
+      "fact": "VDH lists the statutory exemptions on a separate page.",
+      "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-exemptions/",
+      "quote": "The following individuals or organizations are exempt from the requirement to obtain a VDH Food Permit before serving food to the public.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "Virginia ABC says retail licence applications take up to 60 days on average.",
+      "url": "https://www.abc.virginia.gov/licenses/retail-licenses",
+      "quote": "On average, application processing takes up to 60 days.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "Virginia ABC describes banquet licences as covering events in unlicensed locations.",
+      "url": "https://www.abc.virginia.gov/licenses",
+      "quote": "Banquet licenses allow persons or groups to host events such as wedding receptions, tastings or fundraisers, where alcohol is served in an unlicensed location or club premise.",
+      "read": "2026-10-19"
+     }
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "VDH food establishment permit application",
+     "rule": "at least 30 calendar days before opening; renewals 30 days before expiry; the application lapses after 12 months",
+     "citation": "12VAC5-421-3670(A), (C)"
+    },
+    {
+     "item": "Temporary food establishment permit",
+     "rule": "at least 10 calendar days before the event; an event of no more than 14 consecutive days",
+     "citation": "12VAC5-421-3670(B); 12VAC5-421-10"
+    },
+    {
+     "item": "VDH permit term",
+     "rule": "annual, not more than 12 months",
+     "citation": "12VAC5-421-3660(E)"
+    },
+    {
+     "item": "ABC retail licence",
+     "rule": "application before opening; the licence runs to the last day of the twelfth month; ABC quotes up to 60 days' processing",
+     "citation": "Va. Code § 4.1-203(D); https://www.abc.virginia.gov/licenses/retail-licenses"
+    },
+    {
+     "item": "Banquet or tasting licence",
+     "rule": "one licence per day of each event",
+     "citation": "Va. Code § 4.1-206.3(D)(1)(a), (d)"
+    },
+    {
+     "item": "Annual arts venue event licence",
+     "rule": "no more than 12 calendar days a year",
+     "citation": "Va. Code § 4.1-206.3(D)(2)(f)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "VDH food establishment permit",
+     "rule": "no fee found in the sections read; Title 35.1 and 12VAC5-421-3660 set none, and the VDH fee page was not read",
+     "citation": null
+    },
+    {
+     "item": "ABC on-and-off-premises wine and beer licence",
+     "rule": "$450 a year",
+     "citation": "Va. Code § 4.1-231.1(A)(4)"
+    },
+    {
+     "item": "ABC banquet licence",
+     "rule": "$40 per day ($100 for a manufacturer's banquet licence under § 4.1-215)",
+     "citation": "Va. Code § 4.1-231.1(A)(6)(a)(1)"
+    },
+    {
+     "item": "ABC tasting licence",
+     "rule": "$40 per day",
+     "citation": "Va. Code § 4.1-231.1(A)(6)(a)(4)"
+    },
+    {
+     "item": "ABC annual arts venue event licence",
+     "rule": "$300 a year",
+     "citation": "Va. Code § 4.1-231.1(A)(6)(b)(6)"
+    },
+    {
+     "item": "ABC marketplace licence",
+     "rule": "$1,000 a year, or $500 for a declared season of six months or less",
+     "citation": "Va. Code § 4.1-231.1(A)(7)"
+    },
+    {
+     "item": "Local meals tax",
+     "rule": "county rate up to 6 percent; city or town rate by charter ordinance",
+     "citation": "Va. Code §§ 58.1-3833, 58.1-3840"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_vdh_permit",
+     "title": "VDH food establishment permit application (obtained from and filed with the local health department, with plans for a new or remodeled establishment)",
+     "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+     "official": true,
+     "note": "12VAC5-421-3660(B): \"The application forms are obtainable at all local health departments.\""
+    },
+    {
+     "id": "f_abc_banquet",
+     "title": "Virginia ABC banquet licence (online)",
+     "url": "https://www.abc.virginia.gov/licenses/banquet-licenses",
+     "official": true
+    },
+    {
+     "id": "f_abc_retail",
+     "title": "Virginia ABC retail licence application (wine and beer, mixed beverage, marketplace)",
+     "url": "https://www.abc.virginia.gov/licenses/retail-licenses",
+     "official": true
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "VDH permit denied, suspended or revoked",
+     "to": "Commissioner of Health, then the Administrative Process Act",
+     "deadline": "per the APA",
+     "citation": "Va. Code § 35.1-22 (revocation); Va. Code § 2.2-4026",
+     "inferred": true
+    },
+    {
+     "step": 1,
+     "trigger": "ABC licence refused",
+     "to": "Virginia ABC Authority hearing, then the Board, then the circuit court under the APA",
+     "deadline": "per Board regulation (3VAC5-10, not read)",
+     "citation": "Va. Code § 4.1-222; Va. Code § 2.2-4026",
+     "inferred": true
+    },
+    {
+     "step": 1,
+     "trigger": "meals tax assessment disputed",
+     "to": "commissioner of the revenue (correction), then circuit court",
+     "deadline": "three years / one year",
+     "citation": "Va. Code §§ 58.1-3980, 58.1-3984",
+     "inferred": true
+    }
+   ],
+   "caveats": [
+    "Classification of a mixed glass-studio-with-cafe: under Title 35.1 and 12VAC5-421 the cafe (or any serving of prepared food or poured drink to the public) is a restaurant and food establishment, and the permit covers that operation; the hot shop itself is not regulated by VDH. For the meals tax, only the restaurant's food and beverage sales are taxed, not glass. For ABC, a studio cafe that regularly sells food prepared on site is a \"restaurant\" and may hold a wine and beer licence; a studio that only gives away wine at events uses the arts venue (12 days) or marketplace (year-round, complimentary only) licences; selling wine at a ticketed event in an unlicensed studio needs a per-day banquet licence. Which fits depends on whether the drink is charged for, directly or through the ticket price: charging for a sip-and-blow ticket that includes wine is \"charged for ... indirectly\" under the arts venue and marketplace wording. That reading of \"indirectly\" is an inference, not an ABC ruling.",
+    "Banquet licences in § 4.1-206.3(D)(1)(a) go to \"persons in charge of private banquets\" and to nonprofits for special events; whether a for-profit studio's public ticketed event is a \"private banquet\" is not answered in the text read. ABC's page says banquet licences cover events in unlicensed locations. Ask ABC before relying on it.",
+    "The mixed beverage food-to-beverage ratio is in Board regulation (3VAC5-50), not read.",
+    "VDH permit fees and the local health district's plan-review checklist were not read.",
+    "Sealed packaged snacks and bottled drinks only (no preparation, no pouring) fall under § 35.1-25(A)(4) and may instead be a VDACS retail food matter; not grounded beyond that exemption text."
+   ]
+  },
+  {
+   "id": "people",
+   "topic": "People: employees (VEC unemployment registration, workers' compensation, VOSH safety pointers for heat and hot work), students and the public (assembly occupancy, liability waivers are not a permit), and minors in a hot shop (child labour)",
+   "offices": [
+    {
+     "locality": "va",
+     "office": "Virginia Employment Commission (employer registration and quarterly reports)",
+     "url": "https://www.vec.virginia.gov/",
+     "status": "not read: www.vec.virginia.gov answered HTTP 503 on 2026-10-19; office named by its role in Va. Code § 60.2-512"
+    },
+    {
+     "locality": "va",
+     "office": "Virginia Workers' Compensation Commission",
+     "url": "https://workcomp.virginia.gov/content/employers",
+     "status": "page read 2026-10-19"
+    },
+    {
+     "locality": "va",
+     "office": "Department of Labor and Industry, Virginia Occupational Safety and Health (VOSH) programme and Labor Law (child labour)",
+     "url": "https://www.doli.virginia.gov/",
+     "status": "home page and the heat standard page read 2026-10-19; the VOSH and child-labour pages were not found at the guessed paths"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 60.2-210(A)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/60.2-210/",
+     "quote": "In any calendar quarter in either the current or preceding calendar year paid for some service in employment wages of $1,500 or more or such other amount as provided by federal law pursuant to 26 U.S.C. § 3306; or",
+     "role": "when a studio becomes an unemployment-insurance employer",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 60.2-210(A)(2)",
+     "url": "https://law.lis.virginia.gov/vacode/60.2-210/",
+     "quote": "For some portion of a day in each of twenty different weeks, whether or not such weeks were consecutive, in either the current or the preceding calendar year, has or had in its employment at least one individual, irrespective of whether the same individual was in employment in each such day.",
+     "role": "the 20-weeks test",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 60.2-512(B)",
+     "url": "https://law.lis.virginia.gov/vacode/60.2-512/",
+     "quote": "Beginning January 1, 2021, all employers shall file quarterly reports on an electronic medium using a format prescribed by the Commission.",
+     "role": "quarterly electronic reports; a $75 penalty for paper filing without a waiver",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 65.2-800(A)",
+     "url": "https://law.lis.virginia.gov/vacode/65.2-800/",
+     "quote": "Every employer subject to the compensation provisions of this title shall insure the payment of compensation to his employees in the manner hereinafter provided.",
+     "role": "workers' compensation insurance",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 65.2-800(B)",
+     "url": "https://law.lis.virginia.gov/vacode/65.2-800/",
+     "quote": "the appropriate official of a county, city, or town who licenses employers to conduct business under Chapter 37 (§ 58.1-3700 et seq.) of Title 58.1 or the State Corporation Commission who charters employers to conduct business under § 12.1-12 shall provide employers requesting such licenses or charters on and after January 1, 1989, with information concerning statutory requirements for such insurance coverage.",
+     "role": "the BPOL office and the SCC hand out the notice",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 65.2-101 (\"Employee\", exclusion h)",
+     "url": "https://law.lis.virginia.gov/vacode/65.2-101/",
+     "quote": "Employees of any person, firm or private corporation, including any public service corporation, that has regularly in service less than three employees in the same business within this Commonwealth, unless such employees and their employers voluntarily elect to be bound by this title.",
+     "role": "fewer than three regular employees: not required",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 65.2-804(A)(1)",
+     "url": "https://law.lis.virginia.gov/vacode/65.2-804/",
+     "quote": "Each employer subject to this title shall file with the Workers' Compensation Commission, in form prescribed by it, annually or as often as may be necessary, evidence of his compliance with the provisions of § 65.2-801 and all others relating thereto; however, if the employer secures his liability under this title pursuant to subdivision A 1 of § 65.2-801 then the insurance carrier shall make a filing on behalf of the employer",
+     "role": "proof of coverage (the insurer files it)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 65.2-805(A)",
+     "url": "https://law.lis.virginia.gov/vacode/65.2-805/",
+     "quote": "If such employer fails to comply with the provisions of § 65.2-800 or 65.2-804, he shall be assessed a civil penalty of not more than $250 per day for each day of noncompliance, subject to a maximum penalty of $50,000.",
+     "role": "penalty for no coverage",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 40.1-22(4)",
+     "url": "https://law.lis.virginia.gov/vacode/40.1-22/",
+     "quote": "The Board shall study and investigate all phases of safety in business establishments, the application of this title thereto, and shall serve as advisor to the Commissioner.",
+     "role": "Safety and Health Codes Board (VOSH standards)",
+     "source": "official-page"
+    },
+    {
+     "citation": "16VAC25-90-1910",
+     "url": "https://law.lis.virginia.gov/admincode/title16/agency25/chapter90/section1910/",
+     "quote": "The following General Industry Standards (29 CFR 1910.5 et seq.) are applicable in the Commonwealth of Virginia.",
+     "role": "VOSH adopts the federal general industry standards: 1910.252 welding, cutting and brazing (hot work), 1910.132-.138 personal protective equipment (eye protection against infrared from the furnace, gloves), 1910.212 machine guarding (cold shop), 1910.1200 hazard communication (batch chemicals, colourants), 1910.101 compressed gases",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "16VAC25-90-1910",
+     "url": "https://law.lis.virginia.gov/admincode/title16/agency25/chapter90/section1910/",
+     "quote": "Since these regulations for General Industry are identical to the federal regulations and are available elsewhere, the Virginia Code Commission excluded the text of these regulations from the Virginia Administrative Code.",
+     "role": "the text is federal; cite 29 CFR 1910",
+     "source": "law.lis.virginia.gov (VAC), read 2026-10-19"
+    },
+    {
+     "citation": "Va. Code § 40.1-78(A)",
+     "url": "https://law.lis.virginia.gov/vacode/40.1-78/",
+     "quote": "No child under fourteen years of age shall be employed, permitted or suffered to work in, about or in connection with any gainful occupation except as specified in this chapter.",
+     "role": "minimum age for employment",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 40.1-100(A)(9)",
+     "url": "https://law.lis.virginia.gov/vacode/40.1-100/",
+     "quote": "In any occupation determined and declared hazardous by rules and regulations promulgated by the Commissioner of Labor and Industry or the U.S. Secretary of Labor, except as otherwise provided in subsection D.",
+     "role": "no one under 18 in a declared hazardous occupation (the lead-in reads \"No child under 18 years of age shall be employed, permitted, or suffered to work:\")",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 40.1-100.1",
+     "url": "https://law.lis.virginia.gov/vacode/40.1-100.1/",
+     "quote": "No person shall employ, suffer, or permit a child to work in any gainful occupation that exposes such child to a recognized hazard capable of causing serious physical harm or death to such child.",
+     "role": "general hazard bar for employed minors",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 40.1-103(A)",
+     "url": "https://law.lis.virginia.gov/vacode/40.1-103/",
+     "quote": "It shall be unlawful for any person employing or having the custody of any child willfully or negligently to cause or permit the life of such child to be endangered or the health of such child to be injured, or willfully or negligently to cause or permit such child to be placed in a situation that its life, health or morals may be endangered",
+     "role": "applies to anyone with custody of a child, including a class instructor (Class 6 felony)",
+     "source": "official-page"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Nothing on employment law; it is state and federal. The locality's BPOL office only hands out the workers' compensation notice (Va. Code § 65.2-800(B))."
+    ],
+    "state_fixes": [
+     "Employer status for unemployment insurance ($1,500 in a quarter or 20 weeks with an employee), electronic quarterly reports (Va. Code §§ 60.2-210, 60.2-512).",
+     "Workers' compensation coverage at three or more regular employees (counting part-time), the insurer's proof filing and the $250-a-day penalty (Va. Code §§ 65.2-101, 65.2-800, 65.2-804, 65.2-805).",
+     "VOSH standards (federal 29 CFR 1910 by reference) (16VAC25-90-1910).",
+     "Child labour: under 14 not employed; under 18 not in hazardous occupations; no exposure of an employed child to a recognized serious hazard (Va. Code §§ 40.1-78, 40.1-100, 40.1-100.1)."
+    ],
+    "observed": [
+     {
+      "locality": "va",
+      "fact": "The Workers' Compensation Commission counts part-time, seasonal, temporary workers, minors and trainees toward the more-than-two threshold.",
+      "url": "https://workcomp.virginia.gov/content/employers",
+      "quote": "As a general rule, a business with more than two employees regularly employed in Virginia is required to carry workers’ compensation coverage.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "There is no exemption form for businesses below the threshold; coverage is bought from a commercial insurer, not the Commission.",
+      "url": "https://workcomp.virginia.gov/content/employers",
+      "quote": "Virginia does not provide a waiver or exemption form for a sole proprietor or other business that is not required to carry coverage under the Act.",
+      "read": "2026-10-19"
+     },
+     {
+      "locality": "va",
+      "fact": "A Virginia heat illness prevention standard is in development; the 2026 General Assembly required the Safety and Health Codes Board to adopt one by May 1, 2028.",
+      "url": "https://www.doli.virginia.gov/vosh-programs/virginias-heat-illness-prevention-standard/",
+      "quote": "The 2026 General Assembly enacted legislation requiring the Virginia Safety and Health Codes Board to adopt a Heat Illness Prevention Standard by May 1, 2028.",
+      "read": "2026-10-19"
+     }
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "VEC quarterly report",
+     "rule": "quarterly, electronically",
+     "citation": "Va. Code § 60.2-512(B)"
+    },
+    {
+     "item": "Workers' compensation proof of coverage",
+     "rule": "the insurer files within 30 days of the policy's inception; 30 days' notice to employees before cancelling",
+     "citation": "Va. Code § 65.2-804(A)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "Unemployment insurance tax",
+     "rule": "rate set by the Commission; $75 penalty for a non-electronic report without a waiver",
+     "citation": "Va. Code §§ 60.2-511, 60.2-512(B)"
+    },
+    {
+     "item": "Workers' compensation",
+     "rule": "commercial premium; civil penalty up to $250 a day, $50,000 maximum, for going without",
+     "citation": "Va. Code § 65.2-805(A)"
+    }
+   ],
+   "forms": [
+    {
+     "id": "f_vec",
+     "title": "VEC employer registration and quarterly reporting (online)",
+     "url": "https://www.vec.virginia.gov/",
+     "official": true,
+     "note": "not read: HTTP 503"
+    },
+    {
+     "id": "f_wcc_61a",
+     "title": "Certificate of Workers' Compensation Insurance (Form 61A), listed on the Commission's employers page",
+     "url": "https://workcomp.virginia.gov/content/employers",
+     "official": true
+    }
+   ],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "VEC determines the studio is an employer, or assesses tax",
+     "to": "Virginia Employment Commission hearing after 30 days' notice",
+     "deadline": "per the notice",
+     "citation": "Va. Code § 60.2-500(A)"
+    },
+    {
+     "step": 1,
+     "trigger": "Workers' Compensation Commission penalty",
+     "to": "the Commission (hearing), then the Court of Appeals",
+     "deadline": "per the Commission's rules (not read)",
+     "citation": "Va. Code § 65.2-805",
+     "inferred": true
+    },
+    {
+     "step": 1,
+     "trigger": "VOSH citation",
+     "to": "Commissioner of Labor and Industry (contest), then circuit court",
+     "deadline": "15 working days to contest (Va. Code § 40.1-49.4, not read this run)",
+     "citation": "Va. Code § 40.1-49.4",
+     "inferred": true
+    }
+   ],
+   "caveats": [
+    "Liability waivers are not law. No Virginia statute or regulation read here requires, authorises or validates a waiver for students or event guests, and nothing in the permit process asks for one. Whether a signed waiver is enforceable is a matter of Virginia case law on exculpatory agreements, which is outside this file. A waiver never replaces the certificate of occupancy, the fire permits or insurance.",
+    "Minors as students (not employees) are not covered by the child-labour chapter, which regulates employment; the only section read that reaches a class instructor is § 40.1-103 (custody of a child, endangerment). No Virginia text sets a minimum age for a glassblowing student; that is a studio and insurer decision.",
+    "Minors as employees or interns: no federal or Virginia hazardous-occupation order read here names glass furnaces by name; 29 CFR Part 570 orders cover power-driven machines and some hot-work settings, and § 40.1-100.1 bars exposure to any recognized serious hazard. The 16VAC15-50 hazardous-occupations chapter read this run is the agricultural list and does not apply. Treat a hot shop as off-limits to employed minors unless DOLI says otherwise (inference).",
+    "Heat: there is no Virginia heat standard in force today; DOLI is developing one for adoption by May 1, 2028. Until then the general duty clause and the federal standards apply.",
+    "VEC pages were not read (HTTP 503); rates and the registration form were not verified.",
+    "Instructors engaged as independent contractors may still be employees under § 65.2-101 and § 60.2-212; the tests were not read this run."
+   ]
+  },
+  {
+   "id": "signs_hours_noise",
+   "topic": "Signs, hours and noise: enabling law only. Localities decide through zoning (use, special exceptions, conditions) and general police-power ordinances; the state sets no sign, hours or noise rule for a studio",
+   "offices": [
+    {
+     "locality": "local",
+     "office": "Zoning administrator (use determinations, sign permits, special use permits) and board of zoning appeals",
+     "url": null,
+     "status": "local office; see the place file"
+    },
+    {
+     "locality": "local",
+     "office": "Governing body (noise and general ordinances)",
+     "url": null,
+     "status": "local body; see the place file"
+    }
+   ],
+   "sections": [
+    {
+     "citation": "Va. Code § 15.2-2280",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2280/",
+     "quote": "Any locality may, by ordinance, classify the territory under its jurisdiction or any substantial portion thereof into districts of such number, shape and size as it may deem best suited to carry out the purposes of this article, and in each district it may regulate, restrict, permit, prohibit, and determine the following:",
+     "role": "zoning power",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2280(1)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2280/",
+     "quote": "The use of land, buildings, structures and other premises for agricultural, business, industrial, residential, flood plain and other specific uses;",
+     "role": "whether a hot shop (industrial), gallery (commercial), classes and a cafe are allowed where the studio is",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2280(2)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2280/",
+     "quote": "The size, height, area, bulk, location, erection, construction, reconstruction, alteration, repair, maintenance, razing, or removal of structures;",
+     "role": "signs are structures regulated through zoning",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2286(A)(3)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+     "quote": "For the granting of special exceptions under suitable regulations and safeguards; notwithstanding any other provisions of this article, the governing body of any locality may reserve unto itself the right to issue such special exceptions.",
+     "role": "a special use permit with conditions (hours, noise, events) is how localities usually allow a mixed studio",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2286(A)(4)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+     "quote": "For the administration and enforcement of the ordinance including the appointment or designation of a zoning administrator who may also hold another office in the locality. The zoning administrator shall have all necessary authority on behalf of the governing body to administer and enforce the zoning ordinance.",
+     "role": "the zoning administrator decides use questions",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2311(A)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+     "quote": "An appeal to the board may be taken by any person aggrieved or by any officer, department, board or bureau of the locality affected by any decision of the zoning administrator or from any order, requirement, decision or determination made by any other administrative officer in the administration or enforcement of this article",
+     "role": "appeal a use determination to the board of zoning appeals",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2314(A)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2314/",
+     "quote": "may, within 30 days after the final decision of the board, file with the clerk of the circuit court for the county or city a petition",
+     "role": "30 days to the circuit court",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-1200",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-1200/",
+     "quote": "Any county may adopt such measures as it deems expedient to secure and promote the health, safety and general welfare of its inhabitants which are not inconsistent with the general laws of the Commonwealth.",
+     "role": "county general police power (noise ordinances rest on this and on the zoning power)",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-1102",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-1102/",
+     "quote": "A municipal corporation shall have and may exercise all powers which it now has or which may hereafter be conferred upon or delegated to it under the Constitution and laws of the Commonwealth and all other powers pertinent to the conduct of the affairs and functions of the municipal government, the exercise of which is not expressly prohibited by the Constitution and the general laws of the Commonwealth, and which are necessary or desirable to secure and promote the general welfare of the inhabi",
+     "role": "city and town general powers (quote cut at the page line end; it continues \"inhabitants of the municipality\")",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-919",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-919/",
+     "quote": "Repealed by Acts 2022, c. 490, cl. 2.",
+     "role": "the former specific noise-ordinance section is gone; noise regulation rests on the general powers above",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2307(A)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2307/",
+     "quote": "Nothing in this article shall be construed to authorize the impairment of any vested right.",
+     "role": "an existing lawful industrial use keeps its rights (nonconforming use) if the zoning changes",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2286(A)(6)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+     "quote": "For the collection of fees to cover the cost of making inspections, issuing permits, advertising of notices and other expenses incident to the administration of a zoning ordinance or to the filing or processing of any appeal or amendment thereto.",
+     "role": "zoning fees are local",
+     "source": "official-page"
+    },
+    {
+     "citation": "Va. Code § 15.2-2311(A)",
+     "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+     "quote": "The appeal shall be taken within 30 days after the decision appealed from by filing with the zoning administrator, and with the board, a notice of appeal specifying the grounds thereof.",
+     "role": "30 days to appeal to the board of zoning appeals",
+     "source": "official-page"
+    }
+   ],
+   "local_discretion": {
+    "locality_decides": [
+     "Whether the hot shop, gallery, classes, cafe and events are permitted, by right or by special use permit, in the district; conditions on hours of operation, event size and frequency, outdoor activity and noise (Va. Code §§ 15.2-2280, 15.2-2286).",
+     "Sign type, size, number, lighting and permits (zoning ordinance under § 15.2-2280; building permit for the structure under the USBC, with the exemption for small signs in VCC § 108.2 item 9 and Appendix H).",
+     "Noise limits and quiet hours, under its general powers (Va. Code §§ 15.2-1102, 15.2-1200).",
+     "Hours of operation are not regulated by any state section read; a locality may set them as special-use conditions."
+    ],
+    "state_fixes": [
+     "Only the framework: zoning must be by ordinance with notice and hearing (Va. Code § 15.2-2204), the zoning administrator's determinations are appealable to the board of zoning appeals within 30 days and then to the circuit court within 30 days (Va. Code §§ 15.2-2311, 15.2-2314), and vested rights are protected (§ 15.2-2307).",
+     "The USBC decides whether a sign needs a building permit (13VAC5-63-80, § 108.2 item 9 and Appendix H), not the locality."
+    ]
+   },
+   "deadlines": [
+    {
+     "item": "Appeal of a zoning determination to the board of zoning appeals",
+     "rule": "within 30 days after the zoning administrator's decision, by notice of appeal filed with the zoning administrator and the board",
+     "citation": "Va. Code § 15.2-2311(A)"
+    },
+    {
+     "item": "Petition to the circuit court from the board of zoning appeals",
+     "rule": "30 days after the board's final decision",
+     "citation": "Va. Code § 15.2-2314(A)"
+    }
+   ],
+   "fees": [
+    {
+     "item": "Special use permit, sign permit, zoning determination",
+     "rule": "local fees",
+     "citation": "Va. Code § 15.2-2286(A)(6)"
+    }
+   ],
+   "forms": [],
+   "escalation": [
+    {
+     "step": 1,
+     "trigger": "zoning administrator says the use is not allowed, or imposes conditions",
+     "to": "board of zoning appeals",
+     "deadline": "30 days",
+     "citation": "Va. Code §§ 15.2-2309, 15.2-2311"
+    },
+    {
+     "step": 2,
+     "trigger": "board decision",
+     "to": "circuit court (petition for certiorari)",
+     "deadline": "30 days",
+     "citation": "Va. Code § 15.2-2314"
+    }
+   ],
+   "caveats": [
+    "State law says nothing specific about studio signs, opening hours or furnace noise (blowers and burners run around the clock); all three are local. This topic is deliberately enabling-law only.",
+    "Outdoor advertising along state highways is separately regulated by VDOT under Title 33.2 (not read); a wall sign on the studio is not affected.",
+    "A furnace that runs continuously can trip a residential-district noise ordinance; check the local decibel limits and quiet hours before siting a hot shop next to homes (observation, not grounded in state text)."
+   ]
+  }
+ ]
+}

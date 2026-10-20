@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor
 from functools import lru_cache
 
 from .. import config
@@ -146,22 +147,21 @@ def _prior(con, state: str, question: str, model: str):
     return LegalProcessFacts.model_validate(facts) if facts else None
 
 
-def run_one(con, case: str, strategy: str, model: str | None, log=print) -> dict:
+def compute_one(case: str, strategy: str, model: str | None, prior, log=print, node: str | None = None) -> dict:
+    """Run and score one item of the grid; no store access, so worker threads may call it.  ``prior`` is the
+    stored oneshot output a ``snap`` run starts from (read by the main thread)."""
     from ..municipal.build import lexical_agreement
     state, question, texts, text, gold, ghash = load_case(case)
     ctx = config.NUM_CTX if strategy in ("oneshot", "snap") else 4096       # decomposed calls are short
-    client = OllamaClient(base_url=config.OLLAMA_URL, model=model, num_ctx=ctx, timeout=1800) \
+    client = OllamaClient(base_url=config.OLLAMA_URL, model=model, num_ctx=ctx, timeout=1800, node=node) \
         if model and strategy not in LLM_FREE else None
-    prior = _prior(con, state, question, model) if strategy == "snap" and model else None
-    if strategy == "snap" and prior is None:
-        log(f"{case} snap/{model}: no stored oneshot output to snap; skipped")
-        return {}
     r = ST.run(strategy, text, section=texts[0].section, title=texts[0].title, code=texts[0].code,
                jurisdiction=S.NAME[state], question=question, client=client, prior=prior, state=state)
+    used = client.nodes_used() if client else {}
     row = {"case": case, "strategy": strategy, "model": model if strategy not in LLM_FREE else "-",
            "gold_hash": ghash, "seconds": round(r.seconds, 1), "calls": r.calls, "notes": r.notes,
            "problems": r.problems[:20], "valid": int(r.facts is not None and not r.problems),
-           "gold_steps": len(gold.steps), "created_at": db.now()}
+           "gold_steps": len(gold.steps), "node": ",".join(sorted(used)) or None, "created_at": db.now()}
     if r.facts is not None:
         sc = score(r.facts, gold, text)
         eq = equivalence(r.facts, gold)
@@ -172,31 +172,96 @@ def run_one(con, case: str, strategy: str, model: str | None, log=print) -> dict
                    quote_validity=sc.quote_validity, steps=len(r.facts.steps), facts=r.facts.model_dump())
     else:
         row.update(equivalence=0.0, raw_equivalence=0.0, steps=0)
+    return row
+
+
+def store_row(con, row: dict, log=print) -> dict:
+    """Insert a scored row (the main thread's job: workers never touch the connection)."""
     cols = ", ".join(f'"{k}"' for k in row)            # "case" is an SQL keyword
     con.execute(f"INSERT INTO benchmarks ({cols}) VALUES ({', '.join('?' for _ in row)})",
                 [json.dumps(v) if isinstance(v, (dict, list)) else v for v in row.values()])
     db.bump(con)
     con.commit()
-    log(f"{case} {strategy}/{row['model']}: equivalence {row['equivalence']:.2f} (steps {row.get('steps')} vs "
+    log(f"{row['case']} {row['strategy']}/{row['model']}: equivalence {row['equivalence']:.2f} (steps {row.get('steps')} vs "
         f"{row['gold_steps']}, F1 {row.get('step_f1', 0):.2f}, deadlines {row.get('deadlines', 0):.2f}) "
-        f"in {row['seconds']}s, {row['calls']} calls" + (f"; {row['problems'][0][:80]}" if row["problems"] else ""))
+        f"in {row['seconds']}s, {row['calls']} calls" + (f" on {row['node']}" if row.get("node") else "")
+        + (f"; {row['problems'][0][:80]}" if row["problems"] else ""))
     return row
 
 
-def run(con, case_list: list[str], strategy_list: list[str], model_list: list[str], log=print, progress=None) -> dict:
+def run_one(con, case: str, strategy: str, model: str | None, log=print, node: str | None = None) -> dict:
+    state, question = case.split(".", 1)
+    prior = _prior(con, state, question, model) if strategy == "snap" and model else None
+    if strategy == "snap" and prior is None:
+        log(f"{case} snap/{model}: no stored oneshot output to snap; skipped")
+        return {}
+    return store_row(con, compute_one(case, strategy, model, prior, log=log, node=node), log=log)
+
+
+def workers_for(model_list: list[str], node: str | None = None) -> int:
+    """How many items run at once: with a pool of more than one node, the free slots on the nodes that have the
+    models (capped by LEXFLOW_LLM_FANOUT); otherwise one, as before.  A pinned run stays sequential."""
+    from ..compute import nodes as CN
+    from ..compute import pool
+    if node or config.LLM_ONLY or not CN.pool_on():
+        return 1
+    try:
+        if pool.node_count() <= 1:
+            return 1
+        slots = max(pool.free_slots(model=m) for m in model_list) if model_list else pool.free_slots()
+    except Exception:  # noqa: BLE001 - compute.db unreadable
+        return 1
+    return max(1, min(config.LLM_FANOUT, slots))
+
+
+def run(con, case_list: list[str], strategy_list: list[str], model_list: list[str], log=print, progress=None,
+        node: str | None = None) -> dict:
+    """The case x strategy x model grid.  Worker threads compute (their model calls go through the pool, one lease
+    per call); the main thread reads the stored prior for a snap, inserts every row, logs and reports progress."""
     jobs = []
     for case in case_list:
         for strategy in strategy_list:
             for model in (["-"] if strategy in LLM_FREE else model_list):
                 jobs.append((case, strategy, None if model == "-" else model))
     out = []
-    for i, (case, strategy, model) in enumerate(jobs):
-        try:
-            out.append(run_one(con, case, strategy, model, log=log))
-        except Exception as e:  # noqa: BLE001 - keep going through the grid
-            log(f"{case} {strategy}/{model}: failed: {type(e).__name__}: {e}")
+    workers = workers_for([m for m in model_list if m and m != "-"], node)
+    if workers > 1:
+        log(f"benchmark: fanning out over {workers} workers (the pool's free slots)")
+    done = 0
+
+    def prior_for(case, strategy, model):
+        state, question = case.split(".", 1)
+        return _prior(con, state, question, model) if strategy == "snap" and model else None
+
+    def tick():
+        nonlocal done
+        done += 1
         if progress:
-            progress((i + 1) / len(jobs))
+            progress(done / len(jobs))
+
+    if workers <= 1:
+        for case, strategy, model in jobs:
+            try:
+                out.append(run_one(con, case, strategy, model, log=log, node=node))
+            except Exception as e:  # noqa: BLE001 - keep going through the grid
+                log(f"{case} {strategy}/{model}: failed: {type(e).__name__}: {e}")
+            tick()
+        return {"runs": len([o for o in out if o]), "best": best(con)[:10]}
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futures = []
+        for case, strategy, model in jobs:
+            prior = prior_for(case, strategy, model)             # the main thread reads the store
+            if strategy == "snap" and prior is None:
+                log(f"{case} snap/{model}: no stored oneshot output to snap; skipped")
+                tick()
+                continue
+            futures.append(((case, strategy, model), ex.submit(compute_one, case, strategy, model, prior, lambda *_: None, node)))
+        for (case, strategy, model), fut in futures:
+            try:
+                out.append(store_row(con, fut.result(), log=log))   # the main thread writes
+            except Exception as e:  # noqa: BLE001 - keep going through the grid
+                log(f"{case} {strategy}/{model}: failed: {type(e).__name__}: {e}")
+            tick()
     return {"runs": len([o for o in out if o]), "best": best(con)[:10]}
 
 

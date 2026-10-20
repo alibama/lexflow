@@ -1,0 +1,697 @@
+{
+ "place": "va:charlottesville",
+ "gov_id": "47210400100000",
+ "process": "glass_studio_food_and_events",
+ "title": "Adding a cafe, drinks or events to a glass studio: health department food permit and plan review, temporary event permits, meals tax, ABC licence pointers and the City's assembly and special event rules",
+ "question": "My glass studio will have a small cafe, serve drinks at sip-and-blow events, and host classes and parties. What health, meals tax, alcohol, fire and event approvals does that add in Charlottesville?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "artists",
+  "restaurants",
+  "caterers"
+ ],
+ "office": "Blue Ridge Health District, Charlottesville/Albemarle Environmental Health office (Virginia Department of Health food establishment permits); Commissioner of the Revenue (meals tax); Virginia ABC (alcohol licences, state); Charlottesville Fire Marshal's Office (assembly and open-flame permits); NDS Zoning (temporary use permits); Parks & Recreation (special events on City property)",
+ "summary": "Serving food or drink to the public makes the studio a food establishment under Virginia law and needs a Virginia Department of Health permit from the Blue Ridge Health District's Charlottesville/Albemarle office (1138 Rose Hill Drive, 434-972-6219, CAHDEH@vdh.virginia.gov). The district's process starts before construction: a commercial plan review ($40 statewide; the district page quotes an $80 application fee), submitted with the building permit and business license applications at least 30 days before opening or renovation, then plan approval, a pre-opening inspection (which requires the City's occupancy permit and a Certified Food Protection Manager on site), and the permit, posted where customers can see it. Food at a one-off event needs a Temporary Food Establishment permit ($40, applied for at least 10 days ahead) unless the studio already holds a permanent permit and tells the district. A cafe is a 'General food and beverage' use under the Development Code, permitted in the same districts as an artisan workshop; events are 'General indoor entertainment and recreation' (event venue) indoors, or a $250 Temporary Use Permit for outdoor assemblies on the lot (9:00 AM to 9:00 PM, at most 5 a year). The City's 7% meals tax applies to all prepared food and drink, registered with the Commissioner of the Revenue and filed by the 20th of each month. Alcohol needs a Virginia ABC retail licence (state); the Development Code allows a food and beverage or entertainment use to serve alcohol only as an accessory use. The Fire Marshal's Office may require operational permits for a place of assembly, open flames in assembly or dining areas, and commercial cooking, and a Type 1 kitchen hood needs its own building permit. Events on City streets or property go through Parks & Recreation's special event permit ($25, 30 or 60 days ahead; tents over 900 square feet need a tent permit).",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-18",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter.",
+   "role": "authority",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-1 (definition of restaurant)",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "quote": "Any place where food is prepared for service to the public on or off the premises, or any place where food is served",
+   "role": "definition",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3840(A) (as cited in meals_tax_filing.json; not re-read)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3840/",
+   "quote": null,
+   "role": "authority",
+   "source": null
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 4.1-206.3(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "quote": "Mixed beverage restaurant licenses, which shall authorize the licensee to sell and serve mixed beverages for on-premises consumption in dining areas and other designated areas of such restaurant or off-premises consumption. Such license may be granted only to persons who operate a restaurant that complies with the food-to-beverage ratio provisions set by Board regulation pursuant to § 4.1-111 .",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 4.1-206.3(B)",
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "quote": "B. The Board may grant an on-and-off-premises wine and beer license to the following:",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 4.1-206.3(A)(3)",
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "quote": "Mixed beverage limited caterer's licenses, which may be granted only to a person regularly engaged in the business of providing food and beverages to others for service at private gatherings or at special events, not to exceed 12 gatherings or events per year, which shall authorize the licensee to sell and serve alcoholic beverages for on-premises consumption.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-52-70 (SFPC Table 107.2, Places of assembly)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "quote": "Places of assembly. An operational permit is required to operate a place of assembly.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-52-70 (SFPC Table 107.2, Open flames and candles)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "quote": "Open flames and candles. An operational permit is required to use open flames or candles in connection with assembly areas or dining areas of restaurants or drinking establishments.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-52-70 (SFPC Table 107.2, Commercial cooking)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "quote": "Commercial cooking. An operational permit is required for the operation of commercial cooking appliances in occupancies other than assembly occupancies or dwellings.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Virginia Department of Health, Food Safety in Virginia",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+   "quote": "Any individual or entity that serves food to the public (if not exempt or under the jurisdiction of the Virginia Department of Agriculture and Consumer Services ) is required to obtain a Food Establishment Permit from the Virginia Department of Health.",
+   "role": "authority",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Virginia Department of Health, Applying for a Food Permit",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/foodapplication/",
+   "quote": "Once the Plan Review is approved, submit a completed Foodservice Permit Application to the local health department along with payment of $40.00 at least 30 days prior to opening for approval.",
+   "role": "deadline",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Virginia Department of Health, Food Safety Exemptions",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-exemptions/",
+   "quote": "Vendors/organizations that offers only non-TCS pre-packaged foods served (TCS foods are foods that require temperature control for safety such as eggs, dairy, meat, poultry, fish, and seafood).",
+   "role": "exception",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Blue Ridge Health District, Applying for New Foodservice Facility Permit",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "quote": "Note: Construction of the food establishment cannot begin until the Health Department has completed its commercial plan review process.",
+   "role": "procedure",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Blue Ridge Health District, Applying for New Foodservice Facility Permit",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "quote": "Document showing Occupancy Permit has been issued by the Local Building Official must be available.",
+   "role": "procedure",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Virginia Department of Health, Temporary Food Establishments",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "quote": "To apply for a Temporary Food Establishment Permit, submit a completed application and fee of $40 to the local health department in which the TFE will be located. The application and fee must be submitted at least ten calendar days prior to the day in which the TFE will operate.",
+   "role": "deadline",
+   "source": "official-page"
+  },
+  {
+   "level": "state",
+   "citation": "Virginia Department of Health, Temporary Food Establishments",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "quote": "If you hold a valid permanent VDH Food Establishment Permit (restaurant, caterer, mobile food establishment, etc.) and are interested in also operating at a temporary event, you do not need to obtain an additional permit so long as all food is prepared in accordance with the Board of Health Food Regulations .",
+   "role": "exception",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville, Meals Tax page (Commissioner of the Revenue)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Every business in the City of Charlottesville is required to levy a 7% (Meals Tax) on all prepared edible refreshments, nourishments, and liquids (including alcoholic beverages). This is in addition to the 5.3% Virginia Retail Sales & Use Tax.",
+   "role": "authority",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.3.4.B.1 General Food and Beverage",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Food and beverage uses that prepare and sell food or beverage and may only serve alcohol for on-premise consumption as an accessory use.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.3.4.A.1 General Indoor Entertainment and Recreation",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Entertainment and recreation uses that operate primarily in an indoor setting and may only serve alcohol for on-premise consumption as an accessory use.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.6.2.A Temporary Outdoor Assemblies",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "Must take place only between the hours of 9:00 AM and 9:00 PM on a given day.",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "Charlottesville Development Code § 3.6.1.B.9 Temporary Uses and Structures",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "All applicable city ordinances, permits and approvals, including, without limitation: Occupancy permits, peddler's licenses, sign permits, BAR certificates of appropriateness, etc.",
+   "role": "procedure",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville Parks & Recreation, Special Event Permits page",
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "quote": "Requests for special events will require a formal application accompanied by a $25.00 non-refundable application fee payable to Charlottesville Parks and Recreation. All event requests should be submitted 30 days prior to your scheduled event without a street closure request and 60 days prior to your scheduled event with a street closure request .",
+   "role": "deadline",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville, Special Event Regulations § 3.4.2",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "quote": "In all cases, sponsors are encouraged to submit requests for permits as far in advance of any event as possible (but not to exceed 6 months).",
+   "role": "deadline",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville, Special Event Regulations (tents)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "quote": "Tent permits are required for tents that exceed 900 square feet in size.",
+   "role": "procedure",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "City of Charlottesville, Special Event Regulations (grounds for denial)",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "quote": "limitation, where a permit or license required by the Health Department or the",
+   "role": "eligibility",
+   "source": "official-page"
+  },
+  {
+   "level": "local",
+   "citation": "NDS Fee Schedule (Update March 23, 2026), row 'Commercial Kitchen Hood - Type 1 only'",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "Commercial Kitchen Hood - Type 1 only",
+   "role": "fee",
+   "source": "official-page"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Decide what you will serve: that sets which permits apply",
+   "who": "Operator",
+   "how": "VDH exempts vendors that offer only non-TCS pre-packaged foods (no eggs, dairy, meat or other foods needing temperature control), so a studio that sells only sealed snacks and canned or bottled drinks may need no food permit; ask the Blue Ridge Health District to confirm. Preparing coffee drinks, food or opening and pouring drinks for the public makes it a food establishment needing a permit. Alcohol of any kind needs a Virginia ABC licence (state), and the Development Code allows a cafe or event venue to serve alcohol only as an accessory use. Each choice also triggers the City's meals tax, the Fire Marshal's permits, and a Type 1 hood if there is grease-producing cooking.",
+   "deadline": null,
+   "fee": null,
+   "form": null,
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-exemptions/",
+   "quote": "The following individuals or organizations are exempt from the requirement to obtain a VDH Food Permit before serving food to the public.",
+   "role": null,
+   "source": "official-page"
+  },
+  {
+   "id": "s2",
+   "step": "Check the zoning for the cafe and events",
+   "who": "Operator; NDS Zoning",
+   "how": "A cafe is 'General food and beverage' (up to 4,000 SF): permitted by right in RX-3 and RX-5 with use standards and in all CX, NX, DX and IX districts and CM. An indoor event space is 'General indoor entertainment and recreation' (event venue), by right up to 4,000 SF in the CX, NX, DX and IX districts and CM, and by Special Use Permit in CV. Ask Zoning whether occasional classes-with-drinks and private parties are accessory to the artisan workshop or a second principal use. Outdoor events on the lot need a Temporary Use Permit under Development Code Div. 3.6 ($250; up to 5 per year, 21 days apart; outdoor assemblies 9:00 AM to 9:00 PM with parking of one space per 4 persons, meeting the building and fire codes; the Administrator may require a bond). See glass_studio_zoning_use.",
+   "deadline": null,
+   "fee": "Temporary Use Permit: $250 ($500 after the fact)",
+   "form": "f6",
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "quote": "A temporary use or structure for one or more of the uses described in this Division must obtain a temporary use permit pursuant to 5.2.10. Permit Review.",
+   "source": "official-page"
+  },
+  {
+   "id": "s3",
+   "step": "Apply to the Blue Ridge Health District for plan review before building the cafe",
+   "who": "Operator; Blue Ridge Health District, Charlottesville/Albemarle Environmental Health office",
+   "how": "Whenever a food establishment is constructed, remodeled or converted from another use, plans must go to the health department before work starts, and construction cannot begin until the commercial plan review is done. The district's steps: start the building permit application with the City building official; apply for the City business license; then file the Plan Review Application and the Application for Foodservice Establishment Permit with the Environmental Health office for the locality (for Charlottesville, 1138 Rose Hill Drive). The district page states an $80 application fee; the statewide VDH page describes a $40 plan review fee and a $40 permit fee, and the district's fee schedule lists Food Service Plan Review $40 and the annual permit $40. Submit scaled floor plans showing all fixed equipment and plumbing, equipment specification sheets, a site plan (dumpsters, grease interceptor), the proposed menu, the projected meals per day and the Certified Food Protection Manager's credentials. The owner of record must apply at least 30 days before opening or the start of renovation.",
+   "deadline": "At least 30 days before opening to the public or the start of renovation; before construction begins",
+   "fee": "$80 application fee (district page); plan review $40 and annual permit $40 (district fee schedule and statewide VDH page)",
+   "form": "f1",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "quote": "Per the Virginia Food Regulations , owner of record must apply at least 30 days prior to opening to the public or start of renovation.",
+   "source": "official-page"
+  },
+  {
+   "id": "s4",
+   "step": "Answer the plan review letter, build, then schedule the pre-opening inspection",
+   "who": "Operator; the district's Environmental Health Specialist",
+   "how": "The district sends a letter listing any changes and approving the plans for construction; reply in writing on how you will comply. When construction is finished and equipment is in place, call the specialist at least 3 days ahead to schedule the pre-opening inspection. For approval you must show the Occupancy Permit issued by the City building official, have a person in charge with a current Food Safety Manager certification, refrigerators at 41°F or lower and freezers at 0°F or lower with thermometers, a clean facility and a final menu. No food may be served to the public before the inspection passes and the permit is issued. The permit is mailed within 5 to 7 days and must be posted where customers can see it. The permit is annual ($40) and inspections are unannounced.",
+   "deadline": "Call at least 3 days before the inspection date you want",
+   "fee": "Annual Food Service Permit: $40",
+   "form": "f1",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "quote": "No food can be served to the public prior to the pre-opening inspection and approval by the Health Department permit has been issued.",
+   "source": "official-page"
+  },
+  {
+   "id": "s5",
+   "step": "For food at a one-off event: Temporary Food Establishment permit, or notify the district if you already hold a permit",
+   "who": "Operator (and the event coordinator, if someone else runs the event); Blue Ridge Health District",
+   "how": "A Temporary Food Establishment operates for up to 14 consecutive days with a single event. Submit the Temporary Food Establishment Permit Application and Screening Questions with the $40 fee to the local Environmental Health office at least 10 calendar days before the event; the specialist inspects on site before issuing the permit, which must be posted and is valid only for the stated period. An event coordinator should file the Temporary Event Coordinator Application at least 10 days ahead with the vendor list, layout, toilets, waste disposal and water supply. If the studio already holds a permanent VDH permit and prepares the food as its approved plans allow, no extra permit is needed, but the district must know you will operate at the event and the permit must be posted there. Since July 1, 2023 the person in charge of any food establishment, including a TFE, must be a Certified Food Protection Manager unless exempt.",
+   "deadline": "Application and fee at least 10 calendar days before the event",
+   "fee": "$40 per Temporary Food Establishment permit (no fee for qualifying nonprofit organizations)",
+   "form": "f2",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "quote": "The completed application and fee must be received at a minimum of (10) days prior to the event.",
+   "source": "official-page"
+  },
+  {
+   "id": "s6",
+   "step": "Register for the City meals tax and file monthly",
+   "who": "Operator; Commissioner of the Revenue",
+   "how": "Add the 7% City meals tax to all prepared food and drink, including alcoholic drinks, on top of the 5.3% Virginia sales tax. Register by filing the Meals Tax Registration with the Business License Application and a copy of the health permit or inspection, through the Secure Portal (category 'Food & Beverage (Meals) Tax Registration / Tax Return') or by mail to PO Box 2964. File and pay by the 20th of each month in the Business Tax Portal, even for months with no sales; a 3% seller's discount applies when filed and paid on time. Details, exemptions and penalties are in meals_tax_filing.json.",
+   "deadline": "Monthly, by the 20th of the following month",
+   "fee": "7% of taxable sales (collected from customers)",
+   "form": "f3",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "These taxes are collected from the customer at point of sale and remitted to the city on the 20 th of each month. A return must be filed even if there were no sales activity.",
+   "source": "official-page"
+  },
+  {
+   "id": "s7",
+   "step": "If you will serve alcohol: get a Virginia ABC retail licence (state) and check the local rules",
+   "who": "Operator; Virginia Alcoholic Beverage Control Authority",
+   "how": "Alcohol licensing is a state process not modeled here. Va. Code § 4.1-206.3 lists the retail licences: a mixed beverage restaurant licence requires a restaurant that meets the food-to-beverage ratio and brings with it the right to a wine and beer licence; on-and-off-premises wine and beer licences go to hotels, restaurants and clubs; mixed beverage limited caterer's licences cover up to 12 private gatherings or special events a year for a business regularly providing food and beverages; and per-day event licences exist for events. Apply through Virginia ABC's licensing pages (abc.virginia.gov/licenses) and tell the Commissioner of the Revenue, whose checklist lists ABC licensing. Under the Development Code, a food and beverage or indoor entertainment use may serve alcohol only for on-premise consumption as an accessory use, and a City special event permit can be denied where a required ABC licence has not been obtained.",
+   "deadline": null,
+   "fee": "State and local ABC licence fees (Va. Code § 4.1-233.1 for the local fee; not read)",
+   "form": "f4",
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "quote": "The granting of a license pursuant to this subdivision shall automatically authorize the licensee to obtain a license to sell and serve wine and beer for on-premises consumption and in closed containers for off-premises consumption; however, the licensee shall be required to pay the local fee required for such additional license pursuant to § 4.1-233.1 .",
+   "source": "official-page"
+  },
+  {
+   "id": "s8",
+   "step": "Fire Marshal and building-code items for the cafe and events",
+   "who": "Operator; Fire Marshal's Office (434-970-3328); NDS Building Inspections",
+   "how": "Under SFPC Table 107.2 the fire official may require operational permits to operate a place of assembly, to use open flames or candles in assembly or dining areas, and to operate commercial cooking appliances outside assembly occupancies and dwellings; public glassblowing demonstrations are hot work needing a permit. The Fire Marshal's Office lists restaurants, assembly and event spaces and multi-use commercial buildings among the occupancies it inspects, and hood suppression and kitchen hood cleaning reports must be filed through IROL. On the building side a Type 1 commercial kitchen hood has its own permit line ($75 minimum), and the certificate of occupancy will state the occupant load, which the fire code enforces. See glass_studio_fire_permits and glass_studio_building_mechanical.",
+   "deadline": null,
+   "fee": "Commercial Kitchen Hood (Type 1) permit: $75 minimum; fire operational permit fees not published",
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "quote": "Places of assembly. An operational permit is required to operate a place of assembly.",
+   "source": "official-page"
+  },
+  {
+   "id": "s9",
+   "step": "Events on City streets, sidewalks, parks or the Downtown Mall: Parks & Recreation special event permit",
+   "who": "Event sponsor; Charlottesville Parks & Recreation (Events Coordinator)",
+   "how": "Events on City property or needing street closures need a special event permit from Parks & Recreation: a formal application, signed and mailed to Charlottesville Parks & Recreation, P.O. Box 911, with the $25 non-refundable fee, at least 30 days before the event (60 days with a street closure); the Special Event Regulations say 30 or 60 business days and not more than 6 months ahead. The regulations require insurance and indemnification for larger events, say a permit may be denied where a required Health Department or ABC permit has not been obtained, and set the tent rules: tents over 900 square feet need a tent permit from the City Building Code Office in NDS, tents of 400 to 900 square feet are inspected by the Fire Department before use, and pop-up canopies are not allowed on the Downtown Mall. City services are not available during UVA home football games. Vendor stands and outdoor cafe permits on the Mall have their own fees in the NDS schedule.",
+   "deadline": "Application 30 days before an event without a street closure, 60 days with one (the regulations say business days)",
+   "fee": "$25 non-refundable application fee; tent permit $50 per tent; street or alley closing $125 (NDS Fee Schedule)",
+   "form": "f5",
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "quote": "All formal application requests should be completed, signed and mailed to:",
+   "source": "official-page"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Application for Foodservice Establishment Permit (Blue Ridge Health District, fillable PDF, June 2026) with the Plan Review Application",
+   "number": null,
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/196/Foodservice.Application.Fillable.june-2026.pdf",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f2",
+   "title": "Temporary Food Establishment Permit Application and Screening Questions; Temporary Event Coordinator Application (Blue Ridge Health District)",
+   "number": null,
+   "url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f3",
+   "title": "Meals Tax Registration (Commissioner of the Revenue, PDF)",
+   "number": null,
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/210/Meals-Tax-Registration-PDF",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f4",
+   "title": "Virginia ABC retail licence application (state; abc.virginia.gov Licenses pages)",
+   "number": null,
+   "url": "https://www.abc.virginia.gov/licenses",
+   "official": true,
+   "fillable": true
+  },
+  {
+   "id": "f5",
+   "title": "Special Events Application (Parks & Recreation; download, sign and mail) and the Special Event Regulations",
+   "number": null,
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f6",
+   "title": "Temporary Use Permit application (NDS Zoning, City Permit Portal)",
+   "number": null,
+   "url": "https://permits.charlottesville.gov/portal",
+   "official": true,
+   "fillable": true
+  }
+ ],
+ "fees": [
+  {
+   "item": "Food service plan review (Blue Ridge Health District)",
+   "amount": "$40 (district fee schedule effective July 1, 2019; statewide VDH page); the district's new-facility page states an $80 application fee",
+   "basis": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf; https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "quote": "Food Service Plan Review                                                                                   $40     $40   $40       $40     $40",
+   "source": "official-page"
+  },
+  {
+   "item": "Annual Food Service Permit (stationary and mobile)",
+   "amount": "$40",
+   "basis": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf",
+   "quote": "Annual Food Service Permit (Stationary & Mobile)                                                           $40     $40   $40       $40     $40",
+   "source": "official-page"
+  },
+  {
+   "item": "Temporary Food Establishment permit (per vendor, per event)",
+   "amount": "$40",
+   "basis": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "quote": "submit a completed application and fee of $40 to the local health department in which the TFE will be located",
+   "source": "official-page"
+  },
+  {
+   "item": "City meals tax",
+   "amount": "7% of prepared food and drink sales, in addition to the 5.3% Virginia sales tax",
+   "basis": "https://www.charlottesville.gov/189/Meals-Tax",
+   "quote": "Tax Rate – 7%",
+   "source": "official-page"
+  },
+  {
+   "item": "Special event permit application (Parks & Recreation; events on City property)",
+   "amount": "$25.00 non-refundable",
+   "basis": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "quote": "a $25.00 non-refundable application fee payable to Charlottesville Parks and Recreation",
+   "source": "official-page"
+  },
+  {
+   "item": "Temporary Use Permit (outdoor events on the studio's lot)",
+   "amount": "$250; $500 after the fact",
+   "basis": "NDS Fee Schedule (Update March 23, 2026): https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "quote": "After the Fact - Temporary Use Permit    $250",
+   "source": "official-page"
+  },
+  {
+   "item": "Tent permit (temporary)",
+   "amount": "$50 per tent",
+   "basis": "NDS Fee Schedule (Update March 23, 2026)",
+   "quote": "Per each tent",
+   "source": "official-page"
+  },
+  {
+   "item": "Street/Alley Closing",
+   "amount": "$125",
+   "basis": "NDS Fee Schedule (Update March 23, 2026)",
+   "quote": "Street/Alley Closing               $125",
+   "source": "official-page"
+  },
+  {
+   "item": "Commercial Kitchen Hood - Type 1 only (building permit)",
+   "amount": "$75 minimum, then by project value",
+   "basis": "NDS Fee Schedule (Update March 23, 2026)",
+   "quote": "Commercial Kitchen Hood - Type 1 only",
+   "source": "official-page"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Charlottesville/Albemarle Health Department, 1138 Rose Hill Drive, Charlottesville, VA 22903",
+   "label": "Blue Ridge Health District, Environmental Health (food permits, plan review, temporary events)",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/"
+  },
+  {
+   "kind": "phone",
+   "value": "434-972-6219",
+   "label": "Blue Ridge Health District, Charlottesville/Albemarle Environmental Health",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/"
+  },
+  {
+   "kind": "email",
+   "value": "CAHDEH@vdh.virginia.gov",
+   "label": "Blue Ridge Health District, Charlottesville/Albemarle Environmental Health",
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/"
+  },
+  {
+   "kind": "email",
+   "value": "foodsafety@vdh.virginia.gov",
+   "label": "Virginia Department of Health, food safety program",
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/foodapplication/"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3170",
+   "label": "Commissioner of the Revenue, business tax office (meals tax registration)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "email",
+   "value": "citycorbiz@charlottesville.gov",
+   "label": "Commissioner of the Revenue, business tax office",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "portal",
+   "value": "https://corforms.charlottesville.gov/Forms/securedocsubmit",
+   "label": "Commissioner of the Revenue Secure Portal (category Food & Beverage (Meals) Tax Registration / Tax Return)",
+   "url": "https://www.charlottesville.gov/189/Meals-Tax"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3267",
+   "label": "Charlottesville Parks & Recreation (special event permits and facility rentals)",
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits"
+  },
+  {
+   "kind": "address",
+   "value": "Charlottesville Parks & Recreation, P.O. Box 911, Charlottesville, VA 22902; 434-970-3260",
+   "label": "Charlottesville Parks & Recreation (mail special event applications)",
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3328",
+   "label": "Charlottesville Fire Marshal's Office (assembly, open flame and commercial cooking permits)",
+   "url": "https://www.charlottesville.gov/233/Fire-Marshal"
+  },
+  {
+   "kind": "phone",
+   "value": "434-970-3995",
+   "label": "NDS Zoning (temporary use permits)",
+   "url": "https://www.charlottesville.gov/268/Zoning"
+  },
+  {
+   "kind": "page",
+   "value": "https://www.abc.virginia.gov/licenses",
+   "label": "Virginia ABC, Licenses (state alcohol licensing)",
+   "url": "https://www.abc.virginia.gov/licenses"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "A Temporary Food Establishment application is denied",
+   "next": "The local health department notifies you in writing of the reasons and your appeal rights (VDH policy)",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "VDH Temporary Food Establishments page and TFE Policy",
+   "quote": "Any TFE applicants who are not approved will be notified in writing of the reasons for denial and be provided with appeal rights.",
+   "source": "official-page"
+  },
+  {
+   "trigger": "A food establishment permit is denied, suspended or revoked, or an inspection finding is disputed",
+   "next": "Virginia Department of Health: the Food Regulations (12VAC5-421) and Va. Code Title 35.1 provide the hearing and appeal route (not read for this file); ask the district's Environmental Health office",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "12VAC5-421; Va. Code § 35.1-18 et seq. (not read)",
+   "quote": null,
+   "source": null
+  },
+  {
+   "trigger": "A special event permit is denied or revoked",
+   "next": "The Special Event Regulations set the City Manager's grounds and process; the $25 application fee is not refunded on denial",
+   "type": "internal appeal",
+   "deadline": null,
+   "basis": "City of Charlottesville Special Event Regulations § 3.5.3",
+   "quote": "If a permit is denied or revoked, the application fee",
+   "source": "official-page"
+  },
+  {
+   "trigger": "A Temporary Use Permit is revoked by the Administrator",
+   "next": "Board of Zoning Appeals",
+   "type": "internal appeal",
+   "deadline": "30 days (Va. Code § 15.2-2311(A))",
+   "basis": "Charlottesville Development Code § 3.6.1.B.11",
+   "quote": "Any person aggrieved by such notice may appeal the revocation to the Board of Zoning Appeals.",
+   "source": "official-page"
+  }
+ ],
+ "caveats": [
+  "Fees from the Blue Ridge Health District conflict: the new-facility page says 'Application fee: $80', the district fee schedule (effective July 1, 2019) lists plan review $40 and the annual permit $40, and the statewide VDH page describes $40 for plan review and $40 for the permit. $80 may be the two together. Confirm with the Rose Hill Drive office.",
+  "Whether a studio that only sells sealed drinks and packaged snacks, or pours wine at a paid class, needs a VDH permit depends on the district's reading of the exemptions; ask before opening.",
+  "Virginia ABC licensing is only pointed to. The licence type for drinks at classes and private events (restaurant, limited caterer, or per-day event licence), the food-to-beverage ratio and the local fee under § 4.1-233.1 were not researched; the ABC 'Get a Virginia ABC Retail License' page loaded as a navigation shell without the licence list.",
+  "The Development Code allows alcohol only as an accessory use for food and beverage and indoor entertainment uses; whether an artisan workshop may serve alcohol at all (accessory to what?) is a zoning question not answered by the Code text read.",
+  "The Parks & Recreation special event permit covers events on City property and street closures; the Special Event Regulations PDF (undated on its face) says 30 or 60 business days while the web page says 30 or 60 days.",
+  "Fire Marshal operational permits for assembly, open flames and commercial cooking are listed in the state table; the City does not publish which it requires or at what fee.",
+  "The meals tax process is modeled in meals_tax_filing.json; the 7% rate and the 20th-of-the-month deadline are repeated here from the city's Meals Tax page."
+ ],
+ "sources": [
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/",
+   "title": "Food Safety in Virginia - Environmental Health (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/foodapplication/",
+   "title": "Applying for a Food Permit (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-exemptions/",
+   "title": "Food Safety Exemptions (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/environmental-health/food-safety-in-virginia/tfe/",
+   "title": "Temporary Food Establishments (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/environmental-health/",
+   "title": "Environmental Health - Blue Ridge Health District (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-foodservice-permit-to-operate/",
+   "title": "Applying for Foodservice Permits to Operate - Blue Ridge (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/applying-for-new-foodservice-facilities/",
+   "title": "Applying for New Foodservice Facility Permit - Blue Ridge (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/blue-ridge/temporary-events/",
+   "title": "Temporary Events - Blue Ridge (VDH)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/content/uploads/sites/196/District-EH-Fees_Effective-07012019_508c.pdf",
+   "title": "Blue Ridge Health District Environmental Health Program Fees, effective July 1, 2019 (PDF)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/189/Meals-Tax",
+   "title": "Meals Tax | Charlottesville, VA",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/460/Special-Event-Permits",
+   "title": "Special Event Permits | Charlottesville, VA (Parks & Recreation)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/1905/Special-Events",
+   "title": "Special Events | Charlottesville, VA (Parks & Recreation)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/949/Special-Event-Regulations-PDF",
+   "title": "Special Event Regulations (PDF)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/16092",
+   "title": "Charlottesville Development Code (PDF updated March 23, 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.charlottesville.gov/DocumentCenter/View/9634/Building-Permit-Fee-Schedule-PDF",
+   "title": "NDS Fee Schedule (Update March 23, 2026) (PDF)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses",
+   "title": "Licenses (Virginia ABC)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.abc.virginia.gov/licenses/retail-licenses",
+   "title": "Get a Virginia ABC Retail License (Virginia ABC; page loaded as navigation only)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "title": "Va. Code § 35.1-18",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-1/",
+   "title": "Va. Code § 35.1-1",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-206.3/",
+   "title": "Va. Code § 4.1-206.3",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "title": "13VAC5-52-70 (SFPC § 107)",
+   "retrieved": "2026-10-19"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": false,
+ "checks": {
+  "verified_by": null,
+  "date": null,
+  "quotes_checked": 0,
+  "quotes_confirmed": 0,
+  "removed": [],
+  "corrections": [],
+  "open_issues": [
+   "The Blue Ridge Health District's current fees ($80 application vs $40 plan review plus $40 permit) and whether a drinks-only or packaged-snacks service is exempt.",
+   "Which ABC licence fits drinks at classes and private events, and whether Zoning allows alcohol as an accessory to an artisan workshop.",
+   "Which fire operational permits (assembly, open flames, commercial cooking) the City requires for the cafe and events, and the fees.",
+   "Whether private parties and classes-with-drinks are accessory to the workshop or a separate indoor entertainment use."
+  ]
+ }
+}

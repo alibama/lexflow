@@ -587,17 +587,15 @@ def node_of(name: str | None) -> tuple[str, str]:
         if "=" in part:
             n, rest = part.split("=", 1)
             nodes[n.strip()] = rest.split("|", 1)[0].strip()
-    try:
-        from .. import compute as CP  # type: ignore  # noqa: F401
-        has_pool = True
-    except ImportError:
-        has_pool = False
+    from ..compute import nodes as CN
     if name:
         if name in nodes:
             return name, nodes[name]
-        if has_pool:
-            return name, config.OLLAMA_URL
-        raise ValueError(f"unknown node {name!r}: LEXFLOW_LLM_NODES names {sorted(nodes) or 'nothing'}")
+        url = CN.url_of(name)                  # an overlay node the pool knows
+        if url:
+            return name, url
+        raise ValueError(f"unknown node {name!r}: LEXFLOW_LLM_NODES names {sorted(nodes) or 'nothing'}"
+                         + (f"; the pool has {', '.join(CN.names())}" if CN.pool_on() and CN.names() else ""))
     host = urlsplit(config.OLLAMA_URL).hostname or config.OLLAMA_URL
     for n, u in nodes.items():
         if u.rstrip("/") == config.OLLAMA_URL.rstrip("/"):
@@ -617,7 +615,10 @@ def asker_at(url: str, model: str | None = None):
         return None
     if model not in names and f"{model}:latest" not in names:
         return None
-    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800), mode="schema", max_tokens=400)
+    from ..compute import nodes as CN
+    pin = CN.name_for_url(url) if CN.pool_on() else None          # with the pool on, the calls stay on this node
+    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=pin), mode="schema",
+                 max_tokens=400)
 
 
 def cells_for(con, states: list[str], places: list[dict] | None, qs: list[dict]) -> list[tuple[dict, str, str]]:

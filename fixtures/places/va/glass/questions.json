@@ -1,0 +1,353 @@
+{
+ "about": "The plain-language questions a prospective glass-studio owner in Virginia asks, each mapped to the state-layer topic and the sections in fixtures/places/va/glass/state-backbone.json that answer it. The answer is state law only; every question also has a local layer (zoning, the fire official, the building department, the health district, BPOL rates) that the place file supplies.",
+ "place": "va",
+ "built": "2026-10-19",
+ "status": "design fixture",
+ "questions": [
+  {
+   "id": "q1",
+   "question": "Do I need a permit for a gas-fired glass furnace, glory hole or kiln?",
+   "topic": [
+    "building_occupancy",
+    "fire",
+    "air"
+   ],
+   "audience": [
+    "studio owners",
+    "artists",
+    "tenants of industrial space"
+   ],
+   "needs": [
+    "mechanical and gas permits from the local building department before installing the equipment, gas piping and exhaust, with a DPOR-licensed installer",
+    "an electrical permit for new circuits",
+    "a fire operational permit if the fire official treats the furnace as an industrial oven, plus an LP-gas permit for any propane",
+    "no DEQ air permit for gas-fired units under 50 million Btu per hour each, but records showing the ratings"
+   ],
+   "sections": [
+    "13VAC5-63-80 (VCC § 108.1, item 1)",
+    "13VAC5-63-80 (VCC § 108.2, item 14.4)",
+    "13VAC5-63-10 (VCC § 101.2, Note 1)",
+    "Va. Code § 54.1-1111(A)",
+    "13VAC5-52-70 (SFPC Table 107.2, Industrial ovens)",
+    "13VAC5-52-70 (SFPC Table 107.2, LP-gas)",
+    "9VAC5-80-1105(B)(1)(a)(4)",
+    "9VAC5-80-1105(A)(4)"
+   ],
+   "state_answer": "Yes to building permits: the USBC requires a permit before installing mechanical systems, fuel supply systems or any regulated equipment; gas-fired appliance work is never exempt. A fire operational permit is at the fire official's discretion under Table 107.2. No DEQ air permit is needed for small gas-fired units.",
+   "local_layer": "permit fees and forms; whether the locality enforces the fire code or the State Fire Marshal does"
+  },
+  {
+   "id": "q2",
+   "question": "Can I open a hot shop in this building, and what occupancy is it?",
+   "topic": [
+    "building_occupancy",
+    "signs_hours_noise"
+   ],
+   "audience": [
+    "studio owners",
+    "landlords",
+    "architects"
+   ],
+   "needs": [
+    "zoning confirmation that an industrial (hot shop), commercial (gallery), classroom and possibly food use are allowed at the address",
+    "a change-of-occupancy permit and a new certificate of occupancy if the building was something else",
+    "an occupancy classification from the building official: factory (F-1) for the hot shop, mercantile for the gallery, business for small classes (under 50), assembly for larger classes or events"
+   ],
+   "sections": [
+    "Va. Code § 15.2-2280(1)",
+    "13VAC5-63-80 (VCC § 108.1, item 2)",
+    "13VAC5-63-430 (VEBC § 202, \"Change of occupancy\")",
+    "13VAC5-63-433.5 (VEBC § 701.1)",
+    "13VAC5-63-210 (VCC § 303.1.1)",
+    "13VAC5-63-210 (VCC § 303.1.2)",
+    "13VAC5-63-160 (VCC § 116.1)"
+   ],
+   "state_answer": "The USBC governs. A change of occupancy needs a permit and a new certificate of occupancy, and the existing-building code limits upgrades to what the new use requires. A class or viewing space for fewer than 50 people may be classified Group B instead of assembly. The occupancy groups themselves come from the IBC, incorporated by reference.",
+   "local_layer": "zoning district and any special use permit; the building official's classification and plan review"
+  },
+  {
+   "id": "q3",
+   "question": "Can I hold glassblowing classes for the public?",
+   "topic": [
+    "building_occupancy",
+    "fire",
+    "people"
+   ],
+   "audience": [
+    "studio owners",
+    "instructors"
+   ],
+   "needs": [
+    "a certificate of occupancy that covers the class use",
+    "a fire operational permit for public demonstrations of hot work, and a place-of-assembly permit if the room is assembly",
+    "an understanding that a liability waiver is not a permit and is not required or validated by state law",
+    "workers' compensation and VEC registration once instructors are employees"
+   ],
+   "sections": [
+    "13VAC5-63-210 (VCC § 303.1.1)",
+    "13VAC5-63-160 (VCC § 116.1)",
+    "13VAC5-52-70 (SFPC Table 107.2, Hot work operations, item 1)",
+    "13VAC5-52-70 (SFPC Table 107.2, Places of assembly)",
+    "13VAC5-52-80 (SFPC § 108.1.3)",
+    "Va. Code § 65.2-101 (\"Employee\", exclusion h)",
+    "Va. Code § 60.2-210(A)(1)"
+   ],
+   "state_answer": "Yes, if the building's occupancy covers it. Small classes (under 50 people, ancillary to the shop) can stay Group B. Public demonstrations of hot work are on the fire code's operational permit list. Nothing in state law requires or governs a waiver.",
+   "local_layer": "zoning (is instruction allowed), the fire official's permit choices, local BPOL class for tuition"
+  },
+  {
+   "id": "q4",
+   "question": "Can minors take a class or work in the hot shop?",
+   "topic": [
+    "people"
+   ],
+   "audience": [
+    "studio owners",
+    "parents",
+    "instructors"
+   ],
+   "needs": [
+    "for students: no state minimum age; the custody-and-endangerment statute still applies to the instructor",
+    "for employees or interns: under 14 cannot be employed; under 18 cannot work in a declared hazardous occupation or be exposed to a recognized serious hazard"
+   ],
+   "sections": [
+    "Va. Code § 40.1-78(A)",
+    "Va. Code § 40.1-100(A)(9)",
+    "Va. Code § 40.1-100.1",
+    "Va. Code § 40.1-103(A)"
+   ],
+   "state_answer": "Students: no statutory age limit was found; the studio and its insurer decide, and § 40.1-103 makes endangering a child in one's custody a felony. Employees: the child-labour chapter bars under-14s from employment and under-18s from hazardous occupations and recognized serious hazards; treat the hot shop as off-limits to employed minors unless DOLI says otherwise.",
+   "local_layer": "none"
+  },
+  {
+   "id": "q5",
+   "question": "Can I serve wine or beer at a sip-and-blow event or on gallery nights?",
+   "topic": [
+    "food_drink",
+    "fire"
+   ],
+   "audience": [
+    "studio owners",
+    "event hosts"
+   ],
+   "needs": [
+    "an ABC licence that fits: annual arts venue event licence (free wine or beer, art-walk nights, 12 days a year), marketplace licence (free wine or beer to customers year-round, two glasses each), banquet licence (sell or give wine and beer for one day per event), or a restaurant wine and beer licence if the studio has a cafe",
+    "a VDH temporary food establishment permit if food is served at the event, applied for 10 days ahead",
+    "a fire open-flame permit where drinks are served in an assembly or dining area"
+   ],
+   "sections": [
+    "Va. Code § 4.1-206.3(D)(2)(f)",
+    "Va. Code § 4.1-100 (\"Arts venue\")",
+    "Va. Code § 4.1-206.3(E)",
+    "Va. Code § 4.1-206.3(D)(1)(a)",
+    "Va. Code § 4.1-231.1(A)(6)(a)(1)",
+    "Va. Code § 4.1-231.1(A)(6)(b)(6)",
+    "Va. Code § 4.1-231.1(A)(7)",
+    "12VAC5-421-10 (\"Temporary food establishment\")",
+    "12VAC5-421-3670(B)",
+    "13VAC5-52-70 (SFPC Table 107.2, Open flames and candles)"
+   ],
+   "state_answer": "Yes, with an ABC licence. If the wine is free and the studio sells or displays art, the arts venue licence ($300 a year, 12 days) or marketplace licence ($1,000 a year) fits; if wine is sold or bundled into a ticket, a per-day banquet licence ($40) or a restaurant wine and beer licence ($450 a year) is the route. Whether a ticket price counts as charging \"indirectly\" is an inference; ask ABC.",
+   "local_layer": "zoning for events; ABC checks local health, building and zoning compliance before licensing"
+  },
+  {
+   "id": "q6",
+   "question": "If I add a cafe or sell snacks, do I need a health permit and do I collect meals tax?",
+   "topic": [
+    "food_drink"
+   ],
+   "audience": [
+    "studio owners",
+    "cafe operators"
+   ],
+   "needs": [
+    "a VDH food establishment permit (applied for 30 days before opening, after the certificate of occupancy; annual; annual inspection) if any food is prepared or served, even free",
+    "no VDH restaurant permit if only sealed packaged goods are sold",
+    "meals tax registration with the locality if it levies one; sealed snacks and bottled drinks are outside the tax, poured drinks and sandwiches inside"
+   ],
+   "sections": [
+    "Va. Code § 35.1-18",
+    "Va. Code § 35.1-1 (\"Restaurant\", item 1)",
+    "Va. Code § 35.1-25(A)(4)",
+    "12VAC5-421-10 (\"Food establishment\" includes)",
+    "12VAC5-421-3660(A)",
+    "12VAC5-421-3660(E)",
+    "12VAC5-421-3670(A)",
+    "Va. Code § 35.1-22",
+    "Va. Code § 58.1-3840(A)",
+    "Va. Code § 58.1-3840(B)",
+    "Va. Code § 58.1-3833(A)(1)"
+   ],
+   "state_answer": "A cafe, or any serving of prepared food or drink to the public, is a restaurant under Title 35.1 and a food establishment under 12VAC5-421: it needs the VDH permit and the annual inspection. The meals tax is a local option within state limits; it reaches the cafe's food and poured drinks, not the glass.",
+   "local_layer": "the health district's plan review and fees; whether the locality levies a meals tax and at what rate"
+  },
+  {
+   "id": "q7",
+   "question": "Which business licence category am I: manufacturer, retailer or service?",
+   "topic": [
+    "formation_registration"
+   ],
+   "audience": [
+    "studio owners",
+    "accountants"
+   ],
+   "needs": [
+    "no BPOL tax on wholesale sales of glass made at the studio (the manufacturer exclusion)",
+    "the retail class (cap 20 cents per $100) for gallery sales to the public",
+    "the services class (cap 36 cents per $100) for classes, workshops and events, unless the locality classifies otherwise",
+    "an appeal to the local assessing official and then the Tax Commissioner if the classification is wrong"
+   ],
+   "sections": [
+    "Va. Code § 58.1-3703(C)(4)",
+    "Va. Code § 58.1-3706(A)",
+    "Va. Code § 58.1-3706(A)(2)",
+    "Va. Code § 58.1-3706(A)(4)",
+    "Va. Code § 58.1-3700.1 (\"Definite place of business\")",
+    "Va. Code § 58.1-3703.1(A)(2)(a)",
+    "Va. Code § 58.1-3703.1(A)(6)(a)"
+   ],
+   "state_answer": "State law excludes a manufacturer's wholesale sales at the place of manufacture from BPOL, caps the retail class at 20 cents and the services class at 36 cents per $100 of gross receipts, and sets a gross-receipts floor below which only a fee applies. How a mixed studio is split between classes is the locality's call, appealable to the Tax Commissioner within 90 days.",
+   "local_layer": "whether the locality levies BPOL, its rates, fee and threshold, and how it classifies a studio"
+  },
+  {
+   "id": "q8",
+   "question": "Do I charge sales tax on the glass I sell, and can I buy my furnace and gas tax-free as a manufacturer?",
+   "topic": [
+    "formation_registration"
+   ],
+   "audience": [
+    "studio owners",
+    "accountants"
+   ],
+   "needs": [
+    "a sales tax certificate of registration from Virginia Tax for each place of business before selling; returns by the 20th even with no sales",
+    "the manufacturing exemption on machinery, tools, fuel and supplies used directly in making glass for sale, if the studio is industrial in nature, claimed with an exemption certificate",
+    "a ruling from Virginia Tax if most receipts come from classes rather than product"
+   ],
+   "sections": [
+    "Va. Code § 58.1-603",
+    "Va. Code § 58.1-612(B)(1)",
+    "Va. Code § 58.1-613(A)",
+    "Va. Code § 58.1-615(A)",
+    "Va. Code § 58.1-609.3(2)",
+    "Va. Code § 58.1-602 (\"Used directly\")",
+    "Va. Code § 58.1-602 (\"industrial in nature\")",
+    "Va. Code § 58.1-623(A)"
+   ],
+   "state_answer": "Yes, retail glass sales are taxable and the studio must register as a dealer. Purchases of machinery, fuel and supplies used directly in manufacturing glass for sale are exempt if the business is industrial in nature; size does not disqualify it, but a studio that is mostly a school may not qualify. Not settled by any text read: ask Virginia Tax.",
+   "local_layer": "the local sales tax rate component"
+  },
+  {
+   "id": "q9",
+   "question": "How do I set up the business: LLC, name, registrations?",
+   "topic": [
+    "formation_registration",
+    "people"
+   ],
+   "audience": [
+    "studio owners"
+   ],
+   "needs": [
+    "SCC articles of organization ($100) and the $50 annual fee, or a corporation",
+    "an SCC assumed-name certificate if trading under a studio name; the local licence cannot issue without it",
+    "Virginia Tax registration (sales tax; withholding once there are employees)",
+    "VEC registration and workers' compensation insurance once the employee thresholds are met",
+    "the local BPOL licence before opening"
+   ],
+   "sections": [
+    "Va. Code § 13.1-1011(A)",
+    "Va. Code § 13.1-1005(1)(a)",
+    "Va. Code § 13.1-1062(A)",
+    "Va. Code § 59.1-69(B)",
+    "Va. Code § 59.1-74(B)",
+    "Va. Code § 58.1-613(A)",
+    "Va. Code § 60.2-210(A)(1)",
+    "Va. Code § 65.2-800(A)",
+    "Va. Code § 58.1-3703.1(A)(2)(a)"
+   ],
+   "state_answer": "Form the entity and file any assumed name with the SCC; register with Virginia Tax; register with VEC when wages reach $1,500 in a quarter or an employee is on in 20 weeks; insure for workers' compensation at three or more regular employees; then apply for the local licence before beginning business.",
+   "local_layer": "BPOL application and the office that handles it"
+  },
+  {
+   "id": "q10",
+   "question": "What fire permits does a hot shop need, and who issues them?",
+   "topic": [
+    "fire"
+   ],
+   "audience": [
+    "studio owners",
+    "lampworkers"
+   ],
+   "needs": [
+    "operational permits the fire official may require: hot work (fixed equipment and public demonstrations, or a studio Hot Work Program), industrial ovens, compressed gases above the thresholds (oxygen 504 cubic feet, flammable gas 200 cubic feet), LP-gas storage and use, Class I liquids over 5 gallons indoors, open flames in dining or assembly areas, places of assembly",
+    "one consolidated permit for the location",
+    "the local fire official where the locality enforces the code; otherwise the State Fire Marshal, with state fees"
+   ],
+   "sections": [
+    "Va. Code § 27-98",
+    "Va. Code § 27-30",
+    "13VAC5-52-70 (SFPC § 107.2)",
+    "13VAC5-52-70 (SFPC Table 107.2, Hot work operations)",
+    "13VAC5-52-70 (SFPC Table 107.2, Hot work operations, item 6)",
+    "13VAC5-52-70 (SFPC Table 107.2, Industrial ovens)",
+    "13VAC5-52-70 (SFPC Table 107.2, Compressed gas)",
+    "13VAC5-52-70 (SFPC Table 107.2, LP-gas)",
+    "13VAC5-52-70 (SFPC Table 107.2, Flammable and combustible liquids, item 2)",
+    "13VAC5-52-80 (SFPC § 108.1.3)",
+    "13VAC5-52-70 (SFPC § 107.12, item 2.1)"
+   ],
+   "state_answer": "The Statewide Fire Prevention Code lists the permits; the fire official decides which to require, inspects before issuing, and may consolidate them. Permits lapse after six months of inactivity and do not transfer to a new owner. Localities that enforce set their own fees; where the State Fire Marshal enforces, the state fee schedule applies.",
+   "local_layer": "whether the locality enforces the SFPC, its permit choices and fee schedule"
+  },
+  {
+   "id": "q11",
+   "question": "What do I do with cold-shop slurry, glass dust and cullet?",
+   "topic": [
+    "environmental_wastewater"
+   ],
+   "audience": [
+    "studio owners",
+    "cold workers"
+   ],
+   "needs": [
+    "a check of whether the waste is hazardous under 40 CFR Part 261 (lead crystal and metal-coloured glass can fail the toxicity characteristic)",
+    "written permission from the sewer utility before draining slurry to the sanitary sewer; settling first",
+    "never a discharge to a storm drain, stream or the ground"
+   ],
+   "sections": [
+    "9VAC20-60-261(A)",
+    "Va. Code § 10.1-1402(7)",
+    "9VAC25-31-50(A)(1)",
+    "9VAC25-31-730(A)",
+    "9VAC25-31-730(B)(1)"
+   ],
+   "state_answer": "Virginia adopts the federal hazardous waste identification rules by reference and bans discharges to state waters without a permit. Sewer discharges are indirect discharges governed through the local treatment works. No Virginia section names glass slurry; the answer is an application of the general rules.",
+   "local_layer": "the sewer-use ordinance and solid waste rules"
+  },
+  {
+   "id": "q12",
+   "question": "Can I put up a sign, run the furnace overnight and stay open late?",
+   "topic": [
+    "signs_hours_noise"
+   ],
+   "audience": [
+    "studio owners"
+   ],
+   "needs": [
+    "a local sign permit under the zoning ordinance (and a building permit unless the sign is exempt under the USBC)",
+    "compliance with the local noise ordinance for 24-hour furnace blowers and burners",
+    "any hours conditions attached to a special use permit"
+   ],
+   "sections": [
+    "Va. Code § 15.2-2280(2)",
+    "Va. Code § 15.2-2286(A)(3)",
+    "Va. Code § 15.2-1200",
+    "Va. Code § 15.2-1102",
+    "Va. Code § 15.2-919",
+    "13VAC5-63-80 (VCC § 108.2, item 9)"
+   ],
+   "state_answer": "State law only enables: zoning regulates signs and uses, special use permits may carry conditions such as hours, and noise ordinances rest on the localities' general powers (the former specific noise section was repealed in 2022). The USBC alone decides whether a sign needs a building permit.",
+   "local_layer": "everything else"
+  }
+ ]
+}

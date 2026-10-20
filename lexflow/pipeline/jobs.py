@@ -24,6 +24,19 @@ from ..store import db
 EXCLUSIVE = {"build", "quickstart", "models", "ask", "ontology", "coverage"}   # these share Ollama: one at a time
 INDEXING = {"index", "ask"}                               # these build the same per-state search index files
 GROUPS = (EXCLUSIVE, INDEXING)                            # two jobs in one group never run at once
+PULLS = {"models"}                                        # with a pool of several nodes, only pulls stay exclusive
+
+
+def groups() -> tuple[set, ...]:
+    """The one-heavy-job rule: with the pool on and more than one node, the leases limit each node, so only
+    ``models`` (a download) stays exclusive; otherwise today's GROUPS."""
+    try:
+        from ..compute import pool
+        if pool.node_count() > 1:
+            return (PULLS, INDEXING)
+    except Exception:  # noqa: BLE001 - compute.db unreadable: keep the safe rule
+        pass
+    return GROUPS
 # which runner started a job: the container's hostname unless set (process ids are only meaningful inside one
 # container); LEXFLOW_RUNNER_ID keeps it across a container recreate and must be unique to each instance
 RUNNER_ID = os.environ.get("LEXFLOW_RUNNER_ID", "").strip() or socket.gethostname()
@@ -39,17 +52,18 @@ def enqueue(con, step: str, args: dict | None = None) -> int:
 
 
 def _clash(a: str, b: str) -> bool:
-    return any(a in g and b in g for g in GROUPS)
+    return any(a in g and b in g for g in groups())
 
 
 def claim(con, job_id: int) -> bool:
     """Take a queued job for this runner.  One atomic statement, so two instances on one database never both
     start it, never start it beside a running job of one of its ``GROUPS``, and never run over ``MAX_JOBS``."""
-    clash = " OR ".join("(jobs.step IN ({0}) AND r.step IN ({0}))".format(",".join("?" * len(g))) for g in GROUPS)
+    gs = groups()
+    clash = " OR ".join("(jobs.step IN ({0}) AND r.step IN ({0}))".format(",".join("?" * len(g))) for g in gs)
     n = con.execute("UPDATE jobs SET status='running', runner=?, started_at=?, message='Starting' "
                     "WHERE id=? AND status='queued' AND (SELECT count(*) FROM jobs WHERE status='running') < ? "
                     f"AND NOT EXISTS (SELECT 1 FROM jobs r WHERE r.status='running' AND ({clash}))",
-                    (RUNNER_ID, db.now(), job_id, config.MAX_JOBS, *(s for g in GROUPS for s in (*g, *g)))).rowcount
+                    (RUNNER_ID, db.now(), job_id, config.MAX_JOBS, *(s for g in gs for s in (*g, *g)))).rowcount
     con.commit()
     return n == 1
 
@@ -176,10 +190,10 @@ class Runner(threading.Thread):
             cmd = [sys.executable, "-m", "lexflow", "run", job["step"], "--job", str(job["id"]),
                    "--args", job["args"] or "{}"]
             kw = {"start_new_session": True} if os.name == "posix" else {}
+            env = {**os.environ, "PYTHONUNBUFFERED": "1", **job_env(job["id"], job["step"], job["args"])}
             try:
                 with open(log_path(job["id"]), "ab") as logf:
-                    p = subprocess.Popen(cmd, stdout=logf, stderr=subprocess.STDOUT, cwd=str(config.ROOT),
-                                         env={**os.environ, "PYTHONUNBUFFERED": "1"}, **kw)
+                    p = subprocess.Popen(cmd, stdout=logf, stderr=subprocess.STDOUT, cwd=str(config.ROOT), env=env, **kw)
             except Exception as e:  # noqa: BLE001 - e.g. an argument list too long: fail the job, not the runner
                 con.execute("UPDATE jobs SET status='failed', finished_at=?, message=? WHERE id=?",
                             (db.now(), f"Could not start: {e}"[:500], job["id"]))
@@ -191,6 +205,16 @@ class Runner(threading.Thread):
                         (p.pid, db.now(), job["id"]))
             con.commit()
             running.append(job)
+
+
+def job_env(job_id: int, step: str, args: str | dict | None) -> dict:
+    """What a job's process gets in its environment: its id and step (the compute pool's calls log records them)
+    and, for a job with ``args.node``, ``LEXFLOW_LLM_ONLY`` so every model call stays on that node."""
+    a = json.loads(args) if isinstance(args, str) and args else (args or {})
+    env = {"LEXFLOW_JOB_ID": str(job_id), "LEXFLOW_JOB_STEP": step}
+    if isinstance(a, dict) and a.get("node"):
+        env["LEXFLOW_LLM_ONLY"] = str(a["node"])
+    return env
 
 
 class JobContext:

@@ -21,6 +21,7 @@ reference from the same state (a new state has none).
 from __future__ import annotations
 
 import hashlib
+import threading
 import json
 import math
 import re
@@ -461,6 +462,12 @@ class Embedder:
         self.model = model or config.EMBED_MODEL
         self.name = self.model
         self.base_url = (base_url or config.OLLAMA_URL).rstrip("/")
+        self.node: str | None = None       # with the pool on, embeddings always go to the one embed node
+        if base_url is None:
+            from ..compute import nodes as CN
+            if CN.pool_on() or config.EMBED_URL:
+                self.node, self.base_url = CN.embed_node()
+        self.lock = threading.Lock()       # threads that fan out share one cache file: one writer at a time
         self.path = config.DATA_DIR / "cache" / f"embed-{re.sub(r'[^a-z0-9]+', '-', self.model.lower())}.jsonl"
         self.cache: dict[str, list[float]] = {}
         if self.path.exists():
@@ -475,24 +482,31 @@ class Embedder:
     def key(text: str) -> str:
         return hashlib.sha1(text.encode("utf-8")).hexdigest()[:20]
 
+    def _post(self, body: dict):
+        """Through the pool (pinned to the embed node, logged in its calls table) when it is on; else direct."""
+        if self.node:
+            from ..compute import pool
+            r, _ = pool.call("/api/embed", body, model=self.model, kind="embed", timeout=600, pin=self.node)
+            return r
+        return requests.post(f"{self.base_url}/api/embed", json=body, timeout=600)
+
     def __call__(self, texts: list[str], prefix: str = "classification"):
         import numpy as np
         prefixed = [f"{prefix}: {' '.join(t.split()[:220])}" for t in texts]
-        missing = list(dict.fromkeys(t for t in prefixed if self.key(t) not in self.cache))
-        if missing:
-            self.path.parent.mkdir(parents=True, exist_ok=True)
-            with self.path.open("a", encoding="utf-8") as f:
-                for i in range(0, len(missing), 32):
-                    batch = missing[i:i + 32]
-                    # texts are cut to ~300 tokens: a 512-token context embeds twice as fast as the default
-                    r = requests.post(f"{self.base_url}/api/embed", json={"model": self.model, "input": batch,
-                                                                          "options": {"num_ctx": 512}},
-                                      timeout=600)
-                    r.raise_for_status()
-                    for t, v in zip(batch, r.json()["embeddings"]):
-                        k = self.key(t)
-                        self.cache[k] = v
-                        f.write(json.dumps([k, [round(x, 5) for x in v]]) + "\n")
+        with self.lock:
+            missing = list(dict.fromkeys(t for t in prefixed if self.key(t) not in self.cache))
+            if missing:
+                self.path.parent.mkdir(parents=True, exist_ok=True)
+                with self.path.open("a", encoding="utf-8") as f:
+                    for i in range(0, len(missing), 32):
+                        batch = missing[i:i + 32]
+                        # texts are cut to ~300 tokens: a 512-token context embeds twice as fast as the default
+                        r = self._post({"model": self.model, "input": batch, "options": {"num_ctx": 512}})
+                        r.raise_for_status()
+                        for t, v in zip(batch, r.json()["embeddings"]):
+                            k = self.key(t)
+                            self.cache[k] = v
+                            f.write(json.dumps([k, [round(x, 5) for x in v]]) + "\n")
         m = np.array([self.cache[self.key(t)] for t in prefixed], dtype="float32")
         return m / np.maximum(np.linalg.norm(m, axis=1, keepdims=True), 1e-9)
 

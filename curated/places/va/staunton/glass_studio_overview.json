@@ -1,0 +1,741 @@
+{
+ "place": "va:staunton",
+ "gov_id": "47213000100000",
+ "process": "glass_studio_overview",
+ "title": "Open a glass studio in Staunton: the master process and its decision points",
+ "question": "I want to open a hot glass studio in Staunton (gas furnace, glory hole, kilns, torches, oxygen and propane, cold-working, public classes, maybe a small cafe or sip-and-blow events). Which city, state and health offices do I have to go through, in what order, and which choices change the path?",
+ "category": "business",
+ "kind": "process",
+ "audience": [
+  "businesses",
+  "artists and makers",
+  "property owners"
+ ],
+ "office": "Community Development Department, Planning & Zoning Division (zoning and historic review) and Building Services Division (building, trade and occupancy permits); Staunton Fire & Rescue, Fire Marshal's Office (operational permits and inspections); Commissioner of the Revenue (business license and business property); Virginia Department of Health, Central Shenandoah Health District (food); Virginia ABC (alcohol); the Department of Economic Development is the office to ask about sites and incentives",
+ "summary": "A hot glass studio is three businesses at once in the eyes of the City of Staunton: a small manufacturing shop (gas-fired furnace, glory hole, kilns and torches), a retail gallery and classroom open to the public, and, if you add a cafe or sip-and-blow events, a restaurant that may serve alcohol. The path is: (1) pick a site and confirm with Planning & Zoning that the use is allowed there, because the B-2 general business district allows processing only when it is incidental to retail on the premises and small, the I-1 light industrial district allows manufacturing from glass but limits retail, and any of the five downtown historic districts adds a Certificate of Appropriateness for exterior work; (2) get the building, mechanical, gas and electrical permits and a certificate of occupancy for the new use from Building Services (apply in the online portal; commercial review is estimated at fifteen business days); (3) settle the Fire Marshal's operational permits for LP-gas, oxygen and other compressed gases, hot work and any assembly use before opening; (4) license the business with the Commissioner of the Revenue (minimum $30, retail at $0.20 per $100 of gross receipts above $50,000) and file the business tangible property return each May 1; (5) if you serve food or drink, add the Health District plan review and food establishment permit ($40 each), the 7% meals tax and a Virginia ABC license; (6) line up water and sewer, natural gas or propane, and check DEQ's air permit exemption for the furnace. Talk first to Planning & Zoning (540.332.3862); the Department of Economic Development (540.332.3869) is the office for sites, the Enterprise Zone and incentives. The sub-processes are modelled in the glass_studio_* files.",
+ "legal_basis": [
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "The zoning administrator shall have all necessary authority on behalf of the governing body to administer and enforce the zoning ordinance.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2286(A)(4)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "quote": "The zoning administrator shall respond within 90 days of a request for a decision or determination on zoning matters within the scope of his authority unless the requester has agreed to a longer period.",
+   "role": "deadline"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 36-105(A)",
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "quote": "Enforcement of the provisions of the Building Code for construction and rehabilitation shall be the responsibility of the local building department.",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-63-160 (USBC § 116.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "quote": "Prior to occupancy or change of occupancy of a building or structure, a certificate of occupancy shall be obtained in accordance with this section.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 27-98",
+   "url": "https://law.lis.virginia.gov/vacode/27-98/",
+   "quote": "Any local government may enforce the Fire Prevention Code in its entirety or with respect only to those provisions of the Fire Prevention Code relating to open burning, fire lanes, fireworks, and hazardous materials.",
+   "role": "authority"
+  },
+  {
+   "level": "regulation",
+   "citation": "13VAC5-52-70 (SFPC § 107.1)",
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "quote": "The fire official may require notification prior to (i) activities involving the handling, storage, or use of substances, materials, or devices regulated by the SFPC; (ii) conducting processes that produce conditions hazardous to life or property; or (iii) establishing a place of assembly.",
+   "role": "procedure"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3700(A)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "quote": "it shall be unlawful to engage in such business, employment or profession without first obtaining the required license.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 58.1-3703.1(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "quote": "A person engaged in two or more businesses or professions carried on at the same place of business may elect to obtain one license for all such businesses and professions if all of the following criteria are satisfied",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 35.1-18",
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "quote": "No person shall own, establish, conduct, maintain, manage, or operate any hotel, restaurant, summer camp, or campground in this Commonwealth unless the hotel, restaurant, summer camp, or campground is licensed as provided in this chapter.",
+   "role": "authority"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 4.1-230(A)",
+   "url": "https://law.lis.virginia.gov/vacode/4.1-230/",
+   "quote": "Applicants for retail licenses for establishments that serve food or are otherwise required to obtain a food establishment permit from the Department of Health or an inspection by the Department of Agriculture and Consumer Services shall provide a copy of such permit, proof of inspection, proof of a pending application for such permit, or proof of a pending request for such inspection.",
+   "role": "eligibility"
+  },
+  {
+   "level": "state",
+   "citation": "Va. Code § 15.2-2306(A)(1)",
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2306/",
+   "quote": "The ordinance may include a provision that no building or structure, including signs, shall be erected, reconstructed, altered, or restored within any such district unless approved by the review board or, on appeal, by the governing body of the locality as being architecturally compatible with the historic landmarks, buildings, or structures therein.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.15.010 (establishment of zoning districts; eCode360, read but not quoted: 17 district classifications including B-1, B-2, B-3, B-4, I-1, I-2, I-3 and H-1)",
+   "url": "https://ecode360.com/49104266",
+   "quote": null,
+   "role": "definition"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.60.020(13) (B-2 permitted uses; eCode360, read but not quoted: processing and manufacturing not objectionable for smoke, odor, dust or noise, only when incidental to a retail business on the premises and with no more than 10 persons employed in it)",
+   "url": "https://ecode360.com/49104859",
+   "quote": null,
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.60.070(5) (B-2 uses permitted on review; eCode360, read but not quoted: processing and manufacturing establishments not objectionable for smoke, odor, dust or noise when conducted entirely inside a completely enclosed building with no outside storage)",
+   "url": "https://ecode360.com/49104859",
+   "quote": null,
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.75.020(1) and (5)(b) (I-1 permitted uses; eCode360, read but not quoted: manufacture or assembly of articles from previously prepared materials including glass, inside a completely enclosed building; retail or service only when it serves industrial plants or their employees)",
+   "url": "https://ecode360.com/49105042",
+   "quote": null,
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.85.050(1) (H-1 historic preservation district: certificate of appropriateness required for any material change in appearance, whether or not a building permit is required; eCode360, read but not quoted)",
+   "url": "https://ecode360.com/49105370",
+   "quote": null,
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 18.205.010 (certificate of occupancy required for a new building or change in occupancy; eCode360, read but not quoted)",
+   "url": "https://ecode360.com/49106795",
+   "quote": null,
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "Staunton City Code § 15.25.055 (fire code permit fees; eCode360, read but not quoted)",
+   "url": "https://ecode360.com/49103879",
+   "quote": null,
+   "role": "fee"
+  },
+  {
+   "level": "local",
+   "citation": "City of Staunton, Start a Business page (occupancy permit)",
+   "url": "https://www.ci.staunton.va.us/business/start-a-business",
+   "quote": "You may be required to have an occupancy permit issued by the Zoning Administrator.",
+   "role": "procedure"
+  },
+  {
+   "level": "local",
+   "citation": "City of Staunton, Start a Business page (Staunton Enterprise Zone)",
+   "url": "https://www.ci.staunton.va.us/business/start-a-business",
+   "quote": "Staunton has a designated Virginia Enterprise Zone which encompasses most of the central business district and the West Beverley Street corridor.",
+   "role": "eligibility"
+  },
+  {
+   "level": "local",
+   "citation": "City of Staunton, Planning & Zoning Division page",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "quote": "Planning & Zoning is responsible for the review and processing of residential and commercial development applications within the City, including re-zonings, special use permits, comprehensive plan amendments, zoning approvals, zoning appeals, and zoning variances.",
+   "role": "authority"
+  },
+  {
+   "level": "local",
+   "citation": "City of Staunton, Community Development, Apply Online page",
+   "url": "https://www.ci.staunton.va.us/departments/community-development/apply-online",
+   "quote": "If you already have an online account used for Business License or Personal Property Tax, you may also use that account for the online portal",
+   "role": "procedure"
+  }
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "step": "Decide what the studio is: industrial shop, retail and teaching studio, or both",
+   "who": "The studio owner",
+   "how": "Write down the equipment (gas furnace, glory hole, annealing and casting kilns, torches, oxygen and propane cylinders, cold-working wheels and saws, dust and fume exhaust), the public uses (gallery, classes, sip-and-blow events) and whether you will sell food or drink. The answers set the zoning district you can use, the building code occupancy group the building must meet, which Fire Marshal permits apply, and whether the health department and ABC are involved. In Staunton's zoning code a glass studio is not a named use: the business districts list retail, restaurants, schools and small retail-incidental processing, while the I-1 light industrial district lists manufacturing from previously prepared materials such as glass but allows retail only when it serves industrial plants. The Zoning Administrator decides which listed use your plan is closest to.",
+   "deadline": "Before you sign a lease or buy a building",
+   "fee": null,
+   "form": null,
+   "url": "https://ecode360.com/49104063",
+   "quote": "Planning & Zoning is responsible for the review and processing of residential and commercial development applications within the City, including re-zonings, special use permits, comprehensive plan amendments, zoning approvals, zoning appeals, and zoning variances.",
+   "source": "official-page"
+  },
+  {
+   "id": "s2",
+   "step": "Talk to Planning & Zoning first, then to the Department of Economic Development",
+   "who": "Studio owner; Community Development, Planning & Zoning Division (540.332.3862); Department of Economic Development (540.332.3869)",
+   "how": "Call or visit Planning & Zoning on the third floor of City Hall with the address or candidate addresses and the equipment and use list from step 1. Ask three things: whether the use is permitted by right, permitted on review (a special use permit through the Planning Commission and City Council) or not allowed in that district; whether the property is in one of the five historic districts or an entrance corridor; and whether a zoning permit and a certificate of occupancy for a change of use will be needed. For a written answer, request a Zoning Verification Letter (city estimate ten business days; $75 on the fee schedule as a Zoning Official Determination Letter). The Department of Economic Development, also on the third floor, is the office for available buildings and sites, the Enterprise Zone and other incentives (see glass_studio_zoning_use and the city's Economic Development site).",
+   "deadline": null,
+   "fee": "Zoning Official Determination Letter $75.00 (Planning & Zoning fee schedule); the conversation itself is free",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "quote": "Estimated Processing Time: Ten (10) business days.",
+   "source": "official-page"
+  },
+  {
+   "id": "s3",
+   "step": "Pick the site with the zoning answer in hand (decision point: downtown historic district or not)",
+   "who": "Studio owner; Planning & Zoning",
+   "how": "Downtown Staunton lies largely in the Beverley and other historic districts, where the H-1 overlay requires a Certificate of Appropriateness from the Historic Preservation Commission for any material change to the exterior that is visible from a public street (new vents, flues, exhaust stacks, signs, doors, storefront changes), whether or not a building permit is needed; administrative staff review covers signs and screening of mechanical equipment, and other work goes to the Commission, which meets on the fourth Tuesday with a first-Tuesday agenda deadline. The Entrance Corridor Overlay District adds design guidelines on thirteen corridors. Outside those districts the exterior review falls away. If the only district that fits the furnace work is I-1, expect limits on the retail and class side; if the fit is B-2 with manufacturing incidental to retail, expect the city to look at the share of the floor and staff devoted to production. Where the use is listed as permitted on review, budget about three months and $250 for the special use permit.",
+   "deadline": null,
+   "fee": "Special use permit $250.00 if needed",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division/historic-preservation-districts",
+   "quote": "The five historic districts are Gospel Hill, Beverley, The Wharf, Stuart Addition, and Newtown.",
+   "source": "official-page"
+  },
+  {
+   "id": "s4",
+   "step": "Check whether a building is in the Staunton Enterprise Zone and ask Economic Development about incentives",
+   "who": "Studio owner; Department of Economic Development (office: City Hall, 3rd floor, 116 W. Beverley St., 540.332.3869)",
+   "how": "The city's Start a Business page says the Virginia Enterprise Zone covers most of the central business district and the West Beverley Street corridor and provides local and state tax and fee incentives to new or expanding business; the Economic Development site also names the West End Opportunity Zone and C-PACE clean-energy financing. The Plan Submittal Form for site plans asks whether the property is in the Enterprise Zone. Program rules and applications are not published on the pages read; the office asks businesses to contact it.",
+   "deadline": null,
+   "fee": null,
+   "form": "f7",
+   "url": "https://www.stauntonbusiness.com/business-tools/incentives-zones/",
+   "quote": "Staunton Economic Development provides powerful financial incentives specifically designed to aid new business establishment and accelerate existing business expansion.",
+   "source": "official-page"
+  },
+  {
+   "id": "s5",
+   "step": "Get the zoning approvals (zoning permit, special use permit if needed, Certificate of Appropriateness if in a historic district)",
+   "who": "Studio owner; Planning & Zoning Division; Planning Commission and City Council (special use permit); Historic Preservation Commission",
+   "how": "Modelled in glass_studio_zoning_use. In short: a zoning permit ($50) or zoning approval for the use; a special use permit ($250, public hearings before the Planning Commission and City Council, about three months) where the use is permitted on review; a Certificate of Appropriateness for exterior changes in a historic district (staff review about ten business days for signs and mechanical screening, otherwise the Commission's monthly meeting); and a sign permit (outside historic districts) or Certificate of Appropriateness for signage (inside them). Since May 5, 2026 these are applied for in the city's online permitting portal.",
+   "deadline": "Before the building permit; the city will not issue a building permit until zoning and, in a historic district, the Certificate of Appropriateness are in place",
+   "fee": "Zoning permit $50.00; special use permit $250.00; sign permit per fee schedule (see glass_studio_zoning_use)",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/community-development/apply-online",
+   "quote": "Starting on May 5th. All new permit applications will be entered into the Online Portal .",
+   "source": "official-page"
+  },
+  {
+   "id": "s6",
+   "step": "Get the building, mechanical, fuel-gas and electrical permits and the certificate of occupancy",
+   "who": "Studio owner, architect or engineer, licensed contractors; Community Development, Building Services Division (540.332.3862, permits@ci.staunton.va.us)",
+   "how": "Modelled in glass_studio_building_mechanical. A change of use to a shop with gas-fired furnaces, kilns and compressed gases is reviewed under the Virginia Construction Code; the building permit application asks for the use group and occupant load, and the trade permit application asks for the type of gas (natural gas, above-ground or in-ground LP), the number of fuel tanks and any commercial hoods. The city estimates fifteen business days for commercial review. Fees are set in City Code § 15.10.120 (for example commercial alteration $0.18 per square foot, $95 minimum; commercial trade permits $0.05 per square foot for alterations, $95 minimum; certificate of occupancy for an existing building $95). Real estate taxes on the property must be paid first.",
+   "deadline": "Before any construction, equipment installation or occupancy",
+   "fee": "Building and trade permit fees under City Code § 15.10.120 (amounts in glass_studio_building_mechanical)",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/building-services-divison",
+   "quote": "Separate permits are required for electrical, plumbing, mechanical, and gas.",
+   "source": "official-page"
+  },
+  {
+   "id": "s7",
+   "step": "Settle the Fire Marshal's operational permits and inspection before you fire up",
+   "who": "Studio owner; Staunton Fire & Rescue, Fire Marshal's Office (540.332.3720, firemarshals@ci.staunton.va.us)",
+   "how": "Modelled in glass_studio_fire_permits. The city's fire code fee schedule lists an LP-gas permit ($50 a year), a hazardous materials permit ($50 a year) and flammable and combustible liquids permits; the state Fire Prevention Code also lets the fire official require permits for compressed gases above set amounts (oxygen above 504 cubic feet, flammable gases above 200 cubic feet), hot work, industrial ovens, open flames in assembly or dining areas and places of assembly. Staunton's schedule does not price those, and the city's Fire Prevention Activity Application is for other activities not listed but require a permit, so ask the Fire Marshal which apply. Expect an inspection before the permit and at least yearly after.",
+   "deadline": "Before storing propane, oxygen or flammable gases on site and before opening to the public",
+   "fee": "LP-gas $50.00 a year; hazardous materials $50.00 a year; others as the Fire Marshal sets",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/staunton-fire-rescue/fire-permits-inspections",
+   "quote": "The Fire Marshal’s Office issues the following permits, and permit fees are applied as specified in the city code.",
+   "source": "official-page"
+  },
+  {
+   "id": "s8",
+   "step": "License the business with the Commissioner of the Revenue and register your equipment",
+   "who": "Studio owner; Commissioner of the Revenue (540-332-3829, revenue@ci.staunton.va.us)",
+   "how": "Modelled in glass_studio_business_license. One Staunton business license covers the studio's lines of business at one location if you elect it and accept the highest applicable rate; the license is $30 for gross receipts up to $50,000 and then $0.20 per $100 for retail or $0.36 per $100 for services such as classes. File within 30 days of opening (state law says before). Furnaces, kilns, tools and fixtures go on the business tangible personal property return by May 1 each year; machinery and tools used in manufacturing are a separate class taxed at $1.24 per $100. Also register any trade name with the State Corporation Commission and for Virginia sales tax.",
+   "deadline": "Business license within 30 days of starting business (city); business property return by May 1",
+   "fee": "Business license minimum $30.00; then by class and gross receipts",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/business/start-a-business",
+   "quote": "To avoid penalties and interest, you are required to file an application within 30 days of when you begin to conduct business.",
+   "source": "official-page"
+  },
+  {
+   "id": "s9",
+   "step": "Decision point: cafe or not, alcohol or not, public events or not",
+   "who": "Studio owner; Virginia Department of Health, Central Shenandoah Health District (540-332-7830); Virginia ABC; Commissioner of the Revenue; Parks & Recreation (special events)",
+   "how": "Modelled in glass_studio_food_and_events. Selling prepared food or drinks makes the studio a restaurant under state law: health department plan review ($40) and a food establishment permit ($40, apply at least 30 days before opening), the 7% city meals tax with monthly returns, and a Virginia ABC retail license (wine and beer on- and off-premises $450 state fee a year, local tax up to $150, 60 to 90 days of processing) if you pour. An ABC retail license cannot be used to sell or serve until the health permit issues. One-off sip-and-blow nights without a restaurant can run on ABC banquet licenses ($40 a day); pouring free wine at an art walk needs an annual arts venue event license ($300, up to 12 days a year). Food at an outdoor event needs a temporary food establishment permit ($40, ten calendar days ahead), and an event on city streets or parks needs the city's special event application 60 days ahead.",
+   "deadline": null,
+   "fee": "See glass_studio_food_and_events",
+   "form": null,
+   "url": "https://www.vdh.virginia.gov/central-shenandoah/environmental-health/",
+   "quote": "Once a Plan Review is approved, submit a completed Foodservice Permit Application, along with a $40.00 application fee, at least 30 days prior to opening for approval.",
+   "source": "official-page"
+  },
+  {
+   "id": "s10",
+   "step": "Line up utilities and environmental approvals",
+   "who": "Studio owner; Public Works (water and sewer, 540.332.3892); Engineering Division (new connections, 540.332.3858); Columbia Gas of Virginia or a propane supplier; Environmental Programs Division (land disturbance); DEQ Valley Regional Office (air)",
+   "how": "Modelled in glass_studio_utilities_and_environment. A new or larger water meter needs the Water and Sewer Connection and Facility Fee application before the building permit (fees are set by meter size: for a 3/4-inch meter the 2025-26 schedule shows $5,250 water and $10,280 sewer facilities fees plus connection fees); cold-working water goes to the city sewer, whose pretreatment chapter (City Code ch. 13.55) may require a wastewater survey. Natural gas is from Columbia Gas of Virginia (new business line 1-800-440-6111; a gas availability form gets a call back within two business days); propane is a Fire Marshal matter. Site work over 10,000 square feet needs a land disturbing permit ($3,000 plus a $2,500-per-acre bond). A gas-fired glass furnace and glory hole are fuel-burning equipment; DEQ's minor new source review exempts gaseous-fuel units under 50,000,000 Btu per hour, but the owner must keep records showing the exemption applies and should check with the Valley Regional Office in Harrisonburg.",
+   "deadline": "Water and sewer application before the building permit; gas service before the mechanical final",
+   "fee": "See glass_studio_utilities_and_environment",
+   "form": null,
+   "url": "https://www.ci.staunton.va.us/departments/public-works/utilities",
+   "quote": "The City of Staunton provides water, sewer, trash and recycling services. All other utilities are provided by private companies (listed below).",
+   "source": "official-page"
+  },
+  {
+   "id": "s11",
+   "step": "Open: final inspections, certificate of occupancy, fire inspection, health inspection",
+   "who": "Building Services inspectors; Fire Marshal's Office; Health District environmental health specialist; studio owner",
+   "how": "Request the building, mechanical, gas and electrical finals in the online portal; the building official issues the certificate of occupancy within five working days after the final inspection is approved (a temporary commercial certificate costs $250 for 60 days). The Fire Marshal inspects before issuing operational permits and at least yearly afterwards. A food establishment gets a pre-opening inspection and is inspected at least annually. Post the permits and the certificate on the premises.",
+   "deadline": null,
+   "fee": "Commercial temporary certificate of occupancy $250.00 for 60 days (City Code § 15.10.120, read on eCode360)",
+   "form": null,
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "quote": "The building official shall issue the certificate of occupancy within five working days after approval of the final inspection and when the building or structure or portion thereof is determined to be in compliance with this code and any pertinent laws or ordinances, or when otherwise entitled.",
+   "source": "official-page"
+  }
+ ],
+ "forms": [
+  {
+   "id": "f1",
+   "title": "Zoning Verification Letter Request (Planning & Zoning; online or paper)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "official": true,
+   "fillable": null
+  },
+  {
+   "id": "f2",
+   "title": "Special Use Permit Application (Planning & Zoning; PDF, Internet Archive copy of 13 April 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1460/639053892072170000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f3",
+   "title": "Certificate of Appropriateness application (Planning & Zoning; PDF, Internet Archive copy of 13 May 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1438/639135703261130000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f4",
+   "title": "Building Permit Application (Building Services; PDF, earlier version, Internet Archive copy of 10 May 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1378/639135725203530000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f5",
+   "title": "Trade Permit Application (electrical, plumbing, mechanical, gas, fire suppression, fire alarm; PDF, Internet Archive copy of 19 May 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1386/639135725451370000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f6",
+   "title": "Business License Application (Commissioner of the Revenue; PDF, Internet Archive copy of 17 September 2025)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f7",
+   "title": "Plan Submittal Form (Site Development Application; asks whether the property is in an Entrance Corridor, Historic Preservation District or the Enterprise Zone; PDF, Internet Archive copy of 13 April 2026)",
+   "number": null,
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1458/638336522680170000",
+   "official": true,
+   "fillable": false
+  },
+  {
+   "id": "f8",
+   "title": "Online permitting portal (Tyler EnerGov Civic Access), City of Staunton Community Development",
+   "number": null,
+   "url": "https://cityofstauntonva-energovweb.tylerhost.net/apps/selfservice",
+   "official": true,
+   "fillable": null
+  }
+ ],
+ "fees": [
+  {
+   "item": "Zoning permit",
+   "amount": "$50.00",
+   "basis": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees; City Code § 18.220.020 (eCode360, read)",
+   "quote": "Zoning Permit Fee"
+  },
+  {
+   "item": "Special use permit or rezoning application",
+   "amount": "$250.00",
+   "basis": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees; https://www.ci.staunton.va.us/home/showpublisheddocument/1460/639053892072170000",
+   "quote": "FEE PAID ($250.00): YES _____ NO _____"
+  },
+  {
+   "item": "Zoning Official Determination (zoning verification) letter",
+   "amount": "$75.00",
+   "basis": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees",
+   "quote": "Zoning Official Determination Letter"
+  },
+  {
+   "item": "Building permit, commercial alteration or interior up-fit",
+   "amount": "$0.18 per square foot, $95.00 minimum",
+   "basis": "Staunton City Code § 15.10.120(1)(a) (eCode360, read; not quoted)",
+   "quote": null
+  },
+  {
+   "item": "Trade permits (mechanical, plumbing, electrical, gas), commercial alteration",
+   "amount": "$0.05 per square foot, $95.00 minimum, each",
+   "basis": "Staunton City Code § 15.10.120(1)(b) (eCode360, read; not quoted)",
+   "quote": null
+  },
+  {
+   "item": "Certificate of occupancy for an existing building",
+   "amount": "$95.00",
+   "basis": "Staunton City Code § 15.10.120(1)(c) (eCode360, read; not quoted)",
+   "quote": null
+  },
+  {
+   "item": "Fire Marshal LP-gas operational permit",
+   "amount": "$50.00 a year",
+   "basis": "Staunton City Code § 15.25.055(2) (eCode360, read; not quoted)",
+   "quote": null
+  },
+  {
+   "item": "Business license",
+   "amount": "Minimum $30.00 for gross receipts of $0-$50,000; above that $0.20 per $100 (retail) or $0.36 per $100 (services)",
+   "basis": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000; https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "quote": "For retailers, $0.20 per $100.00 of gross receipts;"
+  },
+  {
+   "item": "Health department plan review and food establishment permit (if food or drink is served)",
+   "amount": "$40.00 each",
+   "basis": "https://www.vdh.virginia.gov/central-shenandoah/environmental-health/",
+   "quote": "You will need to complete and submit a Plan Review Application, along with a $40.00 application fee, and submit it to the local health department office."
+  },
+  {
+   "item": "Meals tax (if food or drink is sold)",
+   "amount": "7% of taxable sales",
+   "basis": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/taxes",
+   "quote": "Staunton Meals Tax: 7%"
+  }
+ ],
+ "contacts": [
+  {
+   "kind": "office",
+   "value": "Community Development, Planning & Zoning Division, City Hall, 3rd Floor, 116 W. Beverley St., P.O. Box 58, Staunton, VA 24402",
+   "label": "Planning & Zoning (talk to first)",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division"
+  },
+  {
+   "kind": "phone",
+   "value": "540.332.3862",
+   "label": "Planning & Zoning and Building Services (Community Development)",
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division"
+  },
+  {
+   "kind": "email",
+   "value": "permits@ci.staunton.va.us",
+   "label": "Building Services permit questions mailbox",
+   "url": "https://www.ci.staunton.va.us/departments/building-services-divison"
+  },
+  {
+   "kind": "office",
+   "value": "Department of Economic Development, City Hall, 3rd Floor, 116 W. Beverley St., Staunton, VA 24401",
+   "label": "Economic Development (sites, Enterprise Zone, incentives)",
+   "url": "https://www.stauntonbusiness.com/"
+  },
+  {
+   "kind": "phone",
+   "value": "540.332.3869",
+   "label": "Department of Economic Development",
+   "url": "https://www.stauntonbusiness.com/business-tools/incentives-zones/"
+  },
+  {
+   "kind": "phone",
+   "value": "540.332.3720",
+   "label": "Fire Marshal's Office (Monday through Friday, 8 a.m. to 4 p.m.)",
+   "url": "https://www.ci.staunton.va.us/departments/staunton-fire-rescue/fire-permits-inspections"
+  },
+  {
+   "kind": "phone",
+   "value": "540-332-3829",
+   "label": "Commissioner of the Revenue",
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes"
+  },
+  {
+   "kind": "phone",
+   "value": "(540) 332-7830",
+   "label": "Staunton-Augusta Environmental Health (Central Shenandoah Health District), 1426 N. Augusta St., Staunton, VA 24401",
+   "url": "https://www.vdh.virginia.gov/central-shenandoah/contact-us/"
+  },
+  {
+   "kind": "page",
+   "value": "https://cityofstauntonva-energovweb.tylerhost.net/apps/selfservice",
+   "label": "Online permitting portal (zoning, historic review, building, trade and land disturbing permits)",
+   "url": "https://www.ci.staunton.va.us/departments/community-development/apply-online"
+  }
+ ],
+ "escalation": [
+  {
+   "trigger": "The Zoning Administrator determines that the studio is not a permitted use, or attaches conditions you dispute",
+   "next": "Board of Zoning Appeals (appeal of the Zoning Administrator's decision; $200 on the Planning & Zoning fee schedule), then the Staunton Circuit Court",
+   "type": "administrative appeal",
+   "deadline": "Within 30 days after the decision",
+   "basis": "Va. Code § 15.2-2311(A)",
+   "quote": "The appeal shall be taken within 30 days after the decision appealed from by filing with the zoning administrator, and with the board, a notice of appeal specifying the grounds thereof."
+  },
+  {
+   "trigger": "The Historic Preservation Commission denies or conditions a Certificate of Appropriateness",
+   "next": "Appeal to City Council, then to the Staunton Circuit Court (City Code § 18.85.050(n), read on eCode360: 30 days to Council, 30 days from Council's decision to court)",
+   "type": "administrative appeal",
+   "deadline": "Petition to the circuit court within 30 days after the governing body's final decision",
+   "basis": "Va. Code § 15.2-2306(A)(3)",
+   "quote": "provided that the petition is filed within 30 days after the final decision is rendered by the governing body"
+  },
+  {
+   "trigger": "Disagreement with the building official's application of the building code",
+   "next": "Local Board of Building Code Appeals, then the State Building Code Technical Review Board",
+   "type": "administrative appeal",
+   "deadline": "Written appeal within 30 calendar days of receiving the decision",
+   "basis": "13VAC5-63-190 (USBC § 119.5)",
+   "quote": "The applicant shall submit a written request for appeal to the LBBCA within 30 calendar days of the receipt of the decision being appealed."
+  },
+  {
+   "trigger": "Disagreement with the Fire Marshal's application of the Fire Prevention Code",
+   "next": "Local board of appeals, then the State Building Code Technical Review Board",
+   "type": "administrative appeal",
+   "deadline": null,
+   "basis": "Va. Code § 27-98",
+   "quote": "Appeals concerning the application of the Code by the local enforcing agency shall first lie to a local board of appeals and then to the State Building Code Technical Review Board."
+  }
+ ],
+ "caveats": [
+  "The City of Staunton's website (www.ci.staunton.va.us) answers HTTP 403 to automated readers, so every city page and PDF cited here is an Internet Archive copy (capture dates are given in sources). The Historic Preservation Districts page could only be read in a 2021 capture and the Economic Development department page in a 2017 capture; the live pages may differ.",
+  "Local law not quoted. The Staunton City Code is published on eCode360, whose terms forbid reproducing its text for public purposes. Section numbers and links are given, and the zoning rules are paraphrased from a reading of chapters 18.15, 18.55, 18.60, 18.75, 18.85, 18.195, 18.205, 18.210 and 18.220 and of §§ 15.10.120 and 15.25.055 on 2026-10-19. Fee amounts from those sections are reported as figures, not quoted.",
+  "No zoning district names a glass studio, artisan manufacturing or a craft school. Which listed use a hot shop with classes is closest to, and whether it is permitted by right, on review, or not at all in a given building, is the Zoning Administrator's determination. Only a conversation or a Zoning Verification Letter settles it.",
+  "The building code occupancy classification of a hot shop with a gallery and classroom (factory, mercantile, business, educational or assembly, or a mix) and whether a sprinkler, exhaust or separation is required are design questions decided in plan review by the Building Official; they are not researched here.",
+  "The Fire Marshal's local fee schedule (§ 15.25.055) lists LP-gas, hazardous materials, flammable and combustible liquids, explosives, pyrotechnics, tents and a few other permits, but no entries for compressed gases, hot work, industrial ovens, open flames or places of assembly, which the state code lists as permits the fire official may require. Whether Staunton requires them, and at what fee, was not confirmed.",
+  "Staff names and personal mailboxes printed on city pages and forms are omitted; only office lines, office addresses and role mailboxes are recorded.",
+  "The Economic Development office's incentive rules and applications are not on the pages read; the Start a Business page's description of the Enterprise Zone is from a 2026 capture of a page whose program details may have changed."
+ ],
+ "sources": [
+  {
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division",
+   "title": "Planning & Zoning Division | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/community-development/planning-zoning-division/planning-zoning-fees",
+   "title": "Planning & Zoning Fees | City of Staunton (Internet Archive copy of 10 May 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/planning-zoning-division/historic-preservation-districts",
+   "title": "Historic Preservation Districts | City of Staunton (Internet Archive copy of 10 November 2021; no later capture)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/building-services-divison",
+   "title": "Building Services Division | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/community-development/apply-online",
+   "title": "Community Development, Apply Online | City of Staunton (Internet Archive copy of 10 June 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/staunton-fire-rescue/fire-permits-inspections",
+   "title": "Fire Permits & Inspections (Fire Marshal's Office) | City of Staunton (Internet Archive copy of 18 August 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/business/start-a-business",
+   "title": "Start a Business | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/economic-development",
+   "title": "Economic Development | City of Staunton (Internet Archive copy of 6 July 2017; newest capture)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.stauntonbusiness.com/business-tools/incentives-zones/",
+   "title": "Incentives & Zones | Staunton Economic Development",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.stauntonbusiness.com/",
+   "title": "Economic Development in Staunton, Virginia (stauntonbusiness.com)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/public-works/utilities",
+   "title": "Utilities (Public Works) | City of Staunton (Internet Archive copy of 17 July 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1460/639053892072170000",
+   "title": "Application for Special Use Permit (PDF; Internet Archive copy of 13 April 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/1458/638336522680170000",
+   "title": "Plan Submittal Form (Site Development Application; PDF; Internet Archive copy of 13 April 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12658/638645799933470000",
+   "title": "Business License Application (PDF; Internet Archive copy of 17 September 2025)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.ci.staunton.va.us/departments/commissioner-of-revenue/business-license-taxes",
+   "title": "Business License & Taxes | City of Staunton (Internet Archive copy of 9 August 2026)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/central-shenandoah/environmental-health/",
+   "title": "Environmental Health, Central Shenandoah Health District, Virginia Department of Health",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://www.vdh.virginia.gov/central-shenandoah/contact-us/",
+   "title": "Locations, Central Shenandoah Health District (Staunton-Augusta Env. Health & Vital Records)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/ST4660",
+   "title": "Staunton City Code, table of contents (eCode360, General Code; headings only)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49104266",
+   "title": "Staunton City Code ch. 18.15, Zoning Districts and Map (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49104859",
+   "title": "Staunton City Code ch. 18.60, B-2 General Business District (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49105042",
+   "title": "Staunton City Code ch. 18.75, I-1 Light Industrial District (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49105370",
+   "title": "Staunton City Code ch. 18.85, H-1 Historic Preservation District (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49106795",
+   "title": "Staunton City Code ch. 18.205, Certificate of Occupancy (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49103811",
+   "title": "Staunton City Code ch. 15.10, Building Code, including § 15.10.120 permit fees (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/49103879",
+   "title": "Staunton City Code ch. 15.25, Fire Prevention Code, including § 15.25.055 permit fees (eCode360; read, not quoted)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://ecode360.com/docs/TOS.html",
+   "title": "General Code, LLC Terms and Conditions of Use (eCode360)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2286/",
+   "title": "Va. Code § 15.2-2286, Permitted provisions in zoning ordinances",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2306/",
+   "title": "Va. Code § 15.2-2306, Preservation of historical sites and architectural areas",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/15.2-2311/",
+   "title": "Va. Code § 15.2-2311, Appeals to board",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/36-105/",
+   "title": "Va. Code § 36-105, Enforcement of Code; appeals",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/27-98/",
+   "title": "Va. Code § 27-98, Enforcement of Fire Prevention Code; appeals",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section70/",
+   "title": "13VAC5-52-70, Section 107 Permits and fees (Virginia Statewide Fire Prevention Code)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section160/",
+   "title": "13VAC5-63-160, Section 116 Certificates of occupancy (Virginia Construction Code)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section190/",
+   "title": "13VAC5-63-190, Section 119 Appeals (Virginia Construction Code; read in the building_permit_residential research, 2026-10-11)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3700/",
+   "title": "Va. Code § 58.1-3700, License requirements (read in the bpol_business_license research, 2026-10-11)",
+   "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/58.1-3703.1/",
+   "title": "Va. Code § 58.1-3703.1, Uniform ordinance provisions",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/35.1-18/",
+   "title": "Va. Code § 35.1-18, License required (hotels, restaurants, summer camps, campgrounds)",
+   "retrieved": "2026-10-19"
+  },
+  {
+   "url": "https://law.lis.virginia.gov/vacode/4.1-230/",
+   "title": "Va. Code § 4.1-230, Applications for licenses (Virginia ABC)",
+   "retrieved": "2026-10-19"
+  }
+ ],
+ "researched_by": "Claude (lexflow agent)",
+ "verified": false,
+ "checks": {
+  "verified_by": null,
+  "date": null,
+  "quotes_checked": 0,
+  "quotes_confirmed": 0,
+  "removed": [],
+  "corrections": [],
+  "open_issues": [
+   "Every step and fee quote is marked source: official-page because the local quote index (Docker) was down; match them against the Internet Archive captures listed in sources.",
+   "Which zoning district and listed use fit a hot shop with classes, and whether a special use permit is needed, can only be settled by Planning & Zoning.",
+   "Whether the Fire Marshal requires compressed gas, hot work, industrial oven, open flame or place of assembly permits (and the fees) can only be settled by the Fire Marshal's Office.",
+   "The occupancy classification and the sprinkler, exhaust and separation requirements for the hot shop are design decisions made in plan review."
+  ]
+ }
+}

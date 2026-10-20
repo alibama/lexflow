@@ -25,8 +25,12 @@ from ..pipeline import jobs
 from ..pipeline.steps import STEPS, COMPOSITE, checklist, ollama_state
 from ..store import db
 from ..store import turso as T
+from ..compute import api as compute_api
+from ..compute import health as compute_health
+from ..compute import nodes as compute_nodes
 
 runner = jobs.Runner()
+poller = compute_health.Poller()
 
 
 @asynccontextmanager
@@ -36,11 +40,15 @@ async def lifespan(_app):
         pass
     if config.JOB_RUNNER:          # a second, read-only instance on the same database can run without one
         runner.start()
+    if compute_nodes.pool_on():    # health checks of the model servers (lexflow/compute); nothing without a pool
+        poller.start()
     yield
     runner.stop.set()
+    poller.stop.set()
 
 
 app = FastAPI(title="lexflow", version="1.0", lifespan=lifespan)
+compute_api.register(app)
 
 
 def con():
@@ -110,7 +118,8 @@ def services(c) -> dict:
         except T.TursoError as e:
             turso["reachable"], turso["error"] = False, str(e)[:200]
     searx = {"configured": bool(config.SEARXNG_URL)}
-    return {"ollama": {"url": config.OLLAMA_URL, **o, "want": [config.MODEL_A, config.MODEL_B]}, "turso": turso,
+    return {"ollama": {"url": config.OLLAMA_URL, **o, "want": [config.MODEL_A, config.MODEL_B],
+                       "pool": o.get("pool") or compute_api.summary()}, "turso": turso,
             "searxng": searx, "dokuwiki": {"configured": bool(config.DOKUWIKI_URL and config.DOKUWIKI_TOKEN),
                                            "url": config.DOKUWIKI_URL or None},
             "data_dir": str(config.DATA_DIR)}
@@ -135,6 +144,10 @@ def create_job(job: JobIn):
             raise HTTPException(400, str(e)) from e
         if job.args.get("direction", "push") not in ("push", "pull"):
             raise HTTPException(400, "direction is push or pull")
+    if job.args.get("node"):
+        known = compute_nodes.names()
+        if job.args["node"] not in known:
+            raise HTTPException(400, f"unknown node {job.args['node']!r}: the configured nodes are {', '.join(known) or 'none'}")
     c = con()
     try:
         return {"id": jobs.enqueue(c, job.step, job.args)}

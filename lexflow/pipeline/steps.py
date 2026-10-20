@@ -120,6 +120,14 @@ def st_locus(con):
 
 
 def ollama_state() -> dict:
+    from ..compute import nodes as CN
+    if CN.pool_on():                       # the Setup card: "2 of 3 nodes online, see Compute"
+        from ..compute import api as CA
+        try:
+            summ = CA.summary() or {}
+            return {"reachable": summ.get("online", 0) > 0, "models": B.ollama_models(), "pool": summ}
+        except Exception as e:  # noqa: BLE001
+            return {"reachable": False, "models": [], "error": type(e).__name__, "pool": {"nodes": 0, "online": 0}}
     try:
         r = requests.get(f"{config.OLLAMA_URL.rstrip('/')}/api/tags", timeout=4)
         r.raise_for_status()
@@ -248,7 +256,7 @@ def run_ask(con, args, log, progress):
     if isinstance(targets, str):
         targets = [t for t in targets.split(",") if t.strip()]
     return AP.run(con, args["question"], targets, model=args.get("model"), use_llm=not args.get("no_llm"),
-                  log=log, progress=progress, question_id=args.get("question_id"))
+                  log=log, progress=progress, question_id=args.get("question_id"), node=args.get("node") or None)
 
 
 def st_ontology(con):
@@ -430,11 +438,20 @@ def run_locus(con, args, log, progress):
 
 
 def run_models(con, args, log, progress):
+    """Pull the wanted models (``args.models``, else the embed and the two chat models) into Ollama: with
+    ``args.node``, into that node of the pool (the Compute page's "Pull a model")."""
     out = {}
-    want = list(dict.fromkeys((config.EMBED_MODEL, config.MODEL_A, config.MODEL_B)))
+    url = config.OLLAMA_URL
+    if args.get("node"):
+        from ..compute import nodes as CN
+        url = CN.url_of(args["node"])
+        if not url:
+            raise ValueError(f"unknown node {args['node']!r}: the configured nodes are {', '.join(CN.names()) or 'none'}")
+    want = [m.strip() for m in (args.get("models") or "").split(",") if m.strip()] or \
+        list(dict.fromkeys((config.EMBED_MODEL, config.MODEL_A, config.MODEL_B)))
     for i, name in enumerate(want):
-        log(f"pulling {name} into Ollama at {config.OLLAMA_URL}")
-        with requests.post(f"{config.OLLAMA_URL.rstrip('/')}/api/pull", json={"model": name, "stream": True},
+        log(f"pulling {name} into Ollama at {url}" + (f" (node {args['node']})" if args.get("node") else ""))
+        with requests.post(f"{url.rstrip('/')}/api/pull", json={"model": name, "stream": True},
                            stream=True, timeout=3600) as r:
             r.raise_for_status()
             last = ""
@@ -907,7 +924,7 @@ def run_benchmark(con, args, log, progress):
     model_list = [m.strip() for m in (args.get("models") or "").split(",") if m.strip()] or \
         [config.MODEL_A, config.MODEL_B]
     log(f"benchmark: {len(case_list)} cases x {len(strategy_list)} strategies x {len(model_list)} models")
-    return BM.run(con, case_list, strategy_list, model_list, log=log, progress=progress)
+    return BM.run(con, case_list, strategy_list, model_list, log=log, progress=progress, node=args.get("node") or None)
 
 
 def run_coverage(con, args, log, progress):
@@ -950,11 +967,11 @@ COMPOSITE = {
                               C.used_for(C.CLAUDE, "Wrote the gold the answers are scored against")]),
     "quickstart": Step("quickstart", "Run all required steps", "Governments, statutes, law, contacts, "
                        "models and scores in one job.", "required", lambda con: {}, run_quickstart,
-                       params=["states", "places", "no_llm"],
+                       params=["states", "places", "no_llm", "node"],
                        credits=[], credits_note="Runs the steps above; their credits apply."),
     "ask": Step("ask", "Answer a new question", "Searches each state's statutes for the question, quotes the "
                 "sections that answer it, extracts the steps, and adds each place's local layer.", "optional",
-                lambda con: {}, run_ask, params=["question", "targets", "model", "no_llm"],
+                lambda con: {}, run_ask, params=["question", "targets", "model", "no_llm", "node"],
                 credits=[C.used_for(C.OPEN_US_LAW, "The statutes it searches and quotes"),
                          C.used_for(C.SQLITE_FTS5, "Searches each state's statutes"), C.SEARXNG,
                          *C.model_credits([(config.ASK_MODEL, "Writes the plain-language answers"),
@@ -963,7 +980,7 @@ COMPOSITE = {
     "benchmark": Step("benchmark", "Benchmark local models against Claude",
                       "Runs each extraction strategy with each local model on every curated case and scores it "
                       "against Claude's reference model.", "optional", lambda con: {}, run_benchmark,
-                      params=["cases", "strategies", "models"],
+                      params=["cases", "strategies", "models", "node"],
                       credits=[C.used_for(C.CLAUDE, "Wrote the reference models every run is scored against"),
                                *C.model_credits([(config.MODEL_A, "One of the local models scored"),
                                                  (config.MODEL_B, "One of the local models scored")]),

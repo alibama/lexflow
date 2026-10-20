@@ -39,12 +39,43 @@ def cmd_status(_args) -> int:
     return 0
 
 
+def cmd_compute(args) -> int:
+    """``nodes``: the configured nodes and their last check; ``check``: probe every node now (read-only);
+    ``relabel``: the one-time relabel of benchmark rows made before the pool (lexflow.compute.migrate)."""
+    from .compute import nodes as CN
+    if args.action == "relabel":
+        from .compute import migrate
+        return migrate.main(args.cp_args)
+    if not CN.pool_on():
+        print("no pool: LEXFLOW_LLM_NODES is not set (every call goes to OLLAMA_URL); see docs/compute.md")
+        return 0
+    from .compute import health as CH
+    con = CN.connect()
+    try:
+        CN.sync_env(con)
+        if args.action == "check":
+            for n in CN.load_nodes(con):
+                CH.check(con, n["name"])
+        for n in CN.load_nodes(con):
+            models = ", ".join(m["name"] for m in (n.get("models") or [])) or "-"
+            print(f"{n['name']:<12} {n['status']:<8} {n['url']:<36} v{n.get('version') or '?':<8} max {n['max_concurrency']} "
+                  f"threads {n.get('threads') or '-'} {'draining ' if n.get('draining') else ''}{'' if n.get('enabled') else 'disabled '}"
+                  f"models: {models}" + (f"  ({n['last_error']})" if n.get("last_error") else ""))
+        return 0
+    finally:
+        con.close()
+
+
 def cmd_run(args) -> int:
+    import os
     from .pipeline.jobs import JobContext
     from .pipeline.steps import get_step
     config.ensure_dirs()
     step = get_step(args.step)
     params = json.loads(args.args) if args.args else {}
+    if args.job:                         # the compute pool's calls log records the job and its step
+        os.environ.setdefault("LEXFLOW_JOB_ID", str(args.job))
+        os.environ.setdefault("LEXFLOW_JOB_STEP", args.step)
     for k in ("states", "questions", "direction", "tables", "cases", "strategies", "models", "places", "arm", "node",
               "run", "llm_cells", "model"):
         v = getattr(args, k, None)
@@ -207,7 +238,8 @@ def cmd_ask_bench(args) -> int:
                   f"(curated_ask/<question>/<state>.json; --cases qid.state,... or question ids)")
             return 1
     con = db.connect()
-    rows = AB.run(con, tuple(args.arms.split(",")), cases, use_llm=args.llm, llm_plan=args.llm_plan)
+    rows = AB.run(con, tuple(args.arms.split(",")), cases, use_llm=args.llm, llm_plan=args.llm_plan,
+                  model=getattr(args, "model", None), node=getattr(args, "node", None))
     print(json.dumps(AB.summary(rows), indent=1))
     # docs/askbench.json: the arms stored so far from the current code and metrics, each scored against the current
     # version of its reference; "cases" counts the references, each arm in the summary its own cases
@@ -582,7 +614,8 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--models", help="benchmark: qwen3:1.7b,gemma3:1b")
     r.add_argument("--places", help="va:charlottesville,dc,md:baltimore")
     r.add_argument("--arm", help="coverage: coverage (probe only) or ollama (probe, answer and score)")
-    r.add_argument("--node", help="coverage: the LEXFLOW_LLM_NODES node to run the model calls on")
+    r.add_argument("--node", help="coverage, ask, benchmark, models: the node of the pool (LEXFLOW_LLM_NODES) to run "
+                                  "the model calls on")
     r.add_argument("--run", help="coverage: a run id to resume (default: the date and time)")
     r.add_argument("--llm-cells", help="coverage: Ollama answers for this many state cells per state")
     r.add_argument("--model", help="coverage: the chat model (default LEXFLOW_ASK_MODEL)")
@@ -672,7 +705,13 @@ def main(argv: list[str] | None = None) -> int:
     ab.add_argument("--cases", help="qid.state,... or question ids")
     ab.add_argument("--llm", action="store_true", help="the local model plans the search and writes the summary")
     ab.add_argument("--llm-plan", action="store_true", help="the local model plans the search only")
+    ab.add_argument("--model", help="the chat model for the LLM arms (default LEXFLOW_ASK_MODEL); the arm is named <arm>@<model>")
+    ab.add_argument("--node", help="pin the model calls to this node of the pool (LEXFLOW_LLM_NODES)")
     ab.set_defaults(fn=cmd_ask_bench)
+    cp = sub.add_parser("compute", help="the compute pool (lexflow/compute, docs/compute.md): nodes, check, relabel")
+    cp.add_argument("action", choices=["nodes", "check", "relabel"])
+    cp.add_argument("cp_args", nargs=argparse.REMAINDER, help="relabel: --model, --node, --db, --dry (lexflow.compute.migrate)")
+    cp.set_defaults(fn=cmd_compute)
     alq = sub.add_parser("al-queue", help="sentences for Claude to label (active learning) -> curated_labels/queue/")
     alq.add_argument("--states", required=True)
     alq.add_argument("--questions", default="records,business")

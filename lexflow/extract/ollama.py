@@ -102,6 +102,18 @@ class OllamaClient:
     keep_alive: str = "10m"
     think: bool | None = False           # turn off "thinking" models' reasoning trace; None = model default
     log: list = field(default_factory=list)
+    node: str | None = None              # pin every call to this node of the pool (lexflow/compute); None = any
+
+    def _post(self, path: str, body: dict, kind: str = "chat"):
+        """POST to Ollama.  With the pool on (LEXFLOW_LLM_NODES or an overlay) and a base URL that is a node's or
+        OLLAMA_URL, the dispatcher picks the node (a free slot, failover, the calls log) and records which one;
+        otherwise the request goes straight to ``base_url`` as it always did.  Returns ``(response, node name)``."""
+        from ..compute import pool
+        if pool.routes(self.base_url) or (self.node and pool.routes(pool.N.url_of(self.node) or "")):
+            return pool.call(path, body, model=body.get("model") or self.model, kind=kind, timeout=self.timeout,
+                             pin=self.node)
+        r = requests.post(f"{self.base_url.rstrip('/')}{path}", json=body, timeout=self.timeout)
+        return r, (self.node or pool.N.name_for_url(self.base_url))
 
     def chat(self, messages: list[dict], schema: dict | None = None, temperature: float = 0.0,
              max_tokens: int | None = None) -> str:
@@ -113,20 +125,31 @@ class OllamaClient:
             body["format"] = schema
         if self.think is not None:
             body["think"] = self.think
-        r = requests.post(f"{self.base_url.rstrip('/')}/api/chat", json=body, timeout=self.timeout)
+        r, node = self._post("/api/chat", body)
         if r.status_code == 400 and "think" in body and "think" in r.text.lower():
             body.pop("think")                # the model has no thinking mode
             self.think = None
-            r = requests.post(f"{self.base_url.rstrip('/')}/api/chat", json=body, timeout=self.timeout)
+            r, node = self._post("/api/chat", body)
         r.raise_for_status()
         data = r.json()
-        self.log.append({"request": {k: v for k, v in body.items() if k != "messages"},
-                         "eval_count": data.get("eval_count"), "total_duration": data.get("total_duration")})
+        self.log.append({"request": {k: v for k, v in body.items() if k != "messages"}, "node": node,
+                         "eval_count": data.get("eval_count"), "total_duration": data.get("total_duration"),
+                         "prompt_eval_count": data.get("prompt_eval_count"),
+                         "prompt_eval_duration": data.get("prompt_eval_duration"),
+                         "eval_duration": data.get("eval_duration"), "load_duration": data.get("load_duration")})
         return data["message"]["content"]
 
+    def nodes_used(self, since: int = 0) -> dict[str, int]:
+        """Calls per node in ``log`` from entry ``since`` on: what a benchmark row records."""
+        out: dict[str, int] = {}
+        for e in self.log[since:]:
+            n = e.get("node")
+            if n:
+                out[n] = out.get(n, 0) + 1
+        return out
+
     def embed(self, texts: list[str], model: str = "bge-m3") -> list[list[float]]:
-        r = requests.post(f"{self.base_url.rstrip('/')}/api/embed", json={"model": model, "input": texts},
-                          timeout=self.timeout)
+        r, _ = self._post("/api/embed", {"model": model, "input": texts}, kind="embed")
         r.raise_for_status()
         return r.json()["embeddings"]
 

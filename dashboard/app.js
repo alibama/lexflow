@@ -117,7 +117,7 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
-  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage };
+  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute };
 async function route() {
   const [, name = "map", ...rest] = (location.hash || "#/map").split("/");
   refreshers = [];
@@ -498,8 +498,10 @@ async function viewSetup() {
     const sv = setup.services;
     const o = sv.ollama;
     rc(services, 
-      serviceCard("Ollama", o.reachable && o.want.every((m) => o.models.includes(m)) ? true : o.reachable ? null : false, o.url,
-        o.reachable ? (o.models.length ? `Models: ${o.models.join(", ")}` : "Running, no models yet") : "Not reachable: start with --profile llm"),
+      serviceCard("Ollama", o.reachable && o.want.every((m) => o.models.includes(m)) ? true : o.reachable ? null : false,
+        o.pool ? `${o.pool.online} of ${o.pool.nodes} nodes online: ${(o.pool.names || []).join(", ")}` : o.url,
+        h("span", {}, o.reachable ? (o.models.length ? `Models: ${o.models.join(", ")}` : "Running, no models yet") : (o.pool ? "No node online" : "Not reachable: start with --profile llm"),
+          " · ", h("a", { href: "#/compute" }, o.pool ? "see Compute" : "Compute"))),
       serviceCard("Turso sharing", sv.turso.configured ? sv.turso.reachable : null, sv.turso.url || "TURSO_DATABASE_URL not set",
         sv.turso.configured ? (sv.turso.reachable ? "Connected" : `Not reachable${sv.turso.error ? `: ${sv.turso.error}` : ""}`) : "Optional"),
       serviceCard("Lexipedia wiki", sv.dokuwiki.configured ? true : null, sv.dokuwiki.url || "DOKUWIKI_URL not set", sv.dokuwiki.configured ? "Bot token set" : "Optional"),
@@ -1013,7 +1015,7 @@ function askBenchCard(ab) {
       h("p", {}, `${ab.cases} reference answers by Claude for six questions on prisons and court debt (VA, DC, MD, TX, CA); every number below compares the local answer with Claude's. lexflow ask-bench to rerun.`))),
     h("div", { class: "card-pad table-wrap" }, h("table", { class: "data" },
       h("thead", {}, h("tr", {}, h("th", { scope: "col" }, "Arm"), cols.map(([, l]) => h("th", { scope: "col", class: "num" }, l)))),
-      h("tbody", {}, arms.map(([arm, s]) => h("tr", {}, h("td", {}, label[arm] || arm), cols.map(([k]) => h("td", { class: "num" }, s[k] == null ? "–" : k === "cases" ? String(s[k]) : fx(s[k])))))))))];
+      h("tbody", {}, arms.map(([arm, s]) => h("tr", {}, h("td", {}, label[arm] || (arm.includes("@") && label[arm.split("@")[0]] ? `${label[arm.split("@")[0]]} (${arm.split("@")[1]})` : arm)), cols.map(([k]) => h("td", { class: "num" }, s[k] == null ? "–" : k === "cases" ? String(s[k]) : fx(s[k])))))))))];
 }
 
 // ============================================================== BENCHMARK
@@ -1072,6 +1074,145 @@ async function viewBenchmark() {
       d.askbench ? askBenchCard(d.askbench) : null,
       h("div", { class: "row-flex", style: "margin-top:16px" },
         h("button", { class: "btn", onclick: async () => { await startRunJob("benchmark", {}); location.hash = "#/jobs"; } }, "Run the full benchmark")));
+  }
+  onRefresh(load);
+  await load();
+}
+
+// ================================================================ COMPUTE
+// The model servers lexflow can send work to (lexflow/compute, docs/compute.md).  Lexflow's server asks the nodes
+// and the overlay; this page only reads /api/compute/* and never fetches a node or the overlay itself.
+function nodeStatus(n) {
+  if (n.gone) return statusEl("optional", "left the overlay group");
+  if (!n.enabled) return statusEl("optional", "disabled");
+  if (n.draining) return statusEl("partial", n.busy ? `draining (${n.busy} in flight)` : "drained");
+  if (n.status === "online") return statusEl("done", "online");
+  if (n.status === "backoff") return statusEl("blocked", `backing off${n.backoff_until ? ` until ${new Date(n.backoff_until).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : ""}`);
+  if (n.status === "offline") return statusEl("todo", n.overlay && n.overlay.connected === false ? "asleep (overlay)" : `offline${n.last_ok ? `, last seen ${ago(n.last_ok)}` : ""}`);
+  return statusEl("todo", "not checked yet");
+}
+const gb = (x) => (x == null ? "–" : `${Number(x).toFixed(x < 10 ? 1 : 0)} GB`);
+const tps = (x) => (x == null ? "–" : `${fx(x, 1)} t/s`);
+
+async function viewCompute() {
+  const pills = h("div", { class: "services" });
+  const cards = h("div", { class: "grid who-grid", style: "margin-bottom:16px" });
+  const notes = h("div");
+  const recentBody = h("div", { class: "card-pad" });
+  const nodeSel = h("select", { "aria-label": "Node", onchange: () => loadRecent() }, h("option", { value: "" }, "All nodes"));
+  const modelSel = h("select", { "aria-label": "Model", onchange: () => loadRecent() }, h("option", { value: "" }, "All models"));
+  const checkAll = h("button", { class: "btn", onclick: async () => { checkAll.disabled = true; try { await post("/api/compute/check"); } catch (e) { alert(e.message); } await load(); checkAll.disabled = false; } }, "Check all now");
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Compute"),
+      h("p", {}, "Model servers lexflow can send work to. Each call goes to a node that has the model and a free slot; if a node drops out, its work moves to another. Nodes come from LEXFLOW_LLM_NODES or the overlay, never from this page.")),
+      h("div", { class: "row-flex" }, checkAll)),
+    notes, pills, cards,
+    h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Recent work"),
+      h("p", {}, "The last model calls: prompt tokens and read speed, output tokens and write speed, the time taken and the result.")),
+      h("div", { class: "row-flex" }, nodeSel, modelSel)), recentBody));
+  let data = null;
+  function pill(label, value, sub) {
+    return h("div", { class: "card service" }, h("div", { class: "name" }, value), h("div", { class: "sub" }, label), sub ? h("div", { class: "sub muted" }, sub) : null);
+  }
+  function hostLines(n) {
+    const hst = n.host;
+    if (!hst) return null;
+    const used = hst.ram_total_gb != null && hst.ram_available_gb != null ? hst.ram_total_gb - hst.ram_available_gb : null;
+    return h("div", { class: "sub" },
+      h("div", {}, [hst.cpu, hst.threads ? `${hst.threads} threads` : null, hst.load1 != null ? `load ${fx(hst.load1, 1)}` : null].filter(Boolean).join(" · ")),
+      used != null ? h("div", {}, `RAM ${fx(used, 1)} of ${fx(hst.ram_total_gb, 1)} GB in use`, h("div", { class: "meter" }, h("span", { style: `width:${Math.round((used / hst.ram_total_gb) * 100)}%` }))) : null,
+      h("div", {}, [hst.temp_c != null ? `${Math.round(hst.temp_c)} °C` : null, hst.on_ac != null ? (hst.on_ac ? "on AC" : "on battery") : null, hst.battery_pct != null ? `battery ${hst.battery_pct} %` : null, hst.uptime_h != null ? `up ${fx(hst.uptime_h, 0)} h` : null].filter(Boolean).join(" · ")));
+  }
+  function pullControl(n) {
+    const sel = h("select", { "aria-label": `Model to pull on ${n.name}` }, h("option", { value: "" }, "Pull a model…"),
+      ...n.pullable.map((p) => h("option", { value: p.model, disabled: p.fits === false }, `${p.model} · ${gb(p.gb)}${p.fits === false ? " (too big for its RAM)" : ""}`)),
+      h("option", { value: "other" }, "other…"));
+    const out = h("span", { class: "sub" });
+    sel.addEventListener("change", async () => {
+      let model = sel.value;
+      if (!model) return;
+      if (model === "other") model = (prompt("Model to pull (as on ollama.com, e.g. qwen3:8b)") || "").trim();
+      sel.value = "";
+      if (!model) return;
+      const size = (n.pullable.find((p) => p.model === model) || {}).gb;
+      if (!confirm(`This downloads ${size ? `${gb(size)}` : "a model of unknown size"} from the Ollama registry onto ${n.name}. Go ahead?`)) return;
+      const go = async (confirmBig) => {
+        try {
+          const r = await post(`/api/compute/nodes/${encodeURIComponent(n.name)}/pull`, { model, confirm: confirmBig });
+          rc(out, `Pulling ${r.model}: `, h("a", { href: `#/job/${r.job_id}` }, `job #${r.job_id}`), ` (${r.message})`);
+          pollSoon();
+        } catch (e) {
+          if (!confirmBig && /confirm: true/.test(e.message) && confirm(`${e.message}\n\nPull it anyway?`)) return go(true);
+          rc(out, h("span", { class: "muted" }, e.message));
+        }
+      };
+      await go(false);
+    });
+    return h("div", { class: "row-flex", style: "margin-top:8px" }, sel, out);
+  }
+  function nodeCard(n) {
+    const act = async (what) => {
+      try { await post(`/api/compute/nodes/${encodeURIComponent(n.name)}/${what}`); } catch (e) { alert(e.message); }
+      await load();
+    };
+    const flight = n.in_flight.length ? h("div", { class: "sub" }, "Now: ", n.in_flight.map((l) => `${l.model}${l.job_id ? ` · job #${l.job_id} ${l.step || ""}` : ""} · ${l.elapsed_s != null ? `${l.elapsed_s} s` : ""}`).join("; ")) : h("div", { class: "sub muted" }, n.status === "online" ? "idle" : "");
+    const models = n.models.length ? sortableTable([
+      { key: "name", label: "Model", render: (m) => h("span", { class: "mono", style: "font-size:12px" }, m.name, m.name === data.embed_model ? " (embeds)" : "") },
+      { key: "size_gb", label: "Size", num: true, render: (m) => gb(m.size_gb) },
+      { key: "quant", label: "Quant", render: (m) => m.quant || "–" },
+      { key: "loaded", label: "State", render: (m) => (m.loaded ? `loaded${m.context_length ? ` · ${Math.round(m.context_length / 1024)}k` : ""}` : "on disk") },
+      { key: "read", label: "Reads", num: true, sort: (m) => (m.speed || {}).prefill_tps, render: (m) => tps((m.speed || {}).prefill_tps) },
+      { key: "write", label: "Writes", num: true, sort: (m) => (m.speed || {}).gen_tps, render: (m) => tps((m.speed || {}).gen_tps) },
+    ], n.models, { initial: "name" }) : h("p", { class: "muted", style: "margin:6px 0" }, n.status === "online" ? "No models pulled yet." : "");
+    return h("section", { class: "card card-pad" },
+      h("div", { class: "row-flex" }, h("h2", { style: "margin:0" }, n.name, n.source === "overlay" ? h("span", { class: "tag" }, "overlay") : null, n.embed || n.name === data.embed_node ? h("span", { class: "tag" }, "embeds") : null), h("span", { class: "right" }, nodeStatus(n))),
+      h("div", { class: "sub muted", style: "word-break:break-all" }, n.url, n.version ? ` · Ollama ${n.version}` : "", n.checked_at ? ` · checked ${ago(n.checked_at)}` : ""),
+      h("div", { class: "sub muted" }, `${n.busy} of ${n.max_concurrency} slot${n.max_concurrency === 1 ? "" : "s"} busy`, n.threads ? ` · ${n.threads} threads` : "", n.tags.length ? ` · ${n.tags.join(", ")}` : "", n.part_time ? " · part-time" : ""),
+      n.last_error && n.status !== "online" ? h("div", { class: "sub", style: "color:var(--critical)" }, n.last_error) : null,
+      n.overlay ? h("div", { class: "sub muted" }, `overlay: ${n.overlay.connected ? "connected" : "disconnected"}${n.overlay.last_seen ? ` · last seen ${ago(n.overlay.last_seen)}` : ""}${n.overlay.user ? ` · ${n.overlay.user}` : ""}`) : null,
+      hostLines(n), flight,
+      n.missing.length ? h("div", { class: "sub" }, statusEl("blocked", ""), `wanted here but not pulled: ${n.missing.join(", ")}`) : null,
+      h("h3", { style: "margin:10px 0 4px;font-size:13px" }, "Models"), models,
+      h("div", { class: "row-flex", style: "margin-top:10px" },
+        h("button", { class: "btn small", onclick: () => act("check") }, "Check now"),
+        n.draining || !n.enabled ? h("button", { class: "btn small", onclick: () => act("resume") }, "Enable") : h("button", { class: "btn small", onclick: () => act("drain") }, "Drain")),
+      data.pool && n.status === "online" ? pullControl(n) : null);
+  }
+  async function loadRecent() {
+    const q = new URLSearchParams();
+    if (nodeSel.value) q.set("node", nodeSel.value);
+    if (modelSel.value) q.set("model", modelSel.value);
+    q.set("limit", "100");
+    const rows = data.pool ? await api(`/api/compute/calls?${q}`) : [];
+    rc(recentBody, rows.length ? sortableTable([
+      { key: "at", label: "Time", render: (r) => new Date(r.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }) },
+      { key: "job_id", label: "Job", num: true, render: (r) => (r.job_id ? h("a", { href: `#/job/${r.job_id}` }, `#${r.job_id}`) : "–") },
+      { key: "step", label: "Step" }, { key: "node", label: "Node" },
+      { key: "model", label: "Model", render: (r) => h("span", { class: "mono", style: "font-size:12px" }, r.model) },
+      { key: "kind", label: "Kind" },
+      { key: "prompt_tokens", label: "Prompt", num: true, render: (r) => fmtInt(r.prompt_tokens) },
+      { key: "prefill_tps", label: "Read t/s", num: true, render: (r) => fx(r.prefill_tps, 1) },
+      { key: "out_tokens", label: "Out", num: true, render: (r) => fmtInt(r.out_tokens) },
+      { key: "gen_tps", label: "Write t/s", num: true, render: (r) => fx(r.gen_tps, 1) },
+      { key: "total_s", label: "Took", num: true, render: (r) => (r.total_s == null ? "–" : `${fx(r.total_s, 1)} s`) },
+      { key: "ok", label: "Result", render: (r) => statusEl(r.ok ? "done" : "failed", r.ok ? "ok" : (r.error || "failed").slice(0, 60)) },
+    ], rows, { initial: "at" }) : h("p", { class: "muted" }, data.pool ? "No calls yet." : "The calls log needs the pool: set LEXFLOW_LLM_NODES."));
+  }
+  async function load() {
+    data = await api("/api/compute");
+    const t = data.totals;
+    rc(pills,
+      pill("nodes online", `${t.online} of ${t.nodes}`), pill("slots busy", `${t.busy} of ${t.slots}`),
+      pill("calls in the last hour", fmtInt(t.calls_1h)), pill("embeddings", data.embed_node || "–", "always on one node"));
+    rc(notes,
+      !data.pool ? h("div", { class: "notice" }, icon("info"), h("div", {}, data.note || "No pool configured.")) : null,
+      data.refused && data.refused.length ? h("div", { class: "notice" }, icon("info"), h("div", {}, "Refused entries of LEXFLOW_LLM_NODES: ", data.refused.join("; "))) : null,
+      data.overlay ? h("p", { class: "muted" }, `Nodes are designated in the ${data.overlay.kind} admin (group ${data.overlay.group}); there is no add-node button here.`) : null);
+    rc(cards, ...data.nodes.map(nodeCard));
+    const names = data.nodes.map((n) => n.name), models = [...new Set(data.nodes.flatMap((n) => n.models.map((m) => m.name)))].sort();
+    const keep = (sel, vals, all) => { const v = sel.value; rc(sel, h("option", { value: "" }, all), ...vals.map((x) => h("option", { value: x }, x))); sel.value = vals.includes(v) ? v : ""; };
+    keep(nodeSel, names, "All nodes"); keep(modelSel, models, "All models");
+    await loadRecent();
   }
   onRefresh(load);
   await load();

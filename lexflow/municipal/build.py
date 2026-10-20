@@ -37,6 +37,15 @@ def model_id(state: str, question: str) -> str:
 
 
 def ollama_models(url: str | None = None) -> list[str]:
+    """The models Ollama has: with the pool on and no URL given, the union over its enabled, online nodes."""
+    if url is None:
+        from ..compute import nodes as CN
+        if CN.pool_on():
+            from ..compute import pool
+            try:
+                return pool.union_models()
+            except Exception:  # noqa: BLE001 - compute.db unreadable: fall back to OLLAMA_URL
+                pass
     try:
         r = requests.get(f"{(url or config.OLLAMA_URL).rstrip('/')}/api/tags", timeout=5)
         r.raise_for_status()

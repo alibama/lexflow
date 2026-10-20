@@ -21,8 +21,10 @@ Arms: ``local`` (the full pipeline, no chat model), ``heuristic`` (the same with
 reranker), ``profile`` (searching with Claude's concept groups: what
 planning loses), ``oracle`` (Claude's gold sections handed to the same
 answering stages: what is lost to retrieval vs to answering).  A learned arm whose held-out reranker is missing or
-stale runs without it and is stored as ``<arm>-unlearned``.  Every row records ``version()``, the metric version and
-a hash of the code and models behind it; docs/askbench.json keeps the current rows only.
+stale runs without it and is stored as ``<arm>-unlearned``.  An arm with a chat model in it (``+llm``, ``+llmplan``)
+is named ``<arm>@<model>`` (the key is case x arm, so each model is its own arm and never overwrites another's
+rows); its row records the model and the pool node(s) that ran it.  Every row records ``version()``, the metric
+version and a hash of the code and models behind it; docs/askbench.json keeps the current rows only.
 """
 from __future__ import annotations
 
@@ -222,10 +224,18 @@ def score(ref: dict, row: dict) -> dict:
     return {k: (round(v, 4) if isinstance(v, float) else v) for k, v in out.items()}
 
 
+def arm_name(arm: str, reranker: str, planner, asker, model: str | None) -> str:
+    """``<arm>[-unlearned][+llm|+llmplan][@model]``: the model only when a chat model took part."""
+    name = arm + ("-unlearned" if reranker in ("missing", "stale") else "") \
+        + ("+llm" if asker else "+llmplan" if planner else "")
+    return f"{name}@{model}" if (asker or planner) and model else name
+
+
 def run(con, arms: tuple[str, ...] = ("local", "oracle"), cases: list[tuple[str, str]] | None = None, log=print,
-        use_llm: bool = False, llm_plan: bool = False) -> list[dict]:
+        use_llm: bool = False, llm_plan: bool = False, model: str | None = None, node: str | None = None) -> list[dict]:
     """``use_llm``: the local model plans the search and writes the summary; ``llm_plan``: it plans only (one
-    short call per question, shared by every state), the answer is the quotes and steps."""
+    short call per question, shared by every state), the answer is the quotes and steps.  ``model`` names the
+    chat model (default LEXFLOW_ASK_MODEL); ``node`` pins its calls to one node of the pool."""
     from . import relevance as RV
     from . import retrieve as RT
     from .pipeline import answer_state, asker_for, embedder
@@ -236,17 +246,22 @@ def run(con, arms: tuple[str, ...] = ("local", "oracle"), cases: list[tuple[str,
         emb = embedder()
     except Exception:  # noqa: BLE001
         emb = None
-    asker = asker_for(None) if (use_llm or llm_plan) else None
+    asker = asker_for(model, node) if (use_llm or llm_plan) else None
     planner, asker = asker, (asker if use_llm else None)
+    chat_model = (planner.client.model if planner else None)
     plans: dict[str, object] = {}
     rows = []
     for qid, state in cases:
         ref = R.load(qid, state)
         if qid not in plans:                       # one plan per question, as the ask pipeline does
+            since = len(planner.client.log) if planner else 0
             plans[qid] = make_plan(ref["question"], planner)
+            if planner:
+                plans[qid].nodes = planner.client.nodes_used(since)      # the nodes the planning call used
         p = plans[qid]
         for arm in arms:
             t0 = time.time()
+            since = len(planner.client.log) if planner else 0
             oracle_refs = [g["ref"] for g in ref.get("gold_sections") or []] if arm == "oracle" else None
             if arm == "oracle" and not oracle_refs:
                 continue
@@ -265,9 +280,13 @@ def run(con, arms: tuple[str, ...] = ("local", "oracle"), cases: list[tuple[str,
                 RT.USE_LEARNED, RV.OVERRIDE = True, None
             s = score(ref, row)
             # without its held-out model the arm is the heuristic one: stored apart, so it never passes for the arm
-            s.update(arm=arm + ("-unlearned" if reranker in ("missing", "stale") else "")
-                     + ("+llm" if asker else "+llmplan" if planner else ""),
+            s.update(arm=arm_name(arm, reranker, planner, asker, chat_model),
                      reranker=reranker, version=ver, seconds=round(time.time() - t0, 1))
+            if planner:
+                used = planner.client.nodes_used(since)
+                for n, k in (getattr(p, "nodes", None) or {}).items():      # the shared planning call counts too
+                    used[n] = used.get(n, 0) + k
+                s.update(model=chat_model, node=",".join(sorted(used)) or None, nodes=used)
             rows.append(s)
             db.upsert(con, "ask_bench", [{"case_id": s["case"], "arm": s["arm"], "metrics": json.dumps(s),
                                                "ref_hash": R.hash_of(ref), "created_at": db.now()}],

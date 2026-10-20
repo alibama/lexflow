@@ -106,7 +106,7 @@
    "steps_equivalence": 0.12,
    "gate_correct": 1.0
   },
-  "local+llm": {
+  "local+llm@qwen3:1.7b": {
    "cases": 6,
    "case_ids": [
     "court_debt.va",
@@ -132,7 +132,7 @@
    "steps_equivalence": 0.016,
    "gate_correct": 0.833
   },
-  "local+llmplan": {
+  "local+llmplan@qwen3:1.7b": {
    "cases": 30,
    "case_ids": [
     "court_debt.ca",
@@ -232,7 +232,7 @@
    "steps_equivalence": 0.25,
    "gate_correct": 1.0
   },
-  "oracle+llm": {
+  "oracle+llm@qwen3:1.7b": {
    "cases": 6,
    "case_ids": [
     "court_debt.va",
@@ -2967,10 +2967,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.3514,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 36.4
+   "seconds": 36.4,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.dc",
@@ -2989,10 +2991,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.1,
    "composite": 0.2958,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 32.2
+   "seconds": 32.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.md",
@@ -3011,10 +3015,12 @@
    "slot_match": 0.5,
    "steps_equivalence": 0.2,
    "composite": 0.4319,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 34.1
+   "seconds": 34.1,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.tx",
@@ -3033,10 +3039,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.3978,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 43.1
+   "seconds": 43.1,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.va",
@@ -3055,10 +3063,12 @@
    "slot_match": 0.5714,
    "steps_equivalence": 0.048,
    "composite": 0.5636,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 51.6
+   "seconds": 51.6,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.ca",
@@ -3077,10 +3087,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.3952,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 77.1
+   "seconds": 77.1,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.dc",
@@ -3099,10 +3111,12 @@
    "slot_match": 1.0,
    "steps_equivalence": 0.514,
    "composite": 0.5868,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 271.2
+   "seconds": 271.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.md",
@@ -3121,10 +3135,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.567,
    "composite": 0.15,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 49.8
+   "seconds": 49.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.tx",
@@ -3143,10 +3159,12 @@
    "slot_match": 0.2857,
    "steps_equivalence": 0.0,
    "composite": 0.1929,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 70.4
+   "seconds": 70.4,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.va",
@@ -3165,10 +3183,12 @@
    "slot_match": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.1889,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 114.3
+   "seconds": 114.3,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.ca",
@@ -3187,10 +3207,12 @@
    "slot_match": 0.0,
    "steps_equivalence": null,
    "composite": 0.2991,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 132.8
+   "seconds": 132.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.dc",
@@ -3209,10 +3231,12 @@
    "slot_match": null,
    "steps_equivalence": null,
    "composite": 0.5569,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 67.5
+   "seconds": 67.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.md",
@@ -3231,10 +3255,12 @@
    "slot_match": null,
    "steps_equivalence": null,
    "composite": 0.3622,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 199.4
+   "seconds": 199.4,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.tx",
@@ -3253,10 +3279,12 @@
    "slot_match": 0.0,
    "steps_equivalence": null,
    "composite": 0.3396,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 73.6
+   "seconds": 73.6,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.va",
@@ -3275,10 +3303,12 @@
    "slot_match": null,
    "steps_equivalence": null,
    "composite": 0.433,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 31.7
+   "seconds": 31.7,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.ca",
@@ -3297,10 +3327,12 @@
    "slot_match": 0.125,
    "steps_equivalence": null,
    "composite": 0.1687,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 17.2
+   "seconds": 17.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.dc",
@@ -3319,10 +3351,12 @@
    "slot_match": 0.8571,
    "steps_equivalence": null,
    "composite": 0.9,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 4.1
+   "seconds": 4.1,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.md",
@@ -3341,10 +3375,12 @@
    "slot_match": 0.7143,
    "steps_equivalence": null,
    "composite": 0.5029,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 7.7
+   "seconds": 7.7,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.tx",
@@ -3363,10 +3399,12 @@
    "slot_match": 0.5,
    "steps_equivalence": null,
    "composite": 0.225,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 14.0
+   "seconds": 14.0,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.va",
@@ -3385,10 +3423,12 @@
    "slot_match": 0.4286,
    "steps_equivalence": null,
    "composite": 0.4733,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 1.8
+   "seconds": 1.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.ca",
@@ -3407,10 +3447,12 @@
    "slot_match": 0.1,
    "steps_equivalence": null,
    "composite": 0.1733,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 102.0
+   "seconds": 102.0,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.dc",
@@ -3429,10 +3471,12 @@
    "slot_match": 0.6667,
    "steps_equivalence": null,
    "composite": 0.5643,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 29.2
+   "seconds": 29.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.md",
@@ -3451,10 +3495,12 @@
    "slot_match": 0.7143,
    "steps_equivalence": null,
    "composite": 0.5141,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 27.7
+   "seconds": 27.7,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.tx",
@@ -3473,10 +3519,12 @@
    "slot_match": 0.125,
    "steps_equivalence": null,
    "composite": 0.2652,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 68.7
+   "seconds": 68.7,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.va",
@@ -3495,10 +3543,12 @@
    "slot_match": 0.5,
    "steps_equivalence": null,
    "composite": 0.1828,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 80.5
+   "seconds": 80.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.ca",
@@ -3517,10 +3567,12 @@
    "slot_match": 0.5,
    "steps_equivalence": 0.0,
    "composite": 0.3836,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 42.5
+   "seconds": 42.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.dc",
@@ -3539,10 +3591,12 @@
    "slot_match": 0.8,
    "steps_equivalence": 0.0,
    "composite": 0.5867,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 9.9
+   "seconds": 9.9,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.md",
@@ -3561,10 +3615,12 @@
    "slot_match": 0.2,
    "steps_equivalence": 0.0,
    "composite": 0.4038,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 5.8
+   "seconds": 5.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.tx",
@@ -3583,10 +3639,12 @@
    "slot_match": 0.0909,
    "steps_equivalence": 0.0,
    "composite": 0.2258,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 18.3
+   "seconds": 18.3,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.va",
@@ -3605,10 +3663,12 @@
    "slot_match": 0.3333,
    "steps_equivalence": 0.0,
    "composite": 0.4857,
-   "arm": "local+llmplan",
+   "arm": "local+llmplan@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 4.6
+   "seconds": 4.6,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.va",
@@ -3630,10 +3690,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": 0.048,
    "composite": 0.5636,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 259.2
+   "seconds": 259.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "court_debt.va",
@@ -3655,10 +3717,12 @@
    "claim_vital_recall": 0.1818,
    "steps_equivalence": 0.13,
    "composite": 0.7877,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 1317.2
+   "seconds": 1317.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.va",
@@ -3680,10 +3744,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.1889,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 802.8
+   "seconds": 802.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "license_conviction.va",
@@ -3705,10 +3771,12 @@
    "claim_vital_recall": 0.3333,
    "steps_equivalence": 0.367,
    "composite": 0.7756,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 1169.5
+   "seconds": 1169.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.va",
@@ -3730,10 +3798,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.433,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 213.2
+   "seconds": 213.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "phone_commissary.va",
@@ -3755,10 +3825,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.9706,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 242.3
+   "seconds": 242.3,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.va",
@@ -3780,10 +3852,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.4733,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 147.2
+   "seconds": 147.2,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "pretrial_clock.va",
@@ -3805,10 +3879,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.7686,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 222.5
+   "seconds": 222.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.va",
@@ -3830,10 +3906,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.1928,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 269.5
+   "seconds": 269.5,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "prison_wages.va",
@@ -3855,10 +3933,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": null,
    "composite": 0.7375,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 258.8
+   "seconds": 258.8,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.va",
@@ -3880,10 +3960,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.444,
-   "arm": "local+llm",
+   "arm": "local+llm@qwen3:1.7b",
    "reranker": "loqo",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 92.3
+   "seconds": 92.3,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   },
   {
    "case": "record_sealing.va",
@@ -3905,10 +3987,12 @@
    "claim_vital_recall": 0.0,
    "steps_equivalence": 0.0,
    "composite": 0.5583,
-   "arm": "oracle+llm",
+   "arm": "oracle+llm@qwen3:1.7b",
    "reranker": "none",
    "version": "2-1bbcb0aed8c9",
-   "seconds": 121.0
+   "seconds": 121.0,
+   "model": "qwen3:1.7b",
+   "node": "ollama"
   }
  ],
  "claude_vs_claude": {

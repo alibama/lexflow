@@ -443,6 +443,8 @@ MIGRATIONS = ["ALTER TABLE benchmarks ADD COLUMN lexical REAL", "ALTER TABLE job
               "ALTER TABLE local_answers ADD COLUMN reviewed_by TEXT",
               "ALTER TABLE place_processes ADD COLUMN quote_check TEXT",
               "ALTER TABLE reviewers ADD COLUMN token_hash TEXT",
+              # the compute node(s) that ran a benchmark row (lexflow/compute; this copy's own)
+              "ALTER TABLE benchmarks ADD COLUMN node TEXT",
               # the digest of what lexflow.publish.push last wrote for the key (this copy's own; never synced)
               "ALTER TABLE wikibase_items ADD COLUMN content_hash TEXT"]
 
