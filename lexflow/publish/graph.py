@@ -1216,7 +1216,10 @@ class Build:
             if not o.get("id"):
                 continue
             ok = SC.key_for("outcome", mid, o["id"])
-            out = self.add(ok, o.get("description") or o["id"], f"Outcome of “{title}”", cls("process-outcome"))
+            # the label carries the state and question like a step's, since many models end in "Process complete"
+            # and the wiki allows one item per label and description
+            out = self.add(ok, f"{o.get('description') or o['id']} ({S.NAME[st]} {short})",
+                           f"Outcome of “{title}” ({S.NAME[st]})", cls("process-outcome"))
             src = o.get("source") or {}
             sec = self._src_section(st, src, sections) if src.get("section") else None
             refs = [self.ground(sec, src.get("subsection"), src.get("quote"))] if sec else []
