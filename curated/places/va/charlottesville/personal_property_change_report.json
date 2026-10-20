@@ -247,7 +247,7 @@
    "fee": null,
    "form": "f2",
    "url": "https://corforms.charlottesville.gov/Forms/CORADC2025",
-   "quote": "If the date of the move occurred more than 60 days prior to contacting us, provide documentation supporting the address change such as a new state title or registration.",
+   "quote": null,
    "source": "https://corforms.charlottesville.gov/Forms/CORADC2025"
   },
   {
@@ -271,7 +271,7 @@
    "fee": null,
    "form": null,
    "url": "https://corforms.charlottesville.gov/Forms/PPDisp2025",
-   "quote": "If you have not reported the disposal of this item to DMV or to us within 60 days, we will use the date you contacted DMV to inform them of the disposal or the date that this form is submitted, whichever is earlier.",
+   "quote": null,
    "source": "https://corforms.charlottesville.gov/Forms/PPDisp2025"
   },
   {
@@ -283,7 +283,7 @@
    "fee": "late payment penalty of 10% of the balance due after car tax relief; interest at 10% a year from the first day of the following month",
    "form": null,
    "url": "https://www.charlottesville.gov/568/Personal-Property-Taxes",
-   "quote": "Please pay all current taxes due by the associated due date unless otherwise notified by our office.",
+   "quote": null,
    "source": "https://corforms.charlottesville.gov/Forms/PPDisp2025"
   },
   {
@@ -579,7 +579,9 @@
   "Tax rate and car tax relief. The Tax Year 2026 levy ordinance, printed in the approved City Council minutes of April 9, 2026, sets $4.40 per $100 on automobiles, trucks, motorcycles and other motor vehicles, and the same meeting set car tax relief (PPTR) at 31% of the first $20,000 of value for 2026. The Treasurer's page still gives the rate 'For tax year 2024'. How car tax relief is prorated along with the tax was not confirmed.",
   "DMV details come from three DMV pages and the FMS 210 form (as of 2026-10-11). The online notice-of-sale and plate-surrender service links come from those pages; the services themselves are not described here. FMS 210 (07/01/2022) is a fillable PDF. It asks for an EIN, driver's license number or SSN, and it says 'A $5.00 processing fee will be deducted from your refund if none of the registration period has passed.' DMV title and plate fees are not covered here. DMV's in-state move page says to return a decal to the old locality, which does not apply here: Charlottesville issues no vehicle decal (FAQ QID=487).",
   "The Tax Commissioner appeal (Va. Code § 58.1-3983.1) covers only 'local mobile property tax' (airplanes, boats, campers, recreational vehicles and trailers) and business taxes. For a car, pickup or motorcycle, the next step after the Commissioner of the Revenue is the circuit court. The Charlottesville Circuit Court Clerk's contact details are not covered here.",
-  "Service members, students and other exemptions are not covered here; see the city's vehicle registration process. Staff names on the Commissioner and Treasurer pages are not recorded. State-law quotes are matched to Open US Law's copy of the Code of Virginia, cut to leave out cross-references where that copy puts a space before a comma."
+  "Service members, students and other exemptions are not covered here; see the city's vehicle registration process. Staff names on the Commissioner and Treasurer pages are not recorded. State-law quotes are matched to Open US Law's copy of the Code of Virginia, cut to leave out cross-references where that copy puts a space before a comma.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Moved away: report the move with the New Address for Personal Property online form' (https://corforms.charlottesville.gov/Forms/CORADC2025) were not found on the cited page as lexflow read it (not found word for word in the cited page as read on 11 October 2026; the form's text is drawn by a script when the page opens, which lexflow's reader does not run, and its Internet Archive copies (January 2026) hold no more). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'The Commissioner reviews the report and sets the date the tax stops' and the step 'Keep paying the current bill until the office tells you otherwise' (https://corforms.charlottesville.gov/Forms/PPDisp2025) were not found on the cited page as lexflow read it (not found word for word in the cited page as read on 11 October 2026; the form's text is drawn by a script when the page opens, which lexflow's reader does not run, and its Internet Archive copies (January 2026) hold no more). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -687,10 +689,26 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 58,
-  "quotes_confirmed": 58,
-  "removed": [],
+  "quotes_confirmed": 55,
+  "removed": [
+   {
+    "where": "steps[4]",
+    "what": "the step 'Moved away: report the move with the New Address for Personal Property online form'",
+    "why": "not found word for word in the cited page as read on 11 October 2026"
+   },
+   {
+    "where": "steps[6]",
+    "what": "the step 'The Commissioner reviews the report and sets the date the tax stops'",
+    "why": "not found word for word in the cited page as read on 11 October 2026"
+   },
+   {
+    "where": "steps[7]",
+    "what": "the step 'Keep paying the current bill until the office tells you otherwise'",
+    "why": "not found word for word in the cited page as read on 11 October 2026"
+   }
+  ],
   "corrections": [
    "Quotes: all 51 draft quotes confirmed. The 35 state-law quotes are substrings of I.text_of for the cited section (whitespace normalised only), and each sits under the cited subsection. The 12 local and procedure quotes were re-fetched on 2026-10-11 (city pages, FAQ, appeals PDF, Treasurer page, the two online forms' layout files, DMV buy-sell page) and match exactly. The 4 caveat phrases match. 7 quotes were added and checked the same way: 3 state (Va. Code §§ 46.2-688 twice, 58.1-3983.1(B)(1)), 1 local (Tax Year 2026 levy ordinance) and 3 caveat phrases (levy ordinance, FMS 210 twice).",
    "Va. Code § 46.2-688 was misread. The draft said DMV keeps $5 of any registration refund and prorates the rest. The $5 sentence belongs to plates surrendered before the registration period begins; the six-month proration is followed by 'No charge or deduction shall be assessed for any refund made under this subsection.' FMS 210 (07/01/2022) agrees: $5 is deducted only if none of the registration period has passed. The s2 fee and the fee rows now say so, with a separate $5 row keeping the original quote. Added the statute's rule that there is no refund if the plates are not returned.",
@@ -704,7 +722,8 @@
    "Tax rate: added the Tax Year 2026 levy ordinance from the approved City Council minutes of April 9, 2026 (CivicClerk) as a local legal_basis entry. It sets $4.40 per $100 on motor vehicles for 2026, and the same meeting set car tax relief at 31% for 2026. The fee row names the 2026 ordinance. The ordinance also taxes mobile homes with real estate, so caveat 3 is updated.",
    "FMS 210 was read in full (07/01/2022 revision, a fillable PDF). Form f5 now has the right title and number, and fillable is true. s2 adds that DMV mails the refund to the address on file and that, if the check has not come within 30 days, you write to the DMV Refund Section (its office address is added as a contact). From the DMV page it adds that partial refunds exclude one-time plate reservation fees, Virginia Road Tax for heavy trucks and late fees.",
    "Contacts: the Treasurer phone label said 'refunds', but the page gives that number for payment arrangements. The label is corrected. No staff names, personal mailboxes or direct lines are recorded. The Treasurer page puts the Treasurer's name on the penalty-waiver letter address, and that name is not recorded.",
-   "Caveats: the local-ordinance caveat now notes the one local legal_basis entry; the DMV caveat notes that FMS 210 was read; and a caveat asks whether the city vehicle license fee is prorated or refunded."
+   "Caveats: the local-ordinance caveat now notes the one local legal_basis entry; the DMV caveat notes that FMS 210 was read; and a caveat asks whether the city vehicle license fee is prorated or refunded.",
+   "3 quotes lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "30 or 60 days: FAQ QID=489 says DMV and the Commissioner must be told within 30 days. The current online forms say 60 days and credit the 'Code of Virginia'. No state section found sets either deadline. The steps give both, and reporting within 30 days meets both, so no step is wrong.",

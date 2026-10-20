@@ -42,10 +42,10 @@ async def lifespan(_app):
     if config.JOB_RUNNER:          # a second, read-only instance on the same database can run without one
         runner.start()
     if compute_nodes.pool_on():    # health checks of the model servers (lexflow/compute); nothing without a pool
-        poller.start()
+        poller.start()             # idempotent: one thread per process, restarted after a shutdown
     yield
     runner.stop.set()
-    poller.stop.set()
+    poller.shutdown(timeout=2)     # so the next lifespan in this process (a test's TestClient) starts afresh
 
 
 app = FastAPI(title="lexflow", version="1.0", lifespan=lifespan)

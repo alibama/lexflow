@@ -583,3 +583,28 @@ def test_dashboard_has_the_compute_page_and_never_calls_a_node():
     node = shutil.which("node")
     if node:
         subprocess.run([node, "--check", str(ROOT / "dashboard" / "app.js")], check=True)
+
+
+def test_the_poller_starts_once_per_process_and_again_after_a_shutdown(pool_env, con, monkeypatch):
+    """The compute poller is a module-level singleton started by every lifespan, and one pytest process opens many
+    TestClients with the pool env set: a Thread can be started only once, so ``start`` must be idempotent while
+    the thread runs and start a fresh one after the lifespan's shutdown."""
+    from fastapi.testclient import TestClient
+    from lexflow.api import app as API
+    monkeypatch.setattr(config, "JOB_RUNNER", False)
+    assert N.pool_on()
+    with TestClient(API.app) as c:
+        assert c.get("/api/compute").json()["pool"] is True
+        assert API.poller.is_alive() and API.poller.start() is False          # already running: nothing to do
+        first = API.poller.starts
+    with TestClient(API.app) as c:                                            # a second lifespan in this process
+        assert c.get("/api/compute").json()["pool"] is True
+        assert API.poller.is_alive() and API.poller.starts == first + 1
+    API.poller.shutdown(timeout=5)
+    assert not API.poller.is_alive()
+    # a bare stop.set() (the old shutdown) also leaves the poller restartable
+    assert API.poller.start() is True
+    API.poller.stop.set()
+    API.poller.join(5)
+    assert API.poller.start() is True and API.poller.is_alive()
+    API.poller.shutdown(timeout=5)

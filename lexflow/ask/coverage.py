@@ -621,8 +621,8 @@ def asker_at(url: str, model: str | None = None):
         return None
     from ..compute import nodes as CN
     pin = CN.name_for_url(url) if CN.pool_on() else None          # with the pool on, the calls stay on this node
-    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=pin), mode="schema",
-                 max_tokens=400)
+    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=pin),
+                 mode=config.ASK_MODE, max_tokens=400)
 
 
 def cells_for(con, states: list[str], places: list[dict] | None, qs: list[dict]) -> list[tuple[dict, str, str]]:

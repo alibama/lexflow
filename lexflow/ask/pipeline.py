@@ -44,8 +44,8 @@ def asker_for(model: str | None, node: str | None = None):
             return None
     except Exception:  # noqa: BLE001 - Ollama not running
         return None
-    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=node), mode="schema",
-                 max_tokens=400)
+    return Asker(OllamaClient(base_url=url, model=model, num_ctx=4096, timeout=1800, node=node),
+                 mode=config.ASK_MODE, max_tokens=400)
 
 
 def embedder():

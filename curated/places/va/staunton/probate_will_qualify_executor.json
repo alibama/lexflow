@@ -663,7 +663,7 @@
    "fee": null,
    "form": "f1",
    "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000",
-   "quote": "Heirs at law are required to be listed.",
+   "quote": null,
    "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000"
   },
   {
@@ -699,7 +699,7 @@
    "fee": null,
    "form": "f7",
    "url": "https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000",
-   "quote": "If the Virginia resident will co-qualify with you, they must appear at the appointment with you.",
+   "quote": null,
    "source": "https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000"
   },
   {
@@ -1299,7 +1299,8 @@
   "'A Guide to the Administration of Decedents' Estates in Virginia', linked from the City's page through the Virginia Bar Association's site, is not an official government source and is not used here.",
   "Free legal help: the City's probate page links the Virginia State Bar's Free and Low-Cost Legal Resources pamphlet and Virginia Free Legal Answers. They were not read, and no statement that the Clerk's Office cannot give legal advice was found on a Staunton page.",
   "Not covered in detail: administrators appointed only for wrongful death or personal injury suits (§ 64.2-454), curators beyond the escalation note (§ 64.2-451), guardianships of minors and incapacitated adults (also handled by the Clerk, per the City's page), corporate fiduciaries, estate debts and creditor claims, and federal or state income and estate tax returns.",
-  "Appeal scope: § 64.2-445 lets 'any person interested in the probate of the will' appeal an order the Clerk entered under § 64.2-444, which includes appointment orders. Whether that six-month appeal also reaches a Clerk's appointment of an administrator when there is no will was not confirmed."
+  "Appeal scope: § 64.2-445 lets 'any person interested in the probate of the will' appeal an order the Clerk entered under § 64.2-444, which includes appointment orders. Whether that six-month appeal also reaches a Clerk's appointment of an administrator when there is no will was not confirmed.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Fill in the City of Staunton Probate Information Form and gather what to bring' and the step 'If an executor or administrator lives outside Virginia, arrange a Virginia resident' (https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000) were not found on the cited page as lexflow read it (the cited page could not be read (robots.txt for www.ci.staunton.va.us answered HTTP 403, so robots.txt disallows https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000; the PDF has no text layer lexflow can read); the form is a scan with no text layer, so a text search cannot read it (lexflow read the Internet Archive copy, the City's site refusing automated readers)). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -1737,10 +1738,21 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 129,
-  "quotes_confirmed": 129,
-  "removed": [],
+  "quotes_confirmed": 127,
+  "removed": [
+   {
+    "where": "steps[4]",
+    "what": "the step 'Fill in the City of Staunton Probate Information Form and gather what to bring'",
+    "why": "the cited page could not be read (robots.txt for www.ci.staunton.va.us answered HTTP 403, so robots.txt disallows https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000; the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "steps[7]",
+    "what": "the step 'If an executor or administrator lives outside Virginia, arrange a Virginia resident'",
+    "why": "the cited page could not be read (robots.txt for www.ci.staunton.va.us answered HTTP 403, so robots.txt disallows https://www.ci.staunton.va.us/home/showpublisheddocument/12029/638423099097970000; the PDF has no text layer lexflow can read)"
+   }
+  ],
   "corrections": [
    "All 101 original quotes confirmed. The 91 state-law quotes are substrings of I.text_of for the cited section (whitespace normalised only), each in the cited subsection. The eight procedure quotes from text sources were found in the official sources (two only after the apostrophe fix below): the archived City probate and visitor pages (Internet Archive captures of 2026-05-11 and 2025-11-15), the CC-1650 instructions, the Commissioner of Accounts fee guideline and complaint rules, and the Circuit Courts pamphlet, re-fetched read-only on 2026-10-11. The two quotes from the City's scanned Probate Information Form (s5, s8) were confirmed by eye on a fresh render of the archived PDF (pages 3 and 2).",
    "Verbatim fixes: the s3 quote (CC-1685 instructions) and the s4 quote (CC-1650 instructions) had a curly apostrophe where the PDFs' text has a straight one; both now match the source character for character. The § 17.1-275(A)(9) fee quote now runs to the end of the sentence, so it covers the $0.50 judge's-certificate charge the fee entry already stated.",
@@ -1755,7 +1767,8 @@
    "s17: added the waiver of inventory and settlement the Clerk 'shall' grant for personal estates of $35,000 or less when an heir, beneficiary or creditor qualifies, with its real-estate exception (§ 64.2-1302), the inventory's scope and market-value rule (§ 64.2-1300(A), (D)) and after-discovered assets (§ 64.2-1300(E)). s18: added the extension for reasonable cause and early filing (§ 64.2-1304(B), (C)) and the interim account or notice of intent (§ 64.2-1314(C)); the address-change advice is now attributed to the clerks' pamphlet, where it was found.",
    "s1: the nursing-home presumption now covers convalescent homes and similar institutions and says it can be rebutted (§ 64.2-443(B)); the nonresident venue sentence no longer says the home court 'usually' probates first, and gives the § 64.2-443(A) order instead. The Waynesboro Circuit Court page was read (250 South Wayne Avenue, 25th Judicial Circuit), so the Waynesboro part of the venue caveat is now sourced. s3: added the § 64.2-601(A)(3) statement (no application pending or granted) and the CC-1685 notarization rule. s5: the death certificate is now sourced to the clerks' pamphlet ('A copy of the death certificate should be taken to the court'). s9: device rules re-read from the scanned policy (description unchanged in substance); added food and drink from the visitor page. s12: added the § 64.2-509(D) unknown-heirs exception and the § 64.2-509(E) additional list. s16: added the clerk's abstract to the commissioner of the revenue (§ 64.2-510(B)).",
    "Fees, contacts, escalation: the Commissioner of Accounts fee entry now names the guideline PDF as the quote's source and adds the $250.00 notice-of-intent fee. The Treasurer contact no longer implies the Treasurer's page mentions probate refunds; it cites § 58.1-1717. The § 64.2-445 rung now uses the statute's 'person interested in the probate of the will'; the § 64.2-1212 rung gives the 15-day exception period; the complaint-rules rung uses the rules' definition of a complaint. Summary: the notice goes to the spouse, heirs and beneficiaries within 30 days of qualifying or probate, and the inventory waiver is mentioned.",
-   "Confirmed without change: the Clerk's page (address, 540.332.3874, fax 540.332.3970, hours, payments before 4:30 p.m., Clerk as recorder of deeds and probate judge, constitutional officer); the office mailbox on the Public Records Request page; the Treasurer's address and hours; the vacourts.gov Staunton and Augusta court pages; the OES address; the ADA mailbox; the 20 form numbers, titles and URLs against the fiduciary forms page and the DMV guide; the paraphrase of City Code § 3.70.010; the Small Estate Affidavit link caveat (document 13200 in the archive capture, 13896 in fixtures/places/va/discovery-staunton.json, neither captured); the CC-1651 $10,000 note; the pamphlet's $50,000 figure and tax rates; and the phrases quoted inside caveats and step text ('the appointment', 'Probate of Will only', 'collects the applicable estate taxes for the Commonwealth', 'Virginia Small Estate Act Affidavit'). Privacy: no staff names, personal mailboxes or direct lines are recorded; the Clerk's page, the court pages, the Public Records page, the Treasurer's page, the device policy and the ADA notice name individuals, and none were copied."
+   "Confirmed without change: the Clerk's page (address, 540.332.3874, fax 540.332.3970, hours, payments before 4:30 p.m., Clerk as recorder of deeds and probate judge, constitutional officer); the office mailbox on the Public Records Request page; the Treasurer's address and hours; the vacourts.gov Staunton and Augusta court pages; the OES address; the ADA mailbox; the 20 form numbers, titles and URLs against the fiduciary forms page and the DMV guide; the paraphrase of City Code § 3.70.010; the Small Estate Affidavit link caveat (document 13200 in the archive capture, 13896 in fixtures/places/va/discovery-staunton.json, neither captured); the CC-1651 $10,000 note; the pamphlet's $50,000 figure and tax rates; and the phrases quoted inside caveats and step text ('the appointment', 'Probate of Will only', 'collects the applicable estate taxes for the Commonwealth', 'Virginia Small Estate Act Affidavit'). Privacy: no staff names, personal mailboxes or direct lines are recorded; the Clerk's page, the court pages, the Public Records page, the Treasurer's page, the device policy and the ADA notice name individuals, and none were copied.",
+   "2 quotes lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "Whether the City of Staunton charges its one-third probate tax when a will is probated with an executor (City Code § 3.70.010 as read names only the grant of administration). Steps s10 and the fee list say to confirm with the Clerk.",

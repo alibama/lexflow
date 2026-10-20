@@ -212,6 +212,10 @@ class Asker:
     ``mode="schema"`` constrains the reply with the JSON schema (Ollama ``format``): reliable, but grammar-guided
     sampling is slow on a CPU.  ``mode="lines"`` asks for pipe-separated lines derived from the same schema and parses
     them, which lets the model sample freely and stops after a few tokens; a reply that does not parse is a miss.
+    ``mode="json"`` asks for JSON in words (the schema described in the prompt, Ollama ``format: json``) and parses
+    it: the model samples freely, so a thinking model that the grammar steers to the shortest reply (qwen3 under
+    the schema answers the summary's "not_found, no claims" every time, where the same prompt free-text gives cited
+    claims) says what it has to say.  A reply that does not parse, or lacks a required key, is retried once.
     """
 
     def __init__(self, client: OllamaClient, mode: str = "schema", max_tokens: int = 160):
@@ -223,6 +227,8 @@ class Asker:
     def ask(self, system: str, user: str, schema: dict, retries: int = 1) -> dict | None:
         if self.mode == "lines":
             return self._ask_lines(system, user, schema)
+        if self.mode == "json":
+            return self._ask_json(system, user, schema, retries)
         msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
         for _ in range(retries + 1):
             self.calls += 1
@@ -231,6 +237,38 @@ class Asker:
                 return json.loads(raw)
             except (json.JSONDecodeError, requests.RequestException, KeyError):
                 msgs.append({"role": "user", "content": "Return only valid JSON matching the schema."})
+        return None
+
+    # ---- JSON in words
+    @staticmethod
+    def _shape(schema: dict) -> str:
+        """The schema as the example a prompt shows: {"status": "answered|partial|not_found", "claims": [{...}]}."""
+        t = schema.get("type")
+        if t == "object":
+            return "{" + ", ".join(f'"{k}": {Asker._shape(v)}' for k, v in (schema.get("properties") or {}).items()) + "}"
+        if t == "array":
+            return "[" + Asker._shape(schema.get("items") or {}) + ", ...]"
+        if schema.get("enum"):
+            return '"' + "|".join(str(e) for e in schema["enum"]) + '"'
+        return {"boolean": "true|false", "integer": "0", "number": "0"}.get(t, '"..."')
+
+    def _ask_json(self, system: str, user: str, schema: dict, retries: int = 1) -> dict | None:
+        need = list(schema.get("required") or [])
+        msgs = [{"role": "system", "content": system.strip() + "\nReply with one JSON object only, shaped like "
+                                                                + self._shape(schema) + "."},
+                {"role": "user", "content": user}]
+        for _ in range(retries + 1):
+            self.calls += 1
+            try:
+                raw = self.client.chat(msgs, schema="json", max_tokens=self.max_tokens * 2)
+                raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.S).replace("```json", "").replace("```", "")
+                out = json.loads(raw)
+                if isinstance(out, dict) and all(k in out for k in need):
+                    return out
+            except (json.JSONDecodeError, requests.RequestException, KeyError, TypeError):
+                pass
+            msgs.append({"role": "user", "content": "Return only one valid JSON object with the keys "
+                                                    + ", ".join(need) + "."})
         return None
 
     # ---- line protocol

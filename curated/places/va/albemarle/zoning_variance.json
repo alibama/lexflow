@@ -552,8 +552,8 @@
   },
   {
    "level": "local",
-   "citation": "Albemarle County Code § 1-504 (Zoning Fees), Chapter 1, Article 5 (Fee Schedule), as named in the Board of Supervisors' 2026 fee ordinance item (matter 26-220; the Board adopted the ordinance on April 22, 2026 under matter 26-256, whose agenda text has the same sentence)",
-   "url": "https://webapi.legistar.com/v1/albemarle/matters/8536",
+   "citation": "Albemarle County Code § 1-504 (Zoning Fees), Chapter 1, Article 5 (Fee Schedule), as named in the Board of Supervisors' 2026 fee ordinance item (matter 26-220, its agenda text; the Board adopted the ordinance on April 22, 2026 under matter 26-256, whose agenda text has the same sentence)",
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8536/texts/8668",
    "quote": "If adopted, the revised fees would take effect January 1, 2027.",
    "role": "fee"
   }
@@ -1297,13 +1297,18 @@
    "url": "https://law.lis.virginia.gov/vacode/2.2-3704/",
    "title": "Code of Virginia § 2.2-3704",
    "retrieved": "2026-10-11"
+  },
+  {
+   "url": "https://webapi.legistar.com/v1/albemarle/matters/8536/texts/8668",
+   "title": "Albemarle County Legistar API: the agenda text of matter 26-220 (Public Hearing to Amend County Code Chapter 1, Article 5 (Fee Schedule)), version 1",
+   "retrieved": "2026-10-20"
   }
  ],
  "researched_by": "Claude (lexflow agent)",
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 109,
   "quotes_confirmed": 109,
   "removed": [],
@@ -1323,7 +1328,8 @@
    "Escalation: rung 3 (60-day protection) now uses the statute's terms ('materially changed his position in good faith reliance') and its exceptions (malfeasance, fraud, clerical corrections with the County Attorney's concurrence). Rung 4 (tie vote): the draft's 'ask at the meeting' was presented as a deadline; neither § 15.2-2311(D) nor Rule 5 sets one, and the rung now says so. Rung 6 (rehearing): the draft said a rehearing 'does not extend' the court deadline; no source says either way, so it now says no source read says it does, and to file in court within 30 days anyway. Rung 7: adds that failure to file and serve in time results in dismissal (§ 15.2-2314(A)). Rung 8: adds that the Court of Appeals may extend the time on motion for good cause (§ 8.01-675.3).",
    "Fees: the caveat said the Board of Supervisors adopted the fee ordinance on April 22, 2026, citing matter 26-220. That matter's Legistar record shows only a public hearing and an April 15 deferral; the adoption is recorded under matter 26-256 (April 22, 2026 event item: adopt the Proposed Ordinance: Chapter 1, Article 5 (Fee Schedule) as presented in Attachment B). The caveat, the § 1-504 citation and the sources now say so. The $590, $350 and $220 fee lines in s5, s13, s15 and the fees table are now dated to the 2026-08 fee page, with the January 1, 2027 change noted. The summary now says the notice charge probably applies, not that it does.",
    "Checked and unchanged: the five-member board appointed by the Circuit Court; meetings on the first Tuesday at 2 pm in Lane Auditorium (Nov 10 for November 2026); 15 minutes plus 5 for rebuttal and 3 minutes per public speaker (Rule 3(C)); three affirmative votes to grant a variance or reverse (Rules 5(A)(1) and (2), § 15.2-2312); roll-call votes (Rule 5(C)); 30-day rehearing application (Rule 5(J)); final decision is the date of the final vote (Rule 6(A)); the 10-day period for temporary or seasonal commercial uses as the County page words it; the 90-day limits in §§ 15.2-2286(A)(4) and 15.2-2312; the stay and restraining order in § 15.2-2311(B); the County fee rows ($590, $350, $220, $235 plus postage and advertising, 4% surcharge); the Civic Access link numbers (124, 151, 152, 206) against the pages that link them; the Circuit Court Clerk's office hours, phone lines and address on vacourts.gov.",
-   "Privacy and schema: the only mailboxes are cddinquiry@ and applicationservices@, each found as a mailto link on the County page that publishes it as the department's or Application Services' address. No staff names, personal mailboxes or direct lines are recorded (the County pages name the Zoning Administrator, the deputy, BZA liaisons, a notice-sign contact with an extension and planning staff; the court page names the elected Clerk; the Legistar records name staff and supervisors; none are kept). The JSON is valid, step and form ids are unique, every step's form id exists, and the category is in the schema."
+   "Privacy and schema: the only mailboxes are cddinquiry@ and applicationservices@, each found as a mailto link on the County page that publishes it as the department's or Application Services' address. No staff names, personal mailboxes or direct lines are recorded (the County pages name the Zoning Administrator, the deputy, BZA liaisons, a notice-sign contact with an extension and planning staff; the court page names the elected Clerk; the Legistar records name staff and supervisors; none are kept). The JSON is valid, step and form ids are unique, every step's form id exists, and the category is in the schema.",
+   "legal_basis[73]: the sentence 'If adopted, the revised fees would take effect January 1, 2027' is in the matter's agenda text (the Legistar API's texts resource for matter 26-220, version 1), not in the matter record itself; the citation now names that resource."
   ],
   "open_issues": [
    "www.albemarle.org answers this client with HTTP 403, robots.txt included (checked again 2026-10-11). Every County quote was confirmed against an Internet Archive copy of the cited official URL, not the live page. Re-check against the live pages when they can be read.",

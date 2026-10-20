@@ -20,8 +20,10 @@ a re-run does not fetch it again.  Internet Archive downloads are slow, so a few
 per host: requests to one host still start at least its interval apart.  For a site in ``NO_REPRINT`` the cache
 keeps no words: only which of the files' quotes the page held when it was read.
 
-**Matching** (``match``): text from HTML (scripts and styles dropped, block elements on lines of their own), PDF
-(``pdftotext`` in reading order, raw, layout and table passes, else ``pypdf``; also with line-end hyphens joined),
+**Matching** (``match``): text from HTML (scripts and styles dropped, block elements on lines of their own, each
+``<option>``'s value and each button's caption added), PDF (``pdftotext`` in reading order, raw, layout and table
+passes, and ``pypdf``'s readings beside them, since the two order a form's or an OCR layer's words differently;
+also with line-end hyphens joined),
 Word (.docx: as it stands and, for a redlined ordinance, in its adopted reading with struck text dropped) and JSON
 (every string, as the Legistar and CivicClerk APIs give them); whitespace, curly quotes, non-breaking and
 zero-width spaces, soft hyphens and ligatures normalised; then ``validate.quote_in``, the check every state model's
@@ -298,7 +300,9 @@ BLOCK = {"p", "div", "li", "ul", "ol", "td", "th", "tr", "table", "tbody", "thea
 
 
 def html_text(data: bytes | str, encoding: str | None = None) -> str:
-    """The visible text of an HTML page (and its title and description), block elements on lines of their own."""
+    """The visible text of an HTML page (and its title and description), block elements on lines of their own;
+    with the words a form shows on a choice: each ``<option>``'s value (a calculator's notes on the court chosen,
+    say, which the page prints when it is picked) and each button's caption, on lines of their own."""
     import lxml.html
     from lxml import etree
     if isinstance(data, bytes):
@@ -336,13 +340,17 @@ def html_text(data: bytes | str, encoding: str | None = None) -> str:
             el.tail = "\n" + (el.tail or "")
     meta = [m.get("content") for m in doc.xpath("//meta[@name='description' or @property='og:description']")
             if m.get("content")]
-    return "\n".join(meta + [doc.text_content()])
+    shown = [v.strip() for v in doc.xpath("//option/@value|//input[@type='submit' or @type='button']/@value")
+             if v and v.strip() and re.search(r"[A-Za-z]{2}", v)]
+    return "\n".join(meta + [doc.text_content()] + shown)
 
 
 def pdf_text(data: bytes) -> str | None:
-    """A PDF's text layer: pdftotext in reading order, in content-stream order (-raw), with its layout kept and,
-    where the tool has it (xpdf), as a table, so a table row or a column reads as it does in one of them; else
-    pypdf.  None when neither is installed or the file has no text layer."""
+    """A PDF's text layer, as every extractor installed reads it, one reading after another: pdftotext in reading
+    order, in content-stream order (-raw), with its layout kept and, where the tool has it (xpdf), as a table, so a
+    table row or a column reads as it does in one of them; and pypdf, whose reading order differs from poppler's
+    on a scanned page's OCR layer and on a form, so a quote taken from one reading still matches when the other is
+    added.  None when no extractor is installed or the file has no text layer."""
     exe = shutil.which("pdftotext")
     outs = []
     if exe:
@@ -356,15 +364,27 @@ def pdf_text(data: bytes) -> str | None:
                     continue
                 if r.returncode == 0:
                     outs.append(r.stdout.decode("utf-8", "replace"))
-    if not outs:
-        try:
-            import pypdf
-            reader = pypdf.PdfReader(io.BytesIO(data))
-            outs.append("\n".join(page.extract_text() or "" for page in reader.pages))
-        except Exception:                                          # noqa: BLE001 - no pypdf, or a broken file
-            return None
-    text = "\n\f\n".join(outs)
+    outs += pypdf_text(data)
+    text = "\n\f\n".join(o for o in outs if o.strip())
     return text if text.strip() else None
+
+
+def pypdf_text(data: bytes) -> list[str]:
+    """pypdf's readings of a PDF (plain, and in layout mode where this pypdf has it); [] without pypdf or when the
+    file cannot be read."""
+    try:
+        import pypdf
+        reader = pypdf.PdfReader(io.BytesIO(data))
+        pages = list(reader.pages)
+    except Exception:                                              # noqa: BLE001 - no pypdf, or a broken file
+        return []
+    outs = []
+    for mode in ({}, {"extraction_mode": "layout"}):
+        try:
+            outs.append("\n".join(page.extract_text(**mode) or "" for page in pages))
+        except Exception:                                          # noqa: BLE001 - an older pypdf, or a broken page
+            continue
+    return outs
 
 
 W_NS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"

@@ -206,3 +206,31 @@ def test_parse_verdicts_is_forgiving():
     assert lint.parse_verdicts('text {"items": [{"readable": true, "person": false, "jargon": false, '
                                '"suggested_label": ""}]} more', 1)[1]["readable"] is True
     assert lint.parse_verdicts('{"items": [{"n": 9, "readable": true}]}', 2) == {}
+
+
+def test_a_process_description_names_no_channel_and_is_the_same_every_time():
+    """The description of a researched local process is made from the file's summary without any phone number,
+    mailbox or street address (channels are claims, and lint holds an item with a phone number in its text), the
+    same text for the same file every time, within the wiki's 250 characters."""
+    from lexflow.publish import graph
+    summary = ("Charlottesville Gas is the City-owned natural gas utility; it serves most streets in the city. For a "
+               "new or larger gas service, contact Utilities Outreach (434-970-3812, utilitiesoutreach@charlottesville"
+               ".gov) to confirm availability, or visit 605 E. Main Street, Room 2, Charlottesville, VA 22902. "
+               "Firm gas service is $10 a month.")
+    desc = graph.process_description("City of Charlottesville", "Virginia", summary)
+    assert desc == graph.process_description("City of Charlottesville", "Virginia", summary)
+    assert desc.startswith("Researched local process in City of Charlottesville, Virginia; Charlottesville Gas is")
+    assert "434" not in desc and "@" not in desc and "Main Street" not in desc and "22902" not in desc
+    assert len(desc) <= 250 and not desc.endswith("…")              # whole sentences, as many as fit
+    assert desc.endswith("it serves most streets in the city.")       # the second sentence would not fit
+    assert graph._no_channels(summary).endswith("contact Utilities Outreach to confirm availability, or visit. "
+                                                "Firm gas service is $10 a month.")
+    keys = set()
+    assert not lint.check_item(item("lexflow:process:1:x", "Gas service (City of Charlottesville)", desc), TODAY, keys)
+    cleaned = graph._no_channels("Call (434) 970-3146, ext. 2, or write to 605 E. Main Street, Charlottesville, VA "
+                                 "22902 before the deadline. Pay at City Hall (434.970.3146 or treasurer@charlottesville.gov).")
+    assert "434" not in cleaned and "@" not in cleaned and "Main" not in cleaned
+    assert cleaned.endswith("Pay at City Hall.")
+    assert graph.process_description("Albemarle County", "Virginia", None) == \
+        "Researched local process in Albemarle County, Virginia"
+    assert len(graph.process_description("X", "Virginia", "A" * 400)) == 250

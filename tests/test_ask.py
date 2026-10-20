@@ -288,3 +288,31 @@ def test_readers_show_one_answer_per_target_the_preferred_model(con, monkeypatch
     from lexflow.publish import lexipedia as LX
     assert len([r for r in prefer.preferred(db.rows(con, "SELECT * FROM asked_answers WHERE published=1"))]) == 1
     assert LX.published_asked(con, state="va") == []                      # nobody has reviewed either
+
+
+def test_asker_json_mode_describes_the_schema_in_words_and_parses_the_reply():
+    """``mode="json"``: the schema is shown in the prompt, Ollama's plain ``format: json`` is used (no grammar), the
+    reply is parsed and must carry the required keys; a bad reply is retried once with a reminder."""
+    from lexflow.extract.strategies import Asker
+
+    class Client:
+        model = "qwen3:8b"
+
+        def __init__(self, replies):
+            self.replies, self.calls = list(replies), []
+
+        def chat(self, messages, schema=None, temperature=0.0, max_tokens=None):
+            self.calls.append((messages, schema, max_tokens))
+            return self.replies.pop(0)
+    good = '<think>hm</think>{"status": "answered", "claims": [{"text": "Hearing within 15 days.", "quotes": ["Q1"]}]}'
+    c = Client(["not json at all", good])
+    out = Asker(c, mode="json", max_tokens=400).ask(A.SUMMARY_SYSTEM, "Question: ...", A.SUMMARY_SCHEMA)
+    assert out["status"] == "answered" and out["claims"][0]["quotes"] == ["Q1"]
+    assert len(c.calls) == 2 and c.calls[0][1] == "json" and c.calls[0][2] == 800
+    system = c.calls[0][0][0]["content"]
+    assert 'shaped like {"status": "answered|partial|not_found", "claims": [{"text": "...", "quotes": ["...", ...]}, ...]}' in system
+    assert "valid JSON object with the keys status, claims" in c.calls[1][0][-1]["content"]
+    # a reply without the required keys is a miss after the retry
+    assert Asker(Client(['{"claims": []}', '{"nope": 1}']), mode="json").ask("s", "u", A.SUMMARY_SCHEMA) is None
+    # the default mode is unchanged (schema), and LEXFLOW_ASK_MODE picks the mode of the pipeline's asker
+    assert Asker(Client([]), mode="schema").mode == "schema" and config.ASK_MODE in ("schema", "json", "lines")

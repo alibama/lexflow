@@ -90,6 +90,52 @@ def _cut(s: str, n: int) -> str:
     return s if len(s) <= n else s[:n - 1].rstrip() + "…"
 
 
+_PHONE = re.compile(r"(?<!\d)(?:\+?1[\s.\-]*)?(?:\(\d{3}\)|\d{3})[\s.\-]*\d{3}[\s.\-]*\d{4}(?!\d)"
+                    r"(?:[\s,]*(?:ext\.?|x|extension)\s*\d+)?", re.I)
+_STREET_TYPE = "|".join(sorted(privacy.STREET_TYPES, key=len, reverse=True))
+_ADDRESS = re.compile(
+    rf"\b\d{{1,6}}[A-Za-z]?(?:-\d{{1,6}})?\s+(?:[A-Za-z0-9][\w.'\-]*\s+){{0,{privacy.STREET_NAME_MAX}}}?(?:{_STREET_TYPE})\b\.?"
+    rf"(?:,?\s*(?:Suite|Ste|Room|Rm|Floor|Fl|Unit|#)\.?\s*[\w\-]+)?"
+    rf"(?:,?\s*(?:[A-Z][A-Za-z.'\-]*\s?){{1,3}},?\s*(?:[A-Z]{{2}}|Virginia)\s+\d{{5}}(?:-\d{{4}})?)?", re.I)
+_SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'(])")
+
+
+def _no_channels(text: str) -> str:
+    """Prose with its phone numbers, mailboxes and street addresses taken out, and the brackets or commas they
+    sat between tidied: a description says what a thing is, never how to reach it (channels are claims)."""
+    out = _EMAIL.sub("", text or "")
+    out = _PHONE.sub("", out)
+    out = _ADDRESS.sub("", out)
+    out = re.sub(r"\(\s*(?:(?:,|;|or|and|/|\bext\.?)\s*)*\)", "", out)          # an empty bracket, or one left with "or"
+    out = re.sub(r"\(\s*(?:,|;|or|and|/)\s*", "(", out)                           # "( , the website)" -> "(the website)"
+    out = re.sub(r"\s*(?:,|;|\bor\b|\band\b|/)\s*\)", ")", out)                    # "(the website, )" -> "(the website)"
+    out = re.sub(r"\s+([,;:.!?)])", r"\1", out)
+    out = re.sub(r"\(\s+", "(", out)
+    out = re.sub(r"(?:,\s*){2,}", ", ", out)
+    out = re.sub(r"\b(?:at|on|call|phone|telephone|tel\.?)\s*(?=[,;.)])", "", out, flags=re.I)   # "call ," -> ""
+    out = re.sub(r"\s+([,;:.!?)])", r"\1", out)
+    return re.sub(r"\s+", " ", out).strip(" ,;")
+
+
+def process_description(gov_name: str, state_name: str, summary: str | None, limit: int = SC.DESCRIPTION_MAX) -> str:
+    """The description of a researched local process: where it is, then the opening sentences of the file's summary
+    that fit in ``limit`` characters, with any phone number, mailbox or street address taken out (``_no_channels``);
+    the same text for the same file every time."""
+    head = f"Researched local process in {gov_name}, {state_name}"
+    out = head
+    for s in _SENTENCE.split(_no_channels(summary or "")):
+        s = s.strip()
+        if not s:
+            continue
+        cand = f"{out}; {s}" if out == head else f"{out} {s}"
+        if len(cand) > limit:
+            if out == head:                                        # the first sentence alone is too long: cut it
+                out = _cut(cand, limit)
+            break
+        out = cand
+    return _cut(out, limit)
+
+
 def item(key: str) -> Value:
     return Value("item", key)
 
@@ -1360,8 +1406,8 @@ class Build:
         page = next((s.get("url") for s in spec.get("sources") or [] if s.get("url")), None)
         pkey = SC.key_for("process", gid, pid)
         title = p["title"] or spec.get("title") or pid
-        proc = self.add(pkey, f"{title} ({g['name']})", f"Researched local process in {g['name']}, {S.NAME[st]}; "
-                        f"{spec.get('summary') or ''}", cls("legal-process"), aliases=[p["question"] or ""])
+        proc = self.add(pkey, f"{title} ({g['name']})", process_description(g["name"], S.NAME[st], spec.get("summary")),
+                        cls("legal-process"), aliases=[p["question"] or ""])
         self.claim(proc, "applies to jurisdiction", gov)
         if p.get("question"):
             self.claim(proc, "question asked", mono(p["question"]))
@@ -1548,8 +1594,11 @@ class Build:
                 key = SC.key_for("rung", gid, pid, slug_ or "local", f"{code}-{n}")
                 n += 1
             seen.add(key)
-            rung = self.add(key, f"{e.get('type') or 'escalation'}: {_cut(e.get('next') or '', 120)} ({g['name']})",
-                            _cut(e.get("trigger") or "", SC.DESCRIPTION_MAX), cls("escalation-mechanism"))
+            # the label and description come from the file's prose: no phone number or address in them (channels
+            # are claims; lint holds an item with a phone number in its text)
+            rung = self.add(key, f"{e.get('type') or 'escalation'}: {_cut(_no_channels(e.get('next') or ''), 120)} "
+                                 f"({g['name']})",
+                            _cut(_no_channels(e.get("trigger") or ""), SC.DESCRIPTION_MAX), cls("escalation-mechanism"))
             self.claim(rung, "part of", item(pkey))
             self.claim(rung, "applies to jurisdiction", gov)
             self.claim(rung, "review status", vocab("review-status", "agreed"))

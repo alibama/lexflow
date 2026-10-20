@@ -174,25 +174,67 @@ def refresh_if_stale(con, node: dict, max_age: int = STALE) -> dict:
     return check(con, node["name"]) or node
 
 
-class Poller(threading.Thread):
+class Poller:
     """Checks the nodes every LEXFLOW_LLM_POLL seconds and re-reads the overlay every LEXFLOW_OVERLAY_POLL
-    seconds; started by the API's lifespan when the pool is on."""
+    seconds; started by the API's lifespan when the pool is on.
+
+    One Poller is a module-level singleton (``lexflow.api.app.poller``) and a lifespan runs once per app start,
+    but a process may start the app many times (every ``TestClient`` in a test run does).  So ``start`` is
+    idempotent: it starts a fresh daemon thread when none is running, and does nothing while one is; ``shutdown``
+    stops it and waits for it, after which ``start`` may run it again.  ``stop`` is the event the thread watches
+    (``poller.stop.set()`` alone also ends it, the thread then being replaced on the next ``start``)."""
 
     def __init__(self, poll: float | None = None, overlay_poll: float | None = None):
-        super().__init__(daemon=True, name="lexflow-compute")
         self.poll = poll or config.LLM_POLL
         self.overlay_poll = overlay_poll or config.OVERLAY_POLL
         self.stop = threading.Event()
         self.ticks = 0
+        self.starts = 0
+        self._thread: threading.Thread | None = None
+        self._lock = threading.Lock()
+
+    @property
+    def name(self) -> str:
+        return "lexflow-compute"
+
+    def is_alive(self) -> bool:
+        t = self._thread
+        return bool(t and t.is_alive())
+
+    def start(self) -> bool:
+        """Start the poller thread unless one is already running; True when this call started it."""
+        with self._lock:
+            if self._thread is not None and self._thread.is_alive() and not self.stop.is_set():
+                return False
+            if self._thread is not None and self._thread.is_alive():   # told to stop, not yet gone: a moment to go
+                self._thread.join(timeout=2)                           # (it ends on its own event in any case)
+            self.stop = threading.Event()
+            self._thread = threading.Thread(target=self.run, daemon=True, name=self.name)
+            self.starts += 1
+            self._thread.start()
+            return True
+
+    def shutdown(self, timeout: float | None = None) -> None:
+        """Stop the poller thread and wait for it (``timeout`` seconds at most; the thread is a daemon)."""
+        self.stop.set()
+        t = self._thread
+        if t is not None and t.is_alive() and t is not threading.current_thread():
+            t.join(timeout if timeout is not None else max(self.poll, 5) + 1)
+
+    def join(self, timeout: float | None = None) -> None:
+        t = self._thread
+        if t is not None:
+            t.join(timeout)
 
     def run(self):
         from . import overlay as O
         from . import pool as P
+        stop = self.stop                                           # this thread's event, not a later one's
         con = N.connect()
         last_overlay = 0.0
         try:
             N.sync_env(con)
-            while not self.stop.is_set():
+            while not stop.is_set():
                 try:
                     if config.OVERLAY in ("netbird", "headscale") and time.time() - last_overlay >= self.overlay_poll:
                         O.sync(con)
@@ -202,6 +244,6 @@ class Poller(threading.Thread):
                     self.ticks += 1
                 except Exception as e:  # noqa: BLE001 - keep polling
                     print(f"compute poller: {type(e).__name__}: {e}", file=sys.stderr)
-                self.stop.wait(min(self.poll, 5))
+                stop.wait(min(self.poll, 5))
         finally:
             con.close()

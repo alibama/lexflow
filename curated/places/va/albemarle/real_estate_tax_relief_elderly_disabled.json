@@ -466,8 +466,7 @@
    "paraphrase": null,
    "capture": null,
    "source": "https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program (form template read 2026-10-11; nothing was submitted)",
-   "quote_sha256": "673888016d36de65b079255056e6a6eeee483731ae03ca7fd00b2907d4c55f92",
-   "quote_words": 10
+   "quote": null
   },
   {
    "id": "s5",
@@ -781,7 +780,8 @@
   "The adopted ordinance texts come from the Board of Supervisors Actions documents on albemarle.legistar.com. The proposed ordinance of December 2025, the staff presentation and the agenda PDFs are not used.",
   "Contacts: the Circuit Court Clerk's page and the Board staff reports name individuals, and the clerk page links a personal mailbox. None are recorded; only office lines, the office mailbox Tax@Albemarle.org, addresses and portals are kept. The appointment link is the Assessments Unit's Outlook Bookings page, linked from the relief page.",
   "https://www.albemarle.org/community/apply-tax-relief is a shortcut that redirects (navid=296) to the Real Estate Tax Relief page; it has no content of its own.",
-  "albemarle.org's terms allow browsing for information but forbid reposting its content without permission. Page quotes here are kept to one sentence or clause for citation."
+  "albemarle.org's terms allow browsing for information but forbid reposting its content without permission. Page quotes here are kept to one sentence or clause for citation.",
+  "Not confirmed by lexflow's software: the words once quoted for the step 'Optionally, check eligibility online or book an appointment' (https://lfweb.albemarle.org/Forms/Eligible-for-Real-estate-Tax-Relief-for-Elderly-Disabled-program) were not found on the cited page as lexflow read it (not found word for word in the cited page as read on 11 October 2026; the form's questions are drawn by a script when the page opens, which lexflow's reader does not run, and its Internet Archive copy of 6 March 2026 holds no more). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -964,10 +964,16 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 76,
-  "quotes_confirmed": 76,
-  "removed": [],
+  "quotes_confirmed": 75,
+  "removed": [
+   {
+    "where": "steps[3]",
+    "what": "the step 'Optionally, check eligibility online or book an appointment'",
+    "why": "not found word for word in the cited page as read on 11 October 2026"
+   }
+  ],
   "corrections": [
    "Summary: the escalation sentence now says no source sets an appeal route and that a denial can likely be contested with the Director of Finance and then in circuit court. The draft stated it as fact. Also added the married-couple rule and that the business bar covers a business needing a County business license (§ 15-709(D)(1)).",
    "s1: the draft said 'You (or your spouse)'. Under § 15-709(C)(1) and Va. Code § 58.1-3210(A), a spouse's age or disability counts only for a home the couple owns jointly with no other owners.",
@@ -983,7 +989,8 @@
    "Caveat on dollar figures: noted that the page's $75,488 tier boundary rounds 75 percent of $100,650 ($75,487.50).",
    "Caveat on penalties: a verifier index search found no false-claim penalty in the indexed sections of Article 2.",
    "New caveat: Va. Code §§ 15.2-519 and 15.2-521 apply only to county-executive-form counties (§ 15.2-500); this is not confirmed from a county source, but County Code § 15-706 names the Director of Finance in any case.",
-   "Sources: added the county terms page (Internet Archive copy of July 20, 2026), which confirms the reposting caveat, and Legistar file 25-422 (consent agenda of November 5, 2025), which confirms the hearing-scheduling date in the caveat on Ord. 25-15(4)."
+   "Sources: added the county terms page (Internet Archive copy of July 20, 2026), which confirms the reposting caveat, and Legistar file 25-422 (consent agenda of November 5, 2025), which confirms the hearing-scheduling date in the caveat on Ord. 25-15(4).",
+   "1 quote lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "County Code text is quoted from adopted ordinances in Board Actions documents on albemarle.legistar.com (Ord. 19-15(1) of 2019, Ord. 25-15(4) of 2025, Ord. 22-8(1) & 22-15(6) of 2022), not from the current codified code, because Municode's terms bar automated access. The 2025 history notes show later amendments only to §§ 15-709 and 15-710, and the county page's 2026 figures match the 2025 formulas, but §§ 15-705 to 15-708, 15-711, 15-712 and 15-106 were not compared with the codified text.",

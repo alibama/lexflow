@@ -652,7 +652,7 @@
    "item": "Circuit Court petition appealing a registration denial: how to pay (state appeal form)",
    "amount": "$10.00, by check payable to the Clerk of Circuit Court",
    "basis": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
-   "quote": "Send filing fee of $10.00 with your petition; make your check payable to the Clerk of Circuit Court."
+   "quote": null
   },
   {
    "item": "Writ tax and security for costs on the denial appeal",
@@ -889,7 +889,8 @@
   "Circuit Court address. The city's Clerk page gives the George M. Cochran Judicial Center, 3rd Floor, 113 E. Beverley Street. The Virginia court system page gives the address '113 East Beverley Street' on one line and '2nd Floor' on the next, then 'Clerk's Office - Third Floor', with the same phone (540) 332-3874 and Clerk's Office hours 8:30AM - 5:00PM.",
   "Versions. In the index, Va. Code §§ 24.2-101, 24.2-404, 24.2-418 and 24.2-427 carry contingent effective or expiration notes (Acts 2026, cc. 992 and 1081); § 24.2-401 (voting in the old precinct after a move) and § 24.2-444 are marked effective until July 1, 2027. The index holds only the contingent-effective version of § 24.2-418 (LIS shows a version in force now and versions taking effect January 1, 2027 or on the contingency); the three sentences quoted from it are word for word the same in the version now in force, checked on LIS on 2026-10-11. Re-check these sections after those dates.",
   "Appeal window wording. The Department of Elections Voter Complaints page says the appeal 'must be filed within 10 days after the denial'; § 24.2-422(B) counts 10 days from being notified of the denial. This page follows the statute; filing within 10 days of the denial itself is the safe course.",
-  "Not modelled here: absentee voting by mail and early voting themselves (separate processes), the Officer of Election application, and voter photo ID rules. A voter card or confirmation is not photo identification (Department of Elections)."
+  "Not modelled here: absentee voting by mail and early voting themselves (separate processes), the Officer of Election application, and voter photo ID rules. A voter card or confirmation is not photo identification (Department of Elections).",
+  "Not confirmed by lexflow's software: the words once quoted for the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)' (https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf) were not found on the cited page as lexflow read it (the cited page could not be read (the PDF has no text layer lexflow can read); the form is a scan with no text layer, so a text search cannot read it). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -1082,10 +1083,16 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 86,
-  "quotes_confirmed": 86,
-  "removed": [],
+  "quotes_confirmed": 85,
+  "removed": [
+   {
+    "where": "fees[1]",
+    "what": "the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   }
+  ],
   "corrections": [
    "Quotes: all 86 structured quotes were re-checked and none was removed. The 63 state-law quotes (54 in legal_basis, steps s7 and s12, fees 1 and 3, escalation rungs 1, 2, 3, 9 and 10) are substrings of I.text_of for their cited sections after whitespace-only normalisation, and each subsection label matches the text. The 22 quotes from official pages (city How to Vote and Where to Vote, read from the cited Internet Archive captures because www.ci.staunton.va.us still returns HTTP 403 to the research client, robots.txt included; Department of Elections State-designated Voter Registration, How to Register, Military & Overseas, View Your Info and Voter Complaints; 1VAC20-40-30 and 1VAC20-20-80 on LIS; Staunton Charter § 12 on LIS) match copies fetched on 2026-10-11. The f5 fee sentence was confirmed word for word from the decoded page image of the scanned PDF. Quoted fragments in caveats and step text were also checked; one ('113 East Beverley Street, 2nd Floor') added a comma that is not on the court page and was rewritten.",
    "Summary: 'the deadline is Friday, October 23, 2026' now says October 23 is the last day to register or update and the records are then closed for the 10 days before the election (Va. Code §§ 24.2-414, 24.2-416(A)). The appeal window now runs from being notified of the denial, as in § 24.2-422(B).",
@@ -1097,7 +1104,8 @@
    "s10: 'only in person' now notes the active-duty mail exception (§ 24.2-419). 'A written notice' of the Electoral Board meeting was not on any page; the Department of Elections says 'a notice with the date, time, and place', and adds written notice if the ballot is not counted. The text now follows it.",
    "s12: the appeal is available for any denial, not only 'otherwise'. Added from the form that the petition must be completed and signed (it prints a signature line) and mailed with the check, and from § 24.2-422(B) that the denial notice must include the form.",
    "Escalation rung 8: added that either board may, after a public hearing, also remove the registrar itself (the Electoral Board by unanimous vote with appeal to the State Board, § 24.2-109(B); the State Board by a two-thirds vote, § 24.2-103(E)). 'A resident ... cannot start the proceedings' was an inference; it now says the statutes read give these steps to the boards, not to individual voters.",
-   "Caveats: added that the index holds only the contingent-effective version of § 24.2-418 and that the three quoted sentences are identical in the version now in force on LIS; that the Department of Elections Voter Complaints page counts the appeal window from the denial while the statute counts from notice; that whether same-day registration is offered on Monday, November 2, was not found; and the f5 signature line. The verifier rendered VA-NVRA-1 page 2 and confirmed the '11 days' figure and the 05/2025 footer. Added the LIS § 24.2-418 page to sources."
+   "Caveats: added that the index holds only the contingent-effective version of § 24.2-418 and that the three quoted sentences are identical in the version now in force on LIS; that the Department of Elections Voter Complaints page counts the appeal window from the denial while the statute counts from notice; that whether same-day registration is offered on Monday, November 2, was not found; and the f5 signature line. The verifier rendered VA-NVRA-1 page 2 and confirmed the '11 days' figure and the 05/2025 footer. Added the LIS § 24.2-418 page to sources.",
+   "1 quote lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "www.ci.staunton.va.us still returns HTTP 403 to the research client (robots.txt included), so every city fact comes from Internet Archive captures (Voter Registration 2026-05-07, How to Vote 2026-05-11, Where to Vote 2026-05-10, Clerk of Circuit Court 2026-07-21, Commonwealth's Attorney 2026-02-15, Electoral Board 2025-01-30). Ward polling places, office hours and the city's November 2026 weekend early-voting hours were not confirmed on the live pages. The October 23, 2026 deadline rests on the Department of Elections Upcoming Elections page and § 24.2-416(A), not on a city page.",

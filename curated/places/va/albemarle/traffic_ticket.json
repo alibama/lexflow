@@ -417,14 +417,14 @@
    "level": "local",
    "citation": "Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy under Va. Code § 19.2-354(A); not County Code)",
    "url": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf",
-   "quote": "You will be charged a one-time fee of ten dollars ($10.00) to the account for the installment plan, deferred payment plan or modified payment plan.",
+   "quote": null,
    "role": "fee"
   },
   {
    "level": "local",
    "citation": "Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy; not County Code)",
    "url": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf",
-   "quote": "If an agreement is entered into before ninety (90) days from the court date a down payment is not required.",
+   "quote": null,
    "role": "fee"
   },
   {
@@ -577,7 +577,7 @@
    "fee": "$10 one-time payment plan fee",
    "form": "f5",
    "url": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf",
-   "quote": "Any Defendant who cannot pay all fines and cost within ninety (90) days of their trial date may sign an Acknowledgement of Suspension or Revocation of Driver’s License (form DC210) to enter into a Deferred Payment Plan, an installment Payment Plan, or a Modified Defined Payment Plan (as described below).",
+   "quote": null,
    "source": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf"
   },
   {
@@ -589,7 +589,7 @@
    "fee": null,
    "form": null,
    "url": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf",
-   "quote": "Any person desiring to enter this program shall file an appropriate motion with the Court and be scheduled for a hearing before this court on such motion.",
+   "quote": null,
    "source": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf"
   },
   {
@@ -712,13 +712,13 @@
    "item": "Payment plan fee (Albemarle General District Court)",
    "amount": "$10.00, one time",
    "basis": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf (Va. Code § 19.2-354(A) caps it at $10)",
-   "quote": "You will be charged a one-time fee of ten dollars ($10.00) to the account for the installment plan, deferred payment plan or modified payment plan."
+   "quote": null
   },
   {
    "item": "Down payment on a later payment agreement (Albemarle General District Court policy)",
    "amount": "10% if the account is $500.00 or less; otherwise 5% or $50.00, whichever is greater",
    "basis": "https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf (cap in Va. Code § 19.2-354.1(I))",
-   "quote": "If total account is $500.00 or less = 10% down payment"
+   "quote": null
   },
   {
    "item": "Interest on unpaid fines and costs",
@@ -908,7 +908,8 @@
   "Privacy. The court pages name the clerks and judges; no names are recorded here. The phone (434) 972-4004 appears on the vacourts.gov page after the clerk's name block, and also on the court's own letterhead as its main number, so it is recorded as the office line. The mailbox albemarlegd@vacourts.gov is the court's own published address for remote-hearing motions and interpreter requests.",
   "Rule 3B:2 table rows. The fee row quoted for Va. Code § 46.2-820 ('- failure of driver on left 46.2-820 $30 $51 $81') is the row as it reads across the table columns in the Rules of Court PDF; its text splits the columns otherwise. The residence-district rate ($200 plus $8 per mph) is read from the same table and is not quoted.",
   "Contacts on the vacourts.gov court pages are printed in a block under the clerk's name. The General District Court's (434) 972-4004 and fax (434) 972-4092 are the court's own numbers on its payment plan letterhead; the Circuit Court's main (434) 972-4083 and Criminal (434) 972-4085 lines are labelled office and division lines. They are recorded as office lines; no name is recorded.",
-  "Trial in absence. For a traffic infraction, Va. Code § 19.2-258.1 bars a § 46.2-938 failure-to-appear warrant; the pamphlet's warning about a separate failure-to-appear charge is for criminal and certain traffic cases. No Albemarle page says how the court notifies a person of a finding made in absence."
+  "Trial in absence. For a traffic infraction, Va. Code § 19.2-258.1 bars a § 46.2-938 failure-to-appear warrant; the pamphlet's warning about a separate failure-to-appear charge is for criminal and certain traffic cases. No Albemarle page says how the court notifies a person of a finding made in absence.",
+  "Not confirmed by lexflow's software: the words once quoted for the legal basis 'Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy under Va. Code § 19.2-354(A); not County Code)', the legal basis 'Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy; not County Code)', the step 'After a conviction, pay or ask for a payment plan', the step 'Or work off fines and costs with community service', the fee 'Payment plan fee (Albemarle General District Court)' and the fee 'Down payment on a later payment agreement (Albemarle General District Court policy)' (https://www.vacourts.gov/static/online/ppp_fines_costs/dc/albemarle.pdf) were not found on the cited page as lexflow read it (the cited page could not be read (the PDF has no text layer lexflow can read); the document is a scan with no text layer, so a text search cannot read it). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -1136,10 +1137,41 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 97,
-  "quotes_confirmed": 97,
-  "removed": [],
+  "quotes_confirmed": 91,
+  "removed": [
+   {
+    "where": "legal_basis[57]",
+    "what": "the legal basis 'Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy under Va. Code § 19.2-354(A); not County Code)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "legal_basis[58]",
+    "what": "the legal basis 'Albemarle General District Court Payment Plan Policy, effective July 1, 2024 (court policy; not County Code)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "steps[11]",
+    "what": "the step 'After a conviction, pay or ask for a payment plan'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "steps[12]",
+    "what": "the step 'Or work off fines and costs with community service'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "fees[8]",
+    "what": "the fee 'Payment plan fee (Albemarle General District Court)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   },
+   {
+    "where": "fees[9]",
+    "what": "the fee 'Down payment on a later payment agreement (Albemarle General District Court policy)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   }
+  ],
   "corrections": [
    "Quotes: all 87 original quotes were re-checked. The 57 state-law quotes are substrings of I.text_of for the cited section (whitespace normalised only), across 19 sections, and each cited subsection letter matches the text. 24 quotes are word for word in the official pages and PDFs re-fetched on 2026-10-11: the vacourts.gov Albemarle GDC page, tickets_dc, the GDC pamphlet, Rule 3B:2 in the Rules of Court PDF and Legistar matter 21-372. The fee row for Va. Code § 46.2-820 is found only in the layout-mode extraction of the Rules PDF, where the table columns line up; a caveat now says so. The six quotes from the scanned payment plan policy were re-read against a 220 dpi rendering.",
    "s12 quote corrected: the payment plan policy reads 'an installment Payment Plan' (lower-case i) and 'Driver’s' (typographic apostrophe); the draft had 'an Installment Payment Plan'. No other wording differed.",
@@ -1156,7 +1188,8 @@
    "s1: 'goes to' softened to 'is normally returnable to', with the rule to use the court named on the summons. s4: added the $7 school-crossing and work-zone rate and the residence-district rate ($200 plus $8 per mph) from Rule 3B:2; the residence-district fee item now gives that rate and cites the Rule. The speeding fee item notes the reckless-driving speeds.",
    "Summary updated (indictable offences and reckless-driving speeds not prepayable, judge-only trial of infractions, deputy clerks grant a first continuance, jury on appeal). Three caveats added (Rule 3B:2 table-row extraction, contact lines, trial in absence). Sources added: §§ 19.2-258.1 and 46.2-862.",
    "Checked and left as they were: the court facts on the Albemarle GDC page (hours, address, phone, fax, traffic dockets, cell phones, continuance policy, remote-hearing and interpreter email); the Circuit Court page (address, criminal terms, 'All criminal cases set on Term Day'); the remote-hearing form (interpreter requests by fax, email, mail or in person before court); form titles against the vacourts.gov traffic and criminal forms lists (DC-210 is not listed); and the Legistar matter, whose histories endpoint returns no actions for item 21-372.",
-   "Privacy confirmed: no judge, clerk or staff names. The only email is albemarlegd@vacourts.gov, which the court's page publishes three times as the office mailbox. Phones are the GDC main line and fax (both on the court's letterhead) and the Circuit Court's main and Criminal lines; all are office or division lines. Schema: valid JSON in the shape of the other verified place files; step ids s1 to s15 and form ids f1 to f5 are unique, and every step form id exists."
+   "Privacy confirmed: no judge, clerk or staff names. The only email is albemarlegd@vacourts.gov, which the court's page publishes three times as the office mailbox. Phones are the GDC main line and fax (both on the court's letterhead) and the Circuit Court's main and Criminal lines; all are office or division lines. Schema: valid JSON in the shape of the other verified place files; step ids s1 to s15 and form ids f1 to f5 are unique, and every step form id exists.",
+   "6 quotes lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "County Code Chapter 9 text was not read (Municode not used; albemarle.org answered 403). Adoption of the 2021 recodification (Legistar 21-372) is not confirmed, and no circuit court schedule for non-parallel county traffic ordinances (§ 16.1-69.40:1(D)) was found.",

@@ -493,7 +493,7 @@
    "item": "Circuit Court petition appealing a registration denial: how to pay (state appeal form)",
    "amount": "$10.00, by check payable to the Clerk of Circuit Court",
    "basis": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
-   "quote": "Send filing fee of $10.00 with your petition; make your check payable to the Clerk of Circuit Court."
+   "quote": null
   },
   {
    "item": "Writ tax and security for costs on the denial appeal",
@@ -713,7 +713,8 @@
   "Fillable status: no form fields were found in either VA-NVRA-1 PDF, but the PDFs use compressed object streams, so 'fillable' is left null.",
   "Privacy: the city page names the Director of Elections and General Registrar, and the court page names the Clerk and judges and gives a clerk mailbox. None of these is recorded; only office channels are listed. The office mailbox shown here (vote@charlottesville.gov) is the one the office's own page publishes as 'Email Voter Registration and Elections'. The page also links an older vote@charlottesville.org address in its candidate section, which is not used here.",
   "Students: the city FAQ, in its answer on absentee voting, says of UVA and PVCC 'which are both primarily in Albemarle County'. A student living on Grounds or in county housing may therefore be a county resident, and would register with Albemarle's registrar, not Charlottesville's. Check the address's locality first (step s2).",
-  "Online updates without a DMV credential. The city's Register to Vote page says 'Currently registered Virginia voters may update their registration entirely online', and its Voter FAQ says the online application can be submitted 'if you just need to update your name or address on your existing voter registration'. Va. Code § 24.2-416.7(B) lets a registered voter report a new name or address by completing an electronic registration application, and § 24.2-416.7(C)(2) requires every electronic application to have a Virginia driver's license or other DMV-issued document. The Citizen Portal refuses automated readers, so whether a registered voter without a DMV credential can finish an update online was not confirmed; step s3 keeps the statutory requirement and the city's statement side by side."
+  "Online updates without a DMV credential. The city's Register to Vote page says 'Currently registered Virginia voters may update their registration entirely online', and its Voter FAQ says the online application can be submitted 'if you just need to update your name or address on your existing voter registration'. Va. Code § 24.2-416.7(B) lets a registered voter report a new name or address by completing an electronic registration application, and § 24.2-416.7(C)(2) requires every electronic application to have a Virginia driver's license or other DMV-issued document. The Citizen Portal refuses automated readers, so whether a registered voter without a DMV credential can finish an update online was not confirmed; step s3 keeps the statutory requirement and the city's statement side by side.",
+  "Not confirmed by lexflow's software: the words once quoted for the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)' (https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf) were not found on the cited page as lexflow read it (the cited page could not be read (the PDF has no text layer lexflow can read); the form is a scan with no text layer, so a text search cannot read it). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -841,10 +842,16 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 63,
-  "quotes_confirmed": 63,
-  "removed": [],
+  "quotes_confirmed": 62,
+  "removed": [
+   {
+    "where": "fees[1]",
+    "what": "the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   }
+  ],
   "corrections": [
    "Quotes: all 63 structured quotes were re-checked. The 48 state-law quotes (legal_basis, steps, fees and escalation) match I.text_of for their cited sections with whitespace-only normalisation. The 14 quotes from official pages (city Register to Vote and Voter FAQ, Department of Elections How to Register and Voter Complaints, 1VAC20-20-80 on LIS) match the pages fetched again on 2026-10-11. The fee wording on the scanned appeal form (f6) was re-read from the page image and matches word for word. The 28 quoted fragments in caveats and the 2 in step text were also checked; three come from PDFs and were read from page images (the f6 reverse-side wording, the f6 title, printed in capitals on the form, and the f1 postmark figure).",
    "Summary: 'Regular registration closes on the 11th day before' could be read as the books closing that day. It now says the 11th day before is the last day of regular registration and the records are closed for the 10 days before (Va. Code §§ 24.2-414, 24.2-416(A)). The appeal window now runs from being notified of the denial, as in § 24.2-422(B).",
@@ -858,7 +865,8 @@
    "Escalation: the no-response rung now also cites the View Your Info page, the source of the 30-day follow-up advice. The removal rung now cites §§ 24.2-234 and 24.2-233 for its statement that a resident cannot start removal proceedings.",
    "Contacts: the office mailbox was labelled 'questions only', but the office's page also takes mail ballot applications by email; it now says only that registration applications and address or name changes are not accepted by email. Added the Commonwealth's Attorney's Office line and address from the city's office page (office channels only; the elected officer's name is not recorded), closing the draft's gap for the last rung.",
    "Forms: f1's title now gives the form's own footer (VA-NVRA-1 05/2025) beside the file name (rev-6-2025), and notes that the linked Spanish, Vietnamese and Korean files are rev-5-2024.",
-   "Caveats: the mail-deadline caveat attributed 'postmarked by' to the Department of Elections, which says 'postmarked no later than the registration deadline'; both wordings are now quoted from their own pages. The old-form caveat now records the f1 postmark figure (11 days) read from the page image. Added the Registration page's 11-day special-election figure, the Voter Complaints page's 'within 10 days after the denial' wording, the Government page's Electoral Board link, and the context of the city's UVA and PVCC remark."
+   "Caveats: the mail-deadline caveat attributed 'postmarked by' to the Department of Elections, which says 'postmarked no later than the registration deadline'; both wordings are now quoted from their own pages. The old-form caveat now records the f1 postmark figure (11 days) read from the page image. Added the Registration page's 11-day special-election figure, the Voter Complaints page's 'within 10 days after the denial' wording, the Government page's Electoral Board link, and the context of the city's UVA and PVCC remark.",
+   "1 quote lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "City Code not read: Municode was not accessed (its terms page returned HTTP 520 to the modeller). Registration is governed by Title 24.2 and State Board rules, and no local legal_basis is recorded.",

@@ -629,7 +629,7 @@
    "item": "Circuit Court petition appealing a registration denial: how to pay (state appeal form)",
    "amount": "$10.00, by check payable to the Clerk of Circuit Court",
    "basis": "https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf",
-   "quote": "Send filing fee of $10.00 with your petition; make your check payable to the Clerk of Circuit Court."
+   "quote": null
   },
   {
    "item": "Writ tax and security for costs on the denial appeal",
@@ -852,7 +852,8 @@
   "Electoral Board: the meeting schedule (second Thursday of the month at 9:00 a.m., more often in the two months before an election) is from the May 2026 capture and may have changed. Whether the Board takes public comment from voters was not found. The Board page lists members with their personal County mailboxes; these are not recorded.",
   "Privacy: the County Elections page names the Director of Elections and General Registrar, the Electoral Board page names its members with personal mailboxes, and the court page names the Clerk and judges. None of these is recorded; only office channels are listed. The mailbox VoterRegistration1@albemarle.org is the one the County's Register to Vote and Elections pages publish for the 'Albemarle County Office of Elections'; its local part splits into the role words 'voter' and 'registration' plus a digit.",
   "City-county line: Charlottesville is a separate independent city with its own General Registrar (see curated/places/va/charlottesville/voter_registration.json). The Charlottesville page warns that the borders are confusing. A home divided by the boundary counts where the bedroom is (1VAC20-40-30(E)). Students living on or near the University of Virginia should check which locality their residence hall or home is in before registering.",
-  "Office hours are from the County Elections page (capture of 2026-09-16): Monday to Friday, 8:30 a.m. to 5:00 p.m. The How to Vote page lists 'Monday to Friday from September 18 to October 31, 2026' for early voting, although October 31, 2026 is a Saturday that it lists separately. It also gives the building as 1600 5th Street Extended, while the other County pages say 1600 5th Street."
+  "Office hours are from the County Elections page (capture of 2026-09-16): Monday to Friday, 8:30 a.m. to 5:00 p.m. The How to Vote page lists 'Monday to Friday from September 18 to October 31, 2026' for early voting, although October 31, 2026 is a Saturday that it lists separately. It also gives the building as 1600 5th Street Extended, while the other County pages say 1600 5th Street.",
+  "Not confirmed by lexflow's software: the words once quoted for the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)' (https://www.elections.virginia.gov/media/formswarehouse/veris-voter-registration/applications/AppealOfDenialRequest.pdf) were not found on the cited page as lexflow read it (the cited page could not be read (the PDF has no text layer lexflow can read); the form is a scan with no text layer, so a text search cannot read it). Those claims now rest on the cited page as read, without a matched quote; check them at the link before relying on them."
  ],
  "sources": [
   {
@@ -1025,10 +1026,16 @@
  "verified": true,
  "checks": {
   "verified_by": "Claude (lexflow verifier)",
-  "date": "2026-10-10",
+  "date": "2026-10-20",
   "quotes_checked": 81,
-  "quotes_confirmed": 81,
-  "removed": [],
+  "quotes_confirmed": 80,
+  "removed": [
+   {
+    "where": "fees[1]",
+    "what": "the fee 'Circuit Court petition appealing a registration denial: how to pay (state appeal form)'",
+    "why": "the cited page could not be read (the PDF has no text layer lexflow can read)"
+   }
+  ],
   "corrections": [
    "Quotes: all 77 original structured quotes were confirmed and none was removed. The 56 state-law quotes (legal_basis, steps, fees and escalation) are substrings of I.text_of for their cited sections with whitespace-only normalisation, and each subsection label matches the text. The 11 quotes from official pages (County Register to Vote and Where to Vote, read from the cited Internet Archive captures because www.albemarle.org still returns HTTP 403 with robots.txt included; Department of Elections How to Register, Military & Overseas and Voter Complaints), the 8 from 1VAC20-40-30 and 1VAC20-20-80 (LIS, in legal_basis and escalation) and the Legistar matter title were matched against copies fetched on 2026-10-11. The fee sentence on the scanned appeal form (f5) was re-read from the decoded page image and matches word for word. Four new state-law quotes were added and checked the same way: Va. Code §§ 24.2-416.7(B), 24.2-418(B), 24.2-109(B) (removal by unanimous vote) and 24.2-234.1(B). Quoted fragments in caveats and step text were also checked against their pages; four come from PDF page images (the f5 reverse-side wording, the f1 footer, the f1 postmark rule and 'No SSN was ever issued').",
    "Summary: 'Registration ... closes October 23, 2026' could be read as the books closing that day. It now says October 23 is the last day of regular registration and the records are then closed for the 10 days before the election (Va. Code §§ 24.2-414, 24.2-416(A)). The appeal window now runs from being notified of the denial, as in § 24.2-422(B).",
@@ -1045,7 +1052,8 @@
    "Forms: f1 'fillable' was null; the PDF has no AcroForm or widgets (including compressed objects), so it is false. f1's title now gives the form's own footer (VA-NVRA-1 05/2025) beside the file name (rev-6-2025). f5 'fillable' was false; the scanned appeal form carries five fillable text fields (court, city or county, petitioner name, registrar's city or county, facts), so it is true and the caveat says so. f6 'fillable' was null; ELECT-15512 declares an AcroForm with an empty field list and no widgets, so it is false.",
    "Caveats: the PDF caveat now records the f1 footer and the 11-day postmark rule read from rendered page images. Checked and left as written: the County Terms and Conditions wording, the special-election deadline conflicts between Department of Elections pages, the 11:59 p.m. online cut-off on the State-designated Voter Registration page, the County's fax number and email ballot-application practice, the archive redirect of /how-do-i/vote to the 2026-08-14 How to Vote capture, the Legistar matter 25-224 title, the Electoral Board schedule, the Charlottesville page's boundary warning, and the version notes on §§ 24.2-101, -401, -418 and -428.",
    "Privacy: re-checked. No staff, Electoral Board member, clerk or judge names are recorded; the only mailboxes are the office mailbox VoterRegistration1@albemarle.org and info@elections.virginia.gov; phone numbers are office main, civil and fax lines. The staff mailbox in the Legistar record's MatterText2 field and the Board members' mailboxes on the Electoral Board page were not recorded.",
-   "Schema: valid JSON with the same keys as the verified Albemarle files; step ids s1 to s11 are unique; every step form reference (f1, f2, f4, f5) exists in forms; escalation types and legal_basis roles use the existing vocabulary."
+   "Schema: valid JSON with the same keys as the verified Albemarle files; step ids s1 to s11 are unique; every step form reference (f1, f2, f4, f5) exists in forms; escalation types and legal_basis roles use the existing vocabulary.",
+   "1 quote lexflow's software could not find on the cited pages as it read them on 2026-10-20 (listed in 'removed') dropped from the claims and noted in the caveats; every other quote matched."
   ],
   "open_issues": [
    "www.albemarle.org still returns HTTP 403 to this client (robots.txt included), so every County fact comes from Internet Archive captures dated 2026-03-17 to 2026-09-16; the live pages were not confirmed.",

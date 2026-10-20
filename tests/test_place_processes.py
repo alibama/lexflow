@@ -473,9 +473,9 @@ def test_several_archive_readers_keep_to_one_clock(con):
 
 # ---- the researched files' wording ----------------------------------------------------------------------------
 
-QUOTES = {"albemarle": (2308, "ee94740ac5560ef91d2d2da8e52afa3fa46d17c7a577fd75292edd7178b59b0f"),
-          "charlottesville": (1848, "74bceedb09a6f8933bdf417a94b247d863a5c95dd7075c0c2d35eff4d57eb69d"),
-          "staunton": (2237, "c38c641b9ed25782069825c074193a1c512909f356eb177d84e6991fb52bc97c")}
+QUOTES = {"albemarle": (2300, "f1546428bdb53330986fbd1a725e168c1430d5375141ea648ea65520bbd3d3fa"),
+          "charlottesville": (1844, "96a537f1cb4019dcf2ae21adcf85d2ff2380f3236ecafd6a7683fd2ff67a58b2"),
+          "staunton": (2190, "f8433586991214f8e8f8ade39e8f347739931cb30c7a2cd51e0289046146f913")}
 
 
 def _quotes(value, out):
@@ -548,3 +548,36 @@ def test_pages_print_caveats_as_written_and_log_drafting_words(con, law, caplog)
         text = LX.render_local_process(con, GOV, {"process": "dog_license", "spec": spec})
     assert "so its quotes cannot be confirmed" in text and "  * Fees change each July." in text
     assert sum("describes the drafting" in r.getMessage() for r in caplog.records) == 2
+
+
+def test_pdf_text_keeps_every_extractor_and_html_text_the_words_a_form_shows(monkeypatch):
+    """A PDF's text is every installed extractor's reading, one after another, not pdftotext's alone: a scanned
+    page's OCR layer and a form read in different orders under poppler and pypdf, and a quote taken from either
+    must still match.  An HTML page's text has each ``<option>``'s value and each button's caption, which a page
+    prints when they are chosen (the state's deed calculator keeps each court's notes there)."""
+    import subprocess
+    import types
+
+    def fake_run(cmd, **kw):                                       # pdftotext: the row with the fine column first
+        return types.SimpleNamespace(returncode=0, stdout=b"10.25.390(3) Parallel parking beyond $20.00 delineated "
+                                                             b"parking space or more than 12 inches from curb\n")
+    monkeypatch.setattr(Q.shutil, "which", lambda name: "/usr/bin/pdftotext" if name == "pdftotext" else None)
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    monkeypatch.setattr(Q, "pypdf_text", lambda data: ["Parallel parking beyond delineated parking space or more "
+                                                       "than 12 inches from curb $20.00\n"])
+    text = Q.pdf_text(b"%PDF-1.4 fake")
+    assert text.count("\f") == 4                                   # pdftotext's four passes, then pypdf's reading
+    assert Q.match("Parallel parking beyond delineated parking space or more than 12 inches from curb $20.00", text)
+    assert Q.match("Parallel parking beyond $20.00 delineated parking space", text)
+    monkeypatch.setattr(Q, "pypdf_text", lambda data: [])
+    assert Q.pdf_text(b"%PDF-1.4 fake").count("\f") == 3          # pdftotext's passes alone
+    monkeypatch.setattr(Q.shutil, "which", lambda name: None)
+    assert Q.pdf_text(b"%PDF-1.4 fake") is None                    # no extractor at all
+    html = (b"<html><body><form><select name='court'><option value=''>Select Court...</option>"
+            b"<option value='CHARLOTTESVILLE CIRCUIT COURT~Court does not require a cover sheet.~~540'>"
+            b"CHARLOTTESVILLE CIRCUIT COURT</option><option value='003'>ALBEMARLE</option></select>"
+            b"<input type='submit' value='Calculate the fees'><input type='text' value='secret draft'></form>"
+            b"</body></html>")
+    kind, text = Q.extract(html, "text/html")
+    assert kind == "html" and Q.match("Court does not require a cover sheet.", text)
+    assert Q.match("Calculate the fees", text) and "secret draft" not in text and "\n003" not in text
