@@ -545,6 +545,55 @@ def score_cell(gold: dict, row: dict) -> dict:
     return s
 
 
+# ---------------------------------------------------------------------------------------------------- computed
+def _has_fee(fee: dict) -> bool:
+    """A fee an answer can state: a known amount above nothing, or a known minimum (taxes and charges are not fees)."""
+    return fee.get("kind") == "fee" and ((bool(fee.get("known")) and (fee.get("usd") or 0) > 0)
+                                         or fee.get("min_usd") is not None)
+
+
+def computed_signal(q: dict, state: str, gov_id: str = "") -> dict | None:
+    """The computed answer a question family gives (``lexflow.scenarios``): the family that serves the question
+    (``serves`` in fixtures/families/<id>.json) is run for each of its personas, in the place of the cell (a place
+    the family covers) or, for a state cell, in each of its localities keeping only the state-level requirements;
+    only the tables the question reads count, and only requirements whose citing quote lexflow's software matched.
+    Returns None when no family serves the question in this state; ``requirements`` 0 when it serves it but not
+    this place.  ``kinds``: who (an office for every requirement), steps (two or more, ordered), fee (a known fee
+    or a known minimum), deadline (a deadline grounded in a matched quote), where (an office page), appeal (a
+    grounded appeal route); form is never claimed (the family names no forms)."""
+    from ..scenarios import run as HR
+    from ..scenarios.family import COUNTED, family_for_question
+    fam = family_for_question(q["id"])
+    if fam is None or (fam.spec.get("state") or "") != state:
+        return None
+    tables = (fam.spec.get("serves") or {}).get(q["id"], {}).get("tables") or [t["id"] for t in fam.tables]
+    loc_dim = (fam.spec.get("grammar") or {}).get("locality", "locality")
+    if gov_id:
+        locs = [o["value"] for o in fam.dim[loc_dim].options if o.get("gov_id") == gov_id]
+    else:
+        locs = fam.localities()
+    kinds = {k: False for k in KINDS}
+    ids, used = set(), []
+    for loc in locs:
+        for pid in fam.personas:
+            out = HR.evaluate(fam, fam.persona_inputs(pid, loc), tables=tables)
+            rows = [r for r in out["requirements"] if r["status"] in COUNTED and (r.get("source") or {}).get("matched")
+                    and (gov_id or r.get("level") == "state")]
+            if not rows:
+                continue
+            used.append(f"{pid}@{loc}")
+            ids.update(r["id"] for r in rows)
+            kinds["who"] |= all(r["office"].get("label") for r in rows)
+            kinds["steps"] |= len(rows) >= 2
+            kinds["fee"] |= any(_has_fee(r["fee"]) for r in rows)
+            kinds["deadline"] |= any(r.get("deadline") and (r.get("deadline_source") or {}).get("matched") for r in rows)
+            kinds["where"] |= any(r["office"].get("url") for r in rows)
+            kinds["appeal"] |= bool(gov_id) and any((a.get("source") or {}).get("matched") for a in out["appeals"])
+    return {"family": fam.id, "version": fam.version, "tables_hash": fam.content_hash(), "engine": HR.ENGINE,
+            "tables": tables, "scope": "local" if gov_id else "state", "localities": locs, "runs": used,
+            "requirements": len(ids), "kinds": kinds if ids else {k: False for k in KINDS}}
+
+
 # ---------------------------------------------------------------------------------------------------- verdict
 def drafts_only(probe_: dict) -> bool:
     """Every process item the probe found is a draft (a ``single`` state model or an asked answer's draft): the
@@ -557,14 +606,17 @@ def verdict(q: dict, probe_: dict, score: dict | None, gold: dict | None) -> tup
     """adequate / partial / none, and the kinds the question needs that neither the Wikibase items nor the scored
     answer carry.  With no gold (or ``gold: none``) only the probe counts; with gold, an adequate cell also needs
     the answer's vital-nugget recall at ADEQUATE_VITAL or more.  A cell whose process items are all drafts is at
-    most partial (``drafts_only``): a draft fills the gap but nobody has checked it."""
+    most partial (``drafts_only``): a draft fills the gap but nobody has checked it.  A computed answer (the probe's
+    ``computed`` signal: a question family's grounded tables, run with ``--computed``) counts as an answer: its kinds
+    are already in the probe's ``kinds``, and a cell it answers is not capped by drafts."""
     needs = list(q.get("needs") or [])
     have = {k for k in needs if (probe_.get("kinds") or {}).get(k)}
     if score:
         have |= {k for k in needs if (score.get("kinds") or {}).get(k)}
     missing = [k for k in needs if k not in have]
-    any_process = bool(probe_.get("processes"))
-    cap = "partial" if drafts_only(probe_) else "adequate"
+    computed = bool((probe_.get("computed") or {}).get("requirements"))
+    any_process = bool(probe_.get("processes")) or computed
+    cap = "partial" if drafts_only(probe_) and not computed else "adequate"
     recall = (score or {}).get("vital_recall")
     if gold is None or gold.get("gold") == "none" or score is None:
         if not any_process and not have:
@@ -657,9 +709,12 @@ def _pick_llm(cells: list[tuple[dict, str, str]], per_state: int | None) -> set[
 
 def run(con, states: list[str], places: list[dict] | None = None, qids: list[str] | None = None,
         arm: str = "ollama", llm_cells: int | None = None, run_id: str | None = None, node: str | None = None,
-        live: bool = True, force: bool = False, model: str | None = None, log=print, progress=None) -> dict:
+        live: bool = True, force: bool = False, model: str | None = None, log=print, progress=None,
+        computed: bool = False, docs_dir: Path | str | None = None) -> dict:
     """The coverage test for the states (and places).  ``arm``: ``coverage`` probes only; ``ollama`` also answers
-    and scores, for every cell or for ``llm_cells`` per state (the rest are stored under ``coverage``)."""
+    and scores, for every cell or for ``llm_cells`` per state (the rest are stored under ``coverage``).
+    ``computed``: add the probe signal ``computed`` (``computed_signal``: a question family's grounded tables) and
+    let its kinds count; ``docs_dir``: where the reports go (default docs/)."""
     from . import who as W
     ensure_table(con)
     run_id = run_id or time.strftime("%Y%m%d-%H%M")
@@ -721,7 +776,21 @@ def run(con, states: list[str], places: list[dict] | None = None, qids: list[str
         pr["counts"]["deadlines_quoted"] = max(pr["counts"]["deadlines_quoted"], pr["who"]["deadlines_quoted"])
         pr["counts"]["deadlines"] = max(pr["counts"]["deadlines"], pr["who"]["deadlines"])
         pr["kinds"] = kinds_of(pr["counts"])
-        pr["drafts_only"] = drafts_only(pr)
+        if computed:
+            t1 = time.time()
+            try:
+                comp = computed_signal(q, st_, gid)
+            except Exception as e:  # noqa: BLE001 - one family's failure must not stop the probe
+                comp = {"error": f"{type(e).__name__}: {str(e)[:200]}", "requirements": 0, "kinds": {}}
+            timings["computed"] = round(time.time() - t1, 2)
+            if comp is not None:
+                comp["added_kinds"] = sorted(k for k, v in (comp.get("kinds") or {}).items()
+                                             if v and not pr["kinds"].get(k))
+                pr["computed"] = comp
+                for k, v in (comp.get("kinds") or {}).items():
+                    if v:
+                        pr["kinds"][k] = True
+        pr["drafts_only"] = drafts_only(pr) and not (pr.get("computed") or {}).get("requirements")
         gold = load_gold(st_, q["id"])
         score, model_used, answer_doc = None, None, None
         if cell_arm == "ollama":
@@ -760,10 +829,12 @@ def run(con, states: list[str], places: list[dict] | None = None, qids: list[str
             f"/{c['bodies_with_channels']} dl {c['deadlines_quoted']}/{c['deadlines']} forms {c['forms']} fees {c['fees']} "
             f"esc {c['escalation']}"
             + (f" · vital {score.get('vital_recall')} cite {score.get('citation_precision')} comp {score.get('composite')}"
-               if score else "") + f" · {seconds}s")
+               if score else "")
+            + (f" · computed {pr['computed'].get('requirements', 0)} reqs +{','.join(pr['computed'].get('added_kinds') or []) or '-'}"
+               if pr.get("computed") else "") + f" · {seconds}s")
         if progress:
             progress((i + 1) / len(cells))
-    paths = write_reports(con, run_id, log=log)
+    paths = write_reports(con, run_id, docs_dir=docs_dir, log=log)
     return {"run": run_id, "cells": len(cells), "verdicts": counts, "node": node_name, **paths}
 
 
@@ -1044,6 +1115,7 @@ def matrix(rows: list[dict], qs: list[dict] | None = None) -> dict:
         pr = r["probe"] or {}
         cells[f"{r['qid']}|{col}"] = {"qid": r["qid"], "col": col, "verdict": r["verdict"], "missing": r["missing"],
                                        "draft": draft, "arm": r["arm"], "seconds": r["seconds"], "gold": pr.get("gold"),
+                                       "computed": bool((pr.get("computed") or {}).get("requirements")),
                                        "counts": pr.get("counts"), "source": pr.get("source"),
                                        "composite": (r["score"] or {}).get("composite"),
                                        "vital_recall": (r["score"] or {}).get("vital_recall")}
@@ -1096,6 +1168,8 @@ def markdown(m: dict, run_id: str) -> str:
                 row.append("")
                 continue
             s = DRAFT_GLYPH if cell.get("draft") and cell["verdict"] == "partial" else GLYPH.get(cell["verdict"], "?")
+            if cell.get("computed"):
+                s += "c"                    # a question family's computed answer counted (lexflow.scenarios)
             if cell["missing"]:
                 s += " " + ",".join(cell["missing"])
             if cell.get("composite") is not None:
@@ -1150,6 +1224,9 @@ def main(argv=None) -> int:
     ap.add_argument("--node")
     ap.add_argument("--model")
     ap.add_argument("--local", action="store_true", help="probe the local store, not the live endpoint")
+    ap.add_argument("--computed", action="store_true", help="add the computed-answer signal of the question families "
+                                                           "(lexflow.scenarios) and let it count")
+    ap.add_argument("--docs-dir", help="write the run's reports here instead of docs/")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--check", action="store_true", help="check the question file and every gold entry, then stop")
     ap.add_argument("--fill", action="store_true", help="answer the gap cells of the run (--run, else the latest) with "
@@ -1185,7 +1262,8 @@ def main(argv=None) -> int:
     try:
         places = P.resolve_all(con, a.places) if a.places else None
         out = run(con, states, places, [q for q in (a.questions or "").split(",") if q] or None, arm=a.arm,
-                  llm_cells=a.llm_cells, run_id=a.run, node=a.node, live=not a.local, force=a.force, model=a.model)
+                  llm_cells=a.llm_cells, run_id=a.run, node=a.node, live=not a.local, force=a.force, model=a.model,
+                  computed=a.computed, docs_dir=a.docs_dir)
         print(json.dumps(out, indent=1))
     finally:
         con.close()

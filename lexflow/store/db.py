@@ -411,6 +411,79 @@ CREATE TABLE IF NOT EXISTS section_tags (
   PRIMARY KEY (state, ref)
 );
 CREATE INDEX IF NOT EXISTS section_tags_state_method ON section_tags(state, method);
+
+-- lexflow.scenarios (docs/design/hypotheticals.md): a question family's dimensions and decision tables, its
+-- personas and assumptions.  These are statements about the law and lexflow's readings of it, so they are shared
+-- (SYNCED), and tables holds the committed form only (a NO_REPRINT quote as its fingerprint and paraphrase).
+CREATE TABLE IF NOT EXISTS families (
+  id TEXT PRIMARY KEY,
+  state TEXT NOT NULL,
+  title TEXT,
+  questions TEXT,
+  version TEXT,
+  dimensions TEXT,
+  tables TEXT,
+  content_hash TEXT,
+  grounding TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT
+);
+
+CREATE TABLE IF NOT EXISTS personas (
+  family TEXT NOT NULL,
+  id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  label TEXT,
+  inputs TEXT,
+  note TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (family, id)
+);
+
+CREATE TABLE IF NOT EXISTS assumptions (
+  family TEXT NOT NULL,
+  id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  text TEXT,
+  direction TEXT,
+  range TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (family, id)
+);
+
+-- a scenario is one fact pattern (or a policy variant over one): only enumerated values, keyed by its scenario-ID
+-- grammar string, and local_only marks one that came from a person's free text (the text itself is never stored).
+-- Scenarios and their runs are not statements about the law and are recomputable from a family: never synced.
+CREATE TABLE IF NOT EXISTS scenarios (
+  family TEXT NOT NULL,
+  id TEXT NOT NULL,
+  state TEXT,
+  inputs TEXT,
+  persona TEXT,
+  kind TEXT NOT NULL DEFAULT 'fact',
+  variant TEXT,
+  created_by TEXT,
+  local_only INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT,
+  updated_at TEXT,
+  PRIMARY KEY (family, id)
+);
+
+CREATE TABLE IF NOT EXISTS scenario_runs (
+  run_id TEXT PRIMARY KEY,
+  family TEXT NOT NULL,
+  scenario TEXT NOT NULL,
+  family_version TEXT,
+  tables_hash TEXT,
+  engine TEXT,
+  outputs TEXT,
+  trace TEXT,
+  seconds REAL,
+  created_at TEXT
+);
+CREATE INDEX IF NOT EXISTS scenario_runs_scenario ON scenario_runs(family, scenario);
 INSERT OR IGNORE INTO meta(key, value) VALUES ('version', '0');
 """
 
@@ -431,9 +504,16 @@ SYNCED: dict[str, tuple[str, ...]] = {
     # carries its question's text, so asked_questions stays local; one row per model that answered (the
     # readers pick one per question and target: lexflow.ask.prefer)
     "asked_answers": ("question_id", "target", "model"),
+    # lexflow.scenarios: a family's legal vocabulary and tables, its personas and its assumptions
+    "families": ("id",),
+    "personas": ("family", "id"),
+    "assumptions": ("family", "id"),
 }
-# this copy's own tables that upsert() writes: primary key columns (never synced)
-LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref")}
+# this copy's own tables that upsert() writes: primary key columns (never synced).  Scenarios and their runs stay
+# here: they are not statements about the law, a run is recomputable from its family, and a scenario from a
+# person's free text is theirs (local_only).
+LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref"),
+                                          "scenarios": ("family", "id"), "scenario_runs": ("run_id",)}
 
 # columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists).  Those on shared
 # tables are also applied to the shared database (turso.ensure_schema).  reviewed_by is a person's sign-off, JSON

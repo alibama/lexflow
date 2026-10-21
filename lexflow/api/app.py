@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 from urllib.parse import urlparse
 
-from fastapi import Body, FastAPI, Header, HTTPException, Query
+from fastapi import Body, FastAPI, Header, HTTPException, Query, Request
 from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -843,6 +843,109 @@ def coverage(run: str | None = Query(None, max_length=60, pattern=r"^[\w\-]+$"))
                 "rows": rows, "kinds": list(CV.KINDS)}
     finally:
         c.close()
+
+
+# ------------------------------------------------------------------ hypotheticals
+# Computed answers to "what if" questions (lexflow.scenarios, docs/design/hypotheticals.md): a fact pattern's
+# enumerated inputs through a family's grounded decision tables.  Read-only: nothing is stored by these routes, and
+# a quote from a site whose terms forbid reposting comes back as lexflow's paraphrase, never the words.
+_FAMILY_ID = r"^[a-z0-9_]{1,60}$"
+
+
+def _family(family: str):
+    from ..scenarios.family import Family, FamilyError
+    if not re.fullmatch(_FAMILY_ID, family or ""):
+        raise HTTPException(400, "bad family id")
+    try:
+        return Family.load(family)
+    except FamilyError as e:
+        raise HTTPException(404, str(e)) from e
+
+
+def _hypo_dims(fam) -> list[dict]:
+    out = []
+    for d in fam.dims:
+        out.append({"name": d.name, "label": d.label, "type": d.type, "slot": d.spec.get("slot"),
+                    "default": d.spec.get("default"), "default_by": d.spec.get("default_by"),
+                    "options": [{k: o.get(k) for k in ("code", "label", "value", "scope", "class", "tag", "assumptions",
+                                                       "defined_in", "note", "min", "max", "gov_id")
+                                 if o.get(k) is not None}
+                                for o in d.options]})
+    return out
+
+
+def _hypo_inputs(fam, params, persona: str | None, scenario: str | None) -> tuple[dict, str | None]:
+    """The scenario a request names: a scenario id, or a persona (in ``locality``), then any dimension given as
+    ``dim=value`` (a value or a code) on top."""
+    from ..scenarios.family import FamilyError
+    variant = None
+    try:
+        if scenario:
+            base, variant = fam.parse_id(scenario)
+        elif persona:
+            base = fam.persona_inputs(persona, params.get("locality"))
+        else:
+            base = {}
+        given = {k: v for k, v in params.items() if k in fam.dim}
+        for k, v in given.items():
+            d = fam.dim[k]
+            if d.type == "boolean" and str(v).lower() in ("true", "false"):
+                v = str(v).lower() == "true"
+            elif d.type == "number" and re.fullmatch(r"-?\d+(\.\d+)?", str(v)):
+                v = float(v) if "." in str(v) else int(v)
+            base[k] = v
+        if "locality" in given and "district" not in given and persona:
+            base["district"] = fam.persona_inputs(persona, base["locality"])["district"]
+        return base, variant
+    except FamilyError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.get("/api/hypo/families")
+def hypo_families():
+    """The question families: dimensions with their values, personas, variants, the coverage questions each serves."""
+    from ..scenarios.family import families
+    return {"families": [{**f.summary(), "dimensions": _hypo_dims(f),
+                          "personas": [{"id": p["id"], "label": p.get("label"), "note": p.get("note")}
+                                       for p in f.personas.values()],
+                          "variants": [{"id": v["id"], "label": v.get("label"), "tag": v.get("tag")}
+                                       for v in f.variants.values()],
+                          "assumptions": list(f.assumptions.values()), "serves": f.spec.get("serves") or {},
+                          "status": f.spec.get("status"), "inspiration": f.spec.get("inspiration"),
+                          "default_persona": f.spec.get("default_persona")}
+                         for f in families()]}
+
+
+@app.get("/api/hypo/{family}/run")
+def hypo_run(family: str, request: Request, persona: str | None = Query(None, max_length=60),
+             variant: str | None = Query(None, max_length=60), scenario: str | None = Query(None, max_length=200)):
+    """Evaluate one scenario: ``?persona=hot_shop_classes&locality=staunton`` or ``?scenario=<id>`` or any
+    ``dim=value``; ``variant`` names a policy variant.  Returns the requirements with offices, fees, order and the
+    citing quotes, the fees, the timeline and the trace."""
+    from ..scenarios import run as HR
+    from ..scenarios.family import FamilyError
+    fam = _family(family)
+    inputs, v = _hypo_inputs(fam, dict(request.query_params), persona, scenario)
+    try:
+        out = HR.evaluate(fam, inputs, variant or v)
+    except FamilyError as e:
+        raise HTTPException(400, str(e)) from e
+    out["text"] = HR.text(out)
+    return out
+
+
+@app.get("/api/hypo/{family}/sens")
+def hypo_sens(family: str, request: Request, persona: str | None = Query(None, max_length=60),
+              variant: str | None = Query(None, max_length=60), scenario: str | None = Query(None, max_length=200)):
+    """What matters most: one-at-a-time swings of each dimension around the scenario (the locality held)."""
+    from ..scenarios import sensitivity as HS
+    from ..scenarios.family import FamilyError
+    fam = _family(family)
+    inputs, v = _hypo_inputs(fam, dict(request.query_params), persona, scenario)
+    try:
+        return HS.swings(fam, inputs, variant or v, persona)
+    except FamilyError as e:
+        raise HTTPException(400, str(e)) from e
 
 
 # ------------------------------------------------------------------ sparql

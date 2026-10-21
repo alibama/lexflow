@@ -1,11 +1,11 @@
-# Coverage: can we answer what people ask? (run 20261020s)
+# Coverage: can we answer what people ask? (run 20261020m)
 
 Do the Wikibase items and the statute index hold the facts each question needs (who, steps, deadline, fee, form, where, appeal)?  `A` adequate, `P` partial, `D` partial on draft process items alone (a `single` state model or an asked answer's draft; never more than partial), `-` none; the kinds still missing follow the verdict.  `lexflow run coverage --states va,dc` regenerates this file (lexflow/ask/coverage.py); `lexflow run coverage --fill` answers the gap cells with the ask pipeline and stores the drafts (`--cells filled --model <other>` answers the filled cells again with another model, beside the first answers, for a comparison).
 
 | Column | Cells | Adequate | Partial | Draft | None | Top missing kinds | Ollama cells | Composite | Vital recall | Citation precision | s/cell | s/Ollama cell |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| dc | 49 | 2 | 46 | 31 | 1 | who (36), fee (28), form (22), where (15) | 12 | 0.471 | 0.34 | 0.226 | 35.894 | 146.242 |
-| va | 49 | 3 | 45 | 31 | 1 | who (36), fee (26), form (22), where (15) | 12 | 0.417 | 0.264 | 0.23 | 67.784 | 276.392 |
+| dc | 49 | 2 | 46 | 31 | 1 | who (36), fee (28), form (22), where (15) | 12 | 0.471 | 0.34 | 0.226 | 42.559 | 173.383 |
+| va | 49 | 3 | 45 | 31 | 1 | who (36), fee (26), form (22), where (15) | 12 | 0.417 | 0.264 | 0.23 | 40.784 | 165.983 |
 
 | Question | dc | va |
 |---|---|---|

@@ -117,7 +117,7 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
-  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute };
+  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute, hypo: viewHypo };
 async function route() {
   // #/page/arg?key=value: the query part never reaches the page's arguments; pages read it from S.params
   const [hashPath, query = ""] = (location.hash || "#/map").split("?");
@@ -1725,6 +1725,116 @@ function coverageDetail(d, row, q) {
     h("div", { class: "card-pad" }, h("h3", {}, "What the question needs"), kinds, h("h3", {}, "Wikibase probe"), counts, h("h3", {}, "Score against the gold"), score,
       a ? [h("h3", {}, `Answer (${a.status || "–"})`), a.summary_error ? h("p", { class: "muted" }, `Summary failed: ${a.summary_error}`) : null, claims || h("p", { class: "muted" }, "No summary claims."), quotes] : null));
 }
+// ----------------------------------------------------------------- hypotheticals
+// A computed answer (lexflow.scenarios): one select per dimension of a question family, the requirements with
+// their offices, fees, order and citations, and "what matters most" (the one-at-a-time sensitivity ranking).
+async function hypoFamilies() {
+  if (!S.hypoFamilies) S.hypoFamilies = (await api("/api/hypo/families")).families || [];
+  return S.hypoFamilies;
+}
+const HYPO_STATUS = { required: "ok", recommended: "ok", "may be required": "warn", "ask first": "warn", blocked: "warn", "not required": "muted" };
+function hypoSource(s) {
+  if (!s) return null;
+  const words = s.quote ? `“${s.quote}”` : s.paraphrase ? `${s.paraphrase} (lexflow's paraphrase)` : "";
+  return h("details", {}, h("summary", { class: "muted" }, s.citation || "source"),
+    h("p", { style: "margin:4px 0" }, words), s.why_withheld ? h("p", { class: "muted", style: "margin:4px 0;font-size:12px" }, s.why_withheld) : null,
+    h("p", { class: "muted", style: "margin:4px 0;font-size:12px" }, s.url ? h("a", { href: s.url, target: "_blank", rel: "noopener" }, s.url) : null,
+      s.matched ? ` · matched by lexflow's software (${s.matched_by}${s.checked_on ? `, ${s.checked_on}` : ""})` : " · not matched"));
+}
+function hypoCard(fam, opts = {}) {
+  const card = h("section", { class: "card", id: "hypo-card" });
+  const loc0 = opts.locality || (fam.dimensions.find((d) => d.name === "locality") || { default: null }).default;
+  let persona = opts.persona || fam.default_persona || (fam.personas[0] || {}).id;
+  const sel = {};
+  const personaSel = h("select", { "aria-label": "Persona" }, h("option", { value: "" }, "(no persona)"),
+    fam.personas.map((p) => h("option", { value: p.id, selected: p.id === persona ? true : null }, p.label)));
+  const variantBoxes = fam.variants.map((v) => h("label", { style: "display:flex;gap:6px;align-items:center" }, h("input", { type: "checkbox", value: v.id }), `Variant: ${v.label}`));
+  const form = h("div", { style: "display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px 12px;margin:8px 0" });
+  const out = h("div");
+  function inScope(o, loc) { return !o.scope || !o.scope.locality || o.scope.locality.includes(loc); }
+  const locOptions = (fam.dimensions.find((d) => d.name === "locality") || { options: [] }).options;
+  function drawForm(values) {
+    // the locality as a value ("staunton"), whether the form holds its code ("STN") or a value was passed in
+    const loc = (locOptions.find((o) => o.code === values.locality) || {}).value || values.locality || loc0;
+    if (!values.locality) values = { ...values, locality: (locOptions.find((o) => o.value === loc) || {}).code };
+    rc(form, fam.dimensions.map((d) => {
+      const s = h("select", { "aria-label": d.label, onchange: () => { if (d.name === "locality") { drawForm({ ...current(), locality: s.value, district: null }); } } },
+        d.options.filter((o) => d.name === "locality" || inScope(o, loc)).map((o) => h("option", { value: o.code, selected: values[d.name] === o.code ? true : null },
+          o.label + (o.class ? ` · ${o.class.replace("_", " ")}` : "") + (o.tag && o.tag !== "SRC" ? ` (${o.tag})` : ""))));
+      sel[d.name] = s;
+      return h("label", { style: "display:flex;flex-direction:column;gap:2px;font-size:13px" }, h("span", { class: "muted" }, d.label), s);
+    }));
+  }
+  function current() { const v = {}; for (const [k, s] of Object.entries(sel)) v[k] = s.value; return v; }
+  async function fromPersona() {
+    persona = personaSel.value;
+    if (!persona) return;
+    const loc = (current().locality) ? fam.dimensions.find((d) => d.name === "locality").options.find((o) => o.code === current().locality)?.value : loc0;
+    const r = await api(`/api/hypo/${encodeURIComponent(fam.id)}/run?persona=${encodeURIComponent(persona)}&locality=${encodeURIComponent(loc || loc0)}`);
+    const v = {}; for (const [k, x] of Object.entries(r.inputs)) v[k] = x.code;
+    drawForm(v);
+    show(r);
+  }
+  async function run() {
+    const q = new URLSearchParams(current());
+    const vs = variantBoxes.map((b) => b.querySelector("input")).filter((i) => i.checked).map((i) => i.value);
+    if (vs[0]) q.set("variant", vs[0]);
+    rc(out, h("p", { class: "muted" }, "Computing…"));
+    try { show(await api(`/api/hypo/${encodeURIComponent(fam.id)}/run?${q}`)); } catch (e) { rc(out, h("p", { class: "muted" }, String(e.message || e))); }
+  }
+  async function show(r) {
+    const todo = r.requirements.filter((x) => x.status !== "not required");
+    const rows = todo.map((x) => h("tr", {},
+      h("td", { class: "num" }, x.order ?? "–"),
+      h("td", {}, h("div", {}, x.title), x.deadline ? h("div", { class: "muted", style: "font-size:12px" }, x.deadline) : null, hypoSource(x.source)),
+      h("td", {}, x.office.url ? h("a", { href: x.office.url, target: "_blank", rel: "noopener" }, x.office.label) : x.office.label),
+      h("td", {}, h("span", { class: `badge ${HYPO_STATUS[x.status] || "muted"}` }, x.status), x.tag === "ASM" || x.assumptions.length ? h("div", { class: "muted", style: "font-size:11px" }, x.assumptions.join(" ")) : null),
+      h("td", {}, x.fee.text, x.fee_source ? hypoSource(x.fee_source) : null)));
+    const notReq = r.requirements.filter((x) => x.status === "not required");
+    const sens = h("div", {}, h("p", { class: "muted" }, "Working out what matters most…"));
+    rc(out,
+      h("p", {}, h("strong", {}, `${r.counts.to_do} things to do`), ` (${r.counts.required} required, ${r.counts.possible} that the officials may require or that need a question first) · about ${r.order.timeline_days} days end to end (an estimate) · scenario `, h("span", { class: "mono" }, r.scenario)),
+      r.blocked ? h("div", { class: "notice" }, icon("blocked"), h("div", {}, h("strong", {}, "Not allowed as set: "), r.requirements.filter((x) => x.status === "blocked").map((x) => x.title).join("; "))) : null,
+      h("p", {}, r.fees.summary),
+      h("div", { class: "table-wrap" }, h("table", { class: "data" }, h("thead", {}, h("tr", {}, ["#", "What", "From", "Status", "Fee"].map((t) => h("th", { scope: "col" }, t)))), h("tbody", {}, rows))),
+      notReq.length ? h("p", { class: "muted" }, "Not required: " + notReq.map((x) => x.title).join("; ")) : null,
+      r.appeals.length ? h("details", {}, h("summary", {}, "If something is refused"), h("ul", {}, r.appeals.map((a) => h("li", {}, `${a.table}: ${a.to}, ${a.deadline}`)))) : null,
+      h("h3", {}, "What matters most"), sens,
+      h("p", { class: "muted", style: "font-size:12px" }, `Assumptions: ${r.assumptions.join(", ") || "none"}. ${fam.status || ""}`));
+    const q = new URLSearchParams({}); for (const [k, x] of Object.entries(r.inputs)) q.set(k, x.code);
+    if (r.variant) q.set("variant", r.variant);
+    try {
+      const s = await api(`/api/hypo/${encodeURIComponent(fam.id)}/sens?${q}`);
+      const max = Math.max(...s.ranking.map((x) => x.score), 0.001);
+      rc(sens, h("div", { style: "display:grid;gap:6px" }, s.ranking.slice(0, 6).map((x) => h("div", {},
+        h("div", { style: "display:flex;justify-content:space-between;font-size:13px" }, h("span", {}, x.label), h("span", { class: "muted" }, `±${x.swing_requirements} requirements · ±$${Math.round(x.swing_fees).toLocaleString()} · ±${x.swing_days} days${x.can_block ? " · can block" : ""}`)),
+        h("div", { class: "bar" }, h("span", { style: `width:${Math.round(100 * x.score / max)}%` }))))));
+    } catch (e) { rc(sens, h("p", { class: "muted" }, String(e.message || e))); }
+  }
+  personaSel.addEventListener("change", fromPersona);
+  rc(card, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Computed answer for a fact pattern"),
+      h("p", {}, `${fam.title}: pick the facts and lexflow works out what is needed, from whom, at what cost and in what order, from decision tables whose every rule cites a matched quote. Computed, not reviewed by a person; not legal advice.`))),
+    h("div", { class: "card-pad" }, h("div", { class: "row-flex" }, personaSel, ...variantBoxes, h("button", { class: "btn", onclick: run }, "Compute")), form, out));
+  drawForm({});
+  if (persona) fromPersona();
+  return card;
+}
+async function attachHypo(el, qid, govId) {
+  const token = String(Math.random());
+  el.dataset.hypo = token;                          // a later click replaces the detail: drop this card then
+  const fams = await hypoFamilies().catch(() => []);
+  const fam = fams.find((f) => (f.serves || {})[qid]);
+  if (!fam || el.dataset.hypo !== token) return;
+  const locDim = fam.dimensions.find((d) => d.name === "locality");
+  const loc = govId ? (locDim.options.find((o) => o.gov_id === govId) || {}).value : null;
+  el.append(h("div", { class: "spacer" }), hypoCard(fam, { locality: loc || undefined }));
+}
+async function viewHypo(familyId) {
+  const fams = await hypoFamilies();
+  const fam = fams.find((f) => f.id === familyId) || fams[0];
+  if (!fam) { rc(view, h("div", { class: "notice" }, icon("info"), h("div", {}, "No question families (fixtures/families/)."))); return; }
+  rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Hypotheticals"), h("p", {}, `${fam.dimensions.length} dimensions, ${fam.tables} decision tables, ${fam.rules} grounded rules; scenario grammar ${fam.grammar}.`))), hypoCard(fam));
+}
 async function viewCoverage(runId) {
   const body = h("div");
   rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Coverage"),
@@ -1756,6 +1866,7 @@ async function viewCoverage(runId) {
     function drawDetail() {
       const r = picked && rowsBy[picked];
       rc(detail, r ? coverageDetail(d, r, qs[r.qid] || { text: r.qid, needs: [] }) : h("p", { class: "muted" }, "Click a cell to see its probe, answer, score and what is missing."));
+      if (r) attachHypo(detail, r.qid, r.gov_id);     // a question a family serves gets the computed-answer form
     }
     const summary = h("table", { class: "data" },
       h("thead", {}, h("tr", {}, ["Column", "Cells", "Adequate", "Partial", "None", "Top missing kinds", "Ollama cells", "Composite", "Vital recall", "Citation precision", "s / cell", "s / Ollama cell"].map((t) => h("th", { scope: "col" }, t)))),

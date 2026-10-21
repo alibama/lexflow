@@ -949,7 +949,8 @@ def run_coverage(con, args, log, progress):
     return CV.run(con, sts, _places(con, args), qids, arm=args.get("arm") or "ollama",
                   llm_cells=int(llm) if llm not in (None, "") else None, run_id=args.get("run") or None,
                   node=args.get("node") or None, live=not args.get("local"), force=bool(args.get("force")),
-                  model=args.get("model") or None, log=log, progress=progress)
+                  model=args.get("model") or None, log=log, progress=progress,
+                  computed=bool(args.get("computed")), docs_dir=args.get("docs_dir") or None)
 
 
 COMPOSITE = {

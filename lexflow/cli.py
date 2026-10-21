@@ -77,11 +77,11 @@ def cmd_run(args) -> int:
         os.environ.setdefault("LEXFLOW_JOB_ID", str(args.job))
         os.environ.setdefault("LEXFLOW_JOB_STEP", args.step)
     for k in ("states", "questions", "direction", "tables", "cases", "strategies", "models", "places", "arm", "node",
-              "run", "llm_cells", "model", "cells"):
+              "run", "llm_cells", "model", "cells", "docs_dir"):
         v = getattr(args, k, None)
         if v:
             params[k] = v
-    for k in ("force", "no_llm", "regulations", "full", "dry_run", "local", "fill"):
+    for k in ("force", "no_llm", "regulations", "full", "dry_run", "local", "fill", "computed"):
         if getattr(args, k, False):
             params[k] = True
     from .store.turso import SyncTableError
@@ -520,6 +520,11 @@ def cmd_qs(args) -> int:
     return qs.main(args.qs_args)
 
 
+def cmd_hypo(args) -> int:
+    from .scenarios import cli as H
+    return H.main(args.hypo_args)
+
+
 def cmd_wikibase(args) -> int:
     """``lint``: the cleanliness gate (out/wikibase/lint-report.md); ``push``: the graph through the API."""
     if args.action == "push":
@@ -624,6 +629,9 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--cells", choices=["gaps", "filled", "all", "named"],
                    help="coverage --fill: gaps (default), filled (the cells another model filled already, answered "
                         "again by --model for a comparison), all, or named (every cell of --questions, filled or not)")
+    r.add_argument("--computed", action="store_true", help="coverage: add the computed-answer signal of the question "
+                                                          "families (lexflow.scenarios) and let it count")
+    r.add_argument("--docs-dir", help="coverage: write the run's reports here instead of docs/")
     for flag in ("--force", "--no-llm", "--regulations", "--full", "--dry-run", "--local"):
         r.add_argument(flag, action="store_true")
     r.add_argument("--job", type=int)
@@ -745,6 +753,10 @@ def main(argv: list[str] | None = None) -> int:
                                   "[--pass 2] | resolve | check (see lexflow.publish.qs)")
     q.add_argument("qs_args", nargs=argparse.REMAINDER, help="arguments passed to lexflow.publish.qs")
     q.set_defaults(fn=cmd_qs)
+    hy = sub.add_parser("hypo", help="hypotheticals computed from grounded decision tables (lexflow.scenarios): "
+                                     "lexflow hypo family|expand|run|sens|ask|report (docs/design/hypotheticals.md)")
+    hy.add_argument("hypo_args", nargs=argparse.REMAINDER, help="arguments passed to lexflow.scenarios.cli")
+    hy.set_defaults(fn=cmd_hypo)
     wb = sub.add_parser("wikibase", help="the Lexipedia Wikibase through the API: lexflow wikibase lint [--no-ollama] "
                                          "writes out/wikibase/lint-report.md; lexflow wikibase push [--really] "
                                          "executes the graph (dry run by default; see lexflow.publish.push)")
