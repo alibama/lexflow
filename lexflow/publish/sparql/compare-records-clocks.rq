@@ -1,0 +1,28 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: across every state, the response clocks of the public-records process: days, the law's unit, what starts the clock, and the words that set it
+# params: topic=lexflow:vocab:topic:public-records
+# status: 21 Oct 2026: local 68 rows over 17 state models (live site down for maintenance)
+SELECT ?state ?process ?step ?days ?unit ?countedFrom ?quote WHERE {
+  VALUES ?topic { lx:{Q:lexflow:vocab:topic:public-records} }
+  ?process lxt:{P:instance of} lx:{Q:lexflow:class:legal-process} ; lxt:{P:topic} ?topic ;
+           lxt:{P:applies to jurisdiction} ?j ; lxt:{P:has part} ?s .
+  ?j lxt:{P:instance of} lx:{Q:lexflow:class:jurisdiction} ; rdfs:label ?state .
+  ?s rdfs:label ?step ; lxp:{P:time limit} ?st . ?st lxps:{P:time limit} ?days .
+  OPTIONAL { ?st lxpq:{P:time unit} ?u . ?u rdfs:label ?unit }
+  OPTIONAL { ?st lxpq:{P:counted from} ?countedFrom }
+  OPTIONAL { ?st prov:wasDerivedFrom ?r . ?r lxpr:{P:quoted text} ?quote }
+} ORDER BY ?state ?days

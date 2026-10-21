@@ -1,0 +1,26 @@
+PREFIX lx: <https://lexipedia.wikibase.cloud/entity/>
+PREFIX lxt: <https://lexipedia.wikibase.cloud/prop/direct/>
+PREFIX lxp: <https://lexipedia.wikibase.cloud/prop/>
+PREFIX lxps: <https://lexipedia.wikibase.cloud/prop/statement/>
+PREFIX lxpq: <https://lexipedia.wikibase.cloud/prop/qualifier/>
+PREFIX lxpr: <https://lexipedia.wikibase.cloud/prop/reference/>
+PREFIX lxn: <https://lexipedia.wikibase.cloud/prop/direct-normalized/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+# question: across every state, where a public-records request can be taken next (internal appeal, ombudsman, attorney general, compliance board, court), and the body with its Wikidata id when known
+# params: topic=lexflow:vocab:topic:public-records
+# status: 21 Oct 2026: local 76 rows over 13 state models (live site down for maintenance)
+SELECT ?state ?type ?target ?wd WHERE {
+  VALUES ?topic { lx:{Q:lexflow:vocab:topic:public-records} }
+  ?process lxt:{P:instance of} lx:{Q:lexflow:class:legal-process} ; lxt:{P:topic} ?topic ; lxt:{P:applies to jurisdiction} ?j .
+  ?j lxt:{P:instance of} lx:{Q:lexflow:class:jurisdiction} ; rdfs:label ?state .
+  ?rung lxt:{P:part of} ?process ; lxt:{P:escalates to} ?t . ?t rdfs:label ?target .
+  OPTIONAL { ?rung lxt:{P:escalation type} ?ty . ?ty rdfs:label ?type }
+  OPTIONAL { ?t lxt:{P:played by} ?b . ?b lxt:{P:Wikidata item ID} ?wd }
+} ORDER BY ?state ?type
