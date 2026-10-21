@@ -80,11 +80,12 @@ sudo ss -ltnup | grep -E ':8443|:3478'                           # both must be 
 
 ### 1. DNS
 
-`net.lexipedia.xyz` currently points at `134.209.128.119`; it must be `137.184.50.98` **before** certbot
-runs (HTTP-01 is validated against the A record). Fix it at the registrar, then wait until:
+`net.lexipedia.xyz` points at `134.209.128.119`, the droplet's reserved (floating) IP; `137.184.50.98` is
+its own address. Both reach the same machine (same SSH host key, same Apache), so either works for HTTP-01.
+Check:
 
 ```sh
-dig +short net.lexipedia.xyz A            # must print exactly 137.184.50.98
+dig +short net.lexipedia.xyz A            # 134.209.128.119 (reserved IP) or 137.184.50.98
 dig +short net.lexipedia.xyz AAAA         # empty, unless the droplet has IPv6 and you add it on purpose
 dig +short mesh.lexipedia.xyz             # must stay empty: the peer DNS domain must not resolve publicly
 ```
