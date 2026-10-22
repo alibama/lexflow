@@ -565,12 +565,12 @@ def _actions(t: dict) -> list[dict]:
                 {"kind": "link", "label": "Coverage matrix", "href": "#/coverage"}]
     if tid in ("plan", "wikibase"):
         dry = {"kind": "dry_run", "label": "Dry run: lint → plan", "args": {"passes": "1,2"},
-               "params": ["states", "drafts", "full"]}
+               "params": ["states", "drafts", "full", "single_pass"]}
         if tid == "plan":
             return [dry]
         return [dict(dry, label="Dry run first: lint → plan"),
                 {"kind": "push", "label": "Push: lint → pass 1 → pass 2", "confirm": "wikibase",
-                 "args": {"really": True, "passes": "1,2", "skip_held": True}}]
+                 "args": {"really": True, "passes": "1,2", "skip_held": True}, "params": ["bot"]}]
     if tid == "publish":
         return [{"kind": "dry_run", "label": "Dry run", "args": {"dry_run": True}, "params": []},
                 {"kind": "publish", "label": "Publish", "confirm": "publish", "args": {}}]
@@ -597,7 +597,8 @@ def _wikibase_section(con, out_dir: Path) -> dict:
     if rec:
         sc = rec.get("scope") or {}
         args = {"really": True, "dry_run_id": rec.get("id"), "states": ",".join(sc.get("states") or []),
-                "drafts": bool(sc.get("drafts")), "full": bool(sc.get("full"))}
+                "drafts": bool(sc.get("drafts")), "full": bool(sc.get("full")),
+                "single_pass": bool(sc.get("single_pass"))}
         refusal = ST.wikibase_dry_run_refusal(con, out_dir, args)
     plan = plan_info(out_dir)
     lint = lint_info(out_dir)

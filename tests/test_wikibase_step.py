@@ -115,3 +115,23 @@ def test_run_everything_never_includes_a_step_that_writes_to_an_outside_site(con
     for comp in steps.COMPOSITE.values():
         src = inspect.getsource(comp.run)
         assert not any(f"run_{ext}" in src for ext in steps.EXTERNAL_WRITERS), comp.id
+
+
+def test_single_pass_is_part_of_the_scope_and_bot_and_pause_shape_only_the_push(con, pushed, tmp_path):
+    _lint(tmp_path / "wb", [])
+    _run(con, {"states": "jpn", "single_pass": True}, tmp_path)   # the dry run plans the single pass
+    assert pushed[0]["single_pass"] is True and "bot" not in pushed[0] and "pause" not in pushed[0]
+    rec = steps.read_record(tmp_path / "wb" / steps.DRY_RUN_NAME)
+    assert rec["scope"] == {"states": ["jpn"], "drafts": False, "full": False, "single_pass": True}
+    # a push without the single pass is another scope than the dry run's
+    out, _ = _run(con, {"really": True, "states": "jpn"}, tmp_path)
+    assert len(pushed) == 1 and "single pass" in out["refused"]
+    out, logs = _run(con, {"really": True, "states": "jpn", "single_pass": True, "bot": True, "pause": "0.2"}, tmp_path)
+    real = pushed[1]
+    assert real["dry_run"] is False and real["single_pass"] is True and real["bot"] is True and real["pause"] == 0.2
+    assert any("single pass, with the bot flag, 0.2 s between writes" in m for m in logs)
+
+
+def test_a_scope_without_single_pass_still_matches_an_older_record():
+    assert steps.wikibase_scope({"states": "va"}) == {"states": ["va"], "drafts": False, "full": False}
+    assert steps.wikibase_scope({"single_pass": "false"}) == {"states": None, "drafts": False, "full": False}

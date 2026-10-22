@@ -753,15 +753,18 @@ def ids_mark(con) -> str:
 
 
 def wikibase_scope(args: dict) -> dict:
-    """The part of a wikibase job's args a dry run and its push must share."""
-    sts = sorted(S.parse_states(args["states"])) if args.get("states") else None
-    return {"states": sts, "drafts": bool(args.get("drafts")), "full": bool(args.get("full"))}
+    """The part of a wikibase job's args a dry run and its push must share.  ``single_pass`` is there only when
+    set, so a record from before the option still matches a push without it."""
+    sts = sorted(S.parse_jurisdictions(args["states"])) if args.get("states") else None
+    return {"states": sts, "drafts": bool(args.get("drafts")), "full": bool(args.get("full")),
+            **({"single_pass": True} if flag(args.get("single_pass"), False) else {})}
 
 
 def _scope_words(scope: dict | None) -> str:
     s = scope or {}
     return (f"{'states ' + ','.join(s['states']) if s.get('states') else 'every state'}"
-            f"{', with drafts' if s.get('drafts') else ''}{', a full resend' if s.get('full') else ''}")
+            f"{', with drafts' if s.get('drafts') else ''}{', a full resend' if s.get('full') else ''}"
+            f"{', single pass' if s.get('single_pass') else ''}")
 
 
 def _record_refusal(rec: dict | None, args: dict, what: str, now: float | None = None) -> str | None:
@@ -882,7 +885,11 @@ def run_wikibase(con, args, log, progress):
     confirmed (``dry_run_id``, when given), and still fits: the same graph hash, the same Wikibase record (no other
     push since) and the same held keys.  The dry run's record is marked used before the first write.  Draft
     (single-tier) models stay out unless ``drafts`` is set; ``full`` resends every item instead of skipping those
-    whose content hash is already recorded (``--resume``).  Nothing here deletes or merges an item.
+    whose content hash is already recorded (``--resume``).  ``single_pass`` (part of the scope, so the dry run plans
+    it too) creates a new item with every statement in pass 1 when every item it names has an id, and pass 2 skips
+    it by its recorded hash.  ``bot`` (send bot=1) and ``pause`` (seconds between writes) shape only the real push:
+    use them once the account is in the wiki's bot group (``lexflow wikibase push --bot --pause``).  Nothing here
+    deletes or merges an item.
 
     The v1 loader this step used to run (``wikibase_lexipedia.Loader``: ``clear`` with the v1 statement set, then
     ``retire_drafts``) is gone.  Job 77 (2026-10-18) ran it over 1,795 items the v2 pusher had written and wiped
@@ -892,12 +899,14 @@ def run_wikibase(con, args, log, progress):
     from ..publish import graph as G
     from ..publish import lint as L
     from ..publish import push as P
-    sts = S.parse_states(args["states"]) if args.get("states") else None
+    sts = S.parse_jurisdictions(args["states"]) if args.get("states") else None
     out_dir = wikibase_dir(args)
     really = bool(args.get("really")) and not args.get("dry_run")
     skip_held = flag(args.get("skip_held"), True)
     passes = parse_passes(args.get("passes"))
     drafts, resume = bool(args.get("drafts")), not args.get("full")
+    single_pass, bot = flag(args.get("single_pass"), False), flag(args.get("bot"), False)
+    pause = float(args["pause"]) if args.get("pause") not in (None, "") else None
     lint_model = flag(args.get("lint_model"), False)
     site = config.WIKIBASE_URL
 
@@ -934,7 +943,7 @@ def run_wikibase(con, args, log, progress):
     if not really:
         mark = ids_mark(con)
         out = P.run(con, dry_run=True, items=items, states=sts, drafts=drafts, resume=resume, allow_held=False,
-                    out_dir=out_dir, log=log)
+                    out_dir=out_dir, single_pass=single_pass, log=log)
         progress(1.0)
         s = out.get("summary") or {}
         rid, generated = new_record_id()
@@ -965,7 +974,9 @@ def run_wikibase(con, args, log, progress):
     use_record(rec_path, rec)                     # one dry run, one push: marked before the first write
     log(f"real push to {site} after the dry run of {rec['generated']} ({rec.get('creates')} creates, "
         f"{rec.get('updates')} updates)" + (f"; {len(held)} held items are skipped and never written" if held else
-                                            "; the lint report holds nothing"))
+                                            "; the lint report holds nothing")
+        + (", single pass" if single_pass else "") + (", with the bot flag" if bot else "")
+        + (f", {pause:g} s between writes" if pause is not None else ""))
     todo = passes or ["all"]
     expect = {"1": rec.get("pass1_writes") or 0, "2": rec.get("pass2_writes") or 0}
     expect["all"] = expect["1"] + expect["2"]
@@ -985,7 +996,8 @@ def run_wikibase(con, args, log, progress):
                 progress(lo + (hi - lo) * min(1.0, n[0] / want))
         log(f"== pass {p}" + (f": about {expect[p]:,} writes planned" if expect[p] else ""))
         out = P.run(con, dry_run=False, pass_no=p, items=items, states=sts, drafts=drafts, resume=resume,
-                    allow_held=bool(held) and skip_held, out_dir=out_dir, api=wikibase_api(tick), log=log)
+                    allow_held=bool(held) and skip_held, out_dir=out_dir, api=wikibase_api(tick),
+                    single_pass=single_pass and p in ("1", "all"), pause=pause, bot=bot, log=log)
         progress(hi)
         s = out.get("summary") or {}
         results[p] = {"creates": s.get("creates"), "updates": s.get("updates"),
@@ -1257,7 +1269,7 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "page, and a lint report (lexflow wikibase lint): items the lint holds are skipped and never written. "
          "Drafts from one extraction stay out unless asked for. Never part of a run-all chain.",
          "optional", st_wikibase, run_wikibase, needs=["build"],
-         params=["states", "really", "drafts", "full", "skip_held", "passes"],
+         params=["states", "really", "drafts", "full", "skip_held", "passes", "single_pass", "pause", "bot"],
          cost="dry run: about a minute of reads; a real push about 1.5 s a write (pass 1 creates, pass 2 claims)",
          credits=[C.WIKIBASE_CLOUD, C.used_for(C.WIKIDATA, "Items link to their Wikidata entities", note="")]),
     Step("publish", "Publish to Lexipedia",

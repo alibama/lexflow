@@ -1365,7 +1365,8 @@ const PIPE = { x0: 140, y0: 66, colW: 180, rowH: 100, r: 27, barW: 12, barH: 44,
 const PIPE_COLS = ["Sources", "Index & research", "Drafts", "Verified", "Ready", "Published"];
 const PIPE_STATE = { never: ["todo", "Never run"], running: ["running", "Running"], queued: ["queued", "Queued"],
   done: ["done", "Last run finished"], failed: ["failed", "Last run failed"], cancelled: ["optional", "Last run cancelled"] };
-const PIPE_FLAG = { force: "Redo", no_llm: "Skip models", regulations: "+ regulations", full: "Full resend", drafts: "+ drafts" };
+const PIPE_FLAG = { force: "Redo", no_llm: "Skip models", regulations: "+ regulations", full: "Full resend", drafts: "+ drafts",
+  single_pass: "Single pass", bot: "Bot flag (bot group only)" };
 const SVGNS = "http://www.w3.org/2000/svg";
 let pipeTimer = null;
 function sv(tag, attrs = {}, ...kids) {
@@ -1631,7 +1632,7 @@ async function viewPipeline() {
   }
   // h() flattens one level of children: the rows and their values are flattened here
   function kvRows(rows) { return h("dl", { class: "kv" }, rows.filter(Boolean).flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, [v].flat(Infinity))])); }
-  function scopeWords(sc) { sc = sc || {}; return `${sc.states && sc.states.length ? `states ${sc.states.join(", ")}` : "every state"}${sc.drafts ? ", with drafts" : ""}${sc.full ? ", full resend" : ""}`; }
+  function scopeWords(sc) { sc = sc || {}; return `${sc.states && sc.states.length ? `states ${sc.states.join(", ")}` : "every state"}${sc.drafts ? ", with drafts" : ""}${sc.full ? ", full resend" : ""}${sc.single_pass ? ", single pass" : ""}`; }
   function drawInfo(t) {
     const wb = data.wikibase || {}, pub = data.publish || {};
     const blocks = [h("div", { class: "sec" }, kvRows([
@@ -1693,7 +1694,7 @@ async function viewPipeline() {
       }
       const out = h("span", { class: "muted", style: "font-size:12.5px" });
       const btn = h("button", { class: `btn ${a.confirm ? "danger" : a.kind === "dry_run" ? "primary" : ""}`, type: "button", onclick: async () => {
-        if (a.confirm) { openConfirm(t, a, out); return; }
+        if (a.confirm) { openConfirm(t, a, out, values); return; }
         const args = { ...a.args, ...Object.fromEntries(Object.entries(values).map(([k, f]) => [k, f()])) };
         if (a.kind === "run" && !confirm(`Start “${t.title}”${args.states ? ` for ${args.states}` : ""}? It runs as a background job.`)) return;
         btn.disabled = true;
@@ -1706,15 +1707,16 @@ async function viewPipeline() {
     rc(parts.actions, h("h3", { style: "margin-bottom:6px" }, "Actions"), rows.length ? rows : h("p", { class: "muted" }, "Nothing to run from here."),
       t.id === "wikibase" ? h("p", { class: "muted", style: "font-size:12px;margin:8px 0 0" }, "The dry run comes first: the push asks you to confirm its numbers, and is refused if the graph, the lint or the Wikibase record changed since.") : null);
   }
-  function openConfirm(t, a, out) {
+  function openConfirm(t, a, out, values = {}) {
     const push = a.confirm === "wikibase";
+    const chosen = Object.fromEntries(Object.entries(values).map(([k, f]) => [k, f()]));
     const d = push ? (data.wikibase || {}).dry_run : (data.publish || {}).dry_run;
     const why = !d ? "No dry run has been recorded yet: run the dry run first." : d.refusal;
     const site = push ? (data.wikibase || {}).site : (data.publish || {}).site;
     const host = (() => { try { return new URL(site).hostname; } catch (e) { return site || "the site"; } })();
     const go = h("button", { class: "btn danger", type: "button", disabled: !!why, onclick: async () => {
       go.disabled = true;
-      const args = push ? { ...a.args, dry_run_id: d.id, states: (d.scope.states || []).join(","), drafts: !!d.scope.drafts, full: !!d.scope.full }
+      const args = push ? { ...a.args, ...chosen, dry_run_id: d.id, states: (d.scope.states || []).join(","), drafts: !!d.scope.drafts, full: !!d.scope.full, single_pass: !!d.scope.single_pass }
         : { ...a.args, dry_run_id: d.id };
       try { const id = await startRunJob(t.step, args); dialog.close(); rc(out, "started as ", h("a", { href: `#/job/${id}` }, `job #${id}`)); await load(); }
       catch (e) { rc(msg, h("span", { style: "color:var(--critical)" }, e.message)); go.disabled = false; }
@@ -1724,7 +1726,8 @@ async function viewPipeline() {
       ["Dry run", `${d.generated} (${secs(d.age_s)} ago)`], ["Scope", scopeWords(d.scope)], ["Items", fmtInt(d.items)],
       ["Creates", `${fmtInt(d.creates)} new items (pass 1)`], ["Updates", `${fmtInt(d.updates)} items’ statements (pass 2)`],
       ["Held", `${fmtInt(d.held_count)} items the lint holds: skipped, never written`],
-      ["Dropped", `${fmtInt(d.dropped_snaks)} statements that name an item with no id yet`]])
+      ["Dropped", `${fmtInt(d.dropped_snaks)} statements that name an item with no id yet`],
+      chosen.bot ? ["Bot flag", "on: bot=1 is sent, which the wiki honours only for an account in its bot group"] : null])
       : kvRows([["Dry run", `${d.generated} (${secs(d.age_s)} ago)`], ["Pages", fmtInt(d.pages)], ["Writes", `${fmtInt(d.would_write)} pages`],
         ["Unchanged", d.compared ? fmtInt(d.unchanged) : "not compared"], ["Corrections", d.corrections || "–"]]);
     rc(dialog, h("form", { method: "dialog", class: "card-pad" },
