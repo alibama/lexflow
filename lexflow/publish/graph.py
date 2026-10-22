@@ -11,7 +11,12 @@ and bodies; ``fixtures/entities/agencies.json`` for agencies (exact, kind-checke
 ``caselaw.COURTS`` for courts, named from ``fixtures/entities/courts.json``; ``place_processes`` verified rows for
 local processes, with ``fixtures/places/topics.json`` for the topic and audience of those whose category
 ``schema.CATEGORY_TOPIC`` does not map; ``contacts`` for office channels, after ``lexflow.privacy``; ``case_law``
-for court decisions; ``states.py`` for the jurisdictions.  With ``LEXFLOW_DECIDE=1`` the decision model
+for court decisions; ``states.py`` for the jurisdictions (the states and ``COUNTRIES``); a country's index
+(``data/index/statutes_<key>.sqlite``, its ``law`` table) for its code item and one item per law (schema §4.8), with
+Japan's API law list for its repealed laws, the ``law_amendments`` table for amendments and repeals, and the
+``wikidata_laws`` table (``wikidata_export``) for confident Wikidata matches, in the shape of WikiProject Brazilian
+Laws (docs/design/wikidata-laws.md: references on every statement, makers, the licence rule of
+``schema.PROVISION_TEXT``).  With ``LEXFLOW_DECIDE=1`` the decision model
 (``extract/decide.py``) gives a local step its kind where the file gives none and the model is sure.
 
 Rules kept here: every claim made from a quote carries the grounding reference of section 4.6 (source section or
@@ -22,6 +27,7 @@ the result is in sorted key order so re-runs diff cleanly.
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -41,6 +47,9 @@ Log = Callable[[str], None]
 # CATEGORY_TOPIC does not map (scripts/assign_topics.py); an entry is used when a person accepted it or the model's
 # confidence reached this
 TOPIC_CONFIDENCE = 0.9
+# at most this many ``amending law number`` statements on one law item, the latest kept (Japan's 登記事務委任規則 has
+# 1,132 amendments; 500 statements keep an item's page readable and its body well under the wiki's size limit)
+AMEND_NUMBERS_MAX = 500
 ValueKind = Literal["item", "string", "url", "time", "quantity", "monolingual", "external-id"]
 
 
@@ -67,12 +76,16 @@ class Claim:
 @dataclass
 class Item:
     key: str
-    label: str
+    label: str                            # English (the wiki's default language)
     description: str
     aliases: list[str]
     cls: str | None                       # class key, or the label of an existing class item (Q7 ...)
     claims: list[Claim]
     exists: bool                          # wikibase_items already holds the key: the writer updates
+    # other languages beside English (a Japanese law's ``ja`` label, description and aliases; schema §4.8)
+    labels: dict[str, str] = field(default_factory=dict)
+    descriptions: dict[str, str] = field(default_factory=dict)
+    lang_aliases: dict[str, list[str]] = field(default_factory=dict)
 
 
 def by_kind(items: list[Item]) -> dict[str, list[Item]]:
@@ -345,7 +358,7 @@ class Build:
     def __init__(self, con, *, states=None, places=None, drafts=True, asked_drafts=False, log: Log = print,
                  decider=None):
         self.con, self.log = con, log
-        self.states = sorted(S.normalise(s) for s in states) if states else None
+        self.states = sorted(S.normalise_any(s) for s in states) if states else None
         self.places = set(places or ())
         self.drafts = drafts
         self.asked_drafts = asked_drafts          # asked answers as draft process items (``asked``); default off
@@ -414,6 +427,22 @@ class Build:
                 it.aliases.append(a)
         return it
 
+    def lang(self, it: Item, lang: str, label: str | None = None, description: str | None = None,
+             aliases=()) -> Item:
+        """An item's label, description and aliases in another language than English (``ja``)."""
+        if label:
+            it.labels[lang] = _cut(self._no_mailbox(label), SC.LABEL_MAX)
+        if description:
+            it.descriptions[lang] = _cut(self._no_mailbox(description), SC.DESCRIPTION_MAX)
+        have = it.lang_aliases.setdefault(lang, [])
+        for a in aliases:
+            a = _cut(self._no_mailbox(a or ""), SC.LABEL_MAX)
+            if a and a != it.labels.get(lang) and a not in have:
+                have.append(a)
+        if not have:
+            it.lang_aliases.pop(lang, None)
+        return it
+
     def _no_mailbox(self, text: str) -> str:
         """A label, description or alias with any e-mail address removed: a term names a thing, never a channel
         (channels are claims, after the privacy checks), and a person's mailbox must never reach the wiki."""
@@ -430,8 +459,24 @@ class Build:
             raise KeyError(f"unknown property {prop!r}")
         if not self._clean(value, it):
             return None
-        quals = [(q, v) for q, v in qualifiers if v is not None and self._clean(v, it)]
-        refs = [[(q, v) for q, v in ref if v is not None and self._clean(v, it)] for ref in references]
+        # the licence rule (schema.PROVISION_TEXT): no provision text of a jurisdiction whose source is not free of
+        # copyright (Australia's CC BY 4.0 register) goes to the CC0 wiki, neither as a value, a qualifier nor a quote
+        own_ok = SC.provision_text_ok(SC.jurisdiction_of(it.key))
+        target_ok = own_ok and (value.kind != "item" or SC.provision_text_ok(SC.jurisdiction_of(value.value)))
+        if prop in SC.TEXT_PROPS and not own_ok:
+            self.gap("provision text withheld (source licence is not CC0-compatible)")
+            return None
+        quals = [(q, v) for q, v in qualifiers if v is not None and self._clean(v, it)
+                 and (target_ok or q not in SC.TEXT_PROPS)]
+        refs = []
+        for ref in references:
+            ok = target_ok and all(SC.provision_text_ok(SC.jurisdiction_of(v.value)) for q, v in ref
+                                   if q == "source section" and v is not None)
+            clean = [(q, v) for q, v in ref if v is not None and self._clean(v, it)]
+            kept = [(q, v) for q, v in clean if ok or q not in SC.TEXT_PROPS]
+            if len(kept) < len(clean):
+                self.gap("provision text withheld (source licence is not CC0-compatible)")
+            refs.append(kept)
         refs = [r for r in refs if r]
         sig = (prop, value.sig(), tuple((q, v.sig()) for q, v in quals))
         for c in it.claims:
@@ -538,7 +583,11 @@ class Build:
             self._ontology_matches(it, c)
         for set_, entries in SC.VOCAB.items():
             for v in entries:
-                self.add(SC.key_for("vocab", set_, v.slug), v.label, v.description, cls(set_))
+                it = self.add(SC.key_for("vocab", set_, v.slug), v.label, v.description, cls(set_))
+                q = SC.LANGUAGE_WIKIDATA.get(v.slug) if set_ == "language" else None
+                if q:
+                    self.claim(it, "Wikidata item ID", ext(q))
+                    self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + q))
 
     def _ontology_matches(self, it: Item, c) -> None:
         """One ``P8 exact match`` per IRI of ``ontology_map.CLASS_MATCH`` and one ``close match`` per IRI of
@@ -562,6 +611,323 @@ class Build:
             w = S.WEBSITE.get(st)
             if w and privacy.is_office_url(w):
                 self.claim(it, "official website", url(w))
+        for c in S.COUNTRIES:
+            if not self.want(c["code"]) or not self._country_laws(c["code"]):
+                continue
+            it = self.add(SC.key_for("jurisdiction", c["code"]), c["name"], "Country (lexflow jurisdiction)",
+                          cls("jurisdiction"))
+            if c.get("names"):
+                for lg, nm in c["names"].items():
+                    self.lang(it, lg, nm, c.get("descriptions", {}).get(lg))
+            if c.get("wikidata"):
+                self.claim(it, "Wikidata item ID", ext(c["wikidata"]))
+                self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + c["wikidata"]))
+
+    # ---- a country's laws (schema §4.8): the code item and one statutory unit per law, never one item per article
+    def _country_laws(self, code: str) -> list[dict]:
+        cache = self.__dict__.setdefault("_laws", {})
+        if code not in cache:
+            try:
+                from ..corpus import countries as CT
+                cache[code] = CT.laws(code)
+            except Exception as e:  # noqa: BLE001 - no index, no laws
+                self.log(f"{code}: laws unavailable: {e}")
+                cache[code] = []
+        return cache[code]
+
+    def _listed_laws(self, code: str, indexed: list[dict]) -> list[dict]:
+        """The laws a country's official list holds that its index does not (Japan: the API v2 law list's repealed
+        and not-yet-in-force laws, 586 on 22 October 2026), in the index's ``law`` row shape with their ``status``
+        and ``repeal_date``; [] for a country without such a list."""
+        if code != "jpn":
+            return []
+        try:
+            from ..corpus import countries as CT
+            from ..corpus.countries import japan as J
+            listed = J.law_list(CT.DIR / J.CODE / J.LAWS_NAME)       # beside the index's raw data
+        except Exception as e:  # noqa: BLE001 - no list, no extra laws
+            self.log(f"{code}: law list unavailable: {e}")
+            return []
+        have = {x["law_id"] for x in indexed}
+        out = []
+        for law_id, e in sorted(listed.items()):
+            if law_id in have:
+                continue
+            status = "repealed" if e.get("current_revision_status") == "Repeal" or \
+                e.get("repeal_status") not in (None, "None") else "not_yet_in_force"
+            law_type = (e.get("law_type") or "").split(",")[0]
+            out.append({"law_id": law_id, "title": e.get("law_title") or "", "law_num": e.get("law_num") or "",
+                        "law_type": law_type, "kind": J.LAW_TYPES.get(law_type, ""), "category": e.get("category") or "",
+                        "abbrev": e.get("abbrev") or "", "promulgated": e.get("promulgation_date") or "",
+                        "enforced": e.get("amendment_enforcement_date") if status == "not_yet_in_force" else "",
+                        "url": J.PAGE_URL.format(id=law_id), "status": status,
+                        "repeal_status": e.get("repeal_status"), "repeal_date": e.get("repeal_date") or "",
+                        "number_en": J.law_number_en(e.get("law_num") or "", law_type),
+                        "kind_en": J.law_kind_en(e.get("law_num") or "", law_type), "listed_only": True})
+        return out
+
+    def _amendments(self, code: str) -> dict[str, list[dict]]:
+        """law_key -> the ``law_amendments`` rows of a country (``corpus.countries.japan.load_amendments``); {} when
+        the table has not been built."""
+        try:
+            rows = db.rows(self.con, "SELECT * FROM law_amendments WHERE jurisdiction=? ORDER BY law_key, date, "
+                                     "amending_num, source", code)
+        except Exception:  # noqa: BLE001 - no table: no amendment claims
+            self.gap(f"{code}: no law_amendments table (python -m lexflow.corpus.countries.japan amendments)")
+            return {}
+        out: dict[str, list[dict]] = {}
+        for r in rows:
+            out.setdefault(r["law_key"], []).append(r)
+        return out
+
+    def _wikidata_laws(self, code: str) -> dict[str, str]:
+        """law_key -> the Wikidata item lexflow's reconciliation matched by an identifier (``wikidata_export``'s
+        ``wikidata_laws`` table, confident rows only); {} when it has not run."""
+        try:
+            return {r["law_key"]: r["qid"] for r in db.rows(
+                self.con, "SELECT law_key, qid FROM wikidata_laws WHERE jurisdiction=? AND confident=1", code)}
+        except Exception:  # noqa: BLE001 - no table
+            return {}
+
+    def _retrieved(self, code: str, listed: bool = False) -> str | None:
+        """The date lexflow fetched a country's law data (Japan: the bulk zip, or the API law list for ``listed``)."""
+        cache = self.__dict__.setdefault("_fetched", {})
+        if (code, listed) not in cache:
+            got = None
+            if code == "jpn":
+                try:
+                    from ..corpus.countries import japan as J
+                    m = J.manifest()
+                    e = (m.get("law_list") if listed else m.get("bulk")) or m.get("bulk") or {}
+                    got = (e.get("fetched") or "")[:10] or None
+                except Exception:  # noqa: BLE001
+                    got = None
+            cache[(code, listed)] = got
+        return cache[(code, listed)]
+
+    def law_time(self, code: str, date: str | None) -> Value | None:
+        """A law's date as a time value; None for a Japanese date before 1 January 1873, which e-Gov gives in the
+        lunar calendar of the time (明治5年12月3日 became 1 January 1873) and a Gregorian time value would misstate."""
+        if code == "jpn" and date and date[:10] < "1873-01-01":
+            self.gap(f"{code}: dates before the Gregorian calendar left out")
+            return None
+        return time(date)
+
+    def law_ref(self, code: str, source_url: str | None, retrieved: str | None) -> list[tuple[str, Value]]:
+        """The reference of a statement read from a country's law database: source URL (the law's or the
+        revision's page), retrieved, stated in (the database's item, ``schema.SOURCES``)."""
+        ref: list[tuple[str, Value]] = []
+        if source_url and _URL.match(source_url) and privacy.is_office_url(source_url):
+            ref.append(("source URL", url(source_url)))
+        if time(retrieved):
+            ref.append(("retrieved", time(retrieved)))
+        src = SC.COUNTRY_SOURCE.get(code)
+        if src:
+            ref.append(("stated in", item(self.source_item(src))))
+        return ref
+
+    def source_item(self, slug_: str) -> str:
+        """The item of a law database (``lexflow:source:<slug>``), made once."""
+        key = SC.key_for("source", slug_)
+        if key not in self.items:
+            s = SC.SOURCES[slug_]
+            it = self.add(key, s["label"], s["description"], cls("database"))
+            for lg, lab in (s.get("labels") or {}).items():
+                self.lang(it, lg, lab, (s.get("descriptions") or {}).get(lg))
+            if s.get("jurisdiction") and (s["jurisdiction"] in S.COUNTRY or s["jurisdiction"] in S.NAME):
+                self.claim(it, "applies to jurisdiction", item(SC.key_for("jurisdiction", s["jurisdiction"])))
+            if s.get("website") and privacy.is_office_url(s["website"]):
+                self.claim(it, "official website", url(s["website"]))
+            if s.get("wikidata"):
+                self.claim(it, "Wikidata item ID", ext(s["wikidata"]))
+                self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + s["wikidata"]))
+        return key
+
+    def maker_item(self, code: str, base: str) -> str:
+        """The item of the body or office a Japanese law's number names as its maker (``schema.EGOV_ISSUERS``),
+        made once: a legislature, government body or office, labelled in Japanese and, where lexflow can source it,
+        English."""
+        slug_, cslug, en, qid, current = SC.EGOV_ISSUERS[base]
+        kind = "position" if cslug == "position" else "agency"
+        key = SC.key_for(kind, code, slug_)
+        if key not in self.items:
+            what = {"legislature": "legislature", "position": "office"}.get(cslug, "government body")
+            lead = ("The" if what == "legislature" else "An" if what == "office" else "A") if current else "A former"
+            desc = f"{lead} {what} of Japan ({base})" + ("; the office, never a person who held it"
+                                                         if cslug == "position" else "")
+            it = self.add(key, en, desc, cls(cslug))
+            self.lang(it, "ja", base, {"legislature": "日本の立法機関", "position": "日本の官職"}.get(cslug, "日本の行政機関")
+                      + ("" if current else "（廃止）"))
+            self.claim(it, "applies to jurisdiction", item(SC.key_for("jurisdiction", code)))
+            if qid:
+                self.claim(it, "Wikidata item ID", ext(qid))
+                self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + qid))
+        return key
+
+    def country_law(self):
+        for c in S.COUNTRIES:
+            code = c["code"]
+            if not self.want(code):
+                continue
+            indexed = self._country_laws(code)
+            if not indexed:
+                self.gap(f"{code}: no law table (index not built)")
+                continue
+            listed = self._listed_laws(code, indexed)
+            laws = list(indexed) + listed
+            lang = (c.get("languages") or ["en"])[0]
+            labels = c.get("code_label") or {}
+            jur = item(SC.key_for("jurisdiction", code))
+            ck = SC.key_for("code", code)
+            ref = self.law_ref(code, c.get("website"), self._retrieved(code))
+            extra = f" and {len(listed):,} repealed or not yet in force" if listed else ""
+            code_it = self.add(ck, labels.get("en") or f"Laws of {c['name']}",
+                               f"The national laws of {c['name']}: {len(indexed):,} in force{extra}, from "
+                               f"{c.get('source') or 'the official source'}", cls("legal-code"))
+            if labels.get(lang):
+                own = (c.get("code_description") or {}).get(lang)
+                self.lang(code_it, lang, labels[lang], f"{own}（{len(indexed):,}件）" if own else None)
+            self.claim(code_it, "applies to jurisdiction", jur, references=[ref])
+            self.claim(code_it, "unit level", vocab("unit-level", "code"))
+            if c.get("website") and privacy.is_office_url(c["website"]):
+                self.claim(code_it, "official text", url(c["website"]), references=[ref])
+            if lang in SC.LANGUAGE_WIKIDATA:
+                self.claim(code_it, "language of work", vocab("language", lang), references=[ref])
+            only = {t.strip() for t in os.environ.get("LEXFLOW_LAW_TYPES", "").split(",") if t.strip()}
+            if only:                                  # a subset first (Act, CabinetOrder ...): the operator's choice
+                laws = [x for x in laws if x.get("law_type") in only]
+                self.gap(f"{code}: laws limited to LEXFLOW_LAW_TYPES={','.join(sorted(only))}")
+            keys = {x["law_id"]: SC.key_for("unit", code, f"STATE_{code.upper()}_{x['law_id']}") for x in laws}
+            amends, wd = self._amendments(code), self._wikidata_laws(code)
+            for x in laws:
+                self._law_item(code, lang, x, ck, jur, keys=keys, amends=amends.get(x["law_id"], []),
+                               wikidata=wd.get(x["law_id"]))
+            self.gap(f"{code}: laws written as statutory units", len(laws))
+            if listed:
+                self.gap(f"{code}: repealed or not-yet-in-force laws from the law list", len(listed))
+
+    def _law_item(self, code: str, lang: str, x: dict, code_key: str, jur: Value, *, keys: dict[str, str] | None = None,
+                  amends: list[dict] | None = None, wikidata: str | None = None) -> None:
+        """One law, in the shape of WikiProject Brazilian Laws where lexflow has the data (docs/design/
+        wikidata-laws.md §2): identifiers, names, dates, maker, language, amendments and repeals, every statement
+        but lexflow's own bookkeeping (unit level, sort key, act identifier) with the reference of its source
+        (source URL, retrieved, stated in).  The English label is the official English title when lexflow has one
+        (``title_en``; none yet for Japan), never a romanisation: without one the item is labelled in the law's
+        language only and its English description says what it is ("Japanese law (Act No. 88 of 1993)")."""
+        law_id, title = x["law_id"], (x.get("title") or "").strip() or x["law_id"]
+        key = SC.key_for("unit", code, f"STATE_{code.upper()}_{law_id}")
+        kind_en = x.get("kind_en") or {"Act": "Act", "CabinetOrder": "Cabinet Order", "ImperialOrder": "Imperial "
+                                       "Ordinance", "MinisterialOrdinance": "Ministerial Ordinance", "Rule": "Rule",
+                                       "Constitution": "Constitution"}.get(x.get("law_type") or "", "Law")
+        number = (x.get("law_num") or "").strip()
+        status = x.get("status") or "in_force"
+        what = {"jpn": "Japanese law"}.get(code) or f"law of {S.name_of(code)}"
+        lead = "Repealed " + what if status == "repealed" else what[0].upper() + what[1:]
+        tail = ", not yet in force" if status == "not_yet_in_force" else ""
+        desc = f"{lead} ({x.get('number_en') or number or kind_en}{tail})"
+        en_label = title if lang == "en" else (x.get("title_en") or "").strip()
+        it = self.add(key, en_label, desc, cls("statutory-unit"), aliases=[a for a in (x.get("number_en"),) if a])
+        if lang != "en":
+            ja_status = {"repealed": "・廃止", "not_yet_in_force": "・未施行"}.get(status, "")
+            ja_desc = number + (f"（{x.get('kind') or ''}・{x['category']}{ja_status}）" if x.get("category") else
+                                (f"（{x.get('kind')}{ja_status}）" if x.get("kind") else ""))
+            self.lang(it, lang, title, ja_desc or None, [a for a in (x.get("abbrev"), number) if a and a != title])
+        page = x.get("url") if x.get("url") and privacy.is_office_url(x["url"]) else None
+        R = [self.law_ref(code, page, self._retrieved(code, listed=bool(x.get("listed_only"))))]
+        self.claim(it, "applies to jurisdiction", jur, references=R)
+        self.claim(it, "part of", item(code_key), references=R)
+        self.claim(it, "unit level", vocab("unit-level", "act"))
+        self.claim(it, "sort key", string(f"{x.get('promulgated') or '0000-00-00'}-{law_id.lower()}"))
+        self.claim(it, "act identifier", ext(law_id))
+        if code == "jpn":
+            self.claim(it, "e-Gov law ID", ext(law_id), references=R)
+        elif code == "aus":
+            self.claim(it, "ComLaw ID", ext(law_id), references=R)
+        self.claim(it, "heading text", mono(title, lang), references=R)
+        if number:
+            self.claim(it, "law number", mono(number, lang), references=R)
+        if x.get("abbrev") and x["abbrev"] != title:
+            self.claim(it, "short name", mono(x["abbrev"], lang), references=R)
+        if page:
+            self.claim(it, "official text", url(page), references=R)
+        if status != "repealed":
+            self.claim(it, "effective date", self.law_time(code, x.get("enforced")), references=R)
+        self.claim(it, "promulgation date", self.law_time(code, x.get("promulgated")), references=R)
+        if status == "repealed":
+            self.claim(it, "effective until", self.law_time(code, x.get("repeal_date")), references=R)
+        if lang in SC.LANGUAGE_WIKIDATA:
+            self.claim(it, "language of work", vocab("language", lang), references=R)
+        if code == "jpn":
+            makers = SC.egov_makers(number, x.get("law_type"), x.get("promulgated"))
+            for base in makers:
+                self.claim(it, "legislated by", item(self.maker_item(code, base)), references=R)
+            if not makers:
+                self.gap(f"{code}: laws whose number names no maker lexflow knows")
+        topic = SC.EGOV_CATEGORY_TOPIC.get(x.get("category") or "")
+        if topic:
+            self.claim(it, "topic", vocab("topic", topic), references=R)
+        elif x.get("category"):
+            self.gap(f"{code}: laws whose category has no topic")
+        if wikidata:
+            wref = [[("source URL", url(f"https://www.wikidata.org/wiki/{wikidata}"))]]
+            self.claim(it, "Wikidata item ID", ext(wikidata), references=wref)
+            self.claim(it, "exact match", url(SC.WIKIDATA_ENTITY + wikidata), references=wref)
+        self._law_changes(code, it, law_id, amends or [], keys or {}, page)
+
+    def _law_changes(self, code: str, it: Item, law_id: str, rows: list[dict], keys: dict[str, str],
+                     page: str | None) -> None:
+        """``amended by``, ``repealed by`` and ``repeals`` (an item value when the other law has an item in the
+        build), else ``amending law number`` (the amending law's number, when it has none: most amending acts are
+        folded into the laws they amend); qualifiers point in time (the amending law's promulgation) and effective
+        date (when the amendment or the repeal took effect); the reference names the revision's page when the edge
+        is a revision of the bulk zip.  At most ``AMEND_NUMBERS_MAX`` amending law numbers per law, the latest
+        kept."""
+        by: dict[tuple[str, str], dict] = {}
+        for r in rows:
+            other = r["amending_key"] if r["amending_key"] and r["amending_key"] in keys else None
+            e = by.setdefault((r["kind"], other or r["amending_num"]), {
+                "kind": r["kind"], "other": other, "num": r["amending_num"], "date": None, "fallback": None,
+                "enforced": None, "revision": None, "retrieved": None})
+            if r["date_kind"] in ("promulgated", "repealed") and r["date"]:
+                e["date"] = e["date"] or r["date"]
+            elif r["date"]:
+                e["fallback"] = e["fallback"] or r["date"]
+            if r.get("enforced"):
+                e["enforced"] = e["enforced"] or r["enforced"]
+            if r["source"] == "egov-bulk-revision" and r.get("revision"):
+                e["revision"] = r["revision"]
+            e["retrieved"] = e["retrieved"] or r.get("retrieved")
+        numbers = sorted((e for e in by.values() if e["kind"] == "amended" and not e["other"]),
+                         key=lambda e: (e["date"] or e["fallback"] or "", e["num"]), reverse=True)
+        drop = {id(e) for e in numbers[AMEND_NUMBERS_MAX:]}
+        if drop:
+            self.gap(f"{code}: amending law numbers left out (over {AMEND_NUMBERS_MAX} on one law)", len(drop))
+        for e in sorted(by.values(), key=lambda e: (e["kind"], e["other"] or "", e["num"])):
+            if id(e) in drop:
+                continue
+            src = page
+            if e["revision"] and code == "jpn" and "_" in e["revision"]:
+                src = f"https://laws.e-gov.go.jp/law/{law_id}/{e['revision'].split('_', 1)[1]}"
+            ref = [self.law_ref(code, src, e["retrieved"] or self._retrieved(code))]
+            # point in time: the amending law's promulgation (past by definition); effective date: when the
+            # amendment or the repeal took or takes effect (a revision not yet in force has a date still to come)
+            quals = [("point in time", self.law_time(code, e["date"]))] if e["kind"] == "amended" else []
+            if e["kind"] == "amended" and (e["enforced"] or e["fallback"]):
+                quals.append(("effective date", self.law_time(code, e["enforced"] or e["fallback"])))
+            elif e["kind"] != "amended" and (e["enforced"] or e["date"]):
+                quals.append(("effective date", self.law_time(code, e["enforced"] or e["date"])))
+            if e["kind"] == "amended":
+                if e["other"]:
+                    self.claim(it, "amended by", item(keys[e["other"]]), quals, ref)
+                else:
+                    self.claim(it, "amending law number", mono(e["num"], "ja" if code == "jpn" else "en"), quals, ref)
+                    self.gap(f"{code}: amendments by a law with no item of its own (amending law number)")
+            elif e["kind"] == "repealed" and e["other"]:
+                self.claim(it, "repealed by", item(keys[e["other"]]), quals, ref)
+            elif e["kind"] == "repeals" and e["other"]:
+                self.claim(it, "repeals", item(keys[e["other"]]), quals, ref)
+            else:
+                self.gap(f"{code}: repeal edges whose other law has no item")
 
     # ---- law
     def seed_sections(self):
@@ -593,11 +959,13 @@ class Build:
     def _section_item(self, key: str):
         st, r = self.sections[key]
         if not r:
-            it = self.add(key, key.rsplit(":", 1)[-1], f"{S.NAME[st]} statute (not in the index)", cls("statute"))
+            it = self.add(key, key.rsplit(":", 1)[-1], f"{S.name_of(st)} statute (not in the index)", cls("statute"))
             self.claim(it, "applies to jurisdiction", item(SC.key_for("jurisdiction", st)))
             return
+        if S.is_country(st):
+            return self._country_section_item(key, st, r)
         heading = (r.get("original_title") or "").strip() or (r.get("title") or "").strip()
-        it = self.add(key, r["citation"], heading or f"{S.NAME[st]} statute", cls("statute"))
+        it = self.add(key, r["citation"], heading or f"{S.name_of(st)} statute", cls("statute"))
         self.claim(it, "citation", string(r["citation"]))
         if r.get("url") and privacy.is_office_url(r["url"]):
             self.claim(it, "official text", url(r["url"]))
@@ -616,6 +984,34 @@ class Build:
         if parent:
             self.claim(it, "part of", item(parent))
 
+    def _country_section_item(self, key: str, st: str, r: dict) -> None:
+        """A country's article that a process cites (schema §4.8): a statute at unit level ``article``, part of its
+        law's item, its heading in the law's language; never its chapters as units."""
+        lang = (S.COUNTRY[st].get("languages") or ["en"])[0]
+        heading = (r.get("original_title") or "").strip()
+        if heading and not SC.provision_text_ok(st):           # a heading is provision text (schema.PROVISION_TEXT)
+            self.gap("provision text withheld (source licence is not CC0-compatible)")
+            heading = ""
+        law_id = (SC.unit_tokens(r["act_id"]) or [""])[0]
+        it = self.add(key, r["citation"], f"Article of {S.name_of(st)}'s law: {heading or r['citation']}",
+                      cls("statute"))
+        self.lang(it, lang, r["citation"], heading or None)
+        self.claim(it, "citation", string(r["citation"]))
+        if r.get("url") and privacy.is_office_url(r["url"]):
+            self.claim(it, "official text", url(r["url"]))
+        self.claim(it, "applies to jurisdiction", item(SC.key_for("jurisdiction", st)))
+        self.claim(it, "unit level", vocab("unit-level", "article"))
+        self.claim(it, "section number", string(r["section_number"] or r["ref"]))
+        self.claim(it, "act identifier", ext(r["act_id"]))
+        if heading:
+            self.claim(it, "heading text", mono(heading, lang))
+        self.claim(it, "effective date", time(r.get("effective_from")))
+        law = SC.key_for("unit", st, f"STATE_{st.upper()}_{law_id}")
+        if law_id and (law in self.items or any(x["law_id"] == law_id for x in self._country_laws(st))):
+            self.claim(it, "part of", item(law))
+        else:
+            self.gap(f"{st}: cited articles whose law has no item")
+
     def _units(self, st: str, r: dict) -> str | None:
         """The code, sub-code and unit items above a section, from its path and act_id; the parent's key."""
         toks = SC.unit_tokens(r["act_id"])
@@ -625,10 +1021,10 @@ class Build:
         if len(elems) != len(toks) + 1:
             # Utah's "Chapter 48-3a" is one act_id token with its section: name the units from the tokens
             self.gap("sections whose path and act_id disagree")
-            elems = [elems[0] if elems else f"{S.NAME[st]} Code"] + [_token_name(t) for t in toks]
+            elems = [elems[0] if elems else f"{S.name_of(st)} Code"] + [_token_name(t) for t in toks]
         jur = item(SC.key_for("jurisdiction", st))
         code_key = SC.key_for("code", st)
-        code = self.add(code_key, elems[0], f"The code of laws of {S.NAME[st]}", cls("legal-code"))
+        code = self.add(code_key, elems[0], f"The code of laws of {S.name_of(st)}", cls("legal-code"))
         self.claim(code, "applies to jurisdiction", jur)
         self.claim(code, "unit level", vocab("unit-level", "code"))
         short = (r["citation"].rsplit("§", 1)[0].strip(" ,") if "§" in r["citation"] else elems[0])
@@ -705,7 +1101,7 @@ class Build:
                 word = (next(iter(levels)) if len(levels) == 1 else "unit")
                 word = word if word != "code" else "code"
                 n, m = len(kids), len(secs)
-                head = f"Code of {S.NAME[info['state']]}" if not info["chain"] else f"{info['el']} of {info['chain']}"
+                head = f"Code of {S.name_of(info['state'])}" if not info["chain"] else f"{info['el']} of {info['chain']}"
                 it.description = _cut(f"{head}: {n} {_plural(word, n)}, {m} {_plural('section', m)} cited by lexflow",
                                       SC.DESCRIPTION_MAX)
                 continue
@@ -1682,6 +2078,7 @@ class Build:
     def run(self) -> list[Item]:
         self.vocabularies()
         self.jurisdictions()
+        self.country_law()                                # a country's code and laws (schema §4.8)
         self.seed_sections()
         self.bodies()
         self.models()
@@ -1696,6 +2093,7 @@ class Build:
             it.exists = it.key in self.existing
             it.claims.sort(key=_claim_order)
             it.aliases = sorted(dict.fromkeys(it.aliases))
+            it.lang_aliases = {lg: sorted(dict.fromkeys(v)) for lg, v in sorted(it.lang_aliases.items()) if v}
         for what, n in sorted(self.gaps.items()):
             self.log(f"could not supply: {what}: {n}")
         return [self.items[k] for k in sorted(self.items)]
@@ -1712,8 +2110,19 @@ class Build:
                 it.description = f"lexflow {kind} {it.key.split(':', 2)[-1]}"[:SC.DESCRIPTION_MAX]
         groups: dict[tuple[str, str], list[Item]] = {}
         for it in self.items.values():
-            if not it.exists:
+            if not it.exists and it.label:                # no English label, no English clash (a law in Japanese)
                 groups.setdefault((it.label, it.description), []).append(it)
+        for lg in sorted({lg for it in self.items.values() for lg in it.labels}):
+            seen: dict[tuple[str, str], list[Item]] = {}
+            for it in self.items.values():
+                if not it.exists and it.labels.get(lg) and it.descriptions.get(lg):
+                    seen.setdefault((it.labels[lg], it.descriptions[lg]), []).append(it)
+            for members in seen.values():
+                if len(members) > 1:              # the wiki refuses these in every language: add the key's tail
+                    self.gap(f"{lg} label and description clashes resolved with the key's tail", len(members))
+                    for it in members:
+                        tail = f" [{it.key.rsplit(':', 1)[-1]}]"
+                        it.descriptions[lg] = _cut(it.descriptions[lg], SC.DESCRIPTION_MAX - len(tail)) + tail
         for (label, desc), members in sorted(groups.items()):
             if len(members) < 2:
                 continue
@@ -1736,6 +2145,7 @@ class Build:
         dangling: list[str] = []
         for it in self.items.values():
             assert len(it.label) <= SC.LABEL_MAX and len(it.description) <= SC.DESCRIPTION_MAX, it.key
+            assert all(len(v) <= SC.LABEL_MAX for v in [*it.labels.values(), *it.descriptions.values()]), it.key
             if it.cls and it.cls not in labels and it.cls not in self.items:
                 dangling.append(f"{it.key}: instance of -> {it.cls}")
             for c in it.claims:

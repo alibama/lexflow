@@ -1,0 +1,122 @@
+{
+ "state": "md",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "umbrella": {
+  "name": "State Retirement and Pension System of Maryland",
+  "short": "SRPS",
+  "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-101", "quote": "The State Retirement and Pension System shall provide benefits under this Division II for participants in the several systems."},
+  "body": {"name": "Board of Trustees for the State Retirement and Pension System (staffed by the Maryland State Retirement Agency)", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}}
+ },
+ "systems": [
+  {
+   "name": "Employees' Retirement System and Employees' Pension System",
+   "short": "ERS/EPS",
+   "census_units": ["census-pid6:244188"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Employees’ Pension System, established on January 1, 1980;"},
+   "statute_role": "establishes",
+   "also": [{"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Employees’ Retirement System, established on October 1, 1941;"}],
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "channels": [
+    {"kind": "website", "value": "https://sra.maryland.gov/", "label": "Official website"},
+    {"kind": "phone", "value": "1-800-492-5909", "label": "Retirement Agency main line", "source": {"kind": "page", "url": "https://sra.maryland.gov/contact/", "quote": "Member Services Toll Free 1-800-492-5909 Local 410-625-5555"}},
+    {"kind": "postal", "value": "Maryland State Retirement Agency, 120 East Baltimore Street, Baltimore, MD 21202", "label": "Maryland State Retirement Agency", "source": {"kind": "page", "url": "https://sra.maryland.gov/contact/", "quote": "Address Maryland State Retirement Agency 120 East Baltimore Street Baltimore, MD 21202"}}
+   ],
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 31-102", "quote": "the governmental units that are eligible to participate in the employees’ systems are:"},
+   "notes": "The Census reports both employees' systems as one unit. The Census counts no local active members in it, but participating governmental units (counties, municipalities and others under SPP § 31-102) join the employees' systems, so covers_local is set from the statute."
+  },
+  {
+   "name": "Teachers' Retirement System and Teachers' Pension System",
+   "short": "TRS/TPS",
+   "census_units": ["census-pid6:227140"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Teachers’ Pension System, established on January 1, 1980;"},
+   "statute_role": "establishes",
+   "also": [{"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Teachers’ Retirement System, established on August 1, 1927; and"}],
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "notes": "Teachers are employed by the county boards of education."
+  },
+  {
+   "name": "Law Enforcement Officers' Pension System",
+   "short": "LEOPS",
+   "census_units": ["census-pid6:244191"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Law Enforcement Officers’ Pension System, established on July 2, 1990;"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": true,
+   "notes": "The Census counts local active members (participating local law enforcement)."
+  },
+  {
+   "name": "State Police Retirement System",
+   "short": "SPRS",
+   "census_units": ["census-pid6:244189"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the State Police Retirement System, established on July 1, 1949;"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Correctional Officers' Retirement System",
+   "short": "CORS",
+   "census_units": ["census-pid6:244192"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the Correctional Officers’ Retirement System, established on July 1, 1974;"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": true,
+   "notes": "The Census counts a small number of local active members."
+  },
+  {
+   "name": "Judges' Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:244190"],
+   "statute": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-102", "quote": "the contributory plan, established on July 1, 1969; and"},
+   "statute_role": "establishes",
+   "also": [{"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 27-201", "quote": "The following individuals are members of the Judges’ Retirement System:"}],
+   "body": {"name": "Board of Trustees for the State Retirement and Pension System", "source": {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 21-103", "quote": "There is a Board of Trustees for the State Retirement and Pension System."}},
+   "website": "https://sra.maryland.gov/",
+   "website_source": {"kind": "page", "url": "https://sra.maryland.gov/", "quote": "Welcome to your Maryland State Retirement and Pension System"},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "§ 21-102 lists the Judges' Retirement System as its contributory plan (1969) and noncontributory plan (1904)."
+  },
+  {
+   "name": "Maryland Transit Administration Pension Plan",
+   "short": "MTA",
+   "census_units": ["census-pid6:227701"],
+   "statute": null,
+   "why": "a plan of the Maryland Transit Administration for its represented employees, not one of the systems of the State Retirement and Pension System; no establishing section was found in this copy's index",
+   "statute_role": "none",
+   "body": {"name": "Maryland Transit Administration"},
+   "website": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": ""
+  }
+ ],
+ "apply": {
+  "text": "Apply to the Maryland State Retirement Agency in writing; the Agency recommends beginning at least a year before the retirement date, and a former member's retirement starts on the first day of the month after the Board receives the written application.",
+  "sources": [
+   {"kind": "page", "url": "https://sra.maryland.gov/members/applying-for-retirement/", "quote": "You should begin the process at least one year before your anticipated retirement date."},
+   {"kind": "statute", "ref": "Md. Code, State Personnel and Pensions § 23-403", "quote": "may retire with a retirement allowance under § 23-401 or § 23-402 of this subtitle on the first day of the month after the Board of Trustees receives a written application for retirement from the former member."}
+  ]
+ },
+ "appeal": null,
+ "appeal_why": "the route for appealing a Board of Trustees decision (the Office of Administrative Hearings and judicial review) was not found in this copy's Maryland index; not grounded"
+}

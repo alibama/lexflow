@@ -1,0 +1,49 @@
+{
+ "state": "la",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Louisiana Department of Revenue", "url": "https://revenue.louisiana.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits that are taxed on the federal return are excluded from Louisiana taxable income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "La. Rev. Stat. § 47:44.2", "quote": "Any benefit received by an individual pursuant to the provisions of Chapter 7 of Title 42 of the United States Code (42 U.S.C. 301 et seq.),"},
+    {"kind": "page", "url": "https://revenue.louisiana.gov/tax-education-and-faqs/faqs/individual-income-tax/is-there-a-list-of-retirement-system-benefits-that-may-be-excluded-from-louisiana-income-tax/", "quote": "Social Security Benefits Exclusion (R.S. 47:44.2)—Social Security benefits that are taxed on your federal return may be excluded from Louisiana taxable income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Benefits from Louisiana state and local public retirement systems (LASERS, TRSL, school, police, fire and municipal systems under Title 11) and federal civil service retirement are fully exempt.",
+   "conditions": ["Louisiana public systems listed in Title 11 and federal retirement systems only", "Other states' government pensions qualify only for the $12,000 age-65 exclusion"],
+   "sources": [
+    {"kind": "statute", "ref": "La. Rev. Stat. § 11:405", "quote": "Any annuity, retirement allowance or benefit, or refund of contributions, or any optional benefit or any other benefit paid or paid to any person under the provisions of this Chapter is exempt from any state or municipal tax"},
+    {"kind": "statute", "ref": "La. Rev. Stat. § 47:44.2", "quote": "any income received by an individual pursuant to a retirement system for retirees of the United States Government or pursuant to the Railroad Retirement Act of 1974 (45 U.S.C. 231 et seq.) shall be exempt from the state income tax."},
+    {"kind": "page", "url": "https://revenue.louisiana.gov/tax-education-and-faqs/faqs/individual-income-tax/is-there-a-list-of-retirement-system-benefits-that-may-be-excluded-from-louisiana-income-tax/", "quote": "In addition, for Louisiana individual income tax purposes, retirement benefits paid under the provisions of Chapter 1 Title 11 of the Louisiana Revised Statutes, including disbursements of money from DROP accounts, are exempt from state taxation."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "A taxpayer aged 65 or older may exclude up to $12,000 of pension and annuity income a year (each spouse separately); younger retirees get no exclusion.",
+   "conditions": ["Age 65 or older", "Up to $12,000 per person per year of pension and annuity income", "Amount indexed to CPI-U from January 1, 2026"],
+   "amount_usd": 12000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "La. Rev. Stat. § 47:44.1", "quote": "Twelve thousand dollars of annual retirement income which is received by an individual sixty-five years of age or older shall be exempt from state income taxation."},
+    {"kind": "page", "url": "https://revenue.louisiana.gov/tax-education-and-faqs/faqs/individual-income-tax/is-there-a-list-of-retirement-system-benefits-that-may-be-excluded-from-louisiana-income-tax/", "quote": "Persons 65 years or older may exclude up to $12,000 of annual retirement income from their taxable income. Taxpayers that are married filing jointly and are both age 65 or older can each exclude up to $12,000 of annual retirement income."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military retired pay is a federal retirement benefit and is fully excluded from Louisiana taxable income, as are military survivor benefit plan payments.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "La. Rev. Stat. § 47:44.2", "quote": "any income received by an individual pursuant to a retirement system for retirees of the United States Government or pursuant to the Railroad Retirement Act of 1974 (45 U.S.C. 231 et seq.) shall be exempt from the state income tax."},
+    {"kind": "page", "url": "https://revenue.louisiana.gov/tax-education-and-faqs/faqs/individual-income-tax/is-there-a-list-of-retirement-system-benefits-that-may-be-excluded-from-louisiana-income-tax/", "quote": "Federal Retirement Benefits Exclusion (R.S. 47:44.2)—Federal retirement benefits received by federal retirees, both military and nonmilitary, may be excluded from Louisiana taxable income."}
+   ]
+  }
+ },
+ "notes": "Act 11 of the 2024 Third Extraordinary Session raised the age-65 retirement income exclusion from $6,000 to $12,000 for tax years from 2025 and indexes it to CPI-U from January 1, 2026; the same reform moved Louisiana to a flat 3% rate. Each Louisiana public retirement system has its own Title 11 tax exemption (R.S. 11:405 is LASERS; the agency FAQ lists the others). The Social Security statute quote names the Social Security Act chapter; the same sentence of R.S. 47:44.2 goes on to say such benefits shall be exempt from the state income tax."
+}

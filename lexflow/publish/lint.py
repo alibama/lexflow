@@ -3,7 +3,9 @@
 Deterministic checks run on every NEW item of the graph and on every existing item whose label differs from the
 one ``wikibase_items`` recorded (a changed label or description); each finding has a code:
 
-* ``label-empty``; ``label-bare-key``: a bare key or id for a label (``unit p13_13c``, ``snake_case``,
+* ``label-empty`` (no label in any language, or a label in another language only with no English description to
+  say what the item is: a Japanese law without an official English title is labelled in Japanese and described in
+  English); ``label-bare-key``: a bare key or id for a label (``unit p13_13c``, ``snake_case``,
   ``<State> court <id>``, a lexflow key, a Q-id, a lone section number);
 * ``drafting-words``: a label or description with the words of the drafting process ("verifier", "lexflow index
   row", "discovery file", "User-Agent", "Claude", model names, "draft" anywhere but the review-status claim); the
@@ -15,7 +17,7 @@ one ``wikibase_items`` recorded (a changed label or description); each finding h
 * ``no-reprint-quote``: quoted text in a reference whose source URL is on a ``quotes.NO_REPRINT`` host;
 * ``too-long``: labels, descriptions or aliases over 250, strings over 400, URLs over 500 characters;
 * ``future-time``: a time value after today; ``duplicate-label-description``: two items with one label and
-  description; ``dangling-reference``: an item value no item of the build carries.
+  description in one language; ``dangling-reference``: an item value no item of the build carries.
 
 An Ollama pass (``lexflow.extract.ollama.OllamaClient``, qwen3:1.7b, thinking off, JSON format) reads the labels and
 descriptions of new items in batches of 25 and answers for each ``readable``, ``person``, ``jargon`` and a
@@ -90,7 +92,8 @@ PHONE = re.compile(r"(?<!\d)(?:\+?1[\s.\-]*)?\(?\d{3}\)?[\s.\-]+\d{3}[\s.\-]\d{4
 PERSON_LINE = re.compile(r"\b(?:" + "|".join(sorted(privacy.PERSON_MARKERS | privacy.PERSON_LINE_MARKERS)) +
                          r")\b", re.I)
 _CASE_CAPTION = re.compile(r"\s+v(?:s)?\.?\s+", re.I)
-# a law may be in force until, or from, a date still to come; every other time value records something that happened
+# a law may be in force until, or from, a date still to come (also as a qualifier: an amendment or repeal whose
+# enforcement is scheduled); every other time value records something that happened
 FUTURE_OK = {"effective date", "effective until"}
 
 
@@ -119,13 +122,14 @@ def _is_name(first: str, last: str) -> bool:
 
 
 def _values(it: graph.Item):
+    """``(claim, the property of the value itself, value, where)`` for every value, qualifier and reference snak."""
     for c in it.claims:
-        yield c, c.value, "value"
-        for _, v in c.qualifiers:
-            yield c, v, "qualifier"
+        yield c, c.prop, c.value, "value"
+        for q, v in c.qualifiers:
+            yield c, q, v, "qualifier"
         for ref in c.references:
-            for _, v in ref:
-                yield c, v, "reference"
+            for q, v in ref:
+                yield c, q, v, "reference"
 
 
 def check_item(it: graph.Item, today: date, keys: set[str]) -> list[dict]:
@@ -138,11 +142,17 @@ def check_item(it: graph.Item, today: date, keys: set[str]) -> list[dict]:
     def add(code: str, field: str, detail: str = ""):
         out.append({"code": code, "field": field, "detail": detail[:200]})
 
-    if not label.strip():
+    other_labels = [v for v in getattr(it, "labels", {}).values() if (v or "").strip()]
+    if not label.strip() and not other_labels:
         add("label-empty", "label")
-    elif is_bare(label):
+    elif not label.strip() and not desc.strip():
+        add("label-empty", "label", "a label in another language only, and no English description")
+    elif label.strip() and is_bare(label):
         add("label-bare-key", "label", label)
-    for fld, text in (("label", label), ("description", desc), *(("alias", a) for a in it.aliases)):
+    other = [*((f"label@{lg}", v) for lg, v in sorted(getattr(it, "labels", {}).items())),
+             *((f"description@{lg}", v) for lg, v in sorted(getattr(it, "descriptions", {}).items())),
+             *((f"alias@{lg}", a) for lg, vs in sorted(getattr(it, "lang_aliases", {}).items()) for a in vs)]
+    for fld, text in (("label", label), ("description", desc), *(("alias", a) for a in it.aliases), *other):
         if not schema_item:
             m = DRAFTING_WORDS.search(text)
             if m:
@@ -159,7 +169,7 @@ def check_item(it: graph.Item, today: date, keys: set[str]) -> list[dict]:
         if len(text) > LABEL_MAX:
             add("too-long", fld, f"{len(text)} > {LABEL_MAX}")
     class_labels = {c.label for c in SC.CLASSES if c.qid}
-    for c, v, where in _values(it):
+    for c, own, v, where in _values(it):
         if v.kind in ("string", "monolingual") and len(v.value or "") > STRING_MAX:
             add("too-long", f"{c.prop} {where}", f"{len(v.value)} > {STRING_MAX}")
         if v.kind == "url" and len(v.value or "") > URL_MAX:
@@ -168,7 +178,7 @@ def check_item(it: graph.Item, today: date, keys: set[str]) -> list[dict]:
             add("personal-mailbox", f"{c.prop} {where}", v.value[7:])
         if v.kind in ("string", "monolingual", "url", "external-id") and graph.personal_mailbox(v.value):
             add("personal-mailbox", f"{c.prop} {where}", graph.personal_mailbox(v.value) or "")
-        if v.kind == "time" and c.prop not in FUTURE_OK:
+        if v.kind == "time" and own not in FUTURE_OK:
             d = _date_of(v.value)
             if d and d > today:
                 add("future-time", f"{c.prop} {where}", v.value)
@@ -219,15 +229,23 @@ def deterministic(items: list[graph.Item], stored_labels: dict[str, str], today:
             f = check_item(it, today, keys)
             if f:
                 findings[it.key] = f
-    # duplicate label + description pairs, among every item of the build
-    groups: dict[tuple[str, str], list[str]] = {}
+    # duplicate label + description pairs, among every item of the build, in each language (the wiki refuses a
+    # second item with the same label and description in one language; an item with no label in a language, as a
+    # Japanese law without an English title, cannot clash there)
+    groups: dict[tuple[str, str, str], list[str]] = {}
     for it in items:
-        groups.setdefault((it.label, it.description), []).append(it.key)
-    for (label, desc), ks in groups.items():
+        if it.label:
+            groups.setdefault(("en", it.label, it.description), []).append(it.key)
+        for lg, lab in sorted((getattr(it, "labels", None) or {}).items()):
+            desc_lg = (getattr(it, "descriptions", None) or {}).get(lg)
+            if lg != "en" and lab and desc_lg:
+                groups.setdefault((lg, lab, desc_lg), []).append(it.key)
+    for (_lang, label, desc), ks in groups.items():
         if len(ks) > 1:
             for k in ks:
                 if k in checked:
-                    findings.setdefault(k, []).append({"code": "duplicate-label-description", "field": "label",
+                    findings.setdefault(k, []).append({"code": "duplicate-label-description",
+                                                       "field": "label" if _lang == "en" else f"label@{_lang}",
                                                        "detail": f"also {', '.join(x for x in ks if x != k)[:150]}"})
     return findings, checked
 

@@ -1,0 +1,76 @@
+{
+ "state": "oh",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Ohio Public Employees Retirement System",
+   "short": "OPERS",
+   "census_units": ["census-pid6:227724", "census-pid6:243439"],
+   "statute": {"kind": "statute", "ref": "145.03", "quote": "A public employees retirement system is hereby created for the public employees of the state and of the several local authorities mentioned in section 145.01 of the Revised Code."},
+   "statute_role": "establishes",
+   "body": {"name": "public employees retirement board", "source": {"kind": "statute", "ref": "145.04", "quote": "The general administration and management of the public employees retirement system and the making effective of Chapter 145. of the Revised Code, are hereby vested in a board to be known as the \"public employees retirement board,\""}},
+   "website": "https://www.opers.org/",
+   "website_source": {"kind": "page", "url": "https://www.opers.org/about/", "quote": "OPERS provides retirement, disability and survivor benefit programs for public employees throughout the state who are not covered by another state or local retirement system."},
+   "membership": ["state_employee", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "145.01", "quote": "\"Employer\" or \"public employer\" means the state or any county, township, municipal corporation, park district, conservancy district, sanitary district, health district, metropolitan housing authority"},
+   "notes": "Census lists the Traditional and Combined plans separately; both are OPERS plans."
+  },
+  {
+   "name": "State Teachers Retirement System of Ohio",
+   "short": "STRS Ohio",
+   "census_units": ["census-pid6:226286"],
+   "statute": {"kind": "statute", "ref": "3307.03", "quote": "A state teachers retirement system is hereby established for the teachers of the public schools of the state which includes the several funds created and placed under the management of a state teachers retirement board for the payment of retirement allowances and other benefits under Chapter 3307. of the Revised Code."},
+   "statute_role": "establishes",
+   "body": {"name": "state teachers retirement board", "source": {"kind": "statute", "ref": "3307.04", "quote": "The general administration and the management of the state teachers retirement system is hereby vested in the state teachers retirement board, which shall adopt rules necessary for the fulfillment of its duties and responsibilities under Chapter 3307. of the Revised Code."}},
+   "website": "https://www.strsoh.org/",
+   "website_source": {"kind": "page", "url": "https://www.strsoh.org/", "quote": "STRS Ohio is one of the largest public pension funds in the United States, serving active, inactive and retired Ohio public educators."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "3307.03", "quote": "A state teachers retirement system is hereby established for the teachers of the public schools of the state which includes the several funds created and placed under the management of a state teachers retirement board for the payment of retirement allowances and other benefits under Chapter 3307. of the Revised Code."},
+   "notes": "Covers public school district teachers."
+  },
+  {
+   "name": "School Employees Retirement System of Ohio",
+   "short": "SERS",
+   "census_units": ["census-pid6:227327", "census-pid6:243441"],
+   "statute": {"kind": "statute", "ref": "3309.03", "quote": "A school employees retirement system is hereby established for the employees as defined in section 3309.01 of the Revised Code, which shall include the several funds created and placed under the management of the school employees retirement board for the payment of retirement allowances and other benefits provided in Chapter 3309. of the Revised Code."},
+   "statute_role": "establishes",
+   "body": {"name": "school employees retirement board", "source": {"kind": "statute", "ref": "3309.04", "quote": "The general administration and management of the school employees retirement system and making effective Chapter 3309. of the Revised Code are hereby vested in the school employees retirement board"}},
+   "website": "https://www.ohsers.org/",
+   "website_source": {"kind": "page", "url": "https://www.ohsers.org/", "quote": "Thank you for visiting the School Employees Retirement System of Ohio (SERS). We provide retirement security for the employees who support the daily operations of Ohio’s K–12 schools, community schools, and community colleges across the state."},
+   "membership": ["local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "3309.01", "quote": "\"Employer\" or \"public employer\" means boards of education, school districts, joint vocational districts, governing authorities of community schools established under Chapter 3314. of the Revised Code"},
+   "notes": "Non-teaching school employees. Census lists the SERS death benefit plan as a separate unit; grouped here."
+  },
+  {
+   "name": "Ohio Police and Fire Pension Fund",
+   "short": "OP&F",
+   "census_units": ["census-pid6:227964"],
+   "statute": {"kind": "statute", "ref": "742.02", "quote": "There is hereby created an Ohio police and fire pension fund for the purpose of providing disability benefits and pensions to members of the fund and their surviving spouses, children, and dependent parents."},
+   "statute_role": "establishes",
+   "body": {"name": "board of trustees of the Ohio police and fire pension fund", "source": {"kind": "statute", "ref": "742.03", "quote": "The administration, control, and management of the Ohio police and fire pension fund, created under section 742.02 of the Revised Code, is vested in a board of trustees of the Ohio police and fire pension fund"}},
+   "website": "https://www.op-f.org/",
+   "website_source": {"kind": "page", "url": "https://op-f.org/Information/AboutOPF", "quote": "OP&F was created in 1965 by the Ohio General Assembly to provide pension and disability benefits to the state’s full-time police officers and firefighters."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "742.01", "quote": "\"Fire department\" means a fire department of the state or an instrumentality of the state or of a municipal corporation, township, joint fire district, or other political subdivision."},
+   "notes": ""
+  },
+  {
+   "name": "Ohio State Highway Patrol Retirement System",
+   "short": "HPRS",
+   "census_units": ["census-pid6:226287"],
+   "statute": {"kind": "statute", "ref": "5505.02", "quote": "The state highway patrol retirement system is hereby established for the state highway patrol employees, as defined in division (A) of section 5505.01 of the Revised Code."},
+   "statute_role": "establishes",
+   "body": {"name": "state highway patrol retirement board", "source": {"kind": "statute", "ref": "5505.04", "quote": "The general administration and management of the state highway patrol retirement system and the making effective of this chapter are hereby vested in the state highway patrol retirement board."}},
+   "website": "https://www.ohprs.org/",
+   "website_source": {"kind": "page", "url": "https://www.ohprs.org/", "quote": "OHIO HIGHWAY PATROL RETIREMENT SYSTEM contact us Home Members Membership Health Care Pension Benefits Member Handbook"},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "The site's home page offers only the system name in its header as quotable text."
+  }
+ ]
+}

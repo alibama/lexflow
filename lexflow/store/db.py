@@ -484,6 +484,50 @@ CREATE TABLE IF NOT EXISTS scenario_runs (
   created_at TEXT
 );
 CREATE INDEX IF NOT EXISTS scenario_runs_scenario ON scenario_runs(family, scenario);
+
+-- lexflow.benefits (docs/design/retirement-benefits.md): the Census Bureau's Annual Survey of Public Pensions, one
+-- row per defined-benefit system (public domain; rebuilt here from the unit files by `python -m lexflow.benefits
+-- census`, so this copy's own and never synced), and which systems can cover each government's employees.
+CREATE TABLE IF NOT EXISTS pension_systems (
+  id TEXT PRIMARY KEY,
+  pid6 TEXT,
+  name TEXT NOT NULL,
+  census_name TEXT,
+  state TEXT NOT NULL,
+  level TEXT NOT NULL,
+  admin_type TEXT,
+  admin_gov_id TEXT,
+  admin_how TEXT,
+  membership TEXT,
+  tiers TEXT,
+  members_total INTEGER,
+  members_active INTEGER,
+  members_active_state INTEGER,
+  members_active_local INTEGER,
+  beneficiaries INTEGER,
+  members_inactive INTEGER,
+  benefits_paid INTEGER,
+  covers_local INTEGER NOT NULL DEFAULT 0,
+  source TEXT,
+  year INTEGER,
+  years TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT
+);
+CREATE INDEX IF NOT EXISTS pension_systems_state ON pension_systems(state);
+
+CREATE TABLE IF NOT EXISTS pension_coverage (
+  gov_id TEXT NOT NULL,
+  system_id TEXT NOT NULL,
+  state TEXT NOT NULL,
+  how TEXT NOT NULL,
+  person_types TEXT,
+  note TEXT,
+  updated_at TEXT NOT NULL,
+  origin TEXT,
+  PRIMARY KEY (gov_id, system_id)
+);
+CREATE INDEX IF NOT EXISTS pension_coverage_system ON pension_coverage(system_id);
 INSERT OR IGNORE INTO meta(key, value) VALUES ('version', '0');
 """
 
@@ -513,7 +557,9 @@ SYNCED: dict[str, tuple[str, ...]] = {
 # here: they are not statements about the law, a run is recomputable from its family, and a scenario from a
 # person's free text is theirs (local_only).
 LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref"),
-                                          "scenarios": ("family", "id"), "scenario_runs": ("run_id",)}
+                                          "scenarios": ("family", "id"), "scenario_runs": ("run_id",),
+                                          # lexflow.benefits: rebuilt from the Census unit files on each copy
+                                          "pension_systems": ("id",), "pension_coverage": ("gov_id", "system_id")}
 
 # columns added after a table first shipped (ALTER TABLE is a no-op error when the column exists).  Those on shared
 # tables are also applied to the shared database (turso.ensure_schema).  reviewed_by is a person's sign-off, JSON

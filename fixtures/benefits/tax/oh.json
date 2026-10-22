@@ -1,0 +1,48 @@
+{
+ "state": "oh",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Ohio Department of Taxation", "url": "https://tax.ohio.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and tier 1 railroad retirement benefits included in federal adjusted gross income are deducted on the Ohio Schedule of Adjustments.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "5747.01", "quote": "(5) Deduct the following, to the extent not otherwise deducted or excluded in computing federal or Ohio adjusted gross income: (a) Benefits under Title II of the Social Security Act and tier 1 railroad retirement;"},
+    {"kind": "page", "url": "https://tax.ohio.gov/individual/file-now/senior-citizens-and-ohio-income-tax", "quote": "Ohio does not tax Social Security benefits. Ohio's income tax return starts with \"federal adjusted gross income,\" which includes the taxable portion of your Social Security benefits, if any."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "State, local and federal civil service pensions are taxed, but filers with modified AGI less exemptions under $100,000 get a nonrefundable retirement income credit of up to $200 per return.",
+   "conditions": ["Credit, not an exclusion: $25 to $200 per return depending on retirement income received", "Modified adjusted gross income less exemptions under $100,000", "Retirement income must be received on account of retirement"],
+   "amount_usd": 200,
+   "sources": [
+    {"kind": "statute", "ref": "5747.055", "quote": "(B) A credit shall be allowed against a taxpayer's aggregate tax liability under section 5747.02 of the Revised Code for taxpayers who received retirement income during the taxable year and whose modified adjusted gross income for the taxable year, less applicable exemptions under section 5747.025 of the Revised Code, as shown on an individual or joint annual return is less than one hundred thousand dollars."},
+    {"kind": "page", "url": "https://tax.ohio.gov/individual/file-now/senior-citizens-and-ohio-income-tax", "quote": "Other retirement income included in your Ohio adjusted gross income is usually taxed by Ohio, but you may qualify for credits like Ohio's retirement income credit or the lump sum retirement credit."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions received on account of retirement are taxed, with the same retirement income credit of up to $200 per return for filers with modified AGI less exemptions under $100,000.",
+   "conditions": ["Credit, not an exclusion: $25 to $200 per return depending on retirement income received", "Modified adjusted gross income less exemptions under $100,000", "Retirement income must be received on account of retirement"],
+   "amount_usd": 200,
+   "sources": [
+    {"kind": "statute", "ref": "5747.055", "quote": "(A) As used in this section \"retirement income\" means retirement benefits, annuities, or distributions that are made from or pursuant to a pension, retirement, or profit-sharing plan and that:"},
+    {"kind": "page", "url": "https://tax.ohio.gov/help-center/faqs/income-retirement-income/income-retirement-income", "quote": "Retirement income credit: Taxpayers can claim a credit based on the total amount of retirement income included in their Ohio adjusted gross income."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Retired personnel pay for service in the uniformed services, reserve components or National Guard, and Survivor Benefit Plan payments to a surviving or former spouse, are deducted in full.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "5747.01", "quote": "(23) Deduct, to the extent not otherwise deducted or excluded in computing federal or Ohio adjusted gross income for the taxable year, amounts received by the taxpayer as retired personnel pay for service in the uniformed services or reserve components thereof, or the national guard,"},
+    {"kind": "page", "url": "https://tax.ohio.gov/help-center/faqs/income-retirement-income/income-retirement-income", "quote": "\"Retired personnel pay\" related to a retired military servicemember's service in the uniformed services, the reserve components thereof, or the national guard."}
+   ]
+  }
+ },
+ "notes": "Ohio has no pension exclusion; the retirement income credit (R.C. 5747.055(B)) is a nonrefundable credit per return on a schedule from $25 (over $500 of retirement income) to $200 (over $8,000), limited to modified AGI less exemptions under $100,000; a one-time lump sum retirement credit can be elected instead. Filers 65 and older may also take a $50 senior citizen credit under the same income limit. Public and private pensions are treated the same. The retirement-income FAQ page was read from an Internet Archive capture (June 2025)."
+}

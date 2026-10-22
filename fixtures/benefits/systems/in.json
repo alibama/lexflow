@@ -1,0 +1,113 @@
+{
+ "state": "in",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement Fund of Indiana",
+   "short": "PERF",
+   "census_units": ["census-pid6:227008"],
+   "statute": {"kind": "statute", "ref": "5-10.3-2-1", "quote": "The public employees' retirement fund of Indiana, referred to as the fund, is established to pay benefits to officers and employees of the state and its political subdivisions after specified years of service and under other specified circumstances."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10.5-3-1", "quote": "The board shall manage and administer each public pension or retirement fund that comprises the system in accordance with:"}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "5-10.3-2-1", "quote": "The public employees' retirement fund of Indiana, referred to as the fund, is established to pay benefits to officers and employees of the state and its political subdivisions after specified years of service and under other specified circumstances."},
+   "notes": "One of the funds that make up the Indiana Public Retirement System (INPRS, IC 5-10.5-2-2). The website quote names INPRS, which administers the fund."
+  },
+  {
+   "name": "Indiana State Teachers' Retirement Fund",
+   "short": "TRF",
+   "census_units": ["census-pid6:244546", "census-pid6:244547"],
+   "statute": {"kind": "statute", "ref": "5-10.4-2-1", "quote": "The Indiana state teachers' retirement fund is established to be used to pay benefits to teachers and to supervisors of teachers in the public schools after specified years of service and under other specified circumstances."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10.5-3-1", "quote": "The board shall manage and administer each public pension or retirement fund that comprises the system in accordance with:"}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "5-10.4-2-1", "quote": "The Indiana state teachers' retirement fund is established to be used to pay benefits to teachers and to supervisors of teachers in the public schools after specified years of service and under other specified circumstances."},
+   "notes": "Census reports the pre-1996 (pay-as-you-go) and 1996 accounts as two units; both are grouped here. Teachers are employed by local school corporations."
+  },
+  {
+   "name": "1977 Police Officers' and Firefighters' Pension and Disability Fund",
+   "short": "1977 Fund",
+   "census_units": ["census-pid6:227010"],
+   "statute": {"kind": "statute", "ref": "36-8-8-4", "quote": "There is established a police officers' and firefighters' pension and disability fund to be known as the 1977 fund."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "36-8-8-4", "quote": "The system board shall administer the 1977 fund, which may be commingled for investment purposes with other funds administered by the Indiana public retirement system."}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "notes": "Covers police officers and firefighters of cities, towns and fire districts hired since May 1, 1977."
+  },
+  {
+   "name": "Indiana Judges' Retirement Fund",
+   "short": "JRS",
+   "census_units": ["census-pid6:227009"],
+   "statute": {"kind": "statute", "ref": "33-38-6-12", "quote": "The Indiana judges' retirement fund is established and consists of:"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10.5-3-1", "quote": "The board shall manage and administer each public pension or retirement fund that comprises the system in accordance with:"}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Prosecuting Attorneys Retirement Fund",
+   "short": "PARF",
+   "census_units": ["census-pid6:227011"],
+   "statute": {"kind": "statute", "ref": "33-39-7-9", "quote": "The prosecuting attorneys retirement fund is established. The fund consists of the following:"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10.5-3-1", "quote": "The board shall manage and administer each public pension or retirement fund that comprises the system in accordance with:"}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Covers prosecuting attorneys and chief deputy prosecuting attorneys."
+  },
+  {
+   "name": "State Excise Police, Gaming Agent, Gaming Control Officer, and Conservation Enforcement Officers' Retirement Fund",
+   "short": "EG&C",
+   "census_units": ["census-pid6:227915"],
+   "statute": {"kind": "statute", "ref": "5-10.5-2-2", "quote": "The state excise police, gaming agent, gaming control officer, and conservation enforcement officers' retirement fund established under IC 5-10-5.5."},
+   "statute_role": "defines",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10-5.5-3", "quote": "The management administration of the retirement plan created by this chapter is hereby vested in the board."}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "The plan is created by IC 5-10-5.5; the quoted listing names it as an INPRS fund."
+  },
+  {
+   "name": "Legislators' Retirement System",
+   "short": "LRS",
+   "census_units": ["census-pid6:227012"],
+   "statute": {"kind": "statute", "ref": "2-3.5-3-2", "quote": "The legislators' retirement system is established. The system consists of the legislators' defined benefit plan described in IC 2-3.5-4 and the legislators' defined contribution plan described in IC 2-3.5-5."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Indiana Public Retirement System", "source": {"kind": "statute", "ref": "5-10.5-3-1", "quote": "The board shall manage and administer each public pension or retirement fund that comprises the system in accordance with:"}},
+   "website": "https://www.in.gov/inprs/",
+   "website_source": {"kind": "page", "url": "https://www.in.gov/inprs/", "quote": "Home of the Indiana Public Retirement System. You can find information about your defined benefit (pension) plan and login to your defined contribution account which is administered by Voya."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Census unit is the closed defined benefit plan."
+  },
+  {
+   "name": "Indiana State Police Pension Trust",
+   "short": "",
+   "census_units": ["census-pid6:227007"],
+   "statute": {"kind": "statute", "ref": "10-12-2-2", "quote": "The department may: (1) establish and operate an actuarially sound pension plan governed by a pension trust;"},
+   "statute_role": "establishes",
+   "body": {"name": "Indiana State Police Department", "source": {"kind": "statute", "ref": "10-12-2-2", "quote": "The department may: (1) establish and operate an actuarially sound pension plan governed by a pension trust;"}},
+   "website": null,
+   "website_source": null,
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Administered by the Indiana State Police (not part of INPRS). The statute authorizes the department to establish the plan. Official web page not confirmed."
+  }
+ ]
+}

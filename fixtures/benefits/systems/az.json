@@ -1,0 +1,63 @@
+{
+ "state": "az",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Arizona State Retirement System",
+   "short": "ASRS",
+   "census_units": ["census-pid6:226196"],
+   "statute": {"kind": "statute", "ref": "A.R.S. § 38-711", "quote": "\"ASRS\" means the Arizona state retirement system established by this article."},
+   "statute_role": "defines",
+   "body": {"name": "ASRS board", "source": {"kind": "statute", "ref": "A.R.S. § 38-714", "quote": "The board is responsible for supervising the administration of this article by the director of ASRS."}},
+   "website": "https://www.azasrs.gov/",
+   "website_source": {"kind": "page", "url": "https://www.azasrs.gov/", "quote": "For more than 70 years, the Arizona State Retirement System has provided retirement security to Arizona’s public servants, including teachers, municipal workers, and other government employees."},
+   "membership": ["state_employee", "teacher", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "A.R.S. § 38-711", "quote": "means: (a) This state. (b) Participating political subdivisions. (c) Participating political subdivision entities."},
+   "notes": "The current article names the system by definition (38-711) and gives it corporate powers under the name \"Arizona state retirement system\" (38-714); the ASRS board is established by 38-713. Covers school district and university employees through participating employers."
+  },
+  {
+   "name": "Public Safety Personnel Retirement System",
+   "short": "PSPRS",
+   "census_units": ["census-pid6:228207"],
+   "statute": {"kind": "statute", "ref": "A.R.S. § 38-841", "quote": "In order to provide a uniform, consistent and equitable statewide program for public safety personnel who are regularly assigned hazardous duty in the employ of the state of Arizona or a political subdivision thereof, this retirement system was created"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Public Safety Personnel Retirement System", "source": {"kind": "statute", "ref": "A.R.S. § 38-842", "quote": "\"Board\" means the board of trustees of the system, who are the persons appointed to invest and operate the fund."}},
+   "website": "https://www.psprs.com/",
+   "website_source": {"kind": "page", "url": "https://www.psprs.com/about", "quote": "Welcome to the Public Safety Personnel Retirement System (PSPRS), where we are committed to honoring the service of Arizona’s first responders, corrections officers, elected officials and judges."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "A.R.S. § 38-841", "quote": "In order to provide a uniform, consistent and equitable statewide program for public safety personnel who are regularly assigned hazardous duty in the employ of the state of Arizona or a political subdivision thereof, this retirement system was created"},
+   "notes": "Municipal police and fire, county sheriffs' deputies and state public safety employees; employer-level local boards handle membership determinations."
+  },
+  {
+   "name": "Corrections Officer Retirement Plan",
+   "short": "CORP",
+   "census_units": ["census-pid6:227679", "census-pid6:251546"],
+   "statute": {"kind": "statute", "ref": "A.R.S. § 38-882", "quote": "The corrections officer retirement plan and the corrections officer retirement plan fund are established."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Public Safety Personnel Retirement System", "source": {"kind": "statute", "ref": "A.R.S. § 38-882", "quote": "The board is entitled to administer, manage and operate the plan and fund."}},
+   "website": "https://www.psprs.com/",
+   "website_source": {"kind": "page", "url": "https://www.psprs.com/about", "quote": "Over the years, our mission expanded to encompass the Corrections Officer Retirement Plan (CORP) and the Elected Officials’ Retirement Plan (EORP)."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "A.R.S. § 38-881", "quote": "means an agency or department of this state or a political subdivision of this state that has one or more employees in a designated position."},
+   "notes": "Census reports the judiciary group (CORP-AOC: probation, surveillance and juvenile detention officers) as a separate unit; it is part of CORP. Covers state corrections staff and county and city detention officers."
+  },
+  {
+   "name": "Elected Officials' Retirement Plan",
+   "short": "EORP",
+   "census_units": ["census-pid6:226885"],
+   "statute": {"kind": "statute", "ref": "A.R.S. § 38-802", "quote": "The elected officials' retirement plan is established. B. The elected officials' retirement plan fund is established."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Public Safety Personnel Retirement System", "source": {"kind": "statute", "ref": "A.R.S. § 38-802", "quote": "The board shall administer, manage and operate the plan and fund."}},
+   "website": "https://www.psprs.com/",
+   "website_source": {"kind": "page", "url": "https://www.psprs.com/about", "quote": "Over the years, our mission expanded to encompass the Corrections Officer Retirement Plan (CORP) and the Elected Officials’ Retirement Plan (EORP)."},
+   "membership": ["legislator", "judge", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "A.R.S. § 38-801", "quote": "Every elected official of each county of this state who was a member of the plan on December 31, 2013."},
+   "notes": "Closed to elected officials taking office after December 31, 2013; covers state and county elected officials and justices and judges."
+  }
+ ]
+}

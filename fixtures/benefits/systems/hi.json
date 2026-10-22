@@ -1,0 +1,21 @@
+{
+ "state": "hi",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Employees' Retirement System of the State of Hawaii",
+   "short": "ERS",
+   "census_units": ["census-pid6:226219"],
+   "statute": {"kind": "statute", "ref": "88-22", "quote": "It shall have the powers and privileges of a corporation and shall be known as the \"Employees' Retirement System of the State of Hawaii\" and by that name may sue or be sued"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Employees' Retirement System", "source": {"kind": "statute", "ref": "88-23", "quote": "The general administration and the responsibility for the proper operation of the retirement system and for making effective the provisions of this part and parts VII and VIII are vested in a board of trustees;"}},
+   "website": "https://ers.ehawaii.gov/",
+   "website_source": {"kind": "page", "url": "https://ers.ehawaii.gov/", "quote": "Aloha and welcome to the State of Hawaii Employees’ Retirement System (ERS) website, your online resource for education and information related to the ERS."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "legislator"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "88-42", "quote": "Except as otherwise provided in this part, all employees of the Territory or any county on July 1, 1945, shall be members of the system on that date, and all persons who thereafter enter or reenter the service of the State or any county shall become members at the time of their entry or reentry."},
+   "notes": "Single system covering state and county employees, teachers (statewide Department of Education), police and firefighters, judges and elected officials. Attached to the Department of Budget and Finance for administrative purposes."
+  }
+ ]
+}

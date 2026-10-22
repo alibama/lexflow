@@ -1,0 +1,44 @@
+{
+ "state": "nd",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "North Dakota Office of State Tax Commissioner", "url": "https://www.tax.nd.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "The taxable part of Social Security benefits is deducted from North Dakota taxable income for all filers; the former income limit was removed starting with tax year 2021.",
+   "conditions": ["Only the portion included in federal taxable income is deducted"],
+   "sources": [
+    {"kind": "page", "url": "https://www.tax.nd.gov/individual-income-tax-history", "quote": "Senate Bill 2351 passed by the 2021 North Dakota Legislature, in its November 2021 Special Session, changed the law to remove the adjusted gross income threshold. This change allows the deduction for all individuals, regardless of the amount of their adjusted gross"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "State, local and federal civil service pensions are generally taxed like other income; only retirement benefits from an employer plan of a retired peace officer are deducted (from tax year 2023).",
+   "conditions": ["Deduction limited to retirement benefits of individuals who retired as peace officers", "Other government pensions are taxable"],
+   "sources": [
+    {"kind": "statute", "ref": "57-38-30.3", "quote": "For purposes of this section, \"North Dakota taxable income\" means the federal taxable income of an individual, estate, or trust as computed under the Internal Revenue Code of 1986, as amended, adjusted as follows:"},
+    {"kind": "page", "url": "https://www.tax.nd.gov/individual-income-tax-history", "quote": "A deduction is provided for the retirement benefit received from a retirement plan maintained by an employer from which the individual retired as a peace officer."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions included in federal taxable income are taxed by North Dakota with no special exclusion.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "57-38-30.3", "quote": "For purposes of this section, \"North Dakota taxable income\" means the federal taxable income of an individual, estate, or trust as computed under the Internal Revenue Code of 1986, as amended, adjusted as follows:"},
+    {"kind": "page", "url": "https://www.tax.nd.gov/resident", "quote": "As a North Dakota resident, all your income is subject to North Dakota income tax, regardless of its source inside or outside of North Dakota."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military retirement benefits of retired armed forces, Reserve and National Guard members, and their surviving spouses, are subtracted in full to the extent included in federal taxable income.",
+   "conditions": ["Attach Form 1099-R from DFAS", "Civil service retirement as a dual-status military technician is not covered by this line"],
+   "sources": [
+    {"kind": "page", "url": "https://www.tax.nd.gov/military-service-members", "quote": "For tax years 2019 and after, military retirement benefit payments received by retired U.S. armed forces, Reserve, and National Guard members, or their surviving spouses, may be subtracted from North Dakota taxable income."}
+   ]
+  }
+ },
+ "notes": "The statute index copy of N.D.C.C. 57-38-30.3 is truncated after subdivision 2(l) (about 9.5 KB), so the later subdivisions that create the Social Security, military retirement and peace-officer retirement subtractions cannot be quoted from the index; those items rest on Tax Commissioner pages only. The taxable-income definition in 57-38-30.3(2) is quoted for the pension items. The peace-officer deduction (from tax year 2023) generally requires 20 years as a licensed peace officer or a service-connected disability, per the Commissioner's guideline (PDF, not quoted)."
+}

@@ -1,0 +1,52 @@
+{
+ "state": "ia",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Iowa Department of Revenue", "url": "https://revenue.iowa.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits taxable federally are subtracted, so Iowa does not tax them.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "422.7", "quote": "(8) Subtract, to the extent included, the amount of social security benefits taxable under section 86 of the Internal Revenue Code."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/1040-expanded-instructions/note-additional-information", "quote": "Examples of types of income which are taxable for federal purposes but are excluded for Iowa purposes on Schedule 1 include: Social Security Benefits Active Duty Military Pay and Military Retirement IRA/Pension/Railroad Retirement Income"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Since tax year 2023, all federally taxable income from a governmental pension (including IPERS) is excluded for recipients who are 55 or older, disabled, or qualifying surviving spouses/survivors; younger recipients are taxed.",
+   "conditions": ["Recipient 55 or older on December 31, or disabled, or a qualifying surviving spouse/survivor", "No dollar cap", "Surviving spouses of protection-occupation, sheriff, firefighter or police pensioners qualify regardless of the decedent's age"],
+   "age_min": 55,
+   "sources": [
+    {"kind": "statute", "ref": "422.7", "quote": "(19) (a) Subtract, to the extent included, the total amount received from a governmental or other pension or retirement plan, including defined benefit or defined contribution plans, annuities, individual retirement accounts, plans maintained or contributed to by an employer"},
+    {"kind": "statute", "ref": "422.7", "quote": "received by a person who is any of the following: (19) (a) Disabled. (19) (a) Fifty-five years of age or older."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/1040-expanded-instructions/ia-1040-schedule-1", "quote": "Line 7: IRA/Pension/Railroad Retirement Income If you or your spouse receive federal taxable income from a governmental or other pension or retirement plan you may be eligible to exclude that amount from your Iowa income."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/1040-expanded-instructions/ia-1040-schedule-1", "quote": "To take this exclusion, the income recipient must meet one of the following conditions: 55 years of age or older on December 31, 2025, or Disabled"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k), 457(b), traditional and Roth IRA, SEP and SIMPLE distributions are fully excluded for recipients 55 or older, disabled, or qualifying survivors; younger recipients are taxed, and nonqualified deferred compensation and annuities do not qualify.",
+   "conditions": ["Recipient 55 or older on December 31, or disabled, or a qualifying survivor", "No dollar cap", "Nonqualified deferred compensation and nonqualified annuities excluded from the exclusion"],
+   "age_min": 55,
+   "sources": [
+    {"kind": "statute", "ref": "422.7", "quote": "(19) (a) Subtract, to the extent included, the total amount received from a governmental or other pension or retirement plan, including defined benefit or defined contribution plans, annuities, individual retirement accounts, plans maintained or contributed to by an employer"},
+    {"kind": "statute", "ref": "422.7", "quote": "received by a person who is any of the following: (19) (a) Disabled. (19) (a) Fifty-five years of age or older."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/retirement-income-tax-guidance", "quote": "Division VI of that legislation excludes retirement income from Iowa taxable income for eligible taxpayers for tax years beginning on or after January 1, 2023."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/retirement-income-tax-guidance", "quote": "To qualify for the retirement income exclusion, the taxpayer must be: 55 years of age or older on December 31 of the tax year, or Disabled"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military retirement pay (and military survivor benefits) included in federal income is fully subtracted, regardless of age, in addition to the general retirement income exclusion.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "422.7", "quote": "(20) (a) Subtract, to the extent included, retirement pay received by a taxpayer from the federal government for military service performed in the armed forces, the armed forces military reserve, or national guard."},
+    {"kind": "page", "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/military-tax-information", "quote": "Iowa Code sections 422.7(31A) and (31B) provide an exclusion from Iowa Individual Income Tax for military retirement benefits retroactive to tax years beginning on or after January 1, 2014, regardless of a taxpayer’s age."}
+   ]
+  }
+ },
+ "notes": "The 'Military Tax Information' page still cites the old Code numbering (422.7(31A)/(31B), now 422.7(20)) and the pre-2023 '$6,000/$12,000 pension exclusion'; the 'Individual Income' FAQ page also still describes the $6,000/$12,000 cap. Both are stale: from tax year 2023 the retirement income exclusion (422.7(19)) has no dollar cap for eligible recipients, as the Retirement Income Tax Guidance and 2025 Schedule 1 instructions say. Iowa moves to a flat 3.9% rate for tax years 2026 and later (per DOR's Individual Income Tax Provisions page); no 2026 change to the retirement exclusions was found. The statute index is the 2025 Iowa Code."
+}

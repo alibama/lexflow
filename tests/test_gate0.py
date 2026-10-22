@@ -1289,6 +1289,7 @@ def test_pages_embed_the_diagram_without_the_builders_layer(va_pages):
 DESIGN_ADDRESSES = {           # e-mail-shaped strings in docs/design that are not made-up examples
     "CDB.BuildingCodes@illinois.gov": "the Illinois Capital Development Board's office mailbox, cited as a source",
     "leap@leg.wa.gov": "the Washington LEAP office's mailbox, cited as a source",
+    "OPCWeb@sa.gov.au": "South Australia's Office of Parliamentary Counsel mailbox, quoted from the dataset page",
     "records@1760100000.txt": "a file name",
     "xml_usc26@119-102.zip": "a file name",
     # values verify-gate0.md (Re-check 4) tried as LEXFLOW_CORRECTIONS: the check's inputs, not anyone's address

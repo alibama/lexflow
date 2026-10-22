@@ -1,0 +1,21 @@
+{
+ "state": "de",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Delaware Public Employees' Retirement System",
+   "short": "DPERS",
+   "census_units": ["census-pid6:227685", "census-pid6:244180", "census-pid6:244182", "census-pid6:244183", "census-pid6:244184", "census-pid6:244185", "census-pid6:244186", "census-pid6:244179"],
+   "statute": {"kind": "statute", "ref": "29 Del. C. § 8308", "quote": "The Board shall establish the Delaware Public Employees’ Retirement System, a body corporate and politic, which has control and management of the state pension funds provided for in:"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Pension Trustees", "source": {"kind": "statute", "ref": "29 Del. C. § 5542", "quote": "The Board of Pension Trustees, established by § 8308 of this title, shall be responsible for the general administration of this chapter in accordance with Chapter 83 of this title."}},
+   "website": "https://open.omb.delaware.gov/",
+   "website_source": {"kind": "page", "url": "https://open.omb.delaware.gov/MessFromAdmin.shtml", "quote": "Welcome to the Delaware Public Employees’ Retirement System (DPERS) website! We proudly serve over 30,000 retired members and over 40,000 active members participating in a Defined Benefit Plan."},
+   "membership": ["state_employee", "teacher", "public_safety", "judge", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "29 Del. C. § 8308", "quote": "The County and Municipal Employees’ Retirement Fund pursuant to Chapter 55A of this title; f. The County and Municipal Police/Firefighter Retirement Fund pursuant to Chapter 88 of Title 11;"},
+   "notes": "Census units grouped here are DPERS plans listed in 29 Del. C. § 8308(b)(1): State Employees' Pension Plan (ch. 55, which also covers public school employees), New State Police (11 Del. C. ch. 83), State Judiciary (ch. 56), County and Municipal Other Employees (ch. 55A), County and Municipal Police/Firefighter (11 Del. C. ch. 88), Volunteer Firemen's (16 Del. C. ch. 66A), the closed Diamond State Port Corporation plan (ch. 87) and the Special Pension Fund. The Office of Pensions, a division of the Office of Management and Budget, administers them."
+  }
+ ]
+}

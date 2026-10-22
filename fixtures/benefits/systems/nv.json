@@ -1,0 +1,47 @@
+{
+ "state": "nv",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement System of Nevada",
+   "short": "PERS",
+   "census_units": ["census-pid6:228130"],
+   "statute": {"kind": "statute", "ref": "286.110", "quote": "A system of retirement providing benefits for the retirement, disability or death of employees of public employers and funded on an actuarial reserve basis is hereby established and must be known as the Public Employees’ Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees’ Retirement Board", "source": {"kind": "statute", "ref": "286.120", "quote": "The governing authority of the System shall be a board of seven persons appointed by the Governor. 2. The name of the board shall be the Public Employees’ Retirement Board."}},
+   "website": "https://www.nvpers.org/",
+   "website_source": {"kind": "page", "url": "https://www.nvpers.org/", "quote": "Welcome to the official website of the Public Employees' Retirement System of Nevada! This site is intended to inform members, retirees and the general public of the functions and benefits of the Retirement System."},
+   "membership": ["state_employee", "local_employee", "teacher", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "286.070", "quote": "“Public employer” means the State, one of its agencies or one of its political subdivisions, the System, irrigation districts created under the laws of the State of Nevada"},
+   "notes": "Covers state, school district, county and city employees (regular and police/fire). Website read via the Internet Archive."
+  },
+  {
+   "name": "Judicial Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:243453"],
+   "statute": {"kind": "statute", "ref": "1A.100", "quote": "A system of retirement providing benefits for the retirement, disability or death of all justices of the Supreme Court, judges of the Court of Appeals and district judges, and certain justices of the peace and municipal judges, and funded on an actuarial reserve basis is hereby established and must be known as the Judicial Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees’ Retirement Board", "source": {"kind": "statute", "ref": "1A.100", "quote": "The System must be administered exclusively by the Board, which shall make all necessary rules and regulations for the administration of the System."}},
+   "website": "https://www.nvpers.org/",
+   "website_source": {"kind": "page", "url": "https://www.nvpers.org/", "quote": "Welcome to the official website of the Public Employees' Retirement System of Nevada! This site is intended to inform members, retirees and the general public of the functions and benefits of the Retirement System."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Administered by Nevada PERS; certain justices of the peace and municipal judges may be members."
+  },
+  {
+   "name": "Legislators’ Retirement System",
+   "short": "LRS",
+   "census_units": ["census-pid6:226267"],
+   "statute": {"kind": "statute", "ref": "218C.100", "quote": "A system of retirement for all benefits at retirement or death for Legislators is hereby established and shall be known as the Legislators’ Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees’ Retirement Board", "source": {"kind": "statute", "ref": "218C.150", "quote": "The Legislators’ Retirement System shall be administered by the Board, which may make all necessary rules for the administration of the System."}},
+   "website": "https://www.nvpers.org/",
+   "website_source": {"kind": "page", "url": "https://www.nvpers.org/", "quote": "Welcome to the official website of the Public Employees' Retirement System of Nevada! This site is intended to inform members, retirees and the general public of the functions and benefits of the Retirement System."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Administered by Nevada PERS."
+  }
+ ]
+}

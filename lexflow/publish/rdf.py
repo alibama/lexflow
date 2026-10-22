@@ -265,6 +265,13 @@ class Writer:
         for a in getattr(it, "aliases", None) or []:
             if a and a != label:
                 head.append(f"skos:altLabel {_lit(a, 'en')}")
+        # other languages (a Japanese law's ja label, description and aliases; schema section 4.8)
+        for lg, v in sorted((getattr(it, "labels", None) or {}).items()):
+            head += [f"rdfs:label {_lit(v, lg)}", f"skos:prefLabel {_lit(v, lg)}", f"schema:name {_lit(v, lg)}"]
+        for lg, v in sorted((getattr(it, "descriptions", None) or {}).items()):
+            head.append(f"schema:description {_lit(v, lg)}")
+        for lg, vs in sorted((getattr(it, "lang_aliases", None) or {}).items()):
+            head += [f"skos:altLabel {_lit(a, lg)}" for a in vs if a]
         claims = list(getattr(it, "claims", None) or [])
         cls = getattr(it, "cls", None)
         if cls and not any(c.prop == "instance of" and c.value.value == cls for c in claims):

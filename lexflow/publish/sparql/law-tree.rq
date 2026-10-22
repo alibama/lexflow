@@ -13,7 +13,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-# question: the ancestors of Va. Code § 2.2-3704 up to the code, with their unit levels
+# question: the ancestors of Va. Code § 2.2-3704 up to the code, with their unit levels (any law or unit too: section=lexflow:unit:jpn:405ac0000000088)
 # params: section=lexflow:statute:va:2.2-3704
 # status: 15 Oct 2026: local 5 rows (code, title, subtitle, part, chapter); live 0 (the part-of chain waits for pass 2)
 SELECT ?ancestor ?ancestorLabel ?level ?sort ?heading WHERE {

@@ -3,7 +3,8 @@
 ``graph.build(con)`` gives items whose claims name properties by label and other items by key; this module
 resolves those to ``P`` and ``Q`` ids and executes them with the ``Wikibase`` client of
 ``wikibase_lexipedia`` (login, csrf token, retries and back-off on ``maxlag`` / ``ratelimited``).  Every write
-sends ``maxlag=5`` and is followed by a half-second pause; ``bot=1`` is not sent (the account has no bot right).
+sends ``maxlag=5`` and is followed by a half-second pause (``--pause``); ``bot=1`` is sent only with ``--bot`` (the
+account has no bot right today; docs/design/wikidata-laws.md §7 says what granting it takes).
 
 **Pass 1, entities.**  New properties (``schema.PROPERTIES`` not on the wiki; label -> P recorded in the local
 table ``wikibase_props``), then class and vocabulary items, then every other new item, each with its labels,
@@ -31,8 +32,15 @@ full plan to ``out/wikibase/push-plan.json`` (bodies in ``push-plan.bodies.jsonl
 Writes are serialised; a failure on one entity is logged and the run goes on; the summary lists failures by API
 error code.  ``--check`` after a real run compares ``sparql/coverage.rq`` on the live endpoint with the plan.
 
+**Single pass** (``--single-pass``).  A new item whose referenced items all have ids when its turn comes is
+created with its whole statement set in pass 1 (``wbeditentity`` with ``new=item`` takes claims as well as labels),
+its content hash is recorded, and pass 2 skips it: one write instead of two.  Items wait for what they name (Kahn's
+order over the kind order); a cycle is broken by creating its first item bare, which pass 2 completes.  The
+result on the wiki is the same as two passes; only the number of writes changes.
+
     lexflow wikibase push [--dry-run|--really] [--pass 1|2|all] [--limit N] [--kinds a,b] [--states va,dc]
-                          [--places gid,...] [--no-drafts] [--resume] [--allow-held] [--check] [--no-live]
+                          [--places gid,...] [--no-drafts] [--resume] [--single-pass] [--pause S] [--bot]
+                          [--allow-held] [--check] [--no-live]
 """
 from __future__ import annotations
 
@@ -74,7 +82,7 @@ DATATYPES = {"item": "wikibase-item", "string": "string", "url": "url", "externa
              "time": "time", "quantity": "quantity", "monolingualtext": "monolingualtext",
              "monolingual": "monolingualtext"}
 # the order kinds are written in: what others point at comes first
-KIND_ORDER = ["class", "vocab", "jurisdiction", "code", "unit", "statute", "regulation", "gov", "agency",
+KIND_ORDER = ["class", "vocab", "jurisdiction", "source", "code", "unit", "statute", "regulation", "gov", "agency",
               "office-type", "position", "position-type", "private-party", "power", "role", "process",
               "decision", "outcome", "step", "rung", "form", "cluster"]
 EXAMPLES_PER_KIND = 3
@@ -123,6 +131,10 @@ def content_hash(it: graph.Item) -> str:
     payload = {"label": it.label, "description": it.description, "aliases": sorted(it.aliases), "cls": it.cls,
                "claims": [[c.prop, list(c.value.sig()), [[q, list(v.sig())] for q, v in c.qualifiers],
                            [[[q, list(v.sig())] for q, v in r] for r in c.references]] for c in it.claims]}
+    # other languages only when the item has them, so an English-only item keeps the digest it was pushed with
+    for k in ("labels", "descriptions", "lang_aliases"):
+        if getattr(it, k, None):
+            payload[k] = getattr(it, k)
     return hashlib.sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:32]
 
 
@@ -262,13 +274,26 @@ def snak_sig(s: dict) -> tuple:
 
 
 def labels_body(it: graph.Item, *, add_aliases: bool = False) -> dict:
-    body: dict[str, Any] = {"labels": {LANG: {"language": LANG, "value": it.label[:LABEL_MAX]}}}
+    """Labels, descriptions and aliases in English and in every other language the item carries (``ja``)."""
+    body: dict[str, Any] = {"labels": {}}
+    if it.label:                            # a law without an official English title has its own language's only
+        body["labels"][LANG] = {"language": LANG, "value": it.label[:LABEL_MAX]}
     if it.description:
         body["descriptions"] = {LANG: {"language": LANG, "value": it.description[:LABEL_MAX]}}
     if it.aliases:
         body["aliases"] = {LANG: [dict({"language": LANG, "value": a[:LABEL_MAX]}, **({"add": ""} if add_aliases
                                                                                      else {}))
                                   for a in it.aliases]}
+    for lg, v in sorted((getattr(it, "labels", None) or {}).items()):
+        if lg != LANG and v:
+            body["labels"][lg] = {"language": lg, "value": v[:LABEL_MAX]}
+    for lg, v in sorted((getattr(it, "descriptions", None) or {}).items()):
+        if lg != LANG and v:
+            body.setdefault("descriptions", {})[lg] = {"language": lg, "value": v[:LABEL_MAX]}
+    for lg, vs in sorted((getattr(it, "lang_aliases", None) or {}).items()):
+        if lg != LANG and vs:
+            body.setdefault("aliases", {})[lg] = [dict({"language": lg, "value": a[:LABEL_MAX]},
+                                                       **({"add": ""} if add_aliases else {})) for a in vs]
     return body
 
 
@@ -276,12 +301,14 @@ def labels_body(it: graph.Item, *, add_aliases: bool = False) -> dict:
 
 
 class Api(Wikibase):
-    """``Wikibase`` with ``maxlag``, a pause after every write and no ``bot`` flag."""
+    """``Wikibase`` with ``maxlag``, a pause after every write and, unless ``bot`` is set (``--bot``: the account is
+    in the wiki's bot group and its bot password has the high-volume grant), no ``bot`` flag."""
 
     def __post_init__(self):
         super().__post_init__()
         self.session.headers["User-Agent"] = USER_AGENT
         self.pause = PAUSE
+        self.bot = False
 
     attempts = 8                            # a multi-hour run must outlast a rate-limit window or a lagging replica
 
@@ -322,6 +349,8 @@ class Api(Wikibase):
                 params["clear"] = 1
         else:
             params["new"] = new or "item"
+        if getattr(self, "bot", False):
+            params["bot"] = 1
         res = self.post(**params)
         self.writes += 1
         return res
@@ -484,11 +513,14 @@ class Write:
     error: str | None = None
     code: str | None = None
     placeholder: bool = False
+    full: bool = False                # single pass: the create carried every statement (pass 2 skips the item)
 
     def row(self) -> dict:
         d = {"pass": self.pass_no, "kind": self.kind, "key": self.key, "action": self.action, "qid": self.qid,
              "new": self.new, "clear": self.clear, "note": self.note, "error": self.error, "code": self.code,
              "placeholder": self.placeholder}
+        if self.full:
+            d["full"] = True
         if self.body is not None:
             d["claims"] = len(self.body.get("claims") or [])
             d["bytes"] = len(json.dumps(self.body, ensure_ascii=False))
@@ -519,9 +551,12 @@ def held_keys(report: dict | None) -> set[str]:
 
 class Pusher:
     def __init__(self, con: sqlite3.Connection, items: list[graph.Item], *, api: Api | None = None,
-                 dry_run: bool = True, resume: bool = False, held: set[str] | None = None, log: Log = print):
+                 dry_run: bool = True, resume: bool = False, held: set[str] | None = None, log: Log = print,
+                 single_pass: bool = False):
         self.con, self.items, self.api, self.dry_run, self.resume, self.log = con, items, api, dry_run, resume, log
         self.held = set(held or ())
+        self.single_pass = single_pass
+        self.complete: set[str] = set()       # keys created with every statement in this run (pass 2 skips them)
         self.ids = Resolver(con)
         self.writes: list[Write] = []
         self.failures: Counter = Counter()
@@ -594,8 +629,71 @@ class Pusher:
         if props:
             self.create_properties()
         order = {k: i for i, k in enumerate(KIND_ORDER)}
-        for it in sorted(self.items, key=lambda i: (order.get(SC.kind_of(i.key), 99), i.key)):
+        todo = sorted(self.items, key=lambda i: (order.get(SC.kind_of(i.key), 99), i.key))
+        if self.single_pass:
+            self._pass1_single(todo)
+            return
+        for it in todo:
             self.create_item(it)
+
+    def pending_refs(self, it: graph.Item) -> set[str]:
+        """The keys an item's full body names (class, values, qualifiers, references, quantity units) that are in
+        this push and have no id yet: what a create with every statement must wait for.  A key that is not in the
+        push (or is held) and has no id never gets one in this run, so it does not wait: its snak is dropped, as
+        pass 2 would drop it.  An item that names itself waits on itself (it needs its own id: two writes)."""
+        refs: set[str] = {it.cls} if it.cls else set()
+        for c in it.claims:
+            for v in [c.value, *(v for _, v in c.qualifiers), *(v for r in c.references for _, v in r)]:
+                if v.kind == "item":
+                    refs.add(v.value)
+                if v.kind == "quantity" and v.unit:
+                    refs.add(v.unit)
+        return {r for r in refs if r in self.by_key and r not in self.held and (r == it.key or not self.ids.has(r))}
+
+    def _pass1_single(self, todo: list[graph.Item]) -> None:
+        """Single pass (``--single-pass``): every new item whose referenced items all have ids when its turn comes
+        is created with its full statement set in one write, and pass 2 leaves it alone; the order is the kind
+        order, except that an item waits until what it names exists (Kahn's order).  When every remaining item
+        waits on another (a cycle: a law repealed by a law that repeals it), the first of them in kind order is
+        created bare and completed by pass 2 as before, which frees the others.  Items that exist, are held or are
+        resumed are recorded as in the two-pass mode."""
+        import heapq
+        new: list[graph.Item] = []
+        for it in todo:
+            if it.key in self.held or self.ids.has(it.key) or \
+                    (self.resume and self.hashes.get(it.key) and self.hashes[it.key] == content_hash(it)):
+                self.create_item(it)
+            else:
+                new.append(it)
+        pos = {it.key: i for i, it in enumerate(new)}
+        waiting = {it.key: self.pending_refs(it) for it in new}
+        dependents: dict[str, set[str]] = {}
+        for k, refs in waiting.items():
+            for r in refs:
+                dependents.setdefault(r, set()).add(k)
+        ready = [(pos[k], k) for k, refs in waiting.items() if not refs]
+        heapq.heapify(ready)
+        done: set[str] = set()
+        while len(done) < len(new):
+            if ready:
+                _, k = heapq.heappop(ready)
+                if k in done:
+                    continue
+                self.create_item(self.by_key[k], full=True)
+            else:
+                # every remaining item waits on another: break the cycle at the item the most others wait for
+                # (a greedy small feedback set: each bare create costs a second write in pass 2)
+                k = min((x for x in pos if x not in done),
+                        key=lambda x: (-sum(1 for d in dependents.get(x, ()) if d not in done), pos[x]))
+                self.create_item(self.by_key[k], full=not waiting[k])
+            done.add(k)
+            # created, found or failed: either way nothing will wait on it longer (a failed create's snaks drop)
+            for d in sorted(dependents.get(k, ())):
+                if d in done:
+                    continue
+                waiting[d].discard(k)
+                if not waiting[d]:
+                    heapq.heappush(ready, (pos[d], d))
 
     def create_properties(self) -> None:
         for p in SC.PROPERTIES:
@@ -633,7 +731,10 @@ class Pusher:
         body["claims"] = claims
         return body
 
-    def create_item(self, it: graph.Item) -> Write:
+    def create_item(self, it: graph.Item, full: bool = False) -> Write:
+        """Pass 1's create of a new item: labels, descriptions, aliases, the key and the class only, or with
+        ``full`` (single pass, when every item it names has an id) its whole statement set, after which pass 2
+        skips it and the content hash is recorded for ``--resume``."""
         kind = SC.kind_of(it.key)
         if it.key in self.held:
             return self.record(Write(1, kind, it.key, "skip-held"))
@@ -642,17 +743,32 @@ class Pusher:
         if self.ids.has(it.key):
             return self.record(Write(1, kind, it.key, "skip-exists", qid=self.ids.qid(it.key),
                                      note="pass 2 " + ("replaces" if owned(it.key) else "appends")))
-        body = self.create_body(it)
-        w = Write(1, kind, it.key, "create", new="item", body=body)
+        dropped: list[str] = []
+        if full:
+            try:
+                body, dropped = self.full_body(it)
+            except (ValueError, Unresolved) as e:         # a malformed value: create bare, pass 2 reports it
+                self.log(f"{it.key}: full create refused ({e}); created bare")
+                body, full = self.create_body(it), False
+        else:
+            body = self.create_body(it)
+        w = Write(1, kind, it.key, "create", new="item", body=body, full=full)
+        if dropped:
+            w.note = f"{len(dropped)} snaks dropped (no id): " + "; ".join(dropped[:3])
+            self.dropped += [f"{it.key}: {d}" for d in dropped]
         if self.dry_run:
             w.qid, w.placeholder = self.ids.placeholder_q(it.key), True
+            if full:
+                self.complete.add(it.key)
             return self.record(w)
         suffixed = False
         while True:
             try:
                 res = self.api.edit(body, new="item", summary=f"lexflow: {it.key}")
                 w.qid = res["entity"]["id"]
-                self.remember_item(it.key, w.qid, it.label)
+                self.remember_item(it.key, w.qid, it.label, content_hash(it) if full else None)
+                if full:
+                    self.complete.add(it.key)
                 break
             except WikibaseError as e:
                 other = owner_of(str(e))
@@ -736,14 +852,17 @@ class Pusher:
         """The formatter claims of the new properties (their properties are new too, so they wait for pass 2) and
         the ``P7 equivalent property`` claims (Wikidata and the ontology IRIs of ``schema.equivalents_of``) when
         the create did not carry them: appended when missing.  The 21 existing properties (P5-P25) get their
-        ``P7`` ontology claims the same way."""
-        existing = [(label, pid) for label, pid in SC.EXISTING.items() if SC.EXISTING_EQUIVALENTS.get(label)]
+        ``P7`` claims the same way: the Wikidata property of ``schema.EXISTING_WIKIDATA`` first, then the ontology
+        IRIs."""
+        existing = [(label, pid) for label, pid in SC.EXISTING.items()
+                    if SC.EXISTING_EQUIVALENTS.get(label) or SC.EXISTING_WIKIDATA.get(label)]
         pids = [pid for _, pid in existing] + [self.ids.pids[p.label] for p in SC.PROPERTIES if p.label in self.ids.pids
                                               and p.label not in self.ids.placeholders]
         if self.session is not None and pids:
             self.fetch_live(pids)
         for label, pid in existing:
-            claims = [statement(c, self.ids.pid, self.qid_of) for c in equivalent_claims(label, None)]
+            claims = [statement(c, self.ids.pid, self.qid_of)
+                      for c in equivalent_claims(label, SC.EXISTING_WIKIDATA.get(label))]
             self._append_property_claims(label, pid, claims, "ontology equivalents")
         for p in SC.PROPERTIES:
             if p.label not in self.ids.pids:
@@ -785,6 +904,9 @@ class Pusher:
         kind = SC.kind_of(it.key)
         if it.key in self.held:
             return self.record(Write(2, kind, it.key, "skip-held"))
+        if it.key in self.complete:
+            return self.record(Write(2, kind, it.key, "skip-complete", qid=self.ids.qids.get(it.key),
+                                     note="created with every statement in pass 1 (single pass)"))
         digest = content_hash(it)
         if self.resume and self.hashes.get(it.key) == digest:
             return self.record(Write(2, kind, it.key, "skip-resume", qid=self.ids.qids.get(it.key)))
@@ -829,6 +951,7 @@ class Pusher:
         for w in self.writes:
             per_pass.setdefault(str(w.pass_no), {}).setdefault(w.kind, Counter())[w.action] += 1
         creates = sum(1 for w in self.writes if w.action == "create")
+        full = sum(1 for w in self.writes if w.action == "create" and w.full)
         updates = sum(1 for w in self.writes if w.action in ("update", "clear"))
         examples: dict[str, list[dict]] = {}
         for w in self.writes:
@@ -839,7 +962,8 @@ class Pusher:
                 ex.append({"key": w.key, "qid": w.qid, "new": w.new, "clear": w.clear, "body": example_text(w.body)})
         return {
             "counts": {p: {k: dict(c) for k, c in kinds.items()} for p, kinds in per_pass.items()},
-            "creates": creates, "updates": updates,
+            "creates": creates, "creates_full": full, "updates": updates, "single_pass": self.single_pass,
+            "total_writes": creates + updates,
             "properties_to_create": [w.key for w in self.writes if w.kind == "property" and w.action == "create"],
             "failures_by_code": dict(self.failures),
             "failures": [w.row() for w in self.writes if w.action == "fail"][:500],
@@ -856,13 +980,16 @@ def print_summary(s: dict, log: Log = print) -> None:
     for p in sorted(s["counts"]):
         log(f"pass {p}:")
         log(f"  {'kind':16} {'create':>7} {'update':>7} {'clear':>7} {'exists':>7} {'held':>6} {'resume':>7} "
-            f"{'current':>8} {'unres.':>7} {'fail':>5}")
+            f"{'current':>8} {'unres.':>7} {'fail':>5} {'done':>5}")
         for kind, c in sorted(s["counts"][p].items(), key=lambda kv: (KIND_ORDER.index(kv[0])
                                                                       if kv[0] in KIND_ORDER else 99, kv[0])):
             log(f"  {kind:16} {c.get('create', 0):>7} {c.get('update', 0):>7} {c.get('clear', 0):>7} "
                 f"{c.get('skip-exists', 0):>7} {c.get('skip-held', 0):>6} {c.get('skip-resume', 0):>7} "
-                f"{c.get('skip-current', 0):>8} {c.get('skip-unresolved', 0):>7} {c.get('fail', 0):>5}")
-    log(f"creates {s['creates']}, updates {s['updates']}; properties to create: {len(s['properties_to_create'])}"
+                f"{c.get('skip-current', 0):>8} {c.get('skip-unresolved', 0):>7} {c.get('fail', 0):>5} "
+                f"{c.get('skip-complete', 0):>5}")
+    log(f"creates {s['creates']}" + (f" ({s.get('creates_full', 0)} with every statement: single pass)"
+                                      if s.get("single_pass") else "")
+        + f", updates {s['updates']}; properties to create: {len(s['properties_to_create'])}"
         + (f"; held items skipped: {len(s['held_skipped'])}" if s["held_skipped"] else "")
         + (f"; snaks dropped for want of an id: {s['dropped_snaks']}" if s["dropped_snaks"] else ""))
     if s["failures_by_code"]:
@@ -897,7 +1024,7 @@ def check_live(items: list[graph.Item], pusher: Pusher, log: Log = print) -> dic
 def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", limit: int | None = None,
         kinds: list[str] | None = None, states=None, places=None, drafts: bool = True, asked_drafts: bool = False,
         resume: bool = False, allow_held: bool = False, check: bool = False, live: bool = True,
-        out_dir: Path | None = None,
+        out_dir: Path | None = None, single_pass: bool = False, pause: float | None = None, bot: bool = False,
         items: list[graph.Item] | None = None, api: Api | None = None, session=None, log: Log = print) -> dict:
     out_dir = out_dir or OUT_DIR
     ensure_tables(con)
@@ -909,6 +1036,15 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
         if held and not allow_held:
             raise HeldError(f"the lint report holds {len(held)} items: fix them and re-run the lint, or --allow-held "
                             f"(held items are never pushed either way)")
+        # a report linted for some jurisdictions does not clear a push of others (a `--states jpn` lint left in the
+        # default directory must not wave through a push of every state)
+        linted = ((report or {}).get("scope") or {}).get("states")
+        if linted is not None and not allow_held:
+            want = {str(s).strip().lower() for s in (states or [])}
+            have = {str(s).strip().lower() for s in linted}
+            if not want or not want <= have:
+                raise HeldError(f"the lint report covers {', '.join(sorted(have)) or 'nothing'} only: run `lexflow "
+                                f"wikibase lint` for this push's states first (or --allow-held)")
     if items is None:
         items = graph.build(con, states=states, places=places, drafts=drafts, asked_drafts=asked_drafts, log=log)
     if kinds:
@@ -921,11 +1057,15 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
         if session is not None:
             api.session = session
             api.session.headers["User-Agent"] = USER_AGENT
+    if pause is not None:                   # the operator's choice once the account may write faster (wikidata-laws.md)
+        api.pause = max(0.0, float(pause))
+    if bot:
+        api.bot = True
     if not dry_run:
         if not (api.user and api.password):
             raise PushError("set LEXI_USER / LEXI_PASS (or WIKIBASE_BOT_USER / WIKIBASE_BOT_PASSWORD)")
         log(f"signed in to {SITE} as {api.login()}")
-    pusher = Pusher(con, items, api=api, dry_run=dry_run, resume=resume, held=held, log=log)
+    pusher = Pusher(con, items, api=api, dry_run=dry_run, resume=resume, held=held, log=log, single_pass=single_pass)
     if live:
         pusher.ids.load_live(api.session, log)
     else:
@@ -938,6 +1078,7 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
     summary = pusher.summary()
     meta = {"dry_run": dry_run, "pass": pass_no, "items": len(items), "limit": limit, "kinds": kinds, "states": states,
             "places": places, "drafts": drafts, "asked_drafts": asked_drafts, "resume": resume, "live": live,
+            "single_pass": single_pass,
             "held": sorted(held),
             "seconds": round(time.monotonic() - t, 1), "api_writes": api.writes,
             "placeholders": sorted(pusher.ids.placeholders)[:20], "placeholder_count": len(pusher.ids.placeholders)}
@@ -967,6 +1108,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--asked-drafts", action="store_true", help="include asked answers as draft process items "
                                                                "(lexflow:process:asked:<state>:<question>)")
     ap.add_argument("--resume", action="store_true", help="skip items whose content hash is already recorded")
+    ap.add_argument("--single-pass", action="store_true", help="create a new item with every statement in one write "
+                                                              "when every item it names already has an id (pass 2 "
+                                                              "then skips it); the rest as before")
+    ap.add_argument("--pause", type=float, help=f"seconds between writes (default {PAUSE}); lower it only when the "
+                                                 "account is in the bot group with the high-volume grant and the "
+                                                 "wiki answers without maxlag or ratelimited errors")
+    ap.add_argument("--bot", action="store_true", help="send bot=1 (only once the account is in the bot group and "
+                                                       "its bot password has the high-volume grant)")
     ap.add_argument("--allow-held", action="store_true", help="run --really although the lint report holds items "
                                                              "(held items are still skipped)")
     ap.add_argument("--check", action="store_true", help="after a real run, compare coverage.rq live with the plan")
@@ -982,7 +1131,8 @@ def main(argv: list[str] | None = None) -> int:
                      states=args.states.split(",") if args.states else None,
                      places=args.places.split(",") if args.places else None, drafts=not args.no_drafts,
                      asked_drafts=args.asked_drafts, resume=args.resume, allow_held=args.allow_held,
-                     check=args.check, live=not args.no_live,
+                     check=args.check, live=not args.no_live, single_pass=args.single_pass, pause=args.pause,
+                     bot=args.bot,
                      out_dir=Path(args.out) if args.out else None, log=log)
     except HeldError as e:
         log(f"refused: {e}")

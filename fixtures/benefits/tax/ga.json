@@ -1,0 +1,51 @@
+{
+ "state": "ga",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Georgia Department of Revenue", "url": "https://dor.georgia.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Taxable Social Security and Railroad Retirement benefits on the federal return are subtracted, so Georgia does not tax them.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.georgia.gov/retirees-faq", "quote": "Does Georgia tax Social Security? No. Taxable Social Security and Railroad Retirement on the Federal return are exempt from Georgia Income Tax. The taxable portion is subtracted on schedule 1 of Form 500."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions count as retirement income for Georgia's retirement income exclusion: up to $35,000 per person at ages 62-64 (or if totally and permanently disabled) and up to $65,000 at 65 or older; the rest is taxable.",
+   "conditions": ["Age 62-64 (or totally and permanently disabled): up to $35,000", "Age 65+: up to $65,000", "Cap is per person; covers pensions, annuities, interest, dividends, rents, capital gains, royalties and a limited amount of earned income"],
+   "amount_usd": 65000,
+   "age_min": 62,
+   "sources": [
+    {"kind": "page", "url": "https://dor.georgia.gov/retirement-income-exclusion", "quote": "Taxpayers who are 62 or older, or permanently and totally disabled regardless of age, may be eligible for a retirement income adjustment on their Georgia tax return. Retirement income includes: Income from pensions and annuities"},
+    {"kind": "page", "url": "https://veterans.georgia.gov/military-retirement-income-tax-exemption", "quote": "Veterans ages 62 to 64 are eligible for Georgia's existing retirement income tax exemption for up to $35,000. Those over the age of 65 are eligible for an exemption of up to $65,000."},
+    {"kind": "page", "url": "https://dor.georgia.gov/retirement-income-exclusion", "quote": "Retirement income exceeding the maximum adjustable amount will be taxed at the normal rate."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, annuities and IRA/401(k) distributions share the same retirement income exclusion: up to $35,000 at ages 62-64 and $65,000 at 65 or older; the rest is taxable.",
+   "conditions": ["Age 62-64 (or totally and permanently disabled): up to $35,000", "Age 65+: up to $65,000", "Shared cap with other retirement income"],
+   "amount_usd": 65000,
+   "age_min": 62,
+   "sources": [
+    {"kind": "page", "url": "https://dor.georgia.gov/retirees-faq", "quote": "A retirement exclusion is allowed provided the taxpayer is 62 years of age or older, or the taxpayer is totally and permanently disabled. Retirement income includes items such as: interest, dividends, net rentals, capital gains, royalties, pensions, annuities"},
+    {"kind": "page", "url": "https://veterans.georgia.gov/military-retirement-income-tax-exemption", "quote": "Veterans ages 62 to 64 are eligible for Georgia's existing retirement income tax exemption for up to $35,000. Those over the age of 65 are eligible for an exemption of up to $65,000."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Military retirees under 62 may exclude up to $17,500 of military retirement income, plus another $17,500 if they have more than $17,500 of Georgia earned income; at 62 or older the general $35,000/$65,000 retirement exclusion applies.",
+   "conditions": ["Under 62: up to $17,500", "Under 62 with more than $17,500 of Georgia earned income: additional $17,500", "62+: general retirement income exclusion ($35,000 / $65,000)", "Each spouse qualifies separately"],
+   "amount_usd": 17500,
+   "sources": [
+    {"kind": "page", "url": "https://dor.georgia.gov/retirement-income-exclusion", "quote": "Beginning January 1, 2022, $17,500 of military retirement income can be excluded for taxpayers under 62 years of age and an additional $17,500 can be excluded for taxpayers with more than $17,500 of earned income in Georgia."},
+    {"kind": "page", "url": "https://veterans.georgia.gov/military-retirement-income-tax-exemption", "quote": "Veterans who retired from the military and are under 62 years of age are eligible for an exemption of up to $17,500 of military retirement income."}
+   ]
+  }
+ },
+ "notes": "lexflow has no Georgia statute index, so there are no statute sources (the rules are in O.C.G.A. 48-7-27(a)(5)). The $35,000/$65,000 caps are not stated on the Department of Revenue's HTML pages (they refer to the IT-511 booklet, a PDF lexflow cannot read here), so they are grounded on the Georgia Department of Veterans Service page. DOR's 'Retirees - FAQ' still says the exclusion covers 'the first $4000.00 of earned income', while DOR's 'Retirement Income Exclusion' page says 'Up to $5,000 of earned income'; the $5,000 figure is the newer one."
+}

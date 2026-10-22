@@ -1,0 +1,33 @@
+{
+ "state": "dc",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "District of Columbia Police Officers and Fire Fighters' Retirement Fund",
+   "short": "Police and Firefighters' Plan",
+   "census_units": [],
+   "statute": {"kind": "statute", "ref": "1-712", "quote": "There is established a fund to be known as the District of Columbia Police Officers and Fire Fighters’ Retirement Fund into which shall be deposited the following, which shall constitute the assets of the Fund:"},
+   "statute_role": "establishes",
+   "body": {"name": "District of Columbia Retirement Board", "source": {"kind": "statute", "ref": "1-711", "quote": "There is established, as an independent agency of the government of the District of Columbia, a board of trustees to be known as the District of Columbia Retirement Board which shall have exclusive authority and discretion (subject to the requirements of this chapter) to manage and control the Funds established by this chapter,"}},
+   "website": "https://dcrb.dc.gov/",
+   "website_source": {"kind": "page", "url": "https://dcrb.dc.gov/", "quote": "announced the 2024 cost-of-living adjustments (COLA) for retirees and survivors receiving annuities under the District of Columbia Police Officers and Firefighters’ Retirement Plan (Police and Firefighters’ Plan) and the District of Columbia Teachers’ Retirement Plan (Teachers’ Plan)."},
+   "membership": ["public_safety"],
+   "covers_local": false,
+   "notes": "The Census survey lists no state-level units for the District (its plans are counted as local government units). Benefits for service before July 1, 1997 are paid by the federal government."
+  },
+  {
+   "name": "District of Columbia Teachers' Retirement Fund",
+   "short": "Teachers' Plan",
+   "census_units": [],
+   "statute": {"kind": "statute", "ref": "1-713", "quote": "There is established a fund to be known as the District of Columbia Teachers’ Retirement Fund into which shall be deposited the following, which shall constitute the assets of the Fund:"},
+   "statute_role": "establishes",
+   "body": {"name": "District of Columbia Retirement Board", "source": {"kind": "statute", "ref": "1-711", "quote": "There is established, as an independent agency of the government of the District of Columbia, a board of trustees to be known as the District of Columbia Retirement Board which shall have exclusive authority and discretion (subject to the requirements of this chapter) to manage and control the Funds established by this chapter,"}},
+   "website": "https://dcrb.dc.gov/",
+   "website_source": {"kind": "page", "url": "https://dcrb.dc.gov/", "quote": "announced the 2024 cost-of-living adjustments (COLA) for retirees and survivors receiving annuities under the District of Columbia Police Officers and Firefighters’ Retirement Plan (Police and Firefighters’ Plan) and the District of Columbia Teachers’ Retirement Plan (Teachers’ Plan)."},
+   "membership": ["teacher"],
+   "covers_local": false,
+   "notes": "Covers DC Public Schools teachers. The District of Columbia Judges' Retirement Fund (D.C. Code § 1-714) is left out: judges' retirement has been a federal responsibility since 1997."
+  }
+ ]
+}

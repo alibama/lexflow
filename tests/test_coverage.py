@@ -16,11 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 # ---------------------------------------------------------------------------------------------- the questions
 def test_question_file_shape_and_topic_slugs():
     qs = CV.questions()
-    assert len(qs) == 49
+    assert len(qs) == 57          # 49, and the eight retirement_* questions (docs/design/retirement-benefits.md)
     assert CV.check_questions(qs) == []
     topics = {v.slug for v in SC.VOCAB["topic"]}
     assert all(q["topic"] in topics for q in qs)
-    assert len({q["id"] for q in qs}) == 49
+    assert len({q["id"] for q in qs}) == 57
     assert all(set(q["needs"]) <= set(CV.KINDS) and 2 <= len(q["phrasings"]) <= 3 for q in qs)
     assert {q["level"] for q in qs} <= set(CV.LEVELS)
     bad = CV.check_questions([{"id": "x", "text": "t", "topic": "nope", "audience": "resident", "level": "state",

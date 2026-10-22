@@ -1,0 +1,50 @@
+{
+ "qid": "retirement_apply",
+ "state": "md",
+ "question": "How do I apply for my pension when I retire?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 23-401",
+   "role": "primary"
+  },
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 23-403",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A member submits a written application to the Board of Trustees stating the retirement date.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "Md. Code, State Personnel and Pensions § 23-401",
+   "quote": "the member completes and submits a written application to the Board of Trustees stating the date when the member desires to retire; and",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A former member's retirement begins the first day of the month after the Board receives the application.",
+   "importance": "vital",
+   "kind": "deadline",
+   "section": "Md. Code, State Personnel and Pensions § 23-403",
+   "quote": "on the first day of the month after the Board of Trustees receives a written application for retirement from the former member.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "No benefits are paid for the period before the completed application.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "Md. Code, State Personnel and Pensions § 23-403",
+   "quote": "A former member who retires under this section may not receive benefits for the period before the former member submitted a completed application for retirement to the Board of Trustees.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

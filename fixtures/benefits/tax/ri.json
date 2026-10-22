@@ -1,0 +1,45 @@
+{
+ "state": "ri",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Rhode Island Division of Taxation", "url": "https://tax.ri.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Taxable Social Security benefits are subtracted only for filers who have reached full Social Security retirement age and whose federal AGI is below an inflation-indexed limit (base $80,000 single / $100,000 joint).",
+   "conditions": ["Must have reached full (unreduced) Social Security retirement age; for joint filers the test applies to each spouse", "Federal AGI below the indexed limit (statutory base $80,000 single, head of household or married filing separately; $100,000 joint)"],
+   "sources": [
+    {"kind": "page", "url": "https://webserver.rilegislature.gov/Statutes/TITLE44/44-30/44-30-12.htm", "quote": "(B) A married individual filing jointly or individual filing qualifying widow(er) who has attained the age used for calculating full or unreduced social security retirement benefits whose joint federal adjusted gross income for the taxable year is less than one hundred thousand dollars ($100,000), an amount equal to the social security benefits includible in federal adjusted gross income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "State, local and federal civil service pensions are subject to Rhode Island income tax, but qualifying filers at full retirement age with income under the Social Security modification limit may exclude up to $50,000 each of taxable pension and annuity income from tax year 2025.",
+   "conditions": ["Up to $50,000 per individual ($100,000 for a joint return where both qualify), from tax year 2025", "Must have reached full Social Security retirement age", "Federal AGI below the same indexed limit as the Social Security modification"],
+   "amount_usd": 50000,
+   "sources": [
+    {"kind": "statute", "ref": "36-10-32", "quote": "are hereby made exempt from any municipal tax or state tax except for the personal income tax imposed under the provisions of chapter 30 of title 44."},
+    {"kind": "page", "url": "https://rhodeisland2030.ri.gov/ri-2030-priorities/creating-healthier-rhode-island/supporting-veterans-and-seniors", "quote": "Increased the maximum pension exemption from $20,000 to $50,000, which will allow personal income tax filers to exempt up to $50,000 for qualified single filers and $100,000 for joint filers."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pension and annuity income (401(k), 403(b), 457 and pension plans) shares the same modification of up to $50,000 per individual for filers at full retirement age under the income limit.",
+   "conditions": ["Up to $50,000 per individual, combined with any public pension modification", "Must have reached full Social Security retirement age", "Federal AGI below the same indexed limit as the Social Security modification", "Division materials differ on whether IRA distributions qualify"],
+   "amount_usd": 50000,
+   "sources": [
+    {"kind": "page", "url": "https://rhodeisland2030.ri.gov/ri-2030-priorities/creating-healthier-rhode-island/supporting-veterans-and-seniors", "quote": "Increased the maximum pension exemption from $20,000 to $50,000, which will allow personal income tax filers to exempt up to $50,000 for qualified single filers and $100,000 for joint filers."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military service pensions included in federal AGI are fully subtracted under the military service pension modification, with no age or income limit.",
+   "conditions": ["Amounts used for this modification cannot also count toward the pension and annuity modification"],
+   "sources": [
+    {"kind": "page", "url": "https://rhodeisland2030.ri.gov/ri-2030-priorities/creating-healthier-rhode-island/supporting-veterans-and-seniors", "quote": "Ended state taxation of military service pensions in FY 2023, applicable to every veteran who retires from active duty and wants to make Rhode Island their home."}
+   ]
+  }
+ },
+ "notes": "Chapter 44-30 (personal income tax) is not in lexflow's statute index, so the modifications in R.I. Gen. Laws 44-30-12(c) cannot be quoted as statute sources. The Social Security quote is from the legislature's own web copy of 44-30-12 read through an Internet Archive capture (Feb 2025); that capture still shows the older $15,000 pension figure and no military modification, so it is used only for the unchanged Social Security rule. The Division of Taxation publishes its retirement guidance as PDFs (Publication 2026-01 Retirement Income Guide), which cannot be quoted here; the pension and military items rest on the State's RI 2030 page (an official state site). Per Division materials (PDF, not quoted), the 2025 indexed AGI limits are about $107,000 single / $133,500 joint and the military modification has no cap. Possible later change (not verified from a readable source): the RI 2030 page lists as a goal phasing out the tax on Social Security from tax year 2027 (first dropping the age threshold), and search listings of the Division's 2026 legislative summary (PDF) describe the age threshold being eliminated for tax years beginning on or after January 1, 2027; a reviewer should confirm before relying on it."
+}

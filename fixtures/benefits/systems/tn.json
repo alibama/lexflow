@@ -1,0 +1,21 @@
+{
+ "state": "tn",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Tennessee Consolidated Retirement System",
+   "short": "TCRS",
+   "census_units": ["census-pid6:251490", "census-pid6:248749", "census-pid6:248748"],
+   "statute": null,
+   "why": "No Tennessee statute index on this copy of lexflow; TCRS is governed by Tenn. Code Ann. Title 8, Chapters 34-37 (per the Treasury's board page).",
+   "statute_role": "none",
+   "body": {"name": "Tennessee Consolidated Retirement System Board of Trustees", "source": {"kind": "page", "url": "https://treasury.tn.gov/TCRSBoard", "quote": "The Tennessee Consolidated Retirement System Board of Trustees is responsible for the general administration and proper operation of TCRS within the requirements and provisions of state statute (T.C.A., Title 8, Chapters 34-37)."}},
+   "website": "https://treasury.tn.gov/Retirement",
+   "website_source": {"kind": "page", "url": "https://treasury.tn.gov/Retirement", "quote": "Recognized as one of the best managed defined benefit plans in the country, the Tennessee Consolidated Retirement System provides lifetime retirement, survivor and disability benefits for members and their beneficiaries."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "legislator"],
+   "covers_local": true,
+   "notes": "Census lists the TCRS public employee plan (state and political subdivision employees) and the two teacher plans (Legacy and Hybrid) separately; all are TCRS plans. Local governments participate by resolution; no statute index to cite."
+  }
+ ]
+}

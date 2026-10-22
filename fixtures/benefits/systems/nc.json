@@ -1,0 +1,101 @@
+{
+ "state": "nc",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Teachers' and State Employees' Retirement System of North Carolina",
+   "short": "TSERS",
+   "census_units": ["census-pid6:227722"],
+   "statute": {"kind": "statute", "ref": "135-2", "quote": "A Retirement System is hereby established and placed under the management of the Board of Trustees for the purpose of providing retirement allowances and other benefits under the provisions of this Chapter for teachers and State employees of the State of North Carolina."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees Teachers' and State Employees' Retirement System", "source": {"kind": "statute", "ref": "135-6", "quote": "The general administration and responsibility for the proper operation of the Retirement System and for making effective the provisions of the Chapter are vested in a Board of Trustees."}},
+   "website": "https://www.myncretirement.gov/systems-funds/teachers-and-state-employees-retirement-system-tsers",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/teachers-and-state-employees-retirement-system-tsers", "quote": "The Teachers’ and State Employees’ Retirement System (TSERS) is a pension plan administered by the North Carolina Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["state_employee", "teacher", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "135-1", "quote": "\"Employer\" shall mean the State of North Carolina, the county board of education, the city board of education, the State Board of Education"},
+   "notes": "Local boards of education are employers; state law enforcement officers are a TSERS member class."
+  },
+  {
+   "name": "North Carolina Local Governmental Employees' Retirement System",
+   "short": "LGERS",
+   "census_units": ["census-pid6:226282"],
+   "statute": {"kind": "statute", "ref": "128-22", "quote": "A Retirement System is hereby established and placed under the management of the Board of Trustees for the purpose of providing retirement allowances and other benefits under the provisions of this Article for employees of those counties, cities and towns or other eligible employers participating in the said Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the North Carolina Local Governmental Employees' Retirement System", "source": {"kind": "statute", "ref": "128-28", "quote": "The general administration and responsibility for the proper operation of the Retirement System and for making effective the provisions of this Article are vested in the Board of Trustees."}},
+   "website": "https://www.myncretirement.gov/systems-funds/local-governmental-employees-retirement-system-lgers",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/local-governmental-employees-retirement-system-lgers", "quote": "The Local Governmental Employees’ Retirement System (LGERS) is a pension plan administered by the North Carolina Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "128-22", "quote": "A Retirement System is hereby established and placed under the management of the Board of Trustees for the purpose of providing retirement allowances and other benefits under the provisions of this Article for employees of those counties, cities and towns or other eligible employers participating in the said Retirement System."},
+   "notes": "Local law enforcement officers and firefighters are LGERS member classes."
+  },
+  {
+   "name": "Consolidated Judicial Retirement System of North Carolina",
+   "short": "CJRS",
+   "census_units": ["census-pid6:226283"],
+   "statute": {"kind": "statute", "ref": "135-54", "quote": "A Retirement System is hereby established and placed under the management of the Board of Trustees for the purpose of providing retirement allowances and other benefits under the provisions of this Article for justices and judges, district attorneys, public defenders"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Teachers' and State Employees' Retirement System", "source": {"kind": "statute", "ref": "135-52", "quote": "The provisions of this Article shall be administered by the Board of Trustees of the Teachers' and State Employees' Retirement System."}},
+   "website": "https://www.myncretirement.gov/systems-funds/consolidated-judicial-retirement-system-cjrs",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/consolidated-judicial-retirement-system-cjrs", "quote": "The Consolidated Judicial Retirement System (CJRS)is a pension plan administered by the North Carolina Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Also covers district attorneys, public defenders and clerks of superior court."
+  },
+  {
+   "name": "Legislative Retirement System of North Carolina",
+   "short": "LRS",
+   "census_units": ["census-pid6:226284"],
+   "statute": {"kind": "statute", "ref": "120-4.9", "quote": "A Retirement System is established and placed under the Board of Trustees of the Teachers' and State Employees' Retirement System for administrative purposes."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Teachers' and State Employees' Retirement System", "source": {"kind": "statute", "ref": "120-4.9", "quote": "A Retirement System is established and placed under the Board of Trustees of the Teachers' and State Employees' Retirement System for administrative purposes."}},
+   "website": "https://www.myncretirement.gov/systems-funds/legislative-retirement-system-lrs",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/legislative-retirement-system-lrs", "quote": "The Legislative Retirement System (LRS)is a pension plan administered by the North Carolina Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "North Carolina Firefighters' and Rescue Squad Workers' Pension Fund",
+   "short": "FRSWPF",
+   "census_units": ["census-pid6:227960"],
+   "statute": {"kind": "statute", "ref": "58-86-1", "quote": "The North Carolina Firefighters' and Rescue Squad Workers' Pension Fund is established to provide pension allowances and other benefits for eligible firefighters and rescue squad workers in the State who elect to become members of the fund."},
+   "statute_role": "establishes",
+   "body": {"name": "board of trustees of the North Carolina Firefighters' and Rescue Squad Workers' Pension Fund", "source": {"kind": "statute", "ref": "58-86-1", "quote": "The board of trustees created by this Article shall have authority to administer the fund and shall make necessary rules and regulations to carry out the provisions of this Article."}},
+   "website": "https://www.myncretirement.gov/systems-funds/firefighters-and-rescue-squad-workers-pension-fund-frswpf",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/firefighters-and-rescue-squad-workers-pension-fund-frswpf", "quote": "The Firefighters’ & Rescue Squad Workers’ Pension Fund (FRSWPF) is administered by the North Carolina Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["public_safety"],
+   "covers_local": true,
+   "notes": "Members are paid or volunteer firefighters and rescue squad workers of local fire departments and rescue squads; members elect to join."
+  },
+  {
+   "name": "North Carolina National Guard Pension Fund",
+   "short": "NCNGPF",
+   "census_units": ["census-pid6:227308"],
+   "statute": {"kind": "statute", "ref": "127A-40.1", "quote": "The North Carolina National Guard Pension Fund shall include general fund appropriations made to the Department of State Treasurer and held with the Pension Accumulation Fund of the Teachers' and State Employees' Retirement System."},
+   "statute_role": "defines",
+   "body": {"name": "Board of Trustees of the Teachers' and State Employees' Retirement System", "source": {"kind": "statute", "ref": "127A-40", "quote": "The Board of Trustees of the Teachers' and State Employees' Retirement System shall administer the provisions of this section."}},
+   "website": "https://www.myncretirement.gov/systems-funds/nc-national-guard-pension-fund-ncngpf",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds/nc-national-guard-pension-fund-ncngpf", "quote": "The North Carolina Retirement Systems pays this benefit to existing retirees. Learn more about the North Carolina National Guard Pension Fund."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Pension for members of the North Carolina National Guard (G.S. 127A-40)."
+  },
+  {
+   "name": "Registers of Deeds' Supplemental Pension Fund",
+   "short": "RODSPF",
+   "census_units": ["census-pid6:240585"],
+   "statute": {"kind": "statute", "ref": "161-50", "quote": "The purpose of this Article is to create a pension fund to supplement local government retirement benefits which will attract the most highly qualified talent available within the State to the position of register of deeds."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Local Governmental Employees' Retirement System", "source": {"kind": "statute", "ref": "161-50.1", "quote": "The Board of Trustees of the Local Governmental Employees' Retirement System shall administer the provisions of this Article."}},
+   "website": "https://www.myncretirement.gov/systems-funds",
+   "website_source": {"kind": "page", "url": "https://www.myncretirement.gov/systems-funds", "quote": "Register of Deeds Supplemental Pension Fund (RODSPF) Most of these are administered by a Board of Trustees with the assistance of the Retirement Systems Division within the Department of State Treasurer (DST)."},
+   "membership": ["local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "161-50.1", "quote": "This Article provides supplemental pension benefits for all county registers of deeds who are retired from the Local Governmental Employees' Retirement System or an equivalent locally sponsored plan as herein described."},
+   "notes": "Supplemental benefit for retired county registers of deeds."
+  }
+ ]
+}

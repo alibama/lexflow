@@ -1,0 +1,49 @@
+{
+ "state": "ut",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Utah State Tax Commission", "url": "https://tax.utah.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Social Security included in Utah taxable income is taxed, but a nonrefundable credit equal to the flat tax rate times those benefits offsets the tax in full below income thresholds and phases out above them.",
+   "conditions": ["Credit, not an exclusion: flat income tax rate x Social Security in state taxable income", "Reduced by 2.5 cents per dollar of modified AGI over $54,000 single, $90,000 joint or head of household, $45,000 married filing separately", "Cannot be combined with the $450 retirement credit on the same return"],
+   "sources": [
+    {"kind": "statute", "ref": "59-10-1042", "quote": "each claimant on a return that receives a social security benefit may claim a nonrefundable tax credit against taxes otherwise due under this part equal to the product of: (a) the percentage listed in Subsection 59-10-104(2); and (b) the claimant's social security benefit that is included in the claimant's state taxable income for the taxable year."},
+    {"kind": "page", "url": "https://tax.utah.gov/individuals/retirees-seniors/", "quote": "Retirement Income Tax Credit Social Security Credit Military Retirement Credit Railroad Retirement Income Deduction"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions are taxed at the flat rate; only filers born on or before December 31, 1952 may claim a $450 nonrefundable retirement credit, which phases out with income.",
+   "conditions": ["$450 credit per eligible claimant, born on or before December 31, 1952", "Reduced by 2.5 cents per dollar of modified AGI over $25,000 single, $32,000 head of household, $16,000 married filing separately", "Cannot be claimed with the Social Security or military retirement credit on the same return"],
+   "amount_usd": 450,
+   "sources": [
+    {"kind": "statute", "ref": "59-10-1019", "quote": "(2) Except as provided in Section 59-10-1002.2 and Subsections (3) and (4), each eligible claimant may claim a nonrefundable tax credit of $450 against taxes otherwise due under this part."},
+    {"kind": "statute", "ref": "59-10-1019", "quote": "(a) \"Eligible claimant\" means a claimant, regardless of whether that claimant is retired, who was born on or before December 31, 1952."},
+    {"kind": "page", "url": "https://tax.utah.gov/individuals/retirees-seniors/", "quote": "Retirement Income Tax Credit Social Security Credit Military Retirement Credit Railroad Retirement Income Deduction"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed at the flat rate; only filers born on or before December 31, 1952 may claim the $450 retirement credit, which phases out with income.",
+   "conditions": ["$450 credit per eligible claimant, born on or before December 31, 1952", "Reduced by 2.5 cents per dollar of modified AGI over $25,000 single, $32,000 head of household, $16,000 married filing separately", "Cannot be claimed with the Social Security or military retirement credit on the same return"],
+   "amount_usd": 450,
+   "sources": [
+    {"kind": "statute", "ref": "59-10-1019", "quote": "(2) Except as provided in Section 59-10-1002.2 and Subsections (3) and (4), each eligible claimant may claim a nonrefundable tax credit of $450 against taxes otherwise due under this part."},
+    {"kind": "page", "url": "https://tax.utah.gov/individuals/retirees-seniors/", "quote": "Retirement Income Tax Credit Social Security Credit Military Retirement Credit Railroad Retirement Income Deduction"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military retired pay is offset by a nonrefundable credit equal to the flat tax rate times the retired pay included in AGI, with no age or income limit, so the state tax on it is effectively eliminated.",
+   "conditions": ["Credit, not an exclusion: flat income tax rate x military retirement pay in federal AGI", "Nonrefundable; cannot be combined with the $450 retirement credit on the same return"],
+   "sources": [
+    {"kind": "statute", "ref": "59-10-1043", "quote": "a claimant who receives military retirement pay may claim a nonrefundable tax credit against taxes equal to the product of: (a) the percentage listed in Subsection 59-10-104(2); and (b) the amount of military retirement pay that is included in adjusted gross income on the claimant's federal income tax"},
+    {"kind": "page", "url": "https://tax.utah.gov/individuals/retirees-seniors/", "quote": "Retirement Income Tax Credit Social Security Credit Military Retirement Credit Railroad Retirement Income Deduction"}
+   ]
+  }
+ },
+ "notes": "Utah uses credits rather than exclusions; all retirement income is in the flat-rate tax base (4.5% for 2025 per Tax Commission instructions). The Tax Commission's per-credit pages live on incometax.utah.gov, whose robots.txt disallows automated readers, so the only agency page quoted is the Retirees and Seniors index page, which lists the credits by name; the rules themselves come from the statute index. The Social Security credit thresholds quoted in conditions are those in the indexed 59-10-1042 (S.B. 71 of 2025 moved the credit to state taxable income and raised the single threshold to $54,000). Railroad retirement benefits get a separate deduction (not covered here). Military retired pay that is Survivor Benefit Plan income has a related survivor-benefits credit."
+}

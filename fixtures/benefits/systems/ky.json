@@ -1,0 +1,87 @@
+{
+ "state": "ky",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Kentucky Employees Retirement System",
+   "short": "KERS",
+   "census_units": ["census-pid6:227026"],
+   "statute": {"kind": "statute", "ref": "61.515", "quote": "There is hereby created and established: (1) A retirement system for employees to be known as the \"Kentucky Employees Retirement System\" by and in which name it shall"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Kentucky Retirement Systems", "source": {"kind": "statute", "ref": "61.645", "quote": "The Kentucky Employees Retirement System and State Police Retirement System shall be administered by the board of trustees of the Kentucky Retirement Systems composed of nine (9) members"}},
+   "website": "https://www.kyret.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://www.kyret.ky.gov/About/Pages/default.aspx", "quote": "KPPA covers three separate systems: County Employees Retirement System (CERS) logo Kentucky Employees Retirement Systems (KERS) logo State Police Retirement System (SPRS) logo"},
+   "membership": ["state_employee", "public_safety"],
+   "covers_local": false,
+   "notes": "Day-to-day administration by the Kentucky Public Pensions Authority (KPPA). Hazardous and nonhazardous plans."
+  },
+  {
+   "name": "County Employees Retirement System",
+   "short": "CERS",
+   "census_units": ["census-pid6:226228"],
+   "statute": {"kind": "statute", "ref": "78.520", "quote": "There is hereby created and established: (1) A retirement system for employees to be known as the \"County Employees Retirement System\" by and in which name it shall"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the County Employees Retirement System", "source": {"kind": "statute", "ref": "78.782", "quote": "The County Employees Retirement System shall be administered by the board of trustees composed of nine (9) members, who shall be selected as follows:"}},
+   "website": "https://www.kyret.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://www.kyret.ky.gov/About/Pages/default.aspx", "quote": "The governance of CERS rests with the 9-member CERS Board of Trustees."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "78.530", "quote": "Each county and school board, as defined in KRS 78.510, will participate in the system by appropriate order authorizing such participation which has been entered and duly recorded"},
+   "notes": "Covers county, city and other local government employees and classified (non-teaching) school board employees. Day-to-day administration by the Kentucky Public Pensions Authority (KPPA)."
+  },
+  {
+   "name": "State Police Retirement System",
+   "short": "SPRS",
+   "census_units": ["census-pid6:227695"],
+   "statute": {"kind": "statute", "ref": "16.510", "quote": "A retirement system for state police to be known as the \"State Police Retirement System\" by and in which name it shall, pursuant to the provisions of KRS 16.510 to 16.652, transact all of its business"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Kentucky Retirement Systems", "source": {"kind": "statute", "ref": "61.645", "quote": "The Kentucky Employees Retirement System and State Police Retirement System shall be administered by the board of trustees of the Kentucky Retirement Systems composed of nine (9) members"}},
+   "website": "https://www.kyret.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://www.kyret.ky.gov/About/Pages/default.aspx", "quote": "Kentucky Employees Retirement Systems (KERS) logo State Police Retirement System (SPRS) logo CERS and KERS each have members in hazardous and nonhazardous positions"},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Day-to-day administration by the Kentucky Public Pensions Authority (KPPA)."
+  },
+  {
+   "name": "Teachers' Retirement System of the State of Kentucky",
+   "short": "TRS",
+   "census_units": ["census-pid6:227024"],
+   "statute": {"kind": "statute", "ref": "161.230", "quote": "The Teachers' Retirement System is established as of July 1, 1940, for the purpose of providing retirement allowances for teachers, their beneficiaries, and survivors"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Teachers' Retirement System of the State of Kentucky", "source": {"kind": "statute", "ref": "161.250", "quote": "The general administration and management of the retirement system, and the responsibility for its proper operation and for making effective provisions of KRS 161.155 and 161.220 to 161.714 are vested in a board of trustees"}},
+   "website": "https://trs.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://trs.ky.gov/", "quote": "The Teachers’ Retirement System is a comprehensive retirement plan for Kentucky’s public school teachers that includes a defined benefit, life insurance and retiree health insurance."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "161.220", "quote": "who is employed by public boards, institutions, or agencies as follows: (a) Local boards of education and public charter schools if the public charter school satisfies the criteria set by the Internal Revenue Service"},
+   "notes": "Members are teachers employed by local boards of education and certain state universities and agencies."
+  },
+  {
+   "name": "Judicial Retirement Plan",
+   "short": "JRP",
+   "census_units": ["census-pid6:226227"],
+   "statute": {"kind": "statute", "ref": "21.347", "quote": "The Judicial Retirement System established by KRS 21.345 to 21.510 shall hereafter be designated and known as the Judicial Retirement Plan."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Judicial Form Retirement System", "source": {"kind": "statute", "ref": "21.530", "quote": "For administrative purposes only, as hereinafter provided, the Legislators' Retirement Plan and the Judicial Retirement Plan shall be coordinated under the name, Judicial Form Retirement System, but each of the plans shall maintain its separate identity."}},
+   "website": "https://kjfrs.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://kjfrs.ky.gov/", "quote": "Welcome to JFRS, the state agency charged with the administration of the Judicial Retirement Plan and the Legislators Retirement Plan."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Census unit 'KY Judicial Retirement System'; administered with the Legislators' Retirement Plan by the Judicial Form Retirement System (JFRS)."
+  },
+  {
+   "name": "Legislators' Retirement Plan",
+   "short": "LRP",
+   "census_units": ["census-pid6:228238"],
+   "statute": {"kind": "statute", "ref": "6.500", "quote": "There hereby is created a retirement plan for the members of the General Assembly (hereinafter \"legislators\")."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Judicial Form Retirement System", "source": {"kind": "statute", "ref": "21.530", "quote": "For administrative purposes only, as hereinafter provided, the Legislators' Retirement Plan and the Judicial Retirement Plan shall be coordinated under the name, Judicial Form Retirement System, but each of the plans shall maintain its separate identity."}},
+   "website": "https://kjfrs.ky.gov/",
+   "website_source": {"kind": "page", "url": "https://kjfrs.ky.gov/", "quote": "Welcome to JFRS, the state agency charged with the administration of the Judicial Retirement Plan and the Legislators Retirement Plan."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Census unit 'KY Legislators Retirement System'; administered by the Judicial Form Retirement System (JFRS)."
+  }
+ ]
+}

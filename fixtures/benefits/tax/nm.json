@@ -1,0 +1,48 @@
+{
+ "state": "nm",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "New Mexico Taxation and Revenue Department", "url": "https://www.tax.newmexico.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Federally taxable Social Security is fully exempt if adjusted gross income does not exceed $100,000 (single), $150,000 (joint, head of household, surviving spouse) or $75,000 (married filing separately); above those limits it is fully taxable.",
+   "conditions": ["AGI not over $100,000 single, $150,000 joint/head of household/surviving spouse, $75,000 married filing separately", "Income cliff: no partial exemption above the limit"],
+   "sources": [
+    {"kind": "statute", "ref": "7-2-5.14", "quote": "An individual may claim an exemption in an amount equal to the amount included in adjusted gross income pursuant to Section 86 of the Internal Revenue Code,"},
+    {"kind": "statute", "ref": "7-2-5.14", "quote": "B. one hundred fifty thousand dollars ($150,000) for heads of household, surviving spouses and married individuals filing joint returns; and C. one hundred thousand dollars ($100,000) for single individuals."},
+    {"kind": "page", "url": "https://www.tax.newmexico.gov/social-security-income-tax-exemption/", "quote": "The exemption is available to single taxpayers with less than $100,000 in income, to married couples filing jointly, surviving spouses and heads of household with under $150,000 in income, and to married couples filing separately with under $75,000 in income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "Government pensions are taxed like other income; the only age-based relief is a general exemption of up to $8,000 per person 65 or older that phases out at low incomes.",
+   "conditions": ["Age 65+: up to $8,000 general income exemption, available only at low adjusted gross income"],
+   "sources": [
+    {"kind": "statute", "ref": "7-2-5.2", "quote": "Any individual sixty-five years of age or older or who, for federal income tax purposes, is blind may claim an exemption in an amount specified in Subsections A through C of this section not to exceed eight thousand dollars ($8,000) of income includable except for this exemption in net income."},
+    {"kind": "page", "url": "https://www.tax.newmexico.gov/individuals/personal-income-tax-information-overview/", "quote": "Does New Mexico offer a tax break to retirees? Yes. Depending on income level, taxpayers 65 years of age or older may be eligible for a exemption from taxable income of up to $8,000 each."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed like other income; only the low-income $8,000 exemption for people 65 or older applies.",
+   "conditions": ["Age 65+: up to $8,000 general income exemption, available only at low adjusted gross income"],
+   "sources": [
+    {"kind": "statute", "ref": "7-2-2", "quote": "\"adjusted gross income\" means adjusted gross income as defined in Section 62 of the Internal Revenue Code, as that section may be amended or renumbered;"},
+    {"kind": "page", "url": "https://www.tax.newmexico.gov/individuals/personal-income-tax-information-overview/", "quote": "Does New Mexico offer a tax break to retirees? Yes. Depending on income level, taxpayers 65 years of age or older may be eligible for a exemption from taxable income of up to $8,000 each."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "An armed forces retiree, or the surviving spouse of one, may exempt $30,000 of armed forces retirement pay.",
+   "conditions": ["Up to $30,000 of armed forces retirement pay", "Retiree must have qualified by years of service or disability for lifetime benefits; surviving spouses qualify"],
+   "amount_usd": 30000,
+   "sources": [
+    {"kind": "statute", "ref": "7-2-5.13", "quote": "An individual who is an armed forces retiree or the surviving spouse of an armed forces retiree may claim an exemption in an amount equal to thirty thousand dollars ($30,000) of armed forces retirement pay includable, except for this exemption, in net income."},
+    {"kind": "page", "url": "https://www.tax.newmexico.gov/individuals/personal-income-tax-information-overview/", "quote": "There are also other deductions in this area of the return that may apply to certain individuals such as railroad retirement, armed forces retirement pay, or social security income if your adjusted gross income falls below the income threshold for your filing status"}
+   ]
+  }
+ },
+ "notes": "The armed forces retirement exemption was enacted in 2022 as a phase-in ($10,000 for 2022, $20,000 for 2023, $30,000 from 2024); the Department's 2022 announcement (a PDF, not quoted) describes it as running through tax year 2026, and the statute index shows the $30,000 amount with no end date. The Department's HTML page only mentions the armed forces deduction generally; the $30,000 figure comes from the statute and the 2025 PIT-ADJ instructions (PDF). The age-65 exemption of up to $8,000 applies to any income and phases out at low AGI."
+}

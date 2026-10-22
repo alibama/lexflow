@@ -120,6 +120,53 @@ COURTLISTENER = credit(
          "It may not power a commercial product that earns revenue, and may not be used to build tools for "
          "for-profit or non-profit organisations. One account per person; API keys may not be shared. An account "
          "gets 5 requests a minute, 50 an hour and 125 a day, and lexflow paces its requests to stay within them.")
+E_GOV_LAWS = credit(
+    # read 22 October 2026: the e-Gov 法令検索 利用規約 (https://laws.e-gov.go.jp/terms/) and PDL1.0 itself; the 出典 line
+    # follows the site's own 出典記載例 and PDL1.0 1.1, and the 加工 line says that lexflow edited the data
+    "e-Gov 法令検索: XML一括ダウンロード (法令標準XML) and 法令API Version 2",
+    "デジタル庁 (Digital Agency, Government of Japan)",
+    "公共データ利用規約（第1.0版）(PDL1.0), compatible with CC BY 4.0", "https://laws.e-gov.go.jp/",
+    "Japan's national laws in force (jurisdiction jpn): the official bulk XML of every law, split into articles for "
+    "the Japanese search index (statutes_jpn), and the law list (titles, categories, dates) for the wiki's law items",
+    licence_url="https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    cite="出典：e-Gov法令検索（https://laws.e-gov.go.jp/）「XML一括ダウンロード」（法令標準XML）及び法令API Version 2、"
+         "公共データ利用規約（第1.0版）（PDL1.0）（https://www.digital.go.jp/resources/open_data/public_data_license_v1.0）",
+    note="加工の旨: e-Gov法令検索の法令データをもとに lexflow が作成（条ごとに分割し、見出し・階層・施行日を付して索引化。条文の本文は"
+         "原文のまま）。lexflow の索引及び構造化データはデジタル庁が作成したものではありません。 In English: edited by lexflow "
+         "(split into articles, headings, hierarchy and enforcement dates added; the text unchanged); not made by the "
+         "Digital Agency. Only the Japanese text has legal effect. The notice kept with the download is "
+         "data/raw/countries/jpn/LICENSE-NOTICE.txt.")
+FEDERAL_REGISTER_AU = credit(
+    # read 22 October 2026: the Register's terms of use (CC BY 4.0, prescribed attribution) and robots.txt (Crawl-delay 10)
+    "Federal Register of Legislation: OData API and compiled Acts (ePub)",
+    "Office of Parliamentary Counsel, Commonwealth of Australia", "CC BY 4.0", "https://www.legislation.gov.au/",
+    "Australia's Commonwealth Acts in force (jurisdiction aus): the current compilation of each Act, split into "
+    "sections for the Australian search index",
+    licence_url="https://www.legislation.gov.au/terms-of-use",
+    note="The Register asks for this attribution: \"Sourced from the Federal Register of Legislation at [full date of "
+         "download]. For the latest information on Australian Government law please go to "
+         "https://www.legislation.gov.au.\" Each row keeps its download date; the filled-in notice is "
+         "data/raw/countries/aus/LICENSE-NOTICE.txt. lexflow split the compilations into sections and added the "
+         "heading path; the section text is the Register's. Not made or endorsed by the Office of Parliamentary "
+         "Counsel.")
+NORMAS_LEG_BR = credit(
+    # read 22 October 2026: every normas.leg.br record's "license" (CC BY 4.0), Lei nº 9.610/1998 art. 8º IV (official
+    # acts are not protected by copyright), the Senado's open-data statement and API documentation, robots.txt
+    "Normas.leg.br (texts) and Dados Abertos Legislativos do Senado Federal (metadata and amendment relations)",
+    "Congresso Nacional do Brasil (Senado Federal e Câmara dos Deputados)", "CC BY 4.0; official acts not copyrighted",
+    "https://normas.leg.br/",
+    "Brazil's federal law (jurisdiction bra): the Constitution, constitutional amendments, complementary laws, laws "
+    "and decree-laws in force, from the current compilations, split into articles for the Brazilian search index; "
+    "Diário Oficial publications and amendment relations from the Senate's open data",
+    licence_url="https://creativecommons.org/licenses/by/4.0/",
+    cite="Fonte: Normas.leg.br (Congresso Nacional), https://normas.leg.br/, CC BY 4.0; Dados Abertos Legislativos do "
+         "Senado Federal, https://legis.senado.leg.br/dadosabertos/",
+    note="Lei nº 9.610/1998, art. 8º: \"Não são objeto de proteção como direitos autorais ... IV - os textos de tratados "
+         "ou convenções, leis, decretos, regulamentos, decisões judiciais e demais atos oficiais\". lexflow split the "
+         "compilations into articles, added the hierarchy and article headings and set the compilers' amendment notes "
+         "apart from the text; the provisions' text is the compilation's. \"Este texto não substitui o publicado no "
+         "Diário Oficial.\" Not made or endorsed by the National Congress. The notice kept with the download is "
+         "data/raw/countries/bra/LICENSE-NOTICE.txt.")
 WIKIBASE_CLOUD = credit(
     "Wikibase Cloud", "Wikimedia Deutschland", "Wikibase.cloud Terms of Use; Wikibase software GPL-2.0-or-later",
     "https://meta.wikimedia.org/wiki/Wikibase/Wikibase.cloud",
@@ -296,6 +343,12 @@ GENERAL: list[dict] = [
     # the Ask job is not a Setup step, so its one outside service is credited here
     used_for(SEARXNG, "Optional, for Answer a new question (Ask): finds official pages on a place's own site, only "
                       "when SEARXNG_URL is set ('search' profile)"),
+    # Japan's laws: the Japanese index the Ask page and the Query page read, and the wiki's law items
+    E_GOV_LAWS,
+    # Australia's Commonwealth Acts: the Australian index
+    FEDERAL_REGISTER_AU,
+    # Brazil's federal law: the Brazilian index
+    NORMAS_LEG_BR,
     credit("Python", "Python Software Foundation", "PSF-2.0", "https://docs.python.org/3/license.html",
            "The pipeline and the API"),
     credit("Node.js", "OpenJS Foundation", "MIT", "https://nodejs.org/", "Runs the BPMN and DMN tools"),

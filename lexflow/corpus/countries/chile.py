@@ -20,20 +20,48 @@ Verified 19 October 2026 (docs/design/global-sources.md §2.2):
   agreement (global-sources.md §6).
 
 Rows: one per ``Artículo`` (transitory articles under ``Disposiciones transitorias``), path
-``Ley 19.628 / Título I / Artículo 4``, citation ``Ley 19.628, art. 4``, act_id ``STATE_CL_LEY19628_TI_A4``, ELI
-``.../eli/cl/ley/1999/19628/art_4/es@<fechaVersion>``.
+``Ley 19.628 / Título I / Artículo 4``, citation ``Ley 19.628, art. 4``, act_id ``STATE_CHL_LEY19628_TI_A4`` (the
+lexflow key is ISO alpha-3 ``chl``), ELI ``.../eli/cl/ley/1999/19628/art_4/es@<fechaVersion>`` (the ELI keeps
+alpha-2 ``cl``).
+
+Interim mode (22 October 2026), until BCN answers the request in docs/design/requests/bcn-chile.md: no bulk pull.
+``find(number)`` asks the Linked Open Data endpoint for the norma a question cites by number (10 s pace, no API
+quota; a title-word search timed out); ``on_demand(ids)`` fetches at most ``PER_QUESTION`` (3) normas for one
+question and ``PER_DAY`` (100) in a UTC day — a fifth of the 500 requests per 24 h an API key allows — through the
+same per-document XML the Ley Chile application uses, into a bounded cache (``data/cache/countries/chl/``,
+``CACHE_MAX`` normas, refreshed after ``CACHE_DAYS``); ``rows_on_demand`` gives their rows with the attribution the
+CC BY-NC-ND licence asks for.  The text is quoted unmodified (ND), the use must stay non-commercial (NC), and every
+answer links back to Ley Chile.
 """
 from __future__ import annotations
 
 import re
 import xml.etree.ElementTree as ET
 
+import json
+import os
+import time
+from pathlib import Path
+
+from ... import config
 from .base import Country, Document, Node, Source
 
+# the interim mode (no agreement with BCN yet): a few normas per question, within a fifth of a key's daily quota
+PER_QUESTION = 3
+PER_DAY = 100
+CACHE = config.DATA_DIR / "cache" / "countries" / "chl"
+CACHE_MAX = 300
+CACHE_DAYS = 7
+ATTRIBUTION = ("Texto: Ley Chile, Biblioteca del Congreso Nacional de Chile, {norma}, versión del {version} "
+               "(CC BY-NC-ND 4.0), https://www.bcn.cl/leychile/")
 NS = {"l": "http://www.leychile.cl/esquemas"}
 XML_URL = "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma={id}"
 PAGE_URL = "https://www.bcn.cl/leychile/navegar?idNorma={id}"
 SPARQL = "https://datos.bcn.cl/sparql"
+# the norms vocabulary as the endpoint uses it (read 22 Oct 2026): a version is a bcn:Norm with bcn:leychileCode,
+# dc:title, bcn:isLatestVersion 1 (an integer), bcn:versionOf its root norm, bcn:type .../norma/tipo#ley
+TIPO = "http://datos.bcn.cl/recurso/cl/norma/tipo#"
+PREFIXES = ("PREFIX bcn: <http://datos.bcn.cl/ontologies/bcn-norms#> PREFIX dc: <http://purl.org/dc/elements/1.1/> ")
 # 'Artículo 4°.- El tratamiento', 'Artículo 1º.- Las', 'Artículo 10.- No', 'Artículo 24 bis.- ...'
 ARTICLE = re.compile(r"^\s*Art[íi]culo\s+(\d+[a-z]*(?:\s+(?:bis|ter|qu[áa]ter|quinquies))?)\s*[°º]?\s*(?:\.-|\.|-)?\s*",
                      re.I)
@@ -43,7 +71,9 @@ ROMAN = re.compile(r"^(?:[IVXLCDM]+|\d+|Preliminar|Final|Único|Unico)$", re.I)
 
 
 class Chile(Country):
-    code = "cl"
+    code = "chl"
+    iso2 = "cl"
+    eli_jurisdiction = "cl"
     name = "Chile"
     wikidata = "Q298"
     languages = ("es",)
@@ -77,14 +107,14 @@ class Chile(Country):
     )
 
     def fetch_list(self, limit: int = 20) -> list[dict]:
-        """The most recently published leyes with their LeyChile ids, from the SPARQL endpoint (10 s pace)."""
-        q = ("PREFIX bcn: <http://datos.bcn.cl/ontologies/bcn-norms#> SELECT ?norm ?title ?date ?id WHERE { "
-             "?norm a bcn:RootNorm ; bcn:hasVersion ?v . ?v bcn:isLatestVersion true ; bcn:hasLeyChileId ?id . "
-             "OPTIONAL { ?norm dc:title ?title } OPTIONAL { ?norm bcn:publishDate ?date } } ORDER BY DESC(?date) "
+        """The most recently published leyes with their LeyChile ids, from the SPARQL endpoint (10 s pace).  On 22 Oct
+        2026 this ORDER BY over every ley timed out (60 s); a full listing belongs to the BCN API once BCN agrees
+        (docs/design/requests/bcn-chile.md), the interim mode needs only ``find``."""
+        q = (PREFIXES + "SELECT ?norm ?title ?date ?id WHERE { ?v a bcn:Norm ; bcn:isLatestVersion 1 ; "
+             "bcn:leychileCode ?id ; bcn:versionOf ?norm ; bcn:type <http://datos.bcn.cl/recurso/cl/norma/tipo#ley> . "
+             "OPTIONAL { ?v dc:title ?title } OPTIONAL { ?v bcn:publishDate ?date } } ORDER BY DESC(?date) "
              f"LIMIT {int(limit)}")
-        from urllib.parse import urlencode
-        self.pace = 10.0
-        r = self.get(f"{SPARQL}?{urlencode({'query': q, 'format': 'json'})}", accept="application/sparql-results+json")
+        r = self._sparql(q)
         out = []
         for b in r.json().get("results", {}).get("bindings", []):
             out.append({"native_id": b.get("id", {}).get("value"), "uri": b.get("norm", {}).get("value"),
@@ -94,6 +124,73 @@ class Chile(Country):
     def fetch_document(self, native_id: str) -> Document:
         r = self.get(XML_URL.format(id=native_id), accept="text/xml")
         return self.parse(r.content, native_id)
+
+    # ------------------------------------------------------------------ the interim mode: a few normas per question
+    def _sparql(self, q: str):
+        """One SPARQL query to datos.bcn.cl at its robots.txt Crawl-delay (10 s), whatever the adapter's pace."""
+        from urllib.parse import urlencode
+        pace, self.pace = self.pace, 10.0
+        try:
+            return self.get(f"{SPARQL}?{urlencode({'query': q, 'format': 'json'})}",
+                            accept="application/sparql-results+json")
+        finally:
+            self.pace = pace
+
+    def find(self, number: str, tipo: str = "ley", limit: int = PER_QUESTION) -> list[dict]:
+        """The norma a question cites by number (``Ley 19.628`` -> ``find("19.628")``), from the Linked Open Data
+        endpoint (no API quota): its LeyChile id, title and publication date.  The endpoint answers this equality
+        lookup in under a second; a CONTAINS search over titles timed out after 60 s (22 Oct 2026), so lexflow
+        finds Chilean normas by the number a question or a citation gives, not by words."""
+        n = re.sub(r"[^0-9A-Za-z\-]", "", str(number or ""))
+        if not n:
+            return []
+        q = (PREFIXES + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?norm ?id ?title ?date "
+             f'WHERE {{ ?norm a bcn:RootNorm ; bcn:hasNumber "{n}"^^xsd:string ; bcn:type <{TIPO}{_slug(tipo)}> ; '
+             "bcn:leychileCode ?id . OPTIONAL { ?norm dc:title ?title } OPTIONAL { ?norm bcn:publishDate ?date } } "
+             f"LIMIT {int(limit)}")
+        out: dict[str, dict] = {}
+        for b in self._sparql(q).json().get("results", {}).get("bindings", []):
+            nid = b.get("id", {}).get("value")
+            out.setdefault(nid, {"native_id": nid, "uri": b.get("norm", {}).get("value"),
+                                 "title": b.get("title", {}).get("value"), "published": b.get("date", {}).get("value")})
+        return list(out.values())
+
+    def on_demand(self, ids: list[str], cache: Path | None = None, per_question: int = PER_QUESTION,
+                  per_day: int = PER_DAY) -> list[Document]:
+        """The normas one question needs, fetched on demand: at most ``per_question`` fetched for one call and
+        ``per_day`` in a UTC day (a fifth of the standard API key's 500 requests per 24 h), each kept in a bounded
+        cache (``data/cache/countries/chl/``, at most ``CACHE_MAX`` normas, oldest dropped) and refetched after
+        ``CACHE_DAYS`` days.  No bulk mirror: BCN's conditions forbid one without its authorisation
+        (docs/design/requests/bcn-chile.md asks for it)."""
+        cache = cache or CACHE
+        cache.mkdir(parents=True, exist_ok=True)
+        quota = _Quota(cache / "quota.json", per_day)
+        out, fetched = [], 0
+        for nid in [str(i) for i in ids if str(i).isdigit()]:
+            f = cache / f"{nid}.xml"
+            fresh = f.exists() and time.time() - f.stat().st_mtime < CACHE_DAYS * 86400
+            if not fresh:
+                if fetched >= per_question or not quota.take():
+                    if f.exists():                      # stale but within the budget's reach later: use it
+                        out.append(self.parse(f.read_bytes(), nid))
+                    continue
+                body = self.get(XML_URL.format(id=nid), accept="text/xml").content
+                tmp = f.with_name(f.name + ".part")
+                tmp.write_bytes(body)
+                os.replace(tmp, f)
+                fetched += 1
+            out.append(self.parse(f.read_bytes(), nid))
+        _trim(cache, CACHE_MAX)
+        return out
+
+    def rows_on_demand(self, ids: list[str], **kw) -> list[dict]:
+        """``on_demand`` as index rows, each with the attribution Ley Chile's licence asks for."""
+        rows = []
+        for doc in self.on_demand(ids, **kw):
+            for r in self.to_rows(doc):
+                r["attribution"] = ATTRIBUTION.format(norma=f"{doc.kind} {doc.number}", version=doc.version_date)
+                rows.append(r)
+        return rows
 
     def parse(self, raw: bytes | str, native_id: str = "") -> Document:
         root = ET.fromstring(raw if isinstance(raw, (bytes, bytearray)) else raw.encode("utf-8"))
@@ -108,7 +205,7 @@ class Chile(Country):
         usual = [(e.text or "").strip() for e in root.findall("l:Metadatos/l:NombresUsoComun/l:NombreUsoComun", NS)]
         version = root.attrib.get("fechaVersion")
         derogado = root.attrib.get("derogado", "no derogado")
-        doc = Document(country="cl", native_id=norma_id, kind=kind, kind_token=f"{_tok(kind)}{_tok(number)}",
+        doc = Document(country=self.code, native_id=norma_id, kind=kind, kind_token=f"{_tok(kind)}{_tok(number)}",
                        number=_dotted(number), title=title, short_title=f"{kind} {_dotted(number)}",
                        language="es", year=(promulgated or published or "")[:4], eli_type=kind.lower(),
                        eli_number=number,
@@ -156,6 +253,38 @@ class Chile(Country):
         for child in ef.findall("l:EstructurasFuncionales/l:EstructuraFuncional", NS):
             n.children.append(self._node(child, transitory or tipo == "Disposición Transitoria"))
         return n
+
+
+class _Quota:
+    """A per-UTC-day request counter kept in a small JSON file (survives restarts; one process at a time)."""
+
+    def __init__(self, path: Path, per_day: int):
+        self.path, self.per_day = path, per_day
+
+    def take(self) -> bool:
+        import datetime as dt
+        day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        try:
+            d = json.loads(self.path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            d = {}
+        if d.get("day") != day:
+            d = {"day": day, "used": 0}
+        if d["used"] >= self.per_day:
+            return False
+        d["used"] += 1
+        self.path.write_text(json.dumps(d), encoding="utf-8")
+        return True
+
+
+def _trim(cache: Path, keep: int) -> None:
+    files = sorted(cache.glob("*.xml"), key=lambda f: f.stat().st_mtime)
+    for f in files[:max(0, len(files) - keep)]:
+        f.unlink()
+
+
+def _slug(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(s or "").lower())
 
 
 def _tok(s: str) -> str:

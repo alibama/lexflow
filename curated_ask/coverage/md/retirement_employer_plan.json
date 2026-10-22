@@ -1,0 +1,59 @@
+{
+ "qid": "retirement_employer_plan",
+ "state": "md",
+ "question": "Does my employer have to offer a retirement plan, or a state-run IRA?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "Md. Code, Labor and Employment § 12-402",
+   "role": "primary"
+  },
+  {
+   "ref": "Md. Code, Labor and Employment § 12-101",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Covered employers must set up a payroll deposit arrangement for MarylandSaves.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "Md. Code, Labor and Employment § 12-402",
+   "quote": "After the Board opens the Program for enrollment, covered employers shall establish a payroll deposit retirement savings arrangement to allow employee participation in the Program.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Covered employees are enrolled automatically unless they opt out.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "Md. Code, Labor and Employment § 12-402",
+   "quote": "A covered employer shall automatically enroll a covered employee in the Program, unless the employee elects to opt out in accordance with procedures established by the Board.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "An employer not in compliance loses the waiver of its annual report filing fee.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "Md. Code, Labor and Employment § 12-402",
+   "quote": "If a covered employer is not in compliance with subsection (a) of this section, the covered employer may not receive a waiver of the filing fee",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "An employer that offers its own savings arrangement is not a covered employer.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "Md. Code, Labor and Employment § 12-101",
+   "quote": "an employer that currently offers an employer–offered savings arrangement that was established separately from the requirements of this title;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

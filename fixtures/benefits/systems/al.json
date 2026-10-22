@@ -1,0 +1,102 @@
+{
+ "state": "al",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Employees' Retirement System of Alabama",
+   "short": "ERS",
+   "census_units": ["census-pid6:226845"],
+   "statute": {"kind": "statute", "ref": "36-27-2", "quote": "It shall have the power and privileges of a corporation and shall be known as the “Employees’ Retirement System of Alabama,” and by such name all of its business shall be transacted"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Control of the Employees' Retirement System of Alabama", "source": {"kind": "statute", "ref": "36-27-2", "quote": "A retirement system is hereby established as a body corporate and placed under the management of the Board of Control for the purpose of providing retirement allowances and other benefits under the provisions of this article for employees of the State of Alabama."}},
+   "website": "https://www.rsa-al.gov/ers/",
+   "website_source": {"kind": "page", "url": "https://www.rsa-al.gov/ers/", "quote": "The Employees' Retirement System (ERS) was established in 1945 to provide retirement and other benefits to state employees, state police, and on an elective basis to qualified persons of cities, towns, and quasi-public organizations."},
+   "membership": ["state_employee", "public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "36-27-6", "quote": "any political subdivision thereof or the Alabama Extension Service and Agricultural Experiment Station System of Auburn University may, by resolution legally adopted to conform to rules prescribed by the Board of Control, elect to have its officers and employees from whatever sources and in whatever manner paid become eligible to participate in the retirement system"},
+   "notes": "Administered within the Retirement Systems of Alabama (RSA)."
+  },
+  {
+   "name": "Teachers' Retirement System of Alabama",
+   "short": "TRS",
+   "census_units": ["census-pid6:226190"],
+   "statute": {"kind": "statute", "ref": "16-25-2", "quote": "It shall have the power and privileges of a corporation and shall be known as the “Teachers’ Retirement System of Alabama,” and by such name all of its business shall be transacted"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Control of the Teachers' Retirement System of Alabama", "source": {"kind": "statute", "ref": "16-25-2", "quote": "There shall be a retirement system which shall constitute a body corporate and shall be under the management of the Board of Control for the purpose of providing retirement allowances and other benefits under the provisions of this chapter for teachers of the State of Alabama."}},
+   "website": "https://www.rsa-al.gov/trs/",
+   "website_source": {"kind": "page", "url": "https://www.rsa-al.gov/trs/", "quote": "Since 1939, The Teachers' Retirement System (TRS) has provided benefits to qualified members employed by state-supported educational institutions, including public employees of K-12 school systems"},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "16-25-1", "quote": "EMPLOYER. The State of Alabama, the county school board, the city school board, the State Board of Education, or any governing body of any private nondenominational school operated nonprofit"},
+   "notes": "Covers employees of county and city school boards. Administered within the Retirement Systems of Alabama (RSA)."
+  },
+  {
+   "name": "Judicial Retirement Fund",
+   "short": "JRF",
+   "census_units": ["census-pid6:227895"],
+   "statute": {"kind": "statute", "ref": "12-18-1", "quote": "There is hereby created and established a continuing fund to be known as the Judicial Retirement Fund."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Control of the Employees' Retirement System of Alabama", "source": {"kind": "statute", "ref": "12-18-2", "quote": "The Judicial Retirement Fund shall be administered by the Secretary-Treasurer of the State Employees’ Retirement System under the supervision of the Board of Control of the said State Employees’ Retirement System"}},
+   "website": "https://www.rsa-al.gov/jrf/",
+   "website_source": {"kind": "page", "url": "https://www.rsa-al.gov/jrf/", "quote": "The Judicial Retirement Fund (JRF) was established under the provisions of Act 1163 of the Legislature of 1973 to provide benefits to qualified judges and justices."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Covers state appellate, circuit and district judges and probate judges."
+  },
+  {
+   "name": "Alabama Peace Officers' Annuity and Benefit Fund",
+   "short": "APOABF",
+   "census_units": ["census-pid6:226191"],
+   "statute": {"kind": "statute", "ref": "36-21-66", "quote": "A special fund is established and placed under the management of the board for the purpose of providing retirement allowances and other benefits under this article for members of the fund."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Commissioners of the Alabama Peace Officers' Annuity and Benefit Fund", "source": {"kind": "statute", "ref": "36-21-61", "quote": "There is created a board to be known as the Board of Commissioners of the Alabama Peace Officers’ Annuity and Benefit Fund."}},
+   "website": "https://apoabf.alabama.gov/",
+   "website_source": {"kind": "page", "url": "https://apoabf.alabama.gov/", "quote": "On behalf of the Board of Commissioners of the Alabama Peace Officers’ Annuity & Benefit Fund, I welcome you to the Fund’s web site."},
+   "membership": ["public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "36-21-60", "quote": "PEACE OFFICER. A person duly sworn as a peace officer of the State of Alabama possessing powers of arrest and employed by the state, any political subdivision thereof, or any municipal corporation therein"},
+   "notes": "Supplemental benefit fund for full-time peace officers of the state, counties and municipalities."
+  },
+  {
+   "name": "Clerks' and Registers' Supernumerary Fund",
+   "short": "",
+   "census_units": ["census-pid6:243437"],
+   "statute": {"kind": "statute", "ref": "12-17-143", "quote": "Officials electing to come under the provisions of this article shall contribute to the Clerks’ and Registers’ Supernumerary Fund of the State of Alabama, which is hereby created, in amounts to be determined as follows:"},
+   "statute_role": "establishes",
+   "body": {"name": "Employees' Retirement System of Alabama", "source": {"kind": "statute", "ref": "12-17-143", "quote": "The Clerks’ and Registers’ Supernumerary Fund is hereby placed under the management and control of the Employees’ Retirement System of Alabama."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Small fund for circuit clerks and registers; no dedicated web page naming the fund was found on the RSA site."
+  },
+  {
+   "name": "Alabama State Port Authority pension plans (hourly; terminal railway)",
+   "short": "",
+   "census_units": ["census-pid6:243435", "census-pid6:243436"],
+   "statute": null,
+   "why": "Employer-sponsored plans of the Alabama State Port Authority; no section of the Code of Alabama creating them was found in the statute index.",
+   "statute_role": "none",
+   "body": {"name": "Alabama State Port Authority", "source": null},
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Two small single-employer plans (hourly employees; terminal railway employees)."
+  },
+  {
+   "name": "Flexible Employees Benefit Board",
+   "short": "FEBB",
+   "census_units": ["census-pid6:247686"],
+   "statute": {"kind": "statute", "ref": "36-29-22", "quote": "There is hereby created the Flexible Employees Benefit Board, which shall consist of a state employee appointed by the Executive Director of the Alabama State Employees Association, the members of the State Personnel Board, and the Director of Finance."},
+   "statute_role": "establishes",
+   "body": {"name": "Flexible Employees Benefit Board", "source": {"kind": "statute", "ref": "36-29-22", "quote": "There is hereby created the Flexible Employees Benefit Board, which shall consist of a state employee appointed by the Executive Director of the Alabama State Employees Association, the members of the State Personnel Board, and the Director of Finance."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Not a retirement system: the board administers the state's flexible (cafeteria) employee benefit plan; listed only because the Census counts it as a unit."
+  }
+ ]
+}

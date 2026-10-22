@@ -1,0 +1,46 @@
+{
+ "state": "hi",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Hawaii Department of Taxation", "url": "https://tax.hawaii.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Hawaii does not adopt the federal rule (IRC 86) that taxes Social Security and Tier 1 Railroad Retirement benefits, so they are not taxed.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "235-2.3", "quote": "(3) Section 86 (with respect to social security and tier 1 railroad retirement benefits); (4) Section 91 (with respect to certain foreign branch losses"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Benefits from Hawaii's Employees' Retirement System and comparable benefits from other public retirement systems, and pensions for past services generally, are excluded from Hawaii income.",
+   "conditions": ["Amounts from voluntary employee contributions made under an elective right are not excluded (see notes)"],
+   "sources": [
+    {"kind": "statute", "ref": "235-7", "quote": "(2) Rights, benefits, and other income exempted from taxation by section 88-91, having to do with the state retirement system, and the rights, benefits, and other income, comparable to the rights, benefits, and other income exempted by section 88-91, under any other public retirement system;"},
+    {"kind": "statute", "ref": "235-7", "quote": "(3) Any compensation received in the form of a pension for past services; (4) Compensation paid to a patient affected with Hansen's disease"},
+    {"kind": "page", "url": "https://data.capitol.hawaii.gov/sessions/session2024/bills/HB1572_.HTM", "quote": "The legislature finds that there is a growing number of individuals moving to Hawaii to retire who may be receiving income through a pension for past services performed outside of the State. Currently, these pensions are not taxed under the state income tax law."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Employer-funded private pensions paid for past services are excluded from Hawaii income; distributions attributable to the employee's own contributions, such as 401(k) elective deferrals and IRAs, are taxable.",
+   "conditions": ["Employer-funded pension for past services: excluded", "Portion from employee contributions (401(k) elective deferrals, IRAs): taxable (per DOTAX rules; see notes)"],
+   "sources": [
+    {"kind": "statute", "ref": "235-7", "quote": "(3) Any compensation received in the form of a pension for past services; (4) Compensation paid to a patient affected with Hansen's disease"},
+    {"kind": "page", "url": "https://data.capitol.hawaii.gov/sessions/session2024/bills/HB1572_.HTM", "quote": "The legislature finds that there is a growing number of individuals moving to Hawaii to retire who may be receiving income through a pension for past services performed outside of the State. Currently, these pensions are not taxed under the state income tax law."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military retired pay is a pension for past services and is not subject to Hawaii income tax.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "235-7", "quote": "(3) Any compensation received in the form of a pension for past services; (4) Compensation paid to a patient affected with Hansen's disease"},
+    {"kind": "page", "url": "https://invest.hawaii.gov/business-programs/hawaii-defense-economy/", "quote": "Military retired pay is not subject to Hawaiʻi State income tax."}
+   ]
+  }
+ },
+ "notes": "The Department of Taxation states these rules mainly in its N-11/N-15 instructions and Tax Information Releases (e.g. TIR 96-5), all PDFs lexflow cannot read here, and no DOTAX web page stating them was found. Page sources are therefore other official State of Hawaii pages: the Legislature's text of 2024 HB1572 (a bill, not enacted, whose findings describe current law; the index text of 235-7(a)(3) is still unamended) and DBEDT's Hawaii Defense Economy page. social_security has a statute source only. The split for private plans (employer-funded portion excluded; amounts from employee contributions such as 401(k) elective deferrals and IRA distributions taxable) comes from DOTAX administrative rules (HAR 18-235-7-03) and form instructions, not from a quoted source, and should be confirmed. The 235-2.3 quote is an item in that section's list of Internal Revenue Code provisions that are not operative for Hawaii income tax."
+}

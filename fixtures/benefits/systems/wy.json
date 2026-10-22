@@ -1,0 +1,86 @@
+{
+ "state": "wy",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Wyoming Retirement System (Public Employee, Law Enforcement and Air Guard Firefighter plans)",
+   "short": "WRS",
+   "census_units": ["census-pid6:226309", "census-pid6:228186", "census-pid6:244212"],
+   "statute": {"kind": "statute", "ref": "9-3-403", "quote": "The Wyoming retirement system is established to provide retirement and other benefits to eligible employees of participating employers."},
+   "statute_role": "establishes",
+   "body": {"name": "Wyoming retirement board", "source": {"kind": "statute", "ref": "9-3-404", "quote": "The responsibility for the administration and operation of the retirement system is vested solely and exclusively in the Wyoming retirement board."}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "9-3-402", "quote": "\"Employer\" or \"participating employer\" means: (A) The state of Wyoming and any department, board, commission or other agency or instrumentality of the state; (B) Any county, county memorial hospital, special hospital district, city or town"},
+   "notes": "Census lists the Public Employee, Law Enforcement and Air Guard Firefighter plans separately; all are member classes of the Wyoming retirement system under W.S. 9-3-401 et seq. (air guard firefighters are \"firefighter members\" under W.S. 9-3-402)."
+  },
+  {
+   "name": "Wyoming State Patrol, Game and Fish Warden and Criminal Investigator Retirement Program",
+   "short": "Warden, Patrol and DCI",
+   "census_units": ["census-pid6:226310"],
+   "statute": {"kind": "statute", "ref": "9-3-603", "quote": "There is created the retirement program which is for the benefit of the employees defined in W.S. 9-3-602(a)(v)."},
+   "statute_role": "establishes",
+   "body": {"name": "Wyoming retirement board", "source": {"kind": "statute", "ref": "9-3-603", "quote": "The administration and responsibility for the operation of the retirement program is under the direction and control of the board."}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Covers highway patrol troopers, game and fish wardens and DCI criminal investigators (W.S. 9-3-602(a)(v))."
+  },
+  {
+   "name": "Wyoming Judicial Retirement Program",
+   "short": "Judicial",
+   "census_units": ["census-pid6:228121"],
+   "statute": {"kind": "statute", "ref": "9-3-703", "quote": "There is created the retirement program which is for the benefit of the employees defined in W.S. 9-3-702(a)(v)."},
+   "statute_role": "establishes",
+   "body": {"name": "Wyoming retirement board", "source": {"kind": "statute", "ref": "9-3-703", "quote": "The administration and responsibility for the operation of the retirement program is under the direction and control of the board."}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Supreme court justices and district, chancery and circuit court judges (W.S. 9-3-702(a)(v)); Census calls it the Judicial Pension Fund."
+  },
+  {
+   "name": "Wyoming Paid Firemen's Pension Plan A",
+   "short": "Firemen Plan A",
+   "census_units": ["census-pid6:244210"],
+   "statute": {"kind": "statute", "ref": "15-5-202", "quote": "There is created a firemen's pension account for the purpose of paying the awards, benefits and pensions under the provisions of this article."},
+   "statute_role": "establishes",
+   "body": {"name": "Wyoming retirement board", "source": {"kind": "statute", "ref": "15-5-202", "quote": "The account shall be administered by the board through the director. The board has full custody and control of the account with full power over its administration."}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "notes": "Closed plan for paid municipal firefighters hired before July 1, 1981 (W.S. 15-5-201 et seq.); no active members."
+  },
+  {
+   "name": "Wyoming Paid Firemen's Pension Plan B",
+   "short": "Firemen Plan B",
+   "census_units": ["census-pid6:244211"],
+   "statute": {"kind": "statute", "ref": "15-5-402", "quote": "\"Account\" means the firemen's pension account established by W.S. 15-5-202; (ii) \"Board\" means the retirement board established by W.S. 9-3-404"},
+   "statute_role": "defines",
+   "body": {"name": "Wyoming retirement board", "source": {"kind": "statute", "ref": "15-5-402", "quote": "\"Board\" means the retirement board established by W.S. 9-3-404 and includes all the powers and duties enumerated in W.S. 9-3-401 through 9-3-429;"}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "notes": "Firemen's Pension Account Reform Act of 1981 (W.S. 15-5-401 et seq.) for paid firefighters hired on or after July 1, 1981."
+  },
+  {
+   "name": "Wyoming Volunteer Firefighter, EMT and Search and Rescue Pension Fund",
+   "short": "Volunteer Firefighter and EMT",
+   "census_units": ["census-pid6:245763"],
+   "statute": {"kind": "statute", "ref": "35-9-617", "quote": "The volunteer firefighter, EMT and search and rescue pension account is created. All awards, benefits and pensions established under this article shall be paid from the account."},
+   "statute_role": "establishes",
+   "body": {"name": "volunteer firefighter, EMT and search and rescue pension board, administered by the director of the Wyoming retirement system", "source": {"kind": "statute", "ref": "35-9-617", "quote": "The account established under subsection (a) of this section shall be controlled by the board and administered by the director of the Wyoming retirement system."}},
+   "website": "https://retirement.wyo.gov/",
+   "website_source": {"kind": "page", "url": "https://retirement.wyo.gov/", "quote": "The Wyoming Retirement System administers pension and 457(b) deferred compensation plans for Wyoming's public employees."},
+   "membership": ["public_safety"],
+   "covers_local": true,
+   "notes": "Volunteer members of local fire departments, ambulance services and search and rescue units; the board is established by W.S. 35-9-623."
+  }
+ ]
+}

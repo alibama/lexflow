@@ -1,0 +1,44 @@
+{
+ "state": "dc",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "District of Columbia Office of Tax and Revenue", "url": "https://otr.cfo.dc.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Tier 1 Railroad Retirement benefits that are federally taxable are excluded from District gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "47-1803.02", "quote": "(L) Social security and tier 1 railroad retirement benefits subject to taxation under § 86 of the Internal Revenue Code of 1986."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "District and federal government pensions are taxed like other income; the former $3,000 exclusion for retirees 62 or older applies only to tax years before 2015.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "47-1803.02", "quote": "provided, that the pension, military retired pay, or annuity is otherwise subject to taxation under this chapter; provided further, that this sub-subparagraph shall apply for taxable years beginning before January 1, 2015."},
+    {"kind": "page", "url": "https://otr.cfo.dc.gov/release/dc-office-tax-and-revenue-gears-2015-filing-season", "quote": "Pension Exclusion Repealed: The up to $3,000 exclusion from federal adjusted gross income of military, DC, or federal retirement payments of retirees 62 years or older, has been repealed."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed by the District to the extent they are in federal gross income; there is no special exclusion.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "47-1803.02", "quote": "(a) Gross income. — The words “gross income” shall have the same meaning as defined in § 61 of the Internal Revenue Code of 1986."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "taxable",
+   "summary": "U.S. military retired pay is taxed like other income; the former $3,000 exclusion for retirees 62 or older was repealed from tax year 2015.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "47-1803.02", "quote": "provided, that the pension, military retired pay, or annuity is otherwise subject to taxation under this chapter; provided further, that this sub-subparagraph shall apply for taxable years beginning before January 1, 2015."},
+    {"kind": "page", "url": "https://otr.cfo.dc.gov/release/dc-office-tax-and-revenue-gears-2015-filing-season", "quote": "Pension Exclusion Repealed: The up to $3,000 exclusion from federal adjusted gross income of military, DC, or federal retirement payments of retirees 62 years or older, has been repealed."}
+   ]
+  }
+ },
+ "notes": "OTR's statements of the Social Security subtraction and of the general taxability of pensions are in the D-40 booklet and Schedule I, which are PDFs lexflow cannot read here; no OTR web page stating them could be found, so social_security and private_pension have statute sources only. The OTR page quoted is the 2015 filing-season release (read via an Internet Archive capture), which remains the agency's statement that the $3,000 government/military pension exclusion was repealed. 47-1803.02(a)(2)(N)(ii) still excludes 'Survivor benefits received from the District of Columbia or the federal government by persons who are 62 years of age or older' with no end date in the index text. The index text notes temporary amendments to this section expiring September 25, 2026. A 2021 bill (B24-0071) to restore and enlarge the pension exclusion was not found to have been enacted."
+}

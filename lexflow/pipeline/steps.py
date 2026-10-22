@@ -615,58 +615,396 @@ def st_wikibase(con):
             "detail": f"{plural(n, 'item')} on {config.WIKIBASE_URL}" if n else f"Ready to plan a push to {config.WIKIBASE_URL}"}
 
 
-def wikibase_push_refusal(out_dir) -> str | None:
+def wikibase_push_refusal(out_dir, skip_held: bool = False) -> str | None:
     """Why a real push may not run now: the lint report (``lexflow wikibase lint``) is missing from ``out_dir``, or
-    it holds items.  None when it passes.  The step never passes ``allow_held``, so the pusher's own gate
-    (``push.run``) asks the same question a second time."""
+    it holds items and the operator did not choose ``skip_held``.  None when it passes.  The step passes
+    ``allow_held`` only when the report holds items and the operator chose ``skip_held``, so the pusher's own gate
+    (``push.run``) asks the same question a second time.  Held items are never written either way: the pusher skips
+    them and drops any statement that names one."""
     from ..publish import push as P
     report = P.read_lint(out_dir / P.LINT_NAME)
     if report is None:
         return f"{out_dir / P.LINT_NAME} is missing: run `lexflow wikibase lint` first"
     held = P.held_keys(report)
-    if held:
-        return f"the lint report holds {len(held)} items: fix them and re-run the lint"
+    if held and not skip_held:
+        return (f"the lint report holds {len(held)} items: fix them and re-run the lint, or push with skip_held "
+                "(held items are never written either way)")
     return None
+
+
+# ------------------------------------------------------------- dry runs before real writes
+# A real Wikibase push or DokuWiki publish follows a dry run of the same graph (pages).  Each dry run writes a record
+# (DRY_RUN_NAME) with its numbers, the scope it planned and a fingerprint of what it planned; a real job is refused
+# unless that record is under DRY_RUN_TTL old, planned the same scope, has not been used by a real job since, and
+# still fits what the real job builds (the graph hash and the Wikibase record for a push, the pages for a publish).
+# The dashboard's confirmation dialog shows the record's numbers and sends its id (``dry_run_id``): a newer dry run
+# than the one the operator read is refused too, and /api/jobs asks for that id before a real job is queued.
+DRY_RUN_TTL = 24 * 3600
+DRY_RUN_NAME = "dry-run.json"
+
+
+def wikibase_dir(args: dict | None = None):
+    """Where the wikibase step keeps its plan, lint report and dry-run record: the job's ``out``, else
+    LEXFLOW_WIKIBASE_OUT, else <data>/wikibase-push (the operator's directory; out/wikibase in the checkout is
+    the CLI's default, where the scoped plans of other runs also land)."""
+    import os
+    from pathlib import Path
+    if args and args.get("out"):
+        return Path(args["out"])
+    env = os.environ.get("LEXFLOW_WIKIBASE_OUT", "").strip()
+    return Path(env) if env else config.DATA_DIR / "wikibase-push"
+
+
+def publish_dir():
+    """Where the publish step keeps its dry-run record."""
+    return config.DATA_DIR / "dokuwiki-publish"
+
+
+def flag(value, default: bool) -> bool:
+    """A job arg as a boolean: missing or None is ``default``; "", "0", "false", "no" and "off" are False."""
+    if value is None:
+        return default
+    if isinstance(value, str):
+        return value.strip().lower() not in ("", "0", "false", "no", "off")
+    return bool(value)
+
+
+def parse_passes(value) -> list[str] | None:
+    """The wikibase step's ``passes``: None (both passes in one plan or push, no lint: the CLI's shape), or the
+    passes to run after a fresh lint, in order: "1,2" (also "all" or [1, 2]), "1" or "2"."""
+    if value in (None, "", False):
+        return None
+    parts = [str(p).strip() for p in (value if isinstance(value, (list, tuple)) else str(value).split(","))]
+    parts = [p for p in parts if p]
+    if parts == ["all"]:
+        parts = ["1", "2"]
+    if not parts or parts not in (["1", "2"], ["1"], ["2"]):
+        raise ValueError(f"passes is 1,2 or 1 or 2, not {value!r}")
+    return parts
+
+
+def read_record(path) -> dict | None:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+    except (OSError, ValueError):
+        return None
+
+
+def write_record(path, rec: dict) -> None:
+    import os
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def new_record_id() -> tuple[str, str]:
+    """(id, generated) for a dry-run record: the time, and a few random characters so two runs never share one."""
+    import secrets
+    ts = db.now()
+    return f"{ts}-{secrets.token_hex(3)}", ts
+
+
+def record_age(rec: dict, now: float | None = None) -> float | None:
+    import time
+    from datetime import datetime, timezone
+    try:
+        t = datetime.strptime(rec["generated"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
+    except (KeyError, TypeError, ValueError):
+        return None
+    return (now if now is not None else time.time()) - t
+
+
+def use_record(path, rec: dict) -> None:
+    """Mark a dry-run record used by the real job starting now (one dry run, one real job), before its first write."""
+    import os
+    rec = dict(rec, used={"at": db.now(), "job": os.environ.get("LEXFLOW_JOB_ID") or None})
+    write_record(path, rec)
+
+
+def _digest(lines) -> str:
+    import hashlib
+    h = hashlib.sha256()
+    for line in lines:
+        h.update(line.encode("utf-8"))
+        h.update(b"\n")
+    return h.hexdigest()[:24]
+
+
+def graph_hash(items) -> str:
+    """A fingerprint of the graph a push would write: every item's key and content hash (``push.content_hash``)."""
+    from ..publish import push as P
+    return _digest(sorted(f"{it.key}={P.content_hash(it)}" for it in items))
+
+
+def held_hash(keys) -> str:
+    return _digest(sorted(keys or ()))
+
+
+def ids_mark(con) -> str:
+    """What the local Wikibase record looks like now (rows, hashes, last write of wikibase_items and wikibase_props):
+    only the pusher writes these tables, so a change means a push ran since."""
+    a = db.one(con, "SELECT count(*) AS n, count(content_hash) AS h, max(updated_at) AS t FROM wikibase_items") or {}
+    try:
+        b = db.one(con, "SELECT count(*) AS n, max(updated_at) AS t FROM wikibase_props") or {}
+    except Exception:  # noqa: BLE001 - no such table yet
+        b = {}
+    return f"{a.get('n') or 0}:{a.get('h') or 0}:{a.get('t') or ''}|{b.get('n') or 0}:{b.get('t') or ''}"
+
+
+def wikibase_scope(args: dict) -> dict:
+    """The part of a wikibase job's args a dry run and its push must share."""
+    sts = sorted(S.parse_states(args["states"])) if args.get("states") else None
+    return {"states": sts, "drafts": bool(args.get("drafts")), "full": bool(args.get("full"))}
+
+
+def _scope_words(scope: dict | None) -> str:
+    s = scope or {}
+    return (f"{'states ' + ','.join(s['states']) if s.get('states') else 'every state'}"
+            f"{', with drafts' if s.get('drafts') else ''}{', a full resend' if s.get('full') else ''}")
+
+
+def _record_refusal(rec: dict | None, args: dict, what: str, now: float | None = None) -> str | None:
+    if rec is None:
+        return f"no dry run of the {what} has been recorded: run a dry run first (it shows what would be written)"
+    age = record_age(rec, now)
+    if age is None or age > DRY_RUN_TTL:
+        return f"the last dry run ({rec.get('generated')}) is older than 24 hours: run a dry run again"
+    if rec.get("used"):
+        return (f"the dry run of {rec.get('generated')} was used by the real job of {rec['used'].get('at')}: run a dry "
+                "run again")
+    if args.get("dry_run_id") and args["dry_run_id"] != rec.get("id"):
+        return (f"the dry run confirmed ({args['dry_run_id']}) is not the latest one ({rec.get('id')}): look at the "
+                "latest numbers and confirm again")
+    return None
+
+
+def wikibase_dry_run_refusal(con, out_dir, args: dict, *, graph: str | None = None, held=None,
+                             now: float | None = None) -> str | None:
+    """Why a real push may not follow the dry run recorded in ``out_dir``, or None.  Without ``graph`` (the API,
+    before a job is queued) only what needs nothing built is asked: a record under 24 hours old, not used, the one
+    confirmed, of the same scope, with the Wikibase record unchanged since; the job also gives the hash of the graph
+    it built and the keys its lint report holds."""
+    rec = read_record(out_dir / DRY_RUN_NAME)
+    why = _record_refusal(rec, args, "push", now)
+    if why:
+        return why
+    if rec.get("scope") != wikibase_scope(args):
+        return (f"the dry run planned {_scope_words(rec.get('scope'))}, not {_scope_words(wikibase_scope(args))}: run "
+                "a dry run of the same states and options")
+    if con is not None and rec.get("ids_mark") != ids_mark(con):
+        return "the Wikibase record changed since the dry run (a push ran): run a dry run again"
+    if graph is not None and rec.get("graph_hash") != graph:
+        return "the graph changed since the dry run: run a dry run again"
+    if held is not None and rec.get("held_hash") != held_hash(held):
+        return (f"the lint report now holds {len(held)} items and the dry run planned with {rec.get('held_count')}: "
+                "run a dry run again")
+    return None
+
+
+def publish_dry_run_refusal(args: dict, *, pages: str | None = None, now: float | None = None) -> str | None:
+    """Why a real publish may not follow the recorded dry run, or None; the job also gives the hash of its pages."""
+    rec = read_record(publish_dir() / DRY_RUN_NAME)
+    why = _record_refusal(rec, args, "publish", now)
+    if why:
+        return why
+    if pages is not None and rec.get("pages_hash") != pages:
+        return "the pages changed since the dry run: run a dry run again"
+    return None
+
+
+def pages_hash(pages: dict) -> str:
+    return _digest(f"{pid}\t{(text or '').strip()}" for pid, text in sorted(pages.items()))
+
+
+NEEDS_CONFIRM = ("a real {what} is started from the Pipeline page, which shows the dry run's numbers and sends the "
+                 "id of the dry run confirmed (dry_run_id)")
+NO_BOT = "WIKIBASE_BOT_USER and WIKIBASE_BOT_PASSWORD (or LEXI_USER and LEXI_PASS) are not set"
+
+
+def real_run_refusal(con, step: str, args: dict) -> str | None:
+    """Why /api/jobs does not queue a job: a real push or publish needs the id of the latest dry run's record (as
+    the Pipeline page's confirmation sends it) and that dry run must still allow it; None for any other job.  A bad
+    ``passes`` raises ValueError.  The job asks again, with the graph or pages it builds."""
+    if step == "wikibase":
+        parse_passes(args.get("passes"))
+        if args.get("really") and not args.get("dry_run"):
+            if not args.get("dry_run_id"):
+                return NEEDS_CONFIRM.format(what="push")
+            if not (config.WIKIBASE_BOT_USER and config.WIKIBASE_BOT_PASSWORD):
+                return NO_BOT
+            return wikibase_dry_run_refusal(con, wikibase_dir(args), args)
+    if step == "publish" and not args.get("dry_run"):
+        if not args.get("dry_run_id"):
+            return NEEDS_CONFIRM.format(what="publish")
+        return publish_dry_run_refusal(args)
+    return None
+
+
+def wikibase_api(on_write=None):
+    """The API client of a real push (``push.Api``, the bot password from the environment), calling ``on_write``
+    after each write so the job can show its progress through a pass."""
+    from ..publish import push as P
+    api = P.Api(config.WIKIBASE_URL, config.WIKIBASE_BOT_USER, config.WIKIBASE_BOT_PASSWORD, dry_run=False)
+    if on_write is not None:
+        edit = api.edit
+
+        def counted(*a, **k):
+            res = edit(*a, **k)
+            on_write()
+            return res
+        api.edit = counted
+    return api
+
+
+def _pass_writes(summary: dict, pass_no: str) -> int:
+    counts = (summary.get("counts") or {}).get(pass_no) or {}
+    keep = ("create",) if pass_no == "1" else ("update", "clear")
+    return sum(n for c in counts.values() for a, n in c.items() if a in keep)
 
 
 def run_wikibase(con, args, log, progress):
     """Plan, or with ``really`` perform, the two-pass API push of the schema-v2 graph (``lexflow.publish.push``,
-    the same code as ``lexflow wikibase push``).
+    the same code as ``lexflow wikibase push``), in ``wikibase_dir`` (``out`` names another directory).
 
     A job is a dry run unless its args carry ``really: true`` (a ``dry_run`` flag wins over it): the plan goes to
-    ``out/wikibase/push-plan.json`` (``out`` names another directory) and nothing is POSTed.  A real push also
-    needs a passing lint report in that directory (``lint-report.json`` present with no HELD items); the step
-    never passes ``allow_held``, so a held or missing report is refused here before the pusher is reached.  Draft
+    ``push-plan.json``, nothing is POSTed, and a record of the dry run (``dry-run.json``: its numbers, its scope, the
+    graph hash, the Wikibase record and the held keys it planned with) goes beside it.  ``passes`` ("1,2", "1" or
+    "2") runs a fresh lint first (``lexflow wikibase lint``, deterministic, keeping the model's flags of the last
+    report unless ``lint_model``), then the plan (a dry run) or those passes one after the other (a real push), with
+    progress through each pass.  Without ``passes`` a real push runs both passes against the lint report already
+    there, as the CLI does.
+
+    A real push is refused, before anything is written, unless: the bot password is set; a lint report is there (or
+    this job made one); it
+    holds nothing, or ``skip_held`` (the default) is on, and held items are never written either way; and a dry run of
+    the same scope (states, drafts, full) was recorded in the last 24 hours, was not used by a push since, was the one
+    confirmed (``dry_run_id``, when given), and still fits: the same graph hash, the same Wikibase record (no other
+    push since) and the same held keys.  The dry run's record is marked used before the first write.  Draft
     (single-tier) models stay out unless ``drafts`` is set; ``full`` resends every item instead of skipping those
-    whose content hash is already recorded (``--resume``).
+    whose content hash is already recorded (``--resume``).  Nothing here deletes or merges an item.
 
     The v1 loader this step used to run (``wikibase_lexipedia.Loader``: ``clear`` with the v1 statement set, then
     ``retire_drafts``) is gone.  Job 77 (2026-10-18) ran it over 1,795 items the v2 pusher had written and wiped
     their schema-v2 claims; nothing reachable from a job writes the v1 shape any more.
     """
-    from pathlib import Path
+    import os
+    from ..publish import graph as G
+    from ..publish import lint as L
     from ..publish import push as P
     sts = S.parse_states(args["states"]) if args.get("states") else None
-    out_dir = Path(args["out"]) if args.get("out") else P.OUT_DIR
+    out_dir = wikibase_dir(args)
     really = bool(args.get("really")) and not args.get("dry_run")
+    skip_held = flag(args.get("skip_held"), True)
+    passes = parse_passes(args.get("passes"))
+    drafts, resume = bool(args.get("drafts")), not args.get("full")
+    lint_model = flag(args.get("lint_model"), False)
+    site = config.WIKIBASE_URL
+
+    def refused(why):
+        log(f"push refused: nothing was written to {site}, because {why}")
+        progress(1.0)
+        return {"refused": why, "dry_run": True, "really": False, "plan": None, "api_writes": 0}
+
     if really:
-        why = wikibase_push_refusal(out_dir)
+        # what needs nothing built: the bot password, a lint report (unless this job makes one) and a recent dry run
+        why = (NO_BOT if not (config.WIKIBASE_BOT_USER and config.WIKIBASE_BOT_PASSWORD) else None) or (
+            None if passes else wikibase_push_refusal(out_dir, skip_held)) or wikibase_dry_run_refusal(con, out_dir,
+                                                                                                        args)
         if why:
-            log(f"push refused: nothing was written to {config.WIKIBASE_URL}, because {why}")
-            progress(1.0)
-            return {"refused": why, "dry_run": True, "really": False, "plan": None, "api_writes": 0}
-        log(f"real push to {config.WIKIBASE_URL}: the lint report in {out_dir} holds nothing")
+            return refused(why)
     else:
-        log(f"dry run: the plan goes to {out_dir / P.PLAN_NAME} and nothing is written to {config.WIKIBASE_URL} "
-            "(a job started with really, and a passing lint report, pushes)")
-    out = P.run(con, dry_run=not really, states=sts, drafts=bool(args.get("drafts")), resume=not args.get("full"),
-                allow_held=False, out_dir=out_dir, log=log)
-    progress(1.0)
-    s = out.get("summary") or {}
-    return {"dry_run": out.get("dry_run", True), "really": really, "items": out.get("items"), "plan": out.get("plan"),
-            "creates": s.get("creates"), "updates": s.get("updates"), "held_skipped": len(s.get("held_skipped") or ()),
-            "dropped_snaks": s.get("dropped_snaks"), "failures_by_code": s.get("failures_by_code"),
-            "api_writes": out.get("api_writes"), "seconds": out.get("seconds")}
+        log(f"dry run: the plan goes to {out_dir / P.PLAN_NAME} and nothing is written to {site} (a push may follow "
+            "this dry run for 24 hours, once its numbers are confirmed)")
+    progress(0.01)
+    items = G.build(con, states=sts, drafts=drafts, log=log)
+    ghash = graph_hash(items)
+    log(f"graph: {len(items):,} items, hash {ghash}")
+    progress(0.05)
+    lint_out = None
+    if passes:
+        log("== lint" + (" (with the model pass)" if lint_model else " (rules; the model's flags of the last report kept)"))
+        report = L.run(con, ollama=lint_model, reuse=not lint_model, states=sts, drafts=drafts, items=items,
+                       out_dir=out_dir, log=log)
+        lint_out = {"held": report.get("held_count"), "findings_by_code": report.get("findings_by_code") or {},
+                    "generated": report.get("generated")}
+        progress(0.15)
+    held = P.held_keys(P.read_lint(out_dir / P.LINT_NAME))
+    start = 0.15 if passes else 0.05
+    if not really:
+        mark = ids_mark(con)
+        out = P.run(con, dry_run=True, items=items, states=sts, drafts=drafts, resume=resume, allow_held=False,
+                    out_dir=out_dir, log=log)
+        progress(1.0)
+        s = out.get("summary") or {}
+        rid, generated = new_record_id()
+        lint_report = P.read_lint(out_dir / P.LINT_NAME) or {}
+        rec = {"id": rid, "generated": generated, "kind": "wikibase", "site": site, "scope": wikibase_scope(args),
+               "graph_hash": ghash, "ids_mark": mark, "held_hash": held_hash(held), "held_count": len(held),
+               "held_examples": sorted(held)[:20], "linted": bool(passes), "lint_generated": lint_report.get("generated"),
+               "items": out.get("items", len(items)), "creates": s.get("creates"), "updates": s.get("updates"),
+               "held_skipped": len(s.get("held_skipped") or ()), "dropped_snaks": s.get("dropped_snaks"),
+               "failures_by_code": s.get("failures_by_code") or {},
+               "properties_to_create": len(s.get("properties_to_create") or ()),
+               "pass1_writes": _pass_writes(s, "1"), "pass2_writes": _pass_writes(s, "2"), "plan": out.get("plan"),
+               "job": os.environ.get("LEXFLOW_JOB_ID") or None}
+        write_record(out_dir / DRY_RUN_NAME, rec)
+        log(f"dry run {rid}: {rec['creates']} creates, {rec['updates']} updates, {len(held)} held by the lint, "
+            f"{rec['dropped_snaks']} statements dropped for want of an id; a push of this scope may follow for 24 hours")
+        return {"dry_run": out.get("dry_run", True), "really": False, "items": out.get("items"), "plan": out.get("plan"),
+                "creates": s.get("creates"), "updates": s.get("updates"), "held_skipped": rec["held_skipped"],
+                "dropped_snaks": s.get("dropped_snaks"), "failures_by_code": s.get("failures_by_code"),
+                "api_writes": out.get("api_writes"), "seconds": out.get("seconds"), "dry_run_id": rid,
+                "lint": lint_out}
+    why = wikibase_push_refusal(out_dir, skip_held) or wikibase_dry_run_refusal(con, out_dir, args, graph=ghash,
+                                                                                held=held)
+    if why:
+        return refused(why)
+    rec_path = out_dir / DRY_RUN_NAME
+    rec = read_record(rec_path)
+    use_record(rec_path, rec)                     # one dry run, one push: marked before the first write
+    log(f"real push to {site} after the dry run of {rec['generated']} ({rec.get('creates')} creates, "
+        f"{rec.get('updates')} updates)" + (f"; {len(held)} held items are skipped and never written" if held else
+                                            "; the lint report holds nothing"))
+    todo = passes or ["all"]
+    expect = {"1": rec.get("pass1_writes") or 0, "2": rec.get("pass2_writes") or 0}
+    expect["all"] = expect["1"] + expect["2"]
+    # each pass's share of the progress bar: its writes in the dry run's plan (equal shares when it gave none)
+    weights = [expect[p] for p in todo] if any(expect[p] for p in todo) else [1] * len(todo)
+    bounds, at = [], start
+    for w in weights:
+        bounds.append((at, at + (1.0 - start) * w / sum(weights)))
+        at = bounds[-1][1]
+    results = {}
+    for p, (lo, hi) in zip(todo, bounds):
+        n = [0]
+
+        def tick(lo=lo, hi=hi, want=expect[p], n=n):
+            n[0] += 1
+            if want:
+                progress(lo + (hi - lo) * min(1.0, n[0] / want))
+        log(f"== pass {p}" + (f": about {expect[p]:,} writes planned" if expect[p] else ""))
+        out = P.run(con, dry_run=False, pass_no=p, items=items, states=sts, drafts=drafts, resume=resume,
+                    allow_held=bool(held) and skip_held, out_dir=out_dir, api=wikibase_api(tick), log=log)
+        progress(hi)
+        s = out.get("summary") or {}
+        results[p] = {"creates": s.get("creates"), "updates": s.get("updates"),
+                      "held_skipped": len(s.get("held_skipped") or ()), "dropped_snaks": s.get("dropped_snaks"),
+                      "failures_by_code": s.get("failures_by_code") or {}, "api_writes": out.get("api_writes"),
+                      "seconds": out.get("seconds"), "plan": out.get("plan")}
+    fails: dict[str, int] = {}
+    for r in results.values():
+        for k, v in r["failures_by_code"].items():
+            fails[k] = fails.get(k, 0) + v
+    last = results[todo[-1]]
+    return {"dry_run": False, "really": True, "items": len(items), "plan": last["plan"], "passes": results,
+            "creates": sum(r["creates"] or 0 for r in results.values()),
+            "updates": sum(r["updates"] or 0 for r in results.values()),
+            "held_skipped": max(r["held_skipped"] for r in results.values()),
+            "dropped_snaks": max(r["dropped_snaks"] or 0 for r in results.values()), "failures_by_code": fails,
+            "api_writes": sum(r["api_writes"] or 0 for r in results.values()),
+            "seconds": round(sum(r["seconds"] or 0 for r in results.values()), 1), "dry_run_id": rec["id"],
+            "lint": lint_out}
 
 
 def run_publish(con, args, log, progress):
@@ -675,7 +1013,14 @@ def run_publish(con, args, log, progress):
     every page and reports what would change, without saving.  Nothing at all is written (a dry run included) while
     lexflow:method's corrections line is still the operator's placeholder: every page links lexflow:method for its
     sources, licences and corrections, so the operator sets LEXFLOW_CORRECTIONS (an e-mail address or a URL)
-    first."""
+    first.
+
+    A dry run reads the current text of each page (reads only, when a token is set and ``compare`` is not off) to
+    count the pages that would change, and records its numbers and the hash of the pages (``dry-run.json`` in
+    ``publish_dir``).  A real publish is refused, before anything is written, unless such a dry run was recorded in
+    the last 24 hours, was not used by a publish since, was the one confirmed (``dry_run_id``, when given) and was of
+    the same pages; its record is marked used before the first write.  No page is ever deleted."""
+    import os
     from ..publish import lexipedia as LX
     from ..publish.dokuwiki import DokuWiki, require_namespace
     dry = bool(args.get("dry_run"))
@@ -694,23 +1039,61 @@ def run_publish(con, args, log, progress):
     # the operator sees the address every page sends readers to before anything is written
     log(f"{LX.METHOD} {'would print' if dry else 'prints'} '{LX.corrections()}': readers will write to "
         f"{LX.corrections_address()}")
+    phash = pages_hash(pages)
+    rec_path = publish_dir() / DRY_RUN_NAME
+    if not dry:
+        why = publish_dry_run_refusal(args, pages=phash)
+        if why:
+            log(f"publish refused: no page was written to {config.DOKUWIKI_URL or 'the wiki'}, because {why}")
+            progress(1.0)
+            return {"written": [], "unchanged": [], "refused": sorted(pages), "dry_run": False, "reason": why,
+                    "index": None}
     wiki = DokuWiki(config.DOKUWIKI_URL, token=config.DOKUWIKI_TOKEN, dry_run=dry)
+    reader = None
+    if dry and flag(args.get("compare"), True) and config.DOKUWIKI_URL and config.DOKUWIKI_TOKEN:
+        reader = DokuWiki(config.DOKUWIKI_URL, token=config.DOKUWIKI_TOKEN)     # get_page only: never saves
+        log(f"reading the current text of {len(pages):,} pages from {config.DOKUWIKI_URL} to count what would change "
+            "(reads only)")
     if not dry:
         who = wiki.whoami()
         log(f"signed in to {config.DOKUWIKI_URL} as {who.get('login') if isinstance(who, dict) else who}")
+        use_record(rec_path, read_record(rec_path))      # one dry run, one publish: marked before the first write
     todo = sorted(pages.items())
-    done, unchanged = [], []
+    done, unchanged, unread = [], [], []
+    misses = 0
     for i, (pid, text) in enumerate(todo):
-        current = None if dry else wiki.get_page(pid)
+        current = None
+        if not dry:
+            current = wiki.get_page(pid)
+        elif reader is not None and misses < 3:
+            try:
+                current, misses = reader.get_page(pid), 0
+            except Exception as e:  # noqa: BLE001 - a dry run counts what it can read
+                misses += 1
+                unread.append(pid)
+                if misses == 3:
+                    log(f"could not read {pid} ({type(e).__name__}): the pages left are counted as would-write")
+        elif reader is not None:
+            unread.append(pid)
         if current is not None and current.strip() == text.strip():
             unchanged.append(pid)
         else:
             wiki.save_page(pid, text, summary="lexflow: drafted with an AI system; quotes matched to Open US Law's "
                                               "copy of the statute text")
             done.append(pid)
-        log(f"{'would write' if dry else 'wrote' if pid in done else 'unchanged'} {pid} ({len(text):,} chars)")
+        log(f"{'unchanged' if pid not in done else 'would write' if dry else 'wrote'} {pid} ({len(text):,} chars)")
         progress((i + 1) / len(todo))
-    if not dry:
+    if dry:
+        rid, generated = new_record_id()
+        write_record(rec_path, {
+            "id": rid, "generated": generated, "kind": "publish", "site": config.DOKUWIKI_URL or None,
+            "namespace": LX.NS, "corrections": LX.corrections_address(), "pages": len(pages), "pages_hash": phash,
+            "would_write": len(done), "unchanged": len(unchanged), "unread": len(unread), "compared": reader is not None,
+            "job": os.environ.get("LEXFLOW_JOB_ID") or None})
+        log(f"dry run {rid}: {len(done):,} of {len(pages):,} pages would be written"
+            + (f", {len(unchanged):,} unchanged" if reader is not None else " (the current pages were not read)")
+            + (f", {len(unread):,} could not be read" if unread else "") + "; a publish may follow for 24 hours")
+    else:
         ts = db.now()
         for r in db.rows(con, "SELECT model_id, stages FROM process_models WHERE tier IN ('reviewed','agreed')"):
             stages = db.loads(r["stages"], {})
@@ -720,7 +1103,8 @@ def run_publish(con, args, log, progress):
                         (json.dumps(stages), round(done_n / len(M.STAGES), 3), ts, r["model_id"]))
         db.bump(con)
         con.commit()
-    return {"written": done, "unchanged": unchanged, "refused": [], "dry_run": dry,
+    return {"written": done, "unchanged": unchanged, "refused": [], "dry_run": dry, "unread": unread,
+            "dry_run_id": rid if dry else None,
             "index": f"{config.DOKUWIKI_URL.rstrip('/')}/doku.php?id={LX.NS}:start" if config.DOKUWIKI_URL else None}
 
 
@@ -868,17 +1252,20 @@ STEPS: dict[str, Step] = {s.id: s for s in [
          "Plans the two-pass API push of the schema-v2 graph (the same as lexflow wikibase push): statutes and "
          "codes, the reviewed and agreed processes with their roles, steps, decisions, outcomes, forms and "
          "escalation rungs, agencies, jurisdictions and the court decisions that cite the sections. A job is a dry "
-         "run, with the plan in out/wikibase/push-plan.json, unless it is started with 'Write to the wiki'; a real "
-         "push also needs a passing lint report (lexflow wikibase lint, no HELD items) and is refused without one. "
+         "run, with the plan in data/wikibase-push/push-plan.json, unless it is started with 'Write to the wiki'; a "
+         "real push needs a dry run of the same graph from the last 24 hours, its numbers confirmed on the Pipeline "
+         "page, and a lint report (lexflow wikibase lint): items the lint holds are skipped and never written. "
          "Drafts from one extraction stay out unless asked for. Never part of a run-all chain.",
-         "optional", st_wikibase, run_wikibase, needs=["build"], params=["states", "really", "drafts", "full"],
+         "optional", st_wikibase, run_wikibase, needs=["build"],
+         params=["states", "really", "drafts", "full", "skip_held", "passes"],
          cost="dry run: about a minute of reads; a real push about 1.5 s a write (pass 1 creates, pass 2 claims)",
          credits=[C.WIKIBASE_CLOUD, C.used_for(C.WIKIDATA, "Items link to their Wikidata entities", note="")]),
     Step("publish", "Publish to Lexipedia",
          "Writes the lexflow: pages (process maps, places, start and method) to DokuWiki over JSON-RPC (bot account, "
          "API limited to @bots), and no page outside that namespace. Nothing is written until the operator sets "
          "the corrections address (LEXFLOW_CORRECTIONS, an e-mail address or a URL), which lexflow:method gives "
-         "and every page links.",
+         "and every page links. A real publish needs a dry run of the same pages from the last 24 hours, its "
+         "numbers confirmed on the Pipeline page.",
          "optional", st_publish, run_publish, needs=["build"], params=["dry_run"],
          credits=[C.DOKUWIKI, C.BPMNIO_PLUGIN]),
     Step("ontology", "Tag sections with ontology types",

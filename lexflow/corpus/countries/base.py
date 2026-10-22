@@ -1,6 +1,7 @@
 """The country adapter: one national legislation source -> index rows in the shape of the US ones.
 
-A ``Country`` names a jurisdiction (ISO 3166-1 alpha-2 code, name, Wikidata item, languages) and its verified
+A ``Country`` names a jurisdiction (its lexflow key, the ISO 3166-1 alpha-3 code in lower case: ``jpn``, ``chl``,
+``aus``; name, Wikidata item, languages) and its verified
 primary sources (``Source``: publisher, URL, what it holds, format, machine access, identifier scheme, licence as
 the source states it).  An adapter implements three steps:
 
@@ -17,7 +18,9 @@ the source states it).  An adapter implements three steps:
 Identifiers.  Every row carries the source's own id (``native_id``: LeyChile's ``normaId`` and ``idParte``, e-Gov's
 ``law_id`` and the article number) and an ELI-style work IRI minted as ontology_map.eli_uri does for the states, in
 the ELI pattern ``/eli/{jurisdiction}/{type}/{year}/{number}/{unit}`` with the expression ``/{lang}@{date}`` when the
-version date is known.  Romania's portal mints real ELIs; where a country does, ``Document.eli`` carries that one and
+version date is known; the ELI jurisdiction is the ISO alpha-2 code (``Country.eli_jurisdiction``, ``jp``), as ELI
+publishers write it, while lexflow's keys use the alpha-3 key so that no country collides with a US state's postal
+code (``co``, ``de``, ``in``, ``md`` ...; docs/design/global-sources.md §4.1).  Romania's portal mints real ELIs; where a country does, ``Document.eli`` carries that one and
 the minted IRI is not used (global-sources.md §3.2).
 
 act_id keeps open-us-law's token shape (``STATE_CL_LEY19628_TI_A4``) so that ``publish/schema.unit_tokens``,
@@ -83,6 +86,7 @@ class Node:
     effective_from: str | None = None
     effective_until: str | None = None
     children: list["Node"] = field(default_factory=list)
+    url: str = ""                   # the unit's own page or anchor at the source, when it has one
 
     def leaves(self, path: tuple["Node", ...] = ()) -> Iterable[tuple[tuple["Node", ...], "Node"]]:
         """Every leaf unit with the chain of units above it."""
@@ -96,7 +100,7 @@ class Node:
 @dataclass
 class Document:
     """One law as the source gives it: metadata, the tree, and where it came from."""
-    country: str                    # ISO 3166-1 alpha-2, lower case
+    country: str                    # the lexflow key: ISO 3166-1 alpha-3, lower case (alpha-2 in older adapters)
     native_id: str                  # the source's id for the law (LeyChile normaId, e-Gov law_id)
     kind: str                       # the source's type word: ley, act, decreto, 政令 ...
     kind_token: str                 # the act_id token of the law: LEY19628, 354AC0000000043
@@ -164,7 +168,9 @@ def act_id(country: str, law_token: str, tokens: Iterable[str]) -> str:
 class Country:
     """The adapter base.  Subclasses set the class attributes and implement ``fetch_list``, ``fetch_document`` and
     ``parse``; ``to_rows`` is shared and reads the tree.  ``pace`` is the seconds between requests to the source."""
-    code: str = ""                  # ISO 3166-1 alpha-2, lower case
+    code: str = ""                  # the lexflow key: ISO 3166-1 alpha-3, lower case (``jpn``)
+    iso2: str = ""                  # ISO 3166-1 alpha-2 (``jp``), when the adapter sets it
+    eli_jurisdiction: str = ""      # the ELI jurisdiction segment, when it is not ``code`` (``jp``)
     name: str = ""
     wikidata: str = ""              # Qid, verified read-only against the item page
     languages: tuple[str, ...] = ()
@@ -187,8 +193,8 @@ class Country:
     note: str = ""
 
     # ------------------------------------------------------------------ shared
-    def get(self, url: str, accept: str = "*/*", timeout: int = 60):
-        """One paced, read-only GET with lexflow's user agent."""
+    def get(self, url: str, accept: str = "*/*", timeout: int = 60, ua: str | None = None):
+        """One paced, read-only GET with lexflow's user agent (or ``ua``)."""
         import requests
         from urllib.parse import urlsplit
         host = urlsplit(url).netloc
@@ -197,7 +203,7 @@ class Country:
             if wait > 0:
                 time.sleep(wait)
             _PACE[host] = time.time()
-        r = requests.get(url, timeout=timeout, headers={"User-Agent": config.USER_AGENT, "Accept": accept})
+        r = requests.get(url, timeout=timeout, headers={"User-Agent": ua or config.USER_AGENT, "Accept": accept})
         r.raise_for_status()
         return r
 
@@ -226,8 +232,8 @@ class Country:
             elements = [doc.short_title or doc.title] + [_element(n) for n in units] + [_element(leaf, leaf=True)]
             text = (leaf.text or "").strip()
             status = leaf.status if leaf.status != "in_force" else doc.status
-            eli = doc.eli or eli_uri(doc.country, doc.eli_type or doc.kind, doc.year, doc.eli_number or doc.number,
-                                     self.unit_slug(leaf, path))
+            eli = doc.eli or eli_uri(self.eli_jurisdiction or doc.country, doc.eli_type or doc.kind, doc.year,
+                                     doc.eli_number or doc.number, self.unit_slug(leaf, path))
             date = leaf.effective_from or doc.version_date
             rows.append({
                 "act_id": act_id(doc.country, doc.kind_token, tokens),
@@ -238,7 +244,7 @@ class Country:
                 "display_path": " / ".join(e for e in elements if e),
                 "act_status": status,
                 "text": text,
-                "source_url": doc.url,
+                "source_url": leaf.url or doc.url,
                 "word_count": len(text.split()) if " " in text else len(text),   # characters for Japanese
                 "last_amended_year": doc.last_amended_year,
                 "kind": doc.kind,

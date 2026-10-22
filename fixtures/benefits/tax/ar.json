@@ -1,0 +1,47 @@
+{
+ "state": "ar",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Arkansas Department of Finance and Administration", "url": "https://www.dfa.arkansas.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits are excluded from Arkansas gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://codeofarrules.arkansas.gov/Rules/Rule?levelType=section&titleID=26&chapterID=33&subChapterID=261&partID=941&subPartID=6195&sectionID=40229", "quote": "(1) Social Security benefits are excluded from gross income for state income tax purposes. (2) Thus, amounts received as pensions or annuities under the Social Security Act of 1935"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "The first $6,000 of benefits from a public employment-related retirement plan (in-state or out-of-state) is exempt from Arkansas income tax; the rest is taxable.",
+   "conditions": ["First $6,000 per taxpayer exempt", "Plan must be related to the taxpayer's (or spouse's) employment", "Applies to in-state and out-of-state government plans"],
+   "amount_usd": 6000,
+   "sources": [
+    {"kind": "page", "url": "https://codeofarrules.arkansas.gov/Rules/Rule?levelType=section&titleID=26&chapterID=33&subChapterID=261&partID=941&subPartID=6195&sectionID=40225", "quote": "(1) The first six thousand dollars ($6,000) of retirement or disability benefits received by a resident of Arkansas from an in-state or out-of-state retirement plan or program will be exempt from Arkansas income tax if the: (A) Retirement plan or program is directly related to either public or private employment"},
+    {"kind": "page", "url": "https://www.dfa.arkansas.gov/office/taxes/income-tax-administration/individual-income-tax/whats-new/", "quote": "If the taxpayer claimed a $5,999 or less exemption for military retirement, the remaining $6,000 exemption may be claimed for their employer-sponsored retirement."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "The first $6,000 of benefits from a private employment-related retirement plan, including 401(k) and SEP plans, is exempt from Arkansas income tax; the rest is taxable.",
+   "conditions": ["First $6,000 per taxpayer exempt, shared with any public pension exemption", "Plan must be related to the taxpayer's (or spouse's) employment, e.g. pension, 401(k), SEP"],
+   "amount_usd": 6000,
+   "sources": [
+    {"kind": "page", "url": "https://codeofarrules.arkansas.gov/Rules/Rule?levelType=section&titleID=26&chapterID=33&subChapterID=261&partID=941&subPartID=6195&sectionID=40225", "quote": "(1) The first six thousand dollars ($6,000) of retirement or disability benefits received by a resident of Arkansas from an in-state or out-of-state retirement plan or program will be exempt from Arkansas income tax if the: (A) Retirement plan or program is directly related to either public or private employment"},
+    {"kind": "page", "url": "https://codeofarrules.arkansas.gov/Rules/Rule?levelType=section&titleID=26&chapterID=33&subChapterID=261&partID=941&subPartID=6195&sectionID=40225", "quote": "(G) Cash or deferred arrangements (CODAs, also known as 401(k) plans); and (H) Simplified employee pension (SEP) plans."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "DFA applies a separate military retirement exemption to U.S. military retired pay and survivor benefits; since Act 358 of 2023, a military retiree may still use any unused part of the $6,000 retirement exemption on an employer pension.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.dfa.arkansas.gov/office/taxes/income-tax-administration/individual-income-tax/whats-new/", "quote": "Military Retirement Exemption (Act 358 of the General Session of 2023) This allows taxpayers receiving military retirement or survivor benefits to receive the total amount of the $6,000 retirement exemption."},
+    {"kind": "page", "url": "https://www.dfa.arkansas.gov/office/taxes/income-tax-administration/individual-income-tax/whats-new/", "quote": "If their military pension is $6,000 or more, they cannot claim an exemption on their employer-sponsored retirement."}
+   ]
+  }
+ },
+ "notes": "lexflow has no Arkansas statute index, so there are no statute sources; the Ark. Code sections are 26-51-404 (Social Security), 26-51-307 ($6,000 retirement exemption) and 26-51-306 (military retirement, exempt from tax year 2018 under Act 141 of 2017). Page sources are DFA's 'What's New' page and DFA's income tax rules (26 CAR Part 100) as published on the State's official Code of Arkansas Rules site. DFA's form instructions and its Pensions and Annuities guide are PDFs that lexflow cannot read here (no PDF text extractor), so they are not quoted. The rule 26 CAR 100-118 is stale in two places: (d)(1) still says 'Only the first six thousand dollars ($6,000) of military retirement pay based on length of service is exempt', which predates the full military exemption, and (a)(3) says an IRA falls outside the exemption unless it is an employer SEP, whereas DFA's current instructions also allow traditional IRA distributions after age 59 1/2 (or on death or disability) within the same $6,000 cap. This file follows the current DFA treatment; the IRA point and the full military exemption rest on DFA material lexflow could not quote, so a reviewer should confirm them against the AR1000F instructions."
+}

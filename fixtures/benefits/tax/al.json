@@ -1,0 +1,49 @@
+{
+ "state": "al",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Alabama Department of Revenue", "url": "https://www.revenue.alabama.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Federal Social Security benefits are not taxed by Alabama.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/", "quote": "Payments from a Defined Benefit Retirement Plan in accordance with IRC 414(j) Federal Railroad Retirement benefits Federal Social Security benefits State income tax refunds Unemployment compensation"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Pensions from the Alabama Teachers' and Employees' Retirement Systems, Alabama police and firefighter systems, and federal civil service retirement annuities are fully exempt from Alabama income tax.",
+   "conditions": ["Applies to Alabama state retirement systems (TRS, ERS, Judicial), Alabama police and firefighter retirement, and U.S. civil service and other federal retirement funds"],
+   "sources": [
+    {"kind": "statute", "ref": "40-18-19", "quote": "(2) Retirement allowances, pensions and annuities, or optional allowances, approved by the Board of Control of the Employees’ Retirement System of Alabama, which exempt status is set out in Section 36-27-28."},
+    {"kind": "statute", "ref": "40-18-19", "quote": "Income received as annuities under the United States Retirement System from the United States Government Civil Service Retirement and Disability Fund, including income received from the Tennessee Valley Authority’s pension system"},
+    {"kind": "page", "url": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/", "quote": "United States Civil Service Retirement System benefits State of Alabama Teachers Retirement System benefits State of Alabama Employees Retirement System benefits State of Alabama Judicial Retirement System benefits"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Payments from a private defined benefit pension plan are fully exempt; other taxable retirement income such as 401(k) and IRA distributions is taxable except that taxpayers 65 or older may exclude the first $6,000.",
+   "conditions": ["Defined benefit plan payments (IRC 414(j)) fully exempt", "Defined contribution/401(k)/IRA distributions: first $6,000 of taxable retirement income exempt", "$6,000 exclusion only for taxpayers age 65 or older"],
+   "amount_usd": 6000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "40-18-19", "quote": "Beginning January 1, 1991, all payments made on or after such date to a retiree or his designated beneficiary under a “defined benefit plan,” as defined under 26 U.S.C. § 414(j), to the extent such payment would be taxable for federal income tax purposes."},
+    {"kind": "statute", "ref": "40-18-19", "quote": "a. Beginning January 1, 2023, the first six thousand dollars ($6,000) of taxable retirement income. b. This exemption may only be claimed by individual taxpayers who are 65 years of age or older."},
+    {"kind": "page", "url": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/", "quote": "State of Alabama Judicial Retirement System benefits Military retirement pay Tennessee Valley Authority Pension System benefits United States Government Retirement Fund benefits Payments from a Defined Benefit Retirement Plan in accordance with IRC 414(j)"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military retired pay and survivor benefits derived from it are fully exempt from Alabama income tax.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "40-18-20", "quote": "(d) Effective January 1, 1989, and for all successive tax years, all retirement payments or compensation recognized under this section shall be exempt."},
+    {"kind": "page", "url": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/", "quote": "State of Alabama Employees Retirement System benefits State of Alabama Judicial Retirement System benefits Military retirement pay Tennessee Valley Authority Pension System benefits"}
+   ]
+  }
+ },
+ "notes": "The agency page is a bulleted list of exempt income, so the page quotes are runs of consecutive list items rather than sentences. No section in lexflow's Alabama index expressly exempts Social Security (Alabama's gross-income definition in 40-18-14 never adopted IRC 86), so social_security has only a page source. The $6,000 age-65 exclusion (40-18-19(a)(13)) is on ADOR's Schedule RS and its instructions, but lexflow cannot read the text of those PDFs, so the private_pension page quote covers only the defined-benefit exemption. The index marks 40-18-19 'Amended by Act 2026-603, effective October 1, 2026'; the text quoted is the version the index carries (in force for tax year 2025), and the 2026 change has not been reviewed here."
+}

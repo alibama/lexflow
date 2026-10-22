@@ -1,0 +1,44 @@
+{
+ "state": "ne",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Nebraska Department of Revenue", "url": "https://revenue.nebraska.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "From tax year 2024, all Social Security benefits included in federal AGI are subtracted, with no income limit.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/2023-nebraska-legislative-changes", "quote": "For taxable years beginning on or after January 1, 2024, a taxpayer’s federal adjusted gross income (AGI) is reduced by the amount of social security benefits received to the extent included in federal AGI."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "State and local government pensions are taxed like other income; federal Civil Service Retirement System (CSRS) annuities are fully subtracted from 2024, but FERS annuities are not.",
+   "conditions": ["Exception: federal CSRS annuities included in federal AGI are subtracted from 2024", "FERS annuities and state/local pensions are taxable"],
+   "sources": [
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/legal-information/regulations/chapter-22-individual-income-tax", "quote": "Nebraska taxable income is the taxpayer's federal adjusted gross income after Nebraska adjustments and after the deduction provided in either Reg-22-002.08 or Reg-22-002.09."},
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/2024-nebraska-legislative-changes", "quote": "For taxable years beginning on or after January 1, 2024, LB 1317 limits the decreasing adjustment from federal AGI for amounts received as annuities under the Civil Service Retirement System that were earned from employment with the federal government, to the extent included in federal AGI."},
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/2024-nebraska-legislative-changes", "quote": "Under LB 1317, the decreasing adjustment does not apply to annuities received under the Federal Employees Retirement System."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions included in federal AGI are taxed like other income; Nebraska has no general pension exclusion.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/legal-information/regulations/chapter-22-individual-income-tax", "quote": "Nebraska taxable income is the taxpayer's federal adjusted gross income after Nebraska adjustments and after the deduction provided in either Reg-22-002.08 or Reg-22-002.09."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Since tax year 2022 all military retirees may exclude 100% of military retirement benefits included in federal AGI, with no election needed.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://revenue.nebraska.gov/about/frequently-asked-questions/military-retirement-benefits-exclusion", "quote": "For tax years beginning on or after January 1, 2022, all military retirees may exclude 100% of military retirement benefits from Nebraska taxable income to the extent included in federal adjusted gross income (AGI)."}
+   ]
+  }
+ },
+ "notes": "The Nebraska statute index on this copy lacks the income tax sections (Neb. Rev. Stat. 77-2716 and related), so every item has page sources only from the Department of Revenue (its legislative-change summaries, FAQ and Chapter 22 regulations). The federal retirement exclusion created by LB 754 for 2024 was narrowed by LB 1317 to CSRS annuities only. Railroad Retirement benefits are also subtracted. LB 754 also lowers the top rate each year through 2027 (4.55% for 2026, 3.99% from 2027)."
+}

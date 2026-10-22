@@ -1,0 +1,93 @@
+{
+ "state": "ar",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Arkansas Public Employees' Retirement System",
+   "short": "APERS",
+   "census_units": ["census-pid6:226889"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 4).",
+   "statute_role": "none",
+   "body": {"name": "APERS Board of Trustees", "source": {"kind": "page", "url": "https://apers.org/about/board-of-trustees", "quote": "Act 177 of 1957 established a retirement system for employees of the state of Arkansas and created the APERS Board and its duties, organization, powers, and function."}},
+   "website": "https://www.apers.org/",
+   "website_source": {"kind": "page", "url": "https://www.apers.org/", "quote": "Is your agency or organization interested in joining the Arkansas Public Employees’ Retirement System?"},
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://www.apers.org/", "quote": "Is your agency or organization interested in joining the Arkansas Public Employees’ Retirement System?"},
+   "notes": "APERS staff also administer the Arkansas State Police and Arkansas Judicial retirement systems. Counties, municipalities and other public employers may join."
+  },
+  {
+   "name": "Arkansas Teacher Retirement System",
+   "short": "ATRS",
+   "census_units": ["census-pid6:226197"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 7).",
+   "statute_role": "none",
+   "body": {"name": "ATRS Board of Trustees", "source": null},
+   "website": "https://www.artrs.gov/",
+   "website_source": {"kind": "page", "url": "https://www.artrs.gov/about-us", "quote": "Since 1937, the Arkansas Teacher Retirement System (ATRS) has been providing retirement benefits to Arkansas's public school and education employees."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "notes": "Covers employees of local public school districts and other public education employers."
+  },
+  {
+   "name": "Arkansas Local Police and Fire Retirement System",
+   "short": "LOPFI",
+   "census_units": ["census-pid6:228228", "census-pid6:251817"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 10).",
+   "statute_role": "none",
+   "body": {"name": "LOPFI Board of Trustees", "source": null},
+   "website": "https://www.lopfi-prb.com/",
+   "website_source": {"kind": "page", "url": "https://www.lopfi-prb.com/", "quote": "LOPFI is a statewide defined benefit retirement system for police officers and firefighters of political subdivisions in Arkansas."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://www.lopfi-prb.com/", "quote": "LOPFI is a statewide defined benefit retirement system for police officers and firefighters of political subdivisions in Arkansas."},
+   "notes": "Census reports the cost-sharing and agent-multiple-employer parts of LOPFI as two units."
+  },
+  {
+   "name": "Arkansas State Highway Employees' Retirement System",
+   "short": "ASHERS",
+   "census_units": ["census-pid6:226199"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 5).",
+   "statute_role": "none",
+   "body": {"name": "ASHERS Board of Trustees", "source": null},
+   "website": "https://ardot.gov/divisions/benefits/ashers_contact_information/",
+   "website_source": {"kind": "page", "url": "https://ardot.gov/divisions/benefits/ashers_contact_information/", "quote": "ARKANSAS STATE HIGHWAY EMPLOYEES’ RETIREMENT SYSTEM Room 405 – 10324 Interstate 30; Little Rock, AR 72209"},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Covers employees of the Arkansas Department of Transportation; its pages are hosted on the ARDOT site."
+  },
+  {
+   "name": "Arkansas State Police Retirement System",
+   "short": "ASPRS",
+   "census_units": ["census-pid6:226904"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 6).",
+   "statute_role": "none",
+   "body": {"name": "ASPRS Board of Trustees", "source": {"kind": "page", "url": "https://apers.org/asprs/about/board-of-trustees", "quote": "Act 311 of 1951 established a retirement system (ASPRS) for state troopers of the Arkansas State Police. This system is overseen by the ASPRS Board of Trustees (Board)."}},
+   "website": "https://apers.org/asprs/about/board-of-trustees",
+   "website_source": {"kind": "page", "url": "https://apers.org/asprs/about/board-of-trustees", "quote": "Act 311 of 1951 established a retirement system (ASPRS) for state troopers of the Arkansas State Police."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Administered by APERS staff."
+  },
+  {
+   "name": "Arkansas Judicial Retirement System",
+   "short": "AJRS",
+   "census_units": ["census-pid6:226905"],
+   "statute": null,
+   "why": "No Arkansas statute index on this copy of lexflow (the system is governed by Ark. Code Ann. title 24, chapter 8).",
+   "statute_role": "none",
+   "body": {"name": "Board of Trustees of AJRS", "source": {"kind": "page", "url": "https://apers.org/ajrs/about/board-of-trustees", "quote": "The administration and control of the system are vested in the Board of Trustees of AJRS (the Board)."}},
+   "website": "https://apers.org/ajrs/about/board-of-trustees",
+   "website_source": {"kind": "page", "url": "https://apers.org/ajrs/about/board-of-trustees", "quote": "Act 365 of 1953 established a retirement system (AJRS) for circuit judges, court of appeals judges, and Arkansas Supreme Court justices."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Administered by APERS staff."
+  }
+ ]
+}

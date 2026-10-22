@@ -963,7 +963,113 @@
    "glass_topics": [
     "signs_hours_noise"
    ]
+  },
+  {
+   "id": "retirement_which_system",
+   "text": "Which public retirement system covers me, and who runs it?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "either",
+   "needs": ["who", "where"],
+   "phrasings": [
+    "I am a county employee. Which pension system am I in?",
+    "Who administers the state retirement system for teachers?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_unreduced",
+   "text": "When can I retire with an unreduced pension?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "state",
+   "needs": ["who", "steps", "deadline"],
+   "phrasings": [
+    "At what age can a state employee retire with full benefits?",
+    "Does the Rule of 90 apply to my pension?",
+    "How many years of service do I need before I can retire early?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_buy_service",
+   "text": "Can I buy service credit for prior service, such as military service or another government job?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "state",
+   "needs": ["who", "steps", "deadline", "fee"],
+   "phrasings": [
+    "Can I purchase my military service toward my state pension?",
+    "How much does it cost to buy prior service credit?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_tax",
+   "text": "Does my state tax my pension or my Social Security?",
+   "topic": "taxes",
+   "audience": "resident",
+   "level": "state",
+   "needs": ["who", "where"],
+   "phrasings": [
+    "Is my government pension taxed by the state?",
+    "Do I pay state income tax on military retired pay?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_employer_plan",
+   "text": "Does my employer have to offer a retirement plan, or a state-run IRA?",
+   "topic": "business",
+   "audience": "business",
+   "level": "state",
+   "needs": ["who", "steps", "deadline"],
+   "phrasings": [
+    "My small business has no 401(k). Do I have to sign up for the state retirement savings program?",
+    "Is there a penalty for an employer that does not offer a retirement plan?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_apply",
+   "text": "How do I apply for my pension when I retire?",
+   "topic": "benefits",
+   "audience": "applicant",
+   "level": "state",
+   "needs": ["who", "steps", "deadline", "where", "form"],
+   "phrasings": [
+    "How far ahead do I file my retirement application?",
+    "Where do I send the application for my state pension?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_appeal",
+   "text": "How do I appeal a decision about my retirement benefits?",
+   "topic": "benefits",
+   "audience": "applicant",
+   "level": "state",
+   "needs": ["who", "steps", "deadline", "appeal"],
+   "phrasings": [
+    "The retirement system denied my disability retirement. Can I appeal?",
+    "Who reviews a pension benefit decision I disagree with?"
+   ],
+   "family": "retirement"
+  },
+  {
+   "id": "retirement_survivor",
+   "text": "What happens to my pension if I die before or after I retire?",
+   "topic": "benefits",
+   "audience": "resident",
+   "level": "state",
+   "needs": ["who", "steps"],
+   "phrasings": [
+    "Does my spouse get my pension if I die while still working?",
+    "How do I name a beneficiary for my retirement benefits?"
+   ],
+   "family": "retirement"
   }
  ],
- "_glass": "The glass_* questions are one master question and the twelve sub-questions of fixtures/places/va/glass/questions.json (parent names the master; glass_topics the backbone topics). Their Virginia gold is written from the index-verified quotes of fixtures/places/va/glass/state-backbone.json."
+ "_glass": "The glass_* questions are one master question and the twelve sub-questions of fixtures/places/va/glass/questions.json (parent names the master; glass_topics the backbone topics). Their Virginia gold is written from the index-verified quotes of fixtures/places/va/glass/state-backbone.json.",
+ "_retirement": "The retirement_* questions are the retirement-benefits family (docs/design/retirement-benefits.md); their Virginia and Maryland gold quotes the Code of Virginia and the Annotated Code of Maryland as lexflow's statute index holds them, and the Virginia cells are also served by the retirement_va question family (fixtures/families/retirement_va.json)."
 }

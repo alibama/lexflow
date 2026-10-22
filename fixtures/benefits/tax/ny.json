@@ -1,0 +1,49 @@
+{
+ "state": "ny",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "New York State Department of Taxation and Finance", "url": "https://www.tax.ny.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits included in federal adjusted gross income are subtracted in computing New York adjusted gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "Social security benefits to the extent includible in gross income for federal income tax purposes pursuant to section eighty-six of the internal revenue code."},
+    {"kind": "page", "url": "https://www.tax.ny.gov/pit/file/information_for_seniors.htm", "quote": "Social security benefits that are included in federal adjusted gross income may be subtracted from your federal adjusted gross income when computing your New York adjusted gross income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Pensions of New York State, its local governments and agencies, and of the federal government are fully subtracted at any age; other states' government pensions get only the $20,000 age-59½ exclusion.",
+   "conditions": ["New York State/local and federal government plans only, any age", "Government pensions from other states qualify only for the $20,000 pension and annuity exclusion"],
+   "sources": [
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "Pensions to officers and employees of this state, its subdivisions and agencies, to the extent includible in gross income for federal income tax purposes;"},
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "Pensions to officers and employees of the United States of America, any territory or possession or political subdivision of such territory or possession, the District of Columbia, or any agency or instrumentality of any one of the foregoing,"},
+    {"kind": "page", "url": "https://www.tax.ny.gov/pit/file/information_for_seniors.htm", "quote": "If you received a pension or other distribution from a New York State or local government pension plan or federal government pension plan, you may subtract the amount of distribution that was included in your federal adjusted gross income, regardless of your age or of the form the payment(s) take."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Taxpayers 59½ or older may exclude up to $20,000 each of private pension, annuity, IRA and qualified self-employed plan income; the rest is taxed.",
+   "conditions": ["Age 59½ or older (only income received after reaching 59½ in the year you turn 59½)", "Up to $20,000 per person; spouses each get their own $20,000, and unused amounts cannot be shared", "Shared with the disability income exclusion"],
+   "amount_usd": 20000,
+   "sources": [
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "Pensions and annuities received by an individual who has attained the age of fifty-nine and one-half, not otherwise excluded pursuant to paragraph three of this subsection, to the extent includible in gross income for federal income tax purposes, but not in excess of twenty thousand dollars,"},
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "the term \"pensions and annuities\" shall also include distributions received by an individual who has attained the age of fifty-nine and one-half from an individual retirement account or an individual retirement annuity,"},
+    {"kind": "page", "url": "https://www.tax.ny.gov/pit/file/information_for_seniors.htm", "quote": "If you were age 59½ or older for the entire tax year, you may exclude up to $20,000 of your qualified pension and annuity income from your federal adjusted gross income for purposes of determining your New York adjusted gross income."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military retired pay is a federal government pension and is fully subtracted at any age.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "N.Y. Tax Law § 612", "quote": "Pensions to officers and employees of the United States of America, any territory or possession or political subdivision of such territory or possession, the District of Columbia, or any agency or instrumentality of any one of the foregoing,"},
+    {"kind": "page", "url": "https://www.tax.ny.gov/pit/file/information_for_seniors.htm", "quote": "The United States, its territories, possessions (or political subdivisions thereof), or any agency, instrumentality of the United States (including the military), or the District of Columbia."}
+   ]
+  }
+ },
+ "notes": "The $20,000 pension and annuity exclusion (Tax Law 612(c)(3-a)) is the only relief for private pensions, IRAs and out-of-state government pensions; its age is 59½, not 65. Beneficiaries of a deceased pensioner may claim the deceased's exclusion regardless of their own age, within the same $20,000 total. Tier 1 Railroad Retirement benefits are subtracted like Social Security. New York City and Yonkers resident taxes use the same New York adjusted gross income."
+}

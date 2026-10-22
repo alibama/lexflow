@@ -1,0 +1,103 @@
+{
+ "state": "nj",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement System of New Jersey",
+   "short": "PERS",
+   "census_units": ["census-pid6:227716"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 43:15A-7", "quote": "There is hereby established the Public Employees' Retirement System of New Jersey in the Division of Pensions and Benefits of the Department of the Treasury."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Public Employees' Retirement System", "source": {"kind": "statute", "ref": "15A-17", "quote": "the general responsibility for the proper operation of the Public Employees' Retirement System shall be vested in the board of trustees"}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": {"kind": "page", "url": "https://www.nj.gov/treasury/pensions/", "quote": "PERS, TPAF, and PFRS members are eligible to purchase service credit for official leaves of absence without pay."},
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "notes": "Administered by the Division of Pensions and Benefits; covers State, county, municipal and school district (non-teaching) employees, though Census reads the unit as state-only."
+  },
+  {
+   "name": "Teachers' Pension and Annuity Fund",
+   "short": "TPAF",
+   "census_units": ["census-pid6:226272"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 18A:66-3", "quote": "the teachers' pension and annuity fund is continued with its membership and all of its securities, investments and other assets"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Teachers' Pension and Annuity Fund", "source": {"kind": "statute", "ref": "66-56", "quote": "the general responsibility for the proper operation of the teachers' pension and annuity fund shall be vested in the board of trustees"}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": {"kind": "page", "url": "https://www.nj.gov/treasury/pensions/", "quote": "PERS, TPAF, and PFRS members are eligible to purchase service credit for official leaves of absence without pay."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "notes": "Teachers of local school districts; administered by the Division of Pensions and Benefits."
+  },
+  {
+   "name": "Police and Firemen's Retirement System of New Jersey",
+   "short": "PFRS",
+   "census_units": ["census-pid6:228212"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 43:16A-2", "quote": "A retirement system is hereby established in the Department of the Treasury for the purpose of providing retirement allowances and other benefits for policemen and firemen under the provisions of this act."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Police and Firemen's Retirement System", "source": {"kind": "statute", "ref": "N.J. Stat. § 43:16A-13", "quote": "the general responsibility for the proper operation of the retirement system is hereby vested in a board of trustees"}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": {"kind": "page", "url": "https://www.nj.gov/treasury/pensions/", "quote": "The Police and Firemen's Retirement System of New Jersey (PFRSNJ) has issued an FAQ regarding a one-time benefit enhancement."},
+   "membership": ["public_safety", "local_employee", "state_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "N.J. Stat. § 43:16A-1", "quote": "\"Employer\" shall mean the State of New Jersey, the county, municipality or political subdivision thereof which pays the particular policeman or fireman."},
+   "notes": "PFRSNJ's own site (pfrsnj.gov) could not be read; the quote is from the Division of Pensions and Benefits home page (a news item)."
+  },
+  {
+   "name": "State Police Retirement System of New Jersey",
+   "short": "SPRS",
+   "census_units": ["census-pid6:226271"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 53:5A-4", "quote": "There is hereby established the \"State Police Retirement System of New Jersey\" in the Division of Pensions of the Department of the Treasury."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the State Police Retirement System", "source": {"kind": "statute", "ref": "N.J. Stat. § 53:5A-30", "quote": "the general responsibility for the proper operation of the retirement system is hereby vested in the board of trustees"}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": null,
+   "why_website": "No page naming SPRS could be read (Division of Pensions and Benefits sub-pages not found; web search budget exhausted).",
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Administered by the Division of Pensions and Benefits."
+  },
+  {
+   "name": "Judicial Retirement System of New Jersey",
+   "short": "JRS",
+   "census_units": ["census-pid6:227717"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 43:6A-4", "quote": "There is hereby established the \"Judicial Retirement System of New Jersey\" in the Division of Pensions of the Department of the Treasury."},
+   "statute_role": "establishes",
+   "body": {"name": "State House Commission", "source": {"kind": "statute", "ref": "N.J. Stat. § 43:6A-29", "quote": "the general responsibility for the proper operation of the retirement system is hereby vested in the State House Commission."}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": null,
+   "why_website": "No page naming JRS could be read (Division of Pensions and Benefits sub-pages not found; web search budget exhausted).",
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Administered by the Division of Pensions and Benefits."
+  },
+  {
+   "name": "Consolidated Police and Firemen's Pension Fund",
+   "short": "CPFPF",
+   "census_units": ["census-pid6:227715"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 43:16-5", "quote": "shall, from and after July 1, 1953, be consolidated, and, as so consolidated, shall be transferred to and placed under the Consolidated Police and Firemen's Pension Fund created by the provisions of this chapter."},
+   "statute_role": "establishes",
+   "body": {"name": "Division of Pensions and Benefits, Department of the Treasury", "source": {"kind": "statute", "ref": "N.J. Stat. § 43:16-7", "quote": "The Division of Pensions and Benefits in the Department of the Treasury shall be the trustee of all the funds established by this act."}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": null,
+   "why_website": "Closed fund (no active members); no page naming it could be read.",
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "notes": "Closed fund for municipal police and firefighters appointed before July 1, 1944."
+  },
+  {
+   "name": "Prison Officers' Pension Fund",
+   "short": "POPF",
+   "census_units": ["census-pid6:226270"],
+   "statute": {"kind": "statute", "ref": "N.J. Stat. § 43:7-8", "quote": "No person employed on or after January 1, 1960 shall be eligible for membership in the Prison Officers' Pension Fund."},
+   "statute_role": "defines",
+   "body": {"name": "Division of Pensions and Benefits, Department of the Treasury", "source": {"kind": "statute", "ref": "N.J. Stat. § 43:7-18.1", "quote": "The Division of Pensions and Benefits in the Department of the Treasury shall have the general responsibility for the proper operation of the pension fund"}},
+   "website": "https://www.nj.gov/treasury/pensions/",
+   "website_source": null,
+   "why_website": "Closed fund (no active members); no page naming it could be read.",
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Closed to new members since 1960; no establishing sentence found, only the membership provision."
+  }
+ ]
+}

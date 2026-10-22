@@ -1,0 +1,46 @@
+{
+ "qid": "retirement_tax",
+ "state": "md",
+ "question": "Does my state tax my pension or my Social Security?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "Md. Code, Tax - General § 10-209",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "At 65 or older (or totally disabled), pension income from an employer retirement system may be subtracted, up to a cap tied to the maximum Social Security benefit.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "Md. Code, Tax - General § 10-209",
+   "quote": "the cumulative or total annuity, pension, or endowment income from an employee retirement system included in federal adjusted gross income; or",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "The cap is reduced by Social Security and Railroad Retirement benefits received.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "Md. Code, Tax - General § 10-209",
+   "quote": "less any payment received as old age, survivors, or disability benefits under the Social Security Act, the Railroad Retirement Act, or both.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "IRAs do not count as an employee retirement system.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "Md. Code, Tax - General § 10-209",
+   "quote": "an individual retirement account or annuity under § 408 of the Internal Revenue Code;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": "Tax-General § 10-207 (the Social Security and military retirement subtractions) is not in this copy's Maryland index."
+}

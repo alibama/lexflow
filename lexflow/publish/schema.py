@@ -18,6 +18,21 @@ way.  Everything here is data and pure functions: nothing reads the database or 
 Wikidata ids were checked read-only with ``wbgetentities`` on 15 October 2026 (labels and P31/P279): the doc's
 *verify* marks resolved to Q922203 (code of law), Q11861227 (administrative regulation) and Q1335296 (form, a
 genre of document); Q294414 is "public office", a subclass of position (Q4164871).
+
+International law (docs/design/wikibase-schema.md §4.8, global-sources.md §4): a jurisdiction key is a US state's
+two-letter postal code (``va``) or a country's ISO 3166-1 alpha-3 code (``jpn``), never alpha-2, so ``co`` is
+always Colorado (``is_country_key``).  A country's law is one ``legal code`` item (``lexflow:code:jpn``) and one
+``statutory unit`` item per law at unit level ``act`` (``lexflow:unit:jpn:<law id>``); its articles stay in the search
+index and become ``statute`` items (unit level ``article``) only when a process cites them.  Labels, descriptions
+and aliases may carry other languages beside English (``graph.Item.labels``), and ``heading text``, ``law number``
+and ``quoted text in language`` are monolingual text in the law's language (``ja``); English ``quoted text`` keeps
+its string datatype.
+
+Laws in the shape of WikiProject Brazilian Laws (docs/design/wikidata-laws.md): properties 65-79 (identifiers, short
+name, digest, gazette, approved by, legislated by, language, amended by, repealed by, repeals, amending law number,
+point in time, stated in), ``EXISTING_WIKIDATA`` (the live properties' Wikidata equivalents), ``SOURCES`` (the law
+databases ``stated in`` names), ``EGOV_ISSUERS`` / ``egov_makers`` (who made a Japanese law, from its number) and
+``PROVISION_TEXT`` / ``provision_text_ok`` (whose provision text may go to the CC0 wiki: not Australia's CC BY text).
 """
 from __future__ import annotations
 
@@ -107,6 +122,13 @@ CLASSES: list[Cls] = [
     Cls("concept", "concept", "A legal concept a defined term or role stands for (the terms plan).", "Q2135465"),
     Cls("legal-document", "legal document", "A document the law names (the terms plan).", "Q49848"),
     Cls("legal-status", "legal status", "A status in law (the terms plan).", "Q2628882"),
+    # the shape of WikiProject Brazilian Laws (docs/design/wikidata-laws.md): who makes a law, where statements are
+    # read from, what language a law is in
+    Cls("legislature", "legislature", "A body that makes statutes (the National Diet of Japan, a state legislature).",
+        "Q11204"),
+    Cls("database", "database", "An official database or register lexflow reads law from (e-Gov 法令検索, the Federal "
+        "Register of Legislation); the value of stated in on references.", "Q8513"),
+    Cls("language", "language", "Vocabulary: the language a law's authoritative text is written in.", "Q34770"),
 ]
 CLASS_BY_SLUG: dict[str, Cls] = {c.slug: c for c in CLASSES}
 CLASS_BY_LABEL: dict[str, Cls] = {c.label: c for c in CLASSES}
@@ -197,8 +219,16 @@ VOCAB: dict[str, list[Voc]] = {
         ("title", "title", "A title."), ("subtitle", "subtitle", "A subtitle."), ("part", "part", "A part."),
         ("division", "division", "A division."), ("chapter", "chapter", "A chapter."),
         ("subchapter", "subchapter", "A subchapter."), ("article", "article", "An article."),
-        ("act", "act", "An act (an Illinois compiled statutes act)."), ("section", "section", "A section."),
+        ("act", "act", "An act: an Illinois compiled statutes act, or one national law of a country (a Japanese "
+                       "法律, 政令 or 省令)."), ("section", "section", "A section."),
         ("subsection", "subsection", "A subsection."),
+        # civil-law levels (global-sources.md §4.5): the country's own word stays the item's label
+        ("book", "book", "A book (Libro), the highest division of a civil-law code."),
+        ("paragraph", "paragraph", "A paragraph of an article (項, inciso), or a Párrafo as a unit of a code."),
+        ("item", "item", "An item of an article or paragraph (号)."),
+        ("supplementary-provision", "supplementary provision",
+         "The supplementary provisions of a law (附則, disposiciones transitorias): transition, entry into force and "
+         "the amendments' own provisions."),
     ]),
     # fixtures/authority/ladders.json vocabulary.type
     "escalation-type": _voc([
@@ -226,7 +256,13 @@ VOCAB: dict[str, list[Voc]] = {
         ("http-check", "HTTP check", "An HTTP request confirmed the page or address."),
         ("official-page", "found on official page", "The value was read from the body's own official page."),
     ]),
+    "language": _voc([
+        ("ja", "Japanese", "The Japanese language (ISO 639-1 ja)."),
+        ("en", "English", "The English language (ISO 639-1 en)."),
+    ]),
 }
+# the Wikidata items of the language entries (``Wikidata item ID`` and ``exact match`` on them)
+LANGUAGE_WIKIDATA: dict[str, str] = {"ja": "Q5287", "en": "Q1860"}
 VOCAB_BY_KEY: dict[str, Voc] = {f"lexflow:vocab:{s}:{v.slug}": v for s, vs in VOCAB.items() for v in vs}
 
 
@@ -273,7 +309,7 @@ PROPERTIES: list[Prop] = [
     _p(9, "effective until", "time", None, "The date the provision ceases to be in force (effective date is the "
        "date from).", ("section", "unit")),
     _p(10, "replaced by", "item", "P1366", "The section that replaces this version.", ("section",)),
-    _p(11, "heading text", "monolingualtext", None, "The heading of a section, unit, decision point or rung, as "
+    _p(11, "heading text", "monolingualtext", "P1476", "The heading of a section, unit, decision point or rung, as "
        "searchable text.", ("section", "unit", "decision", "rung")),
     _p(12, "reference type", "item", None, "Qualifier on references: why the provision cites the other.",
        ("vocab:reference-type",)),
@@ -334,7 +370,7 @@ PROPERTIES: list[Prop] = [
        ("step", "process")),
     _p(47, "fee basis", "string", None, "Qualifier on fee: the rule when the amount is not one number.",
        ("step", "process")),
-    _p(48, "topic", "item", None, "What the process, section or form is about.", ("vocab:topic",)),
+    _p(48, "topic", "item", "P921", "What the process, section or form is about.", ("vocab:topic",)),
     _p(49, "audience", "item", None, "Who the process is for.", ("vocab:audience",)),
     _p(50, "question asked", "monolingualtext", None, "The plain-language question the process answers.",
        ("process",)),
@@ -357,6 +393,45 @@ PROPERTIES: list[Prop] = [
     _p(60, "related match", "url", None, "skos:relatedMatch to an external IRI (terms plan).", ("concept",)),
     _p(61, "match probability", "quantity", None, "Qualifier on exact match and the SKOS matches: the "
        "probability of the match (terms plan).", ("qualifier",)),
+    # international law (section 4.8 of the doc): text in the law's own language
+    _p(62, "quoted text in language", "monolingualtext", None, "Reference: up to 400 characters of the provision, "
+       "verbatim, tagged with the language of the text it quotes (ja, es); quoted text keeps English quotes.",
+       ("reference",)),
+    _p(63, "law number", "monolingualtext", "P8550", "The number a law is cited by, as its source writes it, in the "
+       "law's language (平成五年法律第八十八号).", ("unit",)),
+    _p(64, "promulgation date", "time", "P7589", "The date a law was promulgated (公布日); effective date is the "
+       "enforcement date of the version described.", ("unit",)),
+    # the shape of WikiProject Brazilian Laws (docs/design/wikidata-laws.md §2): a law item's identifiers, names,
+    # makers and amendments; ``EXISTING_WIKIDATA`` maps the live properties that already cover the rest
+    _p(65, "e-Gov law ID", "external-id", "P8610", "The law_id of a Japanese law in e-Gov 法令検索 (405AC0000000088).",
+       ("unit",), "https://laws.e-gov.go.jp/law/$1"),
+    _p(66, "ComLaw ID", "external-id", "P2461", "The title id of an Australian Commonwealth law in the Federal "
+       "Register of Legislation (C2004A00467).", ("unit",), "https://www.legislation.gov.au/Details/$1"),
+    _p(67, "short name", "monolingualtext", "P1813", "The abbreviation a law is known by, as its source gives it "
+       "(行手法@ja).", ("unit",)),
+    _p(68, "law digest", "monolingualtext", "P9376", "A short official summary of what a law does (a Brazilian "
+       "ementa), in the law's language, from a source whose text may be copied.", ("unit",)),
+    _p(69, "published in", "item", "P1433", "The official gazette that published the law; qualifier page.",
+       ("source",)),
+    _p(70, "page", "string", "P304", "Qualifier on published in: the page or pages of the gazette.", ("qualifier",)),
+    _p(71, "approved by", "item", "P790", "The office or body that approved, sanctioned or promulgated the law "
+       "(never the person who held the office); qualifiers point in time and determination method.",
+       ("agency", "position")),
+    _p(72, "legislated by", "item", "P467", "The legislature, cabinet, ministry or other office that made the law, "
+       "as the law's type and number name it.", ("agency", "position")),
+    _p(73, "language of work", "item", "P407", "The language the law's authoritative text is written in.",
+       ("vocab:language",)),
+    _p(74, "amended by", "item", "P2567", "A law that amended this one; qualifiers point in time (the amending law's "
+       "promulgation) and effective date (the amendment's enforcement).", ("unit",)),
+    _p(75, "repealed by", "item", "P2568", "The law that repealed this one; qualifier point in time.", ("unit",)),
+    _p(76, "repeals", "item", "P3148", "A law this one repealed; qualifier point in time.", ("unit",)),
+    _p(77, "amending law number", "monolingualtext", None, "The number of a law that amended this one when that "
+       "law has no item of its own (most amending acts are folded into the laws they amend); qualifiers point in "
+       "time and effective date.", ("unit",)),
+    _p(78, "point in time", "time", "P585", "Qualifier: the date a statement refers to (an amendment's "
+       "promulgation, a repeal).", ("qualifier",)),
+    _p(79, "stated in", "item", "P248", "Reference: the database or register the statement was read from.",
+       ("reference",)),
 ]
 PROP_BY_LABEL: dict[str, Prop] = {p.label: p for p in PROPERTIES}
 
@@ -406,6 +481,22 @@ PROP_BY_LABEL.update({p.label: p for p in PROPERTIES})
 CLASS_BY_SLUG.update({c.slug: c for c in CLASSES})
 CLASS_BY_LABEL.update({c.label: c for c in CLASSES})
 EXISTING_EQUIVALENTS: dict[str, tuple[str, ...]] = {label: tuple(OM.PROPERTY_EQUIV.get(label, ())) for label in EXISTING}
+# the Wikidata property each live property is the same as: ``push`` writes it as the first ``P7 equivalent
+# property`` of the property item (as ``Prop.wikidata`` is for the new ones), beside the ontology IRIs above;
+# checked read-only on 22 October 2026 (wikibase:propertyType and labels on query.wikidata.org)
+EXISTING_WIKIDATA: dict[str, str] = {
+    "instance of": "P31", "subclass of": "P279", "equivalent property": "P1628", "exact match": "P2888",
+    "part of": "P361", "has part": "P527", "follows": "P155", "followed by": "P156", "based on": "P144",
+    "applies to jurisdiction": "P1001", "citation": "P1031", "official text": "P953", "effective date": "P7588",
+}
+
+
+def wikidata_of(label: str) -> str | None:
+    """The Wikidata property a Lexipedia property (live or new) is the same as, or None."""
+    if label in EXISTING_WIKIDATA:
+        return EXISTING_WIKIDATA[label]
+    p = PROP_BY_LABEL.get(label)
+    return p.wikidata if p else None
 
 
 def equivalents_of(label: str) -> tuple[str, ...]:
@@ -634,7 +725,207 @@ def subtype_code(subtype: str | None) -> str | None:
     return SUBTYPE_CODES.get(s)
 
 
+# e-Gov 法令検索's categories (事項別分類, as the API v2 law list gives them) -> topic slug, where one fits; the other
+# categories (憲法, 行政組織, 工業 ...) have no topic yet
+EGOV_CATEGORY_TOPIC: dict[str, str] = {
+    "国税": "taxes", "地方財政": "taxes", "社会福祉": "benefits", "社会保険": "benefits", "建築・住宅": "building-and-zoning",
+    "都市計画": "building-and-zoning", "土地": "property", "商業": "business", "事業": "business", "司法": "courts",
+}
+
+# --------------------------------------------------------------------------- law sources and makers (wikidata-laws.md)
+
+# The databases statements about a country's laws are read from: one item each (``lexflow:source:<slug>``, class
+# database), the value of ``stated in`` on every reference of a law item.  Wikidata items checked read-only on 22
+# October 2026 (e-Gov法令検索 Q48746885 by its label; the Federal Register of Legislation Q57686106).
+SOURCES: dict[str, dict] = {
+    "egov-laws": {"label": "e-Gov Law Search", "labels": {"ja": "e-Gov法令検索"},
+                  "description": "The Digital Agency's database of the laws and regulations of Japan, from which lexflow "
+                                 "reads Japan's laws (bulk XML and Law API v2)",
+                  "descriptions": {"ja": "デジタル庁が提供する日本の法令データベース"},
+                  "website": "https://laws.e-gov.go.jp/", "wikidata": "Q48746885", "jurisdiction": "jpn"},
+    "frl": {"label": "Federal Register of Legislation", "labels": {},
+            "description": "The Australian Government's register of Commonwealth legislation, from which lexflow "
+                           "reads Australia's Acts", "descriptions": {},
+            "website": "https://www.legislation.gov.au/", "wikidata": "Q57686106", "jurisdiction": "aus"},
+}
+COUNTRY_SOURCE: dict[str, str] = {s["jurisdiction"]: slug_ for slug_, s in SOURCES.items()}
+
+# Whose provision text may be written to the wiki, which is CC0 (wikidata-laws.md §5).  A US state's statutes are
+# edicts of government, outside copyright (Georgia v. Public.Resource.Org, 590 U.S. 255 (2020)); Japan's laws are not
+# the subject of copyright (著作権法 第十三条 第一号, checked in the index on 22 October 2026).  Every other country is
+# held to titles, identifiers and dates until its entry is added here: Australia's Federal Register of Legislation is
+# CC BY 4.0, whose attribution and modification terms a CC0 wiki cannot carry, so no section text, heading or quote
+# of an Australian provision goes to the wiki (graph.Build enforces it).
+PROVISION_TEXT: dict[str, str] = {
+    "jpn": "Copyright Act (著作権法) art. 13 (i): the Constitution and other laws and regulations are not the subject "
+           "of the rights of authors",
+}
+TEXT_PROPS = ("quoted text", "quoted text in language", "law digest")
+
+
+def provision_text_ok(code: str | None) -> bool:
+    """Whether provision text (quotes, article headings, digests) of a jurisdiction may go to the CC0 wiki: a US
+    state, or a country listed in ``PROVISION_TEXT``."""
+    c = (code or "").strip().lower()
+    if not c:
+        return True
+    return not is_country_key(c) or c in PROVISION_TEXT
+
+
+def jurisdiction_of(key: str | None) -> str | None:
+    """The jurisdiction a law, body or jurisdiction key names (``lexflow:unit:aus:c2004a00467`` -> ``aus``), else
+    None."""
+    parts = (key or "").split(":")
+    if len(parts) >= 3 and parts[0] == "lexflow" and parts[1] in (
+            "code", "unit", "statute", "regulation", "agency", "office-type", "position", "position-type",
+            "jurisdiction"):
+        return parts[2]
+    return None
+
+
+# Who makes a Japanese law, from the words of its number (平成五年法律第八十八号, 令和二年厚生労働省令第十一号,
+# 平成十二年総理府・大蔵省令第九号): base name -> (key slug, class slug, English label, Wikidata item, current).  The
+# English labels are the Wikidata items' (CC0; read 22 October 2026 by their jawiki article), shortened where the
+# Wikidata label adds a country; a body whose English name lexflow cannot source keeps a Japanese label only (no
+# romanisation).  Offices are offices: ``legislated by`` names the Emperor's or the Prime Minister's office, never a
+# person who held it.
+EGOV_ISSUERS: dict[str, tuple[str, str, str, str | None, bool]] = {
+    "国会": ("national_diet", "legislature", "National Diet", "Q202384", True),
+    "帝国議会": ("imperial_diet", "legislature", "Imperial Diet", "Q704408", False),
+    "内閣": ("cabinet", "government-agency", "Cabinet of Japan", "Q529012", True),
+    "天皇": ("emperor_of_japan", "position", "Emperor of Japan", "Q208233", True),
+    "内閣総理大臣": ("prime_minister_of_japan", "position", "Prime Minister of Japan", "Q274948", True),
+    "太政官": ("daijo_kan", "government-agency", "Daijō-kan", "Q1192939", False),
+    "内閣府": ("cabinet_office", "government-agency", "Cabinet Office", "Q6005", True),
+    "内閣官房": ("cabinet_secretariat", "government-agency", "Cabinet Secretariat", "Q1142254", True),
+    "総務省": ("ministry_of_internal_affairs_and_communications", "government-agency",
+             "Ministry of Internal Affairs and Communications", "Q1322293", True),
+    "法務省": ("ministry_of_justice", "government-agency", "Ministry of Justice", "Q1031145", True),
+    "外務省": ("ministry_of_foreign_affairs", "government-agency", "Ministry of Foreign Affairs", "Q222241", True),
+    "財務省": ("ministry_of_finance", "government-agency", "Ministry of Finance", "Q1322605", True),
+    "文部科学省": ("ministry_of_education_culture_sports_science_and", "government-agency",
+               "Ministry of Education, Culture, Sports, Science and Technology", "Q1054379", True),
+    "厚生労働省": ("ministry_of_health_labour_and_welfare", "government-agency", "Ministry of Health, Labour and Welfare",
+               "Q1191238", True),
+    "農林水産省": ("ministry_of_agriculture_forestry_and_fisheries", "government-agency",
+               "Ministry of Agriculture, Forestry and Fisheries", "Q1376786", True),
+    "経済産業省": ("ministry_of_economy_trade_and_industry", "government-agency", "Ministry of Economy, Trade and Industry",
+               "Q1197264", True),
+    "国土交通省": ("ministry_of_land_infrastructure_transport_and_tourism", "government-agency",
+               "Ministry of Land, Infrastructure, Transport and Tourism", "Q1376196", True),
+    "環境省": ("ministry_of_the_environment", "government-agency", "Ministry of the Environment", "Q1125558", True),
+    "防衛省": ("ministry_of_defense", "government-agency", "Ministry of Defense", "Q1062689", True),
+    "デジタル庁": ("digital_agency", "government-agency", "Digital Agency", "Q107291492", True),
+    "復興庁": ("reconstruction_agency", "government-agency", "Reconstruction Agency", "Q1056221", True),
+    "海上保安庁": ("japan_coast_guard", "government-agency", "Japan Coast Guard", "Q565418", True),
+    "国家公安委員会": ("national_public_safety_commission", "government-agency", "National Public Safety Commission",
+                 "Q905830", True),
+    "人事院": ("national_personnel_authority", "government-agency", "National Personnel Authority", "Q178314", True),
+    "会計検査院": ("board_of_audit", "government-agency", "Board of Audit", "Q615225", True),
+    "原子力規制委員会": ("nuclear_regulation_authority", "government-agency", "Nuclear Regulation Authority", "Q1502596",
+                  True),
+    "公正取引委員会": ("fair_trade_commission", "government-agency", "Fair Trade Commission", "Q842043", True),
+    "個人情報保護委員会": ("personal_information_protection_commission", "government-agency",
+                   "Personal Information Protection Commission", "Q17221586", True),
+    "カジノ管理委員会": ("casino_regulatory_commission", "government-agency", "Japan Casino Regulatory Commission",
+                  "Q85870678", True),
+    "公安審査委員会": ("public_security_examination_commission", "government-agency",
+                 "Public Security Examination Commission", "Q11391993", True),
+    "公害等調整委員会": ("environmental_dispute_coordination_commission", "government-agency",
+                  "Environmental Dispute Coordination Commission", "Q11392007", True),
+    "中央労働委員会": ("central_labor_relations_commission", "government-agency", "Central Labor Relations Commission",
+                 "Q11363620", True),
+    "運輸安全委員会": ("japan_transport_safety_board", "government-agency", "Japan Transport Safety Board", "Q6157874",
+                 True),
+    "日本学術会議": ("science_council_of_japan", "government-agency", "Science Council of Japan", "Q4346482", True),
+    "日本ユネスコ国内委員会": ("japanese_national_commission_for_unesco", "government-agency",
+                     "Japanese National Commission for UNESCO", "Q11507005", True),
+    # bodies that no longer exist, whose ordinances e-Gov still lists
+    "大蔵省": ("okurasho", "government-agency", "Ministry of the Treasury", "Q910073", False),
+    "総理府": ("sorifu", "government-agency", "Prime Minister's Office", "Q11267653", False),
+    "総理庁": ("soricho", "government-agency", "", None, False),
+    "運輸省": ("unyusho", "government-agency", "Ministry of Transport", "Q8016499", False),
+    "厚生省": ("koseisho", "government-agency", "Ministry of Health and Welfare", "Q841449", False),
+    "通商産業省": ("tsushosangyosho", "government-agency", "Ministry of International Trade and Industry", "Q6867297",
+               False),
+    "建設省": ("kensetsusho", "government-agency", "Ministry of Construction", "Q11065523", False),
+    "農林省": ("norinsho", "government-agency", "Ministry of Agriculture and Forestry", "Q15041360", False),
+    "文部省": ("monbusho", "government-agency", "Ministry of Education, Science, Sports and Culture", "Q11080185",
+             False),
+    "自治省": ("jichisho", "government-agency", "Ministry of Home Affairs", "Q954350", False),
+    "労働省": ("rodosho", "government-agency", "Ministry of Labor", "Q10901420", False),
+    "郵政省": ("yuseisho", "government-agency", "Ministry of Posts and Telecommunications", "Q905554", False),
+    "逓信省": ("teishinsho", "government-agency", "Ministry of Communications", "Q11639479", False),
+    "司法省": ("shihosho", "government-agency", "Ministry of Justice (Shihōshō)", "Q11412265", False),
+    "内務省": ("naimusho", "government-agency", "Home Ministry", "Q1142265", False),
+    "商工省": ("shokosho", "government-agency", "Ministry of Commerce and Industry", "Q3315486", False),
+    "鉄道省": ("tetsudosho", "government-agency", "Ministry of Railways", "Q249654", False),
+    "農商務省": ("noshomusho", "government-agency", "Ministry of Agriculture and Commerce", "Q3315480", False),
+    "運輸通信省": ("unyu_tsushinsho", "government-agency", "", "Q11640495", False),
+    "第一復員省": ("daiichi_fukuinsho", "government-agency", "First Ministry of Demobilization", "Q11602065", False),
+    "第二復員省": ("daini_fukuinsho", "government-agency", "Second Ministry of Demobilization", "Q11602292", False),
+    "経済安定本部": ("keizai_antei_honbu", "government-agency", "Headquarters for Economic Stabilization", "Q24887853",
+               False),
+    "電気通信省": ("denki_tsushinsho", "government-agency", "Ministry of Telecommunications", "Q11660468", False),
+    "法務庁": ("homucho", "government-agency", "Attorney General's Office", "Q11555051", False),
+    "法務府": ("homufu", "government-agency", "", None, False),
+    "電波監理委員会": ("denpa_kanri_iinkai", "government-agency", "Radio Regulatory Commission", "Q11660519", False),
+    "金融再生委員会": ("kinyu_saisei_iinkai", "government-agency", "Financial Reconstruction Commission", "Q11647873",
+                 False),
+    "首都圏整備委員会": ("shutoken_seibi_iinkai", "government-agency", "", "Q11667074", False),
+    "地方財政委員会": ("chiho_zaisei_iinkai", "government-agency", "", "Q11424425", False),
+    "特定個人情報保護委員会": ("tokutei_kojin_joho_hogo_iinkai", "government-agency", "", None, False),
+    "文化財保護委員会": ("bunkazai_hogo_iinkai", "government-agency", "", None, False),
+    "外資委員会": ("gaishi_iinkai", "government-agency", "", None, False),
+    "公認会計士管理委員会": ("konin_kaikeishi_kanri_iinkai", "government-agency", "", None, False),
+    "土地調整委員会": ("tochi_chosei_iinkai", "government-agency", "", None, False),
+    "司法試験管理委員会": ("shiho_shiken_kanri_iinkai", "government-agency", "", None, False),
+}
+# the instrument words of a law number that name the maker directly (the rest are <body>令 or <body>規則)
+_EGOV_MAKER_WORDS = {"政令": "内閣", "勅令": "天皇", "閣令": "内閣総理大臣", "太政官布告": "太政官", "太政官達": "太政官",
+                     "太政官布達": "太政官", "内閣総理大臣決定": "内閣総理大臣"}
+IMPERIAL_DIET_UNTIL = "1947-05-03"       # the Constitution of Japan in force: the National Diet makes Acts from then
+IMPERIAL_DIET_FROM = "1890-11-29"        # the first Imperial Diet opened; an earlier 法律 has no maker lexflow names
+
+
+def egov_makers(law_num: str | None, law_type: str | None = None, promulgated: str | None = None) -> list[str]:
+    """The bodies a Japanese law's number (and, for an Act, its date) name as its maker, as ``EGOV_ISSUERS`` base
+    names: ``平成五年法律第八十八号`` -> ``["国会"]``; ``明治四十年法律第四十五号`` -> ``["帝国議会"]``;
+    ``平成十二年総理府・大蔵省令第九号`` -> ``["総理府", "大蔵省"]``; ``昭和二十四年人事院規則一―一`` -> ``["人事院"]``;
+    ``[]`` when the number names no maker lexflow knows (the Constitution)."""
+    from ..corpus.countries.japan import parse_law_num
+    p = parse_law_num(law_num)
+    if not p:
+        return []
+    word = re.sub(r"[〇一二三四五六七八九十―\-]+$", "", p["kind"])
+    if word == "法律":
+        date = promulgated or f"{p['gregorian']:04d}-12-31"
+        if date < IMPERIAL_DIET_FROM:
+            return []
+        return ["帝国議会" if date < IMPERIAL_DIET_UNTIL else "国会"]
+    if word in _EGOV_MAKER_WORDS:
+        return [_EGOV_MAKER_WORDS[word]]
+    names = []
+    for part in word.split("・"):                  # 総理府・大蔵省令, カジノ管理委員会規則・国土交通省令
+        for tail in ("規則", "規程", "令"):
+            if part.endswith(tail) and len(part) > len(tail) and part not in EGOV_ISSUERS:
+                part = part[:-len(tail)]
+                break
+        if part not in EGOV_ISSUERS:
+            return []
+        names.append(part)
+    return names
+
 # --------------------------------------------------------------------------- keys
+
+_COUNTRY_KEY = re.compile(r"^[a-z]{3}(?:-[a-z]{2,3})?$")
+
+
+def is_country_key(code: str) -> bool:
+    """A country's jurisdiction key (ISO 3166-1 alpha-3, ``jpn``; a subnational one under it, ``aus-nsw``) rather
+    than a US state's postal code (``va``)."""
+    return bool(_COUNTRY_KEY.fullmatch((code or "").strip()))
+
 
 _STATE_NAMES = {
     "alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware",
@@ -813,12 +1104,15 @@ def key_for(kind: str, *parts: str) -> str:
     """Every key form of the contract.  ``parts`` are the natural pieces; names are slugged where the form
     wants a slug, and a part that already is a slug is kept.
 
+    ``st`` is a state's postal code or a country's alpha-3 key (``jpn``; a country's law is ``unit (jpn, law id)``).
+
     code (st[, sub]) · unit (st, act_id prefix) · statute (st, ref) · regulation (st, ref) · gov (gid) ·
     agency (scope, name) · office-type (st, name) · position (scope, name) · position-type (st, name) ·
     role (st, question, actor) or (gid, process, actor) · process (model_id) or (gid, process) ·
     step (model_id, step) or (gid, process, step) · decision (model_id, id) · outcome (model_id, id) ·
     rung (st, question, section_slug, subtype_code) · form (gid, process, id) · vocab (set, slug) ·
-    class (slug) · power (slug) · jurisdiction (st) · case (cluster_id) · private-party ()
+    class (slug) · power (slug) · jurisdiction (st) · case (cluster_id) · private-party () · source (slug of
+    ``SOURCES``: the database a law's statements are read from)
 
     ``class``: the canonical form is ``lexflow:class:<slug>`` (``lexflow:class:court-decision``).  The label form
     an earlier loader wrote for three items (``lexflow:class:court decision``, ``LEGACY_CLASS_KEYS``) is an alias
@@ -857,6 +1151,8 @@ def key_for(kind: str, *parts: str) -> str:
         return f"lexflow:jurisdiction:{p[0].lower()}"
     if kind == "case":
         return f"courtlistener:cluster:{p[0]}"
+    if kind == "source":
+        return f"lexflow:source:{p[0]}"
     if kind == "private-party":
         return PRIVATE_PARTY
     raise ValueError(f"unknown key kind {kind!r}")

@@ -203,7 +203,170 @@ def llm_groups(asker, text: str) -> list[list[str]]:
     return out
 
 
+# Japanese (and other CJK) questions: the runs of kanji, katakana and Latin letters are the terms (hiragana is
+# grammar: particles and inflections), as the law writes them (手続き -> 手続)
+_CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\u3005-\u3007]")
+_CJK_RUN = re.compile(r"[\u3400-\u9fff\uf900-\ufaff\u3005-\u3007\u30a1-\u30ff\uff66-\uff9fA-Za-z0-9０-９Ａ-Ｚａ-ｚ]+")
+CJK_STOP = frozenset("""場合 方法 必要 可能 以下 以上 何 誰 教 等 時 際 件 点 内容 規定 法律 法令 日本 制度 具体的
+どの どこ いつ なぜ""".split())
+CJK_PROCESS = re.compile(r"どう(?:すれば|したら|やって)|手続|申請|申立|届出|請求|方法|流れ")
+CJK_FACTS = re.compile(r"いくら|何日|何年|期間|期限|金額|上限|手数料|料金")
+
+
+def cjk_groups(text: str) -> list[list[str]]:
+    """Concepts of a Japanese question: its kanji, katakana and Latin runs of two or more characters, in order,
+    without the stop terms (場合, 方法 ...), one concept each (the trigram index matches each as a substring, so
+    ``聴聞`` also finds 聴聞手続 and 聴聞調書)."""
+    runs = [r for r in _CJK_RUN.findall(text or "") if len(r) >= 2 and r not in CJK_STOP]
+    return [[r] for r in dict.fromkeys(runs)][:10]
+
+
+def cjk_kind(text: str) -> str:
+    if CJK_FACTS.search(text or ""):
+        return "facts"
+    if CJK_PROCESS.search(text or ""):
+        return "process"
+    return "either"
+
+
+# Portuguese questions (Brazil's law, lexflow/corpus/countries/brazil.py): the thesaurus above and the local model's
+# prompt are English, so a Portuguese question plans from its own content words, each with its plural or singular
+# and a few of the law's words for it (PT_THESAURUS); the phrases in PT_PHRASES stay one concept.  The Brazilian
+# index folds accents (``unicode61 remove_diacritics 2``), so ``informacao`` finds ``informação``.
+_PT = re.compile(r"[ãõ]|ç[ãõaoõu]|\b(?:qual|quais|quem|não|são|você|vocês|posso|devo|podem|devem|há|às|aos|pelo|pela|"
+                 r"pelos|pelas|onde|quanto|quantos|quantas|até|após)\b", re.I)
+PT_STOP = frozenset("""a o as os um uma uns umas de do da dos das no na nos nas em ao aos à às pelo pela pelos pelas por
+para pra com sem sob sobre entre até após ante e ou nem mas que se é são ser sendo sido foi era há ter tem têm tenho
+qual quais quem como onde quando quanto quanta quantos quantas porque porquê este esta estes estas esse essa esses
+essas isso isto aquele aquela aqueles aquelas meu minha meus minhas seu sua seus suas nosso nossa lhe lhes me te nós
+você vocês ele ela eles elas eu já não sim mais menos muito muita muitos muitas pouco também só apenas cada todo
+toda todos todas outro outra outros outras mesmo mesma pode podem posso poderá poderão deve devem devo preciso precisa
+precisam fazer faz feito está estão estar fica ficar vai vão existe existem algum alguma alguns algumas qualquer
+quaisquer coisa coisas caso casos forma tipo tipos lei leis legal legislação norma normas brasil brasileiro brasileira
+federal artigo artigos art regra regras direito afinal então""".split())
+PT_PHRASES: dict[str, list[str]] = {
+    "acesso à informação": ["acesso à informação", "acesso a informações", "acesso às informações"],
+    "dados pessoais": ["dados pessoais", "dado pessoal", "tratamento de dados"],
+    "pessoa jurídica": ["pessoa jurídica", "pessoas jurídicas"], "pessoa física": ["pessoa física", "pessoas físicas"],
+    "contrato de trabalho": ["contrato de trabalho", "relação de emprego", "empregado"],
+    "pensão alimentícia": ["alimentos", "pensão alimentícia"], "união estável": ["união estável", "companheiro"],
+    "violência doméstica": ["violência doméstica", "violência doméstica e familiar"],
+    "medida protetiva": ["medidas protetivas", "medida protetiva"],
+    "incorporação imobiliária": ["incorporação imobiliária", "incorporações imobiliárias", "incorporador"],
+    "justa causa": ["justa causa"], "horas extras": ["horas extras", "horas suplementares", "jornada"],
+    "habeas corpus": ["habeas corpus"], "mandado de segurança": ["mandado de segurança"],
+    "direitos autorais": ["direitos autorais", "direito autoral", "direitos de autor"],
+    "defesa do consumidor": ["consumidor", "defesa do consumidor", "fornecedor"],
+    "prisão preventiva": ["prisão preventiva"], "liberdade provisória": ["liberdade provisória", "fiança"],
+    "improbidade administrativa": ["improbidade administrativa", "improbidade"],
+    "servidor público": ["servidor público", "servidores públicos", "servidor"],
+}
+PT_THESAURUS: dict[str, list[str]] = {
+    "resposta": ["resposta", "respostas", "responder", "pedido", "requerimento", "solicitação"],
+    "responder": ["resposta", "responder", "pedido", "requerimento", "solicitação"],
+    "pedido": ["pedido", "pedidos", "requerimento", "requerimentos", "solicitação"],
+    "pedir": ["pedido", "requerimento", "requerer", "solicitação"],
+    "multa": ["multa", "multas", "penalidade", "sanção"], "pena": ["pena", "penas", "reclusão", "detenção"],
+    "salário": ["salário", "remuneração", "vencimento"], "demissão": ["demissão", "dispensa", "despedida", "rescisão"],
+    "aluguel": ["aluguel", "locação", "locatário", "locador"], "inquilino": ["locatário", "inquilino", "locação"],
+    "herança": ["herança", "sucessão", "herdeiro", "herdeiros"], "empresa": ["empresa", "empresário", "sociedade"],
+    "criança": ["criança", "adolescente"], "idoso": ["idoso", "pessoa idosa"],
+    "incorporador": ["incorporador", "incorporadores", "incorporação"],
+    "aposentadoria": ["aposentadoria", "aposentado", "benefício"], "recurso": ["recurso", "recursos", "apelação"],
+    "prisão": ["prisão", "preso", "custódia"], "divórcio": ["divórcio", "dissolução do casamento"],
+}
+PT_PROCESS = re.compile(r"\bcomo\b|\bprocedimento|\bpedir\b|\brequerer\b|\bsolicitar\b|\brecorrer\b|\bpasso", re.I)
+PT_FACTS = re.compile(r"\bprazo|\bquanto|\bquantos|\bquantas|\bvalor\b|\bmulta\b|\blimite|\bmáximo|\bmínimo|\bidade\b",
+                      re.I)
+
+
+def is_portuguese(text: str) -> bool:
+    return bool(_PT.search(text or "")) and not _CJK.search(text or "")
+
+
+def _fold_pt(s: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", s.lower()) if unicodedata.category(c) != "Mn")
+
+
+def pt_forms(w: str) -> list[str]:
+    """The other number of a Portuguese noun or adjective: ``pedido`` <-> ``pedidos``, ``informação`` <->
+    ``informações``, ``legal`` <-> ``legais``, ``mulher`` <-> ``mulheres``."""
+    out = []
+    if w.endswith("ções"):
+        out.append(w[:-4] + "ção")
+    elif w.endswith("ção"):
+        out.append(w[:-3] + "ções")
+    elif w.endswith("ões"):
+        out += [w[:-3] + "ão"]
+    elif w.endswith("ão"):
+        out += [w[:-2] + "ões"]
+    elif w.endswith("ns"):
+        out.append(w[:-2] + "m")
+    elif w.endswith("is") and len(w) > 4:
+        out.append(w[:-2] + "l")
+    elif w.endswith("es") and len(w) > 4 and w[-3] in "rzs":
+        out.append(w[:-2])
+    elif w.endswith("s") and len(w) > 3:
+        out.append(w[:-1])
+    elif w.endswith("m"):
+        out.append(w[:-1] + "ns")
+    elif w.endswith("l"):
+        out.append(w[:-1] + "is")
+    elif w.endswith(("r", "z")):
+        out.append(w + "es")
+    elif w[-1] in "aeiouáéíóú":
+        out.append(w + "s")
+    return out
+
+
+def pt_groups(text: str) -> list[list[str]]:
+    """Concepts of a Portuguese question: its phrases (PT_PHRASES), then its content words without the stop words,
+    each with its other number and its PT_THESAURUS words; concepts that share a word are merged."""
+    t = (text or "").lower().replace("’", "'")
+    ft = _fold_pt(t)
+    groups: list[list[str]] = []
+    used: set[str] = set()
+    for p, syn in PT_PHRASES.items():
+        if _fold_pt(p) in ft:
+            groups.append(list(dict.fromkeys([p] + syn)))
+            used.update(_fold_pt(w) for w in p.split())
+    stop = {_fold_pt(w) for w in PT_STOP}
+    for w in re.findall(r"[a-zà-ÿ]+(?:-[a-zà-ÿ]+)*", t):
+        f = _fold_pt(w)
+        if f in stop or f in used or len(w) < 3:
+            continue
+        syn = PT_THESAURUS.get(w) or PT_THESAURUS.get(next((k for k in PT_THESAURUS if _fold_pt(k) == f), ""), [])
+        groups.append(list(dict.fromkeys([w] + pt_forms(w) + syn)))
+        used.add(f)
+    merged: list[list[str]] = []
+    for g in groups:
+        for m in merged:
+            if {_fold_pt(x) for x in g} & {_fold_pt(x) for x in m}:
+                m.extend(x for x in g if x not in m)
+                break
+        else:
+            merged.append(g)
+    return [g[:10] for g in merged][:10]
+
+
+def pt_kind(text: str) -> str:
+    if PT_FACTS.search(text or ""):
+        return "facts"
+    if PT_PROCESS.search(text or ""):
+        return "process"
+    return "either"
+
+
 def plan(text: str, asker=None) -> Plan:
+    if _CJK.search(text or ""):
+        # the planner's thesaurus and the local model's prompt are English: a CJK question plans from its own terms
+        p = Plan(text=text.strip(), groups=cjk_groups(text), kind=cjk_kind(text), goal=text.strip().rstrip("?？"),
+                 source="rules-cjk")
+        return p
+    if is_portuguese(text):
+        return Plan(text=text.strip(), groups=pt_groups(text), kind=pt_kind(text), goal=text.strip().rstrip("?"),
+                    source="rules-pt")
     groups = rule_groups(text)
     p = Plan(text=text.strip(), groups=groups, kind=kind_of(text), goal=text.strip().rstrip("?"))
     if asker is not None:

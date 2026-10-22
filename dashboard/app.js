@@ -117,7 +117,9 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
-  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute, hypo: viewHypo };
+  jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute, hypo: viewHypo,
+  benefits: viewBenefits };
+routes.pipeline = viewPipeline;
 async function route() {
   // #/page/arg?key=value: the query part never reaches the page's arguments; pages read it from S.params
   const [hashPath, query = ""] = (location.hash || "#/map").split("?");
@@ -257,6 +259,7 @@ function binColor(v, bins) {
 }
 
 async function viewMap() {
+  if (LAYERS[S.params.get("layer")]) { S.layer = S.params.get("layer"); store("lexflow-layer", S.layer); }   // #/map?layer=index
   if (!S.topo) S.topo = await api("/vendor/us-atlas/counties-albers-10m.json");
   const topo = S.topo;
   const counties = topojson.feature(topo, topo.objects.counties).features;
@@ -547,6 +550,9 @@ async function viewMap() {
         tile("#/coverage", cov.run ? `${fmtInt(cov.adequate)} of ${fmtInt(cov.cells)}` : "–", "questions covered adequately", cov.run ? `${fmtInt(cov.draft)} on drafts alone · run ${cov.run}` : "no coverage run yet"),
         tile("#/query", fmtInt(t.wikibase), "Wikibase items", "statutes, units, processes, steps, roles, forms"),
         tile("#/data", fmtInt(t.index?.sections), "statute sections indexed", `${fmtInt(t.index?.states)} states${t.index?.regulations ? ` · ${fmtInt(t.index.regulations)} regulation sections` : ""}`),
+        // countries' national law (statutes_jpn ...): articles and laws, apart from the states' sections
+        ...Object.entries(t.countries || {}).map(([k, c]) => tile(`#/query/law-in-order/${encodeURIComponent(`unit=lexflow:code:${k}`)}`,
+          fmtInt(c.sections), `articles of ${c.name}'s law indexed`, `${fmtInt(c.laws)} laws · ${k}`)),
         pool && pool.pool ? tile("#/compute", `${fmtInt(pool.totals?.online)} of ${fmtInt(pool.totals?.nodes)}`, "pool nodes online", `${fmtInt(pool.totals?.slots)} slots · ${fmtInt(pool.totals?.busy)} busy`) : null));
   }
   function draw() {
@@ -675,7 +681,8 @@ async function viewSetup() {
       onclick: async () => {
         const args = Object.fromEntries(Object.entries(values).map(([k, f]) => [k, f()]));
         run.disabled = true;
-        await startRunJob(s.id, args);
+        // a real push or publish is refused here (409): it is started from the Pipeline page, after a dry run
+        try { await startRunJob(s.id, args); } catch (e) { alert(e.message); }
         load();
       } }, job ? "Running…" : s.status === "done" ? "Run again" : "Run");
     const progress = job ? h("div", { class: "progress" },
@@ -908,6 +915,11 @@ function decisionTable(d) {
 // ==================================================================== ASK
 const ASK_STATUS = { answered: ["done", "Answered"], partial: ["partial", "Partly answered"], not_found: ["blocked", "Law not found"],
   "no-statutes": ["optional", "No statute file"] };
+// a state's or a country's name from its key (va -> Virginia, jpn -> Japan)
+function jurName(st) {
+  return (S.meta.states.find((s) => s.state === st) || (S.meta.countries || []).find((c) => c.state === st) || {}).name || st;
+}
+
 function askStatus(s) { const [ic, word] = ASK_STATUS[s] || ["todo", s || "–"]; return statusEl(ic, word); }
 
 async function viewAsk() {
@@ -926,9 +938,9 @@ async function viewAsk() {
   function drawChips() {
     rc(chips, chosen.length ? chosen.map((t, i) => h("span", { class: "tag", style: "display:inline-flex;gap:6px;align-items:center" }, t.label,
       h("button", { class: "icon-btn", "aria-label": `Remove ${t.label}`, onclick: () => { chosen.splice(i, 1); saveTargets(); } }, "×")))
-      : h("span", { class: "muted" }, "No states or places chosen yet."));
+      : h("span", { class: "muted" }, "No states, countries or places chosen yet."));
   }
-  const find = h("input", { type: "search", placeholder: "Add a state, county, city or town", "aria-label": "Add a state or place", style: "width:min(360px, 100%)", autocomplete: "off" });
+  const find = h("input", { type: "search", placeholder: "Add a state, county, city or town, or a country (Japan)", "aria-label": "Add a state, country or place", style: "width:min(360px, 100%)", autocomplete: "off" });
   const results = h("div", { class: "card", style: "position:absolute;z-index:5;min-width:320px;display:none;max-height:300px;overflow:auto" });
   let timer = null;
   find.addEventListener("input", () => {
@@ -1035,7 +1047,7 @@ async function viewAnswer(qid, target) {
   const sec = r.sections || {};
   const local = r.local || {};
   const metrics = r.metrics || {};
-  const place = local.name || (S.meta.states.find((s) => s.state === r.state) || {}).name || r.state;
+  const place = local.name || jurName(r.state);
   const quotes = a.quotes || [];
   const qById = Object.fromEntries(quotes.map((q) => [q.id, q]));
   const claims = (a.summary || {}).claims || [];
@@ -1343,6 +1355,420 @@ async function viewCompute() {
   }
   onRefresh(load);
   await load();
+}
+
+// =============================================================== PIPELINE
+// lexflow as a Petri net (GET /api/pipeline): each circle is a store and its number the tokens it holds, each bar a
+// job that moves tokens from the stores it reads (arrows in) to those it writes (arrows out); the compute pool is the
+// band underneath the jobs that call a model.  Drawn from the payload, polled every 15 s while the page is open.
+const PIPE = { x0: 140, y0: 66, colW: 180, rowH: 100, r: 27, barW: 12, barH: 44, width: 1130 };
+const PIPE_COLS = ["Sources", "Index & research", "Drafts", "Verified", "Ready", "Published"];
+const PIPE_STATE = { never: ["todo", "Never run"], running: ["running", "Running"], queued: ["queued", "Queued"],
+  done: ["done", "Last run finished"], failed: ["failed", "Last run failed"], cancelled: ["optional", "Last run cancelled"] };
+const PIPE_FLAG = { force: "Redo", no_llm: "Skip models", regulations: "+ regulations", full: "Full resend", drafts: "+ drafts" };
+const SVGNS = "http://www.w3.org/2000/svg";
+let pipeTimer = null;
+function sv(tag, attrs = {}, ...kids) {
+  const el = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) {
+    if (kid == null || kid === false) continue;
+    el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+function compactNum(n) {
+  if (n == null) return "?";
+  const a = Math.abs(n);
+  if (a >= 1e6) return `${(n / 1e6).toFixed(a >= 1e7 ? 0 : 1)}M`;
+  if (a >= 1e4) return `${Math.round(n / 1e3)}k`;
+  return Number(n).toLocaleString();
+}
+function wrapWords(text, max) {
+  const lines = [];
+  let cur = "";
+  for (const w of String(text || "").split(/\s+/)) {
+    if (cur && `${cur} ${w}`.length > max) { lines.push(cur); cur = w; } else cur = cur ? `${cur} ${w}` : w;
+  }
+  if (cur) lines.push(cur);
+  return lines.slice(0, 2);
+}
+const secs = (s) => (s == null ? "–" : s < 90 ? `${Math.round(s)} s` : s < 5400 ? `${Math.round(s / 60)} min` : `${(s / 3600).toFixed(1)} h`);
+// a path through points with rounded corners (the long way round, for an arc back to the left)
+function roundedPath(pts, rad = 10) {
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [px, py] = pts[i - 1], [x, y] = pts[i], [nx, ny] = pts[i + 1];
+    const l1 = Math.hypot(x - px, y - py) || 1, l2 = Math.hypot(nx - x, ny - y) || 1, r = Math.min(rad, l1 / 2, l2 / 2);
+    d += ` L${x - ((x - px) / l1) * r},${y - ((y - py) / l1) * r} Q${x},${y} ${x + ((nx - x) / l2) * r},${y + ((ny - y) / l2) * r}`;
+  }
+  const last = pts[pts.length - 1];
+  return `${d} L${last[0]},${last[1]}`;
+}
+
+async function viewPipeline() {
+  clearInterval(pipeTimer);
+  const notes = h("div");
+  const chart = h("div", { class: "pipe-scroll" });
+  const legend = h("div", { class: "legend pipe-legend" });
+  const side = h("aside", { class: "card pipe-side", "aria-live": "polite", hidden: true });
+  const layout = h("div", { class: "pipe-layout" }, h("section", { class: "card", "aria-label": "The pipeline as a Petri net" }, chart, legend), side);
+  const lists = h("div", { class: "grid two pipe-lists" });
+  const others = h("p", { class: "muted", style: "font-size:12.5px;margin:12px 2px 0" });
+  const dialog = h("dialog", { class: "pipe-dialog", "aria-labelledby": "pipe-dialog-title" });
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Pipeline"),
+      h("p", {}, "lexflow as a Petri net: each circle is a store and its number the tokens it holds now; each bar is a job that moves tokens from the stores it reads to the stores it writes. Click a store to open the page that lists it, a bar for its status, its log, the work waiting for it and what it can run."))),
+    notes, layout, lists, others, dialog);
+  const parts = { head: h("div", { class: "sec pipe-head" }), status: h("div"), info: h("div"), actions: h("div", { class: "sec" }), log: h("div") };
+  side.append(...Object.values(parts));
+  let data = null, panelFor = null, logKey = null;
+  let sel = S.params.get("open") || null;
+  const X = (col) => PIPE.x0 + col * PIPE.colW;
+  const Y = (row) => PIPE.y0 + row * PIPE.rowH;
+  const laneY = Y(4) + PIPE.r + 41, bandY = laneY + 14, laneX = X(5) + 70;
+  const height = bandY + 40 + 12;
+  const place = (id) => data.places.find((p) => p.id === id);
+  const trans = (id) => data.transitions.find((t) => t.id === id);
+  const linkOf = (p) => { const name = (p.href || "").split("?")[0].split("/")[1]; return routes[name] ? p.href : null; };
+
+  function select(id) {
+    sel = id;
+    try { history.replaceState(null, "", id ? `#/pipeline?open=${encodeURIComponent(id)}` : "#/pipeline"); } catch (e) { /* not allowed */ }
+    drawChart();
+    drawPanel();
+    if (id && matchMedia("(max-width: 1080px)").matches) side.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function arcPaths(t) {
+    // the arrows of a transition: in from each place it reads, out to each place it writes
+    const bx = X(t.col), by = Y(t.row), out = [];
+    const spread = (i, n) => (n > 1 ? Math.max(-16, Math.min(16, (i - (n - 1) / 2) * 10)) : 0);
+    t.reads.forEach((pid, i) => {
+      const p = place(pid);
+      if (!p || p.band) return;
+      const px = X(p.col), py = Y(p.row), ey = by + spread(i, t.reads.length), ex = bx - PIPE.barW / 2 - 2;
+      if (px > bx) {        // a store to the right of the job (the coverage test reads the Wikibase): round the bottom lane
+        out.push({ d: roundedPath([[px + PIPE.r, py], [laneX, py], [laneX, laneY], [bx - 26, laneY], [bx - 26, ey], [ex, ey]]), far: true });
+        return;
+      }
+      const ang = Math.atan2(ey - py, ex - px), sx = px + PIPE.r * Math.cos(ang), sy = py + PIPE.r * Math.sin(ang);
+      const k = Math.max(22, (ex - sx) * 0.5);
+      out.push({ d: `M${sx},${sy} C${sx + k},${sy} ${ex - k},${ey} ${ex},${ey}`, far: Math.abs(p.col - t.col) > 1.6 || Math.abs(p.row - t.row) > 2.2 });
+    });
+    t.writes.forEach((pid, i) => {
+      const p = place(pid);
+      if (!p || p.band) return;
+      const px = X(p.col), py = Y(p.row), sy = by + spread(i, t.writes.length), sx = bx + PIPE.barW / 2 + 2;
+      const ang = Math.atan2(sy - py, sx - px), ex = px + (PIPE.r + 3) * Math.cos(ang), ey = py + (PIPE.r + 3) * Math.sin(ang);
+      const k = Math.max(22, Math.abs(ex - sx) * 0.5);
+      out.push({ d: `M${sx},${sy} C${sx + k},${sy} ${ex - k},${ey} ${ex},${ey}`, far: Math.abs(p.col - t.col) > 1.6 || Math.abs(p.row - t.row) > 2.2 });
+    });
+    return out;
+  }
+  function hot(id, on) {
+    for (const a of chart.querySelectorAll(`[data-arc="${CSS.escape(id)}"]`)) {
+      const lit = on || id === sel;
+      a.classList.toggle("hot", lit);
+      a.setAttribute("marker-end", `url(#${lit ? "pipe-head-hot" : "pipe-head"})`);
+    }
+  }
+  function placeTip(evt, p) {
+    showTip(evt, [h("div", { style: "font-weight:600" }, p.label), h("div", { class: "v" }, p.count == null ? "–" : fmtInt(p.count)),
+      h("div", { class: "k" }, p.meaning), p.detail ? h("div", { class: "k", style: "margin-top:4px" }, p.detail) : null,
+      linkOf(p) ? h("div", { class: "k", style: "margin-top:4px" }, "Click to open the list") : null]);
+  }
+  function barTip(evt, t) {
+    const [, word] = PIPE_STATE[t.status.state] || ["todo", t.status.state];
+    showTip(evt, [h("div", { style: "font-weight:600" }, t.label), h("div", { class: "k" }, word + (t.status.active && t.status.active.status === "running" ? ` · ${pct(t.status.active.progress)}` : "")),
+      t.waiting && t.waiting.text ? h("div", { class: "k", style: "margin-top:4px" }, t.waiting.text) : null,
+      t.external ? h("div", { class: "k", style: "margin-top:4px" }, "Writes outside lexflow") : null,
+      h("div", { class: "k", style: "margin-top:4px" }, "Click for status, log and actions")]);
+  }
+  function drawChart() {
+    const svg = sv("svg", { viewBox: `0 0 ${PIPE.width} ${height}`, role: "img", "aria-label": "Pipeline: stores and the jobs that move tokens between them" });
+    const defs = sv("defs");
+    for (const [id, cls] of [["pipe-head", "pipe-arrow"], ["pipe-head-hot", "pipe-arrow hot"]]) {
+      defs.append(sv("marker", { id, viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" },
+        sv("path", { d: "M0,1 L9,5 L0,9 z", class: cls })));
+    }
+    svg.append(defs);
+    PIPE_COLS.forEach((c, i) => svg.append(sv("text", { x: X(i), y: 20, class: "pipe-col" }, c)));
+    // the compute band, and a dotted spine from it up to each column of jobs that call a model
+    const pool = place("compute");
+    const arcs = sv("g"), spines = sv("g"), bars = sv("g"), stores = sv("g");
+    if (pool) {
+      const band = sv("a", { href: "#/compute", class: "pipe-band", "aria-label": `Compute pool: ${pool.detail || ""}` },
+        sv("rect", { x: 16, y: bandY, width: PIPE.width - 32, height: 40, rx: 8 }),
+        sv("text", { x: 30, y: bandY + 24, class: "pipe-band-title" }, "Compute pool"),
+        sv("text", { x: 130, y: bandY + 24, class: "pipe-band-sub" }, pool.detail || ""));
+      band.addEventListener("pointermove", (e) => placeTip(e, pool));
+      band.addEventListener("pointerleave", hideTip);
+      svg.append(band);
+      const cols = {};
+      for (const t of data.transitions.filter((t) => t.model)) (cols[t.col] = cols[t.col] || []).push(t);
+      for (const ts of Object.values(cols)) {
+        const top = ts.reduce((a, b) => (b.row < a.row ? b : a));
+        const optional = ts.every((t) => t.model === "optional");
+        spines.append(sv("path", { d: `M${X(top.col)},${bandY} L${X(top.col)},${Y(top.row) + PIPE.barH / 2}`, class: `pipe-spine${optional ? " optional" : ""}` }));
+      }
+    }
+    for (const t of data.transitions) {
+      for (const a of arcPaths(t)) {
+        const on = t.id === sel;
+        arcs.append(sv("path", { d: a.d, "data-arc": t.id, class: `pipe-arc${a.far ? " far" : ""}${on ? " hot" : ""}`, "marker-end": `url(#${on ? "pipe-head-hot" : "pipe-head"})` }));
+      }
+    }
+    for (const t of data.transitions) {
+      const bx = X(t.col), by = Y(t.row), st = t.status.state, act = t.status.active;
+      const [, word] = PIPE_STATE[st] || ["todo", st];
+      const g = sv("g", { class: `pipe-bar ${st}${t.id === sel ? " sel" : ""}`, tabindex: 0, role: "button",
+        "aria-label": `${t.label}: ${word}${t.external ? ", writes outside lexflow" : ""}`, "data-t": t.id });
+      g.append(sv("rect", { class: "hit", x: bx - 18, y: by - PIPE.barH / 2 - 6, width: 36, height: PIPE.barH + 12, rx: 5 }),
+        sv("rect", { class: "body", x: bx - PIPE.barW / 2, y: by - PIPE.barH / 2, width: PIPE.barW, height: PIPE.barH, rx: 2 }));
+      if (st === "running" && act) {
+        const hh = Math.max(3, (act.progress || 0) * PIPE.barH);
+        g.append(sv("rect", { class: "fill", x: bx - PIPE.barW / 2, y: by + PIPE.barH / 2 - hh, width: PIPE.barW, height: hh, rx: 2 }));
+      }
+      if (t.external) g.append(sv("text", { x: bx + PIPE.barW / 2 + 3, y: by - PIPE.barH / 2 + 8, class: "pipe-ext" }, "↗"));
+      wrapWords(t.label, 13).forEach((line, i) => g.append(sv("text", { x: bx, y: by + PIPE.barH / 2 + 14 + i * 12, class: "pipe-bar-label" }, line)));
+      g.addEventListener("click", () => select(t.id));
+      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(t.id); } });
+      g.addEventListener("pointerenter", () => hot(t.id, true));
+      g.addEventListener("pointerleave", () => { hot(t.id, false); hideTip(); });
+      g.addEventListener("pointermove", (e) => barTip(e, t));
+      bars.append(g);
+    }
+    for (const p of data.places.filter((p) => !p.band)) {
+      const px = X(p.col), py = Y(p.row), href = linkOf(p);
+      const cls = `pipe-place${p.count == null ? " unknown" : ""}${p.error ? " error" : ""}${p.id === "ready" && p.count ? " ready" : ""}`;
+      const g = href ? sv("a", { href, class: cls, "aria-label": `${p.label}: ${p.count == null ? "not counted" : fmtInt(p.count)}` })
+        : sv("g", { class: cls, tabindex: 0, "aria-label": `${p.label}: ${p.count == null ? "not counted" : fmtInt(p.count)}` });
+      g.append(sv("circle", { cx: px, cy: py, r: PIPE.r }), sv("text", { x: px, y: py, class: "pipe-count" }, compactNum(p.count)));
+      wrapWords(p.label, 16).forEach((line, i) => g.append(sv("text", { x: px, y: py + PIPE.r + 15 + i * 13, class: "pipe-label" }, line)));
+      if (p.id === "ready") g.addEventListener("click", (e) => { e.preventDefault(); hideTip(); select("wikibase"); });
+      g.addEventListener("pointermove", (e) => placeTip(e, p));
+      g.addEventListener("pointerleave", hideTip);
+      stores.append(g);
+    }
+    svg.append(spines, arcs, bars, stores);
+    rc(chart, svg);
+  }
+  function drawLegend() {
+    const bar = (cls, word) => h("span", {}, h("span", { class: `sw pipe-sw ${cls}` }), word);
+    rc(legend,
+      h("span", {}, h("span", { class: "sw pipe-sw store" }), "store (its tokens)"),
+      bar("done", "job: idle"), bar("running", "running"), bar("queued", "queued"), bar("failed", "last run failed"), bar("never", "never run"),
+      h("span", {}, h("strong", { style: "margin-right:4px" }, "↗"), "writes outside lexflow"),
+      h("span", {}, h("span", { class: "sw pipe-sw spine" }), "calls a model on the compute pool"),
+      h("span", { class: "about" }, `Counts as of ${new Date(data.cached_at).toLocaleTimeString()} (kept ${data.ttl} s, fresh after a job ends); job states are live. Dashed arrows are the long ones; hover a job to light up its arrows.`));
+  }
+  function drawNotes() {
+    const ow = data.other_work || [];
+    rc(notes,
+      ow.length ? h("div", { class: "notice" }, icon("info"), h("div", {}, h("strong", {}, "Other work running in the container: "),
+        "logs written in the last 10 minutes by jobs not started from this dashboard: ",
+        ow.slice(0, 8).map((w) => `${w.name} (${secs(w.ago_s)} ago)`).join(", "), ow.length > 8 ? ` and ${ow.length - 8} more` : "")) : null,
+      data.running.length ? h("p", { class: "muted", style: "margin:0 0 12px" }, `${data.running.length} dashboard job${data.running.length === 1 ? "" : "s"} running or queued: `,
+        ...data.running.map((j, i) => [i ? ", " : "", h("a", { href: `#/job/${j.id}` }, `#${j.id} ${j.step}`)])) : null);
+  }
+  function drawLists() {
+    rc(lists,
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Stores"), h("p", {}, "What each circle holds now."))),
+        h("div", { class: "card-pad" }, sortableTable([
+          { key: "label", label: "Store", render: (p) => (linkOf(p) ? h("a", { href: p.href, onclick: (e) => { if (p.id === "ready") { e.preventDefault(); select("wikibase"); } } }, p.label) : p.label) },
+          { key: "count", label: "Holds", num: true, render: (p) => (p.count == null ? "–" : fmtInt(p.count)) },
+          { key: "detail", label: "What", render: (p) => h("span", { class: "ink-2", style: "font-size:12.5px" }, p.detail || p.meaning) }], data.places))),
+      h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Jobs"), h("p", {}, "Each bar of the chart; click one for its panel."))),
+        h("div", { class: "card-pad" }, sortableTable([
+          { key: "label", label: "Job", render: (t) => [t.label, t.external ? " ↗" : ""] },
+          { key: "state", label: "Status", sort: (t) => t.status.state, render: (t) => statusEl(...(PIPE_STATE[t.status.state] || ["todo", t.status.state])) },
+          { key: "waiting", label: "Work waiting", sort: (t) => t.waiting.count, render: (t) => h("span", { class: "ink-2", style: "font-size:12.5px" }, t.waiting.text) }],
+        data.transitions, { onRow: (t) => select(t.id) }))));
+    rc(others, data.other_steps.length ? ["Steps not on the chart (they feed the map, the scores or the index tags): ", data.other_steps.map((s) => s.title).join(", "), "; run them from ", h("a", { href: "#/setup" }, "Setup"), "."] : null);
+  }
+  function drawPanel() {
+    const t = sel ? trans(sel) : null;
+    layout.classList.toggle("open", !!t);
+    side.hidden = !t;
+    if (!t) { panelFor = null; return; }
+    if (panelFor !== t.id) { drawHead(t); drawActions(t); panelFor = t.id; logKey = null; }
+    drawStatus(t);
+    drawInfo(t);
+    loadLog(t);
+  }
+  function drawHead(t) {
+    rc(parts.head,
+      h("div", { class: "row-flex" }, h("h2", { style: "margin:0" }, t.label),
+        h("button", { class: "icon-btn right", type: "button", "aria-label": "Close the panel", onclick: () => select(null) }, "×")),
+      h("div", { class: "muted", style: "font-size:12.5px;margin-top:2px" }, t.title),
+      h("div", { class: "row-flex", style: "margin-top:6px;gap:6px" },
+        t.external ? h("span", { class: "tag" }, "writes outside lexflow ↗") : null,
+        t.model ? h("span", { class: "tag" }, t.model === "optional" ? "may call a model" : "uses the compute pool") : null,
+        t.id === "plan" ? h("span", { class: "tag" }, "dry runs only") : null));
+  }
+  function jobLine(j, label) {
+    if (!j) return null;
+    return [h("dt", {}, label), h("dd", {}, h("a", { href: `#/job/${j.id}` }, `#${j.id}`), ` ${j.status}${j.real === false && ["wikibase", "publish"].includes(j.step) ? " (dry run)" : j.real && ["wikibase", "publish"].includes(j.step) ? " (real)" : ""}`,
+      j.finished_at ? ` · ${ago(j.finished_at)}` : j.started_at ? ` · started ${ago(j.started_at)}` : "", j.seconds != null ? ` · ${secs(j.seconds)}` : "")];
+  }
+  function drawStatus(t) {
+    const st = t.status, act = st.active, last = st.last;
+    const [ic, word] = PIPE_STATE[st.state] || ["todo", st.state];
+    const j = act || last;
+    rc(parts.status, h("div", { class: "sec" },
+      h("div", { class: "row-flex" }, statusEl(ic, act && act.via ? `Running as part of quickstart #${act.id}` : word)),
+      j && j.message ? h("div", { class: "ink-2", style: "font-size:12.5px;margin-top:4px;overflow-wrap:anywhere" }, j.message) : null,
+      act && act.status === "running" ? h("div", { class: "meter" }, h("span", { style: `width:${Math.round((act.progress || 0) * 100)}%` })) : null,
+      h("dl", { class: "kv", style: "margin-top:8px" }, jobLine(act, "Now"), jobLine(last, "Last finished"),
+        !j ? [h("dt", {}, "Jobs"), h("dd", {}, "never run from the dashboard")] : null)));
+  }
+  function placeLinks(ids) {
+    return ids.flatMap((id, i) => { const p = place(id); if (!p) return []; const href = linkOf(p); return [i ? ", " : "", href ? h("a", { href }, p.label) : p.label]; });
+  }
+  // h() flattens one level of children: the rows and their values are flattened here
+  function kvRows(rows) { return h("dl", { class: "kv" }, rows.filter(Boolean).flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, [v].flat(Infinity))])); }
+  function scopeWords(sc) { sc = sc || {}; return `${sc.states && sc.states.length ? `states ${sc.states.join(", ")}` : "every state"}${sc.drafts ? ", with drafts" : ""}${sc.full ? ", full resend" : ""}`; }
+  function drawInfo(t) {
+    const wb = data.wikibase || {}, pub = data.publish || {};
+    const blocks = [h("div", { class: "sec" }, kvRows([
+      ["Reads", t.reads.length ? placeLinks(t.reads) : "outside data"],
+      (t.also || []).length ? ["Also reads", [placeLinks(t.also), h("span", { class: "muted" }, " (not drawn)")]] : null,
+      ["Writes", placeLinks(t.writes)],
+      ["Work waiting", t.waiting.text || "–"],
+      t.cost ? ["Cost", t.cost] : null]))];
+    if (t.id === "plan" || t.id === "wikibase") {
+      const d = wb.dry_run;
+      blocks.push(h("div", { class: "sec" }, h("h3", {}, "Last dry run"),
+        d ? kvRows([
+          ["When", `${d.generated} (${secs(d.age_s)} ago)${d.job ? `, job #${d.job}` : ""}`],
+          ["Scope", scopeWords(d.scope)],
+          ["Creates", `${fmtInt(d.creates)} (pass 1)`], ["Updates", `${fmtInt(d.updates)} (pass 2)`],
+          ["Held", `${fmtInt(d.held_count)} by the lint: skipped, never written`],
+          ["Dropped", `${fmtInt(d.dropped_snaks)} statements naming an item with no id`],
+          Object.keys(d.failures_by_code || {}).length ? ["Failures", Object.entries(d.failures_by_code).map(([k, n]) => `${k} ${n}`).join(", ")] : null,
+          ["Push", d.refusal ? h("span", { style: "color:var(--critical)" }, `not now: ${d.refusal}`) : `allowed for ${secs(d.expires_in_s)} more`]])
+          : h("p", { class: "muted", style: "margin:4px 0" }, "No dry run recorded here yet: a push needs one from the last 24 hours."),
+        wb.plan ? h("p", { class: "muted", style: "font-size:12px;margin:8px 0 0;overflow-wrap:anywhere" },
+          `Plan file ${wb.plan.path}: ${wb.plan.dry_run ? "a dry run" : "a real push"} of ${wb.plan.generated}, ${fmtInt(wb.plan.items)} items, ${fmtInt(wb.plan.would_write)} to write.`) : null,
+        h("p", { class: "muted", style: "font-size:12px;margin:4px 0 0;overflow-wrap:anywhere" }, wb.lint
+          ? `Lint report ${wb.lint.generated}: ${fmtInt(wb.lint.held_count)} held${Object.keys(wb.lint.held_by_kind || {}).length ? ` (${Object.entries(wb.lint.held_by_kind).map(([k, n]) => `${k} ${n}`).join(", ")})` : ""}.`
+          : "No lint report yet: the dry run makes one."),
+        wb.credentials === false ? h("p", { class: "muted", style: "font-size:12px" }, "WIKIBASE_BOT_USER and WIKIBASE_BOT_PASSWORD are not set: a push would be refused.") : null));
+    }
+    if (t.id === "publish") {
+      const d = pub.dry_run;
+      blocks.push(h("div", { class: "sec" }, h("h3", {}, "Last dry run"),
+        d ? kvRows([["When", `${d.generated} (${secs(d.age_s)} ago)`], ["Pages", fmtInt(d.pages)],
+          ["Would write", fmtInt(d.would_write)], ["Unchanged", d.compared ? fmtInt(d.unchanged) : "not compared"],
+          d.unread ? ["Not read", fmtInt(d.unread)] : null, ["Corrections", d.corrections || "–"],
+          ["Publish", d.refusal ? h("span", { style: "color:var(--critical)" }, `not now: ${d.refusal}`) : `allowed for ${secs(d.expires_in_s)} more`]])
+          : h("p", { class: "muted", style: "margin:4px 0" }, "No dry run recorded yet: a publish needs one from the last 24 hours."),
+        !pub.corrections_set ? h("p", { class: "muted", style: "font-size:12px" }, `LEXFLOW_CORRECTIONS is ${pub.corrections_problem || "not set"}: nothing is written, a dry run included, until it is an address readers can reach.`) : null));
+    }
+    blocks.push(h("details", { class: "sec" }, h("summary", { style: "cursor:pointer" }, "About this step"), h("p", { class: "ink-2", style: "font-size:12.5px" }, t.why)));
+    rc(parts.info, ...blocks);
+  }
+  function drawActions(t) {
+    const rows = t.actions.map((a) => {
+      if (a.kind === "link") return h("div", { class: "pipe-action" }, h("a", { class: "btn", href: a.href }, a.label));
+      const values = {};
+      const opts = h("div", { class: "row-flex", style: "gap:6px 10px" });
+      for (const p of a.params || []) {
+        if (["states", "places", "questions"].includes(p)) {
+          const key = `lexflow-${{ states: "st", places: "pl", questions: "qs" }[p]}-${t.step}`;
+          const def = p === "states" && t.step !== "wikibase" ? "va" : "";
+          const inp = h("input", { type: "text", value: store(key) ?? def, style: "width:150px",
+            placeholder: p === "states" ? (t.step === "wikibase" ? "states (blank: all)" : "states: va,dc or all") : p, "aria-label": `${p} for ${t.label}` });
+          values[p] = () => { store(key, inp.value); return inp.value || undefined; };
+          opts.append(inp);
+        } else {
+          const cb = h("input", { type: "checkbox" });
+          values[p] = () => cb.checked;
+          opts.append(h("label", { class: "check" }, cb, PIPE_FLAG[p] || p));
+        }
+      }
+      const out = h("span", { class: "muted", style: "font-size:12.5px" });
+      const btn = h("button", { class: `btn ${a.confirm ? "danger" : a.kind === "dry_run" ? "primary" : ""}`, type: "button", onclick: async () => {
+        if (a.confirm) { openConfirm(t, a, out); return; }
+        const args = { ...a.args, ...Object.fromEntries(Object.entries(values).map(([k, f]) => [k, f()])) };
+        if (a.kind === "run" && !confirm(`Start “${t.title}”${args.states ? ` for ${args.states}` : ""}? It runs as a background job.`)) return;
+        btn.disabled = true;
+        try { const id = await startRunJob(t.step, args); rc(out, "queued as ", h("a", { href: `#/job/${id}` }, `job #${id}`)); await load(); }
+        catch (e) { rc(out, h("span", { style: "color:var(--critical)" }, e.message)); }
+        btn.disabled = false;
+      } }, a.label);
+      return h("div", { class: "pipe-action" }, opts.childNodes.length ? opts : null, h("div", { class: "row-flex" }, btn, out));
+    });
+    rc(parts.actions, h("h3", { style: "margin-bottom:6px" }, "Actions"), rows.length ? rows : h("p", { class: "muted" }, "Nothing to run from here."),
+      t.id === "wikibase" ? h("p", { class: "muted", style: "font-size:12px;margin:8px 0 0" }, "The dry run comes first: the push asks you to confirm its numbers, and is refused if the graph, the lint or the Wikibase record changed since.") : null);
+  }
+  function openConfirm(t, a, out) {
+    const push = a.confirm === "wikibase";
+    const d = push ? (data.wikibase || {}).dry_run : (data.publish || {}).dry_run;
+    const why = !d ? "No dry run has been recorded yet: run the dry run first." : d.refusal;
+    const site = push ? (data.wikibase || {}).site : (data.publish || {}).site;
+    const host = (() => { try { return new URL(site).hostname; } catch (e) { return site || "the site"; } })();
+    const go = h("button", { class: "btn danger", type: "button", disabled: !!why, onclick: async () => {
+      go.disabled = true;
+      const args = push ? { ...a.args, dry_run_id: d.id, states: (d.scope.states || []).join(","), drafts: !!d.scope.drafts, full: !!d.scope.full }
+        : { ...a.args, dry_run_id: d.id };
+      try { const id = await startRunJob(t.step, args); dialog.close(); rc(out, "started as ", h("a", { href: `#/job/${id}` }, `job #${id}`)); await load(); }
+      catch (e) { rc(msg, h("span", { style: "color:var(--critical)" }, e.message)); go.disabled = false; }
+    } }, push ? "Push for real" : "Publish for real");
+    const msg = h("p", { style: "margin:10px 0 0" }, why ? h("span", { style: "color:var(--critical)" }, why) : null);
+    const numbers = !d ? null : push ? kvRows([
+      ["Dry run", `${d.generated} (${secs(d.age_s)} ago)`], ["Scope", scopeWords(d.scope)], ["Items", fmtInt(d.items)],
+      ["Creates", `${fmtInt(d.creates)} new items (pass 1)`], ["Updates", `${fmtInt(d.updates)} items’ statements (pass 2)`],
+      ["Held", `${fmtInt(d.held_count)} items the lint holds: skipped, never written`],
+      ["Dropped", `${fmtInt(d.dropped_snaks)} statements that name an item with no id yet`]])
+      : kvRows([["Dry run", `${d.generated} (${secs(d.age_s)} ago)`], ["Pages", fmtInt(d.pages)], ["Writes", `${fmtInt(d.would_write)} pages`],
+        ["Unchanged", d.compared ? fmtInt(d.unchanged) : "not compared"], ["Corrections", d.corrections || "–"]]);
+    rc(dialog, h("form", { method: "dialog", class: "card-pad" },
+      h("h2", { id: "pipe-dialog-title" }, push ? `Push to ${host}?` : `Publish to ${host}?`),
+      h("p", { class: "ink-2" }, push
+        ? `This writes to ${site} with the bot account: a fresh lint, then pass 1 (creates the new items: labels, descriptions and their legal identifier) and pass 2 (writes every item’s statements). It never deletes or merges an item: on the items lexflow owns, pass 2 replaces their statements; on the others it only adds the statements they lack.`
+        : `This writes the ${(data.publish || {}).namespace || "lexflow"}: pages to ${site} with the bot account, and no page outside that namespace. It never deletes a page.`),
+      numbers,
+      h("p", { class: "muted", style: "font-size:12.5px" }, push
+        ? "The job is refused if the graph, the lint or the Wikibase record has changed since this dry run."
+        : "The job is refused if the pages have changed since this dry run."),
+      msg,
+      h("div", { class: "row-flex", style: "justify-content:flex-end;margin-top:14px" }, h("button", { class: "btn", value: "cancel" }, "Cancel"), go)));
+    dialog.showModal();
+  }
+  async function loadLog(t) {
+    const j = t.status.active || t.status.last;
+    if (!j) { rc(parts.log); logKey = null; return; }
+    const key = `${j.id}:${j.status}:${j.progress}:${j.message}`;
+    if (key === logKey) return;
+    logKey = key;
+    try {
+      const r = await api(`/api/jobs/${j.id}?lines=30`);
+      if (sel !== t.id) return;
+      const pre = h("pre", { class: "log" }, r.log || "(no output)");
+      rc(parts.log, h("div", { class: "sec" }, h("div", { class: "row-flex" }, h("h3", {}, `Log of job #${j.id}`), h("a", { class: "right", href: `#/job/${j.id}`, style: "font-size:12px" }, "Full log")), pre));
+      pre.scrollTop = pre.scrollHeight;
+    } catch (e) { rc(parts.log, h("div", { class: "sec muted" }, `No log: ${e.message}`)); }
+  }
+  async function load() {
+    data = await api("/api/pipeline");
+    drawNotes();
+    drawChart();
+    drawLegend();
+    drawLists();
+    if (sel && !trans(sel)) sel = null;
+    drawPanel();
+  }
+  onRefresh(() => load().catch(() => {}));
+  await load();
+  pipeTimer = setInterval(() => {
+    if (!(location.hash || "").startsWith("#/pipeline")) { clearInterval(pipeTimer); pipeTimer = null; return; }
+    load().catch(() => {});
+  }, 15000);
 }
 
 // ================================================================= PLACES
@@ -2011,9 +2437,153 @@ async function viewWho() {
         h("div", { class: "who-place" }, find, results, chip),
         h("div", { class: "query-bar" }, h("button", { class: "btn primary", type: "button", onclick: run }, "Ask"), liveSeg,
           h("span", { class: "muted" }, "Try: starting an LLC in Virginia · FOIA request in Charlottesville · dog license in Staunton")))),
-    status, out);
+    status, out,
+    h("p", { class: "muted", style: "margin-top:16px" }, "Retiring? ", h("a", { href: "#/benefits" }, "Retirement benefits: which programs apply to you, who runs them and how your state taxes them")));
   drawChip();
   if (question.value) run();
+}
+
+// ------------------------------------------------------------------ retirement benefits
+// lexflow.benefits (docs/design/retirement-benefits.md): a place and a kind of person -> the pension systems, the
+// state auto-IRA program, the state's tax treatment and the federal pointers.  The person type is a category: nothing
+// about the asker leaves this page except the place and that category, and nothing is stored.
+const BENEFIT_TREATMENT = { exempt: ["ok", "not taxed"], partly_exempt: ["warn", "partly taxed"], taxable: ["muted", "taxed"],
+  no_income_tax: ["ok", "no income tax"], unknown: ["muted", "not grounded"] };
+function benefitSource(s) {
+  if (!s) return null;
+  return h("blockquote", { class: "quote" }, `“${s.quote}”`,
+    h("div", { class: "cite" }, s.url ? h("a", { href: s.url, target: "_blank", rel: "noopener" }, s.citation || s.url) : (s.citation || ""),
+      s.matched ? ` · matched by lexflow's software (${s.matched_by}${s.checked_on ? `, ${s.checked_on}` : ""})` : ""));
+}
+function benefitSources(list, label) {
+  const xs = (list || []).filter(Boolean);
+  return xs.length ? h("details", {}, h("summary", { class: "muted" }, label || `${xs.length} source${xs.length === 1 ? "" : "s"}`), xs.map(benefitSource)) : null;
+}
+function benefitSystemCard(s) {
+  const census = (s.census || []).filter((c) => c.members_active != null || c.beneficiaries != null);
+  return h("section", { class: "card role-card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, s.name + (s.short ? ` (${s.short})` : "")),
+      h("p", {}, s.level === "local" ? "Run by your local government" : "Statewide system", s.why ? ` · ${s.why}` : ""))),
+    h("div", { class: "card-pad role-body" },
+      h("div", { class: "role-row" }, h("span", { class: "k" }, "Run by"),
+        h("div", {}, h("strong", {}, s.body.name || "–"),
+          s.body.wikidata_url ? h("a", { class: "muted", href: s.body.wikidata_url, target: "_blank", rel: "noopener", style: "margin-left:8px" }, `Wikidata ${s.body.wikidata}`) : null)),
+      s.channels && s.channels.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Reach them"), h("ul", { class: "chans" }, s.channels.map(channelRow))) : null,
+      s.statute ? h("div", { class: "role-row" }, h("span", { class: "k" }, s.statute_role === "establishes" ? "The law that creates it" : "The law"),
+        h("div", {}, benefitSource(s.statute), benefitSources(s.also, "more of the law"))) : null,
+      s.plans && s.plans.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Plans"), h("div", {}, s.plans.join(" · "))) : null,
+      census.length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Members"),
+        h("div", { style: "font-size:13px" }, census.map((c) => h("div", {}, `${c.name}: ${fmtInt(c.members_active)} active, ${fmtInt(c.beneficiaries)} receiving benefits (Census ${c.year})`)))) : null,
+      s.apply && s.apply.grounded ? h("div", { class: "role-row" }, h("span", { class: "k" }, "How to apply"), h("div", {}, s.apply.text, benefitSources(s.apply.sources))) : null,
+      s.appeal && s.appeal.grounded ? h("div", { class: "role-row" }, h("span", { class: "k" }, "How to appeal"), h("div", {}, s.appeal.text, benefitSources(s.appeal.sources))) : null,
+      s.family ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Your eligibility"),
+        h("div", {}, h("a", { class: "btn small", href: s.family.href }, "Compute your plan and when you can retire →"),
+          h("div", { class: "muted", style: "font-size:12.5px;margin-top:4px" }, "From decision tables whose every rule quotes the Code; enter your age and service there; nothing is stored."))) : null,
+      s.how ? h("div", { class: "role-row" }, h("span", { class: "k" }, "How lexflow knows"), h("div", { class: "muted", style: "font-size:12.5px" }, s.how, s.source ? ` · ${s.source}` : "")) : null,
+      (s.missing || []).length ? h("div", { class: "role-row" }, h("span", { class: "k" }, "Still missing"), h("ul", { class: "does muted" }, s.missing.map((m) => h("li", {}, m)))) : null));
+}
+function benefitIraCard(p) {
+  const facts = p.facts || [];
+  return h("section", { class: "card role-card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, p.name),
+      h("p", {}, h("span", { class: `badge ${p.mandate ? "warn" : "muted"}` }, p.mandate ? "employers must offer it" : "voluntary"), ` · ${p.status || ""}`,
+        p.smallest_employer ? ` · employers with ${p.smallest_employer} or more employees` : ""))),
+    h("div", { class: "card-pad role-body" },
+      h("div", { class: "role-row" }, h("span", { class: "k" }, "Run by"), h("div", {}, h("strong", {}, p.body.name || "–"),
+        p.website ? h("div", {}, h("a", { href: p.website, target: "_blank", rel: "noopener" }, p.website)) : null)),
+      p.note ? h("p", { class: "muted" }, p.note) : null,
+      facts.length ? h("ul", { class: "does" }, facts.map((f) => h("li", {}, h("span", { class: "tag", style: "margin-right:6px" }, f.kind.replace("_", " ")), f.text,
+        f.deadline ? h("span", { class: "badge", style: "margin-left:6px" }, f.deadline) : null, benefitSources(f.sources)))) : null));
+}
+function benefitTax(t) {
+  if (!t) return h("p", { class: "muted" }, "No tax-treatment data for this state yet.");
+  const order = [...t.first, ...Object.keys(t.items).filter((k) => !t.first.includes(k))];
+  return h("section", { class: "card" },
+    h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "How the state taxes retirement income"),
+      h("p", {}, t.agency ? [t.agency.url ? h("a", { href: t.agency.url, target: "_blank", rel: "noopener" }, t.agency.name) : t.agency.name, ` · tax year ${t.tax_year || "–"}`] : ""))),
+    h("div", { class: "table-wrap" }, h("table", { class: "data" },
+      h("thead", {}, h("tr", {}, ["Income", "Treatment", "What the law says"].map((x) => h("th", { scope: "col" }, x)))),
+      h("tbody", {}, order.map((k) => {
+        const it = t.items[k];
+        const [cls, word] = BENEFIT_TREATMENT[it.treatment] || ["muted", it.treatment];
+        return h("tr", {}, h("td", {}, it.label), h("td", {}, h("span", { class: `badge ${cls}` }, word)),
+          h("td", {}, it.summary || h("span", { class: "muted" }, it.why || ""),
+            (it.conditions || []).length ? h("div", { class: "muted", style: "font-size:12.5px" }, it.conditions.join("; ")) : null,
+            benefitSources(it.sources)));
+      })))),
+    t.notes ? h("p", { class: "card-pad muted", style: "font-size:12.5px" }, t.notes) : null);
+}
+async function viewBenefits() {
+  const meta = await api("/api/benefits");
+  let chosen = JSON.parse(store("lexflow-benefits-place") || "null");
+  const chip = h("span", {});
+  const find = h("input", { type: "search", placeholder: "Your state, county, city or town", "aria-label": "Place", autocomplete: "off", style: "width:100%;box-sizing:border-box" });
+  const results = h("div", { class: "card", style: "position:absolute;z-index:5;min-width:min(280px, 100%);max-width:100%;display:none;max-height:300px;overflow:auto" });
+  function drawChip() {
+    rc(chip, chosen ? h("span", { class: "tag", style: "display:inline-flex;gap:6px;align-items:center;text-transform:none;font-size:13px" }, chosen.label,
+      h("button", { class: "icon-btn", "aria-label": `Remove ${chosen.label}`, onclick: () => { chosen = null; store("lexflow-benefits-place", ""); drawChip(); } }, "×")) : h("span", { class: "muted" }, "No place chosen yet."));
+  }
+  let timer = null;
+  find.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      const q = find.value.trim();
+      if (q.length < 2) { results.style.display = "none"; return; }
+      const rows = (await api(`/api/targets?q=${encodeURIComponent(q)}`)).filter((r) => r.kind !== "country");
+      rc(results, rows.length ? rows.map((r) => h("button", { class: "btn", style: "display:block;width:100%;text-align:left;border:0;border-radius:0",
+        onclick: () => { chosen = { target: r.target, label: r.label.replace(" (state law)", "") }; store("lexflow-benefits-place", JSON.stringify(chosen)); drawChip(); find.value = ""; results.style.display = "none"; } },
+        r.label.replace(" (state law)", ""), h("span", { class: "muted" }, r.kind === "state" ? " · state" : ` · ${r.kind}${r.population ? ` · ${fmtInt(r.population)}` : ""}`)))
+        : h("p", { class: "card-pad muted" }, "No match."));
+      results.style.display = "block";
+    }, 200);
+  });
+  const person = h("select", { "aria-label": "Who you are", style: "width:100%;box-sizing:border-box" },
+    meta.person_types.map((p) => h("option", { value: p.id }, p.label)));
+  person.value = store("lexflow-benefits-person") || "state_employee";
+  person.addEventListener("change", () => store("lexflow-benefits-person", person.value));
+  const status = h("p", { class: "muted" });
+  const out = h("div");
+  async function run() {
+    if (!chosen) { status.textContent = "Choose a place first."; return; }
+    status.textContent = "Looking it up…";
+    rc(out);
+    let r;
+    try {
+      r = await api(`/api/benefits?${new URLSearchParams({ gov_id: chosen.target, person: person.value })}`);
+    } catch (e) {
+      status.textContent = "";
+      rc(out, h("div", { class: "notice" }, icon("info"), h("div", {}, h("strong", {}, "Could not look it up. "), String(e.message || e))));
+      return;
+    }
+    const pl = r.place;
+    status.textContent = `${r.person_label} · ${pl.name ? `${pl.name}, ` : ""}${pl.state_name}`;
+    const local = r.systems.filter((s) => s.level === "local");
+    const statewide = r.systems.filter((s) => s.level !== "local");
+    rc(out,
+      statewide.length || local.length ? [h("h2", { style: "margin:8px 0 10px" }, "Pension systems"),
+        h("div", { class: "grid who-grid" }, [...statewide, ...local].map(benefitSystemCard))] : null,
+      r.auto_ira.length ? [h("h2", { style: "margin:18px 0 10px" }, "State retirement savings program"), h("div", { class: "grid who-grid" }, r.auto_ira.map(benefitIraCard))] : null,
+      h("h2", { style: "margin:18px 0 10px" }, "Taxes"), benefitTax(r.tax),
+      r.federal.length ? [h("h2", { style: "margin:18px 0 10px" }, "Federal programs (everywhere)"),
+        h("ul", { class: "does" }, r.federal.map((f) => h("li", {}, h("a", { href: f.website, target: "_blank", rel: "noopener" }, f.name), h("span", { class: "muted" }, ` · ${f.body.name}${f.law ? ` · ${f.law}` : ""}`),
+          f.note ? h("div", { class: "muted", style: "font-size:12.5px" }, f.note) : null,
+          f.appeal ? h("div", { style: "font-size:12.5px" }, "Disagree with a decision? ", f.appeal.url ? h("a", { href: f.appeal.url, target: "_blank", rel: "noopener" }, f.appeal.text) : f.appeal.text) : null)))] : null,
+      (r.notes || []).length || (r.missing || []).length ? h("div", { class: "notice", style: "margin-top:16px" }, icon("info"),
+        h("ul", { class: "does", style: "margin:0" }, [...(r.notes || []), ...(r.missing || [])].map((m) => h("li", {}, m)))) : null,
+      h("p", { class: "muted", style: "font-size:12.5px;margin-top:16px" }, r.about));
+  }
+  rc(view,
+    h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Retirement benefits"),
+      h("p", {}, "Choose where you work or live and who you are: the retirement programs that apply, who runs each, the law that creates it, how to apply and appeal, and how your state taxes the income. Programs and offices only; your choices stay in this browser and lexflow stores nothing about you."))),
+    h("section", { class: "card card-pad", style: "margin-bottom:16px" },
+      h("div", { style: "display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;align-items:start" },
+        h("div", { style: "position:relative" }, h("label", { class: "muted", style: "font-size:13px" }, "Place"), find, results, h("div", { style: "margin-top:6px" }, chip)),
+        h("div", {}, h("label", { class: "muted", style: "font-size:13px" }, "Who you are"), person)),
+      h("div", { class: "query-bar", style: "margin-top:10px" }, h("button", { class: "btn primary", type: "button", onclick: run }, "Show my benefits"),
+        h("span", { class: "muted" }, "Try: City of Charlottesville · teacher · Maryland · private employee without a plan"))),
+    status, out);
+  drawChip();
+  if (chosen) run();
 }
 
 async function viewQuery(pickName, pickParams) {

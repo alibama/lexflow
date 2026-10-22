@@ -1,0 +1,77 @@
+{
+ "qid": "retirement_unreduced",
+ "state": "va",
+ "question": "When can I retire with an unreduced pension?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "51.1-153",
+   "role": "primary"
+  },
+  {
+   "ref": "51.1-124.3",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Normal retirement: at the normal retirement date with five or more years of service, on written notice to the Board.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-153",
+   "quote": "Any member in service at his normal retirement date with five or more years of creditable service may retire at any time upon written notification to the Board setting forth the date the retirement is to become effective.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Plan 1's normal retirement date is the 65th birthday.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-124.3",
+   "quote": "\"Normal retirement date\" means a member's sixty-fifth birthday.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Plan 2 (members from July 2010, or not vested by 2013): the Social Security retirement age.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-124.3",
+   "quote": "his normal retirement date shall be the date that the member attains his \"retirement age\" as defined under the Social Security Act",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Plan 2 members may also retire unreduced when age plus service equals 90.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-153",
+   "quote": "may retire prior to his normal retirement date after the sum of his age and years of creditable service equals 90",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Plan 1 members may retire unreduced at 50 with 30 years.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "51.1-153",
+   "quote": "may retire prior to his normal retirement date after attaining age 50 and 30 years of creditable service",
+   "source": "index"
+  },
+  {
+   "id": "N6",
+   "text": "The retirement date may be no more than 90 days before the notice is filed.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "51.1-153",
+   "quote": "The effective date of retirement shall be after the last day of service of the member, but shall not be more than 90 days prior to the filing of the notice of retirement.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

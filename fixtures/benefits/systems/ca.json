@@ -1,0 +1,88 @@
+{
+ "state": "ca",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "California Public Employees' Retirement System",
+   "short": "CalPERS",
+   "census_units": ["census-pid6:226909", "census-pid6:252860", "census-pid6:252861"],
+   "statute": {"kind": "statute", "ref": "Cal. GOV § 20002", "quote": "The Public Employees’ Retirement System created by Chapter 700 of the Statutes of 1931, as amended, is continued in existence under this part."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Administration of the Public Employees' Retirement System", "source": {"kind": "statute", "ref": "Cal. GOV § 20120", "quote": "The management and control of this system is vested in the board."}},
+   "website": "https://www.calpers.ca.gov/",
+   "website_source": {"kind": "page", "url": "https://www.calpers.ca.gov/about", "quote": "As the nation's largest public pension fund, CalPERS ensures members' benefits and earned retirements are as enduring as the state they maintain."},
+   "membership": ["state_employee", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Cal. GOV § 20460", "quote": "Any public agency may participate in this system by contract entered into between its governing body and the board pursuant to this part."},
+   "notes": "Census splits the Public Employees' Retirement Fund into three units (A: state; B and C: schools and contracting public agencies). School classified employees are CalPERS members."
+  },
+  {
+   "name": "Judges' Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:226202"],
+   "statute": {"kind": "statute", "ref": "Cal. GOV § 75100", "quote": "There is in the State Treasury a fund known as the Judges’ Retirement Fund."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Administration of the Public Employees' Retirement System", "source": {"kind": "statute", "ref": "Cal. GOV § 75005", "quote": "Notwithstanding any other provision of law, this chapter shall be administered and governed by the Board of Administration of the Public Employees’ Retirement System"}},
+   "website": "https://www.calpers.ca.gov/judges-retirement-system/jrs-i",
+   "website_source": {"kind": "page", "url": "https://www.calpers.ca.gov/judges-retirement-system/jrs-i", "quote": "The Judges' Retirement System (JRS) was established in 1937 and covers Supreme and Appellate court justices, Superior court judges, and Municipal court judges appointed or elected prior to November 9, 1994."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Closed to judges first elected or appointed on or after November 9, 1994."
+  },
+  {
+   "name": "Judges' Retirement System II",
+   "short": "JRS II",
+   "census_units": ["census-pid6:244162"],
+   "statute": {"kind": "statute", "ref": "Cal. GOV § 75600", "quote": "There is in the State Treasury, subject to the control of the board, a trust fund known as the Judges’ Retirement System II Fund."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Administration of the Public Employees' Retirement System", "source": {"kind": "statute", "ref": "Cal. GOV § 75502", "quote": "“Board” means the Board of Administration of the Public Employees’ Retirement System."}},
+   "website": "https://www.calpers.ca.gov/judges-retirement-system/jrs-ii",
+   "website_source": {"kind": "page", "url": "https://www.calpers.ca.gov/judges-retirement-system/jrs-ii", "quote": "The Judges' Retirement System (JRS) II was established in 1994 and is governed by the"},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Judges first elected or appointed on or after November 9, 1994."
+  },
+  {
+   "name": "Legislators' Retirement System",
+   "short": "LRS",
+   "census_units": ["census-pid6:226910"],
+   "statute": {"kind": "statute", "ref": "9350.2", "quote": "“Retirement system” or “this system” means the Legislators’ Retirement System established by this chapter."},
+   "statute_role": "defines",
+   "body": {"name": "Board of Administration of the Public Employees' Retirement System", "source": {"kind": "statute", "ref": "Cal. GOV § 9353", "quote": "This system shall be administered by the Board of Administration of the Public Employees’ Retirement System."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Closed to new members since January 1, 2013; CalPERS publishes only PDF documents for it (no HTML page naming it was found)."
+  },
+  {
+   "name": "California State Teachers' Retirement System",
+   "short": "CalSTRS",
+   "census_units": ["census-pid6:225913", "census-pid6:227681", "census-pid6:244163", "census-pid6:244164", "census-pid6:244165"],
+   "statute": {"kind": "statute", "ref": "Cal. EDC § 22001", "quote": "In order to provide a financially sound plan for the retirement, with adequate retirement allowances, of teachers in the public schools of this state, teachers in schools supported by this state, and other persons employed in connection with the schools, the State Teachers’ Retirement System is established."},
+   "statute_role": "establishes",
+   "body": {"name": "Teachers' Retirement Board", "source": {"kind": "statute", "ref": "Cal. EDC § 22200", "quote": "The plan and the system are administered by the Teachers’ Retirement Board."}},
+   "website": "https://www.calstrs.com/",
+   "website_source": {"kind": "page", "url": "https://www.calstrs.com/about-calstrs", "quote": "The California State Teachers’ Retirement System was established by law in 1913 to provide retirement benefits to California’s public school educators from prekindergarten through community college."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Cal. EDC § 22131", "quote": "“Employer” or “employing agency” means the state or any agency or political subdivision thereof, including, but not limited to, a joint powers authority, for which creditable service subject to coverage by the plan is performed."},
+   "notes": "Census units grouped here: the system, the Defined Benefit Program, the Defined Benefit Supplement Program (EDC 25000), the Cash Balance Benefit Program (EDC 26000 et seq.) and the Replacement Benefits Program."
+  },
+  {
+   "name": "University of California Retirement Plan",
+   "short": "UCRP",
+   "census_units": ["census-pid6:226204", "census-pid6:244166"],
+   "statute": null,
+   "why": "UCRP is established by the Regents of the University of California under their constitutional authority (Cal. Const. art. IX, § 9), not by a code section.",
+   "statute_role": "none",
+   "body": {"name": "The Regents of the University of California", "source": null},
+   "website": "https://ucnet.universityofcalifornia.edu/benefits/retirement/",
+   "website_source": {"kind": "page", "url": "https://ucnet.universityofcalifornia.edu/benefits/retirement/", "quote": "Members of the American Federation of State, County and Municipal Employees (AFSCME), California Nurses Association (CNA), or University Professional and Technical Employees (UPTE) are eligible for pension benefits through the UC Retirement Plan (UCRP) Modified 2013 Tier."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "The small University of California Voluntary Retirement Incentive Program unit is grouped here as part of the UC Retirement System."
+  }
+ ]
+}

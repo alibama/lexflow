@@ -1,0 +1,52 @@
+{
+ "state": "mo",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Missouri Department of Revenue", "url": "https://dor.mo.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "From tax year 2024, all federally taxable Social Security benefits of recipients 62 or older, and all Social Security disability benefits, are subtracted with no income limit.",
+   "conditions": ["Social Security retirement/survivor benefits: recipient age 62 or older", "Social Security disability benefits: any age"],
+   "age_min": 62,
+   "sources": [
+    {"kind": "statute", "ref": "143.125", "quote": "any Social Security benefits received by a taxpayer age sixty-two years of age and older, or Social Security disability benefits;"},
+    {"kind": "statute", "ref": "143.125", "quote": "For all tax years beginning on or after January 1, 2024, a taxpayer shall be entitled to the maximum exemption provided by this subsection regardless of the taxpayer's filing status or the amount of the taxpayer's Missouri adjusted gross income."},
+    {"kind": "page", "url": "https://dor.mo.gov/faq/taxation/individual/pension.html", "quote": "Missouri does not tax 100% of social security benefits for individuals age 62 or older, and 100% of social security disability benefits, as long as these benefits are included in federal adjusted gross income under IRC §86."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Public pensions (Missouri, federal civil service or other states) are subtracted up to the maximum Social Security benefit ($47,633 per taxpayer for 2025) with no income limit since 2024, but the amount is reduced by any Social Security deduction claimed.",
+   "conditions": ["Up to $47,633 per taxpayer for 2025 (the maximum Social Security benefit)", "Reduced by any Social Security or Social Security disability deduction claimed", "No income limit from tax year 2024"],
+   "amount_usd": 47633,
+   "sources": [
+    {"kind": "statute", "ref": "143.124", "quote": "a maximum of an amount equal to one hundred percent of the retirement benefits received from sources other than privately funded sources in the tax year, but not to exceed the maximum Social Security benefit available for such tax year."},
+    {"kind": "statute", "ref": "143.124", "quote": "For purposes of calculating the subtraction provided in subsection 5 of this section, such subtraction shall be decreased by an amount equal to any Social Security benefit exemption provided under section 143.125 ."},
+    {"kind": "page", "url": "https://dor.mo.gov/faq/taxation/individual/pension.html", "quote": "Eligible taxpayers can subtract public retirement benefits up to the maximum social security benefit amount, as long as those benefits are included in federal adjusted gross income. Note: If you also claim the social security or social security disability deduction, your public pension exemption will be reduced by that amount."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Up to $6,000 per taxpayer of private pension, 401(k) and traditional IRA income is subtracted if Missouri AGI is under $25,000 (single) or $32,000 (married filing combined); the exemption shrinks dollar for dollar above those limits.",
+   "conditions": ["Up to $6,000 per taxpayer", "Full exemption only if Missouri AGI is under $25,000 single/head of household, $32,000 married filing combined, $16,000 married filing separately", "Reduced $1 for each $1 of income over the limit"],
+   "amount_usd": 6000,
+   "sources": [
+    {"kind": "statute", "ref": "143.124", "quote": "a maximum of the first six thousand dollars of any retirement allowance received from any privately funded sources for tax years beginning on or after January 1, 2002."},
+    {"kind": "statute", "ref": "143.124", "quote": "If the taxpayer's filing status is single, head of household or qualifying widow(er) and the taxpayer's Missouri adjusted gross income is less than twenty-five thousand dollars;"},
+    {"kind": "page", "url": "https://dor.mo.gov/faq/taxation/individual/pension.html", "quote": "The maximum exemption for private pension income is $6,000. To qualify for the full exemption, your Missouri adjusted gross income must be within these limits: $25,000 – Single, head of household, or qualifying widow(er) $32,000 – Married filing combined $16,000 – Married filing separately"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "100% of military retirement pay (active, reserve and National Guard) included in federal AGI is subtracted; Survivor Benefit Plan annuities instead use the public pension exemption.",
+   "conditions": ["Survivor Benefit Plan annuities do not qualify for this subtraction (they use the public pension exemption)"],
+   "sources": [
+    {"kind": "statute", "ref": "143.121", "quote": "One hundred percent of any retirement benefits received by any taxpayer as a result of the taxpayer's service in the Armed Forces of the United States, including reserve components and the National Guard of this state,"},
+    {"kind": "page", "url": "https://dor.mo.gov/faq/taxation/individual/pension.html", "quote": "Tax years 2021 and forward: The taxable military pension is subtracted from federal adjusted gross income on Form MO-A, Part 1, Line 10."}
+   ]
+  }
+ },
+ "notes": "Missouri removed the income limits on the Social Security and public pension exemptions from tax year 2024 (Mo. Rev. Stat. 143.124.5 and 143.125). The private pension $6,000 exemption keeps its low income limits. The public pension cap is the maximum Social Security benefit ($47,633 for 2025, $48,967 for 2026 per the Department). Because the public pension exemption is reduced by the Social Security deduction, a retiree with both may get little public pension exemption."
+}

@@ -1,14 +1,26 @@
 """The dashboard's wikibase step (lexflow/pipeline/steps.py) after the v1 loader's retirement: it runs the v2
-pusher (lexflow.publish.push) as a dry run unless the job says ``really``, refuses ``really`` without a passing
-lint report, never passes ``allow_held``, and is never part of a run-all chain.  No network: ``push.run`` is
-recorded, not run."""
+pusher (lexflow.publish.push) as a dry run unless the job says ``really``, refuses ``really`` without a lint report
+(or, with ``skip_held`` off, with one that holds items) and without a recent dry run of the same graph, passes
+``allow_held`` only for the operator's ``skip_held`` choice, and is never part of a run-all chain.  No network:
+``push.run`` is recorded, not run, and the graph is a fixed empty one (tests/test_pipeline.py covers the dry-run
+records, the chained passes and the refusals in full)."""
 import inspect
 import json
 
 import pytest
 
 from lexflow.pipeline import steps
-from lexflow.publish import push
+from lexflow.publish import graph, push
+
+
+@pytest.fixture(autouse=True)
+def no_graph(monkeypatch):
+    """The step builds the graph itself (for its hash); here it is empty.  A bot password is set (never used)."""
+    from lexflow import config
+    monkeypatch.setattr(graph, "build", lambda con, **kw: [])
+    monkeypatch.setattr(config, "WIKIBASE_BOT_USER", "bot")
+    monkeypatch.setattr(config, "WIKIBASE_BOT_PASSWORD", "not-a-real-password")
+    monkeypatch.delenv("LEXFLOW_WIKIBASE_OUT", raising=False)
 
 
 @pytest.fixture()
@@ -52,16 +64,22 @@ def test_really_is_refused_without_a_lint_report(con, pushed, tmp_path):
     assert any(m.startswith("push refused: nothing was written") for m in logs)
 
 
-def test_really_is_refused_while_the_lint_report_holds_items(con, pushed, tmp_path):
+def test_really_is_refused_while_the_lint_report_holds_items_unless_skip_held(con, pushed, tmp_path):
     _lint(tmp_path / "wb", ["lexflow:step:va.records:respond", "lexflow:role:va:records:custodian"])
+    out, _ = _run(con, {"really": True, "skip_held": False}, tmp_path)
+    assert pushed == [] and out["refused"].startswith("the lint report holds 2 items: fix them and re-run the lint")
+    # skip_held (the default) gets past the lint, and the dry run is asked for next
     out, _ = _run(con, {"really": True}, tmp_path)
-    assert pushed == [] and out["refused"] == "the lint report holds 2 items: fix them and re-run the lint"
+    assert pushed == [] and out["refused"].startswith("no dry run of the push has been recorded")
 
 
 def test_really_with_a_passing_lint_report_pushes_without_allow_held(con, pushed, tmp_path):
     _lint(tmp_path / "wb", [])
-    out, logs = _run(con, {"really": True, "drafts": True, "full": True, "states": "va,dc"}, tmp_path)
-    assert len(pushed) == 1 and pushed[0]["dry_run"] is False and pushed[0]["allow_held"] is False
+    scope = {"drafts": True, "full": True, "states": "va,dc"}
+    _run(con, scope, tmp_path)                                     # the dry run a push follows
+    out, logs = _run(con, {"really": True, **scope}, tmp_path)
+    assert len(pushed) == 2 and pushed[1]["dry_run"] is False and pushed[1]["allow_held"] is False
+    pushed.pop(0)
     assert pushed[0]["drafts"] is True and pushed[0]["resume"] is False and sorted(pushed[0]["states"]) == ["dc", "va"]
     assert out["dry_run"] is False and out["really"] is True and out["api_writes"] == 3
     assert any(m.startswith("real push to") for m in logs)

@@ -1,0 +1,42 @@
+{
+ "state": "ms",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Mississippi Department of Revenue", "url": "https://www.dor.ms.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Mississippi does not tax Social Security or Railroad Retirement benefits, even the part that is federally taxable.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.dor.ms.gov/individual/individual-income-tax-frequently-asked-questions", "quote": "Is Social Security taxable in Mississippi? No. Mississippi does not tax benefits received from U.S. Social Security, Railroad Retirement Public Welfare assistance, Veterans' Administration payments or workers' compensation."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Government pensions and annuities are fully exempt once the recipient has met the plan's retirement requirements; early distributions are not retirement income and may be taxed.",
+   "conditions": ["Recipient must have met the plan's retirement requirements", "Early distributions do not qualify"],
+   "sources": [
+    {"kind": "page", "url": "https://www.dor.ms.gov/individual/individual-income-tax-frequently-asked-questions", "quote": "Generally, retirement income, pensions and annuities are not subject to Mississippi Income tax if the recipient has met the retirement plan requirements. Early distributions are not considered retirement income and may be subject to tax."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "exempt",
+   "summary": "Private pensions, annuities, 401(k) and IRA retirement distributions are fully exempt once the recipient has met the plan's retirement requirements; early distributions may be taxed.",
+   "conditions": ["Recipient must have met the plan's retirement requirements", "Early distributions do not qualify"],
+   "sources": [
+    {"kind": "page", "url": "https://www.dor.ms.gov/individual/individual-income-tax-frequently-asked-questions", "quote": "Generally, retirement income, pensions and annuities are not subject to Mississippi Income tax if the recipient has met the retirement plan requirements. Early distributions are not considered retirement income and may be subject to tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military retired pay is retirement income from a federal retirement system and is fully exempt.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.dor.ms.gov/individual/individual-income-tax-frequently-asked-questions", "quote": "Generally, retirement income, pensions and annuities are not subject to Mississippi Income tax if the recipient has met the retirement plan requirements. Early distributions are not considered retirement income and may be subject to tax."}
+   ]
+  }
+ },
+ "notes": "Mississippi has no statute index on this copy of lexflow, so every item has page sources only (the exemption is in Miss. Code Ann. 27-7-15(4), not quotable here). The Department's FAQ states the retirement rule generally; its Form 80-100 instructions (PDF, not quotable) say retirement income from federal, state and private retirement systems is exempt in total, which is the basis for applying it to military retired pay. 2025 rate: 0% on the first $10,000 of taxable income and 4.4% above."
+}

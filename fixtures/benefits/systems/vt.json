@@ -1,0 +1,48 @@
+{
+ "state": "vt",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Vermont State Employees' Retirement System",
+   "short": "VSERS",
+   "census_units": ["census-pid6:227980"],
+   "statute": {"kind": "statute", "ref": "3 V.S.A. § 456", "quote": "The date of establishment of the Retirement System shall be July 1, 1972. The System shall be known as the “Vermont State Retirement System,”"},
+   "statute_role": "establishes",
+   "body": {"name": "Retirement Board (Vermont State Employees' Retirement System Board of Trustees)", "source": {"kind": "statute", "ref": "3 V.S.A. § 471", "quote": "The general administration and responsibility for the proper operation of the Retirement System and for making effective the provisions of this subchapter are hereby vested in a board of eight trustees, known as the Retirement Board."}},
+   "website": "https://www.vermonttreasurer.gov/retirement",
+   "website_source": {"kind": "page", "url": "https://www.vermonttreasurer.gov/retirement", "quote": "Vermont State Employees' Retirement System (VSERS) and Vermont State Teachers' Retirement System (VSTRS) are funded by employee contributions as well as contributions made by the State."},
+   "membership": ["state_employee", "public_safety", "judge"],
+   "covers_local": false,
+   "notes": "The statute's name is the Vermont State Retirement System; a few local employers that elected in earlier remain (3 V.S.A. § 482). Administered by the State Treasurer's Retirement Division."
+  },
+  {
+   "name": "State Teachers' Retirement System of Vermont",
+   "short": "VSTRS",
+   "census_units": ["census-pid6:226302"],
+   "statute": {"kind": "statute", "ref": "16 V.S.A. § 1932", "quote": "A retirement system is hereby established and placed under the management of the Board of Trustees of the System for the purpose of providing retirement allowances and other benefits under the provisions of this chapter for teachers of the State of Vermont."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the State Teachers' Retirement System of Vermont", "source": {"kind": "statute", "ref": "16 V.S.A. § 1942", "quote": "The general administration and the responsibility for the proper operation of the System and for making effective the provisions of this chapter are hereby vested in the Board of Trustees of the System"}},
+   "website": "https://www.vermonttreasurer.gov/retirement",
+   "website_source": {"kind": "page", "url": "https://www.vermonttreasurer.gov/retirement", "quote": "Vermont State Employees' Retirement System (VSERS) and Vermont State Teachers' Retirement System (VSTRS) are funded by employee contributions as well as contributions made by the State."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "16 V.S.A. § 1931", "quote": "regularly employed, or otherwise contracted if following retirement, for the full normal working time for the teacher's position in a public day school or school district within the State"},
+   "notes": "Covers teachers employed by local school districts."
+  },
+  {
+   "name": "Vermont Municipal Employees' Retirement System",
+   "short": "VMERS",
+   "census_units": ["census-pid6:227735"],
+   "statute": {"kind": "statute", "ref": "24 V.S.A. § 5052", "quote": "The date of establishment of the Retirement System shall be July 1, 1975. The System shall be known as the “Vermont Municipal Employees' Retirement System”"},
+   "statute_role": "establishes",
+   "body": {"name": "Retirement Board (Vermont Municipal Employees' Retirement System Board of Trustees)", "source": {"kind": "statute", "ref": "5062", "quote": "The general administration and responsibility for the proper operation of the Retirement System and for making effective the provisions of this chapter are hereby vested in a board of five trustees, known as the Retirement Board."}},
+   "website": "https://www.vermonttreasurer.gov/retirement",
+   "website_source": {"kind": "page", "url": "https://www.vermonttreasurer.gov/retirement", "quote": "The Vermont Municipal Employees' Retirement System (VMERS) is funded by employee contributions and local municipal employer contributions, and receives no State contributions."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "24 V.S.A. § 5051", "quote": "“Employer” means a municipality, a library at least one-half of whose operating expenses are paid from municipal funds, or a supervisory union."},
+   "notes": ""
+  }
+ ]
+}

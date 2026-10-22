@@ -1,0 +1,42 @@
+{
+ "state": "nh",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "New Hampshire Department of Revenue Administration", "url": "https://www.revenue.nh.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "New Hampshire has no tax on wages, pensions or benefits, and its Interest and Dividends Tax is repealed for 2025, so Social Security is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.nh.gov/news-and-media/repeal-nh-interest-and-dividends-tax-now-effect", "quote": "For tax periods beginning on or after January 1, 2025, New Hampshire taxpayers are no longer required to pay the state’s Interest and Dividends Tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "New Hampshire has no broad personal income tax, so government pensions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.nh.gov/news-and-media/repeal-nh-interest-and-dividends-tax-now-effect", "quote": "For tax periods beginning on or after January 1, 2025, New Hampshire taxpayers are no longer required to pay the state’s Interest and Dividends Tax."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "New Hampshire has no broad personal income tax, so private pensions, 401(k) and IRA distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.nh.gov/news-and-media/repeal-nh-interest-and-dividends-tax-now-effect", "quote": "For tax periods beginning on or after January 1, 2025, New Hampshire taxpayers are no longer required to pay the state’s Interest and Dividends Tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "New Hampshire has no broad personal income tax, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.nh.gov/news-and-media/repeal-nh-interest-and-dividends-tax-now-effect", "quote": "For tax periods beginning on or after January 1, 2025, New Hampshire taxpayers are no longer required to pay the state’s Interest and Dividends Tax."}
+   ]
+  }
+ },
+ "notes": "New Hampshire never taxed wages, pensions or Social Security; its only personal income tax was the Interest and Dividends Tax (RSA 77), which was repealed for tax periods beginning on or after January 1, 2025 (HB 2 of 2023). Returns for 2024 and earlier remain due. The Department page is read from an Internet Archive capture because www.revenue.nh.gov's robots.txt refuses automated readers. No statute source is given: the quoted page states the repeal directly."
+}

@@ -22,6 +22,20 @@ PASS_WEIGHT = {"title_all": 1.5, "all": 1.2, "procedure": 1.1, "rarest": 1.0, "f
                "feedback": 0.8, "any": 0.6, "unit": 1.0, "cited": 0.8}
 # for how-do-I questions: the words of a procedure a person starts (statutes say "petition", not "how to")
 ACTION_TERMS = ["petition", "application", "apply", "file", "filing", "motion", "request", "procedure", "hearing"]
+# the same for a Japanese index: the law's words for what a person files or asks for
+ACTION_TERMS_JA = ["申請", "申立て", "申出", "届出", "請求", "審査請求", "聴聞", "手続"]
+# and for a Portuguese one (Brazil; plan.source "rules-pt")
+ACTION_TERMS_PT = ["requerimento", "pedido", "petição", "solicitação", "recurso", "procedimento", "requerer"]
+# what a Portuguese question asks for and the wording of the article that answers it, in its first sentence (Brazil's
+# index has no embedding model to find it by meaning): a definition or eligibility for "quem pode" ("Quem pode ser
+# incorporador?"), a duty for "quem deve" / "a quem compete", a time limit for "prazo" / "quantos dias"
+PT_WHO = [(re.compile(r"\bquem\s+(?:pode|podem|poderá)\b", re.I),
+           re.compile(r"\b(?:considera-se|consideram-se|somente poder[áã]o?\s+ser|s[óo]\s+poder[áã]o?\s+ser)\b", re.I)),
+          (re.compile(r"\bquem\s+(?:deve|devem|paga|é responsável)|\ba quem (?:compete|cabe)\b", re.I),
+           re.compile(r"\b(?:compete|competir[áã]|cabe|caber[áã]o?|incumbe|incumbir[áã]|é responsável|"
+                      r"são responsáveis)\b", re.I)),
+          (re.compile(r"\bprazo|\bquantos dias|\bem quanto tempo|\bat[ée] quando\b", re.I),
+           re.compile(r"\b\d+\s*(?:\([^)]{2,30}\)\s*)?(?:dias|horas|meses|anos)\b", re.I))]
 REPEALED = re.compile(r"\b(repealed|expired|reserved|transferred|renumbered)\b", re.I)
 DEFINITIONS = re.compile(r"^\s*(definitions?|short title|purpose|applicability|construction)\b", re.I)
 
@@ -30,13 +44,7 @@ def document_frequency(state: str, group: list[str]) -> int:
     expr = I.match([group], "or")
     if not expr:
         return 0
-    con = I.connect(state)
-    try:
-        return con.execute("SELECT count(*) FROM fts WHERE fts MATCH ?", (expr,)).fetchone()[0]
-    except Exception:  # noqa: BLE001 - a malformed expression
-        return 0
-    finally:
-        con.close()
+    return I.count(state, expr)         # 0 for a malformed expression; short CJK terms expanded on a trigram index
 
 
 def sections_count(state: str) -> int:
@@ -134,7 +142,9 @@ def fused(state: str, plan: Plan, per_pass: int = 120) -> tuple[list[dict], list
     core = [x["terms"] for x in w if x["share"] < 0.2] or [w[0]["terms"]]
     every = [x["terms"] for x in w]
     exprs = {"title_all": I.match(core[:3], "and", columns="title"), "all": I.match(core[:3], "and"),
-             "procedure": I.match(core[:2] + [ACTION_TERMS], "and") if plan.kind in ("process", "either") else None,
+             "procedure": I.match(core[:2] + [ACTION_TERMS_JA if _cjk(plan.text) else ACTION_TERMS_PT
+                                              if plan.source == "rules-pt" else ACTION_TERMS], "and")
+             if plan.kind in ("process", "either") else None,
              "rarest": I.match(core[:2], "and") if len(core) > 2 else None,
              "title_any": I.match(every, "or", columns="title"), "any": I.match(every, "or")}
     scores: dict[int, float] = {}
@@ -186,6 +196,11 @@ def fused(state: str, plan: Plan, per_pass: int = 120) -> tuple[list[dict], list
     return out, w
 
 
+def _cjk(text: str) -> bool:
+    from .answer import CJK
+    return bool(CJK.search(text or ""))
+
+
 def in_force(c: dict, as_of: str) -> int:
     """1 in force on as_of, 0 not yet in force, -1 expired (from '(Effective until ...)' style headings)."""
     if c.get("effective_until") and c["effective_until"] <= as_of:
@@ -205,6 +220,7 @@ def rerank(question: str, cands: list[dict], embedder=None, as_of: str | None = 
     if not cands:
         return []
     top = max(c["rrf"] for c in cands) or 1.0
+    who = next((pat for q, pat in PT_WHO if q.search(question or "")), None)
     sims = [0.0] * len(cands)
     if embedder is not None:
         try:
@@ -220,10 +236,15 @@ def rerank(question: str, cands: list[dict], embedder=None, as_of: str | None = 
         s += 0.02 * min(3.0, math.log10(max(10, c.get("words") or 10)))       # room for a procedure
         if "procedure" in (c.get("passes") or []):
             s += 0.03
-        if REPEALED.search(c["title"] or "") or len((c.get("head") or "").split()) < 8:
+        head = (c.get("head") or "").strip()
+        short = len(head) < 16 if _cjk(head[:40]) else len(head.split()) < 8          # Japanese has no spaces
+        if REPEALED.search(c["title"] or "") or short or head == "削除":
             s -= 0.4
         if DEFINITIONS.match(c["title"] or ""):
             s -= 0.08
+        if who is not None and who.search(re.split(r"\n|(?<=[.;:])\s", head, maxsplit=1)[0][:300] if who is not
+                                          PT_WHO[2][1] else head[:500]):
+            s += 0.15               # a Portuguese question: the article that says who, or within what time
         if in_force(c, as_of) == 0:
             s -= 0.25
             c["version"] = f"not in force until {c['effective_from']}"
@@ -272,7 +293,12 @@ def retrieve(state: str, plan: Plan, embedder=None, k: int = 4) -> dict:
     if not I.ensure(state):
         return {"status": "no-statutes", "candidates": [], "chosen": [], "concepts": []}
     cands, weights = fused(state, plan)
-    ranked = learned_order(rerank(plan.text, cands[:80], embedder), weights)
+    if I.tokenizer_of(state) != I.TOKENIZE:
+        # a non-English index (Japanese, trigram): the embedding model and the learned relevance model were made
+        # on English sections, so the order is the fused lexical one and the structure signals
+        ranked = rerank(plan.text, cands[:80], None)
+    else:
+        ranked = learned_order(rerank(plan.text, cands[:80], embedder), weights)
     chosen = choose(state, ranked, k=k, margin=0.35 if ranked and "relevance" in ranked[0] else 0.12)
     keep = ("id", "ref", "citation", "title", "chapter", "url", "words", "rrf", "similarity", "rank_score", "passes",
             "effective_from", "effective_until", "version", "relevance", "heuristic_score")

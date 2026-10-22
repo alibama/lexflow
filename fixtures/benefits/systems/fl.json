@@ -1,0 +1,21 @@
+{
+ "state": "fl",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Florida Retirement System",
+   "short": "FRS",
+   "census_units": ["census-pid6:226212"],
+   "statute": {"kind": "statute", "ref": "121.021", "quote": "“Florida Retirement System” or “system” means the general retirement system established by this chapter, including, but not limited to, the defined benefit program administered under this part, referred to as the “Florida Retirement System Pension Plan” or “pension plan,”"},
+   "statute_role": "defines",
+   "body": {"name": "Department of Management Services (Division of Retirement)", "source": {"kind": "statute", "ref": "121.025", "quote": "The secretary of the Department of Management Services shall be the administrator of the retirement and pension systems assigned or transferred to the Department of Management Services by law"}},
+   "website": "https://www.myfrs.com/",
+   "website_source": {"kind": "page", "url": "https://www.myfrs.com/", "quote": "MyFRS.com is your gateway to tools and information about your Florida Retirement System plan."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "legislator"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "121.051", "quote": "The governing body of any municipality, metropolitan planning organization, or special district in the state may elect to participate in the Florida Retirement System upon proper application to the administrator"},
+   "notes": "Chapter 121 (the Florida Retirement System Act, s. 121.011) consolidated the earlier state and teacher systems in 1970; county and district school board employees are compulsory members. The State Board of Administration manages the investment plan and invests the pension trust fund."
+  }
+ ]
+}

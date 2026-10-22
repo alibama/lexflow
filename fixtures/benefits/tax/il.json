@@ -1,0 +1,47 @@
+{
+ "state": "il",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Illinois Department of Revenue", "url": "https://tax.illinois.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits included in federal AGI are subtracted from Illinois base income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "35 ILCS 5/203", "quote": "(L) For taxable years ending after December 31, 1983, an amount equal to all social security benefits and railroad retirement benefits included in such total pursuant to Sections 72(r) and 86 of the Internal Revenue Code;"},
+    {"kind": "page", "url": "https://tax.illinois.gov/research/publications/pubs/retirement-income.html", "quote": "Social Security benefits reported on your U.S. 1040 or 1040-SR, Line 6b. Do not include Social Security withheld from wages shown on your Form W-2, Wage and Tax Statement."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Distributions from any government retirement or disability plan, and state or local 457 deferred compensation, are fully subtracted from Illinois base income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "35 ILCS 5/203", "quote": "(F) An amount equal to all amounts included in such total pursuant to the provisions of Sections 402(a), 402(c), 403(a), 403(b), 406(a), 407(a), and 408 of the Internal Revenue Code, or included in such total as distributions under the provisions of any retirement or disability plan for employees of any governmental agency or unit"},
+    {"kind": "page", "url": "https://tax.illinois.gov/research/publications/pubs/retirement-income.html", "quote": "a government retirement and government disability plan, including military plans, reported as wages on your U.S. 1040 or 1040-SR, Line 1z. a state or local governmental deferred compensation plan paid under IRC Section 457"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "exempt",
+   "summary": "Federally taxed distributions from qualified employee benefit plans, including private pensions, 401(k) plans, IRAs and SEPs, are fully subtracted; non-qualified private deferred compensation is not.",
+   "conditions": ["Plan must be a qualified employee benefit plan (IRC 402-408) or IRA/SEP", "Non-government non-qualified deferred compensation does not qualify"],
+   "sources": [
+    {"kind": "statute", "ref": "35 ILCS 5/203", "quote": "(F) An amount equal to all amounts included in such total pursuant to the provisions of Sections 402(a), 402(c), 403(a), 403(b), 406(a), 407(a), and 408 of the Internal Revenue Code"},
+    {"kind": "page", "url": "https://tax.illinois.gov/research/publications/pubs/retirement-income.html", "quote": "You may subtract the amount of any federally taxed portion (not the gross amount) included in your Form IL-1040, Line 1 that you received from a qualified employee benefit plan including 401(k) plans reported on your U.S. 1040 or 1040-SR, Line 5b."},
+    {"kind": "page", "url": "https://tax.illinois.gov/research/publications/pubs/retirement-income.html", "quote": "an Individual Retirement Account (IRA) (including amounts rolled over to a Roth IRA) or a self-employed retirement (SEP) plan reported on your U.S. 1040 or 1040-SR, Line 4b."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military retirement pay is a government retirement plan distribution and is fully subtracted from Illinois base income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "35 ILCS 5/203", "quote": "or included in such total as distributions under the provisions of any retirement or disability plan for employees of any governmental agency or unit, or retirement payments to retired partners"},
+    {"kind": "page", "url": "https://tax.illinois.gov/research/publications/pubs/retirement-income.html", "quote": "a government retirement and government disability plan, including military plans, reported as wages on your U.S. 1040 or 1040-SR, Line 1z."}
+   ]
+  }
+ },
+ "notes": "Illinois subtracts virtually all federally taxed retirement income on Form IL-1040, Line 5, with no age or income limit; early distributions from qualified plans and IRAs also qualify per Pub-120."
+}

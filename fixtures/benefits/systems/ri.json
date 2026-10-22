@@ -1,0 +1,89 @@
+{
+ "state": "ri",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Employees' Retirement System of the State of Rhode Island",
+   "short": "ERSRI",
+   "census_units": ["census-pid6:227728"],
+   "statute": {"kind": "statute", "ref": "36-8-2", "quote": "A retirement system is hereby established and placed under the management of the retirement board for the purpose of providing retirement allowances for employees of the state of Rhode Island"},
+   "statute_role": "establishes",
+   "body": {"name": "retirement board", "source": {"kind": "statute", "ref": "36-8-3", "quote": "The retirement board shall, from time to time, establish rules and regulations for the administration and transaction of the business of the retirement system."}},
+   "website": "https://www.ersri.org/",
+   "website_source": {"kind": "page", "url": "https://treasury.ri.gov/programs/employees-retirement-system-rhode-island", "quote": "ERSRI.org is your source for the latest information from Employees’ Retirement System of Rhode Island, the state’s largest public employee retirement system."},
+   "membership": ["state_employee", "teacher", "public_safety", "judge"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "16-16-1", "quote": "is engaged in teaching as their principal occupation and is regularly employed as a teacher in the public schools of any city or town in the state"},
+   "notes": "Covers state employees and public school teachers (R.I. Gen. Laws chs. 36-8 to 36-10 and 16-16)."
+  },
+  {
+   "name": "Municipal Employees' Retirement System of the State of Rhode Island",
+   "short": "MERS",
+   "census_units": ["census-pid6:244193"],
+   "statute": {"kind": "statute", "ref": "45-21-32", "quote": "A retirement system is hereby established and placed under the management of the retirement board created by chapter 8 of title 36, for the purpose of providing retirement allowances for employees of participating municipalities of the state of Rhode Island"},
+   "statute_role": "establishes",
+   "body": {"name": "retirement board (R.I. Gen. Laws ch. 36-8)", "source": {"kind": "statute", "ref": "45-21-32", "quote": "A retirement system is hereby established and placed under the management of the retirement board created by chapter 8 of title 36, for the purpose of providing retirement allowances for employees of participating municipalities of the state of Rhode Island"}},
+   "website": "https://www.ersri.org/",
+   "website_source": {"kind": "page", "url": "https://treasury.ri.gov/programs/employees-retirement-system-rhode-island", "quote": "The retirement system works with state employees, teachers, the Municipal Employees’ Retirement System (MERS), MERS police and fire, correctional officers, BHDDH nurses, state police, and judges."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "45-21-4", "quote": "Any municipality may accept this chapter by an ordinance or resolution of its governing body stating the group or groups of employees to be included as provided in § 45-21-7."},
+   "notes": "Includes MERS general and MERS police and fire units."
+  },
+  {
+   "name": "Rhode Island State Police Retirement Benefits Trust",
+   "short": "SPRBT",
+   "census_units": ["census-pid6:244194"],
+   "statute": {"kind": "statute", "ref": "42-28-22.1", "quote": "The proceeds deposited in this account shall be held in trust for the purpose of paying retirement benefits under this section to participating members of the state police or their beneficiaries."},
+   "statute_role": "establishes",
+   "body": {"name": "retirement board (R.I. Gen. Laws ch. 36-8)", "source": {"kind": "statute", "ref": "42-28-22.1", "quote": "The retirement board shall establish rules and regulations to govern the provisions of this section."}},
+   "website": "https://www.ersri.org/",
+   "website_source": {"kind": "page", "url": "https://treasury.ri.gov/programs/employees-retirement-system-rhode-island", "quote": "The retirement system works with state employees, teachers, the Municipal Employees’ Retirement System (MERS), MERS police and fire, correctional officers, BHDDH nurses, state police, and judges."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "State police hired after July 1, 1987; administered by ERSRI."
+  },
+  {
+   "name": "Rhode Island Judicial Retirement Benefits Trust",
+   "short": "JRBT",
+   "census_units": ["census-pid6:244195", "census-pid6:245746"],
+   "statute": {"kind": "statute", "ref": "8-3-16", "quote": "Proceeds deposited shall be held in trust for the purpose of paying retirement benefits to participating judges or their beneficiaries"},
+   "statute_role": "establishes",
+   "body": {"name": "retirement board (R.I. Gen. Laws ch. 36-8)", "source": {"kind": "statute", "ref": "8-3-16", "quote": "The retirement board shall establish rules and regulations to govern the provisions of this section."}},
+   "website": "https://www.ersri.org/",
+   "website_source": {"kind": "page", "url": "https://treasury.ri.gov/programs/employees-retirement-system-rhode-island", "quote": "The retirement system works with state employees, teachers, the Municipal Employees’ Retirement System (MERS), MERS police and fire, correctional officers, BHDDH nurses, state police, and judges."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Census also lists a small Judicial Retirement Fund Trust (judges engaged before 1990); grouped here, its own trust provision was not found in the index."
+  },
+  {
+   "name": "Teachers' Survivors Benefit Fund",
+   "short": "TSB",
+   "census_units": ["census-pid6:245745"],
+   "statute": {"kind": "statute", "ref": "16-16-36", "quote": "There shall be established by the retirement board a special reserve account to be designated as the"},
+   "statute_role": "establishes",
+   "body": {"name": "retirement board (R.I. Gen. Laws ch. 36-8)", "source": {"kind": "statute", "ref": "16-16-37", "quote": "The retirement board shall administer and carry out the provisions of"}},
+   "website": "https://www.ersri.org/",
+   "website_source": {"kind": "page", "url": "https://treasury.ri.gov/programs/employees-retirement-system-rhode-island", "quote": "ERSRI.org is your source for the latest information from Employees’ Retirement System of Rhode Island, the state’s largest public employee retirement system."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "16-16-1", "quote": "is engaged in teaching as their principal occupation and is regularly employed as a teacher in the public schools of any city or town in the state"},
+   "notes": "Survivor benefit in lieu of Social Security for teachers in participating school districts; administered by ERSRI."
+  },
+  {
+   "name": "Narragansett Bay Commission Non-Union Defined Benefit Pension Plan",
+   "short": "NBC",
+   "census_units": ["census-pid6:236563"],
+   "statute": null,
+   "why": "Single-employer plan of the Narragansett Bay Commission with no active members reported; no statute section creating it was found in the index.",
+   "statute_role": "none",
+   "body": null,
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Not a statewide system; listed only because Census classes it as state-level."
+  }
+ ]
+}

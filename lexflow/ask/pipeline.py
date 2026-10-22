@@ -1,7 +1,7 @@
 """Answer a new question for any number of states and places, and store the answers.
 
-    targets: "va" (a state) · "va:charlottesville" · "md:baltimore county" · a 14-digit Census gov_id · "va:*" (every
-    government in a state)
+    targets: "va" (a state) · "jpn" (a country whose law lexflow holds: the national index, no local layer) ·
+    "va:charlottesville" · "md:baltimore county" · a 14-digit Census gov_id · "va:*" (every government in a state)
 
 The state answer is worked out once per (question, state) and shared by every place in that state; each place
 adds its local layer (LOCUS headings that mention the question, and its contacts).  Rows go to ``asked_answers``
@@ -61,8 +61,8 @@ def resolve_targets(con, targets: list[str]) -> dict[str, list[dict]]:
         if not t:
             continue
         st, _, rest = t.partition(":")
-        if len(st) == 2 and not rest:
-            out.setdefault(S.normalise(st), [])
+        if not rest and (len(st) == 2 or S.is_country(st)):
+            out.setdefault(S.normalise_any(st), [])
             continue
         if len(st) == 2 and rest == "*":
             out.setdefault(S.normalise(st), []).extend(
@@ -111,11 +111,14 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
     timings = {}
     # no "published": re-asking keeps an answer's wiki tick; but a new answer is not the one a person reviewed, so
     # the review goes, and the wiki shows it again only once someone signs the new text (lexflow/signoff.py)
+    from . import index as I
     row = {"question_id": qid, "target": state, "state": state, "gov_id": None, "question_text": plan.text,
            "model": model or (asker.client.model if asker is not None else None), "reviewed_by": None}
-    if not statutes.have(state):
+    country = S.is_country(state)          # a country's law (jpn): quotes from its index; no steps, summary or cases
+    if not I.have(state):
         row.update(status="no-statutes", answer=db_json({"status": "no-statutes", "why":
-                   f"{S.NAME[state]} has no statute file in open-us-law"}), seconds=0.0)
+                   f"{S.name_of(state)} has no " + ("law on disk" if country else "statute file in open-us-law")}),
+                   seconds=0.0)
         if store:
             db.upsert(con, "asked_answers", [row])
             con.commit()
@@ -130,19 +133,26 @@ def answer_state(con, qid: str, plan: Plan, state: str, *, asker=None, emb=None,
         t1 = time.time()
         quotes = A.evidence(plan.text, plan, text, emb, default_section=texts[0].section)
         timings["evidence"] = round(time.time() - t1, 1)
-        if plan.kind in ("process", "either"):
+        if plan.kind in ("process", "either") and not country:
             t1 = time.time()
             facts, steps, bpmn = _process(plan, qid, state, texts, text, notes, emb)
             timings["process"] = round(time.time() - t1, 1)
-        if asker is not None and quotes:
+        elif country:
+            notes.append("steps and a summary are not made for this language yet: the quotes are the answer")
+        if asker is not None and quotes and not country:
             t1 = time.time()
             summary = A.summarise(asker, plan.text, S.NAME[state], quotes, chosen)
             row["model"] = asker.client.model
             timings["summary"] = round(time.time() - t1, 1)
-    status = gate(r, summary)
+    status = gate(r, summary) if not country else lexical_gate(r)
     checked = quote_counts(quotes, steps, text)
-    cases = L.court_decisions(state, [c["ref"] for c in chosen], log=log) if chosen and status != "not_found" else []
-    md = A.markdown(plan.text, S.NAME[state], chosen, quotes, steps, summary, status)
+    cases = L.court_decisions(state, [c["ref"] for c in chosen], log=log) \
+        if chosen and status != "not_found" and not country else []
+    credit = None
+    if country:
+        from ..corpus import countries as CT
+        credit = CT.licence_note(state)
+    md = A.markdown(plan.text, S.name_of(state), chosen, quotes, steps, summary, status, credit=credit)
     row.update(status=status, sections=db_json(r), facts=db_json(facts) if facts else None, bpmn=bpmn,
                answer=db_json({"status": status, "quotes": quotes, "steps": steps, "summary": summary,
                                "markdown": md, "notes": notes, "cases": cases}),
@@ -211,6 +221,8 @@ def texts_of(state: str, chosen: list[dict]) -> list:
     finally:
         con.close()
     out = []
+    if S.is_country(state):
+        return _country_texts(state, chosen, rows)
     for c, r in zip(chosen, rows):
         if r is None:
             raise KeyError(f"{state}: section {c['ref']} (row {c['id']}) is not in the index")
@@ -220,6 +232,25 @@ def texts_of(state: str, chosen: list[dict]) -> list:
                                retrieved_from=f"open-us-law {r['act_id']}",
                                license_note="open-us-law (Vaquill AI), CC BY-NC 4.0; text from the government "
                                             "publisher at the URL shown"))
+    return out
+
+
+def _country_texts(state: str, chosen: list[dict], rows: list) -> list:
+    """A country's chosen articles: each named by its citation (``行政手続法第十三条``; a bare article number is
+    ambiguous across thousands of laws), its law as the code, the source's attribution as the licence note."""
+    from ..corpus import countries as CT
+    from ..ir import SectionText
+    from . import index as I
+    note = CT.licence_note(state)
+    out = []
+    for c, r in zip(chosen, rows):
+        if r is None:
+            raise KeyError(f"{state}: section {c['ref']} (row {c['id']}) is not in the index")
+        law = (r["path"] or "").split(" / ")[0] or r["citation"]
+        out.append(SectionText(section=r["ref"] or r["citation"], title=r["original_title"] or "", code=law,
+                               jurisdiction=state, text=I.text_of(state, r["id"]), url=r["url"],
+                               retrieved_from=f"{CT.get(state).sources[0].name} {r['native_id'] or r['act_id']}",
+                               license_note=note))
     return out
 
 
@@ -237,6 +268,16 @@ def oracle(state: str, refs: list[str]) -> dict:
             chosen.append({k: c.get(k) for k in ("id", "ref", "citation", "title", "chapter", "url", "words",
                                                  "rrf", "similarity", "rank_score", "passes")})
     return {"status": "found" if chosen else "not-found", "concepts": [], "candidates": chosen, "chosen": chosen}
+
+
+def lexical_gate(r: dict) -> str:
+    """The gate for a language the similarity and relevance models were not made for (Japanese): answered when the
+    best article holds every core concept of the question (in its heading or anywhere), partial when it holds
+    some, not_found when nothing was chosen."""
+    if not r["chosen"]:
+        return "not_found"
+    passes = set(r["chosen"][0].get("passes") or [])
+    return "answered" if passes & {"title_all", "all", "procedure"} else "partial"
 
 
 def gate(r: dict, summary: dict | None) -> str:

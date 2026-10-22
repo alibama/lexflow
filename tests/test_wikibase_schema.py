@@ -42,7 +42,7 @@ def test_property_table_matches_the_doc_numbering_and_datatypes():
             assert [p.label for p in props] == [label], f"row {number}: {label!r}"
             assert props[0].datatype == datatype.strip(), f"row {number}: {datatype!r}"
     assert {n for n, _, _ in doc} == set(by_number), "schema has numbers the doc lacks or the other way round"
-    assert len(SC.PROPERTIES) == 64 and len({p.label for p in SC.PROPERTIES}) == 64
+    assert len(SC.PROPERTIES) == 82 and len({p.label for p in SC.PROPERTIES}) == 82
     assert all(p.datatype in ("item", "string", "url", "time", "quantity", "monolingualtext", "external-id")
                for p in SC.PROPERTIES)
     assert not set(SC.EXISTING) & {p.label for p in SC.PROPERTIES}

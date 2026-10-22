@@ -1,0 +1,54 @@
+{
+ "state": "nj",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "New Jersey Division of Taxation", "url": "https://www.nj.gov/treasury/taxation/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "All Social Security payments are excluded from New Jersey gross income and are not reported on the return.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-2", "quote": "All payments received under the Federal Social Security Act, whether they be regularly monthly benefits or lump sum death benefits."},
+    {"kind": "page", "url": "https://www.nj.gov/treasury/taxation/njit12.shtml", "quote": "Certain items of income are not subject to New Jersey tax and should not be included when you file a New Jersey return. Below is a partial list of such items. Social Security benefits; Railroad Retirement benefits (both Tier 1 and Tier 2);"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions (including federal civil service) qualify for the pension exclusion: taxpayers 62 or older (or disabled) with total income up to $100,000 exclude up to $100,000 joint / $75,000 single / $50,000 separate; a percentage is excluded at incomes of $100,001-$150,000 and nothing above $150,000.",
+   "conditions": ["Age 62 or older, or disabled under Social Security guidelines", "Total income $100,000 or less: up to $100,000 joint, $75,000 single/head of household, $50,000 married filing separately", "Total income $100,001-$150,000: a percentage of the pension (50%/37.5%/25% up to $125,000; 25%/18.75%/12.5% up to $150,000)", "No exclusion if total income exceeds $150,000", "Shared with private pension, annuity and IRA income"],
+   "amount_usd": 100000,
+   "age_min": 62,
+   "sources": [
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-10", "quote": "received as pension, disability, or retirement benefits, under any public or private plan, whether the consideration therefor is contributed by the employee or employer or both, by any person who is 62 years of age or older"},
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-10", "quote": "for taxable years beginning on or after January 1, 2020, of up to $100,000 for a married couple filing jointly, $50,000 for a married person filing separately, or $75,000 for an individual filing as a single taxpayer"},
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-10", "quote": "For taxable years beginning on or after January 1, 2021, the exclusion provided by this subsection shall only be allowed if the taxpayer has gross income for the taxable year of not more than $150,000."},
+    {"kind": "page", "url": "https://www.nj.gov/treasury/taxation/njit7.shtml", "quote": "You (and/or your spouse/civil union partner, if filing jointly) were 62 or older or disabled as defined by Social Security guidelines on the last day of the tax year (December 31 for calendar year filers); and Your total income for the entire year was $150,000 or less."},
+    {"kind": "page", "url": "https://www.nj.gov/treasury/taxation/njit7.shtml", "quote": "If your total income is $100,000 or less, you can exclude reported taxable pension, annuity, and IRA withdrawals up to the maximum amount for your filing status listed below."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, annuities and IRA withdrawals share the same pension exclusion: age 62+ (or disabled), up to $100,000 joint / $75,000 single at total income up to $100,000, a percentage up to $150,000, and none above.",
+   "conditions": ["Age 62 or older, or disabled under Social Security guidelines", "Total income $100,000 or less: up to $100,000 joint, $75,000 single, $50,000 married filing separately", "Total income $100,001-$150,000: a percentage of the pension", "No exclusion above $150,000 total income"],
+   "amount_usd": 100000,
+   "age_min": 62,
+   "sources": [
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-10", "quote": "received as pension, disability, or retirement benefits, under any public or private plan, whether the consideration therefor is contributed by the employee or employer or both, by any person who is 62 years of age or older"},
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-10", "quote": "For taxable years beginning on or after January 1, 2021, the exclusion provided by this subsection shall only be allowed if the taxpayer has gross income for the taxable year of not more than $150,000."},
+    {"kind": "page", "url": "https://www.nj.gov/treasury/taxation/njit7.shtml", "quote": "If your total income is $100,000 or less, you can exclude reported taxable pension, annuity, and IRA withdrawals up to the maximum amount for your filing status listed below."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. military pensions and military survivor benefit payments are excluded from New Jersey gross income at any age and income.",
+   "conditions": ["Federal civil service pensions from OPM, even if based on military service credit, are not covered (they use the pension exclusion)"],
+   "sources": [
+    {"kind": "statute", "ref": "N.J. Stat. § 54A:6-26", "quote": "Gross income shall not include military pension payments or military survivor's benefit payments paid to individuals by the United States with respect to service in the Armed Forces of the United States."},
+    {"kind": "page", "url": "https://nj.gov/treasury/taxation/military/taxinformation.shtml", "quote": "New Jersey does not tax U.S. military pension and survivors' benefit payments. In general, these benefits are issued by the U.S. Defense Finance and Accounting Service (DFAS)."}
+   ]
+  }
+ },
+ "notes": "The pension exclusion (N.J.S.A. 54A:6-10) is one shared allowance for public and private pensions, annuities and IRA withdrawals; the joint-return cap is $100,000. Taxpayers 62+ who do not use the full pension exclusion and have $3,000 or less of wages/business income may use the unused part against other income (Other Retirement Income Exclusion, N.J.S.A. 54A:6-15), and a separate special exclusion applies to people 62+ who cannot receive Social Security or Railroad Retirement benefits (Division of Taxation retirement income exclusions page)."
+}

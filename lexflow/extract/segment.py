@@ -10,7 +10,12 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-SECTION_HEAD = re.compile(r"^§ ([\w.:\-]+)\. ")
+SECTION_HEAD = re.compile(r"^§ ([\w.:\-]+)\. "
+                          # a Brazilian article's citation (lexflow/corpus/countries/brazil.py), as statutes.combined_text
+                          # heads it: "§ Lei nº 12.527/2011, art. 11. ", "§ Constituição Federal, art. 5º. "
+                          r"|^§ ((?:Constituição Federal|Constituição de \d{4}|ADCT|(?:Lei Complementar|Lei Delegada|"
+                          r"Decreto-Lei|Emenda Constitucional(?: de Revisão)?|Lei) nº [\d.]+/\d{4})"
+                          r"(?:, (?:art\. [\d.]+º?(?:-[A-Z]{1,2})?|preâmbulo))?)\.(?: |$)")
 ROMAN = {"i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"}
 # "(a) ", "(b)(1) " (DC stacks labels without a space), "A. ", "12. ", "a. "
 LABEL = re.compile(r"^\s*(?:\(([A-Za-z0-9]{1,5}(?:-\d+)?)\)(?:\s+|(?=\())|([A-Z]|\d{1,2}|[a-z])\.\s+)")
@@ -122,7 +127,7 @@ def segment(text: str) -> list[Clause]:
     for p_index, (offset, par) in enumerate(_paragraphs(text)):
         head = SECTION_HEAD.match(par)
         if head:
-            section, stack = head.group(1), []
+            section, stack = head.group(1) or head.group(2), []
             continue
         body, body_off = par, offset
         while True:

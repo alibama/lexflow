@@ -1,0 +1,59 @@
+{
+ "qid": "retirement_tax",
+ "state": "va",
+ "question": "Does my state tax my pension or my Social Security?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "58.1-322.02",
+   "role": "primary"
+  },
+  {
+   "ref": "58.1-322.03",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Social Security benefits are subtracted from Virginia taxable income.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "58.1-322.02",
+   "quote": "Benefits received under Title II of the Social Security Act and other benefits subject to federal income taxation solely pursuant to § 86 of the Internal Revenue Code.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Pensions are taxed, with an age deduction of up to $12,000 at 65 or older.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "58.1-322.03",
+   "quote": "A deduction in the amount of $ 12,000 for individuals born after January 1, 1939, who have attained the age of 65.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The age deduction is reduced as income rises above $50,000 or $75,000.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "58.1-322.03",
+   "quote": "This deduction shall be reduced by $ 1 for every $ 1 that the taxpayer's adjusted federal adjusted gross income exceeds $ 50,000 for single taxpayers or $ 75,000 for married taxpayers.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Up to $40,000 of military benefits may be subtracted from 2025.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "58.1-322.02",
+   "quote": "for taxable years beginning on and after January 1, 2025, up to $40,000 of military benefits.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

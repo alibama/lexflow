@@ -1,0 +1,103 @@
+{
+ "state": "tx",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Employees Retirement System of Texas",
+   "short": "ERS",
+   "census_units": ["census-pid6:226296", "census-pid6:251385"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 811.001", "quote": "\"Retirement system\" means the Employees Retirement System of Texas."},
+   "statute_role": "defines",
+   "body": {"name": "board of trustees of the Employees Retirement System of Texas", "source": {"kind": "statute", "ref": "Tex. Government Code § 815.101", "quote": "The board of trustees is responsible for the general administration and operation of the retirement system."}},
+   "website": "https://ers.texas.gov/",
+   "website_source": {"kind": "page", "url": "https://ers.texas.gov/about-ers", "quote": "The Employees Retirement System of Texas (ERS) manages benefits for employees and retirees of State of Texas agencies and some higher education institutions."},
+   "membership": ["state_employee", "public_safety", "legislator"],
+   "covers_local": false,
+   "notes": "Census lists the Law Enforcement and Custodial Officer Supplemental Retirement Fund (LECOS) separately; it is an ERS fund (Gov't Code § 815.317). The system itself rests on Tex. Const. art. XVI, § 67; Gov't Code § 815.310 establishes its trust fund."
+  },
+  {
+   "name": "Teacher Retirement System of Texas",
+   "short": "TRS",
+   "census_units": ["census-pid6:227731"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 821.001", "quote": "\"Retirement system\" means the Teacher Retirement System of Texas."},
+   "statute_role": "defines",
+   "body": {"name": "board of trustees of the Teacher Retirement System of Texas", "source": {"kind": "statute", "ref": "Tex. Government Code § 825.101", "quote": "The board of trustees is responsible for the general administration and operation of the retirement system."}},
+   "website": "https://www.trs.texas.gov/",
+   "website_source": null,
+   "membership": ["teacher", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Tex. Government Code § 821.001", "quote": "\"Employer\" means any agents or agencies in the state responsible for public education, including the governing board of any school district created under the laws of this state, any county school board"},
+   "notes": "Website quote dropped: trs.texas.gov returns no readable text to lexflow's fetcher."
+  },
+  {
+   "name": "Texas County and District Retirement System",
+   "short": "TCDRS",
+   "census_units": ["census-pid6:226297"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 841.003", "quote": "The Texas County and District Retirement System is continued in existence and is the name by which the business of the retirement system shall be transacted, all its funds invested, and all its cash and other property held."},
+   "statute_role": "establishes",
+   "body": {"name": "board of trustees of the Texas County and District Retirement System", "source": {"kind": "statute", "ref": "Tex. Government Code § 845.101", "quote": "The board of trustees is responsible for the administration of the retirement system."}},
+   "website": "https://www.tcdrs.org/",
+   "website_source": null,
+   "membership": ["local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Tex. Government Code § 842.002", "quote": "notices, information, and reports the board of trustees requires from a subdivision that elects to participate in the retirement system;"},
+   "notes": "Website quote dropped: tcdrs.org returns no readable text to lexflow's fetcher."
+  },
+  {
+   "name": "Texas Municipal Retirement System",
+   "short": "TMRS",
+   "census_units": ["census-pid6:227397"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 851.003", "quote": "The Texas Municipal Retirement System is continued in existence and is the name by which the business of the retirement system shall be transacted, all its funds invested, and all its cash and other property held."},
+   "statute_role": "establishes",
+   "body": {"name": "board of trustees of the Texas Municipal Retirement System", "source": {"kind": "statute", "ref": "Tex. Government Code § 855.101", "quote": "The board of trustees is responsible for the administration of the retirement system."}},
+   "website": "https://www.tmrs.com/",
+   "website_source": {"kind": "page", "url": "https://www.tmrs.com/", "quote": "TMRS is a statewide retirement system that provides retirement, disability, and survivor benefits for employees of participating Texas cities."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Tex. Government Code § 852.002", "quote": "petition the governing body of a municipality for an election on the issue of participation in the retirement system by the municipality or specified departments of the municipality"},
+   "notes": ""
+  },
+  {
+   "name": "Texas Emergency Services Retirement System",
+   "short": "TESRS",
+   "census_units": ["census-pid6:227393"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 861.002", "quote": "The Texas Emergency Services Retirement System is the name by which all its business shall be transacted, all its funds invested, and all its cash, securities, and other property held."},
+   "statute_role": "defines",
+   "body": {"name": "state board of the pension system", "source": {"kind": "statute", "ref": "Tex. Government Code § 865.001", "quote": "The state board of the pension system is composed of nine members appointed by the governor for staggered terms of six years"}},
+   "website": "https://www.tesrs.texas.gov/",
+   "website_source": null,
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "Tex. Government Code § 861.001", "quote": "\"Participating department\" means a department that elects to participate in the pension system under Section 862.001."},
+   "notes": "Volunteer and paid fire and emergency services departments. Website quote dropped: the readable copy of tesrs.texas.gov carries only the system's name."
+  },
+  {
+   "name": "Judicial Retirement System of Texas Plan Two",
+   "short": "JRS II",
+   "census_units": ["census-pid6:228230"],
+   "statute": {"kind": "statute", "ref": "Tex. Government Code § 836.001", "quote": "\"Retirement system\" means the Judicial Retirement System of Texas Plan Two."},
+   "statute_role": "defines",
+   "body": {"name": "board of trustees of the Employees Retirement System of Texas", "source": {"kind": "statute", "ref": "Tex. Government Code § 840.001", "quote": "The board of trustees of the Employees Retirement System of Texas, as provided by Subchapter A of Chapter 815, is responsible for the general administration and operation of the retirement system."}},
+   "website": "https://ers.texas.gov/",
+   "website_source": null,
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Administered by ERS; no readable ERS page naming JRS II was found."
+  },
+  {
+   "name": "Physicians Referral Service Supplemental Retirement Plan",
+   "short": "PRS",
+   "census_units": ["census-pid6:228247"],
+   "statute": null,
+   "why": "Institutional supplemental plan for physicians of a University of Texas health institution, not a statewide system; no statute section found in the index.",
+   "statute_role": "none",
+   "body": null,
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Listed only because Census classes it as state-level."
+  }
+ ]
+}

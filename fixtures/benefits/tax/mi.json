@@ -1,0 +1,51 @@
+{
+ "state": "mi",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Michigan Department of Treasury", "url": "https://www.michigan.gov/taxes"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits included in adjusted gross income are deducted on Schedule 1, so they are not taxed by Michigan.",
+   "conditions": ["Born after 1952 and 67 or older: for 2025 the Michigan standard deduction cannot be combined with the Social Security deduction (allowed together for 2026-2028)"],
+   "sources": [
+    {"kind": "statute", "ref": "206.30", "quote": "Social Security benefits as defined in section 86 of the internal revenue code."},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/iit/tax-guidance/tax-situations/retirement-and-pension-benefits/pension/2021-retirement-pension-information", "quote": "Social Security benefits included in your adjusted gross income are entered on Schedule 1, line 14 and are exempt from tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "For 2025, retirees born before 1946 deduct all federal and Michigan public pensions; those born 1946-1966 may deduct public and private benefits combined up to 75% of the private limit ($49,423 single / $98,846 joint); those born 1967 or later get no pension deduction until the age-67 standard deduction.",
+   "conditions": ["Born before 1946: federal and Michigan state/local public pensions fully deductible", "Born 1946-1966: combined public and private deduction up to $49,423 single / $98,846 joint for 2025 (or the older Tier 2 limits if larger)", "Born 1967 or later: no deduction for 2025", "Other states' public pensions only with reciprocity and only up to the private limit", "Full phase-in (100% of the private limit for everyone) from 2026"],
+   "sources": [
+    {"kind": "statute", "ref": "206.30", "quote": "Retirement or pension benefits received from a federal public retirement system or from a public retirement system of or created by this state or a political subdivision of this state."},
+    {"kind": "statute", "ref": "206.30", "quote": "For the 2025 tax year, a taxpayer who was born after 1945 and before 1967 may deduct an amount of retirement or pension benefits not to exceed 75% of the maximum amount of retirement or pension benefits that the taxpayer would be allowed to deduct for the tax year"},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/iit/tax-guidance/tax-situations/retirement-and-pension-benefits/2025/2025-tier-i", "quote": "Retirees may subtract all qualifying pension benefits received from federal or Michigan public sources to the extent included in adjusted gross income (AGI)."},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/iit/tax-guidance/tax-situations/retirement-and-pension-benefits/2025/2025-tier-iii", "quote": "For those born January 1, 1946 through December 31, 1966 the phase in subtraction is 75% of the private pension limits."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions are deductible up to $65,897 single / $131,794 joint for 2025 if born before 1946, or up to $49,423 / $98,846 (combined with public pensions) if born 1946-1966; others get no deduction for 2025.",
+   "conditions": ["Born before 1946: up to $65,897 single / $131,794 joint, reduced by public, military and railroad deductions", "Born 1946-1966: up to $49,423 single / $98,846 joint for public and private combined", "Born 1967 or later: none for 2025", "Joint returns use the older spouse's birth year"],
+   "amount_usd": 65897,
+   "sources": [
+    {"kind": "statute", "ref": "206.30", "quote": "retirement or pension benefits not deductible under subparagraph ( i ) or subdivision (e) from any other retirement or pension system or benefits from a retirement annuity policy in which payments are made for life to a senior citizen, to a maximum of $42,240.00 for a single return and $84,480.00 for a joint return."},
+    {"kind": "statute", "ref": "206.30", "quote": "For the 2025 tax year, a taxpayer who was born after 1945 and before 1967 may deduct an amount of retirement or pension benefits not to exceed 75% of the maximum amount of retirement or pension benefits that the taxpayer would be allowed to deduct for the tax year"},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/iit/tax-guidance/tax-situations/retirement-and-pension-benefits/2025/2025-tier-i", "quote": "The 2025 private retirement limits are: up to $65,897 if single or married filing separate, or up to $131,794 if married filing a joint return."},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/iit/tax-guidance/tax-situations/retirement-and-pension-benefits/2025/2025-tier-iii", "quote": "For those born January 1, 1946 through December 31, 1966 the phase in subtraction is 75% of the private pension limits."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. armed forces retirement and pension benefits included in adjusted gross income are fully deducted, regardless of age.",
+   "conditions": ["The military deduction reduces the private pension limit for other retirement income"],
+   "sources": [
+    {"kind": "statute", "ref": "206.30", "quote": "Compensation, including retirement or pension benefits, received for services in the Armed Forces of the United States."},
+    {"kind": "page", "url": "https://www.michigan.gov/taxes/questions/iit/accordion/military/are-military-retirement-benefits-exempt-from-michigan-individual-income-tax", "quote": "Military retirement benefits paid to retirees of the armed forces of the United States for services performed while a member are exempt from Michigan individual income tax."}
+   ]
+  }
+ },
+ "notes": "Public Act 4 of 2023 phases out the 2012 age limits: for 2025 people born 1946-1966 may use 75% of the private limit, and from 2026 all taxpayers may deduct up to the full private limit (born-before-1946 public pensions stay unlimited). The $42,240/$84,480 private maximums in the statute are indexed; Treasury gives $65,897/$131,794 for 2025. Retirees whose government job was not covered by Social Security have separate higher limits. Treasury pages are read from Internet Archive captures (michigan.gov's robots.txt refuses automated readers); the Social Security page quote is from Treasury's 2021 retirement page, the most recent HTML page found stating the rule, which the statute confirms is unchanged. Public Act 24 of 2025 lets taxpayers born after 1952 and 67+ claim both the standard deduction and the Social Security deduction for 2026-2028."
+}

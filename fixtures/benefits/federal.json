@@ -1,0 +1,90 @@
+{
+ "_about": "The federal layer of lexflow.benefits as official pointers: each program's administering agency, its official page (with a quote lexflow's fetch matched on it) and the law that creates it (a citation only: this copy has no index of the United States Code, so the law is not quoted). Federal, and applies in every state; not modelled in depth.",
+ "as_of": "2026-10-22",
+ "programs": [
+  {
+   "id": "us_social_security_retirement",
+   "name": "Social Security retirement benefits",
+   "agency": "Social Security Administration",
+   "url": "https://www.ssa.gov/retirement",
+   "law": "Social Security Act, Title II (42 U.S.C. § 402)",
+   "applies_to": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "private_with_plan", "private_no_plan", "self_employed", "veteran", "retired"],
+   "note": "Most jobs are covered; some state and local government jobs are not covered by Social Security (the employer and the system's handbook say which).",
+   "source": {"kind": "page", "url": "https://www.ssa.gov/retirement", "quote": "You can typically get monthly Retirement benefits starting at age 62 if you've worked and paid Social Security taxes for 10 years or more."},
+   "appeal": {"text": "Ask the Social Security Administration to review a decision you disagree with.", "url": "https://www.ssa.gov/apply/appeal-decision-we-made",
+              "source": {"kind": "page", "url": "https://www.ssa.gov/apply/appeal-decision-we-made", "quote": "Request that an application decision be reviewed."}}
+  },
+  {
+   "id": "us_social_security_survivors",
+   "name": "Social Security survivors benefits",
+   "agency": "Social Security Administration",
+   "url": "https://www.ssa.gov/retirement",
+   "law": "Social Security Act, Title II (42 U.S.C. § 402)",
+   "applies_to": ["surviving_spouse"],
+   "source": {"kind": "page", "url": "https://www.ssa.gov/retirement", "quote": "You might qualify for Family or Survivor benefits based on a family member’s work. These benefits could start before age 62."},
+   "appeal": {"text": "Ask the Social Security Administration to review a decision you disagree with.", "url": "https://www.ssa.gov/apply/appeal-decision-we-made",
+              "source": {"kind": "page", "url": "https://www.ssa.gov/apply/appeal-decision-we-made", "quote": "Request that an application decision be reviewed."}}
+  },
+  {
+   "id": "us_ssi",
+   "name": "Supplemental Security Income (SSI)",
+   "agency": "Social Security Administration",
+   "url": "https://www.ssa.gov/ssi",
+   "law": "Social Security Act, Title XVI (42 U.S.C. § 1381 et seq.)",
+   "applies_to": ["retired", "surviving_spouse", "private_no_plan", "self_employed"],
+   "note": "Means-tested: for people 65 or older, blind or disabled, with little income and few resources.",
+   "source": {"kind": "page", "url": "https://www.ssa.gov/ssi", "quote": "SSI provides monthly payments to people with disabilities and older adults who have little or no income or resources."}
+  },
+  {
+   "id": "us_va_pension",
+   "name": "Veterans Pension",
+   "agency": "U.S. Department of Veterans Affairs",
+   "url": "https://www.va.gov/pension/",
+   "law": "38 U.S.C. § 1521",
+   "applies_to": ["veteran"],
+   "source": {"kind": "page", "url": "https://www.va.gov/pension/", "quote": "VA pension benefits are available to some wartime Veterans and their survivors—find out if you’re eligible to apply."},
+   "appeal": {"text": "Choose a VA decision review option (supplemental claim, higher-level review or Board appeal).", "url": "https://www.va.gov/decision-reviews/",
+              "source": {"kind": "page", "url": "https://www.va.gov/decision-reviews/", "quote": "If you disagree with a VA decision on your benefits or claim, we can help you find the decision review option that’s right for you."}}
+  },
+  {
+   "id": "us_va_survivors_pension",
+   "name": "VA Survivors Pension",
+   "agency": "U.S. Department of Veterans Affairs",
+   "url": "https://www.va.gov/pension/survivors-pension/",
+   "law": "38 U.S.C. § 1541",
+   "applies_to": ["surviving_spouse"],
+   "source": {"kind": "page", "url": "https://www.va.gov/pension/survivors-pension/", "quote": "A VA Survivors Pension offers monthly payments to qualified surviving spouses and unmarried dependent children of wartime Veterans who meet certain income and net worth limits set by Congress."},
+   "appeal": {"text": "Choose a VA decision review option.", "url": "https://www.va.gov/decision-reviews/",
+              "source": {"kind": "page", "url": "https://www.va.gov/decision-reviews/", "quote": "If you disagree with a VA decision on your benefits or claim, we can help you find the decision review option that’s right for you."}}
+  },
+  {
+   "id": "us_military_retired_pay",
+   "name": "Military retired pay and annuities",
+   "agency": "Defense Finance and Accounting Service",
+   "url": "https://www.dfas.mil/RetiredMilitary/",
+   "law": "10 U.S.C. chapter 71",
+   "applies_to": ["veteran", "surviving_spouse"],
+   "source": {"kind": "page", "url": "https://www.dfas.mil/RetiredMilitary/", "quote": "Retired Military & Annuitants"}
+  },
+  {
+   "id": "us_fers_csrs",
+   "name": "Federal employees' retirement (FERS and CSRS)",
+   "agency": "U.S. Office of Personnel Management, Retirement Services",
+   "url": "https://www.opm.gov/retirement-center/",
+   "law": "5 U.S.C. chapters 83 (CSRS) and 84 (FERS)",
+   "applies_to": [],
+   "for": "federal civilian employees (not a person type of this page; shown with the federal layer)",
+   "source": {"kind": "page", "url": "https://www.opm.gov/retirement-center/", "quote": "Retirement Toggle submenu Apply for Retirement My Annuity and Benefits CSRS Information FERS Information"}
+  },
+  {
+   "id": "us_erisa",
+   "name": "Private employer retirement plans (ERISA)",
+   "agency": "U.S. Department of Labor, Employee Benefits Security Administration",
+   "url": "https://www.dol.gov/agencies/ebsa",
+   "law": "Employee Retirement Income Security Act of 1974 (29 U.S.C. § 1001 et seq.)",
+   "applies_to": ["private_with_plan", "retired", "surviving_spouse"],
+   "note": "A private plan's own claims procedure decides benefit claims first; EBSA explains the rights ERISA gives participants and beneficiaries.",
+   "source": {"kind": "page", "url": "https://www.dol.gov/agencies/ebsa", "quote": "Claiming Retirement Benefits Resources to help you understand retirement plan basics"}
+  }
+ ]
+}

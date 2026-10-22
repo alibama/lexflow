@@ -1,0 +1,49 @@
+{
+ "state": "sc",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "South Carolina Department of Revenue", "url": "https://dor.sc.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and railroad retirement benefits taxed federally are not subject to South Carolina income tax.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.sc.gov/iit/prepare-you-file/iit-faqs", "quote": "Social Security benefits and railroad retirement taxed for federal purposes are not subject to tax in South Carolina. For more information, see SC Code Section 12-6-1120(4)."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Federal, state and local government pensions share the retirement income deduction of up to $3,000 a year before age 65 and up to $10,000 from age 65, which together with the age-65 deduction can shelter up to $15,000 per person.",
+   "conditions": ["Up to $3,000 per year before age 65; up to $10,000 per year from the year the taxpayer turns 65", "Each spouse with retirement income gets a separate deduction", "From age 65, retirement deduction plus the general age-65 deduction cannot exceed $15,000 per taxpayer"],
+   "amount_usd": 10000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "12-6-1170", "quote": "An individual taxpayer who is the original owner of a qualified retirement account is allowed an annual deduction from South Carolina taxable income of not more than three thousand dollars of retirement income received. Beginning in the year in which the taxpayer reaches age sixty-five, the taxpayer may deduct not more than ten thousand dollars of retirement income that is included in South Carolina taxable income."},
+    {"kind": "page", "url": "https://dor.sc.gov/iit/prepare-you-file/iit-faqs", "quote": "An individual taxpayer receiving retirement income from their own plan may deduct up to $3,000 of qualifying retirement income annually until reaching age 65 and deduct up to $10,000 of such retirement income annually at age 65 and thereafter."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Distributions from qualified private plans (401, 403, 408 IRAs, 457) not subject to an early-distribution penalty get the same $3,000 (under 65) / $10,000 (65 and older) retirement deduction.",
+   "conditions": ["Up to $3,000 per year before age 65; up to $10,000 per year from age 65", "Distributions subject to the premature-distribution penalty do not qualify", "From age 65, retirement deduction plus the general age-65 deduction cannot exceed $15,000 per taxpayer"],
+   "amount_usd": 10000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "12-6-1170", "quote": "(2) The term \"retirement income\", as used in this subsection, means the total of all otherwise taxable income not subject to a penalty for premature distribution received by the taxpayer or the taxpayer's surviving spouse in a taxable year from qualified retirement plans which include those plans defined in Internal Revenue Code Sections 401, 403, 408, and 457,"},
+    {"kind": "page", "url": "https://dor.sc.gov/iit/prepare-you-file/iit-faqs", "quote": "Pension income received while a resident of South Carolina is taxable to South Carolina. However, South Carolina allows a retirement deduction and an age 65 and over deduction."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Beginning with tax year 2022, all military retirement income included in South Carolina taxable income is deducted, including survivor benefits received by a surviving spouse.",
+   "conditions": ["The military deduction reduces the general retirement deduction and the age-65 deduction by the amount taken"],
+   "sources": [
+    {"kind": "statute", "ref": "12-6-1171", "quote": "(A) An individual taxpayer may deduct all military retirement income that is included in South Carolina taxable income."},
+    {"kind": "page", "url": "https://dor.sc.gov/iit/prepare-you-file/iit-faqs", "quote": "Beginning with tax year 2022, you may deduct all military retirement income included in your South Carolina taxable income."}
+   ]
+  }
+ },
+ "notes": "The Social Security exclusion is in S.C. Code 12-6-1120(4), which is not in lexflow's statute index, so that item rests on the SCDOR FAQ only. Besides the retirement deduction, every resident 65 or older may deduct up to $15,000 against any income (12-6-1170(B)), reduced by the retirement deduction claimed ($30,000 on a joint return when both spouses are 65+), so a 65+ retiree can shelter $15,000 of pension income in total. Surviving spouses get an additional retirement deduction for the decedent's plan."
+}

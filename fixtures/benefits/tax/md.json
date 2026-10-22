@@ -1,0 +1,51 @@
+{
+ "state": "md",
+ "as_of": "2026-10-22",
+ "tax_year": 2024,
+ "income_tax": true,
+ "agency": {"name": "Comptroller of Maryland", "url": "https://www.marylandcomptroller.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits are not taxed in Maryland: the part taxed federally is subtracted on the Maryland return.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.marylandcomptroller.gov/legal-library/tb-51-apr-10-2025.html", "quote": "Social Security benefits and Railroad Retirement benefits provided under the U.S. Railroad Retirement Act are not taxed in Maryland."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "At 65 or older (or totally disabled), income from an employer retirement plan, public or private, may be excluded up to the maximum pension exclusion, reduced by the Social Security and Railroad Retirement benefits received.",
+   "conditions": ["65 or older on the last day of the tax year, or totally disabled (or the spouse totally disabled)", "maximum exclusion $39,500 for tax year 2024 (the Comptroller's Technical Bulletin 51); reduced by Social Security and Railroad Retirement benefits received"],
+   "amount_usd": 39500,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "Md. Code, Tax - General § 10-209", "quote": "the cumulative or total annuity, pension, or endowment income from an employee retirement system included in federal adjusted gross income; or"},
+    {"kind": "statute", "ref": "Md. Code, Tax - General § 10-209", "quote": "the maximum annual benefit under the Social Security Act computed under subsection (c) of this section, less any payment received as old age, survivors, or disability benefits under the Social Security Act, the Railroad Retirement Act, or both."},
+    {"kind": "page", "url": "https://www.marylandcomptroller.gov/legal-library/tb-51-apr-10-2025.html", "quote": "Maryland's maximum pension exclusion of $39,500 is available to taxpayers if: On the last day of the tax year: the taxpayer was 65 or older, or Taxpayer is totally disabled; or Taxpayer’s spouse was totally disabled;"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "The same pension exclusion reaches private employer plans qualified under IRC § 401(a), 403 or 457(b); IRA, Roth IRA, rollover IRA, SEP and Keogh distributions do not qualify and are taxed.",
+   "conditions": ["65 or older, or totally disabled", "employer plans only: IRAs, SEPs and Keogh plans are excluded from the exclusion"],
+   "amount_usd": 39500,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "Md. Code, Tax - General § 10-209", "quote": "an individual retirement account or annuity under § 408 of the Internal Revenue Code;"},
+    {"kind": "page", "url": "https://www.marylandcomptroller.gov/legal-library/tb-51-apr-10-2025.html", "quote": "A traditional IRA, a Roth IRA, a rollover IRA, a simplified employee plan (SEP), a Keogh plan, an ineligible deferred compensation plan, or foreign retirement income does not qualify."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "A military retiree (or the retiree's spouse or ex-spouse) may subtract up to $20,000 of military retirement income at 55 or older, or up to $12,500 under 55.",
+   "conditions": ["up to $20,000 at 55 or older", "up to $12,500 under 55", "income subtracted here does not count toward the pension exclusion"],
+   "amount_usd": 20000,
+   "sources": [
+    {"kind": "statute", "ref": "Md. Code, Tax - General § 10-209", "quote": "Military retirement income that is included in the subtraction under § 10–207(q) of this subtitle may not be taken into account for purposes of the subtraction under this section."},
+    {"kind": "page", "url": "https://www.marylandcomptroller.gov/legal-library/tb-51-apr-10-2025.html", "quote": "Taxpayers at least 55 years of age on the last day of the taxable year may subtract up to $20,000 of military retirement income, received in the taxable year."}
+   ]
+  }
+ },
+ "notes": "Tax-General § 10-207 (the subtractions for Social Security and for military retirement income, subsection (q)) is not in this copy's Maryland index, so those two items rest on the Comptroller's Technical Bulletin 51 (10 April 2025); § 10-209 grounds the pension exclusion and its interaction with the military subtraction. Technical Bulletin 51 gives the tax year 2024 maximum ($39,500); the Comptroller's FAQ gives $41,200 for 2025 but is not a page lexflow's fetch can read."
+}

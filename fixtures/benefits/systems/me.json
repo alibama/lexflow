@@ -1,0 +1,21 @@
+{
+ "state": "me",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Maine Public Employees Retirement System",
+   "short": "MainePERS",
+   "census_units": ["census-pid6:228200", "census-pid6:249668", "census-pid6:249669", "census-pid6:249670", "census-pid6:249671"],
+   "statute": {"kind": "statute", "ref": "5 M.R.S. § 17101", "quote": "There is established a retirement system, the functions and operations of which are under the supervision of the board, for the purpose of providing retirement allowances and other benefits under this Part for employees."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Maine Public Employees Retirement System", "source": {"kind": "statute", "ref": "5 M.R.S. § 17103", "quote": "Operation of retirement system. The board shall have responsibility for the proper operation of the retirement system and for making this Part effective."}},
+   "website": "https://www.mainepers.org/",
+   "website_source": {"kind": "page", "url": "https://www.mainepers.org/before-you-join/", "quote": "The Maine Public Employees Retirement System (MainePERS) administers Retirement Plans, Group Life Insurance, and Disability Retirement benefits to eligible employees."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "legislator"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "5 M.R.S. § 18201", "quote": "A local district may contract for the participation of its employees in the Participating Local District Retirement Program under this chapter any time before the date the board puts into operation the consolidated retirement plan for participating local districts under chapter 427 ."},
+   "notes": "Census units are MainePERS plans: State Employee and Teacher Plan, Participating Local District (PLD) Consolidated and Agent Plans, Legislative Plan and Judicial Plan."
+  }
+ ]
+}

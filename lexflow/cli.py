@@ -193,7 +193,7 @@ def cmd_ask_search(args) -> int:
     concept, synonyms separated by '|'."""
     from .ask import index as I
     from .municipal import states as S
-    st = S.normalise(args.state)
+    st = S.normalise_any(args.state)                # a state, or a country whose law is indexed (jpn)
     corpus = "regulations" if getattr(args, "regulations", False) else I.CORPUS
     if not I.ensure(st, log=lambda *_: None, corpus=corpus):
         print(f"{st}: {corpus} not downloaded")
@@ -288,8 +288,8 @@ def cmd_index(args) -> int:
     from .municipal import statutes
     if getattr(args, "regulations", False):
         return _index_regulations(args)
-    sts = S.parse_states(args.states) if args.states else [s for s, _, _ in S.STATES if statutes.have(s)]
-    for st in sts:
+    sts = S.parse_jurisdictions(args.states) if args.states else [s for s, _, _ in S.STATES if statutes.have(s)]
+    for st in sts:                                  # --states jpn builds data/index/statutes_jpn.sqlite
         if args.force or not I.ready(st):
             I.build(st)
     return 0

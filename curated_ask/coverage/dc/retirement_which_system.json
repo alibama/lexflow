@@ -1,0 +1,54 @@
+{
+ "qid": "retirement_which_system",
+ "state": "dc",
+ "question": "Which public retirement system covers me, and who runs it?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "1-711",
+   "role": "primary"
+  },
+  {
+   "ref": "1-712",
+   "role": "supporting"
+  },
+  {
+   "ref": "1-713",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The District of Columbia Retirement Board, an independent agency, manages the retirement funds.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "1-711",
+   "quote": "There is established, as an independent agency of the government of the District of Columbia, a board of trustees to be known as the District of Columbia Retirement Board",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "There is a Police Officers and Fire Fighters' Retirement Fund.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "1-712",
+   "quote": "There is established a fund to be known as the District of Columbia Police Officers and Fire Fighters",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "There is a Teachers' Retirement Fund.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "1-713",
+   "quote": "There is established a fund to be known as the District of Columbia Teachers",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": "Most other District employees hired after 1987 are in a defined contribution plan, and earlier hires in the federal Civil Service Retirement System; neither is a fund of the Retirement Board."
+}

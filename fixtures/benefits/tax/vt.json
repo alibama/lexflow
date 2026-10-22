@@ -1,0 +1,48 @@
+{
+ "state": "vt",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Vermont Department of Taxes", "url": "https://tax.vermont.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Federally taxable Social Security is fully excluded at federal AGI up to $55,000 ($70,000 joint), partly excluded on a sliding scale up to $65,000 ($80,000 joint), and fully taxed above that.",
+   "conditions": ["Full exclusion at AGI <= $55,000 (single, MFS, HoH, surviving spouse) or <= $70,000 (joint)", "Phases out over the next $10,000 of AGI; none at $65,000 / $80,000 or more", "Only one of the Social Security, CSRS or other-retirement exclusions may be taken"],
+   "sources": [
+    {"kind": "statute", "ref": "5830e", "quote": "(A) If the federal adjusted gross income of the taxpayer is less than or equal to $55,000.00, all federally taxable benefits received under the federal Social Security Act shall be excluded."},
+    {"kind": "page", "url": "https://tax.vermont.gov/tax-law-and-guidance/tax-legislation/2025", "quote": "Social Security Income Increases each adjusted gross income threshold by $5,000 for Social Security recipients to be eligible for the Social Security exemption."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Up to $10,000 of federal CSRS income, or of pensions from federal, state or local contributory systems not covered by Social Security, is excluded under the same AGI limits as the Social Security exclusion; other public pensions are taxed.",
+   "conditions": ["Only CSRS or other government contributory systems whose earnings were not covered by Social Security", "First $10,000 excluded at AGI <= $55,000 ($70,000 joint), phasing out to zero at $65,000 ($80,000 joint)", "Taken instead of, not in addition to, the Social Security exclusion"],
+   "amount_usd": 10000,
+   "sources": [
+    {"kind": "statute", "ref": "5830e", "quote": "(A) If the federal adjusted gross income of the taxpayer is less than or equal to $55,000.00, the first $10,000.00 of income received from the Civil Service Retirement System shall be excluded."},
+    {"kind": "statute", "ref": "5830e", "quote": "(2) the contributory system from which the income is received was based on earnings that were not covered by the Social Security Act."},
+    {"kind": "page", "url": "https://tax.vermont.gov/tax-law-and-guidance/tax-legislation/2025", "quote": "Civil Service Retirement System (CSRS) and Other Contributory Retirement Systems Increases each adjusted gross income threshold by $5,000 for CSRS and other contributory retirement systems recipients to be eligible for the exemption of up to $10,000 of retirement income."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions have no Vermont exclusion and are taxed as part of federal adjusted gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "32 V.S.A. § 5811", "quote": "(21) “Taxable income” means, in the case of an individual, federal adjusted gross income determined without regard to 26 U.S.C. § 168(k) and:"},
+    {"kind": "page", "url": "https://tax.vermont.gov/individuals/personal-income-tax/taxable-income", "quote": "Other eligible retirement systems include any contributory annuity, pension, endowment, or retirement system of the U.S. government or a state government where benefits are based on earnings not covered by the Social Security Act."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "From tax year 2025, all federally taxable U.S. military retirement and survivor benefit income is excluded at AGI up to $125,000, phasing out to nothing at $175,000, for any filing status.",
+   "conditions": ["Full exclusion at federal AGI <= $125,000 (any filing status)", "Phases out between $125,000 and $175,000", "Can be taken in addition to the Social Security or other retirement exclusion"],
+   "sources": [
+    {"kind": "statute", "ref": "5830e", "quote": "(1) If the federal adjusted gross income of the taxpayer is less than or equal to $125,000.00, all federally taxable U.S. military retirement income and survivor benefit income shall be excluded."},
+    {"kind": "page", "url": "https://tax.vermont.gov/tax-law-and-guidance/tax-legislation/2025", "quote": "For taxpayers of any filing status whose adjusted gross income is less than or equal to $125,000, all military retirement and survivor benefit income shall be exempt."}
+   ]
+  }
+ },
+ "notes": "Act 71 of 2025 (S.51), effective retroactively for tax years beginning on and after January 1, 2025, raised the Social Security and CSRS/other-retirement AGI thresholds by $5,000 (to full exclusion at $55,000/$70,000, phased out by $65,000/$80,000) and replaced the former $10,000 military exclusion with a full exclusion up to $125,000 AGI phasing out at $175,000; the indexed 32 V.S.A. 5830e reflects these amounts. The 'Taxable Income' page quoted for private pensions is an Internet Archive capture (May 2025) that still shows tax year 2024 thresholds; it is used only for which systems qualify. Private-sector pensions get no exclusion in Vermont."
+}

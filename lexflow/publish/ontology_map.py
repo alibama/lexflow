@@ -227,6 +227,10 @@ STRUCTURE_MATCH: dict[str, dict] = {
     # levels the paths carry that the unit-level vocabulary does not (Puerto Rico's libro, Louisiana's rules)
     "book": {"akn": "book", "eli": eli("LegalResourceSubdivision"), "uslm": None},
     "rule": {"akn": "rule", "eli": eli("LegalResourceSubdivision"), "uslm": None},
+    # the civil-law levels of schema.VOCAB["unit-level"] (a Japanese law's 項, 号 and 附則)
+    "paragraph": {"akn": "paragraph", "eli": eli("LegalResourceSubdivision"), "uslm": "paragraph"},
+    "item": {"akn": "point", "eli": eli("LegalResourceSubdivision"), "uslm": "item"},
+    "supplementary-provision": {"akn": "transitional", "eli": eli("LegalResourceSubdivision"), "uslm": None},
 }
 
 # --------------------------------------------------------------------------- ELI-style identifiers

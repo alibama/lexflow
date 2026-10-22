@@ -1,0 +1,54 @@
+{
+ "qid": "retirement_appeal",
+ "state": "va",
+ "question": "How do I appeal a decision about my retirement benefits?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-4019",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-4026",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-4001",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A benefit determination is a case decision: the agency settles the facts by informal fact-finding first.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "2.2-4019",
+   "quote": "Agencies shall ascertain the fact basis for their decisions of cases through informal conference or consultation proceedings unless the named party and the agency consent to waive such a conference or proceeding to go directly to a formal hearing.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "A party aggrieved by a case decision may seek court review under the Rules of the Supreme Court.",
+   "importance": "vital",
+   "kind": "appeal",
+   "section": "2.2-4026",
+   "quote": "shall have a right to the direct review thereof by an appropriate and timely court action against the agency or its officers or agents in the manner provided by the Rules of Supreme Court of Virginia.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A case decision includes whether a named party qualifies for a benefit.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "2.2-4001",
+   "quote": "\"Case\" or \"case decision\" means any agency proceeding or determination that, under laws or regulations at the time, a named party as a matter of past or present fact",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": "Title 51.1 does not exempt the Virginia Retirement System from the Administrative Process Act (§ 2.2-4002 lists no exemption for it), so its benefit decisions follow the Act's case-decision route."
+}

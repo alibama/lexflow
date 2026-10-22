@@ -1,0 +1,48 @@
+{
+ "state": "ma",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Massachusetts Department of Revenue", "url": "https://www.mass.gov/orgs/massachusetts-department-of-revenue"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits included in federal gross income are deducted, so they are not part of Massachusetts gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "Mass. Gen. Laws ch. 62, sec. 2", "quote": "Social security benefits included in federal gross income under section eighty-six of the Code."},
+    {"kind": "page", "url": "https://www.mass.gov/info-details/massachusetts-tax-information-for-seniors-and-retirees", "quote": "Massachusetts gross income doesn’t include Social Security benefits. Under I.R.C. § 86, these benefits may be included in federal gross income depending on income thresholds."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Pensions from contributory retirement systems of Massachusetts, its political subdivisions and the U.S. government are excluded; contributory pensions from another state are deductible only if that state does not tax Massachusetts public pensions.",
+   "conditions": ["Plan must be contributory (the employee contributed)", "Massachusetts state/local and federal civil service plans qualify", "Other states' contributory public pensions qualify only on reciprocity (that state exempts Massachusetts public pensions or has no income tax)", "Non-contributory government pensions (e.g. senior U.S. judges) are taxable"],
+   "sources": [
+    {"kind": "statute", "ref": "Mass. Gen. Laws ch. 62, sec. 2", "quote": "Income from any contributory annuity, pension, endowment or retirement fund of the United States government or the commonwealth or any political subdivision thereof including the optional retirement system established by section forty of chapter fifteen A, to which the employee has contributed,"},
+    {"kind": "statute", "ref": "Mass. Gen. Laws ch. 62, sec. 3", "quote": "any income from a contributory annuity, pension, endowment or retirement fund of any other state or any political subdivision thereof, to the extent that income from any such similar fund established under the laws of the commonwealth is not subject to taxation in such other state"},
+    {"kind": "page", "url": "https://www.mass.gov/info-details/tax-treatment-of-government-pensions-in-massachusetts", "quote": "Distributions made to you from a Massachusetts state and local employee contributory plan are excluded from Massachusetts gross income even though they are included in federal gross income."},
+    {"kind": "page", "url": "https://www.mass.gov/info-details/tax-treatment-of-government-pensions-in-massachusetts", "quote": "Distributions made to you from a federal employee contributory plan are excluded from Massachusetts gross income."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, annuities, 401(k) and IRA distributions are taxable; only amounts already taxed by Massachusetts (such as contributions that were not deductible) are recovered tax-free.",
+   "conditions": ["Previously taxed contributions are recovered before the rest is taxed, so the Massachusetts taxable amount can differ from the federal amount"],
+   "sources": [
+    {"kind": "statute", "ref": "Mass. Gen. Laws ch. 62, sec. 2", "quote": "Massachusetts gross income shall mean the federal gross income, modified as required by section six F, with the following further modifications:--"},
+    {"kind": "page", "url": "https://www.mass.gov/info-details/massachusetts-tax-information-for-seniors-and-retirees", "quote": "Income from most private pensions or annuity plans is taxable in Massachusetts but many government pensions are exempt. Withdrawals from a traditional IRA are taxable but the Massachusetts taxable amount may be different from the federal taxable amount."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. uniformed services retired pay and military survivor benefits are excluded from Massachusetts gross income, even though the military plan is non-contributory.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "Mass. Gen. Laws ch. 62, sec. 2", "quote": "any income received from the United States government as retirement pay for a retired member of the Uniformed Services of the United States, as defined in 10 U.S.C. section 1072, regardless of whether the retiree contributed to the retirement system,"},
+    {"kind": "page", "url": "https://www.mass.gov/info-details/tax-treatment-of-government-pensions-in-massachusetts", "quote": "U.S. military pensions, which are included in federal gross income, are excluded from Massachusetts gross income."}
+   ]
+  }
+ },
+ "notes": "Massachusetts has no general age-based pension exclusion; seniors 65+ get a $700 personal exemption and may claim the Senior Circuit Breaker credit instead. Older DOR rulings (TIR 92-3, LR 89-1) said military retirement was taxable because it is non-contributory; the current statute and DOR page exclude it. The public_pension exclusion depends on the plan being contributory."
+}

@@ -1,0 +1,42 @@
+{
+ "state": "sd",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "South Dakota Department of Revenue", "url": "https://dor.sd.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "South Dakota has no state personal income tax, so Social Security benefits are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.sd.gov/individuals/taxes/", "quote": "South Dakota is one of seven states that does not impose a state income tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "South Dakota has no state personal income tax, so government pensions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.sd.gov/individuals/taxes/", "quote": "South Dakota is one of seven states that does not impose a state income tax."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "South Dakota has no state personal income tax, so private pensions, 401(k) and IRA distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.sd.gov/individuals/taxes/", "quote": "South Dakota is one of seven states that does not impose a state income tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "South Dakota has no state personal income tax, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.sd.gov/individuals/taxes/", "quote": "South Dakota is one of seven states that does not impose a state income tax."}
+   ]
+  }
+ },
+ "notes": "South Dakota levies no personal income tax of any kind; no statute section is quoted because there is no income tax statute to cite. Retirees still pay sales and use tax and property tax."
+}

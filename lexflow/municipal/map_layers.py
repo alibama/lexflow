@@ -145,6 +145,7 @@ def _compute(con) -> dict:
 
     # 4. the Wikibase: items per state, by kind
     wikibase_total = 0
+    wikibase_countries: dict[str, int] = {}
     kinds_shared: Counter = Counter()
     for r in db.rows(con, "SELECT key FROM wikibase_items"):
         wikibase_total += 1
@@ -164,6 +165,9 @@ def _compute(con) -> dict:
                 st = gov_state[third] = db.scalar(con, "SELECT state FROM governments WHERE gov_id=?", third) or ""
         elif third == "asked" and len(parts) > 3 and parts[3] in S.NAME:
             st = parts[3]
+        elif third in S.COUNTRY:                     # a country's items (lexflow:unit:jpn:...): counted apart
+            wikibase_countries[third] = wikibase_countries.get(third, 0) + 1
+            continue
         e = _state_entry(states, st) if st else {}
         if e:
             e["wikibase"]["value"] += 1
@@ -172,8 +176,15 @@ def _compute(con) -> dict:
             kinds_shared[kind] += 1
 
     # 5. the statute index: sections per state (and regulations), from each index file's meta table
+    # countries' indexes (statutes_jpn.sqlite) are counted apart, under totals.countries: articles, laws, name
     index_total = {"sections": 0, "regulations": 0, "states": 0}
+    countries: dict[str, dict] = {}
     for st, corpus, n in _index_sizes():
+        if st in S.COUNTRY:
+            if corpus == "statutes":
+                countries[st] = {"name": S.COUNTRY[st]["name"], "sections": n, "laws": _laws_of(st),
+                                 "wikibase": wikibase_countries.get(st, 0)}
+            continue
         e = _state_entry(states, st)
         if not e:
             continue
@@ -192,11 +203,26 @@ def _compute(con) -> dict:
             "totals": {"states_with_models": models_states, "localities": localities,
                        "local_processes": sum(g["processes"] for p in places.values() for g in p["govs"]),
                        "coverage": coverage_total, "wikibase": wikibase_total, "wikibase_shared": dict(kinds_shared),
-                       "index": index_total}}
+                       "index": index_total, "countries": countries,
+                       "international_sections": sum(c["sections"] for c in countries.values())}}
 
 
 def _has(con, table: str) -> bool:
     return bool(db.scalar(con, "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", table))
+
+
+def _laws_of(code: str) -> int:
+    """How many laws a country's index holds (its meta ``laws``), 0 when unrecorded."""
+    p = config.DATA_DIR / "index" / f"statutes_{code}.sqlite"
+    try:
+        c = sqlite3.connect(p.resolve().as_uri() + "?mode=ro", uri=True, timeout=2)
+        try:
+            r = c.execute("SELECT value FROM meta WHERE key='laws'").fetchone()
+        finally:
+            c.close()
+        return int(r[0]) if r else 0
+    except (sqlite3.Error, ValueError, OSError):
+        return 0
 
 
 def _index_sizes() -> list[tuple[str, str, int]]:
@@ -206,9 +232,9 @@ def _index_sizes() -> list[tuple[str, str, int]]:
     out = []
     if not d.is_dir():
         return out
-    for p in sorted(d.glob("*_??.sqlite")):
-        m = re.fullmatch(r"([a-z]+)_([a-z]{2})\.sqlite", p.name)
-        if not m or m.group(2) not in S.NAME:
+    for p in sorted(d.glob("*_*.sqlite")):
+        m = re.fullmatch(r"([a-z]+)_([a-z]{2,3})\.sqlite", p.name)
+        if not m or (m.group(2) not in S.NAME and m.group(2) not in S.COUNTRY):
             continue
         try:
             c = sqlite3.connect(p.resolve().as_uri() + "?mode=ro", uri=True, timeout=2)

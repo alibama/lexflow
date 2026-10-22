@@ -23,6 +23,14 @@ Verified 19 October 2026:
 
 Peru is PDF-first: an adapter needs a PDF text layer step (the Congreso scans before ~2000 need OCR), and the
 consolidated texts live in SPIJ, whose access terms must be read from the site itself first.
+
+Re-checked 22 October 2026: spij.minjus.gob.pe and spijweb.minjus.gob.pe still time out on ports 443 and 80 (TCP
+connect, 42 s) and spijlibre.minjus.gob.pe closes the TLS handshake, from the container's network and from a
+second network (connection refused).  The Ministry's own page on gob.pe ("Acceder al Sistema Peruano de Información
+Jurídica (SPIJ)", https://www.gob.pe/748, last changed 13 September 2023) says that "Existe acceso libre a una parte
+importante de los documentos" through "Normativa de Acceso Libre", and that full access needs a subscription "y
+realices un pago por licencia": the free part is a website, the rest is licensed; no API or open-data terms are
+published there.  Verdict: needs permission (an API or bulk agreement with MINJUSDH), not a pull.
 """
 from __future__ import annotations
 
@@ -30,22 +38,26 @@ from .base import Country, Source
 
 
 class Peru(Country):
-    code = "pe"
+    code = "per"
+    iso2 = "pe"
+    eli_jurisdiction = "pe"
     name = "Peru"
     wikidata = "Q419"
     languages = ("es", "qu", "ay")
     code_label = "Legislación peruana (SPIJ)"
     pace = 5.0
     status = "stub"
-    note = ("SPIJ unreachable from the research network and its terms unread; Congreso and gob.pe publish PDFs only "
-            "(Congreso's robots.txt disallows PDF fetches)")
+    note = ("SPIJ unreachable (22 Oct 2026, two networks) and licensed beyond its free part (gob.pe: full access needs "
+            "a paid licence); Congreso and gob.pe publish PDFs only (Congreso's robots.txt disallows PDF fetches): ask "
+            "MINJUSDH for API or bulk access")
     sources = (
         Source(name="SPIJ - Sistema Peruano de Información Jurídica", publisher="Ministerio de Justicia y Derechos Humanos",
                url="https://spij.minjus.gob.pe/", holds="consolidated national legislation (textos actualizados), "
                "codes, regulations; SPIJ Libre free tier", format="HTML (reported)", access="REST API with public "
                "auth (reported by Legal Data Hunter); not reachable from the research network (connect timeout)",
-               identifier="SPIJ norm id", licence="not readable (site unreachable)", languages=("es",),
-               verified="2026-10-19", automated_reading="unknown; read the terms on the site first"),
+               identifier="SPIJ norm id", licence="site unreachable; gob.pe: free access to part of the documents "
+               "(Normativa de Acceso Libre), the rest by subscription and paid licence", languages=("es",),
+               verified="2026-10-22", automated_reading="unknown (no published API terms); permission needed"),
         Source(name="Archivo Digital de la Legislación del Perú", publisher="Congreso de la República",
                url="https://leyes.congreso.gob.pe/", holds="normas con rango de ley since 1904 (leyes, decretos "
                "legislativos, decretos de urgencia, leyes regionales), constitutions, Leyes de Indias; as published",

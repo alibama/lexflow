@@ -348,3 +348,75 @@ blockquote.quote .cite { font-style: normal; font-size: 12.5px; color: var(--ink
 .holding .label { color: var(--ink-2); font-size: 12.5px; }
 .holding .sub { color: var(--muted); font-size: 12px; }
 @media (max-width: 720px) { .holdings-row { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px 10px 12px; } .holding .value { font-size: 19px; } }
+
+/* -------------------------------------------------------------- pipeline (a Petri net: stores and jobs) */
+.pipe-layout { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.pipe-layout > * { min-width: 0; }
+.pipe-layout.open { grid-template-columns: minmax(0, 1fr) 360px; }
+@media (max-width: 1080px) { .pipe-layout.open { grid-template-columns: minmax(0, 1fr); } }
+.pipe-scroll { overflow-x: auto; padding: 6px 8px 0; -webkit-overflow-scrolling: touch; }
+.pipe-scroll svg { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .pipe-scroll svg { min-width: 980px; } }      /* a phone scrolls the chart inside its card */
+.pipe-col { font: 600 10.5px var(--font); fill: var(--muted); text-anchor: middle; letter-spacing: .06em; text-transform: uppercase; }
+.pipe-arc { fill: none; stroke: var(--baseline); stroke-width: 1.4; }
+.pipe-arc.far { stroke-dasharray: 4 4; }
+.pipe-arc.hot { stroke: var(--accent); stroke-width: 2; stroke-dasharray: none; }
+.pipe-arrow { fill: var(--baseline); }
+.pipe-arrow.hot { fill: var(--accent); }
+.pipe-spine { fill: none; stroke: var(--muted); stroke-width: 1.3; stroke-dasharray: 1.5 3.5; stroke-linecap: round; }
+.pipe-spine.optional { opacity: .5; }
+.pipe-place circle { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+.pipe-place.unknown circle { stroke: var(--baseline); stroke-dasharray: 3 3; }
+.pipe-place.error circle { stroke: var(--critical); }
+.pipe-place.ready circle { fill: var(--accent-wash); }
+.pipe-place:hover circle, .pipe-place:focus-visible circle { stroke-width: 3.5; }
+.pipe-place:focus { outline: none; }
+.pipe-count { font: 650 13px var(--font); fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.pipe-label, .pipe-bar-label { text-anchor: middle; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.pipe-label { font: 500 12px var(--font); fill: var(--ink); }
+.pipe-bar-label { font: 11px var(--font); fill: var(--ink-2); }
+.pipe-bar { cursor: pointer; }
+.pipe-bar:focus { outline: none; }
+.pipe-bar .hit { fill: transparent; stroke: transparent; stroke-width: 1.5; }
+.pipe-bar:hover .hit, .pipe-bar:focus-visible .hit { stroke: var(--border); fill: var(--accent-wash); }
+.pipe-bar.sel .hit { stroke: var(--accent); fill: var(--accent-wash); }
+.pipe-bar .body { fill: var(--ink-2); }
+.pipe-bar.never .body { fill: var(--surface); stroke: var(--baseline); stroke-width: 1.2; stroke-dasharray: 3 2; }
+.pipe-bar.cancelled .body { fill: var(--muted); }
+.pipe-bar.queued .body { fill: var(--warning); }
+.pipe-bar.failed .body { fill: var(--critical); }
+.pipe-bar.running .body { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 1.5; }
+.pipe-bar.running .fill { fill: var(--accent); animation: pipe-pulse 1.8s ease-in-out infinite; }
+@keyframes pipe-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .pipe-bar.running .fill { animation: none; } }
+.pipe-ext { font: 700 11px var(--font); fill: var(--ink-2); }
+.pipe-band rect { fill: var(--surface-2); stroke: var(--border); }
+.pipe-band:hover rect { stroke: var(--accent); }
+.pipe-band-title { font: 600 12px var(--font); fill: var(--ink); }
+.pipe-band-sub { font: 12px var(--font); fill: var(--ink-2); }
+.legend .sw.pipe-sw { width: 6px; border-radius: 2px; background: var(--ink-2); }
+.legend .sw.pipe-sw.store { width: 14px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+.legend .sw.pipe-sw.running { background: var(--accent); }
+.legend .sw.pipe-sw.queued { background: var(--warning); }
+.legend .sw.pipe-sw.failed { background: var(--critical); }
+.legend .sw.pipe-sw.never { background: var(--surface); border: 1px dashed var(--baseline); }
+.legend .sw.pipe-sw.spine { width: 16px; height: 2px; border-radius: 0; vertical-align: 3px; background: none; border-top: 2px dotted var(--muted); }
+.pipe-side { position: sticky; top: 70px; max-height: calc(100vh - 90px); overflow: auto; }
+.pipe-side[hidden] { display: none; }
+.pipe-side .sec { padding: 12px 16px; border-top: 1px solid var(--border); }
+.pipe-side .sec:first-child { border-top: 0; }
+.pipe-side .sec h3 { margin: 0 0 6px; }
+.pipe-side .kv { font-size: 12.5px; }
+.pipe-side .kv dd { overflow-wrap: anywhere; }
+.pipe-side pre.log { max-height: 260px; font-size: 11.5px; padding: 8px 10px; margin-top: 6px; }
+.pipe-action { display: flex; flex-direction: column; gap: 6px; padding: 8px 0; border-top: 1px dashed var(--grid); }
+.pipe-action:first-of-type { border-top: 0; }
+@media (max-width: 1080px) { .pipe-side { position: static; max-height: none; } }
+.pipe-lists { margin-top: 16px; }
+.btn.danger { background: var(--critical); border-color: transparent; color: #fff; }
+.btn.danger:hover { filter: brightness(1.06); background: var(--critical); }
+.pipe-dialog { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--ink);
+  width: min(560px, calc(100% - 32px)); padding: 0; box-shadow: 0 12px 48px rgba(0, 0, 0, .28); }
+.pipe-dialog::backdrop { background: rgba(0, 0, 0, .4); }
+.pipe-dialog h2 { margin-bottom: 8px; }
+.pipe-dialog .kv { margin: 10px 0; }

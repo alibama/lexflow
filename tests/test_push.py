@@ -302,8 +302,8 @@ def test_property_create_body_and_item_create_body(con, wiki, out):
     rows = {r["key"]: r["qid"] for r in con.execute("SELECT key, qid FROM wikibase_items")}
     assert rows["lexflow:step:va.records:respond"].startswith("Q") and "lexflow:jurisdiction:va" not in rows
     c = result["summary"]["counts"]["1"]
-    assert c["jurisdiction"] == {"skip-exists": 1} and c["step"] == {"create": 1} and c["property"]["create"] == 64
-    assert result["summary"]["creates"] == 64 + 7 and not result["summary"]["failures_by_code"]
+    assert c["jurisdiction"] == {"skip-exists": 1} and c["step"] == {"create": 1} and c["property"]["create"] == len(SC.PROPERTIES)
+    assert result["summary"]["creates"] == len(SC.PROPERTIES) + 7 and not result["summary"]["failures_by_code"]
 
 
 def test_pass2_clears_owned_items_and_appends_to_the_rest(con, wiki, out):
@@ -371,7 +371,7 @@ def test_find_before_create_reuses_the_label_clash_owner_or_suffixes(con, wiki, 
 def test_failures_are_counted_by_code_and_the_run_goes_on(con, wiki, out):
     wiki.fail = "failed-save"
     result = _run(con, wiki, out, graph_items(), pass_no="1")
-    assert result["summary"]["failures_by_code"] == {"failed-save": 64 + 7}
+    assert result["summary"]["failures_by_code"] == {"failed-save": len(SC.PROPERTIES) + 7}
     assert push.error_code(push.WikibaseError("wbeditentity: maxlag: Waiting for a database")) == "maxlag"
     assert push.owner_of('Item [[Item:Q5|Q5]] already has label "x" associated') == "Q5"
 
@@ -382,8 +382,8 @@ def test_dry_run_writes_the_plan_and_performs_no_post(con, wiki, out):
     assert wiki.posts == [] and all(isinstance(g, dict) for g in wiki.gets)
     assert any(g.get("action") == "wbgetentities" for g in wiki.gets)     # the live reads the plan needs
     plan = json.loads((out / push.PLAN_NAME).read_text(encoding="utf-8"))
-    assert plan["dry_run"] and plan["creates"] == 64 + 7 and plan["updates"] >= 8
-    assert plan["counts"]["1"]["property"]["create"] == 64 and plan["counts"]["2"]["step"]["clear"] == 1
+    assert plan["dry_run"] and plan["creates"] == len(SC.PROPERTIES) + 7 and plan["updates"] >= 8
+    assert plan["counts"]["1"]["property"]["create"] == len(SC.PROPERTIES) and plan["counts"]["2"]["step"]["clear"] == 1
     assert plan["properties_to_create"][0] == "Wikidata item ID"
     assert all(w["placeholder"] for w in plan["writes"] if w["action"] == "create")
     assert plan["examples"]["1:step:create"][0]["key"] == "lexflow:step:va.records:respond"
@@ -429,17 +429,20 @@ def test_property_items_carry_the_ontology_equivalents(con, wiki, out):
     p7 = [s["mainsnak"]["datavalue"]["value"] for s in create["claims"] if s["mainsnak"]["property"] == "P7"]
     assert p7 == ([SC.WIKIDATA_ENTITY + topic.wikidata] if topic.wikidata else []) + list(topic.equivalents)
     assert all(s["mainsnak"]["datavalue"]["type"] == "string" for s in create["claims"])        # url snaks
-    # pass 2: the existing properties (P5-P25) are appended their P7 ontology claims, once
+    # pass 2: the existing properties (P5-P25) are appended their P7 claims, once: the Wikidata property of
+    # schema.EXISTING_WIKIDATA first, then the ontology IRIs
     wiki.posts.clear()
     result = _run(con, wiki, out, graph_items(), pass_no="2")
     part_of = [json.loads(p["data"]) for p in wiki.posts if p.get("id") == "P9"]
     assert len(part_of) == 1 and "clear" not in next(p for p in wiki.posts if p.get("id") == "P9")
     assert [s["mainsnak"]["datavalue"]["value"] for s in part_of[0]["claims"]] == [
-        "http://data.europa.eu/eli/ontology#is_part_of", "https://schema.org/isPartOf"]
+        "http://www.wikidata.org/entity/P361", "http://data.europa.eu/eli/ontology#is_part_of",
+        "https://schema.org/isPartOf"]
     assert all(s["mainsnak"]["property"] == "P7" for s in part_of[0]["claims"])
     posted = {p.get("id") for p in wiki.posts if p.get("id", "").startswith("P")}
     assert {pid for label, pid in SC.EXISTING.items() if SC.EXISTING_EQUIVALENTS[label]} <= posted
-    assert "P12" not in posted, "followed by has no equivalent: nothing to append"
+    assert {SC.EXISTING[label] for label in SC.EXISTING_WIKIDATA} <= posted
+    assert "P16" not in posted, "deontic modality has no equivalent: nothing to append"
     c = result["summary"]["counts"]["2"]["property"]
     assert c.get("update", 0) >= 13 + 1
     # a second pass 2 finds them present and appends nothing

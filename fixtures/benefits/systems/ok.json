@@ -1,0 +1,102 @@
+{
+ "state": "ok",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Oklahoma Public Employees Retirement System",
+   "short": "OPERS",
+   "census_units": ["census-pid6:227726"],
+   "statute": {"kind": "statute", "ref": "74-903", "quote": "There is hereby created the Oklahoma Public Employees Retirement System which shall be a body corporate and an instrumentality of the State of Oklahoma."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Oklahoma Public Employees Retirement System", "source": {"kind": "statute", "ref": "74-921", "quote": "The Board of Trustees shall have the responsibility for the management of the Oklahoma Public Employees Retirement Fund"}},
+   "website": "https://www.opers.ok.gov/",
+   "website_source": {"kind": "page", "url": "https://www.opers.ok.gov/about", "quote": "The Oklahoma Public Employees Retirement System provides and promotes comprehensive and financially sound retirement services to Oklahoma’s public servants in a professional, efficient, and courteous manner that is transparent and accountable to its members and the public."},
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "74-910", "quote": "provided, that no county hospital, city or town, circuit engineering district or any public or private trust in which a county, city or town participates and is the primary beneficiary shall become a participating employer except by the adoption of a resolution therefor, unless otherwise provided in this act."},
+   "notes": "Board composition in 74 O.S. 905; local employers join by resolution."
+  },
+  {
+   "name": "Teachers' Retirement System of Oklahoma",
+   "short": "TRS",
+   "census_units": ["census-pid6:227335"],
+   "statute": {"kind": "statute", "ref": "70-17-102", "quote": "A retirement system is hereby established and placed under the management of the Board of Trustees for the purpose of providing retirement allowances and other benefits under the provisions of this act for teachers of the State of Oklahoma."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Teachers' Retirement System of Oklahoma", "source": {"kind": "statute", "ref": "70-17-102", "quote": "The Board of Trustees shall have the power and privileges of a corporation and shall be known as the \"Board of Trustees of the Teachers' Retirement System of Oklahoma\", and by such name all of its business shall be transacted"}},
+   "website": "https://oklahoma.gov/trs.html",
+   "website_source": {"kind": "page", "url": "https://oklahoma.gov/trs.html", "quote": "The “PAYER” on the 1099-R form is the Teachers’ Retirement System of Oklahoma (TRS) since TRS “pays” the benefit to the “recipient”."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "70-17-101", "quote": "“Public school” shall mean a school district, a state college or university, the State Board of Education, the State Board of Career and Technology Education"},
+   "notes": "Also covers higher-education and support staff of public schools."
+  },
+  {
+   "name": "Oklahoma Firefighters Pension and Retirement System",
+   "short": "OFPRS",
+   "census_units": ["census-pid6:227333"],
+   "statute": {"kind": "statute", "ref": "11-49-100.2", "quote": "There is created the Oklahoma Firefighters Pension and Retirement System which shall be a body corporate and an instrumentality of this state."},
+   "statute_role": "establishes",
+   "body": {"name": "Oklahoma Firefighters Pension and Retirement Board", "source": {"kind": "statute", "ref": "11-49-100.3", "quote": "There shall be an Oklahoma Firefighters Pension and Retirement Board which shall be composed of thirteen (13) members as follows:"}},
+   "website": "https://ofprs.ok.gov/",
+   "website_source": {"kind": "page", "url": "https://ofprs.ok.gov/", "quote": "OFPRS manages and administers retirement funds for active and retired firefighters. We are dedicated to serving our state’s paid and volunteer firefighters with responsibility, professionalism, and respect."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "11-49-100.1", "quote": "\"Participating municipality\" means a municipality, county fire department organized pursuant to subsection D of Section 351 of Title 19 of the Oklahoma Statutes, or fire protection district which is making contributions to the System on behalf of its firefighters."},
+   "notes": "Covers paid and volunteer firefighters."
+  },
+  {
+   "name": "Oklahoma Police Pension and Retirement System",
+   "short": "OPPRS",
+   "census_units": ["census-pid6:227725"],
+   "statute": {"kind": "statute", "ref": "11-50-102.1", "quote": "There is created the Oklahoma Police Pension and Retirement System which shall be a body corporate and an instrumentality of this state."},
+   "statute_role": "establishes",
+   "body": {"name": "Oklahoma Police Pension and Retirement Board", "source": {"kind": "statute", "ref": "11-50-103.1", "quote": "There shall be an Oklahoma Police Pension and Retirement Board which shall be composed of thirteen (13) members as follows:"}},
+   "website": "https://www.opprs.ok.gov/",
+   "website_source": {"kind": "page", "url": "https://www.opprs.ok.gov/about/", "quote": "The Oklahoma Police Pension and Retirement System is a defined benefit plan and qualifies under section 401(a) of the Internal Revenue Code."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "11-50-101", "quote": "“Participating municipality” means a municipality which is making contributions to the System on behalf of its officers."},
+   "notes": ""
+  },
+  {
+   "name": "Oklahoma Law Enforcement Retirement System",
+   "short": "OLERS",
+   "census_units": ["census-pid6:227339"],
+   "statute": {"kind": "statute", "ref": "47-2-301", "quote": "There is hereby established a System for the payment of retirement benefits and certain medical and hospital expenses of members of the Oklahoma Law Enforcement Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Oklahoma Law Enforcement Retirement Board", "source": {"kind": "statute", "ref": "47-2-303", "quote": "There shall be an \"Oklahoma Law Enforcement Retirement Board\" to administer the fund of the System."}},
+   "website": "https://olers.ok.gov/",
+   "website_source": {"kind": "page", "url": "https://olers.ok.gov/", "quote": "Oklahoma Law Enforcement Retirement System Learn More LOGIN Providing retirement and medical benefits to Oklahoma law enforcement members and their families."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "State law enforcement officers (Highway Patrol and other state agencies)."
+  },
+  {
+   "name": "Uniform Retirement System for Justices and Judges",
+   "short": "URSJJ",
+   "census_units": ["census-pid6:227341"],
+   "statute": {"kind": "statute", "ref": "20-1102", "quote": "Any Justice or Judge of the Supreme Court, Court of Criminal Appeals, Workers' Compensation Court, Court of Appeals or District Court who serves as Justice or judge of any of said courts in the State of Oklahoma shall be a member of The Uniform Retirement System for Justices and Judges."},
+   "statute_role": "defines",
+   "body": {"name": "Board of Trustees of the Oklahoma Public Employees Retirement System", "source": {"kind": "statute", "ref": "20-1108", "quote": "The Board of Trustees of the Oklahoma Public Employees Retirement System shall have the responsibility for management of the Uniform Retirement System for Justices and Judges and the State Judicial Retirement Fund."}},
+   "website": "https://www.opers.ok.gov/",
+   "website_source": {"kind": "page", "url": "https://oklahoma.gov/top/agency/515.html", "quote": "The Uniform Retirement System for Justices and Judges, a defined benefit plan authorized by 20 O.S. § 1101, et seq."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "The act's citation clause (20 O.S. 1101) names the system; no separate creating sentence found."
+  },
+  {
+   "name": "Oklahoma Wildlife Conservation Department Retirement Plan",
+   "short": "WCRP",
+   "census_units": ["census-pid6:244205"],
+   "statute": {"kind": "statute", "ref": "29-3-306", "quote": "There is hereby created an Oklahoma Wildlife Conservation Department Retirement Fund for the purpose of providing revenues for any retirement plan adopted by the Commission for the employees of the Department."},
+   "statute_role": "establishes",
+   "body": {"name": "Wildlife Conservation Commission", "source": {"kind": "statute", "ref": "29-3-306", "quote": "There is hereby created an Oklahoma Wildlife Conservation Department Retirement Fund for the purpose of providing revenues for any retirement plan adopted by the Commission for the employees of the Department."}},
+   "website": "https://wildlifedepartment.com/careers/benefits",
+   "website_source": {"kind": "page", "url": "https://wildlifedepartment.com/careers/benefits", "quote": "Retirement - The Department has a Defined Contribution Retirement Plan. An account is established for the employee and the Department contributes between 6%-12% of pay for retirement benefit based upon years of service."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Single-agency plan of the Department of Wildlife Conservation; the department's page now describes a defined contribution plan, while Census reports the legacy plan."
+  }
+ ]
+}

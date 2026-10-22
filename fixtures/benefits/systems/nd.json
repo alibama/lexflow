@@ -1,0 +1,61 @@
+{
+ "state": "nd",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "North Dakota Public Employees Retirement System",
+   "short": "NDPERS",
+   "census_units": ["census-pid6:227723"],
+   "statute": {"kind": "statute", "ref": "54-52-02", "quote": "All departments, boards, institutions, commissions, or agencies of the state of North Dakota, the Garrison Diversion Conservancy District, district health units, the supreme court, and the district courts, hereinafter referred to as agency, shall participate in a retirement system which will provide for the payment of benefits to state and political subdivision employees"},
+   "statute_role": "establishes",
+   "body": {"name": "North Dakota public employees retirement board", "source": {"kind": "statute", "ref": "54-52-03", "quote": "A state agency is hereby created to constitute the governing authority of the system to consist of a board of eleven individuals known as the retirement board."}},
+   "website": "https://www.ndpers.nd.gov/",
+   "website_source": {"kind": "page", "url": "https://www.ndpers.nd.gov/", "quote": "The North Dakota Public Employees Retirement System (NDPERS) proudly announces the launch of the Defined Contribution (DC) 2025 Tier 3 as the official retirement plan for new state and participating political subdivision employees starting in 2025."},
+   "membership": ["state_employee", "local_employee", "judge", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "54-52-02.1", "quote": "A political subdivision may, on behalf of its permanent employees, on behalf of its peace officers, firefighters, dispatchers, emergency medical services personnel, and correctional officers separately from its other employees"},
+   "notes": "Main defined benefit plan closed to new hires; NDPERS also administers judges, public safety and defined contribution plans."
+  },
+  {
+   "name": "North Dakota Highway Patrol Retirement System",
+   "short": "NDHPRS",
+   "census_units": ["census-pid6:244200"],
+   "statute": {"kind": "statute", "ref": "39-03.1-02", "quote": "A retirement system is hereby established for the members of the North Dakota highway patrol."},
+   "statute_role": "establishes",
+   "body": {"name": "North Dakota public employees retirement board", "source": {"kind": "statute", "ref": "39-03.1-01", "quote": "\"Board\" means the North Dakota public employees retirement board."}},
+   "website": "https://www.ndpers.nd.gov/active-members/retirement-plans-active-members/highway-patrol-retirement-plan",
+   "website_source": {"kind": "page", "url": "https://www.ndpers.nd.gov/active-members/retirement-plans-active-members/highway-patrol-retirement-plan", "quote": "Highway Patrol Retirement Plan Overview You are eligible for this plan if you are a member of the Highway Patrol, including the superintendent and assistant superintendent."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "North Dakota Teachers' Fund for Retirement",
+   "short": "TFFR",
+   "census_units": ["census-pid6:226285"],
+   "statute": {"kind": "statute", "ref": "15-39.1-01", "quote": "There is hereby created the teachers' fund for retirement, which, upon the effective date of this chapter shall consist of the following:"},
+   "statute_role": "establishes",
+   "body": {"name": "board of trustees of the teachers' fund for retirement", "source": {"kind": "statute", "ref": "15-39.1-05.1", "quote": "The authority to set policy for the fund rests in a board of trustees composed as follows:"}},
+   "website": "https://www.rio.nd.gov/",
+   "website_source": {"kind": "page", "url": "https://www.rio.nd.gov/about-rio", "quote": "The North Dakota Retirement and Investment Office (RIO) was established by the State Legislature under NDCC § 54-52.5 to coordinate the activities of the State Investment Board (SIB) and the Teachers’ Fund for Retirement (TFFR)."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "15-39.1-04", "quote": "\"Contract\" means a written agreement with a school board or other governing body of a school district or special education unit of this state or a letter of appointment by a state institution, state agency, or other employer participating in the fund."},
+   "notes": "Day-to-day administration by the North Dakota Retirement and Investment Office (N.D. Cent. Code ch. 54-52.5)."
+  },
+  {
+   "name": "Retirement Plan for the Employees of Job Service North Dakota",
+   "short": "JSND",
+   "census_units": ["census-pid6:244204"],
+   "statute": {"kind": "statute", "ref": "52-11-01", "quote": "The public employees retirement system board is authorized to administer the retirement plan established in 1961 and frozen to new entrants in 1980 for employees of job service North Dakota."},
+   "statute_role": "defines",
+   "body": {"name": "public employees retirement system board", "source": {"kind": "statute", "ref": "52-11-01", "quote": "The public employees retirement system board is authorized to administer the retirement plan established in 1961 and frozen to new entrants in 1980 for employees of job service North Dakota."}},
+   "website": "https://www.ndpers.nd.gov/active-members/retirement-plans-active-members/job-service-retirement-plan",
+   "website_source": {"kind": "page", "url": "https://www.ndpers.nd.gov/active-members/retirement-plans-active-members/job-service-retirement-plan", "quote": "The Job Service Plan Handbook provides an overview of the retirement plan and helpful information for retirees."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Plan established in 1961 and closed to new entrants in 1980; the code identifies it but its creating act is not in the code."
+  }
+ ]
+}

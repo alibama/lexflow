@@ -1,0 +1,307 @@
+{
+ "state": "mt",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement System",
+   "short": "PERS",
+   "census_units": [
+    "census-pid6:226258"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-3-103",
+    "quote": "A defined benefit retirement plan is created and established to become effective July 1, 1945."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "state_employee",
+    "local_employee"
+   ],
+   "covers_local": true,
+   "covers_local_source": {
+    "kind": "statute",
+    "ref": "19-3-201",
+    "quote": "Any municipal corporation, county, or public agency in the state may become a contracting employer through a contract entered into between the board and the legislative body of the contracting employer."
+   },
+   "notes": "The system consists of the defined benefit plan (Census unit) and a defined contribution plan (19-3-2102). School district classified staff are PERS members."
+  },
+  {
+   "name": "Judges' Retirement System",
+   "short": "JRS",
+   "census_units": [
+    "census-pid6:226260"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-5-102",
+    "quote": "There is a retirement plan known as the judges' retirement system, which is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "judge"
+   ],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Highway Patrol Officers' Retirement System",
+   "short": "HPORS",
+   "census_units": [
+    "census-pid6:226259"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-6-102",
+    "quote": "There is a retirement plan known as the highway patrol officers' retirement system, which is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "state_employee"
+   ],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Sheriffs' Retirement System",
+   "short": "SRS",
+   "census_units": [
+    "census-pid6:226261"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-7-102",
+    "quote": "A retirement plan is established and known as the sheriffs' retirement system. The plan is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "local_employee"
+   ],
+   "covers_local": true,
+   "notes": "County sheriffs and deputies (and certain detention officers)."
+  },
+  {
+   "name": "Game Wardens' and Peace Officers' Retirement System",
+   "short": "GWPORS",
+   "census_units": [
+    "census-pid6:227711"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-8-102",
+    "quote": "There is a retirement plan known as the game wardens' and peace officers' retirement system, which is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "state_employee"
+   ],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Municipal Police Officers' Retirement System",
+   "short": "MPORS",
+   "census_units": [
+    "census-pid6:226262"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-9-103",
+    "quote": "There is a retirement plan known as the municipal police officers' retirement system. The plan is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "local_employee"
+   ],
+   "covers_local": true,
+   "notes": "City police officers."
+  },
+  {
+   "name": "Firefighters' Unified Retirement System",
+   "short": "FURS",
+   "census_units": [
+    "census-pid6:227712"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-13-103",
+    "quote": "A retirement plan is established and known as the firefighters' unified retirement system. The plan is governed by the provisions of chapter 2 and this chapter."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board (Montana Public Employee Retirement Administration, MPERA)",
+    "source": {
+     "kind": "statute",
+     "ref": "19-2-403",
+     "quote": "The board shall administer the provisions of the chapters enumerated in 19-2-302 ."
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "local_employee"
+   ],
+   "covers_local": true,
+   "notes": "Paid firefighters of cities and certain state firefighters."
+  },
+  {
+   "name": "Volunteer Firefighters' Compensation Act pension",
+   "short": "VFCA",
+   "census_units": [
+    "census-pid6:228128"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-17-106",
+    "quote": "A pension trust fund is established and maintained for payment of claims and benefits provided under the Volunteer Firefighters' Compensation Act."
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Public employees' retirement board",
+    "source": {
+     "kind": "statute",
+     "ref": "19-17-203",
+     "quote": "The board shall make rules that it considers necessary and advisable in its administration of the Volunteer Firefighters' Compensation Act"
+    }
+   },
+   "website": "https://mpera.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://mpera.mt.gov/",
+    "quote": "Retirement Systems Public Employees' Retirement System (PERS) Firefighters' Unified (FURS) Highway Patrol Officers' (HPORS) Game Wardens' and Peace Officers' (GWPORS) Judges' (JRS) Municipal Police Officers' (MPORS) Sheriffs' (SRS) Volunteer Firefighters Compensation Act (VFCA)"
+   },
+   "membership": [
+    "public_safety",
+    "local_employee"
+   ],
+   "covers_local": true,
+   "notes": "Volunteer firefighters of fire companies in unincorporated areas and small communities."
+  },
+  {
+   "name": "Teachers' Retirement System of the State of Montana",
+   "short": "TRS",
+   "census_units": [
+    "census-pid6:227951"
+   ],
+   "statute": {
+    "kind": "statute",
+    "ref": "19-20-102",
+    "quote": "The state teachers' retirement system created under the provisions of Chapter 87, Laws of 1937, is the state teachers' retirement system of the state of Montana"
+   },
+   "statute_role": "establishes",
+   "body": {
+    "name": "Teachers' retirement board",
+    "source": {
+     "kind": "statute",
+     "ref": "19-20-201",
+     "quote": "The retirement board shall administer and operate the retirement system within the limitations prescribed by this chapter, and it is the duty of the retirement board to:"
+    }
+   },
+   "website": "https://trs.mt.gov/",
+   "website_source": {
+    "kind": "page",
+    "url": "https://trs.mt.gov/",
+    "quote": "Montana Teachers' Retirement System 100 N Park Ave, Suite 110 in downtown Helena Mail: PO Box 200139, Helena, MT 59620"
+   },
+   "membership": [
+    "teacher"
+   ],
+   "covers_local": true,
+   "notes": "Teachers and certified staff of school districts and some state education agencies and universities."
+  }
+ ]
+}

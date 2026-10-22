@@ -74,3 +74,89 @@ def parse_states(arg: str | None) -> list[str]:
     if not arg or arg.strip().lower() == "all":
         return list(CODES)
     return [normalise(x) for x in arg.split(",") if x.strip()]
+
+
+# ---------------------------------------------------------------------- countries
+# National jurisdictions beside the states.  A country's key is its ISO 3166-1 alpha-3 code in lower case, so it never
+# collides with a two-letter postal code (``co`` Colorado vs Colombia, ``de``, ``in``, ``md``, ``pa`` ...): the key
+# names its index (data/index/statutes_jpn.sqlite), its wiki items (lexflow:code:jpn, lexflow:jurisdiction:jpn) and
+# its entry in the dashboard's pickers.  ``iso2`` is kept for the ELI IRIs (/eli/jp/...).  The adapters and their
+# verified sources are lexflow/corpus/countries/ (docs/design/global-sources.md); only countries whose law lexflow
+# holds are listed here.  The lists above stay the 52 US jurisdictions: code that walks them (open-us-law, Census,
+# CourtListener) never meets a country.
+COUNTRIES: list[dict] = [
+    {"code": "jpn", "iso2": "jp", "name": "Japan", "wikidata": "Q17", "languages": ["ja"],
+     "names": {"ja": "日本"}, "descriptions": {"ja": "国（lexflow の法域）"},
+     "code_label": {"ja": "日本の法令", "en": "Laws of Japan"},
+     "code_description": {"ja": "e-Gov法令検索に収録された現行の法令"}, "website": "https://laws.e-gov.go.jp/",
+     "source": "e-Gov 法令検索 (Digital Agency)"},
+    {"code": "bra", "iso2": "br", "name": "Brazil", "wikidata": "Q155", "languages": ["pt"],
+     "names": {"pt": "Brasil"}, "descriptions": {"pt": "país (jurisdição do lexflow)"},
+     "code_label": {"pt": "Legislação federal brasileira", "en": "Federal legislation of Brazil"},
+     "code_description": {"pt": "Constituição, emendas constitucionais, leis complementares, leis ordinárias e "
+                                "decretos-leis federais compilados no Normas.leg.br"},
+     "website": "https://normas.leg.br/",
+     "official_sites": ["https://normas.leg.br/", "https://legis.senado.leg.br/dadosabertos/",
+                        "https://www.lexml.gov.br/", "https://www.planalto.gov.br/ccivil_03/"],
+     "source": "Normas.leg.br (Congresso Nacional) and Senado Federal open data", "aliases": ["brasil"]},
+    # Australia, three of its states (subnational keys <alpha-3>-<abbr>, ``parent`` the country) and Romania, whose
+    # law the country adapters pull (docs/design/global-sources.md §9); Wikidata items verified read-only against
+    # Special:EntityData on 22 October 2026 (Q34366, Q35715, Q3206: P31 state of Australia, P17 Australia)
+    {"code": "aus", "iso2": "au", "name": "Australia", "wikidata": "Q408", "languages": ["en"],
+     "code_label": {"en": "Commonwealth Acts (Federal Register of Legislation)"},
+     "code_description": {"en": "Commonwealth Acts in force, current compilations"},
+     "website": "https://www.legislation.gov.au/", "source": "Federal Register of Legislation (Office of Parliamentary "
+     "Counsel)"},
+    {"code": "aus-tas", "iso2": "au-tas", "iso3166_2": "AU-TAS", "parent": "aus", "name": "Tasmania",
+     "wikidata": "Q34366", "languages": ["en"], "code_label": {"en": "Tasmanian Acts (Tasmanian Legislation Online)"},
+     "website": "https://www.legislation.tas.gov.au/", "source": "Tasmanian Legislation Online"},
+    {"code": "aus-sa", "iso2": "au-sa", "iso3166_2": "AU-SA", "parent": "aus", "name": "South Australia",
+     "wikidata": "Q35715", "languages": ["en"],
+     "code_label": {"en": "South Australian Acts (Legislative Database, DataSA)"},
+     "website": "https://www.legislation.sa.gov.au/", "source": "Legislative Database Update Package (XML), DataSA"},
+    {"code": "aus-wa", "iso2": "au-wa", "iso3166_2": "AU-WA", "parent": "aus", "name": "Western Australia",
+     "wikidata": "Q3206", "languages": ["en"],
+     "code_label": {"en": "Western Australian Acts (Western Australian Legislation)"},
+     "website": "https://www.legislation.wa.gov.au/", "source": "Western Australian Legislation"},
+    {"code": "rou", "iso2": "ro", "name": "Romania", "wikidata": "Q218", "languages": ["ro"],
+     "names": {"ro": "România"}, "descriptions": {"ro": "țară (jurisdicție lexflow)"},
+     "code_label": {"ro": "Legislația României", "en": "Legislation of Romania"},
+     "website": "https://legislatie.just.ro/", "source": "Portal Legislativ (Ministerul Justiției), FreeWebService"},
+]
+COUNTRY = {c["code"]: c for c in COUNTRIES}
+COUNTRY_CODES = [c["code"] for c in COUNTRIES]
+COUNTRY_NAME = {c["code"]: c["name"] for c in COUNTRIES}
+COUNTRY_BY_ALIAS = {**{c["iso2"]: c["code"] for c in COUNTRIES}, **{c["name"].lower(): c["code"] for c in COUNTRIES}}
+# every jurisdiction lexflow answers for, states first
+JURISDICTION_NAME: dict[str, str] = {**NAME, **COUNTRY_NAME}
+
+
+def is_country(code: str) -> bool:
+    return (code or "").strip().lower() in COUNTRY
+
+
+def name_of(code: str) -> str:
+    """The name of a state or a country (``va`` -> Virginia, ``jpn`` -> Japan); the code itself when unknown."""
+    c = (code or "").strip().lower()
+    return JURISDICTION_NAME.get(c, code)
+
+
+def normalise_any(code: str) -> str:
+    """``normalise`` for a state, or a country's key from its key, alpha-2 code or name (``JPN``, ``Japan``); a bare
+    ``jp`` is Japan only because no state has that code."""
+    c = (code or "").strip().lower()
+    if c in COUNTRY:
+        return c
+    try:
+        return normalise(c)
+    except ValueError:
+        if c in COUNTRY_BY_ALIAS:
+            return COUNTRY_BY_ALIAS[c]
+        raise ValueError(f"unknown state or country: {code!r}") from None
+
+
+def parse_jurisdictions(arg: str | None) -> list[str]:
+    """``parse_states`` that also accepts country keys: 'all' -> every state (countries are named explicitly)."""
+    if not arg or arg.strip().lower() == "all":
+        return list(CODES)
+    return [normalise_any(x) for x in arg.split(",") if x.strip()]

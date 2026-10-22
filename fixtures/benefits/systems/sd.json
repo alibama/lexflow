@@ -1,0 +1,21 @@
+{
+ "state": "sd",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "South Dakota Retirement System",
+   "short": "SDRS",
+   "census_units": ["census-pid6:227730"],
+   "statute": {"kind": "statute", "ref": "3-12C-1601", "quote": "The Supreme and Circuit Court Judicial Retirement System, district county court and municipal court judges retirement program, South Dakota Teachers Retirement System, South Dakota Municipal Retirement System, South Dakota Law Enforcement Retirement System, and South Dakota Public Employees Retirement System are hereby continued as a consolidated system known as the South Dakota Retirement System"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the South Dakota Retirement System", "source": {"kind": "statute", "ref": "3-12C-218", "quote": "The Board of Trustees shall transact all business and hold all cash in the name of the South Dakota Retirement System."}},
+   "website": "https://sdrs.sd.gov/",
+   "website_source": {"kind": "page", "url": "https://sdrs.sd.gov/", "quote": "SDRS Main - South Dakota Retirement System Loading... Skip to page content"},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "3-12C-101", "quote": "\"Participating unit,\" this state, any department, bureau, board, or commission of this state, and any political subdivision or public corporation of this state that has employees who are members of the system"},
+   "notes": "Consolidated system (Class A general, Class B public safety and judicial). The official site renders by script, so only its page title is quotable."
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "state": "me",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Maine Revenue Services", "url": "https://www.maine.gov/revenue/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and railroad retirement benefits included in federal adjusted gross income are subtracted from Maine income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "Social security benefits and railroad retirement benefits paid by the United States, to the extent included in federal adjusted gross income;"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "State, local and federal government pensions qualify for the pension income deduction: up to $48,216 per recipient for 2025, reduced dollar for dollar by Social Security and railroad retirement benefits received and phased out at higher incomes.",
+   "conditions": ["Up to $48,216 per primary recipient for 2025 (the maximum annual Social Security benefit at full retirement age)", "Cap reduced by all taxable and nontaxable Social Security and railroad retirement benefits received", "Phase-out from 2025 when federal AGI exceeds $125,000 single, $187,500 head of household, $250,000 joint (inflation adjusted)", "Shared with private pension and IRA income"],
+   "amount_usd": 48216,
+   "sources": [
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "means a state, federal or military retirement plan or any other retirement benefit plan established and maintained by an employer for the benefit of its employees under the Code, Section 401(a), Section 403 or Section 457(b),"},
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "The pension deduction amount reduced by the total amount of the individual’s social security benefits and railroad retirement benefits paid by the United States, but not less than $0;"},
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "For tax years beginning on or after January 1, 2024, the maximum annual benefit that an individual eligible to retire at the retirement age, as defined in 42 United States Code, Section 416(l), as of January 1st of the tax year may receive under the federal Social Security Act"},
+    {"kind": "page", "url": "https://www.maine.gov/revenue/faq/individual-income-tax", "quote": "In addition, for tax year 2025, you and your spouse may each deduct up to $48,216* of pension income that is included in federal adjusted gross income. The $48,216 cap must be reduced by all taxable and nontaxable social security and railroad retirement benefits received."},
+    {"kind": "page", "url": "https://www.maine.gov/revenue/faq/individual-income-tax", "quote": "Deductible pension income, other than military retirement pay, includes state and federal pension benefits and retirement benefits received from plans established and maintained by an employer for the benefit of its employees,"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private employer pensions, 401(k)/403(b) plans and IRAs (including Roth, SEP and SIMPLE) share the same pension income deduction: up to $48,216 per recipient for 2025, reduced by Social Security received and phased out at higher incomes.",
+   "conditions": ["Up to $48,216 per primary recipient for 2025", "Cap reduced by all taxable and nontaxable Social Security and railroad retirement benefits received", "Phase-out from 2025 above $125,000 single / $250,000 joint federal AGI", "Employer-plan distributions before age 55 that are not substantially equal periodic payments do not qualify"],
+   "amount_usd": 48216,
+   "sources": [
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "an individual retirement account under Section 408 of the Code, a Roth IRA under Section 408A of the Code, a simplified employee pension under Section 408(k) of the Code or a simple retirement account for employees under Section 408(p) of the Code."},
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "the numerator of which is the taxpayer's federal adjusted gross income less the applicable amount, except that the numerator may not be less than zero, and the denominator of which is $50,000 in the case of a married individual filing a separate return and $100,000 in all other filing cases."},
+    {"kind": "page", "url": "https://www.maine.gov/revenue/faq/individual-income-tax", "quote": "Deductible pension income also includes benefits received from individual retirement accounts, including ROTH and SIMPLE IRAs, and simplified employee pension plans."},
+    {"kind": "page", "url": "https://www.maine.gov/revenue/faq/individual-income-tax", "quote": "For tax years beginning on or after January 1, 2025, the amount of your non-military pension income deduction may be subject to phaseout based on your filing status and Maine adjusted gross income."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Military retirement pay and survivor benefits included in federal adjusted gross income are fully deducted, with no Social Security reduction and no income phase-out.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "36 M.R.S. § 5122", "quote": "An amount equal to the aggregate of retirement benefits under military retirement plans included in the individual’s federal adjusted gross income;"},
+    {"kind": "page", "url": "https://www.maine.gov/revenue/faq/individual-income-tax", "quote": "For tax years beginning on or after January 1, 2016, the benefits received under a military retirement plan, including survivor benefits, are fully exempt from Maine income tax."}
+   ]
+  }
+ },
+ "notes": "Social Security has only a statute source: Maine Revenue Services states the subtraction in its Form 1040ME / Schedule 1S instructions, which are PDFs that cannot be quoted here, and its HTML FAQ does not state it. The FAQ is read from an Internet Archive capture (June 2026) because www.maine.gov's robots.txt refuses automated readers. The 2025 pension deduction cap is $48,216 per person; the income phase-out (36 M.R.S. 5122, applicable amounts $125,000 single, $187,500 head of household, $250,000 joint, inflation adjusted) applies to non-military pension income from tax year 2025. From 2026 the military exemption covers all uniformed services under 37 U.S.C. 101(3)."
+}

@@ -1,0 +1,75 @@
+{
+ "state": "ak",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement System of Alaska",
+   "short": "PERS",
+   "census_units": ["census-pid6:226193"],
+   "statute": {"kind": "statute", "ref": "39.35.001", "quote": "The purpose of this chapter is to encourage qualified personnel to enter and remain in service with participating employers by establishing plans for the payment of retirement, disability, and death benefits to or on behalf of the members."},
+   "statute_role": "establishes",
+   "body": {"name": "Commissioner of Administration (Department of Administration, Division of Retirement and Benefits)", "source": {"kind": "statute", "ref": "39.35.003", "quote": "The commissioner of administration or the commissioner's designee is the administrator of the system."}},
+   "website": "https://drb.alaska.gov/employee/dbrplan.html",
+   "website_source": {"kind": "page", "url": "https://drb.alaska.gov/employee/dbrplan.html", "quote": "For employees who first entered prior to July 1, 2006, the Public Employees' Retirement System (PERS) is a defined benefit (DB) plan which is designed to offer a lifetime monthly benefit once retirement eligibility is reached."},
+   "membership": ["state_employee", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "39.35.680", "quote": "means (A) the State of Alaska; (B) a political subdivision or public organization of the state that participates in the plan based on a resolution to participate in the plan"},
+   "notes": "Census unit is the defined benefit plan (Tiers I-III, members first hired before July 1, 2006); AS 39.35.680 defines \"system\" as the Public Employees' Retirement System of Alaska. Investments are overseen by the Alaska Retirement Management Board (AS 37.10.210)."
+  },
+  {
+   "name": "Teachers' Retirement System of Alaska",
+   "short": "TRS",
+   "census_units": ["census-pid6:226859"],
+   "statute": {"kind": "statute", "ref": "14.25.001", "quote": "The purpose of this chapter is to encourage qualified teachers to enter and remain in service with participating employers by establishing plans for the payment of retirement, disability, and death benefits to or on behalf of the members."},
+   "statute_role": "establishes",
+   "body": {"name": "Commissioner of Administration (Department of Administration, Division of Retirement and Benefits)", "source": {"kind": "statute", "ref": "14.25.003", "quote": "The commissioner of administration or the commissioner's designee is the administrator of the system."}},
+   "website": "https://drb.alaska.gov/employee/dbrplan.html",
+   "website_source": {"kind": "page", "url": "https://drb.alaska.gov/employee/dbrplan.html", "quote": "The purpose of the Alaska Public Employees’ Retirement System (PERS) and the Teachers' Retirement System (TRS) is to attract qualified public employees by offering a variety of benefits to members and their survivors."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "14.25.220", "quote": "means a public school district, the Board of Regents of the University of Alaska, the Department of Education and Early Development, the Regional Resource Centers, or the state legislature"},
+   "notes": "Census unit is the defined benefit plan (Tiers I-II). Legislators may elect TRS membership."
+  },
+  {
+   "name": "Judicial Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:226861"],
+   "statute": {"kind": "statute", "ref": "22.25.025", "quote": "The system is intended to qualify as a governmental plan established and maintained by the government of this state for the state's employees, as permitted under 26 U.S.C. 414(d)."},
+   "statute_role": "defines",
+   "body": {"name": "Commissioner of Administration", "source": {"kind": "statute", "ref": "22.25.025", "quote": "The commissioner of administration is responsible for the administration of the judicial retirement system."}},
+   "website": "https://drb.alaska.gov/help/plans.html",
+   "website_source": {"kind": "page", "url": "https://drb.alaska.gov/help/plans.html", "quote": "The Judicial Retirement System (JRS) offers a variety of benefits, including pension and retiree insurance benefits, to members and their survivors."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "AS 22.25 has no sentence creating the system; AS 22.25.048 directs the commissioner to establish a judicial retirement trust fund for it."
+  },
+  {
+   "name": "Alaska National Guard and Alaska Naval Militia Retirement System",
+   "short": "NGNMRS",
+   "census_units": ["census-pid6:227508"],
+   "statute": {"kind": "statute", "ref": "26.05.222", "quote": "There is established an Alaska National Guard and Alaska Naval Militia retirement system."},
+   "statute_role": "establishes",
+   "body": {"name": "Commissioner of Administration", "source": {"kind": "statute", "ref": "26.05.222", "quote": "The commissioner of administration shall administer the Alaska National Guard and Alaska Naval Militia retirement system."}},
+   "website": "https://drb.alaska.gov/employee/ngnmrs.html",
+   "website_source": {"kind": "page", "url": "https://drb.alaska.gov/employee/ngnmrs.html", "quote": "The National Guard/Naval Militia Retirement System (NGNMRS) is a retirement system which can pay you a small benefit upon separation from the Alaska army guard, air guard, or naval militia if you meet minimum eligibility provisions."},
+   "membership": ["public_safety"],
+   "covers_local": false,
+   "notes": "Covers members of the Alaska army guard, air guard and naval militia."
+  },
+  {
+   "name": "Alaska Railroad Pension Plan",
+   "short": "",
+   "census_units": ["census-pid6:247642"],
+   "statute": null,
+   "why": "Plan of the Alaska Railroad Corporation (a public corporation established by AS 42.40.010); no section of the Alaska Statutes creating the pension plan was found in the statute index.",
+   "statute_role": "none",
+   "body": {"name": "Alaska Railroad Corporation", "source": {"kind": "statute", "ref": "42.40.010", "quote": "There is established the Alaska Railroad Corporation."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Single-employer plan of the state-owned railroad corporation."
+  }
+ ]
+}

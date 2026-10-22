@@ -1,0 +1,51 @@
+{
+ "state": "va",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Virginia Department of Taxation", "url": "https://www.tax.virginia.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security (and Tier 1 Railroad Retirement) benefits included in federal adjusted gross income are subtracted from Virginia taxable income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "58.1-322.02", "quote": "Benefits received under Title II of the Social Security Act and other benefits subject to federal income taxation solely pursuant to § 86 of the Internal Revenue Code."},
+    {"kind": "page", "url": "https://www.tax.virginia.gov/subtractions", "quote": "Virginia law exempts Social Security and Tier 1 Railroad Retirement benefits from taxation. If you were required to include any of your benefits in federal adjusted gross income, subtract that amount on your Virginia return."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "Virginia taxes state, local and federal civil service pensions like other income; a taxpayer 65 or older may claim the age deduction of up to $12,000, reduced as income rises.",
+   "conditions": ["age deduction of up to $12,000 at 65 or older (born on or before 1 January 1960 for 2025)", "reduced $1 for every $1 of adjusted federal adjusted gross income above $50,000 (single) or $75,000 (married)"],
+   "amount_usd": 12000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "58.1-322.03", "quote": "A deduction in the amount of $ 12,000 for individuals born after January 1, 1939, who have attained the age of 65."},
+    {"kind": "page", "url": "https://www.tax.virginia.gov/subtractions", "quote": "If you or your spouse were born on or before Jan. 1, 1960, you may qualify to claim an age deduction of up to $12,000 each. The age deduction you may claim will depend upon your birth date, filing status, and income."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed like other income; the same income-based age deduction of up to $12,000 applies at 65 or older.",
+   "conditions": ["age deduction of up to $12,000 at 65 or older, income-tested"],
+   "amount_usd": 12000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "58.1-322.03", "quote": "This deduction shall be reduced by $ 1 for every $ 1 that the taxpayer's adjusted federal adjusted gross income exceeds $ 50,000 for single taxpayers or $ 75,000 for married taxpayers."},
+    {"kind": "page", "url": "https://www.tax.virginia.gov/subtractions", "quote": "This deduction shall be reduced by $1 for every $1 that the taxpayer's adjusted federal adjusted gross income exceeds $50,000 for single taxpayers or $75,000 for married taxpayers."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Up to $40,000 of military benefits, including military retirement income, may be subtracted for taxable years beginning on and after 1 January 2025, at any age.",
+   "conditions": ["up to $40,000 for 2025 and later", "no other credit, subtraction or deduction for the same income"],
+   "amount_usd": 40000,
+   "sources": [
+    {"kind": "statute", "ref": "58.1-322.02", "quote": "for taxable years beginning on and after January 1, 2025, up to $40,000 of military benefits."},
+    {"kind": "page", "url": "https://www.tax.virginia.gov/subtractions", "quote": "You can claim a subtraction for certain military benefits. These include: military retirement income received for service in the Armed Forces of the United States"}
+   ]
+  }
+ },
+ "notes": "The $40,000 figure is the Code's (§ 58.1-322.02, subdivision 18 c); the Department's subtractions page describes the subtraction without the amount. The age deduction is a general deduction for taxpayers 65 or older, not a pension exclusion."
+}

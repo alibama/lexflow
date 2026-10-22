@@ -1,0 +1,42 @@
+{
+ "state": "wy",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "Wyoming Department of Revenue", "url": "https://revenue.wyo.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "Wyoming has no individual income tax, so Social Security benefits are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.wyo.gov/about-wyoming", "quote": "Unlike other states, Wyoming does not possess an individual or corporate income tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Wyoming has no individual income tax, so government pensions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.wyo.gov/about-wyoming", "quote": "Unlike other states, Wyoming does not possess an individual or corporate income tax."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Wyoming has no individual income tax, so private pensions, 401(k) and IRA distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.wyo.gov/about-wyoming", "quote": "Unlike other states, Wyoming does not possess an individual or corporate income tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "Wyoming has no individual income tax, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.wyo.gov/about-wyoming", "quote": "Unlike other states, Wyoming does not possess an individual or corporate income tax."}
+   ]
+  }
+ },
+ "notes": "Wyoming levies no individual income tax. The Department of Revenue's site has no page stating this in a quotable sentence (it administers sales, use, property and mineral taxes), so the page source is the State of Wyoming's official About Wyoming page. No statute section is quoted because there is no income tax statute to cite."
+}

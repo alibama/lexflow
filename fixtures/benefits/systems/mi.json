@@ -1,0 +1,87 @@
+{
+ "state": "mi",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Michigan State Employees' Retirement System",
+   "short": "SERS",
+   "census_units": ["census-pid6:227934"],
+   "statute": {"kind": "statute", "ref": "38.2", "quote": "A state employees' retirement system is created for the employees of the state of Michigan."},
+   "statute_role": "establishes",
+   "body": {"name": "State of Michigan Retirement Board", "source": {"kind": "statute", "ref": "38.1174", "quote": "The authority, powers, duties, functions, responsibilities, and rule-making authority of the State Employees' Retirement System Board are transferred to the Board created in Section II of this Order."}},
+   "website": "https://www.michigan.gov/orsstatedb",
+   "website_source": {"kind": "page", "url": "https://www.michigan.gov/orsstatedb/board-information", "quote": "The State of Michigan Retirement Board provides oversight of the State Employees' Retirement System Defined Benefit (DB) Plan, the Judges' Retirement System DB Plan, and the Military Retirement Provisions."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Defined benefit plan closed to employees hired after March 31, 1997 (new hires go to the defined contribution plan). Administered by the Office of Retirement Services (ORS) in DTMB."
+  },
+  {
+   "name": "Michigan Public School Employees' Retirement System",
+   "short": "MPSERS",
+   "census_units": ["census-pid6:226248"],
+   "statute": {"kind": "statute", "ref": "38.1321", "quote": "A Michigan public school employees' retirement system is created for the public school employees of this state."},
+   "statute_role": "establishes",
+   "body": {"name": "Michigan public school employees' retirement board", "source": {"kind": "statute", "ref": "38.1322", "quote": "The Michigan public school employees' retirement board is created in the department and shall consist of the superintendent of public instruction and 11 members appointed by the governor"}},
+   "website": "https://www.michigan.gov/orsschools",
+   "website_source": {"kind": "page", "url": "https://www.michigan.gov/ors/public-school-employees-retirement-system", "quote": "Michigan Public School Employees' Retirement System The Michigan Office of Retirement Services (ORS) administers a Defined Benefit Plan, two hybrid plans, and a Defined Contribution Plan for public school employees."},
+   "membership": ["teacher", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "38.1307", "quote": "\"reporting unit\" means a public school district, intermediate school district, public school academy, tax supported community or junior college, or university, or an agency having employees on its payroll who are members of this retirement system."},
+   "notes": "Covers teachers and other employees of public school districts, intermediate districts, academies, community colleges and some universities."
+  },
+  {
+   "name": "Michigan State Police Retirement System",
+   "short": "MSPRS",
+   "census_units": ["census-pid6:227703"],
+   "statute": {"kind": "statute", "ref": "38.1605", "quote": "A Michigan state police retirement system is created for the state police officers who have subscribed to the constitutional oath of office."},
+   "statute_role": "establishes",
+   "body": {"name": "State police retirement board", "source": {"kind": "statute", "ref": "38.1606", "quote": "Effective January 1, 1987, the state police retirement board is created within the department and shall consist of the following 9 members:"}},
+   "website": "https://www.michigan.gov/orsmsp",
+   "website_source": {"kind": "page", "url": "https://www.michigan.gov/orsmsp/board-information", "quote": "The Michigan State Police Retirement System Board provides oversight of the Michigan State Police Retirement System."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Michigan Judges Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:226247"],
+   "statute": {"kind": "statute", "ref": "38.2201", "quote": "The Michigan judges retirement system is created for judges and state officials."},
+   "statute_role": "establishes",
+   "body": {"name": "State of Michigan Retirement Board", "source": {"kind": "statute", "ref": "38.1174", "quote": "The authority, powers, duties, functions, responsibilities, and rule-making authority of the Judges Retirement Board are transferred to the Board created in Section II of this Order."}},
+   "website": "https://www.michigan.gov/orsjudgesdb",
+   "website_source": {"kind": "page", "url": "https://www.michigan.gov/orsstatedb/board-information", "quote": "The State of Michigan Retirement Board provides oversight of the State Employees' Retirement System Defined Benefit (DB) Plan, the Judges' Retirement System DB Plan, and the Military Retirement Provisions."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Website quote is from the State of Michigan Retirement Board page (the JRS member site could not be read: michigan.gov robots.txt refuses automated readers)."
+  },
+  {
+   "name": "Michigan Legislative Retirement System",
+   "short": "MLRS",
+   "census_units": ["census-pid6:226246"],
+   "statute": {"kind": "statute", "ref": "38.1002", "quote": "The retirement system created by section 1 shall be known as the \"Michigan legislative retirement system\" and all affairs and business of the system shall be transacted in such name."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Michigan legislative retirement system", "source": {"kind": "statute", "ref": "38.1026", "quote": "The retirement system shall be administered by a board of trustees, consisting of 11 persons as follows:"}},
+   "website": "https://www.house.mi.gov/LegislativeRetirementSystem",
+   "website_source": {"kind": "page", "url": "https://www.house.mi.gov/LegislativeRetirementSystem", "quote": "The Michigan Legislative Retirement System was created for the maintenance, and administration of a legislative members' and presiding officers' retirement system within the legislature."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Closed defined benefit system (Census: no active members)."
+  },
+  {
+   "name": "Municipal Employees' Retirement System of Michigan",
+   "short": "MERS",
+   "census_units": ["census-pid6:227935"],
+   "statute": {"kind": "statute", "ref": "38.1502c", "quote": "\"Retirement system\" or \"system\" means the municipal employees retirement system established by former Act No. 135 of the Public Acts of 1945 and continued and restated by this act."},
+   "statute_role": "defines",
+   "body": {"name": "MERS retirement board", "source": {"kind": "statute", "ref": "38.1536", "quote": "A retirement board is created to administer this act. Before August 15, 1996, the retirement board shall operate within the department of management and budget."}},
+   "website": "https://www.mersofmich.com/",
+   "website_source": {"kind": "page", "url": "https://www.mersofmich.com/", "quote": "The Municipal Employees’ Retirement System (MERS) of Michigan is an independent, professional retirement services company."},
+   "membership": ["local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "38.1502c", "quote": "\"Participating municipality\" means a municipality that has elected to be governed by the provisions of this act. Two or more municipalities may enter into an agreement with each other and the retirement system to participate as a combined unit."},
+   "notes": "Since August 1996 an independent public corporation outside the executive branch (MCL 38.1536)."
+  }
+ ]
+}

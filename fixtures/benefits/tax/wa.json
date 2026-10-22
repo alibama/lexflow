@@ -1,0 +1,45 @@
+{
+ "state": "wa",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "Washington State Department of Revenue", "url": "https://dor.wa.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "Washington has no individual income tax for 2025, so Social Security benefits are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.wa.gov/taxes-rates/income-tax", "quote": "Washington does not currently have an individual income tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Washington has no individual income tax for 2025, so government pensions are not taxed by the state; the capital gains excise tax does not reach retirement plans.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.wa.gov/taxes-rates/income-tax", "quote": "Washington does not currently have an individual income tax."},
+    {"kind": "statute", "ref": "RCW 82.87.050", "quote": "an employee defined contribution program, an employee defined benefit plan, or a similar retirement savings vehicle, whether foreign or domestic, that penalizes withdrawals until the legal or beneficial owner reaches a certain age;"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Washington has no individual income tax for 2025, and its capital gains excise tax exempts assets held in 401(k), 403(b), 457(b), IRA, Roth IRA and pension accounts, so retirement distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "RCW 82.87.050", "quote": "(3) Assets held under a retirement savings account under Title 26 U.S.C. Sec. 401(k) of the internal revenue code, a tax-sheltered annuity or custodial account described in Title 26 U.S.C. Sec. 403(b) of the internal revenue code,"},
+    {"kind": "page", "url": "https://dor.wa.gov/taxes-rates/other-taxes/capital-gains-tax/frequently-asked-questions-about-washingtons-capital-gains-tax", "quote": "Washington’s capital gains tax does not apply to transactions through retirement savings accounts."},
+    {"kind": "page", "url": "https://dor.wa.gov/taxes-rates/income-tax", "quote": "Washington does not currently have an individual income tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "Washington has no individual income tax for 2025, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://dor.wa.gov/taxes-rates/income-tax", "quote": "Washington does not currently have an individual income tax."}
+   ]
+  }
+ },
+ "notes": "Washington's capital gains excise tax (RCW 82.87) applies to long-term capital gains above a standard deduction and exempts assets held in retirement accounts (RCW 82.87.050(3)), so it does not reach retirement income. Enacted change for later years: per the Department of Revenue, the 2026 Legislature (Senate Bill 6346) created a 9.9% income tax on individuals and joint filers with annual adjusted gross income over $1 million, effective January 1, 2028 (first returns due April 2029); how it will treat retirement income is not covered here."
+}

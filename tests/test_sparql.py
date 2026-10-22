@@ -264,7 +264,8 @@ def test_param_terms_and_values_substitution(idmap):
 def test_every_query_has_the_header_and_prefixes():
     names = {p.stem for p in SQ.DIR.glob("*.rq")}
     assert names == {"law-in-order", "law-tree", "law-neighbours", "law-in-force", "who-does-what", "process-steps",
-                     "deadlines", "escalation", "body-contacts", "by-topic", "find-process", "federated-body", "coverage"}
+                     "deadlines", "escalation", "body-contacts", "by-topic", "find-process", "federated-body", "coverage",
+                     "compare-records-clocks", "compare-appeal-routes"}
     for query in SQ.catalogue():
         assert query.question, query.name
         for p in ("lx", "lxt", "lxp", "lxps", "lxpq", "lxpr", "lxn", "wikibase", "schema", "rdfs", "skos"):
@@ -278,7 +279,7 @@ def test_every_query_has_the_header_and_prefixes():
 # and are run with their own parameters below
 EXPECTED_LOCAL = {"law-in-order": 1, "law-tree": 2, "law-neighbours": 2, "law-in-force": 1, "who-does-what": 2,
                   "process-steps": 2, "deadlines": 2, "escalation": 0, "body-contacts": 0, "by-topic": 1,
-                  "find-process": 3, "coverage": 5}
+                  "find-process": 3, "coverage": 5, "compare-records-clocks": 0, "compare-appeal-routes": 2}
 
 
 def test_every_query_parses_and_runs_on_the_tiny_store(store, idmap):
@@ -320,7 +321,7 @@ def test_api_endpoints(con, tmp_path, monkeypatch, idmap):
     monkeypatch.setattr(rdf, "STORE_DIR", tmp_path / "wikibase" / "store")
     with TestClient(A.app) as c:
         cat = c.get("/api/sparql/queries").json()
-        assert len(cat["queries"]) == 13 and cat["prefixes"].startswith("PREFIX lx:") and cat["local_built"] is False
+        assert len(cat["queries"]) == 15 and cat["prefixes"].startswith("PREFIX lx:") and cat["local_built"] is False
         assert cat["max_rows"] == 2000 and cat["timeout"] == 30
         byname = {x["name"]: x for x in cat["queries"]}
         assert byname["process-steps"]["params"] == {"process": "lexflow:process:va.records"}

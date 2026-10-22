@@ -81,8 +81,23 @@ def health():
 @app.get("/api/meta")
 def meta():
     return {"questions": {k: {"title": q.title, "short": q.short} for k, q in QUESTIONS.items()},
-            "states": [{"state": s, "fips": f, "name": n} for s, f, n in S.STATES], **M.describe(),
+            "states": [{"state": s, "fips": f, "name": n} for s, f, n in S.STATES], "countries": _countries(),
+            **M.describe(),
             "models": [config.MODEL_A, config.MODEL_B], "ask_model": config.ASK_MODEL, "origin": config.ORIGIN}
+
+
+def _countries() -> list[dict]:
+    """The countries of the registry (states.COUNTRIES) with whether their law is indexed: the pickers' entries."""
+    from ..ask import index as I
+    out = []
+    for c in S.COUNTRIES:
+        try:
+            have = I.have(c["code"]) and I.path(c["code"]).exists()
+        except Exception:  # noqa: BLE001 - a registry entry without an adapter
+            have = False
+        out.append({"state": c["code"], "name": c["name"], "iso2": c["iso2"], "languages": c["languages"],
+                    "code_label": c.get("code_label") or {}, "indexed": have})
+    return out
 
 
 @app.get("/api/overview")
@@ -151,7 +166,39 @@ def create_job(job: JobIn):
             raise HTTPException(400, f"unknown node {job.args['node']!r}: the configured nodes are {', '.join(known) or 'none'}")
     c = con()
     try:
+        if job.step in ("wikibase", "publish"):
+            _real_run_gate(c, job)
         return {"id": jobs.enqueue(c, job.step, job.args)}
+    finally:
+        c.close()
+
+
+def _real_run_gate(c, job: JobIn) -> None:
+    """A real Wikibase push or wiki publish is queued only with the id of the latest dry run's record, while that dry
+    run still allows it (lexflow.pipeline.steps.real_run_refusal), and never beside another job of its step; 409
+    otherwise, 400 for a bad ``passes``.  The job asks again with the graph or pages it builds."""
+    from ..pipeline import steps as ST
+    try:
+        why = ST.real_run_refusal(c, job.step, job.args)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+    real = (job.step == "wikibase" and job.args.get("really") and not job.args.get("dry_run")) or (
+        job.step == "publish" and not job.args.get("dry_run"))
+    if real and not why and db.scalar(c, "SELECT count(*) FROM jobs WHERE step=? AND status IN ('queued','running')",
+                                      job.step, default=0):
+        why = f"a {job.step} job is already queued or running: wait for it to finish"
+    if why:
+        raise HTTPException(409, why)
+
+
+@app.get("/api/pipeline")
+def pipeline():
+    """The Pipeline page: lexflow as a Petri net (lexflow.pipeline.flow): places with their counts, transitions with
+    their status, work waiting and actions, the dry runs a push or publish follows, and other work in the container."""
+    from ..pipeline import flow
+    c = con()
+    try:
+        return flow.payload(c)
     finally:
         c.close()
 
@@ -448,6 +495,14 @@ def targets(q: str = "", limit: int = 15):
     for st, _, name in S.STATES:
         if ql and (ql == st or name.lower().startswith(ql) or (len(ql) > 2 and ql in name.lower())):
             out.append({"target": st, "label": f"{name} (state law)", "kind": "state", "state": st})
+    # countries whose national law lexflow holds: by key (jpn), alpha-2 (jp), name or own-language name (日本)
+    for c in S.COUNTRIES:
+        names = [c["name"].lower(), *(n for n in (c.get("names") or {}).values())]
+        if ql and (ql in (c["code"], c["iso2"]) or any(n.startswith(ql) or (len(ql) > 2 and ql in n) for n in names)
+                   or (not ql.isascii() and any(ql in n for n in names))):
+            label = (c.get("code_label") or {}).get((c.get("languages") or ["en"])[0], "")
+            out.append({"target": c["code"], "label": f"{c['name']} (national law{': ' + label if label else ''})",
+                        "kind": "country", "state": c["code"]})
     if len(q) >= 2:
         c = con()
         try:
@@ -577,7 +632,7 @@ def ask_question(qid: str):
             a = r["answer"] or {}
             claims = ((a.get("summary") or {}).get("claims") or [])
             brief.append({"target": r["target"], "state": r["state"], "gov_id": r["gov_id"], "status": r["status"],
-                          "name": (r["local"] or {}).get("name") or S.NAME.get(r["state"], r["state"]),
+                          "name": (r["local"] or {}).get("name") or S.name_of(r["state"]),
                           "sections": [s["ref"] for s in ((r["sections"] or {}).get("chosen") or [])],
                           "first_claim": claims[0]["text"] if claims else None,
                           "steps": len(a.get("steps") or []), "quotes": len(a.get("quotes") or []),
@@ -825,6 +880,33 @@ def who(q: str = Query(..., min_length=1, max_length=500, description="a plain q
         c.close()
 
 
+# ------------------------------------------------------------------ retirement benefits
+# lexflow.benefits (docs/design/retirement-benefits.md): the programs that apply to a kind of person in a place.
+# Read-only; the person type is a category, and nothing about the asker is stored.
+@app.get("/api/benefits")
+def benefits(gov_id: str | None = Query(None, max_length=120, description="a Census government id, state code or "
+                                                                          "place name"),
+             person: str | None = Query(None, max_length=40, pattern=r"^[a-z_]+$", description="a person type"),
+             who: int = 0):
+    """Retirement benefits for a person type in a place: the pension systems (statewide and the place's own), the
+    state auto-IRA program, the state's tax treatment of retirement income and the federal pointers, each with its
+    body, statute words and links; ``who=1`` returns the same as "Who do I ask" cards.  Without ``gov_id`` it lists
+    the person types (and ``person`` is then not needed)."""
+    from ..benefits import lookup as BL
+    from ..benefits import programs as BP
+    if not gov_id or not person:
+        if gov_id:
+            raise HTTPException(400, f"person must be one of {', '.join(BP.PERSON_TYPES)}")
+        return {"person_types": [{"id": k, "label": v} for k, v in BP.PERSON_TYPES.items()]}
+    c = con()
+    try:
+        return BL.ask(gov_id, person, c) if who else BL.lookup(gov_id, person, c)
+    except BL.LookupError_ as e:
+        raise HTTPException(400, str(e)) from e
+    finally:
+        c.close()
+
+
 # ---------------------------------------------------------------- coverage
 @app.get("/api/coverage")
 def coverage(run: str | None = Query(None, max_length=60, pattern=r"^[\w\-]+$")):
@@ -894,7 +976,7 @@ def _hypo_inputs(fam, params, persona: str | None, scenario: str | None) -> tupl
             elif d.type == "number" and re.fullmatch(r"-?\d+(\.\d+)?", str(v)):
                 v = float(v) if "." in str(v) else int(v)
             base[k] = v
-        if "locality" in given and "district" not in given and persona:
+        if "locality" in given and "district" not in given and persona and "district" in fam.dim:   # retirement_va has none
             base["district"] = fam.persona_inputs(persona, base["locality"])["district"]
         return base, variant
     except FamilyError as e:

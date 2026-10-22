@@ -1,0 +1,52 @@
+{
+ "state": "id",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Idaho State Tax Commission", "url": "https://tax.idaho.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits included in federal income are deducted, so Idaho does not tax them.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "63-3022", "quote": "(l) Deduct any amounts included in gross income under the provisions of section 86 of the Internal Revenue Code relating to certain social security and railroad benefits."},
+    {"kind": "page", "url": "https://tax.idaho.gov/taxes/income-tax/individual-income/specific-guidance-for-individual-income-tax/specific-guidance-for-individuals-seniors-and-retirees/", "quote": "Social Security benefits While potentially taxable on your federal return, these aren’t taxable in Idaho."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Only a few government pensions qualify for Idaho's retirement benefits deduction (federal CSRS and Foreign Service annuities, the Idaho Firefighters Retirement Fund and certain Idaho city police plans), for pensioners 65 or older (62 if disabled), capped at the maximum Social Security benefit less Social Security received; other public pensions, including regular PERSI and FERS, are taxable.",
+   "conditions": ["Age 65+, or 62+ and disabled", "Qualifying plans only: CSRS, Foreign Service (FSRDS), Idaho Firefighters Retirement Fund, certain Idaho city police funds; not FERS or general PERSI", "Married taxpayers must file jointly", "Cap: maximum Social Security benefit for the year, reduced by Social Security/Railroad Retirement received"],
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "63-3022A", "quote": "(a) If such individual has either attained age sixty-five (65) years or has attained age sixty-two (62) years and is classified as disabled: (i) Retirement annuities paid to a retired employee or the unmarried widow or widower of a retired employee by the United States of America under the: 1. Civil service retirement system; or"},
+    {"kind": "statute", "ref": "63-3022A", "quote": "(ii) Retirement benefits paid from the firefighters' retirement fund of the state of Idaho to a retired firefighter or the unremarried widow or widower of a retired firefighter."},
+    {"kind": "statute", "ref": "63-3022A", "quote": "If the taxpayer or the taxpayer's spouse receives retirement benefits under the federal railroad retirement act or the federal social security act in the tax year, then the amount of any retirement annuities computed under subsection (2) of this section shall be reduced by the amount of such"},
+    {"kind": "statute", "ref": "63-3022A", "quote": "This includes retirement benefits paid by the federal employees retirement system or foreign service pension system."},
+    {"kind": "page", "url": "https://tax.idaho.gov/taxes/income-tax/individual-income/popular-credits-and-deductions/idaho-retirement-benefits-deduction/", "quote": "Idaho allows limited deductions for certain pensions. Even if you qualify, you generally can’t deduct the full amount or your benefits. Each year the state recalculates the maximum allowed."},
+    {"kind": "page", "url": "https://tax.idaho.gov/taxes/income-tax/individual-income/popular-credits-and-deductions/idaho-retirement-benefits-deduction/", "quote": "Only a very few Idaho pensions qualify for the deduction from Idaho income tax. You as the pensioner might qualify if all of these are true: You’re at least 65, or at least 62 and disabled."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed by Idaho as part of federal taxable income; the retirement benefits deduction does not cover them.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "63-3011B", "quote": "63-3011B. Taxable income. The term \"taxable income\" means federal taxable income as determined under the Internal Revenue Code."},
+    {"kind": "page", "url": "https://tax.idaho.gov/taxes/income-tax/individual-income/specific-guidance-for-individual-income-tax/specific-guidance-for-individuals-seniors-and-retirees/", "quote": "By federal law, Idaho taxes your pension if you’re an Idaho resident or part-year resident."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "U.S. military retired pay qualifies for the retirement benefits deduction if the retiree is disabled, 62 or older, or under 62 and working enough to have to file a federal return; the deduction is capped at the maximum Social Security benefit less Social Security received.",
+   "conditions": ["Disabled (any age), or age 62+, or under 62 and employed with enough income to require a federal return", "Cap: maximum Social Security benefit for the year, reduced by Social Security/Railroad Retirement received", "Married taxpayers must file jointly"],
+   "sources": [
+    {"kind": "statute", "ref": "63-3022A", "quote": "(b) Retirement benefits paid by the United States of America to a retired member of the military services of the United States, or the unremarried widow or widower of such member, who:"},
+    {"kind": "statute", "ref": "63-3022A", "quote": "(ii) Has attained the age of sixty-two (62) years by the end of the tax year; or (iii) Was employed during the tax year and received sufficient income from such employment to be required to file a federal return"},
+    {"kind": "page", "url": "https://tax.idaho.gov/taxes/income-tax/individual-income/popular-credits-and-deductions/idaho-retirement-benefits-deduction/", "quote": "You as the pensioner might qualify if any of these are true: You’re classified as disabled. You’re age 62 or older. You’re under age 62 and were employed during the year and received sufficient income from such employment to be required to file a federal return."}
+   ]
+  }
+ },
+ "notes": "The deduction cap tracks the maximum Social Security benefit and is published yearly in the Form 39R/39NR instructions, but those PDFs cannot be read by lexflow here, so no amount_usd is recorded. The cap is reduced dollar for dollar by Social Security and Railroad Retirement benefits the taxpayer and spouse receive, so many retirees get little or no deduction. Railroad Retirement Board benefits and Canadian Social Security are also exempt in Idaho."
+}

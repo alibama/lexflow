@@ -1,0 +1,49 @@
+{
+ "state": "mn",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Minnesota Department of Revenue", "url": "https://www.revenue.state.mn.us/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Federally taxable Social Security is fully subtracted for taxpayers below an income threshold; above it the subtraction shrinks by 10% for each $4,000 of AGI, with an alternative (older-style) calculation available if larger.",
+   "conditions": ["Full subtraction below the AGI threshold ($100,000 joint / $78,000 single in statute, inflation adjusted; the Department lists $108,320 joint / $84,490 single)", "Reduced 10% per $4,000 of AGI over the threshold ($2,000 for married filing separately)", "Alternative method may give a partial subtraction at higher incomes"],
+   "sources": [
+    {"kind": "statute", "ref": "290.0132", "quote": "the simplified subtraction is reduced by ten percent for each $4,000 of adjusted gross income, or fraction thereof, in excess of the phaseout threshold."},
+    {"kind": "statute", "ref": "290.0132", "quote": "A taxpayer's simplified subtraction equals the amount of taxable social security benefits, as reduced under paragraphs (c) and (d)."},
+    {"kind": "page", "url": "https://www.revenue.state.mn.us/social-security-benefit-subtraction", "quote": "The simplified method allows taxpayers with adjusted gross income below $108,320 for Married Filing Jointly, or below $84,490 for Single or Head of Household, to subtract all their Social Security benefits included in adjusted gross income (AGI)."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Public pensions are generally taxed; only pensions earned in service not covered by Social Security (basic members of PERA, police and fire, TRA, state patrol, and similar federal or other-state plans) get a capped subtraction that phases out at higher incomes.",
+   "conditions": ["Only pension based on service that did not earn Social Security credit", "Capped ($12,500 single / $25,000 joint in statute, inflation adjusted; the Department lists $13,540 / $27,080)", "Reduced 10% per $2,000 of AGI over the threshold", "Coordinated (Social Security-covered) public pensions, including most federal pensions after 1983, are fully taxable"],
+   "amount_usd": 13540,
+   "sources": [
+    {"kind": "statute", "ref": "290.0132", "quote": "The amount of qualified public pension income is a subtraction. The subtraction in this section is limited to: (1) $25,000 for a married taxpayer filing a joint return or surviving spouse; or (2) $12,500 for all other filers."},
+    {"kind": "page", "url": "https://www.revenue.state.mn.us/senior-citizens", "quote": "Minnesota taxes pensions, including federal pensions, received while you are a Minnesota resident regardless of where you earned the pension. If you had a public pension, you may be eligible for a subtraction."},
+    {"kind": "page", "url": "https://www.revenue.state.mn.us/public-pension-subtraction", "quote": "If you contributed to both Social Security and a qualified pension for the entire length of your job, you are not eligible for this subtraction, whether or not you are receiving Social Security benefits."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions in federal adjusted gross income are taxed like other income; there is no general pension exclusion.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "290.01", "quote": "For an individual, the term \"net income\" means federal adjusted gross income with the modifications provided in sections 290.0131 , 290.0132 , and 290.0135 to 290.0137 ."},
+    {"kind": "page", "url": "https://www.revenue.state.mn.us/senior-citizens", "quote": "Minnesota taxes pensions, including federal pensions, received while you are a Minnesota resident regardless of where you earned the pension. If you had a public pension, you may be eligible for a subtraction."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Federally taxable military retirement pay (active, reserve and Survivor Benefit Plan) is fully subtracted, for those who do not claim the credit for past military service.",
+   "conditions": ["Cannot also claim the Credit for Past Military Service (Minn. Stat. 290.0677)"],
+   "sources": [
+    {"kind": "statute", "ref": "290.0132", "quote": "To the extent included in federal adjusted gross income, compensation received from a pension or other retirement pay from the federal government for service in the military, as computed under United States Code, title 10, sections 1401 to 1414, 1447 to 1455, and 12733, is a subtraction."},
+    {"kind": "page", "url": "https://www.revenue.state.mn.us/senior-citizens", "quote": "If you had a public pension, you may be eligible for a subtraction. For details, see Public Pension Subtraction. Minnesota does not tax military retirement pay, including pensions."}
+   ]
+  }
+ },
+ "notes": "Minnesota's statutory thresholds and caps are indexed for inflation (Minn. Stat. 290.0132 subds. 26 and 34); the Department's pages give the current figures ($108,320/$84,490 Social Security thresholds; $13,540/$27,080 public pension maximums) without naming the tax year on the page, so confirm they are the 2025 amounts. Low-income taxpayers 65 or older (or disabled) may also claim the separate age 65 or older/disabled subtraction, which is not specific to retirement income."
+}

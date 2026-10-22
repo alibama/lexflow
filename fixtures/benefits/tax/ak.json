@@ -1,0 +1,42 @@
+{
+ "state": "ak",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "Alaska Department of Revenue", "url": "https://dor.alaska.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "Alaska has no personal income tax, so Social Security benefits are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.commerce.alaska.gov/web/dcra/officeofthestateassessor/alaskataxfacts.aspx", "quote": "There is no statewide sales tax levied. There is no personal state income tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Alaska has no personal income tax, so government pensions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.commerce.alaska.gov/web/dcra/officeofthestateassessor/alaskataxfacts.aspx", "quote": "There is no statewide sales tax levied. There is no personal state income tax."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Alaska has no personal income tax, so private pensions, 401(k) and IRA distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.commerce.alaska.gov/web/dcra/officeofthestateassessor/alaskataxfacts.aspx", "quote": "There is no statewide sales tax levied. There is no personal state income tax."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "Alaska has no personal income tax, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.commerce.alaska.gov/web/dcra/officeofthestateassessor/alaskataxfacts.aspx", "quote": "There is no statewide sales tax levied. There is no personal state income tax."}
+   ]
+  }
+ },
+ "notes": "The page source is the State of Alaska's official 'Alaska Tax Facts' page from the Office of the State Assessor (Department of Commerce, Community, and Economic Development), read through an Internet Archive capture because that site refuses automated readers. The Department of Revenue's Tax Division site (tax.alaska.gov) disallows automated readers in robots.txt, and its PDF documents have no text layer lexflow can read, so no Revenue page is quoted. No statute source: the individual net income tax was repealed, and no section in the index states the absence of the tax."
+}

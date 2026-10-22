@@ -1,0 +1,49 @@
+{
+ "state": "wi",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Wisconsin Department of Revenue", "url": "https://www.revenue.wi.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Wisconsin does not tax Social Security benefits; any amount in federal AGI is subtracted.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.wi.gov/Pages/FAQS/pcs-retired.aspx", "quote": "How much of my social security benefits are taxable by Wisconsin? Wisconsin does not tax social security benefits."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions are generally taxed, except benefits from listed pre-1964 systems (federal civil service, Milwaukee city/county funds, state teachers) for members as of December 31, 1963; from 2025, filers 67 or older may subtract up to $24,000 ($48,000 joint) of retirement income if they forgo all credits, and low-income filers 65+ may subtract $5,000.",
+   "conditions": ["Pre-1964 members of the listed systems: fully exempt", "Age 67+: up to $24,000 per person ($48,000 joint if both qualify); no Wisconsin credits may be claimed that year", "Age 65+ with federal AGI under $15,000 ($30,000 married): up to $5,000"],
+   "amount_usd": 24000,
+   "age_min": 67,
+   "sources": [
+    {"kind": "statute", "ref": "71.05", "quote": "(a) Retirement systems. All payments received from the U.S. civil service retirement system, the U.S. military employee retirement system, the employee’s retirement system of the city of Milwaukee, Milwaukee County employees’ retirement system,"},
+    {"kind": "page", "url": "https://www.revenue.wi.gov/Pages/FAQS/pcs-retired.aspx", "quote": "2) Individuals who are at least 67 years of age at the close of the relevant taxable year may subtract up to $24,000 ($48,000 for a joint return and both spouses qualify) of retirement income received during the year."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed as for federal purposes, but from 2025 filers 67 or older may subtract up to $24,000 ($48,000 joint) if they claim no credits, and filers 65+ with very low income may subtract up to $5,000.",
+   "conditions": ["Age 67+: up to $24,000 per person ($48,000 joint if both qualify); no Wisconsin credits may be claimed that year", "Age 65+ with federal AGI under $15,000 ($30,000 married): up to $5,000"],
+   "amount_usd": 24000,
+   "age_min": 67,
+   "sources": [
+    {"kind": "page", "url": "https://www.revenue.wi.gov/Pages/FAQS/pcs-retired.aspx", "quote": "Individuals who claim this subtraction may not claim any credit on their return for that taxable year. This subtraction is first available for the 2025 taxable year."},
+    {"kind": "page", "url": "https://www.revenue.wi.gov/Pages/FAQS/pcs-retired.aspx", "quote": "1) Individuals who are at least 65 years of age at the close of the relevant taxable year may subtract up to $5,000 of retirement income received during the year. Individuals must have a federal adjusted gross income (FAGI) of less than $15,000 ($30,000 of combined FAGI if married)."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "All U.S. military and uniformed-services retirement payments, including Survivor Benefit Plan payments, are exempt.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "71.05", "quote": "(am) Military retirement systems. All retirement payments received from the U.S. military employee retirement system, to the extent that such payments are not exempt under par. (a)."},
+    {"kind": "page", "url": "https://www.revenue.wi.gov/Pages/FAQS/pcs-retired.aspx", "quote": "Military and uniformed services retirement benefits are not taxable for Wisconsin income tax purposes"}
+   ]
+  }
+ },
+ "notes": "The statute index copy of Wis. Stat. 71.05 is truncated (about 12 KB, ending in the additions list of sub. (6)(a)), so the subtractions in 71.05(6)(b) for Social Security, the $5,000 retirement subtraction and the new age-67 retirement subtraction (2025 Wisconsin Act 15, created 71.05(6)(b)54m., first available for tax year 2025) cannot be quoted from the index; those items rest on the Department of Revenue FAQ (guidance document 100198, Feb 2026). The pre-1964 exemption in 71.05(1)(a) covers only members of the listed systems as of December 31, 1963. Neither retirement subtraction applies to income already exempt (e.g., military retirement)."
+}

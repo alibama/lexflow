@@ -1,0 +1,51 @@
+{
+ "state": "co",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement Association of Colorado",
+   "short": "Colorado PERA",
+   "census_units": ["census-pid6:226923", "census-pid6:244167", "census-pid6:244168", "census-pid6:244169", "census-pid6:244170"],
+   "statute": null,
+   "why": "No Colorado statute index on this copy of lexflow (PERA is governed by C.R.S. title 24, article 51).",
+   "statute_role": "none",
+   "body": {"name": "PERA Board of Trustees", "source": {"kind": "page", "url": "https://copera.org/about-pera-faqs", "quote": "The Colorado General Assembly sets benefit amounts and contribution rates while the PERA Board of Trustees has the responsibility for the investment of PERA’s funds and establishing policy guidelines for the operations of PERA."}},
+   "website": "https://www.copera.org/",
+   "website_source": {"kind": "page", "url": "https://copera.org/about-pera-faqs", "quote": "The Public Employees’ Retirement Association of Colorado (Colorado PERA) was established by state law in 1931 and provides retirement and other benefits to the employees of more than 400 government agencies and public entities in the state of Colorado."},
+   "membership": ["state_employee", "teacher", "local_employee", "judge", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://copera.org/about-pera-faqs", "quote": "The 16-member Board of Trustees includes three Trustees appointed by the Governor and confirmed by the Senate; four members from the School Division; three members from the State Division; one member from the Local Government Division;"},
+   "notes": "Census reports PERA's five division trust funds (State, School, Local Government, Judicial, Denver Public Schools) as separate units."
+  },
+  {
+   "name": "Fire and Police Pension Association of Colorado",
+   "short": "FPPA",
+   "census_units": ["census-pid6:252446", "census-pid6:244176", "census-pid6:244177", "census-pid6:244171", "census-pid6:244178", "census-pid6:226206"],
+   "statute": null,
+   "why": "No Colorado statute index on this copy of lexflow (FPPA is governed by C.R.S. title 31, article 31).",
+   "statute_role": "none",
+   "body": {"name": "FPPA Board of Directors", "source": {"kind": "page", "url": "https://www.fppaco.org/about", "quote": "Only the Statewide Retirement Plan, the Colorado Springs New Hire Pension Plan, the Statewide Money Purchase Plan, and the Statewide Death & Disability Plan are governed by the FPPA Board of Directors."}},
+   "website": "https://www.fppaco.org/",
+   "website_source": {"kind": "page", "url": "https://www.fppaco.org/about", "quote": "The Fire & Police Pension Association provides retirement and death & disability benefits for firefighters, police officers, and other first responders throughout the state of Colorado."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://www.fppaco.org/about", "quote": "FPPA also administers local pension funds for some police and fire departments, as well as volunteer fire defined benefit plans."},
+   "notes": "Grouped units: Statewide Retirement Plan (and its defined benefit and hybrid components), Statewide Death and Disability Plan, Colorado Springs New Hire Pension Plans, and the affiliated local (old hire and volunteer) plans, which FPPA administers but local boards govern."
+  },
+  {
+   "name": "University of Colorado Hospital Authority Pension Plan",
+   "short": "",
+   "census_units": ["census-pid6:245498"],
+   "statute": null,
+   "why": "Single-employer plan of the University of Colorado Hospital Authority; no Colorado statute index on this copy of lexflow, and the plan is created by the employer rather than by statute.",
+   "statute_role": "none",
+   "body": {"name": "University of Colorado Hospital Authority", "source": null},
+   "website": null,
+   "website_source": null,
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Not a statewide retirement system; listed because the Census counts it as a state-level unit."
+  }
+ ]
+}

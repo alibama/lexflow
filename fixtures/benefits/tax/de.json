@@ -1,0 +1,55 @@
+{
+ "state": "de",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Delaware Division of Revenue", "url": "https://revenue.delaware.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits included in federal AGI are subtracted, so they are not taxed by Delaware.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "(4) Social Security benefits paid by the United States and all payments received under the Railroad Retirement Act of 1974"},
+    {"kind": "page", "url": "https://revenue.delaware.gov/frequently-asked-questions/personal-income-tax-faqs/", "quote": "Social Security and Railroad Retirement benefits are not taxable in Delaware and should not be included in taxable income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Pensions from the United States, Delaware, its subdivisions or other employers are excluded up to $2,000 a year under age 60 and up to $12,500 a year at 60 or older (shared with other eligible retirement income); the rest is taxable.",
+   "conditions": ["Under 60: up to $2,000", "Age 60+: up to $12,500 per person, combined with eligible retirement income"],
+   "amount_usd": 12500,
+   "age_min": 60,
+   "sources": [
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "b. For taxable years beginning on or after January 1, 2022: 1. For persons under age 60, the greater of: A. Amounts received, not to exceed $2,000, as pensions from employers, the United States, this State, or any subdivision of this State;"},
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "2. For persons age 60 or older, amounts received, not to exceed $12,500, as pensions from employers, the United States, this State, or any subdivision of this State, or as eligible retirement income."},
+    {"kind": "page", "url": "https://revenue.delaware.gov/frequently-asked-questions/personal-income-tax-faqs/", "quote": "However, persons 60 years of age or older are entitled to a pension exclusion of up to $12,500 or the amount of the pension and eligible retirement income (whichever is less)."},
+    {"kind": "page", "url": "https://revenue.delaware.gov/frequently-asked-questions/personal-income-tax-faqs/", "quote": "If you are under age 60 and receiving a pension, the exclusion amount is limited to $2,000."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private employer pensions and IRA, 401(k), Keogh and 457 distributions share the same exclusion: up to $12,500 a year at 60 or older (including dividends, interest, capital gains and rental income), and $2,000 for an employer pension under 60.",
+   "conditions": ["Age 60+: up to $12,500 per person of pension plus eligible retirement income", "Under 60: up to $2,000 of employer pension; IRA/401(k) distributions under 60 do not qualify"],
+   "amount_usd": 12500,
+   "age_min": 60,
+   "sources": [
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "2. For persons age 60 or older, amounts received, not to exceed $12,500, as pensions from employers, the United States, this State, or any subdivision of this State, or as eligible retirement income."},
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "“Eligible retirement income” includes distributions received from qualified retirement plans defined in § 4974 of the federal Internal Revenue Code (“IRC”) (26 U.S.C. § 4974) or a successor provision, cash or deferred arrangements described in IRC § 401(k)"},
+    {"kind": "page", "url": "https://revenue.delaware.gov/frequently-asked-questions/personal-income-tax-faqs/", "quote": "Eligible retirement income includes dividends, interest, capital gains, net rental income from real property and qualified retirement plans (IRS Sec. 4974), such as IRA, 401 (K), and Keogh plans, and government deferred compensation plans (IRS Sec. 457)."},
+    {"kind": "page", "url": "https://revenue.delaware.gov/frequently-asked-questions/personal-income-tax-faqs/", "quote": "The combined total of pension and eligible retirement income may not exceed $12,500 per person age 60 or over."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "U.S. military pensions are excluded up to $12,500 a year at any age (under 60 through the military pension exclusion, 60 or older through the general pension exclusion); the rest is taxable.",
+   "conditions": ["Up to $12,500 per person", "Under 60: military pension exclusion (instead of the $2,000 limit)", "Age 60+: general $12,500 pension exclusion"],
+   "amount_usd": 12500,
+   "sources": [
+    {"kind": "statute", "ref": "30 Del. C. § 1106", "quote": "B. Amounts received, not to exceed $12,500, as a United States military pension."},
+    {"kind": "page", "url": "https://legis.delaware.gov/BillDetail/142742", "quote": "This Act phases in, over 3 years, an increased exemption for military pensions from state income taxation, regardless of age, which is currently $12,500"}
+   ]
+  }
+ },
+ "notes": "The military page source is the Delaware General Assembly's bill page for Senate Bill 219 (153rd GA), not the Division of Revenue: the Division's FAQ does not cover the military pension exclusion and its 2025 resident instructions are a PDF lexflow cannot read. SB 219 was signed 8/17/26 and phases the military pension exclusion up over 3 years to $25,000 for all military pensioners for taxable years beginning on or after January 1, 2029; it does not change tax year 2025. The index heading of 30 Del. C. 1106 carries the note '[For application of this section, see 83 Del. Laws, c. 338, 2]'. The $12,500 exclusion is per person, so spouses who each qualify may each exclude up to $12,500."
+}

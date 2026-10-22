@@ -37,12 +37,67 @@ WORDS.update({w: 10 * i for i, w in enumerate("twenty thirty forty fifty sixty s
 SCALES = {"hundred": 100, "thousand": 1000, "million": 10 ** 6}
 
 
+CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\u3005-\u3007]")
+
+
+def is_cjk(text: str) -> bool:
+    """Whether a text is mostly Japanese (or Chinese, Korean): more than a fifth of its first 400 characters."""
+    head = (text or "")[:400]
+    return bool(head) and len(CJK.findall(head)) * 5 > len(head)
+
+
 def _terms(plan: Plan) -> list[re.Pattern]:
+    """One pattern per concept: English words from a word boundary (``\\bexpung``), CJK terms anywhere (Japanese
+    has no word boundaries), two characters being enough for a CJK term (``聴聞``)."""
     out = []
     for g in plan.groups:
-        alts = [re.escape(t.lower()) for t in g if len(t) > 2]
-        if alts:
-            out.append(re.compile(r"\b(?:" + "|".join(alts) + r")", re.I))
+        latin = [re.escape(t.lower()) for t in g if len(t) > 2 and not CJK.search(t)]
+        cjk = [re.escape(t) for t in g if CJK.search(t) and len(t) >= 2]
+        parts = ([r"\b(?:" + "|".join(latin) + ")"] if latin else []) + (["(?:" + "|".join(cjk) + ")"] if cjk else [])
+        if parts:
+            out.append(re.compile("|".join(parts), re.I))
+    return out
+
+
+_HEAD_LINE = re.compile(r"^§ (\S+)\. ?(.*)$")
+_ITEM_LABEL = re.compile(r"^([０-９0-9]+|[一二三四五六七八九十百]+|[イロハニホヘトチリヌルヲワカヨタレソツネナラム])　")
+
+
+def cjk_clauses(text: str, min_chars: int = 8) -> list[Clause]:
+    """Clauses of a Japanese text as japan.py writes articles: one paragraph or item per line (``２　...``,
+    ``　一　...``), a long line split at each 。 outside brackets; ``§ <citation>. <title>`` lines (the joined text
+    of several articles, statutes.combined_text) name the section of what follows.  Each clause is the source's own
+    characters, so a quote is checked verbatim."""
+    out: list[Clause] = []
+    section, pos, para = None, 0, 0
+    for line in text.split("\n"):
+        start, pos = pos, pos + len(line) + 1
+        m = _HEAD_LINE.match(line)
+        if m and CJK.search(m.group(1)):
+            section = m.group(1)
+            continue
+        body = line.strip(" \t\u3000")
+        if not body:
+            continue
+        para += 1
+        lab = _ITEM_LABEL.match(body)
+        off = start + line.index(body)
+        depth, cut, pieces = 0, 0, []
+        for i, ch in enumerate(body):
+            if ch in "（「『(":
+                depth += 1
+            elif ch in "）」』)":
+                depth = max(0, depth - 1)
+            elif ch == "。" and depth == 0 and len(body) > 120:
+                pieces.append((cut, body[cut:i + 1]))
+                cut = i + 1
+        if cut < len(body):
+            pieces.append((cut, body[cut:]))
+        for k, (o, sent) in enumerate(pieces):
+            if len(sent.strip()) < min_chars:
+                continue
+            out.append(Clause(id=f"c{len(out) + 1}", label=lab.group(1) if lab else "", text=sent, start=off + o,
+                              paragraph=para, section=section))
     return out
 
 
@@ -65,9 +120,12 @@ def evidence(question: str, plan: Plan, text: str, embedder=None, k: int | None 
     least one from every section, then the best by meaning, concepts and the slots the question asks for.
     ``k`` grows with the number of sections; ``default_section`` names the section when the text is a single one
     (its clauses carry no section)."""
-    clauses = [c for c in segment(text) if len(c.text.split()) >= 5]
+    cjk = is_cjk(text)
+    clauses = cjk_clauses(text) if cjk else [c for c in segment(text) if len(c.text.split()) >= 5]
     if not clauses:
         return []
+    if cjk:
+        embedder = None             # the embedding model is English; Japanese clauses rank by the question's terms
     n_sections = len({c.section for c in clauses})
     k = k or max(8, min(24, 6 + 2 * n_sections))
     wanted = set(asks_for(question))
@@ -239,9 +297,16 @@ def verify(reply: dict, quotes: list[dict]) -> dict:
     return {"status": status or ("answered" if kept else "not_found"), "claims": kept, "dropped": dropped}
 
 
+def _sec(ref: str | None) -> str:
+    """``§ 2.2-3704``; a citation in its own script (``行政手続法第十三条``) without the section sign."""
+    ref = ref or ""
+    return ref if CJK.search(ref) else f"§ {ref}"
+
+
 def markdown(question: str, place: str, sections: list[dict], quotes: list[dict], steps: list[dict],
-             summary: dict | None, status: str) -> str:
-    """The answer as Markdown: summary (if any), governing law, steps, key quotes."""
+             summary: dict | None, status: str, credit: str | None = None) -> str:
+    """The answer as Markdown: summary (if any), governing law, steps, key quotes; ``credit`` is the source
+    statement a licence asks for (PDL1.0's 出典 for Japan's law)."""
     L = [f"**{question}** — {place}", ""]
     if status == "not_found":
         L += ["lexflow did not find a statute section that clearly governs this. The answer may be in regulations, "
@@ -259,7 +324,9 @@ def markdown(question: str, place: str, sections: list[dict], quotes: list[dict]
             L.append(f"{i}. **{s['actor']}**: {s['action']}{dl} (§ {s['section']})")
         L.append("")
     if quotes:
-        L += ["**Key provisions**", ""] + [f"- [{q['id']}] § {q['section'] or ''}{('(' + q['label'] + ')') if q.get('label') else ''}: "
+        L += ["**Key provisions**", ""] + [f"- [{q['id']}] {_sec(q['section'])}{('(' + q['label'] + ')') if q.get('label') else ''}: "
                                            f"“{q['text']}”" for q in quotes] + [""]
+    if credit:
+        L += [f"_{credit}_", ""]
     L += ["_Information from the statute text, not legal advice. Machine answer: not reviewed._"]
     return "\n".join(L)

@@ -1,0 +1,49 @@
+{
+ "state": "ks",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Kansas Department of Revenue", "url": "https://www.ksrevenue.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "From tax year 2024 on, all Social Security benefits included in federal adjusted gross income are subtracted from Kansas adjusted gross income, with no income limit.",
+   "conditions": ["Only to the extent the benefits are included in federal adjusted gross income"],
+   "sources": [
+    {"kind": "statute", "ref": "79-32,117", "quote": "For all taxable years beginning after December 31, 2023, amounts received as benefits under the federal social security act that are included in federal adjusted gross income of a taxpayer."},
+    {"kind": "page", "url": "https://www.ksrevenue.gov/faqs-taxii.html", "quote": "Effective for all taxable years commencing after December 31, 2023, social security benefits that are included in federal adjusted gross income are not subject to Kansas income tax."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Benefits from KPERS and the other listed Kansas public plans (police and fire, teachers, highway patrol, judges, Regents annuities, certain city plans), and federal civil service annuities, are fully exempt from Kansas income tax.",
+   "conditions": ["Applies to KPERS and the other Kansas public plans named by statute, plus federal civil service retirement", "Government pensions from other states are not on the list and are taxed like other income", "Benefits must be in federal AGI before they are subtracted"],
+   "sources": [
+    {"kind": "statute", "ref": "74-4923", "quote": "Any annuity, benefits, funds, property or rights created by, or accruing to any person under the provisions of K.S.A. 74-4901 et seq. or 74-4951 et seq. , and amendments thereto,"},
+    {"kind": "statute", "ref": "74-4923", "quote": "and all earnings thereof, shall be exempt from any tax of the state of Kansas or any political subdivision or taxing body of the state"},
+    {"kind": "statute", "ref": "79-32,117", "quote": "Any amounts received which are included in federal adjusted gross income but which are specifically exempt from Kansas income taxation under the laws of the state of Kansas."},
+    {"kind": "page", "url": "https://www.ksrevenue.gov/faqs-taxii.html", "quote": "The amount you received as retirement benefits from the Kansas Public Employees Retirement System is not taxable on your Kansas return."},
+    {"kind": "page", "url": "https://www.ksrevenue.gov/incomebook25.html", "quote": "Federal Civil Service Retirement or Disability Fund payments and any other amounts received as retirement benefits from employment by the federal government or for service in the United States Armed Forces including Thrift Savings Plans."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Kansas has no general pension or IRA exclusion; private pensions, 401(k) and IRA distributions in federal adjusted gross income are taxed unless they come from a KPERS lump-sum rollover or another plan the law specifically exempts.",
+   "conditions": ["Exception: IRA/qualified-plan withdrawals of a rolled-over KPERS lump sum (and its earnings) are exempt"],
+   "sources": [
+    {"kind": "statute", "ref": "79-32,117", "quote": "The Kansas adjusted gross income of an individual means such individual's federal adjusted gross income for the taxable year, with the modifications specified in this section."},
+    {"kind": "page", "url": "https://www.ksrevenue.gov/incomebook25.html", "quote": "LINE A14: Retirement benefits specifically exempt from Kansas Income Tax. If you are receiving retirement benefits/pay, report on this line benefits exempt from Kansas income tax (do not include Social Security benefits)."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. armed forces retired pay included in federal adjusted gross income is fully subtracted from Kansas adjusted gross income.",
+   "conditions": ["Benefits must be in federal AGI before they are subtracted"],
+   "sources": [
+    {"kind": "statute", "ref": "79-32,117", "quote": "Amounts received as annuities under the federal civil service retirement system from the civil service retirement and disability fund and other amounts received as retirement benefits in whatever form which were earned for being employed by the federal government or for service in the armed forces of the United States."},
+    {"kind": "page", "url": "https://www.ksrevenue.gov/faqs-taxii.html", "quote": "Are military pensions taxable to Kansas? No. The retirement benefits must be included in your federal adjusted gross income before it can be subtracted on your Kansas return."}
+   ]
+  }
+ },
+ "notes": "Before tax year 2024 the Social Security subtraction applied only when federal AGI was $75,000 or less; the 2024 change removed the limit. Kansas exempts only the public plans the law names (KPERS family, certain Kansas city plans, Washburn and Regents plans, federal civil service, military, railroad retirement); out-of-state government pensions and private pensions/IRAs are taxable. The private_pension page quote shows that only retirement benefits specifically exempted are subtracted; the booklet does not list private pensions among them."
+}

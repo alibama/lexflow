@@ -1,0 +1,47 @@
+{
+ "state": "or",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Oregon Department of Revenue", "url": "https://www.oregon.gov/dor/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and tier 1 railroad retirement benefits included in federal income are subtracted in full from Oregon taxable income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "316.054", "quote": "there shall be subtracted from federal taxable income the amount of any Social Security benefits, as defined in section 86 of the Internal Revenue Code (Title II Social Security or tier 1 railroad retirement benefits) included in gross income for federal income tax purposes under section 86 of the Internal Revenue Code."},
+    {"kind": "page", "url": "https://www.oregon.gov/dor/programs/individuals/pages/pit.aspx", "quote": "Oregon doesn’t tax Social Security or Railroad Retirement Board benefits."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "State and local pensions (including Oregon PERS) are taxed; federal civil service pensions are subtracted in proportion to federal service before October 1, 1991; low-income filers 62 and older may get a retirement income credit of up to 9% of net pension income.",
+   "conditions": ["Federal pensions only: subtraction = pension x months of service before Oct 1, 1991 / total months of service", "Retirement income credit: age 62+, net pension income capped at $7,500 ($15,000 joint) reduced by Social Security and by household income over $15,000 ($30,000 joint)"],
+   "sources": [
+    {"kind": "statute", "ref": "316.680", "quote": "(e)(A) Federal pension income that is attributable to federal employment occurring before October 1, 1991."},
+    {"kind": "statute", "ref": "316.157", "quote": "(1) In the case of an eligible individual, there shall be allowed as a credit against the taxes otherwise due under this chapter for the taxable year an amount equal to the lesser of the tax liability of the taxpayer or nine percent of net pension income."},
+    {"kind": "page", "url": "https://www.oregon.gov/dor/programs/individuals/pages/pit.aspx", "quote": "If you receive a U.S. government pension for service before October 1991, you may be entitled to subtract all or part of that pension on your Oregon return."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed; only a small retirement income credit (9% of net pension income) is available to filers 62 and older with low household income and little Social Security.",
+   "conditions": ["Age 62 or older", "Net pension income capped at $7,500 ($15,000 joint), reduced by Social Security received and by household income over $15,000 ($30,000 joint)", "Credit, not an exclusion"],
+   "sources": [
+    {"kind": "statute", "ref": "316.157", "quote": "(a) “Eligible individual” means any individual who is receiving pension income and who has attained 62 years of age before the close of the taxable year."},
+    {"kind": "page", "url": "https://www.oregon.gov/dor/programs/individuals/pages/pit.aspx", "quote": "If you change your permanent residence to Oregon, your pension income, along with all other income regardless of source, is taxable in Oregon. Depending on your age and income, you may be entitled to a retirement income credit on your Oregon return."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Military retired pay is a federal pension, so only the share attributable to service before October 1, 1991 is subtracted; the rest is taxed.",
+   "conditions": ["Subtraction = retired pay x months of service before Oct 1, 1991 / total months of service"],
+   "sources": [
+    {"kind": "statute", "ref": "316.680", "quote": "(ii) “Federal pension” means any form of retirement allowance provided by the federal government, its agencies or its instrumentalities to retirees of the federal government or their beneficiaries."},
+    {"kind": "page", "url": "https://www.oregon.gov/dor/programs/individuals/pages/pit.aspx", "quote": "If you receive a U.S. government pension for service before October 1991, you may be entitled to subtract all or part of that pension on your Oregon return."}
+   ]
+  }
+ },
+ "notes": "Oregon has no general pension exclusion. The federal pension subtraction (ORS 316.680(1)(e)) covers federal civil service and military retirement pay for service before October 1, 1991, prorated by months of creditable service; Oregon PERS benefits get no subtraction (pre-1991 PERS service was compensated by benefit increases instead). The retirement income credit (ORS 316.157) is 9% of net pension income; because net pension income is reduced by Social Security and by household income above $15,000/$30,000, it phases out completely by household income of $22,500 single / $45,000 joint even with no Social Security. The credit counts only pension income included in Oregon taxable income, so federal pension income already subtracted does not also earn the credit."
+}

@@ -1,0 +1,49 @@
+{
+ "state": "ok",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Oklahoma Tax Commission", "url": "https://oklahoma.gov/tax.html"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security benefits included in federal adjusted gross income are fully exempt from Oklahoma taxable income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "68-2358v3", "quote": "Social Security benefits received by an individual shall be exempt from taxable income, to the extent such benefits are included in the federal adjusted gross income pursuant to the provisions of Section 86 of the Internal Revenue Code"},
+    {"kind": "page", "url": "https://oklahoma.gov/tax/helpcenter/income-tax.html", "quote": "Social Security benefits that are included in the federal adjusted gross income shall be subtracted on your Oklahoma income tax return."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Each individual may exclude up to $10,000 of retirement benefits from Oklahoma state and local systems or the federal civil service; federal CSRS benefits paid in lieu of Social Security are excluded in full.",
+   "conditions": ["Up to $10,000 per individual, limited to the amount in federal AGI", "Benefits must be in the individual's own name", "Federal CSRS annuities paid in lieu of Social Security: 100% excluded (FERS generally limited to the $10,000 exclusion)", "Combined with the other-retirement exclusion, no more than $10,000 per individual"],
+   "amount_usd": 10000,
+   "sources": [
+    {"kind": "statute", "ref": "68-2358v3", "quote": "8. Retirement benefits not to exceed Five Thousand Five Hundred Dollars ($5,500.00) for the 2004 tax year, Seven Thousand Five Hundred Dollars ($7,500.00) for the 2005 tax year and Ten Thousand Dollars ($10,000.00) for the 2006 tax year and all subsequent tax years, which are received by an individual from the civil service of the United States,"},
+    {"kind": "page", "url": "https://oklahoma.gov/tax/helpcenter/income-tax.html", "quote": "Each individual, may exclude their retirement benefits, up to $10,000, but not to exceed the amount included in the federal adjusted gross income. To be eligible, you must have retirement income in your name."},
+    {"kind": "page", "url": "https://oklahoma.gov/tax/helpcenter/income-tax.html", "quote": "Each individual may exclude 100% of their retirement benefits received from the Federal Civil Service Retirement System (CSRS), including survivor benefits, paid in lieu of Social Security to the extent such benefits are included in the federal adjusted gross income."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Each individual may exclude up to $10,000 of distributions from qualified private plans (401(k), 403(b), 457, IRAs and similar), reduced by any government-retirement exclusion already claimed; there is no age or income limit for current years.",
+   "conditions": ["Up to $10,000 per individual, limited to the amount in federal AGI", "Reduced by any government retirement exclusion claimed", "Plan must satisfy the Internal Revenue Code requirements (e.g., 401, 403, 408, 457)"],
+   "amount_usd": 10000,
+   "sources": [
+    {"kind": "statute", "ref": "68-2358v3", "quote": "In taxable years beginning after December 31, 2004, retirement benefits not to exceed the amounts specified in this paragraph, which are received by an individual whose Oklahoma adjusted gross income is less than the qualifying amount specified in this paragraph, shall be exempt from taxable income."},
+    {"kind": "page", "url": "https://oklahoma.gov/tax/helpcenter/income-tax.html", "quote": "For any individual who claims the exclusions for government retirees on Schedule 511-A, line 5 or Schedule 511NR-B, line 5, the amount of the exclusion cannot exceed $10,000 minus the amounts already claimed on Schedule 511-A, line 5 or Schedule 511NR-B, line 5 (if less than zero, enter zero)."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Beginning with tax year 2022, 100% of retirement benefits from any component of the U.S. Armed Forces are exempt.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "68-2358v3", "quote": "For tax year 2022 and subsequent tax years, retirement benefits received by an individual from any component of the Armed Forces of the United States shall be exempt from taxable income."},
+    {"kind": "page", "url": "https://oklahoma.gov/tax/helpcenter/income-tax.html", "quote": "Beginning in Tax Year 2022, each individual may exclude 100% of their retirement benefits. The retirement benefits must be from any component of the Armed Forces of the United States."}
+   ]
+  }
+ },
+ "notes": "The statute index holds three versions of 68 O.S. 2358 (v1-v3); quotes are from v3 and the paragraphs quoted read the same in the current law described by the Tax Commission. The private-retirement exclusion (para. 13) has had no qualifying-income limit since tax year 2010, so it is effectively available to all filers. Federal CSRS benefits paid in lieu of Social Security have been 100% exempt since 2011 (para. 18 phase-in); FERS benefits use the $10,000 government exclusion. The government (para. 8) and other-retirement (para. 13) exclusions together cannot exceed $10,000 per individual."
+}

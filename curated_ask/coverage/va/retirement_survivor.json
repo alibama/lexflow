@@ -1,0 +1,55 @@
+{
+ "qid": "retirement_survivor",
+ "state": "va",
+ "question": "What happens to my pension if I die before or after I retire?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "51.1-162",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Each member designates who receives a refund of contributions if he dies before retirement.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-162",
+   "quote": "Each member shall designate who is to receive a refund of accumulated contributions credited to his account in the event of the death of the member prior to retirement.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "If a member dies in service, a retirement allowance goes to a designated surviving spouse, minor child or parent.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "51.1-162",
+   "quote": "a retirement allowance shall be paid to the person or persons designated as provided in subsection A of this section if the person is the member's (i) surviving spouse, (ii) minor child, or (iii) parent(s).",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "Without a designation, the refund goes first to the spouse.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "51.1-162",
+   "quote": "First, to the spouse of the member;",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "A death in service from a cause compensable under workers' compensation gives the surviving spouse an allowance.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "51.1-162",
+   "quote": "If a member dies in service from a cause compensable under the Virginia Workers' Compensation Act (§ 65.2-100 et seq.), a retirement allowance shall be paid to the member's surviving spouse.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

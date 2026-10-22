@@ -1,0 +1,51 @@
+{
+ "state": "mt",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Montana Department of Revenue", "url": "https://revenue.mt.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "taxable",
+   "summary": "Since 2024 Montana starts from federal taxable income, so Social Security is taxed to the same extent it is federally taxable; there is no separate Social Security exclusion.",
+   "conditions": ["Taxpayers 65 or older get a general $5,500 subtraction (inflation adjusted from 2025) that applies to any income"],
+   "sources": [
+    {"kind": "statute", "ref": "15-30-2101", "quote": "\"Montana taxable income\" means federal taxable income as determined for federal income tax purposes and adjusted as provided in 15-30-2120 ."},
+    {"kind": "page", "url": "https://revenue.mt.gov/montana-tax-simplification-resource-hub", "quote": "Taxable Social Security Income and net operating losses are included in Montana taxable income to the extent that they are included in federal taxable income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "Government pensions are taxed as included in federal taxable income; the former partial pension, annuity and IRA deduction was repealed for 2024 and later.",
+   "conditions": ["Taxpayers 65 or older get a general $5,500 subtraction (inflation adjusted from 2025) that applies to any income"],
+   "sources": [
+    {"kind": "statute", "ref": "15-30-2120", "quote": "for each taxpayer that has attained the age of 65, an additional subtraction of $5,500;"},
+    {"kind": "statute", "ref": "15-30-2101", "quote": "\"Montana taxable income\" means federal taxable income as determined for federal income tax purposes and adjusted as provided in 15-30-2120 ."},
+    {"kind": "page", "url": "https://revenue.mt.gov/montana-tax-simplification-resource-hub", "quote": "Repealed Deductions Several deductions are repealed, including: Unemployment compensation Tip income for certain service industry workers Partial interest income deduction for taxpayers aged 65 or older Partial pension, annuity, and IRA deduction"},
+    {"kind": "page", "url": "https://revenue.mt.gov/montana-tax-simplification-resource-hub", "quote": "There is a standard subtraction for taxpayers 65 and older of $5,500. If filing jointly and both spouses are 65 and older, the subtraction is $11,000. This amount will be adjusted annually for inflation beginning with tax year 2025."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed as included in federal taxable income; the partial pension, annuity and IRA deduction was repealed for 2024 and later.",
+   "conditions": ["Taxpayers 65 or older get a general $5,500 subtraction (inflation adjusted from 2025) that applies to any income"],
+   "sources": [
+    {"kind": "statute", "ref": "15-30-2101", "quote": "\"Montana taxable income\" means federal taxable income as determined for federal income tax purposes and adjusted as provided in 15-30-2120 ."},
+    {"kind": "page", "url": "https://revenue.mt.gov/montana-tax-simplification-resource-hub", "quote": "Repealed Deductions Several deductions are repealed, including: Unemployment compensation Tip income for certain service industry workers Partial interest income deduction for taxpayers aged 65 or older Partial pension, annuity, and IRA deduction"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Resident military retirees may subtract the lesser of 50% of military retirement pay or their Montana wage, business and farm income, for five consecutive years; survivor benefit recipients may subtract up to 50% without the work requirement.",
+   "conditions": ["Lesser of 50% of military retirement income or Montana-source wage, business and farm income", "Must have become a resident after June 30, 2023, or been a resident before retirement pay began", "Only for 5 consecutive years after becoming eligible", "Military survivor benefits: up to 50%, no work requirement"],
+   "sources": [
+    {"kind": "statute", "ref": "15-30-2120", "quote": "a portion of military pensions or military retirement income as calculated pursuant to subsection (8) that is received by a retired member of: (A) the armed forces of the United States, as defined in 10 U.S.C. 101;"},
+    {"kind": "statute", "ref": "15-30-2120", "quote": "the subtraction in subsection (3)(n)(i) is equal to the lesser of: (i) the amount of Montana source wage income on the return; or (ii) 50% of the taxpayer's military pension or military retirement income."},
+    {"kind": "statute", "ref": "15-30-2120", "quote": "may only be claimed for 5 consecutive years after satisfying the provisions of subsection (9)(a);"},
+    {"kind": "page", "url": "https://revenue.mt.gov/taxes/individual-income-tax/working-military-retirement-exemption", "quote": "Montana resident working military retirees may be eligible to exempt a part of their military retirement income from Montana taxable income. The exemption also applies to resident beneficiaries receiving military survivor benefits."},
+    {"kind": "page", "url": "https://revenue.mt.gov/taxes/individual-income-tax/working-military-retirement-exemption", "quote": "The deduction can only be claimed for five consecutive years after meeting the eligibility requirements."}
+   ]
+  }
+ },
+ "notes": "Montana's 2021 tax simplification (effective tax year 2024) moved the starting point to federal taxable income, repealed the partial pension/annuity/IRA exclusion and the old Social Security calculation, and added a general subtraction for taxpayers 65 and older ($5,500 per person in the statute; indexed for inflation from 2025, so the 2025 figure the Department publishes may be slightly higher). Railroad Retirement Tier I and II benefits remain subtracted. The 2025 Form 2 instructions (PDF) say SB 93 removed the expiration date for the military retirement subtraction; not verified against the index."
+}

@@ -1,0 +1,48 @@
+{
+ "state": "ct",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Connecticut Department of Revenue Services", "url": "https://portal.ct.gov/drs"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Federally taxable Social Security is fully subtracted when federal AGI is under $75,000 (single or married filing separately) or $100,000 (joint, qualifying widow(er) or head of household); above those levels Connecticut taxes no more than 25% of benefits.",
+   "conditions": ["Full exemption if federal AGI under $75,000 (single/MFS) or under $100,000 (MFJ, qualifying widow(er), HOH)", "Above the threshold, taxable amount limited to the lesser of 25% of benefits or 25% of the IRC 86(b)(1) excess"],
+   "sources": [
+    {"kind": "statute", "ref": "12-701", "quote": "(III) For the taxable year commencing January 1, 2019, and each taxable year thereafter, for a person who files a return under the federal income tax as an unmarried individual whose federal adjusted gross income for such taxable year is less than seventy-five thousand dollars"},
+    {"kind": "statute", "ref": "12-701", "quote": "an amount equal to the difference between the amount of Social Security benefits includable for federal income tax purposes and the lesser of twenty-five per cent of the Social Security benefits received during the taxable year"},
+    {"kind": "page", "url": "https://portal.ct.gov/drs/individuals/connecticut-tax-tips-for-senior-citizens", "quote": "Your Social Security benefits are fully exempt from Connecticut income tax if your federal filing status is: Single or married filing separately and your federal adjusted gross income as reported on Line 1 of your Connecticut income tax return is less than $75,000"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions qualify for Connecticut's income-limited pension and annuity subtraction (available below federal AGI of $100,000, or $150,000 joint); Connecticut Teachers' Retirement System income is at least 50% exempt regardless of income.",
+   "conditions": ["Pension and annuity subtraction only if federal AGI under $100,000 (single/MFS/HOH) or $150,000 (MFJ), per a statutory phase-out schedule", "State Teachers' Retirement System: 50% subtracted, or the pension-subtraction percentage if greater"],
+   "sources": [
+    {"kind": "statute", "ref": "12-701", "quote": "any pension or annuity income for the taxable year commencing on or after January 1, 2024, and each taxable year thereafter, in accordance with the following schedule, for a person who files a return under the federal income tax as an unmarried individual whose federal adjusted gross income for such taxable year is less than one hundred thousand dollars"},
+    {"kind": "statute", "ref": "12-701", "quote": "(III) for the taxable year commencing January 1, 2021, and each taxable year thereafter, fifty per cent of the income received from the state teachers' retirement system"},
+    {"kind": "page", "url": "https://portal.ct.gov/drs/individuals/connecticut-tax-tips-for-senior-citizens", "quote": "Single, married filing separately, or head of household with federal AGI for the taxable year of less than $100,000 or Married filing jointly with federal AGI of less than $150,000."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions and 401(k), 403(b), 457(b) and non-Roth IRA distributions qualify for the same income-limited pension and annuity subtraction (federal AGI under $100,000, or $150,000 joint); above those limits they are fully taxable.",
+   "conditions": ["Federal AGI under $100,000 (single/MFS/HOH) or $150,000 (MFJ), phased out by schedule", "IRA distributions phased in: 75% subtractable for tax year 2025 (see notes)"],
+   "sources": [
+    {"kind": "statute", "ref": "12-701", "quote": "any pension or annuity income for the taxable year commencing on or after January 1, 2024, and each taxable year thereafter, in accordance with the following schedule, for a person who files a return under the federal income tax as an unmarried individual whose federal adjusted gross income for such taxable year is less than one hundred thousand dollars"},
+    {"kind": "page", "url": "https://portal.ct.gov/drs/individuals/connecticut-tax-tips-for-senior-citizens", "quote": "If you receive distributions from certain pensions and annuities, such as from a defined benefit plan, 401(k), 403(b) or 457(b) plans, or distributions from an IRA (other than a Roth IRA), you may qualify for a subtraction modification if your filing status is:"},
+    {"kind": "page", "url": "https://portal.ct.gov/drs/individuals/connecticut-tax-tips-for-senior-citizens", "quote": "Single, married filing separately, or head of household with federal AGI for the taxable year of less than $100,000 or Married filing jointly with federal AGI of less than $150,000."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "U.S. armed forces and National Guard retirement pay included in federal AGI is fully subtracted from Connecticut income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "12-701", "quote": "(xvi) To the extent properly includable in gross income for federal income tax purposes, any income received from the United States government as retirement pay for a retired member of (I) the Armed Forces of the United States"}
+   ]
+  }
+ },
+ "notes": "No current DRS web page on the military retirement subtraction could be read: the former 'Income Tax Information-Military' page now redirects to a 404, and DRS's current statements (2025 CT-1040 instructions: military retirement pay 'fully exempt') are PDFs lexflow cannot read here, so military_retirement has a statute source only. The index text of 12-701 stops at the colon before the 2024+ pension phase-out table, so the schedule itself (100% below $75,000/$100,000 AGI, phasing down to 0% at $100,000/$150,000) and the IRA-distribution phase-in (25% 2023, 50% 2024, 75% 2025, 100% from 2026) could not be quoted; both come from DRS's 2025 form instructions and should be confirmed. For 2026 the IRA subtraction reaches 100% under the enacted phase-in."
+}

@@ -1,0 +1,76 @@
+{
+ "qid": "retirement_employer_plan",
+ "state": "va",
+ "question": "Does my employer have to offer a retirement plan, or a state-run IRA?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "2.2-2751",
+   "role": "primary"
+  },
+  {
+   "ref": "2.2-2744",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-2745",
+   "role": "supporting"
+  },
+  {
+   "ref": "2.2-2747",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Participation in RetirePath (the state IRA program) is mandatory for eligible employers.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "2.2-2751",
+   "quote": "Participation in the Program shall be mandatory for eligible employers. Eligible employers shall enroll in the Program in accordance with the timeline established by the Plan.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Eligible employers have five or more eligible employees and no qualified plan.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "2.2-2744",
+   "quote": "that employed five or more eligible employees for the period ending December 31 of the preceding calendar year prior to the Program's open enrollment period for that calendar year.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "The Commonwealth Savers Plan sponsors and administers the program.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "2.2-2745",
+   "quote": "The Program shall be sponsored and administered by the Plan.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Enrollment began July 1, 2023; the Board sets the rollout deadlines.",
+   "importance": "okay",
+   "kind": "deadline",
+   "section": "2.2-2751",
+   "quote": "The Program shall be established and enrollment of eligible employers shall begin on July 1, 2023, or as soon thereafter as practicable.",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "Penalties for noncompliance may not exceed $200 per eligible employee a year.",
+   "importance": "okay",
+   "kind": "fee",
+   "section": "2.2-2747",
+   "quote": "Procedures for noncompliance with this chapter, including development of enforcement mechanisms and penalties not to exceed $200 per eligible employee annually;",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

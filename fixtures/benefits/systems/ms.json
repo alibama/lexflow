@@ -1,0 +1,65 @@
+{
+ "state": "ms",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees' Retirement System of Mississippi",
+   "short": "PERS",
+   "census_units": ["census-pid6:227707"],
+   "statute": null,
+   "why": "No Mississippi statute index on this copy of lexflow (the system is in Miss. Code Ann. Title 25, ch. 11, art. 3; citation not verified here).",
+   "statute_role": "none",
+   "body": {"name": "PERS Board of Trustees", "source": {"kind": "page", "url": "https://www.pers.ms.gov/leadership", "quote": "The Board is responsible for designating the System’s executive director and for establishing the policies for administration of the trust."}},
+   "website": "https://www.pers.ms.gov/",
+   "website_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "PERS was established in 1952 as the retirement system for state agencies, as well as counties, cities, and other participating political subdivisions."},
+   "membership": ["state_employee", "local_employee", "teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "PERS was established in 1952 as the retirement system for state agencies, as well as counties, cities, and other participating political subdivisions."},
+   "notes": "Covers state, public school, university, community college, county and municipal employees and legislators. Tier 5 hybrid plan for members hired March 1, 2026 and later."
+  },
+  {
+   "name": "Mississippi Highway Safety Patrol Retirement System",
+   "short": "MHSPRS",
+   "census_units": ["census-pid6:226254"],
+   "statute": null,
+   "why": "No Mississippi statute index on this copy of lexflow (the system is in Miss. Code Ann. Title 25, ch. 13; citation not verified here).",
+   "statute_role": "none",
+   "body": {"name": "PERS Board of Trustees", "source": {"kind": "page", "url": "https://www.pers.ms.gov/leadership", "quote": "The Board is responsible for designating the System’s executive director and for establishing the policies for administration of the trust."}},
+   "website": "https://www.pers.ms.gov/",
+   "website_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "MHSPRS was established in 1958 as the retirement system for all of the sworn officers of the Mississippi Highway Safety Patrol who have completed a course of instruction in an authorized Highway Patrol Training School on general law enforcement."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Administered by PERS."
+  },
+  {
+   "name": "Supplemental Legislative Retirement Plan",
+   "short": "SLRP",
+   "census_units": ["census-pid6:227251"],
+   "statute": null,
+   "why": "No Mississippi statute index on this copy of lexflow (the plan is in Miss. Code Ann. Title 25, ch. 11, art. 7; citation not verified here).",
+   "statute_role": "none",
+   "body": {"name": "PERS Board of Trustees", "source": {"kind": "page", "url": "https://www.pers.ms.gov/leadership", "quote": "The Board is responsible for designating the System’s executive director and for establishing the policies for administration of the trust."}},
+   "website": "https://www.pers.ms.gov/",
+   "website_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "Established in 1989, SLRP provides supplemental benefits, in addition to PERS benefits, to all members of the Mississippi Legislature and the Lieutenant Governor."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Administered by PERS; the PERS home page reports that House Bill 1 (2026) closed SLRP to newly elected legislators."
+  },
+  {
+   "name": "Municipal Retirement Systems",
+   "short": "MRS",
+   "census_units": ["census-pid6:251403"],
+   "statute": null,
+   "why": "No Mississippi statute index on this copy of lexflow (the municipal systems are in Miss. Code Ann. Title 21, ch. 29; citation not verified here).",
+   "statute_role": "none",
+   "body": {"name": "PERS, with the governing authorities of the respective cities", "source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "MRS are closed plans administered by PERS since July 1, 1987, in coordination with the governing authorities of the respective cities."}},
+   "website": "https://www.pers.ms.gov/",
+   "website_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "Municipal Retirement Systems (MRS) MRS are closed plans administered by PERS since July 1, 1987, in coordination with the governing authorities of the respective cities."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://www.pers.ms.gov/retirement-plans", "quote": "MRS are closed plans administered by PERS since July 1, 1987, in coordination with the governing authorities of the respective cities."},
+   "notes": "Census unit 'MS Public Employees' Ret System (MRS - Closed)': closed municipal general-employee and fire/police plans, no active members."
+  }
+ ]
+}

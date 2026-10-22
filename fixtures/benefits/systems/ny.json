@@ -1,0 +1,48 @@
+{
+ "state": "ny",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "New York State and Local Employees' Retirement System",
+   "short": "ERS",
+   "census_units": ["census-pid6:226277"],
+   "statute": {"kind": "statute", "ref": "N.Y. RSS Law § 10", "quote": "The retirement system, as established by chapter seven hundred forty-one of the laws of nineteen hundred twenty, as amended, is hereby continued."},
+   "statute_role": "establishes",
+   "body": {"name": "State Comptroller (administrative head; New York State and Local Retirement System)", "source": {"kind": "statute", "ref": "N.Y. RSS Law § 11", "quote": "The comptroller shall be the administrative head of the retirement system. Subject to the limitations of this article and of law, he shall adopt and may amend, from time to time, rules and regulations"}},
+   "website": "https://www.osc.ny.gov/retirement",
+   "website_source": {"kind": "page", "url": "https://www.osc.ny.gov/retirement", "quote": "The New York State and Local Retirement System (NYSLRS) offers services for the public members, retirees and employers of New York State."},
+   "membership": ["state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "N.Y. RSS Law § 30", "quote": "A municipality may elect to participate in the retirement system. Such election shall be exercised by the adoption of a resolution approved by its local legislative body"},
+   "notes": "Part of the New York State and Local Retirement System (NYSLRS) administered by the Office of the State Comptroller."
+  },
+  {
+   "name": "New York State and Local Police and Fire Retirement System",
+   "short": "PFRS",
+   "census_units": ["census-pid6:244196"],
+   "statute": {"kind": "statute", "ref": "N.Y. RSS Law § 310", "quote": "The policemen's and firemen's retirement system is hereby established. Such system shall have the powers and privileges of a corporation and shall be known as the \"New York State and local Police and Fire Retirement System.\""},
+   "statute_role": "establishes",
+   "body": {"name": "State Comptroller (administrative head; New York State and Local Retirement System)", "source": {"kind": "statute", "ref": "N.Y. RSS Law § 311", "quote": "The comptroller shall be the administrative head of the police and fire retirement system."}},
+   "website": "https://www.osc.ny.gov/retirement",
+   "website_source": {"kind": "page", "url": "https://www.osc.ny.gov/retirement", "quote": "The New York State and Local Retirement System (NYSLRS) offers services for the public members, retirees and employers of New York State."},
+   "membership": ["public_safety", "local_employee", "state_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "N.Y. RSS Law § 330", "quote": "Every municipality (exclusive of those maintaining a local pension system for all its police officers and firefighters) employing police officers and firefighters must participate in the police and fire retirement system"},
+   "notes": "Part of NYSLRS."
+  },
+  {
+   "name": "New York State Teachers' Retirement System",
+   "short": "NYSTRS",
+   "census_units": ["census-pid6:227300"],
+   "statute": {"kind": "statute", "ref": "N.Y. EDN Law § 502", "quote": "The \"New York state teachers' retirement system\" is hereby continued. 2. Such retirement system shall have the powers and privileges of a corporation"},
+   "statute_role": "establishes",
+   "body": {"name": "Retirement board of the New York State Teachers' Retirement System", "source": {"kind": "statute", "ref": "N.Y. EDN Law § 504", "quote": "The general administration and responsibility for the proper operation of the retirement system and for making effective the provisions of this article shall continue to be vested in a retirement board."}},
+   "website": "https://www.nystrs.org/",
+   "website_source": {"kind": "page", "url": "https://www.nystrs.org/", "quote": "The New York State Teachers’ Retirement System (NYSTRS) is one of the largest public pension funds in the nation and among the best-funded teacher systems."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "notes": "Teachers and administrators of public school districts (outside New York City) and SUNY/community college members who elect it. Website read via the Internet Archive."
+  }
+ ]
+}

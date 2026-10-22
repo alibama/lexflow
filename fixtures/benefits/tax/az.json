@@ -1,0 +1,49 @@
+{
+ "state": "az",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Arizona Department of Revenue", "url": "https://azdor.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits included in federal adjusted gross income are subtracted from Arizona gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "A.R.S. § 43-1022", "quote": "10. The amount included in federal adjusted gross income pursuant to section 86 of the internal revenue code, relating to taxation of social security and railroad retirement benefits."},
+    {"kind": "page", "url": "https://azdor.gov/individuals", "quote": "Residents should then exclude income Arizona law does not tax, which includes: interest from U.S. government obligations; Social Security retirement benefits received under Title II of the Social Security Act; benefits received under the Railroad Retirement Act"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Up to $2,500 of pension income from Arizona state and local government retirement systems or from U.S. government (civil service) retirement may be subtracted; the rest is taxable, and public pensions from other states do not qualify.",
+   "conditions": ["Subtraction capped at $2,500 (the amount received or $2,500, whichever is less)", "Arizona state and political-subdivision plans and federal civil service/federal-law retirement plans only", "Pensions from other states' public systems do not qualify"],
+   "amount_usd": 2500,
+   "sources": [
+    {"kind": "statute", "ref": "A.R.S. § 43-1022", "quote": "2. Benefits, annuities and pensions in an amount totaling not more than $2,500 received from one or more of the following: (a) The United States government service retirement and disability fund"},
+    {"kind": "statute", "ref": "A.R.S. § 43-1022", "quote": "(b) The Arizona state retirement system, the corrections officer retirement plan, the public safety personnel retirement system"},
+    {"kind": "page", "url": "https://azdor.gov/individuals", "quote": "However, there is a subtraction of up to $2,500 for pension income received from the state of Arizona and its political subdivisions, or from U.S. government service."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed by Arizona to the same extent they are included in federal adjusted gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "A.R.S. § 43-1001", "quote": "2. \"Arizona gross income\" of a resident individual means the individual's federal adjusted gross income for the taxable year, computed pursuant to the internal revenue code."},
+    {"kind": "page", "url": "https://azdor.gov/individuals/income-tax-filing-assistance/identifying-other-taxable-income", "quote": "Additionally, as a general rule, the same portion of an individual’s pension is taxable for Arizona purposes as it is for federal."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Since tax year 2021, 100% of U.S. uniformed services retired or retainer pay is subtracted from Arizona gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "A.R.S. § 43-1022", "quote": "26. Benefits, annuities and pensions received as retired or retainer pay of the uniformed services of the United States in amounts as follows:"},
+    {"kind": "statute", "ref": "A.R.S. § 43-1022", "quote": "(c) For taxable years beginning from and after December 31, 2020, the full amount received."},
+    {"kind": "page", "url": "https://azdor.gov/individuals/income-tax-filing-assistance/identifying-other-taxable-income", "quote": "Beginning with tax year 2021, if you received benefits, annuities, and pensions as retired or retainer pay of the uniformed services of the United States, you may subtract 100% of the amount you received."}
+   ]
+  }
+ },
+ "notes": "ADOR's /individuals page still says uniformed services retired pay qualifies 'for a subtraction up to $3,500' (the 2019-2020 rule); the statute (43-1022(26)(c)) and ADOR's 'Identifying Other Taxable Income' page give the full subtraction from tax year 2021 on, which is what this file records. ADOR's Form 140 instructions (PDF) could not be read by lexflow (no readable text layer), so how the $2,500 cap applies between spouses is not recorded here."
+}

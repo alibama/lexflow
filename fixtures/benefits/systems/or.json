@@ -1,0 +1,21 @@
+{
+ "state": "or",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Oregon Public Employees Retirement System",
+   "short": "PERS",
+   "census_units": ["census-pid6:228213", "census-pid6:244206"],
+   "statute": {"kind": "statute", "ref": "238.600", "quote": "A system of retirement and of benefits at retirement or death for employees of public employers hereby is established and shall be known as the Public Employees Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees Retirement Board", "source": {"kind": "statute", "ref": "238.630", "quote": "The governing authority of the system shall be a board known as the Public Employees Retirement Board and consisting of five members appointed by the Governor subject to confirmation by the Senate in the manner provided in ORS 171.562 and 171.565."}},
+   "website": "https://www.oregon.gov/pers/",
+   "website_source": {"kind": "page", "url": "https://www.oregon.gov/pers/Pages/SB1049-James.aspx", "quote": "The Oregon Public Employees Retirement System (PERS) serves the people of Oregon by administering public employee benefit trusts to pay the right person, the right benefit, at the right time."},
+   "membership": ["state_employee", "local_employee", "teacher", "public_safety", "judge"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "238.005", "quote": "“Public employer” means the state, one of its agencies or any city, county, municipal or public corporation, political subdivision of the state or instrumentality thereof, or an agency created by one or more such governmental organizations to provide governmental services."},
+   "notes": "Census reports Tier One/Tier Two (ORS ch. 238) and the Oregon Public Service Retirement Plan (ORS 238A.025: \"The Oregon Public Service Retirement Plan is established.\") separately; ORS 238.600 says the system consists of both chapters."
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "state": "in",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Indiana Department of Revenue", "url": "https://www.in.gov/dor/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement benefits included in federal gross income are subtracted, so Indiana does not tax them.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "6-3-1-3.5", "quote": "(8) Subtract an amount equal to the amount of federal Social Security and Railroad Retirement benefits included in a taxpayer's federal gross income by Section 86 of the Internal Revenue Code."},
+    {"kind": "page", "url": "https://www.in.gov/dor/i-am-a/individual/deductions/", "quote": "Indiana does not tax Social Security and railroad retirement benefits issued by the Railroad Retirement Board."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "State and local government pensions have no special Indiana deduction and are taxed as part of federal AGI; federal civil service annuitants 62 or older may deduct up to $16,000, reduced by Social Security and Tier 1 Railroad Retirement received.",
+   "conditions": ["State/local government pensions: no deduction", "Federal civil service annuity (not military): deduction up to $16,000 at age 62+ (or surviving spouse), minus Social Security/Tier 1 RR benefits received"],
+   "sources": [
+    {"kind": "statute", "ref": "6-3-1-3.5", "quote": "(a) In the case of all individuals, \"adjusted gross income\" (as defined in Section 62 of the Internal Revenue Code), modified as follows:"},
+    {"kind": "statute", "ref": "6-3-2-3.7", "quote": "(B) first sixteen thousand dollars ($16,000), for taxable years beginning after December 31, 2015;"},
+    {"kind": "statute", "ref": "6-3-2-3.7", "quote": "(b) The individual is only entitled to the deduction provided by this section if the individual is at least sixty-two (62) years of age before the end of the taxable year."},
+    {"kind": "page", "url": "https://www.in.gov/dor/i-am-a/individual/deductions/", "quote": "If you received a civil service pension (nonmilitary*) and are at least 62 years of age, then you may be eligible for up to a $16,000 deduction."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed by Indiana as part of federal adjusted gross income; there is no special deduction.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "6-3-1-3.5", "quote": "(a) In the case of all individuals, \"adjusted gross income\" (as defined in Section 62 of the Internal Revenue Code), modified as follows:"}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "For 2022 and later, the entire amount of U.S. military retirement income and survivor's benefits included in AGI is deductible.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "6-3-2-4", "quote": "(iv) For taxable years beginning after 2021, one hundred percent (100%) of the amount of the benefits in excess of six thousand two hundred fifty dollars ($6,250)."},
+    {"kind": "statute", "ref": "6-3-2-4", "quote": "The amount of the deduction is the lesser of: (A) the benefits included in the adjusted gross income of the individual or the individual's surviving spouse; or (B) six thousand two hundred fifty dollars ($6,250) plus the following:"},
+    {"kind": "page", "url": "https://www.in.gov/dor/i-am-a/individual/deductions/", "quote": "For 2022 and later, the deduction is equal to the entire amount of military retirement income and/or survivor’s benefits."}
+   ]
+  }
+ },
+ "notes": "DOR states that the taxable portion of pensions is taxable in Income Tax Information Bulletin #26 and the IT-40 booklet, both PDFs lexflow cannot read here, and no DOR web page saying so was found, so private_pension has a statute source only (Indiana starts from federal AGI and has no general pension deduction). The federal civil service annuity deduction (IC 6-3-2-3.7) is recorded under public_pension conditions because Indiana treats federal civil service differently from state and local pensions, which get no deduction."
+}

@@ -1,0 +1,46 @@
+{
+ "state": "fl",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": false,
+ "agency": {"name": "Florida Department of Revenue", "url": "https://floridarevenue.com/"},
+ "items": {
+  "social_security": {
+   "treatment": "no_income_tax",
+   "summary": "Florida's constitution bars an income tax on resident individuals, so Social Security benefits are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "220.02", "quote": "the mandate in s. 5, Art. VII of the State Constitution that no income tax be levied upon natural persons who are residents and citizens of this state."},
+    {"kind": "page", "url": "https://floridarevenue.com/faq/Pages/FAQDetails.aspx?FAQID=1466", "quote": "Do I have to file a personal income tax return in Florida? Florida does not impose a personal income tax, so there are no filing requirements."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Florida has no personal income tax, so government pensions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "220.02", "quote": "the mandate in s. 5, Art. VII of the State Constitution that no income tax be levied upon natural persons who are residents and citizens of this state."},
+    {"kind": "page", "url": "https://floridarevenue.com/faq/Pages/FAQDetails.aspx?FAQID=1466", "quote": "Do I have to file a personal income tax return in Florida? Florida does not impose a personal income tax, so there are no filing requirements."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "no_income_tax",
+   "summary": "Florida has no personal income tax, so private pensions, 401(k) and IRA distributions are not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "220.02", "quote": "the mandate in s. 5, Art. VII of the State Constitution that no income tax be levied upon natural persons who are residents and citizens of this state."},
+    {"kind": "page", "url": "https://floridarevenue.com/faq/Pages/FAQDetails.aspx?FAQID=1466", "quote": "Do I have to file a personal income tax return in Florida? Florida does not impose a personal income tax, so there are no filing requirements."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "no_income_tax",
+   "summary": "Florida has no personal income tax, so military retired pay is not taxed by the state.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "220.02", "quote": "the mandate in s. 5, Art. VII of the State Constitution that no income tax be levied upon natural persons who are residents and citizens of this state."},
+    {"kind": "page", "url": "https://floridarevenue.com/faq/Pages/FAQDetails.aspx?FAQID=1466", "quote": "Do I have to file a personal income tax return in Florida? Florida does not impose a personal income tax, so there are no filing requirements."}
+   ]
+  }
+ },
+ "notes": "The statute source is the legislative-intent section of Florida's corporate income tax code (Fla. Stat. 220.02), which restates the constitutional bar (Art. VII, s. 5) on an income tax on resident natural persons."
+}

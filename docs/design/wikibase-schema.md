@@ -84,7 +84,7 @@ generator before they are written; the others were checked in earlier rounds.
 | time unit | `time-unit` | – | vocabulary: calendar days, business days, working days, work days (the law's own word), hours, weeks, months, years |
 | reference type | `reference-type` | – | vocabulary from `lexflow.law.xref.ROLES`, verbatim: definition, override, exception, penalty, prerequisite_process, authority, procedure, condition, scope, other |
 | step kind | `step-kind` | – | vocabulary from `facts.steps[].kind` as the curated models use it: filing, notice, decision, act, payment, record, inspection, hearing, review (plus delivery, unused today) |
-| unit level | `unit-level` | – | vocabulary: code, title, subtitle, part, division, chapter, subchapter, article, act, section, subsection |
+| unit level | `unit-level` | – | vocabulary: code, title, subtitle, part, division, chapter, subchapter, article, act, section, subsection; for civil-law codes also book, paragraph, item, supplementary provision (§4.8) |
 | escalation type | `escalation-type` | – | vocabulary: the ten types of `ladders.json.vocabulary.type` (property 43's targets) |
 | determination method | `determination-method` | – | vocabulary: matched by lexflow's software, AI verifier, curated, HTTP check, found on official page (property 19's targets) |
 | currency | `currency` | Q8142 | vocabulary: US dollar, the unit of every fee (property 46) |
@@ -116,7 +116,7 @@ on the property item, so federated queries can map them.
 | 8 | section number | string | – | section → `2.2-3704` | the bare number; P22 keeps the full citation |
 | 9 | effective until | time | P582-like | section → date | with P24 effective date (from); P24 is renamed in description only ("effective from") |
 | 10 | replaced by | item | P1366 | section → section | versioned sections (`…v1`) |
-| 11 | heading text | monolingualtext | – | section, unit → `en:"Public records to be open…"` | the label is `Va. Code § 2.2-3704`; the heading is searchable text |
+| 11 | heading text | monolingualtext | P1476 | section, unit → `en:"Public records to be open…"` | the label is `Va. Code § 2.2-3704`; the heading is searchable text |
 | 12 | reference type | item | – | qualifier on P13 → vocab | authority, procedure, … |
 | 13 | quoted text | string | – | reference on any claim → ≤400 chars of the statute | the grounding quote; every claim made from a model's `source` carries one |
 | 14 | source section | item | – | reference → section item | with 15 |
@@ -153,7 +153,7 @@ on the property item, so federated queries can map them.
 | 45 | form number | string | – | form → `DC-495` | with P23 official text = the form's URL |
 | 46 | fee | quantity | – | step, process → amount in USD (unit item `US dollar`) | qualifiers 16 source URL, 13 quote, 47 fee basis |
 | 47 | fee basis | string | – | qualifier → `plus project value × BR over $1,500` | when the amount is not a single number, 46 holds the minimum and 47 the rule |
-| 48 | topic | item | – | process, section, form → vocab | discovery |
+| 48 | topic | item | P921 | process, section, form, law → vocab | discovery |
 | 49 | audience | item | – | process → vocab | discovery |
 | 50 | question asked | monolingualtext | – | process → `en:"How do I request public records…?"` | the plain-language question; also added as an alias |
 | 51 | review status | item | – | process, step, role, rung, local process → vocab | reviewed / agreed / draft / superseded |
@@ -167,10 +167,32 @@ on the property item, so federated queries can map them.
 | 59 | role of actor | item | – | role → defined term or concept | terms plan |
 | 60 | close match / broad match / narrow match / related match | url ×4 | skos | concept → Wikidata IRI | terms plan (four properties) |
 | 61 | match probability | quantity | – | qualifier on P8 and 60 | terms plan |
+| 62 | quoted text in language | monolingualtext | – | reference → verbatim text in the law's language | international law (§4.8); `quoted text` keeps English quotes |
+| 63 | law number | monolingualtext | P8550 | law (unit at level act) → its number as the source writes it | `平成五年法律第八十八号`@ja; Wikidata writes `平成5年法律第88号` |
+| 64 | promulgation date | time | P7589 | law → 公布日 | effective date is the enforcement date of the version described |
+| 65 | e-Gov law ID | external-id | P8610 | Japanese law → `405AC0000000088` | formatter `https://laws.e-gov.go.jp/law/$1`; wikidata-laws.md |
+| 66 | ComLaw ID | external-id | P2461 | Australian law → `C2004A00467` | formatter `https://www.legislation.gov.au/Details/$1` |
+| 67 | short name | monolingualtext | P1813 | law → abbreviation | `行手法`@ja |
+| 68 | law digest | monolingualtext | P9376 | law → official summary | Brazil's ementa; only from a source whose text may be copied (§4.8) |
+| 69 | published in | item | P1433 | law → gazette | qualifier page; no data yet |
+| 70 | page | string | P304 | qualifier on published in | |
+| 71 | approved by | item | P790 | law → office or body | never a person (Brazil's items add a signatory; lexflow does not); no data yet |
+| 72 | legislated by | item | P467 | law → legislature, cabinet, ministry or office | from the law's type and number (`schema.egov_makers`) |
+| 73 | language of work | item | P407 | law, code → vocab language | |
+| 74 | amended by | item | P2567 | law → amending law | qualifiers point in time, effective date; `law_amendments` |
+| 75 | repealed by | item | P2568 | law → repealing law | qualifier effective date |
+| 76 | repeals | item | P3148 | law → repealed law | qualifier effective date |
+| 77 | amending law number | monolingualtext | – | law → number of an amending law with no item | qualifiers point in time, effective date |
+| 78 | point in time | time | P585 | qualifier | an amendment's promulgation |
+| 79 | stated in | item | P248 | reference → database item | `lexflow:source:egov-laws` |
 
-That is 61 numbered rows and, with row 60's four SKOS matches, 64 new properties (64 lines of
-`CREATE_PROPERTY`; `schema.PROPERTIES` holds them in this order). Properties 56–61 are created now so the terms
-plan needs no second property round; they stay empty until it runs.
+That is 79 numbered rows and, with row 60's four SKOS matches, 82 new properties (`schema.PROPERTIES` holds them
+in this order). Properties 1–61 were created on 15 October 2026 (P26–P89); 62–64 are created by the next push's
+pass 1, for the international law of §4.8, and 65–79 with them, for the law shape of WikiProject Brazilian Laws
+(docs/design/wikidata-laws.md). Of the live properties, `schema.EXISTING_WIKIDATA` gives thirteen their Wikidata
+equivalent (citation ≡ P1031, official text ≡ P953, effective date ≡ P7588, part of ≡ P361 …), appended as `P7`
+by pass 2. Properties 56–61 are created now so the terms plan needs no second
+property round; they stay empty until it runs.
 
 ## 4. Item shapes
 
@@ -302,6 +324,48 @@ reference: *source section* (item) or *source URL*, *pinpoint*, *quoted text* (�
 
 The 117 existing cluster items (Q22) gain *court* (→ court item), *date decided*, *CourtListener ID* and keep P13
 → the section. New ones follow when `case_law` grows.
+
+### 4.8 International law: country keys, languages, laws as units
+
+**Jurisdiction keys.** A US state keeps its two-letter postal code (`va`); a country is keyed by its ISO 3166-1
+alpha-3 code in lower case (`jpn`; later `chl`, `aus`, `rou`, `gha`, `per`), never alpha-2, because alpha-2 codes
+collide with postal codes (`co` Colombia and Colorado, `de` Germany and Delaware, `in` India and Indiana, `md`
+Moldova and Maryland, `pa` Panama and Pennsylvania, and `ar`, `ga`, `id`, `la`, `ma`, `ms`, `mt`, `nc`, `sc`).
+The key is the same everywhere: `lexflow:jurisdiction:jpn`,
+`lexflow:code:jpn`, `lexflow:unit:jpn:<law id>`, `lexflow:statute:jpn:<citation>`, the index file
+`data/index/statutes_jpn.sqlite` and the dashboard's pickers (`schema.is_country_key`, `states.COUNTRIES`). The
+ELI IRIs lexflow mints keep the alpha-2 jurisdiction (`/eli/jp/act/1993/88/art_13/ja@2026-07-24`), as ELI
+publishers write it; the US ones stay `/eli/us-va/...`.
+
+**Languages.** Labels, descriptions and aliases may carry languages beside English (`graph.Item.labels`,
+`.descriptions`, `.lang_aliases`; the push writes every language in one `wbeditentity`). A Japanese law's `ja`
+label is its title; its English label is the official English title of the Japanese Law Translation database when
+lexflow has one, never a romanisation, and until then it has none: an English description says what it is
+("Japanese law (Act No. 88 of 1993)") and the English citation form is an English alias (changed 22 October 2026;
+docs/design/wikidata-laws.md §3, which also gives the law item's full shape: identifiers, makers, amendments,
+references).
+*Heading text*, *law number* and *quoted text in language* are monolingual text tagged with the law's language
+(`ja`); English *quoted text* keeps its string datatype, and verification compares a quote only with the text of
+its own language (the `.../ja@<date>` expression), never across translations.
+
+**Laws, not articles.** A country's body of law is one *legal code* item and each law one *statutory unit* at unit
+level `act`:
+
+```
+lexflow:jurisdiction:jpn         "Japan" (ja 日本)        P5 jurisdiction; Wikidata item ID Q17
+lexflow:code:jpn                 "Laws of Japan" (ja 日本の法令)   P5 legal code; P15 → Japan; unit level = code; official text https://laws.e-gov.go.jp/
+lexflow:unit:jpn:405ac0000000088 (no en label; ja 行政手続法; alias "Act No. 88 of 1993", 行手法, 平成五年法律第八十八号)
+                                 P5 statutory unit; P9 part of → code; P15 → Japan; unit level = act; heading text 行政手続法@ja;
+                                 law number 平成五年法律第八十八号@ja; act identifier = 405AC0000000088 (e-Gov law_id);
+                                 official text https://laws.e-gov.go.jp/law/405AC0000000088; effective date (the enforcement
+                                 date of the version indexed); promulgation date; sort key; topic where the e-Gov category maps
+```
+
+Articles (条, one index row each, 附則 articles under their supplementary provision) stay in the search index; an
+article becomes a *statute* item (unit level `article`, *part of* → its law, heading text in `ja`) only when a
+process, rung or local process cites it, as US sections do. The e-Gov category maps to a topic where one fits
+(`schema.EGOV_CATEGORY_TOPIC`: 国税 and 地方財政 taxes, 社会福祉 and 社会保険 benefits, 建築・住宅 and 都市計画 building and
+zoning, 土地 property, 商業 and 事業 business, 司法 courts); the others have no topic yet.
 
 ## 5. The Claude in Chrome packet (`out/wikibase/`)
 

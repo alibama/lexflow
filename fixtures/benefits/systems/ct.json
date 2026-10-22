@@ -1,0 +1,88 @@
+{
+ "state": "ct",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "State Employees Retirement System",
+   "short": "SERS",
+   "census_units": ["census-pid6:226936"],
+   "statute": {"kind": "statute", "ref": "5-154", "quote": "(e) “Retirement Commission” means the State Employees Retirement Commission; (f) “Retirement contributions” means contributions made by, or deducted from the salary of, a member in accordance with part III or part IV of this chapter; (g) “Retirement system” means the state employees retirement system;"},
+   "statute_role": "defines",
+   "body": {"name": "Connecticut State Employees Retirement Commission", "source": {"kind": "statute", "ref": "5-155a", "quote": "The Retirement Commission shall administer this retirement system and all other state retirement and pension plans except the Teachers' Retirement Fund."}},
+   "website": "https://osc.ct.gov/retirement/sers/",
+   "website_source": {"kind": "page", "url": "https://osc.ct.gov/retirement/sers/", "quote": "The State Employees Retirement System is based on a Connecticut state law enacted in 1939."},
+   "membership": ["state_employee", "public_safety", "legislator"],
+   "covers_local": false,
+   "notes": "Only definitions of the system were found in lexflow's copy of chapter 66. Administered through the Retirement Services Division of the Office of the State Comptroller."
+  },
+  {
+   "name": "Connecticut Teachers' Retirement System",
+   "short": "TRS",
+   "census_units": ["census-pid6:226207"],
+   "statute": {"kind": "statute", "ref": "10-183b", "quote": "(26) “Survivor” means a surviving spouse, a dependent former spouse, a dependent child and a dependent parent. (27) “System” means the Connecticut teachers' retirement system."},
+   "statute_role": "defines",
+   "body": {"name": "Teachers' Retirement Board", "source": {"kind": "statute", "ref": "10-183b", "quote": "(4) “Average annual salary” means the average of the three highest annual salaries received as an active member. (5) “Board” means the Teachers' Retirement Board."}},
+   "website": "https://portal.ct.gov/trb",
+   "website_source": {"kind": "page", "url": "https://portal.ct.gov/trb", "quote": "Welcome to the Connecticut Teachers' Retirement Board. We are proud to serve Connecticut educators by providing a comprehensive retirement system."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "10-183b", "quote": "“Employer” means an elected school committee, a board of education, the State Board of Education, the Office of Early Childhood, the Technical Education and Career System"},
+   "notes": "Section 10-183c is headed \"Teachers' retirement system established\", but lexflow's copy lacks its subsection (a), so only the definition is quoted."
+  },
+  {
+   "name": "Connecticut Municipal Employees Retirement System",
+   "short": "CMERS",
+   "census_units": ["census-pid6:227684"],
+   "statute": {"kind": "statute", "ref": "7-425", "quote": "(7) “Fund” or “fund B” means the Connecticut Municipal Employees' Retirement Fund B;"},
+   "statute_role": "defines",
+   "body": {"name": "Connecticut Municipal Employees Retirement Commission", "source": {"kind": "statute", "ref": "7-448a", "quote": "Rules and regulations established by the Connecticut Municipal Employees Retirement Commission shall be binding upon all parties dealing with said commission and all persons claiming any benefits from said fund or such retirement system."}},
+   "website": "https://osc.ct.gov/empret/merswork/plan.htm",
+   "website_source": {"kind": "page", "url": "https://osc.ct.gov/empret/merswork/plan.htm", "quote": "CMERS is a contributory defined benefit retirement plan. Enrollment is mandatory if you work for a participating CMERS employer."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "7-425", "quote": "“Participating municipality” means any municipality that has accepted this part, as provided in section 7-427"},
+   "notes": "Municipalities, school districts, fire districts, housing authorities and other local bodies may accept the part (CGS 7-427)."
+  },
+  {
+   "name": "Policemen and Firemen Survivors' Benefit Fund",
+   "short": "",
+   "census_units": ["census-pid6:251590"],
+   "statute": {"kind": "statute", "ref": "7-323c", "quote": "Each participating municipality shall be liable to the fund for an initial payment in an amount to be determined by the Retirement Commission, which amount is necessary, in conjunction with the policemen and firemen's contribution, to start the fund on a sound actuarial basis."},
+   "statute_role": "establishes",
+   "body": {"name": "Connecticut Municipal Employees Retirement Commission", "source": {"kind": "statute", "ref": "7-448a", "quote": "may establish rules and regulations that said commission deems necessary or desirable to facilitate the proper administration of the Policemen and Firemen Survivors' Benefit Fund and the municipal employees' retirement system"}},
+   "website": null,
+   "website_source": null,
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "7-323c", "quote": "Each participating municipality shall be liable to the fund for an initial payment in an amount to be determined by the Retirement Commission"},
+   "notes": "Survivor-benefit fund for municipal police officers and firefighters (CGS 7-323a et seq.); section 7-323c is headed \"Benefit fund established\". No official HTML page naming the fund was found."
+  },
+  {
+   "name": "Judges, Family Support Magistrates and Compensation Commissioners Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:227909", "census-pid6:251591"],
+   "statute": {"kind": "statute", "ref": "51-49d", "quote": "“Retirement system” or “system” means the retirement provisions in sections 51-49a to 51-50b , inclusive, and section 51-51 , for judges, family support magistrates and administrative law judges;"},
+   "statute_role": "defines",
+   "body": {"name": "Connecticut State Employees Retirement Commission", "source": {"kind": "statute", "ref": "5-155a", "quote": "The Retirement Commission shall administer this retirement system and all other state retirement and pension plans except the Teachers' Retirement Fund."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Census reports the system twice (as the Judicial Retirement System and under its full name); both ids are grouped here. No official HTML page naming the system was found."
+  },
+  {
+   "name": "Connecticut Probate Judges and Employees Retirement System",
+   "short": "CPJERS",
+   "census_units": ["census-pid6:226210"],
+   "statute": {"kind": "statute", "ref": "45a-34", "quote": "(4) “Fund” means the retirement fund established by section 45a-35 ; (5) “Judge” means a judge of probate"},
+   "statute_role": "defines",
+   "body": {"name": "State Retirement Commission", "source": {"kind": "statute", "ref": "5-155a", "quote": "The Retirement Commission shall administer this retirement system and all other state retirement and pension plans except the Teachers' Retirement Fund."}},
+   "website": "https://osc.ct.gov/archived/2014cafr/financial/basic/notes/note12.htm",
+   "website_source": {"kind": "page", "url": "https://osc.ct.gov/archived/2014cafr/financial/basic/notes/note12.htm", "quote": "CPJERS is an agent multi-employer defined benefit pension plan that covers judges and employees of probate courts."},
+   "membership": ["judge", "state_employee"],
+   "covers_local": false,
+   "notes": "Section 45a-35, which establishes the fund, is not in lexflow's copy; the website source is an archived Comptroller annual-report note (fiscal 2014)."
+  }
+ ]
+}

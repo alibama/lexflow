@@ -1,0 +1,34 @@
+{
+ "state": "nh",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "New Hampshire Retirement System",
+   "short": "NHRS",
+   "census_units": ["census-pid6:226268"],
+   "statute": {"kind": "statute", "ref": "N.H. Rev. Stat. § 100-A:2", "quote": "The retirement system hereby created shall be established as of July 1, 1967. It shall be known as the New Hampshire retirement system"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the New Hampshire retirement system", "source": {"kind": "statute", "ref": "N.H. Rev. Stat. § 100-A:14", "quote": "The administration of this system is vested in a board of 13 trustees. Each newly appointed or reappointed trustee shall have familiarity with or experience in finance or business management."}},
+   "website": "https://www.nhrs.org/",
+   "website_source": {"kind": "page", "url": "https://www.nhrs.org/", "quote": "The New Hampshire Retirement System plays an important role in the long-term economic security of the state’s public employees, teachers, police officers, and firefighters."},
+   "membership": ["state_employee", "local_employee", "teacher", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "N.H. Rev. Stat. § 100-A:20", "quote": "The governing board of any county, city, town, school district, school administrative unit or other political subdivision of the state may, by resolution legally adopted, in form approved by the board of trustees, elect to have its officers and employees become eligible to participate in the retirement system."},
+   "notes": "Census unit 'NHRS Traditional DB Pension Plan'; Group I (employees, teachers) and Group II (police, fire)."
+  },
+  {
+   "name": "New Hampshire Judicial Retirement Plan",
+   "short": "JRP",
+   "census_units": ["census-pid6:228231"],
+   "statute": {"kind": "statute", "ref": "N.H. Rev. Stat. § 100-C:2", "quote": "The judicial retirement plan is hereby established. It shall be known as the New Hampshire judicial retirement plan"},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the judicial retirement plan", "source": {"kind": "statute", "ref": "N.H. Rev. Stat. § 100-C:11", "quote": "The judicial retirement plan shall be administered by a board of trustees, which shall be separate from the board of trustees of the New Hampshire retirement system."}},
+   "website": null,
+   "why_website": "The plan's site (nhjrp.org) refused or did not answer automated readers and has no Internet Archive copy; not verified.",
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "state": "id",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employee Retirement System of Idaho",
+   "short": "PERSI",
+   "census_units": ["census-pid6:228209", "census-pid6:243438"],
+   "statute": {"kind": "statute", "ref": "59-1301", "quote": "A retirement and disability benefit system is created and placed under the management of a retirement board for the purpose of providing a retirement system and other benefits for public employees in the state of Idaho under this chapter."},
+   "statute_role": "establishes",
+   "body": {"name": "Retirement Board of the Public Employee Retirement System of Idaho", "source": {"kind": "statute", "ref": "59-1304", "quote": "There is hereby created in the office of the governor a governing authority of the system to consist of a board of five (5) persons known as the retirement board."}},
+   "website": "https://www.persi.idaho.gov/",
+   "website_source": {"kind": "page", "url": "https://www.persi.idaho.gov/about/", "quote": "PERSI is directed by a five-member Retirement Board. Individuals on the Board are appointed by the Governor of the State of Idaho for terms lasting five years."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "59-1302", "quote": "\"Employer\" means the state of Idaho or any political subdivision or governmental entity, provided such subdivision or entity has elected to come into the system."},
+   "notes": "The closed Firefighters' Retirement Fund (Idaho Code title 72, chapter 14) was transferred to and integrated with PERSI on October 1, 1980 (59-1392); its Census unit is grouped here."
+  },
+  {
+   "name": "Judges' Retirement Fund",
+   "short": "JRF",
+   "census_units": ["census-pid6:226986"],
+   "statute": {"kind": "statute", "ref": "1-2002", "quote": "For the purpose of paying such retirement compensation, there is hereby created in the office of the treasurer of the state of Idaho a fund to be known as the \"Judges' Retirement Fund,\""},
+   "statute_role": "establishes",
+   "body": {"name": "Retirement Board of the Public Employee Retirement System of Idaho", "source": {"kind": "statute", "ref": "1-2001", "quote": "The term \"retirement board\" as used in this chapter shall mean the retirement board created by section 59-1304, Idaho Code."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Covers supreme court justices, court of appeals judges and district judges; administered by the PERSI retirement board. No official HTML page naming the fund was found."
+  }
+ ]
+}

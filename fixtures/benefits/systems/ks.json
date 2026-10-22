@@ -1,0 +1,21 @@
+{
+ "state": "ks",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Kansas Public Employees Retirement System",
+   "short": "KPERS",
+   "census_units": ["census-pid6:227694"],
+   "statute": {"kind": "statute", "ref": "74-4903", "quote": "There is hereby created the \"Kansas public employees retirement system\" which shall be a body corporate and an instrumentality of the state of Kansas."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the Kansas public employees retirement system", "source": {"kind": "statute", "ref": "74-4909", "quote": "The board of trustees shall be responsible for the general administration of the system, subject to the provisions of this act."}},
+   "website": "https://www.kspers.gov/",
+   "website_source": {"kind": "page", "url": "https://www.kspers.gov/", "quote": "KPERS administers three statewide pension plans for Kansas state and local public employees."},
+   "membership": ["state_employee", "local_employee", "teacher", "public_safety", "judge"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "74-4910", "quote": "An eligible employer may join the system on January 1 of any year. Application for affiliation shall be in the form of a resolution approved by the governing or legislative body of the eligible employer"},
+   "notes": "One Census unit; KPERS administers the KPERS plan (state, school and local employees), KP&F (police and firemen) and the judges' plan. Old domain kpers.org redirects to kspers.gov."
+  }
+ ]
+}

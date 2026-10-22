@@ -1,0 +1,62 @@
+{
+ "state": "mn",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Minnesota State Retirement System",
+   "short": "MSRS",
+   "census_units": ["census-pid6:228211", "census-pid6:227229", "census-pid6:226251", "census-pid6:226252"],
+   "statute": {"kind": "statute", "ref": "352.021", "quote": "There is established the general state employees retirement plan of the Minnesota State Retirement System for state employees."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of directors of the Minnesota State Retirement System", "source": {"kind": "statute", "ref": "352.03", "quote": "The policy-making function of the system is vested in a board of 11 members known as the board of directors."}},
+   "website": "https://www.mnretire.gov/",
+   "website_source": {"kind": "page", "url": "https://www.mnretire.gov/", "quote": "MSRS administers retirement plans that provide retirement, survivor, and disability benefits coverage for Minnesota state employees, the Metropolitan Council, and many non-faculty employees at the University of Minnesota and Minnesota State University system."},
+   "membership": ["state_employee", "public_safety", "judge", "legislator"],
+   "covers_local": false,
+   "notes": "Census units are MSRS plans: State Employees Retirement Fund (general plan), Correctional Employees Retirement Plan, State Patrol Retirement Plan and Judges Retirement Plan. Old domain msrs.state.mn.us redirects to mnretire.gov."
+  },
+  {
+   "name": "Public Employees Retirement Association of Minnesota",
+   "short": "PERA",
+   "census_units": ["census-pid6:226250", "census-pid6:243449", "census-pid6:227705", "census-pid6:243450"],
+   "statute": {"kind": "statute", "ref": "353.01", "quote": "Subd. 8. Association. \"Association\" means the Public Employees Retirement Association."},
+   "statute_role": "defines",
+   "body": {"name": "Board of trustees of the Public Employees Retirement Association", "source": {"kind": "statute", "ref": "353.03", "quote": "The management of the Public Employees Retirement Association is vested in an 11-member board of trustees consisting of ten members and the state auditor."}},
+   "website": "https://www.mnpera.org/",
+   "website_source": {"kind": "page", "url": "https://www.mnpera.org/", "quote": "Minnesota Public Employees Retirement Association (PERA) administers five retirement plans that serve county, city, school, and other local government public employees and their beneficiaries."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "353.01", "quote": "\"Governmental subdivision\" means a county, city, town, school district within this state, or a department, unit or instrumentality of state or local government"},
+   "notes": "Census units are PERA plans: General Employees Retirement Fund, Public Employees Police and Fire Fund (established by 353.65), Public Employees Correctional Fund, and Statewide Volunteer Firefighter Plan (established by 353G.02). No section establishing the association itself was found in the index."
+  },
+  {
+   "name": "Teachers Retirement Association of Minnesota",
+   "short": "TRA",
+   "census_units": ["census-pid6:226253"],
+   "statute": {"kind": "statute", "ref": "354.05", "quote": "\"Association\" means the combined membership of all teachers who qualify and participate in the retirement program provided for in this chapter."},
+   "statute_role": "defines",
+   "body": {"name": "Board of trustees of the Teachers Retirement Association", "source": {"kind": "statute", "ref": "354.06", "quote": "The management of the association is vested in a board of eight trustees known as the board of trustees of the Teachers Retirement Association."}},
+   "website": "https://minnesotatra.org/",
+   "website_source": {"kind": "page", "url": "https://minnesotatra.org/", "quote": "The Teachers Retirement Association provides retirement and other benefits to Minnesota's education professionals."},
+   "membership": ["teacher"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "354.05", "quote": "a person who renders service as a teacher, supervisor, principal, superintendent, librarian, nurse, counselor, social worker, therapist, or psychologist in: (i) a public school of the state"},
+   "notes": "Census unit 'MN Teachers Retirement Fund'. Covers teachers of school districts statewide and Minnesota State college/university faculty."
+  },
+  {
+   "name": "University of Minnesota Faculty Supplemental Retirement Plan",
+   "short": "",
+   "census_units": ["census-pid6:240749"],
+   "statute": null,
+   "why": "A University of Minnesota plan (no active members per Census), not a statutory statewide system; Minn. Stat. 356.20 only lists 'the University of Minnesota faculty supplemental retirement plan' among plans subject to financial reporting.",
+   "statute_role": "none",
+   "body": null,
+   "website": null,
+   "why_website": "Closed university plan with no official system website.",
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Census unit 'University of Minnesota Supplemental'."
+  }
+ ]
+}

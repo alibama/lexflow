@@ -1,0 +1,83 @@
+{
+ "state": "va",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Virginia Retirement System",
+   "short": "VRS",
+   "census_units": ["census-pid6:226304", "census-pid6:252963", "census-pid6:252964"],
+   "plans": ["Plan 1", "Plan 2", "Hybrid Retirement Plan"],
+   "statute": {"kind": "statute", "ref": "51.1-124.1", "quote": "the General Assembly hereby establishes the Virginia Retirement System as an independent agency of the Commonwealth, exclusive of the legislative, executive, and judicial branches of government, in the following provisions."},
+   "statute_role": "establishes",
+   "also": [
+    {"kind": "statute", "ref": "51.1-124.2", "quote": "The Virginia Supplemental Retirement System, a body corporate and a retirement system for teachers, state employees, and employees of participating political subdivisions, shall be continued as the Virginia Retirement System."}
+   ],
+   "body": {"name": "Board of Trustees of the Virginia Retirement System", "source": {"kind": "statute", "ref": "51.1-124.22", "quote": "The Retirement System shall be administered by the Board of Trustees, whose powers and duties include but are not limited to:"}},
+   "website": "https://www.varetire.org/",
+   "website_source": {"kind": "page", "url": "https://www.varetire.org/", "quote": "The most sought-after resources for Active and Retired VRS members."},
+   "channels": [
+    {"kind": "website", "value": "https://www.varetire.org/", "label": "Official website"},
+    {"kind": "phone", "value": "888-827-3847", "label": "Customer Contact Center", "source": {"kind": "page", "url": "https://www.varetire.org/", "quote": "Customer Contact Center Monday–Friday, 8:30 a.m. to 5 p.m. 888-827-3847"}}
+   ],
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "51.1-130", "quote": "The governing body of a political subdivision may adopt a resolution requesting that its eligible employees become members of the retirement system."},
+   "family": "retirement_va",
+   "notes": "The Census reports the system as three units (state employees, teachers, political subdivisions). Political subdivisions' hazardous-duty employees may receive benefits equivalent to the State Police Officers' Retirement System (Va. Code § 51.1-138) within VRS."
+  },
+  {
+   "name": "State Police Officers' Retirement System",
+   "short": "SPORS",
+   "census_units": ["census-pid6:244207"],
+   "statute": {"kind": "statute", "ref": "51.1-200", "quote": "The State Police Officers' Retirement System is continued and shall be administered by the Board of Trustees of the Virginia Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Virginia Retirement System", "source": {"kind": "statute", "ref": "51.1-200", "quote": "The State Police Officers' Retirement System is continued and shall be administered by the Board of Trustees of the Virginia Retirement System."}},
+   "website": "https://www.varetire.org/",
+   "website_source": {"kind": "page", "url": "https://www.varetire.org/retirement-plans/defined-benefit/plan1/", "quote": "State Police Officers' Retirement System Member: Is a state police officer."},
+   "membership": ["state_employee", "public_safety"],
+   "covers_local": false,
+   "notes": ""
+  },
+  {
+   "name": "Virginia Law Officers' Retirement System",
+   "short": "VaLORS",
+   "census_units": ["census-pid6:244208"],
+   "statute": {"kind": "statute", "ref": "51.1-211", "quote": "The Virginia Law Officers' Retirement System is created and shall be administered by the Board of Trustees of the Virginia Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Virginia Retirement System", "source": {"kind": "statute", "ref": "51.1-211", "quote": "The Virginia Law Officers' Retirement System is created and shall be administered by the Board of Trustees of the Virginia Retirement System."}},
+   "website": "https://www.varetire.org/",
+   "website_source": {"kind": "page", "url": "https://www.varetire.org/retirement-plans/defined-benefit/plan2/", "quote": "Political Subdivision Employees Eligible for Enhanced Hazardous Duty Coverage"},
+   "membership": ["state_employee", "public_safety"],
+   "covers_local": false,
+   "notes": "State law officers (corrections, Capitol Police and others); the page quote is the plan pages' heading for the hazardous-duty groups, which list VaLORS among them."
+  },
+  {
+   "name": "Judicial Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:244209"],
+   "statute": {"kind": "statute", "ref": "51.1-300", "quote": "The Judicial Retirement System is continued and shall be administered by the Board of Trustees of the Virginia Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Trustees of the Virginia Retirement System", "source": {"kind": "statute", "ref": "51.1-300", "quote": "The Judicial Retirement System is continued and shall be administered by the Board of Trustees of the Virginia Retirement System."}},
+   "website": "https://www.varetire.org/",
+   "website_source": {"kind": "page", "url": "https://www.varetire.org/retirement-plans/defined-benefit/plan1/", "quote": "Judicial Retirement System Member: Has been appointed or elected as a judge or a commissioner of the State Corporation Commission or the Virginia Workers' Compensation Commission."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": ""
+  }
+ ],
+ "appeal": {
+  "text": "A VRS benefit determination is a case decision under the Administrative Process Act: the facts are first settled in an informal fact-finding proceeding (or, by consent, a formal hearing), and a party aggrieved by the final case decision may seek court review under the Rules of the Supreme Court of Virginia.",
+  "sources": [
+   {"kind": "statute", "ref": "2.2-4019", "quote": "Agencies shall ascertain the fact basis for their decisions of cases through informal conference or consultation proceedings unless the named party and the agency consent to waive such a conference or proceeding to go directly to a formal hearing."},
+   {"kind": "statute", "ref": "2.2-4026", "quote": "party aggrieved by and claiming unlawfulness of a case decision and whether exempted from the procedural requirements of Article 2 (§ 2.2-4006 et seq.) or 3 (§ 2.2-4018 et seq.) shall have a right to the direct review thereof by an appropriate and timely court action against the agency"}
+  ]
+ },
+ "apply": {
+  "text": "Apply to VRS (online through myVRS for most members, or on the paper application) at least 60 days and not more than 120 days before the retirement date; the effective date must follow the last day of service and may not be more than 90 days before the notice is filed.",
+  "sources": [
+   {"kind": "page", "url": "https://www.varetire.org/member-milestones/getting-ready-to-retire/applying-for-retirement/", "quote": "To begin receiving your benefit payments in a timely manner, apply for retirement at least 60 days, but not more than four months (120 days), before you want to retire."},
+   {"kind": "statute", "ref": "51.1-153", "quote": "The effective date of retirement shall be after the last day of service of the member, but shall not be more than 90 days prior to the filing of the notice of retirement."}
+  ]
+ }
+}

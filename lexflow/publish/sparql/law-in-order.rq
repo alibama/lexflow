@@ -13,17 +13,26 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-# question: every section of Va. Code Title 2.2 Chapter 37 in the code's order, with heading, effective dates and official text
+# question: every section of Va. Code Title 2.2 Chapter 37 in the code's order, with heading, effective dates and official text (a country's code, unit=lexflow:code:jpn, lists its laws)
 # params: unit=lexflow:unit:va:t2.2-sii-pb-c37
-# status: 15 Oct 2026: local 11 rows (Va. Code Title 2.2 Chapter 37: the sections lexflow has, rebuilt from the live database); live 0 (units, sort keys and headings wait for pass 2)
+# status: 15 Oct 2026: local 11 rows (Va. Code Title 2.2 Chapter 37: the sections lexflow has, rebuilt from the live database); live 0 (units, sort keys and headings wait for pass 2). 22 Oct 2026: unit=lexflow:code:jpn local 8,981 rows (the laws of Japan by promulgation date); live 0 until Japan is pushed
 SELECT ?section ?sectionLabel ?number ?heading ?from ?until ?text ?sort WHERE {
   VALUES ?unit { lx:{Q:lexflow:unit:va:t2.2-sii-pb-c37} }
-  ?section lxt:{P:part of} ?unit ;
-           lxt:{P:instance of} lx:{Q:statute or legal provision} ;
-           rdfs:label ?sectionLabel .
+  {
+    ?section lxt:{P:part of} ?unit ;
+             lxt:{P:instance of} lx:{Q:statute or legal provision} .
+  } UNION {
+    # the laws of a code (a country's laws, Puerto Rico's leyes): statutory units at level act directly under it
+    ?unit lxt:{P:instance of} lx:{Q:lexflow:class:legal-code} .
+    ?section lxt:{P:part of} ?unit ;
+             lxt:{P:instance of} lx:{Q:lexflow:class:statutory-unit} ;
+             lxt:{P:unit level} lx:{Q:lexflow:vocab:unit-level:act} .
+  }
+  ?section rdfs:label ?sectionLabel .
   FILTER(lang(?sectionLabel) = "en")
   OPTIONAL { ?section lxt:{P:sort key} ?sort }
   OPTIONAL { ?section lxt:{P:section number} ?number }
+  OPTIONAL { ?section lxt:{P:law number} ?number }
   OPTIONAL { ?section lxt:{P:heading text} ?heading }
   OPTIONAL { ?section lxt:{P:effective date} ?from }
   OPTIONAL { ?section lxt:{P:effective until} ?until }

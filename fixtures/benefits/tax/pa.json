@@ -1,0 +1,45 @@
+{
+ "state": "pa",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Pennsylvania Department of Revenue", "url": "https://www.pa.gov/agencies/revenue"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and railroad retirement benefits are not a taxable class of income for Pennsylvania personal income tax.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.pa.gov/agencies/revenue/forms-and-publications/pa-personal-income-tax-guide/gross-compensation", "quote": "Retirement income, such as: distributions from eligible Pennsylvania retirement plans* after retirement age; Social Security payments; railroad retirement benefits"}
+   ]
+  },
+  "public_pension": {
+   "treatment": "exempt",
+   "summary": "Distributions from the State Employees' Retirement System, the School Employees' Retirement System, the Municipal Employees Retirement System and the federal civil service retirement plan are exempt; other government plans are exempt when received after meeting the plan's retirement age or service conditions.",
+   "conditions": ["Other government plans: must be an eligible plan and received after meeting the plan's age and/or years-of-service requirements for retirement", "Employee contributions are taxed when made"],
+   "sources": [
+    {"kind": "statute", "ref": "5953", "quote": "the right of a person to any benefit or right accrued or accruing under the provisions of this part and the moneys in the fund and the trust are hereby exempt from any State or municipal tax,"},
+    {"kind": "statute", "ref": "8533", "quote": "the right of a person to a member's annuity, a State annuity, or retirement allowance, to the return of contributions, any benefit or right accrued or accruing to any person under the provisions of this part, and the moneys in the fund and the trust are hereby exempt from any State or municipal tax,"},
+    {"kind": "page", "url": "https://www.pa.gov/agencies/revenue/forms-and-publications/pa-personal-income-tax-guide/gross-compensation", "quote": "The State employees’ Retirement System, the Pennsylvania School Employees’ Retirement System, the Pennsylvania Municipal Employees Retirement System and the U.S. Civil Service Commission Retirement Disability Plan are eligible Pennsylvania retirement plans and all distributions are exempt from PA PIT."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "exempt",
+   "summary": "Distributions from eligible employer plans (401(a) pensions, 401(k)s, SEPs, Keoghs) after meeting the plan's retirement conditions, and IRA distributions not subject to the federal early-withdrawal penalty (e.g., after age 59 1/2), are not taxed.",
+   "conditions": ["Employer plan: received after retiring having met the plan's age and/or years-of-service requirements", "IRA: no federal early-withdrawal penalty applies (e.g., after age 59 1/2, death or disability)", "Early distributions are taxable above previously taxed contributions (cost-recovery method)"],
+   "sources": [
+    {"kind": "page", "url": "https://www.pa.gov/agencies/revenue/forms-and-publications/pa-personal-income-tax-guide/gross-compensation", "quote": "If a taxpayer receives distributions from a plan that is not an employer provided plan, such as an Individual Retirement Arrangement (IRA), the department will consider the distributions exempt retirement income so long as the taxpayer is not required to pay a penalty for early withdrawal."},
+    {"kind": "page", "url": "https://www.pa.gov/agencies/revenue/forms-and-publications/pa-personal-income-tax-guide/gross-compensation", "quote": "Generally, eligible Pennsylvania retirement plans include qualified pension plans under Section 401(a) of the Internal Revenue Code (defined benefit plans and defined contributions plans), IRAs (individual retirement accounts and annuities), Roth IRAs, Simplified Employee Pension Plans (SEPs), and Keogh plans."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Retired or retainer pay of uniformed-services members computed under Chapter 71 of Title 10 is exempt from Pennsylvania personal income tax.",
+   "conditions": [],
+   "sources": [
+    {"kind": "page", "url": "https://www.pa.gov/agencies/revenue/forms-and-publications/pa-personal-income-tax-guide/gross-compensation", "quote": "Retired or retainer pay of a member or former member of a uniform service calculated under Chapter 71 of Title 10, U.S. Code as amended is also exempt from PA PIT."}
+   ]
+  }
+ },
+ "notes": "Pennsylvania's personal income tax is in the Tax Reform Code of 1971 (72 P.S. 7301 et seq.), an unconsolidated statute that is not in lexflow's statute index (which holds the Pennsylvania Consolidated Statutes), so the Social Security, private-pension and military items rest on Department of Revenue guidance only. The public-pension statute sources are the SERS (71 Pa.C.S. 5953) and PSERS (24 Pa.C.S. 8533) tax-exemption clauses. Pennsylvania taxes employee contributions to retirement plans when made rather than the payouts; early distributions and early-retirement inducement payments are taxable compensation."
+}

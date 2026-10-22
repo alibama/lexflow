@@ -1,0 +1,61 @@
+{
+ "state": "sc",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "South Carolina Retirement System",
+   "short": "SCRS",
+   "census_units": ["census-pid6:227729"],
+   "statute": {"kind": "statute", "ref": "9-1-20", "quote": "A retirement system is hereby established and placed under the management of the board for the purpose of providing retirement allowances and other benefits for teachers and employees of the State and political subdivisions or agencies or departments thereof."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Directors of the South Carolina Public Employee Benefit Authority", "source": {"kind": "statute", "ref": "9-1-20", "quote": "A retirement system is hereby established and placed under the management of the board for the purpose of providing retirement allowances and other benefits for teachers and employees of the State and political subdivisions or agencies or departments thereof."}},
+   "website": "https://www.peba.sc.gov/scrs",
+   "website_source": {"kind": "page", "url": "https://www.peba.sc.gov/scrs", "quote": "The South Carolina Retirement System is a defined benefit retirement plan for employees of state agencies, public and charter school districts, public higher education institutions, and other local subdivisions of government that have joined SCRS"},
+   "membership": ["state_employee", "teacher", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "9-1-20", "quote": "A retirement system is hereby established and placed under the management of the board for the purpose of providing retirement allowances and other benefits for teachers and employees of the State and political subdivisions or agencies or departments thereof."},
+   "notes": "The board is PEBA's board of directors (S.C. Code § 9-4-10); the chapter 9-1 definitions section is not in lexflow's index."
+  },
+  {
+   "name": "South Carolina Police Officers Retirement System",
+   "short": "PORS",
+   "census_units": ["census-pid6:227366"],
+   "statute": {"kind": "statute", "ref": "9-11-20", "quote": "A retirement system is hereby created and placed under the administration of the Board to provide retirement allowances and other benefits for police officers."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Directors of the South Carolina Public Employee Benefit Authority", "source": {"kind": "statute", "ref": "9-11-10", "quote": "\"Board\" means the Board of Directors of the South Carolina Public Employee Benefit Authority acting through its Division of Retirement Systems."}},
+   "website": "https://www.peba.sc.gov/pors",
+   "website_source": {"kind": "page", "url": "https://www.peba.sc.gov/pors", "quote": "The Police Officers Retirement System is a defined benefit retirement plan primarily for public safety employees of state agencies, public and charter school districts, public higher education institutions and other local subdivisions of government that participate in PORS."},
+   "membership": ["public_safety", "state_employee", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "9-11-40", "quote": "any county, municipality or other political subdivision of the State, and any agency or department thereof which is participating in the South Carolina Retirement System with respect to firemen in its employ, may become an employer under the South Carolina Police Officers Retirement System"},
+   "notes": ""
+  },
+  {
+   "name": "Retirement System for Members of the General Assembly of the State of South Carolina",
+   "short": "GARS",
+   "census_units": ["census-pid6:226292"],
+   "statute": {"kind": "statute", "ref": "9-9-20", "quote": "A retirement system is hereby created and placed under the administration of the Board to provide retirement allowances and other benefits for members of the General Assembly."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Directors of the South Carolina Public Employee Benefit Authority", "source": {"kind": "statute", "ref": "9-9-10", "quote": "\"Board\" means the Board of Directors of the South Carolina Public Employee Benefit Authority."}},
+   "website": "https://www.peba.sc.gov/gars",
+   "website_source": {"kind": "page", "url": "https://www.peba.sc.gov/gars", "quote": "The General Assembly Retirement System is a defined benefit retirement plan for members of the South Carolina General Assembly who were first elected to the General Assembly prior to November 2012."},
+   "membership": ["legislator"],
+   "covers_local": false,
+   "notes": "Closed to members first elected in or after November 2012."
+  },
+  {
+   "name": "Retirement System for Judges and Solicitors of the State of South Carolina",
+   "short": "JSRS",
+   "census_units": ["census-pid6:226291"],
+   "statute": {"kind": "statute", "ref": "9-8-20", "quote": "A retirement system is created and placed under the administration of the board to provide retirement allowances and other benefits for judges, solicitors, and circuit public defenders."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of Directors of the South Carolina Public Employee Benefit Authority", "source": {"kind": "statute", "ref": "9-8-10", "quote": "\"Board\" means the Board of Directors of the South Carolina Public Employee Benefit Authority."}},
+   "website": "https://www.peba.sc.gov/jsrs",
+   "website_source": {"kind": "page", "url": "https://www.peba.sc.gov/jsrs", "quote": "The Judges and Solicitors Retirement System is a defined benefit retirement plan for South Carolina’s public justices, judges, solicitors and circuit public defenders."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": ""
+  }
+ ]
+}

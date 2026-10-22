@@ -1,0 +1,46 @@
+{
+ "state": "nc",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "North Carolina Department of Revenue", "url": "https://www.ncdor.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and Railroad Retirement Act benefits included in federal adjusted gross income are deducted in computing North Carolina taxable income.",
+   "conditions": ["Only the amount included in federal adjusted gross income is deducted"],
+   "sources": [
+    {"kind": "statute", "ref": "105-153.5", "quote": "(3) Benefits received under Title II of the Social Security Act and amounts received from retirement annuities or pensions paid under the provisions of the Railroad Retirement Act of 1937."},
+    {"kind": "page", "url": "https://www.ncdor.gov/taxes-forms/individual-income-tax/social-security-and-railroad-retirement-benefits", "quote": "If your social security or railroad retirement benefits were taxed on your federal return, you may take a deduction for those benefits on your North Carolina individual income tax return."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Only government retirement benefits protected by the Bailey settlement and related court settlements (retirees vested, generally with five years of creditable service, by August 12, 1989) are deducted; other state, local and federal civil service pensions are taxed like other income.",
+   "conditions": ["Retiree vested in a North Carolina state or local, or federal, retirement system as of August 12, 1989 (generally five or more years of creditable service)", "Pensions from other states' systems do not qualify", "Applies to federal civil service retirees on the same terms"],
+   "sources": [
+    {"kind": "statute", "ref": "105-153.5", "quote": "(5) The amount received during the taxable year from one or more State, local, or federal government retirement plans to the extent the amount is exempt from tax under this Part pursuant to a court order in settlement of any of the following cases:"},
+    {"kind": "page", "url": "https://www.ncdor.gov/taxes-forms/individual-income-tax/filing-topics/bailey-decision-concerning-federal-state-and-local-retirement-benefits", "quote": "The exclusion does not apply to retirement benefits paid to former teachers and state employees of other states and their political subdivisions."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions have no North Carolina exclusion and are taxed as part of adjusted gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "105-153.4", "quote": "(a) Residents. - For an individual who is a resident of this State, the term \"North Carolina taxable income\" means the taxpayer's adjusted gross income as modified in G.S. 105-153.5 and G.S. 105-153.6."},
+    {"kind": "page", "url": "https://www.ncdor.gov/taxes-forms/withholding-tax/individual-income-tax-directives-main/directive-pd-00-2", "quote": "Effective January 1, 2001, a pension payer required to withhold federal tax under section 3405 of the Code on a pension payment to a North Carolina resident must also withhold state income tax from the pension payment."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Uniformed-services retired pay is deducted in full for retirees with at least 20 years of service or who were medically retired, along with Survivor Benefit Plan payments to their beneficiaries.",
+   "conditions": ["Served at least 20 years in the uniformed services, or medically retired under 10 U.S.C. Chapter 61", "Severance pay does not qualify", "Cannot also be deducted under the Bailey deduction"],
+   "sources": [
+    {"kind": "statute", "ref": "105-153.5", "quote": "a. Retirement pay for service in the uniformed services of the United States to a retired member that meets either of the criteria listed in this sub-subdivision."},
+    {"kind": "page", "url": "https://www.ncdor.gov/taxes-forms/individual-income-tax/filing-topics/military-retirement", "quote": "Retirement pay for service in the uniformed services of the United States to a retired member that meets either of the following: Served at least 20 years in the uniformed services. Medically retired under 10 U.S.C. Chapter 61."}
+   ]
+  }
+ },
+ "notes": "North Carolina has no general retirement-income exclusion (the former $4,000 government / $2,000 private retirement deductions were repealed from 2014). Government pensions are deductible only under the Bailey settlement (vested by August 12, 1989); this also covers federal civil service and military retirees who were vested then. Military retirees not vested under Bailey who have under 20 years and were not medically retired are taxed. The private-pension page source is a 2000 withholding directive (pension payments to residents are subject to state withholding); NCDOR has no current HTML page stating it in other words."
+}

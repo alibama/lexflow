@@ -1,0 +1,37 @@
+{
+ "qid": "retirement_tax",
+ "state": "dc",
+ "question": "Does my state tax my pension or my Social Security?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "47-1803.02",
+   "role": "primary"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Social Security benefits taxed federally are excluded from D.C. gross income.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "47-1803.02",
+   "quote": "Social security and tier 1 railroad retirement benefits subject to taxation under",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "Gross income follows the Internal Revenue Code, so pensions are taxed.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "47-1803.02",
+   "quote": "shall have the same meaning as defined in",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": "The former $3,000 pension exclusion for retirees 62 or older was repealed (Office of Tax and Revenue); see fixtures/benefits/tax/dc.json."
+}

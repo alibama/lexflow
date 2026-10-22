@@ -1,0 +1,67 @@
+{
+ "qid": "retirement_which_system",
+ "state": "md",
+ "question": "Which public retirement system covers me, and who runs it?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 21-101",
+   "role": "primary"
+  },
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 21-102",
+   "role": "supporting"
+  },
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 21-103",
+   "role": "supporting"
+  },
+  {
+   "ref": "Md. Code, State Personnel and Pensions § 31-102",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "Maryland has a State Retirement and Pension System.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "Md. Code, State Personnel and Pensions § 21-101",
+   "quote": "There is a State Retirement and Pension System.",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "It consists of the several systems (employees', teachers', law enforcement, state police, judges' and others).",
+   "importance": "vital",
+   "kind": "who",
+   "section": "Md. Code, State Personnel and Pensions § 21-102",
+   "quote": "the Employees’ Pension System, established on January 1, 1980;",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A Board of Trustees runs it.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "Md. Code, State Personnel and Pensions § 21-103",
+   "quote": "There is a Board of Trustees for the State Retirement and Pension System.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "Political subdivisions may participate in the employees' systems.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "Md. Code, State Personnel and Pensions § 31-102",
+   "quote": "the governmental units that are eligible to participate in the employees’ systems are:",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

@@ -1,0 +1,49 @@
+{
+ "state": "pa",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "State Employees' Retirement System of Pennsylvania",
+   "short": "SERS",
+   "census_units": ["census-pid6:226290"],
+   "statute": {"kind": "statute", "ref": "71 Pa.C.S. § 5101", "quote": "\"System.\" The State Employees' Retirement System of Pennsylvania as established by the act of June 27, 1923 (P.L.858, No.331), and codified by the act of June 1, 1959 (P.L.392, No.78) and the provisions of this part."},
+   "statute_role": "defines",
+   "body": {"name": "State Employees' Retirement Board", "source": {"kind": "statute", "ref": "71 Pa.C.S. § 5101", "quote": "\"Board.\" The State Employees' Retirement Board or the State Employes' Retirement Board."}},
+   "website": "https://sers.pa.gov/",
+   "website_source": {"kind": "page", "url": "https://sers.pa.gov/About.html", "quote": "Established in 1923, the Pennsylvania State Employees' Retirement System is one of the nation's oldest and largest statewide retirement plans for public employees."},
+   "membership": ["state_employee", "public_safety", "judge", "legislator"],
+   "covers_local": false,
+   "notes": "The definitions in 71 Pa.C.S. § 5102 are indexed under § 5101 in lexflow's copy; the board is an independent administrative board (71 Pa.C.S. § 5901)."
+  },
+  {
+   "name": "Public School Employees' Retirement System of Pennsylvania",
+   "short": "PSERS",
+   "census_units": ["census-pid6:227357"],
+   "statute": {"kind": "statute", "ref": "24 Pa.C.S. § 8102", "quote": "\"System.\" The Public School Employes' Retirement System of Pennsylvania as established by the act of July 18, 1917 (P.L.1043, No.343), and codified by the act of June 1, 1959 (P.L.350, No.77)."},
+   "statute_role": "defines",
+   "body": {"name": "Public School Employees' Retirement Board", "source": {"kind": "statute", "ref": "24 Pa.C.S. § 8102", "quote": "\"Board.\" The Public School Employees' Retirement Board or the Public School Employes' Retirement Board."}},
+   "website": "https://www.pa.gov/agencies/psers",
+   "website_source": {"kind": "page", "url": "https://www.pa.gov/agencies/psers/about", "quote": "Since 1917, PSERS has been serving the public school employees of the Commonwealth of Pennsylvania."},
+   "membership": ["teacher", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "24 Pa.C.S. § 8102", "quote": "\"Employer.\" Any governmental entity directly responsible for the employment and payment of the school employee and charged with the responsibility of providing public education within this Commonwealth, including but not limited to:"},
+   "notes": "Covers school district employees (teachers and support staff)."
+  },
+  {
+   "name": "Pennsylvania Municipal Retirement System",
+   "short": "PMRS",
+   "census_units": ["census-pid6:227727"],
+   "statute": null,
+   "why": "Created by the Pennsylvania Municipal Retirement Law (Act 15 of 1974, 53 P.S. § 881.101 et seq.), an unconsolidated statute not in lexflow's Pennsylvania index; the consolidated code only mentions the system (53 Pa.C.S. § 9125).",
+   "statute_role": "none",
+   "body": {"name": "Pennsylvania Municipal Retirement Board", "source": {"kind": "page", "url": "https://pmrs.pa.gov/about-pmrs/", "quote": "Based in Harrisburg, Pennsylvania, PMRS is governed by an 11-member board of trustees who are responsible for the organization and administration of the pension system, offering oversight for the system’s investments."}},
+   "website": "https://pmrs.pa.gov/",
+   "website_source": {"kind": "page", "url": "https://pmrs.pa.gov/about-pmrs/", "quote": "The Pennsylvania Municipal Retirement System (PMRS) was established in 1974 to provide cost-effective retirement pensions for local government municipalities, authorities, and institutions."},
+   "membership": ["local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "page", "url": "https://pmrs.pa.gov/about-pmrs/", "quote": "Any Pennsylvania county, city, town, township, borough, municipal authority, or institution supported or maintained by a municipality may participate."},
+   "notes": "Administers individual plans for participating local governments."
+  }
+ ]
+}

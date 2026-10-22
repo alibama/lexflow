@@ -1,0 +1,41 @@
+{
+ "qid": "retirement_survivor",
+ "state": "dc",
+ "question": "What happens to my pension if I die before or after I retire?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "partial",
+ "gold_sections": [
+  {
+   "ref": "38-2021.09",
+   "role": "primary"
+  },
+  {
+   "ref": "5-716",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "A teacher separated after 5 years may elect a deferred annuity, with survivor annuities as the section provides.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "38-2021.09",
+   "quote": "after completing 5 years of eligible service and before becoming eligible for retirement, become separated from the service, the teacher may elect to receive a deferred annuity",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "If a police officer or firefighter dies in the performance of duty, a $50,000 lump sum is paid to a dependent survivor.",
+   "importance": "vital",
+   "kind": "steps",
+   "section": "5-716",
+   "quote": "lump-sum payment of $50,000 shall be made to his survivor if the survivor received more than one half of his support from such member",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}

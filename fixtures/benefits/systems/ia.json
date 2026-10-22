@@ -1,0 +1,61 @@
+{
+ "state": "ia",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Iowa Public Employees' Retirement System",
+   "short": "IPERS",
+   "census_units": ["census-pid6:227014"],
+   "statute": {"kind": "statute", "ref": "97B.1", "quote": "The “Iowa Public Employees’ Retirement System” is established as an independent agency within the executive branch of state government."},
+   "statute_role": "establishes",
+   "body": {"name": "Iowa Public Employees' Retirement System (independent agency; investment board under 97B.8A)", "source": {"kind": "statute", "ref": "97B.1", "quote": "The Iowa public employees’ retirement system shall administer the retirement system established under this chapter."}},
+   "website": "https://ipers.org/",
+   "website_source": {"kind": "page", "url": "https://ipers.org/", "quote": "Iowa Public Employees' Retirement System 7401 Register Drive P.O. Box 9117 Des Moines, IA 50306-9117 Phone 515-281-0020"},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "97B.1A", "quote": "“Employer” means the state of Iowa, the counties, municipalities, agencies, public school districts, all political subdivisions, and all of their departments and instrumentalities,"},
+   "notes": "Covers state, county, city and school district employees, including teachers. Website quote is the agency's address block."
+  },
+  {
+   "name": "Municipal Fire and Police Retirement System of Iowa",
+   "short": "MFPRSI",
+   "census_units": ["census-pid6:227017"],
+   "statute": {"kind": "statute", "ref": "411.35", "quote": "Effective January 1, 1992, a single statewide fire and police retirement system is established to replace the individual city fire retirement systems and police retirement systems operating under this chapter prior to that date."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees for the statewide fire and police retirement system", "source": {"kind": "statute", "ref": "411.36", "quote": "A board of trustees for the statewide fire and police retirement system is created."}},
+   "website": "https://www.mfprsi.org/",
+   "website_source": {"kind": "page", "url": "https://www.mfprsi.org/", "quote": "Municipal Fire and Police Retirement System provides pension benefits for municipal police officers and fire fighters in Iowa."},
+   "membership": ["public_safety", "local_employee"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "411.35", "quote": "Each city fire retirement system and police retirement system operating under this chapter prior to May 3, 1990, shall participate in the statewide system."},
+   "notes": ""
+  },
+  {
+   "name": "Iowa Department of Public Safety Peace Officers' Retirement, Accident, and Disability System",
+   "short": "PORS",
+   "census_units": ["census-pid6:227015"],
+   "statute": {"kind": "statute", "ref": "97A.2", "quote": "The Iowa department of public safety peace officers’ retirement, accident, and disability system is created."},
+   "statute_role": "establishes",
+   "body": {"name": "Board of trustees of the peace officers' retirement system", "source": {"kind": "statute", "ref": "97A.2", "quote": "The system shall be administered under the direction of the board of trustees, and shall transact all of its business, invest all of its funds,"}},
+   "website": null,
+   "website_source": null,
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Covers peace officers of the Iowa Department of Public Safety. Official web page not confirmed."
+  },
+  {
+   "name": "Judicial Retirement System",
+   "short": "JRS",
+   "census_units": ["census-pid6:226225"],
+   "statute": {"kind": "statute", "ref": "602.9101", "quote": "A retirement system is hereby created and established to be known as the “Judicial Retirement System”, hereinafter called the “system”."},
+   "statute_role": "establishes",
+   "body": {"name": "State court administrator", "source": {"kind": "statute", "ref": "602.1209", "quote": "(4) Supervise the employees of the supreme court and court of appeals, and the clerk of the supreme court. (5) Administer the judicial retirement system as provided in article 9."}},
+   "website": null,
+   "website_source": null,
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "The treasurer of state invests the judicial retirement fund (602.9111). Official web page not confirmed."
+  }
+ ]
+}

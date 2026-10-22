@@ -1,0 +1,49 @@
+{
+ "state": "ca",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "California Franchise Tax Board", "url": "https://www.ftb.ca.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "California does not adopt the federal rule that taxes Social Security, so U.S. Social Security and Tier 1 Railroad Retirement benefits are excluded from California income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "Cal. RTC § 17087", "quote": "(a) Section 86 of the Internal Revenue Code, relating to Social Security and Tier 1 Railroad Retirement Benefits, shall not apply."},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html", "quote": "Line 6 – Social Security Benefits California excludes U.S. social security benefits or equivalent Tier 1 railroad retirement benefits from taxable income."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "taxable",
+   "summary": "California has no special exclusion for state, local or federal government pensions; a resident's pension is taxed like other income, generally in the same amount as federally.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "Cal. RTC § 17081", "quote": "Part II of Subchapter B of Chapter 1 of Subtitle A of the Internal Revenue Code, relating to items that are specifically included in gross income, shall apply, except as otherwise provided."},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html", "quote": "Line 5a and Line 5b – Pensions and Annuities Generally, no adjustments are made on this line."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "taxable",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed by California like other income, generally in the same amount as federally.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "Cal. RTC § 17071", "quote": "Section 61 of the Internal Revenue Code, relating to gross income defined, shall apply, except as otherwise provided."},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html", "quote": "Line 4a and Line 4b – IRA Distributions Generally, no adjustments are made on this line."},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html", "quote": "Line 5a and Line 5b – Pensions and Annuities Generally, no adjustments are made on this line."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "For tax years 2025 through 2029, a qualified taxpayer may exclude up to $20,000 of U.S. uniformed services retired pay; the exclusion is limited to taxpayers with federal AGI up to $125,000 ($250,000 joint or surviving spouse), and the rest is taxable.",
+   "conditions": ["Up to $20,000 of uniformed services retirement pay excluded", "Federal AGI not over $125,000 (single/other) or $250,000 (joint or surviving spouse)", "Tax years 2025 through 2029 only", "A separate $20,000 exclusion applies to DoD Survivor Benefit Plan annuities"],
+   "amount_usd": 20000,
+   "sources": [
+    {"kind": "statute", "ref": "17132.9", "quote": "(a) For taxable years beginning on or after January 1, 2025, and before January 1, 2030, gross income shall not include retirement pay received by a qualified taxpayer during the taxable year, not to exceed twenty thousand dollars ($20,000), from the federal government for service in the uniformed services."},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/file/personal/filing-situations/military.html", "quote": "For taxable years beginning on or after January 1, 2025, and before January 1, 2030, California allows qualified taxpayers to exclude from gross income up to $20,000 of retirement pay from the federal government for service in the uniformed services"},
+    {"kind": "page", "url": "https://www.ftb.ca.gov/file/personal/filing-situations/military.html", "quote": "In the case of an individual, the taxpayer’s income may not exceed $125,000."}
+   ]
+  }
+ },
+ "notes": "The military retirement exclusion (R&TC 17132.9, plus 17132.10 for Survivor Benefit Plan annuities) is new for tax year 2025 and sunsets after tax year 2029; it is an income-limited exclusion, so retirees above the AGI limits are fully taxed. FTB has published analyses of 2026 bills that would raise or remove the $20,000 cap; whether any was enacted was not checked, and the index text quoted is the $20,000 version. California taxes residents on pensions from any state; nonresidents are not taxed on qualified retirement income (federal law, 4 U.S.C. 114)."
+}

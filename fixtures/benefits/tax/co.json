@@ -1,0 +1,53 @@
+{
+ "state": "co",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Colorado Department of Revenue, Taxation Division", "url": "https://tax.colorado.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "Taxpayers 65 or older subtract all taxable Social Security; those 55 to 64 subtract all of it if AGI is at most $75,000 (single) or $95,000 (joint), otherwise it falls under the $20,000 pension and annuity subtraction; under 55 it is generally taxable.",
+   "conditions": ["Age 65+: full subtraction", "Age 55-64: full subtraction if AGI not over $75,000 single / $95,000 joint; otherwise capped at $20,000 together with other pension income", "Under 55: no subtraction unless received as a death benefit"],
+   "age_min": 55,
+   "sources": [
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "For income tax years beginning January 1, 2022, and after, taxpayers age 65 or older at the end of the tax year may subtract the entire amount of Social Security benefit income included in the taxpayer’s federal taxable income."},
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "For income tax years beginning January 1, 2025, and after, taxpayers age 55 to 64 at the end of the tax year may subtract the entire amount of Social Security benefit income included in their federal taxable income if their adjusted gross income does not exceed the following thresholds:"},
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "$75,000 if their filing status is single; or $95,000 if their filing status is joint. For those taxpayers whose adjusted gross income exceeds these thresholds, the cap remains at $20,000."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions qualify for Colorado's pension and annuity subtraction of up to $20,000 a year at ages 55-64 and $24,000 at 65 or older (per taxpayer); amounts above the cap are taxable.",
+   "conditions": ["Age 55-64: up to $20,000", "Age 65+: up to $24,000", "Under 55: only for death benefits, up to $20,000", "Joint filers: allowed separately for each spouse", "Shared with any capped Social Security subtraction", "Colorado PERA/Denver Public Schools retirees may also have a separate PERA/DPSRS subtraction for certain 1984-1986 contributions"],
+   "amount_usd": 24000,
+   "age_min": 55,
+   "sources": [
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "The subtraction is generally allowed only to individuals age 55 or older but may also be claimed by individuals under age 55 for pension and annuity income they receive as a death benefit. The subtraction is generally limited to $20,000 each year or, for individuals age 65 or older, $24,000."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, annuities and non-premature IRA distributions qualify for the same pension and annuity subtraction: up to $20,000 at ages 55-64 and $24,000 at 65 or older; the rest is taxable.",
+   "conditions": ["Age 55-64: up to $20,000", "Age 65+: up to $24,000", "Premature IRA/401(k)/SEP distributions do not qualify", "Shared cap with government pensions and capped Social Security"],
+   "amount_usd": 24000,
+   "age_min": 55,
+   "sources": [
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "pensions and annuities reported on line 5b of the federal return; Social Security benefits reported on line 6b of the federal return; certain IRA distributions reported on line 4b of the federal return"},
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "The subtraction is generally allowed only to individuals age 55 or older but may also be claimed by individuals under age 55 for pension and annuity income they receive as a death benefit. The subtraction is generally limited to $20,000 each year or, for individuals age 65 or older, $24,000."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Retired servicemembers under 55 may subtract up to $15,000 of military retired pay for tax years 2022-2028; those 55 or older use the regular pension and annuity subtraction ($20,000/$24,000).",
+   "conditions": ["Under 55: up to $15,000 (tax years 2022-2028)", "Age 55+: regular pension and annuity subtraction, $20,000 (55-64) or $24,000 (65+)"],
+   "amount_usd": 15000,
+   "sources": [
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "If a retired servicemember is under age 55 at the end of the tax year, they may claim the military retirement subtraction on the applicable line of the Subtractions from Income Schedule (DR 0104AD) for military retirement benefits included in their federal taxable income, subject to the following limitations based on the tax year:"},
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "Military Retirement Subtraction Limits Tax Year(s) Limit 2019 $4,500 2020 $7,500 2021 $10,000 2022-2028 $15,000"},
+    {"kind": "page", "url": "https://tax.colorado.gov/income-tax-topics-social-security-pensions-and-annuities", "quote": "If a retired servicemember is at least 55 years old at the end of the tax year, they may claim the regular pension and annuity subtraction"}
+   ]
+  }
+ },
+ "notes": "lexflow has no Colorado statute index, so there are no statute sources (the rules are in C.R.S. 39-22-104(4)(f) and (4)(y)). The page is the Department's 'Income Tax Topics: Social Security, Pensions and Annuities', read through an Internet Archive capture of January 2026 because tax.colorado.gov refuses automated readers. The amount_usd on the pension items is the age-65 cap ($24,000); it is $20,000 at ages 55-64. Social Security that is not fully subtracted uses up the same $20,000/$24,000 room as other pension income."
+}

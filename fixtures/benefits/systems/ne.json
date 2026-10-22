@@ -1,0 +1,74 @@
+{
+ "state": "ne",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "State Employees Retirement System of the State of Nebraska",
+   "short": "",
+   "census_units": ["census-pid6:227713"],
+   "statute": null,
+   "why": "The State Employees Retirement Act (Neb. Rev. Stat. 84-1301 et seq.) is not in this copy's statute index; no establishing section could be matched.",
+   "statute_role": "none",
+   "body": {"name": "Public Employees Retirement Board (Nebraska Public Employees Retirement Systems, NPERS)", "source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."}},
+   "website": "https://npers.ne.gov/",
+   "website_source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."},
+   "membership": ["state_employee"],
+   "covers_local": false,
+   "notes": "Census unit 'State Employees' Retirement Cash Balance Fund' (cash balance plan). Website names only NPERS, which administers the State plan."
+  },
+  {
+   "name": "Retirement System for Nebraska Counties",
+   "short": "",
+   "census_units": ["census-pid6:226265"],
+   "statute": {"kind": "statute", "ref": "23-2302", "quote": "A county employees retirement system shall be established for the purpose of providing a retirement annuity or other benefits for employees as provided by the County Employees Retirement Act. It shall be known as the Retirement System for Nebraska Counties"},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees Retirement Board", "source": {"kind": "statute", "ref": "23-2301", "quote": "Retirement board or board means the Public Employees Retirement Board; (33) Retirement date means"}},
+   "website": "https://npers.ne.gov/",
+   "website_source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."},
+   "membership": ["local_employee"],
+   "covers_local": true,
+   "notes": "Census unit 'County Employees' Retirement Cash Balance Fund'. County employees (excluding Douglas and Lancaster counties' own systems); body quote is the Act's definition of the board."
+  },
+  {
+   "name": "School Employees Retirement System of the State of Nebraska",
+   "short": "",
+   "census_units": ["census-pid6:228129"],
+   "statute": null,
+   "why": "The School Employees Retirement Act (Neb. Rev. Stat. 79-901 et seq.) is not in this copy's statute index; no establishing section could be matched.",
+   "statute_role": "none",
+   "body": {"name": "Public Employees Retirement Board (Nebraska Public Employees Retirement Systems, NPERS)", "source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."}},
+   "website": "https://npers.ne.gov/",
+   "website_source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."},
+   "membership": ["teacher", "local_employee"],
+   "covers_local": true,
+   "notes": "Covers school district employees statewide except Omaha Public Schools (which has its own system administered by NPERS)."
+  },
+  {
+   "name": "Nebraska Judges Retirement System",
+   "short": "",
+   "census_units": ["census-pid6:226263"],
+   "statute": {"kind": "statute", "ref": "24-701", "quote": "Retirement system or system means the Nebraska Judges Retirement System as provided in the Judges Retirement Act; (25) Surviving spouse means"},
+   "statute_role": "defines",
+   "body": {"name": "Public Employees Retirement Board", "source": {"kind": "statute", "ref": "24-701", "quote": "(3) Board means the Public Employees Retirement Board; (4)(a) Compensation means the statutory salary"}},
+   "website": "https://npers.ne.gov/",
+   "website_source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."},
+   "membership": ["judge"],
+   "covers_local": false,
+   "notes": "Census marks this unit open to local employers; the system covers state judges. Body quote is the Act's definition of the board."
+  },
+  {
+   "name": "Nebraska State Patrol Retirement System",
+   "short": "",
+   "census_units": ["census-pid6:226264"],
+   "statute": {"kind": "statute", "ref": "81-2015", "quote": "A retirement system is hereby created and established to be known as the Nebraska State Patrol Retirement System."},
+   "statute_role": "establishes",
+   "body": {"name": "Public Employees Retirement Board", "source": {"kind": "statute", "ref": "81-2014", "quote": "(2) Board means the Public Employees Retirement Board; (3)(a)(i) Compensation means gross wages or salaries payable to the member"}},
+   "website": "https://npers.ne.gov/",
+   "website_source": {"kind": "page", "url": "https://npers.ne.gov/", "quote": "Nebraska Public Employees Retirement Systems Have you done your retirement homework? NPERS offers seminars to help members understand, plan, and prepare for retirement."},
+   "membership": ["public_safety", "state_employee"],
+   "covers_local": false,
+   "notes": "Body quote is the Act's definition of the board."
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "state": "wi",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Wisconsin Retirement System",
+   "short": "WRS",
+   "census_units": ["census-pid6:226308"],
+   "statute": {"kind": "statute", "ref": "40.20", "quote": "A Wisconsin retirement system is created, including the benefits provided by this subchapter, the disability annuities provided by s. 40.63 and the death benefits provided by ss. 40.71 and 40.73."},
+   "statute_role": "establishes",
+   "body": {"name": "Department of Employee Trust Funds, under the Employee Trust Funds Board", "source": {"kind": "statute", "ref": "15.16", "quote": "There is created a department of employee trust funds under the direction and supervision of the employee trust funds board."}},
+   "website": "https://etf.wi.gov/",
+   "website_source": {"kind": "page", "url": "https://etf.wi.gov/", "quote": "ETF administers retirement, insurance and other benefit programs for state and local government employees and retirees of the Wisconsin Retirement System."},
+   "membership": ["state_employee", "teacher", "local_employee", "public_safety", "judge", "legislator"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "40.21", "quote": "Any employer shall be included within and thereafter subject to the provisions of the Wisconsin retirement system by so electing, through adoption of a resolution by the governing body of the employer."},
+   "notes": "Separate Teachers Retirement Board and Wisconsin Retirement Board also have policy roles under ch. 40."
+  }
+ ]
+}

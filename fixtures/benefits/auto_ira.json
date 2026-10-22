@@ -1,0 +1,2430 @@
+{
+ "_about": "State auto-IRA programs (lexflow.benefits.programs). Every fact cites a verbatim quote matched by lexflow's software.",
+ "as_of": "2026-10-22",
+ "programs": [
+  {
+   "state": "ca",
+   "id": "ca_calsavers",
+   "name": "CalSavers Retirement Savings Program",
+   "mandate": true,
+   "status": "open",
+   "board": "CalSavers Retirement Savings Board",
+   "website": "https://www.calsavers.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "California created the CalSavers Retirement Savings Program under the CalSavers Retirement Savings Trust Act.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Cal. GOV § 100000",
+       "quote": "“CalSavers Retirement Savings Program” or “program” means a retirement savings program offered pursuant to the CalSavers Retirement Savings Trust Act."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A nine-member CalSavers Retirement Savings Board, chaired by the State Treasurer, runs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Cal. GOV § 100002",
+       "quote": "There is hereby created within state government the CalSavers Retirement Savings Board, which shall consist of nine members, with the Treasurer serving as chair, as follows:"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Eligible employers that do not offer a retirement plan must offer CalSavers through payroll deduction or certify an exemption; since January 1, 2026 this covers employers with one or more employees.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "By December 31, 2025, eligible employers with one or more eligible employees and that do not offer a retirement savings program pursuant to subdivision (h) shall have a payroll deposit retirement savings arrangement to allow employee participation in the program."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.treasurer.ca.gov/calsavers/",
+       "quote": "Effective January 1, 2026, all California employers with one or more employees are required by law to provide access to a qualified retirement program or certify a valid exemption with CalSavers."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with more than 100 eligible employees: within 12 months after the program opened for enrollment.",
+     "employees_min": 101,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "Within 12 months after the board opens the program for enrollment, eligible employers with more than 100 eligible employees and that do not offer a retirement savings program pursuant to subdivision (h) shall have a payroll deposit retirement savings arrangement to allow employee participation in the program."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with more than 50 eligible employees: within 24 months after opening (the program page gave June 30, 2021).",
+     "employees_min": 51,
+     "deadline": "2021-06-30",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "Within 24 months after the board opens the program for enrollment, eligible employers with more than 50 eligible employees and that do not offer a retirement savings program pursuant to subdivision (h) shall have a payroll deposit retirement savings arrangement to allow employee participation in the program."
+      },
+      {
+       "kind": "page",
+       "url": "https://saver.calsavers.com/",
+       "quote": "If you have more than 50 employees and don't sponsor a plan, you must register with CalSavers by June 30, 2021."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more employees: within 36 months after the program opened for enrollment.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "Within 36 months after the board opens the program for enrollment, eligible employers with five or more employees and that do not offer a retirement savings program pursuant to subdivision (h) shall have a payroll deposit retirement savings arrangement to allow employee participation in the program."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 1 or more eligible employees: by December 31, 2025.",
+     "employees_min": 1,
+     "deadline": "2025-12-31",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "By December 31, 2025, eligible employers with one or more eligible employees and that do not offer a retirement savings program pursuant to subdivision (h) shall have a payroll deposit retirement savings arrangement to allow employee participation in the program."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.calsavers.com/",
+       "quote": "Eligible employers with at least one employee in 2024 are required to register unless they meet one of the conditions for exemption"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers offering a tax-qualified plan (such as a 401(k), SEP, SIMPLE or defined benefit plan) or an automatic-enrollment payroll IRA are exempt; government employers and businesses with no employees other than the owners are not eligible employers.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "An employer that provides an employer-sponsored retirement plan, such as a defined benefit plan or a 401(k), Simplified Employee Pension (SEP) plan, or Savings Incentive Match Plan for Employees (SIMPLE) plan, or that offers an automatic enrollment payroll deduction IRA, shall be exempt from the requirements of the CalSavers Retirement Savings Program"
+      },
+      {
+       "kind": "statute",
+       "ref": "Cal. GOV § 100000",
+       "quote": "excluding sole proprietorships, self-employed individuals, or other business entities that do not employ any individuals other than the owners of the business, the federal government, the state, any county, any municipal corporation, or any of the state’s units or instrumentalities,"
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals are not mandated employers but may save in CalSavers on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.calsavers.com/",
+       "quote": "CalSavers is available to California workers whose employers don’t offer a retirement plan, self-employed individuals, and others who want to save extra."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "$250 per eligible employee after a final notice, plus $500 per eligible employee if noncompliance continues.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100033",
+       "quote": "shall be subject to a penalty of two hundred fifty dollars ($250) per eligible employee and an additional penalty of five hundred dollars ($500) per eligible employee if noncompliance continues as described in Section 19287 of the Revenue and Taxation Code."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "The statute sets a 3% default and lets the board set it by regulation anywhere from 2% to 5%.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "Unless otherwise specified by the employee, a participating employee shall contribute 3 percent of the employee’s annual salary or wages to the program."
+      },
+      {
+       "kind": "statute",
+       "ref": "100032",
+       "quote": "By regulation, the board may adjust the contribution amount set in subdivision (j) to no less than 2 percent and no more than 5 percent and may vary that amount within that 2 percent to 5 percent range."
+      }
+     ]
+    }
+   ],
+   "notes": "The statute leaves the first three waves' dates relative to the program's opening; only the 51+ wave date (June 30, 2021) is stated on an official page that was read (saver.calsavers.com, a stale banner), so the 101+ and 5+ waves carry no deadline. The board's current default rate (widely reported as 5%) is not quoted from a page here, so the default fact shows the statutory 3% and the 2-5% range."
+  },
+  {
+   "state": "co",
+   "id": "co_securesavings",
+   "name": "Colorado SecureSavings",
+   "mandate": true,
+   "status": "open",
+   "board": "Colorado Secure Savings Plan Board",
+   "website": "https://coloradosecuresavings.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Colorado SecureSavings was created by state law.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://treasury.colorado.gov/colorado-securesavings-program",
+       "quote": "Here in Colorado, nearly 940,000 workers have no employer-sponsored retirement savings plan. Colorado SecureSavings was created by law to meet this urgent need."
+      },
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/",
+       "quote": "Colorado SecureSavings is a new retirement savings program, created by the State of Colorado."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A state board (called the Colorado Secure Savings Plan Board in the 2020 study reports on the Treasury page) oversees the program.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://treasury.colorado.gov/colorado-securesavings-program",
+       "quote": "The Fiscal Impacts of Insufficient Retirement Savings in Colorado: a report to the Colorado Secure Savings Plan Board, February 2020."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Eligible employers must register or certify an exemption by their deadline.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/employers/",
+       "quote": "All eligible employers must register or certify their exemption by the deadline"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more employees, in business at least 2 years, without a qualified plan.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/employers/program-details",
+       "quote": "Colorado employers are required to facilitate the program if they: Have been in business for at least 2 years Have 5 or more employees, and Don’t offer a qualified retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Registration deadline shown for new businesses: May 15, 2025; deadlines for existing businesses have passed.",
+     "deadline": "2025-05-15",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/employers/program-details",
+       "quote": "New businesses Registration May 15, 2025 deadline Existing Colorado businesses Your registration deadline has passed"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers with a qualified plan, fewer than 2 years in business, or fewer than 5 employees certify an exemption.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/employers/program-details",
+       "quote": "Employers who provide a qualified retirement plan to their employees, have been in business for less than 2 years, or have fewer than 5 employees should certify their exemption from the program using their provided Access Code."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals may join on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/",
+       "quote": "Colorado SecureSavings is also available for: Colorado workers whose employers do not offer a workplace retirement plan Self-employed individuals"
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of gross pay, rising 1 point a year to 8% unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/savers/contributions/",
+       "quote": "The default savings rate for a Colorado SecureSavings account is 5% of your gross pay, and that amount is deducted from your paycheck after taxes have been taken out."
+      },
+      {
+       "kind": "page",
+       "url": "https://coloradosecuresavings.com/savers/",
+       "quote": "Your contribution rate will automatically increase by one percentage point each year until it reaches 8% of your total pay (wages before taxes and other deductions), unless you choose otherwise."
+      }
+     ]
+    }
+   ],
+   "notes": "This copy of lexflow has no Colorado statute index, so the program rests on official pages alone (coloradosecuresavings.com via Internet Archive captures, and the State Treasury page via a 2025 capture). No penalty is recorded: none was stated on the pages read. The board's name is grounded only by a 2020 report title on the Treasury page."
+  },
+  {
+   "state": "ct",
+   "id": "ct_myctsavings",
+   "name": "MyCTSavings (Connecticut Retirement Security Program)",
+   "mandate": true,
+   "status": "open",
+   "board": "Connecticut Retirement Security Advisory Board (program run by the State Comptroller)",
+   "website": "https://myctsavings.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "State law establishes the Connecticut Retirement Security Program, offered as MyCTSavings and overseen by the State Comptroller.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-416",
+       "quote": "“Program” means the Connecticut Retirement Security Program established pursuant to section 31-418"
+      },
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/",
+       "quote": "MyCTSavings is overseen by the Connecticut Office of the State Comptroller."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Connecticut Retirement Security Advisory Board advises; the Comptroller administers the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-416",
+       "quote": "“Board” means the Connecticut Retirement Security Advisory Board established pursuant to section 31-417"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Qualified employers without a retirement plan must automatically enroll covered employees, who may opt out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-422",
+       "quote": "such qualified employer shall automatically enroll each of its covered employees in the program at the participant's contribution level in accordance with the provisions of section 31-71j"
+      },
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/employers/program-details",
+       "quote": "Eligible Connecticut businesses are required to facilitate MyCTSavings if they don’t offer a retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more employees in Connecticut (on October 1 of the prior year, at least five paid $5,000 or more).",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-416",
+       "quote": "“Qualified employer” means any person, corporation, limited liability company, firm, partnership, voluntary association, joint stock association or other entity doing business in the state during the calendar year, whether for profit or not for profit, that employed on October first of the preceding calendar year five or more individuals in the state"
+      },
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/",
+       "quote": "State law requires that all businesses with 5 or more employees that do not already offer a qualified retirement plan register before their required deadline."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Registration deadline shown for newly eligible businesses: August 31, 2025 (earlier waves have passed).",
+     "deadline": "2025-08-31",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/employers/program-details",
+       "quote": "Newly eligible businesses August 31, 2025 Next deadline Businesses previously notified Your registration deadline has passed"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that maintain a qualified plan or another arrangement the Comptroller approves are exempt and certify the exemption.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-422",
+       "quote": "or (ii) any other retirement arrangement approved by the Comptroller, shall be exempt from the requirements of subdivisions (1) and (2) of this subsection."
+      },
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/employers/program-details",
+       "quote": "Employers who provide a qualified retirement plan to their employees should certify their exemption from the program using their provided Access Code."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals may join on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/",
+       "quote": "MyCTSavings is also available for: Connecticut workers whose employers do not offer a workplace retirement plan Self-employed individuals"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "No per-employee fine is set; an employee, the Labor Commissioner or the Comptroller may sue to compel enrollment.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "31-425",
+       "quote": "If a qualified employer fails to enroll a covered employee as required under subsection (a) of section 31-422 , such covered employee, the Labor Commissioner or the Comptroller, may bring a civil action to require the qualified employer to enroll the covered employee"
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "The program default is 5% of gross pay; the statute's fallback contribution level is 3% of taxable wages.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://myctsavings.com/savers/contributions",
+       "quote": "The default savings rate for a MyCTSavings account is 5% of your gross pay (the amount you earn before taxes)"
+      },
+      {
+       "kind": "statute",
+       "ref": "31-416",
+       "quote": "in the absence of an affirmative election by the participant, three per cent of the participant's taxable wages"
+      }
+     ]
+    }
+   ],
+   "notes": "myctsavings.com refuses automated readers; its pages were read from Internet Archive captures (2026). The statute's 3% fallback and the program page's 5% default differ; the page reflects the current program setting. Hawaii's board voted in February 2026 to join the MyCT partnership (see the Hawaii entry)."
+  },
+  {
+   "state": "de",
+   "id": "de_earns",
+   "name": "Delaware EARNS (Expanding Access for Retirement and Necessary Saving)",
+   "mandate": true,
+   "status": "open",
+   "board": "Delaware EARNS Program Board",
+   "website": "https://earnsdelaware.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Delaware established the EARNS Program, a state-facilitated retirement savings program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3801",
+       "quote": "There is hereby established the Expanding Access for Retirement and Necessary Saving (“EARNS”) Program to serve as a vehicle through which covered employees may, on a voluntary basis, provide for additional retirement security through a state-facilitated retirement saving program"
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Delaware EARNS Program Board governs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3802",
+       "quote": "“Board” means the Delaware EARNS Program Board established under § 3803 of this title."
+      },
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/",
+       "quote": "EARNS is governed by the EARNS Program Board (“EPB”), an instrumentality of the State of Delaware."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must register with EARNS and offer it to covered employees, or certify an exemption.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3804",
+       "quote": "When and as required by the Board, covered employers shall: a. Register with the Program and provide the program administrator relevant information about the employer’s employees."
+      },
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/employers/",
+       "quote": "All eligible employers must register or certify their exemption by the deadline"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more covered employees (now and in the prior year) in business in Delaware at least 6 months of the prior year.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3802",
+       "quote": "including a nonprofit entity, that employs, and during the previous calendar year employed, at least 5 covered employees, and that has been in business in this State for at least 6 months in the immediately preceding calendar year."
+      },
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/employers/program-details",
+       "quote": "Program eligibility You’re required to register if you: Have 5 or more employees* Have been in business since July 1 of the previous year Do not offer qualified retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Next registration deadline shown for newly eligible businesses: June 30, 2026.",
+     "deadline": "2026-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/employers/program-details",
+       "quote": "Newly eligible businesses June 30, 2026 NEXT deadline Businesses notified before January 1, 2026 Your registration deadline has passed"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers with a qualified plan or fewer than 5 employees certify an exemption.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/employers/program-details",
+       "quote": "Employers who provide a qualified retirement plan to their employees or have fewer than 5 employees should certify their exemption from the program using their provided Access Code."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals may join on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/",
+       "quote": "EARNS is available for: Delaware workers whose employers do not offer a workplace retirement plan Self-employed individuals"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "Administrative penalties up to $250 per employee per year, capped at $5,000 per year.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3805",
+       "quote": "The Board may, in a final order, impose administrative penalties against a covered employer who fails to comply with this chapter or any regulation promulgated under this chapter, which penalties shall not exceed $250 per employee per year, up to a maximum total penalty of $5,000 per year."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of gross pay unless the saver chooses otherwise; the board may set the default between 3% and 6%.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://earnsdelaware.com/savers/contributions/",
+       "quote": "The default savings rate for an EARNS account is 5% of your gross pay, and that amount is deducted from your paycheck after taxes have been taken out."
+      },
+      {
+       "kind": "statute",
+       "ref": "19 Del. C. § 3804",
+       "quote": "It shall not be less than 3% nor more than 6% of compensation."
+      }
+     ]
+    }
+   ],
+   "notes": "earnsdelaware.com refuses automated readers; its pages were read from Internet Archive captures (2026)."
+  },
+  {
+   "state": "hi",
+   "id": "hi_hrsp",
+   "name": "Hawaiʻi Retirement Savings Program (HRSP)",
+   "mandate": true,
+   "status": "enacted",
+   "board": "Hawaii Retirement Savings Board",
+   "website": "https://labor.hawaii.gov/hrsp/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Hawaii has a state-sponsored retirement savings program for private-sector employees without a workplace plan; it has not launched yet.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/",
+       "quote": "Welcome to the Hawaiʻi Retirement Savings Program (HRSP), a state-sponsored retirement savings plan designed for private-sector employees who don’t have access to an employer-sponsored retirement plan."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Hawaii Retirement Savings Board is finalizing the implementation plan.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/program-overview/",
+       "quote": "The Hawaii Retirement Savings Board is finalizing the implementation plan, and we will update this page with the next steps as soon as they are available."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Private-sector employers with at least one employee must facilitate HRSP or offer a qualifying plan; 2025 legislation switched the program to automatic enrollment.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/frequently-asked-questions/",
+       "quote": "If you are a private-sector employer in Hawaii with at least one employee, you must either: Enroll in and facilitate the state-run HRSP program. Offer your employee(s) a qualifying retirement plan, such as a 401(k)."
+      },
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/program-overview/",
+       "quote": "Automatic enrollment (Effective May 29, 2025): Recent legislation changed the program to an automatic enrollment model."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 1 or more employees (once the program is active).",
+     "employees_min": 1,
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/frequently-asked-questions/",
+       "quote": "If you are a private-sector employer in Hawaii with at least one employee, you must either: Enroll in and facilitate the state-run HRSP program. Offer your employee(s) a qualifying retirement plan, such as a 401(k)."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Projected program launch: late December 2026.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/",
+       "quote": "The Hawaiʻi Retirement Savings Program is projected to launch in late December 2026, provided there are no extenuating circumstances."
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that already offer a qualified retirement plan are exempt.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/employers/",
+       "quote": "Exemption for existing plans: If you already offer a qualified retirement plan to your employees, you are exempt from the program."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "Once the program is active, noncompliant employers may face penalties of up to $5,000 per calendar year.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/frequently-asked-questions/",
+       "quote": "required to participate and fail to do so once the program is active, you may face penalties. These penalties could be up to $5,000 per calendar year."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of compensation unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://labor.hawaii.gov/hrsp/program-overview/",
+       "quote": "Default contribution rate: The default contribution rate is set at 5% of your compensation."
+      }
+     ]
+    }
+   ],
+   "notes": "Hawaii's program statute (HRS chapter 389) is not in this copy's statute index, so the entry rests on the Department of Labor and Industrial Relations' official HRSP pages (read live 2026-10-22). In February 2026 the board voted to join Connecticut's MyCT partnership."
+  },
+  {
+   "state": "il",
+   "id": "il_my_illinois_savings",
+   "name": "My Illinois Savings (formerly Illinois Secure Choice)",
+   "mandate": true,
+   "status": "open",
+   "board": "Illinois Secure Choice Savings Board",
+   "website": "https://www.illinoistreasurer.gov/home/individuals/my-illinois-savings/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The Illinois Secure Choice Savings Program Act created the state program, now branded My Illinois Savings.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.illinoistreasurer.gov/Individuals/Secure_Choice",
+       "quote": "The Illinois Secure Choice Savings Program Act [820 ILCS 80] establishes a state-facilitated retirement savings program, now known as My Illinois Savings, for private-sector workers in Illinois who lack access to a qualified employer-sponsored retirement plan."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.illinoistreasurer.gov/Individuals/Secure_Choice",
+       "quote": "My Illinois Savings, formerly known as Illinois Secure Choice, is a state-facilitated retirement savings program that provides Illinois workers with a simple way to save for the future."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A seven-member Illinois Secure Choice Savings Board, chaired by the State Treasurer, governs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/20",
+       "quote": "There is created the Illinois Secure Choice Savings Board. (a) The Board shall consist of the following 7 members: (1) the State Treasurer, or his or her designee, who shall serve as chair;"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must set up payroll deposit to the program on the Board's timeline unless they offer their own qualified plan.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/60",
+       "quote": "Each employer shall establish a payroll deposit retirement savings arrangement to allow each employee to participate in the Program within the timeline set by the Board after the Program opens for enrollment."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.ilsecurechoice.com/",
+       "quote": "State law now requires every Illinois employer with five or more employees to offer their own retirement program or facilitate Secure Choice."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with at least 5 Illinois employees in every quarter of the prior year and 2 or more years in business; the statute sets the 5-15 employee enrollment deadline no sooner than September 1, 2023.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/5",
+       "quote": "\"Employer\" means a person or entity engaged in a business, industry, profession, trade, or other enterprise in Illinois, whether for profit or not for profit, that (i) has employed at least 5 employees in the State during every quarter of the previous calendar year, (ii) has been in business at least 2 years,"
+      },
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/60",
+       "quote": "The enrollment deadline for employers with at least 5 employees but not more than 15 employees shall be no sooner than September 1, 2023."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.illinoistreasurer.gov/Individuals/Secure_Choice",
+       "quote": "Under Illinois law, businesses must participate in My Illinois Savings or offer a qualified retirement plan if they: Had at least five Illinois employees in every quarter of the previous calendar year Have been in business for two or more years"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that offer or contribute to a qualified plan (401(k), 403(b), SEP, SIMPLE and similar) are not covered.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/5",
+       "quote": "and (iii) is not offering or contributing to a qualified retirement plan, including, but not limited to, a plan qualified under Section 401(a), Section 401(k), Section 403(a), Section 403(b),"
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Anyone, including self-employed people, may sign up on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.illinoistreasurer.gov/Individuals/Secure_Choice",
+       "quote": "is also available to people who choose to sign up on their own, including self-employed individuals."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "$250 per employee for the first noncompliant calendar year and $500 per employee for each later noncompliant year.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "820 ILCS 80/85",
+       "quote": "shall be subject to a penalty equal to: (1) $250 per employee for the first calendar year the employer is noncompliant; or (2) $500 per employee for each subsequent calendar year the employer is noncompliant;"
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of pay into a target-date Roth IRA unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.illinoistreasurer.gov/Individuals/Secure_Choice",
+       "quote": "Workers who participate in My Illinois Savings are automatically enrolled in a default target-date Roth IRA with a default 5% payroll contribution."
+      }
+     ]
+    }
+   ],
+   "notes": "The program was renamed My Illinois Savings (Treasurer's page, read live 2026-10-22); ilsecurechoice.com now redirects to myilsavings.com, which refuses automated readers, so the ilsecurechoice.com quote comes from a June 2026 archive capture. The statute gives only 'no sooner than' floors for the 16-24 and 5-15 waves; the Board's actual wave dates were not found on a readable page."
+  },
+  {
+   "state": "ma",
+   "id": "ma_core_plan",
+   "name": "Massachusetts CORE Plan (Connecting Organizations to Retirement)",
+   "mandate": false,
+   "status": "open",
+   "board": "Office of the State Treasurer and Receiver General",
+   "website": "https://www.mass.gov/core-plan-for-nonprofits",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The Treasurer may sponsor a qualified defined contribution plan that small nonprofits can adopt.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Mass. Gen. Laws ch. 29, sec. 64E",
+       "quote": "The treasurer and receiver general, on behalf of the commonwealth, may sponsor a qualified defined contribution plan within the meaning of section 414(i) of the Internal Revenue Code,"
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The State Treasurer's office sponsors the plan and handles most administration and investment.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.mass.gov/core-plan",
+       "quote": "The Office of the State Treasurer and Receiver General, as sponsor of the CORE Plan, assumes most administrative and investment responsibilities, reducing the burden on participating nonprofit employers."
+      }
+     ]
+    },
+    {
+     "kind": "voluntary",
+     "text": "A voluntary 401(k) for Massachusetts nonprofits with 100 or fewer employees (the limit was 20 before July 1, 2025); employers choose to adopt it.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.mass.gov/core-plan",
+       "quote": "The Massachusetts Defined Contribution CORE Plan (“CORE Plan”) is a tax deferred and post-tax 401(k) savings plan developed for employees of eligible small nonprofit organizations that choose to adopt it."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.mass.gov/core-plan",
+       "quote": "Massachusetts nonprofit organizations with 100 employees or fewer may be eligible to adopt the CORE Plan."
+      },
+      {
+       "kind": "statute",
+       "ref": "Mass. Gen. Laws ch. 29, sec. 64E",
+       "quote": "doing business in the commonwealth and employing not more than 100 persons, but shall not include a governmental employer."
+      }
+     ]
+    }
+   ],
+   "notes": "A voluntary 401(k) for nonprofits, not an auto-IRA."
+  },
+  {
+   "state": "md",
+   "id": "md_marylandsaves",
+   "name": "MarylandSaves (the Maryland Small Business Retirement Savings Program)",
+   "mandate": true,
+   "status": "open",
+   "board": "Maryland Small Business Retirement Savings Board",
+   "website": "https://www.marylandsaves.org/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Maryland law creates the Maryland Small Business Retirement Savings Program, made of payroll deposit IRA arrangements chosen by the Board (MarylandSaves).",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-401",
+       "quote": "The Maryland Small Business Retirement Savings Program shall only include one or more payroll deposit IRA arrangements as determined by the Board."
+      },
+      {
+       "kind": "page",
+       "url": "https://marylandsaves.org/",
+       "quote": "Maryland’s retirement and emergency savings program designed for small businesses and those who make them"
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Maryland Small Business Retirement Savings Board, an instrumentality of the State, runs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-201",
+       "quote": "The Board is a body politic and corporate and is an instrumentality of the State."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must set up a payroll deposit arrangement and automatically enrol covered employees unless they opt out; an employer may instead offer its own plan at any time.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-402",
+       "quote": "After the Board opens the Program for enrollment, covered employers shall establish a payroll deposit retirement savings arrangement to allow employee participation in the Program."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "A covered employer is any private employer in Maryland, for profit or not, that pays its employees through a payroll system or service and has been in business during the current and preceding calendar year; there is no headcount floor.",
+     "employees_min": 1,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-101",
+       "quote": "“Covered employer” means a person engaged in a business, an industry, a profession, a trade, or any other enterprise in the State, whether for profit or not for profit, that pays the covered employer’s employees through a payroll system or service."
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Governments, employers offering (or having offered in the preceding two calendar years) their own savings arrangement, and employers not in business throughout the current and preceding year are not covered.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-101",
+       "quote": "an employer that currently offers an employer–offered savings arrangement that was established separately from the requirements of this title;"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "There is no fine: an employer not in compliance cannot receive the waiver of its State Department of Assessments and Taxation annual report filing fee.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "Md. Code, Labor and Employment § 12-402",
+       "quote": "If a covered employer is not in compliance with subsection (a) of this section, the covered employer may not receive a waiver of the filing fee"
+      },
+      {
+       "kind": "page",
+       "url": "https://marylandsaves.org/",
+       "quote": "Note: Your business must also be in good standing with SDAT to receive the fee waiver."
+      }
+     ]
+    }
+   ],
+   "notes": "Labor and Employment Title 12 as this copy's index holds it. The program's site describes the SDAT annual report fee waiver; the Board's rollout schedule was not on a page lexflow read."
+  },
+  {
+   "state": "me",
+   "id": "me_merit",
+   "name": "MERIT (Maine Retirement Investment Trust), the Maine Retirement Savings Program",
+   "mandate": true,
+   "status": "open",
+   "board": "Maine Retirement Savings Board",
+   "website": "https://meritsaves.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The Maine Retirement Savings Board develops and maintains the Maine Retirement Savings Program, offered as MERIT.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 172",
+       "quote": "to develop and maintain the Maine Retirement Savings Program for individuals employed or self-employed for wages or other compensation in this State."
+      },
+      {
+       "kind": "page",
+       "url": "https://meritsaves.com/",
+       "quote": "The Maine Retirement Investment Trust (MERIT) is a retirement savings program, created by the Maine Retirement Savings Board."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Maine Retirement Savings Board is a public instrumentality of the State.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 172",
+       "quote": "The Maine Retirement Savings Board is established as a body corporate and politic and a public instrumentality of the State pursuant to section"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must offer the program by automatically enrolling covered employees, who may opt out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 173",
+       "quote": "Notwithstanding any provision of state law related to payroll deduction to the contrary, require each covered employer to offer its covered employees the choice whether or not to contribute to a payroll deduction IRA by automatically enrolling them in the payroll deduction IRA with the opportunity to opt out."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more employees (in business 2 years): by December 31, 2024; employers with fewer than 5 may join voluntarily.",
+     "employees_min": 5,
+     "deadline": "2024-12-31",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 173",
+       "quote": "A covered employer shall offer the program to its covered employees no later than December 31, 2024. A covered employer with fewer than 5 employees is not required to offer the program to its covered employees"
+      },
+      {
+       "kind": "page",
+       "url": "https://www.maine.gov/treasurer/maine%20retirement%20savings%20board",
+       "quote": "Maine employers having five or more Maine employees and have been in business for two years must register with the MERIT at meritsaves.com."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Next registration deadline shown for newly eligible businesses: June 30, 2026.",
+     "deadline": "2026-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://meritsaves.com/employers/program-details",
+       "quote": "Newly eligible businesses June 30, 2026 NEXT deadline Businesses notified before January 1, 2026 Your registration deadline has passed"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers with a qualified plan or fewer than 5 employees certify an exemption.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://meritsaves.com/employers/program-details",
+       "quote": "Employers who provide a qualified retirement plan to their employees or have fewer than 5 employees should certify their exemption from the program using their provided Access Code."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals may join on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://meritsaves.com/",
+       "quote": "MERIT is available for: Maine workers whose employers do not offer a workplace retirement plan Self-employed individuals"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "Maximum penalty per unenrolled covered employee: $20 (July 2025-June 2026), $50 (July 2026-June 2027), $100 from July 1, 2027.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 173",
+       "quote": "(1) From July 1, 2025 to June 30, 2026, the maximum penalty per covered employee is $20; (2) From July 1, 2026 to June 30, 2027, the maximum penalty per covered employee is $50; and (4) On or after July 1, 2027, the maximum penalty per covered employee is $100."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of pay unless the saver chooses otherwise; the board may change it.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "5 M.R.S. § 173",
+       "quote": "The board is authorized to change, from time to time, the 5% automatic initial default contribution rate for all covered employees in its discretion;"
+      }
+     ]
+    }
+   ],
+   "notes": "meritsaves.com and maine.gov refuse automated readers; their pages were read from Internet Archive captures (2026)."
+  },
+  {
+   "state": "mn",
+   "id": "mn_secure_choice",
+   "name": "Minnesota Secure Choice Retirement Program",
+   "mandate": true,
+   "status": "open",
+   "board": "Secure Choice Retirement Program Board of Directors",
+   "website": "https://securechoice.mn.gov/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The board operates a payroll-deduction IRA program for employees of covered employers.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.05",
+       "quote": "The board must operate an employee retirement savings program whereby employee payroll deduction contributions are transmitted on an after-tax or pretax basis by covered employers to individual retirement accounts established under the program."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A seven-member board of directors sets program policy.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.08",
+       "quote": "The policy-making function of the program is vested in a board of directors consisting of seven members as follows:"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must enroll covered employees and withhold contributions within 30 days of hire, unless the employee opts out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.07",
+       "quote": "Each covered employer must enroll its covered employees in the program and withhold payroll deduction contributions from each covered employee's paycheck no later than 30 days after the covered employee's first day of employment, unless the covered employee has elected not to contribute."
+      },
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "All eligible Minnesota employers are required by law to facilitate Minnesota Secure Choice if they don’t offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 100 or more employees: by June 30, 2026.",
+     "employees_min": 100,
+     "deadline": "2026-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers with 100+ Employees June 30, 2026 deadline Upcoming Deadlines 50 to 99 employees: December 31, 2026 25-49 employees: June 30, 2027 10-24 employees: December 31, 2027 5-9 employees: June 30, 2028"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 50-99 employees: by December 31, 2026.",
+     "employees_min": 50,
+     "deadline": "2026-12-31",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers with 100+ Employees June 30, 2026 deadline Upcoming Deadlines 50 to 99 employees: December 31, 2026 25-49 employees: June 30, 2027 10-24 employees: December 31, 2027 5-9 employees: June 30, 2028"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 25-49 employees: by June 30, 2027.",
+     "employees_min": 25,
+     "deadline": "2027-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers with 100+ Employees June 30, 2026 deadline Upcoming Deadlines 50 to 99 employees: December 31, 2026 25-49 employees: June 30, 2027 10-24 employees: December 31, 2027 5-9 employees: June 30, 2028"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 10-24 employees: by December 31, 2027.",
+     "employees_min": 10,
+     "deadline": "2027-12-31",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers with 100+ Employees June 30, 2026 deadline Upcoming Deadlines 50 to 99 employees: December 31, 2026 25-49 employees: June 30, 2027 10-24 employees: December 31, 2027 5-9 employees: June 30, 2028"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5-9 employees: by June 30, 2028.",
+     "employees_min": 5,
+     "deadline": "2028-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers with 100+ Employees June 30, 2026 deadline Upcoming Deadlines 50 to 99 employees: December 31, 2026 25-49 employees: June 30, 2027 10-24 employees: December 31, 2027 5-9 employees: June 30, 2028"
+      },
+      {
+       "kind": "statute",
+       "ref": "187.03",
+       "quote": "engaged in a business, industry, profession, trade, or other enterprise in Minnesota, whether for profit or not for profit; (2) that employs five or more covered employees; and (3) that does not sponsor or contribute to"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers in business in Minnesota under 12 months, with fewer than five employees, or that sponsor or contributed to a retirement plan in the past 12 months may certify they are not covered.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.05",
+       "quote": "the entity or person has not been engaged for at least 12 months in a business, industry, profession, trade, or other enterprise in Minnesota, whether for profit or not for profit; (2) the entity or person does not employ five or more employees; (3) the entity or person sponsors or contributes to"
+      },
+      {
+       "kind": "page",
+       "url": "https://securechoice.mn.gov/employers/program-details",
+       "quote": "Employers who provide a qualified retirement plan to their employees should certify their exemption from the program using their provided Access Code."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "From the second anniversary of the compliance date: $100 per covered employee (max $4,000), then $200 (max $6,000), then $300, then $500 per covered employee each later year; doubled if both enrollment and notice duties are missed.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.12",
+       "quote": "on the second anniversary, a penalty of $100 per covered employee, not to exceed $4,000; (2) on the third anniversary, a penalty of $200 per covered employee, not to exceed $6,000; (3) on the fourth anniversary, a penalty of $300 per covered employee; and (4) on each anniversary after the fourth anniversary, a penalty of $500 per covered employee."
+      },
+      {
+       "kind": "statute",
+       "ref": "187.12",
+       "quote": "If the covered employer fails to comply with section 187.07, subdivisions 1 and 3, the board must assess two times the penalties in paragraph (b)."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of pay in the first year, then 6%, 7% and 8%, unless the board sets other rates or the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "187.07",
+       "quote": "(1) five percent of pay for the covered employee's first year of participation; (2) six percent of pay for the covered employee's second year of participation;"
+      }
+     ]
+    }
+   ],
+   "notes": "securechoice.mn.gov refuses automated readers; read from an Internet Archive capture (April 2026). No self-employed fact: the pages read did not say whether individuals may join on their own."
+  },
+  {
+   "state": "mo",
+   "id": "mo_show_me_myretirement",
+   "name": "Show-Me MyRetirement Savings Plan",
+   "mandate": false,
+   "status": "enacted",
+   "board": "Show-Me MyRetirement Savings Board",
+   "website": null,
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Missouri's board must adopt and run a pooled retirement plan called the Show-Me MyRetirement Savings Plan.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "285.1015",
+       "quote": "The board shall, consistent with federal law and regulation, adopt and implement the plan, which shall remain in compliance with federal law and regulations once implemented and shall be called the \"Show-Me MyRetirement Savings Plan\"."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Show-Me MyRetirement Savings Board sits in the State Treasurer's office.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "285.1005",
+       "quote": "The \"Show-Me MyRetirement Savings Board\" is hereby established in the office of the state treasurer."
+      }
+     ]
+    },
+    {
+     "kind": "voluntary",
+     "text": "The plan is voluntary for eligible employers and self-employed individuals.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "285.1015",
+       "quote": "Be available on a voluntary basis to eligible employers and self-employed individuals;"
+      }
+     ]
+    }
+   ],
+   "notes": "Status is from the statute alone: the Treasurer's home page read on 2026-10-22 did not mention the plan, and no official page confirming a launch was found, so 'enacted' is unverified."
+  },
+  {
+   "state": "nj",
+   "id": "nj_retirement_marketplace",
+   "name": "New Jersey Small Business Retirement Marketplace",
+   "mandate": false,
+   "status": "enacted",
+   "board": "New Jersey Department of the Treasury",
+   "website": null,
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "New Jersey established a Small Business Retirement Marketplace in the Department of the Treasury.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-4",
+       "quote": "There is established the New Jersey Small Business Retirement Marketplace in the Department of the Treasury."
+      }
+     ]
+    },
+    {
+     "kind": "voluntary",
+     "text": "Employers with fewer than 100 qualified employees may choose to offer approved plans; employee enrollment is voluntary.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-3",
+       "quote": "\"Participating employer\" means any eligible employer with employees enrolled in an approved plan offered through the New Jersey Small Business Retirement Marketplace who chooses to participate in the marketplace and offers approved plans to employees for voluntary enrollment."
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-3",
+       "quote": "or any other employer that is actively engaged in business with fewer than 100 qualified employees at the time of enrollment, and a majority of which employees are employed in New Jersey."
+      }
+     ]
+    }
+   ],
+   "notes": "Status is from the statute alone: no official page showing the marketplace in operation was found, so 'enacted' is unverified. RetireReady NJ (above) is the separate mandatory program."
+  },
+  {
+   "state": "nj",
+   "id": "nj_retireready",
+   "name": "RetireReady NJ (New Jersey Secure Choice Savings Program)",
+   "mandate": true,
+   "status": "open",
+   "board": "New Jersey Secure Choice Savings Board",
+   "website": "https://www.nj.gov/treasury/securechoiceprogram/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "New Jersey established the Secure Choice Savings Program, an automatic-enrollment payroll IRA offered as RetireReady NJ.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-15",
+       "quote": "A retirement savings program in the form of an automatic enrollment payroll deduction IRA, known as the New Jersey Secure Choice Savings Program, is hereby established and shall be administered by the board"
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Secure Choice Savings Board, in but not of the Department of the Treasury, governs RetireReady NJ.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-18",
+       "quote": "There is established in, but not of, the Department of the Treasury the New Jersey Secure Choice Savings Board."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "RetireReady NJ is governed by the Secure Choice Savings Board (\"the Board\"), an instrumentality of the State of New Jersey."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers (10+ employees, 2+ years in business, no qualified plan) must sign up and offer payroll deposit to the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-26",
+       "quote": "Each employer shall establish a payroll deposit retirement savings arrangement to allow each employee to participate in the program not more than nine months after the board opens the program for enrollment."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "If you are a business who has 10 or more employees, does not offer a retirement program and has been in business for at least two years, you are required to sign up for RetireReady NJ."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 40 or more employees: implementation deadline September 15, 2024 (penalty exposure if not registered by June 15, 2025).",
+     "employees_min": 40,
+     "deadline": "2024-09-15",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "For those employers who have 40 or more employees, your implementation deadline is September 15, 2024. Should you fail to register before June 15, 2025, you may be subject to penalties in accordance with the statute."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 25-39 employees: implementation deadline November 15, 2024 (penalty exposure if not registered by August 15, 2025).",
+     "employees_min": 25,
+     "deadline": "2024-11-15",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "For those employers who have 25-39 employees, your implementation deadline is set for November 15, 2024. Should you fail to register before August 15, 2025, you may be subject to penalties in accordance with the statute."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 20-24 employees: implementation deadline December 1, 2026 (penalty exposure if not registered by September 1, 2027).",
+     "employees_min": 20,
+     "deadline": "2026-12-01",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "For those employers who have 20-24 employees, your implementation deadline is set for December 1, 2026. Should you fail to register before September 1, 2027, you may be subject to penalties in accordance with the statute."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 10-19 employees: implementation deadline February 17, 2027 (penalty exposure if not registered by November 17, 2027).",
+     "employees_min": 10,
+     "deadline": "2027-02-17",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "For those employers who have 10-19 employees, your implementation deadline is set for February 17, 2027. Should you fail to register before November 17, 2027, you may be subject to penalties in accordance with the statute."
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-14",
+       "quote": "that has at no time during the previous calendar year employed fewer than 10 employees in the State, has been in business at least two years, and has not offered a qualified retirement plan,"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that open their own qualified plan (401(k), 403(b), SEP, SIMPLE, defined benefit and similar) are exempt.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.nj.gov/treasury/securechoiceprogram/board-info.shtml",
+       "quote": "Should you wish to open your own qualified program, including but not limited to the following structures, you are welcome to do so and it exempts your business of the requirements above"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "Written warning for the first year of violation, then $100, then $250 per unenrolled employee (years 3-4) and $500 per unenrolled employee (year 5 on); failing to remit collected contributions is $2,500 / $5,000.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-31",
+       "quote": "An employer who fails without reasonable cause to enroll any employee within the time prescribed under section 14 of P.L.2019, c.56 (C.43:23-26) shall be subject to: (1) for the first calendar year during which at any point a violation occurs, a written warning by the department;"
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-31",
+       "quote": "(2) for the second calendar year during which at any point a violation occurs, a fine of $100; (3) for the third and fourth calendar years during which at any point a violation occurs, a fine of $250 for each employee who was not enrolled in the program;"
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-31",
+       "quote": "(4) for the fifth year and any subsequent calendar year during which at any point a violation occurs, a fine of $500 for each employee who was not enrolled in the program."
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-31",
+       "quote": "An employer who collects employee contributions but fails to remit any portion of the contributions to the fund shall be subject to a penalty of $2,500 for a first offense, and $5,000 for the second and each subsequent offense."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "3% of wages unless the saver chooses otherwise, rising 1 point a year up to 10%.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-26",
+       "quote": "If an enrollee fails to select a contribution level using the form described in subsection d. of section 13 of P.L.2019, c.56 (C.43:23-25), then the enrollee shall contribute three percent of the enrollee’s wages to the program,"
+      },
+      {
+       "kind": "statute",
+       "ref": "N.J. Stat. § 43:23-26",
+       "quote": "This contribution level shall be increased by one percent each year; this increased contribution level shall not exceed ten percent of the enrollee’s wages to the program."
+      }
+     ]
+    }
+   ],
+   "notes": "A 2026 amendment lowered coverage from 25 to 10 employees; the statute index and the Treasury page both show the 10-employee rule. retirereadynj.com is not an official program site (it points to a private advisory firm) and was not used; the official site RetireReady.NJ.gov redirects to the Treasury pages quoted here."
+  },
+  {
+   "state": "nm",
+   "id": "nm_work_and_save",
+   "name": "New Mexico Work and Save IRA Program and Retirement Plan Marketplace",
+   "mandate": false,
+   "status": "enacted",
+   "board": "New Mexico Work and Save Board",
+   "website": "https://nmsto.gov/special-programs/work-and-save",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The Work and Save Act created a voluntary Roth IRA program and a retirement plan marketplace.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "58-33-8",
+       "quote": "The board shall provide for the design and implementation of the New Mexico retirement plan marketplace website."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The New Mexico Work and Save Board is attached to the State Treasurer's office.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "58-33-3",
+       "quote": "The \"New Mexico work and save board\" is created and is administratively attached to the office of the state treasurer."
+      }
+     ]
+    },
+    {
+     "kind": "voluntary",
+     "text": "Employers choose whether to participate; the program is voluntary for employers and employees.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "58-33-9",
+       "quote": "provide that a covered employer may voluntarily choose to participate in the New Mexico work and save IRA program;"
+      },
+      {
+       "kind": "page",
+       "url": "https://nmsto.gov/special-programs/work-and-save",
+       "quote": "The program is voluntary for both employers and employees."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "The law allows self-employed individuals to save through the program.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://nmsto.gov/special-programs/work-and-save",
+       "quote": "allows for a voluntary savings program for private-sector employees, nonprofit employees, and self-employed individuals via a Roth Individual Retirement Account;"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Not operational: the program has been delayed with no launch date.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://nmsto.gov/special-programs/work-and-save",
+       "quote": "That legislation did not move forward either. Therefore, the New Mexico Work and Save program is not currently operational and has been delayed."
+      }
+     ]
+    }
+   ],
+   "notes": "Enacted 2020 but not operational (Treasurer's page, June 2025 archive capture). Bills to make it mandatory did not pass."
+  },
+  {
+   "state": "nv",
+   "id": "nv_nest",
+   "name": "Nevada Employee Savings Trust (NEST)",
+   "mandate": true,
+   "status": "open",
+   "board": "Board of Trustees of the Nevada Employee Savings Trust",
+   "website": "https://nest.nv.gov/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "The Board establishes the Nevada Employee Savings Trust Program under NRS chapter 353D.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "353D.130",
+       "quote": "“Program” means the Nevada Employee Savings Trust Program established by the Board pursuant to NRS 353D.300."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Board of Trustees of the Nevada Employee Savings Trust runs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "353D.200",
+       "quote": "There is hereby created the Board of Trustees of the Nevada Employee Savings Trust."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must automatically enroll covered employees (in NEST or a similar trade-association or chamber program), who may opt out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "353D.310",
+       "quote": "Each covered employer shall automatically enroll the covered employee in the Program or in a similar program offered by a trade association or chamber of commerce, unless the employee elects to opt out of the Program,"
+      },
+      {
+       "kind": "page",
+       "url": "https://nest.nv.gov/employers/program-details",
+       "quote": "All eligible Nevada employers are required by law to facilitate NEST if they don’t offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with more than five (6 or more) employees in Nevada, in business at least 36 months, without a tax-favored plan.",
+     "employees_min": 6,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "353D.070",
+       "quote": "“Covered employer” means an employer that: 1. Employs more than five persons in this State; 2. Has been in business for at least 36 months; and"
+      },
+      {
+       "kind": "page",
+       "url": "https://nest.nv.gov/employers/program-details",
+       "quote": "You’re required to register if you: Have 6 or more employees Have been in business for at least 3 years Do not offer qualified retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Registration deadline shown for new businesses: June 30, 2026.",
+     "deadline": "2026-06-30",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://nest.nv.gov/employers/program-details",
+       "quote": "New businesses Registration June 30, 2026 deadline How do I get started?"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that maintained a tax-favored retirement plan in the current year or the 3 preceding years are not covered.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "353D.070",
+       "quote": "Has not maintained a tax-favored retirement plan for its employees or has not done so in an effective form and operation at any time within the current calendar year or 3 immediately preceding calendar years."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of gross pay, rising 1 point a year, unless the saver chooses otherwise (the rate is set by the Board).",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://nest.nv.gov/savers/contributions",
+       "quote": "The default savings rate for a The Nevada Employee Savings Trust (NEST) account is 5% of your gross pay, and that amount is deducted from your paycheck after taxes have been taken out."
+      },
+      {
+       "kind": "statute",
+       "ref": "353D.310",
+       "quote": "Contributions must be withheld from the compensation of each covered employee at the contribution rate set by the Board unless the covered employee elects not to contribute or to contribute at a different rate."
+      }
+     ]
+    }
+   ],
+   "notes": "No penalty section appears in the NRS 353D index and none was stated on the pages read, so no penalty fact is recorded. nest.nv.gov refuses automated readers; read from Internet Archive captures (April 2026)."
+  },
+  {
+   "state": "ny",
+   "id": "ny_secure_choice",
+   "name": "New York State Secure Choice Savings Program",
+   "mandate": true,
+   "status": "open",
+   "board": "New York State Secure Choice Savings Program Board",
+   "website": "https://www.newyorksecurechoice.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "New York established the Secure Choice Savings Program as an automatic-enrollment payroll IRA.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1301",
+       "quote": "There is hereby established a retirement savings program in the form of an automatic enrollment payroll deduction IRA, known as the New York state secure choice savings program."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A seven-member board chaired by the Commissioner of Taxation and Finance (or designee) runs the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1302",
+       "quote": "There is hereby created the New York state secure choice savings program board. 1. The board shall consist of the following seven members: (a) the commissioner, or his or her designee, who shall serve as chair;"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers without a qualified plan must facilitate the program and automatically enroll employees, who may opt out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1310",
+       "quote": "Each participating employer shall have a payroll deposit retirement savings arrangement to allow each employee to participate in the program at most nine months after the board opens the program for enrollment."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/employers/",
+       "quote": "Eligible New York employers are required to facilitate the program if they don't offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 30 or more employees: register by March 18, 2026.",
+     "employees_min": 30,
+     "deadline": "2026-03-18",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/employers/program-details/",
+       "quote": "Employers required to facilitate the program must register by the following deadlines: 30 or more employees – March 18, 2026 15 to 29 employees – May 15, 2026 10 to 14 employees – July 15, 2026"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 15-29 employees: register by May 15, 2026.",
+     "employees_min": 15,
+     "deadline": "2026-05-15",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/employers/program-details/",
+       "quote": "Employers required to facilitate the program must register by the following deadlines: 30 or more employees – March 18, 2026 15 to 29 employees – May 15, 2026 10 to 14 employees – July 15, 2026"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 10-14 employees: register by July 15, 2026.",
+     "employees_min": 10,
+     "deadline": "2026-07-15",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/employers/program-details/",
+       "quote": "Employers required to facilitate the program must register by the following deadlines: 30 or more employees – March 18, 2026 15 to 29 employees – May 15, 2026 10 to 14 employees – July 15, 2026"
+      },
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1300",
+       "quote": "has at all times during the previous calendar year employed at least ten employees in the state, (ii) has been in business at least two years, and (iii) has not offered a qualified retirement plan,"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that offer a qualified plan (401(k), 403(b), SEP, SIMPLE, 457(b) and similar), have fewer than 10 employees, or have been in business under 2 years are not covered.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1300",
+       "quote": "has not offered a qualified retirement plan, including, but not limited to, a plan qualified under sections 401(a), 401(k), 403(a), 403(b), 408(k), 408(p) or 457(b)"
+      },
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/employers/program-details/",
+       "quote": "You’re required to register and facilitate the program if you: have 10 or more employees, do not offer a qualified retirement plan, and have been in business for at least two years."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "3% of wages unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "N.Y. GBS Law § 1310",
+       "quote": "If an enrollee fails to select a contribution level using the form described in this article, then he or she shall contribute three percent of his or her wages to the program,"
+      },
+      {
+       "kind": "page",
+       "url": "https://www.newyorksecurechoice.com/savers/contributions/",
+       "quote": "The default savings rate for a New York Secure Choice account is 3% of your gross pay."
+      }
+     ]
+    }
+   ],
+   "notes": "No penalty provision was found in the statute index (GBS §§ 1300-1313) or on the pages read, so no penalty fact is recorded. newyorksecurechoice.com refuses automated readers; read from Internet Archive captures (March-May 2026)."
+  },
+  {
+   "state": "or",
+   "id": "or_oregonsaves",
+   "name": "OregonSaves (Oregon Retirement Savings Plan)",
+   "mandate": true,
+   "status": "open",
+   "board": "Oregon Retirement Savings Board",
+   "website": "https://www.oregonsaves.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Oregon's Retirement Savings Board must develop and run a retirement savings plan for people working in the state; OregonSaves is that plan.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "178.205",
+       "quote": "The Oregon Retirement Savings Board shall develop a defined contribution retirement plan for persons employed for compensation in this state and conduct a market and legal analysis of the plan."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A seven-member Oregon Retirement Savings Board sits in the State Treasurer's office.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "178.200",
+       "quote": "The Oregon Retirement Savings Board is established in the office of the State Treasurer. The board consists of seven members as follows:"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Employers that do not offer a qualified retirement plan must let employees contribute to OregonSaves through payroll deduction.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "178.210",
+       "quote": "Require an employer to offer its employees the opportunity to contribute to the plan through payroll deductions unless the employer offers a qualified retirement plan,"
+      },
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/employers/program-details",
+       "quote": "All Oregon employers are required by law to facilitate OregonSaves if they don’t offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers of all sizes (one or more employees) without a workplace plan must register or certify an exemption.",
+     "employees_min": 1,
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/",
+       "quote": "Oregon employers of all sizes who don’t already offer a workplace retirement plan must complete registration or certify exemption before their required deadline."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Next registration deadline shown for newly eligible businesses: July 31, 2026 (earlier waves have passed).",
+     "deadline": "2026-07-31",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/employers/program-details",
+       "quote": "Upcoming deadline July 31, 2026 For Newly eligible businesses"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that already offer a plan, have no W-2 employees, or are sole proprietors certify an exemption.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/employers",
+       "quote": "If you already offer a plan, your business has no W2 employees, or you’re a sole proprietor, use your unique Access Code and EIN to certify your exemption."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals may join OregonSaves on their own.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/",
+       "quote": "OregonSaves is available for: Oregon workers whose employers do not offer a workplace retirement plan Self-employed individuals Others who want an easy way to save in an Individual Retirement Account (IRA)"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "The Labor Commissioner may assess up to $100 per eligible employee, capped at $5,000 per calendar year.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "178.990",
+       "quote": "may assess against an employer who has engaged in an unlawful practice under ORS 178.250 a civil penalty in an amount up to $100 for each employee who is eligible to participate in the plan developed under ORS 178.205, not to exceed an aggregate amount of $5,000 in a calendar year."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of gross pay unless the saver chooses otherwise (the rate is set by board rule).",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.oregonsaves.com/employers",
+       "quote": "The default savings rate is 5 percent of gross pay, and they can change their rate at any time."
+      },
+      {
+       "kind": "statute",
+       "ref": "178.210",
+       "quote": "Have a default contribution rate set by the board by rule."
+      }
+     ]
+    }
+   ],
+   "notes": "Wave deadlines by employer size are set by board rule and were not found on a readable official page, so only the all-sizes coverage and the newly-eligible deadline are recorded. oregonsaves.com refuses automated readers; its pages were read from Internet Archive captures (2026)."
+  },
+  {
+   "state": "ri",
+   "id": "ri_risavers",
+   "name": "RISavers (Rhode Island Secure Choice Retirement Savings Program)",
+   "mandate": true,
+   "status": "open",
+   "board": "Office of the General Treasurer",
+   "website": "https://risavers.gov/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Rhode Island established a secure choice retirement savings program, run by the General Treasurer and offered as RISavers.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-3",
+       "quote": "There is hereby established a retirement savings program known as the Rhode Island secure choice retirement savings program to be administered by the office of the general treasurer"
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "There is no separate board; the Office of the General Treasurer administers and enforces the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-15",
+       "quote": "The office of the general treasurer shall have the power and duties necessary to administer the enforcement of employer compliance with this chapter, including the ability to impose penalties."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Once RISavers opens, eligible employers without a qualified plan must offer payroll deposit to the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-9",
+       "quote": "After the office of the general treasurer opens the RISavers retirement savings program for enrollment, eligible employers shall have a payroll deposit retirement savings arrangement to allow employee participation in the program under the terms and conditions prescribed by the office of the general treasurer."
+      },
+      {
+       "kind": "page",
+       "url": "https://risavers.gov/employers/program-details",
+       "quote": "All eligible Rhode Island employers are required by law to facilitate RISavers if they don’t offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with more than 100 eligible employees: within 12 months after the program opens.",
+     "employees_min": 101,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-9",
+       "quote": "Within twelve (12) months after the office of the general treasurer opens the program for enrollment, eligible employers with more than one hundred (100) eligible employees and that do not offer a retirement savings program pursuant to subsection (g) of this section shall have a payroll deposit retirement savings arrangement"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with more than 50 eligible employees: within 24 months after the program opens.",
+     "employees_min": 51,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-9",
+       "quote": "Within twenty-four (24) months after the office of the general treasurer opens the program for enrollment, eligible employers with more than fifty (50) eligible employees and that do not offer a retirement savings program pursuant to subsection (g) of this section shall have a payroll deposit retirement savings arrangement"
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "All other eligible employers (5 or more employees): within 36 months after the program opens.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-9",
+       "quote": "Within thirty-six (36) months after the office of the general treasurer opens the program for enrollment, all other eligible employers that do not offer a retirement savings program pursuant to subsection (g) of this section shall have a payroll deposit retirement savings arrangement"
+      },
+      {
+       "kind": "statute",
+       "ref": "35-23-2",
+       "quote": "that has five (5) or more employees and that satisfies the requirements to establish or participate in a payroll deposit retirement savings arrangement."
+      },
+      {
+       "kind": "page",
+       "url": "https://risavers.gov/employers/program-details",
+       "quote": "You’re required to register if you: Have 5 or more employees Do not offer qualified retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "The program page showed a registration window closing December 12, 2025 for new businesses (an onboarding milestone; statutory waves run 12/24/36 months from opening).",
+     "deadline": "2025-12-12",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://risavers.gov/employers/program-details",
+       "quote": "New Business REgistration December 12, 2025 Registration Window Closes Register your business today"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Employers that provide a tax-qualified retirement plan are not eligible employers; government employers are excluded.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-2",
+       "quote": "does not include an employer that provides a tax-qualified retirement savings program as described in § 35-23-9."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "$250 per eligible employee if the employer still fails to comply 30 days after a penalty notice.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "35-23-15",
+       "quote": "Each eligible employer that, without good cause, fails to allow its eligible employees to participate in the program within thirty (30) days from the date the notice of penalty was issued, shall be subject to a penalty of two hundred fifty dollars ($250) per eligible employee."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of gross pay, rising 1 point a year, unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://risavers.gov/savers/contributions",
+       "quote": "The default savings rate for a RISavers account is 5% of your gross pay, and that amount is deducted from your paycheck after taxes have been taken out."
+      }
+     ]
+    }
+   ],
+   "notes": "RISavers opened for enrollment in late 2025 (per secondary reporting; the official page confirms registration is open). The statutory waves are relative to the opening date, which no quoted source states, so tiers carry no ISO deadlines. risavers.gov refuses automated readers; read from Internet Archive captures (April 2026)."
+  },
+  {
+   "state": "va",
+   "id": "va_retirepath",
+   "name": "RetirePath Virginia (the Commonwealth Savers Plan's state-facilitated IRA savings program)",
+   "mandate": true,
+   "status": "open",
+   "board": "Board of the Commonwealth Savers Plan",
+   "website": "https://www.retirepathvirginia.com/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Virginia law authorizes the Commonwealth Savers Plan to establish and administer a state-facilitated IRA savings program for private-sector workers (RetirePath Virginia).",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2745",
+       "quote": "the Plan is authorized, in accordance with this chapter, to establish a state-facilitated IRA savings program for private-sector workers. The Program shall be sponsored and administered by the Plan."
+      },
+      {
+       "kind": "page",
+       "url": "https://www.retirepathvirginia.com/",
+       "quote": "RetirePath was created by Virginia state law to expand access to retirement savings and provide more Virginians with a path to economic security."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The governing board of the Commonwealth Savers Plan administers the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2744",
+       "quote": "\"Board\" means the governing board of the Commonwealth Savers Plan."
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Participation is mandatory for eligible employers: they must enrol on the Plan's timeline and offer payroll deposit into the program; each eligible employee is enrolled unless he opts out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2751",
+       "quote": "Participation in the Program shall be mandatory for eligible employers. Eligible employers shall enroll in the Program in accordance with the timeline established by the Plan."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "An eligible employer is a private (for-profit or nonprofit) employer in Virginia with five or more eligible employees at the end of the preceding calendar year.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2744",
+       "quote": "that employed five or more eligible employees for the period ending December 31 of the preceding calendar year prior to the Program's open enrollment period for that calendar year."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Enrollment of eligible employers began on July 1, 2023 (or as soon as practicable); the Board sets and may alter the rollout deadlines with reasonable notice.",
+     "deadline": "2023-07-01",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2751",
+       "quote": "The Program shall be established and enrollment of eligible employers shall begin on July 1, 2023, or as soon thereafter as practicable."
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "An employer that sponsors or contributes to a qualified retirement plan (401(a), 401(k), 403(a), 403(b), SEP or SIMPLE IRA) is not an eligible employer.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2744",
+       "quote": "\"Eligible employer\" does not include an employer that sponsors, maintains, or contributes to a qualified employer-sponsored retirement plan in compliance with federal law for its employees"
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "A self-employed person, or an employee whose employer does not facilitate the program, may join on terms the Board sets.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2751",
+       "quote": "Any employee whose employer does not facilitate his participation in the Program pursuant to subdivision 1 or any self-employed individual may participate in the Program under terms and conditions prescribed by the Board."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "The Board sets procedures and penalties for noncompliance, not to exceed $200 per eligible employee a year.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "2.2-2747",
+       "quote": "Procedures for noncompliance with this chapter, including development of enforcement mechanisms and penalties not to exceed $200 per eligible employee annually;"
+      }
+     ]
+    }
+   ],
+   "notes": "The program's site (retirepathva.com) renders its content with scripts, so only its description could be read; the size thresholds, deadlines and penalties rest on Va. Code §§ 2.2-2744 to 2.2-2751 as this copy's index holds them (2026 amendments, cc. 84 and 85, included). Rollout deadlines by employer size are set by the Board and were not on a page lexflow could read."
+  },
+  {
+   "state": "vt",
+   "id": "vt_vermont_saves",
+   "name": "Vermont Saves",
+   "mandate": true,
+   "status": "open",
+   "board": "Office of the State Treasurer",
+   "website": "https://vtsaves.vermont.gov/",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Vermont established the Vermont Saves Program, administered by the State Treasurer's office, to give employees of companies without a plan access to an IRA.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 532",
+       "quote": "There is established the Vermont Saves Program (Program), administered by the Office of the State Treasurer, for the purpose of increasing financial security for Vermonters by providing access to an IRA for Vermont employees of companies that do not currently offer a retirement savings program."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "There is no separate board; the State Treasurer administers the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 532",
+       "quote": "The Treasurer shall administer and implement the provisions of this chapter or contract with a vendor to administer the Program and manage the investments in accordance with this chapter,"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must automatically enroll covered employees in a payroll-deduction IRA, with the right to opt out.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 532",
+       "quote": "notwithstanding any other provision of law to the contrary, require each covered employer to offer its covered employees the choice to contribute to a payroll deduction IRA by automatically enrolling them in the payroll deduction IRA with the opportunity to opt out."
+      },
+      {
+       "kind": "page",
+       "url": "https://vtsaves.vermont.gov/employers/program-details",
+       "quote": "All eligible Vermont employers are required by law to facilitate Vermont Saves if they don’t offer a retirement plan for their employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Employers with 5 or more employees, in business at least 2 years, without a qualified plan must register.",
+     "employees_min": 5,
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://vtsaves.vermont.gov/employers/program-details",
+       "quote": "You’re required to register if you: Have 5 or more employees Have been in business for at least 2 years Do not offer qualified retirement plan"
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "Registration deadline shown for new businesses: March 1, 2025.",
+     "deadline": "2025-03-01",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://vtsaves.vermont.gov/employers/program-details",
+       "quote": "New businesses Registration March 1, 2025 deadline Register your business today"
+      }
+     ]
+    },
+    {
+     "kind": "exemption",
+     "text": "Government employers and businesses in their first calendar year are not covered employers.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 531",
+       "quote": "A covered employer does not include: (A) the federal government, the State or any other state, any county or municipal corporation, or any of the State's or any other state's units or instrumentalities; (B) any employer that has only been in business during the current calendar year."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Program rules cover enrollment and opt-outs for self-employed individuals and independent contractors.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 532",
+       "quote": "automatic enrollment in a payroll deduction IRA and opt-outs by covered employees, including self-employed individuals and independent contractors, through payroll deduction or otherwise;"
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "Maximum penalty per unenrolled covered employee: $10 before October 1, 2025; $20 through September 30, 2026; $75 from October 1, 2026.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 535",
+       "quote": "(1) prior to October 1, 2025, the maximum penalty per covered employee is $10.00; (2) beginning on October 1, 2025 and ending on September 30, 2026, the maximum penalty per covered employee is $20.00; (3) on or after October 1, 2026, the maximum penalty per covered employee is $75.00."
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "5% of salary or wages unless the saver chooses otherwise.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "3 V.S.A. § 532",
+       "quote": "Unless otherwise specified by the covered employee, a covered employee shall automatically initially contribute five percent of the covered employee's salary or wages to the Program."
+      }
+     ]
+    }
+   ],
+   "notes": "The 5-employee threshold comes from the program page (set by Treasurer rule); the statute's covered-employer definition has no headcount. vtsaves.vermont.gov refuses automated readers; read from an Internet Archive capture (March 2026)."
+  },
+  {
+   "state": "wa",
+   "id": "wa_retirement_marketplace",
+   "name": "Washington Small Business Retirement Marketplace",
+   "mandate": false,
+   "status": "open",
+   "board": "Washington State Department of Commerce",
+   "website": "https://dfi.wa.gov/small-business-retirement-marketplace",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Washington created a small business retirement marketplace run by the Department of Commerce, listing approved private plans.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 43.330.735",
+       "quote": "The Washington small business retirement marketplace is created. (2) Prior to connecting any eligible employer with an approved plan in the marketplace,"
+      },
+      {
+       "kind": "page",
+       "url": "https://dfi.wa.gov/small-business-retirement-marketplace",
+       "quote": "The Washington Small Business Retirement Marketplace is a virtual marketplace where qualified financial services firms offer low-cost retirement savings plans to businesses with less than 100 employees, including sole proprietors and self-employed individuals."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "The Department of Commerce operates the Marketplace; the Department of Financial Institutions verifies listed plans.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://dfi.wa.gov/small-business-retirement-marketplace",
+       "quote": "The Washington Department of Commerce operates the Marketplace. The Department of Financial Institutions is responsible for verifying that retirement plans listed on the Marketplace meet statutory requirements."
+      }
+     ]
+    },
+    {
+     "kind": "voluntary",
+     "text": "Participation is voluntary for employers and employees.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://dfi.wa.gov/small-business-retirement-marketplace",
+       "quote": "Participation in a retirement plan offered on the Washington small business retirement marketplace shall be voluntary for both eligible employers and qualified employees."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "Self-employed individuals and sole proprietors are eligible employers.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 43.330.732",
+       "quote": "\"Eligible employer\" means a self-employed individual, sole proprietor, or an employer with at least one qualified employee at the time of enrollment."
+      }
+     ]
+    }
+   ],
+   "notes": "A voluntary marketplace, not an auto-IRA mandate; Washington Saves (above) is the separate mandatory program."
+  },
+  {
+   "state": "wa",
+   "id": "wa_washington_saves",
+   "name": "Washington Saves",
+   "mandate": true,
+   "status": "enacted",
+   "board": "Washington Saves governing board",
+   "website": "https://www.lni.wa.gov/workers-rights/workplace-policies/washington-saves-retirement-program",
+   "facts": [
+    {
+     "kind": "creates",
+     "text": "Washington established Washington Saves, a state-facilitated retirement savings program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.020",
+       "quote": "Washington saves is established to serve as a vehicle through which covered employees may, on a voluntary basis, provide for additional retirement security through a state-facilitated retirement savings program in a convenient, cost-effective, and portable manner."
+      }
+     ]
+    },
+    {
+     "kind": "board",
+     "text": "A 15-member governing board designs and administers the program.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.040",
+       "quote": "The governing board shall design and administer the program for the exclusive benefit of individual participants and beneficiaries with the care and skill of a knowledgeable, prudent individual. (2) The governing board is comprised of 15 members as follows:"
+      }
+     ]
+    },
+    {
+     "kind": "mandate",
+     "text": "Covered employers must register, give employees program information, automatically enroll them (with opt-out), and remit payroll contributions.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.030",
+       "quote": "Each covered employer must facilitate the opportunity for covered employees to participate in the program by fulfilling the following administrative duties, as defined by rule by the governing board:"
+      },
+      {
+       "kind": "page",
+       "url": "https://www.lni.wa.gov/workers-rights/workplace-policies/washington-saves-retirement-program",
+       "quote": "Covered employers must register with Washington Saves, provide the program administrator relevant information about their covered employees, and distribute program information and disclosures to employees."
+      }
+     ]
+    },
+    {
+     "kind": "threshold",
+     "text": "Covered employers: in business in Washington 2+ years with a physical presence, no qualified plan for employees with 1+ year of service, and employees working a combined 10,400+ hours in the prior year (an hours test, not a headcount).",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.lni.wa.gov/workers-rights/workplace-policies/washington-saves-retirement-program",
+       "quote": "Have been in business in Washington State for at least 2 years and maintain a physical presence here. Do not offer a qualified retirement plan to their covered employees who have had continuous employment of 1 year or more. Had employees working a combined minimum of 10,400 hours during the previous calendar year."
+      }
+     ]
+    },
+    {
+     "kind": "deadline",
+     "text": "The program begins July 1, 2027 and may be phased in.",
+     "deadline": "2027-07-01",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.lni.wa.gov/workers-rights/workplace-policies/washington-saves-retirement-program",
+       "quote": "Washington Saves will begin on July 1, 2027, but may be phased in gradually."
+      }
+     ]
+    },
+    {
+     "kind": "self_employed",
+     "text": "The board may adopt rules letting self-employed people, contractors and the unemployed participate.",
+     "sources": [
+      {
+       "kind": "page",
+       "url": "https://www.lni.wa.gov/workers-rights/workplace-policies/washington-saves-retirement-program",
+       "quote": "The law gives the governing board the authority to adopt rules allowing individuals who are not covered workers to participate, including self-employed individuals, independent contractors, and those who are unemployed."
+      }
+     ]
+    },
+    {
+     "kind": "penalty",
+     "text": "No civil penalties before January 1, 2030; after that, willful violations up to $100 (first) and $250 (second), then $500 each.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.070",
+       "quote": "Except as provided otherwise in this chapter, the maximum penalty for a first-time willful violation is $100 and $250 for a second willful violation."
+      },
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.070",
+       "quote": "For each subsequent willful violation, the employer is subject to a maximum penalty amount of $500 for each violation."
+      },
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.070",
+       "quote": "offer technical assistance to the employer to bring them into compliance. Civil penalties may not be assessed before January 1, 2030;"
+      }
+     ]
+    },
+    {
+     "kind": "default_contribution",
+     "text": "Set by board rule between 3% and 7% of wages.",
+     "sources": [
+      {
+       "kind": "statute",
+       "ref": "RCW 19.05.030",
+       "quote": "Has a default contribution rate, set by the governing board by rule. The default contribution rate may not be less than three percent or more than seven percent of wages;"
+      }
+     ]
+    }
+   ],
+   "notes": "Not yet open; the L&I page says the board's final design report is due December 1, 2026. No dedicated program website was found; the L&I page is the official source used."
+  }
+ ]
+}

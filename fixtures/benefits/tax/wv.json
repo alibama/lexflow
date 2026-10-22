@@ -1,0 +1,51 @@
+{
+ "state": "wv",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "West Virginia Tax Division", "url": "https://tax.wv.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "partly_exempt",
+   "summary": "For 2025, Social Security in federal AGI is fully subtracted when AGI is $50,000 or less ($100,000 joint); above those limits 65% is subtracted, rising to 100% for everyone in 2026.",
+   "conditions": ["100% subtracted if federal AGI <= $50,000 single/MFS or <= $100,000 joint", "65% subtracted for tax year 2025 if AGI is above those limits (35% in 2024, 100% from 2026)"],
+   "sources": [
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "(D) For taxable years beginning on or after January 1, 2025, 65 percent of the social security benefits received pursuant to Chapter 7 of Title 42 of the United States Code,"},
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "(B) The deduction allowed by §11-21-12(c)(8)(A) of this code are allowable only when the federal adjusted gross income of a married couple filing a joint return does not exceed $100,000, or $50,000 in the case of a single individual or a married individual filing a separate return."},
+    {"kind": "page", "url": "https://tax.wv.gov/Individuals/SeniorCitizens/Pages/SeniorCitizenSocialSecurityModification.aspx", "quote": "Starting in Tax Year 2024, a taxpayer with a federal adjusted gross income of more than $50,000 (or more than $100,000 if a joint filer) was able to take a decreasing modification of 35% of their Social Security income. For Tax Year 2025, this has increased to a 65% decreasing modification."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "The first $2,000 of PERS, Teachers' Retirement System or federal civil service benefits is subtracted (pensions from West Virginia police, firefighter, State Police and deputy sheriff systems are fully subtracted); filers 65 or older or disabled can instead use the $8,000 senior modification.",
+   "conditions": ["$2,000 per person for PERS, TRS and federal retirement systems covered by 4 U.S.C. 111", "Full subtraction for West Virginia police, firemen's, State Police and deputy sheriff retirement systems", "Age 65+ or permanently disabled: up to $8,000 total modification, reduced by the other retirement and Social Security modifications"],
+   "amount_usd": 2000,
+   "sources": [
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "That the total modification under this paragraph shall not exceed $2,000 per person receiving retirement benefits and this limitation shall apply to all returns or amended returns filed after December 31, 1988;"},
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "(6) Retirement income received in the form of pensions and annuities after December 31, 1979, under any West Virginia police, West Virginia Firemen’s Retirement System or the West Virginia State Police Death, Disability and Retirement Fund,"},
+    {"kind": "page", "url": "https://tax.wv.gov/Individuals/Pages/WestVirginiaPersonalIncomeTaxAct.aspx", "quote": "The first $2,000 of annuities, retirement allowances, returns of contributions and any other benefit, including survivorship benefits, received under the West Virginia Public Employees Retirement System, and the West Virginia State Teachers Retirement System,"}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, 401(k) and IRA distributions are taxed, except that filers 65 or older (or permanently disabled) may subtract up to $8,000 of income from any source, reduced by other retirement and Social Security modifications.",
+   "conditions": ["Age 65 or older by year end, or certified permanently and totally disabled", "Up to $8,000 per person from any source, less other retirement and Social Security modifications claimed"],
+   "amount_usd": 8000,
+   "age_min": 65,
+   "sources": [
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "(9) Federal adjusted gross income in the amount of $8,000 received from any source after December 31, 1986, by any person who has attained the age of 65 on or before the last day of the taxable year,"},
+    {"kind": "page", "url": "https://tax.wv.gov/Individuals/SeniorCitizens/Pages/SeniorCitizenSocialSecurityModification.aspx", "quote": "The $8,000 senior citizen modification is similar in operation to the federal standard deduction. You receive the higher of the $8,000 modification or the sum of various itemized decreasing modifications, including among others taxable social security benefits and certain public pension modifications."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "exempt",
+   "summary": "Since 2018, all military retirement income from the regular Armed Forces, Reserves and National Guard (and other uniformed services), including survivorship annuities, is subtracted to the extent included in federal AGI.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "W. Va. Code § 11-21-12", "quote": "(C) For taxable years beginning after December 31, 2017, military retirement income, including retirement income from the regular Armed Forces, Reserves and National Guard paid by the United States or by this state after December 31, 2017, including any survivorship annuities, to the extent included in federal adjusted gross income for the taxable year."},
+    {"kind": "page", "url": "https://tax.wv.gov/Individuals/Pages/WestVirginiaPersonalIncomeTaxAct.aspx", "quote": "For taxable years beginning after December 31, 2018, retirement income from the uniformed services, including the Army, Navy, Marines, Air Force, Coast Guard, Public Health Service, National Oceanic Atmospheric Administration, reserves, and National Guard,"}
+   ]
+  }
+ },
+ "notes": "Social Security phase-in under HB 4880 (2024): for filers above $50,000/$100,000 AGI the subtraction is 35% (2024), 65% (2025) and 100% from tax year 2026 (enacted; 11-21-12(c)(8)(E)). The $8,000 senior/disabled modification works like a floor: a 65+ filer gets the larger of $8,000 or the sum of the Social Security, pension and military modifications. The Tax Division's 'Personal Income Tax Act' summary page was read from an Internet Archive capture (Oct 2022); the provisions quoted from it are unchanged in the indexed statute. Per Tax Division guidance following a 2019 U.S. Supreme Court decision, the full police/firefighter subtraction also reaches certain federal law-enforcement and firefighter retirees (not quoted here)."
+}

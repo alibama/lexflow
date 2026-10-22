@@ -1,0 +1,34 @@
+{
+ "state": "nm",
+ "curated": true,
+ "as_of": "2026-10-22",
+ "systems": [
+  {
+   "name": "Public Employees Retirement Association of New Mexico",
+   "short": "PERA",
+   "census_units": ["census-pid6:226275", "census-pid6:227291", "census-pid6:228268", "census-pid6:226276"],
+   "statute": {"kind": "statute", "ref": "10-11-2", "quote": "\"association\" means the public employees retirement association established under the Public Employees Retirement Act;"},
+   "statute_role": "defines",
+   "body": {"name": "Retirement board (PERA Board)", "source": {"kind": "statute", "ref": "10-11-130", "quote": "The \"retirement board\" is created and is the trustee of the association and the funds created by the state retirement system acts"}},
+   "website": "https://www.nmpera.org/",
+   "website_source": {"kind": "page", "url": "https://www.nmpera.org/", "quote": "Public Employees Retirement Association (PERA) of New Mexico PERA Receives GFOA Award"},
+   "membership": ["state_employee", "local_employee", "public_safety", "judge"],
+   "covers_local": true,
+   "covers_local_source": {"kind": "statute", "ref": "10-11-2", "quote": "\"public employer\" means the state, any municipality, city, county, metropolitan arroyo flood control authority, economic development district, regional housing authority, soil and water conservation district"},
+   "notes": "Census units are PERA-administered funds: Public Employees' Retirement Fund, Judicial Retirement Fund (10-12B), Magistrate Retirement Fund (10-12C) and Volunteer Firefighters Retirement Fund (created by 10-11A-3). No section establishing the association itself was found; definition used."
+  },
+  {
+   "name": "New Mexico Educational Retirement Board",
+   "short": "NMERB",
+   "census_units": ["census-pid6:227719"],
+   "statute": {"kind": "statute", "ref": "22-11-11", "quote": "The \"educational retirement fund\" and the \"educational retirement suspense fund\" are created. B. The state treasurer shall be the custodian of the funds, and the board shall be the trustee of the funds."},
+   "statute_role": "establishes",
+   "body": {"name": "Educational retirement board", "source": {"kind": "statute", "ref": "22-11-3", "quote": "The \"educational retirement board\" is created. B. The board shall be composed of nine members, consisting of the following:"}},
+   "website": "https://www.erb.nm.gov/",
+   "website_source": {"kind": "page", "url": "https://www.erb.nm.gov/", "quote": "NM Educational Retirement Board | Managing the assets of New Mexico's educators since 1957"},
+   "membership": ["teacher", "local_employee", "state_employee"],
+   "covers_local": true,
+   "notes": "Census unit 'NM Education Employees' Retirement System'. Covers public school and higher-education employees; employers are 'local administrative units' (22-11-2). Old domain nmerb.org redirects to erb.nm.gov."
+  }
+ ]
+}

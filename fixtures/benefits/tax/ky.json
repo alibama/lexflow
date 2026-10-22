@@ -1,0 +1,51 @@
+{
+ "state": "ky",
+ "as_of": "2026-10-22",
+ "tax_year": 2025,
+ "income_tax": true,
+ "agency": {"name": "Kentucky Department of Revenue", "url": "https://revenue.ky.gov/"},
+ "items": {
+  "social_security": {
+   "treatment": "exempt",
+   "summary": "Social Security and railroad retirement benefits that are federally taxable are excluded from Kentucky adjusted gross income.",
+   "conditions": [],
+   "sources": [
+    {"kind": "statute", "ref": "141.019", "quote": "Exclude Social Security and railroad retirement benefits subject to federal income tax;"},
+    {"kind": "page", "url": "https://revenue.ky.gov/Individual/Individual-Income-Tax/Pages/Do-I-Need-to-File-a-Return.aspx", "quote": "Kentucky allows a pension exclusion of $31,110 and none of the Social Security income is taxable; therefore, your Kentucky adjusted gross income is $0."}
+   ]
+  },
+  "public_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Government pensions share the general $31,110 retirement income exclusion; in addition, the part of a Kentucky state, Kentucky local or federal pension earned by service before January 1, 1998 is fully excluded (Schedule P).",
+   "conditions": ["Up to $31,110 per taxpayer of all pension and retirement income combined", "Kentucky state/local and federal pensions: the share attributable to service before January 1, 1998 is excluded in full", "Other states' government pensions get only the $31,110 exclusion"],
+   "amount_usd": 31110,
+   "sources": [
+    {"kind": "statute", "ref": "141.019", "quote": "For taxable years beginning on or after January 1, 2018, exclude up to thirty-one thousand one hundred ten dollars ($31,110) of total distributions from pension plans, annuity contracts, profit- sharing plans, retirement plans, or employee savings plans."},
+    {"kind": "statute", "ref": "141.0215", "quote": "Multiply the total annual government retirement payments by a fraction whose numerator is the number of full or partial years of service performed for the governmental unit making the retirement payments after January 1, 1998,"},
+    {"kind": "page", "url": "https://revenue.ky.gov/Individual/Individual-Income-Tax/Pages/default.aspx", "quote": "For all individuals who are retired from the federal government, the Commonwealth of Kentucky, or a Kentucky local government with service performed prior to January 1, 1998, you may be able to exclude more than $31,110*."}
+   ]
+  },
+  "private_pension": {
+   "treatment": "partly_exempt",
+   "summary": "Private pensions, annuities, 401(k) and IRA distributions are excluded up to $31,110 per taxpayer (shared with all other retirement income); the rest is taxed.",
+   "conditions": ["Up to $31,110 per taxpayer of all pension and retirement income combined", "Only income reported as taxable and included in federal AGI"],
+   "amount_usd": 31110,
+   "sources": [
+    {"kind": "statute", "ref": "141.019", "quote": "For taxable years beginning on or after January 1, 2018, exclude up to thirty-one thousand one hundred ten dollars ($31,110) of total distributions from pension plans, annuity contracts, profit- sharing plans, retirement plans, or employee savings plans."},
+    {"kind": "page", "url": "https://revenue.ky.gov/Individual/Pages/Military-Exemptions.aspx", "quote": "For all individuals, Kentucky allows a pension income exclusion of up to $31,110* for all pension and retirement income that is reported as taxable and included in the federal adjusted gross income."}
+   ]
+  },
+  "military_retirement": {
+   "treatment": "partly_exempt",
+   "summary": "Military retired pay gets the $31,110 retirement income exclusion; as a federal pension, the share earned by service before January 1, 1998 is also fully excluded (Schedule P).",
+   "conditions": ["Up to $31,110 per taxpayer of all pension and retirement income combined", "Share attributable to service before January 1, 1998 is excluded in full"],
+   "amount_usd": 31110,
+   "sources": [
+    {"kind": "statute", "ref": "141.0215", "quote": "the amount of all previously untaxed distributions paid from a retirement plan by the federal government, which are excluded from gross income pursuant to KRS 141.021, shall be included in gross income as follows:"},
+    {"kind": "statute", "ref": "141.019", "quote": "For taxable years beginning on or after January 1, 2018, exclude up to thirty-one thousand one hundred ten dollars ($31,110) of total distributions from pension plans, annuity contracts, profit- sharing plans, retirement plans, or employee savings plans."},
+    {"kind": "page", "url": "https://revenue.ky.gov/Individual/Pages/Military-Exemptions.aspx", "quote": "If you are retired military and receive a federal pension income greater than $31,110*, you will need to complete Kentucky Schedule P Kentucky Pension Income Exclusion to determine how much of your pension income is taxable."}
+   ]
+  }
+ },
+ "notes": "The $31,110 exclusion is per taxpayer and covers all pension, annuity, 401(k), IRA and other retirement income together (it was $41,110 before 2018). Kentucky state/local (KRS 141.021 lists the local plans) and federal (including military) pensions are fully excluded for the fraction of service before 1998 under KRS 141.0215. The statute index shows no separate full military pension exclusion for 2025; a 2025 bill (HB 192) proposed one for 2026-2029, but it is not in the index text."
+}

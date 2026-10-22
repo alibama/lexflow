@@ -1,0 +1,80 @@
+{
+ "qid": "retirement_which_system",
+ "state": "va",
+ "question": "Which public retirement system covers me, and who runs it?",
+ "as_of": "2026-10-22",
+ "gold": "index",
+ "coverage": "in_code",
+ "gold_sections": [
+  {
+   "ref": "51.1-124.1",
+   "role": "primary"
+  },
+  {
+   "ref": "51.1-124.2",
+   "role": "supporting"
+  },
+  {
+   "ref": "51.1-130",
+   "role": "supporting"
+  },
+  {
+   "ref": "51.1-124.22",
+   "role": "supporting"
+  },
+  {
+   "ref": "51.1-200",
+   "role": "supporting"
+  }
+ ],
+ "local_process": null,
+ "nuggets": [
+  {
+   "id": "N1",
+   "text": "The General Assembly establishes the Virginia Retirement System as an independent agency.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "51.1-124.1",
+   "quote": "the General Assembly hereby establishes the Virginia Retirement System as an independent agency of the Commonwealth",
+   "source": "index"
+  },
+  {
+   "id": "N2",
+   "text": "VRS is the retirement system for teachers, state employees and employees of participating political subdivisions.",
+   "importance": "vital",
+   "kind": "who",
+   "section": "51.1-124.2",
+   "quote": "The Virginia Supplemental Retirement System, a body corporate and a retirement system for teachers, state employees, and employees of participating political subdivisions, shall be continued as the Virginia Retirement System.",
+   "source": "index"
+  },
+  {
+   "id": "N3",
+   "text": "A political subdivision joins by a resolution of its governing body approved by the Board.",
+   "importance": "okay",
+   "kind": "steps",
+   "section": "51.1-130",
+   "quote": "The governing body of a political subdivision may adopt a resolution requesting that its eligible employees become members of the retirement system.",
+   "source": "index"
+  },
+  {
+   "id": "N4",
+   "text": "The Board of Trustees administers the system.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "51.1-124.22",
+   "quote": "The Retirement System shall be administered by the Board of Trustees",
+   "source": "index"
+  },
+  {
+   "id": "N5",
+   "text": "State police officers have their own system, run by the VRS Board.",
+   "importance": "okay",
+   "kind": "who",
+   "section": "51.1-200",
+   "quote": "The State Police Officers' Retirement System is continued and shall be administered by the Board of Trustees of the Virginia Retirement System.",
+   "source": "index"
+  }
+ ],
+ "slots": {},
+ "notes": ""
+}
