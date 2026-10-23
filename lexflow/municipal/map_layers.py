@@ -233,7 +233,7 @@ def _index_sizes() -> list[tuple[str, str, int]]:
     if not d.is_dir():
         return out
     for p in sorted(d.glob("*_*.sqlite")):
-        m = re.fullmatch(r"([a-z]+)_([a-z]{2,3})\.sqlite", p.name)
+        m = re.fullmatch(r"([a-z]+)_([a-z]{2,3}(?:-[a-z]{2,3})?)\.sqlite", p.name)   # statutes_aus-tas too
         if not m or (m.group(2) not in S.NAME and m.group(2) not in S.COUNTRY):
             continue
         try:
@@ -247,3 +247,93 @@ def _index_sizes() -> list[tuple[str, str, int]]:
             continue
         out.append((m.group(2), m.group(1), n))
     return out
+
+
+# ---------------------------------------------------------------------- the world view
+# How far lexflow has got with a country or a region of one, most advanced first: its law searchable here; its law on
+# disk and not indexed yet (a pull may still be running); an adapter written against verified sources, nothing
+# downloaded; sources found whose terms need the publisher's permission for bulk reading.  The legend's order.
+STAGES = ("indexed", "downloaded", "adapter", "permission")
+# ISO 3166-1 numeric codes: world-atlas's country ids (dashboard/geo/world-50m.json)
+ISO_NUMERIC = {"usa": "840", "jpn": "392", "bra": "076", "aus": "036", "chl": "152", "per": "604", "gha": "288",
+               "rou": "642"}
+
+
+def _pulled(key: str) -> dict:
+    """Laws listed and laws downloaded for a country from its raw directory (data/raw/countries/<key>): the lines of
+    list.jsonl, and the distinct ids with an "ok" line in progress.jsonl; else the count its MANIFEST.json gives
+    (Japan's bulk file, Romania's sample)."""
+    import json
+    from ..corpus import countries as C
+    d = C.DIR / key
+    out = {"on_disk": d.is_dir() and any(p.name != "MANIFEST.json" for p in d.iterdir())}
+    if not out["on_disk"]:
+        return out
+    try:
+        with open(d / "list.jsonl", encoding="utf-8") as f:
+            out["listed"] = sum(1 for line in f if line.strip())
+    except OSError:
+        pass
+    try:
+        done = set()
+        with open(d / "progress.jsonl", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                if r.get("status") == "ok":
+                    done.add(r.get("title_id") or r.get("native_id"))
+        out["downloaded"] = len(done)
+    except OSError:
+        pass
+    if "downloaded" not in out:
+        try:
+            m = json.loads((d / "MANIFEST.json").read_text(encoding="utf-8"))
+            n = (m.get("bulk") or {}).get("xml_files") or m.get("acts")
+            if n:
+                out["downloaded"] = int(n)
+        except (OSError, ValueError, TypeError, AttributeError):
+            pass
+    return out
+
+
+def world(con) -> dict:
+    """The home map's world view: every jurisdiction of the country registry (corpus.countries.JURISDICTIONS) with
+    its stage (STAGES), the adapter's note on what is missing, what is on disk, the articles and laws its index holds
+    and its Wikibase items.  Subnational registers (Australia's states) are listed under their country's
+    ``regions``, keyed by ISO 3166-2 code as the map's regions are (dashboard/geo/regions-10m.json).  The US numbers
+    are the states' totals, from holdings()."""
+    from ..corpus import countries as C
+    sizes = {st: n for st, corpus, n in _index_sizes() if corpus == "statutes"}
+    items: Counter = Counter()
+    for r in db.rows(con, "SELECT key FROM wikibase_items WHERE key LIKE 'lexflow:%'"):
+        parts = r["key"].split(":")
+        if len(parts) > 2 and parts[2] in C.BY_KEY:
+            items[parts[2]] += 1
+    entries = {}
+    for j in C.JURISDICTIONS:
+        key = j["code"]
+        a = C.ADAPTERS.get(key)
+        pulled = _pulled(key)
+        sections = sizes.get(key, 0)
+        stage = ("indexed" if sections else "downloaded" if pulled["on_disk"]
+                 else "permission" if getattr(a, "status", "stub") == "stub" else "adapter")
+        entries[key] = {"key": key, "name": j["name"], "iso2": j.get("iso2"), "iso3166_2": j.get("iso3166_2"),
+                        "parent": j.get("parent"), "wikidata": j.get("wikidata"), "website": j.get("website"),
+                        "code_label": j.get("code_label"), "stage": stage, "note": getattr(a, "note", "") or "",
+                        "sections": sections, "laws": _laws_of(key) if sections else 0, "wikibase": items.get(key, 0),
+                        **{k: v for k, v in pulled.items() if k != "on_disk"}}
+    countries = []
+    for e in entries.values():
+        if e["parent"]:
+            continue
+        regions = [r for r in entries.values() if r["parent"] == e["key"]]
+        countries.append({**e, "numeric": ISO_NUMERIC.get(e["key"]), "regions": regions})
+    t = holdings(con)["totals"]
+    us = {"key": "usa", "name": "United States", "numeric": ISO_NUMERIC["usa"], "stage": "indexed",
+          "sections": t["index"]["sections"], "regulations": t["index"]["regulations"],
+          "states_indexed": t["index"]["states"], "states_with_models": t["states_with_models"],
+          "localities": t["localities"], "local_processes": t["local_processes"],
+          "wikibase": t["wikibase"] - sum(items.values()), "regions": []}
+    return {"stages": list(STAGES), "countries": [us, *countries]}

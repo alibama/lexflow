@@ -919,9 +919,11 @@ class Build:
             if e["kind"] == "amended":
                 if e["other"]:
                     self.claim(it, "amended by", item(keys[e["other"]]), quals, ref)
-                else:
+                elif (e["num"] or "").strip():
                     self.claim(it, "amending law number", mono(e["num"], "ja" if code == "jpn" else "en"), quals, ref)
                     self.gap(f"{code}: amendments by a law with no item of its own (amending law number)")
+                else:                           # a revision recorded with no amending law number: nothing to cite
+                    self.gap(f"{code}: amendments recorded with no amending law number")
             elif e["kind"] == "repealed" and e["other"]:
                 self.claim(it, "repealed by", item(keys[e["other"]]), quals, ref)
             elif e["kind"] == "repeals" and e["other"]:

@@ -263,6 +263,18 @@ def map_layer(question: str = "records", layer: str = "confidence"):
         c.close()
 
 
+@app.get("/api/world")
+def world_view():
+    """The home map's world view (municipal.map_layers.world): each country of the registry with its stage, what is
+    downloaded and indexed and its Wikibase items, Australia's states under its regions, and the US totals."""
+    from ..municipal import map_layers as ML
+    c = con()
+    try:
+        return ML.world(c)
+    finally:
+        c.close()
+
+
 @app.get("/api/states")
 def state_table(question: str | None = None):
     c = con()

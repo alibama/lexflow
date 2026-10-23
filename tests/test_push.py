@@ -454,3 +454,57 @@ def test_property_items_carry_the_ontology_equivalents(con, wiki, out):
         graph.Claim("equivalent property", graph.url("http://data.europa.eu/eli/ontology#is_part_of")),
         graph.Claim("equivalent property", graph.url("https://schema.org/isPartOf"))]
     assert push.equivalent_claims("sort key", None) == []
+
+
+class LapsingSession(FakeSession):
+    """The wiki after the session has lapsed: an edit with the old token is ``badtoken``; signed out, a write that
+    asserts a user is ``assertuserfailed`` and one that does not is ``permissiondenied`` (no anonymous edits)."""
+
+    def __init__(self, *a, lapse_after=1, **k):
+        super().__init__(*a, **k)
+        self.lapse_after, self.edits, self.signed_in, self.logins, self.lapsed = lapse_after, 0, True, 0, False
+
+    def post(self, url, data=None, timeout=None):
+        data = dict(data or {})
+        if data.get("action") == "login":
+            self.signed_in, self.logins = True, self.logins + 1
+            return super().post(url, data, timeout)
+        if self.edits == self.lapse_after and not self.lapsed:
+            self.signed_in, self.lapsed = False, True       # the session cookie expires here, once
+            self.posts.append(data)
+            return _Resp({"error": {"code": "badtoken", "info": "Invalid CSRF token."}})
+        if not self.signed_in:
+            self.posts.append(data)
+            code = "assertuserfailed" if data.get("assert") == "user" else "permissiondenied"
+            return _Resp({"error": {"code": code, "info": "signed out"}})
+        self.edits += 1
+        return super().post(url, data, timeout)
+
+
+def test_a_lapsed_session_signs_in_again_and_never_writes_signed_out():
+    s = LapsingSession(lapse_after=1)
+    api = push.Api(SITE, "Bot@lexflow", "not-a-real-password", dry_run=False, session=s)
+    api.pause, said = 0, []
+    api.log = said.append
+    api.login()
+    for i in range(3):
+        api.edit({"labels": {"en": {"language": "en", "value": f"item {i}"}}}, new="item")
+    edits = [p for p in s.posts if p.get("action") == "wbeditentity"]
+    assert all(p.get("assert") == "user" for p in edits)            # every write asks to be a signed-in one
+    assert s.logins == 2 and api.relogins == 1 and api.writes == 3 and s.edits == 3
+    assert said == ["the session lapsed (badtoken): signing in again"]
+
+
+def test_signing_in_again_is_bounded():
+    class Never(LapsingSession):                            # the sign-in "succeeds" but the session never holds
+        def post(self, url, data=None, timeout=None):
+            if dict(data or {}).get("action") == "login":
+                self.logins += 1
+                return _Resp({"login": {"result": "Success", "lgusername": "Bot"}})
+            return _Resp({"error": {"code": "assertuserfailed", "info": "signed out"}})
+    s = Never()
+    api = push.Api(SITE, "Bot@lexflow", "not-a-real-password", dry_run=False, session=s)
+    api.pause = 0
+    with pytest.raises(push.WikibaseError, match="assertuserfailed"):
+        api.edit({"labels": {}}, new="item")
+    assert s.logins == 2

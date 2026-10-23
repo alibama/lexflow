@@ -145,3 +145,41 @@ def test_empty_store_has_zero_holdings(con, tmp_path):
     h = ML.holdings(con)
     assert h["states"] == {} and h["places"] == {}
     assert h["totals"]["coverage"]["run"] is None and h["totals"]["wikibase"] == 0 and h["totals"]["index"]["sections"] == 0
+
+
+def test_world_view_gives_each_country_its_stage(seeded, tmp_path, monkeypatch):
+    """/api/world (map_layers.world): indexed, downloaded, adapter or permission per registry entry, Australia's
+    registers under its regions by ISO 3166-2 code, and the US totals from the holdings."""
+    from lexflow.corpus import countries as C
+    raw = tmp_path / "raw" / "countries"
+    monkeypatch.setattr(C, "DIR", raw)
+    (raw / "aus-wa").mkdir(parents=True)
+    (raw / "aus-wa" / "list.jsonl").write_text('{"native_id": "a"}\n{"native_id": "b"}\n', encoding="utf-8")
+    (raw / "aus-wa" / "progress.jsonl").write_text('{"native_id": "a", "status": "ok"}\n{"native_id": "a", "status": "ok"}\n'
+                                                   '{"native_id": "b", "status": "empty"}\n', encoding="utf-8")
+    (raw / "rou").mkdir()
+    (raw / "rou" / "MANIFEST.json").write_text('{"acts": 50}', encoding="utf-8")   # a manifest alone: nothing downloaded
+    _index_file(tmp_path / "index" / "statutes_jpn.sqlite", 40)
+    _index_file(tmp_path / "index" / "statutes_aus-tas.sqlite", 5)                  # a hyphenated key is an index too
+    seeded.execute("INSERT INTO wikibase_items(key, qid, updated_at) VALUES ('lexflow:unit:jpn:x', 'Q11', ?)", (NOW,))
+    db.bump(seeded)
+    seeded.commit()
+    ML.clear()
+    w = ML.world(seeded)
+    assert w["stages"] == ["indexed", "downloaded", "adapter", "permission"]
+    by = {c["key"]: c for c in w["countries"]}
+    assert w["countries"][0]["key"] == "usa" and by["usa"]["sections"] == 130 and by["usa"]["wikibase"] == 10
+    assert by["jpn"]["stage"] == "indexed" and by["jpn"]["sections"] == 40 and by["jpn"]["wikibase"] == 1
+    assert by["jpn"]["numeric"] == "392" and by["bra"]["numeric"] == "076"
+    assert by["per"]["stage"] == "permission" and by["per"]["note"] and by["gha"]["stage"] == "permission"
+    assert by["chl"]["stage"] == "adapter" and by["rou"]["stage"] == "adapter"
+    regions = {r["key"]: r for r in by["aus"]["regions"]}
+    assert "aus-wa" not in by and by["aus"]["stage"] == "adapter"
+    assert regions["aus-wa"]["stage"] == "downloaded" and regions["aus-wa"]["listed"] == 2 and regions["aus-wa"]["downloaded"] == 1
+    assert regions["aus-tas"]["stage"] == "indexed" and regions["aus-tas"]["iso3166_2"] == "AU-TAS"
+    assert regions["aus-nsw"]["stage"] == "permission"
+
+
+def test_api_world(client):
+    d = client.get("/api/world").json()
+    assert d["countries"][0]["key"] == "usa" and {c["key"] for c in d["countries"]} >= {"jpn", "bra", "aus", "chl"}

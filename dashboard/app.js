@@ -252,6 +252,59 @@ const HOLDING_VALUE = {     // the number a holdings layer colours a state by
   index: (st) => st.index ? st.index.sections : null,
 };
 const verdictLine = (c) => `${c.adequate} adequate · ${c.partial} partial · ${c.draft} on drafts · ${c.none} none of ${c.cells}`;
+// The world view (GET /api/world): the home map opens on the world, every country of lexflow's registry coloured by
+// how far lexflow has got with its law; a country opens on its regions (Natural Earth admin-1, dashboard/geo, cut by
+// tools/web/build_geo.mjs) and a region on itself.  The US opens on the county map.  The stages are ordinal, so
+// they share the sequential ramp: the further along, the stronger the colour.
+const STAGE = {
+  indexed: { label: "Law indexed", sw: "--seq-5", about: "downloaded and searchable here" },
+  downloaded: { label: "Law downloading", sw: "--seq-3", about: "on disk, not indexed yet" },
+  adapter: { label: "Adapter ready", sw: "--seq-2", about: "sources verified, nothing downloaded yet" },
+  permission: { label: "Waiting on permission", sw: "--seq-1", about: "the publisher's terms need its permission for bulk reading" },
+};
+const stageColor = (st) => css(STAGE[st] ? STAGE[st].sw : "--neutral-fill");
+function stageBadge(stage) {
+  const s = STAGE[stage];
+  return s ? h("span", { class: "badge" }, h("span", { class: "sw", style: `background:var(${s.sw})` }), s.label) : null;   // follows the theme
+}
+// the pieces a view is framed on: a country's largest polygons up to `share` of its area (Easter Island and Macquarie
+// Island stay drawn, outside the frame), or with `ofLargest` a region's polygons of at least that part of its largest
+function framePieces(features, { share = 0.99, ofLargest = 0 } = {}) {
+  const pieces = features.flatMap((f) => (f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates)
+    .map((c) => ({ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: c } })))
+    .map((f) => [f, d3.geoArea(f)]).sort((a, b) => b[1] - a[1]);
+  const total = pieces.reduce((t, [, a]) => t + a, 0);
+  const out = [];
+  let sum = 0;
+  for (const [f, a] of pieces) {
+    if (out.length && (ofLargest ? a < ofLargest * pieces[0][1] : sum >= share * total)) break;
+    out.push(f);
+    sum += a;
+  }
+  return { type: "FeatureCollection", features: out };
+}
+// the transform that frames a feature collection in a 975 x 610 view
+function frameOn(p, fc, pad, maxK) {
+  const [[x0, y0], [x1, y1]] = p.bounds(fc);
+  const k = Math.min(maxK, pad / Math.max((x1 - x0) / 975, (y1 - y0) / 610));
+  return d3.zoomIdentity.translate(975 / 2, 610 / 2).scale(k).translate(-(x0 + x1) / 2, -(y0 + y1) / 2);
+}
+const US_ENTRY = { key: "usa", name: "United States", numeric: "840", stage: "indexed", regions: [] };
+// a server from before GET /api/world: the countries /api/meta lists (each holds law: indexed, or downloaded) with
+// their regions, the numbers of /api/map's holdings, and world-atlas's ISO 3166-1 numeric ids
+const ISO_NUMERIC = { jpn: "392", bra: "076", aus: "036", rou: "642", chl: "152", per: "604", gha: "288" };
+function worldFromMeta(held) {
+  const cs = S.meta.countries || [], counts = held?.countries || {};
+  const us = { ...US_ENTRY, sections: held?.index?.sections, states_indexed: held?.index?.states, states_with_models: held?.states_with_models,
+    localities: held?.localities, wikibase: held?.wikibase };
+  const top = cs.filter((c) => !c.state.includes("-")).map((c) => ({ key: c.state, name: c.name, numeric: ISO_NUMERIC[c.state],
+    stage: c.indexed ? "indexed" : "downloaded", sections: counts[c.state]?.sections || 0, laws: counts[c.state]?.laws || 0,
+    wikibase: counts[c.state]?.wikibase || 0, code_label: (c.code_label || {}).en,
+    regions: cs.filter((r) => r.state.startsWith(`${c.state}-`)).map((r) => ({ key: r.state, name: r.name, iso3166_2: r.iso2.toUpperCase(),
+      stage: r.indexed ? "indexed" : "downloaded" })) }));
+  return { stages: Object.keys(STAGE), countries: [us, ...top] };
+}
+
 function binColor(v, bins) {
   let i = 0;
   while (i < bins.length && v >= bins[i]) i++;
@@ -270,9 +323,10 @@ async function viewMap() {
 
   const layerSel = h("select", { "aria-label": "Map layer", onchange: (e) => { S.layer = e.target.value; store("lexflow-layer", S.layer); load(); } },
     Object.entries(LAYERS).map(([k, l]) => h("option", { value: k, selected: S.layer === k }, l.label)));
-  const stateSel = h("select", { "aria-label": "Zoom to a state", onchange: (e) => zoomTo(e.target.value || null) },
-    h("option", { value: "" }, "All states"),
-    S.meta.states.filter((s) => s.state !== "pr").map((s) => h("option", { value: s.fips }, s.name)));
+  const stateSel = h("select", { "aria-label": "Zoom to a country, a state or a region", onchange: (e) => goTo(e.target.value) },
+    h("option", { value: "world" }, "World"));
+  const layerField = h("label", { class: "field" }, "Layer", layerSel);
+  const crumbs = h("nav", { class: "map-crumbs", "aria-label": "Map level" });
   const tableBtn = h("button", { class: "btn", type: "button", "aria-pressed": String(S.tableView),
     onclick: () => { S.tableView = !S.tableView; tableBtn.setAttribute("aria-pressed", String(S.tableView)); tableBtn.textContent = S.tableView ? "Show map" : "Table view"; draw(); } },
     S.tableView ? "Show map" : "Table view");
@@ -285,10 +339,10 @@ async function viewMap() {
   rc(view,
     h("div", { class: "page-head" }, h("div", {},
       h("h1", {}, "Where the answers stand"),
-      h("p", {}, "Every county, city and town, coloured by how well lexflow can answer the question, and every state by what lexflow holds: models, coverage, Wikibase items and the statute index. Colours update as process models are built, checked and scored."))),
-    h("div", { class: "filters" }, questionSeg(load), h("label", { class: "field" }, "Layer", layerSel), h("label", { class: "field" }, "Zoom", stateSel), tableBtn),
+      h("p", {}, "From the world down to a town: every country whose law lexflow holds, then its regions; in the US every county, city and town, coloured by how well lexflow can answer the question, and every state by what lexflow holds: models, coverage, Wikibase items and the statute index. Colours update as law is downloaded and process models are built, checked and scored."))),
+    h("div", { class: "filters" }, questionSeg(load), layerField, h("label", { class: "field" }, "Zoom", stateSel), tableBtn),
     kpis,
-    h("div", { class: "grid map-layout" }, h("section", { class: "card" }, mapWrap, legend), side),
+    h("div", { class: "grid map-layout" }, h("section", { class: "card" }, crumbs, mapWrap, legend), side),
     holdingsCard,
     h("div", { class: "spacer" }), tableCard);
 
@@ -311,6 +365,222 @@ async function viewMap() {
   });
   svg.call(zoom).on("wheel.zoom", null);   // page scroll stays page scroll; buttons and drag still zoom
   mapWrap.append(svg.node());
+
+  // ---- the world and a country's regions, each in its own SVG beside the US one; one shows at a time
+  const worldSvg = d3.create("svg").attr("viewBox", "0 0 975 610").attr("role", "img").attr("aria-label", "World map of the countries whose law lexflow holds");
+  const worldG = worldSvg.append("g");
+  const ctySvg = d3.create("svg").attr("viewBox", "0 0 975 610").attr("role", "img");
+  const ctyG = ctySvg.append("g");
+  mapWrap.append(worldSvg.node(), ctySvg.node());
+  const worldZoom = d3.zoom().scaleExtent([1, 24]).on("zoom", (e) => worldG.attr("transform", e.transform));
+  const ctyZoom = d3.zoom().scaleExtent([1, 40]).on("zoom", (e) => ctyG.attr("transform", e.transform));
+  worldSvg.call(worldZoom).on("wheel.zoom", null);
+  ctySvg.call(ctyZoom).on("wheel.zoom", null);
+  let wd = null;                                // GET /api/world
+  let worldPaths = null, worldPath = null, ctyPaths = null, ctyPath = null, ctyRegions = [];
+  const entryOf = (key) => (wd?.countries || []).find((c) => c.key === key) || null;
+  const byNumeric = (id) => (wd?.countries || []).find((c) => c.numeric === id) || null;
+  const regionEntry = (c, code) => (c?.regions || []).find((r) => r.iso3166_2 === code) || null;
+  const regionStage = (c, f) => regionEntry(c, f.id)?.stage || c?.stage;
+  // the US first, then the countries by stage and name
+  const ordered = () => (wd?.countries || [US_ENTRY]).slice().sort((a, b) => (b.key === "usa") - (a.key === "usa")
+    || (wd ? wd.stages.indexOf(a.stage) - wd.stages.indexOf(b.stage) : 0) || a.name.localeCompare(b.name));
+  function countryLines(c) {
+    if (c.key === "usa") return [`${fmtInt(c.sections)} statute sections in ${fmtInt(c.states_indexed)} states`,
+      `${fmtInt(c.states_with_models)} states with process models · ${fmtInt(c.localities)} localities researched`,
+      `${fmtInt(c.wikibase)} Wikibase items`];
+    const regs = (c.regions || []).filter((r) => r.stage === "indexed" || r.stage === "downloaded");
+    return [c.sections ? `${fmtInt(c.laws)} laws · ${fmtInt(c.sections)} articles indexed` : null,
+      !c.sections && c.downloaded ? `${fmtInt(c.downloaded)}${c.listed ? ` of ${fmtInt(c.listed)}` : ""} laws downloaded` : null,
+      c.wikibase ? `${fmtInt(c.wikibase)} Wikibase items` : null,
+      regs.length ? `${regs.length} of ${c.regions.length} regional registers downloaded` : null,
+      !c.sections && !c.downloaded ? STAGE[c.stage]?.about : null].filter(Boolean);
+  }
+  function regionLine(r) {
+    if (r.stage === "indexed") return `${fmtInt(r.sections)} sections indexed`;
+    if (r.stage === "downloaded" && r.downloaded != null) return `${fmtInt(r.downloaded)}${r.listed ? ` of ${fmtInt(r.listed)}` : ""} Acts downloaded`;
+    return STAGE[r.stage]?.about || "";
+  }
+  async function ensureWorld() {
+    if (worldPaths) return;
+    if (!S.worldTopo) S.worldTopo = await api("/static/geo/world-50m.json");
+    const feats = topojson.feature(S.worldTopo, S.worldTopo.objects.countries).features.filter((f) => f.id !== "010");   // no Antarctica
+    worldPath = d3.geoPath(d3.geoEqualEarth().fitExtent([[8, 8], [967, 602]], { type: "FeatureCollection", features: feats }));
+    worldPaths = worldG.append("g").selectAll("path").data(feats).join("path").attr("class", "country").attr("d", worldPath)
+      .on("pointermove", (evt, f) => {
+        const c = byNumeric(f.id);
+        showTip(evt, c ? [h("div", { class: "v" }, STAGE[c.stage]?.label || ""), h("div", { style: "margin-top:4px;font-weight:600" }, c.name),
+          ...countryLines(c).map((t) => h("div", { class: "k" }, t)), h("div", { class: "k" }, "Click to zoom in")]
+          : [h("div", { style: "font-weight:600" }, f.properties.name), h("div", { class: "k" }, "No law collected yet")]);
+        if (c) d3.select(evt.currentTarget).raise();
+      })
+      .on("pointerleave", hideTip)
+      .on("click", (evt, f) => { const c = byNumeric(f.id); if (c) goTo(c.key); });
+  }
+  async function drawCountry(key) {
+    if (ctyG.attr("data-key") === key) return;
+    if (!S.regionsGeo) S.regionsGeo = await api("/static/geo/regions-10m.json");
+    const c = entryOf(key);
+    ctyRegions = S.regionsGeo.features.filter((f) => f.properties.country === key);
+    if (!ctyRegions.length) {                     // a country with no regions in the file: its outline, as one region
+      await ensureWorld();
+      ctyRegions = worldPaths.data().filter((f) => f.id === c?.numeric).map((f) => ({ ...f, id: key, properties: { name: c.name } }));
+    }
+    ctyPath = d3.geoPath(d3.geoMercator().fitExtent([[16, 16], [959, 594]], framePieces(ctyRegions)));
+    ctyG.selectAll("*").remove();
+    ctyG.attr("data-key", key);
+    ctySvg.attr("aria-label", `Map of the regions of ${c ? c.name : key}`);
+    ctyPaths = ctyG.append("g").selectAll("path").data(ctyRegions).join("path").attr("class", "region").attr("d", ctyPath)
+      .on("pointermove", (evt, f) => {
+        const r = regionEntry(c, f.id), p = f.properties;
+        showTip(evt, [h("div", { class: "v" }, STAGE[regionStage(c, f)]?.label || ""),
+          h("div", { style: "margin-top:4px;font-weight:600" }, p.name + (p.local && p.local !== p.name ? ` (${p.local})` : "")),
+          h("div", { class: "k" }, `${p.type || "Region"} · ${c ? c.name : key}`),
+          h("div", { class: "k" }, r ? regionLine(r) : `National law applies; no ${(p.type || "regional").toLowerCase()} law collected yet`),
+          S.region === f.id ? null : h("div", { class: "k" }, "Click to zoom in")]);
+        d3.select(evt.currentTarget).raise();
+      })
+      .on("pointerleave", hideTip)
+      .on("click", (evt, f) => goTo(S.region === f.id ? key : `${key}:${f.id}`));
+    ctySvg.call(ctyZoom.transform, d3.zoomIdentity);
+    paintGeo();
+  }
+  function paintGeo() {
+    if (worldPaths) worldPaths.attr("fill", (f) => { const c = byNumeric(f.id); return c ? stageColor(c.stage) : css("--neutral-fill"); })
+      .classed("held", (f) => !!byNumeric(f.id));
+    if (ctyPaths) { const c = entryOf(ctyG.attr("data-key")); ctyPaths.attr("fill", (f) => stageColor(regionStage(c, f))); }
+  }
+  function show(which) {
+    svg.style("display", which === "usa" ? null : "none");
+    worldSvg.style("display", which === "world" ? null : "none");
+    ctySvg.style("display", which === "country" ? null : "none");
+    layerField.style.display = which === "usa" ? "" : "none";
+  }
+  // one place to go: "world", "usa", "usa:51" (a state's FIPS), "jpn" or "jpn:JP-13" (an ISO 3166-2 region)
+  async function goTo(value) {
+    const v = String(value || "world"), i = v.indexOf(":");
+    let at = i < 0 ? v : v.slice(0, i);
+    const sub = i < 0 ? null : v.slice(i + 1);
+    if (at !== "world" && at !== "usa" && !entryOf(at)) at = "world";
+    const prev = S.at;
+    hideTip();
+    if (at === "world") return toWorld(prev);
+    if (prev === "world" && worldPaths) {
+      const c = entryOf(at), f = c && worldPaths.data().find((x) => x.id === c.numeric);
+      if (f) await worldSvg.transition().duration(650).call(worldZoom.transform, frameOn(worldPath, framePieces([f]), 0.9, 24)).end().catch(() => {});
+    }
+    S.at = at;
+    S.region = at === "usa" ? null : sub;
+    if (at === "usa") {
+      show("usa");
+      if (prev !== "usa") { S.county = null; countyPaths.classed("active", false); }
+      if (sub) zoomTo(sub);
+      else if (prev !== "usa" || S.focus) zoomTo(null);
+    } else {
+      await drawCountry(at);
+      show("country");
+      const f = sub && ctyRegions.find((x) => x.id === sub);
+      if (!f) S.region = null;
+      ctyPaths.classed("active", (d) => d.id === S.region);
+      ctyG.classed("focused", !!S.region);        // the neighbours dim, so the region stands out
+      ctySvg.transition().duration(650).call(ctyZoom.transform, f ? frameOn(ctyPath, framePieces([f], { ofLargest: 0.1 }), 0.8, 40) : d3.zoomIdentity);
+    }
+    afterMove();
+  }
+  async function toWorld(prev) {
+    await ensureWorld();
+    S.at = "world";
+    S.region = null;
+    const c = entryOf(prev), f = c && worldPaths.data().find((x) => x.id === c.numeric);
+    show("world");
+    if (f) worldSvg.call(worldZoom.transform, frameOn(worldPath, framePieces([f]), 0.9, 24));   // from where we were, out
+    worldSvg.transition().duration(650).call(worldZoom.transform, d3.zoomIdentity);
+    afterMove();
+  }
+  function afterMove() {
+    paintGeo();
+    drawCrumbs();
+    fillZoomSel();
+    if (S.at === "usa") drawLegend(); else drawStageLegend();
+    drawSide();
+    const q = S.at === "world" ? "" : `?at=${S.at}${S.region ? `&region=${encodeURIComponent(S.region)}` : S.at === "usa" && S.focus ? `&state=${S.focus}` : ""}`;
+    try { history.replaceState(null, "", `#/map${q}`); } catch (e) { /* not allowed */ }
+  }
+  function drawCrumbs() {
+    const parts = [["world", "World"]];
+    if (S.at && S.at !== "world") parts.push([S.at, entryOf(S.at)?.name || "United States"]);
+    if (S.at === "usa" && S.focus) parts.push([`usa:${S.focus}`, stateByFips.get(S.focus)?.name || S.focus]);
+    if (S.at && S.at !== "world" && S.at !== "usa" && S.region) parts.push([`${S.at}:${S.region}`, ctyRegions.find((f) => f.id === S.region)?.properties.name || S.region]);
+    const hint = S.at === "world" ? "Click a country to zoom in" : S.at === "usa" ? (S.focus ? "Click a county for its governments" : "Click a county, or choose a state to zoom in")
+      : S.region ? "Click the region again to zoom out" : "Click a region to zoom in";
+    rc(crumbs, ...parts.flatMap(([v, label], i) => [i ? h("span", { class: "sep", "aria-hidden": "true" }, "›") : null,
+      i === parts.length - 1 ? h("span", { "aria-current": "location" }, label) : h("button", { type: "button", onclick: () => goTo(v) }, label)]),
+      h("span", { class: "hint" }, hint));
+  }
+  function fillZoomSel() {
+    const regions = S.at === "usa" ? h("optgroup", { label: "US states" }, S.meta.states.filter((s) => s.state !== "pr").map((s) => h("option", { value: `usa:${s.fips}` }, s.name)))
+      : S.at && S.at !== "world" && ctyRegions.length ? h("optgroup", { label: `Regions of ${entryOf(S.at)?.name || S.at}` },
+        ctyRegions.slice().sort((a, b) => a.properties.name.localeCompare(b.properties.name)).map((f) => h("option", { value: `${S.at}:${f.id}` }, f.properties.name)))
+      : null;
+    rc(stateSel, h("option", { value: "world" }, "World"), h("optgroup", { label: "Countries" }, ordered().map((c) => h("option", { value: c.key }, c.name))), regions);
+    stateSel.value = S.at === "usa" ? (S.focus ? `usa:${S.focus}` : "usa") : !S.at || S.at === "world" ? "world" : S.region ? `${S.at}:${S.region}` : S.at;
+  }
+  function drawStageLegend() {
+    rc(legend, h("span", { class: "title" }, "Law collected"),
+      ...Object.values(STAGE).map((st) => h("span", {}, h("span", { class: "sw", style: `background:var(${st.sw})` }), st.label)),
+      S.at === "world" ? h("span", {}, h("span", { class: "sw", style: "background:var(--neutral-fill)" }), "Not started") : null,
+      h("span", { class: "about" }, S.at === "world"
+        ? "Countries by how far lexflow has got with their law. The US opens on its county map, the others on their regions."
+        : "A region with a register of its own (Australia's states) takes its register's colour; the others take the country's, since national law applies there."));
+  }
+  function drawSide() {
+    if (!S.at || S.at === "world") return sideWorld();
+    if (S.at === "usa") { if (S.county) selectCounty(S.county); else if (S.focus) sideState(S.focus); else sideDefault(); return; }
+    const c = entryOf(S.at);
+    const f = c && S.region && ctyRegions.find((x) => x.id === S.region);
+    if (c) (f ? sideRegion(c, f) : sideCountry(c));
+  }
+  function rowButton(onclick, name, stage, lines) {
+    return h("button", { type: "button", class: "gov world-row", onclick },
+      h("div", { class: "row" }, h("span", { class: "name", style: "color:var(--ink)" }, name), stageBadge(stage)),
+      ...lines.map((t) => h("div", { class: "row" }, h("span", {}, t))));
+  }
+  function sideWorld() {
+    const cs = ordered();
+    const n = cs.filter((c) => c.stage === "indexed").length;
+    rc(side, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Around the world"),
+      h("p", {}, `${n} of ${cs.length} countries searchable here, read from each country's official sources. Pick one to zoom in.`))),
+      ...cs.map((c) => rowButton(() => goTo(c.key), c.name, c.stage, countryLines(c))));
+  }
+  function sideCountry(c) {
+    const links = [c.sections ? h("a", { href: `#/query/law-in-order/${encodeURIComponent(`unit=lexflow:code:${c.key}`)}` }, "Read the law in order →") : null,
+      c.website ? h("a", { href: c.website, target: "_blank", rel: "noopener" }, "Official source") : null].filter(Boolean);
+    const regs = c.regions || [];
+    rc(side, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, c.name), c.code_label ? h("p", {}, c.code_label) : null),
+      h("button", { class: "btn small", onclick: () => goTo("world") }, "World")),
+      h("div", { class: "card-pad" }, h("dl", { class: "kv" },
+        h("dt", {}, "Stage"), h("dd", {}, stageBadge(c.stage)),
+        h("dt", {}, "Indexed"), h("dd", {}, c.sections ? `${fmtInt(c.laws)} laws · ${fmtInt(c.sections)} articles` : h("span", { class: "muted" }, "not yet")),
+        c.downloaded != null ? [h("dt", {}, "Downloaded"), h("dd", {}, `${fmtInt(c.downloaded)}${c.listed ? ` of ${fmtInt(c.listed)}` : ""} laws`)] : null,
+        h("dt", {}, "On the Wikibase"), h("dd", { class: "num" }, fmtInt(c.wikibase)),
+        c.note ? [h("dt", {}, c.stage === "permission" ? "Waiting on" : "Source"), h("dd", { style: "font-size:12.5px" }, c.note)] : null),
+        links.length ? h("p", { class: "row-flex", style: "gap:14px;margin:10px 0 0" }, links) : null),
+      regs.length ? [h("div", { class: "card-head" }, h("h3", {}, "Regional registers")),
+        ...regs.map((r) => rowButton(() => goTo(`${c.key}:${r.iso3166_2}`), r.name, r.stage, [regionLine(r)]))]
+        : h("p", { class: "empty" }, `${fmtInt(ctyRegions.length)} regions on the map. National law applies in each; no regional law is collected yet. Click one to zoom in.`));
+  }
+  function sideRegion(c, f) {
+    const r = regionEntry(c, f.id), p = f.properties;
+    rc(side, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, p.name), h("p", {}, `${p.type || "Region"} of ${c.name}`)),
+      h("button", { class: "btn small", onclick: () => goTo(c.key) }, "Close")),
+      h("div", { class: "card-pad" }, h("dl", { class: "kv" },
+        p.local && p.local !== p.name ? [h("dt", {}, "Local name"), h("dd", {}, p.local)] : null,
+        h("dt", {}, "Code"), h("dd", {}, f.id),
+        p.wikidata ? [h("dt", {}, "Wikidata"), h("dd", {}, h("a", { href: `https://www.wikidata.org/wiki/${encodeURIComponent(p.wikidata)}`, target: "_blank", rel: "noopener" }, p.wikidata))] : null,
+        h("dt", {}, "Regional law"), h("dd", {}, r ? [stageBadge(r.stage), " ", regionLine(r)] : h("span", { class: "muted" }, "not collected yet")),
+        r?.note ? [h("dt", {}, r.stage === "permission" ? "Waiting on" : "Source"), h("dd", { style: "font-size:12.5px" }, r.note)] : null,
+        h("dt", {}, "National law"), h("dd", {}, [stageBadge(c.stage), c.sections ? ` ${fmtInt(c.laws)} laws indexed` : ""]))));
+  }
 
   let data = null, overview = null, rows = [];
   const isHoldings = () => LAYERS[S.layer].kind === "holdings";
@@ -362,7 +632,8 @@ async function viewMap() {
     pat.select(".nodata-line").attr("stroke", css("--hatch"));
     countyPaths.attr("fill", (d) => fillOf(d.id));
     drawDots();
-    drawLegend();
+    if (S.at === "usa") drawLegend(); else drawStageLegend();
+    paintGeo();
   }
   // the tooltip's lines for a holdings layer: the state's numbers, then the locality's when it has researched processes
   function holdingLines(fips) {
@@ -432,7 +703,11 @@ async function viewMap() {
 
   function zoomTo(fips) {
     S.focus = fips;
-    stateSel.value = fips || "";
+    if (S.at === "usa") {
+      stateSel.value = fips ? `usa:${fips}` : "usa";
+      drawCrumbs();
+      try { history.replaceState(null, "", `#/map?at=usa${fips ? `&state=${fips}` : ""}`); } catch (e) { /* not allowed */ }
+    }
     if (!fips) { svg.transition().duration(600).call(zoom.transform, d3.zoomIdentity); return; }
     const f = statesGeo.find((s) => s.id === fips);
     if (!f) return;
@@ -563,16 +838,23 @@ async function viewMap() {
   async function load(themeOnly) {
     if (themeOnly === true && data) { paint(); return; }
     mapWrap.classList.add("loading");
-    [data, overview, rows, pool] = await Promise.all([api(`/api/map?question=${S.question}&layer=${S.layer}`), api("/api/overview"), api(`/api/states?question=${S.question}`),
-      api("/api/compute").catch(() => null)]);
+    [data, overview, rows, pool, wd] = await Promise.all([api(`/api/map?question=${S.question}&layer=${S.layer}`), api("/api/overview"), api(`/api/states?question=${S.question}`),
+      api("/api/compute").catch(() => null), api("/api/world").catch(() => null)]);
+    wd = wd || worldFromMeta(data.holdings);
     mapWrap.classList.remove("loading");
     drawKpis(); drawHoldings(); drawTable(); draw();
-    if (S.county) selectCounty(S.county); else if (S.focus) sideState(S.focus); else sideDefault();
+    if (S.at) { drawCrumbs(); fillZoomSel(); drawSide(); }
   }
   onRefresh(load);
   sideDefault();
+  // where to open: the address (#/map?at=jpn&region=JP-13, #/map?at=usa&state=51), a US layer asked for, the last
+  // place this session, else the world
+  const openAt = S.params.get("at") || (S.params.get("layer") ? "usa" : S.at || "world");
+  const openSub = S.params.get("region") || S.params.get("state") || (openAt === "usa" && !S.params.get("at") ? S.focus : null);
+  S.at = null;
+  show("none");
   await load();
-  if (S.focus) zoomTo(S.focus);
+  await goTo(openSub ? `${openAt}:${openSub}` : openAt);
   if (!overview.governments) {
     view.prepend(h("div", { class: "notice" }, icon("info"), h("div", {}, h("strong", {}, "Nothing loaded yet. "),
       "Open ", h("a", { href: "#/setup" }, "Setup"), " and tick the required boxes in order, or pull a shared state from ", h("a", { href: "#/data" }, "Data & sync"), ".")));

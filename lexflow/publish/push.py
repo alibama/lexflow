@@ -309,25 +309,38 @@ class Api(Wikibase):
         self.session.headers["User-Agent"] = USER_AGENT
         self.pause = PAUSE
         self.bot = False
+        self.relogins = 0
+        self.log = None                     # run() hands its log here, for the sign-ins after a lapsed session
 
     attempts = 8                            # a multi-hour run must outlast a rate-limit window or a lagging replica
 
     def post(self, **params):
-        """The base client's POST (token, JSON, error folding) with ``maxlag``, longer back-off on ``ratelimited``
-        / ``maxlag``, one token refresh on ``badtoken``, retries on a dropped connection, and the pause."""
+        """The base client's POST (token, JSON, error folding) with ``maxlag`` and ``assert=user``, longer back-off
+        on ``ratelimited`` / ``maxlag``, a fresh sign-in when the session lapses, retries on a dropped connection,
+        and the pause.
+
+        A session lapses on a long run (the 2026-10-23 Japan push lost it after 90 minutes): the wiki answers
+        ``badtoken``, and a token fetched then is an anonymous one, so every later write was refused
+        (``permissiondenied``).  ``assert=user`` makes such a write fail as ``assertuserfailed`` instead of ever
+        being taken as an anonymous edit, and either code signs in again (twice at most per write)."""
         import requests
         last: Exception | None = None
+        signed_in = 0
         for attempt in range(self.attempts):
             try:
-                data = super().post(maxlag=MAXLAG, **params)
+                data = super().post(maxlag=MAXLAG, **({"assert": "user"} if self.user else {}), **params)
             except WikibaseError as e:
                 code = error_code(e)
                 if code in ("ratelimited", "maxlag", "readonly") or str(e) == "rate limited":
                     last = e
                     time.sleep(15 * (attempt + 1))
                     continue
-                if code == "badtoken" and attempt == 0:
-                    self.csrf = self.get(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
+                if code in ("badtoken", "assertuserfailed", "assertnameduserfailed") and self.user and signed_in < 2:
+                    signed_in += 1
+                    self.relogins += 1
+                    if self.log:
+                        self.log(f"the session lapsed ({code}): signing in again")
+                    self.login()
                     last = e
                     continue
                 raise
@@ -1057,6 +1070,8 @@ def run(con: sqlite3.Connection, *, dry_run: bool = True, pass_no: str = "all", 
         if session is not None:
             api.session = session
             api.session.headers["User-Agent"] = USER_AGENT
+    if getattr(api, "log", "") is None:
+        api.log = log
     if pause is not None:                   # the operator's choice once the account may write faster (wikidata-laws.md)
         api.pause = max(0.0, float(pause))
     if bot:

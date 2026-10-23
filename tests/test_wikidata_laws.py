@@ -462,3 +462,15 @@ def test_a_lint_of_some_states_does_not_clear_a_push_of_others(con, tmp_path):
     res = push.run(con, items=_laws(), api=api_for(_wiki(), dry_run=False), out_dir=out, dry_run=False,
                    states=["jpn"], log=lambda *a: None)                     # the linted scope: allowed
     assert not res["summary"]["failures_by_code"]
+
+
+def test_an_amendment_with_no_number_is_left_out(con, jpn):
+    """e-Gov records a few revisions with no amending law number: no empty statement (the wiki refuses the whole
+    item for one), a gap instead."""
+    con.execute("INSERT INTO law_amendments(jurisdiction, law_key, amending_key, amending_num, date, kind, source) "
+                "VALUES ('jpn', ?, NULL, '', '2022-06-17', 'amended', 'egov-bulk-revision')", (GYO,))
+    said = []
+    items = {it.key: it for it in graph.build(con, states=["jpn"], drafts=False, log=said.append)}
+    law = items[f"lexflow:unit:jpn:{GYO.lower()}"]
+    assert [c.value.value for c in _claims(law, "amending law number")] == ["平成十一年法律第百五十一号"]
+    assert any("amendments recorded with no amending law number" in m for m in said)

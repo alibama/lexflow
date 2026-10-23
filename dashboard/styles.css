@@ -151,6 +151,20 @@ label.field { display: inline-flex; align-items: center; gap: 8px; color: var(--
 .county:hover, .county.active { stroke: var(--ink); stroke-width: 1.5px; }
 .state-line { fill: none; stroke: var(--surface); stroke-width: 1.4px; vector-effect: non-scaling-stroke; pointer-events: none; }
 .nation { fill: none; stroke: var(--baseline); stroke-width: 1px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.country { stroke: var(--surface); stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.country.held { cursor: pointer; }
+.country.held:hover { stroke: var(--ink); stroke-width: 1.5px; }
+.region { stroke: var(--surface); stroke-width: 0.6px; vector-effect: non-scaling-stroke; cursor: pointer; }
+.region:hover, .region.active { stroke: var(--ink); stroke-width: 1.5px; }
+.focused .region:not(.active) { fill-opacity: .35; }
+.map-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding: 12px 18px 0; font-size: 13px; }
+.map-crumbs button { background: none; border: 0; padding: 0; font: inherit; color: var(--accent-ink); cursor: pointer; }
+.map-crumbs button:hover { text-decoration: underline; }
+.map-crumbs [aria-current] { font-weight: 600; color: var(--ink); }
+.map-crumbs .sep { color: var(--muted); }
+.map-crumbs .hint { margin-left: auto; color: var(--muted); font-size: 12px; }
+.world-row { display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--border); font: inherit; color: inherit; cursor: pointer; }
+.world-row:hover { background: var(--accent-wash); }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; padding: 4px 18px 14px; font-size: 12.5px; color: var(--ink-2); }
 .legend .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; }
 .legend .title { color: var(--ink); font-weight: 600; margin-right: 6px; }
