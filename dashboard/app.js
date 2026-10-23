@@ -528,8 +528,8 @@ async function viewMap() {
   function drawStageLegend() {
     rc(legend, h("span", { class: "title" }, "Law collected"),
       ...Object.values(STAGE).map((st) => h("span", {}, h("span", { class: "sw", style: `background:var(${st.sw})` }), st.label)),
-      S.at === "world" ? h("span", {}, h("span", { class: "sw", style: "background:var(--neutral-fill)" }), "Not started") : null,
-      h("span", { class: "about" }, S.at === "world"
+      !S.at || S.at === "world" ? h("span", {}, h("span", { class: "sw", style: "background:var(--neutral-fill)" }), "Not started") : null,
+      h("span", { class: "about" }, !S.at || S.at === "world"
         ? "Countries by how far lexflow has got with their law. The US opens on its county map, the others on their regions."
         : "A region with a register of its own (Australia's states) takes its register's colour; the others take the country's, since national law applies there."));
   }
@@ -846,7 +846,7 @@ async function viewMap() {
     if (S.at) { drawCrumbs(); fillZoomSel(); drawSide(); }
   }
   onRefresh(load);
-  sideDefault();
+  rc(side, h("p", { class: "empty" }, "Loading…"));
   // where to open: the address (#/map?at=jpn&region=JP-13, #/map?at=usa&state=51), a US layer asked for, the last
   // place this session, else the world
   const openAt = S.params.get("at") || (S.params.get("layer") ? "usa" : S.at || "world");
