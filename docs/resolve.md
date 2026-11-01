@@ -92,8 +92,21 @@ model is an arm, `judge@<model>[+search][+schema]`; each case × arm row is stor
 | seconds a case | wall time per case on the node(s) that ran it |
 
 Read it the way AskBench is read: compare arms on the same cases, trust precision over accuracy, and rerun when
-the version changes (the Resolve page says when the stored rows are from older code). The threshold trades
+the version changes (the Resolve page says when the stored rows are from older code; the version hashes
+`source.py`, `evidence.py` and `judge.py`, the code behind an answer, not the reporting). The threshold trades
 coverage for precision; raise it until precision holds, then look at what is left open.
+
+**The panel as an arm.** When two or more arms judged the same cases, the summary adds `panel(<arm>+<arm>)`:
+the consensus of those arms on each case, from the stored rows and no new calls. It settles only where every
+model agrees at or above the threshold, so it shows what agreement buys in precision and costs in coverage.
+
+**First numbers (1 November 2026, the `shop` node, a laptop CPU, no web search).** On 21 rule-decided
+colour and occupation terms, `qwen3:1.7b` was right 43% of the time and said 0.90 to almost everything, so its
+precision when decided was 37%: it picks heraldic "or" for the colour gold and "audio technician" for
+technician. `qwen3:8b` on 8 of the same cases: 63% right, 71% precision when decided, 69 seconds a case; one
+of its "misses" (clear → *clear glass*) was right and the rule-decided gold wrong, which is the caveat below.
+The panel of the two settled 4 of the 8 cases and was right on all 4. Far from 95%: the lever is bigger models
+on a GPU node, web search on, and the panel. Nothing was applied.
 
 ## 4. More compute
 

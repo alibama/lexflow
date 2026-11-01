@@ -311,6 +311,15 @@ def test_bench_rows_summary_and_docs(wired, judge_server):
     g = out2["arms"]["judge@gemma3:1b"]
     assert g["accuracy"] == 0.0 and g["decided"] == 0.0 and g["precision_decided"] is None and g["unsure"] == 1.0
     assert len(RB.stored(con)) == 6 and any("precision there" in ln for ln in lines)
+    # the panel as an arm, from the stored rows: with the doubter in it nothing is settled; two agreeing copies settle all
+    s = RB.summarize(RB.stored(con))
+    p = s["panel(judge@gemma3:1b+judge@qwen3:1.7b)"]
+    assert p["cases"] == 3 and p["decided"] == 0.0 and p["accuracy"] == 0.0 and p["precision_decided"] is None
+    twin = [dict(r, arm="judge@twin") for r in RB.stored(con) if r["arm"] == "judge@qwen3:1.7b"]
+    s = RB.summarize([r for r in RB.stored(con) if r["arm"] == "judge@qwen3:1.7b"] + twin)
+    p = s["panel(judge@qwen3:1.7b+judge@twin)"]
+    assert p["decided"] == 1.0 and p["precision_decided"] == 1.0 and p["accuracy"] == 1.0
+    assert RB.panel_rows(twin) == []                                   # one arm is no panel
     # a changed gold makes the stored row stale
     con.execute("UPDATE resolve_cases SET gold_qid='Q777' WHERE key='gdb:place:crozet-virginia'")
     con.commit()

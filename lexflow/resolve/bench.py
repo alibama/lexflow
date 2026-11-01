@@ -36,7 +36,9 @@ from . import judge as J
 from .source import Case, GlassDatabase
 
 METRIC_VERSION = 1
-CODE = ("resolve/*.py",)
+# the code behind an answer: what is asked, what is shown, how the reply is read.  Summaries (this file) and the
+# API are not in it, so a change to the reporting does not make the stored rows stale.
+CODE = ("resolve/source.py", "resolve/evidence.py", "resolve/judge.py")
 GOLD_STATUSES = ("confirmed", "rejected", "matched", "none")
 DOCS = config.ROOT / "docs" / "resolvebench.json"
 
@@ -168,8 +170,36 @@ def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = N
     return {"version": ver, "cases": len(cases), "threshold": threshold, "arms": summary, "docs": str(DOCS)}
 
 
+def panel_rows(rows: list[dict], threshold: float | None = None) -> list[dict]:
+    """The panel as an arm of its own, from the stored rows and no new calls: for every case that two or more arms
+    judged, the consensus of those arms (``consensus``: settled only when all agree at or above the threshold).
+    Named ``panel(<arm>+<arm>)``; it says what agreement buys in precision and costs in coverage."""
+    threshold = config.RESOLVE_THRESHOLD if threshold is None else threshold
+    arms = sorted({r["arm"] for r in rows})
+    if len(arms) < 2:
+        return []
+    by_case: dict[str, dict[str, dict]] = {}
+    for r in rows:
+        by_case.setdefault(r["case"], {})[r["arm"]] = r
+    out = []
+    for case, per in by_case.items():
+        if len(per) < 2:
+            continue
+        verdicts = [J.Verdict(verdict=r["verdict"], confidence=float(r["confidence"] or 0), because=r.get("because") or "",
+                              model=arm) for arm, r in sorted(per.items())]
+        cons = consensus(verdicts, threshold)
+        first = next(iter(per.values()))
+        verdict = cons["verdict"] if cons["settled"] else "unsure"
+        out.append({**first, "arm": "panel(" + "+".join(sorted(per)) + ")", "model": "+".join(sorted(per)), "verdict": verdict,
+                    "confidence": cons["confidence"] if cons["settled"] else 0.0, "correct": verdict == first.get("gold"),
+                    "decided": cons["settled"], "ok": True, "flags": [], "because": cons["because"],
+                    "seconds": round(sum(float(r.get("seconds") or 0) for r in per.values()), 1)})
+    return out
+
+
 def summarize(rows: list[dict], threshold: float | None = None) -> dict:
     threshold = config.RESOLVE_THRESHOLD if threshold is None else threshold
+    rows = list(rows) + panel_rows(rows, threshold)
     out: dict = {}
     for arm in sorted({r["arm"] for r in rows}):
         rs = [r for r in rows if r["arm"] == arm]
