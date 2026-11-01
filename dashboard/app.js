@@ -1520,6 +1520,8 @@ async function viewResolve() {
       h("div", { class: "card-pad row-flex" },
         h("button", { class: "btn", onclick: run("resolve") }, "Judge the open queue"),
         h("button", { class: "btn", onclick: run("resolve-bench") }, "Benchmark the models"),
+        h("button", { class: "btn", onclick: run("enrich") }, "Search the web for websites and accounts"),
+        h("button", { class: "btn", onclick: async () => { await startRunJob("enrich", { check: true }); location.hash = "#/jobs"; } }, "Check the search"),
         last ? h("span", { class: "muted" }, `Last job: #${last.id} ${last.step} ${last.status}${last.message ? ` – ${last.message}` : ""}`) : null));
     const cases = (await api("/api/resolve/cases?state=all&limit=300")).rows;
     async function decide(key, qid) {
@@ -1559,11 +1561,33 @@ async function viewResolve() {
         h("tbody", {}, arms.map(([arm, s]) => h("tr", {}, h("td", { class: "mono" }, arm), h("td", { class: "num" }, String(s.cases)), h("td", { class: "num" }, fx(s.accuracy)),
           h("td", { class: "num" }, pct(s.decided)), h("td", { class: "num", style: s.precision_decided != null && s.precision_decided >= 0.95 ? "font-weight:600" : "" }, fx(s.precision_decided)),
           h("td", { class: "num" }, s.human_cases ? `${fx(s.human_accuracy)} (${s.human_cases})` : "–"), h("td", { class: "num" }, pct(s.unsure)), h("td", { class: "num" }, fx(s.mean_seconds, 1)))))))) : null;
+    // the enrich step: what a web search found for records with nothing on Wikidata, and how the check scored it
+    const en = await api("/api/resolve/enrich?limit=200");
+    const live = (en.rows || []).filter((r) => !r.check), checks = Object.entries(en.check || {});
+    const hostOf = (u) => { try { return new URL(u).host.replace(/^www\./, ""); } catch (e) { return u; } };
+    const linkTo = (f, v) => (f === "website" ? h("a", { href: v.value, target: "_blank", rel: "noopener" }, hostOf(v.value))
+      : f === "instagram" ? h("a", { href: `https://www.instagram.com/${v.value}/`, target: "_blank", rel: "noopener" }, `@${v.value}`)
+        : h("span", {}, [v.value, v.region, v.country].filter(Boolean).join(", ")));
+    const enRow = (r) => h("div", { style: "padding:8px 0;border-top:1px solid var(--rule, #ddd)" },
+      h("div", {}, h("b", {}, r.label), ` (${r.kind})`, r.suggested_at ? h("span", { class: "muted" }, " · the reviewer sees this proposal") : null,
+        r.model ? h("span", { class: "muted mono" }, ` · ${r.model}`) : h("span", { class: "muted" }, " · without a model")),
+      Object.keys(r.fields || {}).length ? h("ul", {}, Object.entries(r.fields).map(([f, v]) => h("li", {}, h("b", {}, f === "city" ? "town" : f), " ", linkTo(f, v), ` (${fx(v.confidence)}) `,
+        h("span", { class: "muted" }, v.because || ""), (v.evidence || []).length ? h("span", { class: "muted" }, " · read: ", ...v.evidence.slice(0, 3).map((u, i) => h("span", {}, i ? ", " : "", h("a", { href: u, target: "_blank", rel: "noopener" }, hostOf(u))))) : null)))
+        : h("p", { class: "muted" }, "nothing the hits bore out"));
+    const enrichCard = h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `More about records with nothing on Wikidata (${live.length})`),
+      h("p", {}, `A web search for the website, Instagram account and town of records the lookup left with no Wikidata item. Only what the hits bear out is kept, and the Glass Database's review page shows each proposal with an Add button; nothing enters a record without a person. ${en.search ? "" : "SEARXNG_URL is not set, so the step has nothing to search with."}`))),
+      h("div", { class: "card-pad" }, live.length ? live.map(enRow) : h("p", { class: "muted" }, "No proposals yet.")),
+      checks.length ? h("div", { class: "card-pad table-wrap" }, h("p", { class: "muted" }, "The check: records that already had the fields, run with them hidden. Precision when proposed is the number to read."),
+        h("table", { class: "data" },
+          h("thead", {}, h("tr", {}, ["Arm", "Records", "Website precision / recall", "Instagram precision / recall", "Town precision / recall"].map((l, i) => h("th", { scope: "col", class: i ? "num" : "" }, l)))),
+          h("tbody", {}, checks.map(([arm, s]) => h("tr", {}, h("td", { class: "mono" }, arm), h("td", { class: "num" }, String(s.cases)),
+            ...["website", "instagram", "city"].map((f) => h("td", { class: "num" }, `${fx(s[f].precision)} / ${fx(s[f].recall)} (${s[f].proposed} of ${s[f].had})`))))))) : null);
     rc(body, head, h("div", { class: "spacer" }),
       list("Settled", settled, "Every model named the same answer at or above the threshold. Apply one here, or leave it to the reviewer on the Glass Database's own page, where the suggestion already shows beside the candidates."),
       h("div", { class: "spacer" }),
       list("Open", open, "The models disagreed, or none was sure. The reviewer sees the panel's best guess and its reasons beside the candidates."),
-      benchCard ? h("div", { class: "spacer" }) : null, benchCard);
+      benchCard ? h("div", { class: "spacer" }) : null, benchCard,
+      h("div", { class: "spacer" }), enrichCard);
   }
   onRefresh(load);
   await load();

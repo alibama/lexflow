@@ -166,8 +166,11 @@ and Wikipedia lead, and web search snippets; a verdict every model agrees on abo
 every answer goes back to the Glass Database as a suggestion its reviewer sees beside the candidates (with its
 API key), and a decision is applied only when the run is told to. `lexflow run resolve-bench` scores the same
 judge on the rows a person or the rules already decided, model by model, and the number to watch is precision
-when decided: it has to reach 95% before a model's answers are applied without a person. The **Resolve** page
-shows both; the model calls go through the compute pool, so another node is one line of `.env`. The runbook is
+when decided: it has to reach 95% before a model's answers are applied without a person. `lexflow run enrich`
+takes the records left with nothing on Wikidata and asks the web for their website, Instagram account and
+town, keeps only what the hits bear out, and leaves it on the Glass Database's review page with an Add button;
+its `check` mode scores the proposals on records that already have the fields. The **Resolve** page shows all
+of it; the model calls go through the compute pool, so another node is one line of `.env`. The runbook is
 [docs/resolve.md](docs/resolve.md).
 
 ## Where it stands
@@ -416,7 +419,8 @@ lexflow/            the package
   ask/              new questions: index.py (statute search), plan.py, retrieve.py, relevance.py, answer.py, local.py,
                     pipeline.py, reference.py (Claude's reference answers), bench.py (AskBench)
   resolve/          the Glass Database's open Wikidata questions through local models: source.py (the queue),
-                    evidence.py, judge.py, bench.py (ResolveBench and the live run), api.py (docs/resolve.md)
+                    evidence.py, judge.py, bench.py (ResolveBench and the live run), enrich.py (website, Instagram
+                    and town from a web search), api.py (docs/resolve.md)
   extract/          facts schema, Ollama client, compiler, scorer; segment.py (clauses), selector.py (the learned
                     selector), strategies.py (every extraction strategy), benchmark.py (scoring against Claude)
   municipal/        governments, statutes, locator, contacts, crawl, LOCUS scan, build, quality, scoring, stats

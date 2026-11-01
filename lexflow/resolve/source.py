@@ -188,5 +188,9 @@ class GlassDatabase:
         """Leave the panel's answer on the row for the reviewer; the row stays unsure.  Admin."""
         return self._post("/wikibase/wikidata/" + key, {"suggest": suggestion})
 
+    def enrich(self, key: str, proposal: dict) -> dict:
+        """Leave what a web search found (website, Instagram, city) on the staged item for the reviewer.  Admin."""
+        return self._post("/wikibase/items/" + key, {"enrich": proposal})
+
     def can_write(self) -> bool:
         return bool(self.token)

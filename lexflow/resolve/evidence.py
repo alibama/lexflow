@@ -27,6 +27,11 @@ from .source import Case
 WD_API = "https://www.wikidata.org/w/api.php"
 WP_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 TTL_DAYS = 30
+PACE = {"www.wikidata.org": 1.0, "en.wikipedia.org": 0.3}   # seconds between requests to a host: one at a time, as asked
+RETRIES = 5
+COOLDOWN = 600                  # seconds a host is left alone after it kept answering 429 (a throttled address)
+_last: dict[str, float] = {}
+_cool: dict[str, float] = {}
 PROPS = {"P31": "instance of", "P279": "subclass of", "P106": "occupation", "P27": "citizenship", "P569": "born",
          "P570": "died", "P19": "born in", "P937": "work location", "P551": "residence", "P69": "educated at",
          "P108": "employer", "P1416": "affiliation", "P6379": "has works in the collection", "P166": "award",
@@ -47,20 +52,52 @@ def session() -> requests.Session:
     return _session
 
 
-def _get(url: str, **params) -> dict:
+def _host(url: str) -> str:
+    return url.split("/")[2] if "://" in url else url
+
+
+def _pace(url: str) -> None:
+    h = _host(url)
+    wait = _last.get(h, 0.0) + PACE.get(h, 0.5) - time.monotonic()
+    if wait > 0:
+        time.sleep(wait)
+    _last[h] = time.monotonic()
+
+
+def _get(url: str, log=None, **params) -> dict:
+    """One read, paced per host.  A 429 or 5xx waits what ``Retry-After`` says (at least 10, 20, 40 … seconds) and
+    tries again up to RETRIES times; a host that still answers 429 is left alone for COOLDOWN seconds, so a
+    throttled address does not stall every case for minutes.  Raises RuntimeError when the host will not answer."""
+    h = _host(url)
+    if _cool.get(h, 0.0) > time.monotonic():
+        raise RuntimeError(f"{h} is being left alone for {int(_cool[h] - time.monotonic())} s after answering 429")
     last: Exception | None = None
-    for attempt in range(3):
+    throttled = False
+    for attempt in range(RETRIES):
+        _pace(url)
         try:
             r = session().get(url, params=params or None, timeout=60)
             if r.status_code == 404:
                 return {}
             if r.status_code == 429 or r.status_code >= 500:
-                raise requests.HTTPError(f"{r.status_code}", response=r)
+                try:
+                    wait = float(r.headers.get("Retry-After") or 0)
+                except ValueError:
+                    wait = 0.0
+                wait = min(max(wait, 10.0 * (2 ** attempt)), 120.0)
+                throttled = r.status_code == 429
+                last = RuntimeError(f"{r.status_code} from {h}")
+                if log:
+                    log(f"  {h} answered {r.status_code}; waiting {wait:.0f} s")
+                time.sleep(wait)
+                continue
             r.raise_for_status()
             return r.json()
         except (requests.ConnectionError, requests.Timeout, requests.HTTPError, ValueError) as e:
             last = e
-            time.sleep(1.5 * (attempt + 1))
+            time.sleep(2.0 * (attempt + 1))
+    if throttled:
+        _cool[h] = time.monotonic() + COOLDOWN
     raise RuntimeError(f"no answer from {url} ({last})")
 
 
@@ -100,7 +137,7 @@ def entity_facts(ids: list[str], log=None) -> dict[str, dict]:
     out: dict[str, dict] = {}
     pending: dict[str, list[tuple[str, str]]] = {}        # qid -> [(prop name, referenced item)]
     for i in range(0, len(ids), 50):
-        data = _get(WD_API, action="wbgetentities", ids="|".join(ids[i:i + 50]), format="json", languages="en",
+        data = _get(WD_API, log, action="wbgetentities", ids="|".join(ids[i:i + 50]), format="json", languages="en",
                     props="labels|descriptions|aliases|claims|sitelinks")
         for qid, e in (data.get("entities") or {}).items():
             if "missing" in e:
@@ -124,7 +161,7 @@ def entity_facts(ids: list[str], log=None) -> dict[str, dict]:
     refs = sorted({q for pairs in pending.values() for _n, q in pairs})
     labels: dict[str, str] = {}
     for i in range(0, len(refs), 50):
-        data = _get(WD_API, action="wbgetentities", ids="|".join(refs[i:i + 50]), format="json", languages="en",
+        data = _get(WD_API, log, action="wbgetentities", ids="|".join(refs[i:i + 50]), format="json", languages="en",
                     props="labels")
         for q, e in (data.get("entities") or {}).items():
             labels[q] = ((e.get("labels") or {}).get("en") or {}).get("value") or q
@@ -214,11 +251,25 @@ def _remember(con, kind: str, ident: str, value) -> None:
                 (kind, ident, json.dumps(value, ensure_ascii=False), db.now()))
 
 
+def hits(con, q: str, fresh_days: int = TTL_DAYS) -> list[dict]:
+    """Search hits for one query, from the cache when younger than ``fresh_days``."""
+    found = _cached(con, "q", q, fresh_days)
+    if found is None:
+        found = search(q)
+        _remember(con, "q", q, found)
+        con.commit()
+    return found
+
+
 def gather(con, case: Case, *, use_search: bool = True, fresh_days: int = TTL_DAYS, log=None) -> dict:
     """Everything the judge is shown for ``case``: ``{"candidates": {qid: facts + wikipedia}, "search": {query:
-    hits}, "searched": bool}``.  Each piece comes from the cache when it is younger than ``fresh_days``."""
+    hits}, "searched": bool, "partial": bool}``.  Each piece comes from the cache when it is younger than
+    ``fresh_days``.  When Wikidata will not answer (a throttled address), the candidates keep the label, description
+    and classes the lookup itself saw, the row is marked partial, and nothing of that is cached, so the next run
+    reads the facts."""
     cands: dict[str, dict] = {}
     missing = []
+    partial = False
     for qid in case.candidate_ids():
         hit = _cached(con, "wd", qid, fresh_days)
         if hit is None:
@@ -226,12 +277,25 @@ def gather(con, case: Case, *, use_search: bool = True, fresh_days: int = TTL_DA
         else:
             cands[qid] = hit
     if missing:
-        for qid, facts in entity_facts(missing, log).items():
+        try:
+            read = entity_facts(missing, log)
+        except RuntimeError as e:
+            read = {}
+            partial = True
+            if log:
+                log(f"  {case.label}: Wikidata facts not read ({e}); judging from the lookup's own candidate descriptions")
+        for qid, facts in read.items():
             facts["wikipedia"] = wikipedia_summary(facts.get("enwiki") or "")
             _remember(con, "wd", qid, facts)
             cands[qid] = facts
-        for qid in missing:                       # an id Wikidata no longer has: remember that too
-            if qid not in cands:
+        for qid in missing:
+            if qid in cands:
+                continue
+            if partial:                          # what the lookup saw: label, description, classes; not cached
+                c = next((x for x in case.candidates if x.get("qid") == qid), {})
+                cands[qid] = {"label": c.get("label") or qid, "description": c.get("description") or "",
+                              "facts": {"instance of": list(c.get("types") or [])}, "wikipedia": ""}
+            else:                                # an id Wikidata no longer has: remember that too
                 cands[qid] = {"label": qid, "description": "(no such item on Wikidata)", "facts": {}, "wikipedia": ""}
                 _remember(con, "wd", qid, cands[qid])
     searched: dict[str, list[dict]] = {}
@@ -243,4 +307,4 @@ def gather(con, case: Case, *, use_search: bool = True, fresh_days: int = TTL_DA
                 _remember(con, "q", q, hits)
             searched[q] = hits
     con.commit()
-    return {"candidates": cands, "search": searched, "searched": bool(use_search and config.SEARXNG_URL)}
+    return {"candidates": cands, "search": searched, "searched": bool(use_search and config.SEARXNG_URL), "partial": partial}

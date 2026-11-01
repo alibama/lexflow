@@ -108,7 +108,40 @@ of its "misses" (clear → *clear glass*) was right and the rule-decided gold wr
 The panel of the two settled 4 of the 8 cases and was right on all 4. Far from 95%: the lever is bigger models
 on a GPU node, web search on, and the panel. Nothing was applied.
 
-## 4. More compute
+## 4. Enrich: the website, Instagram account and town of a record with nothing on Wikidata
+
+`lexflow run enrich` takes the records the lookup left with no Wikidata item (`none`, and `rejected` by a person)
+that lack a website, an Instagram account or a place, and asks the web. It needs the `search` profile
+(`SEARXNG_URL`); without it the step says so and stops.
+
+```sh
+docker compose exec app lexflow run enrich                                   # people, studios, schools, museums
+docker compose exec app lexflow run enrich --models qwen3:8b --args '{"kinds": "person", "limit": 40}'
+docker compose exec app lexflow run enrich --args '{"no_llm": true}'         # the deterministic part only
+docker compose exec app lexflow run enrich --args '{"check": true, "limit": 60}'   # score it on records that have the fields
+```
+
+Per record: two or three queries (`"Name" glass artist`, `"Name" Crozet glass`, `"Name" glass instagram`); the
+hits sifted without a model first, into candidate sites (never a social network, a marketplace, an encyclopaedia
+or a directory; ranked by the record's name in the host) and Instagram handles that appear in the hits; then
+the model picks among those candidates and reads the town from the snippets; then every proposal is checked
+against the hits before it is kept: a website must be a candidate site, a handle a candidate handle, a town a
+word in a title or snippet. Each kept field carries the pages it rests on. With `no_llm` only the deterministic
+part runs: the one site whose host carries the name, the one handle that does, no town.
+
+With `GLASSDB_ADMIN_TOKEN` a record's proposal goes to the Glass Database (`POST /api/wikibase/items/{key}` with
+`{"enrich": …}`). Its review page lists the proposals under the Wikidata section with the pages they were read
+from; *Add the website* and *Add the account* put the statement on the item as a reviewer's edit, which a
+re-stage keeps and the next push carries; a town stays information until the row's based-in column is edited.
+Nothing enters a record without that click.
+
+**The check.** `check` runs the same search and model on records that already carry the fields, with those
+fields hidden from the prompt and the queries, and compares each proposal with the record: a website by host,
+a handle exactly, a town by name. Per field and per model, precision when proposed and recall; the Resolve
+page shows the table. Read precision first: a step that proposes less but is right is the one to let the
+reviewer lean on.
+
+## 5. More compute
 
 Every model call goes through the compute pool (`docs/compute.md`). Name the panel's models, and each call is
 sent to a node that has the model and a free slot; the bench fans the models out over the pool's free slots, and
@@ -116,14 +149,15 @@ the live run judges a case's panel in parallel. Adding a machine is one entry in
 (`name=url|threads=N|max=1|models=qwen3:8b`) or a peer in the overlay's compute group; nothing in `lexflow/resolve`
 changes. A node that sleeps costs a retry on another, not a failed run.
 
-## 5. Tables
+## 6. Tables
 
 `resolve_cases` (the queue and gold rows, their statements, when fetched), `resolve_evidence` (Wikidata and
 Wikipedia facts per candidate, search hits per query, with a fetch time), `resolve_bench` (case × arm rows),
 `resolve_queue` (the live run's last conclusion per case, the panel's verdicts, when a suggestion went back and
-when an answer was applied). All local to this copy; nothing is synced.
+when an answer was applied), `resolve_enrich` (the enrich step's proposal per record, the hits it read, and the
+check's result). All local to this copy; nothing is synced.
 
-## 6. Checks before trusting it
+## 7. Checks before trusting it
 
 * Run the bench before the first live run with `apply`, on the human-decided rows if there are enough
   (`"status": "confirmed,rejected"`), and read the open rows on the Resolve page: the `because` lines say what

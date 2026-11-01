@@ -327,6 +327,20 @@ CREATE TABLE IF NOT EXISTS resolve_queue (
   updated_at TEXT
 );
 
+CREATE TABLE IF NOT EXISTS resolve_enrich (
+  key TEXT PRIMARY KEY,
+  kind TEXT,
+  label TEXT,
+  fields TEXT,
+  hits TEXT,
+  model TEXT,
+  searched INTEGER DEFAULT 0,
+  version TEXT,
+  check_json TEXT,
+  suggested_at TEXT,
+  updated_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS wikibase_items (
   key TEXT PRIMARY KEY,
   qid TEXT,
@@ -610,6 +624,7 @@ LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": 
                                           # lexflow.resolve: the Glass Database's open Wikidata questions, this copy's own
                                           "resolve_cases": ("key",), "resolve_evidence": ("kind", "ident"),
                                           "resolve_bench": ("case_id", "arm"), "resolve_queue": ("key",),
+                                          "resolve_enrich": ("key",),
                                           # lexflow.benefits: rebuilt from the Census unit files on each copy
                                           "pension_systems": ("id",), "pension_coverage": ("gov_id", "system_id")}
 

@@ -79,6 +79,17 @@ def register(app) -> None:
         finally:
             c.close()
 
+    @app.get("/api/resolve/enrich")
+    def resolve_enrich(limit: int = 300):
+        """What the enrich step proposed per record (website, Instagram, town) and, for check runs, how right it was."""
+        from . import enrich as EN
+        c = db.connect()
+        try:
+            rs = EN.rows(c, min(max(int(limit), 1), 1000))
+            return {"rows": rs, "check": EN.check_summary(rs), "version": EN.version(), "search": bool(config.SEARXNG_URL)}
+        finally:
+            c.close()
+
     @app.post("/api/resolve/cases/{key:path}")
     def resolve_apply(key: str, body: Decision):
         """A person applies an answer: the Glass Database is told, and the local row records it."""

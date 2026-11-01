@@ -1379,6 +1379,18 @@ def run_resolve_bench(con, args, log, progress):
                         mode=args.get("mode") or "json", threshold=args.get("threshold"), log=log, progress=progress)
 
 
+def run_enrich(con, args, log, progress):
+    """lexflow.resolve.enrich: a web search for the website, Instagram account and town of records with nothing on
+    Wikidata; proposals go back when GLASSDB_ADMIN_TOKEN is set; ``check`` scores it on records that have them."""
+    from ..resolve import enrich as EN
+    models = _names(args.get("models")) or config.RESOLVE_MODELS
+    limit = int(args["limit"]) if args.get("limit") not in (None, "") else None
+    return EN.run(con, models, fields=tuple(_names(args.get("fields"))) or EN.FIELDS,
+                  kinds=tuple(_names(args.get("kinds"))) or EN.KINDS, limit=limit, node=args.get("node") or None,
+                  check=bool(args.get("check")), no_llm=bool(args.get("no_llm")), search=not args.get("no_search"),
+                  log=log, progress=progress)
+
+
 _RESOLVE_CREDITS = [C.GLASS_DATABASE,
                     C.used_for(C.WIKIDATA, "Each candidate's facts (wbgetentities), read once and cached", note=""),
                     C.WIKIPEDIA,
@@ -1408,6 +1420,20 @@ COMPOSITE = {
                           params=["models", "node", "limit", "status", "kinds", "no_search"],
                           cost="about a minute a case per model on a laptop CPU; there are hundreds of gold cases, "
                                "so --limit for a first look", credits=_RESOLVE_CREDITS),
+    "enrich": Step("enrich", "Find the website, Instagram and town of records with nothing on Wikidata",
+                   "For the records the lookup left with no Wikidata item: a web search through SearXNG, the hits "
+                   "sifted for candidate sites and Instagram handles, a local model picking among them and reading the "
+                   "town from the snippets, and every proposal checked against the hits before it is kept. Proposals "
+                   "go to the Glass Database's review page with an Add button when the API key is set; nothing enters "
+                   "a record without a person. check runs it on records that already have the fields and scores the "
+                   "proposals against them.", "optional", lambda con: {}, run_enrich,
+                   params=["models", "node", "limit", "kinds", "fields", "check", "no_llm", "no_search"],
+                   cost="needs the search profile (SEARXNG_URL); two or three queries and one model call a record",
+                   credits=[C.GLASS_DATABASE,
+                            C.used_for(C.SEARXNG, "Two or three queries a record for the sites, handles and towns the web names"),
+                            *C.model_credits([(m, "Picks the record's own site and account among the hits and reads the town")
+                                              for m in config.RESOLVE_MODELS]),
+                            C.OLLAMA]),
     "coverage": Step("coverage", "Test coverage of the questions people ask",
                      "For each of the 36 plain-language questions (fixtures/coverage/questions.json) and each state "
                      "or place: is there a Wikibase process for the topic, with bearers, bodies, channels, deadlines, "

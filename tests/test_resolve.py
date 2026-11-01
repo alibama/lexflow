@@ -43,6 +43,8 @@ ROWS = [
      "candidates": [{"qid": "Q931", "label": "Bea Lindqvist", "description": "Swedish glass sculptor", "types": ["human"]}]},
     {"key": "gdb:colour:red", "kind": "colour", "label": "red", "status": "known", "qid": "Q3142", "why": "hand list",
      "item_description": "red glass", "candidates": []},
+    {"key": "gdb:artists:5", "kind": "person", "label": "Pike Example", "status": "none", "qid": "",
+     "why": "Wikidata has no item of that name and kind", "item_description": "glass artist, Crozet, Virginia", "candidates": []},
 ]
 ITEMS = {
     "gdb:artists:1": {"item": {"aliases": ["T. Park"], "url": "https://glassdatabase.test/explore/?q=Theo",
@@ -52,7 +54,34 @@ ITEMS = {
                                           {"p": "Glass Database ID", "v": {"k": "external-id", "v": "gdb:artists:1"}}]},
                       "refs": {"gdb:place:norfolk-virginia": {"label": "Norfolk", "qid": ""},
                                "gdb:technique:offhand-blown": {"label": "Offhand Blown Glass", "qid": ""}}},
+    "gdb:artists:4": {"item": {"aliases": [], "url": "https://glassdatabase.test/explore/?q=Bea",
+                               "claims": [{"p": "work location", "v": {"k": "item", "v": "gdb:place:bristol-england"}},
+                                          {"p": "official website", "v": {"k": "url", "v": "https://www.bealindqvist.example/"}},
+                                          {"p": "Instagram username", "v": {"k": "external-id", "v": "bea.glass"}}]},
+                      "refs": {"gdb:place:bristol-england": {"label": "Bristol", "qid": ""}}},
+    "gdb:artists:5": {"item": {"aliases": [], "url": "https://glassdatabase.test/explore/?q=Pike",
+                               "claims": [{"p": "work location", "v": {"k": "item", "v": "gdb:place:crozet-virginia"}}]},
+                      "refs": {"gdb:place:crozet-virginia": {"label": "Crozet", "qid": ""}}},
 }
+# what a web search says (evidence.search is replaced by this in the enrich tests), by a word of the query
+HITS = {
+    "pike example": [
+        {"title": "Pike Example Glass – hot shop in Crozet, Virginia", "url": "https://pikeexampleglass.com/about",
+         "snippet": "Pike Example blows glass in Crozet, Virginia. Follow @pikeexample on Instagram."},
+        {"title": "Pike Example (@pikeexample) • Instagram photos", "url": "https://www.instagram.com/pikeexample/", "snippet": "glass artist in Crozet"},
+        {"title": "Pike Example - Facebook", "url": "https://www.facebook.com/pikeexample", "snippet": "posts"},
+        {"title": "Pike - Wikipedia", "url": "https://en.wikipedia.org/wiki/Pike", "snippet": "a fish"},
+        {"title": "Pike Example | Saatchi Art", "url": "https://www.saatchiart.com/pikeexample", "snippet": "buy art"}],
+    "bea lindqvist": [
+        {"title": "Bea Lindqvist Glass", "url": "https://bealindqvist.example/", "snippet": "Bea Lindqvist, glass sculptor, Bristol. Instagram @bea.glass"},
+        {"title": "bea.glass on Instagram", "url": "https://www.instagram.com/bea.glass/", "snippet": "Bristol based glass"}],
+    "rae sutter": [{"title": "Rae Sutter for Council", "url": "https://raesutter.vote/", "snippet": "Vote Rae Sutter"}],
+}
+
+
+def fake_search(q, limit=5):
+    key = next((k for k in HITS if k in q.lower()), None)
+    return list(HITS.get(key, []))
 # what Wikidata says about the candidates (evidence.entity_facts is replaced by this in the tests)
 WD = {
     "Q901": {"label": "Theo Park", "description": "British sculptor", "aliases": [], "enwiki": "",
@@ -122,6 +151,10 @@ class FakeGlass:
                 body = json.loads(self.rfile.read(n) or b"{}")
                 if self.headers.get("X-API-Key") != fake.token:
                     return self._send(401, {"detail": "no"})
+                if self.path.startswith("/wikibase/items/"):
+                    key = self.path[len("/wikibase/items/"):]
+                    fake.posts.append({"key": key, "body": body})
+                    return self._send(200, {"key": key, "enrich": body.get("enrich")})
                 key = self.path[len("/wikibase/wikidata/"):]
                 fake.posts.append({"key": key, "body": body})
                 if "suggest" in body:
@@ -168,7 +201,17 @@ class FakeJudge:
                 body = json.loads(self.rfile.read(n) or b"{}")
                 fake.requests.append(body)
                 content = body["messages"][-1]["content"]
-                if body.get("model") == "gemma3:1b":
+                if "CANDIDATE SITES" in content:                       # the enrich step's question
+                    if "Pike Example" in content:
+                        reply = {"website": "https://pikeexampleglass.com/", "instagram": "pikeexample", "city": "Crozet", "region": "Virginia",
+                                 "country": "United States", "confidence": {"website": 0.9, "instagram": 0.9, "city": 0.8}, "because": "the site and the account name Crozet"}
+                    elif "Bea Lindqvist" in content:
+                        reply = {"website": "https://bealindqvist.example/", "instagram": "@bea.glass", "city": "Bristol", "region": "", "country": "",
+                                 "confidence": {"website": 0.9, "instagram": 0.9, "city": 0.9}, "because": "her site names Bristol"}
+                    else:                                              # an answer the hits do not bear out
+                        reply = {"website": "https://evil.example.com/", "instagram": "rae_fake", "city": "Crozet", "region": "", "country": "",
+                                 "confidence": {"website": 0.9, "instagram": 0.9, "city": 0.9}, "because": "made up"}
+                elif body.get("model") == "gemma3:1b":
                     reply = {"verdict": "unsure", "confidence": 0.3, "because": "nothing ties them together"}
                 else:
                     blocks = re.split(r"\n(?=CANDIDATE Q\d+)", content)
@@ -214,6 +257,7 @@ def wired(con, glass, judge_server, monkeypatch, tmp_path):
     monkeypatch.setattr(config, "SEARXNG_URL", "")
     monkeypatch.setattr(config, "RESOLVE_THRESHOLD", 0.8)
     monkeypatch.setattr(config, "RESOLVE_MODELS", ["qwen3:1.7b"])
+    monkeypatch.setattr(config, "JOB_RUNNER", False)        # the app's runner thread starts once per process
     monkeypatch.setattr(E, "entity_facts", lambda ids, log=None: {q: dict(WD[q]) for q in ids if q in WD})
     monkeypatch.setattr(E, "wikipedia_summary", lambda title: f"{title} is an article." if title else "")
     monkeypatch.setattr(RB, "DOCS", tmp_path / "resolvebench.json")
@@ -225,12 +269,14 @@ def test_queue_rows_facts_and_gold(glass):
     src = GlassDatabase(base=glass.url, token="")
     cases = src.cases(("unsure",))
     assert [c.key for c in cases] == ["gdb:artists:1", "gdb:artists:2"]
+    assert [c.key for c in src.cases(("none",), with_facts=False)] == ["gdb:artists:3", "gdb:artists:5"]
     theo = cases[0]
     assert theo.description == "glass artist, Norfolk, Virginia" and theo.aliases == ["T. Park"]
     assert theo.facts == {"work location": ["Norfolk"], "technique": ["Offhand Blown Glass"], "Instagram username": ["theo.glass"]}
     assert theo.url.startswith("https://glassdatabase.test/") and theo.gold() is None and theo.candidate_ids() == ["Q901", "Q902"]
     gold = {c.key: (c.gold(), c.human()) for c in src.cases(RB.GOLD_STATUSES, with_facts=False)}
-    assert gold == {"gdb:place:crozet-virginia": ("Q1141856", False), "gdb:artists:3": ("none", False), "gdb:artists:4": ("Q931", True)}
+    assert gold == {"gdb:place:crozet-virginia": ("Q1141856", False), "gdb:artists:3": ("none", False), "gdb:artists:4": ("Q931", True),
+                    "gdb:artists:5": ("none", False)}
     kinds = src.cases(("unsure",), kinds=["place"], with_facts=False)
     assert kinds == []
     # the cache of an earlier fetch is reused when label and candidates are unchanged
@@ -289,7 +335,7 @@ def test_bench_rows_summary_and_docs(wired, judge_server):
     con = wired
     lines = []
     cases = RB.fetch_cases(con, RB.GOLD_STATUSES, log=lines.append)
-    assert {c.key for c in cases} == {"gdb:place:crozet-virginia", "gdb:artists:3", "gdb:artists:4"}   # known rows are not gold
+    assert {c.key for c in cases} == {"gdb:place:crozet-virginia", "gdb:artists:3", "gdb:artists:4", "gdb:artists:5"}   # known rows are not gold
     out = RB.run_bench(con, ["qwen3:1.7b"], cases + [Case("gdb:colour:red", "colour", "red", status="known", qid="Q3142")], log=lines.append)
     arm = out["arms"]["judge@qwen3:1.7b"]
     assert out["cases"] == 3                                   # red has no candidates: not a question
@@ -372,6 +418,134 @@ def test_live_without_a_token_only_reports(wired, glass, monkeypatch):
     monkeypatch.setattr(config, "GLASSDB_ADMIN_TOKEN", "")
     out = RB.run_live(wired, ["qwen3:1.7b"], apply=True, log=lambda *_: None)
     assert out["settled"] == 2 and out["suggested"] == 0 and out["applied"] == 0 and glass.posts == []
+
+
+def test_wikidata_throttled_still_judges_from_the_lookups_descriptions(wired, monkeypatch):
+    """A 429 from Wikidata (a throttled address) is not the end of the run: the candidates keep the label,
+    description and classes the lookup saw, the case is judged, the row says so, and nothing is cached."""
+    con = wired
+
+    def refuse(ids, log=None):
+        raise RuntimeError("no answer from https://www.wikidata.org/w/api.php (429 from www.wikidata.org)")
+    monkeypatch.setattr(E, "entity_facts", refuse)
+    case = Case("gdb:artists:2", "person", "Nadia Okonkwo", "glass artist, Portland, Oregon", [], {}, ROWS[1]["candidates"])
+    lines = []
+    ev = E.gather(con, case, use_search=False, log=lines.append)
+    assert ev["partial"] is True and ev["candidates"]["Q911"]["description"] == "Nigerian glass artist"
+    assert ev["candidates"]["Q911"]["facts"] == {"instance of": ["human"]} and any("not read" in ln for ln in lines)
+    assert db.scalar(con, "SELECT count(*) FROM resolve_evidence WHERE kind='wd'") == 0
+    text = J.prompt(case, ev)[1]["content"]
+    assert "CANDIDATE Q911: Nadia Okonkwo" in text and "Nigerian glass artist" in text
+    out = RB.run_live(con, ["qwen3:1.7b"], log=lines.append)
+    assert out["settled"] >= 1 and any("could not be read" in ln for ln in lines)
+    # the pacing and cooldown: a host that keeps answering 429 is left alone instead of stalling every case
+    import lexflow.resolve.evidence as EV
+
+    class R:
+        status_code, headers, text = 429, {"Retry-After": "0"}, "slow down"
+
+        def json(self):
+            return {}
+
+        def raise_for_status(self):
+            pass
+
+    class S:
+        def get(self, *a, **k):
+            return R()
+    monkeypatch.setattr(EV, "session", lambda: S())
+    monkeypatch.setattr(EV.time, "sleep", lambda s: None)
+    EV._cool.clear()
+    with pytest.raises(RuntimeError):
+        EV._get("https://www.wikidata.org/w/api.php", action="wbgetentities")
+    assert EV._cool.get("www.wikidata.org", 0) > 0
+    with pytest.raises(RuntimeError, match="left alone"):
+        EV._get("https://www.wikidata.org/w/api.php", action="wbgetentities")
+    EV._cool.clear()
+
+
+# ------------------------------------------------------------------------------------------------ enrichment
+def test_enrich_sifting_and_verification():
+    from lexflow.resolve import enrich as EN
+    pike = Case("gdb:artists:5", "person", "Pike Example", "glass artist, Crozet, Virginia", [], {"work location": ["Crozet"]})
+    hits = HITS["pike example"]
+    webs = EN.website_candidates(pike, hits)
+    assert [w["host"] for w in webs] == ["pikeexampleglass.com"] and webs[0]["url"] == "https://pikeexampleglass.com/" and webs[0]["score"] >= 4
+    igs = EN.instagram_candidates(pike, hits)
+    assert igs[0]["handle"] == "pikeexample" and "https://www.instagram.com/pikeexample/" in igs[0]["evidence"] and len(igs) == 1
+    assert EN.queries_for(pike) == ['"Pike Example" glass artist', '"Pike Example" Crozet glass', '"Pike Example" glass instagram']
+    assert EN.queries_for(pike, {"city"}) == ['"Pike Example" glass artist', '"Pike Example" glass instagram']
+    assert EN.site_of("https://user.wixsite.com/mysite/about") == "https://user.wixsite.com/mysite/"
+    assert EN.host("https://www.Example.com:443/x") == "example.com"
+    # the model's answer is kept only where the hits bear it out
+    answer = EN.parse(json.dumps({"website": "https://pikeexampleglass.com/about", "instagram": "@pikeexample", "city": "Crozet",
+                                  "region": "Virginia", "country": "France", "confidence": {"website": 90, "instagram": 0.8, "city": 0.7},
+                                  "because": "the site says so"}))
+    kept = EN.verify(pike, answer, hits, webs, igs)
+    assert kept["website"]["value"] == "https://pikeexampleglass.com/" and kept["website"]["confidence"] == 0.9
+    assert kept["instagram"]["value"] == "pikeexample" and kept["city"]["value"] == "Crozet" and kept["city"]["region"] == "Virginia"
+    assert "country" not in kept["city"] and kept["city"]["evidence"]           # France is in no hit
+    bogus = EN.parse(json.dumps({"website": "https://evil.example.com/", "instagram": "someone_else", "city": "Atlantis",
+                                 "confidence": {"website": 1, "instagram": 1, "city": 1}, "because": "x"}))
+    assert EN.verify(pike, bogus, hits, webs, igs) == {}
+    det = EN.deterministic(pike, webs, igs)
+    assert det["website"] == "https://pikeexampleglass.com/" and det["instagram"] == "pikeexample" and det["city"] == ""
+    rae = Case("gdb:artists:3", "person", "Rae Sutter", "glass artist, Crozet, Virginia", [], {})
+    assert EN.deterministic(rae, EN.website_candidates(rae, HITS["rae sutter"]), [])["website"] == ""   # her name, not her site
+    assert EN.parse("no json here")["ok"] is False
+    assert re.fullmatch(r"1-[0-9a-f]{12}", EN.version())
+    # the campaign site is a candidate (the name is in the host); it is the model's or the glass rule's to refuse
+    webs = EN.website_candidates(rae, HITS["rae sutter"])
+    assert webs and webs[0]["host"] == "raesutter.vote"
+
+
+def test_enrich_live_check_and_api(wired, glass, judge_server, monkeypatch):
+    from fastapi.testclient import TestClient
+    from lexflow.api.app import app
+    from lexflow.pipeline import jobs
+    from lexflow.pipeline.steps import get_step
+    from lexflow.resolve import enrich as EN
+    con = wired
+    assert get_step("enrich").params[:2] == ["models", "node"] and "enrich" in jobs.EXCLUSIVE
+    lines = []
+    out = EN.run(con, ["qwen3:1.7b"], log=lines.append)                  # no SEARXNG_URL: nothing to search with
+    assert out["cases"] == 0 and out["error"] == "no SEARXNG_URL" and glass.posts == []
+    monkeypatch.setattr(config, "SEARXNG_URL", "http://searxng.test:8080")
+    monkeypatch.setattr(E, "search", fake_search)
+    out = EN.run(con, ["qwen3:1.7b"], log=lines.append)
+    # Pike (none; has a place, lacks a site and an account) gets the site and the account, not the town he has;
+    # Rae's made-up answer is dropped whole
+    assert out["cases"] == 2 and out["proposed"] == {"website": 1, "instagram": 1, "city": 0} and out["suggested"] == 1
+    rows = {r["key"]: r for r in EN.rows(con)}
+    pike = rows["gdb:artists:5"]
+    assert pike["fields"]["website"]["value"] == "https://pikeexampleglass.com/" and pike["fields"]["instagram"]["value"] == "pikeexample"
+    assert "city" not in pike["fields"] and pike["suggested_at"] and pike["model"] == "qwen3:1.7b"
+    assert rows["gdb:artists:3"]["fields"] == {} and not rows["gdb:artists:3"].get("suggested_at")
+    sent = next(p for p in glass.posts if p["key"] == "gdb:artists:5")["body"]["enrich"]
+    assert sent["fields"]["website"]["value"] == "https://pikeexampleglass.com/" and sent["searched"] is True and sent["version"] == EN.version()
+    # the check: records that have the fields (Bea everything, Theo an account and a town, Pike a town), hidden;
+    # the search finds Bea's and Pike's again, and nothing for Theo, whom the web does not know
+    glass.posts.clear()
+    out = EN.run(con, ["qwen3:1.7b"], check=True, log=lines.append)
+    assert out["cases"] == 3 and out["check"]["website"] == {"had": 1, "proposed": 1, "right": 1, "precision": 1.0, "recall": 1.0}
+    assert out["check"]["instagram"] == {"had": 2, "proposed": 1, "right": 1, "precision": 1.0, "recall": 0.5}
+    assert out["check"]["city"]["had"] == 3 and out["check"]["city"]["right"] == 2 and glass.posts == []
+    rows = {r["key"]: r for r in EN.rows(con)}
+    bea = rows["gdb:artists:4"]
+    assert bea["check"]["website"]["match"] is True and bea["check"]["website"]["actual"] == ["https://www.bealindqvist.example/"]
+    assert rows["gdb:artists:1"]["check"]["instagram"] == {"proposed": "", "actual": ["theo.glass"], "match": None}
+    summary = EN.check_summary(EN.rows(con))
+    assert summary["enrich@qwen3:1.7b"]["cases"] == 3 and summary["enrich@qwen3:1.7b"]["website"]["precision"] == 1.0
+    assert summary["enrich@qwen3:1.7b"]["city"]["recall"] == 0.667
+    # without a model: the deterministic part only
+    out = EN.run(con, [], no_llm=True, log=lines.append)
+    pike = {r["key"]: r for r in EN.rows(con)}["gdb:artists:5"]
+    assert out["proposed"]["website"] == 1 and out["proposed"]["city"] == 0 and pike["model"] == "" and pike["fields"]["website"]["confidence"] == 0.7
+    with TestClient(app) as c:
+        j = c.get("/api/resolve/enrich").json()
+        assert j["search"] is True and len(j["rows"]) == 4 and j["check"]["enrich@qwen3:1.7b"]["website"]["precision"] == 1.0
+    js = (ROOT / "dashboard" / "app.js").read_text(encoding="utf-8")
+    assert "/api/resolve/enrich" in js and "Check the search" in js
 
 
 # ------------------------------------------------------------------------------------------------ API, steps, page

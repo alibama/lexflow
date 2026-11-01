@@ -111,10 +111,13 @@ def search_text(searched: dict) -> str:
 def prompt(case: Case, evidence: dict) -> list[dict]:
     """The two messages.  Candidates come first and are never cut away; search text takes what room is left."""
     cands = evidence.get("candidates") or {}
+    seen = {c.get("qid"): c for c in case.candidates}           # what the lookup saw, when no facts were read
     parts = [record_text(case), ""]
     budget = MAX_CHARS - len(parts[0])
     for qid in case.candidate_ids():
-        text = candidate_text(qid, cands.get(qid) or {"label": qid, "description": "(no facts were read)"})
+        c = cands.get(qid) or {"label": seen.get(qid, {}).get("label") or qid, "description": seen.get(qid, {}).get("description") or "",
+                               "facts": {"instance of": list(seen.get(qid, {}).get("types") or [])}}
+        text = candidate_text(qid, c)
         if len(text) > budget and budget > 400:
             text = text[:budget - 1] + "…"
         parts.append(text)

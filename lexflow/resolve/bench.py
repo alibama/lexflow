@@ -106,6 +106,10 @@ def row_for(case: Case, v: J.Verdict, *, arm: str, ver: str, threshold: float, s
             "searched": searched, "version": ver, "threshold": threshold}
 
 
+def _partial(ev: dict) -> bool:
+    return bool((ev or {}).get("partial"))
+
+
 def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = None, search: bool = True,
               mode: str = "json", threshold: float | None = None, log=print, progress=None) -> dict:
     """Every gold case x every model; rows stored, docs/resolvebench.json rewritten, the summary returned."""
@@ -119,9 +123,11 @@ def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = N
         f"{len(models)} model(s), threshold {threshold}" + ("" if search and config.SEARXNG_URL else "; no web search"))
     ev: dict[str, dict] = {}
     for i, c in enumerate(cases):                   # the main thread reads the evidence (and fills the cache)
-        ev[c.key] = E.gather(con, c, use_search=search, log=None)
+        ev[c.key] = E.gather(con, c, use_search=search, log=log)
         if progress:
             progress(0.3 * (i + 1) / len(cases))
+    if any(_partial(e) for e in ev.values()):
+        log(f"  Wikidata facts could not be read for {sum(_partial(e) for e in ev.values())} case(s); their rows say partial_evidence")
     searched = bool(search and config.SEARXNG_URL)
     jobs = [(m, c) for m in models for c in cases]
     workers = _workers(models, node)
@@ -136,7 +142,9 @@ def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = N
         except Exception as e:  # noqa: BLE001 - a failed call is a row that says so
             v = J.Verdict(verdict="unsure", confidence=0.0, because=f"call failed: {type(e).__name__}: {e}", ok=False,
                           model=model, flags=["call failed"])
-        return row_for(case, v, arm=arm_name(model, searched, mode), ver=ver, threshold=threshold, searched=searched)
+        row = row_for(case, v, arm=arm_name(model, searched, mode), ver=ver, threshold=threshold, searched=searched)
+        row["partial_evidence"] = _partial(ev[case.key])
+        return row
 
     def keep(row: dict) -> None:
         nonlocal done
@@ -289,7 +297,10 @@ def run_live(con, models: list[str], *, node: str | None = None, search: bool = 
         + (f"; decisions at ≥{apply_above} will be applied" if apply and src.can_write() else ""))
     if not cases:
         return {"cases": 0, "settled": 0, "open": 0, "suggested": 0, "applied": 0, "version": ver}
-    ev = {c.key: E.gather(con, c, use_search=search, log=None) for c in cases}
+    ev = {c.key: E.gather(con, c, use_search=search, log=log) for c in cases}
+    if any(_partial(e) for e in ev.values()):
+        log(f"  Wikidata facts could not be read for {sum(_partial(e) for e in ev.values())} case(s): those are judged from the "
+            "lookup's own candidate descriptions, with less to go on")
     searched = bool(search and config.SEARXNG_URL)
     workers = _workers(models, node)
     counts = {"cases": len(cases), "settled": 0, "open": 0, "suggested": 0, "applied": 0, "by_kind": {}, "version": ver}
