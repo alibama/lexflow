@@ -118,7 +118,7 @@ function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 400)
 // ---------------------------------------------------------------- routing
 const routes = { map: viewMap, setup: viewSetup, places: viewPlaces, place: viewPlace, local: viewLocalProcess, ask: viewAsk, asked: viewAsked, answer: viewAnswer, benchmark: viewBenchmark, processes: viewProcesses, model: viewModel, data: viewData,
   jobs: viewJobs, job: viewJob, method: viewMethod, query: viewQuery, who: viewWho, coverage: viewCoverage, compute: viewCompute, hypo: viewHypo,
-  benefits: viewBenefits };
+  benefits: viewBenefits, resolve: viewResolve };
 routes.pipeline = viewPipeline;
 async function route() {
   // #/page/arg?key=value: the query part never reaches the page's arguments; pages read it from S.params
@@ -1495,6 +1495,75 @@ async function viewBenchmark() {
       d.askbench ? askBenchCard(d.askbench) : null,
       h("div", { class: "row-flex", style: "margin-top:16px" },
         h("button", { class: "btn", onclick: async () => { await startRunJob("benchmark", {}); location.hash = "#/jobs"; } }, "Run the full benchmark")));
+  }
+  onRefresh(load);
+  await load();
+}
+
+// ================================================================ RESOLVE
+// Local models settle the Glass Database's open Wikidata questions (lexflow/resolve, docs/resolve.md).  This page
+// reads /api/resolve/*; its one write is a person applying an answer, which lexflow's server forwards to the Glass
+// Database with the API key in .env.  The browser never talks to the Glass Database, Wikidata or a model.
+async function viewResolve() {
+  const body = h("div");
+  rc(view, h("div", { class: "page-head" }, h("div", {}, h("h1", {}, "Resolve: the open Wikidata questions"),
+    h("p", {}, "The Glass Database's Wikidata lookup leaves a queue of namesakes it could not settle. Each case here was shown to a panel of local models with the record, the candidates' Wikidata facts and Wikipedia leads, and web search snippets. Settled means every model named the same answer at or above the threshold. ResolveBench runs the same judge on the cases a person or the lookup's rules already decided, so each model's precision is known before its answers are trusted."))), body);
+  const isQ = (s) => /^Q\d+$/.test(s || "");
+  const wd = (qid) => (isQ(qid) ? h("a", { href: `https://www.wikidata.org/wiki/${qid}`, target: "_blank", rel: "noopener" }, qid) : (qid || "–"));
+  async function load() {
+    const d = await api("/api/resolve");
+    const cfg = d.configured, q = d.queue;
+    const run = (step) => async () => { await startRunJob(step, {}); location.hash = "#/jobs"; };
+    const last = d.jobs && d.jobs[0];
+    const head = h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Where it stands"),
+      h("p", {}, `${q.cases ? `${fmtInt(q.cases)} case${q.cases === 1 ? "" : "s"} judged: ${q.settled} settled, ${q.open} open${q.suggested ? `, ${q.suggested} written back as suggestions` : ""}${q.applied ? `, ${q.applied} applied` : ""}.` : "No case judged yet."} Queue: ${cfg.glassdb}. Panel: ${cfg.models.join(", ")}; threshold ${cfg.threshold}. ${cfg.search ? "Web search on." : "No web search (SEARXNG_URL is not set)."} ${cfg.token ? "Answers go back to the Glass Database as suggestions." : "Read only: set GLASSDB_ADMIN_TOKEN in .env to write suggestions back."} ${cfg.pool ? "Model calls spread over the compute pool." : "One Ollama, no pool."}`))),
+      h("div", { class: "card-pad row-flex" },
+        h("button", { class: "btn", onclick: run("resolve") }, "Judge the open queue"),
+        h("button", { class: "btn", onclick: run("resolve-bench") }, "Benchmark the models"),
+        last ? h("span", { class: "muted" }, `Last job: #${last.id} ${last.step} ${last.status}${last.message ? ` – ${last.message}` : ""}`) : null));
+    const cases = (await api("/api/resolve/cases?state=all&limit=300")).rows;
+    async function decide(key, qid) {
+      if (!confirm(qid ? `Link ${key} to ${qid} on the Glass Database?` : `Rule Wikidata out for ${key} on the Glass Database?`)) return;
+      try { await post(`/api/resolve/cases/${key}`, { qid }); await load(); } catch (e) { alert(e.message || e); }
+    }
+    const caseEl = (r) => {
+      const ev = r.evidence || {};
+      const cands = (r.candidates || []).map((c) => h("li", {}, h("b", {}, c.label || c.qid), " ", wd(c.qid), " ",
+        h("span", { class: "muted" }, (ev[c.qid] && ev[c.qid].description) || c.description || ""),
+        ev[c.qid] && ev[c.qid].facts ? h("div", { class: "muted", style: "font-size:12px" },
+          Object.entries(ev[c.qid].facts).slice(0, 6).map(([k, v]) => `${k}: ${v.slice(0, 4).join(", ")}`).join(" · ")) : null));
+      const votes = Object.entries(r.verdicts || {}).map(([m, v]) => h("li", {}, h("span", { class: "mono" }, m), ` → `, wd(v.verdict), ` (${fx(v.confidence)}) `,
+        v.because ? h("span", { class: "muted" }, v.because) : null, v.flags && v.flags.length ? h("span", { class: "muted" }, ` [${v.flags.join("; ")}]`) : null));
+      const state = r.applied_at ? statusEl("done", `applied: ${r.applied_qid || "not on Wikidata"}`) : r.settled ? statusEl("partial", "settled") : statusEl("todo", "open");
+      return h("details", { style: "padding:8px 0;border-top:1px solid var(--rule, #ddd)" },
+        h("summary", { style: "cursor:pointer" }, h("b", {}, r.label), ` (${r.kind}) → `, wd(r.verdict), ` ${fx(r.confidence)} `, state,
+          r.suggested_at ? h("span", { class: "muted" }, " · the reviewer sees this suggestion") : null),
+        h("div", { style: "padding:6px 0 4px 16px" }, r.description ? h("p", { class: "muted" }, r.description) : null,
+          r.because ? h("p", {}, r.because) : null,
+          h("p", { class: "muted" }, "Candidates"), h("ul", {}, cands),
+          h("p", { class: "muted" }, "The panel"), h("ul", {}, votes),
+          r.url ? h("p", {}, h("a", { href: r.url, target: "_blank", rel: "noopener" }, "the record on glassdatabase.org")) : null,
+          cfg.token && !r.applied_at ? h("div", { class: "row-flex" },
+            isQ(r.verdict) ? h("button", { class: "btn", onclick: () => decide(r.key, r.verdict) }, `Apply ${r.verdict}`) : null,
+            h("button", { class: "btn", onclick: () => decide(r.key, "") }, "Not on Wikidata")) : null));
+    };
+    const settled = cases.filter((r) => r.settled), open = cases.filter((r) => !r.settled);
+    const list = (title, rows, note) => h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `${title} (${rows.length})`), h("p", {}, note))),
+      h("div", { class: "card-pad" }, rows.length ? rows.map(caseEl) : h("p", { class: "muted" }, "Nothing here.")));
+    const b = d.bench;
+    const arms = b && b.summary ? Object.entries(b.summary) : [];
+    const benchCard = arms.length ? h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, "Models compared (ResolveBench)"),
+      h("p", {}, `${b.cases} gold cases (rows a person or the lookup's rules already decided), threshold ${b.threshold}${b.current ? "" : "; the code changed since this run, so rerun the bench"}. "Precision when decided" is the number that has to reach 95% before a model's answers are applied without a person, and then only for the cases it decides.`))),
+      h("div", { class: "card-pad table-wrap" }, h("table", { class: "data" },
+        h("thead", {}, h("tr", {}, ["Arm", "Cases", "Accuracy", "Decides", "Precision when decided", "Human-decided accuracy", "Unsure", "Seconds a case"].map((l, i) => h("th", { scope: "col", class: i ? "num" : "" }, l)))),
+        h("tbody", {}, arms.map(([arm, s]) => h("tr", {}, h("td", { class: "mono" }, arm), h("td", { class: "num" }, String(s.cases)), h("td", { class: "num" }, fx(s.accuracy)),
+          h("td", { class: "num" }, pct(s.decided)), h("td", { class: "num", style: s.precision_decided != null && s.precision_decided >= 0.95 ? "font-weight:600" : "" }, fx(s.precision_decided)),
+          h("td", { class: "num" }, s.human_cases ? `${fx(s.human_accuracy)} (${s.human_cases})` : "–"), h("td", { class: "num" }, pct(s.unsure)), h("td", { class: "num" }, fx(s.mean_seconds, 1)))))))) : null;
+    rc(body, head, h("div", { class: "spacer" }),
+      list("Settled", settled, "Every model named the same answer at or above the threshold. Apply one here, or leave it to the reviewer on the Glass Database's own page, where the suggestion already shows beside the candidates."),
+      h("div", { class: "spacer" }),
+      list("Open", open, "The models disagreed, or none was sure. The reviewer sees the panel's best guess and its reasons beside the candidates."),
+      benchCard ? h("div", { class: "spacer" }) : null, benchCard);
   }
   onRefresh(load);
   await load();

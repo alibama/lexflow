@@ -21,7 +21,7 @@ from datetime import datetime, timedelta, timezone
 from .. import config
 from ..store import db
 
-EXCLUSIVE = {"build", "quickstart", "models", "ask", "ontology", "coverage"}   # these share Ollama: one at a time
+EXCLUSIVE = {"build", "quickstart", "models", "ask", "ontology", "coverage", "resolve", "resolve-bench"}   # these share Ollama: one at a time
 INDEXING = {"index", "ask"}                               # these build the same per-state search index files
 GROUPS = (EXCLUSIVE, INDEXING)                            # two jobs in one group never run at once
 PULLS = {"models"}                                        # with a pool of several nodes, only pulls stay exclusive

@@ -156,6 +156,20 @@ The selector sits at about 0.60 on these 22 cases: none of these moves it beyond
 
 Reproduce with `lexflow run benchmark --strategies stack_combo,stack_tfidf,rules`, `lexflow ceiling` and `python scripts/learning_curve.py`. The **Benchmark** page shows every case.
 
+## Local models on someone else's queue: the Glass Database's Wikidata questions
+
+The Glass Database (glassdatabase.org) moves its public record to a Wikibase and looks every person, place,
+institution and term up on Wikidata on the way. Its lookup settles what it can with narrow rules and leaves the
+rest, namesakes mostly, as a queue of small questions with the candidates already found. `lexflow run resolve`
+puts that queue through a panel of local models with the record's statements, each candidate's Wikidata facts
+and Wikipedia lead, and web search snippets; a verdict every model agrees on above the threshold is settled,
+every answer goes back to the Glass Database as a suggestion its reviewer sees beside the candidates (with its
+API key), and a decision is applied only when the run is told to. `lexflow run resolve-bench` scores the same
+judge on the rows a person or the rules already decided, model by model, and the number to watch is precision
+when decided: it has to reach 95% before a model's answers are applied without a person. The **Resolve** page
+shows both; the model calls go through the compute pool, so another node is one line of `.env`. The runbook is
+[docs/resolve.md](docs/resolve.md).
+
 ## Where it stands
 
 <picture>
@@ -401,6 +415,8 @@ lexflow/            the package
   ir.py, bpmn_xml.py, dmn_xml.py, layout.py, validate.py, petri.py, ...   the core (see docs/core.md)
   ask/              new questions: index.py (statute search), plan.py, retrieve.py, relevance.py, answer.py, local.py,
                     pipeline.py, reference.py (Claude's reference answers), bench.py (AskBench)
+  resolve/          the Glass Database's open Wikidata questions through local models: source.py (the queue),
+                    evidence.py, judge.py, bench.py (ResolveBench and the live run), api.py (docs/resolve.md)
   extract/          facts schema, Ollama client, compiler, scorer; segment.py (clauses), selector.py (the learned
                     selector), strategies.py (every extraction strategy), benchmark.py (scoring against Claude)
   municipal/        governments, statutes, locator, contacts, crawl, LOCUS scan, build, quality, scoring, stats

@@ -87,6 +87,15 @@ WIKIDATA = credit(
     "Official websites (P856), office emails (P968) and phone numbers (P1329) from the Wikidata Query Service, "
     "matched by FIPS code (P882, P774)",
     note="To fix a wrong contact, edit Wikidata.")
+WIKIPEDIA = credit(
+    "Wikipedia", "The Wikipedia community, hosted by the Wikimedia Foundation", "CC BY-SA 4.0",
+    "https://en.wikipedia.org/wiki/Wikipedia:Copyrights",
+    "The English article's lead for a Wikidata candidate (the REST page summary), shown to the judge as evidence")
+GLASS_DATABASE = credit(
+    "Glass Database", "glassdatabase.org", "CC0 1.0 for its published statements",
+    "https://glassdatabase.org/wikibase.html",
+    "The open Wikidata questions its migration leaves (the unsure rows of its lookup), read over its public API; "
+    "an answer goes back only with its API key, as a suggestion for the reviewer or, when asked, a decision")
 GOV_DIRECTORY = credit(
     "Govdirectory", "WikiProject Govdirectory", "CC0 1.0", "https://www.govdirectory.org/about/",
     "Not called by lexflow: it shows the same Wikidata statements this step reads")

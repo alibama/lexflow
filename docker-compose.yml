@@ -6,6 +6,10 @@
 #   docker compose --profile search up -d         + SearXNG
 #   docker compose --profile test run --rm test   the test suite
 #   docker compose --profile test-ui up -d test-ui  a second dashboard on 127.0.0.1:8001, on a throwaway store
+#   docker compose --profile llm --profile search up -d   then `docker compose exec app lexflow run resolve`:
+#                                                 local models settle the Glass Database's open Wikidata
+#                                                 questions (docs/resolve.md); GLASSDB_ADMIN_TOKEN in .env
+#                                                 lets the answers go back as suggestions
 #
 # GPU for Ollama (NVIDIA): add -f docker-compose.gpu.yml.  On a Mac, run Ollama natively (it uses
 # the GPU there) and set OLLAMA_URL=http://host.docker.internal:11434 in .env.
@@ -29,6 +33,10 @@ x-app: &app
     DOKUWIKI_TOKEN: ${DOKUWIKI_TOKEN:-}
     LEXIPEDIA_TOKEN: ${LEXIPEDIA_TOKEN:-}
     SEARXNG_URL: ${SEARXNG_URL:-}
+    GLASSDB_URL: ${GLASSDB_URL:-https://glassdatabase.org/api}
+    GLASSDB_ADMIN_TOKEN: ${GLASSDB_ADMIN_TOKEN:-}
+    LEXFLOW_RESOLVE_MODELS: ${LEXFLOW_RESOLVE_MODELS:-}
+    LEXFLOW_RESOLVE_THRESHOLD: ${LEXFLOW_RESOLVE_THRESHOLD:-0.8}
   volumes:
     - lexflow-data:/data                 # the SQLite store, job logs, built models
     - ./data/raw:/data/raw               # downloads stay on the host and survive `down -v`
@@ -105,6 +113,7 @@ services:
       DOKUWIKI_TOKEN: ""
       LEXIPEDIA_TOKEN: ""
       LEXFLOW_CORRECTIONS: ""
+      GLASSDB_ADMIN_TOKEN: ""
       OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
     restart: "no"
 
@@ -120,6 +129,7 @@ services:
       DOKUWIKI_TOKEN: ""
       LEXIPEDIA_TOKEN: ""
       LEXFLOW_CORRECTIONS: ""
+      GLASSDB_ADMIN_TOKEN: ""
       OLLAMA_URL: http://127.0.0.1:9
     command: ["python", "-m", "pytest", "-q"]
 

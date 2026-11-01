@@ -29,6 +29,7 @@ from ..store import turso as T
 from ..compute import api as compute_api
 from ..compute import health as compute_health
 from ..compute import nodes as compute_nodes
+from ..resolve import api as resolve_api
 
 runner = jobs.Runner()
 poller = compute_health.Poller()
@@ -50,6 +51,7 @@ async def lifespan(_app):
 
 app = FastAPI(title="lexflow", version="1.0", lifespan=lifespan)
 compute_api.register(app)
+resolve_api.register(app)
 
 
 def con():

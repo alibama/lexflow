@@ -278,6 +278,55 @@ CREATE TABLE IF NOT EXISTS ask_bench (
   PRIMARY KEY (case_id, arm)
 );
 
+CREATE TABLE IF NOT EXISTS resolve_cases (
+  key TEXT PRIMARY KEY,
+  kind TEXT,
+  label TEXT,
+  description TEXT,
+  aliases TEXT,
+  facts TEXT,
+  candidates TEXT,
+  status TEXT,
+  gold_qid TEXT,
+  why TEXT,
+  url TEXT,
+  fetched_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS resolve_evidence (
+  kind TEXT NOT NULL,
+  ident TEXT NOT NULL,
+  json TEXT,
+  fetched_at TEXT,
+  PRIMARY KEY (kind, ident)
+);
+
+CREATE TABLE IF NOT EXISTS resolve_bench (
+  case_id TEXT NOT NULL,
+  arm TEXT NOT NULL,
+  metrics TEXT,
+  gold_hash TEXT,
+  created_at TEXT,
+  PRIMARY KEY (case_id, arm)
+);
+
+CREATE TABLE IF NOT EXISTS resolve_queue (
+  key TEXT PRIMARY KEY,
+  kind TEXT,
+  label TEXT,
+  verdict TEXT,
+  confidence REAL,
+  settled INTEGER DEFAULT 0,
+  because TEXT,
+  verdicts TEXT,
+  searched INTEGER DEFAULT 0,
+  version TEXT,
+  suggested_at TEXT,
+  applied_at TEXT,
+  applied_qid TEXT,
+  updated_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS wikibase_items (
   key TEXT PRIMARY KEY,
   qid TEXT,
@@ -558,6 +607,9 @@ SYNCED: dict[str, tuple[str, ...]] = {
 # person's free text is theirs (local_only).
 LOCAL_KEYS: dict[str, tuple[str, ...]] = {"reviewers": ("id",), "section_tags": ("state", "ref"),
                                           "scenarios": ("family", "id"), "scenario_runs": ("run_id",),
+                                          # lexflow.resolve: the Glass Database's open Wikidata questions, this copy's own
+                                          "resolve_cases": ("key",), "resolve_evidence": ("kind", "ident"),
+                                          "resolve_bench": ("case_id", "arm"), "resolve_queue": ("key",),
                                           # lexflow.benefits: rebuilt from the Census unit files on each copy
                                           "pension_systems": ("id",), "pension_coverage": ("gov_id", "system_id")}
 

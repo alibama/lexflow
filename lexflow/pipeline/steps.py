@@ -1352,7 +1352,62 @@ def run_coverage(con, args, log, progress):
                   computed=bool(args.get("computed")), docs_dir=args.get("docs_dir") or None)
 
 
+def _names(v) -> list[str]:
+    return [x.strip() for x in str(v or "").split(",") if x.strip()]
+
+
+def run_resolve(con, args, log, progress):
+    """lexflow.resolve: the Glass Database's open Wikidata questions through a panel of local models; suggestions
+    go back when GLASSDB_ADMIN_TOKEN is set, decisions only with ``apply`` (docs/resolve.md)."""
+    from ..resolve import bench as RB
+    models = _names(args.get("models")) or config.RESOLVE_MODELS
+    limit = int(args["limit"]) if args.get("limit") not in (None, "") else None
+    return RB.run_live(con, models, node=args.get("node") or None, search=not args.get("no_search"),
+                       mode=args.get("mode") or "json", threshold=args.get("threshold"), apply=bool(args.get("apply")),
+                       apply_above=args.get("apply_above"), limit=limit, kinds=_names(args.get("kinds")) or None,
+                       log=log, progress=progress)
+
+
+def run_resolve_bench(con, args, log, progress):
+    """ResolveBench: every model named, on the cases the Glass Database already decided."""
+    from ..resolve import bench as RB
+    models = _names(args.get("models")) or config.RESOLVE_MODELS
+    statuses = _names(args.get("status")) or list(RB.GOLD_STATUSES)
+    limit = int(args["limit"]) if args.get("limit") not in (None, "") else None
+    cases = RB.fetch_cases(con, statuses, kinds=_names(args.get("kinds")) or None, limit=limit, log=log)
+    return RB.run_bench(con, models, cases, node=args.get("node") or None, search=not args.get("no_search"),
+                        mode=args.get("mode") or "json", threshold=args.get("threshold"), log=log, progress=progress)
+
+
+_RESOLVE_CREDITS = [C.GLASS_DATABASE,
+                    C.used_for(C.WIKIDATA, "Each candidate's facts (wbgetentities), read once and cached", note=""),
+                    C.WIKIPEDIA,
+                    C.used_for(C.SEARXNG, "Optional: a query or two per case for snippets, only when SEARXNG_URL is set"),
+                    *C.model_credits([(m, "Judges each case: which candidate is the same thing, if any")
+                                      for m in config.RESOLVE_MODELS]),
+                    C.OLLAMA]
+
 COMPOSITE = {
+    "resolve": Step("resolve", "Settle the Glass Database's open Wikidata questions",
+                    "The Glass Database's Wikidata lookup leaves rows it could not settle: namesakes, shortened names, "
+                    "nothing in a description that says which one. A panel of local models reads each record, the "
+                    "candidates' Wikidata facts and Wikipedia leads and web search snippets, and answers which candidate "
+                    "is the same thing, if any. Agreement at or above the threshold is settled. With the site's API key "
+                    "every answer goes back as a suggestion the reviewer sees beside the candidates; a decision is "
+                    "applied only when the run is told to (apply).", "optional", lambda con: {}, run_resolve,
+                    params=["models", "node", "limit", "kinds", "apply", "no_search"],
+                    cost="about a minute a case per model on a laptop CPU, seconds on a GPU; Wikidata and Wikipedia "
+                         "are read once per candidate and cached in the store",
+                    credits=_RESOLVE_CREDITS),
+    "resolve-bench": Step("resolve-bench", "Compare local models on settled Wikidata questions",
+                          "ResolveBench: the same judge on the rows the Glass Database already decided (a person's "
+                          "confirmed and rejected rows; the lookup's matched and none rows that had candidates). Per "
+                          "model: accuracy, how much of the queue it would settle at the threshold, and how often those "
+                          "settled answers are right. Writes docs/resolvebench.json; the Resolve page shows it.",
+                          "optional", lambda con: {}, run_resolve_bench,
+                          params=["models", "node", "limit", "status", "kinds", "no_search"],
+                          cost="about a minute a case per model on a laptop CPU; there are hundreds of gold cases, "
+                               "so --limit for a first look", credits=_RESOLVE_CREDITS),
     "coverage": Step("coverage", "Test coverage of the questions people ask",
                      "For each of the 36 plain-language questions (fixtures/coverage/questions.json) and each state "
                      "or place: is there a Wikibase process for the topic, with bearers, bodies, channels, deadlines, "

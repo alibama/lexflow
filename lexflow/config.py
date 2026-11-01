@@ -79,6 +79,14 @@ OVERLAY_COMPUTE_GROUP = _env("LEXFLOW_OVERLAY_COMPUTE_GROUP", "compute")
 OVERLAY_RANGE = _env("LEXFLOW_OVERLAY_RANGE", "10.231.0.0/16")
 OVERLAY_POLL = int(_env("LEXFLOW_OVERLAY_POLL", "60"))
 
+# lexflow.resolve: local models settle the Glass Database's open Wikidata questions (docs/resolve.md).  Reads need
+# nothing; suggestions and decisions go back only with the site's API key.
+GLASSDB_URL = _env("GLASSDB_URL", "https://glassdatabase.org/api")
+GLASSDB_ADMIN_TOKEN = _env("GLASSDB_ADMIN_TOKEN")
+RESOLVE_MODELS = [m.strip() for m in _env("LEXFLOW_RESOLVE_MODELS").split(",") if m.strip()] or [MODEL_A]
+RESOLVE_THRESHOLD = float(_env("LEXFLOW_RESOLVE_THRESHOLD", "0.8"))   # a verdict below it is a suggestion, never settled
+RESOLVE_THINK = _env("LEXFLOW_RESOLVE_THINK", "0") not in ("", "0", "false", "no")   # let thinking models think (slow)
+
 TURSO_URL = _env("TURSO_DATABASE_URL")
 TURSO_TOKEN = _env("TURSO_AUTH_TOKEN")
 ORIGIN = _env("LEXFLOW_ORIGIN", socket.gethostname())
