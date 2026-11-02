@@ -1530,8 +1530,10 @@ async function viewResolve() {
     }
     const caseEl = (r) => {
       const ev = r.evidence || {};
+      // every candidate gets its own Apply: the panel's pick is one opinion, and the reviewer may know better
       const cands = (r.candidates || []).map((c) => h("li", {}, h("b", {}, c.label || c.qid), " ", wd(c.qid), " ",
         h("span", { class: "muted" }, (ev[c.qid] && ev[c.qid].description) || c.description || ""),
+        cfg.token && !r.applied_at ? h("button", { class: "btn", style: "margin-left:8px", onclick: () => decide(r.key, c.qid) }, c.qid === r.verdict ? `Apply ${c.qid} (the panel's pick)` : `Apply ${c.qid}`) : null,
         ev[c.qid] && ev[c.qid].facts ? h("div", { class: "muted", style: "font-size:12px" },
           Object.entries(ev[c.qid].facts).slice(0, 6).map(([k, v]) => `${k}: ${v.slice(0, 4).join(", ")}`).join(" · ")) : null));
       const votes = Object.entries(r.verdicts || {}).map(([m, v]) => h("li", {}, h("span", { class: "mono" }, m), ` → `, wd(v.verdict), ` (${fx(v.confidence)}) `,
@@ -1546,8 +1548,8 @@ async function viewResolve() {
           h("p", { class: "muted" }, "The panel"), h("ul", {}, votes),
           r.url ? h("p", {}, h("a", { href: r.url, target: "_blank", rel: "noopener" }, "the record on glassdatabase.org")) : null,
           cfg.token && !r.applied_at ? h("div", { class: "row-flex" },
-            isQ(r.verdict) ? h("button", { class: "btn", onclick: () => decide(r.key, r.verdict) }, `Apply ${r.verdict}`) : null,
-            h("button", { class: "btn", onclick: () => decide(r.key, "") }, "Not on Wikidata")) : null));
+            h("button", { class: "btn", onclick: () => decide(r.key, "") }, "Not on Wikidata"),
+            h("span", { class: "muted" }, "or apply one of the candidates above")) : null));
     };
     const settled = cases.filter((r) => r.settled), open = cases.filter((r) => !r.settled);
     const list = (title, rows, note) => h("section", { class: "card" }, h("div", { class: "card-head" }, h("div", {}, h("h2", {}, `${title} (${rows.length})`), h("p", {}, note))),

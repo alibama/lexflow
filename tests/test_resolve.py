@@ -326,6 +326,23 @@ def test_prompt_parse_and_sanity():
     person = Case("gdb:artists:9", "person", "Crozet", "", [], {}, [{"qid": "Q777", "label": "Crozet"}])
     v = J.sanity(person, J.Verdict(verdict="Q777", confidence=0.9), {"candidates": {"Q777": WD["Q777"]}})
     assert v.verdict == "unsure" and "the record is a person" in v.flags[0]
+    # a small model's reasons name one candidate and its verdict another (Kiki Smith): no verdict, a flag
+    kiki = Case("gdb:museum_artists:1", "person", "Kiki Smith", "glass artist held in museum collections", [],
+                {"collection": ["Corning Museum of Glass"]},
+                [{"qid": "Q447300", "label": "Kiki Smith"}, {"qid": "Q119565041", "label": "KiKi Smith"}])
+    kev = {"candidates": {"Q447300": {"label": "Kiki Smith", "facts": {"instance of": ["human"], "occupation": ["sculptor", "painter"]}},
+                          "Q119565041": {"label": "KiKi Smith", "facts": {"instance of": ["human"], "occupation": ["basketball player"]}}}}
+    v = J.sanity(kiki, J.Verdict(verdict="Q119565041", confidence=0.95, because="Candidate Q447300 is the German-born artist whose work the museum holds."), kev)
+    assert v.verdict == "unsure" and v.confidence <= 0.3 and "the reasons name Q447300" in v.flags[0]
+    # a candidate Wikidata records only as an athlete is not the maker, whatever the model said
+    v = J.sanity(kiki, J.Verdict(verdict="Q119565041", confidence=0.95, because="same name"), kev)
+    assert v.verdict == "unsure" and "only as basketball player" in v.flags[0]
+    # a sculptor is how Wikidata often records a glass artist: no downgrade (Te Rongo Kirkwood)
+    v = J.sanity(kiki, J.Verdict(verdict="Q447300", confidence=0.9, because="the artist whose work Corning holds"), kev)
+    assert v.verdict == "Q447300" and v.confidence == 0.9 and v.flags == []
+    # the record's facts are shown in words a reader takes rightly: a collection is a museum holding the work
+    assert "work held in the collection of: Corning Museum of Glass" in J.record_text(kiki)
+    assert "the candidate your reasons point at" in J.SYSTEM and "work held in the collection of" in J.SYSTEM
     assert RB.arm_name("qwen3:8b", True) == "judge@qwen3:8b+search" and RB.arm_name("x", False, "schema") == "judge@x+schema"
     assert re.fullmatch(r"1-[0-9a-f]{12}", RB.version())
 
@@ -613,7 +630,8 @@ def test_api_and_page(wired, glass, monkeypatch):
     page = (ROOT / "dashboard" / "index.html").read_text(encoding="utf-8")
     js = (ROOT / "dashboard" / "app.js").read_text(encoding="utf-8")
     assert '#/resolve' in page and "function viewResolve" in js and "resolve: viewResolve" in js
-    for must in ("/api/resolve/cases", "/api/resolve", "Judge the open queue", "Benchmark the models", "Precision when decided"):
+    for must in ("/api/resolve/cases", "/api/resolve", "Judge the open queue", "Benchmark the models", "Precision when decided",
+                 "Apply ${c.qid}", "Not on Wikidata"):
         assert must in js, must
     env = (ROOT / ".env.example").read_text(encoding="utf-8")
     compose = (ROOT / "docker-compose.yml").read_text(encoding="utf-8")

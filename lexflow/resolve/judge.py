@@ -32,9 +32,28 @@ SYSTEM = (
     "(a colour, an occupation, a technique, a vessel form, a trait of glass), the answer is the general concept of "
     "that name in the sense the record's description gives, not a narrower kind of it or a namesake in another "
     "language: a record 'student' is the plain item for a student, not a doctoral student; 'curator' in the glass "
-    "field is the museum curator; a term described as a kind of glass is the glass item. Confidence is how sure the "
-    "evidence makes you, from 0 to 1; say what decided it in one or two sentences that name the facts."
+    "field is the museum curator; a term described as a kind of glass is the glass item. Read the record's facts as "
+    "the Glass Database means them: 'work held in the collection of' names a museum that owns the person's work, not "
+    "where they live or work; 'works in' names their town. Wikidata often records a glass artist only as a sculptor, "
+    "artist, designer or ceramicist, which is no contradiction when the name, place and dates fit; a candidate whose "
+    "only occupation is an athlete, a politician or an actor is a different person. Your verdict must be the "
+    "candidate your reasons point at. Confidence is how sure the evidence makes you, from 0 to 1; say what decided it "
+    "in one or two sentences that name the facts."
 )
+# the record's statement labels, in the words a reader (or a small model) takes them to mean
+FACT_WORDS = {"collection": "work held in the collection of", "work location": "works in", "located in": "located in",
+              "occupation": "occupation in the glass field", "technique": "techniques", "official website": "website",
+              "Instagram username": "Instagram", "educated at": "studied at", "worked at": "worked at",
+              "student of": "studied under", "student": "taught", "award received": "award", "inception": "since",
+              "start time": "starts", "end time": "ends", "made at": "made at", "maker": "made by",
+              "participant in": "took part in", "part of": "part of"}
+# a candidate recorded on Wikidata only in these lines of work is not the maker the record describes
+OTHER_WORK = ("player", "footballer", "athlete", "cricketer", "politician", "boxer", "wrestler", "swimmer", "sprinter",
+              "cyclist", "racing driver", "rower", "golfer", "gymnast", "skier", "skater", "jockey", "referee", "umpire",
+              "soldier", "military", "judge", "lawyer", "banker", "economist")
+ART_WORK = ("artist", "sculpt", "glass", "design", "paint", "ceram", "potter", "craft", "maker", "teacher", "educator",
+            "curator", "architect", "jewel", "illustrat", "photograph", "printmak", "engrav", "weav", "blower",
+            "lampwork", "goldsmith", "silversmith", "metalsmith", "woodwork", "textile", "fashion")
 SHAPE = ('Answer with one JSON object and nothing else, shaped like this: {"verdict": "<the Q id of the one '
          'candidate that is the same thing, or none, or unsure>", "confidence": <a number from 0 to 1>, '
          '"because": "<one or two sentences naming the facts that decided it>"}')
@@ -69,8 +88,8 @@ class Verdict:
 
 
 # ------------------------------------------------------------------------------------------------ the prompt
-def _facts(facts: dict, limit: int = 6) -> list[str]:
-    return [f"  {k}: {', '.join(str(x) for x in v[:limit])}" for k, v in (facts or {}).items() if v]
+def _facts(facts: dict, limit: int = 6, words: dict | None = None) -> list[str]:
+    return [f"  {(words or {}).get(k, k)}: {', '.join(str(x) for x in v[:limit])}" for k, v in (facts or {}).items() if v]
 
 
 def record_text(case: Case) -> str:
@@ -79,7 +98,7 @@ def record_text(case: Case) -> str:
         lines.append(f"  description: {case.description}")
     if case.aliases:
         lines.append(f"  also known as: {', '.join(case.aliases[:6])}")
-    lines += _facts(case.facts)
+    lines += _facts(case.facts, words=FACT_WORDS)
     return "\n".join(lines)
 
 
@@ -216,10 +235,22 @@ def sanity(case: Case, v: Verdict, evidence: dict) -> Verdict:
     """What the evidence settles on its own.  Lowers confidence or turns the verdict to unsure; never raises it."""
     if not _Q.fullmatch(v.verdict or ""):
         return v
+    # the reasons name one candidate and the verdict another: a small model's answer and its argument parted ways
+    named = [q for q in dict.fromkeys(_Q.findall((v.because or "").upper())) if q in case.candidate_ids()]
+    if named and v.verdict not in named:
+        v.flags.append(f"the reasons name {named[0]} but the verdict says {v.verdict}")
+        v.verdict, v.confidence = "unsure", min(v.confidence, 0.3)
+        return v
     c = (evidence.get("candidates") or {}).get(v.verdict) or {}
     facts = c.get("facts") or {}
     kinds = " ".join(x.lower() for x in facts.get("instance of") or [])
     is_human = "human" in kinds.split() or kinds.startswith("human")
+    occupations = [str(o).lower() for o in facts.get("occupation") or []]
+    if case.kind == "person" and occupations and not any(any(a in o for a in ART_WORK) for o in occupations) \
+            and any(any(w in o for w in OTHER_WORK) for o in occupations):
+        v.flags.append(f"Wikidata records {v.verdict} only as {', '.join(occupations[:3])}")
+        v.verdict, v.confidence = "unsure", min(v.confidence, 0.2)
+        return v
     if case.kind == "person" and kinds and not is_human:
         v.flags.append(f"the record is a person and {v.verdict} is {', '.join(facts.get('instance of') or [])[:60]}")
         v.verdict, v.confidence = "unsure", min(v.confidence, 0.2)
