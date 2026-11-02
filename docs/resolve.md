@@ -67,6 +67,12 @@ both take `--node <name>` to pin their model calls to one node of the pool.
    decades before the record's Instagram account is not the maker. Those lower the confidence or turn the
    verdict to `unsure`, and the row says why.
 
+**Runs resume.** A case this code and this panel judged before is reused, not judged again (its stored
+verdicts, as long as the label and candidates are the same); a suggestion that could not be written last time
+(no token) is written from them. So a run that died halfway, or one started before the token was set, costs
+only the cases left. `--args '{"force": true}'` judges everything again. The bench keeps the rows this code
+already stored the same way.
+
 **The consensus.** Settled when every model in the panel names the same verdict (not `unsure`) and the least
 confident is at or above the threshold. Otherwise the most common non-unsure verdict is the suggestion, marked
 open; a tie is `unsure`. With a token, every case's panel answer is written to the Glass Database as a

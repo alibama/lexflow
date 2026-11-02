@@ -399,9 +399,10 @@ def test_live_consensus_suggestions_and_apply(wired, glass, judge_server):
     out = RB.run_live(con, ["qwen3:1.7b"], apply=True, apply_above=0.9, log=lines.append)
     decided = [p for p in glass.posts if "qid" in p["body"]]
     assert out["applied"] == 1 and {p["key"]: p["body"]["qid"] for p in decided} == {"gdb:artists:2": "Q911"}
-    out = RB.run_live(con, ["qwen3:1.7b"], apply=True, apply_above=0.85, log=lines.append)
+    out = RB.run_live(con, ["qwen3:1.7b"], apply=True, apply_above=0.85, log=lines.append)   # reuses the verdicts, applies the one left
     decided = [p for p in glass.posts if "qid" in p["body"]]
-    assert out["applied"] == 2 and {p["key"]: p["body"]["qid"] for p in decided} == {"gdb:artists:2": "Q911", "gdb:artists:1": ""}
+    assert out["applied"] == 1 and out["reused"] == 2
+    assert {p["key"]: p["body"]["qid"] for p in decided} == {"gdb:artists:2": "Q911", "gdb:artists:1": ""}
     assert len(RB.queue_rows(con, "applied")) == 2 and all(r["applied_at"] for r in RB.queue_rows(con, "applied"))
     # the consensus rules on their own
     V = J.Verdict
@@ -418,6 +419,39 @@ def test_live_without_a_token_only_reports(wired, glass, monkeypatch):
     monkeypatch.setattr(config, "GLASSDB_ADMIN_TOKEN", "")
     out = RB.run_live(wired, ["qwen3:1.7b"], apply=True, log=lambda *_: None)
     assert out["settled"] == 2 and out["suggested"] == 0 and out["applied"] == 0 and glass.posts == []
+
+
+def test_live_and_bench_resume_without_asking_again(wired, glass, judge_server, monkeypatch):
+    """A run that died, or one started without a token: the next run reuses what this code and panel already
+    decided, asks the models only about what is new, and writes the suggestions it could not write before."""
+    con = wired
+    monkeypatch.setattr(config, "GLASSDB_ADMIN_TOKEN", "")
+    out = RB.run_live(con, ["qwen3:1.7b"], log=lambda *_: None)
+    n_calls = len(judge_server.requests)
+    assert out["cases"] == 2 and out["suggested"] == 0 and n_calls >= 2
+    monkeypatch.setattr(config, "GLASSDB_ADMIN_TOKEN", "k")                 # the token arrives later
+    lines = []
+    out = RB.run_live(con, ["qwen3:1.7b"], log=lines.append)
+    assert out["reused"] == 2 and out["suggested"] == 2 and len(judge_server.requests) == n_calls
+    assert any("reused" in ln for ln in lines) and {p["key"] for p in glass.posts} == {"gdb:artists:1", "gdb:artists:2"}
+    out = RB.run_live(con, ["qwen3:1.7b"], log=lambda *_: None)             # nothing new: nothing written twice
+    assert out["reused"] == 2 and out["suggested"] == 0 and len(glass.posts) == 2
+    out = RB.run_live(con, ["qwen3:1.7b", "gemma3:1b"], log=lambda *_: None)   # another panel is another question
+    assert out["reused"] == 0 and len(judge_server.requests) > n_calls
+    n_calls = len(judge_server.requests)
+    out = RB.run_live(con, ["qwen3:1.7b", "gemma3:1b"], force=True, log=lambda *_: None)
+    assert out["reused"] == 0 and len(judge_server.requests) > n_calls
+    # the bench keeps the rows this code already stored and judges only the rest
+    cases = RB.fetch_cases(con, RB.GOLD_STATUSES, log=lambda *_: None)
+    RB.run_bench(con, ["qwen3:1.7b"], cases[:2], log=lambda *_: None)
+    n_calls = len(judge_server.requests)
+    lines = []
+    out = RB.run_bench(con, ["qwen3:1.7b"], cases, log=lines.append)
+    judged_before = sum(1 for c in cases[:2] if c.gold() is not None and c.candidates)
+    assert len(judge_server.requests) == n_calls + (out["cases"] - judged_before)
+    assert out["arms"]["judge@qwen3:1.7b"]["cases"] == out["cases"] and any("already judged" in ln for ln in lines)
+    out = RB.run_bench(con, ["qwen3:1.7b"], cases, force=True, log=lambda *_: None)
+    assert len(judge_server.requests) == n_calls + (out["cases"] - judged_before) + out["cases"]
 
 
 def test_wikidata_throttled_still_judges_from_the_lookups_descriptions(wired, monkeypatch):
@@ -555,7 +589,7 @@ def test_api_and_page(wired, glass, monkeypatch):
     from lexflow.pipeline import jobs
     from lexflow.pipeline.steps import get_step
     con = wired
-    assert get_step("resolve").run and get_step("resolve-bench").params == ["models", "node", "limit", "status", "kinds", "no_search"]
+    assert get_step("resolve").run and get_step("resolve-bench").params == ["models", "node", "limit", "status", "kinds", "no_search", "force"]
     assert {"resolve", "resolve-bench"} <= jobs.EXCLUSIVE
     RB.run_live(con, ["qwen3:1.7b"], log=lambda *_: None)
     with TestClient(app) as c:

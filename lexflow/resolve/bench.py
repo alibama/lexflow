@@ -111,25 +111,37 @@ def _partial(ev: dict) -> bool:
 
 
 def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = None, search: bool = True,
-              mode: str = "json", threshold: float | None = None, log=print, progress=None) -> dict:
-    """Every gold case x every model; rows stored, docs/resolvebench.json rewritten, the summary returned."""
+              mode: str = "json", threshold: float | None = None, force: bool = False, log=print, progress=None) -> dict:
+    """Every gold case x every model; rows stored, docs/resolvebench.json rewritten, the summary returned.  A row
+    already stored by this code for this case and arm is kept, not judged again, unless ``force``: a run that
+    died halfway continues where it stopped."""
     threshold = config.RESOLVE_THRESHOLD if threshold is None else float(threshold)
     ver = version()
     cases = [c for c in cases if c.gold() is not None and c.candidates]
     if not cases:
         log("no gold cases: nothing the Glass Database has decided has candidates to choose between")
         return {"version": ver, "cases": 0, "arms": {}}
+    searched = bool(search and config.SEARXNG_URL)
+    already: set[tuple[str, str]] = set()           # (case, arm) rows this code stored before: kept, not judged again
+    if not force:
+        gold = {c.key: gold_hash(c) for c in cases}
+        for r in db.rows(con, "SELECT case_id, arm, metrics, gold_hash FROM resolve_bench"):
+            m = db.loads(r["metrics"], {})
+            if m.get("version") == ver and gold.get(r["case_id"]) == r["gold_hash"]:
+                already.add((r["case_id"], r["arm"]))
+    jobs = [(m, c) for m in models for c in cases if (c.key, arm_name(m, searched, mode)) not in already]
+    need = {c.key for _m, c in jobs}
     log(f"ResolveBench {ver}: {len(cases)} gold cases ({sum(1 for c in cases if c.human())} decided by a person) x "
-        f"{len(models)} model(s), threshold {threshold}" + ("" if search and config.SEARXNG_URL else "; no web search"))
+        f"{len(models)} model(s), threshold {threshold}" + ("" if searched else "; no web search")
+        + (f"; {len(models) * len(cases) - len(jobs)} row(s) already judged by this code are kept" if len(jobs) < len(models) * len(cases) else ""))
     ev: dict[str, dict] = {}
-    for i, c in enumerate(cases):                   # the main thread reads the evidence (and fills the cache)
+    todo_ev = [c for c in cases if c.key in need]
+    for i, c in enumerate(todo_ev):                 # the main thread reads the evidence (and fills the cache)
         ev[c.key] = E.gather(con, c, use_search=search, log=log)
         if progress:
-            progress(0.3 * (i + 1) / len(cases))
+            progress(0.3 * (i + 1) / max(1, len(todo_ev)))
     if any(_partial(e) for e in ev.values()):
         log(f"  Wikidata facts could not be read for {sum(_partial(e) for e in ev.values())} case(s); their rows say partial_evidence")
-    searched = bool(search and config.SEARXNG_URL)
-    jobs = [(m, c) for m in models for c in cases]
     workers = _workers(models, node)
     if workers > 1:
         log(f"  fanning out over {workers} workers (the pool's free slots)")
@@ -168,6 +180,9 @@ def run_bench(con, models: list[str], cases: list[Case], *, node: str | None = N
         with ThreadPoolExecutor(max_workers=workers) as ex:
             for fut in [ex.submit(one, m, c) for m, c in jobs]:
                 keep(fut.result())
+    if already:                                     # the kept rows count in this run's summary too
+        wanted = {(c.key, arm_name(m, searched, mode)) for m in models for c in cases}
+        rows += [m for m in stored(con) if (m["case"], m["arm"]) in wanted and (m["case"], m["arm"]) in already]
     summary = summarize(rows, threshold)
     for arm, s in summary.items():
         log(f"{arm}: accuracy {s['accuracy']:.3f}, decides {s['decided']:.0%} of cases at ≥{threshold}, "
@@ -282,11 +297,30 @@ def consensus(verdicts: list[J.Verdict], threshold: float) -> dict:
             "because": max(vs, key=lambda x: x.confidence).because, "models": models}
 
 
+def _prior_verdicts(old: dict | None, case: Case, models: list[str], ver: str) -> list[J.Verdict] | None:
+    """The panel's earlier verdicts on this case when the same code, the same models and the same label and
+    candidates produced them: a run that died, or one started without a token, need not ask the models again."""
+    if not old or old.get("version") != ver or old.get("label") != case.label:
+        return None
+    prior = db.loads(old.get("verdicts"), {})
+    if set(prior) != set(models):
+        return None
+    cands = set(case.candidate_ids())
+    for d in prior.values():
+        v = d.get("verdict", "")
+        if v.startswith("Q") and v not in cands:
+            return None
+    return [J.Verdict(verdict=d.get("verdict") or "unsure", confidence=float(d.get("confidence") or 0),
+                      because=d.get("because") or "", flags=list(d.get("flags") or []), model=m) for m, d in prior.items()]
+
+
 def run_live(con, models: list[str], *, node: str | None = None, search: bool = True, mode: str = "json",
              threshold: float | None = None, apply: bool = False, apply_above: float | None = None,
-             limit: int | None = None, kinds: list[str] | None = None, log=print, progress=None,
+             limit: int | None = None, kinds: list[str] | None = None, force: bool = False, log=print, progress=None,
              src: GlassDatabase | None = None) -> dict:
-    """The open queue through the panel; suggestions back when a token is set; decisions only with ``apply``."""
+    """The open queue through the panel; suggestions back when a token is set; decisions only with ``apply``.
+    A case this code and this panel judged before is reused, not judged again, unless ``force``; a suggestion
+    not yet written (no token last time) is written from the stored verdicts."""
     threshold = config.RESOLVE_THRESHOLD if threshold is None else float(threshold)
     apply_above = max(threshold, 0.9) if apply_above is None else float(apply_above)
     src = src or GlassDatabase(log=log)
@@ -296,14 +330,20 @@ def run_live(con, models: list[str], *, node: str | None = None, search: bool = 
         + ("" if src.can_write() else "; no GLASSDB_ADMIN_TOKEN, so nothing is written back")
         + (f"; decisions at ≥{apply_above} will be applied" if apply and src.can_write() else ""))
     if not cases:
-        return {"cases": 0, "settled": 0, "open": 0, "suggested": 0, "applied": 0, "version": ver}
-    ev = {c.key: E.gather(con, c, use_search=search, log=log) for c in cases}
+        return {"cases": 0, "settled": 0, "open": 0, "suggested": 0, "applied": 0, "reused": 0, "version": ver}
+    existing = {r["key"]: r for r in db.rows(con, "SELECT * FROM resolve_queue")}
+    prior = {} if force else {c.key: _prior_verdicts(existing.get(c.key), c, models, ver) for c in cases}
+    prior = {k: v for k, v in prior.items() if v}
+    if prior:
+        log(f"  {len(prior)} case(s) judged before by this code and panel are reused; the rest go to the models")
+    ev = {c.key: E.gather(con, c, use_search=search, log=log) for c in cases if c.key not in prior}
     if any(_partial(e) for e in ev.values()):
         log(f"  Wikidata facts could not be read for {sum(_partial(e) for e in ev.values())} case(s): those are judged from the "
             "lookup's own candidate descriptions, with less to go on")
     searched = bool(search and config.SEARXNG_URL)
     workers = _workers(models, node)
-    counts = {"cases": len(cases), "settled": 0, "open": 0, "suggested": 0, "applied": 0, "by_kind": {}, "version": ver}
+    counts = {"cases": len(cases), "settled": 0, "open": 0, "suggested": 0, "applied": 0, "reused": len(prior),
+              "by_kind": {}, "version": ver}
 
     def panel(case: Case) -> list[J.Verdict]:
         def one(m):
@@ -318,25 +358,33 @@ def run_live(con, models: list[str], *, node: str | None = None, search: bool = 
             return list(ex.map(one, models))
 
     for i, case in enumerate(cases):
-        vs = panel(case)
+        old = existing.get(case.key) or {}
+        reused = case.key in prior
+        vs = prior[case.key] if reused else panel(case)
         cons = consensus(vs, threshold)
         kind = counts["by_kind"].setdefault(case.kind, {"settled": 0, "open": 0})
         kind["settled" if cons["settled"] else "open"] += 1
         counts["settled" if cons["settled"] else "open"] += 1
         row = {"key": case.key, "kind": case.kind, "label": case.label, "verdict": cons["verdict"],
                "confidence": cons["confidence"], "settled": int(cons["settled"]), "because": cons["because"],
-               "verdicts": cons["models"], "searched": int(searched), "version": ver, "updated_at": db.now()}
+               "verdicts": cons["models"], "searched": int(old.get("searched") or 0) if reused else int(searched),
+               "version": ver, "updated_at": db.now(),
+               "suggested_at": old.get("suggested_at") if reused else None,
+               "applied_at": old.get("applied_at") if reused else None,
+               "applied_qid": old.get("applied_qid") if reused else None}
         suggestion = {"qid": cons["verdict"] if cons["verdict"].startswith("Q") else "", "verdict": cons["verdict"],
                       "confidence": cons["confidence"], "because": cons["because"], "settled": cons["settled"],
-                      "models": cons["models"], "searched": searched, "version": ver, "at": db.now()}
+                      "models": cons["models"], "searched": bool(row["searched"]), "version": ver, "at": db.now()}
         if src.can_write():
-            try:
-                src.suggest(case.key, suggestion)
-                row["suggested_at"] = db.now()
-                counts["suggested"] += 1
-            except Exception as e:  # noqa: BLE001
-                log(f"  {case.key}: suggestion not written ({e})")
-            if apply and cons["settled"] and cons["confidence"] >= apply_above and cons["verdict"] != "unsure":
+            if not row.get("suggested_at"):
+                try:
+                    src.suggest(case.key, suggestion)
+                    row["suggested_at"] = db.now()
+                    counts["suggested"] += 1
+                except Exception as e:  # noqa: BLE001
+                    log(f"  {case.key}: suggestion not written ({e})")
+            if apply and cons["settled"] and cons["confidence"] >= apply_above and cons["verdict"] != "unsure" \
+                    and not row.get("applied_at"):
                 try:
                     src.decide(case.key, suggestion["qid"])
                     row["applied_at"], row["applied_qid"] = db.now(), suggestion["qid"]
@@ -348,10 +396,11 @@ def run_live(con, models: list[str], *, node: str | None = None, search: bool = 
         mark = "settled" if cons["settled"] else "open"
         log(f"  {case.label[:30]:<30} {mark:<8} {cons['verdict']:<10} {cons['confidence']:.2f}  "
             + "  ".join(f"{m.split(':')[0]}={d['verdict']}@{d['confidence']:.2f}" for m, d in cons["models"].items())
-            + ("  applied" if row.get("applied_at") else ""))
+            + ("  (reused)" if reused else "") + ("  applied" if row.get("applied_at") else ""))
         if progress:
             progress((i + 1) / len(cases))
     log(f"settled {counts['settled']}, open {counts['open']}"
+        + (f"; {counts['reused']} reused from the last run" if counts["reused"] else "")
         + (f"; {counts['suggested']} suggestion(s) written back" if counts["suggested"] else "")
         + (f"; {counts['applied']} decision(s) applied" if counts["applied"] else ""))
     return counts

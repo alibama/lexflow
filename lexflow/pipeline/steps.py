@@ -1365,7 +1365,7 @@ def run_resolve(con, args, log, progress):
     return RB.run_live(con, models, node=args.get("node") or None, search=not args.get("no_search"),
                        mode=args.get("mode") or "json", threshold=args.get("threshold"), apply=bool(args.get("apply")),
                        apply_above=args.get("apply_above"), limit=limit, kinds=_names(args.get("kinds")) or None,
-                       log=log, progress=progress)
+                       force=bool(args.get("force")), log=log, progress=progress)
 
 
 def run_resolve_bench(con, args, log, progress):
@@ -1376,7 +1376,8 @@ def run_resolve_bench(con, args, log, progress):
     limit = int(args["limit"]) if args.get("limit") not in (None, "") else None
     cases = RB.fetch_cases(con, statuses, kinds=_names(args.get("kinds")) or None, limit=limit, log=log)
     return RB.run_bench(con, models, cases, node=args.get("node") or None, search=not args.get("no_search"),
-                        mode=args.get("mode") or "json", threshold=args.get("threshold"), log=log, progress=progress)
+                        mode=args.get("mode") or "json", threshold=args.get("threshold"), force=bool(args.get("force")),
+                        log=log, progress=progress)
 
 
 def run_enrich(con, args, log, progress):
@@ -1407,7 +1408,7 @@ COMPOSITE = {
                     "is the same thing, if any. Agreement at or above the threshold is settled. With the site's API key "
                     "every answer goes back as a suggestion the reviewer sees beside the candidates; a decision is "
                     "applied only when the run is told to (apply).", "optional", lambda con: {}, run_resolve,
-                    params=["models", "node", "limit", "kinds", "apply", "no_search"],
+                    params=["models", "node", "limit", "kinds", "apply", "no_search", "force"],
                     cost="about a minute a case per model on a laptop CPU, seconds on a GPU; Wikidata and Wikipedia "
                          "are read once per candidate and cached in the store",
                     credits=_RESOLVE_CREDITS),
@@ -1417,7 +1418,7 @@ COMPOSITE = {
                           "model: accuracy, how much of the queue it would settle at the threshold, and how often those "
                           "settled answers are right. Writes docs/resolvebench.json; the Resolve page shows it.",
                           "optional", lambda con: {}, run_resolve_bench,
-                          params=["models", "node", "limit", "status", "kinds", "no_search"],
+                          params=["models", "node", "limit", "status", "kinds", "no_search", "force"],
                           cost="about a minute a case per model on a laptop CPU; there are hundreds of gold cases, "
                                "so --limit for a first look", credits=_RESOLVE_CREDITS),
     "enrich": Step("enrich", "Find the website, Instagram and town of records with nothing on Wikidata",
